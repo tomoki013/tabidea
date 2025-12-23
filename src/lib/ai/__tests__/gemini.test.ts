@@ -2,35 +2,42 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { GeminiService } from "../gemini";
 
+// Mock response helpers
+const mockText = (text: string) => ({ text: () => text });
+
+const { mockGenerateContent } = vi.hoisted(() => {
+  return { mockGenerateContent: vi.fn() };
+});
+
 vi.mock("@google/generative-ai", () => {
   return {
-    GoogleGenerativeAI: vi.fn(() => ({
-      getGenerativeModel: vi.fn(() => ({
-        generateContent: vi.fn(),
-        startChat: vi.fn(() => ({
-          sendMessage: vi.fn(async () => ({
-            response: { text: () => "Chat response" },
+    GoogleGenerativeAI: class {
+      constructor(apiKey: string) {}
+      getGenerativeModel() {
+        return {
+          generateContent: mockGenerateContent,
+          startChat: vi.fn(() => ({
+            sendMessage: vi.fn(async () => ({
+              response: mockText("Chat response"),
+            })),
           })),
-        })),
-      })),
-    })),
+        };
+      }
+    },
   };
 });
 
 describe("GeminiService", () => {
   let service: GeminiService;
-  let mockGenerateContent: any;
 
   beforeEach(() => {
-    service = new GeminiService("fake-api-key");
-    // Access the spy through the private property 'model'
-    mockGenerateContent = (service as any).model.generateContent;
     vi.clearAllMocks();
+    service = new GeminiService("fake-api-key");
   });
 
   it("generates a valid itinerary from valid JSON response", async () => {
     const mockResponse = {
-      text: () =>
+      response: mockText(
         JSON.stringify({
           id: "test-trip",
           destination: "Kyoto",
@@ -38,9 +45,10 @@ describe("GeminiService", () => {
           description: "A trip to Kyoto",
           days: [],
           references: [],
-        }),
+        })
+      ),
     };
-    mockGenerateContent.mockResolvedValue({ response: mockResponse });
+    mockGenerateContent.mockResolvedValue(mockResponse);
 
     const result = await service.generateItinerary("Kyoto trip", []);
 
@@ -49,16 +57,14 @@ describe("GeminiService", () => {
   });
 
   it("handles markdown code blocks in JSON response", async () => {
+    const jsonStr = JSON.stringify({
+      id: "test-trip",
+      destination: "Kyoto",
+    });
     const mockResponse = {
-      text: () =>
-        "```json\n" +
-        JSON.stringify({
-          id: "test-trip",
-          destination: "Kyoto",
-        }) +
-        "\n```",
+      response: mockText("```json\n" + jsonStr + "\n```"),
     };
-    mockGenerateContent.mockResolvedValue({ response: mockResponse });
+    mockGenerateContent.mockResolvedValue(mockResponse);
 
     const result = await service.generateItinerary("Kyoto trip", []);
     expect(result.destination).toBe("Kyoto");
@@ -66,9 +72,9 @@ describe("GeminiService", () => {
 
   it("throws error on invalid JSON", async () => {
     const mockResponse = {
-      text: () => "Not JSON",
+      response: mockText("Not JSON"),
     };
-    mockGenerateContent.mockResolvedValue({ response: mockResponse });
+    mockGenerateContent.mockResolvedValue(mockResponse);
 
     await expect(service.generateItinerary("Kyoto trip", [])).rejects.toThrow();
   });

@@ -8,10 +8,22 @@ export default function Home() {
       <main className="flex flex-col gap-8 row-start-2 items-center text-center max-w-4xl w-full">
         <h1 className="text-5xl sm:text-7xl font-bold pb-2 animate-in fade-in slide-in-from-top-4 duration-1000 tracking-tight text-foreground">
           AIトラベルプランナー
+          <span className="block text-2xl sm:text-3xl mt-4 font-normal text-muted-foreground">
+            Powered by ともきちの旅行日記
+          </span>
         </h1>
         <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-4 duration-1000 delay-150 font-medium">
           次の冒険を、AIと一緒に見つけよう。
         </p>
+
+        <div className="animate-in fade-in slide-in-from-top-4 duration-1000 delay-200 text-sm text-muted-foreground/80 max-w-2xl bg-muted/30 p-4 rounded-lg border border-border/50">
+          <p className="font-medium mb-1">
+            このサービスは『ともきちの旅行日記』の記事を参考にしています。
+          </p>
+          <p className="text-xs">
+            ※AIが生成するため、情報の正確性は保証されません。施設の営業状況や料金などは、必ず公式サイト等でご自身でご確認ください。
+          </p>
+        </div>
 
         <Suspense
           fallback={
