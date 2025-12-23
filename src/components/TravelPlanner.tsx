@@ -41,21 +41,21 @@ export default function TravelPlanner() {
   ];
 
   const loadingImages = [
-    "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2673&auto=format&fit=crop", // Paris
-    "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=2694&auto=format&fit=crop", // Tokyo
-    "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2670&auto=format&fit=crop", // Nature
-    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2621&auto=format&fit=crop", // Travel
+    "/images/eiffel-tower-and-sunset.jpg", // Paris
+    "/images/kiyomizu-temple-autumn-leaves-lightup.jpg", // Kyoto
+    "/images/balloons-in-cappadocia.jpg", // Nature
+    "/images/tajmahal.jpg", // Travel
   ];
 
   // Step Background Images
   const stepImages = [
-    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2621&auto=format&fit=crop", // 0: Destination
-    "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2668&auto=format&fit=crop", // 1: Dates
-    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2832&auto=format&fit=crop", // 2: Companions
-    "https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=2574&auto=format&fit=crop", // 3: Themes
-    "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2670&auto=format&fit=crop", // 4: Budget
-    "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=2670&auto=format&fit=crop", // 5: Pace
-    "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=2672&auto=format&fit=crop", // 6: FreeText
+    "/images/eiffel-tower-and-sunset.jpg", // 0: Destination
+    "/images/kiyomizu-temple-autumn-leaves-lightup.jpg", // 1: Dates
+    "/images/balloons-in-cappadocia.jpg", // 2: Companions
+    "/images/tajmahal.jpg", // 3: Themes
+    "/images/eiffel-tower-and-sunset.jpg", // 4: Budget
+    "/images/kiyomizu-temple-autumn-leaves-lightup.jpg", // 5: Pace
+    "/images/balloons-in-cappadocia.jpg", // 6: FreeText
   ];
 
   // Sync date inputs to the main input string
