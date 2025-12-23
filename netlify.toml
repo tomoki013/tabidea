@@ -1,6 +1,6 @@
 [build]
   command = "pnpm run build"
-  publish = ".next"
+  # publish = ".next" # @netlify/plugin-nextjs handles this automatically
 
 # 1. 旧ドメインからのアクセスを新ドメインへ転送 (301 Redirect)
 # これだけ残せばOKです

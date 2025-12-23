@@ -23,7 +23,7 @@ export default function Home() {
           <TravelPlanner />
         </Suspense>
 
-        <div className="flex gap-4 mt-12 text-sm text-muted-foreground/50 animate-in fade-in duration-1000 delay-300">
+        {/* <div className="flex gap-4 mt-12 text-sm text-muted-foreground/50 animate-in fade-in duration-1000 delay-300">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
             <span>AIモデル準備完了</span>
@@ -32,7 +32,7 @@ export default function Home() {
             <span className="w-2 h-2 rounded-full bg-purple-500"></span>
             <span>プレミアム体験</span>
           </div>
-        </div>
+        </div> */}
       </main>
 
       <footer className="row-start-3 flex flex-col items-center gap-4 text-muted-foreground text-sm">
