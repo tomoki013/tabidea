@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
     ],
   },
   basePath: "/ai-travel-planner",
-  trailingSlash: true,
+  // trailingSlash: true, // Removed to prevent redirect loops
   experimental: {
     serverActions: {
       allowedOrigins: ['travel.tomokichidiary.com'], // 独自ドメインを許可
