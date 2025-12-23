@@ -31,4 +31,7 @@ export interface UserInput {
   dates: string;
   companions: string;
   theme: string[];
+  freeText?: string;
+  budget?: string;
+  pace?: string;
 }
