@@ -1,0 +1,17 @@
+[build]
+  command = "pnpm run build"
+  publish = ".next"
+
+# 1. 旧ドメインからのアクセスを新ドメインへ転送 (301 Redirect)
+# これだけ残せばOKです
+[[redirects]]
+  from = "https://ai-travel-planner.tomokichidiary.com/*"
+  to = "https://travel.tomokichidiary.com/ai-travel-planner/:splat"
+  status = 301
+  force = true
+
+# 2. 削除しました
+
+# 3. プラグイン設定
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
