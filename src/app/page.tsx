@@ -20,16 +20,34 @@ export default function Home() {
             <span>AIモデル準備完了</span>
           </div>
           <div className="flex items-center gap-2">
-             <span className="w-2 h-2 rounded-full bg-purple-500"></span>
-             <span>プレミアム体験</span>
+            <span className="w-2 h-2 rounded-full bg-purple-500"></span>
+            <span>プレミアム体験</span>
           </div>
         </div>
       </main>
-      
+
       <footer className="row-start-3 flex flex-col items-center gap-4 text-muted-foreground text-sm">
         <div className="flex gap-6">
-          <Link href="/privacy" className="hover:underline hover:text-foreground transition-colors">プライバシーポリシー</Link>
-          <Link href="/terms" className="hover:underline hover:text-foreground transition-colors">利用規約</Link>
+          <Link
+            href="/privacy"
+            className="hover:underline hover:text-foreground transition-colors"
+          >
+            プライバシーポリシー
+          </Link>
+          <Link
+            href="/terms"
+            className="hover:underline hover:text-foreground transition-colors"
+          >
+            利用規約
+          </Link>
+          <Link
+            href="https://travel.tomokichidiary.com/contact"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:underline hover:text-foreground transition-colors"
+          >
+            お問い合わせ
+          </Link>
         </div>
         <p>© 2025 AI Travel Planner. Design inspired by Tomokichi Diary.</p>
       </footer>
