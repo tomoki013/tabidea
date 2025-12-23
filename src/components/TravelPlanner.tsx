@@ -636,20 +636,31 @@ export default function TravelPlanner() {
 
         {/* --- UI FIX: Changed left-10 to right-10 to separate tags from title --- */}
         <div className="absolute top-10 right-10 flex gap-3 flex-wrap justify-end max-w-[50%]">
-          {input.theme.map((t) => (
-            <span
-              key={t}
-              className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-medium text-white border border-white/20 tracking-wider uppercase"
-            >
-              {t}
-            </span>
-          ))}
-          <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-medium text-white border border-white/20 tracking-wider uppercase">
+          {input.theme.map((t, i) => {
+            // Assign different colors based on index or just rotate through a few
+            const colors = [
+              "bg-pink-500/20 border-pink-500/30",
+              "bg-purple-500/20 border-purple-500/30",
+              "bg-blue-500/20 border-blue-500/30",
+              "bg-green-500/20 border-green-500/30",
+            ];
+            const colorClass = colors[i % colors.length];
+
+            return (
+              <span
+                key={t}
+                className={`px-4 py-1.5 rounded-full backdrop-blur-md text-xs font-medium text-white border tracking-wider uppercase ${colorClass}`}
+              >
+                {t}
+              </span>
+            );
+          })}
+          <span className="px-4 py-1.5 rounded-full bg-orange-500/20 backdrop-blur-md text-xs font-medium text-white border border-orange-500/30 tracking-wider uppercase">
             {input.companions} Trip
           </span>
           {/* Display Budget/Pace if available */}
           {input.budget && (
-            <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-medium text-white border border-white/20 tracking-wider uppercase">
+            <span className="px-4 py-1.5 rounded-full bg-yellow-500/20 backdrop-blur-md text-xs font-medium text-white border border-yellow-500/30 tracking-wider uppercase">
               {input.budget === "saving"
                 ? "Budget"
                 : input.budget === "luxury"
