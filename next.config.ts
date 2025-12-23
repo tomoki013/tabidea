@@ -9,6 +9,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  basePath: "/ai-travel-planner",
+  trailingSlash: true,
 };
 
 export default nextConfig;
