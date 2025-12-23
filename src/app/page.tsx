@@ -4,7 +4,7 @@ import TravelPlanner from "@/components/TravelPlanner";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-4 pb-20 gap-8 sm:p-20 sm:gap-16">
       <main className="flex flex-col gap-8 row-start-2 items-center text-center max-w-4xl w-full">
         <h1 className="text-5xl sm:text-7xl font-bold pb-2 animate-in fade-in slide-in-from-top-4 duration-1000 tracking-tight text-foreground">
           AIトラベルプランナー

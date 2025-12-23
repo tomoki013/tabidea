@@ -171,7 +171,7 @@ export default function TravelPlanner() {
   if (status === "idle" || status === "error") {
     return (
       <div className="w-full max-w-2xl mt-8 animate-in fade-in duration-700">
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-6 sm:p-10 shadow-2xl min-h-[500px] flex flex-col justify-between relative overflow-hidden group">
+        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-4 sm:p-10 shadow-2xl min-h-[500px] flex flex-col justify-between relative overflow-hidden group">
           {/* Background Image Layer */}
           {stepImages.map((img, i) => (
             <div
@@ -228,7 +228,7 @@ export default function TravelPlanner() {
                   }
                   placeholder="例: パリ, 京都, 北海道..."
                   autoFocus
-                  className="w-full bg-transparent border-b-2 border-white/20 pb-4 text-4xl font-light text-white placeholder:text-muted-foreground/30 focus:outline-hidden focus:border-white transition-colors"
+                  className="w-full bg-transparent border-b-2 border-white/20 pb-4 text-2xl sm:text-4xl font-light text-white placeholder:text-muted-foreground/30 focus:outline-hidden focus:border-white transition-colors"
                 />
               </div>
             )}
@@ -245,7 +245,7 @@ export default function TravelPlanner() {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 gap-8">
+                <div className="grid grid-cols-1 gap-6 sm:gap-8">
                   <div className="space-y-3">
                     <label className="text-sm text-gray-400">
                       出発日 (任意)
@@ -302,7 +302,7 @@ export default function TravelPlanner() {
                     <button
                       key={c.id}
                       onClick={() => setInput({ ...input, companions: c.id })}
-                      className={`p-4 rounded-2xl border transition-all text-left group ${
+                      className={`p-3 sm:p-4 rounded-2xl border transition-all text-left group ${
                         input.companions === c.id
                           ? "bg-white text-black border-white shadow-lg scale-[1.02]"
                           : "bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/30"
@@ -342,7 +342,7 @@ export default function TravelPlanner() {
                     <button
                       key={t}
                       onClick={() => toggleTheme(t)}
-                      className={`px-6 py-3 rounded-full text-base transition-all ${
+                      className={`px-4 py-2 sm:px-6 sm:py-3 rounded-full text-sm sm:text-base transition-all ${
                         input.theme.includes(t)
                           ? "bg-white text-black shadow-lg scale-105"
                           : "bg-white/10 text-white hover:bg-white/20 border border-white/10"
@@ -625,7 +625,7 @@ export default function TravelPlanner() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative h-[65vh] w-full rounded-[2.5rem] overflow-hidden mb-20 group shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
+      <div className="relative h-[50vh] sm:h-[65vh] w-full rounded-2xl sm:rounded-[2.5rem] overflow-hidden mb-10 sm:mb-20 group shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10">
         <Image
           src={result?.heroImage || loadingImages[0]}
           alt={result?.destination || ""}
@@ -634,8 +634,8 @@ export default function TravelPlanner() {
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/30 via-transparent to-black/90" />
 
-        {/* --- UI FIX: Changed left-10 to right-10 to separate tags from title --- */}
-        <div className="absolute top-10 right-10 flex gap-3 flex-wrap justify-end max-w-[50%]">
+        {/* --- UI FIX: Moved tags to top-left on mobile to avoid overlapping with fixed "Start New Plan" button --- */}
+        <div className="absolute top-4 left-4 sm:top-10 sm:right-10 sm:left-auto flex gap-2 sm:gap-3 flex-wrap justify-start sm:justify-end max-w-[90%] sm:max-w-[50%]">
           {input.theme.map((t, i) => {
             // Assign different colors based on index or just rotate through a few
             const colors = [
@@ -670,14 +670,14 @@ export default function TravelPlanner() {
           )}
         </div>
 
-        <div className="absolute bottom-0 left-0 p-10 sm:p-20 w-full max-w-5xl">
-          <p className="text-sm font-mono text-accent uppercase tracking-[0.2em] mb-4 pl-1">
+        <div className="absolute bottom-0 left-0 p-6 sm:p-20 w-full max-w-5xl">
+          <p className="text-xs sm:text-sm font-mono text-accent uppercase tracking-[0.2em] mb-2 sm:mb-4 pl-1">
             Your Personalized Journey
           </p>
-          <h2 className="text-7xl sm:text-9xl font-serif text-white mb-8 tracking-tighter drop-shadow-2xl">
+          <h2 className="text-4xl sm:text-7xl lg:text-9xl font-serif text-white mb-4 sm:mb-8 tracking-tighter drop-shadow-2xl">
             {result?.destination}
           </h2>
-          <p className="text-xl sm:text-2xl text-white/90 font-light leading-relaxed max-w-3xl drop-shadow-lg">
+          <p className="text-sm sm:text-xl lg:text-2xl text-white/90 font-light leading-relaxed max-w-3xl drop-shadow-lg">
             {result?.description}
           </p>
         </div>
@@ -691,7 +691,7 @@ export default function TravelPlanner() {
               {/* Day Header */}
               <div className="sticky top-4 z-30 flex items-center gap-6 mb-12">
                 <div className="bg-background/90 backdrop-blur-xl px-6 py-2 rounded-full border border-white/10 shadow-xl flex items-baseline gap-4">
-                  <h3 className="text-5xl font-serif text-transparent bg-clip-text bg-linear-to-br from-white to-white/50">
+                  <h3 className="text-3xl sm:text-5xl font-serif text-transparent bg-clip-text bg-linear-to-br from-white to-white/50">
                     {day.day}
                   </h3>
                   <span className="text-sm font-light text-muted-foreground uppercase tracking-widest">
@@ -704,7 +704,7 @@ export default function TravelPlanner() {
                 </span>
               </div>
 
-              <div className="space-y-12 pl-8 border-l-2 border-white/5 ml-8 relative pb-12">
+              <div className="space-y-12 pl-8 sm:pl-12 border-l-2 border-white/5 ml-4 sm:ml-8 relative pb-12">
                 {/* Timeline dot at top */}
                 <span className="absolute -left-[5px] top-0 w-2.5 h-2.5 rounded-full bg-white/20"></span>
 
