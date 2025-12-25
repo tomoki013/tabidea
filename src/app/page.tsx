@@ -23,6 +23,9 @@ export default function Home() {
           <p className="text-xs">
             ※AIが生成するため、情報の正確性は保証されません。施設の営業状況や料金などは、必ず公式サイト等でご自身でご確認ください。
           </p>
+          <p className="text-xs mt-1">
+            ※入力された情報はAIモデルの学習には使用されません。詳しくは<Link href="/terms" className="underline hover:text-foreground">利用規約</Link>および<Link href="/privacy" className="underline hover:text-foreground">プライバシーポリシー</Link>をご覧ください。
+          </p>
         </div>
 
         <Suspense

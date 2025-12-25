@@ -76,6 +76,26 @@ export default function PrivacyPolicy() {
             <p>
               当サービスは、サービスの改善や広告配信のために、Google Analytics等の外部サービスを利用する場合があります。これらのサービスはCookieを使用してトラフィックデータを収集しますが、このデータは匿名で収集されており、個人を特定するものではありません。
             </p>
+            <div className="mt-4">
+              <h3 className="text-lg font-medium text-foreground mb-2">Google Gemini API</h3>
+              <p>
+                当サービスは、AIによる旅行プラン生成のためにGoogle Gemini APIを使用しています。
+                ユーザーが入力した情報は、Google社のサーバーへ送信され処理されます。
+                Google社の規定（Paid Services）により、本サービスを通じて送信されたデータは、AIモデルの学習（トレーニング）には使用されません。
+              </p>
+              <p className="mt-2">
+                ただし、不正利用防止の観点から、Google社において一定期間データが保持される場合があります。
+                詳細なデータ取り扱いについては、以下のGoogle社の規約等をご参照ください。
+              </p>
+              <ul className="list-disc pl-6 mt-2 space-y-1">
+                <li>
+                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Google プライバシーポリシー</a>
+                </li>
+                <li>
+                  <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Gemini API 追加利用規約</a>
+                </li>
+              </ul>
+            </div>
           </section>
 
           <section>
