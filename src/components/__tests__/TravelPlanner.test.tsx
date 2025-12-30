@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import TravelPlanner from "@/components/TravelPlanner";
 
@@ -22,48 +22,54 @@ vi.mock("next/navigation", () => ({
 
 it("renders the initial form", () => {
   render(<TravelPlanner />);
-  // The text is split across multiple elements or lines
-  expect(screen.getByText((content) => content.includes("どこへ"))).toBeDefined();
-  expect(screen.getByText((content) => content.includes("旅に出ますか？"))).toBeDefined();
+  // Updated text assertions for the new UI
+  expect(screen.getByText((content) => content.includes("まずは、行き先を"))).toBeDefined();
+  expect(screen.getByText((content) => content.includes("教えてください。"))).toBeDefined();
 });
 
 it("navigates through all steps including new ones", async () => {
   render(<TravelPlanner />);
 
   // Step 1: Destination
-  const input = screen.getByPlaceholderText("例: 京都、パリ、北海道...");
+  const input = screen.getByPlaceholderText("ここに行きたい...");
   fireEvent.change(input, { target: { value: "Tokyo" } });
+
   const nextBtn = screen.getByRole("button", { name: "次へ" });
   fireEvent.click(nextBtn);
 
   // Step 2: Dates (Just click next)
+  // New UI uses "いつ、どれくらい？"
+  await screen.findByText("いつ、どれくらい？");
   fireEvent.click(nextBtn);
 
   // Step 3: Companions (Click 'Business')
-  // Wait for the element to appear if there is an animation or state update lag
   const businessBtn = await screen.findByText("ビジネス");
   expect(businessBtn).toBeDefined();
   fireEvent.click(businessBtn);
+  // In the current StepCompanions implementation, it seems I need to click Next manually after selection
+  // because the "Next" button is outside the StepCompanions component (in StepContainer).
   fireEvent.click(nextBtn);
 
-  // Step 4: Themes (Click 'Gourmet')
-  const gourmetBtn = await screen.findByText("グルメ");
+  // Step 4: Themes (Click 'Gourmet' -> 'グルメ')
+  // Note: StepThemes now includes Budget and Pace
+  const gourmetBtn = await screen.findByText("#グルメ");
   fireEvent.click(gourmetBtn);
-  fireEvent.click(nextBtn);
 
-  // Step 5: Budget (Click 'Standard')
-  // Note: "普通" appears in both Budget and Pace options in StepThemes.
+  // Budget "普通"
   const allStandardBtns = screen.getAllByText("普通");
-  // Assuming the first one is budget (based on render order in StepThemes)
-  fireEvent.click(allStandardBtns[0]);
+  fireEvent.click(allStandardBtns[0]); // Budget
 
-  // Step 6: Pace (Click 'Balanced' which is labeled "普通")
-  // So we need to click the second "普通".
-  fireEvent.click(allStandardBtns[1]);
+  // Pace "普通"
+  fireEvent.click(allStandardBtns[1]); // Pace
 
-  // Now click next to move to Step 7 (FreeText)
   fireEvent.click(nextBtn);
 
-  // Step 7: FreeText -> Submit
-  expect(screen.getByRole("button", { name: "プランを作成する ✨" })).toBeDefined();
+  // Step 5: FreeText
+  // Wait for the text to appear. The text "最後に、メモはありますか？" might be split due to <br /> or newlines.
+  // We use a flexible matcher.
+  await screen.findByText((content) => content.includes("最後に") && content.includes("メモはありますか"));
+
+  // Submit button
+  const submitBtn = screen.getByRole("button", { name: /プランを作成する/ });
+  expect(submitBtn).toBeDefined();
 });

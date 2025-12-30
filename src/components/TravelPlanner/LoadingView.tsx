@@ -12,11 +12,11 @@ const loadingImages = [
 ];
 
 const loadingMessages = [
-  "ともきち日記のアーカイブにアクセス中...",
-  "関連するブログ記事を検索中...",
-  "体験談を抽出中...",
-  "抽出情報をAIが分析中...",
-  "あなただけの旅程を作成中...",
+  "ガイドブックを開いています...",
+  "現地の天気を調べています...",
+  "とっておきの場所を探しています...",
+  "旅のしおりを作成中...",
+  "あなただけの物語を書いています...",
 ];
 
 export default function LoadingView() {
@@ -25,48 +25,53 @@ export default function LoadingView() {
   useEffect(() => {
     const interval = setInterval(() => {
       setStep((prev) => (prev + 1) % loadingMessages.length);
-    }, 2000);
+    }, 2500);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 flex items-center justify-center">
-      {/* Cinematic Background Rotation */}
+    <div className="w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-3xl overflow-hidden shadow-2xl bg-[#fcfbf9] border-8 border-white flex items-center justify-center">
+
+      {/* Background with heavy blur and overlay to look like a memory */}
       {loadingImages.map((img, i) => (
         <Image
           key={i}
           src={img}
           alt="Loading background"
           fill
-          className={`object-cover transition-opacity duration-1000 ${
+          className={`object-cover transition-opacity duration-2000 ${
             i === step % loadingImages.length
-              ? "opacity-50 scale-105"
+              ? "opacity-20 scale-110 blur-xs"
               : "opacity-0 scale-100"
           }`}
         />
       ))}
 
-      <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
+      {/* Paper Overlay Texture (Local Asset) */}
+      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col items-center gap-8 p-10 text-center max-w-md">
-        <div className="relative">
-          <div className="w-20 h-20 rounded-full border-4 border-white/20 border-t-teal-400 animate-spin"></div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-2xl">✈️</span>
-          </div>
+      <div className="relative z-10 flex flex-col items-center gap-12 p-10 text-center max-w-md">
+
+        {/* Animated Icon - Not a spinner, but a bouncing element */}
+        <div className="relative w-24 h-24">
+            <div className="absolute inset-0 border-4 border-dashed border-primary/30 rounded-full animate-[spin_10s_linear_infinite]" />
+            <div className="absolute inset-0 flex items-center justify-center text-4xl animate-bounce">
+                ✈️
+            </div>
         </div>
 
-        <div className="space-y-4">
-          <div className="flex items-center justify-center gap-3">
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span className="text-xs font-mono uppercase tracking-widest text-white/80">
-              AI Agent Working
-            </span>
-          </div>
-          <p className="text-3xl font-light text-white leading-tight animate-in fade-in slide-in-from-bottom-2 duration-500 key={step}">
+        <div className="space-y-6">
+          <p className="text-2xl font-serif text-foreground leading-tight min-h-[4rem]">
             {loadingMessages[step]}
           </p>
+          <div className="w-16 h-1 bg-primary/20 mx-auto rounded-full overflow-hidden">
+            <div className="h-full bg-primary animate-progress-indeterminate" />
+          </div>
         </div>
+
+        <p className="text-sm font-hand text-muted-foreground rotate-[-2deg]">
+            もうすぐ出発です。
+        </p>
       </div>
     </div>
   );

@@ -1,37 +1,37 @@
 @import "tailwindcss";
 
 :root {
-  /* Vibrant Journey Theme Palette */
-  --background: #0f172a; /* Deep Blue base */
-  --foreground: #f8fafc;
+  /* Travel Journal Theme Palette */
+  --background: #fcfbf9; /* Warm Paper White */
+  --foreground: #2c2c2c; /* Ink Black */
 
-  --card: #1e293b;
-  --card-foreground: #f8fafc;
+  --card: #ffffff;
+  --card-foreground: #2c2c2c;
 
-  --popover: #1e293b;
-  --popover-foreground: #f8fafc;
+  --popover: #ffffff;
+  --popover-foreground: #2c2c2c;
 
-  /* Gradient-ready primary colors */
-  --primary: #f43f5e; /* Rose 500 */
+  /* Organic Accents */
+  --primary: #e67e22; /* Terracotta / Stamp Color */
   --primary-foreground: #ffffff;
 
-  --secondary: #8b5cf6; /* Violet 500 */
+  --secondary: #7f8c8d; /* Pencil Gray */
   --secondary-foreground: #ffffff;
 
-  --muted: #334155;
-  --muted-foreground: #94a3b8;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
 
-  --accent: #f59e0b; /* Amber 500 */
+  --accent: #27ae60; /* Nature Green */
   --accent-foreground: #ffffff;
 
-  --destructive: #ef4444;
+  --destructive: #e74c3c;
   --destructive-foreground: #ffffff;
 
-  --border: #334155;
-  --input: #334155;
-  --ring: #f43f5e;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #e67e22;
 
-  --radius: 1rem;
+  --radius: 0.5rem;
 }
 
 @theme inline {
@@ -58,6 +58,8 @@
   --color-ring: var(--ring);
 
   --font-sans: var(--font-noto-sans-jp);
+  --font-serif: var(--font-kaisei-decol);
+  --font-hand: var(--font-yomogi);
 }
 
 body {
@@ -66,15 +68,30 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(
-      circle at 15% 50%,
-      rgba(244, 63, 94, 0.15),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 85% 30%,
-      rgba(139, 92, 246, 0.15),
-      transparent 25%
-    );
-  background-attachment: fixed;
+  background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+  background-size: 24px 24px; /* Dot grid paper effect */
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Utilities */
+.font-serif {
+  font-family: var(--font-kaisei-decol), serif;
+}
+
+.font-hand {
+  font-family: var(--font-yomogi), cursive;
 }
