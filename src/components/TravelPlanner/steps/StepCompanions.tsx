@@ -40,27 +40,33 @@ export default function StepCompanions({
             key={opt.id}
             onClick={() => onChange(opt.id)}
             className={`
-              relative p-6 rounded-2xl border-2 text-left transition-all duration-300 group overflow-hidden
+              relative p-4 rounded-xl border-2 text-left transition-all duration-300 group overflow-hidden
               ${
                 value === opt.id
-                  ? "bg-white border-primary shadow-[4px_4px_0px_0px_rgba(230,126,34,1)] translate-x-[-2px] translate-y-[-2px]"
-                  : "bg-white border-gray-100 hover:border-primary/50 hover:shadow-md"
+                  ? "bg-white border-primary shadow-[4px_4px_0px_0px_var(--color-primary)] translate-x-[-2px] translate-y-[-2px] z-10"
+                  : "bg-white border-stone-200 hover:border-primary/50 hover:shadow-md hover:bg-stone-50"
               }
             `}
           >
-            <span className="text-4xl mb-3 block transform group-hover:scale-110 transition-transform duration-300">
-              {opt.icon}
-            </span>
-            <span className="text-lg font-bold block text-foreground font-serif">
-              {opt.label}
-            </span>
-            <span className="text-xs text-muted-foreground font-hand">
-              {opt.desc}
-            </span>
+            <div className="flex flex-col h-full justify-between">
+              <span className="text-4xl mb-2 block transform group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">
+                {opt.icon}
+              </span>
+              <div>
+                <span className={`text-lg font-bold block font-serif leading-tight ${value === opt.id ? 'text-primary' : 'text-foreground'}`}>
+                  {opt.label}
+                </span>
+                <span className="text-xs text-stone-500 font-hand mt-1 block">
+                  {opt.desc}
+                </span>
+              </div>
+            </div>
 
-            {/* Selection indicator */}
+            {/* Selection indicator (Stamp mark) */}
             {value === opt.id && (
-              <div className="absolute top-2 right-2 w-3 h-3 bg-primary rounded-full animate-bounce" />
+              <div className="absolute top-2 right-2 text-primary opacity-20 transform rotate-12">
+                <span className="text-4xl">●</span>
+              </div>
             )}
           </button>
         ))}

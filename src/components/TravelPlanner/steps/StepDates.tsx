@@ -48,50 +48,50 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
         </p>
       </div>
 
-      <div className="max-w-md mx-auto w-full space-y-8 bg-white p-8 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100">
+      <div className="max-w-md mx-auto w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-stone-200 rotate-1 transform transition-transform hover:rotate-0 duration-500">
 
         {/* Date Input */}
         <div className="space-y-3">
-          <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
-            出発日 (任意)
+          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
+            <span className="text-lg">📅</span> 出発日 (任意)
           </label>
           <input
             type="date"
             value={startDate}
             onChange={(e) => handleDateChange(e.target.value)}
-            className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-4 text-foreground text-xl focus:outline-hidden focus:border-primary/50 transition-colors cursor-pointer"
+            className="w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
           />
         </div>
 
         {/* Duration Input - Counter Style */}
         <div className="space-y-3">
-          <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest">
-            旅行日数
+          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
+             <span className="text-lg">⏱️</span> 旅行日数
           </label>
-          <div className="flex items-center justify-between gap-4 p-2 rounded-2xl border border-gray-200 bg-gray-50/50">
+          <div className="flex items-center justify-between gap-4 p-2 rounded-lg border border-stone-300 bg-stone-50">
             <button
               onClick={() => handleDurationChange(duration - 1)}
-              className="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-gray-200 text-foreground shadow-xs hover:shadow-md active:scale-95 transition-all text-2xl font-bold disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-12 h-12 flex items-center justify-center rounded-md bg-white border border-stone-300 text-stone-700 shadow-sm hover:shadow-md active:scale-95 transition-all text-2xl font-bold disabled:opacity-30 disabled:cursor-not-allowed"
               disabled={duration <= 1}
             >
               −
             </button>
 
             <div className="flex-1 text-center">
-              <span className="text-3xl font-serif font-bold text-foreground block leading-none">
+              <span className="text-4xl font-serif font-bold text-foreground block leading-none">
                 {duration}
-                <span className="text-sm font-sans font-normal text-muted-foreground ml-1">
+                <span className="text-sm font-sans font-normal text-stone-500 ml-1">
                   日間
                 </span>
               </span>
-              <span className="text-[10px] text-muted-foreground/60 block mt-1 font-mono">
+              <span className="text-[10px] text-stone-400 block mt-1 font-mono">
                 {duration === 1 ? "Day Trip" : `${duration - 1} Nights`}
               </span>
             </div>
 
             <button
               onClick={() => handleDurationChange(duration + 1)}
-              className="w-12 h-12 flex items-center justify-center rounded-xl bg-white border border-gray-200 text-foreground shadow-xs hover:shadow-md active:scale-95 transition-all text-2xl font-bold disabled:opacity-30 disabled:cursor-not-allowed"
+              className="w-12 h-12 flex items-center justify-center rounded-md bg-white border border-stone-300 text-stone-700 shadow-sm hover:shadow-md active:scale-95 transition-all text-2xl font-bold disabled:opacity-30 disabled:cursor-not-allowed"
               disabled={duration >= 30}
             >
               +

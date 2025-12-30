@@ -52,24 +52,27 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
 
       {/* Themes - Sticker Style */}
       <div className="space-y-4">
-        <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest block text-center">
+        <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
           テーマ (複数選択可)
         </label>
         <div className="flex flex-wrap gap-3 justify-center">
-          {themes.map((t) => (
+          {themes.map((t, i) => (
             <button
               key={t}
               onClick={() => toggleTheme(t)}
               className={`
-                px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 transform
+                px-5 py-2 rounded-sm text-sm font-medium transition-all duration-300 transform font-hand border-2
                 ${
                   input.theme.includes(t)
-                    ? "bg-primary text-white shadow-md scale-105 -rotate-1"
-                    : "bg-white text-gray-600 border border-gray-200 hover:border-primary/50 hover:bg-orange-50"
+                    ? "bg-primary text-white border-primary shadow-lg scale-110 -rotate-2 z-10"
+                    : `bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1}`
                 }
               `}
+              style={{
+                borderRadius: input.theme.includes(t) ? "2px 10px 4px 12px" : "4px"
+              }}
             >
-              #{t}
+              {t}
             </button>
           ))}
         </div>
@@ -78,7 +81,7 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {/* Budget */}
         <div className="space-y-3">
-          <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest block text-center">
+          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
             予算感
           </label>
           <div className="flex gap-2 justify-center">
@@ -86,13 +89,13 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
               <button
                 key={b.id}
                 onClick={() => onChange({ budget: b.id })}
-                className={`flex-1 p-3 rounded-xl border text-center transition-all ${
+                className={`flex-1 p-3 rounded-lg border-2 text-center transition-all ${
                   input.budget === b.id
-                    ? "bg-white border-primary shadow-md scale-105 z-10"
-                    : "bg-white border-gray-100 text-gray-400 hover:bg-gray-50"
+                    ? "bg-white border-primary text-primary shadow-md scale-105 z-10"
+                    : "bg-white border-stone-200 text-stone-400 hover:bg-stone-50 hover:border-stone-300"
                 }`}
               >
-                <span className="block text-xl mb-1">{b.icon}</span>
+                <span className="block text-2xl mb-1 filter drop-shadow-sm">{b.icon}</span>
                 <span className="text-xs font-bold">{b.label}</span>
               </button>
             ))}
@@ -101,7 +104,7 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
 
         {/* Pace */}
         <div className="space-y-3">
-          <label className="text-xs font-bold text-muted-foreground uppercase tracking-widest block text-center">
+          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
             ペース
           </label>
           <div className="flex gap-2 justify-center">
@@ -109,13 +112,13 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
               <button
                 key={p.id}
                 onClick={() => onChange({ pace: p.id })}
-                className={`flex-1 p-3 rounded-xl border text-center transition-all ${
+                className={`flex-1 p-3 rounded-lg border-2 text-center transition-all ${
                   input.pace === p.id
-                    ? "bg-white border-primary shadow-md scale-105 z-10"
-                    : "bg-white border-gray-100 text-gray-400 hover:bg-gray-50"
+                    ? "bg-white border-primary text-primary shadow-md scale-105 z-10"
+                    : "bg-white border-stone-200 text-stone-400 hover:bg-stone-50 hover:border-stone-300"
                 }`}
               >
-                <span className="block text-xl mb-1">{p.icon}</span>
+                <span className="block text-2xl mb-1 filter drop-shadow-sm">{p.icon}</span>
                 <span className="text-xs font-bold">{p.label}</span>
               </button>
             ))}
