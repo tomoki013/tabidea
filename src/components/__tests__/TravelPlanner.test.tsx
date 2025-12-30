@@ -52,7 +52,7 @@ it("navigates through all steps including new ones", async () => {
 
   // Step 4: Themes (Click 'Gourmet' -> 'グルメ')
   // Note: StepThemes now includes Budget and Pace
-  const gourmetBtn = await screen.findByText("#グルメ");
+  const gourmetBtn = await screen.findByText("グルメ");
   fireEvent.click(gourmetBtn);
 
   // Budget "普通"
@@ -65,9 +65,9 @@ it("navigates through all steps including new ones", async () => {
   fireEvent.click(nextBtn);
 
   // Step 5: FreeText
-  // Wait for the text to appear. The text "最後に、メモはありますか？" might be split due to <br /> or newlines.
+  // Wait for the text to appear. The text "最後に、特別なご要望は？" might be split due to <br /> or newlines.
   // We use a flexible matcher.
-  await screen.findByText((content) => content.includes("最後に") && content.includes("メモはありますか"));
+  await screen.findByText((content) => content.includes("最後に") && content.includes("特別なご要望は"));
 
   // Submit button
   const submitBtn = screen.getByRole("button", { name: /プランを作成する/ });

@@ -30,7 +30,7 @@ export default function TravelPlannerChat({
     const newHistory = [
       ...messages,
       { role: "user", text: userMsg } as { role: "user"; text: string },
-    ]; // Type assertion
+    ];
     setMessages(newHistory);
     setInput("");
     setLoading(true);
@@ -54,14 +54,14 @@ export default function TravelPlannerChat({
   };
 
   return (
-    <div className="mt-8 border-t border-white/10 pt-8 animate-in fade-in duration-700">
-      <h3 className="text-xl font-serif text-white mb-4">
+    <div className="mt-8 pt-8 animate-in fade-in duration-700">
+      <h3 className="text-xl font-serif text-stone-800 mb-4 px-2">
         Chat with your Planner
       </h3>
-      <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 space-y-4">
-        <div className="max-h-[300px] overflow-y-auto space-y-4 pr-2">
+      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-stone-200 shadow-sm space-y-4">
+        <div className="max-h-[300px] overflow-y-auto space-y-4 pr-2 custom-scrollbar">
           {messages.length === 0 && (
-            <p className="text-muted-foreground text-sm">
+            <p className="text-stone-500 text-sm italic text-center">
               Ask me to adjust the schedule, suggest restaurants, or explain
               more about a spot.
             </p>
@@ -74,10 +74,10 @@ export default function TravelPlannerChat({
               }`}
             >
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-2 text-sm ${
+                className={`max-w-[85%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-xs ${
                   m.role === "user"
-                    ? "bg-white text-black"
-                    : "bg-white/10 text-white"
+                    ? "bg-primary text-white rounded-br-none"
+                    : "bg-white border border-stone-100 text-stone-700 rounded-bl-none"
                 }`}
               >
                 {m.text}
@@ -86,33 +86,33 @@ export default function TravelPlannerChat({
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="bg-white/10 text-white rounded-2xl px-4 py-2 text-sm animate-pulse">
+              <div className="bg-stone-100 text-stone-500 rounded-2xl rounded-bl-none px-5 py-3 text-sm animate-pulse">
                 Thinking...
               </div>
             </div>
           )}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs">
           <input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="e.g. Can we find a cheaper lunch option?"
-            className="flex-1 bg-transparent border border-white/20 rounded-full px-4 py-2 text-white text-sm focus:outline-hidden focus:border-white transition-colors"
+            className="flex-1 bg-transparent border-none px-4 py-1 text-stone-800 text-sm focus:outline-hidden placeholder:text-stone-400"
           />
           <button
             onClick={handleSend}
             disabled={!input.trim() || loading}
-            className="p-2 rounded-full bg-white text-black hover:bg-slate-200 transition-colors disabled:opacity-50"
+            className="p-2.5 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              strokeWidth={1.5}
+              strokeWidth={2}
               stroke="currentColor"
-              className="w-5 h-5"
+              className="w-4 h-4"
             >
               <path
                 strokeLinecap="round"
@@ -128,7 +128,7 @@ export default function TravelPlannerChat({
         <div className="mt-4 flex justify-end animate-in fade-in slide-in-from-bottom-2">
           <button
             onClick={() => onRegenerate(messages)}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-accent/20 border border-accent/50 text-accent hover:bg-accent/30 transition-all font-medium text-sm"
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-stone-100 border border-stone-200 text-stone-700 hover:bg-stone-200 transition-all font-bold text-sm shadow-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"

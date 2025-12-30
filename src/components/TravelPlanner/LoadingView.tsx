@@ -32,21 +32,6 @@ export default function LoadingView() {
   return (
     <div className="w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-3xl overflow-hidden shadow-2xl bg-[#fcfbf9] border-8 border-white flex items-center justify-center">
 
-      {/* Background with heavy blur and overlay to look like a memory */}
-      {loadingImages.map((img, i) => (
-        <Image
-          key={i}
-          src={img}
-          alt="Loading background"
-          fill
-          className={`object-cover transition-opacity duration-2000 ${
-            i === step % loadingImages.length
-              ? "opacity-20 scale-110 blur-xs"
-              : "opacity-0 scale-100"
-          }`}
-        />
-      ))}
-
       {/* Paper Overlay Texture (Local Asset) */}
       <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
 

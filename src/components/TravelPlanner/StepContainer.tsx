@@ -51,28 +51,6 @@ export default function StepContainer({
         }}
       />
 
-      {/* Background Image (Subtle watermark style) */}
-      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none mix-blend-multiply grayscale">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={step}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8 }}
-            className="absolute inset-0"
-          >
-            <Image
-              src={stepImages[step % stepImages.length]}
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
       {/* Header / Progress */}
       <div className="relative z-10 px-6 pt-8 pb-4">
         <div className="flex justify-between items-center mb-8">
@@ -110,7 +88,7 @@ export default function StepContainer({
                 animate={{ left: `calc(${progress}% - 12px)` }} // Adjust -12px to center the plane on the tip
                 transition={{ duration: 0.5 }}
             >
-                <FaPlane className="transform rotate-45" />
+                <FaPlane className="transform -rotate-45" />
             </motion.div>
         </div>
       </div>

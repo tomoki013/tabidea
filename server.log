@@ -1,0 +1,34 @@
+
+> ai-travel-planner@0.1.0 dev
+> next dev
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+   - Experiments (use with caution):
+     · serverActions
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 1607ms
+ ○ Compiling / ...
+ GET / 200 in 10.7s (compile: 9.8s, render: 860ms)
+ GET /images/eiffel-tower-and-sunset.jpg 404 in 1117ms (compile: 977ms, render: 140ms)
+ ⨯ The requested resource isn't a valid image for /images/eiffel-tower-and-sunset.jpg received null
+ GET /images/cream-paper.png 404 in 1227ms (compile: 967ms, render: 260ms)
+ GET /images/eiffel-tower-and-sunset.jpg 404 in 43ms (compile: 6ms, render: 37ms)
+ ⨯ The requested resource isn't a valid image for /images/eiffel-tower-and-sunset.jpg received null
+ GET /images/eiffel-tower-and-sunset.jpg 404 in 52ms (compile: 8ms, render: 44ms)
+ ⨯ The requested resource isn't a valid image for /images/eiffel-tower-and-sunset.jpg received null
+ GET /images/kiyomizu-temple-autumn-leaves-lightup.jpg 404 in 46ms (compile: 11ms, render: 35ms)
+ ⨯ The requested resource isn't a valid image for /images/kiyomizu-temple-autumn-leaves-lightup.jpg received null
+ GET /images/balloons-in-cappadocia.jpg 404 in 48ms (compile: 6ms, render: 42ms)
+ ⨯ The requested resource isn't a valid image for /images/balloons-in-cappadocia.jpg received null
+ GET /images/tajmahal.jpg 404 in 47ms (compile: 6ms, render: 42ms)
+ ⨯ The requested resource isn't a valid image for /images/tajmahal.jpg received null
+ GET / 200 in 418ms (compile: 214ms, render: 205ms)
+ GET /images/cream-paper.png 404 in 91ms (compile: 40ms, render: 50ms)
