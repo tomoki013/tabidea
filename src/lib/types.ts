@@ -24,6 +24,7 @@ export interface Itinerary {
   description: string;
   days: DayPlan[];
   references: Reference[];
+  reasoning?: string;
 }
 
 export interface UserInput {
