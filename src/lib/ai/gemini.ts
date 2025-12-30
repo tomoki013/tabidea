@@ -27,9 +27,9 @@ export class GeminiService implements AIService {
       .join("\n\n");
 
     const systemPrompt = `
-      You are the AI assistant for "Tomokichi's Travel Diary" (ともきちの旅行日記). Your role is to create special travel Selection itineraries based on the blog's archives.
+      Your role is to create special travel Selection itineraries based on the blog's archives.
       
-      CONTEXT (Tomokichi Diary Archives):
+      CONTEXT (Travel Diary Archives):
       ${contextText}
       
       USER REQUEST:
@@ -47,11 +47,23 @@ export class GeminiService implements AIService {
          - DO NOT include an index if the article was not used or is irrelevant.
          - If multiple articles cover the same spot, choose the most relevant one.
       6. IMPORTANT: The user sees the references. If a reference is shown that has nothing to do with the plan, the user will be confused. Ensure high relevance.
-      7. If valid context exists for the destination, prioritize it. If not, fill in gaps with general knowledge to maintain the high-quality "Tomokichi" style.
+      7. If valid context exists for the destination, prioritize it. If not, fill in gaps with general knowledge to maintain the high-quality style.
       8. RETURN ONLY JSON. No markdown formatting.
+
+      EXAMPLES:
+      User Request: "京都で静かなお寺に行きたい"
+      Output (JSON):
+      {
+        "reasoning": "ユーザーは混雑を嫌っているため、清水寺や金閣寺などの定番は除外。アクセスは少し悪いが雰囲気が良い詩仙堂や圓光寺を選択。記事コンテキストに京都の穴場カフェがあるのでそれを休憩場所に採用。",
+        "destination": "Kyoto",
+        "description": "観光客の喧騒から離れ、心静かに庭園と向き合う大人の京都旅をご提案します。",
+        "days": [ ... (detailed plan) ... ],
+        "reference_indices": [0, 2]
+      }
       
       JSON SCHEMA:
       {
+        "reasoning": "string (Why you chose this plan/spots, logic behind decisions)",
         "id": "string (unique-ish id)",
         "destination": "string",
         "heroImage": "string (URL from one of the context articles or a placeholder unsplash url)",
@@ -82,7 +94,13 @@ export class GeminiService implements AIService {
         `[gemini] Request prepared. Sending to Google Generative AI...`
       );
       const startTime = Date.now();
-      const result = await this.model.generateContent(systemPrompt);
+      const result = await this.model.generateContent({
+        contents: [{ role: "user", parts: [{ text: systemPrompt }] }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          temperature: 0.35,
+        },
+      });
       const response = await result.response;
 
       const endTime = Date.now();
@@ -91,7 +109,7 @@ export class GeminiService implements AIService {
       let text = response.text();
       console.log(`[gemini] Response text length: ${text.length} characters.`);
 
-      // Sanitizing JSON if markdown fences are present
+      // Sanitizing JSON if markdown fences are present (just in case, though MIME type should handle it)
       text = text
         .replace(/```json/g, "")
         .replace(/```/g, "")
