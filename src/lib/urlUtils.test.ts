@@ -27,7 +27,7 @@ describe("urlUtils", () => {
     references: [],
   };
 
-  it("should correctly encode and decode plan data", () => {
+  it("should correctly encode and decode plan data (compressed)", () => {
     const encoded = encodePlanData(mockInput, mockResult);
     expect(encoded).toBeTruthy();
 
@@ -47,5 +47,19 @@ describe("urlUtils", () => {
   it("should return null for invalid base64", () => {
     const decoded = decodePlanData("invalid-base64");
     expect(decoded).toBeNull();
+  });
+
+  it("should decode legacy format correctly", () => {
+    // This is a legacy encoded string (uncompressed Base64 of JSON)
+    // Corresponds to mockInput and mockResult above
+    const legacyJson = JSON.stringify({ i: mockInput, r: mockResult });
+    const legacyEncoded = btoa(encodeURIComponent(legacyJson).replace(/%([0-9A-F]{2})/g, (match, p1) => {
+        return String.fromCharCode(parseInt(p1, 16));
+    })).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+
+    const decoded = decodePlanData(legacyEncoded);
+    expect(decoded).not.toBeNull();
+    expect(decoded?.input).toEqual(mockInput);
+    expect(decoded?.result).toEqual(mockResult);
   });
 });
