@@ -12,6 +12,4 @@
 
 # 2. 削除しました
 
-# 3. プラグイン設定
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# 3. プラグイン設定 (自動検出されるため削除)
