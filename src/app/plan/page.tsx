@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserInput, Itinerary } from "@/lib/types";
-import { decodePlanData } from "@/lib/urlUtils";
+import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import LoadingView from "@/components/TravelPlanner/LoadingView";
@@ -48,13 +48,14 @@ function PlanContent() {
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[]
   ) => {
-    if (!result) return;
+    if (!result || !input) return;
     setStatus("regenerating");
     try {
       const response = await regeneratePlan(result, chatHistory);
       if (response.success && response.data) {
-        setResult(response.data);
-        setStatus("idle");
+        const encoded = encodePlanData(input, response.data);
+        router.push(`/plan?q=${encoded}`);
+        // No manual state update needed; URL change triggers useEffect
       } else {
         console.error(response.message);
         setStatus("idle");
@@ -94,7 +95,15 @@ function PlanContent() {
   }
 
   if (status === "regenerating") {
-    return <LoadingView />;
+    return (
+        <ResultView
+            result={result}
+            input={input}
+            onRestart={handleRestart}
+            onRegenerate={handleRegenerate}
+            isUpdating={true}
+        />
+    );
   }
 
   return (

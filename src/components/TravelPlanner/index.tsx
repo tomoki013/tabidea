@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { UserInput, Itinerary } from "@/lib/types";
-import { generatePlan, regeneratePlan } from "@/app/actions/travel-planner";
+import { useRouter } from "next/navigation";
+import { UserInput } from "@/lib/types";
+import { generatePlan } from "@/app/actions/travel-planner";
+import { encodePlanData } from "@/lib/urlUtils";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
-import ResultView from "./ResultView";
 import StepDestination from "./steps/StepDestination";
 import StepDates from "./steps/StepDates";
 import StepCompanions from "./steps/StepCompanions";
@@ -17,6 +18,7 @@ import StepBudget from "./steps/StepBudget";
 import StepPace from "./steps/StepPace";
 
 export default function TravelPlanner() {
+  const router = useRouter();
   const [step, setStep] = useState(0);
   const [input, setInput] = useState<UserInput>({
     destination: "",
@@ -34,7 +36,6 @@ export default function TravelPlanner() {
   const [status, setStatus] = useState<
     "idle" | "loading" | "updating" | "complete" | "error"
   >("idle");
-  const [result, setResult] = useState<Itinerary | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
 
   const validateStep = (currentStep: number) => {
@@ -143,8 +144,9 @@ export default function TravelPlanner() {
     try {
       const response = await generatePlan(input);
       if (response.success && response.data) {
-        setResult(response.data);
-        setStatus("complete");
+        // Compress data and redirect
+        const encoded = encodePlanData(input, response.data);
+        router.push(`/plan?q=${encoded}`);
       } else {
         setErrorMessage(response.message || "Something went wrong.");
         setStatus("error");
@@ -156,60 +158,8 @@ export default function TravelPlanner() {
     }
   };
 
-  const handleRegenerate = async (
-    chatHistory: { role: string; text: string }[]
-  ) => {
-    if (!result) return;
-    setStatus("updating");
-    setErrorMessage("");
-    try {
-      const response = await regeneratePlan(result, chatHistory);
-      if (response.success && response.data) {
-        setResult(response.data);
-        setStatus("complete");
-      } else {
-        setErrorMessage(response.message || "Failed to regenerate.");
-        setStatus("error");
-      }
-    } catch (e) {
-      console.error(e);
-      setErrorMessage("Regeneration failed.");
-      setStatus("error");
-    }
-  };
-
-  const handleRestart = () => {
-    setStatus("idle");
-    setStep(0);
-    setInput({
-      destination: "",
-      isDestinationDecided: undefined,
-      region: "",
-      dates: "",
-      companions: "solo",
-      theme: [],
-      budget: "",
-      pace: "",
-      freeText: "",
-      travelVibe: "",
-    });
-    setResult(null);
-  };
-
   if (status === "loading") {
     return <LoadingView />;
-  }
-
-  if ((status === "complete" || status === "updating") && result) {
-    return (
-      <ResultView
-        result={result}
-        input={input}
-        onRestart={handleRestart}
-        onRegenerate={handleRegenerate}
-        isUpdating={status === "updating"}
-      />
-    );
   }
 
   // New Steps Mapping

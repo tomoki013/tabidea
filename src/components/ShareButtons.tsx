@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { Itinerary, UserInput } from "@/lib/types";
 import { encodePlanData } from "@/lib/urlUtils";
 import {
-  FaTwitter,
   FaFacebook,
   FaLine,
   FaLink,
   FaShareAlt,
 } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 interface ShareButtonsProps {
   input: UserInput;
@@ -77,14 +77,14 @@ export default function ShareButtons({
 
   return (
     <div className={`space-y-4 ${className}`}>
-      <h4 className="text-sm font-bold text-white mb-3 text-center sm:text-left flex items-center gap-2">
+      <h4 className="text-sm font-bold text-stone-600 mb-3 text-center sm:text-left flex items-center gap-2">
         <FaShareAlt /> Share this plan
       </h4>
       <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
         {canShare && (
           <button
             onClick={handleNativeShare}
-            className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all w-10 h-10 flex items-center justify-center"
+            className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all w-10 h-10 flex items-center justify-center"
             aria-label="Share"
           >
             <FaShareAlt size={18} />
@@ -98,7 +98,7 @@ export default function ShareButtons({
           className="p-3 rounded-full bg-black hover:bg-gray-900 text-white border border-white/20 transition-all flex items-center justify-center w-10 h-10"
           aria-label="Share on X"
         >
-          <FaTwitter size={16} />
+          <FaXTwitter size={16} />
         </a>
 
         <a
@@ -123,7 +123,7 @@ export default function ShareButtons({
 
         <button
           onClick={handleCopy}
-          className="p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all relative w-10 h-10 flex items-center justify-center"
+          className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all relative w-10 h-10 flex items-center justify-center"
           aria-label="Copy Link"
         >
           {copied ? (
