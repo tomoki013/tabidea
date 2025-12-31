@@ -39,7 +39,10 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       ? "海外旅行 おすすめ"
       : "おすすめ旅行先";
 
-    const query = `${destinationQuery} ${input.theme.join(" ")} ${
+    // Incorporate travelVibe into the search query if present
+    const vibeQuery = input.travelVibe ? ` ${input.travelVibe}` : "";
+
+    const query = `${destinationQuery}${vibeQuery} ${input.theme.join(" ")} ${
       input.companions
     }`;
     console.log(`[action] Step 1: Searching for "${query}"`);
@@ -71,6 +74,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
        prompt = `
         User has NOT decided on a specific destination yet.
         Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
+        Travel Vibe/Preference: ${input.travelVibe || "None specified"}
         Dates: ${input.dates}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
@@ -79,7 +83,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Specific Requests: ${input.freeText || "None"}
 
         Task:
-        1. Select the BEST single destination that matches the user's themes, budget, and region preference.
+        1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
         2. Create a detailed travel itinerary for that chosen destination.
         3. The "destination" field in the JSON must be the name of the place you chose.
       `;

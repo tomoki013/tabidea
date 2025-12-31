@@ -28,6 +28,7 @@ export default function TravelPlanner() {
     budget: "",
     pace: "",
     freeText: "",
+    travelVibe: "",
   });
 
   const [status, setStatus] = useState<
@@ -51,8 +52,9 @@ export default function TravelPlanner() {
             return false;
           }
         } else {
-          if (!input.region) {
-            setErrorMessage("エリアを選択してください 🌏");
+          // If no region selected, but user typed a vibe, that's acceptable.
+          if (!input.region && !input.travelVibe?.trim()) {
+            setErrorMessage("エリアを選択するか、希望の雰囲気を入力してください 🌏");
             return false;
           }
         }
@@ -100,6 +102,17 @@ export default function TravelPlanner() {
   };
 
   const handleNext = () => {
+    // If proceeding from Step 1 (Undecided) and no region is selected but vibe is present, default region to 'anywhere'
+    if (step === 1 && input.isDestinationDecided === false) {
+       if (!input.region && input.travelVibe?.trim()) {
+           // We need to ensure region is set before or during the next step transition
+           // Since setState is async, we can update it here but validateStep checks current state.
+           // However, we just passed validateStep check (if implemented correctly above).
+           // To be safe, let's update it.
+           setInput(prev => ({ ...prev, region: "anywhere" }));
+       }
+    }
+
     if (validateStep(step)) {
       setErrorMessage("");
       setStep((prev) => prev + 1);
@@ -178,6 +191,7 @@ export default function TravelPlanner() {
       budget: "",
       pace: "",
       freeText: "",
+      travelVibe: "",
     });
     setResult(null);
   };
@@ -231,7 +245,9 @@ export default function TravelPlanner() {
       {step === 1 && input.isDestinationDecided === false && (
         <StepRegion
           value={input.region}
+          vibe={input.travelVibe}
           onChange={(val) => setInput({ ...input, region: val })}
+          onVibeChange={(val) => setInput({ ...input, travelVibe: val })}
           onNext={handleNext}
         />
       )}
