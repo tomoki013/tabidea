@@ -8,6 +8,8 @@ import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import LoadingView from "@/components/TravelPlanner/LoadingView";
+import FAQSection from "@/components/landing/FAQSection";
+import ExampleSection from "@/components/landing/ExampleSection";
 
 function PlanContent() {
   const searchParams = useSearchParams();
@@ -137,7 +139,12 @@ export default function PlanPage() {
         </Suspense>
       </main>
 
-      <footer className="row-start-3 flex flex-col items-center gap-4 text-muted-foreground text-sm">
+      <div className="w-full row-start-3 flex flex-col items-center gap-0">
+         <ExampleSection />
+         <FAQSection />
+      </div>
+
+      <footer className="row-start-4 flex flex-col items-center gap-4 text-muted-foreground text-sm pb-8">
         <div className="flex gap-6">
           <Link
             href="/privacy"

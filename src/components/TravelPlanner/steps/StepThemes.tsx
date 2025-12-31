@@ -52,15 +52,18 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
               key={t}
               onClick={() => toggleTheme(t)}
               className={`
-                px-6 py-3 rounded-sm text-base font-medium transition-all duration-300 transform font-hand border-2
+                px-6 py-3 text-base font-medium transition-all duration-300 transform font-hand
                 ${
                   input.theme.includes(t)
-                    ? "bg-primary text-white border-primary shadow-lg scale-110 -rotate-2 z-10"
-                    : `bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1} hover:scale-105`
+                    ? "bg-primary text-white shadow-lg scale-110 -rotate-2 z-10 pt-4 pb-8"
+                    : `bg-white text-stone-600 border-2 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1} hover:scale-105 rounded-sm`
                 }
               `}
               style={{
-                borderRadius: input.theme.includes(t) ? "2px 10px 4px 12px" : "4px"
+                borderRadius: input.theme.includes(t) ? "0" : "4px",
+                clipPath: input.theme.includes(t)
+                  ? "polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%)"
+                  : "none",
               }}
             >
               {t}
