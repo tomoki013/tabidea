@@ -24,6 +24,28 @@ export default function ResultView({
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage || "/images/eiffel-tower-and-sunset.jpg";
 
+  // Helper to parse date string
+  const formatTravelDates = (dateStr: string) => {
+    const match = dateStr.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
+    if (match) {
+      const startDate = new Date(match[1]);
+      const duration = parseInt(match[2], 10);
+      const endDate = new Date(startDate);
+      endDate.setDate(startDate.getDate() + duration - 1);
+
+      const formatDate = (d: Date) => `${d.getMonth() + 1}/${d.getDate()}`;
+      return `${formatDate(startDate)} - ${formatDate(endDate)}`;
+    }
+    // If no specific date but has duration
+    const durationMatch = dateStr.match(/(\d+)日間/);
+    if (durationMatch) {
+        return `${durationMatch[1]} Days Trip`;
+    }
+    return dateStr;
+  };
+
+  const travelDates = formatTravelDates(input.dates);
+
   return (
     <div className="w-full max-w-5xl mx-auto mt-4 text-left animate-in fade-in duration-700 pb-20 relative">
       {/* Updating Overlay */}
@@ -69,7 +91,17 @@ export default function ResultView({
         </div>
 
         <div className="mt-8 text-center relative z-10">
-            <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-sm shadow-sm border border-stone-100 -rotate-1">
+            <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-sm shadow-sm border border-stone-100 -rotate-1 relative group">
+                 {/* Date Stamp */}
+                 <div className="absolute -top-6 -right-6 sm:-right-12 bg-white border-2 border-primary/30 text-stone-600 font-mono text-xs font-bold px-3 py-1.5 shadow-sm rotate-12 rounded-sm z-20">
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                       <FaCalendarAlt className="text-primary" />
+                       {travelDates}
+                    </div>
+                    {/* Stamp inner border */}
+                    <div className="absolute inset-0.5 border border-primary/10 pointer-events-none"></div>
+                 </div>
+
                  <p className="text-sm font-hand text-stone-500 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
                     <FaMapMarkerAlt className="text-primary" />
                     Your Destination
