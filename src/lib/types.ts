@@ -29,6 +29,8 @@ export interface Itinerary {
 
 export interface UserInput {
   destination: string;
+  isDestinationDecided?: boolean;
+  region?: string; // For when destination is not decided (e.g. "domestic", "overseas")
   dates: string;
   companions: string;
   theme: string[];

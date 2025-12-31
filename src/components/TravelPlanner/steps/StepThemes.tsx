@@ -17,18 +17,9 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
     "ショッピング",
     "アート",
     "体験・アクティビティ",
-  ];
-
-  const budgets = [
-    { id: "saving", label: "節約", icon: "💸" },
-    { id: "standard", label: "普通", icon: "💰" },
-    { id: "luxury", label: "贅沢", icon: "💎" },
-  ];
-
-  const paces = [
-    { id: "relaxed", label: "ゆったり", icon: "☕" },
-    { id: "balanced", label: "普通", icon: "⚖️" },
-    { id: "packed", label: "詰め込み", icon: "🔥" },
+    "温泉・サウナ",
+    "写真映え",
+    "冒険",
   ];
 
   const toggleTheme = (t: string) => {
@@ -40,9 +31,9 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
   };
 
   return (
-    <div className="flex flex-col h-full space-y-8 pt-4 pb-20 overflow-y-auto animate-in fade-in slide-in-from-right-8 duration-500 pr-2">
-      <div className="space-y-2 text-center">
-        <h2 className="text-3xl font-serif font-bold text-foreground">
+    <div className="flex flex-col h-full justify-center space-y-12 animate-in fade-in slide-in-from-right-8 duration-500">
+      <div className="space-y-6 text-center">
+        <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground leading-tight">
           どんな旅にしますか？
         </h2>
         <p className="font-hand text-muted-foreground">
@@ -51,21 +42,21 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
       </div>
 
       {/* Themes - Sticker Style */}
-      <div className="space-y-4">
-        <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
+      <div className="space-y-4 max-w-4xl mx-auto w-full px-4">
+        <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center mb-6">
           テーマ (複数選択可)
         </label>
-        <div className="flex flex-wrap gap-3 justify-center">
+        <div className="flex flex-wrap gap-4 justify-center">
           {themes.map((t, i) => (
             <button
               key={t}
               onClick={() => toggleTheme(t)}
               className={`
-                px-5 py-2 rounded-sm text-sm font-medium transition-all duration-300 transform font-hand border-2
+                px-6 py-3 rounded-sm text-base font-medium transition-all duration-300 transform font-hand border-2
                 ${
                   input.theme.includes(t)
                     ? "bg-primary text-white border-primary shadow-lg scale-110 -rotate-2 z-10"
-                    : `bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1}`
+                    : `bg-white text-stone-600 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1} hover:scale-105`
                 }
               `}
               style={{
@@ -75,54 +66,6 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
               {t}
             </button>
           ))}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-        {/* Budget */}
-        <div className="space-y-3">
-          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
-            予算感
-          </label>
-          <div className="flex gap-2 justify-center">
-            {budgets.map((b) => (
-              <button
-                key={b.id}
-                onClick={() => onChange({ budget: b.id })}
-                className={`flex-1 p-3 rounded-lg border-2 text-center transition-all ${
-                  input.budget === b.id
-                    ? "bg-white border-primary text-primary shadow-md scale-105 z-10"
-                    : "bg-white border-stone-200 text-stone-400 hover:bg-stone-50 hover:border-stone-300"
-                }`}
-              >
-                <span className="block text-2xl mb-1 filter drop-shadow-sm">{b.icon}</span>
-                <span className="text-xs font-bold">{b.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Pace */}
-        <div className="space-y-3">
-          <label className="text-xs font-bold text-stone-500 uppercase tracking-widest block text-center">
-            ペース
-          </label>
-          <div className="flex gap-2 justify-center">
-            {paces.map((p) => (
-              <button
-                key={p.id}
-                onClick={() => onChange({ pace: p.id })}
-                className={`flex-1 p-3 rounded-lg border-2 text-center transition-all ${
-                  input.pace === p.id
-                    ? "bg-white border-primary text-primary shadow-md scale-105 z-10"
-                    : "bg-white border-stone-200 text-stone-400 hover:bg-stone-50 hover:border-stone-300"
-                }`}
-              >
-                <span className="block text-2xl mb-1 filter drop-shadow-sm">{p.icon}</span>
-                <span className="text-xs font-bold">{p.label}</span>
-              </button>
-            ))}
-          </div>
         </div>
       </div>
     </div>

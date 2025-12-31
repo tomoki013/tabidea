@@ -26,15 +26,32 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
     onChange({ dates: datesStr });
   };
 
+  const [isFlexible, setIsFlexible] = useState(() => input.dates.includes("時期は未定"));
+
   const handleDateChange = (val: string) => {
     setStartDate(val);
+    setIsFlexible(false);
     updateParent(val, duration);
   };
 
   const handleDurationChange = (val: number) => {
     const newDur = Math.max(1, Math.min(30, val));
     setDuration(newDur);
-    updateParent(startDate, newDur);
+    if (!isFlexible) {
+      updateParent(startDate, newDur);
+    } else {
+      onChange({ dates: `時期は未定 (${newDur}日間)` });
+    }
+  };
+
+  const toggleFlexible = () => {
+    const newVal = !isFlexible;
+    setIsFlexible(newVal);
+    if (newVal) {
+      onChange({ dates: `時期は未定 (${duration}日間)` });
+    } else {
+      updateParent(startDate, duration);
+    }
   };
 
   return (
@@ -50,8 +67,23 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
 
       <div className="max-w-md mx-auto w-full space-y-8 bg-white p-8 rounded-xl shadow-md border border-stone-200 rotate-1 transform transition-transform hover:rotate-0 duration-500">
 
+        {/* Flexible Toggle */}
+        <div className="flex items-center justify-between bg-stone-50 p-3 rounded-lg border border-stone-200">
+           <label className="text-sm font-bold text-stone-600 cursor-pointer select-none flex-1" htmlFor="flexible-check">
+             時期は決まっていない
+             <span className="block text-xs text-stone-400 font-normal mt-0.5">ベストシーズンを提案します</span>
+           </label>
+           <input
+             id="flexible-check"
+             type="checkbox"
+             checked={isFlexible}
+             onChange={toggleFlexible}
+             className="w-5 h-5 text-primary border-stone-300 rounded-sm focus:ring-primary"
+           />
+        </div>
+
         {/* Date Input */}
-        <div className="space-y-3">
+        <div className={`space-y-3 transition-opacity duration-300 ${isFlexible ? "opacity-40 pointer-events-none" : "opacity-100"}`}>
           <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
             <span className="text-lg">📅</span> 出発日 (任意)
           </label>
@@ -59,7 +91,8 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
             type="date"
             value={startDate}
             onChange={(e) => handleDateChange(e.target.value)}
-            className="w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer"
+            disabled={isFlexible}
+            className="w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-colors cursor-pointer disabled:cursor-not-allowed"
           />
         </div>
 

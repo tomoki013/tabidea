@@ -30,7 +30,16 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     const ai = new GeminiService(apiKey);
 
     // 1. RAG: Search for relevant content
-    const query = `${input.destination} ${input.theme.join(" ")} ${
+    // If destination is undecided, search for region + themes
+    const destinationQuery = input.isDestinationDecided
+      ? input.destination
+      : input.region === "domestic"
+      ? "日本国内 おすすめ旅行先"
+      : input.region === "overseas"
+      ? "海外旅行 おすすめ"
+      : "おすすめ旅行先";
+
+    const query = `${destinationQuery} ${input.theme.join(" ")} ${
       input.companions
     }`;
     console.log(`[action] Step 1: Searching for "${query}"`);
@@ -44,17 +53,37 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
     // 2. AI: Generate Plan
     console.log(`[action] Step 2: Generating Plan with AI...`);
-    const prompt = `
-      Destination: ${input.destination}
-      Dates: ${input.dates}
-      Companions: ${input.companions}
-      Themes: ${input.theme.join(", ")}
-      Budget: ${input.budget || "Not specified"}
-      Pace: ${input.pace || "Not specified"}
-      Specific Requests: ${input.freeText || "None"}
-      
-      Please create a travel itinerary for this request.
-    `;
+
+    let prompt = "";
+    if (input.isDestinationDecided) {
+      prompt = `
+        Destination: ${input.destination}
+        Dates: ${input.dates}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        Budget: ${input.budget || "Not specified"}
+        Pace: ${input.pace || "Not specified"}
+        Specific Requests: ${input.freeText || "None"}
+
+        Please create a travel itinerary for this request.
+      `;
+    } else {
+       prompt = `
+        User has NOT decided on a specific destination yet.
+        Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
+        Dates: ${input.dates}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        Budget: ${input.budget || "Not specified"}
+        Pace: ${input.pace || "Not specified"}
+        Specific Requests: ${input.freeText || "None"}
+
+        Task:
+        1. Select the BEST single destination that matches the user's themes, budget, and region preference.
+        2. Create a detailed travel itinerary for that chosen destination.
+        3. The "destination" field in the JSON must be the name of the place you chose.
+      `;
+    }
 
     const plan = await ai.generateItinerary(prompt, contextArticles);
     console.log(
