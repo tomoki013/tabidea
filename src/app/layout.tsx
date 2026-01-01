@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Kaisei_Decol, Yomogi } from "next/font/google";
+import Footer from "@/components/landing/Footer";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -35,6 +36,7 @@ export default function RootLayout({
         className={`${notoSansJP.variable} ${kaiseiDecol.variable} ${yomogi.variable} font-sans antialiased bg-background text-foreground`}
       >
         {children}
+        <Footer />
       </body>
     </html>
   );

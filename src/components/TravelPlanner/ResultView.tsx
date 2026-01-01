@@ -46,6 +46,11 @@ export default function ResultView({
 
   const travelDates = formatTravelDates(input.dates);
 
+  // Calculate duration string (e.g. 2泊3日)
+  const numberOfDays = result.days.length;
+  const numberOfNights = Math.max(0, numberOfDays - 1);
+  const durationString = `${numberOfNights}泊${numberOfDays}日`;
+
   return (
     <div className="w-full max-w-5xl mx-auto mt-4 text-left animate-in fade-in duration-700 pb-20 relative">
       {/* Updating Overlay */}
@@ -94,9 +99,12 @@ export default function ResultView({
             <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-sm shadow-sm border border-stone-100 -rotate-1 relative group">
                  {/* Date Stamp */}
                  <div className="absolute -top-6 -right-6 sm:-right-12 bg-white border-2 border-primary/30 text-stone-600 font-mono text-xs font-bold px-3 py-1.5 shadow-sm rotate-12 rounded-sm z-20">
-                    <div className="flex items-center gap-1.5 whitespace-nowrap">
-                       <FaCalendarAlt className="text-primary" />
-                       {travelDates}
+                    <div className="flex flex-col items-center gap-0.5 whitespace-nowrap">
+                       <div className="flex items-center gap-1.5">
+                         <FaCalendarAlt className="text-primary" />
+                         {travelDates}
+                       </div>
+                       <span className="text-[10px] text-stone-400 font-sans tracking-widest">{durationString}</span>
                     </div>
                     {/* Stamp inner border */}
                     <div className="absolute inset-0.5 border border-primary/10 pointer-events-none"></div>

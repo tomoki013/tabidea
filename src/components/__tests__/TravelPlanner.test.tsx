@@ -18,6 +18,9 @@ vi.mock("next/navigation", () => ({
   useSearchParams: () => ({
     get: () => null,
   }),
+  useRouter: () => ({
+    push: vi.fn(),
+  }),
 }));
 
 it("renders the initial form", () => {
@@ -60,7 +63,7 @@ it("navigates through 'Decided' flow", async () => {
   // Step 5: Dates
   await screen.findByText("いつ、どれくらい？");
   // Toggle "Flexible" to ensure dates input is set
-  const flexibleCheck = screen.getByLabelText(/時期は決まっていない/);
+  const flexibleCheck = screen.getByLabelText("未定", { selector: "#date-undecided" });
   fireEvent.click(flexibleCheck);
   fireEvent.click(nextBtn);
 
@@ -115,7 +118,7 @@ it("navigates through 'Not Decided' flow", async () => {
 
   // And so on... verifying we are in the flow
   await screen.findByText("いつ、どれくらい？");
-  const flexibleCheck2 = screen.getByLabelText(/時期は決まっていない/);
+  const flexibleCheck2 = screen.getByLabelText("未定", { selector: "#date-undecided" });
   fireEvent.click(flexibleCheck2);
   fireEvent.click(nextBtn);
 
