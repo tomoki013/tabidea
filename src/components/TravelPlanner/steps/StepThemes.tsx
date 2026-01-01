@@ -1,6 +1,7 @@
 "use client";
 
 import { UserInput } from "@/lib/types";
+import { FaCheck } from "react-icons/fa";
 
 interface StepThemesProps {
   input: UserInput;
@@ -47,28 +48,32 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
           テーマ (複数選択可)
         </label>
         <div className="flex flex-wrap gap-4 justify-center">
-          {themes.map((t, i) => (
-            <button
-              key={t}
-              onClick={() => toggleTheme(t)}
-              className={`
-                px-6 py-3 text-base font-medium transition-all duration-300 transform font-hand
-                ${
-                  input.theme.includes(t)
-                    ? "bg-primary text-white shadow-lg scale-110 -rotate-2 z-10 pt-4 pb-8"
-                    : `bg-white text-stone-600 border-2 border-stone-200 hover:border-primary/50 hover:bg-orange-50 rotate-${(i % 3) - 1} hover:scale-105 rounded-sm`
-                }
-              `}
-              style={{
-                borderRadius: input.theme.includes(t) ? "0" : "4px",
-                clipPath: input.theme.includes(t)
-                  ? "polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%)"
-                  : "none",
-              }}
-            >
-              {t}
-            </button>
-          ))}
+          {themes.map((t, i) => {
+            const isSelected = input.theme.includes(t);
+            return (
+              <button
+                key={t}
+                onClick={() => toggleTheme(t)}
+                className={`
+                  relative px-6 py-3 text-base font-medium transition-all duration-300 transform font-hand flex items-center gap-2
+                  ${
+                    isSelected
+                      ? "bg-[#e67e22] text-white shadow-lg scale-110 -rotate-2 z-10 pt-4 pb-8 border-2 border-[#e67e22]"
+                      : `bg-white text-stone-600 border-2 border-stone-200 hover:border-[#e67e22]/50 hover:bg-orange-50 rotate-${(i % 3) - 1} hover:scale-105 rounded-sm`
+                  }
+                `}
+                style={{
+                  borderRadius: isSelected ? "0" : "4px",
+                  clipPath: isSelected
+                    ? "polygon(0% 0%, 100% 0%, 100% 100%, 50% 85%, 0% 100%)"
+                    : "none",
+                }}
+              >
+                {isSelected && <FaCheck size={14} />}
+                {t}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>

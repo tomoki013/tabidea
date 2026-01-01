@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
 
         {/* Brand */}
-        <div className="space-y-4 md:col-span-2">
+        <div className="space-y-4 md:col-span-1">
           <h3 className="text-2xl font-serif font-bold text-[#e67e22]">AI Travel Planner</h3>
           <p className="text-stone-600 text-sm leading-relaxed max-w-xs font-hand">
             あなたの旅の物語を、AIと一緒に紡ぎ出す。<br />
@@ -18,13 +18,19 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Links */}
+        {/* Service */}
         <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif">Menu</h4>
+          <h4 className="font-bold text-stone-800 font-serif">Service</h4>
           <ul className="space-y-2 text-sm text-stone-600">
             <li><Link href="/" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">ホーム</Link></li>
-            {/* <li><Link href="#" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">使い方</Link></li> */}
             <li><Link href="/updates" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">更新情報・ロードマップ</Link></li>
+          </ul>
+        </div>
+
+        {/* Support */}
+        <div className="space-y-4">
+          <h4 className="font-bold text-stone-800 font-serif">Support</h4>
+          <ul className="space-y-2 text-sm text-stone-600">
             <li><Link href="/faq" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">よくある質問</Link></li>
             <li><Link href="/contact" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">お問い合わせ</Link></li>
           </ul>
@@ -36,7 +42,6 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-stone-600">
             <li><Link href="/terms" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">利用規約</Link></li>
             <li><Link href="/privacy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">プライバシーポリシー</Link></li>
-            {/* <li><Link href="#" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">特定商取引法に基づく表記</Link></li> */}
           </ul>
         </div>
       </div>

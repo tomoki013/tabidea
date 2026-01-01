@@ -58,7 +58,7 @@ export default function ContactPage() {
             </a>
 
             {/* X (Twitter) DM */}
-            <a
+            {/* <a
               href="https://x.com/tomoki013"
               target="_blank"
               rel="noopener noreferrer"
@@ -73,7 +73,7 @@ export default function ContactPage() {
               <p className="text-stone-600 text-sm leading-relaxed">
                 サービスへのご感想、取材のご依頼、その他一般的なお問い合わせは、X (Twitter) のDMにてお気軽にご連絡ください。
               </p>
-            </a>
+            </a> */}
           </div>
 
           <div className="text-center mt-12">

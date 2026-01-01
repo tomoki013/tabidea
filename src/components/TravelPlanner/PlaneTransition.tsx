@@ -12,7 +12,7 @@ export default function PlaneTransition() {
       <div
         className="text-primary absolute z-10"
         style={{
-          animation: "fly-across 1.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards",
+          animation: "fly-across 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) forwards",
           left: 0,
           bottom: 0,
         }}

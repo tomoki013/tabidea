@@ -141,7 +141,7 @@ export default function TravelPlanner() {
     setTimeout(() => {
       setIsTransitioning(false);
       setStep(1);
-    }, 1200); // Wait for most of the animation to play before switching view
+    }, 700); // Wait for most of the animation to play before switching view
   };
 
   const handlePlan = async () => {
