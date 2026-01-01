@@ -137,6 +137,7 @@ export default function PlanPage() {
         </Suspense>
 
         {/* Call to Action - Create New Plan */}
+        {/* This button allows users to start a fresh planning session easily */}
         <div className="w-full flex justify-center pb-16 pt-8">
             <Link
                 href="/"
