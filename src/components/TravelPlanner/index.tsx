@@ -173,6 +173,10 @@ export default function TravelPlanner() {
   // 7: FreeText
   const TOTAL_STEPS = 8;
 
+  if (step === 0) {
+    return <StepInitialChoice onDecide={handleInitialChoice} />;
+  }
+
   return (
     <StepContainer
       step={step}
@@ -182,9 +186,6 @@ export default function TravelPlanner() {
       onComplete={handlePlan}
       errorMessage={errorMessage}
     >
-      {step === 0 && (
-        <StepInitialChoice onDecide={handleInitialChoice} />
-      )}
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
           value={input.destination}
