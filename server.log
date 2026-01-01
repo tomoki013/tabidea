@@ -5,8 +5,6 @@
    ▲ Next.js 16.0.10 (Turbopack)
    - Local:         http://localhost:3000
    - Network:       http://192.168.0.2:3000
-   - Experiments (use with caution):
-     · serverActions
 
  ✓ Starting...
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
@@ -14,9 +12,7 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
- ✓ Ready in 1090ms
- ○ Compiling / ...
- GET / 200 in 12.4s (compile: 11.3s, render: 1090ms)
- GET /images/cream-paper.png 404 in 880ms (compile: 781ms, render: 99ms)
- GET / 200 in 2.5s (compile: 1376ms, render: 1088ms)
- GET /images/cream-paper.png 404 in 219ms (compile: 18ms, render: 200ms)
+ ✓ Ready in 1212ms
+ ○ Compiling /_not-found/page ...
+ GET /ai-travel-planner 404 in 7.1s (compile: 6.4s, render: 604ms)
+ GET /ai-travel-planner/plan 404 in 177ms (compile: 57ms, render: 120ms)

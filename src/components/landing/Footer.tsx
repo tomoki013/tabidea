@@ -41,9 +41,6 @@ export default function Footer() {
 
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-200 border-dashed text-center text-xs text-stone-500">
         <p>© 2025 AI Travel Planner. All rights reserved.</p>
-        <p className="mt-2 opacity-70">
-          ※本サイトはデモ目的で作成されています。実際の旅行の際は各自治体や施設の最新情報をご確認ください。
-        </p>
       </div>
     </footer>
   );
