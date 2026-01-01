@@ -9,7 +9,6 @@ import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
-import Footer from "@/components/landing/Footer";
 import { FaPlus } from "react-icons/fa6";
 
 function PlanContent() {
@@ -152,8 +151,6 @@ export default function PlanPage() {
         <ExampleSection />
         <FAQSection limit={5} />
       </main>
-
-      <Footer />
     </div>
   );
 }
