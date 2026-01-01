@@ -5,7 +5,6 @@ import FeatureSection from "@/components/landing/FeatureSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import ExampleSection from "@/components/landing/ExampleSection";
 import FAQSection from "@/components/landing/FAQSection";
-import Footer from "@/components/landing/Footer";
 
 export default function Home() {
   return (
@@ -31,12 +30,9 @@ export default function Home() {
         <FeatureSection />
         <HowItWorksSection />
         <ExampleSection />
-        <FAQSection />
+        <FAQSection limit={5} />
 
       </main>
-
-      {/* Enhanced Footer */}
-      <Footer />
     </div>
   );
 }
