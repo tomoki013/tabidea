@@ -21,7 +21,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     console.error("[action] API Key is missing in environment variables");
     return {
       success: false,
-      message: "Server configuration error: API Key missing",
+      message: "システムエラー: APIキーが設定されていません。管理者に連絡してください。",
     };
   }
 
@@ -47,12 +47,18 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     }`;
     console.log(`[action] Step 1: Searching for "${query}"`);
 
-    const contextArticles = await scraper.search(query);
-    console.log(
-      `[action] Step 1 Complete. Found ${
-        contextArticles.length
-      } articles. Elapsed: ${Date.now() - startTime}ms`
-    );
+    let contextArticles: any[] = [];
+    try {
+        contextArticles = await scraper.search(query);
+        console.log(
+        `[action] Step 1 Complete. Found ${
+            contextArticles.length
+        } articles. Elapsed: ${Date.now() - startTime}ms`
+        );
+    } catch (e) {
+        console.warn("[action] Vector search failed, proceeding without context:", e);
+        contextArticles = [];
+    }
 
     // 2. AI: Generate Plan
     console.log(`[action] Step 2: Generating Plan with AI...`);
@@ -66,6 +72,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Themes: ${input.theme.join(", ")}
         Budget: ${input.budget || "Not specified"}
         Pace: ${input.pace || "Not specified"}
+        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Specific Requests: ${input.freeText || "None"}
 
         Please create a travel itinerary for this request.
@@ -80,6 +87,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Themes: ${input.theme.join(", ")}
         Budget: ${input.budget || "Not specified"}
         Pace: ${input.pace || "Not specified"}
+        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Specific Requests: ${input.freeText || "None"}
 
         Task:
@@ -97,14 +105,24 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     );
 
     return { success: true, data: plan };
-  } catch (error) {
+  } catch (error: any) {
     console.error("[action] Plan generation failed:", error);
     const elapsed = Date.now() - startTime;
+
+    let userMessage = "プランの生成中にエラーが発生しました。もう一度お試しください。";
+
+    // Check for specific error types (e.g., from Gemini)
+    if (error.message?.includes("Candidate was blocked due to safety")) {
+        userMessage = "生成されたプランが安全基準に抵触したため表示できません。入力内容（フリーテキストなど）を変更して再度お試しください。";
+    } else if (error.message?.includes("429") || error.message?.includes("quota")) {
+        userMessage = "アクセスが集中しており、現在プランを生成できません。しばらく時間を置いてから再度お試しください。";
+    } else if (error.message?.includes("JSON")) {
+        userMessage = "AIからの応答の解析に失敗しました。もう一度お試しください。";
+    }
+
     return {
       success: false,
-      message: `Plan generation failed after ${elapsed}ms. Error: ${
-        error instanceof Error ? error.message : String(error)
-      }`,
+      message: userMessage,
     };
   }
 }
@@ -124,7 +142,7 @@ export async function chatWithPlanner(
     return { response: reply };
   } catch (e) {
     console.error(e);
-    return { response: "Sorry, I couldn't process your request." };
+    return { response: "すみません、エラーが発生しました。もう一度お試しください。" };
   }
 }
 
@@ -141,6 +159,6 @@ export async function regeneratePlan(
     return { success: true, data: newPlan };
   } catch (e) {
     console.error("Regeneration failed", e);
-    return { success: false, message: "Failed to regenerate plan." };
+    return { success: false, message: "プランの再生成に失敗しました。" };
   }
 }

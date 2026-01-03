@@ -35,6 +35,7 @@ export default function TravelPlanner() {
     freeText: "",
     travelVibe: "",
     mustVisitPlaces: [],
+    hasMustVisitPlaces: undefined,
   });
 
   const [status, setStatus] = useState<
@@ -64,7 +65,17 @@ export default function TravelPlanner() {
           }
         }
         break;
-      case 2: // Must-Visit Places (Optional)
+      case 2: // Must-Visit Places
+        if (input.hasMustVisitPlaces === undefined) {
+          setErrorMessage("あるか、ないかを選択してください 🤔");
+          return false;
+        }
+        if (input.hasMustVisitPlaces === true && (!input.mustVisitPlaces || input.mustVisitPlaces.length === 0)) {
+           // If they said Yes but didn't add anything, that's confusing.
+           // Let's require at least one place if "Yes" is selected.
+           setErrorMessage("行きたい場所を入力してください ✍️");
+           return false;
+        }
         break;
       case 3: // Companions
         if (!input.companions) {
@@ -132,7 +143,7 @@ export default function TravelPlanner() {
   };
 
   const handleInitialChoice = (decided: boolean) => {
-    setInput({ ...input, isDestinationDecided: decided });
+    setInput(prev => ({ ...prev, isDestinationDecided: decided }));
     // Clear potentially conflicting fields if switching
     if (decided) {
       setInput(prev => ({ ...prev, isDestinationDecided: true, region: "" }));
@@ -207,7 +218,10 @@ export default function TravelPlanner() {
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
           value={input.destination}
-          onChange={(val) => setInput({ ...input, destination: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, destination: val }));
+            setErrorMessage("");
+          }}
           onNext={handleNext}
         />
       )}
@@ -215,52 +229,84 @@ export default function TravelPlanner() {
         <StepRegion
           value={input.region}
           vibe={input.travelVibe}
-          onChange={(val) => setInput({ ...input, region: val })}
-          onVibeChange={(val) => setInput({ ...input, travelVibe: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, region: val }));
+            setErrorMessage("");
+          }}
+          onVibeChange={(val) => {
+            setInput(prev => ({ ...prev, travelVibe: val }));
+            setErrorMessage("");
+          }}
           onNext={handleNext}
         />
       )}
       {step === 2 && (
         <StepPlaces
           mustVisitPlaces={input.mustVisitPlaces || []}
-          onChange={(val) => setInput({ ...input, mustVisitPlaces: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, mustVisitPlaces: val }));
+            setErrorMessage("");
+          }}
           onNext={handleNext}
+          hasDecided={input.hasMustVisitPlaces}
+          onDecisionChange={(val) => {
+            setInput(prev => ({ ...prev, hasMustVisitPlaces: val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 3 && (
         <StepCompanions
           value={input.companions}
-          onChange={(val) => setInput({ ...input, companions: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, companions: val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 4 && (
         <StepThemes
           input={input}
-          onChange={(val) => setInput({ ...input, ...val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, ...val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 5 && (
         <StepBudget
           value={input.budget}
-          onChange={(val) => setInput({ ...input, budget: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, budget: val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 6 && (
          <StepDates
           input={input}
-          onChange={(val) => setInput({ ...input, ...val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, ...val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 7 && (
          <StepPace
           value={input.pace}
-          onChange={(val) => setInput({ ...input, pace: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, pace: val }));
+            setErrorMessage("");
+          }}
         />
       )}
       {step === 8 && (
         <StepFreeText
           value={input.freeText}
-          onChange={(val) => setInput({ ...input, freeText: val })}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, freeText: val }));
+            setErrorMessage("");
+          }}
         />
       )}
     </StepContainer>
