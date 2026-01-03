@@ -7,16 +7,28 @@ interface StepPlacesProps {
   mustVisitPlaces: string[];
   onChange: (places: string[]) => void;
   onNext: () => void;
+  hasDecided?: boolean;
+  onDecisionChange: (decided: boolean) => void;
 }
 
 export default function StepPlaces({
   mustVisitPlaces,
   onChange,
   onNext,
+  hasDecided,
+  onDecisionChange,
 }: StepPlacesProps) {
-  const [hasPlaces, setHasPlaces] = useState<boolean | null>(
-    mustVisitPlaces.length > 0 ? true : null
-  );
+  // We use the prop hasDecided if available, otherwise fallback to local logic (though validation relies on parent)
+  // To handle the animation/UI state locally, we can derive it or use local state if props aren't passed (backward compat)
+  // But for this task, we assume props are passed.
+
+  // Actually, we need to know if "Yes" or "No" is selected.
+  // "No" -> hasDecided=false (in parent context? No, wait.)
+  // If we add `hasMustVisitPlaces` to UserInput:
+  // True -> Yes
+  // False -> No
+  // Undefined -> Not selected
+
   const [currentInput, setCurrentInput] = useState("");
 
   const handleAddPlace = () => {
@@ -39,9 +51,13 @@ export default function StepPlaces({
     }
   };
 
-  const handleNoPlaces = () => {
-    setHasPlaces(false);
-    onChange([]);
+  const handleYes = () => {
+    onDecisionChange(true);
+  };
+
+  const handleNo = () => {
+    onDecisionChange(false);
+    onChange([]); // Clear places if any were added
   };
 
   return (
@@ -61,9 +77,9 @@ export default function StepPlaces({
         {/* Toggle Buttons */}
         <div className="flex gap-4 mb-8">
           <button
-            onClick={() => setHasPlaces(true)}
+            onClick={handleYes}
             className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
-              hasPlaces === true
+              hasDecided === true
                 ? "bg-primary text-white shadow-md scale-105"
                 : "bg-white text-stone-600 border border-stone-200 hover:bg-stone-50"
             }`}
@@ -71,9 +87,9 @@ export default function StepPlaces({
             ある
           </button>
           <button
-            onClick={handleNoPlaces}
+            onClick={handleNo}
             className={`px-6 py-3 rounded-full font-bold transition-all duration-300 ${
-              hasPlaces === false
+              hasDecided === false
                 ? "bg-secondary text-white shadow-md scale-105"
                 : "bg-white text-stone-600 border border-stone-200 hover:bg-stone-50"
             }`}
@@ -83,7 +99,7 @@ export default function StepPlaces({
         </div>
 
         {/* Input Area (Only if "Yes" is selected) */}
-        {hasPlaces && (
+        {hasDecided === true && (
           <div className="w-full space-y-6 animate-in zoom-in-95 duration-300">
             {/* Input Field */}
             <div className="flex gap-2">
@@ -127,23 +143,6 @@ export default function StepPlaces({
           </div>
         )}
       </div>
-
-      {/* Navigation - only show Next if selection is made */}
-      {hasPlaces !== null && (
-         <div className="mt-4 flex justify-center shrink-0 pb-2">
-            {/* The main container handles the actual next button via onNext prop usually,
-                but StepContainer handles the bottom bar.
-                Here we rely on the main container's Next button,
-                but we need to make sure the user can click it.
-                Actually, the StepContainer renders the Next button.
-                We just need to make sure the state is valid.
-                Wait, for "No", I called onNext directly in the handler, but for "Yes", the user adds items and then manually clicks Next on the parent container.
-                Wait, StepContainer renders "Back" and "Next".
-                If I call `onNext()` here, it might duplicate logic or auto-advance.
-                Let's stick to the pattern: update state, and let user click Next in StepContainer.
-            */}
-         </div>
-      )}
     </div>
   );
 }

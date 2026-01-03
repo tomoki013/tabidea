@@ -35,6 +35,7 @@ export default function TravelPlanner() {
     freeText: "",
     travelVibe: "",
     mustVisitPlaces: [],
+    hasMustVisitPlaces: undefined,
   });
 
   const [status, setStatus] = useState<
@@ -64,7 +65,17 @@ export default function TravelPlanner() {
           }
         }
         break;
-      case 2: // Must-Visit Places (Optional)
+      case 2: // Must-Visit Places
+        if (input.hasMustVisitPlaces === undefined) {
+          setErrorMessage("あるか、ないかを選択してください 🤔");
+          return false;
+        }
+        if (input.hasMustVisitPlaces === true && (!input.mustVisitPlaces || input.mustVisitPlaces.length === 0)) {
+           // If they said Yes but didn't add anything, that's confusing.
+           // Let's require at least one place if "Yes" is selected.
+           setErrorMessage("行きたい場所を入力してください ✍️");
+           return false;
+        }
         break;
       case 3: // Companions
         if (!input.companions) {
@@ -225,6 +236,8 @@ export default function TravelPlanner() {
           mustVisitPlaces={input.mustVisitPlaces || []}
           onChange={(val) => setInput({ ...input, mustVisitPlaces: val })}
           onNext={handleNext}
+          hasDecided={input.hasMustVisitPlaces}
+          onDecisionChange={(val) => setInput({ ...input, hasMustVisitPlaces: val })}
         />
       )}
       {step === 3 && (

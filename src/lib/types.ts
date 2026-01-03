@@ -18,6 +18,7 @@ export interface UserInput {
   freeText: string;
   travelVibe?: string; // New field for "South Island", "Resort vibe", etc.
   mustVisitPlaces?: string[]; // Optional list of specific places the user wants to visit
+  hasMustVisitPlaces?: boolean; // Required for validation in Step 2
 }
 
 export interface Activity {
