@@ -1,3 +1,3 @@
 [submodule "posts"]
 	path = posts
-	url = git@github.com:tomoki013/management-of-articles.git
+	url = https://github.com/tomoki013/management-of-articles.git
