@@ -16,6 +16,7 @@ interface StepContainerProps {
   errorMessage?: string;
   children: ReactNode;
   input: UserInput;
+  onJumpToStep?: (step: number) => void;
 }
 
 export default function StepContainer({
@@ -28,6 +29,7 @@ export default function StepContainer({
   errorMessage,
   children,
   input,
+  onJumpToStep,
 }: StepContainerProps) {
   const [showSummary, setShowSummary] = useState(false);
   const isLastStep = step === totalSteps - 1;
@@ -136,7 +138,14 @@ export default function StepContainer({
                    <FaXmark />
                  </button>
                </div>
-               <RequestSummary input={input} className="mb-0 shadow-none border-stone-200" />
+               <RequestSummary
+                  input={input}
+                  className="mb-0 shadow-none border-stone-200"
+                  onEdit={(targetStep) => {
+                    setShowSummary(false);
+                    onJumpToStep?.(targetStep);
+                  }}
+               />
                <div className="mt-8 text-center">
                  <button
                     onClick={() => setShowSummary(false)}

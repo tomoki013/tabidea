@@ -181,6 +181,11 @@ export default function TravelPlanner() {
     }
   };
 
+  const handleJumpToStep = (targetStep: number) => {
+    setErrorMessage("");
+    setStep(targetStep);
+  };
+
   if (status === "loading") {
     return <LoadingView />;
   }
@@ -215,6 +220,7 @@ export default function TravelPlanner() {
       onComplete={handlePlan}
       errorMessage={errorMessage}
       input={input}
+      onJumpToStep={handleJumpToStep}
     >
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
