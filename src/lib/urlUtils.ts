@@ -6,6 +6,15 @@ import { UserInput, Itinerary, Reference } from "./types";
 interface MinifiedInput {
   d: string;   // dates
   t: string[]; // theme
+  c?: string;  // companions
+  b?: string;  // budget
+  p?: string;  // pace
+  r?: string;  // region
+  tv?: string; // travelVibe
+  mv?: string[]; // mustVisitPlaces
+  hmv?: number; // hasMustVisitPlaces (1 for true, 0 for false)
+  idd?: number; // isDestinationDecided (1 for true, 0 for false)
+  ft?: string; // freeText
 }
 
 interface MinifiedReference {
@@ -42,6 +51,15 @@ export function encodePlanData(input: UserInput, result: Itinerary): string {
   const minInput: MinifiedInput = {
     d: input.dates,
     t: input.theme,
+    c: input.companions,
+    b: input.budget,
+    p: input.pace,
+    r: input.region,
+    tv: input.travelVibe,
+    mv: input.mustVisitPlaces,
+    hmv: input.hasMustVisitPlaces ? 1 : 0,
+    idd: input.isDestinationDecided ? 1 : 0,
+    ft: input.freeText
   };
 
   const minResult: MinifiedItinerary = {
@@ -140,14 +158,16 @@ function hydrateMinifiedData(data: MinifiedData): { input: UserInput, result: It
     const input: UserInput = {
         dates: minInput.d,
         theme: minInput.t,
-        destination: minResult.dst,
-        region: "anywhere", // Default
-        isDestinationDecided: true,
-        companions: "any", // Default
-        budget: "any", // Default
-        pace: "any", // Default
-        freeText: "", // Default
-        travelVibe: "" // Default
+        destination: minResult.dst, // Destination is also stored in result
+        region: minInput.r || "anywhere",
+        isDestinationDecided: minInput.idd === 1,
+        companions: minInput.c || "any",
+        budget: minInput.b || "any",
+        pace: minInput.p || "any",
+        freeText: minInput.ft || "",
+        travelVibe: minInput.tv || "",
+        mustVisitPlaces: minInput.mv || [],
+        hasMustVisitPlaces: minInput.hmv === 1
     };
 
     // Hydrate Result

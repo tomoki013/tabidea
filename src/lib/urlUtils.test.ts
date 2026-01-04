@@ -10,13 +10,14 @@ describe("urlUtils", () => {
     dates: "2024-01-01",
     companions: "solo",
     theme: ["food", "history"],
-    // Add missing fields to satisfy types (even though test might not enforce strictness)
     isDestinationDecided: true,
     region: "domestic",
     budget: "standard",
-    pace: "medium",
+    pace: "standard",
     freeText: "",
-    travelVibe: ""
+    travelVibe: "vibey",
+    mustVisitPlaces: ["Place A"],
+    hasMustVisitPlaces: true
   };
 
   const mockResult: Itinerary = {
@@ -47,13 +48,19 @@ describe("urlUtils", () => {
     const decoded = decodePlanData(encoded);
     expect(decoded).not.toBeNull();
 
-    // Verify Input (Note: defaults will be applied for non-saved fields)
+    // Verify Input
     expect(decoded?.input.dates).toBe(mockInput.dates);
     expect(decoded?.input.theme).toEqual(mockInput.theme);
-    expect(decoded?.input.destination).toBe(mockResult.destination); // Inferred from result
-    // These fields are reset to defaults during hydration
-    expect(decoded?.input.budget).toBe("any");
-    expect(decoded?.input.pace).toBe("any");
+    expect(decoded?.input.destination).toBe(mockResult.destination); // Inferred from result or input
+
+    // Now these fields should be preserved
+    expect(decoded?.input.budget).toBe(mockInput.budget);
+    expect(decoded?.input.pace).toBe(mockInput.pace);
+    expect(decoded?.input.companions).toBe(mockInput.companions);
+    expect(decoded?.input.region).toBe(mockInput.region); // Depending on implementation
+    expect(decoded?.input.travelVibe).toBe(mockInput.travelVibe);
+    expect(decoded?.input.mustVisitPlaces).toEqual(mockInput.mustVisitPlaces);
+    expect(decoded?.input.hasMustVisitPlaces).toBe(mockInput.hasMustVisitPlaces);
 
     // Verify Result
     expect(decoded?.result.destination).toBe(mockResult.destination);

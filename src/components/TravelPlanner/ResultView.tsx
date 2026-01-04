@@ -4,6 +4,7 @@ import { Itinerary, UserInput } from "@/lib/types";
 import Image from "next/image";
 import TravelPlannerChat from "../TravelPlannerChat";
 import ShareButtons from "../ShareButtons";
+import RequestSummary from "./RequestSummary";
 import { FaMapMarkerAlt, FaClock, FaCalendarAlt } from "react-icons/fa";
 
 interface ResultViewProps {
@@ -117,6 +118,9 @@ export default function ResultView({
         </div>
       </div>
 
+      <div className="px-4 sm:px-0 mb-12">
+          <RequestSummary input={input} />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 px-4 sm:px-0">
         {/* Timeline */}

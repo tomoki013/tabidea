@@ -1,8 +1,10 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlane } from "react-icons/fa6";
+import { FaPlane, FaListCheck, FaXmark } from "react-icons/fa6";
+import { UserInput } from "@/lib/types";
+import RequestSummary from "./RequestSummary";
 
 interface StepContainerProps {
   step: number;
@@ -13,6 +15,7 @@ interface StepContainerProps {
   isNextDisabled?: boolean;
   errorMessage?: string;
   children: ReactNode;
+  input: UserInput;
 }
 
 export default function StepContainer({
@@ -24,7 +27,9 @@ export default function StepContainer({
   isNextDisabled = false,
   errorMessage,
   children,
+  input,
 }: StepContainerProps) {
+  const [showSummary, setShowSummary] = useState(false);
   const isLastStep = step === totalSteps - 1;
 
   // Progress Bar Calculation
@@ -58,7 +63,14 @@ export default function StepContainer({
           <span className="text-stone-500 font-mono text-xs tracking-widest bg-white/50 px-2 py-1 rounded-md">
             STEP {step}/{Math.max(1, totalSteps - 1)}
           </span>
-          <div className="w-10 h-10" /> {/* Spacer */}
+
+          <button
+            onClick={() => setShowSummary(true)}
+            className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 hover:text-primary active:scale-95"
+            title="選択内容を確認"
+          >
+            <FaListCheck />
+          </button>
         </div>
 
         {/* Progress Bar Container */}
@@ -103,6 +115,38 @@ export default function StepContainer({
           >
             {children}
           </motion.div>
+        </AnimatePresence>
+
+        {/* Summary Overlay */}
+        <AnimatePresence>
+          {showSummary && (
+            <motion.div
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="absolute inset-0 z-50 bg-stone-50/95 backdrop-blur-sm p-6 overflow-y-auto"
+            >
+               <div className="flex justify-between items-center mb-6">
+                 <h2 className="text-lg font-bold text-stone-800 font-serif">現在のリクエスト</h2>
+                 <button
+                   onClick={() => setShowSummary(false)}
+                   className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors"
+                 >
+                   <FaXmark />
+                 </button>
+               </div>
+               <RequestSummary input={input} className="mb-0 shadow-none border-stone-200" />
+               <div className="mt-8 text-center">
+                 <button
+                    onClick={() => setShowSummary(false)}
+                    className="px-6 py-2 bg-stone-800 text-white rounded-full text-sm font-bold hover:bg-stone-700 transition-colors"
+                 >
+                    閉じる
+                 </button>
+               </div>
+            </motion.div>
+          )}
         </AnimatePresence>
       </div>
 

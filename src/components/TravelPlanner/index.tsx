@@ -214,6 +214,7 @@ export default function TravelPlanner() {
       onNext={handleNext}
       onComplete={handlePlan}
       errorMessage={errorMessage}
+      input={input}
     >
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
