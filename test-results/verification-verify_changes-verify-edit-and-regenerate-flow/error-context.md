@@ -1,0 +1,151 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - heading "心が、どこへ 行きたがっている？" [level=1] [ref=e6]
+        - paragraph [ref=e7]: AIと一緒に、次の冒険の物語を書き始めよう。
+      - generic [ref=e9]:
+        - generic [ref=e10]:
+          - generic [ref=e11]:
+            - button "←" [ref=e12]
+            - generic [ref=e13]: STEP 2/8
+            - button "選択内容を確認" [ref=e14]:
+              - img [ref=e15]
+          - img [ref=e21]
+        - generic [ref=e25]:
+          - generic [ref=e26]:
+            - heading "絶対に行きたい 観光地はありますか？" [level=2] [ref=e27]:
+              - text: 絶対に行きたい
+              - text: 観光地はありますか？
+            - paragraph [ref=e28]: もしあれば、優先的にプランに組み込みます
+          - generic [ref=e30]:
+            - button "ある" [ref=e31]
+            - button "ない" [active] [ref=e32]
+        - button "次へ" [ref=e34]
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - img [ref=e40]
+        - heading "あなただけのガイド" [level=3] [ref=e42]
+        - paragraph [ref=e43]: AIがあなたの好みを理解し、世界に一つだけのプランを提案します。
+      - generic [ref=e44]:
+        - img [ref=e46]
+        - heading "未知の場所へ" [level=3] [ref=e48]
+        - paragraph [ref=e49]: ガイドブックには載っていない、隠れた名所を見つけましょう。
+      - generic [ref=e50]:
+        - img [ref=e52]
+        - heading "物語を編集する" [level=3] [ref=e54]
+        - paragraph [ref=e55]: 提案されたプランは自由自在。あなたの旅の物語を完成させてください。
+    - generic [ref=e57]:
+      - generic [ref=e58]:
+        - heading "旅のつくりかた" [level=2] [ref=e59]
+        - paragraph [ref=e60]: とてもシンプル。まるで日記を書くように。
+      - generic [ref=e61]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: "01"
+          - heading "行き先と日程を決める" [level=3] [ref=e65]
+          - paragraph [ref=e66]: 行きたい場所と期間を入力してください。漠然としていても大丈夫。
+        - generic [ref=e67]:
+          - generic [ref=e68]: "02"
+          - heading "AIがドラフトを作成" [level=3] [ref=e69]
+          - paragraph [ref=e70]: 数秒で旅行プランのたたき台ができあがります。
+        - generic [ref=e71]:
+          - generic [ref=e72]: "03"
+          - heading "自由にアレンジ" [level=3] [ref=e73]
+          - paragraph [ref=e74]: 気に入らない場所は変更したり、新しいアイデアを追加したり。
+    - generic [ref=e76]:
+      - generic [ref=e77]:
+        - heading "みんなの旅の記録" [level=2] [ref=e78]
+        - paragraph [ref=e79]: 例えばこんなプラン。
+      - generic [ref=e80]:
+        - generic [ref=e81]:
+          - generic [ref=e82]:
+            - heading "京都" [level=3] [ref=e83]
+            - generic [ref=e84]: 静寂と歴史
+          - paragraph [ref=e85]: "\"朝一番の清水寺から始まり、嵐山の竹林で深呼吸。夜は先斗町で京料理を。\""
+        - generic [ref=e86]:
+          - generic [ref=e87]:
+            - heading "沖縄" [level=3] [ref=e88]
+            - generic [ref=e89]: 青と白のコントラスト
+          - paragraph [ref=e90]: "\"レンタカーで古宇利島へ。美ら海水族館の後は、サンセットビーチで波の音を聴く。\""
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - heading "金沢" [level=3] [ref=e93]
+            - generic [ref=e94]: アートと海鮮
+          - paragraph [ref=e95]: "\"21世紀美術館で現代アートに触れ、近江町市場で新鮮な海鮮丼を堪能する旅。\""
+    - generic [ref=e97]:
+      - generic [ref=e98]:
+        - heading "よくある質問" [level=2] [ref=e99]
+        - paragraph [ref=e100]:
+          - text: AI Travel Plannerは、Google Geminiを活用して、あなたの理想の旅行プランを提案するサービスです。
+          - text: 旅のワクワク感を大切にし、手書きの旅行日記のような温かみのあるデザインを目指しました。
+      - generic [ref=e101]:
+        - generic [ref=e102]:
+          - button "料金はかかりますか？" [ref=e103]:
+            - generic [ref=e104]: 料金はかかりますか？
+            - img [ref=e105]
+          - generic [ref=e107]: 現在はプレビュー版のため、すべての機能を無料でご利用いただけます。将来的に商用サービスとして正式リリースする際には、一部機能が有料となる可能性があります。
+        - generic [ref=e108]:
+          - button "このサービスについて教えてください" [ref=e109]:
+            - generic [ref=e110]: このサービスについて教えてください
+            - img [ref=e111]
+          - generic [ref=e113]: 将来的な商用展開を目指して開発されている旅行計画サービスです。現在は機能の検証と品質向上を行っている段階です。開発の進捗や詳細はGitHubでも公開しています。
+        - generic [ref=e114]:
+          - button "入力した情報はAIの学習に使われますか？" [ref=e115]:
+            - generic [ref=e116]: 入力した情報はAIの学習に使われますか？
+            - img [ref=e117]
+          - generic [ref=e119]: いいえ、Google Gemini APIの規約に基づき、入力されたデータがモデルの学習に使用されることはありません。安心してご利用ください。
+        - generic [ref=e120]:
+          - button "生成されたプランの正確性は保証されますか？" [ref=e121]:
+            - generic [ref=e122]: 生成されたプランの正確性は保証されますか？
+            - img [ref=e123]
+          - generic [ref=e125]: AIはもっともらしい情報を生成しますが、ハルシネーション（嘘の情報）が含まれる可能性があります。営業時間や料金などは、必ず公式サイト等で最新情報をご確認ください。
+        - generic [ref=e126]:
+          - button "提案されたプランを保存することはできますか？" [ref=e127]:
+            - generic [ref=e128]: 提案されたプランを保存することはできますか？
+            - img [ref=e129]
+          - generic [ref=e131]: 現在はアカウント機能がないため、クラウドへの保存機能はありません。ただし、生成されたURLを保存またはブックマークすることで、いつでも同じプランにアクセスできます。※将来的にはサイトの仕様変更等により、過去の保存済みプランが見られなくなる可能性があります。あらかじめご了承ください。
+  - contentinfo [ref=e132]:
+    - generic [ref=e133]:
+      - generic [ref=e134]:
+        - heading "AI Travel Planner" [level=3] [ref=e135]
+        - paragraph [ref=e136]:
+          - text: あなたの旅の物語を、AIと一緒に紡ぎ出す。
+          - text: Powered by ともきちの旅行日記
+        - link [ref=e138] [cursor=pointer]:
+          - /url: https://github.com/tomoki013/ai-travel-planner
+          - img [ref=e139]
+      - generic [ref=e141]:
+        - heading "Service" [level=4] [ref=e142]
+        - list [ref=e143]:
+          - listitem [ref=e144]:
+            - link "ホーム" [ref=e145] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=e146]:
+            - link "更新情報・ロードマップ" [ref=e147] [cursor=pointer]:
+              - /url: /updates
+      - generic [ref=e148]:
+        - heading "Support" [level=4] [ref=e149]
+        - list [ref=e150]:
+          - listitem [ref=e151]:
+            - link "よくある質問" [ref=e152] [cursor=pointer]:
+              - /url: /faq
+          - listitem [ref=e153]:
+            - link "お問い合わせ" [ref=e154] [cursor=pointer]:
+              - /url: /contact
+      - generic [ref=e155]:
+        - heading "Legal" [level=4] [ref=e156]
+        - list [ref=e157]:
+          - listitem [ref=e158]:
+            - link "利用規約" [ref=e159] [cursor=pointer]:
+              - /url: /terms
+          - listitem [ref=e160]:
+            - link "プライバシーポリシー" [ref=e161] [cursor=pointer]:
+              - /url: /privacy
+    - paragraph [ref=e163]: © 2025-2026 AI Travel Planner. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e169] [cursor=pointer]:
+    - img [ref=e170]
+  - alert [ref=e173]
+```

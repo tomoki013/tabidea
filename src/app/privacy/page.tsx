@@ -130,6 +130,9 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
+          <p className="text-right text-sm text-stone-500 mt-12">
+            最終更新日：2025年2月18日
+          </p>
         </div>
       </main>
     </div>

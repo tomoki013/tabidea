@@ -1,11 +1,13 @@
 "use client";
 
 import { Itinerary, UserInput } from "@/lib/types";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import TravelPlannerChat from "../TravelPlannerChat";
 import ShareButtons from "../ShareButtons";
 import RequestSummary from "./RequestSummary";
-import { FaMapMarkerAlt, FaClock, FaCalendarAlt } from "react-icons/fa";
+import { FaMapMarkerAlt, FaClock, FaCalendarAlt, FaEdit } from "react-icons/fa";
+import { encodePlanData } from "@/lib/urlUtils";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -239,6 +241,19 @@ export default function ResultView({
 
       <div className="px-4 sm:px-0 mt-16 mb-12">
           <RequestSummary input={input} />
+
+          <div className="mt-8 flex justify-center">
+            <button
+              onClick={() => {
+                const encoded = encodePlanData(input, result);
+                router.push(`/?q=${encoded}`);
+              }}
+              className="group relative inline-flex items-center gap-2 px-8 py-4 bg-white border-2 border-stone-200 rounded-full text-stone-600 font-bold shadow-sm hover:border-primary hover:text-primary hover:shadow-md transition-all duration-300 cursor-pointer"
+            >
+              <FaEdit className="text-lg" />
+              <span>条件を変更して再生成する</span>
+            </button>
+          </div>
       </div>
     </div>
   );

@@ -46,9 +46,6 @@ export default function ContactPage() {
                   不具合・要望 (GitHub)
                 </h3>
               </div>
-              <p className="text-stone-600 text-sm leading-relaxed">
-                開発者の方はGitHub Issuesもご利用いただけます。
-              </p>
             </a>
 
             {/* X (Twitter) DM */}
