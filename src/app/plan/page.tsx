@@ -108,6 +108,18 @@ function PlanContent() {
     );
   }
 
+  useEffect(() => {
+    // Prevent background scrolling when editing
+    if (isEditing) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isEditing]);
+
   return (
     <>
       <ResultView
@@ -121,11 +133,11 @@ function PlanContent() {
 
       {/* Edit Modal Overlay */}
       {isEditing && input && (
-        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-sm overflow-y-auto">
+        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-md overflow-y-auto">
           <div className="min-h-screen flex flex-col items-center justify-center p-4">
              <button
                 onClick={() => setIsEditing(false)}
-                className="absolute top-4 right-4 p-2 text-stone-500 hover:text-stone-800 transition-colors"
+                className="absolute top-4 right-4 p-2 text-stone-500 hover:text-stone-800 transition-colors z-[110]"
                 aria-label="Close"
              >
                 <FaXmark size={32} />
