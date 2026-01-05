@@ -15,6 +15,7 @@ interface ResultViewProps {
   onRegenerate: (history: { role: string; text: string }[], overridePlan?: Itinerary) => void;
   onResultChange?: (result: Itinerary) => void;
   isUpdating?: boolean;
+  onEditRequest?: (stepIndex: number) => void;
 }
 
 export default function ResultView({
@@ -24,6 +25,7 @@ export default function ResultView({
   onRegenerate,
   onResultChange,
   isUpdating = false,
+  onEditRequest,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage || "/images/eiffel-tower-and-sunset.jpg";
@@ -41,17 +43,13 @@ export default function ResultView({
     setEditingResult(null);
   };
 
-  const saveAndRegenerate = () => {
+  const saveChanges = () => {
     if (!editingResult) return;
 
     // Update parent state if callback is provided
     if (onResultChange) {
       onResultChange(editingResult);
     }
-
-    // Trigger regeneration with a system-like user message
-    const history = [{ role: 'user', text: 'プランの内容を直接編集しました。整合性を確認して再生成してください。' }];
-    onRegenerate(history, editingResult);
 
     setIsEditing(false);
   };
@@ -141,10 +139,10 @@ export default function ResultView({
                 <FaTimes /> キャンセル
              </button>
              <button
-                onClick={saveAndRegenerate}
-                className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 font-bold transition-all animate-pulse"
+                onClick={saveChanges}
+                className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 font-bold transition-all"
              >
-                <FaSave /> 保存して再生成
+                <FaSave /> 保存
              </button>
         </div>
       )}
@@ -384,7 +382,7 @@ export default function ResultView({
       </div>
 
       <div className="px-4 sm:px-0 mt-16 mb-12">
-          <RequestSummary input={input} />
+          <RequestSummary input={input} onEdit={onEditRequest} />
       </div>
     </div>
   );
