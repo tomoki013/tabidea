@@ -47,7 +47,7 @@ export default function ContactPage() {
                 </h3>
               </div>
               <p className="text-stone-600 text-sm leading-relaxed">
-                開発者の方はGitHub Issuesもご利用いただけます。
+                GitHub Issuesもご利用いただけます。
               </p>
             </a>
 

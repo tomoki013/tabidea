@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useActionState } from 'react';
+import Link from 'next/link';
 import { FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { sendContactEmail, ContactState } from '@/app/actions/contact';
@@ -132,6 +133,24 @@ export default function ContactForm() {
                 {state.errors.message[0]}
               </p>
             )}
+          </div>
+
+          <div className="flex items-start gap-3 p-4 bg-stone-50 rounded-xl border border-stone-200">
+            <div className="flex items-center h-5">
+              <input
+                id="agreement"
+                name="agreement"
+                type="checkbox"
+                required
+                className="w-5 h-5 text-[#e67e22] border-stone-300 rounded focus:ring-[#e67e22] focus:ring-2 cursor-pointer"
+              />
+            </div>
+            <label htmlFor="agreement" className="text-sm text-stone-700 cursor-pointer select-none">
+              <Link href="/privacy" className="text-[#e67e22] hover:underline" target="_blank">プライバシーポリシー</Link>
+              と
+              <Link href="/terms" className="text-[#e67e22] hover:underline" target="_blank">利用規約</Link>
+              に同意します <span className="text-red-500">*</span>
+            </label>
           </div>
 
           <button
