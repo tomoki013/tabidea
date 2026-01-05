@@ -19,11 +19,21 @@ import StepPace from "./steps/StepPace";
 import StepPlaces from "./steps/StepPlaces";
 import PlaneTransition from "./PlaneTransition";
 
-export default function TravelPlanner() {
+interface TravelPlannerProps {
+  initialInput?: UserInput;
+  initialStep?: number;
+  onComplete?: () => void;
+}
+
+export default function TravelPlanner({
+  initialInput,
+  initialStep = 0,
+  onComplete
+}: TravelPlannerProps = {}) {
   const router = useRouter();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(initialStep);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [input, setInput] = useState<UserInput>({
+  const [input, setInput] = useState<UserInput>(initialInput || {
     destination: "",
     isDestinationDecided: undefined,
     region: "",
@@ -170,6 +180,9 @@ export default function TravelPlanner() {
         // Compress data and redirect
         const encoded = encodePlanData(input, response.data);
         router.push(`/plan?q=${encoded}`);
+        if (onComplete) {
+          onComplete();
+        }
       } else {
         setErrorMessage(response.message || "Something went wrong.");
         setStatus("error");

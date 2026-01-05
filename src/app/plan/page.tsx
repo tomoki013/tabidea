@@ -7,9 +7,10 @@ import { UserInput, Itinerary } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
+import TravelPlanner from "@/components/TravelPlanner";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
-import { FaPlus } from "react-icons/fa6";
+import { FaPlus, FaXmark } from "react-icons/fa6";
 
 function PlanContent() {
   const searchParams = useSearchParams();
@@ -22,6 +23,10 @@ function PlanContent() {
   const [status, setStatus] = useState<
     "loading" | "idle" | "regenerating" | "error"
   >("loading");
+
+  // Editing state
+  const [isEditing, setIsEditing] = useState(false);
+  const [editingStep, setEditingStep] = useState(0);
 
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
@@ -37,6 +42,8 @@ function PlanContent() {
         setInput(decoded.input);
         setResult(decoded.result);
         setStatus("idle");
+        // Ensure editing mode is closed when new data arrives
+        setIsEditing(false);
         } else {
         setError(
             "プランデータの読み込みに失敗しました。リンクが壊れている可能性があります。"
@@ -72,6 +79,11 @@ function PlanContent() {
     router.push("/");
   };
 
+  const handleEditInput = (stepIndex: number) => {
+    setEditingStep(stepIndex);
+    setIsEditing(true);
+  };
+
   if (status === "loading") {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
@@ -97,13 +109,39 @@ function PlanContent() {
   }
 
   return (
+    <>
       <ResultView
         result={result}
         input={input}
         onRestart={handleRestart}
         onRegenerate={handleRegenerate}
         isUpdating={status === "regenerating"}
+        onEditInput={handleEditInput}
       />
+
+      {/* Edit Modal Overlay */}
+      {isEditing && input && (
+        <div className="fixed inset-0 z-[100] bg-white/95 backdrop-blur-sm overflow-y-auto">
+          <div className="min-h-screen flex flex-col items-center justify-center p-4">
+             <button
+                onClick={() => setIsEditing(false)}
+                className="absolute top-4 right-4 p-2 text-stone-500 hover:text-stone-800 transition-colors"
+                aria-label="Close"
+             >
+                <FaXmark size={32} />
+             </button>
+
+             <div className="w-full max-w-5xl">
+                <TravelPlanner
+                   initialInput={input}
+                   initialStep={editingStep}
+                   onComplete={() => setIsEditing(false)}
+                />
+             </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 
