@@ -18,6 +18,7 @@ interface StepContainerProps {
   input: UserInput;
   onJumpToStep?: (step: number) => void;
   widthClass?: string;
+  onClose?: () => void;
 }
 
 export default function StepContainer({
@@ -32,6 +33,7 @@ export default function StepContainer({
   input,
   onJumpToStep,
   widthClass = "max-w-lg",
+  onClose,
 }: StepContainerProps) {
   const [showSummary, setShowSummary] = useState(false);
   const isLastStep = step === totalSteps - 1;
@@ -42,7 +44,7 @@ export default function StepContainer({
   const progress = (step / safeTotal) * 100;
 
   return (
-    <div className={`w-full ${widthClass} mx-auto h-[90vh] sm:h-[800px] relative rounded-3xl overflow-hidden shadow-2xl flex flex-col bg-[#fcfbf9] border-8 border-white`}>
+    <div className={`w-full ${widthClass} mx-auto h-[90vh] sm:h-[800px] max-h-[90vh] relative rounded-3xl overflow-hidden shadow-2xl flex flex-col bg-[#fcfbf9] border-8 border-white`}>
       {/* Background Texture */}
       <div
         className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-multiply"
@@ -55,15 +57,26 @@ export default function StepContainer({
       {/* Header / Progress */}
       <div className="relative z-10 px-6 pt-8 pb-4">
         <div className="flex justify-between items-center mb-8">
-          <button
-            onClick={onBack}
-            disabled={step === 0}
-            className={`w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 ${
-              step === 0 ? "opacity-0 cursor-default" : ""
-            }`}
-          >
-            ←
-          </button>
+          {onClose ? (
+             <button
+              onClick={onClose}
+              className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 hover:text-red-500 active:scale-95"
+              title="閉じる"
+            >
+               <FaXmark />
+            </button>
+          ) : (
+            <button
+              onClick={onBack}
+              disabled={step === 0}
+              className={`w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 ${
+                step === 0 ? "opacity-0 cursor-default" : ""
+              }`}
+            >
+              ←
+            </button>
+          )}
+
           <span className="text-stone-500 font-mono text-xs tracking-widest bg-white/50 px-2 py-1 rounded-md">
             STEP {step}/{Math.max(1, totalSteps - 1)}
           </span>

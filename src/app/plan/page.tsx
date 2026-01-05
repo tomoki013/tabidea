@@ -7,6 +7,7 @@ import { UserInput, Itinerary } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
+import TravelPlanner from "@/components/TravelPlanner";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
 import { FaPlus } from "react-icons/fa6";
@@ -23,6 +24,10 @@ function PlanContent() {
     "loading" | "idle" | "regenerating" | "error"
   >("loading");
 
+  // State for request editing modal
+  const [isEditingRequest, setIsEditingRequest] = useState(false);
+  const [initialEditStep, setInitialEditStep] = useState(0);
+
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
     const timer = setTimeout(() => {
@@ -37,6 +42,8 @@ function PlanContent() {
         setInput(decoded.input);
         setResult(decoded.result);
         setStatus("idle");
+        // Close modal if URL changes (regeneration complete)
+        setIsEditingRequest(false);
         } else {
         setError(
             "プランデータの読み込みに失敗しました。リンクが壊れている可能性があります。"
@@ -74,6 +81,20 @@ function PlanContent() {
     router.push("/");
   };
 
+  const handleResultChange = (newResult: Itinerary) => {
+    if (!input) return;
+    setResult(newResult);
+
+    // Update URL to persist changes without page reload
+    const encoded = encodePlanData(input, newResult);
+    window.history.replaceState(null, '', `?q=${encoded}`);
+  };
+
+  const handleEditRequest = (stepIndex: number) => {
+    setInitialEditStep(stepIndex);
+    setIsEditingRequest(true);
+  };
+
   if (status === "loading") {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
@@ -99,14 +120,30 @@ function PlanContent() {
   }
 
   return (
+    <>
       <ResultView
         result={result}
         input={input}
         onRestart={handleRestart}
         onRegenerate={handleRegenerate}
-        onResultChange={setResult}
+        onResultChange={handleResultChange}
         isUpdating={status === "regenerating"}
+        onEditRequest={handleEditRequest}
       />
+
+      {/* Request Editing Modal */}
+      {isEditingRequest && input && (
+        <div className="fixed inset-0 z-[100] bg-stone-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="w-full max-w-5xl h-[90vh] bg-transparent relative">
+            <TravelPlanner
+              initialInput={input}
+              initialStep={initialEditStep}
+              onClose={() => setIsEditingRequest(false)}
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

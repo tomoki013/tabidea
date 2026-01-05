@@ -19,23 +19,39 @@ import StepPace from "./steps/StepPace";
 import StepPlaces from "./steps/StepPlaces";
 import PlaneTransition from "./PlaneTransition";
 
-export default function TravelPlanner() {
+interface TravelPlannerProps {
+  initialInput?: UserInput | null;
+  initialStep?: number;
+  onClose?: () => void;
+}
+
+export default function TravelPlanner({ initialInput, initialStep, onClose }: TravelPlannerProps) {
   const router = useRouter();
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(initialStep ?? 0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [input, setInput] = useState<UserInput>({
-    destination: "",
-    isDestinationDecided: undefined,
-    region: "",
-    dates: "",
-    companions: "",
-    theme: [],
-    budget: "",
-    pace: "",
-    freeText: "",
-    travelVibe: "",
-    mustVisitPlaces: [],
-    hasMustVisitPlaces: undefined,
+  const [input, setInput] = useState<UserInput>(() => {
+    if (initialInput) {
+      const merged = { ...initialInput };
+      // Ensure consistency: If destination is set, it must be decided
+      if (merged.destination && !merged.isDestinationDecided) {
+         merged.isDestinationDecided = true;
+      }
+      return merged;
+    }
+    return {
+      destination: "",
+      isDestinationDecided: undefined,
+      region: "",
+      dates: "",
+      companions: "",
+      theme: [],
+      budget: "",
+      pace: "",
+      freeText: "",
+      travelVibe: "",
+      mustVisitPlaces: [],
+      hasMustVisitPlaces: undefined,
+    };
   });
 
   const [status, setStatus] = useState<
@@ -222,6 +238,7 @@ export default function TravelPlanner() {
       input={input}
       onJumpToStep={handleJumpToStep}
       widthClass={step === 8 ? "max-w-3xl" : "max-w-lg"}
+      onClose={onClose}
     >
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
