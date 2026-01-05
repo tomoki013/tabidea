@@ -185,9 +185,11 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
             </div>
             <p className="text-stone-600 font-medium">
               {input.pace === "relaxed" && "ゆったり (1日1-2箇所)"}
+              {input.pace === "balanced" && "バランスよく (観光と休息を程よく)"}
+              {input.pace === "active" && "アクティブ (主要スポットを網羅)"}
+              {input.pace === "packed" && "詰め込み (朝から晩まで全力で)"}
               {input.pace === "normal" && "普通 (1日3-4箇所)"}
-              {input.pace === "packed" && "盛りだくさん (行けるだけ行く!)"}
-              {!["relaxed", "normal", "packed"].includes(input.pace) && input.pace}
+              {!["relaxed", "balanced", "active", "packed", "normal"].includes(input.pace) && input.pace}
             </p>
           </div>
         </div>

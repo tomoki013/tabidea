@@ -23,7 +23,7 @@ export class GeminiService implements AIService {
       `[gemini] Generating itinerary. Context articles: ${context.length}`
     );
     const contextText = context
-      .map((a, i) => `Article ${i + 1}: ${a.title}\n${a.content}`)
+      .map((a, i) => `[ID: ${i}]\nTitle: ${a.title}\nContent: ${a.content}`)
       .join("\n\n");
 
     const systemPrompt = `
@@ -32,6 +32,8 @@ export class GeminiService implements AIService {
       CONTEXT (Travel Diary Archives):
       ${contextText}
       
+      CURRENT DATE: ${new Date().toISOString().split('T')[0]}
+
       USER REQUEST:
       ${prompt}
       
@@ -42,12 +44,12 @@ export class GeminiService implements AIService {
          - IF MISMATCH (Different City/Region): You may use the "vibe" or "style" from the Context as inspiration, BUT be careful.
       3. CRITICAL: If the User asks for "Paris" and context is about "Tokyo", do NOT put Tokyo cafes in Paris. Use general knowledge for Paris instead.
       4. STRICT RULE: If using a Context article for style/vibe inspiration only (because of location mismatch), DO NOT mention the article name or location in the final text description. Just apply the style silently.
-      5. REFERENCE FILTERING: Populate \`reference_indices\` with indices of Context articles that were ACTUAL SOURCES of information or specific inspiration.
-         - DO NOT include an index just because the article exists in the context.
-         - DO NOT include an index if the article was not used or is irrelevant.
-         - If multiple articles cover the same spot, choose the most relevant one.
-      6. IMPORTANT: The user sees the references. If a reference is shown that has nothing to do with the plan, the user will be confused. Ensure high relevance.
-      7. If valid context exists for the destination, prioritize it. If not, fill in gaps with general knowledge to maintain the high-quality style.
+      5. REFERENCE FILTERING: Populate \`reference_indices\` with the **IDs** of Context articles that were ACTUAL SOURCES of information or specific inspiration.
+         - DO NOT include an ID just because it exists in context.
+         - DO NOT include an ID if the article was not used or is irrelevant.
+         - If no context was used, return an empty array.
+      6. IMAGES: Use a URL from context ONLY if explicitly available and relevant. Otherwise return null.
+      7. LANGUAGE: The JSON structure keys must be in English, but ALL content values (description, reasoning, titles, activities) MUST be in **JAPANESE**.
       8. RETURN ONLY JSON. No markdown formatting.
 
       EXAMPLES:
@@ -66,7 +68,7 @@ export class GeminiService implements AIService {
         "reasoning": "string (Why you chose this plan/spots, logic behind decisions)",
         "id": "string (unique-ish id)",
         "destination": "string",
-        "heroImage": "string (URL from one of the context articles or a placeholder unsplash url)",
+        "heroImage": "string | null (URL from one of the context articles if available, otherwise null)",
         "description": "string (A compelling intro in Japanese, mentioning if you used specific blog tips)",
         "days": [
           {
@@ -82,9 +84,9 @@ export class GeminiService implements AIService {
           }
         ],
         "reference_indices": [
-           // Array of numbers (0-based) corresponding to the index of Context articles used.
-           // ONLY include indices of articles that are RELEVANT to the destination.
-           // Example: [0, 2] means Article 1 and Article 3 were used.
+           // Array of numbers (0-based) corresponding to the [ID: n] of Context articles used.
+           // ONLY include IDs of articles that are RELEVANT to the destination.
+           // Example: [0, 2] means Article [ID: 0] and [ID: 2] were used.
         ]
       }
     `;
