@@ -1,4 +1,3 @@
-import React from "react";
 import FAQSection from "@/components/landing/FAQSection";
 import type { Metadata } from "next";
 

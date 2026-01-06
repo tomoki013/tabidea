@@ -1,10 +1,10 @@
-import React from "react";
 import type { Metadata } from "next";
 import { FaFlag, FaCheck, FaTools } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "更新情報・ロードマップ - AI Travel Planner",
-  description: "AI Travel Plannerの更新情報と今後の開発ロードマップを掲載しています。",
+  description:
+    "AI Travel Plannerの更新情報と今後の開発ロードマップを掲載しています。",
 };
 
 type RoadmapItem = {
@@ -16,32 +16,61 @@ type RoadmapItem = {
 
 const roadmapData: RoadmapItem[] = [
   {
-    status: "developing",
+    status: "planned",
     title: "プランの保存機能",
-    description: "生成した旅行プランをブラウザに保存し、後から確認できる機能を開発中です。",
+    description:
+      "生成した旅行プランをブラウザに保存し、後から確認できる機能を開発中です。",
   },
   {
     status: "planned",
     title: "プランの画像共有",
-    description: "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
+    description:
+      "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
   },
   {
-    status: "planned",
+    status: "developing",
     title: "ユーザーアカウント機能",
-    description: "ログインすることで、複数のデバイスでプランを同期したり、過去の履歴を管理できるようになります。",
+    description:
+      "ログインすることで、複数のデバイスでプランを同期したり、過去の履歴を管理できるようになります。",
   },
   {
     status: "planned",
     title: "スポット詳細情報の拡充",
-    description: "各観光スポットの営業時間や料金など、より詳細な情報をAIが提案できるように改善します。",
+    description:
+      "各観光スポットの営業時間や料金など、より詳細な情報をAIが提案できるように改善します。",
+  },
+  {
+    status: "planned",
+    title: "ホテル、飛行機を含めたプラン提案",
+    description: "ホテル、飛行機を含めたプランを提案する機能を検討しています。",
   },
   {
     status: "done",
-    date: "2025.02.16", // Approximate date based on context
+    date: "2025.12.25", // Approximate date based on context
     title: "β版サービス公開",
-    description: "AI Travel Plannerのβ版を公開しました。Gemini AIを活用した旅行プラン生成が可能です。",
+    description:
+      "UIとUXの修正、および本格的なサービス開始に伴うページ整理を行いました。",
+  },
+  {
+    status: "done",
+    date: "2025.12.05", // Approximate date based on context
+    title: "α版サービス公開",
+    description:
+      "AI Travel Plannerのα版を公開しました。Gemini AIを活用した旅行プラン生成が可能です。",
   },
 ];
+
+// 1. 優先順位を定義するオブジェクトを作る (数値が小さいほうが先頭)
+const statusPriority: Record<RoadmapItem["status"], number> = {
+  developing: 1, // 先頭にしたい
+  planned: 2,
+  done: 3,
+};
+
+// 2. その数値を使って引き算でソートする
+const sorted = roadmapData.toSorted((a, b) => {
+  return statusPriority[a.status] - statusPriority[b.status];
+});
 
 export default function UpdatesPage() {
   return (
@@ -59,28 +88,39 @@ export default function UpdatesPage() {
         <div className="space-y-12">
           {/* Section: Development Status */}
           <section>
-             <h2 className="text-xl font-bold text-[#e67e22] mb-6 flex items-center gap-2 border-b-2 border-[#e67e22]/20 pb-2">
+            <h2 className="text-xl font-bold text-[#e67e22] mb-6 flex items-center gap-2 border-b-2 border-[#e67e22]/20 pb-2">
               <FaTools />
               <span>開発ロードマップ</span>
             </h2>
 
             <div className="relative border-l-2 border-dashed border-stone-300 ml-3 md:ml-6 space-y-10 pl-8 pb-4">
-               {roadmapData.filter(i => i.status !== "done").map((item, index) => (
-                 <div key={index} className="relative">
-                    <div className={`absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 bg-[#fcfbf9] z-10
-                      ${item.status === 'developing' ? 'border-blue-400' : 'border-stone-300'}`}>
-                    </div>
+              {sorted
+                .filter((i) => i.status !== "done")
+                .map((item, index) => (
+                  <div key={index} className="relative">
+                    <div
+                      className={`absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 bg-[#fcfbf9] z-10
+                      ${
+                        item.status === "developing"
+                          ? "border-blue-400"
+                          : "border-stone-300"
+                      }`}
+                    ></div>
                     <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 relative">
-                       {item.status === 'developing' && (
-                         <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
-                           開発中
-                         </span>
-                       )}
-                       <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">{item.title}</h3>
-                       <p className="text-stone-600 leading-relaxed text-sm">{item.description}</p>
+                      {item.status === "developing" && (
+                        <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
+                          開発中
+                        </span>
+                      )}
+                      <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                        {item.title}
+                      </h3>
+                      <p className="text-stone-600 leading-relaxed text-sm">
+                        {item.description}
+                      </p>
                     </div>
-                 </div>
-               ))}
+                  </div>
+                ))}
             </div>
           </section>
 
@@ -92,16 +132,24 @@ export default function UpdatesPage() {
             </h2>
 
             <div className="relative border-l-2 border-stone-300 ml-3 md:ml-6 space-y-8 pl-8">
-               {roadmapData.filter(i => i.status === "done").map((item, index) => (
-                 <div key={index} className="relative">
+              {roadmapData
+                .filter((i) => i.status === "done")
+                .map((item, index) => (
+                  <div key={index} className="relative">
                     <div className="absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 border-green-500 bg-[#fcfbf9] z-10"></div>
                     <div>
-                       <span className="text-sm font-bold text-stone-400 block mb-1 font-mono">{item.date}</span>
-                       <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">{item.title}</h3>
-                       <p className="text-stone-600 leading-relaxed text-sm">{item.description}</p>
+                      <span className="text-sm font-bold text-stone-400 block mb-1 font-mono">
+                        {item.date}
+                      </span>
+                      <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                        {item.title}
+                      </h3>
+                      <p className="text-stone-600 leading-relaxed text-sm">
+                        {item.description}
+                      </p>
                     </div>
-                 </div>
-               ))}
+                  </div>
+                ))}
             </div>
           </section>
 
@@ -114,7 +162,9 @@ export default function UpdatesPage() {
                 href="/contact"
                 className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border border-stone-200 hover:border-[#e67e22] hover:shadow-sm transition-all group"
               >
-                <span className="font-bold text-[#2c2c2c] group-hover:text-[#e67e22] mb-2">お問い合わせ</span>
+                <span className="font-bold text-[#2c2c2c] group-hover:text-[#e67e22] mb-2">
+                  お問い合わせ
+                </span>
                 <span className="text-xs text-stone-500 text-center">
                   一般的なご質問やご感想はこちら
                 </span>
@@ -134,7 +184,6 @@ export default function UpdatesPage() {
               </a>
             </div>
           </div>
-
         </div>
       </main>
     </div>

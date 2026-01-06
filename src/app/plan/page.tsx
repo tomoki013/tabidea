@@ -31,25 +31,25 @@ function PlanContent() {
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
     const timer = setTimeout(() => {
-        if (!q) {
+      if (!q) {
         setError("プランが見つかりませんでした。URLを確認してください。");
         setStatus("error");
         return;
-        }
+      }
 
-        const decoded = decodePlanData(q);
-        if (decoded) {
+      const decoded = decodePlanData(q);
+      if (decoded) {
         setInput(decoded.input);
         setResult(decoded.result);
         setStatus("idle");
         // Close modal if URL changes (regeneration complete)
         setIsEditingRequest(false);
-        } else {
+      } else {
         setError(
-            "プランデータの読み込みに失敗しました。リンクが壊れている可能性があります。"
+          "プランデータの読み込みに失敗しました。リンクが壊れている可能性があります。"
         );
         setStatus("error");
-        }
+      }
     }, 0);
     return () => clearTimeout(timer);
   }, [q]);
@@ -87,7 +87,7 @@ function PlanContent() {
 
     // Update URL to persist changes without page reload
     const encoded = encodePlanData(input, newResult);
-    window.history.replaceState(null, '', `?q=${encoded}`);
+    window.history.replaceState(null, "", `?q=${encoded}`);
   };
 
   const handleEditRequest = (stepIndex: number) => {
@@ -133,7 +133,7 @@ function PlanContent() {
 
       {/* Request Editing Modal */}
       {isEditingRequest && input && (
-        <div className="fixed inset-0 z-[100] bg-stone-900/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-100 bg-stone-900/50 backdrop-blur-sm flex items-center justify-center p-4">
           <div className="w-full max-w-5xl h-[90vh] bg-transparent relative">
             <TravelPlanner
               initialInput={input}
@@ -151,18 +151,17 @@ export default function PlanPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
       <main className="flex-1 w-full flex flex-col items-center">
-
         {/* Title Section - Matches the aesthetic of the app */}
         <div className="w-full pt-16 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
-           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
-              Result
-           </div>
-           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
-             旅行プラン結果
-           </h1>
-           <p className="text-stone-500 mt-3 font-hand text-lg">
-             あなただけの特別な旅のしおりが完成しました
-           </p>
+          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
+            Result
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
+            旅行プラン結果
+          </h1>
+          <p className="text-stone-500 mt-3 font-hand text-lg">
+            あなただけの特別な旅のしおりが完成しました
+          </p>
         </div>
 
         <Suspense
@@ -178,14 +177,14 @@ export default function PlanPage() {
         {/* Call to Action - Create New Plan */}
         {/* This button allows users to start a fresh planning session easily */}
         <div className="w-full flex justify-center pb-16 pt-8">
-            <Link
-                href="/"
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-primary font-serif rounded-full hover:bg-primary/90 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary overflow-hidden"
-            >
-                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                <FaPlus className="mr-2 relative z-10" />
-                <span className="relative z-10">新しいプランを作る</span>
-            </Link>
+          <Link
+            href="/"
+            className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-primary font-serif rounded-full hover:bg-primary/90 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+            <FaPlus className="mr-2 relative z-10" />
+            <span className="relative z-10">新しいプランを作る</span>
+          </Link>
         </div>
 
         <ExampleSection />

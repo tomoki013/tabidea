@@ -14,7 +14,6 @@ interface StepPlacesProps {
 export default function StepPlaces({
   mustVisitPlaces,
   onChange,
-  onNext,
   hasDecided,
   onDecisionChange,
 }: StepPlacesProps) {
