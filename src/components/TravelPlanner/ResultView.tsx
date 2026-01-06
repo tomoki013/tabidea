@@ -129,23 +129,34 @@ export default function ResultView({
         </div>
       )}
 
-      {/* Edit Mode Actions (Floating/Sticky) */}
-      {isEditing && (
-        <div className="sticky top-20 z-50 flex justify-center gap-4 mb-4 animate-in slide-in-from-top-4">
-             <button
-                onClick={cancelEditing}
-                className="flex items-center gap-2 bg-white text-stone-600 px-6 py-3 rounded-full shadow-lg border border-stone-200 hover:bg-stone-50 font-bold transition-all"
-             >
-                <FaTimes /> キャンセル
-             </button>
-             <button
-                onClick={saveChanges}
-                className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-lg hover:bg-primary/90 font-bold transition-all"
-             >
-                <FaSave /> 保存
-             </button>
+      {/* Fixed Action Bar (Edit / Save / Cancel) */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-4 w-full max-w-sm px-4 pointer-events-none">
+        <div className="pointer-events-auto flex justify-center">
+            {isEditing ? (
+                <div className="flex items-center gap-3 p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xl border border-stone-200/50">
+                    <button
+                        onClick={cancelEditing}
+                        className="flex items-center gap-2 bg-white text-stone-600 px-6 py-3 rounded-full shadow-sm border border-stone-200 hover:bg-stone-50 font-bold transition-all"
+                    >
+                        <FaTimes /> キャンセル
+                    </button>
+                    <button
+                        onClick={saveChanges}
+                        className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-md hover:bg-primary/90 font-bold transition-all"
+                    >
+                        <FaSave /> 保存
+                    </button>
+                </div>
+            ) : (
+                <button
+                    onClick={startEditing}
+                    className="flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20"
+                >
+                    <FaPen /> プラン内容を編集
+                </button>
+            )}
         </div>
-      )}
+      </div>
 
 
       {/* Journal Header Section */}
@@ -200,17 +211,6 @@ export default function ResultView({
         {/* Timeline */}
         <div className="space-y-16">
 
-          {/* Edit Trigger - Only show if not editing */}
-          {!isEditing && (
-            <div className="flex justify-end">
-                <button
-                    onClick={startEditing}
-                    className="flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors bg-primary/5 px-4 py-2 rounded-full"
-                >
-                    <FaPen /> プラン内容を編集
-                </button>
-            </div>
-          )}
 
           {displayResult.days.map((day, dayIndex) => (
             <div key={day.day} className="relative">
