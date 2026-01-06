@@ -48,4 +48,23 @@ test.describe('Travel Plan Result View', () => {
         // Pace (ペース) -> Label is "旅行のペース"
         await expect(page.getByText('旅行のペース')).not.toBeVisible();
     });
+
+    test('verify plan page translates "anywhere" region correctly', async ({ page }) => {
+        // Generated Q string for undecided destination, region: 'anywhere'
+        const q = "N4IgbiBcCMA0IEsB2VQBMogEwAYsFYBaHAZmOhHgBcoBtEAOQEMqBXAJwFMQBdeAY0z8A9qwAOAG27wARpgDOVJkjRN2GeGMxcJTAB6cNIdpmUBPAO4ALTl0ogqESCABKnXXuQBzAARgEMtIgALZOtHwgVqFQOPAIaBiQOAC+8FzyqIiJIcL8ANaE6awSVITx9miKmACyuXk+ACKcVfCVgs61+Y3Ngq1MZhmQ4WmcAGaD4cnJQA";
+
+        await page.goto(`http://localhost:3000/plan?q=${q}`);
+
+        // Wait for page load
+        await expect(page.getByText('旅行プラン結果')).toBeVisible();
+
+        // Verify "anywhere" is displayed as "どこでも"
+        await expect(page.getByText('どこでも')).toBeVisible();
+
+        // Verify "Relaxing vibe" is displayed
+        await expect(page.getByText('Relaxing vibe')).toBeVisible();
+
+        // Verify "anywhere" (English) is NOT visible
+        await expect(page.getByText('anywhere')).not.toBeVisible();
+    });
 });

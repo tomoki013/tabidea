@@ -27,6 +27,12 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
     luxury: "リッチに",
   };
 
+  const regionMap: Record<string, string> = {
+    domestic: "国内",
+    overseas: "海外",
+    anywhere: "どこでも",
+  };
+
   const EditButton = ({ stepIndex }: { stepIndex: number }) => {
     if (!onEdit) return null;
     return (
@@ -39,6 +45,25 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
         <FaPen className="text-sm" />
       </button>
     );
+  };
+
+  // Helper to determine display text for region/destination
+  const getDestinationDisplay = () => {
+    if (input.isDestinationDecided) {
+      return input.destination;
+    }
+
+    // Check if region exists and map it, otherwise return raw region
+    if (input.region) {
+      return regionMap[input.region] || input.region;
+    }
+
+    // Fallback if no region but travelVibe exists
+    if (input.travelVibe) {
+      return "エリア未定 (雰囲気重視)";
+    }
+
+    return "未設定";
   };
 
   return (
@@ -55,9 +80,7 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
                <EditButton stepIndex={steps.destination} />
             </div>
             <p className="text-stone-600 font-medium">
-              {input.isDestinationDecided
-                ? input.destination
-                : input.region || (input.travelVibe ? "エリア未定 (雰囲気重視)" : "未設定")}
+              {getDestinationDisplay()}
             </p>
             {!input.isDestinationDecided && input.travelVibe && (
               <p className="text-xs text-stone-500 mt-1">
