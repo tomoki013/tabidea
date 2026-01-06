@@ -10,7 +10,12 @@ interface StepRegionProps {
   onNext: () => void;
 }
 
-export default function StepRegion({ value, vibe, onChange, onVibeChange, onNext }: StepRegionProps) {
+export default function StepRegion({
+  value,
+  vibe,
+  onChange,
+  onVibeChange,
+}: StepRegionProps) {
   const regions = [
     { id: "domestic", label: "国内", sub: "Domestic", icon: "🗾" },
     { id: "overseas", label: "海外", sub: "Overseas", icon: "🗽" },
@@ -43,13 +48,14 @@ export default function StepRegion({ value, vibe, onChange, onVibeChange, onNext
             placeholder="例：南の島、リゾートでゆっくり、温泉があるところ..."
             className="w-full h-32 bg-white border border-stone-300 rounded-lg p-4 text-foreground placeholder:text-stone-300 focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none text-base leading-relaxed font-hand shadow-sm"
             style={{
-               backgroundImage: "linear-gradient(transparent, transparent 29px, #e5e7eb 30px)",
-               backgroundSize: "100% 30px",
-               lineHeight: "30px"
+              backgroundImage:
+                "linear-gradient(transparent, transparent 29px, #e5e7eb 30px)",
+              backgroundSize: "100% 30px",
+              lineHeight: "30px",
             }}
           />
           <div className="absolute top-2 right-2 p-1 pointer-events-none">
-             <span className="text-2xl opacity-20 block">🏝️</span>
+            <span className="text-2xl opacity-20 block">🏝️</span>
           </div>
         </div>
       </div>
@@ -79,11 +85,21 @@ export default function StepRegion({ value, vibe, onChange, onVibeChange, onNext
                   }
                 `}
               >
-                <span className="text-3xl mb-2 filter drop-shadow-sm">{region.icon}</span>
-                <span className={`text-lg font-bold font-serif ${isSelected ? "text-white" : "text-stone-800"}`}>
+                <span className="text-3xl mb-2 filter drop-shadow-sm">
+                  {region.icon}
+                </span>
+                <span
+                  className={`text-lg font-bold font-serif ${
+                    isSelected ? "text-white" : "text-stone-800"
+                  }`}
+                >
                   {region.label}
                 </span>
-                <span className={`text-xs uppercase tracking-wider ${isSelected ? "text-white/80" : "text-stone-400"}`}>
+                <span
+                  className={`text-xs uppercase tracking-wider ${
+                    isSelected ? "text-white/80" : "text-stone-400"
+                  }`}
+                >
                   {region.sub}
                 </span>
               </motion.button>

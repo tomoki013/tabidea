@@ -26,7 +26,7 @@ export default function HeroSection({ children }: HeroSectionProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-xl sm:text-2xl text-muted-foreground font-hand rotate-[-2deg]"
+          className="text-xl sm:text-2xl text-muted-foreground font-hand -rotate-2"
         >
           AIと一緒に、次の冒険の物語を書き始めよう。
         </motion.p>

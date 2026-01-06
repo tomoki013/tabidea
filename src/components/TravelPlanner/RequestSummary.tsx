@@ -1,5 +1,13 @@
 import { UserInput } from "@/lib/types";
-import { FaMapLocationDot, FaCalendarDays, FaUserGroup, FaPalette, FaWallet, FaPersonRunning, FaPen } from "react-icons/fa6";
+import {
+  FaMapLocationDot,
+  FaCalendarDays,
+  FaUserGroup,
+  FaPalette,
+  FaWallet,
+  FaPersonRunning,
+  FaPen,
+} from "react-icons/fa6";
 
 interface RequestSummaryProps {
   input: UserInput;
@@ -7,46 +15,56 @@ interface RequestSummaryProps {
   onEdit?: (stepIndex: number) => void;
 }
 
-export default function RequestSummary({ input, className = "", onEdit }: RequestSummaryProps) {
-  // Step mappings
-  const steps = {
-    destination: 1, // or Region
-    mustVisit: 2,
-    companions: 3,
-    themes: 4,
-    budget: 5,
-    dates: 6,
-    pace: 7,
-    freeText: 8
-  };
+// Step mappings
+const steps = {
+  destination: 1, // or Region
+  mustVisit: 2,
+  companions: 3,
+  themes: 4,
+  budget: 5,
+  dates: 6,
+  pace: 7,
+  freeText: 8,
+};
 
-  const budgetMap: Record<string, string> = {
-    saving: "なるべく安く",
-    standard: "普通",
-    high: "少し贅沢に",
-    luxury: "リッチに",
-  };
+const budgetMap: Record<string, string> = {
+  saving: "なるべく安く",
+  standard: "普通",
+  high: "少し贅沢に",
+  luxury: "リッチに",
+};
 
-  const regionMap: Record<string, string> = {
-    domestic: "国内",
-    overseas: "海外",
-    anywhere: "どこでも",
-  };
+const regionMap: Record<string, string> = {
+  domestic: "国内",
+  overseas: "海外",
+  anywhere: "どこでも",
+};
 
-  const EditButton = ({ stepIndex }: { stepIndex: number }) => {
-    if (!onEdit) return null;
-    return (
-      <button
-        onClick={() => onEdit(stepIndex)}
-        className="ml-2 text-stone-400 hover:text-primary transition-colors p-1"
-        aria-label="Edit"
-        title="修正する"
-      >
-        <FaPen className="text-sm" />
-      </button>
-    );
-  };
+const EditButton = ({
+  stepIndex,
+  onEdit,
+}: {
+  stepIndex: number;
+  onEdit?: (stepIndex: number) => void;
+}) => {
+  if (!onEdit) return null;
+  return (
+    <button
+      onClick={() => onEdit(stepIndex)}
+      className="ml-2 text-stone-400 hover:text-primary transition-colors p-1"
+      aria-label="Edit"
+      title="修正する"
+    >
+      <FaPen className="text-sm" />
+    </button>
+  );
+};
 
+export default function RequestSummary({
+  input,
+  className = "",
+  onEdit,
+}: RequestSummaryProps) {
   // Helper to determine display text for region/destination
   const getDestinationDisplay = () => {
     if (input.isDestinationDecided) {
@@ -67,7 +85,9 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
   };
 
   return (
-    <div className={`space-y-6 bg-white p-6 rounded-xl shadow-xs border border-stone-100 ${className}`}>
+    <div
+      className={`space-y-6 bg-white p-6 rounded-xl shadow-xs border border-stone-100 ${className}`}
+    >
       {/* Destination / Region */}
       {(input.isDestinationDecided || input.region || input.travelVibe) && (
         <div className="flex items-start gap-3 first:border-t-0 first:pt-0">
@@ -76,8 +96,10 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-               <h3 className="font-bold text-stone-700 text-sm">目的地・エリア</h3>
-               <EditButton stepIndex={steps.destination} />
+              <h3 className="font-bold text-stone-700 text-sm">
+                目的地・エリア
+              </h3>
+              <EditButton stepIndex={steps.destination} onEdit={onEdit} />
             </div>
             <p className="text-stone-600 font-medium">
               {getDestinationDisplay()}
@@ -91,29 +113,32 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
         </div>
       )}
 
-       {/* Must Visit Places (Only if present) */}
-       {input.hasMustVisitPlaces && input.mustVisitPlaces && input.mustVisitPlaces.length > 0 && (
-        <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
-          <div className="mt-1 text-primary text-xl">
-            <FaMapLocationDot className="opacity-70" />
-          </div>
-          <div className="flex-1">
-            <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">絶対に行きたい場所</h3>
-              <EditButton stepIndex={steps.mustVisit} />
+      {/* Must Visit Places (Only if present) */}
+      {input.hasMustVisitPlaces &&
+        input.mustVisitPlaces &&
+        input.mustVisitPlaces.length > 0 && (
+          <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
+            <div className="mt-1 text-primary text-xl">
+              <FaMapLocationDot className="opacity-70" />
             </div>
-            <ul className="text-stone-600 font-medium list-disc list-inside">
-              {input.mustVisitPlaces.map((place, i) => (
-                <li key={i}>{place}</li>
-              ))}
-            </ul>
+            <div className="flex-1">
+              <div className="flex items-center">
+                <h3 className="font-bold text-stone-700 text-sm">
+                  絶対に行きたい場所
+                </h3>
+                <EditButton stepIndex={steps.mustVisit} onEdit={onEdit} />
+              </div>
+              <ul className="text-stone-600 font-medium list-disc list-inside">
+                {input.mustVisitPlaces.map((place, i) => (
+                  <li key={i}>{place}</li>
+                ))}
+              </ul>
+            </div>
           </div>
-        </div>
-      )}
-
+        )}
 
       {/* Companions */}
-      {input.companions && input.companions !== 'any' && (
+      {input.companions && input.companions !== "any" && (
         <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
           <div className="mt-1 text-primary text-xl">
             <FaUserGroup />
@@ -121,14 +146,16 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
           <div className="flex-1">
             <div className="flex items-center">
               <h3 className="font-bold text-stone-700 text-sm">誰と行く？</h3>
-              <EditButton stepIndex={steps.companions} />
+              <EditButton stepIndex={steps.companions} onEdit={onEdit} />
             </div>
             <p className="text-stone-600 font-medium">
               {input.companions === "solo" && "一人旅"}
               {input.companions === "couple" && "パートナー・夫婦"}
               {input.companions === "friends" && "友人グループ"}
               {input.companions === "family" && "家族（子供連れ）"}
-              {!["solo", "couple", "friends", "family"].includes(input.companions) && input.companions}
+              {!["solo", "couple", "friends", "family"].includes(
+                input.companions
+              ) && input.companions}
             </p>
           </div>
         </div>
@@ -143,7 +170,7 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
           <div className="flex-1">
             <div className="flex items-center">
               <h3 className="font-bold text-stone-700 text-sm">旅のテーマ</h3>
-              <EditButton stepIndex={steps.themes} />
+              <EditButton stepIndex={steps.themes} onEdit={onEdit} />
             </div>
             <div className="flex flex-wrap gap-1 mt-1">
               {input.theme.map((t) => (
@@ -160,15 +187,15 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
       )}
 
       {/* Budget */}
-      {input.budget && input.budget !== 'any' && (
+      {input.budget && input.budget !== "any" && (
         <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
           <div className="mt-1 text-primary text-xl">
             <FaWallet />
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-               <h3 className="font-bold text-stone-700 text-sm">予算感</h3>
-               <EditButton stepIndex={steps.budget} />
+              <h3 className="font-bold text-stone-700 text-sm">予算感</h3>
+              <EditButton stepIndex={steps.budget} onEdit={onEdit} />
             </div>
             <p className="text-stone-600 font-medium">
               {budgetMap[input.budget] || input.budget}
@@ -184,27 +211,25 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
             <FaCalendarDays />
           </div>
           <div className="flex-1">
-              <div className="flex items-center">
-                  <h3 className="font-bold text-stone-700 text-sm">日程・時期</h3>
-                  <EditButton stepIndex={steps.dates} />
-              </div>
-            <p className="text-stone-600 font-medium">
-              {input.dates}
-            </p>
+            <div className="flex items-center">
+              <h3 className="font-bold text-stone-700 text-sm">日程・時期</h3>
+              <EditButton stepIndex={steps.dates} onEdit={onEdit} />
+            </div>
+            <p className="text-stone-600 font-medium">{input.dates}</p>
           </div>
         </div>
       )}
 
       {/* Pace */}
-      {input.pace && input.pace !== 'any' && (
+      {input.pace && input.pace !== "any" && (
         <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
           <div className="mt-1 text-primary text-xl">
             <FaPersonRunning />
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-               <h3 className="font-bold text-stone-700 text-sm">旅行のペース</h3>
-               <EditButton stepIndex={steps.pace} />
+              <h3 className="font-bold text-stone-700 text-sm">旅行のペース</h3>
+              <EditButton stepIndex={steps.pace} onEdit={onEdit} />
             </div>
             <p className="text-stone-600 font-medium">
               {input.pace === "relaxed" && "ゆったり (1日1-2箇所)"}
@@ -212,7 +237,9 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
               {input.pace === "active" && "アクティブ (主要スポットを網羅)"}
               {input.pace === "packed" && "詰め込み (朝から晩まで全力で)"}
               {input.pace === "normal" && "普通 (1日3-4箇所)"}
-              {!["relaxed", "balanced", "active", "packed", "normal"].includes(input.pace) && input.pace}
+              {!["relaxed", "balanced", "active", "packed", "normal"].includes(
+                input.pace
+              ) && input.pace}
             </p>
           </div>
         </div>
@@ -222,9 +249,11 @@ export default function RequestSummary({ input, className = "", onEdit }: Reques
       {input.freeText && (
         <div className="mt-4 p-4 bg-stone-50 rounded-lg border border-dashed border-stone-300 relative group">
           <div className="absolute top-2 right-2">
-               <EditButton stepIndex={steps.freeText} />
+            <EditButton stepIndex={steps.freeText} onEdit={onEdit} />
           </div>
-          <h3 className="text-xs font-bold text-stone-500 mb-1">その他の要望</h3>
+          <h3 className="text-xs font-bold text-stone-500 mb-1">
+            その他の要望
+          </h3>
           <p className="text-stone-700 text-sm whitespace-pre-wrap">
             {input.freeText}
           </p>

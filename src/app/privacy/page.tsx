@@ -1,5 +1,3 @@
-import React from "react";
-import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -29,13 +27,16 @@ export default function PrivacyPolicy() {
             <p>当サービスは、以下の情報を収集・取得する場合があります。</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <strong>ユーザー提供情報：</strong> 旅行の目的地、日程、予算、好みなど、サービス利用時に入力された情報。
+                <strong>ユーザー提供情報：</strong>{" "}
+                旅行の目的地、日程、予算、好みなど、サービス利用時に入力された情報。
               </li>
               <li>
-                <strong>自動収集情報：</strong> 端末情報、ログ情報、Cookie（クッキー）、IPアドレス、ブラウザの種類、アクセス日時など。
+                <strong>自動収集情報：</strong>{" "}
+                端末情報、ログ情報、Cookie（クッキー）、IPアドレス、ブラウザの種類、アクセス日時など。
               </li>
               <li>
-                <strong>お問い合わせ情報：</strong> ユーザーからのお問い合わせ時に提供された連絡先情報（メールアドレス等）。
+                <strong>お問い合わせ情報：</strong>{" "}
+                ユーザーからのお問い合わせ時に提供された連絡先情報（メールアドレス等）。
               </li>
             </ul>
           </section>
@@ -46,7 +47,9 @@ export default function PrivacyPolicy() {
             </h2>
             <p>収集した情報は、以下の目的で利用します。</p>
             <ol className="list-decimal pl-6 mt-3 space-y-2">
-              <li>当サービスの提供・運営（AIによる旅行プランの生成を含む）のため</li>
+              <li>
+                当サービスの提供・運営（AIによる旅行プランの生成を含む）のため
+              </li>
               <li>ユーザーサポート、お問い合わせ対応のため</li>
               <li>当サービスの利用状況の分析、改善、新機能開発のため</li>
               <li>利用規約違反や不正行為の防止・対応のため</li>
@@ -64,8 +67,12 @@ export default function PrivacyPolicy() {
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>法令に基づく場合</li>
               <li>人の生命、身体または財産の保護のために必要がある場合</li>
-              <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合</li>
-              <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合</li>
+              <li>
+                公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合
+              </li>
+              <li>
+                国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合
+              </li>
             </ul>
           </section>
 
@@ -74,14 +81,19 @@ export default function PrivacyPolicy() {
               5. 外部サービスの利用
             </h2>
             <p>
-              当サービスは、サービスの改善や広告配信のために、Google Analytics等の外部サービスを利用する場合があります。これらのサービスはCookieを使用してトラフィックデータを収集しますが、このデータは匿名で収集されており、個人を特定するものではありません。
+              当サービスは、サービスの改善や広告配信のために、Google
+              Analytics等の外部サービスを利用する場合があります。これらのサービスはCookieを使用してトラフィックデータを収集しますが、このデータは匿名で収集されており、個人を特定するものではありません。
             </p>
             <div className="mt-4">
-              <h3 className="text-lg font-medium text-foreground mb-2">Google Gemini API</h3>
+              <h3 className="text-lg font-medium text-foreground mb-2">
+                Google Gemini API
+              </h3>
               <p>
-                当サービスは、AIによる旅行プラン生成のためにGoogle Gemini APIを使用しています。
+                当サービスは、AIによる旅行プラン生成のためにGoogle Gemini
+                APIを使用しています。
                 ユーザーが入力した情報は、Google社のサーバーへ送信され処理されます。
-                Google社の規定（Paid Services）により、本サービスを通じて送信されたデータは、AIモデルの学習（トレーニング）には使用されません。
+                Google社の規定（Paid
+                Services）により、本サービスを通じて送信されたデータは、AIモデルの学習（トレーニング）には使用されません。
               </p>
               <p className="mt-2">
                 ただし、不正利用防止の観点から、Google社において一定期間データが保持される場合があります。
@@ -89,10 +101,24 @@ export default function PrivacyPolicy() {
               </p>
               <ul className="list-disc pl-6 mt-2 space-y-1">
                 <li>
-                  <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Google プライバシーポリシー</a>
+                  <a
+                    href="https://policies.google.com/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Google プライバシーポリシー
+                  </a>
                 </li>
                 <li>
-                  <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Gemini API 追加利用規約</a>
+                  <a
+                    href="https://ai.google.dev/gemini-api/terms"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Gemini API 追加利用規約
+                  </a>
                 </li>
               </ul>
             </div>
@@ -104,7 +130,9 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               当サービスが提供する旅行プラン、スポット情報、その他のコンテンツは、人工知能（AI）によって生成されています。
-              <strong>AIの特性上、生成された情報には誤り、不正確な内容、または最新ではない情報が含まれる可能性があります。</strong>
+              <strong>
+                AIの特性上、生成された情報には誤り、不正確な内容、または最新ではない情報が含まれる可能性があります。
+              </strong>
             </p>
             <p className="mt-2">
               ユーザーは、自己の責任において当サービスを利用するものとし、当サービスは、生成された情報の正確性、完全性、有用性、安全性等について、いかなる保証も行いません。
@@ -131,7 +159,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            最終更新日: 2025年2月18日
+            最終更新日: 2025年12月25日
           </div>
         </div>
       </main>
