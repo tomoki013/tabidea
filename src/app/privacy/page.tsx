@@ -89,54 +89,26 @@ export default function PrivacyPolicy() {
                 Google Gemini API
               </h3>
               <p>
-                当サービスは、AIによる旅行プラン生成のためにGoogle Gemini
-                APIを使用しています。
-                ユーザーが入力した情報は、Google社のサーバーへ送信され処理されます。
-                Google社の規定（Paid
-                Services）により、本サービスを通じて送信されたデータは、AIモデルの学習（トレーニング）には使用されません。
+                当サービスは、AIによる旅行プラン生成のためにGoogle Gemini APIを使用しています。
+                入力されたデータの取り扱いやAIによる生成データの性質に関する詳細については、別途定める
+                <a href="/ai-policy" className="text-blue-500 hover:underline">
+                  AIポリシー
+                </a>
+                をご確認ください。
               </p>
-              <p className="mt-2">
-                ただし、不正利用防止の観点から、Google社において一定期間データが保持される場合があります。
-                詳細なデータ取り扱いについては、以下のGoogle社の規約等をご参照ください。
-              </p>
-              <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li>
-                  <a
-                    href="https://policies.google.com/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    Google プライバシーポリシー
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://ai.google.dev/gemini-api/terms"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                  >
-                    Gemini API 追加利用規約
-                  </a>
-                </li>
-              </ul>
             </div>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              6. 免責事項（AI生成コンテンツについて）
+              6. AIの利用について
             </h2>
             <p>
-              当サービスが提供する旅行プラン、スポット情報、その他のコンテンツは、人工知能（AI）によって生成されています。
-              <strong>
-                AIの特性上、生成された情報には誤り、不正確な内容、または最新ではない情報が含まれる可能性があります。
-              </strong>
-            </p>
-            <p className="mt-2">
-              ユーザーは、自己の責任において当サービスを利用するものとし、当サービスは、生成された情報の正確性、完全性、有用性、安全性等について、いかなる保証も行いません。
-              実際の旅行計画や予約に際しては、必ず公式情報や一次情報を確認してください。
+              当サービスにおけるAI技術の利用、生成されるコンテンツの正確性、およびユーザーの責任範囲等については、
+              <a href="/ai-policy" className="text-blue-500 hover:underline">
+                AIポリシー
+              </a>
+              に詳細を規定しています。本ポリシーと併せてご確認ください。
             </p>
           </section>
 

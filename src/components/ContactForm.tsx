@@ -147,8 +147,10 @@ export default function ContactForm() {
             </div>
             <label htmlFor="agreement" className="text-sm text-stone-700 cursor-pointer select-none">
               <Link href="/privacy" className="text-[#e67e22] hover:underline" target="_blank">プライバシーポリシー</Link>
-              と
+              、
               <Link href="/terms" className="text-[#e67e22] hover:underline" target="_blank">利用規約</Link>
+              、及び
+              <Link href="/ai-policy" className="text-[#e67e22] hover:underline" target="_blank">AIポリシー</Link>
               に同意します <span className="text-red-500">*</span>
             </label>
           </div>
