@@ -36,40 +36,16 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              3. 外部AIサービスの利用
+              3. AIの利用について
             </h2>
             <p>
-              当サービスは、旅行プランの生成にあたり、Google
-              LLC（以下「Google社」）が提供する「Gemini API」を使用しています。
-              Google社の「Gemini API 追加利用規約（Paid
-              Services）」に基づき、ユーザーが当サービスに入力した情報（プロンプト）および生成された情報は、Google社の製品改善やAIモデルの学習（トレーニング）には使用されません。
+              当サービスは、Google LLCが提供する「Gemini API」を利用して旅行プランを生成しています。
+              AIの利用に関する詳細、データの取り扱い、および生成されるコンテンツの性質については、別途定める
+              <a href="/ai-policy" className="text-blue-500 hover:underline">
+                AIポリシー
+              </a>
+              をご確認ください。ユーザーは、本規約に加え、AIポリシーにも同意したものとみなされます。
             </p>
-            <p className="mt-2">
-              ただし、不正利用の検知および法令順守の目的において、Google社により一定期間（一時的に）ログとして保持される場合があります。これらのデータは、当該目的以外には使用されません。
-              詳細については、以下のGoogle社の規約をご確認ください。
-            </p>
-            <ul className="list-disc pl-6 mt-3 space-y-2">
-              <li>
-                <a
-                  href="https://policies.google.com/terms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  Google 利用規約
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://ai.google.dev/gemini-api/terms"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
-                >
-                  Gemini API 追加利用規約
-                </a>
-              </li>
-            </ul>
           </section>
 
           <section>
@@ -107,7 +83,11 @@ export default function TermsOfService() {
               <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>AI生成情報の正確性：</strong>{" "}
-                  AIが提案するプラン、観光地情報、交通手段、所要時間、費用等の情報の正確性、完全性、最新性、有用性。
+                  AIが提案する情報の正確性、完全性、最新性、有用性については保証いたしません。詳細は
+                  <a href="/ai-policy" className="text-blue-500 hover:underline">
+                    AIポリシー
+                  </a>
+                  をご参照ください。
                 </li>
                 <li>
                   <strong>損害の発生：</strong>{" "}

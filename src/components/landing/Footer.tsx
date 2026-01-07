@@ -42,6 +42,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-stone-600">
             <li><Link href="/terms" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">利用規約</Link></li>
             <li><Link href="/privacy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">プライバシーポリシー</Link></li>
+            <li><Link href="/ai-policy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">AIポリシー</Link></li>
           </ul>
         </div>
       </div>
