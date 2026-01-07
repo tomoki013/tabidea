@@ -142,7 +142,7 @@ export default function AiPolicy() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            制定日: 2025年2月18日
+            最終更新日: 2026年1月7日
           </div>
         </div>
       </main>

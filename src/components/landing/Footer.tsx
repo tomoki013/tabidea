@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { PolicyLink } from "@/components/ui/PolicyLink";
 
 export default function Footer() {
   return (
@@ -40,9 +41,9 @@ export default function Footer() {
         <div className="space-y-4">
           <h4 className="font-bold text-stone-800 font-serif">Legal</h4>
           <ul className="space-y-2 text-sm text-stone-600">
-            <li><Link href="/terms" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">利用規約</Link></li>
-            <li><Link href="/privacy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">プライバシーポリシー</Link></li>
-            <li><Link href="/ai-policy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">AIポリシー</Link></li>
+            <li><PolicyLink href="/terms">利用規約</PolicyLink></li>
+            <li><PolicyLink href="/privacy">プライバシーポリシー</PolicyLink></li>
+            <li><PolicyLink href="/ai-policy">AIポリシー</PolicyLink></li>
           </ul>
         </div>
       </div>
