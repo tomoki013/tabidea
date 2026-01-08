@@ -4,6 +4,7 @@ import { GeminiService } from "@/lib/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/rag/scraper';
 import { PineconeRetriever } from "@/lib/rag/pinecone-retriever";
 import { Itinerary, UserInput } from "@/lib/types";
+import { getUnsplashImage } from "@/lib/unsplash";
 
 export type ActionState = {
   success: boolean;
@@ -98,6 +99,13 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     }
 
     const plan = await ai.generateItinerary(prompt, contextArticles);
+
+    // Fetch hero image from Unsplash
+    const heroImage = await getUnsplashImage(plan.destination);
+    if (heroImage) {
+      plan.heroImage = heroImage;
+    }
+
     console.log(
       `[action] Step 2 Complete. Plan ID: ${plan.id}. Total Elapsed: ${
         Date.now() - startTime
@@ -156,6 +164,18 @@ export async function regeneratePlan(
   try {
     const ai = new GeminiService(apiKey);
     const newPlan = await ai.modifyItinerary(currentPlan, chatHistory);
+
+    // If the destination changed, fetch a new image
+    if (newPlan.destination !== currentPlan.destination) {
+      const heroImage = await getUnsplashImage(newPlan.destination);
+      if (heroImage) {
+        newPlan.heroImage = heroImage;
+      }
+    } else {
+        // Keep the old image if destination is the same
+        newPlan.heroImage = currentPlan.heroImage;
+    }
+
     return { success: true, data: newPlan };
   } catch (e) {
     console.error("Regeneration failed", e);

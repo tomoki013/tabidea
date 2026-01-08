@@ -47,6 +47,7 @@ pnpm install
 
 ```env
 GOOGLE_API_KEY=your_google_api_key
+UNSPLASH_ACCESS_KEY=your_unsplash_access_key
 # PINECONE_API_KEY=your_pinecone_api_key (必要に応じて)
 ```
 
