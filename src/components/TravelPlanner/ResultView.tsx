@@ -128,7 +128,7 @@ export default function ResultView({
   const displayResult = isEditing && editingResult ? editingResult : result;
 
   return (
-    <div className="w-full max-w-5xl mx-auto mt-4 text-left animate-in fade-in duration-700 pb-20 relative">
+    <div className="w-full max-w-6xl mx-auto mt-4 px-4 text-left animate-in fade-in duration-700 pb-20 relative">
       {/* Updating Overlay */}
       {isUpdating && (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-sm animate-in fade-in duration-500">
@@ -174,7 +174,7 @@ export default function ResultView({
       </div>
 
       {/* Journal Header Section */}
-      <div className="relative mb-16 px-4 sm:px-0">
+      <div className="relative mb-16">
         <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-xl border-8 border-white bg-white rotate-1">
           <Image
             src={heroImg}
@@ -223,7 +223,7 @@ export default function ResultView({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12 px-4 sm:px-0">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-12">
         {/* Timeline */}
         <div className="space-y-16">
 
@@ -434,7 +434,7 @@ export default function ResultView({
         </div>
       </div>
 
-      <div className="px-4 sm:px-0 mt-16 mb-12">
+      <div className="mt-16 mb-12">
         <RequestSummary input={input} onEdit={onEditRequest} />
       </div>
     </div>
