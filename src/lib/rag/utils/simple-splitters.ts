@@ -114,6 +114,8 @@ export class SimpleMarkdownHeaderTextSplitter {
                 // Start new section
                 currentTitle = line.slice(sep.length + 1).trim(); // Remove "# " and trim
                 currentSectionLines = [];
+                // We keep the header in the content too for context
+                currentSectionLines.push(line);
             } else {
                 currentSectionLines.push(line);
             }
