@@ -94,10 +94,17 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
         </motion.button>
       </div>
 
-      <div className="text-center">
-        <PolicyLink href="/ai-policy">
-          AIポリシーを確認する
-        </PolicyLink>
+      <div className="text-center space-y-2 mt-4">
+        <p className="text-stone-500 text-sm font-hand">
+          入力内容はAIの学習には使われませんので、安心してご記入ください。
+        </p>
+        <p className="text-stone-500 text-sm font-hand">
+          詳細は
+          <PolicyLink href="/ai-policy" className="mx-1">
+            AIポリシー
+          </PolicyLink>
+          にてご案内しています。
+        </p>
       </div>
     </div>
   );
