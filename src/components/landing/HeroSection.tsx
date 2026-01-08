@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 interface HeroSectionProps {
@@ -22,14 +23,22 @@ export default function HeroSection({ children }: HeroSectionProps) {
           行きたがっている？
         </motion.h1>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-xl sm:text-2xl text-muted-foreground font-hand -rotate-2"
+          className="flex flex-col items-center gap-4"
         >
-          AIと一緒に、次の冒険の物語を書き始めよう。
-        </motion.p>
+          <p className="text-xl sm:text-2xl text-muted-foreground font-hand -rotate-2">
+            AIと一緒に、次の冒険の物語を書き始めよう。
+          </p>
+          <Link
+            href="/usage"
+            className="text-sm text-stone-400 hover:text-primary transition-colors border-b border-dashed border-stone-300 hover:border-primary pb-0.5 font-sans"
+          >
+            使い方を見る
+          </Link>
+        </motion.div>
       </div>
 
       <motion.div

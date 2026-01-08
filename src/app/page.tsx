@@ -3,7 +3,7 @@ import TravelPlanner from "@/components/TravelPlanner";
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesHeroSection from "@/components/landing/FeaturesHeroSection";
 import FeatureSection from "@/components/landing/FeatureSection";
-import HowItWorksSection from "@/components/landing/HowItWorksSection";
+import UsageGuideHero from "@/components/landing/UsageGuideHero";
 import ExampleSection from "@/components/landing/ExampleSection";
 import FAQSection from "@/components/landing/FAQSection";
 
@@ -29,8 +29,8 @@ export default function Home() {
 
         {/* Other Sections */}
         <FeaturesHeroSection />
+        <UsageGuideHero />
         <FeatureSection />
-        <HowItWorksSection />
         <ExampleSection />
         <FAQSection limit={5} />
 
