@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Itinerary, UserInput } from "@/lib/types";
 import { encodePlanData } from "@/lib/urlUtils";
 import {
@@ -24,18 +24,16 @@ export default function ShareButtons({
   const [copied, setCopied] = useState(false);
   const [canShare, setCanShare] = useState(false);
 
+  // Memoize the encoded plan data to avoid recalculating on every render
+  const encodedData = useMemo(() => encodePlanData(input, result), [input, result]);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // Wrap in setTimeout to avoid synchronous state update linter error
-      const timer = setTimeout(() => {
-        const encoded = encodePlanData(input, result);
-        const url = `${window.location.origin}/plan?q=${encoded}`;
-        setShareUrl(url);
-        setCanShare(!!navigator.share);
-      }, 0);
-      return () => clearTimeout(timer);
+      const url = `${window.location.origin}/plan?q=${encodedData}`;
+      setShareUrl(url);
+      setCanShare(!!navigator.share);
     }
-  }, [input, result]);
+  }, [encodedData]);
 
   const shareText = `AIに旅行プランを作ってもらいました！\n目的地: ${
     result.destination
