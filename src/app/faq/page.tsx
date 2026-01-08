@@ -1,4 +1,4 @@
-import FAQCategoryList from "@/components/faq/FAQCategoryList";
+import FAQContent from "@/components/faq/FAQContent";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -30,7 +30,7 @@ export default function FAQPage() {
 
       {/* Main Content */}
       <main className="flex-1 w-full px-4 md:px-6 pb-20">
-        <FAQCategoryList />
+        <FAQContent />
 
         {/* Contact CTA */}
         <div className="max-w-2xl mx-auto mt-12 mb-20 p-8 md:p-12 bg-white rounded-xl border border-stone-200 shadow-sm text-center space-y-6 relative overflow-hidden">

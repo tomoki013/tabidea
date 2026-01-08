@@ -1,8 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaChevronRight } from "react-icons/fa";
 import { faqs } from "@/lib/data/faq";
 
 interface FAQSectionProps {
@@ -56,6 +57,18 @@ export default function FAQSection({ limit }: FAQSectionProps) {
             </div>
           ))}
         </div>
+
+        {limit && (
+          <div className="mt-12 text-center">
+            <Link
+              href="/faq"
+              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#e67e22] text-white font-bold rounded-full hover:bg-[#d35400] transition-all hover:scale-105 shadow-md group"
+            >
+              <span>よくある質問一覧を見る</span>
+              <FaChevronRight className="text-sm group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
