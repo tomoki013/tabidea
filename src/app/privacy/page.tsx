@@ -84,6 +84,11 @@ export default function PrivacyPolicy() {
             <p>
               当サービスは、サービスの改善や広告配信のために、Google
               Analytics等の外部サービスを利用する場合があります。これらのサービスはCookieを使用してトラフィックデータを収集しますが、このデータは匿名で収集されており、個人を特定するものではありません。
+              当サービスにおけるクッキー（Cookie）の利用目的や無効化（オプトアウト）等の詳細については、別途定める
+              <PolicyLink href="/cookie-policy">
+                クッキーポリシー
+              </PolicyLink>
+              をご確認ください。
             </p>
             <div className="mt-4">
               <h3 className="text-lg font-medium text-foreground mb-2">
@@ -132,7 +137,7 @@ export default function PrivacyPolicy() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            最終更新日: 2026年1月7日
+            最終更新日: 2026年1月8日
           </div>
         </div>
       </main>

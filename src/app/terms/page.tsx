@@ -19,6 +19,15 @@ export default function TermsOfService() {
             <p>
               この利用規約（以下、「本規約」といいます。）は、Tabidea（以下、「当サービス」といいます。）の利用条件を定めるものです。
               本サービスを利用する全ての皆様（以下、「ユーザー」といいます。）には、本規約に同意した上でご利用いただきます。
+              また、当サービスの利用にあたっては、別途定める
+              <PolicyLink href="/privacy">
+                プライバシーポリシー
+              </PolicyLink>
+              および
+              <PolicyLink href="/cookie-policy">
+                クッキーポリシー
+              </PolicyLink>
+              にも同意したものとみなされます。
             </p>
           </section>
 
@@ -149,7 +158,7 @@ export default function TermsOfService() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            最終更新日: 2026年1月7日
+            最終更新日: 2026年1月8日
           </div>
         </div>
       </main>

@@ -4,10 +4,10 @@ import { FaGithub } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="w-full bg-[#fcfbf9] text-[#2c2c2c] py-16 px-4 border-t-2 border-stone-200 border-dashed">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
 
         {/* Brand */}
-        <div className="space-y-4 md:col-span-1">
+        <div className="space-y-4 col-span-2 md:col-span-1">
           <h3 className="text-2xl font-serif font-bold text-[#e67e22]">Tabidea</h3>
           <p className="text-stone-600 text-sm leading-relaxed max-w-xs font-hand">
             あなたの旅の物語を、AIと一緒に紡ぎ出す。<br />
@@ -42,6 +42,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-stone-600">
             <li><Link href="/terms" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">利用規約</Link></li>
             <li><Link href="/privacy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">プライバシーポリシー</Link></li>
+            <li><Link href="/cookie-policy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">クッキーポリシー</Link></li>
             <li><Link href="/ai-policy" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">AIポリシー</Link></li>
           </ul>
         </div>
