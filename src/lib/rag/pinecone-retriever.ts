@@ -2,7 +2,7 @@
 import { PineconeStore } from "@langchain/pinecone";
 import { Pinecone } from "@pinecone-database/pinecone";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
-import { ContentRetriever, Article } from "@/lib/ai/types";
+import { ContentRetriever, Article, SearchOptions } from "@/lib/ai/types";
 
 export class PineconeRetriever implements ContentRetriever {
   private store: PineconeStore | null = null;
@@ -36,22 +36,30 @@ export class PineconeRetriever implements ContentRetriever {
     );
   }
 
-  async search(query: string): Promise<Article[]> {
+  async search(query: string, options?: SearchOptions): Promise<Article[]> {
     await this.initPromise;
-    
+
     if (!this.store) {
         console.warn("Pinecone store not initialized, returning empty results");
         return [];
     }
 
-    console.log(`[retriever] Searching Pinecone for: "${query}"`);
-    
+    const topK = options?.topK ?? 5;
+    const minScore = options?.minScore ?? 0.7;
+
+    console.log(`[retriever] Searching Pinecone for: "${query}" (topK: ${topK}, minScore: ${minScore})`);
+
     try {
-        const results = await this.store.similaritySearch(query, 5);
-        
-        console.log(`[retriever] Found ${results.length} matches`);
-        
-        return results.map(doc => ({
+        const resultsWithScore = await this.store.similaritySearchWithScore(query, topK);
+
+        console.log(`[retriever] Found ${resultsWithScore.length} matches before filtering`);
+
+        // Filter by minimum score
+        const filteredResults = resultsWithScore.filter(([, score]) => score >= minScore);
+
+        console.log(`[retriever] After filtering (score >= ${minScore}): ${filteredResults.length} matches`);
+
+        return filteredResults.map(([doc, score]) => ({
             title: (doc.metadata.title as string) || "Blog Post",
             url: (() => {
                 const source = (doc.metadata.source as string) || "";
@@ -60,7 +68,8 @@ export class PineconeRetriever implements ContentRetriever {
             })(),
             content: doc.pageContent,
             snippet: doc.pageContent.substring(0, 200) + "...",
-            imageUrl: (doc.metadata.imageUrl as string) || undefined
+            imageUrl: (doc.metadata.imageUrl as string) || undefined,
+            relevanceScore: score
         }));
 
     } catch (e) {
