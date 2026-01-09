@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserInput, Itinerary } from "@/lib/types";
@@ -28,6 +28,10 @@ function PlanContent() {
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
 
+  // Track if this is the initial load to avoid scrolling on first render
+  const isInitialLoad = useRef(true);
+  const previousStatus = useRef<typeof status>("loading");
+
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
     const timer = setTimeout(async () => {
@@ -54,8 +58,8 @@ function PlanContent() {
         // Close modal if URL changes (regeneration complete)
         setIsEditingRequest(false);
 
-        // Scroll to itinerary top when plan is regenerated
-        if (status === "regenerating") {
+        // Scroll to itinerary top only after regeneration (not on initial load)
+        if (!isInitialLoad.current && previousStatus.current === "regenerating") {
           setTimeout(() => {
             const itinerarySection = document.querySelector(
               '[data-itinerary-section]'
@@ -65,12 +69,20 @@ function PlanContent() {
             }
           }, 100);
         }
+
+        // Mark that initial load is complete
+        if (isInitialLoad.current) {
+          isInitialLoad.current = false;
+        }
       } else {
         setError(
           "プランデータの読み込みに失敗しました。リンクが壊れている可能性があります。"
         );
         setStatus("error");
       }
+
+      // Update previous status for next render
+      previousStatus.current = status;
     }, 0);
     return () => clearTimeout(timer);
   }, [q, status]);

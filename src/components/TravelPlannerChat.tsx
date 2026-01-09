@@ -25,10 +25,13 @@ export default function TravelPlannerChat({
   const [loading, setLoading] = useState(false);
   const [hasInteracted, setHasInteracted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll to bottom when messages change
+  // Auto-scroll to bottom within chat container when messages change
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages, loading]);
 
   const handleSend = async () => {
@@ -67,7 +70,7 @@ export default function TravelPlannerChat({
         Chat with your Planner
       </h3>
       <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-stone-200 shadow-sm space-y-4">
-        <div className="max-h-[300px] overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+        <div ref={chatContainerRef} className="max-h-[300px] overflow-y-auto space-y-4 pr-2 custom-scrollbar">
           {messages.length === 0 && (
             <p className="text-stone-500 text-sm italic text-center">
               Ask me to adjust the schedule, suggest restaurants, or explain
