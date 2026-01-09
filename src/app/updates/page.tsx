@@ -3,8 +3,7 @@ import { FaFlag, FaCheck, FaTools } from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "更新情報・ロードマップ - Tabidea",
-  description:
-    "Tabideaの更新情報と今後の開発ロードマップを掲載しています。",
+  description: "Tabideaの更新情報と今後の開発ロードマップを掲載しています。",
 };
 
 type RoadmapItem = {
@@ -35,14 +34,30 @@ const roadmapData: RoadmapItem[] = [
   },
   {
     status: "planned",
-    title: "スポット詳細情報の拡充",
-    description:
-      "各観光スポットの営業時間や料金など、より詳細な情報をAIが提案できるように改善します。",
+    title: "PDF出力",
+    description: "生成されたプランをPDFで出力できるようになります。",
+  },
+  {
+    status: "planned",
+    title: "日程の並び替えや時間の調整",
+    description: "日程の並び替えや時間の調整ができる機能を開発中です。",
+  },
+  {
+    status: "planned",
+    title: "複数の候補からプランを選択できる機能",
+    description: "複数の候補からプランを選択できる機能を開発中です。",
   },
   {
     status: "planned",
     title: "ホテル、飛行機を含めたプラン提案",
     description: "ホテル、飛行機を含めたプランを提案する機能を検討しています。",
+  },
+  {
+    status: "done",
+    date: "2025.01.08", // Approximate date based on context
+    title: "よくある質問および機能紹介・使い方ページを設置",
+    description:
+      "よくある質問ページと使い方ページを設置し、多くの人が利用しやすいサービスとするための改修を行いました。",
   },
   {
     status: "done",

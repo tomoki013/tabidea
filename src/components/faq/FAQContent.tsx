@@ -48,7 +48,9 @@ export default function FAQContent() {
                   question={faq.q}
                   answer={faq.a}
                   isOpen={openIndex === index}
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  onClick={() =>
+                    setOpenIndex(openIndex === index ? null : index)
+                  }
                 />
               ))}
             </div>

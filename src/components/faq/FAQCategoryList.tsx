@@ -1,7 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { FaMapMarkerAlt, FaRegLightbulb, FaShieldAlt, FaQuestionCircle, FaTools } from "react-icons/fa";
+import {
+  FaMapMarkerAlt,
+  FaRegLightbulb,
+  FaShieldAlt,
+  FaQuestionCircle,
+  FaTools,
+} from "react-icons/fa";
 import { faqCategories } from "@/lib/data/faq";
 import FAQCard from "./FAQCard";
 

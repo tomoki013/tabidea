@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { FaLightbulb, FaHeart, FaRobot } from "react-icons/fa";
+import {
+  FaLightbulb,
+  FaHeart,
+  FaRobot,
+  FaExternalLinkAlt,
+} from "react-icons/fa";
 
 export const metadata: Metadata = {
   title: "Tabideaについて - Tabidea",
   description:
-    "Tabideaは、AIとともきちの旅行日記の知識を組み合わせて、あなただけの旅行プランを提案するサービスです。",
+    "Tabideaは、AIがともきちの旅行日記を始めとするWeb上の膨大な知識を組み合わせて、あなただけの旅行プランを提案するサービスです。",
 };
 
 export default function AboutPage() {
@@ -19,7 +24,7 @@ export default function AboutPage() {
               Tabideaについて
             </h1>
             <p className="text-xl text-stone-600 font-hand max-w-3xl mx-auto leading-relaxed">
-              AIとともきちの旅行日記の知識を組み合わせて、
+              AIがともきちの旅行日記を始めとするWeb上の知識を組み合わせて、
               <br className="hidden sm:block" />
               あなただけの旅の物語を紡ぎ出すサービスです。
             </p>
@@ -44,7 +49,7 @@ export default function AboutPage() {
                 でも、膨大な情報を調べるのは大変ですよね。
               </p>
               <p>
-                Tabideaなら、あなたの希望を伝えるだけで、AIが「ともきちの旅行日記」に蓄積された実際の旅行体験をもとに、
+                Tabideaなら、あなたの希望を伝えるだけで、AIが「ともきちの旅行日記」に蓄積された実際の旅行体験やWeb上に存在する膨大な情報をもとに、
                 あなたにぴったりのプランを提案します。
               </p>
             </div>
@@ -65,7 +70,8 @@ export default function AboutPage() {
                   AIパワー
                 </h3>
                 <p className="text-stone-600 leading-relaxed">
-                  Google Gemini AIを活用し、あなたの希望や旅のスタイルに合わせた最適なプランを瞬時に生成します。
+                  Google Gemini
+                  AIを活用し、あなたの希望や旅のスタイルに合わせた最適なプランを瞬時に生成します。
                 </p>
               </div>
 
@@ -108,7 +114,9 @@ export default function AboutPage() {
                   1
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">行き先や条件を入力</h3>
+                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
+                    行き先や条件を入力
+                  </h3>
                   <p className="text-stone-600">
                     目的地、日程、予算、旅のテーマなど、あなたの希望を簡単な質問に答えるだけで入力できます。
                   </p>
@@ -120,9 +128,11 @@ export default function AboutPage() {
                   2
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">AIがプランを生成</h3>
+                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
+                    AIがプランを生成
+                  </h3>
                   <p className="text-stone-600">
-                    AIが「ともきちの旅行日記」のデータベースから関連情報を抽出し、あなた専用の旅行プランを数秒で作成します。
+                    AIがデータベースから関連情報を抽出し、あなた専用の旅行プランを数秒で作成します。
                   </p>
                 </div>
               </div>
@@ -132,10 +142,22 @@ export default function AboutPage() {
                   3
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">プランを確認・シェア</h3>
+                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
+                    プランを確認・シェア
+                  </h3>
                   <p className="text-stone-600">
                     生成されたプランをチェック。気に入ったらURLで簡単にシェアできます。もちろん修正も自由です。
                   </p>
+                  <div className="mt-3 text-sm text-stone-500 space-y-1">
+                    <p>
+                      ※
+                      将来的な変更で見れなくなる可能性がありますのでご了承ください。
+                    </p>
+                    <p>
+                      ※
+                      絶対に残しておきたいプランは、スクリーンショットを撮るか、ご自身の端末にダウンロードして保存することをお勧めします。
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -158,6 +180,17 @@ export default function AboutPage() {
                 「実際に行った人ならではの視点」を提案に反映しています。
               </p>
             </div>
+            <div className="mt-8 text-center sm:text-left">
+              <Link
+                href="https://travel.tomokichidiary.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#e67e22] text-white px-6 py-3 rounded-full font-bold transition-all hover:bg-[#d35400] hover:scale-105 shadow-md"
+              >
+                <span>ブログを見に行く</span>
+                <FaExternalLinkAlt />
+              </Link>
+            </div>
           </section>
 
           {/* Important Notice */}
@@ -171,13 +204,22 @@ export default function AboutPage() {
                 実際の旅行では、以下の点にご注意ください：
               </p>
               <ul className="list-disc pl-6 space-y-2">
-                <li>施設の営業時間、料金、交通機関の最新情報は必ず公式サイトで確認してください</li>
-                <li>AIは時に誤った情報を生成することがあります（ハルシネーション）</li>
-                <li>提案内容はあくまで参考とし、最終的な判断はご自身で行ってください</li>
+                <li>
+                  施設の営業時間、料金、交通機関の最新情報は必ず公式サイトで確認してください
+                </li>
+                <li>
+                  AIは時に誤った情報を生成することがあります（ハルシネーション）
+                </li>
+                <li>
+                  提案内容はあくまで参考とし、最終的な判断はご自身で行ってください
+                </li>
               </ul>
               <p className="text-sm mt-4">
                 詳細は{" "}
-                <a href="/ai-policy" className="underline font-bold hover:text-orange-700">
+                <a
+                  href="/ai-policy"
+                  className="underline font-bold hover:text-orange-700"
+                >
                   AIポリシー
                 </a>{" "}
                 をご確認ください。
