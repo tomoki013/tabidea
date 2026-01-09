@@ -55,6 +55,14 @@ const roadmapData: RoadmapItem[] = [
   },
   {
     status: "done",
+    date: "2026.01.10",
+    version: "0.3.0",
+    title: "日程が長い場合のスケジュール生成改善",
+    description:
+      "日程が長くなると1日あたりの予定が少なくなる問題を修正しました。",
+  },
+  {
+    status: "done",
     date: "2026.01.09",
     version: "0.2.8",
     title: "プラン生成精度の向上",
