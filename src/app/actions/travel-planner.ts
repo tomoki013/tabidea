@@ -143,6 +143,18 @@ export async function chatWithPlanner(
   }
 }
 
+export async function fetchHeroImage(
+  destination: string
+): Promise<string | null> {
+  try {
+    const heroImage = await getUnsplashImage(destination);
+    return heroImage;
+  } catch (e) {
+    console.error("Failed to fetch hero image:", e);
+    return null;
+  }
+}
+
 export async function regeneratePlan(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]

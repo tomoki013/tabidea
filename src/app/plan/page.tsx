@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserInput, Itinerary } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
-import { regeneratePlan } from "@/app/actions/travel-planner";
+import { regeneratePlan, fetchHeroImage } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import PlanModal from "@/components/ui/PlanModal";
 import FAQSection from "@/components/landing/FAQSection";
@@ -30,7 +30,7 @@ function PlanContent() {
 
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
-    const timer = setTimeout(() => {
+    const timer = setTimeout(async () => {
       if (!q) {
         setError("プランが見つかりませんでした。URLを確認してください。");
         setStatus("error");
@@ -40,6 +40,15 @@ function PlanContent() {
       const decoded = decodePlanData(q);
       if (decoded) {
         setInput(decoded.input);
+
+        // Fetch hero image from server if not present
+        if (!decoded.result.heroImage) {
+          const heroImage = await fetchHeroImage(decoded.result.destination);
+          if (heroImage) {
+            decoded.result.heroImage = heroImage;
+          }
+        }
+
         setResult(decoded.result);
         setStatus("idle");
         // Close modal if URL changes (regeneration complete)

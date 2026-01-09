@@ -230,9 +230,9 @@ export default function ResultView({
 
           {displayResult.days.map((day, dayIndex) => (
             <div key={day.day} className="relative">
-              {/* Day Header - Sticky but styled for light theme */}
-              <div className="sticky top-4 z-30 mb-8">
-                <div className="inline-flex items-center gap-4 bg-[#fcfbf9]/95 backdrop-blur-md py-3 px-6 rounded-r-full shadow-sm border border-stone-200 border-l-4 border-l-primary shadow-stone-200/50">
+              {/* Day Header - Sticky at top when scrolled */}
+              <div className="sticky top-0 z-30 mb-8 bg-[#fcfbf9] -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 py-4">
+                <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
                   <span className="text-4xl font-serif text-primary">
                     {day.day}
                   </span>
@@ -388,8 +388,8 @@ export default function ResultView({
         </div>
 
         {/* Sidebar / References */}
-        <div className="space-y-8">
-          <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm sticky top-8">
+        <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
+          <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
             <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
               <FaCalendarAlt /> Reference Articles
             </h3>

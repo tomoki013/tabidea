@@ -59,6 +59,9 @@ Required for AI and RAG features:
 - `PINECONE_API_KEY` - Pinecone API key
 - `PINECONE_INDEX` - Pinecone index name
 
+Optional for hero images:
+- `UNSPLASH_ACCESS_KEY` - Unsplash API access key for destination hero images (falls back to default image if not set)
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 with App Router
