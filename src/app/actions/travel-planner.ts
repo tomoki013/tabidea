@@ -21,12 +21,12 @@ function extractDuration(dates: string): number {
 }
 
 /**
- * Split days into chunks of maximum 3 days each to avoid timeouts
+ * Split days into chunks of maximum 2 days each to avoid timeouts
  */
 function splitDaysIntoChunks(totalDays: number): { start: number; end: number }[] {
   const chunks: { start: number; end: number }[] = [];
   let currentDay = 1;
-  const CHUNK_SIZE = 3; // Reduced from 5 to 3 to prevent timeouts
+  const CHUNK_SIZE = 2; // Reduced to 2 days to prevent timeouts on long trips
 
   while (currentDay <= totalDays) {
     const end = Math.min(currentDay + CHUNK_SIZE - 1, totalDays);
@@ -80,18 +80,18 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
     // Extract duration and check if we need to split
     const totalDays = extractDuration(input.dates);
-    const shouldSplit = totalDays > 3; // Split if more than 3 days
+    const shouldSplit = totalDays > 2; // Split if more than 2 days
 
     let plan: Itinerary;
 
     if (shouldSplit) {
-      console.log(`[action] Duration is ${totalDays} days. Splitting into 3-day chunks...`);
+      console.log(`[action] Duration is ${totalDays} days. Splitting into 2-day chunks...`);
       const chunks = splitDaysIntoChunks(totalDays);
       console.log(`[action] Created ${chunks.length} chunks:`, chunks);
 
-      // Generate plan for each chunk with parallel processing (2 at a time to avoid rate limits)
+      // Generate plan for each chunk with parallel processing (3 at a time to maximize speed)
       const chunkPlans: Itinerary[] = [];
-      const BATCH_SIZE = 2; // Process 2 chunks at a time
+      const BATCH_SIZE = 3; // Process 3 chunks at a time
 
       for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
         const batchEnd = Math.min(batchStart + BATCH_SIZE, chunks.length);
@@ -108,6 +108,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
             prompt = `
               Destination: ${input.destination}
               Dates: ${input.dates}
+              Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
               Companions: ${input.companions}
               Themes: ${input.theme.join(", ")}
               Budget: ${input.budget || "Not specified"}
@@ -115,9 +116,9 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
               Specific Requests: ${input.freeText || "None"}
 
-              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
             `;
           } else {
             prompt = `
@@ -125,6 +126,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
               Travel Vibe/Preference: ${input.travelVibe || "None specified"}
               Dates: ${input.dates}
+              Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
               Companions: ${input.companions}
               Themes: ${input.theme.join(", ")}
               Budget: ${input.budget || "Not specified"}
@@ -137,9 +139,9 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               2. Create a detailed travel itinerary for that chosen destination.
               3. The "destination" field in the JSON must be the name of the place you chose.
 
-              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
             `;
           }
 
@@ -184,8 +186,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       plan.references = Array.from(referenceMap.values());
 
     } else {
-      // Original behavior for trips of 3 days or less
-      console.log(`[action] Duration is ${totalDays} days (≤3). Generating single plan...`);
+      // Original behavior for trips of 2 days or less
+      console.log(`[action] Duration is ${totalDays} days (≤2). Generating single plan...`);
 
       let prompt = "";
       if (input.isDestinationDecided) {
