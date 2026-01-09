@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 type RoadmapItem = {
   status: "done" | "planned" | "developing";
   date?: string; // For done items
+  version?: string;
   title: string;
   description: string;
 };
@@ -55,6 +56,7 @@ const roadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2025.01.08", // Approximate date based on context
+    version: "0.2.1",
     title: "よくある質問および機能紹介・使い方ページを設置",
     description:
       "よくある質問ページと使い方ページを設置し、多くの人が利用しやすいサービスとするための改修を行いました。",
@@ -62,6 +64,7 @@ const roadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2025.12.23", // Approximate date based on context
+    version: "0.2.0",
     title: "β版サービス公開",
     description:
       "UIとUXの修正、および本格的なサービス開始に伴うページ整理を行いました。",
@@ -69,6 +72,7 @@ const roadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2025.12.13", // Approximate date based on context
+    version: "0.1.0",
     title: "α版サービス公開",
     description:
       "Tabideaのα版を公開しました。Gemini AIを活用した旅行プラン生成が可能です。",
@@ -153,8 +157,13 @@ export default function UpdatesPage() {
                   <div key={index} className="relative">
                     <div className="absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 border-green-500 bg-[#fcfbf9] z-10"></div>
                     <div>
-                      <span className="text-sm font-bold text-stone-400 block mb-1 font-mono">
+                      <span className="text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2">
                         {item.date}
+                        {item.version && (
+                          <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
+                            v{item.version}
+                          </span>
+                        )}
                       </span>
                       <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
                         {item.title}
