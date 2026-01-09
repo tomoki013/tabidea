@@ -15,7 +15,12 @@ export interface SearchOptions {
 }
 
 export interface AIService {
-  generateItinerary(prompt: string, context: Article[]): Promise<Itinerary>;
+  generateItinerary(
+    prompt: string,
+    context: Article[],
+    startDay?: number,
+    endDay?: number
+  ): Promise<Itinerary>;
   chat(message: string, context: Itinerary): Promise<string>;
 }
 

@@ -12,6 +12,30 @@ export type ActionState = {
   data?: Itinerary;
 };
 
+/**
+ * Extract duration (number of days) from dates string
+ */
+function extractDuration(dates: string): number {
+  const match = dates.match(/(\d+)日間/);
+  return match ? parseInt(match[1]) : 0;
+}
+
+/**
+ * Split days into chunks of maximum 5 days each
+ */
+function splitDaysIntoChunks(totalDays: number): { start: number; end: number }[] {
+  const chunks: { start: number; end: number }[] = [];
+  let currentDay = 1;
+
+  while (currentDay <= totalDays) {
+    const end = Math.min(currentDay + 4, totalDays); // 5 days per chunk (currentDay + 4)
+    chunks.push({ start: currentDay, end });
+    currentDay = end + 1;
+  }
+
+  return chunks;
+}
+
 export async function generatePlan(input: UserInput): Promise<ActionState> {
   const startTime = Date.now();
   console.log(`[action] generatePlan started at ${new Date().toISOString()}`);
@@ -53,41 +77,141 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     // 2. AI: Generate Plan
     console.log(`[action] Step 2: Generating Plan with AI...`);
 
-    let prompt = "";
-    if (input.isDestinationDecided) {
-      prompt = `
-        Destination: ${input.destination}
-        Dates: ${input.dates}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        Budget: ${input.budget || "Not specified"}
-        Pace: ${input.pace || "Not specified"}
-        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-        Specific Requests: ${input.freeText || "None"}
+    // Extract duration and check if we need to split
+    const totalDays = extractDuration(input.dates);
+    const shouldSplit = totalDays >= 5;
 
-        Please create a travel itinerary for this request.
-      `;
+    let plan: Itinerary;
+
+    if (shouldSplit) {
+      console.log(`[action] Duration is ${totalDays} days. Splitting into 5-day chunks...`);
+      const chunks = splitDaysIntoChunks(totalDays);
+      console.log(`[action] Created ${chunks.length} chunks:`, chunks);
+
+      // Generate plan for each chunk
+      const chunkPlans: Itinerary[] = [];
+
+      for (let i = 0; i < chunks.length; i++) {
+        const chunk = chunks[i];
+        console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
+
+        let prompt = "";
+        if (input.isDestinationDecided) {
+          prompt = `
+            Destination: ${input.destination}
+            Dates: ${input.dates}
+            Companions: ${input.companions}
+            Themes: ${input.theme.join(", ")}
+            Budget: ${input.budget || "Not specified"}
+            Pace: ${input.pace || "Not specified"}
+            Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+            Specific Requests: ${input.freeText || "None"}
+
+            IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+            Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
+            ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+          `;
+        } else {
+          prompt = `
+            User has NOT decided on a specific destination yet.
+            Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
+            Travel Vibe/Preference: ${input.travelVibe || "None specified"}
+            Dates: ${input.dates}
+            Companions: ${input.companions}
+            Themes: ${input.theme.join(", ")}
+            Budget: ${input.budget || "Not specified"}
+            Pace: ${input.pace || "Not specified"}
+            Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+            Specific Requests: ${input.freeText || "None"}
+
+            Task:
+            1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
+            2. Create a detailed travel itinerary for that chosen destination.
+            3. The "destination" field in the JSON must be the name of the place you chose.
+
+            IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+            Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
+            ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+          `;
+        }
+
+        const chunkPlan = await ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
+        chunkPlans.push(chunkPlan);
+      }
+
+      console.log(`[action] All chunks generated. Merging results...`);
+
+      // Merge all chunk plans into one, normalizing day numbers
+      const mergedDays = chunkPlans.flatMap((chunkPlan, chunkIndex) => {
+        const chunk = chunks[chunkIndex];
+        return chunkPlan.days.map((day, index) => ({
+          ...day,
+          // Ensure day numbers are correct based on chunk position
+          day: chunk.start + index,
+        }));
+      });
+
+      plan = {
+        id: chunkPlans[0].id,
+        destination: chunkPlans[0].destination,
+        description: chunkPlans[0].description,
+        reasoning: chunkPlans[0].reasoning,
+        heroImage: chunkPlans[0].heroImage,
+        days: mergedDays,
+        references: [],
+      };
+
+      // Merge references and deduplicate by URL
+      const referenceMap = new Map<string, any>();
+      chunkPlans.forEach(p => {
+        (p.references || []).forEach(ref => {
+          if (!referenceMap.has(ref.url)) {
+            referenceMap.set(ref.url, ref);
+          }
+        });
+      });
+      plan.references = Array.from(referenceMap.values());
+
     } else {
-       prompt = `
-        User has NOT decided on a specific destination yet.
-        Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
-        Travel Vibe/Preference: ${input.travelVibe || "None specified"}
-        Dates: ${input.dates}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        Budget: ${input.budget || "Not specified"}
-        Pace: ${input.pace || "Not specified"}
-        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-        Specific Requests: ${input.freeText || "None"}
+      // Original behavior for trips less than 5 days
+      console.log(`[action] Duration is ${totalDays} days. Generating single plan...`);
 
-        Task:
-        1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
-        2. Create a detailed travel itinerary for that chosen destination.
-        3. The "destination" field in the JSON must be the name of the place you chose.
-      `;
+      let prompt = "";
+      if (input.isDestinationDecided) {
+        prompt = `
+          Destination: ${input.destination}
+          Dates: ${input.dates}
+          Companions: ${input.companions}
+          Themes: ${input.theme.join(", ")}
+          Budget: ${input.budget || "Not specified"}
+          Pace: ${input.pace || "Not specified"}
+          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+          Specific Requests: ${input.freeText || "None"}
+
+          Please create a travel itinerary for this request.
+        `;
+      } else {
+        prompt = `
+          User has NOT decided on a specific destination yet.
+          Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
+          Travel Vibe/Preference: ${input.travelVibe || "None specified"}
+          Dates: ${input.dates}
+          Companions: ${input.companions}
+          Themes: ${input.theme.join(", ")}
+          Budget: ${input.budget || "Not specified"}
+          Pace: ${input.pace || "Not specified"}
+          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+          Specific Requests: ${input.freeText || "None"}
+
+          Task:
+          1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
+          2. Create a detailed travel itinerary for that chosen destination.
+          3. The "destination" field in the JSON must be the name of the place you chose.
+        `;
+      }
+
+      plan = await ai.generateItinerary(prompt, contextArticles);
     }
-
-    const plan = await ai.generateItinerary(prompt, contextArticles);
 
     // Fetch hero image from Unsplash
     const heroImage = await getUnsplashImage(plan.destination);

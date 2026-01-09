@@ -17,7 +17,9 @@ export class GeminiService implements AIService {
 
   async generateItinerary(
     prompt: string,
-    context: Article[]
+    context: Article[],
+    startDay?: number,
+    endDay?: number
   ): Promise<Itinerary> {
     console.log(
       `[gemini] Generating itinerary. Context articles: ${context.length}`
@@ -33,6 +35,10 @@ export class GeminiService implements AIService {
       .join("\n\n");
 
     // System instruction containing context, instructions, examples, and schema
+    const dayRangeInfo = startDay && endDay
+      ? `\n      DAY RANGE: Generate itinerary ONLY for days ${startDay} to ${endDay}. The "day" field in the JSON must start from ${startDay} and end at ${endDay}.`
+      : "";
+
     const systemInstruction = `
       Your role is to create special travel Selection itineraries based on the blog's archives.
 
@@ -40,9 +46,10 @@ export class GeminiService implements AIService {
       ${contextText}
 
       CURRENT DATE AND TIME: ${new Date().toISOString()}
+      ${dayRangeInfo}
 
       INSTRUCTIONS:
-      1. Create a detailed itinerary based on the User Request (Destination, Dates, Companions, Themes, Budget, Pace).
+      1. Create a detailed itinerary based on the User Request (Destination, Dates, Companions, Themes, Budget, Pace).${startDay && endDay ? ` Generate ONLY days ${startDay} to ${endDay}.` : ""}
       2. ANALYZE if the Context articles match the Destination in the User Request.
          - IF MATCH (Same City/Region): PRIORITIZE using spots, restaurants, and experiences from the Context.
          - IF MISMATCH (Different City/Region): You may use the "vibe" or "style" from the Context as inspiration, BUT be careful.
