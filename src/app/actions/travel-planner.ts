@@ -31,21 +31,10 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     const ai = new GeminiService(apiKey);
 
     // 1. RAG: Search for relevant content
-    // If destination is undecided, search for region + themes
-    const destinationQuery = input.isDestinationDecided
-      ? input.destination
-      : input.region === "domestic"
-      ? "日本国内 おすすめ旅行先"
-      : input.region === "overseas"
-      ? "海外旅行 おすすめ"
-      : "おすすめ旅行先";
-
-    // Incorporate travelVibe into the search query if present
-    const vibeQuery = input.travelVibe ? ` ${input.travelVibe}` : "";
-
-    const query = `${destinationQuery}${vibeQuery} ${input.theme.join(" ")} ${
-      input.companions
-    }`;
+    // Generate semantic query for better vector search results
+    const query = input.isDestinationDecided
+      ? `${input.destination}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
+      : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
     console.log(`[action] Step 1: Searching for "${query}"`);
 
     let contextArticles: any[] = [];
