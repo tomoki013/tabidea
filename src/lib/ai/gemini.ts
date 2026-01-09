@@ -22,8 +22,14 @@ export class GeminiService implements AIService {
     console.log(
       `[gemini] Generating itinerary. Context articles: ${context.length}`
     );
+    const MAX_CONTENT_LENGTH = 500;
     const contextText = context
-      .map((a, i) => `[ID: ${i}]\nTitle: ${a.title}\nContent: ${a.content}`)
+      .map((a, i) => {
+        const truncatedContent = a.content.length > MAX_CONTENT_LENGTH
+          ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
+          : a.content;
+        return `[ID: ${i}]\nTitle: ${a.title}\nURL: ${a.url}\nContent: ${truncatedContent}`;
+      })
       .join("\n\n");
 
     // System instruction containing context, instructions, examples, and schema
