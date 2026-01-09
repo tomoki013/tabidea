@@ -24,15 +24,15 @@ export class GeminiService implements AIService {
     console.log(
       `[gemini] Generating itinerary. Context articles: ${context.length}`
     );
-    const MAX_CONTENT_LENGTH = 250; // Reduced from 500 to 250 to minimize token usage
+    const MAX_CONTENT_LENGTH = 100; // Aggressive reduction to 100 chars for maximum speed
     const contextText = context
       .map((a, i) => {
         const truncatedContent = a.content.length > MAX_CONTENT_LENGTH
           ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
           : a.content;
-        return `[ID: ${i}]\nTitle: ${a.title}\nURL: ${a.url}\nContent: ${truncatedContent}`;
+        return `[${i}] ${a.title}: ${truncatedContent}`;
       })
-      .join("\n\n");
+      .join("\n");
 
     // System instruction containing context, instructions, examples, and schema
     const dayRangeInfo = startDay && endDay
@@ -40,21 +40,15 @@ export class GeminiService implements AIService {
       : "";
 
     const systemInstruction = `
-      Create travel itineraries based on the blog's archives.
+      Create travel itinerary in JAPANESE.${startDay && endDay ? ` Days ${startDay}-${endDay} only.` : ""}
+      ${contextText ? `Context: ${contextText}` : ""}
 
-      CONTEXT: ${contextText}
-      ${dayRangeInfo}
+      Rules:
+      1. Follow User Request (Destination, Dates, Companions, Themes, Budget, Pace).
+      2. 3 meals/day + activities by pace: relaxed(1-2), balanced(3-4), active(5-6), packed(7-8).
+      3. Return JSON only.
 
-      RULES:
-      1. Create itinerary for User Request (Destination, Dates, Companions, Themes, Budget, Pace).${startDay && endDay ? ` ONLY days ${startDay} to ${endDay}.` : ""}
-      2. Use Context if it matches the destination. Don't mix locations (e.g., no Tokyo spots in Paris).
-      3. Populate reference_indices ONLY with IDs of articles actually used.
-      4. ALL content in JAPANESE (description, reasoning, titles, activities).
-      5. Include 3 meals/day. Adjust on arrival/departure days.
-      6. Activity count by pace: relaxed(1-2), balanced(3-4), active(5-6), packed(7-8) + meals.
-      7. Return ONLY JSON.
-
-      JSON FORMAT:
+      JSON:
       {
         "reasoning": "string (Why you chose this plan/spots, logic behind decisions)",
         "id": "string (unique-ish id)",
@@ -82,11 +76,11 @@ export class GeminiService implements AIService {
       }
     `;
 
-    // User request as a separate message
-    const userRequest = `
-      USER REQUEST:
-      ${prompt}
-    `;
+    // Combine system instruction and user request into single message for speed
+    const fullPrompt = `${systemInstruction}
+
+USER REQUEST:
+${prompt}`;
 
     try {
       console.log(
@@ -97,20 +91,12 @@ export class GeminiService implements AIService {
         contents: [
           {
             role: "user",
-            parts: [{ text: systemInstruction }]
-          },
-          {
-            role: "model",
-            parts: [{ text: "理解しました。ご指示に従って旅行プランを生成します。" }]
-          },
-          {
-            role: "user",
-            parts: [{ text: userRequest }]
+            parts: [{ text: fullPrompt }]
           }
         ],
         generationConfig: {
           responseMimeType: "application/json",
-          temperature: 0.2, // Lower temperature for faster, more deterministic responses
+          temperature: 0.1, // Minimum temperature for maximum speed
         },
       });
       const response = await result.response;
@@ -130,36 +116,18 @@ export class GeminiService implements AIService {
       try {
         const data = JSON.parse(text);
 
-        // Deduplicate indices just in case the AI hallucinates duplicates
-        const uniqueIndices = Array.from(
-          new Set(data.reference_indices || [])
-        ) as number[];
+        // Quick reference processing
+        const indices = data.reference_indices || [];
+        data.references = indices
+          .map((idx: number) => context[idx])
+          .filter(Boolean)
+          .map((a: any) => ({
+            title: a.title,
+            url: a.url,
+            image: a.imageUrl || "",
+            snippet: a.snippet,
+          }));
 
-        // Hydrate references from indices
-        const hydratedReferences = uniqueIndices
-          .map((idx: number) => {
-            const article = context[idx];
-            if (!article) return null;
-            return {
-              title: article.title,
-              url: article.url,
-              image: article.imageUrl || "", // Map imageUrl to image for frontend
-              snippet: article.snippet,
-            };
-          })
-          .filter(Boolean);
-
-        // Fallback or explicit references assignment
-        if (hydratedReferences.length > 0) {
-          data.references = hydratedReferences;
-        } else {
-          console.log(`[gemini] No specific references cited by AI.`);
-          data.references = [];
-        }
-
-        console.log(
-          `[gemini] Parsed JSON successfully. Destination: ${data.destination}`
-        );
         return data as Itinerary;
       } catch (jsonError) {
         console.error(`[gemini] JSON Parse Error:`, jsonError);
@@ -209,7 +177,7 @@ export class GeminiService implements AIService {
         contents: [{ role: "user", parts: [{ text: systemPrompt }] }],
         generationConfig: {
           responseMimeType: "application/json",
-          temperature: 0.2,
+          temperature: 0.1,
         },
       });
       const response = await result.response;

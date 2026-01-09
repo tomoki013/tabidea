@@ -64,8 +64,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
     let contextArticles: any[] = [];
     try {
-        // Reduce topK to minimize context size and speed up generation
-        contextArticles = await scraper.search(query, { topK: 3 });
+        // Minimize RAG to just 1 article for maximum speed
+        contextArticles = await scraper.search(query, { topK: 1 });
         console.log(
         `[action] Step 1 Complete. Found ${
             contextArticles.length
@@ -90,9 +90,9 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       const chunks = splitDaysIntoChunks(totalDays);
       console.log(`[action] Created ${chunks.length} chunks:`, chunks);
 
-      // Generate plan for each chunk with parallel processing (3 at a time to maximize speed)
+      // Generate plan for each chunk with aggressive parallel processing
       const chunkPlans: Itinerary[] = [];
-      const BATCH_SIZE = 3; // Process 3 chunks at a time
+      const BATCH_SIZE = 5; // Process 5 chunks at a time for maximum speed
 
       for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
         const batchEnd = Math.min(batchStart + BATCH_SIZE, chunks.length);
