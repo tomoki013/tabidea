@@ -1,14 +1,7 @@
 "use client";
 
 import { useState } from "react";
-<<<<<<< Updated upstream
-import { FaMapMarkerAlt, FaRegLightbulb, FaShieldAlt, FaQuestionCircle, FaTools } from "react-icons/fa";
-import { faqCategories } from "@/lib/data/faq";
-import FAQCard from "./FAQCard";
-=======
 import {
-  FaChevronDown,
-  FaChevronUp,
   FaMapMarkerAlt,
   FaRegLightbulb,
   FaShieldAlt,
@@ -16,7 +9,7 @@ import {
   FaTools,
 } from "react-icons/fa";
 import { faqCategories } from "@/lib/data/faq";
->>>>>>> Stashed changes
+import FAQCard from "./FAQCard";
 
 // Map category IDs to icons for a richer UI
 const iconMap: Record<string, React.ElementType> = {
@@ -62,53 +55,11 @@ export default function FAQCategoryList() {
                 return (
                   <FAQCard
                     key={index}
-<<<<<<< Updated upstream
                     question={item.q}
                     answer={item.a}
                     isOpen={isOpen}
                     onClick={() => toggleAccordion(uniqueId)}
                   />
-=======
-                    className="bg-white border border-stone-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group"
-                  >
-                    <button
-                      onClick={() => toggleAccordion(uniqueId)}
-                      className="w-full flex items-start md:items-center justify-between p-5 md:p-6 text-left hover:bg-[#fffdfa] transition-colors gap-4"
-                      aria-expanded={isOpen}
-                    >
-                      <div className="flex items-start gap-4 flex-1">
-                        <span className="flex-shrink-0 w-8 h-8 rounded-full bg-[#e67e22]/10 text-[#e67e22] flex items-center justify-center font-serif font-bold text-sm mt-0.5 md:mt-0">
-                          Q
-                        </span>
-                        <span className="font-bold text-lg text-[#2c2c2c] group-hover:text-[#e67e22] transition-colors leading-snug">
-                          {item.q}
-                        </span>
-                      </div>
-                      <span className="flex-shrink-0 mt-1 md:mt-0">
-                        {isOpen ? (
-                          <FaChevronUp className="text-[#e67e22]" />
-                        ) : (
-                          <FaChevronDown className="text-stone-400 group-hover:text-[#e67e22] transition-colors" />
-                        )}
-                      </span>
-                    </button>
-                    <motion.div
-                      initial={false}
-                      animate={{ height: isOpen ? "auto" : 0 }}
-                      transition={{ duration: 0.3, ease: "easeInOut" }}
-                      className="overflow-hidden"
-                    >
-                      <div className="p-6 pt-0 pl-[4.5rem] md:pl-20 pr-6 text-stone-600 leading-relaxed border-t border-dashed border-stone-100 bg-[#fffdfa]">
-                        <div className="flex gap-4">
-                          <span className="flex-shrink-0 font-serif font-bold text-[#27ae60] mt-1">
-                            A.
-                          </span>
-                          <span className="whitespace-pre-wrap">{item.a}</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </div>
->>>>>>> Stashed changes
                 );
               })}
             </div>
