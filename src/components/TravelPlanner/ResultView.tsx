@@ -128,48 +128,67 @@ export default function ResultView({
   const displayResult = isEditing && editingResult ? editingResult : result;
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-hidden">
+    <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
       {/* Updating Overlay */}
       {isUpdating && (
-        <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-sm animate-in fade-in duration-500">
-          <div className="bg-white p-8 rounded-full shadow-xl border-4 border-primary/20 animate-bounce">
-            <span className="text-4xl">✏️</span>
+        <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-md animate-in fade-in duration-500">
+          <div className="relative p-10 rounded-3xl bg-[#fcfbf9] shadow-2xl border-4 border-white text-center max-w-sm w-full mx-4">
+            {/* Paper Texture Overlay */}
+            <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none rounded-3xl" />
+
+            <div className="relative z-10 flex flex-col items-center gap-6">
+              {/* Animated Icon */}
+              <div className="relative w-20 h-20">
+                <div className="absolute inset-0 border-4 border-dashed border-primary/30 rounded-full animate-[spin_10s_linear_infinite]" />
+                <div className="absolute inset-0 flex items-center justify-center text-3xl animate-bounce">
+                  ✏️
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <h2 className="text-2xl font-serif font-bold text-stone-800 tracking-wide">
+                  プランを書き直しています...
+                </h2>
+                <p className="text-stone-500 font-sans text-xs">
+                  Updating your travel plan
+                </p>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="w-24 h-1 bg-stone-100 rounded-full overflow-hidden">
+                <div className="h-full bg-primary animate-progress-indeterminate" />
+              </div>
+            </div>
           </div>
-          <h2 className="mt-6 text-3xl font-hand font-bold text-stone-800 tracking-wide animate-pulse">
-            プランを書き直しています...
-          </h2>
-          <p className="mt-2 text-stone-500 font-sans text-sm">
-            Updating your travel plan
-          </p>
         </div>
       )}
 
       {/* Fixed Action Bar (Edit / Save / Cancel) */}
       <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-4 w-full max-w-sm px-4 pointer-events-none">
         <div className="pointer-events-auto flex justify-center">
-            {isEditing ? (
-                <div className="flex items-center gap-3 p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xl border border-stone-200/50">
-                    <button
-                        onClick={cancelEditing}
-                        className="flex items-center gap-2 bg-white text-stone-600 px-6 py-3 rounded-full shadow-sm border border-stone-200 hover:bg-stone-50 font-bold transition-all"
-                    >
-                        <FaTimes /> キャンセル
-                    </button>
-                    <button
-                        onClick={saveChanges}
-                        className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-md hover:bg-primary/90 font-bold transition-all"
-                    >
-                        <FaSave /> 保存
-                    </button>
-                </div>
-            ) : (
-                <button
-                    onClick={startEditing}
-                    className="flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20"
-                >
-                    <FaPen /> プラン内容を編集
-                </button>
-            )}
+          {isEditing ? (
+            <div className="flex items-center gap-3 p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xl border border-stone-200/50">
+              <button
+                onClick={cancelEditing}
+                className="flex items-center gap-2 bg-white text-stone-600 px-6 py-3 rounded-full shadow-sm border border-stone-200 hover:bg-stone-50 font-bold transition-all"
+              >
+                <FaTimes /> キャンセル
+              </button>
+              <button
+                onClick={saveChanges}
+                className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-md hover:bg-primary/90 font-bold transition-all"
+              >
+                <FaSave /> 保存
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={startEditing}
+              className="flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20"
+            >
+              <FaPen /> プラン内容を編集
+            </button>
+          )}
         </div>
       </div>
 
@@ -223,27 +242,23 @@ export default function ResultView({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip">
         {/* Timeline */}
         <div className="space-y-16">
-
-
           {displayResult.days.map((day, dayIndex) => (
             <div key={day.day} className="relative">
               {/* Day Header - Sticky at top when scrolled */}
-              <div className="sticky top-0 z-30 mb-8 bg-[#fcfbf9] -mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 py-4">
-                <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
-                  <span className="text-4xl font-serif text-primary">
-                    {day.day}
+              <div className="sticky top-0 z-30 mb-8 inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
+                <span className="text-4xl font-serif text-primary">
+                  {day.day}
+                </span>
+                <div className="flex flex-col">
+                  <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                    Day
                   </span>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                      Day
-                    </span>
-                    <span className="text-stone-600 font-serif italic text-lg leading-none">
-                      {day.title}
-                    </span>
-                  </div>
+                  <span className="text-stone-600 font-serif italic text-lg leading-none">
+                    {day.title}
+                  </span>
                 </div>
               </div>
 
