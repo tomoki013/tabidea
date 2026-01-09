@@ -244,7 +244,7 @@ export default function ResultView({
 
       <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip">
         {/* Timeline */}
-        <div className="space-y-16">
+        <div className="space-y-16" data-itinerary-section>
           {displayResult.days.map((day, dayIndex) => (
             <div key={day.day} className="relative">
               {/* Day Header - Sticky at top when scrolled */}
