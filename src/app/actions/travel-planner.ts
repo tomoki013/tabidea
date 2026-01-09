@@ -21,14 +21,15 @@ function extractDuration(dates: string): number {
 }
 
 /**
- * Split days into chunks of maximum 5 days each
+ * Split days into chunks of maximum 3 days each to avoid timeouts
  */
 function splitDaysIntoChunks(totalDays: number): { start: number; end: number }[] {
   const chunks: { start: number; end: number }[] = [];
   let currentDay = 1;
+  const CHUNK_SIZE = 3; // Reduced from 5 to 3 to prevent timeouts
 
   while (currentDay <= totalDays) {
-    const end = Math.min(currentDay + 4, totalDays); // 5 days per chunk (currentDay + 4)
+    const end = Math.min(currentDay + CHUNK_SIZE - 1, totalDays);
     chunks.push({ start: currentDay, end });
     currentDay = end + 1;
   }
@@ -79,64 +80,74 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
     // Extract duration and check if we need to split
     const totalDays = extractDuration(input.dates);
-    const shouldSplit = totalDays >= 5;
+    const shouldSplit = totalDays > 3; // Split if more than 3 days
 
     let plan: Itinerary;
 
     if (shouldSplit) {
-      console.log(`[action] Duration is ${totalDays} days. Splitting into 5-day chunks...`);
+      console.log(`[action] Duration is ${totalDays} days. Splitting into 3-day chunks...`);
       const chunks = splitDaysIntoChunks(totalDays);
       console.log(`[action] Created ${chunks.length} chunks:`, chunks);
 
-      // Generate plan for each chunk
+      // Generate plan for each chunk with parallel processing (2 at a time to avoid rate limits)
       const chunkPlans: Itinerary[] = [];
+      const BATCH_SIZE = 2; // Process 2 chunks at a time
 
-      for (let i = 0; i < chunks.length; i++) {
-        const chunk = chunks[i];
-        console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
+      for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
+        const batchEnd = Math.min(batchStart + BATCH_SIZE, chunks.length);
+        const batchChunks = chunks.slice(batchStart, batchEnd);
 
-        let prompt = "";
-        if (input.isDestinationDecided) {
-          prompt = `
-            Destination: ${input.destination}
-            Dates: ${input.dates}
-            Companions: ${input.companions}
-            Themes: ${input.theme.join(", ")}
-            Budget: ${input.budget || "Not specified"}
-            Pace: ${input.pace || "Not specified"}
-            Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-            Specific Requests: ${input.freeText || "None"}
+        console.log(`[action] Processing batch ${Math.floor(batchStart / BATCH_SIZE) + 1}/${Math.ceil(chunks.length / BATCH_SIZE)} (${batchChunks.length} chunks)...`);
 
-            IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
-            Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-            ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
-          `;
-        } else {
-          prompt = `
-            User has NOT decided on a specific destination yet.
-            Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
-            Travel Vibe/Preference: ${input.travelVibe || "None specified"}
-            Dates: ${input.dates}
-            Companions: ${input.companions}
-            Themes: ${input.theme.join(", ")}
-            Budget: ${input.budget || "Not specified"}
-            Pace: ${input.pace || "Not specified"}
-            Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-            Specific Requests: ${input.freeText || "None"}
+        const batchPromises = batchChunks.map(async (chunk, batchIndex) => {
+          const i = batchStart + batchIndex;
+          console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
 
-            Task:
-            1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
-            2. Create a detailed travel itinerary for that chosen destination.
-            3. The "destination" field in the JSON must be the name of the place you chose.
+          let prompt = "";
+          if (input.isDestinationDecided) {
+            prompt = `
+              Destination: ${input.destination}
+              Dates: ${input.dates}
+              Companions: ${input.companions}
+              Themes: ${input.theme.join(", ")}
+              Budget: ${input.budget || "Not specified"}
+              Pace: ${input.pace || "Not specified"}
+              Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+              Specific Requests: ${input.freeText || "None"}
 
-            IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
-            Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-            ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
-          `;
-        }
+              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+              Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
+              ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+            `;
+          } else {
+            prompt = `
+              User has NOT decided on a specific destination yet.
+              Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
+              Travel Vibe/Preference: ${input.travelVibe || "None specified"}
+              Dates: ${input.dates}
+              Companions: ${input.companions}
+              Themes: ${input.theme.join(", ")}
+              Budget: ${input.budget || "Not specified"}
+              Pace: ${input.pace || "Not specified"}
+              Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+              Specific Requests: ${input.freeText || "None"}
 
-        const chunkPlan = await ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
-        chunkPlans.push(chunkPlan);
+              Task:
+              1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
+              2. Create a detailed travel itinerary for that chosen destination.
+              3. The "destination" field in the JSON must be the name of the place you chose.
+
+              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary.
+              Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
+              ${i === 0 ? "This is the beginning of the trip." : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+            `;
+          }
+
+          return await ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
+        });
+
+        const batchResults = await Promise.all(batchPromises);
+        chunkPlans.push(...batchResults);
       }
 
       console.log(`[action] All chunks generated. Merging results...`);
@@ -173,8 +184,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       plan.references = Array.from(referenceMap.values());
 
     } else {
-      // Original behavior for trips less than 5 days
-      console.log(`[action] Duration is ${totalDays} days. Generating single plan...`);
+      // Original behavior for trips of 3 days or less
+      console.log(`[action] Duration is ${totalDays} days (≤3). Generating single plan...`);
 
       let prompt = "";
       if (input.isDestinationDecided) {
