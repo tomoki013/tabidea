@@ -7,7 +7,7 @@ import { UserInput, Itinerary } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
-import TravelPlanner from "@/components/TravelPlanner";
+import PlanModal from "@/components/ui/PlanModal";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
 import { FaPlus } from "react-icons/fa6";
@@ -132,17 +132,12 @@ function PlanContent() {
       />
 
       {/* Request Editing Modal */}
-      {isEditingRequest && input && (
-        <div className="fixed inset-0 z-100 bg-stone-900/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="w-full max-w-5xl h-[90vh] bg-transparent relative">
-            <TravelPlanner
-              initialInput={input}
-              initialStep={initialEditStep}
-              onClose={() => setIsEditingRequest(false)}
-            />
-          </div>
-        </div>
-      )}
+      <PlanModal
+        isOpen={isEditingRequest && !!input}
+        onClose={() => setIsEditingRequest(false)}
+        initialInput={input}
+        initialStep={initialEditStep}
+      />
     </>
   );
 }
