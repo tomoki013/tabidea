@@ -90,18 +90,38 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       const chunks = splitDaysIntoChunks(totalDays);
       console.log(`[action] Created ${chunks.length} chunks:`, chunks);
 
-      // Generate plan for each chunk sequentially to avoid duplicate places
-      // Each chunk needs to know what places were already visited in previous chunks
-      const chunkPlans: Itinerary[] = [];
-      const visitedPlaces: string[] = [];
+      // Step 1: Generate place assignments first (lightweight call to prevent duplicates)
+      const basePrompt = input.isDestinationDecided
+        ? `${input.destination}で${input.companions}と${input.theme.join("、")}を楽しむ${totalDays}日間の旅行。予算: ${input.budget || "指定なし"}、ペース: ${input.pace || "指定なし"}`
+        : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("、")}を楽しむ${input.companions}の${totalDays}日間旅行`;
 
-      for (let i = 0; i < chunks.length; i++) {
-        const chunk = chunks[i];
+      console.log(`[action] Step 2a: Generating place assignments to prevent duplicates...`);
+      const placeAssignments = await ai.generatePlaceAssignments(basePrompt, totalDays);
+      console.log(`[action] Place assignments generated: ${placeAssignments.length} days`);
+
+      // Build a map of day -> assigned places
+      const dayPlacesMap = new Map<number, string[]>();
+      placeAssignments.forEach(assignment => {
+        dayPlacesMap.set(assignment.day, assignment.places);
+      });
+
+      // Step 2: Generate chunks in parallel with assigned places
+      console.log(`[action] Step 2b: Generating ${chunks.length} chunks in parallel with place assignments...`);
+
+      const chunkPromises = chunks.map(async (chunk, i) => {
         console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
 
-        // Build the visited places instruction
-        const visitedPlacesInstruction = visitedPlaces.length > 0
-          ? `\n              ALREADY VISITED PLACES (DO NOT revisit these): ${visitedPlaces.join(", ")}\n              You MUST suggest DIFFERENT places and activities. Do not repeat any of the above locations.`
+        // Get assigned places for this chunk's days
+        const assignedPlaces: string[] = [];
+        for (let d = chunk.start; d <= chunk.end; d++) {
+          const places = dayPlacesMap.get(d);
+          if (places) {
+            assignedPlaces.push(...places);
+          }
+        }
+
+        const assignedPlacesInstruction = assignedPlaces.length > 0
+          ? `\n              ASSIGNED PLACES FOR THESE DAYS: ${assignedPlaces.join(", ")}\n              You MUST include these places in the itinerary for the specified days. Build activities around these locations.`
           : "";
 
         let prompt = "";
@@ -119,7 +139,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
               IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}${visitedPlacesInstruction}
+              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}${assignedPlacesInstruction}
             `;
         } else {
           prompt = `
@@ -142,24 +162,15 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
               IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}${visitedPlacesInstruction}
+              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}${assignedPlacesInstruction}
             `;
         }
 
-        const chunkPlan = await ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
-        chunkPlans.push(chunkPlan);
+        return ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
+      });
 
-        // Extract visited places from this chunk to pass to the next chunk
-        chunkPlan.days.forEach(day => {
-          day.activities.forEach(activity => {
-            // Add the activity name (which usually contains the place name)
-            if (activity.activity) {
-              visitedPlaces.push(activity.activity);
-            }
-          });
-        });
-        console.log(`[action] Chunk ${i + 1} complete. Total visited places so far: ${visitedPlaces.length}`);
-      }
+      const chunkPlans = await Promise.all(chunkPromises);
+      console.log(`[action] All ${chunks.length} chunks generated in parallel.`);
 
       console.log(`[action] All chunks generated. Merging results...`);
 

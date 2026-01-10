@@ -143,6 +143,54 @@ ${prompt}`;
     }
   }
 
+  /**
+   * Generate a lightweight place assignment list for all days (used to prevent duplicates in parallel chunk generation)
+   */
+  async generatePlaceAssignments(
+    prompt: string,
+    totalDays: number
+  ): Promise<{ day: number; places: string[] }[]> {
+    console.log(`[gemini] Generating place assignments for ${totalDays} days...`);
+
+    const systemInstruction = `
+      あなたは旅行プランナーです。以下のリクエストに基づいて、各日に訪問する場所のリストを生成してください。
+
+      ルール:
+      1. 各日に3〜6箇所の場所を割り当てる
+      2. 同じ場所を複数日に割り当てない（重複禁止）
+      3. 場所名は具体的に（例：「浅草寺」「東京スカイツリー」など）
+      4. JSONのみを返す
+
+      JSON形式:
+      [
+        { "day": 1, "places": ["場所1", "場所2", "場所3"] },
+        { "day": 2, "places": ["場所4", "場所5", "場所6"] }
+      ]
+    `;
+
+    const fullPrompt = `${systemInstruction}\n\nリクエスト:\n${prompt}\n\n${totalDays}日間の場所割り当てを生成してください。`;
+
+    try {
+      const startTime = Date.now();
+      const result = await this.model.generateContent({
+        contents: [{ role: "user", parts: [{ text: fullPrompt }] }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          temperature: 0.1,
+        },
+      });
+      const response = await result.response;
+      console.log(`[gemini] Place assignments generated in ${Date.now() - startTime}ms`);
+
+      let text = response.text().replace(/```json/g, "").replace(/```/g, "").trim();
+      return JSON.parse(text);
+    } catch (error) {
+      console.error("[gemini] Failed to generate place assignments:", error);
+      // Return empty array on failure - chunks will generate without constraints
+      return [];
+    }
+  }
+
   async modifyItinerary(
     currentPlan: Itinerary,
     chatHistory: { role: string; text: string }[]
