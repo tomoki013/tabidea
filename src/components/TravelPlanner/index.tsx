@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserInput } from "@/lib/types";
-import { generatePlan } from "@/app/actions/travel-planner";
-import { encodePlanData } from "@/lib/urlUtils";
+import { encodeInputData } from "@/lib/urlUtils";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -175,29 +174,17 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     }, 700); // Wait for most of the animation to play before switching view
   };
 
-  const handlePlan = async () => {
+  const handlePlan = () => {
     if (!validateStep(step)) return;
 
-    setStatus("loading");
-    setErrorMessage("");
-    try {
-      const response = await generatePlan(input);
-      if (response.success && response.data) {
-        // Compress data and redirect
-        const encoded = encodePlanData(input, response.data);
-        router.push(`/plan?q=${encoded}`);
-        // Close modal if it's open
-        if (onClose) {
-          onClose();
-        }
-      } else {
-        setErrorMessage(response.message || "Something went wrong.");
-        setStatus("error");
-      }
-    } catch (e) {
-      console.error(e);
-      setErrorMessage("Network error or server timeout.");
-      setStatus("error");
+    // Immediately navigate to /plan page with encoded input data
+    // This avoids popup blockers by navigating synchronously on user click
+    const encoded = encodeInputData(input);
+    router.push(`/plan?input=${encoded}`);
+
+    // Close modal if it's open
+    if (onClose) {
+      onClose();
     }
   };
 
