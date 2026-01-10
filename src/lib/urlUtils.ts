@@ -46,6 +46,67 @@ interface MinifiedData {
   res: MinifiedItinerary;
 }
 
+export function encodeInputData(input: UserInput): string {
+  // Create minified version
+  const minInput: MinifiedInput = {
+    d: input.dates,
+    t: input.theme,
+    c: input.companions,
+    b: input.budget,
+    p: input.pace,
+    r: input.region,
+    tv: input.travelVibe,
+    mv: input.mustVisitPlaces,
+    hmv: input.hasMustVisitPlaces ? 1 : 0,
+    idd: input.isDestinationDecided ? 1 : 0,
+    ft: input.freeText
+  };
+
+  // Add destination to minified input
+  const data = {
+    v: 1,
+    in: minInput,
+    dst: input.destination // Include destination for API call
+  };
+
+  const stringified = JSON.stringify(data);
+  return LZString.compressToEncodedURIComponent(stringified);
+}
+
+export function decodeInputData(encoded: string): UserInput | null {
+  if (!encoded) return null;
+
+  try {
+    const decompressed = LZString.decompressFromEncodedURIComponent(encoded);
+    if (!decompressed) return null;
+
+    const data = JSON.parse(decompressed);
+
+    if (data.v === 1 && data.in) {
+      const minInput = data.in;
+      const input: UserInput = {
+        destination: data.dst || "",
+        dates: minInput.d,
+        theme: minInput.t,
+        region: minInput.r || "anywhere",
+        isDestinationDecided: minInput.idd === 1,
+        companions: minInput.c || "any",
+        budget: minInput.b || "any",
+        pace: minInput.p || "any",
+        freeText: minInput.ft || "",
+        travelVibe: minInput.tv || "",
+        mustVisitPlaces: minInput.mv || [],
+        hasMustVisitPlaces: minInput.hmv === 1
+      };
+      return input;
+    }
+
+    return null;
+  } catch (e) {
+    return null;
+  }
+}
+
 export function encodePlanData(input: UserInput, result: Itinerary): string {
   // Create minified version
   const minInput: MinifiedInput = {
