@@ -4,6 +4,7 @@ import { Itinerary, UserInput } from "@/lib/types";
 import Image from "next/image";
 import TravelPlannerChat from "../TravelPlannerChat";
 import ShareButtons from "../ShareButtons";
+import PDFDownloadButton from "./PDFDownloadButton";
 import RequestSummary from "./RequestSummary";
 import {
   FaMapMarkerAlt,
@@ -236,9 +237,10 @@ export default function ResultView({
           </div>
         </div>
 
-        {/* Share Buttons */}
-        <div className="flex justify-center mt-6">
+        {/* Share Buttons and PDF Download */}
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
           <ShareButtons input={input} result={result} />
+          <PDFDownloadButton itinerary={result} />
         </div>
       </div>
 
