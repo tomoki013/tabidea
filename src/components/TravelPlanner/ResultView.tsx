@@ -202,6 +202,29 @@ export default function ResultView({
             className="object-cover"
             priority
           />
+          {/* Unsplash Credit - Only show if photographer info exists */}
+          {result.heroImagePhotographer && result.heroImagePhotographerUrl && (
+            <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
+              Photo by{" "}
+              <a
+                href={result.heroImagePhotographerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-stone-300 transition-colors"
+              >
+                {result.heroImagePhotographer}
+              </a>
+              {" "}on{" "}
+              <a
+                href="https://unsplash.com/?utm_source=Tabidea&utm_medium=referral"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-stone-300 transition-colors"
+              >
+                Unsplash
+              </a>
+            </div>
+          )}
           {/* Tape Effect */}
           <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-100/80 -rotate-2 shadow-sm backdrop-blur-sm"></div>
         </div>

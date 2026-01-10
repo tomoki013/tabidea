@@ -47,9 +47,11 @@ function PlanContent() {
 
         // Fetch hero image from server if not present
         if (!decoded.result.heroImage) {
-          const heroImage = await fetchHeroImage(decoded.result.destination);
-          if (heroImage) {
-            decoded.result.heroImage = heroImage;
+          const heroImageData = await fetchHeroImage(decoded.result.destination);
+          if (heroImageData) {
+            decoded.result.heroImage = heroImageData.url;
+            decoded.result.heroImagePhotographer = heroImageData.photographer;
+            decoded.result.heroImagePhotographerUrl = heroImageData.photographerUrl;
           }
         }
 

@@ -46,6 +46,8 @@ export interface Itinerary {
   description: string;
   reasoning?: string; // AI's thought process
   heroImage?: string;
+  heroImagePhotographer?: string; // Unsplash photographer name
+  heroImagePhotographerUrl?: string; // Unsplash photographer profile URL
   days: DayPlan[];
   references?: Reference[];
   reference_indices?: number[]; // indices of used articles in the context array

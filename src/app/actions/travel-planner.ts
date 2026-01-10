@@ -228,9 +228,11 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     }
 
     // Fetch hero image from Unsplash
-    const heroImage = await getUnsplashImage(plan.destination);
-    if (heroImage) {
-      plan.heroImage = heroImage;
+    const heroImageData = await getUnsplashImage(plan.destination);
+    if (heroImageData) {
+      plan.heroImage = heroImageData.url;
+      plan.heroImagePhotographer = heroImageData.photographer;
+      plan.heroImagePhotographerUrl = heroImageData.photographerUrl;
     }
 
     console.log(
@@ -283,10 +285,10 @@ export async function chatWithPlanner(
 
 export async function fetchHeroImage(
   destination: string
-): Promise<string | null> {
+) {
   try {
-    const heroImage = await getUnsplashImage(destination);
-    return heroImage;
+    const heroImageData = await getUnsplashImage(destination);
+    return heroImageData;
   } catch (e) {
     console.error("Failed to fetch hero image:", e);
     return null;
@@ -306,13 +308,17 @@ export async function regeneratePlan(
 
     // If the destination changed, fetch a new image
     if (newPlan.destination !== currentPlan.destination) {
-      const heroImage = await getUnsplashImage(newPlan.destination);
-      if (heroImage) {
-        newPlan.heroImage = heroImage;
+      const heroImageData = await getUnsplashImage(newPlan.destination);
+      if (heroImageData) {
+        newPlan.heroImage = heroImageData.url;
+        newPlan.heroImagePhotographer = heroImageData.photographer;
+        newPlan.heroImagePhotographerUrl = heroImageData.photographerUrl;
       }
     } else {
         // Keep the old image if destination is the same
         newPlan.heroImage = currentPlan.heroImage;
+        newPlan.heroImagePhotographer = currentPlan.heroImagePhotographer;
+        newPlan.heroImagePhotographerUrl = currentPlan.heroImagePhotographerUrl;
     }
 
     return { success: true, data: newPlan };

@@ -51,19 +51,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-200 border-dashed text-center text-xs text-stone-500 space-y-2">
+      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-200 border-dashed text-center text-xs text-stone-500">
         <p>© 2025-2026 Tabidea. All rights reserved.</p>
-        <p>
-          Photos by{" "}
-          <a
-            href="https://unsplash.com/?utm_source=Tabidea&utm_medium=referral"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#e67e22] transition-colors underline"
-          >
-            Unsplash
-          </a>
-        </p>
       </div>
     </footer>
   );

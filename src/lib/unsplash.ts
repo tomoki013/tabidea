@@ -1,4 +1,10 @@
-export async function getUnsplashImage(query: string): Promise<string | null> {
+export type UnsplashImageData = {
+  url: string;
+  photographer: string;
+  photographerUrl: string;
+};
+
+export async function getUnsplashImage(query: string): Promise<UnsplashImageData | null> {
   console.log(`[Unsplash] Step 1: getUnsplashImage called with query: "${query}"`);
 
   const accessKey = process.env.UNSPLASH_ACCESS_KEY;
@@ -32,10 +38,20 @@ export async function getUnsplashImage(query: string): Promise<string | null> {
     console.log("[Unsplash] Step 5: Parsing response JSON...");
     const data = await response.json();
     const imageUrl = data.urls.regular;
-    console.log(`[Unsplash] Step 6: Successfully retrieved image URL: ${imageUrl}`);
-    console.log(`[Unsplash] Image details - ID: ${data.id}, Photographer: ${data.user?.name || "Unknown"}, Dimensions: ${data.width}x${data.height}`);
+    const photographerName = data.user?.name || "Unknown";
+    const photographerUsername = data.user?.username || "";
+    const photographerUrl = photographerUsername
+      ? `https://unsplash.com/@${photographerUsername}?utm_source=Tabidea&utm_medium=referral`
+      : `https://unsplash.com/?utm_source=Tabidea&utm_medium=referral`;
 
-    return imageUrl;
+    console.log(`[Unsplash] Step 6: Successfully retrieved image URL: ${imageUrl}`);
+    console.log(`[Unsplash] Image details - ID: ${data.id}, Photographer: ${photographerName}, Dimensions: ${data.width}x${data.height}`);
+
+    return {
+      url: imageUrl,
+      photographer: photographerName,
+      photographerUrl,
+    };
   } catch (error) {
     console.error("[Unsplash] Error fetching image from Unsplash:", error);
     console.error(`[Unsplash] Error details - Type: ${error instanceof Error ? error.constructor.name : typeof error}, Message: ${error instanceof Error ? error.message : String(error)}`);
