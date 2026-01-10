@@ -12,6 +12,7 @@ import { Itinerary } from "@/lib/types";
 const styles = StyleSheet.create({
   page: {
     padding: 40,
+    fontFamily: "Noto Sans JP",
     fontSize: 10,
     backgroundColor: "#ffffff",
   },

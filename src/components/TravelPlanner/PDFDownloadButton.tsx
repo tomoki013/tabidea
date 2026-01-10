@@ -22,8 +22,17 @@ export default function PDFDownloadButton({
 
       // Dynamically import PDF libraries to avoid SSR issues
       console.log("Importing PDF libraries...");
-      const { pdf } = await import("@react-pdf/renderer");
+      const { pdf, Font } = await import("@react-pdf/renderer");
       const React = await import("react");
+
+      // Register Japanese font
+      console.log("Registering Japanese font...");
+      Font.register({
+        family: "Noto Sans JP",
+        src: "/fonts/NotoSansJP-Regular.ttf",
+      });
+      console.log("Font registered successfully");
+
       const ItineraryPDFModule = await import("./ItineraryPDF");
       const ItineraryPDF = ItineraryPDFModule.default;
       console.log("PDF libraries imported successfully");
