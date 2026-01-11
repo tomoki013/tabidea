@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
+import { useChat } from "ai/react";
 import { Itinerary } from "@/lib/types";
-import { chatWithPlanner } from "@/app/actions/travel-planner";
 
 export default function TravelPlannerChat({
   itinerary,
@@ -13,55 +13,46 @@ export default function TravelPlannerChat({
   onRegenerate: (history: { role: string; text: string }[]) => void;
   isRegenerating?: boolean;
 }) {
-  const [messages, setMessages] = useState<
-    { role: "user" | "model"; text: string }[]
-  >([
-    {
-      role: "model",
-      text: "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
-    },
-  ]);
-  const [input, setInput] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
+    api: "/api/chat",
+    body: {
+      itinerary,
+    },
+    initialMessages: [
+      {
+        id: "initial",
+        role: "assistant",
+        content: "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
+      },
+    ],
+  });
+
+  // Track if user has interacted (sent at least one message)
+  const hasInteracted = messages.some((m) => m.role === "user");
 
   // Auto-scroll to bottom within chat container when messages change
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages, loading]);
+  }, [messages, isLoading]);
 
-  const handleSend = async () => {
-    if (!input.trim() || loading) return;
+  // Convert messages to the format expected by onRegenerate
+  const handleRegenerate = () => {
+    const formattedHistory = messages.map((m) => ({
+      role: m.role === "assistant" ? "model" : "user",
+      text: m.content,
+    }));
+    onRegenerate(formattedHistory);
+  };
 
-    const userMsg = input.trim();
-    const newHistory = [
-      ...messages,
-      { role: "user", text: userMsg } as { role: "user"; text: string },
-    ];
-    setMessages(newHistory);
-    setInput("");
-    setLoading(true);
-    setHasInteracted(true);
-
-    try {
-      const result = await chatWithPlanner(itinerary, userMsg);
-      setMessages((prev) => [
-        ...prev,
-        { role: "model", text: result.response },
-      ]);
-    } catch (e) {
-      console.error(e);
-      setMessages((prev) => [
-        ...prev,
-        { role: "model", text: "Error communicating with the planner." },
-      ]);
-    } finally {
-      setLoading(false);
-    }
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading || isRegenerating) return;
+    handleSubmit(e);
   };
 
   return (
@@ -77,9 +68,9 @@ export default function TravelPlannerChat({
               more about a spot.
             </p>
           )}
-          {messages.map((m, i) => (
+          {messages.map((m) => (
             <div
-              key={i}
+              key={m.id}
               className={`flex ${
                 m.role === "user" ? "justify-end" : "justify-start"
               }`}
@@ -91,32 +82,38 @@ export default function TravelPlannerChat({
                     : "bg-white border border-stone-100 text-stone-700 rounded-bl-none"
                 }`}
               >
-                {m.text}
+                {m.content}
               </div>
             </div>
           ))}
-          {loading && (
+          {isLoading && messages[messages.length - 1]?.role === "user" && (
             <div className="flex justify-start">
               <div className="bg-stone-100 text-stone-500 rounded-2xl rounded-bl-none px-5 py-3 text-sm animate-pulse">
-                Thinking...
+                考え中...
+              </div>
+            </div>
+          )}
+          {error && (
+            <div className="flex justify-start">
+              <div className="bg-red-50 text-red-600 rounded-2xl rounded-bl-none px-5 py-3 text-sm">
+                エラーが発生しました。もう一度お試しください。
               </div>
             </div>
           )}
           <div ref={messagesEndRef} />
         </div>
 
-        <div className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs">
+        <form onSubmit={onFormSubmit} className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs">
           <input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && !isRegenerating && handleSend()}
-            placeholder="e.g. Can we find a cheaper lunch option?"
+            onChange={handleInputChange}
+            placeholder="例: もっと安いランチの選択肢はありますか？"
             disabled={isRegenerating}
             className="flex-1 bg-transparent border-none px-4 py-1 text-stone-800 text-sm focus:outline-hidden placeholder:text-stone-400 disabled:opacity-50 disabled:cursor-not-allowed"
           />
           <button
-            onClick={handleSend}
-            disabled={!input.trim() || loading || isRegenerating}
+            type="submit"
+            disabled={!input.trim() || isLoading || isRegenerating}
             className="p-2.5 rounded-full bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
           >
             <svg
@@ -134,13 +131,13 @@ export default function TravelPlannerChat({
               />
             </svg>
           </button>
-        </div>
+        </form>
       </div>
 
-      {hasInteracted && !loading && (
+      {hasInteracted && !isLoading && (
         <div className="mt-4 flex justify-end animate-in fade-in slide-in-from-bottom-2">
           <button
-            onClick={() => onRegenerate(messages)}
+            onClick={handleRegenerate}
             disabled={isRegenerating}
             className="flex items-center gap-2 px-6 py-3 rounded-full bg-stone-100 border border-stone-200 text-stone-700 hover:bg-stone-200 transition-all font-bold text-sm shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
