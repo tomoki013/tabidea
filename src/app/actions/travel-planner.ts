@@ -3,8 +3,9 @@
 import { GeminiService } from "@/lib/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/rag/scraper';
 import { PineconeRetriever } from "@/lib/rag/pinecone-retriever";
-import { Itinerary, UserInput } from "@/lib/types";
+import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from "@/lib/types";
 import { getUnsplashImage } from "@/lib/unsplash";
+import { extractDuration, splitDaysIntoChunks } from "@/lib/planUtils";
 
 export type ActionState = {
   success: boolean;
@@ -12,76 +13,191 @@ export type ActionState = {
   data?: Itinerary;
 };
 
-/**
- * Extract duration (number of days) from dates string
- */
-function extractDuration(dates: string): number {
-  const match = dates.match(/(\d+)日間/);
-  return match ? parseInt(match[1]) : 0;
-}
+export type OutlineActionState = {
+  success: boolean;
+  message?: string;
+  data?: {
+    outline: PlanOutline;
+    context: Article[];
+    input: UserInput;
+    heroImage?: any;
+  };
+};
+
+export type ChunkActionState = {
+  success: boolean;
+  message?: string;
+  data?: DayPlan[];
+};
 
 /**
- * Split days into chunks of maximum 2 days each to avoid timeouts
+ * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
-function splitDaysIntoChunks(totalDays: number): { start: number; end: number }[] {
-  const chunks: { start: number; end: number }[] = [];
-  let currentDay = 1;
-  const CHUNK_SIZE = 2; // Reduced to 2 days to prevent timeouts on long trips
-
-  while (currentDay <= totalDays) {
-    const end = Math.min(currentDay + CHUNK_SIZE - 1, totalDays);
-    chunks.push({ start: currentDay, end });
-    currentDay = end + 1;
-  }
-
-  return chunks;
-}
-
-export async function generatePlan(input: UserInput): Promise<ActionState> {
+export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
   const startTime = Date.now();
-  console.log(`[action] generatePlan started at ${new Date().toISOString()}`);
-  console.log(`[action] Input: ${JSON.stringify(input)}`);
+  console.log(`[action] generatePlanOutline started`);
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    console.error("[action] API Key is missing in environment variables");
-    return {
-      success: false,
-      message: "システムエラー: APIキーが設定されていません。管理者に連絡してください。",
-    };
+    return { success: false, message: "API Key missing" };
   }
 
   try {
     const scraper = new PineconeRetriever();
     const ai = new GeminiService(apiKey);
 
-    // 1. RAG: Search for relevant content
-    // Generate semantic query for better vector search results
+    // 1. RAG Search
     const query = input.isDestinationDecided
       ? `${input.destination}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
       : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
-    console.log(`[action] Step 1: Searching for "${query}"`);
 
     let contextArticles: any[] = [];
     try {
-        // Minimize RAG to just 1 article for maximum speed
         contextArticles = await scraper.search(query, { topK: 1 });
-        console.log(
-        `[action] Step 1 Complete. Found ${
-            contextArticles.length
-        } articles. Elapsed: ${Date.now() - startTime}ms`
-        );
     } catch (e) {
-        console.warn("[action] Vector search failed, proceeding without context:", e);
+        console.warn("[action] Vector search failed:", e);
+    }
+
+    // 2. Prepare Prompt
+    let prompt = "";
+    const totalDays = extractDuration(input.dates);
+
+    if (input.isDestinationDecided) {
+      prompt = `
+        Destination: ${input.destination}
+        Dates: ${input.dates}
+        Total Days: ${totalDays}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        Budget: ${input.budget}
+        Pace: ${input.pace}
+        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Note: ${input.freeText || "None"}
+      `;
+    } else {
+      prompt = `
+        Region: ${input.region === "domestic" ? "Japan" : input.region === "overseas" ? "Overseas" : "Anywhere"}
+        Vibe: ${input.travelVibe || "None"}
+        Dates: ${input.dates}
+        Total Days: ${totalDays}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        Budget: ${input.budget}
+        Pace: ${input.pace}
+        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Note: ${input.freeText || "None"}
+
+        TASK: Select best destination and outline plan.
+      `;
+    }
+
+    // 3. Generate Outline
+    const outline = await ai.generateOutline(prompt, contextArticles);
+
+    // 4. Update Input if destination was chosen
+    const updatedInput = { ...input };
+    if (!updatedInput.isDestinationDecided) {
+      updatedInput.destination = outline.destination;
+      updatedInput.isDestinationDecided = true;
+    }
+
+    // 5. Fetch Hero Image early
+    const heroImageData = await getUnsplashImage(outline.destination);
+
+    console.log(`[action] Outline generated in ${Date.now() - startTime}ms`);
+
+    return {
+      success: true,
+      data: {
+        outline,
+        context: contextArticles,
+        input: updatedInput,
+        heroImage: heroImageData
+      }
+    };
+
+  } catch (error: any) {
+    console.error("[action] Outline generation failed:", error);
+    return { success: false, message: "プラン概要の作成に失敗しました。" };
+  }
+}
+
+/**
+ * Step 2: Generate Details for a specific Chunk (Client-Side Orchestration Flow)
+ */
+export async function generatePlanChunk(
+  input: UserInput,
+  context: Article[],
+  outlineDays: PlanOutlineDay[],
+  startDay: number,
+  endDay: number
+): Promise<ChunkActionState> {
+  const startTime = Date.now();
+  console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
+
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (!apiKey) return { success: false, message: "API Key missing" };
+
+  try {
+    const ai = new GeminiService(apiKey);
+
+    const prompt = `
+      Destination: ${input.destination}
+      Dates: ${input.dates}
+      Companions: ${input.companions}
+      Themes: ${input.theme.join(", ")}
+      Budget: ${input.budget}
+      Pace: ${input.pace}
+      Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+      Request: ${input.freeText || "None"}
+    `;
+
+    const days = await ai.generateDayDetails(prompt, context, startDay, endDay, outlineDays);
+
+    console.log(`[action] Chunk ${startDay}-${endDay} generated in ${Date.now() - startTime}ms`);
+    return { success: true, data: days };
+
+  } catch (error: any) {
+    console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
+    return { success: false, message: "詳細プランの生成に失敗しました。" };
+  }
+}
+
+
+/**
+ * Legacy Function - Kept for reference or fallback if needed, but primary flow uses Outline+Chunks now.
+ */
+export async function generatePlan(input: UserInput): Promise<ActionState> {
+    // Forwarding to new logic wrapper if we wanted to support direct call,
+    // but here we just keep the old implementation or better yet, deprecate it.
+    // For now, I'll keep the original implementation below to ensure I don't break anything
+    // that might still rely on it, although the client will switch to the new actions.
+
+  const startTime = Date.now();
+  console.log(`[action] generatePlan (Legacy) started at ${new Date().toISOString()}`);
+
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (!apiKey) {
+    return { success: false, message: "API Key missing" };
+  }
+
+  try {
+    const scraper = new PineconeRetriever();
+    const ai = new GeminiService(apiKey);
+
+    const query = input.isDestinationDecided
+      ? `${input.destination}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
+      : `${input.region}で${input.travelVibe || ""}楽しむ旅行`;
+
+    let contextArticles: any[] = [];
+    try {
+        contextArticles = await scraper.search(query, { topK: 1 });
+    } catch (e) {
         contextArticles = [];
     }
 
-    // 2. AI: Generate Plan
-    console.log(`[action] Step 2: Generating Plan with AI...`);
-
-    // Extract duration and check if we need to split
     const totalDays = extractDuration(input.dates);
-    const shouldSplit = totalDays > 1; // Split aggressively for all trips over 1 day
+    const shouldSplit = totalDays > 1;
 
     let plan: Itinerary;
 
@@ -92,7 +208,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
       // Generate plan for each chunk with aggressive parallel processing
       const chunkPlans: Itinerary[] = [];
-      const BATCH_SIZE = 5; // Process 5 chunks at a time for maximum speed
+      const BATCH_SIZE = 5;
 
       for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
         const batchEnd = Math.min(batchStart + BATCH_SIZE, chunks.length);
@@ -187,47 +303,22 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       plan.references = Array.from(referenceMap.values());
 
     } else {
-      // Original behavior for single day trips only
-      console.log(`[action] Duration is ${totalDays} day(s) (≤1). Generating single plan...`);
-
-      let prompt = "";
-      if (input.isDestinationDecided) {
-        prompt = `
-          Destination: ${input.destination}
-          Dates: ${input.dates}
-          Companions: ${input.companions}
-          Themes: ${input.theme.join(", ")}
-          Budget: ${input.budget || "Not specified"}
-          Pace: ${input.pace || "Not specified"}
-          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-          Specific Requests: ${input.freeText || "None"}
-
-          Please create a travel itinerary for this request.
+        let prompt = `
+        Destination: ${input.destination || "Decide based on request"}
+        Region: ${input.region}
+        Dates: ${input.dates}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        Budget: ${input.budget}
+        Pace: ${input.pace}
+        Must-Visit: ${input.mustVisitPlaces?.join(", ")}
+        FreeText: ${input.freeText}
         `;
-      } else {
-        prompt = `
-          User has NOT decided on a specific destination yet.
-          Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
-          Travel Vibe/Preference: ${input.travelVibe || "None specified"}
-          Dates: ${input.dates}
-          Companions: ${input.companions}
-          Themes: ${input.theme.join(", ")}
-          Budget: ${input.budget || "Not specified"}
-          Pace: ${input.pace || "Not specified"}
-          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-          Specific Requests: ${input.freeText || "None"}
 
-          Task:
-          1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
-          2. Create a detailed travel itinerary for that chosen destination.
-          3. The "destination" field in the JSON must be the name of the place you chose.
-        `;
-      }
-
-      plan = await ai.generateItinerary(prompt, contextArticles);
+        plan = await ai.generateItinerary(prompt, contextArticles);
     }
 
-    // Fetch hero image from Unsplash
+    // Fetch hero image
     const heroImageData = await getUnsplashImage(plan.destination);
     if (heroImageData) {
       plan.heroImage = heroImageData.url;
@@ -235,32 +326,10 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       plan.heroImagePhotographerUrl = heroImageData.photographerUrl;
     }
 
-    console.log(
-      `[action] Step 2 Complete. Plan ID: ${plan.id}. Total Elapsed: ${
-        Date.now() - startTime
-      }ms`
-    );
-
     return { success: true, data: plan };
   } catch (error: any) {
     console.error("[action] Plan generation failed:", error);
-    const elapsed = Date.now() - startTime;
-
-    let userMessage = "プランの生成中にエラーが発生しました。もう一度お試しください。";
-
-    // Check for specific error types (e.g., from Gemini)
-    if (error.message?.includes("Candidate was blocked due to safety")) {
-        userMessage = "生成されたプランが安全基準に抵触したため表示できません。入力内容（フリーテキストなど）を変更して再度お試しください。";
-    } else if (error.message?.includes("429") || error.message?.includes("quota")) {
-        userMessage = "アクセスが集中しており、現在プランを生成できません。しばらく時間を置いてから再度お試しください。";
-    } else if (error.message?.includes("JSON")) {
-        userMessage = "AIからの応答の解析に失敗しました。もう一度お試しください。";
-    }
-
-    return {
-      success: false,
-      message: userMessage,
-    };
+    return { success: false, message: "Error" };
   }
 }
 

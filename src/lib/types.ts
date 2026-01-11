@@ -52,3 +52,15 @@ export interface Itinerary {
   references?: Reference[];
   reference_indices?: number[]; // indices of used articles in the context array
 }
+
+export interface PlanOutlineDay {
+  day: number;
+  title: string;
+  highlight_areas: string[];
+}
+
+export interface PlanOutline {
+  destination: string;
+  description: string;
+  days: PlanOutlineDay[];
+}
