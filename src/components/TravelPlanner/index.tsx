@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserInput } from "@/lib/types";
-import { encodeInputData } from "@/lib/urlUtils";
+import { encodePlanData } from "@/lib/urlUtils";
+import { generatePlan } from "@/app/actions/travel-planner";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -174,17 +175,35 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     }, 700); // Wait for most of the animation to play before switching view
   };
 
-  const handlePlan = () => {
+  const handlePlan = async () => {
     if (!validateStep(step)) return;
 
-    // Immediately navigate to /plan page with encoded input data
-    // This avoids popup blockers by navigating synchronously on user click
-    const encoded = encodeInputData(input);
-    router.push(`/plan?input=${encoded}`);
+    // Start loading state while generating plan
+    setStatus("loading");
+    setErrorMessage("");
 
-    // Close modal if it's open
-    if (onClose) {
-      onClose();
+    try {
+      // Generate plan on the server
+      const response = await generatePlan(input);
+
+      if (response.success && response.data) {
+        // Plan generated successfully, navigate to plan page with result
+        const encoded = encodePlanData(input, response.data);
+        router.push(`/plan?q=${encoded}`);
+
+        // Close modal if it's open
+        if (onClose) {
+          onClose();
+        }
+      } else {
+        // Handle error
+        setStatus("error");
+        setErrorMessage(response.message || "プランの生成に失敗しました。もう一度お試しください。");
+      }
+    } catch (e) {
+      console.error(e);
+      setStatus("error");
+      setErrorMessage("ネットワークエラーまたはサーバータイムアウトが発生しました。");
     }
   };
 
@@ -195,6 +214,26 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
 
   if (status === "loading") {
     return <LoadingView />;
+  }
+
+  if (status === "error") {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
+        <div className="text-6xl mb-4">😢</div>
+        <p className="text-destructive font-medium text-lg">
+          {errorMessage || "エラーが発生しました"}
+        </p>
+        <button
+          onClick={() => {
+            setStatus("idle");
+            setErrorMessage("");
+          }}
+          className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
+        >
+          もう一度試す
+        </button>
+      </div>
+    );
   }
 
   // New Steps Mapping

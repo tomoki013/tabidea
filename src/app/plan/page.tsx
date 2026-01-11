@@ -4,8 +4,8 @@ import { Suspense, useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserInput, Itinerary } from "@/lib/types";
-import { decodePlanData, decodeInputData, encodePlanData } from "@/lib/urlUtils";
-import { regeneratePlan, generatePlan, fetchHeroImage } from "@/app/actions/travel-planner";
+import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
+import { regeneratePlan, fetchHeroImage } from "@/app/actions/travel-planner";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import PlanModal from "@/components/ui/PlanModal";
 import FAQSection from "@/components/landing/FAQSection";
@@ -16,7 +16,6 @@ function PlanContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const q = searchParams.get("q");
-  const inputParam = searchParams.get("input");
 
   const [input, setInput] = useState<UserInput | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
@@ -36,38 +35,7 @@ function PlanContent() {
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
     const timer = setTimeout(async () => {
-      // Case 1: input parameter exists - generate new plan
-      if (inputParam && !q) {
-        const decodedInput = decodeInputData(inputParam);
-        if (!decodedInput) {
-          setError("リクエストデータの読み込みに失敗しました。");
-          setStatus("error");
-          return;
-        }
-
-        setInput(decodedInput);
-        setStatus("loading");
-
-        try {
-          const response = await generatePlan(decodedInput);
-          if (response.success && response.data) {
-            // Update URL with the result
-            const encoded = encodePlanData(decodedInput, response.data);
-            router.replace(`/plan?q=${encoded}`);
-            // The useEffect will be triggered again with the new q parameter
-          } else {
-            setError(response.message || "プランの生成に失敗しました。");
-            setStatus("error");
-          }
-        } catch (e) {
-          console.error(e);
-          setError("ネットワークエラーまたはサーバータイムアウトが発生しました。");
-          setStatus("error");
-        }
-        return;
-      }
-
-      // Case 2: q parameter exists - display existing plan
+      // q parameter exists - display existing plan
       if (q) {
         const decoded = decodePlanData(q);
         if (decoded) {
@@ -120,7 +88,7 @@ function PlanContent() {
       previousStatus.current = status;
     }, 0);
     return () => clearTimeout(timer);
-  }, [q, inputParam, status, router]);
+  }, [q, status, router]);
 
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[],
