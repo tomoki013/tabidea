@@ -1,18 +1,16 @@
-import { GoogleGenerativeAI, GenerativeModel } from "@google/generative-ai";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { generateText } from "ai";
 import { AIService, Article } from "@/lib/ai/types";
 import { Itinerary } from "@/lib/types";
 
 export class GeminiService implements AIService {
-  private genAI: GoogleGenerativeAI;
-  private model: GenerativeModel;
+  private google: ReturnType<typeof createGoogleGenerativeAI>;
+  private modelName: string;
 
   constructor(apiKey: string) {
-    this.genAI = new GoogleGenerativeAI(apiKey);
-    const modelName =
-      (typeof process !== "undefined" && process.env.GOOGLE_MODEL_NAME) ||
-      "gemini-2.5-flash";
-    console.log(`[gemini] Service initialized. Using model: ${modelName}`);
-    this.model = this.genAI.getGenerativeModel({ model: modelName });
+    this.google = createGoogleGenerativeAI({ apiKey });
+    this.modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+    console.log(`[gemini] Service initialized. Using model: ${this.modelName}`);
   }
 
   async generateItinerary(
@@ -24,20 +22,16 @@ export class GeminiService implements AIService {
     console.log(
       `[gemini] Generating itinerary. Context articles: ${context.length}`
     );
-    const MAX_CONTENT_LENGTH = 100; // Aggressive reduction to 100 chars for maximum speed
+    const MAX_CONTENT_LENGTH = 100;
     const contextText = context
       .map((a, i) => {
-        const truncatedContent = a.content.length > MAX_CONTENT_LENGTH
-          ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
-          : a.content;
+        const truncatedContent =
+          a.content.length > MAX_CONTENT_LENGTH
+            ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
+            : a.content;
         return `[${i}] ${a.title}: ${truncatedContent}`;
       })
       .join("\n");
-
-    // System instruction containing context, instructions, examples, and schema
-    const dayRangeInfo = startDay && endDay
-      ? `\n      DAY RANGE: Generate itinerary ONLY for days ${startDay} to ${endDay}. The "day" field in the JSON must start from ${startDay} and end at ${endDay}.`
-      : "";
 
     const systemInstruction = `
       Create travel itinerary in JAPANESE.${startDay && endDay ? ` Days ${startDay}-${endDay} only.` : ""}
@@ -76,52 +70,40 @@ export class GeminiService implements AIService {
       }
     `;
 
-    // Combine system instruction and user request into single message for speed
     const fullPrompt = `${systemInstruction}
 
 USER REQUEST:
 ${prompt}`;
 
     try {
-      console.log(
-        `[gemini] Request prepared. Sending to Google Generative AI...`
-      );
+      console.log(`[gemini] Request prepared. Sending to Vercel AI SDK...`);
       const startTime = Date.now();
-      const result = await this.model.generateContent({
-        contents: [
-          {
-            role: "user",
-            parts: [{ text: fullPrompt }]
-          }
-        ],
-        generationConfig: {
-          responseMimeType: "application/json",
-          temperature: 0.1, // Minimum temperature for maximum speed
-        },
+
+      const { text } = await generateText({
+        model: this.google(this.modelName, { structuredOutputs: true }),
+        prompt: fullPrompt,
+        temperature: 0.1,
       });
-      const response = await result.response;
 
       const endTime = Date.now();
       console.log(`[gemini] Response received in ${endTime - startTime}ms.`);
-
-      let text = response.text();
       console.log(`[gemini] Response text length: ${text.length} characters.`);
 
-      // Sanitizing JSON if markdown fences are present (just in case, though MIME type should handle it)
-      text = text
+      // Sanitize JSON if markdown fences are present
+      const cleanedText = text
         .replace(/```json/g, "")
         .replace(/```/g, "")
         .trim();
 
       try {
-        const data = JSON.parse(text);
+        const data = JSON.parse(cleanedText);
 
         // Quick reference processing
         const indices = data.reference_indices || [];
         data.references = indices
           .map((idx: number) => context[idx])
           .filter(Boolean)
-          .map((a: any) => ({
+          .map((a: Article) => ({
             title: a.title,
             url: a.url,
             image: a.imageUrl || "",
@@ -131,7 +113,7 @@ ${prompt}`;
         return data as Itinerary;
       } catch (jsonError) {
         console.error(`[gemini] JSON Parse Error:`, jsonError);
-        console.error(`[gemini] Raw Response text:`, text);
+        console.error(`[gemini] Raw Response text:`, cleanedText);
         throw new Error("Failed to parse AI response as JSON");
       }
     } catch (error) {
@@ -149,13 +131,12 @@ ${prompt}`;
   ): Promise<Itinerary> {
     console.log(`[gemini] Modifying itinerary based on chat history...`);
 
-    // Extract user instructions from chat history
     const userInstructions = chatHistory
       .filter((m) => m.role === "user")
       .map((m) => m.text)
       .join("\n");
 
-    const systemPrompt = `
+    const prompt = `
         You are "Tomokichi's Travel Diary AI". You are refining an existing travel itinerary based on the user's feedback.
 
         CURRENT ITINERARY JSON:
@@ -173,23 +154,20 @@ ${prompt}`;
      `;
 
     try {
-      const result = await this.model.generateContent({
-        contents: [{ role: "user", parts: [{ text: systemPrompt }] }],
-        generationConfig: {
-          responseMimeType: "application/json",
-          temperature: 0.1,
-        },
+      const { text } = await generateText({
+        model: this.google(this.modelName, { structuredOutputs: true }),
+        prompt,
+        temperature: 0.1,
       });
-      const response = await result.response;
-      let text = response.text();
-      text = text
+
+      const cleanedText = text
         .replace(/```json/g, "")
         .replace(/```/g, "")
         .trim();
 
-      const data = JSON.parse(text);
+      const data = JSON.parse(cleanedText);
 
-      // Preserve original references if not present in new data (though AI should return them if prompt works well, let's be safe)
+      // Preserve original references if not present in new data
       if (!data.references && currentPlan.references) {
         data.references = currentPlan.references;
       }
@@ -199,42 +177,5 @@ ${prompt}`;
       console.error("Failed to modify itinerary", e);
       throw e;
     }
-  }
-
-  async chat(message: string, context: Itinerary): Promise<string> {
-    const chat = this.model.startChat({
-      history: [
-        {
-          role: "user",
-          parts: [
-            {
-              text: `
-You are a friendly travel assistant discussing a travel plan with the user.
-Current Plan Context: ${JSON.stringify(context)}
-
-Your goal is to have a light, conversational chat to understand what the user wants to change.
-Do NOT generate a new JSON plan yet. Just acknowledge the request, suggest ideas, and ask clarifying questions if needed.
-INSTRUCTIONS:
-1. Keep responses SHORT and CONCISE (aim for 1-2 sentences).
-2. Do NOT end every message with a question. Only ask if clarification is truly needed.
-3. Be helpful but efficient.
-4. Reply in Japanese.
-`,
-            },
-          ],
-        },
-        {
-          role: "model",
-          parts: [
-            {
-              text: "承知しました。プランについてのご感想や変更したい点があれば、お気軽におっしゃってくださいね。",
-            },
-          ],
-        },
-      ],
-    });
-
-    const result = await chat.sendMessage(message);
-    return result.response.text();
   }
 }

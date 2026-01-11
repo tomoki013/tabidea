@@ -21,7 +21,6 @@ export interface AIService {
     startDay?: number,
     endDay?: number
   ): Promise<Itinerary>;
-  chat(message: string, context: Itinerary): Promise<string>;
 }
 
 export interface ContentRetriever {

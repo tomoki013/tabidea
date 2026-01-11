@@ -264,25 +264,6 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
   }
 }
 
-export async function chatWithPlanner(
-  history: Itinerary,
-  userMessage: string
-): Promise<{ response: string }> {
-  const apiKey = process.env.GOOGLE_API_KEY;
-  if (!apiKey) {
-    return { response: "System Error: API Key missing" };
-  }
-
-  try {
-    const ai = new GeminiService(apiKey);
-    const reply = await ai.chat(userMessage, history);
-    return { response: reply };
-  } catch (e) {
-    console.error(e);
-    return { response: "すみません、エラーが発生しました。もう一度お試しください。" };
-  }
-}
-
 export async function fetchHeroImage(
   destination: string
 ) {

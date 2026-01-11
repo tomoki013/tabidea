@@ -1,6 +1,7 @@
 "use server";
 
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { generateText } from "ai";
 
 interface TravelInfo {
   country: string;
@@ -38,11 +39,10 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
   }
 
   try {
-    const genAI = new GoogleGenerativeAI(apiKey);
+    const google = createGoogleGenerativeAI({ apiKey });
     const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
-    const model = genAI.getGenerativeModel({ model: modelName });
 
-    const systemPrompt = `
+    const prompt = `
 あなたは旅行者向けに渡航情報を提供する専門アシスタントです。
 
 ユーザーが指定した国・地域について、以下の情報を正確に提供してください：
@@ -76,29 +76,24 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
 6. 具体的で実用的な情報を提供してください
 `;
 
-    console.log(`[travel-info] Sending request to Gemini API...`);
-    const result = await model.generateContent({
-      contents: [{ role: "user", parts: [{ text: systemPrompt }] }],
-      generationConfig: {
-        responseMimeType: "application/json",
-        temperature: 0.3,
-      },
+    console.log(`[travel-info] Sending request to Vercel AI SDK...`);
+    const { text } = await generateText({
+      model: google(modelName, { structuredOutputs: true }),
+      prompt,
+      temperature: 0.3,
     });
-
-    const response = await result.response;
-    let text = response.text();
 
     const endTime = Date.now();
     console.log(`[travel-info] Response received in ${endTime - startTime}ms`);
 
     // Clean up response
-    text = text
+    const cleanedText = text
       .replace(/```json/g, "")
       .replace(/```/g, "")
       .trim();
 
     try {
-      const data = JSON.parse(text) as TravelInfo;
+      const data = JSON.parse(cleanedText) as TravelInfo;
       console.log(`[travel-info] Successfully parsed travel info for ${data.country}`);
 
       return {
@@ -107,7 +102,7 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
       };
     } catch (jsonError) {
       console.error(`[travel-info] JSON Parse Error:`, jsonError);
-      console.error(`[travel-info] Raw Response text:`, text);
+      console.error(`[travel-info] Raw Response text:`, cleanedText);
       return {
         success: false,
         error: "AI応答の解析に失敗しました。",
