@@ -101,29 +101,51 @@ export default function ResultView({
     setEditingResult(newResult);
   };
 
-  // Move activity up within the same day
+  // Move activity up within the same day (keep times in their original positions)
   const handleMoveActivityUp = (dayIndex: number, actIndex: number) => {
     if (!editingResult || actIndex === 0) return;
     const newResult = JSON.parse(JSON.stringify(editingResult));
     const activities = newResult.days[dayIndex].activities;
+
+    // Save the times at their original positions
+    const upperTime = activities[actIndex - 1].time;
+    const lowerTime = activities[actIndex].time;
+
+    // Swap the activities
     [activities[actIndex - 1], activities[actIndex]] = [
       activities[actIndex],
       activities[actIndex - 1],
     ];
+
+    // Restore times to their original positions
+    activities[actIndex - 1].time = upperTime;
+    activities[actIndex].time = lowerTime;
+
     setEditingResult(newResult);
   };
 
-  // Move activity down within the same day
+  // Move activity down within the same day (keep times in their original positions)
   const handleMoveActivityDown = (dayIndex: number, actIndex: number) => {
     if (!editingResult) return;
     const activities = editingResult.days[dayIndex].activities;
     if (actIndex >= activities.length - 1) return;
     const newResult = JSON.parse(JSON.stringify(editingResult));
     const newActivities = newResult.days[dayIndex].activities;
+
+    // Save the times at their original positions
+    const upperTime = newActivities[actIndex].time;
+    const lowerTime = newActivities[actIndex + 1].time;
+
+    // Swap the activities
     [newActivities[actIndex], newActivities[actIndex + 1]] = [
       newActivities[actIndex + 1],
       newActivities[actIndex],
     ];
+
+    // Restore times to their original positions
+    newActivities[actIndex].time = upperTime;
+    newActivities[actIndex + 1].time = lowerTime;
+
     setEditingResult(newResult);
   };
 
