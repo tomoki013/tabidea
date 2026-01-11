@@ -37,8 +37,8 @@ const roadmapData: RoadmapItem[] = [
     status: "done",
     date: "2026.01.11",
     version: "0.3.6",
-    title: "プランの手動再生成機能",
-    description: "プラン生成後に手動でプランの生成ができるようになりました。",
+    title: "プランの手動修正機能",
+    description: "プラン生成後に手動でプランの修正ができるようになりました。",
   },
   {
     status: "done",
