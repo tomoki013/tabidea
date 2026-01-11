@@ -75,10 +75,10 @@ async function main() {
   console.log(`Total chunks to index: ${allDocs.length}`);
 
   // 3. Initialize Embeddings & Pinecone
-  const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   const modelName = "models/text-embedding-004";
   
-  if (!apiKey) throw new Error("GOOGLE_GENERATIVE_API_KEY missing");
+  if (!apiKey) throw new Error("GOOGLE_GENERATIVE_AI_API_KEY missing");
   
   const embeddings = new GoogleGenerativeAIEmbeddings({
     model: modelName,
