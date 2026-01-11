@@ -48,7 +48,7 @@ pnpm install
 ルートディレクトリに `.env.local` ファイルを作成し、以下の環境変数を設定してください。
 
 ```env
-GOOGLE_GENERATIVE_API_KEY=your_google_api_key
+GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key
 UNSPLASH_ACCESS_KEY=your_unsplash_access_key
 # PINECONE_API_KEY=your_pinecone_api_key (必要に応じて)
 ```

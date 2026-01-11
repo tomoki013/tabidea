@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const { messages, itinerary }: { messages: Message[]; itinerary: Itinerary } = await req.json();
 
-    const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     if (!apiKey) {
       return new Response(JSON.stringify({ error: "API key not configured" }), {
         status: 500,
