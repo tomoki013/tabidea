@@ -15,6 +15,8 @@ import {
   FaPlus,
   FaSave,
   FaTimes,
+  FaArrowUp,
+  FaArrowDown,
 } from "react-icons/fa";
 import { useState } from "react";
 
@@ -95,6 +97,62 @@ export default function ResultView({
       time: "12:00",
       activity: "新しいアクティビティ",
       description: "詳細を入力してください",
+    });
+    setEditingResult(newResult);
+  };
+
+  // Move activity up within the same day
+  const handleMoveActivityUp = (dayIndex: number, actIndex: number) => {
+    if (!editingResult || actIndex === 0) return;
+    const newResult = JSON.parse(JSON.stringify(editingResult));
+    const activities = newResult.days[dayIndex].activities;
+    [activities[actIndex - 1], activities[actIndex]] = [
+      activities[actIndex],
+      activities[actIndex - 1],
+    ];
+    setEditingResult(newResult);
+  };
+
+  // Move activity down within the same day
+  const handleMoveActivityDown = (dayIndex: number, actIndex: number) => {
+    if (!editingResult) return;
+    const activities = editingResult.days[dayIndex].activities;
+    if (actIndex >= activities.length - 1) return;
+    const newResult = JSON.parse(JSON.stringify(editingResult));
+    const newActivities = newResult.days[dayIndex].activities;
+    [newActivities[actIndex], newActivities[actIndex + 1]] = [
+      newActivities[actIndex + 1],
+      newActivities[actIndex],
+    ];
+    setEditingResult(newResult);
+  };
+
+  // Move day up
+  const handleMoveDayUp = (dayIndex: number) => {
+    if (!editingResult || dayIndex === 0) return;
+    const newResult = JSON.parse(JSON.stringify(editingResult));
+    [newResult.days[dayIndex - 1], newResult.days[dayIndex]] = [
+      newResult.days[dayIndex],
+      newResult.days[dayIndex - 1],
+    ];
+    // Update day numbers
+    newResult.days.forEach((day: { day: number }, index: number) => {
+      day.day = index + 1;
+    });
+    setEditingResult(newResult);
+  };
+
+  // Move day down
+  const handleMoveDayDown = (dayIndex: number) => {
+    if (!editingResult || dayIndex >= editingResult.days.length - 1) return;
+    const newResult = JSON.parse(JSON.stringify(editingResult));
+    [newResult.days[dayIndex], newResult.days[dayIndex + 1]] = [
+      newResult.days[dayIndex + 1],
+      newResult.days[dayIndex],
+    ];
+    // Update day numbers
+    newResult.days.forEach((day: { day: number }, index: number) => {
+      day.day = index + 1;
     });
     setEditingResult(newResult);
   };
@@ -300,18 +358,49 @@ export default function ResultView({
           {displayResult.days.map((day, dayIndex) => (
             <div key={day.day} className="relative">
               {/* Day Header - Sticky at top when scrolled */}
-              <div className="sticky top-0 z-30 mb-8 inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
-                <span className="text-4xl font-serif text-primary">
-                  {day.day}
-                </span>
-                <div className="flex flex-col">
-                  <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                    Day
+              <div className="sticky top-0 z-30 mb-8 flex items-center gap-4">
+                <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
+                  <span className="text-4xl font-serif text-primary">
+                    {day.day}
                   </span>
-                  <span className="text-stone-600 font-serif italic text-lg leading-none">
-                    {day.title}
-                  </span>
+                  <div className="flex flex-col">
+                    <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                      Day
+                    </span>
+                    <span className="text-stone-600 font-serif italic text-lg leading-none">
+                      {day.title}
+                    </span>
+                  </div>
                 </div>
+                {/* Day reorder buttons - Only in edit mode */}
+                {isEditing && (
+                  <div className="flex items-center gap-1 bg-white rounded-full shadow-md border border-stone-200 p-1">
+                    <button
+                      onClick={() => handleMoveDayUp(dayIndex)}
+                      disabled={dayIndex === 0}
+                      className={`p-2 rounded-full transition-colors ${
+                        dayIndex === 0
+                          ? "text-stone-300 cursor-not-allowed"
+                          : "text-stone-500 hover:text-primary hover:bg-primary/10"
+                      }`}
+                      title="前の日と入れ替え"
+                    >
+                      <FaArrowUp size={14} />
+                    </button>
+                    <button
+                      onClick={() => handleMoveDayDown(dayIndex)}
+                      disabled={dayIndex >= displayResult.days.length - 1}
+                      className={`p-2 rounded-full transition-colors ${
+                        dayIndex >= displayResult.days.length - 1
+                          ? "text-stone-300 cursor-not-allowed"
+                          : "text-stone-500 hover:text-primary hover:bg-primary/10"
+                      }`}
+                      title="次の日と入れ替え"
+                    >
+                      <FaArrowDown size={14} />
+                    </button>
+                  </div>
+                )}
               </div>
 
               {/* Activities */}
@@ -368,15 +457,52 @@ export default function ResultView({
                                 placeholder="Activity Name"
                               />
                             </div>
-                            <button
-                              onClick={() =>
-                                handleDeleteActivity(dayIndex, actIndex)
-                              }
-                              className="text-stone-400 hover:text-red-500 p-2"
-                              title="削除"
-                            >
-                              <FaTrash />
-                            </button>
+                            {/* Activity action buttons */}
+                            <div className="flex items-center gap-1">
+                              {/* Move up/down buttons */}
+                              <div className="flex flex-col gap-0.5">
+                                <button
+                                  onClick={() =>
+                                    handleMoveActivityUp(dayIndex, actIndex)
+                                  }
+                                  disabled={actIndex === 0}
+                                  className={`p-1.5 rounded transition-colors ${
+                                    actIndex === 0
+                                      ? "text-stone-300 cursor-not-allowed"
+                                      : "text-stone-400 hover:text-primary hover:bg-primary/10"
+                                  }`}
+                                  title="上に移動"
+                                >
+                                  <FaArrowUp size={12} />
+                                </button>
+                                <button
+                                  onClick={() =>
+                                    handleMoveActivityDown(dayIndex, actIndex)
+                                  }
+                                  disabled={
+                                    actIndex >= day.activities.length - 1
+                                  }
+                                  className={`p-1.5 rounded transition-colors ${
+                                    actIndex >= day.activities.length - 1
+                                      ? "text-stone-300 cursor-not-allowed"
+                                      : "text-stone-400 hover:text-primary hover:bg-primary/10"
+                                  }`}
+                                  title="下に移動"
+                                >
+                                  <FaArrowDown size={12} />
+                                </button>
+                              </div>
+                              {/* Delete button */}
+                              <button
+                                onClick={() =>
+                                  handleDeleteActivity(dayIndex, actIndex)
+                                }
+                                className="text-stone-400 hover:text-red-500 p-2"
+                                title="削除"
+                              >
+                                <FaTrash />
+                              </button>
+                            </div>
                           </div>
                           <textarea
                             value={act.description}
