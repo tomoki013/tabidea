@@ -4,7 +4,6 @@ import {
   Page,
   Text,
   View,
-  Image,
   StyleSheet,
 } from "@react-pdf/renderer";
 import { Itinerary } from "@/lib/types";
@@ -59,22 +58,7 @@ const styles = StyleSheet.create({
     color: "#6b7280",
     marginTop: 4,
   },
-  // Hero Image
-  heroImageContainer: {
-    height: 200,
-    width: "100%",
-    marginBottom: 20,
-    borderRadius: 4,
-    overflow: "hidden",
-    borderWidth: 4,
-    borderColor: "#ffffff",
-    backgroundColor: "#e5e7eb", // Placeholder color
-  },
-  heroImage: {
-    width: "100%",
-    height: "100%",
-    objectFit: "cover",
-  },
+  // Hero Image styles removed
   description: {
     fontSize: 10,
     color: "#4b5563",
@@ -219,12 +203,7 @@ interface ItineraryPDFProps {
 }
 
 const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
-  // Resolve hero image URL
-  // If it's a relative path, we might need to prepend the origin, but @react-pdf usually handles relative paths if the browser context is correct.
-  // Safest is to pass it as is if it starts with http, or ensure it works locally.
-  const heroImageSrc = itinerary.heroImage || "/images/eiffel-tower-and-sunset.jpg";
-
-  // Note: For Unsplash images, they usually have CORS enabled.
+  // Hero image support removed per request
 
   return (
     <Document>
@@ -246,13 +225,7 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
           </View>
         </View>
 
-        {/* Hero Image */}
-        {heroImageSrc && (
-          <View style={styles.heroImageContainer}>
-             {/* @ts-ignore - Image src type compatibility */}
-            <Image src={heroImageSrc} style={styles.heroImage} />
-          </View>
-        )}
+        {/* Hero Image section removed */}
 
         <Text style={styles.description}>{itinerary.description}</Text>
 
