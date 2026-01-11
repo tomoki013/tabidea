@@ -232,6 +232,16 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         >
           もう一度試す
         </button>
+        <p className="text-stone-600 text-sm mt-2">
+          問題が解決しない場合は、
+          <a
+            href="/contact"
+            className="text-primary hover:underline font-medium ml-1"
+          >
+            お問い合わせページ
+          </a>
+          からご連絡ください。
+        </p>
       </div>
     );
   }

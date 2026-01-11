@@ -97,6 +97,15 @@ export default function TravelPlannerChat({
             <div className="flex justify-start">
               <div className="bg-red-50 text-red-600 rounded-2xl rounded-bl-none px-5 py-3 text-sm">
                 エラーが発生しました。もう一度お試しください。
+                <br />
+                問題が解決しない場合は、
+                <a
+                  href="/contact"
+                  className="underline font-medium ml-1"
+                >
+                  お問い合わせページ
+                </a>
+                からご連絡ください。
               </div>
             </div>
           )}
