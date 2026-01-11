@@ -29,7 +29,7 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
   const startTime = Date.now();
   console.log(`[travel-info] getTravelInfo started for country: ${country}`);
 
-  const apiKey = process.env.GOOGLE_API_KEY;
+  const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
   if (!apiKey) {
     console.error("[travel-info] API Key is missing in environment variables");
     return {

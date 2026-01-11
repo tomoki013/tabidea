@@ -42,7 +42,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
   console.log(`[action] generatePlan started at ${new Date().toISOString()}`);
   console.log(`[action] Input: ${JSON.stringify(input)}`);
 
-  const apiKey = process.env.GOOGLE_API_KEY;
+  const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
   if (!apiKey) {
     console.error("[action] API Key is missing in environment variables");
     return {
@@ -280,7 +280,7 @@ export async function regeneratePlan(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]
 ): Promise<ActionState> {
-  const apiKey = process.env.GOOGLE_API_KEY;
+  const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
   if (!apiKey) return { success: false, message: "API Key missing" };
 
   try {

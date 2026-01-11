@@ -13,7 +13,7 @@ export class PineconeRetriever implements ContentRetriever {
   }
 
   private async init() {
-    const apiKey = process.env.GOOGLE_API_KEY;
+    const apiKey = process.env.GOOGLE_GENERATIVE_API_KEY;
     const pineconeApiKey = process.env.PINECONE_API_KEY;
     const pineconeIndex = process.env.PINECONE_INDEX;
 

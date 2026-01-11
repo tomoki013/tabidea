@@ -54,7 +54,7 @@ src/
 ## Environment Variables
 
 Required for AI and RAG features:
-- `GOOGLE_API_KEY` - Google AI API key for Gemini
+- `GOOGLE_GENERATIVE_API_KEY` - Google AI API key for Gemini
 - `GOOGLE_MODEL_NAME` - Model name (defaults to `gemini-2.5-flash`)
 - `PINECONE_API_KEY` - Pinecone API key
 - `PINECONE_INDEX` - Pinecone index name
