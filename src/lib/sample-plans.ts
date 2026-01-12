@@ -200,12 +200,62 @@ export function filterSamplePlansByDays(days: number | null): SamplePlan[] {
 }
 
 /**
- * 全てのユニークなタグを取得
+ * 地域タグのリスト（都道府県・地域名）
+ */
+export const regionTags = [
+  "北海道",
+  "東京",
+  "神奈川",
+  "石川",
+  "京都",
+  "奈良",
+  "広島",
+  "沖縄",
+];
+
+/**
+ * 全てのユニークなタグを取得（地域タグを除く）
  */
 export function getAllTags(): string[] {
   const tagSet = new Set<string>();
   samplePlans.forEach((plan) => {
-    plan.tags.forEach((tag) => tagSet.add(tag));
+    plan.tags.forEach((tag) => {
+      if (!regionTags.includes(tag)) {
+        tagSet.add(tag);
+      }
+    });
   });
   return Array.from(tagSet).sort();
+}
+
+/**
+ * プランに含まれる地域タグを取得
+ */
+export function getAllRegions(): string[] {
+  const regionSet = new Set<string>();
+  samplePlans.forEach((plan) => {
+    plan.tags.forEach((tag) => {
+      if (regionTags.includes(tag)) {
+        regionSet.add(tag);
+      }
+    });
+  });
+  return Array.from(regionSet);
+}
+
+/**
+ * 地域からエリア名を取得（グルーピング用）
+ */
+export function getAreaFromRegion(region: string): string {
+  const areaMap: Record<string, string> = {
+    北海道: "北海道",
+    東京: "関東",
+    神奈川: "関東",
+    石川: "北陸",
+    京都: "関西",
+    奈良: "関西",
+    広島: "中国",
+    沖縄: "沖縄",
+  };
+  return areaMap[region] || region;
 }

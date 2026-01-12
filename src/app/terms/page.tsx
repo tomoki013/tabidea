@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PolicyLink from "@/components/ui/PolicyLink";
+import HighlightBox from "@/components/ui/HighlightBox";
 
 export const metadata: Metadata = {
   title: "利用規約",
@@ -38,11 +39,8 @@ export default function TermsOfService() {
             <p>
               当サービスは、人工知能（AI）技術を用いて旅行プランの提案、情報の検索、および整理を行うサービスです。
             </p>
-            <div className="mt-3 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg space-y-2">
-              <p>
-                <strong>【重要事項】</strong>
-              </p>
-              <ul className="list-disc pl-6">
+            <HighlightBox variant="info" title="【重要事項】" className="mt-3">
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>情報の提供のみを目的としています：</strong>
                   当サービスは旅行代理店ではありません。旅行の手配（航空券、宿泊施設、ツアー、交通機関等の予約・契約等）は行いません。
@@ -52,7 +50,7 @@ export default function TermsOfService() {
                   提示される旅行プランや情報は、AIが統計データや学習に基づいて生成した推測情報であり、その正確性、完全性、実現可能性を保証するものではありません。
                 </li>
               </ul>
-            </div>
+            </HighlightBox>
           </section>
 
           <section>
@@ -107,10 +105,10 @@ export default function TermsOfService() {
             <p className="mb-4">
               当サービスは、ユーザーに対し、本サービスの信頼性、正確性、適法性、有用性、第三者の権利侵害の有無等について、明示的にも黙示的にも一切保証しません。
             </p>
-            <div className="p-4 bg-red-50 dark:bg-red-900/20 rounded-lg text-red-800 dark:text-red-200">
-              <p className="font-bold mb-2">
-                以下の事項について、当サービスは一切の責任を負いません。
-              </p>
+            <HighlightBox
+              variant="danger"
+              title="以下の事項について、当サービスは一切の責任を負いません。"
+            >
               <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>AI生成情報の誤り：</strong>
@@ -129,7 +127,7 @@ export default function TermsOfService() {
                   通信回線の障害、システムメンテナンス、サイバー攻撃等によるサービスの停止・中断・遅延・データ消失によってユーザーに生じた損害。
                 </li>
               </ul>
-            </div>
+            </HighlightBox>
             <p className="mt-4">
               いかなる場合であっても、当サービスがユーザーに対して負う損害賠償責任は、当サービスの故意または重過失による場合を除き、免責されるものとします。また、責任を負う場合であっても、通常生ずべき直接かつ現実の損害に限られるものとします。
             </p>

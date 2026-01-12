@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PolicyLink from "@/components/ui/PolicyLink";
+import HighlightBox from "@/components/ui/HighlightBox";
 
 export const metadata: Metadata = {
   title: "AIポリシー",
@@ -71,11 +72,11 @@ export default function AiPolicy() {
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
               4. AI生成情報の正確性と免責事項
             </h2>
-            <div className="p-4 bg-orange-50 dark:bg-orange-900/20 rounded-lg border border-orange-100 dark:border-orange-800">
-              <p className="font-bold mb-2 text-orange-800 dark:text-orange-200">
-                AIの特性上、以下の点にご注意ください。
-              </p>
-              <ul className="list-disc pl-6 space-y-2 text-orange-900 dark:text-orange-100">
+            <HighlightBox
+              variant="warning"
+              title="AIの特性上、以下の点にご注意ください。"
+            >
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <strong>情報の不正確性（ハルシネーション）：</strong>{" "}
                   AIは、もっともらしいが事実と異なる情報（存在しない観光地、誤った営業時間、架空の交通手段など）を生成する可能性があります。
@@ -89,7 +90,7 @@ export default function AiPolicy() {
                   AIの学習データに含まれるバイアスにより、生成されるプランに偏りが生じる場合があります。
                 </li>
               </ul>
-            </div>
+            </HighlightBox>
             <p className="mt-4">
               当サービスおよび運営者は、AIが生成した情報の正確性、完全性、有用性、安全性等について、いかなる保証も行いません。
               当該情報の利用に起因してユーザーに生じた損害について、一切の責任を負いかねます。

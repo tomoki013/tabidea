@@ -3,14 +3,59 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaCalendarAlt, FaUsers, FaMapMarkerAlt } from "react-icons/fa";
-import { SamplePlan } from "@/lib/sample-plans";
+import { SamplePlan, regionTags } from "@/lib/sample-plans";
 
 interface SamplePlanCardProps {
   plan: SamplePlan;
   index: number;
 }
 
+// タグの装飾情報
+const tagDecorations: Record<string, { icon: string; bg: string; text: string; border: string }> = {
+  // 同行者
+  家族旅行: { icon: "👨‍👩‍👧‍👦", bg: "bg-blue-50", text: "text-blue-700", border: "border-blue-200" },
+  カップル: { icon: "💑", bg: "bg-pink-50", text: "text-pink-700", border: "border-pink-200" },
+  友人旅行: { icon: "👫", bg: "bg-purple-50", text: "text-purple-700", border: "border-purple-200" },
+  一人旅: { icon: "🚶", bg: "bg-indigo-50", text: "text-indigo-700", border: "border-indigo-200" },
+  // 季節
+  春: { icon: "🌸", bg: "bg-pink-50", text: "text-pink-700", border: "border-pink-200" },
+  夏: { icon: "☀️", bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+  秋: { icon: "🍁", bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
+  冬: { icon: "❄️", bg: "bg-cyan-50", text: "text-cyan-700", border: "border-cyan-200" },
+  通年: { icon: "📅", bg: "bg-stone-50", text: "text-stone-700", border: "border-stone-200" },
+  // テーマ
+  グルメ: { icon: "🍽️", bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
+  文化体験: { icon: "🏛️", bg: "bg-violet-50", text: "text-violet-700", border: "border-violet-200" },
+  アート: { icon: "🎨", bg: "bg-fuchsia-50", text: "text-fuchsia-700", border: "border-fuchsia-200" },
+  ビーチ: { icon: "🏖️", bg: "bg-cyan-50", text: "text-cyan-700", border: "border-cyan-200" },
+  リゾート: { icon: "🌴", bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
+  温泉: { icon: "♨️", bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200" },
+  リラックス: { icon: "🧘", bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200" },
+  世界遺産: { icon: "🏰", bg: "bg-amber-50", text: "text-amber-700", border: "border-amber-200" },
+  // 地域
+  北海道: { icon: "🗻", bg: "bg-sky-50", text: "text-sky-700", border: "border-sky-200" },
+  東京: { icon: "🗼", bg: "bg-slate-50", text: "text-slate-700", border: "border-slate-200" },
+  神奈川: { icon: "⛩️", bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200" },
+  石川: { icon: "🏯", bg: "bg-yellow-50", text: "text-yellow-700", border: "border-yellow-200" },
+  京都: { icon: "⛩️", bg: "bg-red-50", text: "text-red-700", border: "border-red-200" },
+  奈良: { icon: "🦌", bg: "bg-orange-50", text: "text-orange-700", border: "border-orange-200" },
+  広島: { icon: "🕊️", bg: "bg-rose-50", text: "text-rose-700", border: "border-rose-200" },
+  沖縄: { icon: "🌺", bg: "bg-teal-50", text: "text-teal-700", border: "border-teal-200" },
+};
+
+const defaultTagStyle = {
+  icon: "🏷️",
+  bg: "bg-stone-50",
+  text: "text-stone-600",
+  border: "border-stone-200",
+};
+
 export default function SamplePlanCard({ plan, index }: SamplePlanCardProps) {
+  // 地域タグとその他のタグを分離して表示順序を整理
+  const regionTag = plan.tags.find(tag => regionTags.includes(tag));
+  const otherTags = plan.tags.filter(tag => !regionTags.includes(tag));
+  const displayTags = regionTag ? [regionTag, ...otherTags] : otherTags;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -53,18 +98,22 @@ export default function SamplePlanCard({ plan, index }: SamplePlanCardProps) {
             </div>
 
             {/* Tags */}
-            <div className="flex flex-wrap gap-2">
-              {plan.tags.slice(0, 4).map((tag, tagIndex) => (
-                <span
-                  key={tagIndex}
-                  className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-[#e67e22]/10 text-[#e67e22] border border-[#e67e22]/20"
-                >
-                  {tag}
-                </span>
-              ))}
-              {plan.tags.length > 4 && (
-                <span className="inline-block px-2.5 py-1 text-xs font-medium rounded-full bg-stone-100 text-stone-500">
-                  +{plan.tags.length - 4}
+            <div className="flex flex-wrap gap-1.5">
+              {displayTags.slice(0, 4).map((tag, tagIndex) => {
+                const decoration = tagDecorations[tag] || defaultTagStyle;
+                return (
+                  <span
+                    key={tagIndex}
+                    className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-lg border ${decoration.bg} ${decoration.text} ${decoration.border}`}
+                  >
+                    <span className="text-sm">{decoration.icon}</span>
+                    <span>{tag}</span>
+                  </span>
+                );
+              })}
+              {displayTags.length > 4 && (
+                <span className="inline-flex items-center px-2 py-1 text-xs font-medium rounded-lg bg-stone-100 text-stone-500 border border-stone-200">
+                  +{displayTags.length - 4}
                 </span>
               )}
             </div>
