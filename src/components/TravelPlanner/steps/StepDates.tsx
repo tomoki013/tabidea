@@ -17,8 +17,20 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
   };
 
   const parseDuration = (str: string) => {
-    const match = str.match(/(\d+)日間/); // Matches "X日間" or "YYYY-MM-DDからX日間"
-    return match ? parseInt(match[1]) : 3;
+    // Matches "X日間" or "X泊Y日" format
+    const daysMatch = str.match(/(\d+)日間/);
+    if (daysMatch) return parseInt(daysMatch[1]);
+
+    const nightsMatch = str.match(/(\d+)泊(\d+)日/);
+    if (nightsMatch) return parseInt(nightsMatch[2]); // Return days (泊+1)
+
+    return 3;
+  };
+
+  const parseDisplayFormat = (str: string): "days" | "nights" => {
+    // Check if the string uses "X泊Y日" format
+    if (/\d+泊\d+日/.test(str)) return "nights";
+    return "days";
   };
 
   const isDateUndecidedCheck = (str: string) => {
@@ -26,21 +38,27 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
   };
 
   const isDurationUndecidedCheck = (str: string) => {
-     // If it explicitly says undecided or doesn't have "X日間" pattern
-     // But wait, "X日間" matches even if we have date.
-     // If we have "X日間", duration is decided.
-     // If we don't have "X日間", it's undecided.
-     // However, "時期は未定" has neither.
-     // "2023-01-01出発" has date but no duration.
-     return !/(\d+)日間/.test(str);
+     // If it explicitly says undecided or doesn't have "X日間" or "X泊Y日" pattern
+     // If we have either pattern, duration is decided.
+     return !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
   };
 
   // State initialization
   const [startDate, setStartDate] = useState(() => parseDate(input.dates));
   const [duration, setDuration] = useState(() => parseDuration(input.dates));
+  const [displayFormat, setDisplayFormat] = useState<"days" | "nights">(() => parseDisplayFormat(input.dates));
 
   const [isDateUndecided, setIsDateUndecided] = useState(() => isDateUndecidedCheck(input.dates));
   const [isDurationUndecided, setIsDurationUndecided] = useState(() => isDurationUndecidedCheck(input.dates));
+
+  // Helper to format duration based on displayFormat
+  const formatDuration = (days: number) => {
+    if (displayFormat === "nights") {
+      if (days === 1) return "日帰り";
+      return `${days - 1}泊${days}日`;
+    }
+    return `${days}日間`;
+  };
 
   // Update parent whenever state changes
   useEffect(() => {
@@ -49,7 +67,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
     if (isDateUndecided && isDurationUndecided) {
       result = "時期は未定";
     } else if (isDateUndecided && !isDurationUndecided) {
-      result = `${duration}日間`;
+      result = formatDuration(duration);
     } else if (!isDateUndecided && isDurationUndecided) {
       if (startDate) {
         result = `${startDate}出発 (期間未定)`;
@@ -60,9 +78,9 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
     } else {
       // Both decided
       if (startDate) {
-        result = `${startDate}から${duration}日間`;
+        result = `${startDate}から${formatDuration(duration)}`;
       } else {
-        result = `${duration}日間`; // Fallback
+        result = formatDuration(duration); // Fallback
       }
     }
 
@@ -70,7 +88,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
     if (result !== input.dates) {
        onChange({ dates: result });
     }
-  }, [startDate, duration, isDateUndecided, isDurationUndecided]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [startDate, duration, displayFormat, isDateUndecided, isDurationUndecided]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleDurationChange = (delta: number) => {
     const newDur = Math.max(1, Math.min(30, duration + delta));
@@ -135,7 +153,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
         <div className="space-y-3">
              <div className="flex items-center justify-between">
                 <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
-                    <span className="text-lg">⏱️</span> 旅行日数 (泊数)
+                    <span className="text-lg">⏱️</span> 旅行日数
                 </label>
                 <div className="flex items-center gap-2">
                     <input
@@ -151,6 +169,30 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                 </div>
             </div>
 
+            {/* Display Format Toggle */}
+            <div className={`flex justify-center gap-1 transition-all duration-300 ${isDurationUndecided ? "opacity-40 pointer-events-none" : ""}`}>
+                <button
+                    onClick={() => setDisplayFormat("days")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-l-md border transition-all ${
+                        displayFormat === "days"
+                            ? "bg-primary text-white border-primary"
+                            : "bg-stone-50 text-stone-500 border-stone-300 hover:bg-stone-100"
+                    }`}
+                >
+                    ○日間
+                </button>
+                <button
+                    onClick={() => setDisplayFormat("nights")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-r-md border-t border-b border-r transition-all ${
+                        displayFormat === "nights"
+                            ? "bg-primary text-white border-primary"
+                            : "bg-stone-50 text-stone-500 border-stone-300 hover:bg-stone-100"
+                    }`}
+                >
+                    ○泊○日
+                </button>
+            </div>
+
             <div className={`flex items-center gap-4 transition-all duration-300 ${isDurationUndecided ? "opacity-40 pointer-events-none grayscale" : ""}`}>
                 <button
                     onClick={() => handleDurationChange(-1)}
@@ -162,12 +204,20 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                 </button>
 
                 <div className="flex-1 bg-stone-50 border border-stone-300 rounded-md px-4 py-3 flex items-center justify-center relative">
-                    <span className="text-2xl font-bold font-serif text-foreground">
-                        {duration}
-                    </span>
-                    <span className="ml-2 text-sm text-stone-500 font-bold mt-1">
-                        日間
-                    </span>
+                    {displayFormat === "days" ? (
+                        <>
+                            <span className="text-2xl font-bold font-serif text-foreground">
+                                {duration}
+                            </span>
+                            <span className="ml-2 text-sm text-stone-500 font-bold mt-1">
+                                日間
+                            </span>
+                        </>
+                    ) : (
+                        <span className="text-xl font-bold font-serif text-foreground">
+                            {duration === 1 ? "日帰り" : `${duration - 1}泊${duration}日`}
+                        </span>
+                    )}
                 </div>
 
                 <button
@@ -183,7 +233,10 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
             <div className="text-center h-6">
                  {!isDurationUndecided && (
                     <span className="text-xs text-stone-400 font-mono block animate-in fade-in duration-300">
-                        {duration === 1 ? "日帰り" : `${duration - 1}泊${duration}日`}
+                        {displayFormat === "days"
+                            ? (duration === 1 ? "日帰り" : `${duration - 1}泊${duration}日`)
+                            : `${duration}日間`
+                        }
                     </span>
                  )}
             </div>

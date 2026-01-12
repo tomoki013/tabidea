@@ -35,6 +35,13 @@ const roadmapData: RoadmapItem[] = [
   },
   {
     status: "done",
+    date: "2026.01.13",
+    version: "0.3.7",
+    title: "旅程サンプル集の公開",
+    description: "様々な旅行プランのサンプルを閲覧できる旅程サンプル集を公開しました。プラン作成の参考にご活用ください。",
+  },
+  {
+    status: "done",
     date: "2026.01.11",
     version: "0.3.6",
     title: "プランの手動修正機能",
