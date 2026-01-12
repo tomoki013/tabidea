@@ -1,12 +1,15 @@
 "use client";
 
-import { Suspense, useEffect, useState, useRef } from "react";
+import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserInput, Itinerary } from "@/lib/types";
+import { UserInput, Itinerary, DayPlan } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
-import { regeneratePlan, fetchHeroImage } from "@/app/actions/travel-planner";
+import { regeneratePlan, fetchHeroImage, generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
+import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils";
+import { getSamplePlanById } from "@/lib/sample-plans";
 import ResultView from "@/components/TravelPlanner/ResultView";
+import LoadingView from "@/components/TravelPlanner/LoadingView";
 import PlanModal from "@/components/ui/PlanModal";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
@@ -16,12 +19,13 @@ function PlanContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const q = searchParams.get("q");
+  const sampleId = searchParams.get("sample");
 
   const [input, setInput] = useState<UserInput | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
   const [error, setError] = useState<string>("");
   const [status, setStatus] = useState<
-    "loading" | "idle" | "regenerating" | "error"
+    "loading" | "idle" | "regenerating" | "generating" | "error"
   >("loading");
 
   // State for request editing modal
@@ -31,6 +35,72 @@ function PlanContent() {
   // Track if this is the initial load to avoid scrolling on first render
   const isInitialLoad = useRef(true);
   const previousStatus = useRef<typeof status>("loading");
+  const hasStartedGeneration = useRef(false);
+
+  // Generate plan from sample
+  const generateFromSample = useCallback(async (sampleInput: UserInput) => {
+    setStatus("generating");
+    setError("");
+
+    try {
+      // Step 1: Generate Master Outline
+      const outlineResponse = await generatePlanOutline(sampleInput);
+
+      if (!outlineResponse.success || !outlineResponse.data) {
+        throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
+      }
+
+      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
+
+      // Step 2: Parallel Chunk Generation
+      const totalDays = extractDuration(updatedInput.dates);
+      const chunks = splitDaysIntoChunks(totalDays);
+
+      const chunkPromises = chunks.map(chunk => {
+        const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
+        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end);
+      });
+
+      const chunkResults = await Promise.all(chunkPromises);
+
+      const failedChunk = chunkResults.find(r => !r.success);
+      if (failedChunk) {
+        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
+      }
+
+      // Step 3: Merge Results
+      const mergedDays: DayPlan[] = chunkResults.flatMap(r => r.data || []);
+      mergedDays.sort((a, b) => a.day - b.day);
+
+      // Construct Final Itinerary
+      const simpleId = Math.random().toString(36).substring(2, 15);
+
+      const finalPlan: Itinerary = {
+        id: simpleId,
+        destination: outline.destination,
+        description: outline.description,
+        heroImage: heroImage?.url || null,
+        heroImagePhotographer: heroImage?.photographer || null,
+        heroImagePhotographerUrl: heroImage?.photographerUrl || null,
+        days: mergedDays,
+        references: context.map(c => ({
+          title: c.title,
+          url: c.url,
+          image: c.imageUrl,
+          snippet: c.snippet
+        }))
+      };
+
+      // Redirect to result URL
+      const encoded = encodePlanData(updatedInput, finalPlan);
+      router.replace(`/plan?q=${encoded}`);
+
+    } catch (e: unknown) {
+      console.error(e);
+      setStatus("error");
+      setError(e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。");
+    }
+  }, [router]);
 
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
@@ -78,7 +148,23 @@ function PlanContent() {
           );
           setStatus("error");
         }
-      } else {
+      } else if (sampleId && !hasStartedGeneration.current) {
+        // sample parameter exists - generate plan from sample
+        hasStartedGeneration.current = true;
+        const samplePlan = getSamplePlanById(sampleId);
+        if (samplePlan) {
+          // Prepare input with default values for missing fields
+          const sampleInput: UserInput = {
+            ...samplePlan.input,
+            hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
+            mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
+          };
+          generateFromSample(sampleInput);
+        } else {
+          setError("指定されたサンプルプランが見つかりませんでした。");
+          setStatus("error");
+        }
+      } else if (!sampleId) {
         // No parameters
         setError("プランが見つかりませんでした。URLを確認してください。");
         setStatus("error");
@@ -88,7 +174,7 @@ function PlanContent() {
       previousStatus.current = status;
     }, 0);
     return () => clearTimeout(timer);
-  }, [q, status, router]);
+  }, [q, sampleId, status, router, generateFromSample]);
 
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[],
@@ -139,18 +225,44 @@ function PlanContent() {
     );
   }
 
+  if (status === "generating") {
+    return <LoadingView />;
+  }
+
   if (status === "error" || !result || !input) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center">
-        <p className="text-destructive font-medium">
+      <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
+        <div className="text-6xl mb-4">😢</div>
+        <p className="text-destructive font-medium text-lg">
           {error || "エラーが発生しました"}
         </p>
+        {sampleId && (
+          <button
+            onClick={() => {
+              hasStartedGeneration.current = false;
+              setStatus("loading");
+            }}
+            className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
+          >
+            もう一度試す
+          </button>
+        )}
         <Link
           href="/"
-          className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+          className="px-4 py-2 text-stone-600 hover:text-primary transition-colors"
         >
           トップに戻る
         </Link>
+        <p className="text-stone-600 text-sm mt-2">
+          問題が解決しない場合は、
+          <a
+            href="/contact"
+            className="text-primary hover:underline font-medium ml-1"
+          >
+            お問い合わせページ
+          </a>
+          からご連絡ください。
+        </p>
       </div>
     );
   }

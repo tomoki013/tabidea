@@ -6,8 +6,30 @@ import FeatureSection from "@/components/landing/FeatureSection";
 import UsageGuideHero from "@/components/landing/UsageGuideHero";
 import ExampleSection from "@/components/landing/ExampleSection";
 import FAQSection from "@/components/landing/FAQSection";
+import { getSamplePlanById } from "@/lib/sample-plans";
+import { UserInput } from "@/lib/types";
 
-export default function Home() {
+interface HomeProps {
+  searchParams: Promise<{ sample?: string }>;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const { sample } = await searchParams;
+
+  // Get sample plan input if sample ID is provided
+  let initialInput: UserInput | null = null;
+  if (sample) {
+    const samplePlan = getSamplePlanById(sample);
+    if (samplePlan) {
+      // Set hasMustVisitPlaces to false if not defined (for wizard validation)
+      initialInput = {
+        ...samplePlan.input,
+        hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
+        mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
+      };
+    }
+  }
+
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1 w-full flex flex-col items-center">
@@ -23,7 +45,7 @@ export default function Home() {
               </div>
             }
           >
-            <TravelPlanner />
+            <TravelPlanner initialInput={initialInput} initialStep={initialInput ? 1 : undefined} />
           </Suspense>
         </HeroSection>
 
