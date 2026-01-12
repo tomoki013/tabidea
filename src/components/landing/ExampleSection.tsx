@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const examples = [
   {
@@ -63,6 +64,28 @@ export default function ExampleSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* CTA to Sample Plans Page */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-12"
+        >
+          <div className="inline-block">
+            <div className="mb-3 font-hand text-stone-600 text-base">
+              もっと色々なプランを見てみませんか？
+            </div>
+            <Link
+              href="/samples"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-white text-[#e67e22] font-bold rounded-full border-2 border-[#e67e22] border-dashed hover:bg-[#e67e22] hover:text-white transition-all hover:scale-105 shadow-sm group"
+            >
+              <span>サンプルプランをもっと見る</span>
+              <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

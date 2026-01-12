@@ -25,6 +25,7 @@ export default function Footer() {
             <li><Link href="/" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">ホーム</Link></li>
             <li><Link href="/about" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">Tabideaについて</Link></li>
             <li><Link href="/features" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">機能紹介・使い方</Link></li>
+            <li><Link href="/samples" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">サンプルプラン集</Link></li>
             {/* <li><Link href="/travel-info" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">渡航情報・安全ガイド</Link></li> */}
             <li><Link href="/updates" className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline">アップデート情報</Link></li>
           </ul>
