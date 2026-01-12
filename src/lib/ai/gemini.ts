@@ -1,7 +1,7 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { AIService, Article } from "@/lib/ai/types";
-import { Itinerary } from "@/lib/types";
+import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay } from "@/lib/types";
 
 export class GeminiService implements AIService {
   private google: ReturnType<typeof createGoogleGenerativeAI>;
@@ -13,6 +13,7 @@ export class GeminiService implements AIService {
     console.log(`[gemini] Service initialized. Using model: ${this.modelName}`);
   }
 
+  // Legacy method - can be kept for fallback or specific uses
   async generateItinerary(
     prompt: string,
     context: Article[],
@@ -175,6 +176,154 @@ ${prompt}`;
       return data as Itinerary;
     } catch (e) {
       console.error("Failed to modify itinerary", e);
+      throw e;
+    }
+  }
+
+  /**
+   * Step 1: Generate Master Outline (No detailed activities yet)
+   * Focus on selecting destination (if needed) and high-level routing.
+   */
+  async generateOutline(
+    prompt: string,
+    context: Article[]
+  ): Promise<PlanOutline> {
+    console.log(`[gemini] Generating Plan Outline...`);
+
+    const MAX_CONTENT_LENGTH = 150;
+    const contextText = context
+      .map((a, i) => {
+        const truncatedContent =
+          a.content.length > MAX_CONTENT_LENGTH
+            ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
+            : a.content;
+        return `[${i}] ${a.title}: ${truncatedContent}`;
+      })
+      .join("\n");
+
+    const systemInstruction = `
+      Create a Travel Plan Outline in JAPANESE.
+      ${contextText ? `Context: ${contextText}` : ""}
+
+      Rules:
+      1. If destination is NOT specified, choose the BEST destination based on User Request.
+      2. Plan the route for ALL days.
+      3. For each day, list the "highlight_areas" (e.g. ["Asakusa", "Sky Tree"]).
+      4. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
+      5. Return JSON only.
+
+      JSON:
+      {
+        "destination": "string (The chosen destination name)",
+        "description": "string (Overview of the entire trip in Japanese)",
+        "days": [
+          {
+            "day": number,
+            "title": "string (Theme/Area of the day)",
+            "highlight_areas": ["string", "string"]
+          }
+        ]
+      }
+    `;
+
+    const fullPrompt = `${systemInstruction}
+
+USER REQUEST:
+${prompt}`;
+
+    try {
+      const { text } = await generateText({
+        model: this.google(this.modelName, { structuredOutputs: true }),
+        prompt: fullPrompt,
+        temperature: 0.2, // Slightly higher for creative destination choice
+      });
+
+      const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
+      return JSON.parse(cleanedText) as PlanOutline;
+    } catch (e) {
+      console.error("[gemini] Outline generation failed:", e);
+      throw e;
+    }
+  }
+
+  /**
+   * Step 2: Generate Detailed Activities for specific days based on Outline
+   */
+  async generateDayDetails(
+    prompt: string,
+    context: Article[],
+    startDay: number,
+    endDay: number,
+    outlineDays: PlanOutlineDay[]
+  ): Promise<DayPlan[]> {
+    console.log(`[gemini] Generating details for days ${startDay}-${endDay}...`);
+
+    // Provide ONLY relevant outline info to keep context small
+    const outlineInfo = JSON.stringify(outlineDays);
+
+    // Use limited context for speed
+    const MAX_CONTENT_LENGTH = 150;
+    const contextText = context
+      .map((a, i) => {
+        const truncatedContent =
+          a.content.length > MAX_CONTENT_LENGTH
+            ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
+            : a.content;
+        return `[${i}] ${a.title}: ${truncatedContent}`;
+      })
+      .join("\n");
+
+    const systemInstruction = `
+      Create detailed itinerary for Days ${startDay} to ${endDay} in JAPANESE.
+
+      MASTER PLAN OUTLINE (You MUST follow this):
+      ${outlineInfo}
+
+      ${contextText ? `Context: ${contextText}` : ""}
+
+      Rules:
+      1. Strictly follow the "highlight_areas" defined in the Master Plan Outline for each day.
+      2. Create detailed activities (3 meals + spots) fitting the user's pace.
+      3. Return JSON array of DayPlans.
+
+      JSON:
+      {
+        "days": [
+          {
+            "day": number,
+            "title": "string (Same as outline)",
+            "activities": [
+               {
+                "time": "string",
+                "activity": "string",
+                "description": "string"
+               }
+            ]
+          }
+        ],
+        "reference_indices": []
+      }
+    `;
+
+    const fullPrompt = `${systemInstruction}
+
+USER REQUEST:
+${prompt}`;
+
+    try {
+      const { text } = await generateText({
+        model: this.google(this.modelName, { structuredOutputs: true }),
+        prompt: fullPrompt,
+        temperature: 0.1,
+      });
+
+      const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
+      const data = JSON.parse(cleanedText);
+
+      // Ensure we just return the days array
+      return data.days as DayPlan[];
+    } catch (e) {
+      console.error(`[gemini] Detail generation failed for days ${startDay}-${endDay}:`, e);
       throw e;
     }
   }

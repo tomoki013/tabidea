@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { UserInput } from "@/lib/types";
+import { UserInput, Itinerary, DayPlan } from "@/lib/types";
 import { encodePlanData } from "@/lib/urlUtils";
-import { generatePlan } from "@/app/actions/travel-planner";
+import { generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
+import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils"; // Use the shared helper
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -183,27 +184,85 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     setErrorMessage("");
 
     try {
-      // Generate plan on the server
-      const response = await generatePlan(input);
+      // Step 1: Generate Master Outline (Client-Side Orchestration)
+      // This step decides destination (if undecided) and sets high-level route
+      const outlineResponse = await generatePlanOutline(input);
 
-      if (response.success && response.data) {
-        // Plan generated successfully, navigate to plan page with result
-        const encoded = encodePlanData(input, response.data);
-        router.push(`/plan?q=${encoded}`);
-
-        // Close modal if it's open
-        if (onClose) {
-          onClose();
-        }
-      } else {
-        // Handle error
-        setStatus("error");
-        setErrorMessage(response.message || "プランの生成に失敗しました。もう一度お試しください。");
+      if (!outlineResponse.success || !outlineResponse.data) {
+        throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
       }
-    } catch (e) {
+
+      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
+
+      // Update local input state with chosen destination if it was undecided
+      // (Though we are about to redirect, good for consistency)
+      if (input.isDestinationDecided === false) {
+         setInput(updatedInput);
+      }
+
+      // Step 2: Parallel Chunk Generation
+      const totalDays = extractDuration(updatedInput.dates);
+
+      // If duration is > 1 day, we split. Otherwise just use the outline days (or single chunk)
+      // The shared logic handles splits.
+      const chunks = splitDaysIntoChunks(totalDays);
+
+      // Map chunks to promises
+      const chunkPromises = chunks.map(chunk => {
+        // Filter outline days relevant to this chunk
+        const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
+        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end);
+      });
+
+      // Execute all chunks in parallel
+      const chunkResults = await Promise.all(chunkPromises);
+
+      // Verify all chunks succeeded
+      const failedChunk = chunkResults.find(r => !r.success);
+      if (failedChunk) {
+        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
+      }
+
+      // Step 3: Merge Results
+      const mergedDays: DayPlan[] = chunkResults.flatMap(r => r.data || []);
+
+      // Sort just in case parallel execution messed up order (unlikely with map but safe)
+      mergedDays.sort((a, b) => a.day - b.day);
+
+      // Construct Final Itinerary
+      // Use a simple random ID generator that doesn't rely on crypto.randomUUID (HTTPS/Env restriction)
+      const simpleId = Math.random().toString(36).substring(2, 15);
+
+      const finalPlan: Itinerary = {
+        id: simpleId,
+        destination: outline.destination,
+        description: outline.description,
+        heroImage: heroImage?.url || null,
+        heroImagePhotographer: heroImage?.photographer || null,
+        heroImagePhotographerUrl: heroImage?.photographerUrl || null,
+        days: mergedDays,
+        // References from context
+        references: context.map(c => ({
+            title: c.title,
+            url: c.url,
+            image: c.imageUrl,
+            snippet: c.snippet
+        }))
+      };
+
+      // Step 4: Redirect
+      const encoded = encodePlanData(updatedInput, finalPlan);
+      router.push(`/plan?q=${encoded}`);
+
+      // Close modal if it's open
+      if (onClose) {
+        onClose();
+      }
+
+    } catch (e: any) {
       console.error(e);
       setStatus("error");
-      setErrorMessage("ネットワークエラーまたはサーバータイムアウトが発生しました。");
+      setErrorMessage(e.message || "ネットワークエラーまたはサーバータイムアウトが発生しました。");
     }
   };
 
