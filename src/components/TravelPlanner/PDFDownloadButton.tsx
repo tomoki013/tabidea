@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Itinerary } from "@/lib/types";
+import { generatePdfFilename } from "@/lib/pdfUtils";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 
 interface PDFDownloadButtonProps {
@@ -62,7 +63,7 @@ export default function PDFDownloadButton({
     const url = URL.createObjectURL(downloadBlob);
     const link = document.createElement("a");
     link.href = url;
-    const filename = `${itinerary.destination.replace(/[/\\?%*:|"<>]/g, "-")}_旅程.pdf`;
+    const filename = generatePdfFilename(itinerary);
     link.download = filename;
     document.body.appendChild(link);
     link.click();
