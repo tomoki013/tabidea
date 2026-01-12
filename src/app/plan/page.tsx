@@ -3,11 +3,14 @@
 import { Suspense, useEffect, useState, useRef } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserInput, Itinerary } from "@/lib/types";
+import { UserInput, Itinerary, DayPlan } from "@/lib/types";
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
-import { regeneratePlan, fetchHeroImage } from "@/app/actions/travel-planner";
+import { regeneratePlan, fetchHeroImage, generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
+import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils";
+import { getSamplePlanById } from "@/lib/samplePlans";
 import ResultView from "@/components/TravelPlanner/ResultView";
 import PlanModal from "@/components/ui/PlanModal";
+import LoadingView from "@/components/TravelPlanner/LoadingView";
 import FAQSection from "@/components/landing/FAQSection";
 import ExampleSection from "@/components/landing/ExampleSection";
 import { FaPlus } from "react-icons/fa6";
@@ -16,12 +19,13 @@ function PlanContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const q = searchParams.get("q");
+  const sampleId = searchParams.get("sample");
 
   const [input, setInput] = useState<UserInput | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
   const [error, setError] = useState<string>("");
   const [status, setStatus] = useState<
-    "loading" | "idle" | "regenerating" | "error"
+    "loading" | "idle" | "regenerating" | "error" | "generating"
   >("loading");
 
   // State for request editing modal
@@ -31,10 +35,92 @@ function PlanContent() {
   // Track if this is the initial load to avoid scrolling on first render
   const isInitialLoad = useRef(true);
   const previousStatus = useRef<typeof status>("loading");
+  const hasStartedGeneration = useRef(false);
+
+  // Generate plan from sample
+  const generateFromSample = async (userInput: UserInput) => {
+    setStatus("generating");
+    setInput(userInput);
+    setError("");
+
+    try {
+      // Step 1: Generate Master Outline
+      const outlineResponse = await generatePlanOutline(userInput);
+
+      if (!outlineResponse.success || !outlineResponse.data) {
+        throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
+      }
+
+      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
+
+      // Step 2: Parallel Chunk Generation
+      const totalDays = extractDuration(updatedInput.dates);
+      const chunks = splitDaysIntoChunks(totalDays);
+
+      const chunkPromises = chunks.map(chunk => {
+        const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
+        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end);
+      });
+
+      const chunkResults = await Promise.all(chunkPromises);
+
+      const failedChunk = chunkResults.find(r => !r.success);
+      if (failedChunk) {
+        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
+      }
+
+      // Step 3: Merge Results
+      const mergedDays: DayPlan[] = chunkResults.flatMap(r => r.data || []);
+      mergedDays.sort((a, b) => a.day - b.day);
+
+      // Construct Final Itinerary
+      const simpleId = Math.random().toString(36).substring(2, 15);
+
+      const finalPlan: Itinerary = {
+        id: simpleId,
+        destination: outline.destination,
+        description: outline.description,
+        heroImage: heroImage?.url || null,
+        heroImagePhotographer: heroImage?.photographer || null,
+        heroImagePhotographerUrl: heroImage?.photographerUrl || null,
+        days: mergedDays,
+        references: context.map(c => ({
+          title: c.title,
+          url: c.url,
+          image: c.imageUrl,
+          snippet: c.snippet
+        }))
+      };
+
+      // Redirect to plan with encoded data
+      const encoded = encodePlanData(updatedInput, finalPlan);
+      router.replace(`/plan?q=${encoded}`);
+
+    } catch (e: unknown) {
+      console.error(e);
+      setStatus("error");
+      const errorMessage = e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+      setError(errorMessage);
+    }
+  };
 
   useEffect(() => {
     // Wrap in setTimeout to avoid synchronous state update linter error
     const timer = setTimeout(async () => {
+      // sample parameter exists - generate plan from sample
+      if (sampleId && !q && !hasStartedGeneration.current) {
+        const samplePlan = getSamplePlanById(sampleId);
+        if (samplePlan) {
+          hasStartedGeneration.current = true;
+          generateFromSample(samplePlan.userInput);
+          return;
+        } else {
+          setError("指定されたサンプルプランが見つかりませんでした。");
+          setStatus("error");
+          return;
+        }
+      }
+
       // q parameter exists - display existing plan
       if (q) {
         const decoded = decodePlanData(q);
@@ -78,7 +164,7 @@ function PlanContent() {
           );
           setStatus("error");
         }
-      } else {
+      } else if (!sampleId) {
         // No parameters
         setError("プランが見つかりませんでした。URLを確認してください。");
         setStatus("error");
@@ -88,7 +174,8 @@ function PlanContent() {
       previousStatus.current = status;
     }, 0);
     return () => clearTimeout(timer);
-  }, [q, status, router]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [q, sampleId, status, router]);
 
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[],
@@ -137,6 +224,10 @@ function PlanContent() {
         <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
       </div>
     );
+  }
+
+  if (status === "generating") {
+    return <LoadingView />;
   }
 
   if (status === "error" || !result || !input) {

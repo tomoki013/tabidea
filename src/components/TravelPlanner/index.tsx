@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { UserInput, Itinerary, DayPlan } from "@/lib/types";
 import { encodePlanData } from "@/lib/urlUtils";
 import { generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils"; // Use the shared helper
+import { getSamplePlanById } from "@/lib/samplePlans";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -28,11 +29,23 @@ interface TravelPlannerProps {
 
 export default function TravelPlanner({ initialInput, initialStep, onClose }: TravelPlannerProps) {
   const router = useRouter();
-  const [step, setStep] = useState(initialStep ?? 0);
+  const searchParams = useSearchParams();
+
+  // Check for sample parameter in URL
+  const sampleId = searchParams.get("sample");
+  const samplePlan = sampleId ? getSamplePlanById(sampleId) : null;
+
+  // Determine the effective initial input (prop takes precedence over URL sample)
+  const effectiveInitialInput = initialInput || samplePlan?.userInput || null;
+
+  // If sample is loaded, start at step 1 (skip initial choice)
+  const effectiveInitialStep = initialStep ?? (effectiveInitialInput ? 1 : 0);
+
+  const [step, setStep] = useState(effectiveInitialStep);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [input, setInput] = useState<UserInput>(() => {
-    if (initialInput) {
-      const merged = { ...initialInput };
+    if (effectiveInitialInput) {
+      const merged = { ...effectiveInitialInput };
       // Ensure consistency: If destination is set, it must be decided
       if (merged.destination && !merged.isDestinationDecided) {
          merged.isDestinationDecided = true;
