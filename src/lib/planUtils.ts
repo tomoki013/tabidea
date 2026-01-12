@@ -1,6 +1,17 @@
 export function extractDuration(dates: string): number {
-  const match = dates.match(/(\d+)日間/);
-  return match ? parseInt(match[1]) : 0;
+  // Support "X日間" format (e.g., "3日間")
+  const daysMatch = dates.match(/(\d+)日間/);
+  if (daysMatch) {
+    return parseInt(daysMatch[1], 10);
+  }
+
+  // Support "X泊Y日" format (e.g., "2泊3日")
+  const nightsDaysMatch = dates.match(/(\d+)泊(\d+)日/);
+  if (nightsDaysMatch) {
+    return parseInt(nightsDaysMatch[2], 10);
+  }
+
+  return 0;
 }
 
 export function splitDaysIntoChunks(totalDays: number): { start: number; end: number }[] {
