@@ -2,9 +2,20 @@ import { describe, it, expect } from "vitest";
 import { extractDuration, splitDaysIntoChunks } from "../planUtils";
 
 describe("extractDuration", () => {
-  it("extracts duration correctly from valid string", () => {
-    expect(extractDuration("2泊3日間")).toBe(3);
+  it("extracts duration from X日間 format", () => {
+    expect(extractDuration("3日間")).toBe(3);
     expect(extractDuration("10日間")).toBe(10);
+  });
+
+  it("extracts duration from X泊Y日 format", () => {
+    expect(extractDuration("2泊3日")).toBe(3);
+    expect(extractDuration("1泊2日")).toBe(2);
+    expect(extractDuration("4泊5日")).toBe(5);
+  });
+
+  it("prioritizes X日間 format over X泊Y日 format when both present", () => {
+    // "2泊3日間" contains both patterns, but X日間 is checked first
+    expect(extractDuration("2泊3日間")).toBe(3);
   });
 
   it("returns 0 for invalid string", () => {
