@@ -1,10 +1,11 @@
-import { UserInput } from "./types";
+import { UserInput, Itinerary } from "./types";
 
 export interface SamplePlan {
   id: string;
   title: string;
   description: string;
   input: UserInput;
+  itinerary?: Itinerary; // AI生成された旅程データ（オプショナル）
   createdAt: string;
   tags: string[];
 }
