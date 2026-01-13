@@ -1,4 +1,4 @@
-import { UserInput } from "./types";
+import { UserInput, Itinerary } from "./types";
 
 export interface SamplePlan {
   id: string;
@@ -7,6 +7,8 @@ export interface SamplePlan {
   input: UserInput;
   createdAt: string;
   tags: string[];
+  /** 事前生成済みの旅程データ（オプション） */
+  itinerary?: Itinerary;
 }
 
 /**

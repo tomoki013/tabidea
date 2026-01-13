@@ -1,12 +1,9 @@
+"use client";
+
 import { useState, useEffect, useMemo } from "react";
 import { Itinerary, UserInput } from "@/lib/types";
 import { encodePlanData } from "@/lib/urlUtils";
-import {
-  FaFacebook,
-  FaLine,
-  FaLink,
-  FaShareAlt,
-} from "react-icons/fa";
+import { FaFacebook, FaLine, FaLink, FaShareAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 interface ShareButtonsProps {
@@ -25,7 +22,10 @@ export default function ShareButtons({
   const [canShare, setCanShare] = useState(false);
 
   // Memoize the encoded plan data to avoid recalculating on every render
-  const encodedData = useMemo(() => encodePlanData(input, result), [input, result]);
+  const encodedData = useMemo(
+    () => encodePlanData(input, result),
+    [input, result]
+  );
 
   useEffect(() => {
     if (typeof window !== "undefined") {

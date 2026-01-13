@@ -68,7 +68,7 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
 }
 
 重要な注意事項：
-1. 情報は2024-2025年時点の一般的な情報を基にしてください
+1. 情報は2025-2026年時点の一般的な情報を基にしてください
 2. 必ず日本語で回答してください
 3. JSONフォーマット以外の余計なテキストは含めないでください
 4. 情報が不明な場合は「情報が限定的です」と記載してください
@@ -94,7 +94,9 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
 
     try {
       const data = JSON.parse(cleanedText) as TravelInfo;
-      console.log(`[travel-info] Successfully parsed travel info for ${data.country}`);
+      console.log(
+        `[travel-info] Successfully parsed travel info for ${data.country}`
+      );
 
       return {
         success: true,

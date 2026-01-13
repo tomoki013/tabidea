@@ -1,7 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSamplePlanById, samplePlans, getNights, getDays } from "@/lib/sample-plans";
+import {
+  getSamplePlanById,
+  samplePlans,
+  getNights,
+  getDays,
+} from "@/lib/sample-plans";
+import { getSampleItinerary } from "@/lib/sample-itineraries";
 import {
   FaMapMarkerAlt,
   FaCalendarAlt,
@@ -11,9 +17,12 @@ import {
   FaWalking,
   FaComments,
   FaArrowLeft,
+  FaClock,
 } from "react-icons/fa";
-import SamplePlanActions from "@/components/SamplePlanActions";
 import { UserInput } from "@/lib/types";
+import Image from "next/image";
+import ShareButtons from "@/components/ShareButtons";
+import SamplePlanActions from "@/components/SamplePlanActions";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -52,6 +61,16 @@ export default async function SamplePlanDetailPage({ params }: Props) {
   const { input } = plan;
   const nights = getNights(input.dates);
   const days = getDays(input.dates);
+
+  // 事前生成済みの旅程を取得
+  const itinerary = getSampleItinerary(id);
+
+  // プラン編集用のUserInput
+  const fullInput: UserInput = {
+    ...input,
+    hasMustVisitPlaces: input.hasMustVisitPlaces ?? false,
+    mustVisitPlaces: input.mustVisitPlaces ?? [],
+  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
@@ -167,17 +186,162 @@ export default async function SamplePlanDetailPage({ params }: Props) {
                   )}
                 </div>
               </div>
+
+              {/* Action Buttons */}
+              <div className="mt-8 mb-2 pt-6 px-4 border-t border-stone-100">
+                <SamplePlanActions sampleInput={fullInput} />
+              </div>
             </div>
           </section>
 
-          {/* Action Buttons */}
-          <SamplePlanActions
-            sampleInput={{
-              ...input,
-              hasMustVisitPlaces: input.hasMustVisitPlaces ?? false,
-              mustVisitPlaces: input.mustVisitPlaces ?? [],
-            } as UserInput}
-          />
+          {/* AI Generated Itinerary Section */}
+          {itinerary && (
+            <section className="mb-8">
+              {/* Hero Image */}
+              {itinerary.heroImage && (
+                <div className="relative mb-8">
+                  <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-xl border-8 border-white bg-white rotate-1">
+                    <Image
+                      src={itinerary.heroImage}
+                      alt={itinerary.destination}
+                      fill
+                      className="object-cover"
+                      priority
+                    />
+                    {/* Unsplash Credit */}
+                    {itinerary.heroImagePhotographer &&
+                      itinerary.heroImagePhotographerUrl && (
+                        <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
+                          Photo by{" "}
+                          <a
+                            href={itinerary.heroImagePhotographerUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-stone-300 transition-colors"
+                          >
+                            {itinerary.heroImagePhotographer}
+                          </a>{" "}
+                          on{" "}
+                          <a
+                            href="https://unsplash.com/?utm_source=Tabidea&utm_medium=referral"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="underline hover:text-stone-300 transition-colors"
+                          >
+                            Unsplash
+                          </a>
+                        </div>
+                      )}
+                    {/* Tape Effect */}
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-100/80 -rotate-2 shadow-sm backdrop-blur-sm"></div>
+                  </div>
+                </div>
+              )}
+
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-[#e67e22]/10 flex items-center justify-center text-2xl">
+                  🤖
+                </div>
+                <h2 className="text-xl md:text-2xl font-serif font-bold text-[#2c2c2c]">
+                  AIが作成した旅程
+                </h2>
+              </div>
+
+              {/* Itinerary Description */}
+              <div className="bg-white rounded-xl p-6 border border-stone-200 shadow-sm mb-8">
+                <p className="text-stone-600 leading-relaxed">
+                  {itinerary.description}
+                </p>
+              </div>
+
+              {/* AI Disclaimer Notice */}
+              <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg shadow-sm mb-8">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 text-2xl">⚠️</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-amber-900 mb-2 text-lg">
+                      AI生成プランに関する重要なお知らせ
+                    </h3>
+                    <div className="text-amber-800 text-sm leading-relaxed space-y-2">
+                      <p>
+                        このプランはAIによって自動生成されています。以下の点にご注意ください：
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>
+                          施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください
+                        </li>
+                        <li>
+                          AIは時に事実と異なる情報を生成する可能性があります（ハルシネーション）
+                        </li>
+                        <li>
+                          季節や天候、予約の必要性など、実際の旅行計画では追加の確認が必要です
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timeline */}
+              <div className="space-y-12">
+                {itinerary.days.map((day) => (
+                  <div key={day.day} className="relative">
+                    {/* Day Header */}
+                    <div className="sticky top-0 z-30 mb-8 flex items-center gap-4">
+                      <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
+                        <span className="text-4xl font-serif text-primary">
+                          {day.day}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                            Day
+                          </span>
+                          <span className="text-stone-600 font-serif italic text-lg leading-none">
+                            {day.title}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Activities */}
+                    <div className="border-l-2 border-stone-200 ml-8 space-y-8 pb-8 relative">
+                      {day.activities.map((act, actIndex) => (
+                        <div key={actIndex} className="relative pl-10 group">
+                          {/* Dot on timeline */}
+                          <div className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-primary shadow-sm z-10"></div>
+
+                          {/* Activity Card */}
+                          <div className="bg-white border rounded-xl p-6 shadow-sm transition-all duration-300 hover:bg-stone-50 border-stone-100 hover:shadow-md group-hover:-translate-y-1 relative overflow-hidden">
+                            {/* Decorative background stripe */}
+                            <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
+
+                            <div className="flex items-center gap-2 mb-2 text-stone-500 text-sm font-mono bg-stone-100 inline-block px-2 py-1 rounded-md">
+                              <FaClock className="text-primary/70" />
+                              {act.time}
+                            </div>
+
+                            <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
+                              {act.activity}
+                            </h4>
+                            <p className="text-stone-600 leading-relaxed text-sm">
+                              {act.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Share Buttons */}
+              <div className="mt-8 pt-8 border-t border-stone-200">
+                <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                  <ShareButtons input={fullInput} result={itinerary} />
+                </div>
+              </div>
+            </section>
+          )}
 
           {/* Back Link */}
           <div className="mt-12 pt-8 border-t border-stone-200 text-center">
@@ -203,7 +367,13 @@ interface ConditionCardProps {
   fullWidth?: boolean;
 }
 
-function ConditionCard({ icon, label, value, subtext, fullWidth }: ConditionCardProps) {
+function ConditionCard({
+  icon,
+  label,
+  value,
+  subtext,
+  fullWidth,
+}: ConditionCardProps) {
   return (
     <div
       className={`flex items-start gap-4 p-4 rounded-lg bg-stone-50 border border-stone-100 ${
@@ -218,9 +388,7 @@ function ConditionCard({ icon, label, value, subtext, fullWidth }: ConditionCard
           {label}
         </p>
         <p className="text-[#2c2c2c] font-medium leading-relaxed">{value}</p>
-        {subtext && (
-          <p className="text-xs text-stone-500 mt-1">{subtext}</p>
-        )}
+        {subtext && <p className="text-xs text-stone-500 mt-1">{subtext}</p>}
       </div>
     </div>
   );
