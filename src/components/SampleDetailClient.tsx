@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserInput, Itinerary } from "@/lib/types";
 import ResultView from "@/components/TravelPlanner/ResultView";
+import RequestSummary from "@/components/TravelPlanner/RequestSummary";
 import SamplePlanActions from "@/components/SamplePlanActions";
 import PlanModal from "@/components/ui/PlanModal";
 import { regeneratePlan } from "@/app/actions/travel-planner";
@@ -57,6 +58,11 @@ export default function SampleDetailClient({
   return (
     <>
       <div className="mb-8">
+        <RequestSummary
+          input={sampleInput}
+          onEdit={handleEditRequest}
+          className="mb-8"
+        />
         <SamplePlanActions sampleInput={sampleInput} />
       </div>
 
@@ -69,6 +75,7 @@ export default function SampleDetailClient({
           onResultChange={handleResultChange}
           isUpdating={isUpdating}
           onEditRequest={handleEditRequest}
+          showRequestSummary={false}
         />
       )}
 

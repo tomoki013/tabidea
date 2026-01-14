@@ -31,6 +31,7 @@ interface ResultViewProps {
   onResultChange?: (result: Itinerary) => void;
   isUpdating?: boolean;
   onEditRequest?: (stepIndex: number) => void;
+  showRequestSummary?: boolean;
 }
 
 export default function ResultView({
@@ -40,6 +41,7 @@ export default function ResultView({
   onResultChange,
   isUpdating = false,
   onEditRequest,
+  showRequestSummary = true,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -651,9 +653,11 @@ export default function ResultView({
         </div>
       </div>
 
-      <div className="mt-16 mb-12">
-        <RequestSummary input={input} onEdit={onEditRequest} />
-      </div>
+      {showRequestSummary && (
+        <div className="mt-16 mb-12">
+          <RequestSummary input={input} onEdit={onEditRequest} />
+        </div>
+      )}
     </div>
   );
 }
