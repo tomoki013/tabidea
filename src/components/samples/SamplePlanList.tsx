@@ -11,6 +11,7 @@ import {
   FaGlobe,
   FaPlane,
   FaTrain,
+  FaSearch,
 } from "react-icons/fa";
 import SamplePlanCard from "./SamplePlanCard";
 import {
@@ -297,6 +298,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [selectedDays, setSelectedDays] = useState<number | null>(null);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const allTags = useMemo(() => getAllTags(), []);
   const allRegions = useMemo(() => getAllRegions(), []);
@@ -308,6 +310,19 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         if (plan.input.region !== "domestic" && !plan.tags.includes("国内")) return false;
       } else if (selectedTab === "overseas") {
         if (plan.input.region !== "overseas" && !plan.tags.includes("海外")) return false;
+      }
+
+      // Search Query Filter
+      if (searchQuery.trim()) {
+        const query = searchQuery.toLowerCase().trim();
+        const searchTargets = [
+          plan.title,
+          plan.description,
+          plan.input.destination,
+          ...plan.tags,
+        ].join(" ").toLowerCase();
+
+        if (!searchTargets.includes(query)) return false;
       }
 
       // Tag filter
@@ -328,7 +343,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
       return tagMatch && regionMatch && daysMatch;
     });
-  }, [plans, selectedTags, selectedRegions, selectedDays, selectedTab]);
+  }, [plans, selectedTags, selectedRegions, selectedDays, selectedTab, searchQuery]);
 
   // Group regions by area for display
   const groupedRegions = useMemo(() => {
@@ -469,49 +484,84 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   return (
     <div className="space-y-8">
-      {/* Main Tabs */}
-      <div className="flex justify-center">
-        <div className="inline-flex bg-stone-100 p-1.5 rounded-2xl">
-          {(['all', 'domestic', 'overseas'] as const).map((tab) => (
+      {/* Sticky Header (Search & Tabs) */}
+      <div className="sticky top-4 z-40 -mx-2 px-2">
+        <motion.div
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          className="bg-white/90 backdrop-blur-md border border-stone-200/60 shadow-lg rounded-2xl p-2 flex flex-col md:flex-row gap-3 md:items-center max-w-5xl mx-auto"
+        >
+          {/* Search Input */}
+          <div className="relative flex-1 group">
+            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 group-focus-within:text-[#e67e22] transition-colors" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="キーワード、目的地、気分で検索..."
+              className="w-full pl-11 pr-4 py-3 bg-stone-50 border border-transparent rounded-xl focus:bg-white focus:border-[#e67e22]/50 focus:ring-4 focus:ring-[#e67e22]/10 outline-none transition-all placeholder:text-stone-400 font-medium"
+            />
+          </div>
+
+          {/* Desktop Divider */}
+          <div className="hidden md:block w-px h-10 bg-stone-200" />
+
+          {/* Controls Container */}
+          <div className="flex gap-2 overflow-x-auto pb-1 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+            {/* Tabs */}
+            <div className="flex bg-stone-100 p-1 rounded-xl flex-shrink-0">
+              {(["all", "domestic", "overseas"] as const).map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setSelectedTab(tab);
+                    setSelectedRegions([]);
+                  }}
+                  className={`
+                    px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2 whitespace-nowrap
+                    ${
+                      selectedTab === tab
+                        ? "bg-white text-[#e67e22] shadow-sm"
+                        : "text-stone-500 hover:text-stone-700 hover:bg-stone-200/50"
+                    }
+                  `}
+                >
+                  {tab === "all" && <FaGlobe />}
+                  {tab === "domestic" && <FaTrain />}
+                  {tab === "overseas" && <FaPlane />}
+                  <span>
+                    {tab === "all"
+                      ? "すべて"
+                      : tab === "domestic"
+                      ? "国内"
+                      : "海外"}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Filter Toggle */}
             <button
-              key={tab}
-              onClick={() => { setSelectedTab(tab); setSelectedRegions([]); }}
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
               className={`
-                px-4 sm:px-8 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2
-                ${selectedTab === tab
-                  ? 'bg-white text-[#e67e22] shadow-sm'
-                  : 'text-stone-500 hover:text-stone-700 hover:bg-stone-200/50'}
+                flex items-center gap-2 px-4 py-2 rounded-xl border transition-all font-bold text-sm whitespace-nowrap flex-shrink-0
+                ${
+                  isFilterOpen || hasActiveFilters
+                    ? "bg-[#e67e22] text-white border-[#e67e22] shadow-md"
+                    : "bg-white text-stone-600 border-stone-200 hover:border-[#e67e22] hover:text-[#e67e22]"
+                }
               `}
             >
-              {tab === 'all' && <FaGlobe />}
-              {tab === 'domestic' && <FaTrain />}
-              {tab === 'overseas' && <FaPlane />}
-              <span className="hidden sm:inline">
-                {tab === 'all' ? 'すべて' : tab === 'domestic' ? '国内旅行' : '海外旅行'}
-              </span>
-              <span className="sm:hidden">
-                {tab === 'all' ? 'すべて' : tab === 'domestic' ? '国内' : '海外'}
-              </span>
+              <FaFilter />
+              <span>絞り込み</span>
+              {hasActiveFilters && (
+                <span className="ml-1 px-1.5 py-0.5 bg-white/20 text-white rounded-full text-xs">
+                  {activeFilterCount}
+                </span>
+              )}
             </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Filter Toggle Button (Mobile) */}
-      <div className="lg:hidden">
-        <motion.button
-          onClick={() => setIsFilterOpen(!isFilterOpen)}
-          whileTap={{ scale: 0.98 }}
-          className="flex items-center gap-2 px-5 py-3 bg-white border border-stone-200 rounded-xl shadow-sm text-stone-600 hover:bg-stone-50 transition-colors w-full justify-center"
-        >
-          <FaFilter className="text-[#e67e22]" />
-          <span className="font-bold">条件を絞り込む</span>
-          {hasActiveFilters && (
-            <span className="ml-2 px-2.5 py-0.5 text-xs font-bold bg-[#e67e22] text-white rounded-full">
-              {activeFilterCount}
-            </span>
-          )}
-        </motion.button>
+          </div>
+        </motion.div>
       </div>
 
       {/* Filters Area */}
@@ -721,14 +771,20 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         >
           <div className="text-7xl mb-6 opacity-80">🗺️</div>
           <h3 className="text-xl font-bold text-stone-700 mb-2">
-            プランが見つかりませんでした
+            {searchQuery
+              ? `「${searchQuery}」のプランは見つかりませんでした`
+              : "プランが見つかりませんでした"}
           </h3>
           <p className="text-stone-500 mb-8 max-w-md mx-auto">
-            選択した条件に一致する旅のプランがありませんでした。<br/>
-            条件を少し緩めて、もう一度探してみてください。
+            {searchQuery
+              ? "キーワードを変えて、もう一度探してみてください。"
+              : "選択した条件に一致する旅のプランがありませんでした。\n条件を少し緩めて、もう一度探してみてください。"}
           </p>
           <motion.button
-            onClick={clearFilters}
+            onClick={() => {
+              clearFilters();
+              setSearchQuery("");
+            }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors shadow-lg flex items-center gap-2 mx-auto"
