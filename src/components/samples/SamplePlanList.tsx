@@ -8,6 +8,9 @@ import {
   FaCalendarAlt,
   FaTag,
   FaMapMarkerAlt,
+  FaGlobe,
+  FaPlane,
+  FaTrain,
 } from "react-icons/fa";
 import SamplePlanCard from "./SamplePlanCard";
 import {
@@ -15,6 +18,7 @@ import {
   getAllTags,
   getAllRegions,
   getDays,
+  getAreaFromRegion,
 } from "@/lib/sample-plans";
 
 interface SamplePlanListProps {
@@ -59,6 +63,41 @@ const tagCategoryMap: Record<string, TagInfo> = {
   温泉: { category: "theme", icon: "♨️", color: "rose" },
   リラックス: { category: "theme", icon: "🧘", color: "teal" },
   世界遺産: { category: "theme", icon: "🏰", color: "amber" },
+  自然: { category: "theme", icon: "🌲", color: "green" },
+  絶景: { category: "theme", icon: "🏞️", color: "cyan" },
+  ショッピング: { category: "theme", icon: "🛍️", color: "pink" },
+  エンターテイメント: { category: "theme", icon: "🎡", color: "orange" },
+  夜景: { category: "theme", icon: "🌃", color: "indigo" },
+  街歩き: { category: "theme", icon: "🚶‍♀️", color: "gray" },
+  歴史: { category: "theme", icon: "📜", color: "amber" },
+  冒険: { category: "theme", icon: "🤠", color: "orange" },
+  鉄道: { category: "theme", icon: "🚂", color: "slate" },
+  写真: { category: "theme", icon: "📷", color: "teal" },
+  動物: { category: "theme", icon: "🐨", color: "green" },
+  スポーツ: { category: "theme", icon: "⚽", color: "red" },
+  ダイビング: { category: "theme", icon: "🤿", color: "blue" },
+  クルーズ: { category: "theme", icon: "🚢", color: "sky" },
+  秘境: { category: "theme", icon: "🏜️", color: "amber" },
+  建築: { category: "theme", icon: "🏛️", color: "gray" },
+  雑貨: { category: "theme", icon: "🧺", color: "orange" },
+  おしゃれ: { category: "theme", icon: "👗", color: "pink" },
+  ドライブ: { category: "theme", icon: "🚗", color: "sky" },
+  山: { category: "theme", icon: "⛰️", color: "green" },
+  城めぐり: { category: "theme", icon: "🏰", color: "amber" },
+  テーマパーク: { category: "theme", icon: "🎢", color: "purple" },
+  子供: { category: "theme", icon: "👶", color: "orange" },
+  屋台: { category: "theme", icon: "🍜", color: "red" },
+  神社仏閣: { category: "theme", icon: "⛩️", color: "red" },
+  初夏: { category: "season", icon: "🍃", color: "green" },
+  離島: { category: "theme", icon: "🏝️", color: "cyan" },
+  フォトジェニック: { category: "theme", icon: "📸", color: "pink" },
+  北米: { category: "theme", icon: "🌎", color: "blue" },
+  南米: { category: "theme", icon: "🌎", color: "green" },
+  アジア: { category: "theme", icon: "🌏", color: "red" },
+  ヨーロッパ: { category: "theme", icon: "🌍", color: "blue" },
+  アフリカ: { category: "theme", icon: "🌍", color: "orange" },
+  オセアニア: { category: "theme", icon: "🌏", color: "cyan" },
+  中東: { category: "theme", icon: "🕌", color: "amber" },
 };
 
 const colorStyles: Record<
@@ -149,6 +188,24 @@ const colorStyles: Record<
     text: "text-teal-700",
     activeBg: "bg-teal-500",
   },
+  green: {
+    bg: "bg-green-50",
+    border: "border-green-200",
+    text: "text-green-700",
+    activeBg: "bg-green-500",
+  },
+  sky: {
+    bg: "bg-sky-50",
+    border: "border-sky-200",
+    text: "text-sky-700",
+    activeBg: "bg-sky-500",
+  },
+  slate: {
+    bg: "bg-slate-50",
+    border: "border-slate-200",
+    text: "text-slate-700",
+    activeBg: "bg-slate-500",
+  },
 };
 
 // 地域のアイコンマップ
@@ -192,14 +249,50 @@ const regionIconMap: Record<string, string> = {
   シンガポール: "🇸🇬",
   インドネシア: "🇮🇩",
   モルディブ: "🇲🇻",
+  カンボジア: "🇰🇭",
+  インド: "🇮🇳",
+  ネパール: "🇳🇵",
+  ラオス: "🇱🇦",
+  ミャンマー: "🇲🇲",
+  スリランカ: "🇱🇰",
   オーストラリア: "🇦🇺",
   ニュージーランド: "🇳🇿",
+  フィジー: "🇫🇯",
+  タヒチ: "🏝️",
+  ニューカレドニア: "🇳🇨",
+  パラオ: "🇵🇼",
   UAE: "🇦🇪",
+  ヨルダン: "🇯🇴",
   エジプト: "🇪🇬",
   モロッコ: "🇲🇦",
+  南アフリカ: "🇿🇦",
+  ケニア: "🇰🇪",
+  マダガスカル: "🇲🇬",
+  チェコ: "🇨🇿",
+  ハンガリー: "🇭🇺",
+  ベルギー: "🇧🇪",
+  マルタ: "🇲🇹",
+  アイスランド: "🇮🇸",
+  ノルウェー: "🇳🇴",
+  スウェーデン: "🇸🇪",
+  デンマーク: "🇩🇰",
+  アイルランド: "🇮🇪",
+  ポーランド: "🇵🇱",
+  ボリビア: "🇧🇴",
+  ブラジル: "🇧🇷",
+  アルゼンチン: "🇦🇷",
+  チリ: "🇨🇱",
+  キューバ: "🇨🇺",
+  ジャマイカ: "🇯🇲",
+  岐阜: "🏯",
+  香川: "🎨",
+  長崎: "⛪",
+  鹿児島: "🌲",
+  島根: "⛩️",
 };
 
 export default function SamplePlanList({ plans }: SamplePlanListProps) {
+  const [selectedTab, setSelectedTab] = useState<"all" | "domestic" | "overseas">("all");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [selectedDays, setSelectedDays] = useState<number | null>(null);
@@ -210,7 +303,14 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   const filteredPlans = useMemo(() => {
     return plans.filter((plan) => {
-      // Tag filter（地域タグを除く）
+      // Tab Filter
+      if (selectedTab === "domestic") {
+        if (plan.input.region !== "domestic" && !plan.tags.includes("国内")) return false;
+      } else if (selectedTab === "overseas") {
+        if (plan.input.region !== "overseas" && !plan.tags.includes("海外")) return false;
+      }
+
+      // Tag filter
       const tagMatch =
         selectedTags.length === 0 ||
         selectedTags.some((tag) => plan.tags.includes(tag));
@@ -228,7 +328,39 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
       return tagMatch && regionMatch && daysMatch;
     });
-  }, [plans, selectedTags, selectedRegions, selectedDays]);
+  }, [plans, selectedTags, selectedRegions, selectedDays, selectedTab]);
+
+  // Group regions by area for display
+  const groupedRegions = useMemo(() => {
+    const groups: Record<string, string[]> = {};
+    const visibleRegions = allRegions.filter(region => {
+      if (selectedTab === "all") return true;
+      const area = getAreaFromRegion(region);
+      // Determine if domestic based on area
+      const domesticAreas = [
+        "北海道",
+        "東北",
+        "関東",
+        "甲信越",
+        "北陸",
+        "東海",
+        "関西",
+        "中国",
+        "四国",
+        "九州",
+        "沖縄",
+      ];
+      const isDomestic = domesticAreas.includes(area);
+      return selectedTab === "domestic" ? isDomestic : !isDomestic;
+    });
+
+    visibleRegions.forEach(region => {
+      const area = getAreaFromRegion(region);
+      if (!groups[area]) groups[area] = [];
+      groups[area].push(region);
+    });
+    return groups;
+  }, [allRegions, selectedTab]);
 
   const toggleTag = (tag: string) => {
     setSelectedTags((prev) =>
@@ -297,7 +429,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={`
-          inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-xl border transition-all
+          inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-xl border transition-all whitespace-nowrap
           ${
             isSelected
               ? `${colorStyle.activeBg} text-white border-transparent shadow-md`
@@ -321,7 +453,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         className={`
-          inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-xl border transition-all
+          inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-xl border transition-all whitespace-nowrap
           ${
             isSelected
               ? "bg-[#e67e22] text-white border-transparent shadow-md"
@@ -337,6 +469,34 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   return (
     <div className="space-y-8">
+      {/* Main Tabs */}
+      <div className="flex justify-center">
+        <div className="inline-flex bg-stone-100 p-1.5 rounded-2xl">
+          {(['all', 'domestic', 'overseas'] as const).map((tab) => (
+            <button
+              key={tab}
+              onClick={() => { setSelectedTab(tab); setSelectedRegions([]); }}
+              className={`
+                px-4 sm:px-8 py-2.5 rounded-xl font-bold text-sm transition-all flex items-center gap-2
+                ${selectedTab === tab
+                  ? 'bg-white text-[#e67e22] shadow-sm'
+                  : 'text-stone-500 hover:text-stone-700 hover:bg-stone-200/50'}
+              `}
+            >
+              {tab === 'all' && <FaGlobe />}
+              {tab === 'domestic' && <FaTrain />}
+              {tab === 'overseas' && <FaPlane />}
+              <span className="hidden sm:inline">
+                {tab === 'all' ? 'すべて' : tab === 'domestic' ? '国内旅行' : '海外旅行'}
+              </span>
+              <span className="sm:hidden">
+                {tab === 'all' ? 'すべて' : tab === 'domestic' ? '国内' : '海外'}
+              </span>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Filter Toggle Button (Mobile) */}
       <div className="lg:hidden">
         <motion.button
@@ -345,7 +505,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
           className="flex items-center gap-2 px-5 py-3 bg-white border border-stone-200 rounded-xl shadow-sm text-stone-600 hover:bg-stone-50 transition-colors w-full justify-center"
         >
           <FaFilter className="text-[#e67e22]" />
-          <span className="font-bold">絞り込み</span>
+          <span className="font-bold">条件を絞り込む</span>
           {hasActiveFilters && (
             <span className="ml-2 px-2.5 py-0.5 text-xs font-bold bg-[#e67e22] text-white rounded-full">
               {activeFilterCount}
@@ -354,7 +514,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         </motion.button>
       </div>
 
-      {/* Filters */}
+      {/* Filters Area */}
       <AnimatePresence>
         {(isFilterOpen || typeof window !== "undefined") && (
           <motion.div
@@ -363,11 +523,11 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
             exit={{ opacity: 0, height: 0 }}
             className={`${isFilterOpen ? "block" : "hidden lg:block"}`}
           >
-            <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-6">
-              <div className="flex items-center justify-between">
+            <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-8">
+              <div className="flex items-center justify-between pb-4 border-b border-stone-100">
                 <h3 className="text-lg font-bold text-[#2c2c2c] flex items-center gap-2">
                   <FaFilter className="text-[#e67e22]" />
-                  絞り込み検索
+                  条件検索
                 </h3>
                 {hasActiveFilters && (
                   <motion.button
@@ -380,19 +540,6 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                     <span className="font-medium">すべてクリア</span>
                   </motion.button>
                 )}
-              </div>
-
-              {/* Region Filter */}
-              <div className="space-y-3">
-                <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
-                  <FaMapMarkerAlt className="text-[#e67e22]" />
-                  エリア
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {allRegions.map((region) =>
-                    renderRegionButton(region, selectedRegions.includes(region))
-                  )}
-                </div>
               </div>
 
               {/* Days Filter */}
@@ -420,89 +567,111 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 </div>
               </div>
 
-              {/* Tag Filters */}
+              {/* Region Filter (Grouped) */}
               <div className="space-y-4">
                 <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
+                  <FaMapMarkerAlt className="text-[#e67e22]" />
+                  エリア
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {Object.entries(groupedRegions).map(([area, regions]) => (
+                     regions.length > 0 && (
+                      <div key={area} className="space-y-2">
+                        <h5 className="text-xs font-bold text-stone-400 uppercase tracking-wider pl-1">{area}</h5>
+                        <div className="flex flex-wrap gap-2">
+                          {regions.map(region => renderRegionButton(region, selectedRegions.includes(region)))}
+                        </div>
+                      </div>
+                     )
+                  ))}
+                </div>
+              </div>
+
+              {/* Tag Filters */}
+              <div className="space-y-6 pt-4 border-t border-stone-100">
+                <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
                   <FaTag className="text-[#e67e22]" />
-                  タグで絞り込み
+                  タグ
                 </h4>
 
-                {/* 同行者 */}
-                {categorizedTags.companions.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                      同行者
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {categorizedTags.companions.map((tag) =>
-                        renderTagButton(tag, selectedTags.includes(tag))
-                      )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Theme */}
+                  {categorizedTags.themes.length > 0 && (
+                    <div className="space-y-2">
+                      <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+                        旅のテーマ
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {categorizedTags.themes.map((tag) =>
+                          renderTagButton(tag, selectedTags.includes(tag))
+                        )}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* 季節 */}
-                {categorizedTags.seasons.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                      おすすめの季節
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {categorizedTags.seasons.map((tag) =>
-                        renderTagButton(tag, selectedTags.includes(tag))
-                      )}
-                    </div>
+                  {/* Companion & Season */}
+                  <div className="space-y-6">
+                    {categorizedTags.companions.length > 0 && (
+                      <div className="space-y-2">
+                        <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+                          同行者
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {categorizedTags.companions.map((tag) =>
+                            renderTagButton(tag, selectedTags.includes(tag))
+                          )}
+                        </div>
+                      </div>
+                    )}
+                    {categorizedTags.seasons.length > 0 && (
+                      <div className="space-y-2">
+                        <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+                          おすすめの季節
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {categorizedTags.seasons.map((tag) =>
+                            renderTagButton(tag, selectedTags.includes(tag))
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                )}
-
-                {/* テーマ */}
-                {categorizedTags.themes.length > 0 && (
-                  <div className="space-y-2">
-                    <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                      旅のテーマ
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {categorizedTags.themes.map((tag) =>
-                        renderTagButton(tag, selectedTags.includes(tag))
-                      )}
-                    </div>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Active Filters Summary */}
+      {/* Active Filters Summary (Chips) */}
       {hasActiveFilters && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex flex-wrap items-center gap-2"
+          className="flex flex-wrap items-center gap-2 bg-white/50 p-4 rounded-xl border border-stone-200/50 backdrop-blur-sm"
         >
-          <span className="text-sm text-stone-500 font-medium">
-            選択中のフィルタ:
+          <span className="text-sm text-stone-500 font-bold mr-2">
+            選択中:
           </span>
           {selectedRegions.map((region) => (
             <motion.button
               key={`active-${region}`}
               onClick={() => toggleRegion(region)}
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full bg-[#e67e22]/10 text-[#e67e22] border border-[#e67e22]/30 hover:bg-[#e67e22]/20"
+              className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-[#e67e22] text-white shadow-sm hover:bg-[#d35400]"
             >
               {regionIconMap[region] || "📍"} {region}
-              <FaTimes className="ml-1 opacity-60" />
+              <FaTimes className="ml-1 opacity-80" />
             </motion.button>
           ))}
           {selectedDays !== null && (
             <motion.button
               onClick={() => setSelectedDays(null)}
               whileHover={{ scale: 1.05 }}
-              className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full bg-[#e67e22]/10 text-[#e67e22] border border-[#e67e22]/30 hover:bg-[#e67e22]/20"
+              className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-[#e67e22] text-white shadow-sm hover:bg-[#d35400]"
             >
               📅 {dayOptions.find((d) => d.value === selectedDays)?.label}
-              <FaTimes className="ml-1 opacity-60" />
+              <FaTimes className="ml-1 opacity-80" />
             </motion.button>
           )}
           {selectedTags.map((tag) => {
@@ -512,31 +681,35 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 key={`active-${tag}`}
                 onClick={() => toggleTag(tag)}
                 whileHover={{ scale: 1.05 }}
-                className="inline-flex items-center gap-1 px-3 py-1 text-xs font-medium rounded-full bg-[#e67e22]/10 text-[#e67e22] border border-[#e67e22]/30 hover:bg-[#e67e22]/20"
+                className="inline-flex items-center gap-1 px-3 py-1 text-xs font-bold rounded-full bg-stone-700 text-white shadow-sm hover:bg-stone-900"
               >
                 {info?.icon} {tag}
-                <FaTimes className="ml-1 opacity-60" />
+                <FaTimes className="ml-1 opacity-80" />
               </motion.button>
             );
           })}
         </motion.div>
       )}
 
-      {/* Results Count */}
-      <div className="text-stone-600 flex items-center gap-2">
-        <span className="text-2xl font-bold text-[#e67e22]">
-          {filteredPlans.length}
-        </span>
-        <span>件のプランが見つかりました</span>
-      </div>
+      {/* Results Count & Grid */}
+      <div className="space-y-4">
+        <div className="flex items-end justify-between border-b border-stone-200 pb-2">
+          <div className="text-stone-600 flex items-baseline gap-2">
+            <span className="text-3xl font-bold text-[#e67e22]">
+              {filteredPlans.length}
+            </span>
+            <span className="text-sm font-medium text-stone-500">件のプラン</span>
+          </div>
+          {/* Optional: Sort order could go here */}
+        </div>
 
-      {/* Plan Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AnimatePresence mode="popLayout">
-          {filteredPlans.map((plan, index) => (
-            <SamplePlanCard key={plan.id} plan={plan} index={index} />
-          ))}
-        </AnimatePresence>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredPlans.map((plan, index) => (
+              <SamplePlanCard key={plan.id} plan={plan} index={index} />
+            ))}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Empty State */}
@@ -544,22 +717,24 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center py-16 bg-white rounded-2xl border border-stone-200"
+          className="text-center py-20 bg-white rounded-3xl border border-stone-200 shadow-sm"
         >
-          <div className="text-6xl mb-4">🔍</div>
-          <p className="text-stone-500 text-lg mb-2">
-            条件に一致するプランが見つかりませんでした
-          </p>
-          <p className="text-stone-400 text-sm mb-6">
-            フィルタ条件を変更してみてください
+          <div className="text-7xl mb-6 opacity-80">🗺️</div>
+          <h3 className="text-xl font-bold text-stone-700 mb-2">
+            プランが見つかりませんでした
+          </h3>
+          <p className="text-stone-500 mb-8 max-w-md mx-auto">
+            選択した条件に一致する旅のプランがありませんでした。<br/>
+            条件を少し緩めて、もう一度探してみてください。
           </p>
           <motion.button
             onClick={clearFilters}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors shadow-lg"
+            className="px-8 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors shadow-lg flex items-center gap-2 mx-auto"
           >
-            フィルタをクリア
+            <FaTimes />
+            すべてのフィルタを解除
           </motion.button>
         </motion.div>
       )}
