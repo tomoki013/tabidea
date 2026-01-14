@@ -513,6 +513,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               {(["all", "domestic", "overseas"] as const).map((tab) => (
                 <button
                   key={tab}
+                  data-testid={`tab-${tab}`}
                   onClick={() => {
                     setSelectedTab(tab);
                     setSelectedRegions([]);
@@ -543,6 +544,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
             {/* Filter Toggle */}
             <button
               onClick={() => setIsFilterOpen(!isFilterOpen)}
+              data-testid="filter-toggle"
               className={`
                 flex items-center gap-2 px-4 py-2 rounded-xl border transition-all font-bold text-sm whitespace-nowrap flex-shrink-0
                 ${
@@ -566,12 +568,11 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
       {/* Filters Area */}
       <AnimatePresence>
-        {(isFilterOpen || typeof window !== "undefined") && (
+        {isFilterOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className={`${isFilterOpen ? "block" : "hidden lg:block"}`}
           >
             <div className="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-8">
               <div className="flex items-center justify-between pb-4 border-b border-stone-100">
@@ -784,7 +785,9 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
             onClick={() => {
               clearFilters();
               setSearchQuery("");
+              setSelectedTab("all");
             }}
+            data-testid="empty-state-clear-filters"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors shadow-lg flex items-center gap-2 mx-auto"
