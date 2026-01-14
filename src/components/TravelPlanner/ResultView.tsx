@@ -32,6 +32,8 @@ interface ResultViewProps {
   isUpdating?: boolean;
   onEditRequest?: (stepIndex: number) => void;
   showRequestSummary?: boolean;
+  showChat?: boolean;
+  showShareButtons?: boolean;
 }
 
 export default function ResultView({
@@ -42,6 +44,8 @@ export default function ResultView({
   isUpdating = false,
   onEditRequest,
   showRequestSummary = true,
+  showChat = true,
+  showShareButtons = true,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -346,7 +350,7 @@ export default function ResultView({
 
         {/* Share Buttons and PDF Download */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
-          <ShareButtons input={input} result={result} />
+          {showShareButtons && <ShareButtons input={input} result={result} />}
           <PDFDownloadButton itinerary={result} />
         </div>
       </div>
@@ -579,7 +583,7 @@ export default function ResultView({
           ))}
 
           {/* Chat Section - Restyled */}
-          {!isEditing && (
+          {!isEditing && showChat && (
             <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden">
               {/* Texture overlay */}
               <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-20 pointer-events-none mix-blend-multiply" />

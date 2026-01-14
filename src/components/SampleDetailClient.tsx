@@ -76,6 +76,8 @@ export default function SampleDetailClient({
           isUpdating={isUpdating}
           onEditRequest={handleEditRequest}
           showRequestSummary={false}
+          showChat={false}
+          showShareButtons={false}
         />
       )}
 
