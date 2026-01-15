@@ -38,7 +38,15 @@ export class SimpleRecursiveCharacterTextSplitter {
             }
 
             chunks.push(text.slice(start, splitPoint));
-            start = splitPoint - this.chunkOverlap; // rewind for overlap
+            const nextStart = splitPoint - this.chunkOverlap; // rewind for overlap
+
+            if (nextStart <= start) {
+                // If overlap puts us back before or at start (e.g. small chunk),
+                // we must advance to avoid infinite loop.
+                start = splitPoint;
+            } else {
+                start = nextStart;
+            }
             
             // Avoid infinite loop if overlap is too big or logic fails
             if (start >= end) start = end;
