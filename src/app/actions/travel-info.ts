@@ -1,21 +1,23 @@
-'use server';
+"use server";
 
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
-import { generateText } from 'ai';
+import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { generateText } from "ai";
 import type {
   TravelInfoCategory,
   TravelInfoResponse,
   TravelInfoSource,
   CategoryDataEntry,
   SourceType,
-} from '@/lib/types/travel-info';
+  FailedCategory,
+} from "@/lib/types/travel-info";
+import { CATEGORY_LABELS } from "@/lib/types/travel-info";
 import {
   generateCategorySpecificPrompt,
   parseStructuredResponse,
   generateSearchQueries,
   type TravelInfoPromptResult,
   type ParsedSource,
-} from '@/lib/ai/prompts/travel-info-prompt';
+} from "@/lib/ai/prompts/travel-info-prompt";
 
 // ============================================
 // 型定義
@@ -51,7 +53,7 @@ interface TravelInfoOptions {
 // 定数
 // ============================================
 
-const DEFAULT_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'climate'];
+const DEFAULT_CATEGORIES: TravelInfoCategory[] = ["basic", "safety", "climate"];
 const REQUEST_TIMEOUT_MS = 30000; // 30秒
 const MAX_RETRIES = 2;
 
@@ -62,21 +64,45 @@ const MAX_RETRIES = 2;
 /**
  * タイムスタンプ付きログ出力
  */
-function logInfo(context: string, message: string, data?: Record<string, unknown>): void {
+function logInfo(
+  context: string,
+  message: string,
+  data?: Record<string, unknown>
+): void {
   const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] [travel-info] [${context}] ${message}`, data ? JSON.stringify(data, null, 2) : '');
+  console.log(
+    `[${timestamp}] [travel-info] [${context}] ${message}`,
+    data ? JSON.stringify(data, null, 2) : ""
+  );
 }
 
-function logWarn(context: string, message: string, data?: Record<string, unknown>): void {
+function logWarn(
+  context: string,
+  message: string,
+  data?: Record<string, unknown>
+): void {
   const timestamp = new Date().toISOString();
-  console.warn(`[${timestamp}] [travel-info] [${context}] ${message}`, data ? JSON.stringify(data, null, 2) : '');
+  console.warn(
+    `[${timestamp}] [travel-info] [${context}] ${message}`,
+    data ? JSON.stringify(data, null, 2) : ""
+  );
 }
 
-function logError(context: string, message: string, error?: unknown, data?: Record<string, unknown>): void {
+function logError(
+  context: string,
+  message: string,
+  error?: unknown,
+  data?: Record<string, unknown>
+): void {
   const timestamp = new Date().toISOString();
-  const errorInfo = error instanceof Error
-    ? { name: error.name, message: error.message, stack: error.stack?.split('\n').slice(0, 3).join('\n') }
-    : { raw: String(error) };
+  const errorInfo =
+    error instanceof Error
+      ? {
+          name: error.name,
+          message: error.message,
+          stack: error.stack?.split("\n").slice(0, 3).join("\n"),
+        }
+      : { raw: String(error) };
   console.error(`[${timestamp}] [travel-info] [${context}] ${message}`, {
     error: errorInfo,
     ...data,
@@ -101,9 +127,11 @@ export async function getTravelInfo(
   options?: TravelInfoOptions
 ): Promise<TravelInfoResult> {
   const startTime = Date.now();
-  const requestId = `req_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const requestId = `req_${Date.now()}_${Math.random()
+    .toString(36)
+    .slice(2, 8)}`;
 
-  logInfo('getTravelInfo', '処理開始', {
+  logInfo("getTravelInfo", "処理開始", {
     requestId,
     destination,
     categories,
@@ -112,27 +140,34 @@ export async function getTravelInfo(
 
   // 入力バリデーション
   if (!destination || destination.trim().length === 0) {
-    logWarn('getTravelInfo', 'バリデーションエラー: 目的地が空', { requestId });
-    return { success: false, error: '目的地を指定してください。' };
+    logWarn("getTravelInfo", "バリデーションエラー: 目的地が空", { requestId });
+    return { success: false, error: "目的地を指定してください。" };
   }
 
   if (categories.length === 0) {
-    logWarn('getTravelInfo', 'バリデーションエラー: カテゴリが空', { requestId });
-    return { success: false, error: 'カテゴリを1つ以上指定してください。' };
+    logWarn("getTravelInfo", "バリデーションエラー: カテゴリが空", {
+      requestId,
+    });
+    return { success: false, error: "カテゴリを1つ以上指定してください。" };
   }
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    logError('getTravelInfo', 'APIキーが設定されていません', undefined, { requestId });
-    return { success: false, error: 'システムエラーが発生しました。管理者にお問い合わせください。' };
+    logError("getTravelInfo", "APIキーが設定されていません", undefined, {
+      requestId,
+    });
+    return {
+      success: false,
+      error: "システムエラーが発生しました。管理者にお問い合わせください。",
+    };
   }
 
   try {
     // 目的地から国名を抽出
-    logInfo('getTravelInfo', '国名抽出開始', { requestId, destination });
+    logInfo("getTravelInfo", "国名抽出開始", { requestId, destination });
     const countryStartTime = Date.now();
     const country = await extractCountryFromDestination(destination, apiKey);
-    logInfo('getTravelInfo', '国名抽出完了', {
+    logInfo("getTravelInfo", "国名抽出完了", {
       requestId,
       country,
       elapsedMs: Date.now() - countryStartTime,
@@ -147,13 +182,10 @@ export async function getTravelInfo(
       : undefined;
 
     // カテゴリごとに情報を取得
-    const categoryResults = new Map<
-      TravelInfoCategory,
-      CategoryFetchResult
-    >();
+    const categoryResults = new Map<TravelInfoCategory, CategoryFetchResult>();
     const allSources: TravelInfoSource[] = [];
 
-    logInfo('getTravelInfo', 'カテゴリ情報取得開始', {
+    logInfo("getTravelInfo", "カテゴリ情報取得開始", {
       requestId,
       categoriesCount: categories.length,
     });
@@ -162,7 +194,7 @@ export async function getTravelInfo(
     // 並列で全カテゴリの情報を取得
     const fetchPromises = categories.map(async (category) => {
       const categoryStartTime = Date.now();
-      logInfo('fetchCategory', `カテゴリ取得開始: ${category}`, {
+      logInfo("fetchCategory", `カテゴリ取得開始: ${category}`, {
         requestId,
         category,
         destination,
@@ -179,14 +211,14 @@ export async function getTravelInfo(
 
       const categoryElapsed = Date.now() - categoryStartTime;
       if (result.success) {
-        logInfo('fetchCategory', `カテゴリ取得成功: ${category}`, {
+        logInfo("fetchCategory", `カテゴリ取得成功: ${category}`, {
           requestId,
           category,
           elapsedMs: categoryElapsed,
           confidence: result.data.confidence,
         });
       } else {
-        logWarn('fetchCategory', `カテゴリ取得失敗: ${category}`, {
+        logWarn("fetchCategory", `カテゴリ取得失敗: ${category}`, {
           requestId,
           category,
           error: result.error,
@@ -197,41 +229,53 @@ export async function getTravelInfo(
       return { category, result };
     });
 
-    const results = await Promise.all(fetchPromises);
+    // Promise.allSettled を使用して、成功・失敗を個別に処理
+    const settledResults = await Promise.allSettled(fetchPromises);
 
-    logInfo('getTravelInfo', 'カテゴリ情報取得完了', {
+    logInfo("getTravelInfo", "カテゴリ情報取得完了", {
       requestId,
       totalElapsedMs: Date.now() - categoryFetchStartTime,
     });
 
     // 結果を整理
     let successCount = 0;
-    const failedCategories: string[] = [];
-    for (const { category, result } of results) {
-      categoryResults.set(category, result);
-      if (result.success) {
-        successCount++;
-        // ソース情報を変換して追加
-        const convertedSources = convertParsedSourcesToTravelInfoSources(
-          result.data.sources,
-          result.source
-        );
-        allSources.push(...convertedSources);
+    const failedCategoriesInfo: FailedCategory[] = [];
+    for (const settledResult of settledResults) {
+      if (settledResult.status === "fulfilled") {
+        const { category, result } = settledResult.value;
+        categoryResults.set(category, result);
+        if (result.success) {
+          successCount++;
+          // ソース情報を変換して追加
+          const convertedSources = convertParsedSourcesToTravelInfoSources(
+            result.data.sources,
+            result.source
+          );
+          allSources.push(...convertedSources);
+        } else {
+          failedCategoriesInfo.push({
+            category,
+            error: result.error || "情報の取得に失敗しました",
+          });
+        }
       } else {
-        failedCategories.push(category);
+        // Promise自体が reject された場合（通常は発生しないが念のため）
+        logError("getTravelInfo", "Promise rejected", settledResult.reason, {
+          requestId,
+        });
       }
     }
 
     // 全カテゴリ失敗の場合
     if (successCount === 0) {
-      logError('getTravelInfo', '全カテゴリの取得に失敗', undefined, {
+      logError("getTravelInfo", "全カテゴリの取得に失敗", undefined, {
         requestId,
-        failedCategories,
+        failedCategories: failedCategoriesInfo.map((fc) => fc.category),
       });
       return {
         success: false,
         error:
-          '渡航情報の取得に失敗しました。しばらく経ってから再度お試しください。',
+          "渡航情報の取得に失敗しました。しばらく経ってから再度お試しください。",
       };
     }
 
@@ -268,21 +312,25 @@ export async function getTravelInfo(
       sources: mergedSources,
       generatedAt: new Date(),
       disclaimer,
+      // 失敗したカテゴリがあれば含める
+      ...(failedCategoriesInfo.length > 0 && {
+        failedCategories: failedCategoriesInfo,
+      }),
     };
 
     const elapsed = Date.now() - startTime;
 
     // 部分的成功の場合はログ
     if (successCount < categories.length) {
-      logWarn('getTravelInfo', '一部カテゴリの取得に失敗', {
+      logWarn("getTravelInfo", "一部カテゴリの取得に失敗", {
         requestId,
         successCount,
         totalCategories: categories.length,
-        failedCategories,
+        failedCategories: failedCategoriesInfo.map((fc) => fc.category),
         elapsedMs: elapsed,
       });
     } else {
-      logInfo('getTravelInfo', '処理完了（全カテゴリ成功）', {
+      logInfo("getTravelInfo", "処理完了（全カテゴリ成功）", {
         requestId,
         successCount,
         totalCategories: categories.length,
@@ -294,7 +342,7 @@ export async function getTravelInfo(
     return { success: true, data: response };
   } catch (error) {
     const elapsed = Date.now() - startTime;
-    logError('getTravelInfo', '予期しないエラー発生', error, {
+    logError("getTravelInfo", "予期しないエラー発生", error, {
       requestId,
       destination,
       categories,
@@ -303,7 +351,7 @@ export async function getTravelInfo(
     return {
       success: false,
       error:
-        '予期しないエラーが発生しました。しばらく経ってから再度お試しください。',
+        "予期しないエラーが発生しました。しばらく経ってから再度お試しください。",
     };
   }
 }
@@ -337,7 +385,7 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
   apiKey: string
 ): Promise<CategoryFetchResult<T>> {
   const google = createGoogleGenerativeAI({ apiKey });
-  const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+  const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
 
   // カテゴリ専用プロンプトを生成
   const prompt = generateCategorySpecificPrompt(
@@ -349,7 +397,7 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
 
   // 検索クエリを生成（Web検索の参考用）
   const searchQueries = generateSearchQueries(destination, country, category);
-  const searchHint = `\n\n【参考検索クエリ】\n${searchQueries.join('\n')}`;
+  const searchHint = `\n\n【参考検索クエリ】\n${searchQueries.join("\n")}`;
 
   let lastError: Error | null = null;
 
@@ -357,11 +405,15 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
     const attemptStartTime = Date.now();
 
     try {
-      logInfo('fetchFromGemini', `API呼び出し開始 (試行 ${attempt + 1}/${MAX_RETRIES})`, {
-        category,
-        destination,
-        modelName,
-      });
+      logInfo(
+        "fetchFromGemini",
+        `API呼び出し開始 (試行 ${attempt + 1}/${MAX_RETRIES})`,
+        {
+          category,
+          destination,
+          modelName,
+        }
+      );
 
       const controller = new AbortController();
       const timeoutId = setTimeout(
@@ -379,7 +431,7 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
       clearTimeout(timeoutId);
 
       const apiElapsed = Date.now() - attemptStartTime;
-      logInfo('fetchFromGemini', 'API応答受信', {
+      logInfo("fetchFromGemini", "API応答受信", {
         category,
         elapsedMs: apiElapsed,
         responseLength: text.length,
@@ -389,35 +441,35 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
       const parseResult = parseStructuredResponse(category, text);
 
       if (parseResult.success) {
-        logInfo('fetchFromGemini', 'パース成功', {
+        logInfo("fetchFromGemini", "パース成功", {
           category,
           confidence: parseResult.data.confidence,
         });
         return {
           success: true,
           data: parseResult.data as TravelInfoPromptResult<T>,
-          source: 'ai_generated',
+          source: "ai_generated",
         };
       } else {
-        logWarn('fetchFromGemini', 'パース失敗', {
+        logWarn("fetchFromGemini", "パース失敗", {
           category,
           error: parseResult.error.error,
         });
         lastError = new Error(parseResult.error.error);
       }
     } catch (error) {
-      lastError = error instanceof Error ? error : new Error('Unknown error');
+      lastError = error instanceof Error ? error : new Error("Unknown error");
       const attemptElapsed = Date.now() - attemptStartTime;
 
-      if (lastError.name === 'AbortError') {
-        logWarn('fetchFromGemini', 'リクエストタイムアウト', {
+      if (lastError.name === "AbortError") {
+        logWarn("fetchFromGemini", "リクエストタイムアウト", {
           category,
           attempt: attempt + 1,
           timeoutMs: REQUEST_TIMEOUT_MS,
           elapsedMs: attemptElapsed,
         });
       } else {
-        logError('fetchFromGemini', `試行 ${attempt + 1} 失敗`, lastError, {
+        logError("fetchFromGemini", `試行 ${attempt + 1} 失敗`, lastError, {
           category,
           elapsedMs: attemptElapsed,
         });
@@ -426,7 +478,7 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
       // リトライ前に待機（指数バックオフ）
       if (attempt < MAX_RETRIES - 1) {
         const backoffMs = Math.pow(2, attempt) * 1000;
-        logInfo('fetchFromGemini', `リトライ待機中`, {
+        logInfo("fetchFromGemini", `リトライ待機中`, {
           category,
           backoffMs,
           nextAttempt: attempt + 2,
@@ -436,7 +488,7 @@ async function fetchFromGemini<T extends TravelInfoCategory>(
     }
   }
 
-  logError('fetchFromGemini', '全試行失敗', lastError, {
+  logError("fetchFromGemini", "全試行失敗", lastError, {
     category,
     maxRetries: MAX_RETRIES,
   });
@@ -461,63 +513,63 @@ async function extractCountryFromDestination(
   // 一般的な都市名と国名のマッピング（キャッシュ的に使用）
   const knownMappings: Record<string, string> = {
     // 日本
-    東京: '日本',
-    大阪: '日本',
-    京都: '日本',
-    北海道: '日本',
-    沖縄: '日本',
-    福岡: '日本',
-    名古屋: '日本',
-    札幌: '日本',
+    東京: "日本",
+    大阪: "日本",
+    京都: "日本",
+    北海道: "日本",
+    沖縄: "日本",
+    福岡: "日本",
+    名古屋: "日本",
+    札幌: "日本",
     // アジア
-    ソウル: '韓国',
-    釜山: '韓国',
-    台北: '台湾',
-    高雄: '台湾',
-    香港: '香港',
-    マカオ: 'マカオ',
-    上海: '中国',
-    北京: '中国',
-    バンコク: 'タイ',
-    プーケット: 'タイ',
-    シンガポール: 'シンガポール',
-    クアラルンプール: 'マレーシア',
-    ジャカルタ: 'インドネシア',
-    バリ: 'インドネシア',
-    マニラ: 'フィリピン',
-    セブ: 'フィリピン',
-    ハノイ: 'ベトナム',
-    ホーチミン: 'ベトナム',
+    ソウル: "韓国",
+    釜山: "韓国",
+    台北: "台湾",
+    高雄: "台湾",
+    香港: "香港",
+    マカオ: "マカオ",
+    上海: "中国",
+    北京: "中国",
+    バンコク: "タイ",
+    プーケット: "タイ",
+    シンガポール: "シンガポール",
+    クアラルンプール: "マレーシア",
+    ジャカルタ: "インドネシア",
+    バリ: "インドネシア",
+    マニラ: "フィリピン",
+    セブ: "フィリピン",
+    ハノイ: "ベトナム",
+    ホーチミン: "ベトナム",
     // ヨーロッパ
-    パリ: 'フランス',
-    ロンドン: 'イギリス',
-    ローマ: 'イタリア',
-    ミラノ: 'イタリア',
-    バルセロナ: 'スペイン',
-    マドリード: 'スペイン',
-    ベルリン: 'ドイツ',
-    アムステルダム: 'オランダ',
-    チューリッヒ: 'スイス',
-    ウィーン: 'オーストリア',
-    プラハ: 'チェコ',
+    パリ: "フランス",
+    ロンドン: "イギリス",
+    ローマ: "イタリア",
+    ミラノ: "イタリア",
+    バルセロナ: "スペイン",
+    マドリード: "スペイン",
+    ベルリン: "ドイツ",
+    アムステルダム: "オランダ",
+    チューリッヒ: "スイス",
+    ウィーン: "オーストリア",
+    プラハ: "チェコ",
     // アメリカ
-    ニューヨーク: 'アメリカ',
-    ロサンゼルス: 'アメリカ',
-    ハワイ: 'アメリカ',
-    ホノルル: 'アメリカ',
-    サンフランシスコ: 'アメリカ',
-    ラスベガス: 'アメリカ',
-    シアトル: 'アメリカ',
-    バンクーバー: 'カナダ',
-    トロント: 'カナダ',
+    ニューヨーク: "アメリカ",
+    ロサンゼルス: "アメリカ",
+    ハワイ: "アメリカ",
+    ホノルル: "アメリカ",
+    サンフランシスコ: "アメリカ",
+    ラスベガス: "アメリカ",
+    シアトル: "アメリカ",
+    バンクーバー: "カナダ",
+    トロント: "カナダ",
     // オセアニア
-    シドニー: 'オーストラリア',
-    メルボルン: 'オーストラリア',
-    ケアンズ: 'オーストラリア',
-    オークランド: 'ニュージーランド',
+    シドニー: "オーストラリア",
+    メルボルン: "オーストラリア",
+    ケアンズ: "オーストラリア",
+    オークランド: "ニュージーランド",
     // 中東
-    ドバイ: 'アラブ首長国連邦',
-    アブダビ: 'アラブ首長国連邦',
+    ドバイ: "アラブ首長国連邦",
+    アブダビ: "アラブ首長国連邦",
   };
 
   // 既知のマッピングをチェック
@@ -528,25 +580,25 @@ async function extractCountryFromDestination(
 
   // 目的地が国名の場合はそのまま返す
   const commonCountries = [
-    '日本',
-    '韓国',
-    '台湾',
-    '中国',
-    'タイ',
-    'シンガポール',
-    'マレーシア',
-    'インドネシア',
-    'フィリピン',
-    'ベトナム',
-    'フランス',
-    'イギリス',
-    'イタリア',
-    'スペイン',
-    'ドイツ',
-    'アメリカ',
-    'カナダ',
-    'オーストラリア',
-    'ニュージーランド',
+    "日本",
+    "韓国",
+    "台湾",
+    "中国",
+    "タイ",
+    "シンガポール",
+    "マレーシア",
+    "インドネシア",
+    "フィリピン",
+    "ベトナム",
+    "フランス",
+    "イギリス",
+    "イタリア",
+    "スペイン",
+    "ドイツ",
+    "アメリカ",
+    "カナダ",
+    "オーストラリア",
+    "ニュージーランド",
   ];
 
   if (commonCountries.includes(normalized)) {
@@ -556,7 +608,7 @@ async function extractCountryFromDestination(
   // AIで国名を推測
   try {
     const google = createGoogleGenerativeAI({ apiKey });
-    const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
 
     const { text } = await generateText({
       model: google(modelName),
@@ -566,7 +618,7 @@ async function extractCountryFromDestination(
 
     return text.trim() || destination;
   } catch (error) {
-    console.warn('[travel-info] Failed to extract country:', error);
+    console.warn("[travel-info] Failed to extract country:", error);
     return destination; // フォールバック
   }
 }
@@ -622,29 +674,29 @@ function generateDisclaimer(
   reliability: number,
   categories: TravelInfoCategory[]
 ): string {
-  const hasSafetyInfo = categories.includes('safety');
-  const hasVisaInfo = categories.includes('visa');
+  const hasSafetyInfo = categories.includes("safety");
+  const hasVisaInfo = categories.includes("visa");
 
   let disclaimer =
-    'この情報はAIによって生成されたものであり、正確性を保証するものではありません。';
+    "この情報はAIによって生成されたものであり、正確性を保証するものではありません。";
 
   if (reliability < 50) {
     disclaimer +=
-      '情報の信頼性が低い可能性があります。必ず公式情報をご確認ください。';
+      "情報の信頼性が低い可能性があります。必ず公式情報をご確認ください。";
   }
 
   if (hasSafetyInfo) {
     disclaimer +=
-      '安全情報については、外務省海外安全ホームページで最新情報をご確認ください。';
+      "安全情報については、外務省海外安全ホームページで最新情報をご確認ください。";
   }
 
   if (hasVisaInfo) {
     disclaimer +=
-      'ビザ・入国条件は変更される場合があります。渡航前に大使館・領事館にご確認ください。';
+      "ビザ・入国条件は変更される場合があります。渡航前に大使館・領事館にご確認ください。";
   }
 
   disclaimer +=
-    '渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。';
+    "渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。";
 
   return disclaimer;
 }
@@ -669,22 +721,22 @@ function convertParsedSourcesToTravelInfoSources(
  * パースされたソースタイプをSourceTypeにマッピング
  */
 function mapParsedSourceTypeToSourceType(
-  parsedType: 'official' | 'news' | 'commercial' | 'personal',
+  parsedType: "official" | "news" | "commercial" | "personal",
   fetchSourceType: SourceType
 ): SourceType {
   // AI生成の場合はそのままfetchSourceTypeを使用
-  if (fetchSourceType === 'ai_generated') {
-    return 'ai_generated';
+  if (fetchSourceType === "ai_generated") {
+    return "ai_generated";
   }
 
   // それ以外はパースされたタイプに基づいて判断
   switch (parsedType) {
-    case 'official':
-      return 'official_api';
-    case 'news':
-    case 'commercial':
-    case 'personal':
-      return 'web_search';
+    case "official":
+      return "official_api";
+    case "news":
+    case "commercial":
+    case "personal":
+      return "web_search";
     default:
       return fetchSourceType;
   }
@@ -694,16 +746,16 @@ function mapParsedSourceTypeToSourceType(
  * ソースタイプに基づく信頼性スコア
  */
 function getReliabilityScore(
-  type: 'official' | 'news' | 'commercial' | 'personal'
+  type: "official" | "news" | "commercial" | "personal"
 ): number {
   switch (type) {
-    case 'official':
+    case "official":
       return 95;
-    case 'news':
+    case "news":
       return 80;
-    case 'commercial':
+    case "commercial":
       return 70;
-    case 'personal':
+    case "personal":
       return 50;
     default:
       return 60;
@@ -715,16 +767,16 @@ function getReliabilityScore(
  */
 function getSourceName(type: SourceType): string {
   switch (type) {
-    case 'official_api':
-      return '公式API';
-    case 'web_search':
-      return 'Web検索';
-    case 'ai_generated':
-      return 'AI生成';
-    case 'blog':
-      return 'ブログ記事';
+    case "official_api":
+      return "公式API";
+    case "web_search":
+      return "Web検索";
+    case "ai_generated":
+      return "AI生成";
+    case "blog":
+      return "ブログ記事";
     default:
-      return '不明';
+      return "不明";
   }
 }
 
@@ -737,6 +789,157 @@ function sleep(ms: number): Promise<void> {
 
 // ユーティリティ関数は別ファイルからインポート
 // @see src/lib/travel-info/utils.ts
+
+// ============================================
+// 単一カテゴリ取得API（プログレッシブローディング用）
+// ============================================
+
+/**
+ * 単一カテゴリ取得結果
+ */
+export type SingleCategoryResult =
+  | {
+      success: true;
+      category: TravelInfoCategory;
+      data: CategoryDataEntry;
+      country: string;
+    }
+  | {
+      success: false;
+      category: TravelInfoCategory;
+      error: string;
+    };
+
+/**
+ * 単一カテゴリの渡航情報を取得する
+ * プログレッシブローディング用：各カテゴリを独立して取得し、逐次表示する
+ *
+ * @param destination - 目的地（都市名または国名）
+ * @param category - 取得するカテゴリ
+ * @param options - オプション（渡航日程等）
+ * @returns 単一カテゴリの取得結果
+ */
+export async function getSingleCategoryInfo(
+  destination: string,
+  category: TravelInfoCategory,
+  options?: { travelDates?: { start: string; end: string } }
+): Promise<SingleCategoryResult> {
+  const startTime = Date.now();
+  const requestId = `single_${category}_${Date.now()}_${Math.random()
+    .toString(36)
+    .slice(2, 6)}`;
+
+  logInfo("getSingleCategoryInfo", "処理開始", {
+    requestId,
+    destination,
+    category,
+  });
+
+  // 入力バリデーション
+  if (!destination || destination.trim().length === 0) {
+    logWarn("getSingleCategoryInfo", "バリデーションエラー: 目的地が空", {
+      requestId,
+    });
+    return { success: false, category, error: "目的地を指定してください。" };
+  }
+
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (!apiKey) {
+    logError(
+      "getSingleCategoryInfo",
+      "APIキーが設定されていません",
+      undefined,
+      {
+        requestId,
+      }
+    );
+    return {
+      success: false,
+      category,
+      error: "システムエラーが発生しました。",
+    };
+  }
+
+  try {
+    // 目的地から国名を抽出
+    const country = await extractCountryFromDestination(destination, apiKey);
+    logInfo("getSingleCategoryInfo", "国名抽出完了", {
+      requestId,
+      country,
+    });
+
+    // 渡航日程のパース
+    const travelDates = options?.travelDates
+      ? {
+          start: new Date(options.travelDates.start),
+          end: new Date(options.travelDates.end),
+        }
+      : undefined;
+
+    // カテゴリ情報を取得
+    const result = await fetchCategoryInfo(
+      category,
+      destination,
+      country,
+      travelDates,
+      apiKey
+    );
+
+    const elapsed = Date.now() - startTime;
+
+    if (result.success) {
+      logInfo("getSingleCategoryInfo", "取得成功", {
+        requestId,
+        category,
+        elapsedMs: elapsed,
+      });
+
+      return {
+        success: true,
+        category,
+        country,
+        data: {
+          category,
+          data: result.data.content,
+          source: {
+            sourceType: result.source,
+            sourceName: getSourceName(result.source),
+            retrievedAt: new Date(),
+            reliabilityScore: result.data.confidence,
+          },
+        },
+      };
+    } else {
+      logWarn("getSingleCategoryInfo", "取得失敗", {
+        requestId,
+        category,
+        error: result.error,
+        elapsedMs: elapsed,
+      });
+
+      return {
+        success: false,
+        category,
+        error:
+          result.error ||
+          `${CATEGORY_LABELS[category]}の取得に失敗しました。しばらく経ってから再度お試しください。`,
+      };
+    }
+  } catch (error) {
+    const elapsed = Date.now() - startTime;
+    logError("getSingleCategoryInfo", "予期しないエラー発生", error, {
+      requestId,
+      category,
+      elapsedMs: elapsed,
+    });
+
+    return {
+      success: false,
+      category,
+      error: `${CATEGORY_LABELS[category]}の取得中にエラーが発生しました。`,
+    };
+  }
+}
 
 // ============================================
 // レガシーAPI（後方互換性のため）
@@ -775,20 +978,22 @@ export async function getLegacyTravelInfo(
   country: string
 ): Promise<LegacyTravelInfoState> {
   const startTime = Date.now();
-  console.log(`[travel-info] getLegacyTravelInfo started for country: ${country}`);
+  console.log(
+    `[travel-info] getLegacyTravelInfo started for country: ${country}`
+  );
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    console.error('[travel-info] API Key is missing in environment variables');
+    console.error("[travel-info] API Key is missing in environment variables");
     return {
       success: false,
-      error: 'システムエラー: APIキーが設定されていません。',
+      error: "システムエラー: APIキーが設定されていません。",
     };
   }
 
   try {
     const google = createGoogleGenerativeAI({ apiKey });
-    const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
 
     const prompt = `
 あなたは旅行者向けに渡航情報を提供する専門アシスタントです。
@@ -836,8 +1041,8 @@ export async function getLegacyTravelInfo(
 
     // Clean up response
     const cleanedText = text
-      .replace(/```json/g, '')
-      .replace(/```/g, '')
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
       .trim();
 
     try {
@@ -855,14 +1060,14 @@ export async function getLegacyTravelInfo(
       console.error(`[travel-info] Raw Response text:`, cleanedText);
       return {
         success: false,
-        error: 'AI応答の解析に失敗しました。',
+        error: "AI応答の解析に失敗しました。",
       };
     }
   } catch (error) {
-    console.error('[travel-info] Generation failed:', error);
+    console.error("[travel-info] Generation failed:", error);
     return {
       success: false,
-      error: '情報の取得中にエラーが発生しました。もう一度お試しください。',
+      error: "情報の取得中にエラーが発生しました。もう一度お試しください。",
     };
   }
 }
