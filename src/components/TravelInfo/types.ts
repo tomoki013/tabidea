@@ -5,9 +5,8 @@
 
 import type {
   TravelInfoCategory,
-  TravelInfoResponse,
   CategoryDataEntry,
-} from '@/lib/types/travel-info';
+} from "@/lib/types/travel-info";
 
 // ============================================
 // カテゴリ情報定義
@@ -29,46 +28,46 @@ export interface CategoryDisplayInfo {
  * 使用可能なアイコン名
  */
 export type CategoryIcon =
-  | 'Globe'
-  | 'Shield'
-  | 'Cloud'
-  | 'FileText'
-  | 'Heart'
-  | 'Car';
+  | "Globe"
+  | "Shield"
+  | "Cloud"
+  | "FileText"
+  | "Heart"
+  | "Car";
 
 /**
  * カテゴリ情報マッピング
  */
 export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryDisplayInfo> = {
   basic: {
-    label: '基本情報',
-    description: '通貨・言語・時差',
-    icon: 'Globe',
+    label: "基本情報",
+    description: "通貨・言語・時差",
+    icon: "Globe",
   },
   safety: {
-    label: '安全・医療',
-    description: '危険度・緊急連絡先',
-    icon: 'Shield',
+    label: "安全・医療",
+    description: "危険度・緊急連絡先",
+    icon: "Shield",
   },
   climate: {
-    label: '気候・服装',
-    description: '天気予報・服装アドバイス',
-    icon: 'Cloud',
+    label: "気候・服装",
+    description: "天気予報・服装アドバイス",
+    icon: "Cloud",
   },
   visa: {
-    label: 'ビザ・手続き',
-    description: '入国要件・必要書類',
-    icon: 'FileText',
+    label: "ビザ・手続き",
+    description: "入国要件・必要書類",
+    icon: "FileText",
   },
   manner: {
-    label: 'マナー・チップ',
-    description: '現地の習慣・タブー',
-    icon: 'Heart',
+    label: "マナー・チップ",
+    description: "現地の習慣・タブー",
+    icon: "Heart",
   },
   transport: {
-    label: '交通事情',
-    description: '公共交通・配車サービス',
-    icon: 'Car',
+    label: "交通事情",
+    description: "公共交通・配車サービス",
+    icon: "Car",
   },
 };
 
@@ -113,19 +112,30 @@ export interface CategoryCardProps {
 // ============================================
 
 /**
- * TravelInfoDisplay コンポーネントのProps
+ * カテゴリ別の状態（プログレッシブローディング用）
+ */
+export interface CategoryState {
+  status: "loading" | "success" | "error";
+  data?: CategoryDataEntry;
+  error?: string;
+}
+
+/**
+ * TravelInfoDisplay コンポーネントのProps（プログレッシブローディング対応）
  */
 export interface TravelInfoDisplayProps {
-  /** 取得した渡航情報データ */
-  data: TravelInfoResponse | null;
-  /** ローディング状態 */
-  loading: boolean;
-  /** エラーメッセージ */
-  error?: string;
+  /** 目的地 */
+  destination: string;
+  /** 国名 */
+  country: string;
+  /** カテゴリ別の状態 */
+  categoryStates: Map<TravelInfoCategory, CategoryState>;
   /** 選択されたカテゴリ */
   selectedCategories: TravelInfoCategory[];
-  /** リトライコールバック */
-  onRetry?: () => void;
+  /** ソース情報 */
+  sources: CategoryDataEntry["source"][];
+  /** カテゴリ再取得コールバック */
+  onRetryCategory?: (category: TravelInfoCategory) => void;
 }
 
 // ============================================
@@ -145,7 +155,7 @@ export interface InfoSectionProps {
   /** セクションの内容 */
   children: React.ReactNode;
   /** ソース情報 */
-  source?: CategoryDataEntry['source'];
+  source?: CategoryDataEntry["source"];
 }
 
 // ============================================
@@ -157,7 +167,7 @@ export interface InfoSectionProps {
  */
 export interface SourceBadgeProps {
   /** ソースタイプ */
-  sourceType: 'official_api' | 'web_search' | 'ai_generated' | 'blog';
+  sourceType: "official_api" | "web_search" | "ai_generated" | "blog";
   /** ソース名 */
   sourceName: string;
   /** ソースURL（オプション） */

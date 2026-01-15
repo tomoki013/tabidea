@@ -11,21 +11,21 @@
  * 渡航情報のカテゴリ
  */
 export type TravelInfoCategory =
-  | 'basic' // 基本情報（通貨、言語、時差）
-  | 'safety' // 安全・医療（危険度、緊急連絡先）
-  | 'climate' // 気候・服装
-  | 'visa' // ビザ・入国手続き
-  | 'manner' // 現地マナー・チップ
-  | 'transport'; // 交通事情
+  | "basic" // 基本情報（通貨、言語、時差）
+  | "safety" // 安全・医療（危険度、緊急連絡先）
+  | "climate" // 気候・服装
+  | "visa" // ビザ・入国手続き
+  | "manner" // 現地マナー・チップ
+  | "transport"; // 交通事情
 
 /**
  * 情報ソースの種類
  */
 export type SourceType =
-  | 'official_api' // 公式API（外務省等）
-  | 'web_search' // Web検索
-  | 'ai_generated' // AI生成
-  | 'blog'; // ブログ記事
+  | "official_api" // 公式API（外務省等）
+  | "web_search" // Web検索
+  | "ai_generated" // AI生成
+  | "blog"; // ブログ記事
 
 /**
  * 外務省の危険度レベル（1-4）
@@ -257,7 +257,9 @@ export interface CategoryDataMap {
 /**
  * カテゴリデータのエントリ
  */
-export type CategoryDataEntry<T extends TravelInfoCategory = TravelInfoCategory> = {
+export type CategoryDataEntry<
+  T extends TravelInfoCategory = TravelInfoCategory
+> = {
   category: T;
   data: CategoryDataMap[T];
   source: TravelInfoSource;
@@ -298,6 +300,16 @@ export interface TravelInfoOptions {
 }
 
 /**
+ * 取得に失敗したカテゴリの情報
+ */
+export interface FailedCategory {
+  /** 失敗したカテゴリ */
+  category: TravelInfoCategory;
+  /** エラーメッセージ */
+  error: string;
+}
+
+/**
  * 渡航情報統合レスポンス
  */
 export interface TravelInfoResponse {
@@ -313,6 +325,8 @@ export interface TravelInfoResponse {
   generatedAt: Date;
   /** 免責事項 */
   disclaimer: string;
+  /** 取得に失敗したカテゴリ（オプション） */
+  failedCategories?: FailedCategory[];
 }
 
 // ============================================
@@ -341,32 +355,32 @@ export type AnyCategoryData =
  * 全カテゴリ配列（定数として使用可能）
  */
 export const ALL_TRAVEL_INFO_CATEGORIES: TravelInfoCategory[] = [
-  'basic',
-  'safety',
-  'climate',
-  'visa',
-  'manner',
-  'transport',
+  "basic",
+  "safety",
+  "climate",
+  "visa",
+  "manner",
+  "transport",
 ];
 
 /**
  * カテゴリの日本語ラベル
  */
 export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = {
-  basic: '基本情報',
-  safety: '安全・医療',
-  climate: '気候・服装',
-  visa: 'ビザ・入国',
-  manner: 'マナー・チップ',
-  transport: '交通事情',
+  basic: "基本情報",
+  safety: "安全・医療",
+  climate: "気候・服装",
+  visa: "ビザ・入国",
+  manner: "マナー・チップ",
+  transport: "交通事情",
 };
 
 /**
  * 危険度レベルの日本語説明
  */
 export const DANGER_LEVEL_DESCRIPTIONS: Record<DangerLevel, string> = {
-  1: '十分注意してください',
-  2: '不要不急の渡航は止めてください',
-  3: '渡航は止めてください（渡航中止勧告）',
-  4: '退避してください（退避勧告）',
+  1: "十分注意してください",
+  2: "不要不急の渡航は止めてください",
+  3: "渡航は止めてください（渡航中止勧告）",
+  4: "退避してください（退避勧告）",
 };
