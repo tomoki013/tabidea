@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: "Tabideaの更新情報と今後の開発ロードマップを掲載しています。",
 };
 
-type UpdateType = "release" | "pre_release" | "patch";
+type UpdateType = "release" | "pre_release" | "patch" | "minor" | "major";
 
 type RoadmapItem = {
   status: "done" | "planned" | "developing";
@@ -77,7 +77,7 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.01.13",
-    updateType: "pre_release",
+    updateType: "minor",
     title: "旅程サンプル集の公開",
     description:
       "様々な旅行プランのサンプルを閲覧できる旅程サンプル集を公開しました。プラン作成の参考にご活用ください。",
@@ -137,11 +137,14 @@ function calculateVersions(items: RoadmapItem[]): RoadmapItemWithVersion[] {
   return items.map((item) => {
     if (item.status !== "done") return item;
 
-    if (item.updateType === "release") {
+    if (item.updateType === "release" || item.updateType === "major") {
       major += 1;
       minor = 0;
       patch = 0;
-    } else if (item.updateType === "pre_release") {
+    } else if (
+      item.updateType === "pre_release" ||
+      item.updateType === "minor"
+    ) {
       minor += 1;
       patch = 0;
     } else if (item.updateType === "patch") {
