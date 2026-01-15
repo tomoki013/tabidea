@@ -84,7 +84,10 @@ export default function DestinationClient({
         const result = await getSingleCategoryInfo(
           destination,
           category,
-          dates ? { travelDates: dates } : undefined
+          {
+            travelDates: dates,
+            knownCountry: country !== destination ? country : undefined,
+          }
         );
 
         if (result.success) {
@@ -133,7 +136,7 @@ export default function DestinationClient({
         });
       }
     },
-    [destination, dates]
+    [destination, dates, country]
   );
 
   /**

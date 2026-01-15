@@ -70,6 +70,93 @@ const DEFAULT_CATEGORIES: TravelInfoCategory[] = ["basic", "safety", "climate"];
 const REQUEST_TIMEOUT_MS = 30000; // 30秒
 const MAX_RETRIES = 2;
 
+const countryExtractionCache = new Map<string, Promise<string>>();
+
+// 一般的な都市名と国名のマッピング（キャッシュ的に使用）
+const KNOWN_MAPPINGS: Record<string, string> = {
+  // 日本
+  東京: "日本",
+  大阪: "日本",
+  京都: "日本",
+  北海道: "日本",
+  沖縄: "日本",
+  福岡: "日本",
+  名古屋: "日本",
+  札幌: "日本",
+  // アジア
+  ソウル: "韓国",
+  釜山: "韓国",
+  台北: "台湾",
+  高雄: "台湾",
+  香港: "香港",
+  マカオ: "マカオ",
+  上海: "中国",
+  北京: "中国",
+  バンコク: "タイ",
+  プーケット: "タイ",
+  シンガポール: "シンガポール",
+  クアラルンプール: "マレーシア",
+  ジャカルタ: "インドネシア",
+  バリ: "インドネシア",
+  マニラ: "フィリピン",
+  セブ: "フィリピン",
+  ハノイ: "ベトナム",
+  ホーチミン: "ベトナム",
+  // ヨーロッパ
+  パリ: "フランス",
+  ロンドン: "イギリス",
+  ローマ: "イタリア",
+  ミラノ: "イタリア",
+  バルセロナ: "スペイン",
+  マドリード: "スペイン",
+  ベルリン: "ドイツ",
+  アムステルダム: "オランダ",
+  チューリッヒ: "スイス",
+  ウィーン: "オーストリア",
+  プラハ: "チェコ",
+  // アメリカ
+  ニューヨーク: "アメリカ",
+  ロサンゼルス: "アメリカ",
+  ハワイ: "アメリカ",
+  ホノルル: "アメリカ",
+  サンフランシスコ: "アメリカ",
+  ラスベガス: "アメリカ",
+  シアトル: "アメリカ",
+  バンクーバー: "カナダ",
+  トロント: "カナダ",
+  // オセアニア
+  シドニー: "オーストラリア",
+  メルボルン: "オーストラリア",
+  ケアンズ: "オーストラリア",
+  オークランド: "ニュージーランド",
+  // 中東
+  ドバイ: "アラブ首長国連邦",
+  アブダビ: "アラブ首長国連邦",
+};
+
+// 目的地が国名の場合はそのまま返す
+const COMMON_COUNTRIES = [
+  "日本",
+  "韓国",
+  "台湾",
+  "中国",
+  "タイ",
+  "シンガポール",
+  "マレーシア",
+  "インドネシア",
+  "フィリピン",
+  "ベトナム",
+  "フランス",
+  "イギリス",
+  "イタリア",
+  "スペイン",
+  "ドイツ",
+  "アメリカ",
+  "カナダ",
+  "オーストラリア",
+  "ニュージーランド",
+];
+
 // ============================================
 // ロギングヘルパー
 // ============================================
@@ -523,117 +610,49 @@ async function extractCountryFromDestination(
   destination: string,
   apiKey: string
 ): Promise<string> {
-  // 一般的な都市名と国名のマッピング（キャッシュ的に使用）
-  const knownMappings: Record<string, string> = {
-    // 日本
-    東京: "日本",
-    大阪: "日本",
-    京都: "日本",
-    北海道: "日本",
-    沖縄: "日本",
-    福岡: "日本",
-    名古屋: "日本",
-    札幌: "日本",
-    // アジア
-    ソウル: "韓国",
-    釜山: "韓国",
-    台北: "台湾",
-    高雄: "台湾",
-    香港: "香港",
-    マカオ: "マカオ",
-    上海: "中国",
-    北京: "中国",
-    バンコク: "タイ",
-    プーケット: "タイ",
-    シンガポール: "シンガポール",
-    クアラルンプール: "マレーシア",
-    ジャカルタ: "インドネシア",
-    バリ: "インドネシア",
-    マニラ: "フィリピン",
-    セブ: "フィリピン",
-    ハノイ: "ベトナム",
-    ホーチミン: "ベトナム",
-    // ヨーロッパ
-    パリ: "フランス",
-    ロンドン: "イギリス",
-    ローマ: "イタリア",
-    ミラノ: "イタリア",
-    バルセロナ: "スペイン",
-    マドリード: "スペイン",
-    ベルリン: "ドイツ",
-    アムステルダム: "オランダ",
-    チューリッヒ: "スイス",
-    ウィーン: "オーストリア",
-    プラハ: "チェコ",
-    // アメリカ
-    ニューヨーク: "アメリカ",
-    ロサンゼルス: "アメリカ",
-    ハワイ: "アメリカ",
-    ホノルル: "アメリカ",
-    サンフランシスコ: "アメリカ",
-    ラスベガス: "アメリカ",
-    シアトル: "アメリカ",
-    バンクーバー: "カナダ",
-    トロント: "カナダ",
-    // オセアニア
-    シドニー: "オーストラリア",
-    メルボルン: "オーストラリア",
-    ケアンズ: "オーストラリア",
-    オークランド: "ニュージーランド",
-    // 中東
-    ドバイ: "アラブ首長国連邦",
-    アブダビ: "アラブ首長国連邦",
-  };
-
-  // 既知のマッピングをチェック
-  const normalized = destination.trim();
-  if (knownMappings[normalized]) {
-    return knownMappings[normalized];
+  // キャッシュを確認
+  if (countryExtractionCache.has(destination)) {
+    return countryExtractionCache.get(destination)!;
   }
 
-  // 目的地が国名の場合はそのまま返す
-  const commonCountries = [
-    "日本",
-    "韓国",
-    "台湾",
-    "中国",
-    "タイ",
-    "シンガポール",
-    "マレーシア",
-    "インドネシア",
-    "フィリピン",
-    "ベトナム",
-    "フランス",
-    "イギリス",
-    "イタリア",
-    "スペイン",
-    "ドイツ",
-    "アメリカ",
-    "カナダ",
-    "オーストラリア",
-    "ニュージーランド",
-  ];
+  const promise = (async () => {
+    // 既知のマッピングをチェック
+    const normalized = destination.trim();
+    if (KNOWN_MAPPINGS[normalized]) {
+      return KNOWN_MAPPINGS[normalized];
+    }
 
-  if (commonCountries.includes(normalized)) {
-    return normalized;
-  }
+    if (COMMON_COUNTRIES.includes(normalized)) {
+      return normalized;
+    }
 
-  // AIで国名を推測
-  try {
-    const google = getGoogleAI(apiKey);
-    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+    // AIで国名を推測
+    try {
+      const google = createGoogleGenerativeAI({ apiKey });
+      const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
 
-    const { text } = await generateText({
-      model: google(modelName),
-      prompt: `「${destination}」という地名の国名を日本語で答えてください。国名のみを回答してください。例: タイ、フランス、アメリカ`,
-      temperature: 0,
-    });
+      const { text } = await generateText({
+        model: google(modelName),
+        prompt: `「${destination}」という地名の国名を日本語で答えてください。国名のみを回答してください。例: タイ、フランス、アメリカ`,
+        temperature: 0,
+      });
 
-    return text.trim() || destination;
-  } catch (error) {
-    console.warn("[travel-info] Failed to extract country:", error);
-    return destination; // フォールバック
-  }
+      return text.trim() || destination;
+    } catch (error) {
+      console.warn("[travel-info] Failed to extract country:", error);
+      return destination; // フォールバック
+    }
+  })();
+
+  // キャッシュに保存
+  countryExtractionCache.set(destination, promise);
+
+  // 完了後（成功・失敗問わず）はキャッシュから削除（インフライトリクエストの重複排除のみを行う）
+  promise.finally(() => {
+    countryExtractionCache.delete(destination);
+  });
+
+  return promise;
 }
 
 /**
@@ -835,7 +854,10 @@ export type SingleCategoryResult =
 export async function getSingleCategoryInfo(
   destination: string,
   category: TravelInfoCategory,
-  options?: { travelDates?: { start: string; end: string } }
+  options?: {
+    travelDates?: { start: string; end: string };
+    knownCountry?: string;
+  }
 ): Promise<SingleCategoryResult> {
   const startTime = Date.now();
   const requestId = `single_${category}_${Date.now()}_${Math.random()
@@ -875,11 +897,20 @@ export async function getSingleCategoryInfo(
 
   try {
     // 目的地から国名を抽出
-    const country = await extractCountryFromDestination(destination, apiKey);
-    logInfo("getSingleCategoryInfo", "国名抽出完了", {
-      requestId,
-      country,
-    });
+    let country: string;
+    if (options?.knownCountry) {
+      country = options.knownCountry;
+      logInfo("getSingleCategoryInfo", "国名抽出スキップ（指定あり）", {
+        requestId,
+        country,
+      });
+    } else {
+      country = await extractCountryFromDestination(destination, apiKey);
+      logInfo("getSingleCategoryInfo", "国名抽出完了", {
+        requestId,
+        country,
+      });
+    }
 
     // 渡航日程のパース
     const travelDates = options?.travelDates
