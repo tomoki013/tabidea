@@ -53,20 +53,73 @@ export {
 
 // キャッシュ
 export {
+  CacheManager,
   InMemoryCacheManager,
   createCacheManager,
   getSharedCacheManager,
+  resetSharedCacheManager,
+  CACHE_TTL_CONFIG,
   type CacheManagerConfig,
+  type CacheStrategy,
+  type IExtendedCacheManager,
 } from './cache/cache-manager';
 
-// ユーティリティ
+// キャッシュ設定
+export {
+  EXCHANGE_RATE_TTL,
+  CACHE_KEY_PREFIX,
+  MEMORY_CACHE_DEFAULTS,
+  FILE_CACHE_DEFAULTS,
+  generateCacheKey,
+  generateCompositeCacheKey,
+  generateCacheKeyPattern,
+  normalizeDestination,
+  getCategoryTtl,
+  getCategoryTtlSeconds,
+  createEmptyCacheStats,
+  calculateHitRate,
+  type CacheStats,
+} from './cache/cache-config';
+
+// キャッシュ戦略
+export {
+  MemoryCache,
+  createMemoryCache,
+  type MemoryCacheConfig,
+} from './cache/strategies/memory-cache';
+
+export {
+  FileCache,
+  createFileCache,
+  type FileCacheConfig,
+} from './cache/strategies/file-cache';
+
+export {
+  RedisCache,
+  createRedisCache,
+  isRedisConfigured,
+  type RedisCacheConfig,
+} from './cache/strategies/redis-cache';
+
+// ユーティリティ - 信頼性スコアリング
 export {
   ReliabilityScorer,
   createReliabilityScorer,
   getSharedReliabilityScorer,
   interpretReliabilityScore,
+  calculateCrossValidation,
+  calculateFieldCrossValidation,
+  BASE_RELIABILITY_SCORES,
+  EXTENDED_BASE_SCORES,
+  RELIABILITY_DISPLAY,
+  RELIABILITY_THRESHOLDS,
+  type ReliabilityLevel,
+  type ReliabilityDisplay,
+  type ExtendedReliabilityFactors,
+  type ExtendedSourceType,
 } from './utils/reliability-scorer';
 
+// ユーティリティ - カテゴリマッパー
 export {
   CategoryMapper,
   createCategoryMapper,
@@ -74,6 +127,19 @@ export {
   getSharedCategoryMapper,
   type CategoryMapperConfig,
 } from './utils/category-mapper';
+
+// ユーティリティ - ソースランカー
+export {
+  SourceRanker,
+  createSourceRanker,
+  getSharedSourceRanker,
+  executeFallbackChain,
+  SOURCE_PRIORITY,
+  type SourceRankingOptions,
+  type RankedSource,
+  type FallbackChainConfig,
+  type FallbackResult,
+} from './utils/source-ranker';
 
 // 便利なファクトリ関数
 import { createCacheManager } from './cache/cache-manager';

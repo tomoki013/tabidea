@@ -2,8 +2,9 @@
  * キャッシュマネージャー
  * 渡航情報のキャッシュを管理
  *
- * TODO: Redis/Upstashへの移行を検討
- * 現在はメモリキャッシュ（サーバーレス環境では制限あり）
+ * 戦略パターンを使用して、環境に応じたキャッシュ実装を選択可能
+ * - 開発: MemoryCache または FileCache
+ * - 本番: RedisCache（将来実装）
  */
 
 import {
@@ -12,249 +13,314 @@ import {
   CacheOptions,
 } from '../interfaces';
 
-/**
- * デフォルトのTTL（秒）
- */
-const DEFAULT_TTL_SECONDS = 3600; // 1時間
+import { TravelInfoCategory } from '@/lib/types/travel-info';
 
-/**
- * キャッシュマネージャー設定
- */
+import {
+  CacheStats,
+  CACHE_TTL_CONFIG,
+  generateCacheKey,
+  getCategoryTtlSeconds,
+  createEmptyCacheStats,
+} from './cache-config';
+
+import { MemoryCache, createMemoryCache, MemoryCacheConfig } from './strategies/memory-cache';
+import { FileCache, createFileCache, FileCacheConfig } from './strategies/file-cache';
+import { RedisCache, createRedisCache, RedisCacheConfig, isRedisConfigured } from './strategies/redis-cache';
+
+// ============================================
+// キャッシュ戦略タイプ
+// ============================================
+
+export type CacheStrategy = 'memory' | 'file' | 'redis' | 'auto';
+
+// ============================================
+// 統合キャッシュマネージャー設定
+// ============================================
+
 export interface CacheManagerConfig {
+  /** キャッシュ戦略 */
+  strategy?: CacheStrategy;
+  /** メモリキャッシュ設定 */
+  memoryConfig?: MemoryCacheConfig;
+  /** ファイルキャッシュ設定 */
+  fileConfig?: FileCacheConfig;
+  /** Redisキャッシュ設定 */
+  redisConfig?: RedisCacheConfig;
   /** デフォルトTTL（秒） */
   defaultTtlSeconds?: number;
-  /** 最大エントリ数 */
-  maxEntries?: number;
-  /** 定期クリーンアップ間隔（ミリ秒） */
-  cleanupIntervalMs?: number;
+  /** カテゴリ別TTLを使用するか */
+  useCategoryTtl?: boolean;
+  /** デバッグログを出力するか */
+  debug?: boolean;
 }
 
+// ============================================
+// 拡張キャッシュマネージャーインターフェース
+// ============================================
+
+export interface IExtendedCacheManager extends ICacheManager {
+  /**
+   * カテゴリ別にキャッシュを設定
+   */
+  setWithCategory<T>(
+    destination: string,
+    category: TravelInfoCategory,
+    data: T,
+    options?: Record<string, string>
+  ): Promise<void>;
+
+  /**
+   * カテゴリ別にキャッシュを取得
+   */
+  getWithCategory<T>(
+    destination: string,
+    category: TravelInfoCategory,
+    options?: Record<string, string>
+  ): Promise<CacheEntry<T> | null>;
+
+  /**
+   * キャッシュ統計を取得
+   */
+  getStats(): CacheStats | Promise<CacheStats>;
+
+  /**
+   * 統計をリセット
+   */
+  resetStats(): void;
+}
+
+// ============================================
+// 統合キャッシュマネージャー
+// ============================================
+
 /**
- * インメモリキャッシュマネージャー
- * サーバーレス環境ではリクエスト間でキャッシュが保持されない可能性あり
+ * 統合キャッシュマネージャー
+ * 戦略パターンで異なるキャッシュ実装を切り替え可能
  */
-export class InMemoryCacheManager implements ICacheManager {
-  private cache: Map<string, CacheEntry<unknown>> = new Map();
-  private readonly config: CacheManagerConfig;
-  private cleanupTimer?: NodeJS.Timeout;
+export class CacheManager implements IExtendedCacheManager {
+  private readonly strategy: ICacheManager;
+  private readonly config: Required<
+    Omit<CacheManagerConfig, 'memoryConfig' | 'fileConfig' | 'redisConfig'>
+  >;
 
   constructor(config: CacheManagerConfig = {}) {
     this.config = {
-      defaultTtlSeconds: DEFAULT_TTL_SECONDS,
-      maxEntries: 1000,
-      cleanupIntervalMs: 60000, // 1分
-      ...config,
+      strategy: config.strategy ?? 'auto',
+      defaultTtlSeconds: config.defaultTtlSeconds ?? 3600,
+      useCategoryTtl: config.useCategoryTtl ?? true,
+      debug: config.debug ?? false,
     };
 
-    // 定期クリーンアップを開始
-    this.startCleanup();
+    // 戦略を選択
+    this.strategy = this.selectStrategy(config);
+    this.log(`CacheManager initialized with strategy: ${this.config.strategy}`);
   }
 
   /**
-   * キャッシュを取得
+   * キャッシュ戦略を選択
    */
+  private selectStrategy(config: CacheManagerConfig): ICacheManager {
+    const strategy = config.strategy ?? 'auto';
+
+    switch (strategy) {
+      case 'redis':
+        return createRedisCache(config.redisConfig);
+
+      case 'file':
+        return createFileCache(config.fileConfig);
+
+      case 'memory':
+        return createMemoryCache(config.memoryConfig);
+
+      case 'auto':
+      default:
+        // 自動選択: Redis > Memory
+        if (isRedisConfigured()) {
+          this.log('Auto-selected: Redis cache');
+          return createRedisCache(config.redisConfig);
+        }
+        this.log('Auto-selected: Memory cache');
+        return createMemoryCache(config.memoryConfig);
+    }
+  }
+
+  // ============================================
+  // 基本キャッシュ操作
+  // ============================================
+
   async get<T>(key: string): Promise<CacheEntry<T> | null> {
-    const entry = this.cache.get(key);
-
-    if (!entry) {
-      return null;
-    }
-
-    // 期限切れチェック
-    if (new Date() > entry.expiresAt) {
-      this.cache.delete(key);
-      return null;
-    }
-
-    return entry as CacheEntry<T>;
+    return this.strategy.get<T>(key);
   }
 
-  /**
-   * キャッシュを設定
-   */
   async set<T>(key: string, data: T, options?: CacheOptions): Promise<void> {
-    // 最大エントリ数をチェック
-    if (this.cache.size >= (this.config.maxEntries || 1000)) {
-      this.evictOldest();
-    }
-
-    const ttlSeconds = options?.ttlSeconds ?? this.config.defaultTtlSeconds ?? DEFAULT_TTL_SECONDS;
-    const now = new Date();
-    const expiresAt = new Date(now.getTime() + ttlSeconds * 1000);
-
-    const entry: CacheEntry<T> = {
-      data,
-      createdAt: now,
-      expiresAt,
-      key,
-    };
-
-    this.cache.set(key, entry);
-    console.log(`[cache] Set: ${key} (expires: ${expiresAt.toISOString()})`);
+    const ttlSeconds = options?.ttlSeconds ?? this.config.defaultTtlSeconds;
+    return this.strategy.set(key, data, { ...options, ttlSeconds });
   }
 
-  /**
-   * キャッシュを削除
-   */
   async delete(key: string): Promise<boolean> {
-    const existed = this.cache.has(key);
-    this.cache.delete(key);
-
-    if (existed) {
-      console.log(`[cache] Deleted: ${key}`);
-    }
-
-    return existed;
+    return this.strategy.delete(key);
   }
 
-  /**
-   * パターンに一致するキャッシュを削除
-   */
   async deleteByPattern(pattern: string): Promise<number> {
-    // 簡易的なワイルドカードマッチング（*のみ対応）
-    const regex = new RegExp(
-      '^' + pattern.replace(/\*/g, '.*').replace(/\?/g, '.') + '$'
-    );
-
-    let deletedCount = 0;
-
-    for (const key of this.cache.keys()) {
-      if (regex.test(key)) {
-        this.cache.delete(key);
-        deletedCount++;
-      }
-    }
-
-    console.log(`[cache] Deleted ${deletedCount} entries matching: ${pattern}`);
-    return deletedCount;
+    return this.strategy.deleteByPattern(pattern);
   }
 
-  /**
-   * キャッシュをクリア
-   */
   async clear(): Promise<void> {
-    const size = this.cache.size;
-    this.cache.clear();
-    console.log(`[cache] Cleared ${size} entries`);
+    return this.strategy.clear();
   }
 
-  /**
-   * キャッシュが存在するか確認
-   */
   async has(key: string): Promise<boolean> {
-    const entry = await this.get(key);
-    return entry !== null;
+    return this.strategy.has(key);
+  }
+
+  // ============================================
+  // カテゴリ別キャッシュ操作
+  // ============================================
+
+  /**
+   * カテゴリ別にキャッシュを設定
+   * カテゴリに応じたTTLを自動適用
+   */
+  async setWithCategory<T>(
+    destination: string,
+    category: TravelInfoCategory,
+    data: T,
+    options?: Record<string, string>
+  ): Promise<void> {
+    const key = generateCacheKey(destination, category, options);
+    const ttlSeconds = this.config.useCategoryTtl
+      ? getCategoryTtlSeconds(category)
+      : this.config.defaultTtlSeconds;
+
+    this.log(`Setting cache for ${category}: ${key} (TTL: ${ttlSeconds}s)`);
+    return this.set(key, data, { ttlSeconds });
   }
 
   /**
-   * 最も古いエントリを削除
+   * カテゴリ別にキャッシュを取得
    */
-  private evictOldest(): void {
-    let oldestKey: string | null = null;
-    let oldestTime = new Date();
+  async getWithCategory<T>(
+    destination: string,
+    category: TravelInfoCategory,
+    options?: Record<string, string>
+  ): Promise<CacheEntry<T> | null> {
+    const key = generateCacheKey(destination, category, options);
+    return this.get<T>(key);
+  }
 
-    for (const [key, entry] of this.cache.entries()) {
-      if (entry.createdAt < oldestTime) {
-        oldestTime = entry.createdAt;
-        oldestKey = key;
-      }
-    }
+  // ============================================
+  // 統計情報
+  // ============================================
 
-    if (oldestKey) {
-      this.cache.delete(oldestKey);
-      console.log(`[cache] Evicted oldest: ${oldestKey}`);
+  /**
+   * キャッシュ統計を取得
+   */
+  getStats(): CacheStats | Promise<CacheStats> {
+    if (this.strategy instanceof MemoryCache) {
+      return this.strategy.getStats();
     }
+    if (this.strategy instanceof FileCache) {
+      return this.strategy.getStats();
+    }
+    if (this.strategy instanceof RedisCache) {
+      return this.strategy.getStats();
+    }
+    return createEmptyCacheStats();
   }
 
   /**
-   * 期限切れエントリをクリーンアップ
+   * 統計をリセット
    */
-  private cleanup(): void {
-    const now = new Date();
-    let cleanedCount = 0;
-
-    for (const [key, entry] of this.cache.entries()) {
-      if (now > entry.expiresAt) {
-        this.cache.delete(key);
-        cleanedCount++;
-      }
+  resetStats(): void {
+    if (this.strategy instanceof MemoryCache) {
+      this.strategy.resetStats();
     }
-
-    if (cleanedCount > 0) {
-      console.log(`[cache] Cleanup: removed ${cleanedCount} expired entries`);
+    if (this.strategy instanceof FileCache) {
+      this.strategy.resetStats();
     }
   }
 
+  // ============================================
+  // ユーティリティ
+  // ============================================
+
   /**
-   * 定期クリーンアップを開始
+   * 使用中の戦略を取得
    */
-  private startCleanup(): void {
-    if (this.cleanupTimer) {
-      return;
-    }
-
-    this.cleanupTimer = setInterval(() => {
-      this.cleanup();
-    }, this.config.cleanupIntervalMs);
-
-    // Node.js環境でプロセス終了時にタイマーをクリア
-    if (typeof process !== 'undefined' && process.on) {
-      process.on('beforeExit', () => {
-        this.stopCleanup();
-      });
-    }
+  getStrategy(): ICacheManager {
+    return this.strategy;
   }
 
   /**
-   * 定期クリーンアップを停止
+   * 使用中の戦略タイプを取得
    */
-  private stopCleanup(): void {
-    if (this.cleanupTimer) {
-      clearInterval(this.cleanupTimer);
-      this.cleanupTimer = undefined;
-    }
+  getStrategyType(): CacheStrategy {
+    if (this.strategy instanceof RedisCache) return 'redis';
+    if (this.strategy instanceof FileCache) return 'file';
+    if (this.strategy instanceof MemoryCache) return 'memory';
+    return 'memory';
   }
 
   /**
-   * キャッシュの統計情報を取得
+   * デバッグログを出力
    */
-  getStats(): { size: number; oldestEntry: Date | null; newestEntry: Date | null } {
-    let oldest: Date | null = null;
-    let newest: Date | null = null;
-
-    for (const entry of this.cache.values()) {
-      if (!oldest || entry.createdAt < oldest) {
-        oldest = entry.createdAt;
-      }
-      if (!newest || entry.createdAt > newest) {
-        newest = entry.createdAt;
-      }
+  private log(message: string): void {
+    if (this.config.debug) {
+      console.log(`[cache-manager] ${message}`);
     }
-
-    return {
-      size: this.cache.size,
-      oldestEntry: oldest,
-      newestEntry: newest,
-    };
   }
 }
 
+// ============================================
+// 後方互換性のためのエイリアス
+// ============================================
+
 /**
- * キャッシュマネージャーのファクトリ関数
+ * InMemoryCacheManager（後方互換性のため）
+ * @deprecated CacheManager を使用してください
  */
-export function createCacheManager(config?: CacheManagerConfig): ICacheManager {
-  return new InMemoryCacheManager(config);
+export class InMemoryCacheManager extends CacheManager {
+  constructor(config?: CacheManagerConfig) {
+    super({ ...config, strategy: 'memory' });
+  }
 }
 
-/**
- * シングルトンキャッシュマネージャー
- * アプリケーション全体で共有
- */
-let sharedCacheManager: ICacheManager | null = null;
+// ============================================
+// ファクトリ関数
+// ============================================
 
-export function getSharedCacheManager(): ICacheManager {
+/**
+ * キャッシュマネージャーを作成
+ */
+export function createCacheManager(config?: CacheManagerConfig): IExtendedCacheManager {
+  return new CacheManager(config);
+}
+
+// ============================================
+// シングルトン
+// ============================================
+
+let sharedCacheManager: IExtendedCacheManager | null = null;
+
+/**
+ * 共有キャッシュマネージャーを取得
+ */
+export function getSharedCacheManager(): IExtendedCacheManager {
   if (!sharedCacheManager) {
     sharedCacheManager = createCacheManager();
   }
   return sharedCacheManager;
 }
+
+/**
+ * 共有キャッシュマネージャーをリセット
+ */
+export function resetSharedCacheManager(): void {
+  sharedCacheManager = null;
+}
+
+// ============================================
+// カテゴリTTL設定のエクスポート
+// ============================================
+
+export { CACHE_TTL_CONFIG };
