@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const plan = getSamplePlanById(id);
-  const itinerary = getSampleItinerary(id);
+  const itinerary = await getSampleItinerary(id);
 
   if (!plan) {
     return {
@@ -99,7 +99,7 @@ export default async function SamplePlanDetailPage({ params }: Props) {
   const { input } = plan;
 
   // 事前生成済みの旅程を取得
-  const itinerary = getSampleItinerary(id);
+  const itinerary = await getSampleItinerary(id);
 
   // プラン編集用のUserInput
   const fullInput: UserInput = {
