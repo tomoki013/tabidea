@@ -35,6 +35,14 @@ const roadmapData: RoadmapItem[] = [
   },
   {
     status: "done",
+    date: "2026.01.14",
+    version: "0.3.8",
+    title: "サンプルの大幅追加と検索・絞り込み機能の実装",
+    description:
+      "旅程サンプルを大幅に追加し、地域やキーワードでプランを探せる検索・絞り込み機能を実装しました。よりスムーズに理想の旅程を見つけられるようになりました。",
+  },
+  {
+    status: "done",
     date: "2026.01.13",
     version: "0.3.7",
     title: "旅程サンプル集の公開",
