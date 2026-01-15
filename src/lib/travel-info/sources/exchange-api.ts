@@ -9,6 +9,7 @@ import {
   TravelInfoCategory,
   SourceType,
   TravelInfoSource,
+  BasicCountryInfo,
   Currency,
   ExchangeRate,
 } from '@/lib/types/travel-info';
@@ -32,7 +33,7 @@ export interface ExchangeApiConfig {
 }
 
 /**
- * 為替レート取得用の部分的なBasicCountryInfo
+ * 為替レート取得用のデータ型（内部使用）
  */
 export interface ExchangeRateData {
   currency: Currency;
@@ -41,8 +42,9 @@ export interface ExchangeRateData {
 
 /**
  * 為替レートソース
+ * BasicCountryInfoの為替関連フィールドを提供
  */
-export class ExchangeApiSource implements ITravelInfoSource<ExchangeRateData> {
+export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
   readonly sourceName = '為替レートAPI';
   readonly sourceType: SourceType = 'official_api';
   readonly reliabilityScore = 90;
@@ -60,11 +62,12 @@ export class ExchangeApiSource implements ITravelInfoSource<ExchangeRateData> {
 
   /**
    * 為替レート情報を取得
+   * BasicCountryInfoとして返す（為替関連フィールドのみ有効）
    */
   async fetch(
     destination: string,
     _options?: SourceOptions
-  ): Promise<SourceResult<ExchangeRateData>> {
+  ): Promise<SourceResult<BasicCountryInfo>> {
     console.log(`[exchange-api] Fetching exchange rate for: ${destination}`);
 
     try {
@@ -100,6 +103,15 @@ export class ExchangeApiSource implements ITravelInfoSource<ExchangeRateData> {
         };
       }
 
+      // BasicCountryInfoとして返す
+      const basicCountryInfo: BasicCountryInfo = {
+        currency: exchangeData.currency,
+        exchangeRate: exchangeData.exchangeRate,
+        languages: [], // 為替APIでは言語情報は取得しない
+        timezone: '', // 為替APIではタイムゾーン情報は取得しない
+        timeDifference: '', // 為替APIでは時差情報は取得しない
+      };
+
       const source: TravelInfoSource = {
         sourceType: this.sourceType,
         sourceName: this.sourceName,
@@ -110,7 +122,7 @@ export class ExchangeApiSource implements ITravelInfoSource<ExchangeRateData> {
 
       return {
         success: true,
-        data: exchangeData,
+        data: basicCountryInfo,
         source,
       };
     } catch (error) {
