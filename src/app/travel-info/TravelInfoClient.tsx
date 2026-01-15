@@ -4,14 +4,9 @@ import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Search, Info, MapPin, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import type { TravelInfoCategory, TravelInfoResponse } from '@/lib/types/travel-info';
-import { getTravelInfo } from '@/app/actions/travel-info';
+import type { TravelInfoCategory } from '@/lib/types/travel-info';
 import { encodeTravelInfoUrl } from '@/lib/travelInfoUrlUtils';
-import {
-  CategorySelector,
-  TravelInfoDisplay,
-  ShareButton,
-} from '@/components/TravelInfo';
+import { CategorySelector } from '@/components/TravelInfo';
 
 /**
  * 人気の目的地リスト
@@ -28,7 +23,8 @@ const POPULAR_DESTINATIONS = [
 /**
  * TravelInfoClient - 渡航情報ページのメインクライアントコンポーネント
  *
- * カテゴリ選択、検索、結果表示を統合
+ * カテゴリ選択と検索フォームを提供
+ * 検索時は即座に目的地ページへ遷移
  */
 export default function TravelInfoClient() {
   const router = useRouter();
@@ -38,52 +34,48 @@ export default function TravelInfoClient() {
     'safety',
     'climate',
   ]);
-  const [loading, setLoading] = useState(false);
-  const [travelInfo, setTravelInfo] = useState<TravelInfoResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [searchedDestination, setSearchedDestination] = useState<string>('');
+  const [isNavigating, setIsNavigating] = useState(false);
 
   /**
-   * 渡航情報を検索
+   * 渡航情報を検索（即座にページ遷移）
    */
-  const handleSearch = useCallback(async (e?: React.FormEvent) => {
+  const handleSearch = useCallback((e?: React.FormEvent) => {
     e?.preventDefault();
-    if (!destination.trim() || selectedCategories.length === 0) return;
 
-    setLoading(true);
-    setError(null);
-    setTravelInfo(null);
-    setSearchedDestination(destination.trim());
+    const trimmedDestination = destination.trim();
 
-    try {
-      const result = await getTravelInfo(destination.trim(), selectedCategories);
-      if (result.success) {
-        setTravelInfo(result.data);
-        // URLを更新（履歴に追加しない）
-        const newUrl = encodeTravelInfoUrl(destination.trim(), selectedCategories);
-        router.replace(newUrl, { scroll: false });
-      } else {
-        setError(result.error || '情報の取得に失敗しました。');
-      }
-    } catch {
-      setError('エラーが発生しました。もう一度お試しください。');
-    } finally {
-      setLoading(false);
+    // バリデーション
+    if (!trimmedDestination) {
+      console.warn('[TravelInfoClient] 検索失敗: 目的地が入力されていません');
+      return;
     }
+
+    if (selectedCategories.length === 0) {
+      console.warn('[TravelInfoClient] 検索失敗: カテゴリが選択されていません');
+      return;
+    }
+
+    console.log('[TravelInfoClient] 検索開始:', {
+      destination: trimmedDestination,
+      categories: selectedCategories,
+    });
+
+    // 遷移中フラグを設定
+    setIsNavigating(true);
+
+    // URLを生成して即座に遷移
+    const targetUrl = encodeTravelInfoUrl(trimmedDestination, selectedCategories);
+    console.log('[TravelInfoClient] ページ遷移:', targetUrl);
+
+    router.push(targetUrl);
   }, [destination, selectedCategories, router]);
 
   /**
    * 人気の目的地を選択
    */
   const handlePopularDestination = (name: string) => {
+    console.log('[TravelInfoClient] 人気の目的地を選択:', name);
     setDestination(name);
-  };
-
-  /**
-   * リトライ処理
-   */
-  const handleRetry = () => {
-    handleSearch();
   };
 
   return (
@@ -136,7 +128,7 @@ export default function TravelInfoClient() {
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder="例: パリ、バンコク、ニューヨーク"
                     className="flex-1 px-4 py-3 border-2 border-stone-200 rounded-xl focus:outline-none focus:border-primary transition-colors text-lg"
-                    disabled={loading}
+                    disabled={isNavigating}
                   />
                 </div>
 
@@ -167,7 +159,7 @@ export default function TravelInfoClient() {
                 <CategorySelector
                   selectedCategories={selectedCategories}
                   onSelectionChange={setSelectedCategories}
-                  disabled={loading}
+                  disabled={isNavigating}
                 />
               </div>
 
@@ -175,11 +167,11 @@ export default function TravelInfoClient() {
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <button
                   type="submit"
-                  disabled={loading || !destination.trim() || selectedCategories.length === 0}
+                  disabled={isNavigating || !destination.trim() || selectedCategories.length === 0}
                   className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 text-lg"
                 >
                   <Search className="w-5 h-5" />
-                  {loading ? '検索中...' : '渡航情報を検索'}
+                  {isNavigating ? '移動中...' : '渡航情報を検索'}
                 </button>
 
                 <p className="text-sm text-stone-500 flex items-start gap-2">
@@ -192,36 +184,8 @@ export default function TravelInfoClient() {
             </form>
           </motion.section>
 
-          {/* Results Section */}
-          {(loading || travelInfo || error) && (
-            <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-            >
-              {/* 共有ボタン（結果がある場合） */}
-              {travelInfo && !loading && (
-                <div className="flex justify-end mb-4">
-                  <ShareButton
-                    destination={searchedDestination}
-                    categories={selectedCategories}
-                  />
-                </div>
-              )}
-
-              <TravelInfoDisplay
-                data={travelInfo}
-                loading={loading}
-                error={error || undefined}
-                selectedCategories={selectedCategories}
-                onRetry={handleRetry}
-              />
-            </motion.section>
-          )}
-
           {/* Initial State - How to Use */}
-          {!loading && !travelInfo && !error && (
-            <motion.section
+          <motion.section
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -257,7 +221,6 @@ export default function TravelInfoClient() {
                 </p>
               </div>
             </motion.section>
-          )}
         </div>
       </main>
     </div>

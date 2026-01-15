@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, RefreshCw } from 'lucide-react';
 import Link from 'next/link';
@@ -13,6 +13,67 @@ import {
   TravelInfoDisplay,
   ShareButton,
 } from '@/components/TravelInfo';
+
+/**
+ * エラーの種類を判別
+ */
+type ErrorType = 'network' | 'api' | 'validation' | 'unknown';
+
+/**
+ * エラー情報
+ */
+interface ErrorInfo {
+  type: ErrorType;
+  message: string;
+  details?: string;
+}
+
+/**
+ * エラーの種類を判定
+ */
+function classifyError(error: unknown): ErrorInfo {
+  if (error instanceof Error) {
+    const message = error.message.toLowerCase();
+
+    // ネットワークエラー
+    if (
+      message.includes('network') ||
+      message.includes('fetch') ||
+      message.includes('timeout') ||
+      message.includes('aborted')
+    ) {
+      return {
+        type: 'network',
+        message: 'ネットワークエラーが発生しました。接続を確認してください。',
+        details: error.message,
+      };
+    }
+
+    // APIエラー
+    if (
+      message.includes('api') ||
+      message.includes('rate limit') ||
+      message.includes('unauthorized')
+    ) {
+      return {
+        type: 'api',
+        message: 'サーバーとの通信に問題が発生しました。',
+        details: error.message,
+      };
+    }
+
+    return {
+      type: 'unknown',
+      message: 'エラーが発生しました。もう一度お試しください。',
+      details: error.message,
+    };
+  }
+
+  return {
+    type: 'unknown',
+    message: 'エラーが発生しました。もう一度お試しください。',
+  };
+}
 
 interface DestinationClientProps {
   destination: string;
@@ -37,36 +98,82 @@ export default function DestinationClient({
   );
   const [loading, setLoading] = useState(true);
   const [travelInfo, setTravelInfo] = useState<TravelInfoResponse | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<ErrorInfo | null>(null);
+  const [retryCount, setRetryCount] = useState(0);
+  const fetchStartTime = useRef<number>(0);
 
   /**
    * 渡航情報を取得
    */
-  const fetchTravelInfo = useCallback(async (categories: TravelInfoCategory[]) => {
+  const fetchTravelInfo = useCallback(async (categories: TravelInfoCategory[], isRetry = false) => {
+    fetchStartTime.current = Date.now();
+
+    console.log('[DestinationClient] 渡航情報取得開始:', {
+      destination,
+      categories,
+      dates,
+      isRetry,
+      retryCount: isRetry ? retryCount + 1 : 0,
+    });
+
     setLoading(true);
     setError(null);
 
     try {
+      console.log('[DestinationClient] サーバーアクション呼び出し中...');
       const result = await getTravelInfo(
         destination,
         categories,
         dates ? { travelDates: dates } : undefined
       );
 
+      const elapsed = Date.now() - fetchStartTime.current;
+
       if (result.success) {
+        console.log('[DestinationClient] 渡航情報取得成功:', {
+          destination,
+          categoriesCount: result.data.categories.size,
+          sourcesCount: result.data.sources.length,
+          elapsedMs: elapsed,
+        });
         setTravelInfo(result.data);
+        setRetryCount(0);
       } else {
-        setError(result.error || '情報の取得に失敗しました。');
+        console.error('[DestinationClient] 渡航情報取得失敗:', {
+          destination,
+          error: result.error,
+          elapsedMs: elapsed,
+        });
+        setError({
+          type: 'api',
+          message: result.error || '情報の取得に失敗しました。',
+        });
       }
-    } catch {
-      setError('エラーが発生しました。もう一度お試しください。');
+    } catch (err) {
+      const elapsed = Date.now() - fetchStartTime.current;
+      const errorInfo = classifyError(err);
+
+      console.error('[DestinationClient] 例外発生:', {
+        destination,
+        errorType: errorInfo.type,
+        errorMessage: errorInfo.message,
+        errorDetails: errorInfo.details,
+        elapsedMs: elapsed,
+      });
+
+      setError(errorInfo);
     } finally {
       setLoading(false);
     }
-  }, [destination, dates]);
+  }, [destination, dates, retryCount]);
 
   // 初期ロード
   useEffect(() => {
+    console.log('[DestinationClient] コンポーネントマウント:', {
+      destination,
+      initialCategories,
+      dates,
+    });
     fetchTravelInfo(initialCategories);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -75,6 +182,10 @@ export default function DestinationClient({
    * カテゴリ変更時の処理
    */
   const handleCategoryChange = (newCategories: TravelInfoCategory[]) => {
+    console.log('[DestinationClient] カテゴリ変更:', {
+      previous: selectedCategories,
+      new: newCategories,
+    });
     setSelectedCategories(newCategories);
   };
 
@@ -82,9 +193,16 @@ export default function DestinationClient({
    * 再検索
    */
   const handleResearch = () => {
+    console.log('[DestinationClient] 再検索開始:', {
+      destination,
+      categories: selectedCategories,
+    });
+
     // URLを更新
     const newUrl = encodeTravelInfoUrl(destination, selectedCategories, dates);
+    console.log('[DestinationClient] URL更新:', newUrl);
     router.replace(newUrl, { scroll: false });
+
     // 再取得
     fetchTravelInfo(selectedCategories);
   };
@@ -93,7 +211,14 @@ export default function DestinationClient({
    * リトライ
    */
   const handleRetry = () => {
-    fetchTravelInfo(selectedCategories);
+    const newRetryCount = retryCount + 1;
+    console.log('[DestinationClient] リトライ実行:', {
+      destination,
+      categories: selectedCategories,
+      retryCount: newRetryCount,
+    });
+    setRetryCount(newRetryCount);
+    fetchTravelInfo(selectedCategories, true);
   };
 
   return (
@@ -181,7 +306,7 @@ export default function DestinationClient({
             <TravelInfoDisplay
               data={travelInfo}
               loading={loading}
-              error={error || undefined}
+              error={error?.message}
               selectedCategories={selectedCategories}
               onRetry={handleRetry}
             />
