@@ -166,24 +166,38 @@ export default async function SamplePlanDetailPage({ params }: Props) {
           <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none bg-[radial-gradient(#e67e22_1px,transparent_1px)] [background-size:20px_20px]" />
 
           <div className="max-w-4xl mx-auto relative z-10">
-            {/* Back Link */}
-            <Link
-              href="/samples"
-              className="inline-flex items-center gap-2 text-stone-500 hover:text-[#e67e22] transition-colors mb-6 text-sm font-medium"
-            >
-              <FaArrowLeft />
-              <span>サンプルプラン一覧に戻る</span>
-            </Link>
+            {/* Nav Row */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+              <Link
+                href="/samples"
+                className="group inline-flex items-center gap-3 text-stone-500 hover:text-stone-800 transition-colors"
+              >
+                <div className="w-10 h-10 flex items-center justify-center rounded-full bg-white border border-stone-200 group-hover:border-primary/50 group-hover:text-primary shadow-sm transition-all duration-300">
+                  <FaArrowLeft size={14} />
+                </div>
+                <span className="text-sm font-bold font-serif tracking-wide">
+                  Back to List
+                </span>
+              </Link>
 
-            {/* Badge */}
-            <div className="inline-block px-4 py-1.5 rounded-full border border-[#e67e22]/30 bg-[#e67e22]/5 text-[#e67e22] text-sm font-bold tracking-wider mb-4">
-              SAMPLE PLAN
+              {/* Desktop Badge */}
+              <div className="hidden md:block px-4 py-1.5 border-2 border-stone-300/50 text-stone-400 font-mono text-xs font-bold tracking-[0.2em] uppercase rotate-[-2deg] bg-white/50 backdrop-blur-sm">
+                Sample Plan
+              </div>
             </div>
 
-            {/* Title */}
-            <h1 className="text-2xl md:text-4xl font-serif font-bold text-[#2c2c2c] tracking-tight mb-4">
-              {plan.title}
-            </h1>
+            {/* Title Block */}
+            <div className="text-left relative">
+              {/* Mobile Badge */}
+              <div className="md:hidden inline-block mb-4 px-3 py-1 border-2 border-stone-300/50 text-stone-400 font-mono text-xs font-bold tracking-[0.2em] uppercase rotate-[-2deg] bg-white/50 backdrop-blur-sm">
+                Sample Plan
+              </div>
+
+              {/* Title */}
+              <h1 className="text-3xl md:text-5xl font-serif font-bold text-[#2c2c2c] tracking-tight mb-6 leading-tight">
+                {plan.title}
+              </h1>
+            </div>
 
             {/* Description */}
             <p className="text-stone-600 text-base md:text-lg leading-relaxed mb-6">

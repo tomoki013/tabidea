@@ -78,6 +78,7 @@ export default function SampleDetailClient({
           showRequestSummary={false}
           showChat={false}
           showShareButtons={false}
+          showReferences={false}
         />
       )}
 

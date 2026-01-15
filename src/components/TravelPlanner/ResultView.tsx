@@ -34,6 +34,7 @@ interface ResultViewProps {
   showRequestSummary?: boolean;
   showChat?: boolean;
   showShareButtons?: boolean;
+  showReferences?: boolean;
 }
 
 export default function ResultView({
@@ -46,6 +47,7 @@ export default function ResultView({
   showRequestSummary = true,
   showChat = true,
   showShareButtons = true,
+  showReferences = true,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -382,7 +384,13 @@ export default function ResultView({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip">
+      <div
+        className={
+          showReferences
+            ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip"
+            : "max-w-4xl mx-auto space-y-16 overflow-x-clip"
+        }
+      >
         {/* Timeline */}
         <div className="space-y-16" data-itinerary-section>
           {displayResult.days.map((day, dayIndex) => (
@@ -611,50 +619,52 @@ export default function ResultView({
         </div>
 
         {/* Sidebar / References */}
-        <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
-          <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
-            <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
-              <FaCalendarAlt /> Reference Articles
-            </h3>
+        {showReferences && (
+          <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
+            <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
+              <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
+                <FaCalendarAlt /> Reference Articles
+              </h3>
 
-            <div className="space-y-6">
-              {result.references && result.references.length > 0 ? (
-                result.references.map((ref, i) => (
-                  <a
-                    key={i}
-                    href={ref.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block group relative"
-                  >
-                    <div className="relative h-32 w-full rounded-lg overflow-hidden border border-stone-200 shadow-sm group-hover:shadow-md transition-all">
-                      {ref.image ? (
-                        <Image
-                          src={ref.image}
-                          alt={ref.title}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-stone-100 flex items-center justify-center text-xs text-stone-400">
-                          No Image
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-                    </div>
-                    <h5 className="mt-2 text-stone-700 text-sm font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                      {ref.title}
-                    </h5>
-                  </a>
-                ))
-              ) : (
-                <div className="p-4 bg-stone-50 rounded-xl border border-stone-100 text-sm text-stone-500 italic text-center">
-                  No specific references linked.
-                </div>
-              )}
+              <div className="space-y-6">
+                {result.references && result.references.length > 0 ? (
+                  result.references.map((ref, i) => (
+                    <a
+                      key={i}
+                      href={ref.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block group relative"
+                    >
+                      <div className="relative h-32 w-full rounded-lg overflow-hidden border border-stone-200 shadow-sm group-hover:shadow-md transition-all">
+                        {ref.image ? (
+                          <Image
+                            src={ref.image}
+                            alt={ref.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-stone-100 flex items-center justify-center text-xs text-stone-400">
+                            No Image
+                          </div>
+                        )}
+                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                      </div>
+                      <h5 className="mt-2 text-stone-700 text-sm font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                        {ref.title}
+                      </h5>
+                    </a>
+                  ))
+                ) : (
+                  <div className="p-4 bg-stone-50 rounded-xl border border-stone-100 text-sm text-stone-500 italic text-center">
+                    No specific references linked.
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
 
       {showRequestSummary && (
