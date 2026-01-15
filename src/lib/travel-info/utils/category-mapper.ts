@@ -7,6 +7,11 @@ import {
   TravelInfoCategory,
 } from '@/lib/types/travel-info';
 
+import { createCountryApiSource } from '../sources/country-api';
+import { createExchangeApiSource } from '../sources/exchange-api';
+import { createGeminiFallbackSource } from '../sources/gemini-fallback';
+import { createMofaApiSource } from '../sources/mofa-api';
+import { createWeatherApiSource } from '../sources/weather-api';
 import {
   ICategoryMapper,
   ITravelInfoSource,
@@ -170,27 +175,16 @@ export function createCategoryMapper(config?: CategoryMapperConfig): ICategoryMa
 
 /**
  * デフォルトのソースでカテゴリマッパーを初期化
- * TODO: 実際のソースインスタンスで初期化
  */
 export function createDefaultCategoryMapper(): ICategoryMapper {
   const mapper = new CategoryMapper();
 
-  // TODO: デフォルトソースを登録
-  // import { createMofaApiSource } from '../sources/mofa-api';
-  // import { createWeatherApiSource } from '../sources/weather-api';
-  // import { createExchangeApiSource } from '../sources/exchange-api';
-  // import { createCountryApiSource } from '../sources/country-api';
-  // import { createGeminiFallbackSource } from '../sources/gemini-fallback';
-  //
-  // mapper.registerSource(createMofaApiSource());
-  // mapper.registerSource(createWeatherApiSource());
-  // mapper.registerSource(createExchangeApiSource());
-  // mapper.registerSource(createCountryApiSource());
-  // mapper.registerSource(createGeminiFallbackSource());
-
-  console.warn(
-    '[category-mapper] Using empty mapper - register sources for production use'
-  );
+  // デフォルトソースを登録
+  mapper.registerSource(createMofaApiSource());
+  mapper.registerSource(createWeatherApiSource());
+  mapper.registerSource(createExchangeApiSource());
+  mapper.registerSource(createCountryApiSource());
+  mapper.registerSource(createGeminiFallbackSource());
 
   return mapper;
 }
