@@ -28,7 +28,7 @@ const IconComponents: Record<CategoryIcon, React.ComponentType<{ className?: str
  * CategoryCard - カテゴリ選択カード
  *
  * 各カテゴリを視覚的に表現し、選択状態を管理する
- * Framer Motionによるホバー・選択アニメーション付き
+ * トラベルジャーナル風のスタンプカードデザイン
  */
 export default function CategoryCard({
   category,
@@ -44,76 +44,88 @@ export default function CategoryCard({
       type="button"
       onClick={onToggle}
       disabled={disabled}
-      whileHover={disabled ? {} : { scale: 1.03, y: -2 }}
+      whileHover={disabled ? {} : { scale: 1.02, rotate: -1 }}
       whileTap={disabled ? {} : { scale: 0.98 }}
       transition={{ type: 'spring', stiffness: 400, damping: 20 }}
       className={`
-        relative group w-full p-4 sm:p-6 rounded-2xl text-left
-        border-2 transition-all duration-300
+        relative group w-full p-4 sm:p-5 rounded-xl text-left
+        border-2 transition-all duration-300 overflow-hidden
         focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2
         ${selected
-          ? 'border-primary bg-primary/5 shadow-[0_4px_20px_-4px_rgba(230,126,34,0.3)]'
-          : 'border-stone-200 bg-white hover:border-stone-300 hover:shadow-md'
+          ? 'border-primary/50 bg-[#fffdf5] shadow-md'
+          : 'border-stone-300 border-dashed bg-white hover:border-primary/30 hover:shadow-sm'
         }
         ${disabled
-          ? 'opacity-50 cursor-not-allowed'
+          ? 'opacity-50 cursor-not-allowed grayscale'
           : 'cursor-pointer'
         }
       `}
       aria-pressed={selected}
       aria-label={`${info.label}を${selected ? '選択解除' : '選択'}`}
     >
-      {/* 選択インジケーター */}
+      {/* 選択時の「スタンプ」風エフェクト */}
+      <motion.div
+        initial={false}
+        animate={{
+          opacity: selected ? 1 : 0,
+          scale: selected ? 1 : 1.5,
+          rotate: selected ? -15 : 0,
+        }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className="absolute -top-3 -right-3 w-16 h-16 rounded-full border-2 border-primary opacity-20 pointer-events-none flex items-center justify-center z-0"
+      >
+        <div className="w-14 h-14 rounded-full border border-primary border-dashed flex items-center justify-center">
+             <span className="text-[10px] font-serif font-bold text-primary tracking-widest opacity-80 rotate-12">CHECKED</span>
+        </div>
+      </motion.div>
+
+      {/* 実際に表示するチェックマーク（右上） */}
       <motion.div
         initial={false}
         animate={{
           scale: selected ? 1 : 0,
           opacity: selected ? 1 : 0,
         }}
-        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-        className="absolute top-3 right-3 w-6 h-6 rounded-full bg-primary flex items-center justify-center"
+        className="absolute top-2 right-2 w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center shadow-sm z-10"
       >
-        <Check className="w-4 h-4 text-white" strokeWidth={3} />
+        <Check className="w-4 h-4" strokeWidth={3} />
       </motion.div>
 
-      {/* アイコン */}
-      <div
-        className={`
-          w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3
-          transition-colors duration-300
-          ${selected ? 'bg-primary/20' : 'bg-stone-100 group-hover:bg-stone-200'}
-        `}
-      >
-        <IconComponent
+      {/* コンテンツラッパー */}
+      <div className="relative z-10 flex flex-col items-start h-full">
+        {/* アイコン */}
+        <div
           className={`
-            w-6 h-6 sm:w-7 sm:h-7 transition-colors duration-300
-            ${selected ? 'text-primary' : 'text-stone-600'}
+            w-10 h-10 sm:w-12 sm:h-12 rounded-lg flex items-center justify-center mb-3
+            transition-colors duration-300 border
+            ${selected
+              ? 'bg-primary/10 border-primary/20 text-primary'
+              : 'bg-stone-50 border-stone-200 text-stone-500 group-hover:bg-primary/5 group-hover:text-primary/70'
+            }
           `}
-        />
+        >
+          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
+        </div>
+
+        {/* ラベル */}
+        <h3
+          className={`
+            font-serif font-bold text-base sm:text-lg mb-1 leading-tight
+            transition-colors duration-300
+            ${selected ? 'text-primary' : 'text-[#2c2c2c]'}
+          `}
+        >
+          {info.label}
+        </h3>
+
+        {/* 説明 */}
+        <p className="text-xs sm:text-sm text-stone-500 font-hand leading-relaxed">
+          {info.description}
+        </p>
       </div>
 
-      {/* ラベル */}
-      <h3
-        className={`
-          font-serif font-bold text-base sm:text-lg mb-1
-          transition-colors duration-300
-          ${selected ? 'text-primary' : 'text-[#2c2c2c]'}
-        `}
-      >
-        {info.label}
-      </h3>
-
-      {/* 説明 */}
-      <p className="text-xs sm:text-sm text-stone-500 font-hand">
-        {info.description}
-      </p>
-
-      {/* 選択時のボーダーエフェクト */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: selected ? 1 : 0 }}
-        className="absolute inset-0 rounded-2xl border-2 border-primary pointer-events-none"
-      />
+      {/* 紙の質感ノイズ（オプション、CSSで実装されている場合） */}
+      {selected && <div className="absolute inset-0 bg-yellow-50/30 pointer-events-none mix-blend-multiply" />}
     </motion.button>
   );
 }

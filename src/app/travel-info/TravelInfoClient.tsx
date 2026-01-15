@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { Search, Info, MapPin, Sparkles } from 'lucide-react';
+import { Search, Info, MapPin, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { FaPassport, FaPlane, FaGlobeAsia, FaStamp } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import type { TravelInfoCategory } from '@/lib/types/travel-info';
 import { encodeTravelInfoUrl } from '@/lib/travelInfoUrlUtils';
@@ -24,7 +25,7 @@ const POPULAR_DESTINATIONS = [
  * TravelInfoClient - 渡航情報ページのメインクライアントコンポーネント
  *
  * カテゴリ選択と検索フォームを提供
- * 検索時は即座に目的地ページへ遷移
+ * トラベルジャーナル（旅行日記）風のUIデザイン
  */
 export default function TravelInfoClient() {
   const router = useRouter();
@@ -55,18 +56,11 @@ export default function TravelInfoClient() {
       return;
     }
 
-    console.log('[TravelInfoClient] 検索開始:', {
-      destination: trimmedDestination,
-      categories: selectedCategories,
-    });
-
     // 遷移中フラグを設定
     setIsNavigating(true);
 
     // URLを生成して即座に遷移
     const targetUrl = encodeTravelInfoUrl(trimmedDestination, selectedCategories);
-    console.log('[TravelInfoClient] ページ遷移:', targetUrl);
-
     router.push(targetUrl);
   }, [destination, selectedCategories, router]);
 
@@ -74,74 +68,117 @@ export default function TravelInfoClient() {
    * 人気の目的地を選択
    */
   const handlePopularDestination = (name: string) => {
-    console.log('[TravelInfoClient] 人気の目的地を選択:', name);
     setDestination(name);
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
+    <div className="min-h-screen bg-[#fcfbf9] relative overflow-hidden">
+      {/* 背景テクスチャ */}
+      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none fixed" />
+
+      {/* 装飾的な背景要素 */}
+      <div className="absolute top-20 right-10 opacity-10 pointer-events-none rotate-12 hidden lg:block">
+        <FaPassport size={200} className="text-primary" />
+      </div>
+      <div className="absolute bottom-40 left-10 opacity-5 pointer-events-none -rotate-12 hidden lg:block">
+        <FaGlobeAsia size={240} className="text-stone-600" />
+      </div>
+
       {/* Hero Section */}
-      <section className="relative w-full">
-        <div className="max-w-5xl mx-auto px-4 py-12 sm:py-20">
+      <section className="relative w-full pt-16 pb-12 sm:pt-24 sm:pb-16 z-10">
+        <div className="max-w-5xl mx-auto px-4 text-center relative">
+          {/* 浮遊する装飾アイコン */}
+          <motion.div
+            animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
+            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+            className="absolute top-0 left-[10%] sm:left-[20%] text-primary/40 hidden sm:block"
+          >
+            <FaPlane size={40} />
+          </motion.div>
+          <motion.div
+            animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
+            className="absolute top-10 right-[15%] text-stone-400 hidden sm:block"
+          >
+            <FaStamp size={32} />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center space-y-6"
+            className="space-y-4"
           >
-            <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#2c2c2c] leading-tight">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/50 border border-orange-200 text-orange-800 text-sm font-bold tracking-wider mb-4">
+              <Sparkles className="w-4 h-4" />
+              <span>Travel Support Guide</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#2c2c2c] leading-tight drop-shadow-sm">
               渡航情報・安全ガイド
             </h1>
-            <p className="text-xl text-stone-600 font-hand max-w-3xl mx-auto leading-relaxed">
-              渡航先の情報をカテゴリ別にチェック。
+            <p className="text-lg sm:text-xl text-stone-600 font-hand max-w-2xl mx-auto leading-relaxed">
+              旅の準備は、安心を集めることから。
               <br className="hidden sm:block" />
-              必要な情報だけを選んで、効率的に準備できます。
+              知りたい国や都市の情報を、あなたのノートに書き留めるように。
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Main Content */}
-      <main className="max-w-5xl mx-auto px-4 pb-16 sm:pb-24">
-        <div className="space-y-8">
-          {/* Search Form */}
+      <main className="max-w-4xl mx-auto px-4 pb-20 sm:pb-32 relative z-10">
+        <div className="space-y-12">
+          {/* Search Form - Journal Style */}
           <motion.section
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-3xl border-2 border-stone-200 p-6 sm:p-8 shadow-sm"
+            className="relative bg-white/90 backdrop-blur-sm rounded-sm sm:rounded-xl border border-stone-200 p-6 sm:p-10 shadow-xl sm:rotate-1"
           >
-            <form onSubmit={handleSearch} className="space-y-6">
+            {/* ピン留め風装飾 */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-orange-200/50 backdrop-blur-md shadow-sm rotate-[-1deg] hidden sm:block"></div>
+
+            <form onSubmit={handleSearch} className="space-y-10">
               {/* 目的地入力 */}
-              <div>
+              <div className="space-y-4">
                 <label
                   htmlFor="destination"
-                  className="block text-lg font-bold text-[#2c2c2c] mb-3 font-serif"
+                  className="flex items-center gap-2 text-xl font-bold text-[#2c2c2c] font-serif"
                 >
-                  <MapPin className="inline w-5 h-5 mr-2 text-primary" />
-                  目的地
+                  <MapPin className="w-6 h-6 text-primary" />
+                  <span>目的地を決める</span>
                 </label>
-                <div className="flex gap-3">
+
+                <div className="relative group">
                   <input
                     type="text"
                     id="destination"
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
-                    placeholder="例: パリ、バンコク、ニューヨーク"
-                    className="flex-1 px-4 py-3 border-2 border-stone-200 rounded-xl focus:outline-none focus:border-primary transition-colors text-lg"
+                    placeholder="どこへ行きますか？（例: パリ、バンコク）"
+                    className="w-full bg-transparent border-b-2 border-dashed border-stone-300 px-2 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-hand focus:outline-none focus:border-primary transition-all rounded-none"
                     disabled={isNavigating}
                   />
+                  <div className="absolute right-2 bottom-4 text-stone-400">
+                    <Search className="w-6 h-6" />
+                  </div>
                 </div>
 
-                {/* 人気の目的地 */}
-                <div className="mt-3">
-                  <p className="text-sm text-stone-500 mb-2">人気の目的地:</p>
-                  <div className="flex flex-wrap gap-2">
-                    {POPULAR_DESTINATIONS.map((dest) => (
+                {/* 人気の目的地 - 付箋風 */}
+                <div className="pt-2">
+                  <p className="text-sm text-stone-500 font-hand mb-3 ml-1">人気の目的地から選ぶ:</p>
+                  <div className="flex flex-wrap gap-3">
+                    {POPULAR_DESTINATIONS.map((dest, i) => (
                       <button
                         key={dest.name}
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
-                        className="px-3 py-1.5 text-sm bg-stone-100 hover:bg-primary/10 hover:text-primary rounded-full transition-colors"
+                        className={`
+                          px-4 py-2 text-sm sm:text-base font-hand text-stone-700
+                          bg-[#fff9c4] hover:bg-[#fff59d] shadow-sm hover:shadow-md
+                          transition-all duration-300 transform hover:-translate-y-1 hover:rotate-0
+                          ${i % 2 === 0 ? 'rotate-[-1deg]' : 'rotate-[1deg]'}
+                        `}
                       >
                         {dest.name}
                       </button>
@@ -151,76 +188,107 @@ export default function TravelInfoClient() {
               </div>
 
               {/* カテゴリ選択 */}
-              <div>
-                <label className="block text-lg font-bold text-[#2c2c2c] mb-3 font-serif">
-                  <Sparkles className="inline w-5 h-5 mr-2 text-primary" />
-                  取得する情報カテゴリ
+              <div className="space-y-4">
+                <label className="flex items-center gap-2 text-xl font-bold text-[#2c2c2c] font-serif">
+                  <CheckCircle2 className="w-6 h-6 text-primary" />
+                  <span>知りたいことを選ぶ</span>
                 </label>
-                <CategorySelector
-                  selectedCategories={selectedCategories}
-                  onSelectionChange={setSelectedCategories}
-                  disabled={isNavigating}
-                />
+                <div className="bg-stone-50/50 p-4 rounded-xl border border-stone-100">
+                  <CategorySelector
+                    selectedCategories={selectedCategories}
+                    onSelectionChange={setSelectedCategories}
+                    disabled={isNavigating}
+                  />
+                </div>
               </div>
 
               {/* 検索ボタン */}
-              <div className="flex flex-col sm:flex-row items-center gap-4">
+              <div className="flex flex-col items-center gap-6 pt-4">
                 <button
                   type="submit"
                   disabled={isNavigating || !destination.trim() || selectedCategories.length === 0}
-                  className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-xl transition-all hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 flex items-center justify-center gap-2 text-lg"
+                  className="group relative w-full sm:w-auto min-w-[280px]"
                 >
-                  <Search className="w-5 h-5" />
-                  {isNavigating ? '移動中...' : '渡航情報を検索'}
+                  <div className="absolute inset-0 bg-stone-800 rounded-full translate-y-1 transition-transform group-hover:translate-y-2 group-disabled:translate-y-0" />
+                  <div className="relative bg-primary hover:bg-[#d35400] text-white font-serif font-bold py-4 px-10 rounded-full transition-all group-hover:-translate-y-1 group-disabled:translate-y-0 group-disabled:bg-stone-400 group-disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg sm:text-xl shadow-lg">
+                    <span>{isNavigating ? 'ページをめくっています...' : '旅のノートを開く'}</span>
+                    {!isNavigating && <ArrowRight className="w-6 h-6" />}
+                  </div>
                 </button>
 
-                <p className="text-sm text-stone-500 flex items-start gap-2">
-                  <Info className="w-4 h-4 mt-0.5 flex-shrink-0" />
+                <p className="text-sm text-stone-500 flex items-center gap-2 font-hand">
+                  <Info className="w-4 h-4" />
                   <span>
-                    AIが情報を収集します。公式情報も併せてご確認ください。
+                    AIが最新の情報を収集して、あなただけのガイドを作成します
                   </span>
                 </p>
               </div>
             </form>
           </motion.section>
 
-          {/* Initial State - How to Use */}
+          {/* How to Use - Visual Flow */}
           <motion.section
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="bg-white rounded-3xl border-2 border-dashed border-stone-200 p-8 sm:p-12 shadow-sm"
-            >
-              <h2 className="text-2xl sm:text-3xl font-serif font-bold text-primary mb-6 text-center">
-                このページでできること
-              </h2>
-              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                {[
-                  { title: '基本情報', desc: '通貨・言語・時差・電源' },
-                  { title: '安全・医療', desc: '危険度・緊急連絡先' },
-                  { title: '気候・服装', desc: '天気予報・持ち物' },
-                  { title: 'ビザ・手続き', desc: '入国要件・必要書類' },
-                  { title: 'マナー・チップ', desc: '現地の習慣・タブー' },
-                  { title: '交通事情', desc: '公共交通・配車サービス' },
-                ].map((item) => (
-                  <div key={item.title} className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <span className="text-primary font-bold text-sm">✓</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-[#2c2c2c] mb-1">{item.title}</h3>
-                      <p className="text-stone-500 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="py-10"
+          >
+            <h2 className="text-2xl font-serif font-bold text-stone-700 text-center mb-10 relative">
+              <span className="relative z-10 bg-[#fcfbf9] px-6">3ステップで完了</span>
+              <div className="absolute top-1/2 left-0 right-0 h-px bg-stone-300 z-0"></div>
+            </h2>
+
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 max-w-3xl mx-auto">
+              {/* Step 1 */}
+              <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
+                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                  <MapPin className="w-10 h-10" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-lg text-stone-800">目的地を入力</h3>
+                  <p className="text-stone-500 text-sm font-hand">行きたい国や都市を<br/>入力します</p>
+                </div>
               </div>
 
-              <div className="mt-8 p-4 bg-blue-50 border border-blue-200 rounded-xl">
-                <p className="text-blue-900 text-sm text-center">
-                  <strong>使い方:</strong> 目的地を入力し、必要なカテゴリを選択して検索ボタンを押してください
-                </p>
+              {/* Arrow */}
+              <div className="hidden md:block text-stone-300">
+                <ArrowRight className="w-8 h-8" />
               </div>
-            </motion.section>
+              <div className="md:hidden text-stone-300 rotate-90 my-2">
+                <ArrowRight className="w-8 h-8" />
+              </div>
+
+              {/* Step 2 */}
+              <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
+                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                  <CheckCircle2 className="w-10 h-10" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-lg text-stone-800">カテゴリを選択</h3>
+                  <p className="text-stone-500 text-sm font-hand">知りたい情報だけを<br/>ピックアップ</p>
+                </div>
+              </div>
+
+              {/* Arrow */}
+              <div className="hidden md:block text-stone-300">
+                <ArrowRight className="w-8 h-8" />
+              </div>
+              <div className="md:hidden text-stone-300 rotate-90 my-2">
+                <ArrowRight className="w-8 h-8" />
+              </div>
+
+              {/* Step 3 */}
+              <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
+                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                  <FaPassport className="w-10 h-10" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-bold text-lg text-stone-800">ガイドを作成</h3>
+                  <p className="text-stone-500 text-sm font-hand">AIが情報をまとめて<br/>表示します</p>
+                </div>
+              </div>
+            </div>
+          </motion.section>
         </div>
       </main>
     </div>
