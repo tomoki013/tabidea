@@ -95,7 +95,7 @@ export default function RootLayout({
         ></Script>
       </head>
       <body
-        className={`${notoSansJP.variable} ${kaiseiDecol.variable} ${yomogi.variable} font-sans antialiased bg-background text-foreground`}
+        className={`${notoSansJP.variable} ${kaiseiDecol.variable} ${yomogi.variable} font-sans antialiased bg-background text-foreground pt-4`}
       >
         <Header />
         {children}

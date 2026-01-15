@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import TravelPlanner from "@/components/TravelPlanner";
 import Header from "@/components/layout/Header";
+
 import HeroSection from "@/components/landing/HeroSection";
 import AboutSection from "@/components/landing/AboutSection";
 import FeaturesHeroSection from "@/components/landing/FeaturesHeroSection";
@@ -35,8 +36,10 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <main className="flex-1 w-full flex flex-col items-center">
+      {/* Fixed Header that appears on scroll */}
+      <Header forceShow={true} className="z-50" />
 
+      <main className="flex-1 w-full flex flex-col items-center">
         {/* Hero Section containing the main app functionality */}
         <HeroSection>
           <Suspense
@@ -48,20 +51,21 @@ export default async function Home({ searchParams }: HomeProps) {
               </div>
             }
           >
-            <TravelPlanner initialInput={initialInput} initialStep={initialInput ? 1 : undefined} />
+            <TravelPlanner
+              initialInput={initialInput}
+              initialStep={initialInput ? 1 : undefined}
+            />
           </Suspense>
         </HeroSection>
 
         {/* Other Sections */}
         <AboutSection />
-        <Header forceShow={true} className="sticky top-0 left-0 right-0 z-50 border-b border-dashed border-stone-200/50" />
         <FeaturesHeroSection />
         <UsageGuideHero />
         <FeatureSection />
         <ExampleSection />
-        <TravelInfoSection />
+        {/* <TravelInfoSection /> */}
         <FAQSection limit={5} />
-
       </main>
     </div>
   );
