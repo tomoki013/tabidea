@@ -54,7 +54,9 @@ describe('CountryApiSource', () => {
 
     expect(mockFetch).toHaveBeenCalled();
     expect(result.success).toBe(false);
-    expect(result.error).toContain('国情報が見つかりませんでした');
+    if (!result.success) {
+      expect(result.error).toContain('国情報が見つかりませんでした');
+    }
   });
 
   it('should handle API errors (non-404)', async () => {
@@ -73,7 +75,9 @@ describe('CountryApiSource', () => {
     // The current implementation of fetch catches errors.
     // My implementation of fetchCountryData should throw on non-404 errors,
     // which source.fetch will catch.
-    expect(result.error).toBe('Internal Server Error');
+    if (!result.success) {
+      expect(result.error).toBe('Internal Server Error');
+    }
   });
 
   it('should handle network errors', async () => {
@@ -84,6 +88,8 @@ describe('CountryApiSource', () => {
     const result = await source.fetch('Japan');
 
     expect(result.success).toBe(false);
-    expect(result.error).toBe('Network error');
+    if (!result.success) {
+      expect(result.error).toBe('Network error');
+    }
   });
 });

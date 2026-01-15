@@ -1,0 +1,225 @@
+/**
+ * travel-info用のZodスキーマ定義
+ * generateObjectでJSON形式のレスポンスを確実に取得するために使用
+ */
+
+import { z } from 'zod';
+import type { TravelInfoCategory } from '@/lib/types/travel-info';
+
+// ============================================
+// 基本情報 (basic) スキーマ
+// ============================================
+
+export const CurrencySchema = z.object({
+  code: z.string().describe('通貨コード（例: USD, EUR, JPY）'),
+  name: z.string().describe('通貨名（例: 米ドル, ユーロ）'),
+  symbol: z.string().describe('通貨記号（例: $, €, ¥）'),
+});
+
+export const ExchangeRateSchema = z.object({
+  rate: z.number().describe('1円あたりのレート'),
+  baseCurrency: z.string().default('JPY'),
+  updatedAt: z.coerce.date().describe('更新日時（ISO 8601形式）'),
+});
+
+export const BasicInfoSchema = z.object({
+  currency: CurrencySchema,
+  exchangeRate: ExchangeRateSchema.optional(),
+  languages: z.array(z.string()).describe('公用語リスト'),
+  timezone: z.string().describe('タイムゾーン（例: Asia/Tokyo）'),
+  timeDifference: z.string().describe('日本との時差（例: -8時間）'),
+});
+
+// ============================================
+// 安全情報 (safety) スキーマ
+// ============================================
+
+export const EmergencyContactSchema = z.object({
+  name: z.string().describe('連絡先名（例: 警察, 救急）'),
+  number: z.string().describe('電話番号'),
+});
+
+export const EmbassySchema = z.object({
+  name: z.string().describe('大使館・領事館名'),
+  address: z.string().describe('住所'),
+  phone: z.string().describe('電話番号'),
+});
+
+export const SafetyInfoSchema = z.object({
+  dangerLevel: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).describe('外務省危険度レベル（1-4）'),
+  dangerLevelDescription: z.string().describe('危険度の説明'),
+  warnings: z.array(z.string()).describe('注意事項・警告リスト'),
+  emergencyContacts: z.array(EmergencyContactSchema).describe('緊急連絡先'),
+  nearestEmbassy: EmbassySchema.optional().describe('最寄りの日本大使館・領事館'),
+});
+
+// ============================================
+// 気候情報 (climate) スキーマ
+// ============================================
+
+export const CurrentWeatherSchema = z.object({
+  temp: z.number().describe('現在気温（摂氏）'),
+  condition: z.string().describe('天気状態'),
+  humidity: z.number().describe('湿度（%）'),
+});
+
+export const ForecastDaySchema = z.object({
+  date: z.string().describe('日付（YYYY-MM-DD）'),
+  high: z.number().describe('最高気温'),
+  low: z.number().describe('最低気温'),
+  condition: z.string().describe('天気状態'),
+});
+
+export const ClimateInfoSchema = z.object({
+  currentWeather: CurrentWeatherSchema.optional(),
+  forecast: z.array(ForecastDaySchema).optional(),
+  recommendedClothing: z.array(z.string()).describe('おすすめの服装'),
+  seasonDescription: z.string().describe('季節の説明'),
+});
+
+// ============================================
+// ビザ情報 (visa) スキーマ
+// ============================================
+
+export const VisaInfoSchema = z.object({
+  required: z.boolean().describe('ビザが必要かどうか'),
+  visaFreeStayDays: z.number().nullable().describe('ビザなし滞在可能日数'),
+  requirements: z.array(z.string()).describe('入国要件'),
+  notes: z.array(z.string()).describe('補足事項'),
+});
+
+// ============================================
+// マナー情報 (manner) スキーマ
+// ============================================
+
+export const TippingSchema = z.object({
+  required: z.boolean().describe('チップが必須か'),
+  customary: z.boolean().describe('チップが慣習的か'),
+  guideline: z.string().describe('チップの目安'),
+});
+
+export const MannerInfoSchema = z.object({
+  tipping: TippingSchema,
+  customs: z.array(z.string()).describe('現地の習慣・マナー'),
+  taboos: z.array(z.string()).describe('タブー・避けるべきこと'),
+});
+
+// ============================================
+// 交通情報 (transport) スキーマ
+// ============================================
+
+export const RideshareSchema = z.object({
+  available: z.boolean().describe('ライドシェア利用可能か'),
+  services: z.array(z.string()).describe('利用可能なサービス名'),
+});
+
+export const TransportInfoSchema = z.object({
+  publicTransport: z.array(z.string()).describe('公共交通機関の情報'),
+  rideshare: RideshareSchema,
+  drivingNotes: z.array(z.string()).optional().describe('運転に関する注意事項'),
+});
+
+// ============================================
+// ソース情報スキーマ
+// ============================================
+
+export const SourceTypeEnum = z.enum(['official', 'news', 'commercial', 'personal']);
+
+export const ParsedSourceSchema = z.object({
+  name: z.string().describe('ソース名'),
+  url: z.string().describe('URL'),
+  type: SourceTypeEnum.describe('ソースタイプ'),
+});
+
+// ============================================
+// カテゴリ別レスポンススキーマ
+// ============================================
+
+export const BasicInfoResponseSchema = z.object({
+  content: BasicInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100).describe('確信度（0-100）'),
+  lastVerified: z.string().describe('情報確認日時（ISO 8601形式）'),
+});
+
+export const SafetyInfoResponseSchema = z.object({
+  content: SafetyInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const ClimateInfoResponseSchema = z.object({
+  content: ClimateInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const VisaInfoResponseSchema = z.object({
+  content: VisaInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const MannerInfoResponseSchema = z.object({
+  content: MannerInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const TransportInfoResponseSchema = z.object({
+  content: TransportInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+// ============================================
+// カテゴリ別スキーママッピング
+// ============================================
+
+export const CATEGORY_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
+  basic: BasicInfoResponseSchema,
+  safety: SafetyInfoResponseSchema,
+  climate: ClimateInfoResponseSchema,
+  visa: VisaInfoResponseSchema,
+  manner: MannerInfoResponseSchema,
+  transport: TransportInfoResponseSchema,
+};
+
+/**
+ * カテゴリに対応するスキーマを取得
+ */
+export function getCategorySchema(category: TravelInfoCategory): z.ZodType {
+  return CATEGORY_SCHEMAS[category];
+}
+
+// ============================================
+// 国名抽出用スキーマ
+// ============================================
+
+export const CountryExtractionSchema = z.object({
+  country: z.string().describe('国名（日本語）'),
+});
+
+// ============================================
+// 型エクスポート
+// ============================================
+
+export type BasicInfo = z.infer<typeof BasicInfoSchema>;
+export type SafetyInfo = z.infer<typeof SafetyInfoSchema>;
+export type ClimateInfo = z.infer<typeof ClimateInfoSchema>;
+export type VisaInfo = z.infer<typeof VisaInfoSchema>;
+export type MannerInfo = z.infer<typeof MannerInfoSchema>;
+export type TransportInfo = z.infer<typeof TransportInfoSchema>;
+export type ParsedSource = z.infer<typeof ParsedSourceSchema>;
+
+export type BasicInfoResponse = z.infer<typeof BasicInfoResponseSchema>;
+export type SafetyInfoResponse = z.infer<typeof SafetyInfoResponseSchema>;
+export type ClimateInfoResponse = z.infer<typeof ClimateInfoResponseSchema>;
+export type VisaInfoResponse = z.infer<typeof VisaInfoResponseSchema>;
+export type MannerInfoResponse = z.infer<typeof MannerInfoResponseSchema>;
+export type TransportInfoResponse = z.infer<typeof TransportInfoResponseSchema>;

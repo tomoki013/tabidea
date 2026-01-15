@@ -15,7 +15,7 @@ import {
   ITravelInfoSource,
   SourceResult,
 } from '../interfaces';
-import { TravelInfoCategory, SafetyInfo, ClimateInfo } from '@/lib/types/travel-info';
+import { TravelInfoCategory, SafetyInfo, ClimateInfo, AnyCategoryData } from '@/lib/types/travel-info';
 
 // モックソースの作成
 function createMockSource(
@@ -33,13 +33,13 @@ function createMockSource(
     sourceType: config.sourceType,
     reliabilityScore: config.sourceType === 'official_api' ? 95 : 60,
     supportedCategories: config.categories,
-    async fetch(): Promise<SourceResult<unknown>> {
+    async fetch(): Promise<SourceResult<AnyCategoryData>> {
       if (config.shouldFail) {
         return { success: false, error: 'Mock fetch failed' };
       }
       return {
         success: true,
-        data: config.data ?? { mock: true },
+        data: (config.data ?? { mock: true }) as AnyCategoryData,
         source: {
           sourceType: config.sourceType,
           sourceName: config.sourceName,
@@ -236,7 +236,9 @@ describe('TravelInfoService', () => {
 
       const result = await service.getCategoryInfo('Tokyo', 'safety');
       expect(result.success).toBe(false);
-      expect(result.error).toContain('No sources available');
+      if (!result.success) {
+        expect(result.error).toContain('No sources available');
+      }
     });
   });
 

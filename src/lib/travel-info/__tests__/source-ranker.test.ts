@@ -10,7 +10,7 @@ import {
   SOURCE_PRIORITY,
 } from '../utils/source-ranker';
 import { ITravelInfoSource, SourceResult } from '../interfaces';
-import { TravelInfoCategory, TravelInfoSource } from '@/lib/types/travel-info';
+import { TravelInfoCategory, TravelInfoSource, AnyCategoryData } from '@/lib/types/travel-info';
 
 // モックソースの作成
 function createMockSource(
@@ -27,10 +27,10 @@ function createMockSource(
     sourceType: config.sourceType,
     reliabilityScore: config.reliabilityScore ?? (config.sourceType === 'official_api' ? 95 : 60),
     supportedCategories: config.categories,
-    async fetch(): Promise<SourceResult<unknown>> {
+    async fetch(): Promise<SourceResult<AnyCategoryData>> {
       return {
         success: true,
-        data: { mock: true },
+        data: { mock: true } as unknown as AnyCategoryData,
         source: {
           sourceType: config.sourceType,
           sourceName: config.sourceName,

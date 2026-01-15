@@ -5,6 +5,8 @@
  * 注意: AI生成情報は信頼性が低いためフォールバックとしてのみ使用
  */
 
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { generateObject } from 'ai';
 import {
   TravelInfoCategory,
   SourceType,
@@ -19,6 +21,16 @@ import {
   SourceResult,
 } from '../interfaces';
 
+import {
+  BasicInfoSchema,
+  SafetyInfoSchema,
+  ClimateInfoSchema,
+  VisaInfoSchema,
+  MannerInfoSchema,
+  TransportInfoSchema,
+} from '@/lib/ai/schemas/travel-info-schemas';
+import { z } from 'zod';
+
 /**
  * Geminiフォールバック設定
  */
@@ -30,6 +42,18 @@ export interface GeminiFallbackConfig {
   /** タイムアウト（ミリ秒） */
   timeout?: number;
 }
+
+/**
+ * カテゴリ別コンテンツスキーマ
+ */
+const CATEGORY_CONTENT_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
+  basic: BasicInfoSchema,
+  safety: SafetyInfoSchema,
+  climate: ClimateInfoSchema,
+  visa: VisaInfoSchema,
+  manner: MannerInfoSchema,
+  transport: TransportInfoSchema,
+};
 
 /**
  * Gemini AIフォールバックソース
@@ -49,6 +73,7 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
   ];
 
   private readonly config: GeminiFallbackConfig;
+  private google: ReturnType<typeof createGoogleGenerativeAI> | null = null;
 
   constructor(config: GeminiFallbackConfig = {}) {
     this.config = {
@@ -56,6 +81,20 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
       timeout: 30000,
       ...config,
     };
+  }
+
+  /**
+   * Google AIクライアントを取得（遅延初期化）
+   */
+  private getGoogleAI(): ReturnType<typeof createGoogleGenerativeAI> {
+    if (!this.google) {
+      const apiKey = this.config.apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (!apiKey) {
+        throw new Error('Google AI API key not configured');
+      }
+      this.google = createGoogleGenerativeAI({ apiKey });
+    }
+    return this.google;
   }
 
   /**
@@ -77,12 +116,15 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
         };
       }
 
-      // TODO: 実際のGemini API呼び出し
-      // 現在はプレースホルダー
-      const generatedData = await this.generateWithGemini(
-        destination,
-        options?.additionalParams?.category as TravelInfoCategory | undefined
-      );
+      const category = options?.additionalParams?.category as TravelInfoCategory | undefined;
+      if (!category) {
+        return {
+          success: false,
+          error: 'Category is required for Gemini fallback',
+        };
+      }
+
+      const generatedData = await this.generateWithGemini(destination, category);
 
       if (!generatedData) {
         return {
@@ -121,22 +163,42 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
   }
 
   /**
-   * Gemini AIで渡航情報を生成
-   * TODO: 実際のGemini API統合
+   * Gemini AIで渡航情報を生成（generateObjectを使用）
    */
   private async generateWithGemini(
-    _destination: string,
-    _category?: TravelInfoCategory
+    destination: string,
+    category: TravelInfoCategory
   ): Promise<AnyCategoryData | null> {
-    // TODO: 実際の実装
-    // 1. Gemini APIクライアントを初期化
-    // 2. プロンプトを構築
-    // 3. 構造化出力を要求
-    // 4. レスポンスをパース
+    const startTime = Date.now();
+    console.log(`[gemini-fallback] Generating ${category} for ${destination}`);
 
-    console.warn('[gemini-fallback] Using placeholder - implement actual generation');
+    try {
+      const google = this.getGoogleAI();
+      const modelName = this.config.modelName || 'gemini-2.5-flash';
+      const prompt = this.buildPromptForCategory(destination, category);
+      const schema = CATEGORY_CONTENT_SCHEMAS[category];
 
-    return null;
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), this.config.timeout || 30000);
+
+      const { object } = await generateObject({
+        model: google(modelName, { structuredOutputs: true }),
+        schema,
+        prompt,
+        abortSignal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      const elapsed = Date.now() - startTime;
+      console.log(`[gemini-fallback] Generated ${category} in ${elapsed}ms`);
+
+      return object as AnyCategoryData;
+    } catch (error) {
+      const elapsed = Date.now() - startTime;
+      console.error(`[gemini-fallback] Failed to generate ${category} in ${elapsed}ms:`, error);
+      return null;
+    }
   }
 
   /**
@@ -148,49 +210,63 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
   ): string {
     const categoryLabel = CATEGORY_LABELS[category];
 
-    const basePrompt = `
-      以下の目的地についての${categoryLabel}を日本語で提供してください。
-      目的地: ${destination}
+    const basePrompt = `あなたは渡航情報の専門家です。
+以下の目的地についての${categoryLabel}を日本語で提供してください。
+目的地: ${destination}
 
-      回答は以下のJSON形式で返してください。
-    `;
+【情報収集の優先順位】
+1. 公的機関の公式情報（外務省、大使館、政府観光局）
+2. 信頼性の高いニュースソース
+3. 旅行会社・航空会社の公式情報
 
-    // カテゴリ別のスキーマ指定
-    const schemas: Record<TravelInfoCategory, string> = {
-      basic: `{
-        "currency": { "code": "...", "name": "...", "symbol": "..." },
-        "languages": ["..."],
-        "timezone": "...",
-        "timeDifference": "..."
-      }`,
-      safety: `{
-        "dangerLevel": 1-4,
-        "dangerLevelDescription": "...",
-        "warnings": ["..."],
-        "emergencyContacts": [{ "name": "...", "number": "..." }]
-      }`,
-      climate: `{
-        "seasonDescription": "...",
-        "recommendedClothing": ["..."]
-      }`,
-      visa: `{
-        "required": true/false,
-        "visaFreeStayDays": number,
-        "requirements": ["..."],
-        "notes": ["..."]
-      }`,
-      manner: `{
-        "tipping": { "required": true/false, "customary": true/false, "guideline": "..." },
-        "customs": ["..."],
-        "taboos": ["..."]
-      }`,
-      transport: `{
-        "publicTransport": ["..."],
-        "rideshare": { "available": true/false, "services": ["..."] }
-      }`,
+【重要事項】
+- 正確で最新の情報を提供してください
+- 不明な場合は無理に情報を生成せず、適切なデフォルト値を使用してください`;
+
+    const categorySpecificInstructions: Record<TravelInfoCategory, string> = {
+      basic: `
+【基本情報で必要な項目】
+- 現地通貨（コード、名称、記号）
+- 為替レート（日本円との換算）
+- 公用語
+- タイムゾーンと日本との時差`,
+
+      safety: `
+【安全情報で必要な項目】
+- 外務省の危険度レベル（1-4、該当なしは1）
+- 危険度の説明
+- 注意事項・警告
+- 緊急連絡先（警察、救急、日本大使館など）`,
+
+      climate: `
+【気候情報で必要な項目】
+- 現在または一般的な天気情報
+- おすすめの服装
+- 季節の説明`,
+
+      visa: `
+【ビザ情報で必要な項目】
+- 日本国籍の場合のビザ要否
+- ビザなし滞在可能日数
+- 入国要件
+- 補足事項（電子渡航認証など）`,
+
+      manner: `
+【マナー情報で必要な項目】
+- チップの習慣（必須か、慣習的か、目安）
+- 現地の習慣・マナー
+- タブー・避けるべきこと`,
+
+      transport: `
+【交通情報で必要な項目】
+- 公共交通機関の情報
+- ライドシェア（利用可否、サービス名）
+- 運転に関する注意事項`,
     };
 
-    return `${basePrompt}\n${schemas[category]}`;
+    return `${basePrompt}
+
+${categorySpecificInstructions[category]}`;
   }
 }
 
