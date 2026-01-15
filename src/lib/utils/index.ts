@@ -38,3 +38,6 @@ export {
   DEFAULT_POLICY,
   type DomainPolicy
 } from './scraping-policy';
+
+// Generic utilities
+export { throttle } from './throttle';

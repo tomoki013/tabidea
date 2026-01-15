@@ -12,6 +12,7 @@ import {
   FaPen,
 } from "react-icons/fa";
 import PlanModal from "@/components/ui/PlanModal";
+import { throttle } from "@/lib/utils";
 
 interface HeaderProps {
   forceShow?: boolean;
@@ -53,8 +54,10 @@ export default function Header({
     // Initial check
     handleScroll();
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    const throttledScroll = throttle(handleScroll, 100);
+
+    window.addEventListener("scroll", throttledScroll, { passive: true });
+    return () => window.removeEventListener("scroll", throttledScroll);
   }, [isHome, forceShow]);
 
   // Global Header Logic: If this is the global header (forceShow=false) and we are on Home, hide it completely (return null).
