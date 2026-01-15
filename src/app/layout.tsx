@@ -41,19 +41,19 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "favicon.ico",
-        width: 1200,
-        height: 630,
+        url: "/icon.png",
+        width: 512,
+        height: 512,
         alt: "Tabidea",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "Tabidea - Powered by ともきちの旅行日記",
     description:
       "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
-    images: ["favicon.ico"],
+    images: ["/icon.png"],
   },
   metadataBase: new URL("https://ai.tomokichidiary.com"),
   // manifest: "/manifest.json",

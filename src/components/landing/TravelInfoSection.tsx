@@ -14,8 +14,8 @@ import {
 export default function TravelInfoSection() {
   return (
     <section className="relative w-full py-24 bg-[#fcfbf9] overflow-hidden border-t border-stone-100">
-       {/* Background texture if needed, matching other sections */}
-       <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none" />
+      {/* Background texture if needed, matching other sections */}
+      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -45,12 +45,12 @@ export default function TravelInfoSection() {
               <ul className="space-y-3 mt-4">
                 <li className="flex items-center gap-3">
                   <FaClock className="text-orange-400" />
-                  <span>主要都市の現地時間をリアルタイム表示</span>
+                  <span>主要都市の現地時間を表示</span>
                 </li>
-                <li className="flex items-center gap-3">
+                {/* <li className="flex items-center gap-3">
                   <FaMoneyBillWave className="text-orange-400" />
                   <span>最新の為替レートをかんたん計算</span>
-                </li>
+                </li> */}
                 <li className="flex items-center gap-3">
                   <FaShieldAlt className="text-orange-400" />
                   <span>外務省の安全情報へのダイレクトリンク</span>
@@ -113,19 +113,21 @@ export default function TravelInfoSection() {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
             >
               <div className="w-40 h-52 bg-[#1a3c6e] rounded-lg shadow-xl flex flex-col items-center justify-center border-l-4 border-[#122a4d]">
-                 <FaPassport className="text-white/20 text-6xl mb-4" />
-                 <div className="text-white/40 font-serif tracking-widest text-xs">PASSPORT</div>
+                <FaPassport className="text-white/20 text-6xl mb-4" />
+                <div className="text-white/40 font-serif tracking-widest text-xs">
+                  PASSPORT
+                </div>
               </div>
             </motion.div>
 
-             {/* Sticker: Safety */}
+            {/* Sticker: Safety */}
             <div className="absolute top-0 right-10 w-24 h-24 bg-yellow-100 rounded-full shadow-md flex items-center justify-center rotate-12 z-0 opacity-80">
-                <FaShieldAlt className="text-yellow-600 text-3xl" />
+              <FaShieldAlt className="text-yellow-600 text-3xl" />
             </div>
 
-             {/* Sticker: Plane */}
-             <div className="absolute bottom-10 left-10 w-20 h-20 bg-blue-50 rounded-full shadow-md flex items-center justify-center -rotate-12 z-40 opacity-90">
-                <FaGlobeAsia className="text-blue-400 text-3xl" />
+            {/* Sticker: Plane */}
+            <div className="absolute bottom-10 left-10 w-20 h-20 bg-blue-50 rounded-full shadow-md flex items-center justify-center -rotate-12 z-40 opacity-90">
+              <FaGlobeAsia className="text-blue-400 text-3xl" />
             </div>
           </motion.div>
         </div>
