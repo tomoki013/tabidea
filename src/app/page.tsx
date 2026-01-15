@@ -64,7 +64,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <UsageGuideHero />
         <FeatureSection />
         <ExampleSection />
-        {/* <TravelInfoSection /> */}
+        <TravelInfoSection />
         <FAQSection limit={5} />
       </main>
     </div>

@@ -45,8 +45,8 @@ export default function Header({
     }
 
     const handleScroll = () => {
-      // Show header when scrolled past ~600px (approximately after AboutSection)
-      const threshold = 600;
+      // Show header when scrolled past ~1100px (approximately after AboutSection)
+      const threshold = 1100;
       setScrollPastThreshold(window.scrollY > threshold);
     };
 
