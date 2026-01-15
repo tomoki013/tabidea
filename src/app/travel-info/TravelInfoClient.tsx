@@ -16,7 +16,7 @@ import {
   FaMapMarkedAlt,
   FaInfoCircle,
 } from "react-icons/fa";
-import { getTravelInfo } from "@/app/actions/travel-info";
+import { getLegacyTravelInfo } from "@/app/actions/travel-info";
 
 interface TravelInfo {
   country: string;
@@ -49,7 +49,7 @@ export default function TravelInfoClient() {
     setTravelInfo(null);
 
     try {
-      const result = await getTravelInfo(country.trim());
+      const result = await getLegacyTravelInfo(country.trim());
       if (result.success && result.data) {
         setTravelInfo(result.data);
       } else {

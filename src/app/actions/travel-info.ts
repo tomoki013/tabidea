@@ -1,9 +1,619 @@
-"use server";
+'use server';
 
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { generateText } from "ai";
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { generateText } from 'ai';
+import type {
+  TravelInfoCategory,
+  TravelInfoResponse,
+  TravelInfoSource,
+  CategoryDataEntry,
+  SourceType,
+} from '@/lib/types/travel-info';
+import {
+  generateCategorySpecificPrompt,
+  parseStructuredResponse,
+  generateSearchQueries,
+  type TravelInfoPromptResult,
+  type ParsedSource,
+} from '@/lib/ai/prompts/travel-info-prompt';
 
-interface TravelInfo {
+// ============================================
+// 型定義
+// ============================================
+
+/**
+ * 渡航情報取得結果
+ */
+export type TravelInfoResult =
+  | { success: true; data: TravelInfoResponse }
+  | {
+      success: false;
+      error: string;
+      partialData?: Partial<TravelInfoResponse>;
+    };
+
+/**
+ * カテゴリ別取得結果（内部用）
+ */
+type CategoryFetchResult<T extends TravelInfoCategory = TravelInfoCategory> =
+  | { success: true; data: TravelInfoPromptResult<T>; source: SourceType }
+  | { success: false; error: string };
+
+/**
+ * 取得オプション
+ */
+interface TravelInfoOptions {
+  travelDates?: { start: string; end: string };
+  forceRefresh?: boolean;
+}
+
+// ============================================
+// 定数
+// ============================================
+
+const DEFAULT_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'climate'];
+const REQUEST_TIMEOUT_MS = 30000; // 30秒
+const MAX_RETRIES = 2;
+
+// ============================================
+// メイン関数
+// ============================================
+
+/**
+ * 渡航情報を取得するメイン関数
+ *
+ * @param destination - 目的地（都市名または国名）
+ * @param categories - 取得するカテゴリ一覧（デフォルト: basic, safety, climate）
+ * @param options - オプション（渡航日程、キャッシュ無視フラグ）
+ * @returns 渡航情報の取得結果
+ */
+export async function getTravelInfo(
+  destination: string,
+  categories: TravelInfoCategory[] = DEFAULT_CATEGORIES,
+  options?: TravelInfoOptions
+): Promise<TravelInfoResult> {
+  const startTime = Date.now();
+  console.log(
+    `[travel-info] getTravelInfo started for: ${destination}, categories: ${categories.join(', ')}`
+  );
+
+  // 入力バリデーション
+  if (!destination || destination.trim().length === 0) {
+    return { success: false, error: '目的地を指定してください。' };
+  }
+
+  if (categories.length === 0) {
+    return { success: false, error: 'カテゴリを1つ以上指定してください。' };
+  }
+
+  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+  if (!apiKey) {
+    return { success: false, error: 'API Key が設定されていません。' };
+  }
+
+  try {
+    // 目的地から国名を抽出
+    const country = await extractCountryFromDestination(destination, apiKey);
+    console.log(`[travel-info] Extracted country: ${country}`);
+
+    // 渡航日程のパース
+    const travelDates = options?.travelDates
+      ? {
+          start: new Date(options.travelDates.start),
+          end: new Date(options.travelDates.end),
+        }
+      : undefined;
+
+    // カテゴリごとに情報を取得
+    const categoryResults = new Map<
+      TravelInfoCategory,
+      CategoryFetchResult
+    >();
+    const allSources: TravelInfoSource[] = [];
+
+    // 並列で全カテゴリの情報を取得
+    const fetchPromises = categories.map(async (category) => {
+      const result = await fetchCategoryInfo(
+        category,
+        destination,
+        country,
+        travelDates,
+        apiKey
+      );
+      return { category, result };
+    });
+
+    const results = await Promise.all(fetchPromises);
+
+    // 結果を整理
+    let successCount = 0;
+    for (const { category, result } of results) {
+      categoryResults.set(category, result);
+      if (result.success) {
+        successCount++;
+        // ソース情報を変換して追加
+        const convertedSources = convertParsedSourcesToTravelInfoSources(
+          result.data.sources,
+          result.source
+        );
+        allSources.push(...convertedSources);
+      }
+    }
+
+    // 全カテゴリ失敗の場合
+    if (successCount === 0) {
+      return {
+        success: false,
+        error:
+          '渡航情報の取得に失敗しました。しばらく経ってから再度お試しください。',
+      };
+    }
+
+    // カテゴリデータをMapに変換
+    const categoriesMap = new Map<TravelInfoCategory, CategoryDataEntry>();
+    for (const [category, result] of categoryResults) {
+      if (result.success) {
+        categoriesMap.set(category, {
+          category,
+          data: result.data.content,
+          source: {
+            sourceType: result.source,
+            sourceName: getSourceName(result.source),
+            retrievedAt: new Date(),
+            reliabilityScore: result.data.confidence,
+          },
+        });
+      }
+    }
+
+    // ソースをマージ・重複排除
+    const mergedSources = mergeInfoSources(allSources);
+
+    // 総合信頼性を計算
+    const overallReliability = calculateOverallReliability(categoryResults);
+
+    // 免責事項を生成
+    const disclaimer = generateDisclaimer(overallReliability, categories);
+
+    const response: TravelInfoResponse = {
+      destination,
+      country,
+      categories: categoriesMap,
+      sources: mergedSources,
+      generatedAt: new Date(),
+      disclaimer,
+    };
+
+    const elapsed = Date.now() - startTime;
+    console.log(
+      `[travel-info] getTravelInfo completed in ${elapsed}ms. Success: ${successCount}/${categories.length} categories`
+    );
+
+    // 部分的成功の場合はログ
+    if (successCount < categories.length) {
+      const failedCategories = categories.filter(
+        (cat) => !categoryResults.get(cat)?.success
+      );
+      console.warn(
+        `[travel-info] Some categories failed: ${failedCategories.join(', ')}`
+      );
+    }
+
+    return { success: true, data: response };
+  } catch (error) {
+    console.error('[travel-info] Unexpected error:', error);
+    return {
+      success: false,
+      error:
+        '予期しないエラーが発生しました。しばらく経ってから再度お試しください。',
+    };
+  }
+}
+
+// ============================================
+// カテゴリ情報取得
+// ============================================
+
+/**
+ * 単一カテゴリの情報を取得
+ */
+async function fetchCategoryInfo<T extends TravelInfoCategory>(
+  category: T,
+  destination: string,
+  country: string,
+  travelDates: { start: Date; end: Date } | undefined,
+  apiKey: string
+): Promise<CategoryFetchResult<T>> {
+  console.log(`[travel-info] Fetching category: ${category}`);
+
+  // Gemini Web検索でフォールバック
+  return fetchFromGemini(category, destination, country, travelDates, apiKey);
+}
+
+/**
+ * Gemini Web検索から情報を取得
+ */
+async function fetchFromGemini<T extends TravelInfoCategory>(
+  category: T,
+  destination: string,
+  country: string,
+  travelDates: { start: Date; end: Date } | undefined,
+  apiKey: string
+): Promise<CategoryFetchResult<T>> {
+  const google = createGoogleGenerativeAI({ apiKey });
+  const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+
+  // カテゴリ専用プロンプトを生成
+  const prompt = generateCategorySpecificPrompt(
+    category,
+    destination,
+    country,
+    travelDates
+  );
+
+  // 検索クエリを生成（Web検索の参考用）
+  const searchQueries = generateSearchQueries(destination, country, category);
+  const searchHint = `\n\n【参考検索クエリ】\n${searchQueries.join('\n')}`;
+
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(
+        () => controller.abort(),
+        REQUEST_TIMEOUT_MS
+      );
+
+      const { text } = await generateText({
+        model: google(modelName, { structuredOutputs: true }),
+        prompt: prompt + searchHint,
+        temperature: 0.1,
+        abortSignal: controller.signal,
+      });
+
+      clearTimeout(timeoutId);
+
+      // レスポンスをパース
+      const parseResult = parseStructuredResponse(category, text);
+
+      if (parseResult.success) {
+        return {
+          success: true,
+          data: parseResult.data as TravelInfoPromptResult<T>,
+          source: 'ai_generated',
+        };
+      } else {
+        console.warn(
+          `[travel-info] Parse failed for ${category}:`,
+          parseResult.error.error
+        );
+        lastError = new Error(parseResult.error.error);
+      }
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error('Unknown error');
+
+      if (lastError.name === 'AbortError') {
+        console.warn(`[travel-info] Request timeout for ${category}`);
+      } else {
+        console.warn(
+          `[travel-info] Attempt ${attempt + 1} failed for ${category}:`,
+          lastError.message
+        );
+      }
+
+      // リトライ前に待機（指数バックオフ）
+      if (attempt < MAX_RETRIES - 1) {
+        await sleep(Math.pow(2, attempt) * 1000);
+      }
+    }
+  }
+
+  return {
+    success: false,
+    error: lastError?.message || `Failed to fetch ${category} info`,
+  };
+}
+
+// ============================================
+// ヘルパー関数
+// ============================================
+
+/**
+ * 目的地から国名を抽出
+ */
+async function extractCountryFromDestination(
+  destination: string,
+  apiKey: string
+): Promise<string> {
+  // 一般的な都市名と国名のマッピング（キャッシュ的に使用）
+  const knownMappings: Record<string, string> = {
+    // 日本
+    東京: '日本',
+    大阪: '日本',
+    京都: '日本',
+    北海道: '日本',
+    沖縄: '日本',
+    福岡: '日本',
+    名古屋: '日本',
+    札幌: '日本',
+    // アジア
+    ソウル: '韓国',
+    釜山: '韓国',
+    台北: '台湾',
+    高雄: '台湾',
+    香港: '香港',
+    マカオ: 'マカオ',
+    上海: '中国',
+    北京: '中国',
+    バンコク: 'タイ',
+    プーケット: 'タイ',
+    シンガポール: 'シンガポール',
+    クアラルンプール: 'マレーシア',
+    ジャカルタ: 'インドネシア',
+    バリ: 'インドネシア',
+    マニラ: 'フィリピン',
+    セブ: 'フィリピン',
+    ハノイ: 'ベトナム',
+    ホーチミン: 'ベトナム',
+    // ヨーロッパ
+    パリ: 'フランス',
+    ロンドン: 'イギリス',
+    ローマ: 'イタリア',
+    ミラノ: 'イタリア',
+    バルセロナ: 'スペイン',
+    マドリード: 'スペイン',
+    ベルリン: 'ドイツ',
+    アムステルダム: 'オランダ',
+    チューリッヒ: 'スイス',
+    ウィーン: 'オーストリア',
+    プラハ: 'チェコ',
+    // アメリカ
+    ニューヨーク: 'アメリカ',
+    ロサンゼルス: 'アメリカ',
+    ハワイ: 'アメリカ',
+    ホノルル: 'アメリカ',
+    サンフランシスコ: 'アメリカ',
+    ラスベガス: 'アメリカ',
+    シアトル: 'アメリカ',
+    バンクーバー: 'カナダ',
+    トロント: 'カナダ',
+    // オセアニア
+    シドニー: 'オーストラリア',
+    メルボルン: 'オーストラリア',
+    ケアンズ: 'オーストラリア',
+    オークランド: 'ニュージーランド',
+    // 中東
+    ドバイ: 'アラブ首長国連邦',
+    アブダビ: 'アラブ首長国連邦',
+  };
+
+  // 既知のマッピングをチェック
+  const normalized = destination.trim();
+  if (knownMappings[normalized]) {
+    return knownMappings[normalized];
+  }
+
+  // 目的地が国名の場合はそのまま返す
+  const commonCountries = [
+    '日本',
+    '韓国',
+    '台湾',
+    '中国',
+    'タイ',
+    'シンガポール',
+    'マレーシア',
+    'インドネシア',
+    'フィリピン',
+    'ベトナム',
+    'フランス',
+    'イギリス',
+    'イタリア',
+    'スペイン',
+    'ドイツ',
+    'アメリカ',
+    'カナダ',
+    'オーストラリア',
+    'ニュージーランド',
+  ];
+
+  if (commonCountries.includes(normalized)) {
+    return normalized;
+  }
+
+  // AIで国名を推測
+  try {
+    const google = createGoogleGenerativeAI({ apiKey });
+    const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+
+    const { text } = await generateText({
+      model: google(modelName),
+      prompt: `「${destination}」という地名の国名を日本語で答えてください。国名のみを回答してください。例: タイ、フランス、アメリカ`,
+      temperature: 0,
+    });
+
+    return text.trim() || destination;
+  } catch (error) {
+    console.warn('[travel-info] Failed to extract country:', error);
+    return destination; // フォールバック
+  }
+}
+
+/**
+ * 複数ソースからの情報をマージ・重複排除
+ */
+function mergeInfoSources(sources: TravelInfoSource[]): TravelInfoSource[] {
+  const uniqueSources = new Map<string, TravelInfoSource>();
+
+  for (const source of sources) {
+    const key = source.sourceUrl || source.sourceName;
+    const existing = uniqueSources.get(key);
+
+    if (!existing || source.reliabilityScore > existing.reliabilityScore) {
+      uniqueSources.set(key, source);
+    }
+  }
+
+  // 信頼性スコア順にソート
+  return Array.from(uniqueSources.values()).sort(
+    (a, b) => b.reliabilityScore - a.reliabilityScore
+  );
+}
+
+/**
+ * 総合信頼性スコアを計算
+ */
+function calculateOverallReliability(
+  results: Map<TravelInfoCategory, CategoryFetchResult>
+): number {
+  let totalScore = 0;
+  let count = 0;
+
+  for (const result of results.values()) {
+    if (result.success) {
+      totalScore += result.data.confidence;
+      count++;
+    }
+  }
+
+  if (count === 0) {
+    return 0;
+  }
+
+  return Math.round(totalScore / count);
+}
+
+/**
+ * 免責事項を生成
+ */
+function generateDisclaimer(
+  reliability: number,
+  categories: TravelInfoCategory[]
+): string {
+  const hasSafetyInfo = categories.includes('safety');
+  const hasVisaInfo = categories.includes('visa');
+
+  let disclaimer =
+    'この情報はAIによって生成されたものであり、正確性を保証するものではありません。';
+
+  if (reliability < 50) {
+    disclaimer +=
+      '情報の信頼性が低い可能性があります。必ず公式情報をご確認ください。';
+  }
+
+  if (hasSafetyInfo) {
+    disclaimer +=
+      '安全情報については、外務省海外安全ホームページで最新情報をご確認ください。';
+  }
+
+  if (hasVisaInfo) {
+    disclaimer +=
+      'ビザ・入国条件は変更される場合があります。渡航前に大使館・領事館にご確認ください。';
+  }
+
+  disclaimer +=
+    '渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。';
+
+  return disclaimer;
+}
+
+/**
+ * ParsedSourceをTravelInfoSourceに変換
+ */
+function convertParsedSourcesToTravelInfoSources(
+  parsedSources: ParsedSource[],
+  fetchSourceType: SourceType
+): TravelInfoSource[] {
+  return parsedSources.map((source) => ({
+    sourceType: mapParsedSourceTypeToSourceType(source.type, fetchSourceType),
+    sourceName: source.name,
+    sourceUrl: source.url || undefined,
+    retrievedAt: new Date(),
+    reliabilityScore: getReliabilityScore(source.type),
+  }));
+}
+
+/**
+ * パースされたソースタイプをSourceTypeにマッピング
+ */
+function mapParsedSourceTypeToSourceType(
+  parsedType: 'official' | 'news' | 'commercial' | 'personal',
+  fetchSourceType: SourceType
+): SourceType {
+  // AI生成の場合はそのままfetchSourceTypeを使用
+  if (fetchSourceType === 'ai_generated') {
+    return 'ai_generated';
+  }
+
+  // それ以外はパースされたタイプに基づいて判断
+  switch (parsedType) {
+    case 'official':
+      return 'official_api';
+    case 'news':
+    case 'commercial':
+    case 'personal':
+      return 'web_search';
+    default:
+      return fetchSourceType;
+  }
+}
+
+/**
+ * ソースタイプに基づく信頼性スコア
+ */
+function getReliabilityScore(
+  type: 'official' | 'news' | 'commercial' | 'personal'
+): number {
+  switch (type) {
+    case 'official':
+      return 95;
+    case 'news':
+      return 80;
+    case 'commercial':
+      return 70;
+    case 'personal':
+      return 50;
+    default:
+      return 60;
+  }
+}
+
+/**
+ * ソースタイプの日本語名を取得
+ */
+function getSourceName(type: SourceType): string {
+  switch (type) {
+    case 'official_api':
+      return '公式API';
+    case 'web_search':
+      return 'Web検索';
+    case 'ai_generated':
+      return 'AI生成';
+    case 'blog':
+      return 'ブログ記事';
+    default:
+      return '不明';
+  }
+}
+
+/**
+ * スリープ関数
+ */
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// ユーティリティ関数は別ファイルからインポート
+// @see src/lib/travel-info/utils.ts
+
+// ============================================
+// レガシーAPI（後方互換性のため）
+// ============================================
+
+/**
+ * 旧TravelInfo型（後方互換性のため）
+ */
+interface LegacyTravelInfo {
   country: string;
   visa: string;
   power: {
@@ -19,28 +629,34 @@ interface TravelInfo {
   generalInfo: string;
 }
 
-export type TravelInfoState = {
+export type LegacyTravelInfoState = {
   success: boolean;
   error?: string;
-  data?: TravelInfo;
+  data?: LegacyTravelInfo;
 };
 
-export async function getTravelInfo(country: string): Promise<TravelInfoState> {
+/**
+ * 旧API形式での渡航情報取得（後方互換性のため）
+ * @deprecated 新しいgetTravelInfo関数を使用してください
+ */
+export async function getLegacyTravelInfo(
+  country: string
+): Promise<LegacyTravelInfoState> {
   const startTime = Date.now();
-  console.log(`[travel-info] getTravelInfo started for country: ${country}`);
+  console.log(`[travel-info] getLegacyTravelInfo started for country: ${country}`);
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    console.error("[travel-info] API Key is missing in environment variables");
+    console.error('[travel-info] API Key is missing in environment variables');
     return {
       success: false,
-      error: "システムエラー: APIキーが設定されていません。",
+      error: 'システムエラー: APIキーが設定されていません。',
     };
   }
 
   try {
     const google = createGoogleGenerativeAI({ apiKey });
-    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+    const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
 
     const prompt = `
 あなたは旅行者向けに渡航情報を提供する専門アシスタントです。
@@ -88,12 +704,12 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
 
     // Clean up response
     const cleanedText = text
-      .replace(/```json/g, "")
-      .replace(/```/g, "")
+      .replace(/```json/g, '')
+      .replace(/```/g, '')
       .trim();
 
     try {
-      const data = JSON.parse(cleanedText) as TravelInfo;
+      const data = JSON.parse(cleanedText) as LegacyTravelInfo;
       console.log(
         `[travel-info] Successfully parsed travel info for ${data.country}`
       );
@@ -107,14 +723,14 @@ export async function getTravelInfo(country: string): Promise<TravelInfoState> {
       console.error(`[travel-info] Raw Response text:`, cleanedText);
       return {
         success: false,
-        error: "AI応答の解析に失敗しました。",
+        error: 'AI応答の解析に失敗しました。',
       };
     }
   } catch (error) {
-    console.error("[travel-info] Generation failed:", error);
+    console.error('[travel-info] Generation failed:', error);
     return {
       success: false,
-      error: "情報の取得中にエラーが発生しました。もう一度お試しください。",
+      error: '情報の取得中にエラーが発生しました。もう一度お試しください。',
     };
   }
 }
