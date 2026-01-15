@@ -36,7 +36,7 @@ async function main() {
 
   const allDocs: any[] = [];
 
-  for (const file of mdxFiles) {
+  const promises = mdxFiles.map(async (file) => {
     const filePath = path.join(postsDir, file);
     const content = await fs.readFile(filePath, 'utf-8');
     
@@ -69,8 +69,11 @@ async function main() {
     });
 
     const splits = await textSplitter.splitDocuments(headerSplits);
-    allDocs.push(...splits);
-  }
+    return splits;
+  });
+
+  const results = await Promise.all(promises);
+  allDocs.push(...results.flat());
 
   console.log(`Total chunks to index: ${allDocs.length}`);
 
