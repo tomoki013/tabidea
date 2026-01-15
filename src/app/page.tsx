@@ -1,10 +1,12 @@
 import { Suspense } from "react";
 import TravelPlanner from "@/components/TravelPlanner";
 import HeroSection from "@/components/landing/HeroSection";
+import AboutSection from "@/components/landing/AboutSection";
 import FeaturesHeroSection from "@/components/landing/FeaturesHeroSection";
 import FeatureSection from "@/components/landing/FeatureSection";
 import UsageGuideHero from "@/components/landing/UsageGuideHero";
 import ExampleSection from "@/components/landing/ExampleSection";
+import TravelInfoSection from "@/components/landing/TravelInfoSection";
 import FAQSection from "@/components/landing/FAQSection";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from "@/lib/types";
@@ -50,10 +52,12 @@ export default async function Home({ searchParams }: HomeProps) {
         </HeroSection>
 
         {/* Other Sections */}
+        <AboutSection />
         <FeaturesHeroSection />
         <UsageGuideHero />
         <FeatureSection />
         <ExampleSection />
+        <TravelInfoSection />
         <FAQSection limit={5} />
 
       </main>
