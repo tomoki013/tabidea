@@ -153,20 +153,56 @@ export class WeatherApiSource implements ITravelInfoSource<ClimateInfo> {
     _forecast: WeatherForecast[]
   ): string[] {
     const recommendations: string[] = [];
+    const { temp, condition, humidity } = weather;
 
-    // TODO: 気温に基づく服装推奨ロジック
-    if (weather.temp < 10) {
-      recommendations.push('厚手のコート');
-      recommendations.push('手袋・マフラー');
-    } else if (weather.temp < 20) {
-      recommendations.push('軽めのジャケット');
-      recommendations.push('長袖シャツ');
+    // Temperature-based recommendations
+    if (temp < 5) {
+      recommendations.push('ダウンジャケットや厚手のコート');
+      recommendations.push('冬用の帽子、手袋、マフラー');
+      recommendations.push('暖かいインナー');
+    } else if (temp < 10) {
+      recommendations.push('冬物のコートやジャケット');
+      recommendations.push('セーターやフリース');
+      recommendations.push('手袋やマフラーもあると安心');
+    } else if (temp < 15) {
+      recommendations.push('トレンチコートや軽めのジャケット');
+      recommendations.push('長袖シャツや薄手のニット');
+    } else if (temp < 20) {
+      recommendations.push('カーディガンやパーカーなど羽織るもの');
+      recommendations.push('長袖Tシャツ');
+    } else if (temp < 25) {
+      recommendations.push('半袖Tシャツ');
+      recommendations.push('薄手の長袖シャツ');
     } else {
-      recommendations.push('薄手の服装');
-      recommendations.push('日焼け止め');
+      recommendations.push('半袖やノースリーブなど涼しい服装');
+      recommendations.push('ショートパンツ');
     }
 
-    return recommendations;
+    // Condition-based recommendations
+    const lowerCaseCondition = condition.toLowerCase();
+    if (lowerCaseCondition.includes('rain') || lowerCaseCondition.includes('雨')) {
+      recommendations.push('傘やレインコート');
+      recommendations.push('防水性のある靴');
+    }
+    if (lowerCaseCondition.includes('sun') || lowerCaseCondition.includes('晴')) {
+      recommendations.push('日焼け止め');
+      recommendations.push('帽子やサングラス');
+    }
+    if (lowerCaseCondition.includes('snow') || lowerCaseCondition.includes('雪')) {
+      recommendations.push('スノーブーツ');
+      recommendations.push('防水性の高いアウター');
+    }
+    if (lowerCaseCondition.includes('wind') || lowerCaseCondition.includes('風')) {
+      recommendations.push('風を通しにくいウィンドブレーカー');
+    }
+
+    // Humidity-based recommendations
+    if (humidity > 75) {
+      recommendations.push('通気性の良い服装');
+    }
+
+    // Remove duplicates and return
+    return [...new Set(recommendations)];
   }
 }
 
