@@ -1,7 +1,6 @@
 "use client";
 
 import { UserInput } from "@/lib/types";
-import { useState, useEffect } from "react";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 interface StepDatesProps {
@@ -9,100 +8,89 @@ interface StepDatesProps {
   onChange: (value: Partial<UserInput>) => void;
 }
 
+// Parsing logic can be moved outside or kept if it's only used here.
+// For simplicity, let's keep them here but they are pure functions.
+const parseDate = (str: string) => {
+  const match = str.match(/(\d{4}-\d{2}-\d{2})/);
+  return match ? match[1] : "";
+};
+
+const parseDuration = (str: string) => {
+  const daysMatch = str.match(/(\d+)日間/);
+  if (daysMatch) return parseInt(daysMatch[1]);
+  const nightsMatch = str.match(/(\d+)泊(\d+)日/);
+  if (nightsMatch) return parseInt(nightsMatch[2]);
+  return 3;
+};
+
+const parseDisplayFormat = (str: string): "days" | "nights" => {
+  if (/\d+泊\d+日/.test(str)) return "nights";
+  return "days";
+};
+
+const isDateUndecidedCheck = (str:string) => !/(\d{4}-\d{2}-\d{2})/.test(str);
+const isDurationUndecidedCheck = (str: string) => !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
+
+
 export default function StepDates({ input, onChange }: StepDatesProps) {
-  // Parsing logic
-  const parseDate = (str: string) => {
-    const match = str.match(/(\d{4}-\d{2}-\d{2})/);
-    return match ? match[1] : "";
-  };
+  // --- STATE DERIVATION ---
+  // Derive all state directly from the input prop. No local state needed.
+  const startDate = parseDate(input.dates);
+  const duration = parseDuration(input.dates);
+  const displayFormat = parseDisplayFormat(input.dates);
+  const isDateUndecided = isDateUndecidedCheck(input.dates);
+  const isDurationUndecided = isDurationUndecidedCheck(input.dates);
 
-  const parseDuration = (str: string) => {
-    // Matches "X日間" or "X泊Y日" format
-    const daysMatch = str.match(/(\d+)日間/);
-    if (daysMatch) return parseInt(daysMatch[1]);
-
-    const nightsMatch = str.match(/(\d+)泊(\d+)日/);
-    if (nightsMatch) return parseInt(nightsMatch[2]); // Return days (泊+1)
-
-    return 3;
-  };
-
-  const parseDisplayFormat = (str: string): "days" | "nights" => {
-    // Check if the string uses "X泊Y日" format
-    if (/\d+泊\d+日/.test(str)) return "nights";
-    return "days";
-  };
-
-  const isDateUndecidedCheck = (str: string) => {
-     return !/(\d{4}-\d{2}-\d{2})/.test(str);
-  };
-
-  const isDurationUndecidedCheck = (str: string) => {
-     // If it explicitly says undecided or doesn't have "X日間" or "X泊Y日" pattern
-     // If we have either pattern, duration is decided.
-     return !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
-  };
-
-  // State initialization
-  const [startDate, setStartDate] = useState(() => parseDate(input.dates));
-  const [duration, setDuration] = useState(() => parseDuration(input.dates));
-  const [displayFormat, setDisplayFormat] = useState<"days" | "nights">(() => parseDisplayFormat(input.dates));
-
-  const [isDateUndecided, setIsDateUndecided] = useState(() => isDateUndecidedCheck(input.dates));
-  const [isDurationUndecided, setIsDurationUndecided] = useState(() => isDurationUndecidedCheck(input.dates));
-
-  // Helper to format duration based on displayFormat
-  const formatDuration = (days: number) => {
-    if (displayFormat === "nights") {
-      if (days === 1) return "日帰り";
-      return `${days - 1}泊${days}日`;
-    }
-    return `${days}日間`;
-  };
-
-  // Update parent whenever state changes
-  useEffect(() => {
-    let result = "";
-
-    if (isDateUndecided && isDurationUndecided) {
-      result = "時期は未定";
-    } else if (isDateUndecided && !isDurationUndecided) {
-      result = formatDuration(duration);
-    } else if (!isDateUndecided && isDurationUndecided) {
-      if (startDate) {
-        result = `${startDate}出発 (期間未定)`;
-      } else {
-         // Should not happen if logic is correct, fallback
-         result = "時期は未定";
+  // --- STRING FORMATTING LOGIC ---
+  // A single function to construct the final string based on state.
+  const formatDatesString = (
+    sDate: string,
+    dur: number,
+    format: "days" | "nights",
+    dateUndecided: boolean,
+    durationUndecided: boolean
+  ): string => {
+    const formatDur = (d: number) => {
+      if (format === "nights") {
+        if (d === 1) return "日帰り";
+        return `${d - 1}泊${d}日`;
       }
-    } else {
-      // Both decided
-      if (startDate) {
-        result = `${startDate}から${formatDuration(duration)}`;
-      } else {
-        result = formatDuration(duration); // Fallback
-      }
-    }
+      return `${d}日間`;
+    };
 
-    // Only update if different to avoid loop (though React handles strict equality)
-    if (result !== input.dates) {
-       onChange({ dates: result });
-    }
-  }, [startDate, duration, displayFormat, isDateUndecided, isDurationUndecided]); // eslint-disable-line react-hooks/exhaustive-deps
+    if (dateUndecided && durationUndecided) return "時期は未定";
+    if (dateUndecided) return formatDur(dur);
+    if (durationUndecided) return sDate ? `${sDate}出発 (期間未定)` : "時期は未定";
+    return sDate ? `${sDate}から${formatDur(dur)}` : formatDur(dur);
+  };
+
+  // --- EVENT HANDLERS ---
+  // Handlers now construct the new string and call onChange directly.
 
   const handleDurationChange = (delta: number) => {
     const newDur = Math.max(1, Math.min(30, duration + delta));
-    setDuration(newDur);
-    if (isDurationUndecided) {
-        setIsDurationUndecided(false);
-    }
+    const newDates = formatDatesString(startDate, newDur, displayFormat, isDateUndecided, false);
+    onChange({ dates: newDates });
   };
 
-  const handleDateChange = (val: string) => {
-      setStartDate(val);
-      if (isDateUndecided) {
-          setIsDateUndecided(false);
-      }
+  const handleDateChange = (newDate: string) => {
+    const newDates = formatDatesString(newDate, duration, displayFormat, false, isDurationUndecided);
+    onChange({ dates: newDates });
+  };
+
+  const handleDateUndecidedToggle = (checked: boolean) => {
+    const newDates = formatDatesString(startDate, duration, displayFormat, checked, isDurationUndecided);
+    onChange({ dates: newDates });
+  };
+
+  const handleDurationUndecidedToggle = (checked: boolean) => {
+    const newDates = formatDatesString(startDate, duration, displayFormat, isDateUndecided, checked);
+    onChange({ dates: newDates });
+  };
+
+  const handleDisplayFormatChange = (newFormat: "days" | "nights") => {
+    const newDates = formatDatesString(startDate, duration, newFormat, isDateUndecided, isDurationUndecided);
+    onChange({ dates: newDates });
   };
 
   return (
@@ -129,7 +117,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                         id="date-undecided"
                         type="checkbox"
                         checked={isDateUndecided}
-                        onChange={(e) => setIsDateUndecided(e.target.checked)}
+                        onChange={(e) => handleDateUndecidedToggle(e.target.checked)}
                         className="w-4 h-4 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
                     <label htmlFor="date-undecided" className="text-xs text-stone-500 font-bold cursor-pointer select-none">
@@ -160,7 +148,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                         id="duration-undecided"
                         type="checkbox"
                         checked={isDurationUndecided}
-                        onChange={(e) => setIsDurationUndecided(e.target.checked)}
+                        onChange={(e) => handleDurationUndecidedToggle(e.target.checked)}
                         className="w-4 h-4 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
                     <label htmlFor="duration-undecided" className="text-xs text-stone-500 font-bold cursor-pointer select-none">
@@ -172,7 +160,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
             {/* Display Format Toggle */}
             <div className={`flex justify-center gap-1 transition-all duration-300 ${isDurationUndecided ? "opacity-40 pointer-events-none" : ""}`}>
                 <button
-                    onClick={() => setDisplayFormat("days")}
+                    onClick={() => handleDisplayFormatChange("days")}
                     className={`px-3 py-1.5 text-xs font-bold rounded-l-md border transition-all ${
                         displayFormat === "days"
                             ? "bg-primary text-white border-primary"
@@ -182,7 +170,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                     ○日間
                 </button>
                 <button
-                    onClick={() => setDisplayFormat("nights")}
+                    onClick={() => handleDisplayFormatChange("nights")}
                     className={`px-3 py-1.5 text-xs font-bold rounded-r-md border-t border-b border-r transition-all ${
                         displayFormat === "nights"
                             ? "bg-primary text-white border-primary"
