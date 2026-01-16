@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { extractDuration, splitDaysIntoChunks } from "../planUtils";
+import { extractDuration, splitDaysIntoChunks } from "./planUtils";
 
 describe("extractDuration", () => {
   it("extracts duration from X日間 format", () => {

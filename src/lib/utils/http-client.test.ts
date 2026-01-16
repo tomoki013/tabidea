@@ -6,16 +6,16 @@ import {
   RobotsTxtDeniedError,
   DomainNotAllowedError,
   rateLimiter
-} from '../http-client';
+} from './http-client';
 
 // Mock the robots-checker module
-vi.mock('../robots-checker', () => ({
+vi.mock('./robots-checker', () => ({
   checkRobotsTxt: vi.fn().mockResolvedValue(true),
   getCrawlDelay: vi.fn().mockReturnValue(null)
 }));
 
 // Mock the scraping-policy module
-vi.mock('../scraping-policy', () => ({
+vi.mock('./scraping-policy', () => ({
   getDomainPolicy: vi.fn((url: string) => {
     const hostname = new URL(url).hostname;
     if (hostname === 'tomokichidiary.com' || hostname === 'www.tomokichidiary.com') {
@@ -40,7 +40,7 @@ vi.mock('../scraping-policy', () => ({
   })
 }));
 
-import { checkRobotsTxt } from '../robots-checker';
+import { checkRobotsTxt } from './robots-checker';
 const mockCheckRobotsTxt = vi.mocked(checkRobotsTxt);
 
 // Mock global fetch

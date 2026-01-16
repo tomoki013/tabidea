@@ -1,6 +1,6 @@
 // @vitest-environment node
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { GeminiService } from "../gemini";
+import { GeminiService } from "./gemini";
 
 const { mockGenerateText } = vi.hoisted(() => {
   return { mockGenerateText: vi.fn() };

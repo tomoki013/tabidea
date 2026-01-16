@@ -13,7 +13,7 @@ import {
   RELIABILITY_DISPLAY,
   RELIABILITY_THRESHOLDS,
   interpretReliabilityScore,
-} from '../utils/reliability-scorer';
+} from './reliability-scorer';
 import { TravelInfoSource } from '@/lib/types/travel-info';
 
 describe('ReliabilityScorer', () => {

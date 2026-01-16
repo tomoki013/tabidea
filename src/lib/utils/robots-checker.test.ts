@@ -4,7 +4,7 @@ import {
   getCrawlDelay,
   clearRobotsCache,
   getRobotsCacheStats
-} from '../robots-checker';
+} from './robots-checker';
 
 // Mock global fetch
 const mockFetch = vi.fn();

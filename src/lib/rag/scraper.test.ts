@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { WebScraperRetriever } from '../scraper';
+import { WebScraperRetriever } from './scraper';
 
 // Mock the ethical fetch module
 vi.mock('@/lib/utils/http-client', () => ({

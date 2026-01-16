@@ -14,7 +14,7 @@ import {
   getCategoryTtl,
   getCategoryTtlSeconds,
   CACHE_TTL_CONFIG,
-} from '../index';
+} from './index';
 
 describe('CacheManager', () => {
   let cacheManager: CacheManager;

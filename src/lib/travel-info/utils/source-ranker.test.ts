@@ -8,7 +8,7 @@ import {
   createSourceRanker,
   executeFallbackChain,
   SOURCE_PRIORITY,
-} from '../utils/source-ranker';
+} from './source-ranker';
 import { ITravelInfoSource, SourceResult } from '../interfaces';
 import { TravelInfoCategory, TravelInfoSource, AnyCategoryData } from '@/lib/types/travel-info';
 

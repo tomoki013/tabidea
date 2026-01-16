@@ -9,12 +9,12 @@ import {
   createCacheManager,
   createCategoryMapper,
   TravelInfoServiceConfig,
-} from '../index';
+} from './index';
 import {
   ICategoryMapper,
   ITravelInfoSource,
   SourceResult,
-} from '../interfaces';
+} from './interfaces';
 import { TravelInfoCategory, SafetyInfo, ClimateInfo, AnyCategoryData } from '@/lib/types/travel-info';
 
 // モックソースの作成

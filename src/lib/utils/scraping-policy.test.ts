@@ -6,7 +6,7 @@ import {
   ALLOWED_DOMAINS,
   DENIED_DOMAINS,
   DOMAIN_POLICIES
-} from '../scraping-policy';
+} from './scraping-policy';
 
 describe('scraping-policy', () => {
   describe('getDomainPolicy', () => {
