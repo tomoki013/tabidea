@@ -81,36 +81,9 @@ export default function PDFExportButton({
     try {
       const blob = await generatePDF();
 
-      // Check for Web Share API support (Mobile)
-      const canShare =
-        typeof navigator !== "undefined" &&
-        'share' in navigator &&
-        'canShare' in navigator &&
-        navigator.canShare({ files: [new File([blob], filename, { type: "application/pdf" })] });
+      // Explicitly removed Web Share API logic here based on user feedback.
+      // Always show preview modal.
 
-      if (canShare) {
-        try {
-          await navigator.share({
-            files: [new File([blob], filename, { type: "application/pdf" })],
-            title: `${destination} 渡航情報`,
-          });
-          setIsGenerating(false);
-          return;
-        } catch (shareError) {
-          // Check if shareError is an object and has 'name' property
-          const isAbortError = shareError && typeof shareError === 'object' && 'name' in shareError && (shareError as Error).name === "AbortError";
-
-          if (!isAbortError) {
-             // If share fails, fall back to modal
-             console.error("Share failed", shareError);
-          } else {
-            setIsGenerating(false);
-            return;
-          }
-        }
-      }
-
-      // Desktop or Share fallback: Show modal
       if (pdfBlobUrl) URL.revokeObjectURL(pdfBlobUrl);
       const url = URL.createObjectURL(blob);
       setPdfBlobUrl(url);
