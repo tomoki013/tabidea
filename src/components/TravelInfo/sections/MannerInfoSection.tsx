@@ -28,18 +28,18 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className={`p-4 sm:p-6 rounded-2xl border-2 ${
+          className={`p-5 sm:p-6 rounded-2xl border-2 bg-white shadow-md ${
             data.tipping.required
-              ? 'bg-amber-50 border-amber-200'
+              ? 'border-amber-200'
               : data.tipping.customary
-                ? 'bg-blue-50 border-blue-200'
-                : 'bg-green-50 border-green-200'
+                ? 'border-blue-200'
+                : 'border-green-200'
           }`}
         >
           <div className="flex items-center gap-4 mb-3">
             <TippingBadge tipping={data.tipping} />
           </div>
-          <p className="text-stone-700 leading-relaxed">
+          <p className="text-stone-800 text-lg leading-relaxed">
             {data.tipping.guideline}
           </p>
         </motion.div>
@@ -47,24 +47,24 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
 
       {/* 現地の習慣・マナー */}
       {data.customs.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
-            <Heart className="w-5 h-5 text-primary" />
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
+            <Heart className="w-6 h-6 text-primary" />
             現地の習慣・マナー
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {data.customs.map((custom, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-3 bg-stone-50 rounded-xl"
+                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   <CheckCircle className="w-5 h-5 text-green-500" />
                 </div>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-stone-800 text-base leading-relaxed">
                   {custom}
                 </p>
               </motion.li>
@@ -75,24 +75,24 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
 
       {/* タブー・避けるべきこと */}
       {data.taboos.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
-            <AlertTriangle className="w-5 h-5 text-red-500" />
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
+            <AlertTriangle className="w-6 h-6 text-red-500" />
             タブー・避けるべきこと
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {data.taboos.map((taboo, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-xl"
+                className="flex items-start gap-4 p-4 bg-white border border-red-100 rounded-xl shadow-sm"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   <XCircle className="w-5 h-5 text-red-500" />
                 </div>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-stone-800 text-base leading-relaxed">
                   {taboo}
                 </p>
               </motion.li>

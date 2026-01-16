@@ -103,11 +103,11 @@ function InfoCard({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="p-4 bg-stone-50 rounded-xl">
-      <p className="text-xs text-stone-500 mb-1">{label}</p>
+    <div className="p-5 bg-white border border-stone-100 rounded-xl shadow-sm">
+      <p className="text-xs font-bold text-stone-500 mb-1 tracking-wide">{label}</p>
       <div className="flex items-center gap-2">
         {icon}
-        <p className="font-medium text-[#2c2c2c]">{value}</p>
+        <p className="font-bold text-lg text-[#2c2c2c]">{value}</p>
       </div>
       {subValue && (
         <p className="text-xs text-stone-400 mt-1">{subValue}</p>

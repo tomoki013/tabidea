@@ -24,15 +24,15 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-4 sm:p-6 rounded-2xl border-2 ${
+        className={`p-5 sm:p-6 rounded-2xl border-2 bg-white shadow-md ${
           data.required
-            ? 'bg-orange-50 border-orange-200'
-            : 'bg-green-50 border-green-200'
+            ? 'border-orange-200'
+            : 'border-green-200'
         }`}
       >
         <div className="flex items-center gap-4">
           <div
-            className={`p-3 rounded-xl ${
+            className={`p-4 rounded-xl ${
               data.required ? 'bg-orange-100' : 'bg-green-100'
             }`}
           >
@@ -65,24 +65,24 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
 
       {/* 入国要件 */}
       {data.requirements.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
-            <CheckCircle className="w-5 h-5 text-primary" />
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
+            <CheckCircle className="w-6 h-6 text-primary" />
             入国要件
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {data.requirements.map((requirement, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-3 bg-stone-50 rounded-xl"
+                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   <CheckCircle className="w-5 h-5 text-green-500" />
                 </div>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-stone-800 text-base leading-relaxed">
                   {requirement}
                 </p>
               </motion.li>

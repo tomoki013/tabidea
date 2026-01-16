@@ -46,9 +46,9 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-6 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl border border-blue-100"
+          className="p-6 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl border border-blue-100 shadow-md"
         >
-          <h4 className="text-sm text-stone-500 mb-3">現在の天気</h4>
+          <h4 className="text-sm text-stone-500 mb-3 font-bold">現在の天気</h4>
           <div className="flex items-center gap-6">
             <div className="text-blue-500">
               <WeatherIconDisplay condition={data.currentWeather.condition} className="w-16 h-16" />
@@ -114,14 +114,12 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-3 p-3 bg-amber-50 border border-amber-100 rounded-xl"
+                className="flex items-center gap-4 p-4 bg-white border border-amber-100 rounded-xl shadow-sm"
               >
-                <div className="w-8 h-8 rounded-full bg-amber-200/50 flex items-center justify-center">
-                  <span className="text-amber-700 text-sm font-bold">
-                    {index + 1}
-                  </span>
+                <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  {index + 1}
                 </div>
-                <p className="text-stone-700 text-sm">{item}</p>
+                <p className="text-stone-800 text-sm font-medium">{item}</p>
               </motion.div>
             ))}
           </div>
@@ -150,7 +148,7 @@ function ForecastCard({
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
-      className="flex flex-col items-center gap-2 p-4 bg-white border border-stone-200 rounded-xl min-w-[100px] hover:border-primary/30 hover:shadow-md transition-all"
+      className="flex flex-col items-center gap-2 p-4 bg-white border border-stone-100 rounded-xl min-w-[110px] shadow-sm hover:border-primary/30 hover:shadow-md transition-all"
     >
       {/* 日付 */}
       <div className="text-center">

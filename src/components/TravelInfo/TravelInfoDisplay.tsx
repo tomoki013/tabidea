@@ -151,9 +151,9 @@ export default function TravelInfoDisplay({
   return (
     <div className="space-y-6">
       {/* ヘッダー */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 bg-white border border-stone-100 rounded-2xl shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
             <MapPin className="w-6 h-6 text-primary" />
           </div>
           <div>
@@ -187,7 +187,7 @@ export default function TravelInfoDisplay({
       {/* カテゴリセクション */}
       <AnimatePresence mode="wait">
         <motion.div
-          className="space-y-4"
+          className="space-y-8"
           initial="hidden"
           animate="visible"
           variants={{
@@ -220,9 +220,9 @@ export default function TravelInfoDisplay({
 
       {/* 免責事項 */}
       {successCount > 0 && (
-        <div className="p-4 sm:p-6 bg-stone-50 border border-stone-200 rounded-2xl">
-          <h4 className="flex items-center gap-2 font-bold text-stone-700 mb-2">
-            <AlertCircle className="w-5 h-5" />
+        <div className="p-5 sm:p-6 bg-white border border-stone-200 rounded-2xl shadow-sm">
+          <h4 className="flex items-center gap-2 font-bold text-stone-800 mb-2">
+            <AlertCircle className="w-5 h-5 text-stone-500" />
             免責事項
           </h4>
           <p className="text-sm text-stone-600 leading-relaxed">

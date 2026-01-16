@@ -55,27 +55,27 @@ export default function SafetyInfoSection({ data }: SectionBaseProps<SafetyInfo>
   const DangerIcon = style.icon;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* 危険度レベルインジケーター */}
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-4 sm:p-6 rounded-2xl border-2 ${style.bg} ${style.border}`}
+        className={`p-5 sm:p-6 rounded-2xl border-2 shadow-md bg-white ${style.border}`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-          <div className={`p-3 rounded-xl ${style.bg} ${style.text}`}>
-            <DangerIcon className="w-8 h-8" />
+          <div className={`p-4 rounded-2xl ${style.bg} ${style.text} inline-flex items-center justify-center w-16 h-16`}>
+            <DangerIcon className="w-10 h-10" />
           </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
+          <div className="flex-1 space-y-2">
+            <div className="flex flex-wrap items-center gap-3">
               <span
-                className={`px-3 py-1 rounded-full text-sm font-bold ${style.bg} ${style.text}`}
+                className={`px-3 py-1 rounded-full text-sm font-bold ${style.bg} ${style.text} border ${style.border}`}
               >
                 レベル {data.dangerLevel}
               </span>
               <DangerLevelBar level={data.dangerLevel} />
             </div>
-            <p className={`font-bold text-lg ${style.text}`}>
+            <p className={`font-bold text-xl leading-tight ${style.text}`}>
               {data.dangerLevelDescription}
             </p>
           </div>
@@ -84,24 +84,24 @@ export default function SafetyInfoSection({ data }: SectionBaseProps<SafetyInfo>
 
       {/* 警告・注意事項 */}
       {data.warnings.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
-            <AlertTriangle className="w-5 h-5 text-orange-500" />
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
+            <AlertTriangle className="w-6 h-6 text-orange-500" />
             注意事項
           </h4>
-          <ul className="space-y-2">
+          <ul className="space-y-3">
             {data.warnings.map((warning, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-3 p-3 bg-orange-50 border border-orange-100 rounded-xl"
+                className="flex items-start gap-4 p-4 bg-white border border-orange-100 rounded-xl shadow-sm"
               >
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-200 text-orange-800 flex items-center justify-center text-sm font-bold">
+                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-700 flex items-center justify-center text-sm font-bold mt-0.5">
                   {index + 1}
                 </span>
-                <p className="text-stone-700 text-sm leading-relaxed">
+                <p className="text-stone-800 text-base leading-relaxed">
                   {warning}
                 </p>
               </motion.li>

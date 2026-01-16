@@ -174,10 +174,10 @@ export default function TravelInfoClient() {
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder="どこへ行きますか？（例: パリ、バンコク）"
-                    className="w-full bg-transparent border-b-2 border-dashed border-stone-300 px-2 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-hand focus:outline-none focus:border-primary transition-all rounded-none"
+                    className="w-full bg-white border border-stone-200 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-hand focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all rounded-full shadow-sm"
                     disabled={isNavigating}
                   />
-                  <div className="absolute right-2 bottom-4 text-stone-400">
+                  <div className="absolute right-6 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none">
                     <Search className="w-6 h-6" />
                   </div>
                 </div>
@@ -193,12 +193,12 @@ export default function TravelInfoClient() {
                         key={dest.name}
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
-                        className={`
-                          px-4 py-2 text-sm sm:text-base font-hand text-stone-700
-                          bg-[#fff9c4] hover:bg-[#fff59d] shadow-sm hover:shadow-md
-                          transition-all duration-300 transform hover:-translate-y-1 hover:rotate-0
-                          ${i % 2 === 0 ? "rotate-[-1deg]" : "rotate-[1deg]"}
-                        `}
+                        className="
+                          px-4 py-2 text-sm sm:text-base font-hand text-stone-600
+                          bg-white border border-stone-200 hover:border-primary/50 hover:text-primary
+                          shadow-sm hover:shadow-md rounded-full
+                          transition-all duration-300 transform hover:-translate-y-0.5
+                        "
                       >
                         {dest.name}
                       </button>
@@ -234,7 +234,7 @@ export default function TravelInfoClient() {
                   className="group relative w-full sm:w-auto min-w-[280px]"
                 >
                   <div className="absolute inset-0 bg-stone-800 rounded-full translate-y-1 transition-transform group-hover:translate-y-2 group-disabled:translate-y-0" />
-                  <div className="relative bg-primary hover:bg-[#d35400] text-white font-serif font-bold py-4 px-10 rounded-full transition-all group-hover:-translate-y-1 group-disabled:translate-y-0 group-disabled:bg-stone-400 group-disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg sm:text-xl shadow-lg">
+                  <div className="relative bg-gradient-to-r from-primary to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-serif font-bold py-4 px-10 rounded-full transition-all group-hover:-translate-y-1 group-disabled:translate-y-0 group-disabled:from-stone-400 group-disabled:to-stone-400 group-disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg sm:text-xl shadow-lg">
                     <span>
                       {isNavigating ? "ページをめくっています..." : "検索する"}
                     </span>
