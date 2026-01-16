@@ -807,8 +807,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       }
     }
 
-    // デフォルトはレベル1（最も低い警戒レベル）
-    return (maxLevel || 1) as DangerLevel;
+    // デフォルトはレベル0（危険情報なし）
+    return maxLevel as DangerLevel;
   }
 
   /**

@@ -8,6 +8,7 @@ import {
   MapPin,
   ShieldAlert,
   ShieldCheck,
+  AlertOctagon,
 } from 'lucide-react';
 import type { SafetyInfo, DangerLevel } from '@/lib/types/travel-info';
 import type { SectionBaseProps } from '../types';
@@ -19,29 +20,35 @@ const DANGER_LEVEL_STYLES: Record<
   DangerLevel,
   { bg: string; text: string; border: string; icon: typeof ShieldCheck }
 > = {
-  1: {
-    bg: 'bg-green-50',
-    text: 'text-green-800',
-    border: 'border-green-200',
+  0: {
+    bg: 'bg-white',
+    text: 'text-stone-800',
+    border: 'border-stone-200',
     icon: ShieldCheck,
   },
-  2: {
+  1: {
     bg: 'bg-yellow-50',
     text: 'text-yellow-800',
     border: 'border-yellow-200',
     icon: ShieldAlert,
   },
-  3: {
+  2: {
     bg: 'bg-orange-50',
     text: 'text-orange-800',
     border: 'border-orange-200',
     icon: AlertTriangle,
   },
-  4: {
+  3: {
     bg: 'bg-red-50',
     text: 'text-red-800',
     border: 'border-red-200',
     icon: AlertTriangle,
+  },
+  4: {
+    bg: 'bg-purple-50',
+    text: 'text-purple-800',
+    border: 'border-purple-200',
+    icon: AlertOctagon,
   },
 };
 
@@ -186,12 +193,12 @@ function DangerLevelBar({ level }: { level: DangerLevel }) {
           className={`h-2 w-4 rounded-sm transition-colors ${
             l <= level
               ? l === 1
-                ? 'bg-green-500'
+                ? 'bg-yellow-500'
                 : l === 2
-                  ? 'bg-yellow-500'
+                  ? 'bg-orange-500'
                   : l === 3
-                    ? 'bg-orange-500'
-                    : 'bg-red-500'
+                    ? 'bg-red-500'
+                    : 'bg-purple-500'
               : 'bg-stone-200'
           }`}
         />

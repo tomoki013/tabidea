@@ -28,13 +28,14 @@ export type SourceType =
   | "blog"; // ブログ記事
 
 /**
- * 外務省の危険度レベル（1-4）
+ * 外務省の危険度レベル（0-4）
+ * 0: 危険情報なし
  * 1: 十分注意してください
  * 2: 不要不急の渡航は止めてください
  * 3: 渡航は止めてください（渡航中止勧告）
  * 4: 退避してください（退避勧告）
  */
-export type DangerLevel = 1 | 2 | 3 | 4;
+export type DangerLevel = 0 | 1 | 2 | 3 | 4;
 
 // ============================================
 // 情報ソース
@@ -379,6 +380,7 @@ export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = {
  * 危険度レベルの日本語説明
  */
 export const DANGER_LEVEL_DESCRIPTIONS: Record<DangerLevel, string> = {
+  0: "危険情報なし",
   1: "十分注意してください",
   2: "不要不急の渡航は止めてください",
   3: "渡航は止めてください（渡航中止勧告）",
