@@ -98,6 +98,14 @@ export default function TravelInfoDisplay({
 
   return (
     <div className="space-y-6">
+      <div className="flex justify-end">
+        <PDFExportButton
+          destination={destination}
+          country={country}
+          categoryStates={categoryStates}
+        />
+      </div>
+
       {/* ヘッダー */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 sm:p-6 bg-white border border-stone-100 rounded-2xl shadow-sm">
         <div className="flex items-center gap-3">
@@ -105,14 +113,6 @@ export default function TravelInfoDisplay({
             <MapPin className="w-6 h-6 text-primary" />
           </div>
           <div>
-            <div className="mb-2">
-              <PDFExportButton
-                destination={destination}
-                country={country}
-                categoryStates={categoryStates}
-                className="!px-3 !py-1.5 !text-xs bg-stone-700 hover:bg-stone-600"
-              />
-            </div>
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2c2c2c]">
               {destination}
             </h2>
