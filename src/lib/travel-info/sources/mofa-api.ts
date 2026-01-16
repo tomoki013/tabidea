@@ -958,9 +958,10 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
   ): SourceResult<SafetyInfo> {
     console.log(`[mofa-api] Using default safety info for: ${destination}`);
 
+    // 外務省XMLから危険情報が取得できない場合はレベル0（危険情報なし）
     const defaultInfo: SafetyInfo = {
-      dangerLevel: 1,
-      dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[1],
+      dangerLevel: 0,
+      dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[0],
       warnings: [
         '最新の渡航情報は外務省海外安全ホームページでご確認ください',
         '海外旅行保険への加入を強くお勧めします',
