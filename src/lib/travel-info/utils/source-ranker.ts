@@ -38,7 +38,7 @@ export const SOURCE_PRIORITY: Record<TravelInfoCategory, SourceType[]> = {
 const SOURCE_TYPE_PRIORITY_SCORE: Record<SourceType, number> = {
   official_api: 100,
   web_search: 60,
-  ai_generated: 40,
+  ai_generated: 10,
   blog: 20,
 };
 

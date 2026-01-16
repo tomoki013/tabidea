@@ -10,6 +10,8 @@
  * 利用条件: 無償、営利・非営利問わず自由利用可能
  */
 
+import { XMLParser } from 'fast-xml-parser';
+
 import {
   TravelInfoCategory,
   SourceType,
@@ -469,16 +471,16 @@ export interface MofaXmlResponse {
   countryCode?: string;
   /** 国・地域名 */
   countryName?: string;
-  /** 危険レベル（Y=該当あり、N=該当なし） */
-  riskLevel1?: 'Y' | 'N'; // 十分注意
-  riskLevel2?: 'Y' | 'N'; // 不要不急の渡航中止
-  riskLevel3?: 'Y' | 'N'; // 渡航中止勧告
-  riskLevel4?: 'Y' | 'N'; // 退避勧告
-  /** 感染症危険レベル（Y=該当あり、N=該当なし） */
-  infectionLevel1?: 'Y' | 'N';
-  infectionLevel2?: 'Y' | 'N';
-  infectionLevel3?: 'Y' | 'N';
-  infectionLevel4?: 'Y' | 'N';
+  /** 危険レベル（1=該当あり、0=該当なし） */
+  riskLevel1?: number; // 十分注意
+  riskLevel2?: number; // 不要不急の渡航中止
+  riskLevel3?: number; // 渡航中止勧告
+  riskLevel4?: number; // 退避勧告
+  /** 感染症危険レベル（1=該当あり、0=該当なし） */
+  infectionLevel1?: number;
+  infectionLevel2?: number;
+  infectionLevel3?: number;
+  infectionLevel4?: number;
   /** 危険情報日時 */
   riskLeaveDate?: string;
   /** 危険情報タイトル */
@@ -487,6 +489,30 @@ export interface MofaXmlResponse {
   riskLead?: string;
   /** 危険情報概要 */
   riskSubText?: string;
+  /** メール情報（配列または単一オブジェクト） */
+  mail?: MofaMailEntry | MofaMailEntry[];
+  /** 広域・スポット情報（配列または単一オブジェクト） */
+  wideareaSpot?: MofaSpotEntry | MofaSpotEntry[];
+}
+
+interface MofaMailEntry {
+  title?: string;
+  lead?: string;
+  mainText?: string;
+  leaveDate?: string;
+}
+
+interface MofaSpotEntry {
+  title?: string;
+  lead?: string;
+  mainText?: string;
+  leaveDate?: {
+    '#text'?: string;
+  };
+}
+
+interface MofaOpendataResult {
+  opendata: MofaXmlResponse;
 }
 
 // ============================================
@@ -526,6 +552,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
   > &
     Pick<MofaApiConfig, 'endpoint' | 'cacheManager'>;
 
+  private readonly parser: XMLParser;
+
   constructor(config: MofaApiConfig = {}) {
     this.config = {
       endpoint: config.endpoint,
@@ -533,6 +561,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       cacheManager: config.cacheManager,
       cacheTtlSeconds: config.cacheTtlSeconds ?? CACHE_TTL_SECONDS,
     };
+
+    // XMLパーサーの初期化
+    this.parser = new XMLParser({
+      ignoreAttributes: true, // 属性は基本的に不要（areaCdなど）
+      parseTagValue: true,    // 数値の自動変換（0/1など）を有効化
+      isArray: (name) => ['mail', 'wideareaSpot'].includes(name), // 配列として扱う要素
+    });
   }
 
   /**
@@ -597,7 +632,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         data: safetyInfo,
         source: this.createSource(countryCode),
       };
-      console.log(`[mofa-api] Final Result for ${destination}:`, JSON.stringify(result.data, null, 2));
+      // ログ出力は過剰なため省略（または要約のみ出力）
+      console.log(`[mofa-api] Successfully fetched safety info for ${destination} (Level: ${safetyInfo.dangerLevel})`);
       return result;
     } catch (error) {
       console.error('[mofa-api] Error:', error);
@@ -612,7 +648,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   async isAvailable(): Promise<boolean> {
     try {
-      // ヘルスチェックとして日本（0081）の情報を取得してみる
+      // ヘルスチェックとしてタイ（0066）の情報を取得してみる
       const testUrl = `${MOFA_OPENDATA_BASE_URL}/country/0066A.xml`;
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 5000);
@@ -716,12 +752,14 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         }
 
         const xmlText = await response.text();
-      console.log(`[mofa-api] Response for ${countryCode}:`, xmlText);
 
-      // XMLかどうかチェック（HTMLエラーページの場合は弾く）
-      if (!xmlText.trim().startsWith('<') || !xmlText.includes('<opendata')) {
-        throw new Error(`Invalid XML response for ${countryCode}`);
-      }
+        // ログ出力を削除 (パフォーマンス改善)
+        // console.log(`[mofa-api] Response for ${countryCode}:`, xmlText);
+
+        // XMLかどうかチェック（HTMLエラーページの場合は弾く）
+        if (!xmlText.trim().startsWith('<') || !xmlText.includes('<opendata')) {
+          throw new Error(`Invalid XML response for ${countryCode}`);
+        }
 
         return this.parseXmlResponse(xmlText, countryCode);
       } catch (error) {
@@ -752,118 +790,109 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     xmlText: string,
     countryCode: string
   ): SafetyInfo {
-    // シンプルなXMLパース（外部ライブラリなし）
-    const dangerLevel = this.extractDangerLevel(xmlText);
-    const warnings = this.extractWarnings(xmlText);
+    try {
+      const result = this.parser.parse(xmlText) as MofaOpendataResult;
+      const opendata = result.opendata;
 
-    return {
-      dangerLevel,
-      dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[dangerLevel],
-      warnings,
-      emergencyContacts:
-        EMERGENCY_CONTACTS_BY_COUNTRY[countryCode] ||
-        this.getDefaultEmergencyContacts(),
-      nearestEmbassy: EMBASSIES_BY_COUNTRY[countryCode],
-    };
+      if (!opendata) {
+        throw new Error('Invalid XML structure: missing opendata');
+      }
+
+      const dangerLevel = this.extractDangerLevel(opendata);
+      const warnings = this.extractWarnings(opendata);
+
+      return {
+        dangerLevel,
+        dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[dangerLevel],
+        warnings,
+        emergencyContacts:
+          EMERGENCY_CONTACTS_BY_COUNTRY[countryCode] ||
+          this.getDefaultEmergencyContacts(),
+        nearestEmbassy: EMBASSIES_BY_COUNTRY[countryCode],
+      };
+    } catch (e) {
+      console.error('[mofa-api] XML Parse Error:', e);
+      // パースエラー時はデフォルト値を返す
+      return {
+        dangerLevel: 0,
+        dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[0],
+        warnings: ['データの解析中にエラーが発生しました。最新の情報を外務省ホームページでご確認ください。'],
+        emergencyContacts: this.getDefaultEmergencyContacts(),
+        nearestEmbassy: EMBASSIES_BY_COUNTRY[countryCode],
+      };
+    }
   }
 
   /**
-   * XMLから危険度レベルを抽出
-   * 外務省オープンデータ仕様に基づき、riskLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
-   * 全て0の場合はレベル0（危険情報なし）を返す
+   * XMLオブジェクトから危険度レベルを抽出
    */
-  private extractDangerLevel(xmlText: string): DangerLevel {
-    // 外務省オープンデータ仕様に基づくriskLevel1〜4の1/0形式をパース
-    const riskLevel4Match = xmlText.match(/<riskLevel4>([01])<\/riskLevel4>/i);
-    const riskLevel3Match = xmlText.match(/<riskLevel3>([01])<\/riskLevel3>/i);
-    const riskLevel2Match = xmlText.match(/<riskLevel2>([01])<\/riskLevel2>/i);
-    const riskLevel1Match = xmlText.match(/<riskLevel1>([01])<\/riskLevel1>/i);
+  private extractDangerLevel(opendata: MofaXmlResponse): DangerLevel {
+    // 1(該当あり)か0(該当なし)かチェック
+    // XMLParserの設定(parseTagValue: true)により数値として取得される想定
 
-    console.log('[mofa-api] Danger Level Matches:', {
-      level4: riskLevel4Match?.[1],
-      level3: riskLevel3Match?.[1],
-      level2: riskLevel2Match?.[1],
-      level1: riskLevel1Match?.[1],
-    });
+    // 退避勧告が最優先
+    if (opendata.riskLevel4 === 1) return 4;
+    if (opendata.riskLevel3 === 1) return 3;
+    if (opendata.riskLevel2 === 1) return 2;
+    if (opendata.riskLevel1 === 1) return 1;
 
-    const hasRiskLevel4 = riskLevel4Match?.[1] === '1';
-    const hasRiskLevel3 = riskLevel3Match?.[1] === '1';
-    const hasRiskLevel2 = riskLevel2Match?.[1] === '1';
-    const hasRiskLevel1 = riskLevel1Match?.[1] === '1';
-
-    // 最も高い危険レベルを返す（退避勧告が最優先）
-    if (hasRiskLevel4) return 4;
-    if (hasRiskLevel3) return 3;
-    if (hasRiskLevel2) return 2;
-    if (hasRiskLevel1) return 1;
-
-    // 全て0の場合はレベル0（危険情報なし）
+    // 全て0または未定義の場合はレベル0（危険情報なし）
     return 0;
   }
 
   /**
-   * XMLから感染症危険度レベルを抽出
-   * 外務省オープンデータ仕様に基づき、infectionLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
+   * XMLオブジェクトから感染症危険度レベルを抽出
    */
-  private extractInfectionLevel(xmlText: string): DangerLevel {
-    const infectionLevel4Match = xmlText.match(/<infectionLevel4>([01])<\/infectionLevel4>/i);
-    const infectionLevel3Match = xmlText.match(/<infectionLevel3>([01])<\/infectionLevel3>/i);
-    const infectionLevel2Match = xmlText.match(/<infectionLevel2>([01])<\/infectionLevel2>/i);
-    const infectionLevel1Match = xmlText.match(/<infectionLevel1>([01])<\/infectionLevel1>/i);
-
-    console.log('[mofa-api] Infection Level Matches:', {
-      level4: infectionLevel4Match?.[1],
-      level3: infectionLevel3Match?.[1],
-      level2: infectionLevel2Match?.[1],
-      level1: infectionLevel1Match?.[1],
-    });
-
-    const hasLevel4 = infectionLevel4Match?.[1] === '1';
-    const hasLevel3 = infectionLevel3Match?.[1] === '1';
-    const hasLevel2 = infectionLevel2Match?.[1] === '1';
-    const hasLevel1 = infectionLevel1Match?.[1] === '1';
-
-    if (hasLevel4) return 4;
-    if (hasLevel3) return 3;
-    if (hasLevel2) return 2;
-    if (hasLevel1) return 1;
+  private extractInfectionLevel(opendata: MofaXmlResponse): DangerLevel {
+    if (opendata.infectionLevel4 === 1) return 4;
+    if (opendata.infectionLevel3 === 1) return 3;
+    if (opendata.infectionLevel2 === 1) return 2;
+    if (opendata.infectionLevel1 === 1) return 1;
 
     return 0;
   }
 
   /**
-   * XMLから警告情報を抽出
-   * 外務省オープンデータ仕様に基づき、riskLead、riskTitle、広域・スポット情報等から抽出
+   * XMLオブジェクトから警告情報を抽出
    */
-  private extractWarnings(xmlText: string): string[] {
+  private extractWarnings(opendata: MofaXmlResponse): string[] {
     const warnings: string[] = [];
 
-    // 危険情報のリード（riskLead）を抽出
-    const riskLeadMatch = xmlText.match(/<riskLead>([^<]+)<\/riskLead>/);
-    if (riskLeadMatch?.[1]) {
-      const lead = riskLeadMatch[1].trim();
-      if (lead.length > 0 && lead.length < 300) {
+    // 1. 危険情報のリード（riskLead）
+    if (opendata.riskLead && typeof opendata.riskLead === 'string') {
+      const lead = opendata.riskLead.trim();
+      if (lead.length > 0) {
         warnings.push(lead);
       }
     }
 
-    // 広域・スポット情報のタイトルを抽出
-    const titlePattern = /<title>([^<]+)<\/title>/gi;
-    let match;
-    while ((match = titlePattern.exec(xmlText)) !== null) {
-      const title = match[1]?.trim();
-      if (title && title.length > 0 && title.length < 200 && !warnings.includes(title)) {
-        warnings.push(title);
+    // 2. 広域・スポット情報のタイトルとリード
+    // isArray設定により、wideareaSpotは常に配列として扱われる
+    if (Array.isArray(opendata.wideareaSpot)) {
+      for (const spot of opendata.wideareaSpot) {
         if (warnings.length >= 5) break;
+
+        if (spot.title) {
+          const title = spot.title.trim();
+          if (title && !warnings.includes(title)) {
+            warnings.push(title);
+          }
+        }
       }
     }
 
-    // 広域・スポット情報のリードを抽出
-    const leadPattern = /<lead>([^<]+)<\/lead>/gi;
-    while ((match = leadPattern.exec(xmlText)) !== null && warnings.length < 5) {
-      const lead = match[1]?.trim();
-      if (lead && lead.length > 10 && lead.length < 300 && !warnings.includes(lead)) {
-        warnings.push(lead);
+    // 3. メール情報のタイトル
+    // isArray設定により、mailは常に配列として扱われる
+    if (Array.isArray(opendata.mail)) {
+      for (const mail of opendata.mail) {
+        if (warnings.length >= 5) break;
+
+        if (mail.title) {
+          const title = mail.title.trim();
+          if (title && !warnings.includes(title)) {
+            warnings.push(title);
+          }
+        }
       }
     }
 
