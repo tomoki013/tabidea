@@ -17,6 +17,9 @@ import type {
   VisaInfo,
   MannerInfo,
   TransportInfo,
+  LocalFoodInfo,
+  SouvenirInfo,
+  EventsInfo,
 } from "@/lib/types/travel-info";
 import { CATEGORY_LABELS } from "@/lib/types/travel-info";
 import InfoSection from "./InfoSection";
@@ -28,6 +31,9 @@ import {
   VisaInfoSection,
   MannerInfoSection,
   TransportInfoSection,
+  LocalFoodSection,
+  SouvenirSection,
+  EventsSection,
 } from "./sections";
 import type { TravelInfoDisplayProps, CategoryState } from "./types";
 import { CATEGORY_INFO } from "./types";
@@ -376,6 +382,12 @@ function CategoryContent({
       return <MannerInfoSection data={data as MannerInfo} />;
     case "transport":
       return <TransportInfoSection data={data as TransportInfo} />;
+    case "local_food":
+      return <LocalFoodSection data={data as LocalFoodInfo} />;
+    case "souvenir":
+      return <SouvenirSection data={data as SouvenirInfo} />;
+    case "events":
+      return <EventsSection data={data as EventsInfo} />;
     default:
       return null;
   }

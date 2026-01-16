@@ -11,6 +11,9 @@ import type {
   VisaInfo,
   MannerInfo,
   TransportInfo,
+  LocalFoodInfo,
+  SouvenirInfo,
+  EventsInfo,
   CategoryDataMap,
   DangerLevel,
 } from '@/lib/types/travel-info';
@@ -153,6 +156,46 @@ const JSON_SCHEMAS: Record<TravelInfoCategory, string> = {
     "services": ["string (利用可能なサービス名)"]
   },
   "drivingNotes": ["string (運転に関する注意事項)"]
+}`,
+
+  local_food: `{
+  "popularDishes": [
+    {
+      "name": "string (料理名)",
+      "description": "string (説明)",
+      "approximatePrice": "string (価格帯)"
+    }
+  ],
+  "diningEtiquette": ["string (食事のマナー・習慣)"]
+}`,
+
+  souvenir: `{
+  "popularItems": [
+    {
+      "name": "string (商品名)",
+      "description": "string (説明)",
+      "approximatePrice": "string (価格帯)"
+    }
+  ],
+  "shoppingAreas": ["string (おすすめの買い物エリア)"],
+  "taxFreeInfo": "string (免税情報)"
+}`,
+
+  events: `{
+  "majorEvents": [
+    {
+      "name": "string (イベント名)",
+      "date": "string (開催時期)",
+      "description": "string (内容)"
+    }
+  ],
+  "seasonalFestivals": [
+    {
+      "name": "string (祭り名)",
+      "date": "string (開催時期)",
+      "description": "string (内容)"
+    }
+  ]
 }`,
 };
 
@@ -437,6 +480,149 @@ ${JSON_SCHEMAS.transport}
 ${SOURCE_PRIORITY_INSTRUCTION}`;
 }
 
+/**
+ * グルメ情報用プロンプト
+ */
+function generateLocalFoodPrompt(destination: string, country: string): string {
+  return `あなたは現地のグルメ情報に詳しい専門家です。
+${destination}（${country}）の代表的な料理や食事のマナーについて情報を提供してください。
+
+【必須情報】
+- 代表的な料理（名前、説明、価格帯）
+- 食事のマナー・習慣
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.local_food}
+
+【情報収集の優先ソース】
+1. 政府観光局
+2. グルメガイド
+3. 旅行ガイドブック
+
+【Few-shot Example】
+入力: バンコク（タイ）
+出力:
+{
+  "popularDishes": [
+    {
+      "name": "パッタイ",
+      "description": "タイ風焼きそば。米粉の麺を甘酸っぱいタレで炒めたもの。",
+      "approximatePrice": "50-100バーツ"
+    },
+    {
+      "name": "トムヤムクン",
+      "description": "世界三大スープの一つ。エビ入りの酸味と辛味が特徴のスープ。",
+      "approximatePrice": "150-300バーツ"
+    }
+  ],
+  "diningEtiquette": [
+    "フォークとスプーンを使って食べるのが一般的",
+    "麺類は箸を使うこともある",
+    "音を立てて食べるのはマナー違反"
+  ]
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * お土産・買い物情報用プロンプト
+ */
+function generateSouvenirPrompt(destination: string, country: string): string {
+  return `あなたは現地のショッピング情報に詳しい専門家です。
+${destination}（${country}）のお土産や買い物について情報を提供してください。
+
+【必須情報】
+- 人気のお土産（名前、説明、価格帯）
+- おすすめの買い物エリア
+- 免税情報
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.souvenir}
+
+【情報収集の優先ソース】
+1. 政府観光局
+2. ショッピングモール公式サイト
+3. 旅行ガイドブック
+
+【Few-shot Example】
+入力: 台北（台湾）
+出力:
+{
+  "popularItems": [
+    {
+      "name": "パイナップルケーキ",
+      "description": "台湾を代表する銘菓。サクサクの生地の中にパイナップル餡が入っている。",
+      "approximatePrice": "300-500台湾ドル"
+    },
+    {
+      "name": "台湾茶",
+      "description": "高山茶や東方美人茶など、香り高いお茶が有名。",
+      "approximatePrice": "500台湾ドル〜"
+    }
+  ],
+  "shoppingAreas": [
+    "西門町（若者の流行発信地）",
+    "信義区（高級デパートが集まるエリア）",
+    "迪化街（乾物や雑貨の問屋街）"
+  ],
+  "taxFreeInfo": "同一店舗で1日2,000台湾ドル以上の購入で消費税（5%）の還付申請が可能"
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * イベント情報用プロンプト
+ */
+function generateEventsPrompt(
+  destination: string,
+  country: string,
+  travelDates?: { start: Date; end: Date }
+): string {
+  const dateInfo = travelDates
+    ? `渡航予定期間: ${travelDates.start.toISOString().split('T')[0]} 〜 ${travelDates.end.toISOString().split('T')[0]}`
+    : '渡航予定期間: 未定';
+
+  return `あなたは現地のイベント情報に詳しい専門家です。
+${destination}（${country}）のイベントや祭りについて情報を提供してください。
+${dateInfo}
+
+【必須情報】
+- 主要なイベント（名前、開催時期、内容）
+- 季節の祭り
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.events}
+
+【情報収集の優先ソース】
+1. 政府観光局
+2. イベント公式サイト
+3. ニュースサイト
+
+【Few-shot Example】
+入力: 京都（日本）、渡航期間: 7月
+出力:
+{
+  "majorEvents": [
+    {
+      "name": "祇園祭",
+      "date": "7月1日〜31日",
+      "description": "日本三大祭りの一つ。1ヶ月間にわたり様々な神事が行われる。"
+    }
+  ],
+  "seasonalFestivals": [
+    {
+      "name": "七夕のライトアップ",
+      "date": "7月上旬〜8月上旬",
+      "description": "鴨川や堀川などでライトアップイベントが開催される。"
+    }
+  ]
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
 // ============================================
 // メイン関数
 // ============================================
@@ -463,6 +649,12 @@ export function generateCategorySpecificPrompt(
       return generateMannerPrompt(destination, country);
     case 'transport':
       return generateTransportPrompt(destination, country);
+    case 'local_food':
+      return generateLocalFoodPrompt(destination, country);
+    case 'souvenir':
+      return generateSouvenirPrompt(destination, country);
+    case 'events':
+      return generateEventsPrompt(destination, country, travelDates);
     default:
       throw new Error(`Unknown category: ${category}`);
   }
@@ -501,6 +693,12 @@ export function generateTravelInfoPrompt(
           return '- manner: チップ、現地マナー、タブー';
         case 'transport':
           return '- transport: 公共交通、ライドシェア、運転情報';
+        case 'local_food':
+          return '- local_food: 代表的な料理、食事マナー';
+        case 'souvenir':
+          return '- souvenir: 人気のお土産、免税情報';
+        case 'events':
+          return '- events: 主要イベント、季節の祭り';
         default:
           return '';
       }
@@ -573,6 +771,21 @@ export function generateSearchQueries(
       `${destination} 公共交通機関 電車 バス`,
       `${country} ライドシェア Grab Uber`,
       `${country} レンタカー 国際免許`,
+    ],
+    local_food: [
+      `${destination} グルメ おすすめ`,
+      `${country} 料理 名物`,
+      `${country} 食事マナー`,
+    ],
+    souvenir: [
+      `${destination} お土産 おすすめ`,
+      `${destination} ショッピング エリア`,
+      `${country} 免税 手続き`,
+    ],
+    events: [
+      `${destination} イベント`,
+      `${destination} 祭り`,
+      `${country} 祝日`,
     ],
   };
 
@@ -770,6 +983,12 @@ function validateAndNormalizeContent<T extends TravelInfoCategory>(
       return normalizeMannerInfo(rawData) as CategoryDataMap[T];
     case 'transport':
       return normalizeTransportInfo(rawData) as CategoryDataMap[T];
+    case 'local_food':
+      return normalizeLocalFoodInfo(rawData) as CategoryDataMap[T];
+    case 'souvenir':
+      return normalizeSouvenirInfo(rawData) as CategoryDataMap[T];
+    case 'events':
+      return normalizeEventsInfo(rawData) as CategoryDataMap[T];
     default:
       throw new Error(`Unknown category: ${category}`);
   }
@@ -951,6 +1170,64 @@ function normalizeTransportInfo(data: Record<string, unknown>): TransportInfo {
     drivingNotes: Array.isArray(data.drivingNotes)
       ? data.drivingNotes.filter((d): d is string => typeof d === 'string')
       : undefined,
+  };
+}
+
+function normalizeLocalFoodInfo(data: Record<string, unknown>): LocalFoodInfo {
+  const popularDishes = Array.isArray(data.popularDishes)
+    ? data.popularDishes.filter((item): item is Record<string, unknown> => typeof item === 'object' && item !== null).map(item => ({
+        name: typeof item.name === 'string' ? item.name : '不明',
+        description: typeof item.description === 'string' ? item.description : '',
+        approximatePrice: typeof item.approximatePrice === 'string' ? item.approximatePrice : undefined
+      }))
+    : [];
+
+  return {
+    popularDishes,
+    diningEtiquette: Array.isArray(data.diningEtiquette)
+      ? data.diningEtiquette.filter((e): e is string => typeof e === 'string')
+      : []
+  };
+}
+
+function normalizeSouvenirInfo(data: Record<string, unknown>): SouvenirInfo {
+  const popularItems = Array.isArray(data.popularItems)
+    ? data.popularItems.filter((item): item is Record<string, unknown> => typeof item === 'object' && item !== null).map(item => ({
+        name: typeof item.name === 'string' ? item.name : '不明',
+        description: typeof item.description === 'string' ? item.description : '',
+        approximatePrice: typeof item.approximatePrice === 'string' ? item.approximatePrice : undefined
+      }))
+    : [];
+
+  return {
+    popularItems,
+    shoppingAreas: Array.isArray(data.shoppingAreas)
+      ? data.shoppingAreas.filter((a): a is string => typeof a === 'string')
+      : [],
+    taxFreeInfo: typeof data.taxFreeInfo === 'string' ? data.taxFreeInfo : undefined
+  };
+}
+
+function normalizeEventsInfo(data: Record<string, unknown>): EventsInfo {
+  const majorEvents = Array.isArray(data.majorEvents)
+    ? data.majorEvents.filter((item): item is Record<string, unknown> => typeof item === 'object' && item !== null).map(item => ({
+        name: typeof item.name === 'string' ? item.name : '不明',
+        date: typeof item.date === 'string' ? item.date : '',
+        description: typeof item.description === 'string' ? item.description : ''
+      }))
+    : [];
+
+  const seasonalFestivals = Array.isArray(data.seasonalFestivals)
+    ? data.seasonalFestivals.filter((item): item is Record<string, unknown> => typeof item === 'object' && item !== null).map(item => ({
+        name: typeof item.name === 'string' ? item.name : '不明',
+        date: typeof item.date === 'string' ? item.date : '',
+        description: typeof item.description === 'string' ? item.description : ''
+      }))
+    : [];
+
+  return {
+    majorEvents,
+    seasonalFestivals
   };
 }
 

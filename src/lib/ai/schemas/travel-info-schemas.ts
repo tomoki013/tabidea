@@ -120,6 +120,52 @@ export const TransportInfoSchema = z.object({
 });
 
 // ============================================
+// グルメ情報 (local_food) スキーマ
+// ============================================
+
+export const FoodItemSchema = z.object({
+  name: z.string().describe('料理名'),
+  description: z.string().describe('説明'),
+  approximatePrice: z.string().optional().describe('価格帯'),
+});
+
+export const LocalFoodInfoSchema = z.object({
+  popularDishes: z.array(FoodItemSchema).describe('代表的な料理'),
+  diningEtiquette: z.array(z.string()).describe('食事のマナー・習慣'),
+});
+
+// ============================================
+// お土産・買い物情報 (souvenir) スキーマ
+// ============================================
+
+export const SouvenirItemSchema = z.object({
+  name: z.string().describe('商品名'),
+  description: z.string().describe('説明'),
+  approximatePrice: z.string().optional().describe('価格帯'),
+});
+
+export const SouvenirInfoSchema = z.object({
+  popularItems: z.array(SouvenirItemSchema).describe('人気のお土産'),
+  shoppingAreas: z.array(z.string()).describe('おすすめの買い物エリア'),
+  taxFreeInfo: z.string().optional().describe('免税情報'),
+});
+
+// ============================================
+// イベント情報 (events) スキーマ
+// ============================================
+
+export const EventItemSchema = z.object({
+  name: z.string().describe('イベント名'),
+  date: z.string().describe('開催時期'),
+  description: z.string().describe('内容'),
+});
+
+export const EventsInfoSchema = z.object({
+  majorEvents: z.array(EventItemSchema).describe('主要なイベント'),
+  seasonalFestivals: z.array(EventItemSchema).describe('季節の祭り'),
+});
+
+// ============================================
 // ソース情報スキーマ
 // ============================================
 
@@ -177,6 +223,27 @@ export const TransportInfoResponseSchema = z.object({
   lastVerified: z.string(),
 });
 
+export const LocalFoodInfoResponseSchema = z.object({
+  content: LocalFoodInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const SouvenirInfoResponseSchema = z.object({
+  content: SouvenirInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const EventsInfoResponseSchema = z.object({
+  content: EventsInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
 // ============================================
 // カテゴリ別スキーママッピング
 // ============================================
@@ -188,6 +255,9 @@ export const CATEGORY_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
   visa: VisaInfoResponseSchema,
   manner: MannerInfoResponseSchema,
   transport: TransportInfoResponseSchema,
+  local_food: LocalFoodInfoResponseSchema,
+  souvenir: SouvenirInfoResponseSchema,
+  events: EventsInfoResponseSchema,
 };
 
 /**
@@ -215,6 +285,9 @@ export type ClimateInfo = z.infer<typeof ClimateInfoSchema>;
 export type VisaInfo = z.infer<typeof VisaInfoSchema>;
 export type MannerInfo = z.infer<typeof MannerInfoSchema>;
 export type TransportInfo = z.infer<typeof TransportInfoSchema>;
+export type LocalFoodInfo = z.infer<typeof LocalFoodInfoSchema>;
+export type SouvenirInfo = z.infer<typeof SouvenirInfoSchema>;
+export type EventsInfo = z.infer<typeof EventsInfoSchema>;
 export type ParsedSource = z.infer<typeof ParsedSourceSchema>;
 
 export type BasicInfoResponse = z.infer<typeof BasicInfoResponseSchema>;
@@ -223,3 +296,6 @@ export type ClimateInfoResponse = z.infer<typeof ClimateInfoResponseSchema>;
 export type VisaInfoResponse = z.infer<typeof VisaInfoResponseSchema>;
 export type MannerInfoResponse = z.infer<typeof MannerInfoResponseSchema>;
 export type TransportInfoResponse = z.infer<typeof TransportInfoResponseSchema>;
+export type LocalFoodInfoResponse = z.infer<typeof LocalFoodInfoResponseSchema>;
+export type SouvenirInfoResponse = z.infer<typeof SouvenirInfoResponseSchema>;
+export type EventsInfoResponse = z.infer<typeof EventsInfoResponseSchema>;

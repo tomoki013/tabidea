@@ -16,7 +16,10 @@ export type TravelInfoCategory =
   | "climate" // 気候・服装
   | "visa" // ビザ・入国手続き
   | "manner" // 現地マナー・チップ
-  | "transport"; // 交通事情
+  | "transport" // 交通事情
+  | "local_food" // グルメ（代表的な料理、マナー）
+  | "souvenir" // お土産・買い物（人気のお土産、免税）
+  | "events"; // イベント・祭り
 
 /**
  * 情報ソースの種類
@@ -239,6 +242,65 @@ export interface RideshareInfo {
   services: string[];
 }
 
+/**
+ * グルメ情報
+ */
+export interface LocalFoodInfo {
+  /** 代表的な料理 */
+  popularDishes: FoodItem[];
+  /** 食事のマナー・習慣 */
+  diningEtiquette: string[];
+}
+
+/**
+ * 料理アイテム
+ */
+export interface FoodItem {
+  name: string;
+  description: string;
+  approximatePrice?: string;
+}
+
+/**
+ * お土産・買い物情報
+ */
+export interface SouvenirInfo {
+  /** 人気のお土産 */
+  popularItems: SouvenirItem[];
+  /** おすすめの買い物エリア */
+  shoppingAreas: string[];
+  /** 免税情報 */
+  taxFreeInfo?: string;
+}
+
+/**
+ * お土産アイテム
+ */
+export interface SouvenirItem {
+  name: string;
+  description: string;
+  approximatePrice?: string;
+}
+
+/**
+ * イベント情報
+ */
+export interface EventsInfo {
+  /** 主要なイベント */
+  majorEvents: EventItem[];
+  /** 季節の祭り */
+  seasonalFestivals: EventItem[];
+}
+
+/**
+ * イベントアイテム
+ */
+export interface EventItem {
+  name: string;
+  date: string;
+  description: string;
+}
+
 // ============================================
 // カテゴリ別データマッピング
 // ============================================
@@ -253,6 +315,9 @@ export interface CategoryDataMap {
   visa: VisaInfo;
   manner: MannerInfo;
   transport: TransportInfo;
+  local_food: LocalFoodInfo;
+  souvenir: SouvenirInfo;
+  events: EventsInfo;
 }
 
 /**
@@ -350,7 +415,10 @@ export type AnyCategoryData =
   | ClimateInfo
   | VisaInfo
   | MannerInfo
-  | TransportInfo;
+  | TransportInfo
+  | LocalFoodInfo
+  | SouvenirInfo
+  | EventsInfo;
 
 /**
  * 全カテゴリ配列（定数として使用可能）
@@ -362,6 +430,9 @@ export const ALL_TRAVEL_INFO_CATEGORIES: TravelInfoCategory[] = [
   "visa",
   "manner",
   "transport",
+  "local_food",
+  "souvenir",
+  "events",
 ];
 
 /**
@@ -374,6 +445,9 @@ export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = {
   visa: "ビザ・入国",
   manner: "マナー・チップ",
   transport: "交通事情",
+  local_food: "グルメ",
+  souvenir: "お土産・買い物",
+  events: "イベント・祭り",
 };
 
 /**

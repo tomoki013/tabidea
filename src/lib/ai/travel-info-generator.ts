@@ -15,6 +15,9 @@ import {
   type VisaInfoResponse,
   type MannerInfoResponse,
   type TransportInfoResponse,
+  type LocalFoodInfoResponse,
+  type SouvenirInfoResponse,
+  type EventsInfoResponse,
 } from './schemas/travel-info-schemas';
 
 // ============================================
@@ -27,7 +30,10 @@ export type CategoryResponse =
   | ClimateInfoResponse
   | VisaInfoResponse
   | MannerInfoResponse
-  | TransportInfoResponse;
+  | TransportInfoResponse
+  | LocalFoodInfoResponse
+  | SouvenirInfoResponse
+  | EventsInfoResponse;
 
 export interface TravelInfoGenerationResult {
   success: true;
@@ -111,6 +117,20 @@ ${dateInfo}
 - 主な公共交通機関
 - ライドシェア・タクシー事情
 - レンタカー・運転に関する注意（該当する場合）`,
+
+    local_food: `${destination}（${country}）のグルメ情報を提供してください。
+- 代表的な料理（名前、説明、価格帯）
+- 食事のマナー・習慣`,
+
+    souvenir: `${destination}（${country}）のお土産・買い物情報を提供してください。
+- 人気のお土産（名前、説明、価格帯）
+- おすすめの買い物エリア
+- 免税情報`,
+
+    events: `${destination}（${country}）のイベント情報を提供してください。
+${dateInfo}
+- 主要なイベント（名前、開催時期、内容）
+- 季節の祭り`,
   };
 
   return `${SYSTEM_INSTRUCTIONS}

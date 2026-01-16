@@ -33,7 +33,10 @@ export type CategoryIcon =
   | "Cloud"
   | "FileText"
   | "Heart"
-  | "Car";
+  | "Car"
+  | "Utensils"
+  | "ShoppingBag"
+  | "Calendar";
 
 /**
  * カテゴリ情報マッピング
@@ -68,6 +71,21 @@ export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryDisplayInfo> = {
     label: "交通事情",
     description: "公共交通・配車サービス",
     icon: "Car",
+  },
+  local_food: {
+    label: "グルメ",
+    description: "代表的な料理・食事マナー",
+    icon: "Utensils",
+  },
+  souvenir: {
+    label: "お土産・買い物",
+    description: "人気のお土産・免税情報",
+    icon: "ShoppingBag",
+  },
+  events: {
+    label: "イベント・祭り",
+    description: "主要イベント・季節の祭り",
+    icon: "Calendar",
   },
 };
 

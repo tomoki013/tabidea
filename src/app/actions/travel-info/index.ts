@@ -61,7 +61,7 @@ interface TravelInfoOptions {
 // 定数
 // ============================================
 
-const DEFAULT_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'climate'];
+const DEFAULT_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety'];
 const MAX_RETRIES = 2;
 
 // ============================================

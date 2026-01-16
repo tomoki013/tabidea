@@ -28,6 +28,9 @@ import {
   VisaInfoSchema,
   MannerInfoSchema,
   TransportInfoSchema,
+  LocalFoodInfoSchema,
+  SouvenirInfoSchema,
+  EventsInfoSchema,
 } from '@/lib/ai/schemas/travel-info-schemas';
 import { z } from 'zod';
 
@@ -53,6 +56,9 @@ const CATEGORY_CONTENT_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
   visa: VisaInfoSchema,
   manner: MannerInfoSchema,
   transport: TransportInfoSchema,
+  local_food: LocalFoodInfoSchema,
+  souvenir: SouvenirInfoSchema,
+  events: EventsInfoSchema,
 };
 
 /**
@@ -70,6 +76,9 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
     'visa',
     'manner',
     'transport',
+    'local_food',
+    'souvenir',
+    'events',
   ];
 
   private readonly config: GeminiFallbackConfig;
@@ -262,6 +271,22 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
 - 公共交通機関の情報
 - ライドシェア（利用可否、サービス名）
 - 運転に関する注意事項`,
+
+      local_food: `
+【グルメ情報で必要な項目】
+- 代表的な料理（名前、説明、価格帯）
+- 食事のマナー・習慣`,
+
+      souvenir: `
+【お土産・買い物情報で必要な項目】
+- 人気のお土産（名前、説明、価格帯）
+- おすすめの買い物エリア
+- 免税情報`,
+
+      events: `
+【イベント情報で必要な項目】
+- 主要なイベント（名前、開催時期、内容）
+- 季節の祭り`,
     };
 
     return `${basePrompt}

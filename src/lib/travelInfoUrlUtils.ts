@@ -4,7 +4,7 @@
  * URL共有機能の実装
  */
 
-import type { TravelInfoCategory } from '@/lib/types/travel-info';
+import { type TravelInfoCategory, ALL_TRAVEL_INFO_CATEGORIES } from '@/lib/types/travel-info';
 
 /**
  * 渡航情報URLパラメータの型定義
@@ -66,9 +66,9 @@ export function decodeTravelInfoUrl(
   const categoriesParam = searchParams.get('categories');
   const categories: TravelInfoCategory[] = categoriesParam
     ? (categoriesParam.split(',').filter((c): c is TravelInfoCategory =>
-        ['basic', 'safety', 'climate', 'visa', 'manner', 'transport'].includes(c)
+        ALL_TRAVEL_INFO_CATEGORIES.includes(c as TravelInfoCategory)
       ))
-    : ['basic', 'safety', 'climate']; // デフォルト
+    : ['basic', 'safety']; // デフォルト
 
   // 日程をパース
   const datesParam = searchParams.get('dates');
@@ -180,22 +180,13 @@ export function parseCategoriesParam(
   categoriesParam: string | undefined | null
 ): TravelInfoCategory[] {
   if (!categoriesParam) {
-    return ['basic', 'safety', 'climate']; // デフォルト
+    return ['basic', 'safety']; // デフォルト
   }
-
-  const validCategories: TravelInfoCategory[] = [
-    'basic',
-    'safety',
-    'climate',
-    'visa',
-    'manner',
-    'transport',
-  ];
 
   return categoriesParam
     .split(',')
     .filter((c): c is TravelInfoCategory =>
-      validCategories.includes(c as TravelInfoCategory)
+      ALL_TRAVEL_INFO_CATEGORIES.includes(c as TravelInfoCategory)
     );
 }
 

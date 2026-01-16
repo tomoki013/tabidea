@@ -20,6 +20,9 @@ export const CACHE_TTL_CONFIG: Record<TravelInfoCategory, number> = {
   visa: 7 * 24 * 60 * 60 * 1000,   // 7日（ビザ要件は稀に変更）
   manner: 30 * 24 * 60 * 60 * 1000, // 30日（マナーはほぼ不変）
   transport: 24 * 60 * 60 * 1000,  // 24時間
+  local_food: 7 * 24 * 60 * 60 * 1000, // 7日（グルメ情報は比較的安定）
+  souvenir: 7 * 24 * 60 * 60 * 1000,   // 7日（お土産情報は比較的安定）
+  events: 24 * 60 * 60 * 1000,     // 24時間（イベント情報は変化する可能性あり）
 };
 
 /**

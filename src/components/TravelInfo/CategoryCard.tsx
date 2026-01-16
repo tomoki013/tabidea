@@ -9,6 +9,9 @@ import {
   Heart,
   Car,
   Check,
+  Utensils,
+  ShoppingBag,
+  Calendar,
 } from 'lucide-react';
 import { CATEGORY_INFO, type CategoryCardProps, type CategoryIcon } from './types';
 
@@ -22,6 +25,9 @@ const IconComponents: Record<CategoryIcon, React.ComponentType<{ className?: str
   FileText,
   Heart,
   Car,
+  Utensils,
+  ShoppingBag,
+  Calendar,
 };
 
 /**
