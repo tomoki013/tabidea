@@ -2,28 +2,20 @@
 
 /**
  * 渡航情報取得サーバーアクション
- * リファクタリング後：generateObjectを使用してJSON形式を保証
+ * TravelInfoServiceを使用して渡航情報を取得
  */
 
 import type {
   TravelInfoCategory,
   TravelInfoResponse,
-  TravelInfoSource,
   CategoryDataEntry,
   SourceType,
-  FailedCategory,
-  AnyCategoryData,
 } from '@/lib/types/travel-info';
 import { CATEGORY_LABELS } from '@/lib/types/travel-info';
-import { getTravelInfoGenerator } from '@/lib/ai/travel-info-generator';
+import { createDefaultTravelInfoService } from '@/lib/travel-info';
 import { extractCountryFromDestination } from './country-extractor';
 import {
   getSourceName,
-  convertParsedSourcesToTravelInfoSources,
-  mergeInfoSources,
-  calculateOverallReliability,
-  generateDisclaimer,
-  sleep,
 } from './helpers';
 import { logInfo, logWarn, logError, generateRequestId } from './logger';
 
@@ -43,16 +35,9 @@ export type TravelInfoResult =
     };
 
 /**
- * カテゴリ別取得結果（内部用）
- */
-type CategoryFetchResult =
-  | { success: true; data: AnyCategoryData; confidence: number; sources: unknown[] }
-  | { success: false; error: string };
-
-/**
  * 取得オプション
  */
-interface TravelInfoOptions {
+interface TravelInfoActionOptions {
   travelDates?: { start: string; end: string };
   forceRefresh?: boolean;
 }
@@ -62,7 +47,6 @@ interface TravelInfoOptions {
 // ============================================
 
 const DEFAULT_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety'];
-const MAX_RETRIES = 2;
 
 // ============================================
 // メイン関数
@@ -72,14 +56,14 @@ const MAX_RETRIES = 2;
  * 渡航情報を取得するメイン関数
  *
  * @param destination - 目的地（都市名または国名）
- * @param categories - 取得するカテゴリ一覧（デフォルト: basic, safety, climate）
+ * @param categories - 取得するカテゴリ一覧（デフォルト: basic, safety）
  * @param options - オプション（渡航日程、キャッシュ無視フラグ）
  * @returns 渡航情報の取得結果
  */
 export async function getTravelInfo(
   destination: string,
   categories: TravelInfoCategory[] = DEFAULT_CATEGORIES,
-  options?: TravelInfoOptions
+  options?: TravelInfoActionOptions
 ): Promise<TravelInfoResult> {
   const startTime = Date.now();
   const requestId = generateRequestId();
@@ -122,171 +106,35 @@ export async function getTravelInfo(
       elapsedMs: Date.now() - countryStartTime,
     });
 
-    // 渡航日程のパース
-    const travelDates = options?.travelDates
-      ? {
-          start: new Date(options.travelDates.start),
-          end: new Date(options.travelDates.end),
-        }
-      : undefined;
+    // TravelInfoServiceのインスタンスを作成
+    const service = createDefaultTravelInfoService();
 
-    // カテゴリごとに情報を取得
-    const categoryResults = new Map<TravelInfoCategory, CategoryFetchResult>();
-    const allSources: TravelInfoSource[] = [];
-    const confidenceScores: number[] = [];
-
-    logInfo('getTravelInfo', 'カテゴリ情報取得開始', {
+    logInfo('getTravelInfo', 'TravelInfoService呼び出し開始', {
       requestId,
-      categoriesCount: categories.length,
-    });
-    const categoryFetchStartTime = Date.now();
-
-    // 並列で全カテゴリの情報を取得
-    const fetchPromises = categories.map(async (category) => {
-      const categoryStartTime = Date.now();
-      logInfo('fetchCategory', `カテゴリ取得開始: ${category}`, {
-        requestId,
-        category,
-        destination,
-        country,
-      });
-
-      const result = await fetchCategoryInfoWithRetry(
-        category,
-        destination,
-        country,
-        travelDates
-      );
-
-      const categoryElapsed = Date.now() - categoryStartTime;
-      if (result.success) {
-        logInfo('fetchCategory', `カテゴリ取得成功: ${category}`, {
-          requestId,
-          category,
-          elapsedMs: categoryElapsed,
-          confidence: result.confidence,
-        });
-      } else {
-        logWarn('fetchCategory', `カテゴリ取得失敗: ${category}`, {
-          requestId,
-          category,
-          error: result.error,
-          elapsedMs: categoryElapsed,
-        });
-      }
-
-      return { category, result };
-    });
-
-    // Promise.allSettled を使用して、成功・失敗を個別に処理
-    const settledResults = await Promise.allSettled(fetchPromises);
-
-    logInfo('getTravelInfo', 'カテゴリ情報取得完了', {
-      requestId,
-      totalElapsedMs: Date.now() - categoryFetchStartTime,
-    });
-
-    // 結果を整理
-    let successCount = 0;
-    const failedCategoriesInfo: FailedCategory[] = [];
-
-    for (const settledResult of settledResults) {
-      if (settledResult.status === 'fulfilled') {
-        const { category, result } = settledResult.value;
-        categoryResults.set(category, result);
-
-        if (result.success) {
-          successCount++;
-          confidenceScores.push(result.confidence);
-
-          // ソース情報を変換して追加
-          if (Array.isArray(result.sources)) {
-            const convertedSources = convertParsedSourcesToTravelInfoSources(
-              result.sources as { name: string; url: string; type: 'official' | 'news' | 'commercial' | 'personal' }[],
-              'ai_generated'
-            );
-            allSources.push(...convertedSources);
-          }
-        } else {
-          failedCategoriesInfo.push({
-            category,
-            error: result.error || '情報の取得に失敗しました',
-          });
-        }
-      } else {
-        logError('getTravelInfo', 'Promise rejected', settledResult.reason, { requestId });
-      }
-    }
-
-    // 全カテゴリ失敗の場合
-    if (successCount === 0) {
-      logError('getTravelInfo', '全カテゴリの取得に失敗', undefined, {
-        requestId,
-        failedCategories: failedCategoriesInfo.map((fc) => fc.category),
-      });
-      return {
-        success: false,
-        error: '渡航情報の取得に失敗しました。しばらく経ってから再度お試しください。',
-      };
-    }
-
-    // カテゴリデータをMapに変換
-    const categoriesMap = new Map<TravelInfoCategory, CategoryDataEntry>();
-    for (const [category, result] of categoryResults) {
-      if (result.success) {
-        categoriesMap.set(category, {
-          category,
-          data: result.data,
-          source: {
-            sourceType: 'ai_generated' as SourceType,
-            sourceName: getSourceName('ai_generated'),
-            retrievedAt: new Date(),
-            reliabilityScore: result.confidence,
-          },
-        });
-      }
-    }
-
-    // ソースをマージ・重複排除
-    const mergedSources = mergeInfoSources(allSources);
-
-    // 総合信頼性を計算
-    const overallReliability = calculateOverallReliability(confidenceScores);
-
-    // 免責事項を生成
-    const disclaimer = generateDisclaimer(overallReliability, categories);
-
-    const response: TravelInfoResponse = {
       destination,
       country,
-      categories: categoriesMap,
-      sources: mergedSources,
-      generatedAt: new Date(),
-      disclaimer,
-      ...(failedCategoriesInfo.length > 0 && {
-        failedCategories: failedCategoriesInfo,
-      }),
-    };
+      categories,
+    });
+
+    // サービスを使用して情報を取得
+    const response = await service.getInfo(destination, categories, {
+      travelDate: options?.travelDates ? new Date(options.travelDates.start) : undefined,
+      useCache: !options?.forceRefresh,
+      country: country, // 抽出した国名をコンテキストとして渡す
+    });
 
     const elapsed = Date.now() - startTime;
 
-    if (successCount < categories.length) {
-      logWarn('getTravelInfo', '一部カテゴリの取得に失敗', {
-        requestId,
-        successCount,
-        totalCategories: categories.length,
-        failedCategories: failedCategoriesInfo.map((fc) => fc.category),
-        elapsedMs: elapsed,
-      });
-    } else {
-      logInfo('getTravelInfo', '処理完了（全カテゴリ成功）', {
-        requestId,
-        successCount,
-        totalCategories: categories.length,
-        sourcesCount: mergedSources.length,
-        elapsedMs: elapsed,
-      });
-    }
+    // 成功したカテゴリ数をカウント
+    const successCount = response.categories.size;
+    const failedCount = response.failedCategories?.length ?? 0;
+
+    logInfo('getTravelInfo', '処理完了', {
+      requestId,
+      successCount,
+      failedCount,
+      elapsedMs: elapsed,
+    });
 
     return { success: true, data: response };
   } catch (error) {
@@ -302,58 +150,6 @@ export async function getTravelInfo(
       error: '予期しないエラーが発生しました。しばらく経ってから再度お試しください。',
     };
   }
-}
-
-// ============================================
-// カテゴリ情報取得
-// ============================================
-
-/**
- * リトライ付きでカテゴリ情報を取得
- */
-async function fetchCategoryInfoWithRetry(
-  category: TravelInfoCategory,
-  destination: string,
-  country: string,
-  travelDates?: { start: Date; end: Date }
-): Promise<CategoryFetchResult> {
-  let lastError: string = '';
-
-  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-    try {
-      const generator = getTravelInfoGenerator();
-      const result = await generator.generateCategoryInfo(
-        category,
-        destination,
-        country,
-        travelDates
-      );
-
-      if (result.success) {
-        return {
-          success: true,
-          data: result.data.content as AnyCategoryData,
-          confidence: result.data.confidence,
-          sources: result.data.sources,
-        };
-      }
-
-      lastError = result.error;
-    } catch (error) {
-      lastError = error instanceof Error ? error.message : 'Unknown error';
-    }
-
-    // リトライ前に待機（指数バックオフ）
-    if (attempt < MAX_RETRIES - 1) {
-      const backoffMs = Math.pow(2, attempt) * 1000;
-      await sleep(backoffMs);
-    }
-  }
-
-  return {
-    success: false,
-    error: lastError || `${category}情報の取得に失敗しました`,
-  };
 }
 
 // ============================================
@@ -435,21 +231,14 @@ export async function getSingleCategoryInfo(
       });
     }
 
-    // 渡航日程のパース
-    const travelDates = options?.travelDates
-      ? {
-          start: new Date(options.travelDates.start),
-          end: new Date(options.travelDates.end),
-        }
-      : undefined;
+    // TravelInfoServiceのインスタンスを作成
+    const service = createDefaultTravelInfoService();
 
     // カテゴリ情報を取得
-    const result = await fetchCategoryInfoWithRetry(
-      category,
-      destination,
-      country,
-      travelDates
-    );
+    const result = await service.getCategoryInfo(destination, category, {
+      travelDate: options?.travelDates ? new Date(options.travelDates.start) : undefined,
+      country: country,
+    });
 
     const elapsed = Date.now() - startTime;
 
@@ -467,12 +256,7 @@ export async function getSingleCategoryInfo(
         data: {
           category,
           data: result.data,
-          source: {
-            sourceType: 'ai_generated' as SourceType,
-            sourceName: getSourceName('ai_generated'),
-            retrievedAt: new Date(),
-            reliabilityScore: result.confidence,
-          },
+          source: result.source,
         },
       };
     } else {

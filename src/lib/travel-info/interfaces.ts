@@ -27,6 +27,8 @@ export interface SourceOptions {
   timeout?: number;
   /** 言語（デフォルト: "ja"） */
   language?: string;
+  /** 国名（コンテキスト用） */
+  country?: string;
   /** 追加パラメータ */
   additionalParams?: Record<string, unknown>;
 }

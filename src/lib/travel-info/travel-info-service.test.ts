@@ -376,6 +376,31 @@ describe('TravelInfoService', () => {
       expect(result.success).toBe(false);
     });
   });
+
+  describe('Options', () => {
+    it('passes country option to source', async () => {
+      let capturedOptions: any = null;
+      const mockSource = createMockSource({
+        sourceName: 'MockSource',
+        sourceType: 'official_api',
+        categories: ['safety'],
+      });
+      const originalFetch = mockSource.fetch;
+      mockSource.fetch = async (dest, opts) => {
+        capturedOptions = opts;
+        return originalFetch(dest, opts);
+      };
+
+      service = createTravelInfoService({
+        cacheManager,
+        categoryMapper: createMockCategoryMapper([mockSource]),
+      }) as TravelInfoService;
+
+      await service.getInfo('Paris', ['safety'], { country: 'France' });
+      expect(capturedOptions).toBeDefined();
+      expect(capturedOptions.country).toBe('France');
+    });
+  });
 });
 
 describe('TravelInfoServiceConfig', () => {
