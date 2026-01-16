@@ -336,4 +336,74 @@ describe('MofaApiSource', () => {
       );
     });
   });
+
+  describe('一部地域リスク判定', () => {
+    it('都市名での検索かつ「全土」キーワードが含まれない場合、isPartialCountryRiskがtrueになる', async () => {
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>南部国境地域に危険情報が出ています。</riskLead>
+          <riskSubText>ナラティワート県などはレベル3です。</riskSubText>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // バンコク (0066) で検索
+      const result = await source.fetch('バンコク');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.isPartialCountryRisk).toBe(true);
+      expect(result.data.lead).toBe('南部国境地域に危険情報が出ています。');
+    });
+
+    it('国名での検索の場合、isPartialCountryRiskはfalseになる', async () => {
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>南部国境地域に危険情報が出ています。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // タイ (0066) で検索
+      const result = await source.fetch('タイ');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.isPartialCountryRisk).toBe(false);
+    });
+
+    it('「全土」キーワードが含まれる場合、isPartialCountryRiskはfalseになる', async () => {
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel4>1</riskLevel4>
+          <riskLead>ウクライナ全土に退避勧告が出ています。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // キーウ (0380) で検索
+      const result = await source.fetch('キーウ');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.isPartialCountryRisk).toBe(false);
+    });
+  });
 });

@@ -613,7 +613,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       // 3. 外務省オープンデータからXMLを取得
       const safetyInfo = await this.fetchFromOpenData(
         countryCode,
-        options?.timeout ?? this.config.timeout
+        options?.timeout ?? this.config.timeout,
+        destination
       );
 
       // 4. キャッシュに保存
@@ -757,7 +758,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   private async fetchFromOpenData(
     countryCode: string,
-    timeout: number
+    timeout: number,
+    destination: string
   ): Promise<SafetyInfo | null> {
     const url = `${MOFA_OPENDATA_BASE_URL}/country/${countryCode}A.xml`;
     console.log(`[mofa-api] Fetching: ${url}`);
@@ -797,7 +799,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
           throw new Error(`Invalid XML response for ${countryCode}`);
         }
 
-        return this.parseXmlResponse(xmlText, countryCode);
+        return this.parseXmlResponse(xmlText, countryCode, destination);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
         console.warn(
@@ -824,7 +826,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   private parseXmlResponse(
     xmlText: string,
-    countryCode: string
+    countryCode: string,
+    destination: string
   ): SafetyInfo {
     try {
       const result = this.parser.parse(xmlText) as MofaOpendataResult;
@@ -837,9 +840,33 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       const dangerLevel = this.extractDangerLevel(opendata);
       const warnings = this.extractWarnings(opendata);
 
+      // 追加情報の抽出
+      const lead = opendata.riskLead?.trim();
+      const subText = opendata.riskSubText?.trim();
+
+      // 国全体ではなく一部地域のみのリスクかどうかの判定
+      // 条件: 危険度が1以上 かつ 目的地が国名と一致しない かつ テキストに「全土」「全域」が含まれない
+      let isPartialCountryRisk = false;
+      if (dangerLevel > 0) {
+        const countryName = COUNTRY_CODE_TO_NAME[countryCode];
+        // 目的地が国名そのものでない場合（都市名などの場合）
+        if (countryName && destination !== countryName && !destination.includes(countryName)) {
+          const combinedText = (lead || '') + (subText || '');
+          const wholeCountryKeywords = ['全土', '全域', '国全土', '国内全域'];
+          const hasWholeCountryKeyword = wholeCountryKeywords.some(keyword => combinedText.includes(keyword));
+
+          if (!hasWholeCountryKeyword) {
+            isPartialCountryRisk = true;
+          }
+        }
+      }
+
       return {
         dangerLevel,
         dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[dangerLevel],
+        lead,
+        subText,
+        isPartialCountryRisk,
         warnings,
         emergencyContacts:
           EMERGENCY_CONTACTS_BY_COUNTRY[countryCode] ||

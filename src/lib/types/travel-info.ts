@@ -72,6 +72,12 @@ export interface SafetyInfo {
   dangerLevel: DangerLevel;
   /** 危険度レベルの説明 */
   dangerLevelDescription: string;
+  /** 危険情報のリード文（概要） */
+  lead?: string;
+  /** 危険情報の詳細テキスト（地域別情報など） */
+  subText?: string;
+  /** 国全体ではなく一部地域のみのリスクかどうかのフラグ */
+  isPartialCountryRisk?: boolean;
   /** 注意事項・警告一覧 */
   warnings: string[];
   /** 緊急連絡先リスト */

@@ -84,16 +84,46 @@ export default function SafetyInfoSection({ data }: SectionBaseProps<SafetyInfo>
               <span
                 className={`px-3 py-1 rounded-full text-sm font-bold ${style.bg} ${style.text} border ${style.border}`}
               >
-                レベル {data.dangerLevel}
+                {data.isPartialCountryRisk ? '国別最大レベル' : 'レベル'} {data.dangerLevel}
               </span>
               <DangerLevelBar level={data.dangerLevel} />
             </div>
-            <p className={`font-bold text-xl leading-tight ${style.text}`}>
-              {data.dangerLevelDescription}
-            </p>
+            <div className="flex flex-col gap-1">
+              <p className={`font-bold text-xl leading-tight ${style.text}`}>
+                {data.dangerLevelDescription}
+              </p>
+              {data.isPartialCountryRisk && (
+                <p className="text-sm text-stone-500 flex items-center gap-1">
+                  <AlertTriangle className="w-4 h-4 text-orange-500" />
+                  <span>地域により危険度が異なります。詳細は下記をご確認ください。</span>
+                </p>
+              )}
+            </div>
           </div>
         </div>
       </motion.div>
+
+      {/* 詳細情報（リード・詳細テキスト） */}
+      {(data.lead || data.subText) && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-stone-50 p-5 rounded-xl border border-stone-200"
+        >
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] mb-3">
+            <ShieldCheck className="w-5 h-5 text-primary" />
+            詳細情報
+          </h4>
+          <div className="space-y-4 text-stone-700 text-sm leading-relaxed">
+            {data.lead && (
+              <p className="font-bold whitespace-pre-wrap">{data.lead}</p>
+            )}
+            {data.subText && (
+              <p className="whitespace-pre-wrap">{data.subText}</p>
+            )}
+          </div>
+        </motion.div>
+      )}
 
       {/* 警告・注意事項 */}
       {data.warnings.length > 0 && (
