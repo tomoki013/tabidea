@@ -10,7 +10,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
-import { FaPassport, FaPlane, FaGlobeAsia, FaStamp } from "react-icons/fa";
+import { FaPassport } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import type { TravelInfoCategory } from "@/lib/types/travel-info";
 import { encodeTravelInfoUrl } from "@/lib/travelInfoUrlUtils";
@@ -89,34 +89,9 @@ export default function TravelInfoClient() {
       {/* 背景テクスチャ */}
       <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-10 mix-blend-multiply pointer-events-none fixed" />
 
-      {/* 装飾的な背景要素 */}
-      <div className="absolute top-20 right-10 opacity-5 pointer-events-none hidden lg:block">
-        <FaPassport size={200} className="text-primary" />
-      </div>
-      <div className="absolute bottom-40 left-10 opacity-5 pointer-events-none hidden lg:block">
-        <FaGlobeAsia size={240} className="text-stone-600" />
-      </div>
-
       {/* Hero Section */}
       <section className="relative w-full pt-16 pb-12 sm:pt-24 sm:pb-16 z-10">
         <div className="max-w-5xl mx-auto px-4 text-center relative">
-          {/* 浮遊する装飾アイコン */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="absolute top-0 left-[10%] sm:left-[20%] text-primary/40 hidden sm:block"
-          >
-            <FaPlane size={40} />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="absolute top-10 right-[15%] text-stone-400 hidden sm:block"
-          >
-            <FaStamp size={32} />
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -224,15 +199,20 @@ export default function TravelInfoClient() {
                     !destination.trim() ||
                     selectedCategories.length === 0
                   }
-                  className="group relative w-full sm:w-auto min-w-[280px]"
+                  className="
+                    relative w-full sm:w-auto min-w-[280px]
+                    bg-primary hover:bg-[#d35400] text-white
+                    font-serif font-bold py-4 px-10 rounded-full
+                    transition-all duration-300
+                    shadow-lg hover:shadow-xl hover:-translate-y-0.5
+                    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:shadow-none
+                    flex items-center justify-center gap-3 text-lg sm:text-xl
+                  "
                 >
-                  <div className="absolute inset-0 bg-stone-800 rounded-full translate-y-1 transition-transform group-hover:translate-y-2 group-disabled:translate-y-0" />
-                  <div className="relative bg-gradient-to-r from-primary to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-serif font-bold py-4 px-10 rounded-full transition-all group-hover:-translate-y-1 group-disabled:translate-y-0 group-disabled:from-stone-400 group-disabled:to-stone-400 group-disabled:cursor-not-allowed flex items-center justify-center gap-3 text-lg sm:text-xl shadow-lg">
-                    <span>
-                      {isNavigating ? "ページをめくっています..." : "検索する"}
-                    </span>
-                    {!isNavigating && <ArrowRight className="w-6 h-6" />}
-                  </div>
+                  <span>
+                    {isNavigating ? "ページをめくっています..." : "検索する"}
+                  </span>
+                  {!isNavigating && <ArrowRight className="w-6 h-6" />}
                 </button>
 
                 <p className="text-sm text-stone-500 flex items-center gap-2 font-sans">
