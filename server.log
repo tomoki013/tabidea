@@ -12,184 +12,50 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
- ✓ Ready in 1175ms
- ○ Compiling /travel-info/[destination] ...
- ⨯ ./src/app/travel-info/[destination]/DestinationClient.tsx:16:1
-Export PDFExportButton doesn't exist in target module
-[0m [90m 14 |[39m [36mimport[39m { getSingleCategoryInfo } [36mfrom[39m [32m"@/app/actions/travel-info"[39m[33m;[39m
- [90m 15 |[39m [36mimport[39m { encodeTravelInfoUrl } [36mfrom[39m [32m"@/lib/travelInfoUrlUtils"[39m[33m;[39m
-[31m[1m>[22m[39m[90m 16 |[39m [36mimport[39m {
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 17 |[39m   [33mCategorySelector[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 18 |[39m   [33mTravelInfoDisplay[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 19 |[39m   [33mShareButton[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 20 |[39m   [33mPDFExportButton[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 21 |[39m } [36mfrom[39m [32m"@/components/TravelInfo"[39m[33m;[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
- [90m 22 |[39m
- [90m 23 |[39m [90m/**[39m
- [90m 24 |[39m [90m * カテゴリ別の状態[39m[0m
-
-The export PDFExportButton was not found in module [project]/src/components/TravelInfo/index.ts [app-client] (ecmascript).
-Did you mean to import ShareButton?
-All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
-
-Import trace:
-  Server Component:
-    ./src/app/travel-info/[destination]/DestinationClient.tsx
-    ./src/app/travel-info/[destination]/page.tsx
-
-
-
-./src/app/travel-info/[destination]/DestinationClient.tsx:16:1
-Export PDFExportButton doesn't exist in target module
-[0m [90m 14 |[39m [36mimport[39m { getSingleCategoryInfo } [36mfrom[39m [32m"@/app/actions/travel-info"[39m[33m;[39m
- [90m 15 |[39m [36mimport[39m { encodeTravelInfoUrl } [36mfrom[39m [32m"@/lib/travelInfoUrlUtils"[39m[33m;[39m
-[31m[1m>[22m[39m[90m 16 |[39m [36mimport[39m {
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 17 |[39m   [33mCategorySelector[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 18 |[39m   [33mTravelInfoDisplay[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 19 |[39m   [33mShareButton[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 20 |[39m   [33mPDFExportButton[39m[33m,[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
-[31m[1m>[22m[39m[90m 21 |[39m } [36mfrom[39m [32m"@/components/TravelInfo"[39m[33m;[39m
- [90m    |[39m [31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m[31m[1m^[22m[39m
- [90m 22 |[39m
- [90m 23 |[39m [90m/**[39m
- [90m 24 |[39m [90m * カテゴリ別の状態[39m[0m
-
-The export PDFExportButton was not found in module [project]/src/components/TravelInfo/index.ts [app-ssr] (ecmascript).
-Did you mean to import ShareButton?
-All exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.
-
-Import trace:
-  Server Component:
-    ./src/app/travel-info/[destination]/DestinationClient.tsx
-    ./src/app/travel-info/[destination]/page.tsx
-
-
- GET /travel-info/Paris?categories=basic,safety 500 in 12.4s (compile: 12.0s, render: 374ms)
- ✓ Compiled in 1214ms
- GET /travel-info/Paris?categories=basic,safety 200 in 3.6s (compile: 2.6s, render: 988ms)
-[2026-01-16T05:19:09.042Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768540749042_i89exg",
-  "destination": "Paris",
+ ✓ Ready in 1154ms
+ ○ Compiling /travel-info ...
+ GET /travel-info 200 in 17.4s (compile: 15.9s, render: 1530ms)
+ GET /travel-info/Tokyo?categories=basic%2Csafety 200 in 4.2s (compile: 4.1s, render: 79ms)
+[2026-01-16T08:35:18.012Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_basic_1768552518012_1tu959",
+  "destination": "Tokyo",
   "category": "basic"
 }
-[2026-01-16T05:19:09.044Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+[2026-01-16T08:35:18.016Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
   error: { raw: 'undefined' },
-  requestId: 'single_basic_1768540749042_i89exg'
+  requestId: 'single_basic_1768552518012_1tu959'
 }
- POST /travel-info/Paris?categories=basic,safety 200 in 204ms (compile: 44ms, render: 160ms)
- GET /travel-info/Paris?categories=basic,safety 200 in 234ms (compile: 38ms, render: 196ms)
-[2026-01-16T05:19:30.439Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768540770439_rry5c4",
-  "destination": "Paris",
-  "category": "basic"
-}
-[2026-01-16T05:19:30.440Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768540770439_rry5c4'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 61ms (compile: 41ms, render: 20ms)
-[2026-01-16T05:19:30.533Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768540770532_l79kg9",
-  "destination": "Paris",
+ POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 209ms (compile: 39ms, render: 170ms)
+[2026-01-16T08:35:18.047Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_safety_1768552518047_as781x",
+  "destination": "Tokyo",
   "category": "safety"
 }
-[2026-01-16T05:19:30.533Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+[2026-01-16T08:35:18.048Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
   error: { raw: 'undefined' },
-  requestId: 'single_safety_1768540770532_l79kg9'
+  requestId: 'single_safety_1768552518047_as781x'
 }
- POST /travel-info/Paris?categories=basic,safety 200 in 30ms (compile: 8ms, render: 22ms)
- GET /travel-info/Paris?categories=basic,safety 200 in 250ms (compile: 42ms, render: 207ms)
-[2026-01-16T05:20:22.047Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768540822047_ts5mwh",
-  "destination": "Paris",
+ POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 25ms (compile: 6ms, render: 18ms)
+[2026-01-16T08:35:18.225Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_basic_1768552518225_ipgfri",
+  "destination": "Tokyo",
   "category": "basic"
 }
-[2026-01-16T05:20:22.048Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+[2026-01-16T08:35:18.225Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
   error: { raw: 'undefined' },
-  requestId: 'single_basic_1768540822047_ts5mwh'
+  requestId: 'single_basic_1768552518225_ipgfri'
 }
- POST /travel-info/Paris?categories=basic,safety 200 in 54ms (compile: 40ms, render: 15ms)
-[2026-01-16T05:20:22.117Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768540822117_t7hjhw",
-  "destination": "Paris",
+ POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 65ms (compile: 45ms, render: 20ms)
+[2026-01-16T08:35:18.293Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_safety_1768552518293_rsg8sp",
+  "destination": "Tokyo",
   "category": "safety"
 }
-[2026-01-16T05:20:22.118Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+[2026-01-16T08:35:18.293Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
   error: { raw: 'undefined' },
-  requestId: 'single_safety_1768540822117_t7hjhw'
+  requestId: 'single_safety_1768552518293_rsg8sp'
 }
- POST /travel-info/Paris?categories=basic,safety 200 in 34ms (compile: 11ms, render: 23ms)
- GET /travel-info/Paris?categories=basic,safety 200 in 260ms (compile: 44ms, render: 216ms)
-[2026-01-16T05:20:46.716Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768540846716_7xtofb",
-  "destination": "Paris",
-  "category": "basic"
-}
-[2026-01-16T05:20:46.716Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768540846716_7xtofb'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 79ms (compile: 47ms, render: 31ms)
-[2026-01-16T05:20:46.785Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768540846785_o2but6",
-  "destination": "Paris",
-  "category": "safety"
-}
-[2026-01-16T05:20:46.786Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1768540846785_o2but6'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 19ms (compile: 7ms, render: 12ms)
- GET /travel-info/Paris?categories=basic,safety 200 in 261ms (compile: 41ms, render: 220ms)
-[2026-01-16T05:21:41.717Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768540901717_gjvsss",
-  "destination": "Paris",
-  "category": "basic"
-}
-[2026-01-16T05:21:41.718Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768540901717_gjvsss'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 65ms (compile: 43ms, render: 23ms)
-[2026-01-16T05:21:41.778Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768540901778_xfxn9k",
-  "destination": "Paris",
-  "category": "safety"
-}
-[2026-01-16T05:21:41.779Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1768540901778_xfxn9k'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 26ms (compile: 8ms, render: 18ms)
- GET /travel-info/Paris?categories=basic,safety 200 in 7.4s (compile: 5.2s, render: 2.2s)
-[2026-01-16T05:50:56.177Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768542656176_dcc3oc",
-  "destination": "Paris",
-  "category": "basic"
-}
-[2026-01-16T05:50:56.181Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768542656176_dcc3oc'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 324ms (compile: 67ms, render: 257ms)
-[2026-01-16T05:50:56.279Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768542656279_bakuaa",
-  "destination": "Paris",
-  "category": "safety"
-}
-[2026-01-16T05:50:56.280Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1768542656279_bakuaa'
-}
- POST /travel-info/Paris?categories=basic,safety 200 in 38ms (compile: 19ms, render: 19ms)
+ POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 37ms (compile: 5ms, render: 32ms)
+ HEAD / 200 in 1513ms (compile: 1404ms, render: 109ms)
+ GET /travel-info 200 in 175ms (compile: 8ms, render: 167ms)
+[?25h
