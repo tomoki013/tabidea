@@ -24,7 +24,7 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-5 sm:p-6 rounded-2xl border-2 bg-white shadow-md ${
+        className={`p-5 sm:p-6 rounded-2xl border bg-white shadow-md ${
           data.required
             ? 'border-orange-200'
             : 'border-green-200'

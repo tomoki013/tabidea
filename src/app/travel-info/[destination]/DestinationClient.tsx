@@ -266,7 +266,7 @@ export default function DestinationClient({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="bg-white rounded-2xl border-2 border-stone-200 overflow-hidden"
+            className="bg-white rounded-2xl border border-stone-200 overflow-hidden"
           >
             <summary className="p-4 sm:p-6 cursor-pointer hover:bg-stone-50 transition-colors">
               <span className="font-bold text-[#2c2c2c]">カテゴリを変更</span>

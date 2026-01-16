@@ -67,7 +67,7 @@ export default function SafetyInfoSection({ data }: SectionBaseProps<SafetyInfo>
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-5 sm:p-6 rounded-2xl border-2 shadow-md bg-white ${style.border}`}
+        className={`p-5 sm:p-6 rounded-2xl border shadow-md bg-white ${style.border}`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <div className={`p-4 rounded-2xl ${style.bg} ${style.text} inline-flex items-center justify-center w-16 h-16`}>

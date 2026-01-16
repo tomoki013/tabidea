@@ -106,7 +106,7 @@ export default function TravelInfoDisplay({
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="p-8 bg-red-50 border-2 border-red-200 border-dashed rounded-3xl text-center"
+        className="p-8 bg-red-50 border border-red-200 rounded-3xl text-center"
       >
         <AlertCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
         <h3 className="text-lg font-bold text-red-800 mb-2">
@@ -136,7 +136,7 @@ export default function TravelInfoDisplay({
   // データなし（カテゴリ未選択時）
   if (categoryStates.size === 0) {
     return (
-      <div className="p-8 bg-stone-50 border-2 border-stone-200 border-dashed rounded-3xl text-center">
+      <div className="p-8 bg-stone-50 border border-stone-200 rounded-3xl text-center">
         <Info className="w-12 h-12 text-stone-400 mx-auto mb-4" />
         <h3 className="text-lg font-bold text-stone-600 mb-2">
           情報を取得するには
@@ -273,7 +273,7 @@ function CategorySection({
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
         }}
-        className="p-6 bg-white rounded-2xl border-2 border-stone-200"
+        className="p-6 bg-white rounded-2xl border border-stone-200"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center animate-pulse">
@@ -301,7 +301,7 @@ function CategorySection({
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
         }}
-        className="p-6 bg-orange-50 rounded-2xl border-2 border-orange-200"
+        className="p-6 bg-orange-50 rounded-2xl border border-orange-200"
       >
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0">

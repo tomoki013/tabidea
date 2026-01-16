@@ -58,7 +58,7 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className={`p-5 sm:p-6 rounded-2xl border-2 bg-white shadow-md ${
+          className={`p-5 sm:p-6 rounded-2xl border bg-white shadow-md ${
             data.rideshare.available
               ? 'border-green-200'
               : 'border-stone-200'

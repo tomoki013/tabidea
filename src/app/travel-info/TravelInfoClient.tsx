@@ -87,13 +87,13 @@ export default function TravelInfoClient() {
   return (
     <div className="min-h-screen bg-[#fcfbf9] relative overflow-hidden">
       {/* 背景テクスチャ */}
-      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-40 mix-blend-multiply pointer-events-none fixed" />
+      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-10 mix-blend-multiply pointer-events-none fixed" />
 
       {/* 装飾的な背景要素 */}
-      <div className="absolute top-20 right-10 opacity-10 pointer-events-none rotate-12 hidden lg:block">
+      <div className="absolute top-20 right-10 opacity-5 pointer-events-none hidden lg:block">
         <FaPassport size={200} className="text-primary" />
       </div>
-      <div className="absolute bottom-40 left-10 opacity-5 pointer-events-none -rotate-12 hidden lg:block">
+      <div className="absolute bottom-40 left-10 opacity-5 pointer-events-none hidden lg:block">
         <FaGlobeAsia size={240} className="text-stone-600" />
       </div>
 
@@ -102,20 +102,16 @@ export default function TravelInfoClient() {
         <div className="max-w-5xl mx-auto px-4 text-center relative">
           {/* 浮遊する装飾アイコン */}
           <motion.div
-            animate={{ y: [0, -10, 0], rotate: [0, 5, 0] }}
-            transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             className="absolute top-0 left-[10%] sm:left-[20%] text-primary/40 hidden sm:block"
           >
             <FaPlane size={40} />
           </motion.div>
           <motion.div
-            animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }}
-            transition={{
-              repeat: Infinity,
-              duration: 6,
-              ease: "easeInOut",
-              delay: 1,
-            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
             className="absolute top-10 right-[15%] text-stone-400 hidden sm:block"
           >
             <FaStamp size={32} />
@@ -134,7 +130,7 @@ export default function TravelInfoClient() {
             <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#2c2c2c] leading-tight drop-shadow-sm">
               渡航情報・安全ガイド
             </h1>
-            <p className="text-lg sm:text-xl text-stone-600 font-hand max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-stone-600 font-sans max-w-2xl mx-auto leading-relaxed">
               旅の準備は、安心を集めることから。
               <br className="hidden sm:block" />
               知りたい国や都市の情報を、あなたのノートに書き留めるように。
@@ -151,11 +147,8 @@ export default function TravelInfoClient() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="relative bg-white/90 backdrop-blur-sm rounded-sm sm:rounded-xl border border-stone-200 p-6 sm:p-10 shadow-xl sm:rotate-1"
+            className="relative bg-white/90 backdrop-blur-sm rounded-xl border border-stone-200 p-6 sm:p-10 shadow-xl"
           >
-            {/* ピン留め風装飾 */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-orange-200/50 backdrop-blur-md shadow-sm rotate-[-1deg] hidden sm:block"></div>
-
             <form onSubmit={handleSearch} className="space-y-10">
               {/* 目的地入力 */}
               <div className="space-y-4">
@@ -174,7 +167,7 @@ export default function TravelInfoClient() {
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder="どこへ行きますか？（例: パリ、バンコク）"
-                    className="w-full bg-white border border-stone-200 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-hand focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all rounded-full shadow-sm"
+                    className="w-full bg-white border border-stone-200 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all rounded-full shadow-sm"
                     disabled={isNavigating}
                   />
                   <div className="absolute right-6 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none">
@@ -184,7 +177,7 @@ export default function TravelInfoClient() {
 
                 {/* 人気の目的地 - 付箋風 */}
                 <div className="pt-2">
-                  <p className="text-sm text-stone-500 font-hand mb-3 ml-1">
+                  <p className="text-sm text-stone-500 font-sans mb-3 ml-1">
                     人気の目的地から選ぶ:
                   </p>
                   <div className="flex flex-wrap gap-3">
@@ -194,10 +187,10 @@ export default function TravelInfoClient() {
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
                         className="
-                          px-4 py-2 text-sm sm:text-base font-hand text-stone-600
+                          px-4 py-2 text-sm sm:text-base font-sans text-stone-600
                           bg-white border border-stone-200 hover:border-primary/50 hover:text-primary
                           shadow-sm hover:shadow-md rounded-full
-                          transition-all duration-300 transform hover:-translate-y-0.5
+                          transition-all duration-300
                         "
                       >
                         {dest.name}
@@ -242,7 +235,7 @@ export default function TravelInfoClient() {
                   </div>
                 </button>
 
-                <p className="text-sm text-stone-500 flex items-center gap-2 font-hand">
+                <p className="text-sm text-stone-500 flex items-center gap-2 font-sans">
                   <Info className="w-4 h-4" />
                   <span>
                     AIが最新の情報を収集して、あなただけのガイドを作成します
@@ -269,14 +262,14 @@ export default function TravelInfoClient() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-4 max-w-3xl mx-auto">
               {/* Step 1 */}
               <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
-                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                <div className="w-20 h-20 bg-white rounded-full border border-stone-200 flex items-center justify-center text-primary shadow-sm">
                   <MapPin className="w-10 h-10" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
                     目的地を入力
                   </h3>
-                  <p className="text-stone-500 text-sm font-hand">
+                  <p className="text-stone-500 text-sm font-sans">
                     行きたい国や都市を
                     <br />
                     入力します
@@ -294,14 +287,14 @@ export default function TravelInfoClient() {
 
               {/* Step 2 */}
               <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
-                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                <div className="w-20 h-20 bg-white rounded-full border border-stone-200 flex items-center justify-center text-primary shadow-sm">
                   <CheckCircle2 className="w-10 h-10" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
                     カテゴリを選択
                   </h3>
-                  <p className="text-stone-500 text-sm font-hand">
+                  <p className="text-stone-500 text-sm font-sans">
                     知りたい情報だけを
                     <br />
                     ピックアップ
@@ -319,14 +312,14 @@ export default function TravelInfoClient() {
 
               {/* Step 3 */}
               <div className="flex flex-col items-center text-center space-y-3 w-full md:w-1/3">
-                <div className="w-20 h-20 bg-white rounded-full border-2 border-dashed border-stone-300 flex items-center justify-center text-primary shadow-sm">
+                <div className="w-20 h-20 bg-white rounded-full border border-stone-200 flex items-center justify-center text-primary shadow-sm">
                   <FaPassport className="w-10 h-10" />
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
                     ガイドを作成
                   </h3>
-                  <p className="text-stone-500 text-sm font-hand">
+                  <p className="text-stone-500 text-sm font-sans">
                     AIが情報をまとめて
                     <br />
                     表示します
