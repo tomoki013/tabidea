@@ -11,6 +11,9 @@
  */
 
 import { XMLParser } from 'fast-xml-parser';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { generateObject } from 'ai';
+import { z } from 'zod';
 
 import {
   TravelInfoCategory,
@@ -48,7 +51,7 @@ const MOFA_ANZEN_BASE_URL = 'https://www.anzen.mofa.go.jp';
 /**
  * デフォルトタイムアウト（ミリ秒）
  */
-const DEFAULT_TIMEOUT_MS = 10000;
+const DEFAULT_TIMEOUT_MS = 20000;
 
 /**
  * キャッシュのTTL（秒）- 5分（オープンデータの更新頻度に合わせる）
@@ -613,7 +616,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       // 3. 外務省オープンデータからXMLを取得
       const safetyInfo = await this.fetchFromOpenData(
         countryCode,
-        options?.timeout ?? this.config.timeout
+        options?.timeout ?? this.config.timeout,
+        destination
       );
 
       // 4. キャッシュに保存
@@ -757,7 +761,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   private async fetchFromOpenData(
     countryCode: string,
-    timeout: number
+    timeout: number,
+    destination: string
   ): Promise<SafetyInfo | null> {
     const url = `${MOFA_OPENDATA_BASE_URL}/country/${countryCode}A.xml`;
     console.log(`[mofa-api] Fetching: ${url}`);
@@ -797,7 +802,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
           throw new Error(`Invalid XML response for ${countryCode}`);
         }
 
-        return this.parseXmlResponse(xmlText, countryCode);
+        return await this.parseXmlResponse(xmlText, countryCode, destination);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
         console.warn(
@@ -822,10 +827,11 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
   /**
    * XMLレスポンスをパースしてSafetyInfoに変換
    */
-  private parseXmlResponse(
+  private async parseXmlResponse(
     xmlText: string,
-    countryCode: string
-  ): SafetyInfo {
+    countryCode: string,
+    destination: string
+  ): Promise<SafetyInfo> {
     try {
       const result = this.parser.parse(xmlText) as MofaOpendataResult;
       const opendata = result.opendata;
@@ -837,9 +843,77 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       const dangerLevel = this.extractDangerLevel(opendata);
       const warnings = this.extractWarnings(opendata);
 
+      // 追加情報の抽出
+      const lead = opendata.riskLead?.trim();
+      const subText = opendata.riskSubText?.trim();
+
+      // 目的地の特定危険レベルを判定
+      let specificDangerLevel = dangerLevel;
+      let maxCountryLevel = dangerLevel;
+      let isPartialCountryRisk = false;
+
+      const countryName = COUNTRY_CODE_TO_NAME[countryCode];
+
+      // 目的地が国名そのものでない場合（都市名などの場合）、かつ危険レベルが1以上の場合
+      if (dangerLevel > 0 && countryName && destination !== countryName && !destination.includes(countryName)) {
+        // AIを使用して特定レベルを判定
+        try {
+          const aiResult = await this.determineRiskWithAI(
+            (lead || '') + '\n' + (subText || ''),
+            destination,
+            countryName,
+            dangerLevel
+          );
+
+          if (aiResult) {
+            specificDangerLevel = aiResult.specificLevel as DangerLevel;
+            maxCountryLevel = aiResult.maxCountryLevel as DangerLevel;
+            console.log(`[mofa-api] AI Determined Risk for ${destination}: ${specificDangerLevel} (Country Max: ${maxCountryLevel})`);
+          } else {
+            // AI判定失敗時のフォールバック（ヒューリスティック）
+             const combinedText = (lead || '') + (subText || '');
+             const wholeCountryKeywords = ['全土', '全域', '国全土', '国内全域'];
+             const hasWholeCountryKeyword = wholeCountryKeywords.some(keyword => combinedText.includes(keyword));
+
+             if (!hasWholeCountryKeyword) {
+               // 「全土」キーワードがない場合
+               if (combinedText.includes(destination)) {
+                  // テキストに目的地が含まれている場合 -> 念のため最大レベルを適用（安全サイド）
+                  specificDangerLevel = maxCountryLevel;
+               } else {
+                  // テキストに目的地が含まれておらず、全土指定でもない -> レベル0（安全）とみなす
+                  specificDangerLevel = 0;
+               }
+             }
+             console.log(`[mofa-api] Heuristic Risk for ${destination}: ${specificDangerLevel} (Country Max: ${maxCountryLevel})`);
+          }
+        } catch (e) {
+          console.warn('[mofa-api] AI analysis failed, using fallback:', e);
+           // AI判定失敗時のフォールバック（ヒューリスティック）- 同上
+             const combinedText = (lead || '') + (subText || '');
+             const wholeCountryKeywords = ['全土', '全域', '国全土', '国内全域'];
+             const hasWholeCountryKeyword = wholeCountryKeywords.some(keyword => combinedText.includes(keyword));
+
+             if (!hasWholeCountryKeyword) {
+               if (combinedText.includes(destination)) {
+                  specificDangerLevel = maxCountryLevel;
+               } else {
+                  specificDangerLevel = 0;
+               }
+             }
+        }
+      }
+
+      // 部分的リスクフラグ（表示制御用）
+      isPartialCountryRisk = specificDangerLevel < maxCountryLevel;
+
       return {
-        dangerLevel,
-        dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[dangerLevel],
+        dangerLevel: specificDangerLevel,
+        maxCountryLevel,
+        dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[specificDangerLevel],
+        lead,
+        subText,
+        isPartialCountryRisk,
         warnings,
         emergencyContacts:
           EMERGENCY_CONTACTS_BY_COUNTRY[countryCode] ||
@@ -856,6 +930,67 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         emergencyContacts: this.getDefaultEmergencyContacts(),
         nearestEmbassy: EMBASSIES_BY_COUNTRY[countryCode],
       };
+    }
+  }
+
+  /**
+   * AIを使用してリスクレベルを判定
+   */
+  private async determineRiskWithAI(
+    text: string,
+    destination: string,
+    country: string,
+    xmlMaxLevel: number
+  ): Promise<{ specificLevel: number; maxCountryLevel: number } | null> {
+    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+    if (!apiKey) return null;
+
+    try {
+      const google = createGoogleGenerativeAI({ apiKey });
+      const modelName = process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+
+      const schema = z.object({
+        specificLevel: z.number().min(0).max(4).describe(`The danger level (0-4) specifically for ${destination}.`),
+        maxCountryLevel: z.number().min(0).max(4).describe(`The maximum danger level mentioned for ${country}.`),
+        reason: z.string().describe("The reasoning for the decision."),
+      });
+
+      const prompt = `
+        You are a travel safety analyst. Analyze the following safety information text from the Ministry of Foreign Affairs of Japan (MOFA).
+
+        Information Source: MOFA Open Data
+        Country: ${country}
+        Target Destination: ${destination}
+        MOFA XML Reported Max Level: ${xmlMaxLevel}
+
+        Text (Lead & SubText):
+        """
+        ${text}
+        """
+
+        Task:
+        1. Determine the specific danger level (0-4) for the 'Target Destination' based on the text.
+           - If the text explicitly mentions the destination with a level, use that.
+           - If the text says the "Whole Country" or "All areas" has a certain level, apply that.
+           - If the text specifies high risks for *other* regions but does NOT mention the destination or "Whole Country", assume the destination is safe (likely Level 0 or 1, refer to context).
+           - Major tourist cities often have lower risks than border regions.
+        2. Determine the maximum danger level mentioned for the entire country in the text.
+
+        Constraint:
+        - The 'maxCountryLevel' should generally match or exceed the 'specificLevel'.
+        - If the text is ambiguous, prefer the safer side (higher level), but do not incorrectly flag safe cities as dangerous if the text clearly targets specific other zones.
+      `;
+
+      const { object } = await generateObject({
+        model: google(modelName),
+        schema,
+        prompt,
+      });
+
+      return object;
+    } catch (error) {
+      console.error('[mofa-api] AI determination error:', error);
+      return null;
     }
   }
 

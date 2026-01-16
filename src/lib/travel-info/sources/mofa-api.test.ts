@@ -5,6 +5,16 @@ import { MofaApiSource } from './mofa-api';
 const fetchMock = vi.fn();
 global.fetch = fetchMock;
 
+// Mock AI
+const generateObjectMock = vi.fn();
+vi.mock('ai', () => ({
+  generateObject: (...args: any[]) => generateObjectMock(...args),
+}));
+
+vi.mock('@ai-sdk/google', () => ({
+  createGoogleGenerativeAI: () => () => ({}),
+}));
+
 describe('MofaApiSource', () => {
   let source: MofaApiSource;
 
@@ -334,6 +344,146 @@ describe('MofaApiSource', () => {
         expect.stringContaining('0066A.xml'),
         expect.any(Object)
       );
+    });
+  });
+
+  describe('一部地域リスク判定', () => {
+    it('都市名での検索かつ「全土」キーワードが含まれない場合、AIがなければレベル0が返される', async () => {
+      // API Keyがない場合やAIが失敗した場合のテスト
+      const originalApiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      delete process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>南部国境地域に危険情報が出ています。</riskLead>
+          <riskSubText>ナラティワート県などはレベル3です。</riskSubText>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // バンコク (0066) で検索
+      // バンコクはテキストに含まれない -> レベル0
+      const result = await source.fetch('バンコク');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.dangerLevel).toBe(0);
+      expect(result.data.maxCountryLevel).toBe(2);
+      expect(result.data.isPartialCountryRisk).toBe(true);
+      expect(result.data.lead).toBe('南部国境地域に危険情報が出ています。');
+
+      process.env.GOOGLE_GENERATIVE_AI_API_KEY = originalApiKey;
+    });
+
+    it('AIが特定レベルを判定した場合、その結果が使用される', async () => {
+      process.env.GOOGLE_GENERATIVE_AI_API_KEY = 'test-key';
+
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>全土で注意が必要ですが、バンコクは安全です。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // AIのモックレスポンス
+      generateObjectMock.mockResolvedValue({
+        object: {
+          specificLevel: 0,
+          maxCountryLevel: 2,
+          reason: 'Bangkok is mentioned as safe.',
+        },
+      });
+
+      const result = await source.fetch('バンコク');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.dangerLevel).toBe(0); // AI said 0
+      expect(result.data.maxCountryLevel).toBe(2);
+      expect(result.data.isPartialCountryRisk).toBe(true);
+      expect(generateObjectMock).toHaveBeenCalled();
+    });
+
+    it('国名での検索の場合、最大レベルが返される', async () => {
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>南部国境地域に危険情報が出ています。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // タイ (0066) で検索
+      const result = await source.fetch('タイ');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.dangerLevel).toBe(2);
+      expect(result.data.maxCountryLevel).toBe(2);
+      expect(result.data.isPartialCountryRisk).toBe(false);
+    });
+
+    it('「全土」キーワードが含まれる場合、都市検索でも最大レベルが返される', async () => {
+      const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel4>1</riskLevel4>
+          <riskLead>ウクライナ全土に退避勧告が出ています。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // キーウ (0380) で検索
+      const result = await source.fetch('キーウ');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.dangerLevel).toBe(4);
+      expect(result.data.maxCountryLevel).toBe(4);
+      expect(result.data.isPartialCountryRisk).toBe(false);
+    });
+
+    it('都市名がテキストに含まれる場合、最大レベル（保守的評価）が返される', async () => {
+       const xml = `
+        <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
+          <riskLevel2>1</riskLevel2>
+          <riskLead>プーケットで注意が必要です。</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xml),
+      });
+
+      // プーケット (0066) で検索
+      const result = await source.fetch('プーケット');
+
+      if (!result.success) throw new Error('Fetch failed');
+
+      expect(result.data.dangerLevel).toBe(2);
     });
   });
 });

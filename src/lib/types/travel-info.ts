@@ -70,8 +70,16 @@ export interface TravelInfoSource {
 export interface SafetyInfo {
   /** 外務省の危険度レベル（1-4） */
   dangerLevel: DangerLevel;
+  /** 国全体の最大危険度レベル（一部地域のみ危険な場合など、dangerLevelと異なる場合がある） */
+  maxCountryLevel?: DangerLevel;
   /** 危険度レベルの説明 */
   dangerLevelDescription: string;
+  /** 危険情報のリード文（概要） */
+  lead?: string;
+  /** 危険情報の詳細テキスト（地域別情報など） */
+  subText?: string;
+  /** 国全体ではなく一部地域のみのリスクかどうかのフラグ */
+  isPartialCountryRisk?: boolean;
   /** 注意事項・警告一覧 */
   warnings: string[];
   /** 緊急連絡先リスト */

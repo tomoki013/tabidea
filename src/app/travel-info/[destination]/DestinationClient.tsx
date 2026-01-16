@@ -171,6 +171,9 @@ export default function DestinationClient({
       initialCategories,
       dates,
     });
+    // ページトップへ遷移
+    window.scrollTo(0, 0);
+
     fetchAllCategories(initialCategories);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

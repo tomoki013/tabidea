@@ -6,6 +6,7 @@
 import type {
   TravelInfoCategory,
   CategoryDataEntry,
+  TravelInfoSource,
 } from "@/lib/types/travel-info";
 
 export type { TravelInfoCategory, CategoryDataEntry };
@@ -242,4 +243,6 @@ export interface ShareButtonProps {
 export interface SectionBaseProps<T> {
   /** セクションのデータ */
   data: T;
+  /** ソース情報 */
+  source?: TravelInfoSource;
 }
