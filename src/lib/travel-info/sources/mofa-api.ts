@@ -674,12 +674,48 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    * 目的地名から国コードを解決
    */
   private resolveCountryCode(destination: string): string | null {
-    // 完全一致
+    // 1. 完全一致（日本語）
     if (DESTINATION_TO_COUNTRY_CODE[destination]) {
       return DESTINATION_TO_COUNTRY_CODE[destination];
     }
 
-    // 部分一致（都市名から国を推測）
+    // 2. 英語名からの解決（COUNTRY_CODE_TO_NAMEの逆引き）
+    // Gemini等から英語の国名が渡される場合に対応（例: "United States" -> "0001"）
+    // 注: COUNTRY_CODE_TO_NAME は "0001": "アメリカ" のようなマップ
+    // 英語名を解決するには別途英語名マップが必要だが、簡易的に英語名対応を追加
+    const englishToCode: Record<string, string> = {
+      'United States': '1000',
+      'USA': '1000',
+      'Korea': '0082',
+      'South Korea': '0082',
+      'China': '0086',
+      'Taiwan': '0886',
+      'Thailand': '0066',
+      'Vietnam': '0084',
+      'Singapore': '0065',
+      'Malaysia': '0060',
+      'Indonesia': '0062',
+      'Philippines': '0063',
+      'Cambodia': '0855',
+      'India': '0091',
+      'Australia': '0061',
+      'New Zealand': '0064',
+      'UK': '0044',
+      'United Kingdom': '0044',
+      'France': '0033',
+      'Germany': '0049',
+      'Italy': '0039',
+      'Spain': '0034',
+      'Canada': '9001',
+      'Hawaii': '1808',
+      'Guam': '1671',
+    };
+
+    if (englishToCode[destination]) {
+       return englishToCode[destination];
+    }
+
+    // 3. 部分一致（都市名から国を推測）
     const normalizedDest = destination
       .replace(/[（）()]/g, '')
       .replace(/\s+/g, '');

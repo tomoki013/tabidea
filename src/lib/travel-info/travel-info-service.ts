@@ -337,6 +337,7 @@ export class TravelInfoService implements ITravelInfoService {
     const result = await this.trySourcesWithFallback(
       availableSources,
       destination,
+      category,
       options
     );
 
@@ -450,6 +451,7 @@ export class TravelInfoService implements ITravelInfoService {
   private async trySourcesWithFallback(
     sources: ITravelInfoSource[],
     destination: string,
+    category: TravelInfoCategory,
     options?: TravelInfoOptions
   ): Promise<{
     success: boolean;
@@ -478,6 +480,7 @@ export class TravelInfoService implements ITravelInfoService {
           timeout: options?.timeout ?? this.defaultTimeout,
           language: options?.language ?? this.defaultLanguage,
           country: options?.country,
+          additionalParams: { category },
         });
 
         if (!fetchResult.success) {
