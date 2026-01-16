@@ -583,11 +583,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         return this.getDefaultSafetyInfo(destination);
       }
 
-      return {
+      const result: SourceResult<SafetyInfo> = {
         success: true,
         data: safetyInfo,
         source: this.createSource(countryCode),
       };
+      console.log(`[mofa-api] Final Result for ${destination}:`, JSON.stringify(result.data, null, 2));
+      return result;
     } catch (error) {
       console.error('[mofa-api] Error:', error);
 
@@ -705,6 +707,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         }
 
         const xmlText = await response.text();
+      console.log(`[mofa-api] Response for ${countryCode}:`, xmlText);
         return this.parseXmlResponse(xmlText, countryCode);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
@@ -761,6 +764,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     const riskLevel2Match = xmlText.match(/<riskLevel2>([01])<\/riskLevel2>/i);
     const riskLevel1Match = xmlText.match(/<riskLevel1>([01])<\/riskLevel1>/i);
 
+    console.log('[mofa-api] Danger Level Matches:', {
+      level4: riskLevel4Match?.[1],
+      level3: riskLevel3Match?.[1],
+      level2: riskLevel2Match?.[1],
+      level1: riskLevel1Match?.[1],
+    });
+
     const hasRiskLevel4 = riskLevel4Match?.[1] === '1';
     const hasRiskLevel3 = riskLevel3Match?.[1] === '1';
     const hasRiskLevel2 = riskLevel2Match?.[1] === '1';
@@ -785,6 +795,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     const infectionLevel3Match = xmlText.match(/<infectionLevel3>([01])<\/infectionLevel3>/i);
     const infectionLevel2Match = xmlText.match(/<infectionLevel2>([01])<\/infectionLevel2>/i);
     const infectionLevel1Match = xmlText.match(/<infectionLevel1>([01])<\/infectionLevel1>/i);
+
+    console.log('[mofa-api] Infection Level Matches:', {
+      level4: infectionLevel4Match?.[1],
+      level3: infectionLevel3Match?.[1],
+      level2: infectionLevel2Match?.[1],
+      level1: infectionLevel1Match?.[1],
+    });
 
     const hasLevel4 = infectionLevel4Match?.[1] === '1';
     const hasLevel3 = infectionLevel3Match?.[1] === '1';
