@@ -172,3 +172,24 @@ Import trace:
   requestId: 'single_safety_1768540901778_xfxn9k'
 }
  POST /travel-info/Paris?categories=basic,safety 200 in 26ms (compile: 8ms, render: 18ms)
+ GET /travel-info/Paris?categories=basic,safety 200 in 7.4s (compile: 5.2s, render: 2.2s)
+[2026-01-16T05:50:56.177Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_basic_1768542656176_dcc3oc",
+  "destination": "Paris",
+  "category": "basic"
+}
+[2026-01-16T05:50:56.181Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+  error: { raw: 'undefined' },
+  requestId: 'single_basic_1768542656176_dcc3oc'
+}
+ POST /travel-info/Paris?categories=basic,safety 200 in 324ms (compile: 67ms, render: 257ms)
+[2026-01-16T05:50:56.279Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_safety_1768542656279_bakuaa",
+  "destination": "Paris",
+  "category": "safety"
+}
+[2026-01-16T05:50:56.280Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+  error: { raw: 'undefined' },
+  requestId: 'single_safety_1768542656279_bakuaa'
+}
+ POST /travel-info/Paris?categories=basic,safety 200 in 38ms (compile: 19ms, render: 19ms)

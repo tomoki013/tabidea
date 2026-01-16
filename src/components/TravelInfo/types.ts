@@ -154,6 +154,8 @@ export interface TravelInfoDisplayProps {
   selectedCategories: TravelInfoCategory[];
   /** ソース情報 */
   sources: CategoryDataEntry["source"][];
+  /** 渡航日程（オプション） */
+  dates?: { start: string; end: string };
   /** カテゴリ再取得コールバック */
   onRetryCategory?: (category: TravelInfoCategory) => void;
 }

@@ -16,8 +16,6 @@ import { encodeTravelInfoUrl } from "@/lib/travelInfoUrlUtils";
 import {
   CategorySelector,
   TravelInfoDisplay,
-  ShareButton,
-  PDFExportButton,
 } from "@/components/TravelInfo";
 
 /**
@@ -226,22 +224,6 @@ export default function DestinationClient({
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4">
         <div className="space-y-8">
-          {/* Action Buttons (Centered) */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-            <PDFExportButton
-              destination={destination}
-              country={country}
-              categoryStates={categoryStates}
-              disabled={isLoading}
-              dates={dates}
-            />
-            <ShareButton
-              destination={destination}
-              categories={selectedCategories}
-              dates={dates}
-            />
-          </div>
-
           {/* 目的地ヘッダー */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -304,6 +286,7 @@ export default function DestinationClient({
               categoryStates={categoryStates}
               selectedCategories={selectedCategories}
               sources={sources}
+              dates={dates}
               onRetryCategory={handleRetryCategory}
             />
           </motion.div>
