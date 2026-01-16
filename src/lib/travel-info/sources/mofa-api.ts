@@ -546,7 +546,14 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
     try {
       // 1. 目的地から国コードを取得
-      const countryCode = this.resolveCountryCode(destination);
+      let countryCode = this.resolveCountryCode(destination);
+
+      // フォールバック: 指定された国名からコードを取得
+      if (!countryCode && options?.country) {
+        console.log(`[mofa-api] Destination code not found, trying country: ${options.country}`);
+        countryCode = this.resolveCountryCode(options.country);
+      }
+
       if (!countryCode) {
         console.warn(
           `[mofa-api] Unknown destination: ${destination}, will use default safety info`

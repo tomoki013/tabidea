@@ -477,6 +477,7 @@ export class TravelInfoService implements ITravelInfoService {
           travelDate: options?.travelDate,
           timeout: options?.timeout ?? this.defaultTimeout,
           language: options?.language ?? this.defaultLanguage,
+          country: options?.country,
         });
 
         if (!fetchResult.success) {

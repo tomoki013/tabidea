@@ -363,6 +363,8 @@ export interface TravelInfoOptions {
   timeout?: number;
   /** 言語 */
   language?: string;
+  /** 国名（コンテキスト用） */
+  country?: string;
 }
 
 /**
