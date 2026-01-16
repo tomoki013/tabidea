@@ -761,21 +761,68 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
   /**
    * XMLから危険度レベルを抽出
+   *
+   * 外務省オープンデータの危険レベル:
+   * - レベル0: 危険情報なし（XMLに危険情報タグがない場合）
+   * - レベル1: 十分注意してください
+   * - レベル2: 不要不急の渡航は止めてください
+   * - レベル3: 渡航は止めてください（渡航中止勧告）
+   * - レベル4: 退避してください（退避勧告）
    */
   private extractDangerLevel(xmlText: string): DangerLevel {
-    // 危険度レベルのパターンマッチング
-    // 外務省XMLには「レベル1」「レベル2」などの形式で記載
+    // 1. 外務省XMLの危険地域タグ（ad1Body〜ad4Body）をチェック
+    // ad4Body が存在すればレベル4、ad3Body があればレベル3、という優先度
+    const adBodyPatterns = [
+      { pattern: /<ad4Body\b[^>]*>[\s\S]*?<\/ad4Body>/i, level: 4 },
+      { pattern: /<ad3Body\b[^>]*>[\s\S]*?<\/ad3Body>/i, level: 3 },
+      { pattern: /<ad2Body\b[^>]*>[\s\S]*?<\/ad2Body>/i, level: 2 },
+      { pattern: /<ad1Body\b[^>]*>[\s\S]*?<\/ad1Body>/i, level: 1 },
+    ];
+
+    for (const { pattern, level } of adBodyPatterns) {
+      if (pattern.test(xmlText)) {
+        console.log(`[mofa-api] Found danger level ${level} via adBody tag`);
+        return level as DangerLevel;
+      }
+    }
+
+    // 2. hazardAll / hazardArea タグ内のレベル表記をチェック
+    const hazardPattern = /<hazard(?:All|Area)\b[^>]*>([\s\S]*?)<\/hazard(?:All|Area)>/gi;
+    let hazardMatch;
+    let maxLevelFromHazard = 0;
+
+    while ((hazardMatch = hazardPattern.exec(xmlText)) !== null) {
+      const hazardContent = hazardMatch[1];
+      // 「レベル4」「レベル3」等の表記を探す
+      const levelMatch = hazardContent.match(/レベル\s*(\d)/);
+      if (levelMatch) {
+        const level = parseInt(levelMatch[1], 10);
+        if (level >= 1 && level <= 4 && level > maxLevelFromHazard) {
+          maxLevelFromHazard = level;
+        }
+      }
+    }
+
+    if (maxLevelFromHazard > 0) {
+      console.log(`[mofa-api] Found danger level ${maxLevelFromHazard} via hazard tag`);
+      return maxLevelFromHazard as DangerLevel;
+    }
+
+    // 3. 一般的なパターンマッチング
     const levelPatterns = [
-      /レベル(\d)/g,
+      /レベル\s*(\d)/g,
       /level[:\s]*(\d)/gi,
       /危険度[:\s]*(\d)/g,
       /<level>(\d)<\/level>/gi,
       /<dangerLevel>(\d)<\/dangerLevel>/gi,
+      /危険レベル[:\s]*(\d)/g,
     ];
 
     let maxLevel = 0;
 
     for (const pattern of levelPatterns) {
+      // 正規表現のlastIndexをリセット
+      pattern.lastIndex = 0;
       let match;
       while ((match = pattern.exec(xmlText)) !== null) {
         const level = parseInt(match[1], 10);
@@ -785,30 +832,38 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       }
     }
 
-    // 特定のキーワードによる推測
-    if (maxLevel === 0) {
-      if (
-        xmlText.includes('退避してください') ||
-        xmlText.includes('退避勧告')
-      ) {
-        return 4;
-      }
-      if (
-        xmlText.includes('渡航は止めてください') ||
-        xmlText.includes('渡航中止勧告')
-      ) {
-        return 3;
-      }
-      if (xmlText.includes('不要不急の渡航は止めてください')) {
-        return 2;
-      }
-      if (xmlText.includes('十分注意してください')) {
-        return 1;
-      }
+    if (maxLevel > 0) {
+      console.log(`[mofa-api] Found danger level ${maxLevel} via pattern matching`);
+      return maxLevel as DangerLevel;
     }
 
-    // デフォルトはレベル0（危険情報なし）
-    return maxLevel as DangerLevel;
+    // 4. 特定のキーワードによる推測（フォールバック）
+    if (
+      xmlText.includes('退避してください') ||
+      xmlText.includes('退避勧告')
+    ) {
+      console.log('[mofa-api] Found danger level 4 via keyword matching');
+      return 4;
+    }
+    if (
+      xmlText.includes('渡航は止めてください') ||
+      xmlText.includes('渡航中止勧告')
+    ) {
+      console.log('[mofa-api] Found danger level 3 via keyword matching');
+      return 3;
+    }
+    if (xmlText.includes('不要不急の渡航は止めてください')) {
+      console.log('[mofa-api] Found danger level 2 via keyword matching');
+      return 2;
+    }
+    if (xmlText.includes('十分注意してください')) {
+      console.log('[mofa-api] Found danger level 1 via keyword matching');
+      return 1;
+    }
+
+    // 5. デフォルトはレベル0（危険情報なし）
+    console.log('[mofa-api] No danger level found, returning level 0 (safe)');
+    return 0;
   }
 
   /**
