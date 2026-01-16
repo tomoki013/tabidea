@@ -199,13 +199,13 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevel).toBe(1);
     });
 
-    it('キーワード「退避勧告」からレベル4を推測する', async () => {
+    it('公式な「全土に退避」表記からレベル4を推測する', async () => {
       const xmlWithKeyword = `
         <country>
           <code>0007</code>
           <name>ロシア</name>
           <info>
-            現在、全土に退避勧告が出されています。
+            現在、全土に退避勧告が発出されています。
             直ちに退避してください。
           </info>
         </country>
@@ -227,13 +227,15 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevel).toBe(4);
     });
 
-    it('キーワード「十分注意してください」からレベル1を推測する', async () => {
-      const xmlWithKeyword = `
+    it('一般的な「十分注意してください」はレベル0として扱う（誤検出防止）', async () => {
+      // 一般的な注意喚起の文言はレベル1として誤検出しない
+      const xmlWithGeneralWarning = `
         <country>
           <code>0082</code>
           <name>韓国</name>
           <info>
             一般的な犯罪に十分注意してください。
+            スリや置き引きに気をつけましょう。
           </info>
         </country>
       `;
@@ -241,10 +243,38 @@ describe('MofaApiSource', () => {
       fetchMock.mockResolvedValue({
         ok: true,
         status: 200,
-        text: () => Promise.resolve(xmlWithKeyword),
+        text: () => Promise.resolve(xmlWithGeneralWarning),
       });
 
       const result = await source.fetch('韓国');
+
+      if (!result.success) {
+        throw new Error('Fetch failed');
+      }
+
+      // 公式な「レベル1」表記がないのでレベル0
+      expect(result.data.dangerLevel).toBe(0);
+    });
+
+    it('公式な「レベル1」表記がある場合はレベル1を返す', async () => {
+      const xmlWithOfficialLevel1 = `
+        <country>
+          <code>0066</code>
+          <name>タイ</name>
+          <info>
+            南部一部地域にレベル1が発出されています。
+            十分注意してください。
+          </info>
+        </country>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(xmlWithOfficialLevel1),
+      });
+
+      const result = await source.fetch('タイ');
 
       if (!result.success) {
         throw new Error('Fetch failed');

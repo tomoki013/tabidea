@@ -838,25 +838,38 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     }
 
     // 4. 特定のキーワードによる推測（フォールバック）
+    // 注意：一般的な注意喚起ではなく、公式な危険情報の発出形式のみを検出
+    // 外務省の危険情報は通常「レベルX：〜」の形式で発出される
+
+    // レベル4の公式表現をチェック（全土に対する退避勧告）
     if (
-      xmlText.includes('退避してください') ||
-      xmlText.includes('退避勧告')
+      /全土.*退避/.test(xmlText) ||
+      /レベル\s*4/.test(xmlText) ||
+      xmlText.includes('退避勧告が発出')
     ) {
       console.log('[mofa-api] Found danger level 4 via keyword matching');
       return 4;
     }
+    // レベル3の公式表現をチェック（渡航中止勧告）
     if (
-      xmlText.includes('渡航は止めてください') ||
-      xmlText.includes('渡航中止勧告')
+      /全土.*渡航中止/.test(xmlText) ||
+      /レベル\s*3/.test(xmlText) ||
+      xmlText.includes('渡航中止勧告が発出')
     ) {
       console.log('[mofa-api] Found danger level 3 via keyword matching');
       return 3;
     }
-    if (xmlText.includes('不要不急の渡航は止めてください')) {
+    // レベル2の公式表現をチェック（不要不急の渡航中止）
+    if (
+      /全土.*不要不急/.test(xmlText) ||
+      /レベル\s*2/.test(xmlText)
+    ) {
       console.log('[mofa-api] Found danger level 2 via keyword matching');
       return 2;
     }
-    if (xmlText.includes('十分注意してください')) {
+    // レベル1は公式な「レベル1」表記がある場合のみ
+    // 一般的な「十分注意してください」は誤検出を避けるため検出しない
+    if (/レベル\s*1/.test(xmlText)) {
       console.log('[mofa-api] Found danger level 1 via keyword matching');
       return 1;
     }
