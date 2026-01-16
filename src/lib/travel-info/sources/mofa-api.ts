@@ -131,6 +131,8 @@ const DESTINATION_TO_COUNTRY_CODE: Record<string, string> = {
   ニューカレドニア: '0687',
 
   // ヨーロッパ
+  ウクライナ: '0380',
+  キーウ: '0380',
   イギリス: '0044',
   ロンドン: '0044',
   フランス: '0033',
@@ -185,16 +187,16 @@ const DESTINATION_TO_COUNTRY_CODE: Record<string, string> = {
   モスクワ: '0007',
 
   // 北米
-  アメリカ: '0001',
-  ニューヨーク: '0001',
-  ロサンゼルス: '0001',
-  サンフランシスコ: '0001',
-  ラスベガス: '0001',
-  ハワイ: '0001',
-  ホノルル: '0001',
-  カナダ: '0001', // カナダも+1
-  バンクーバー: '0001',
-  トロント: '0001',
+  アメリカ: '1000',
+  ニューヨーク: '1000',
+  ロサンゼルス: '1000',
+  サンフランシスコ: '1000',
+  ラスベガス: '1000',
+  ハワイ: '1808', // ハワイは別コードの可能性あり、一旦1808（ログ参照）
+  ホノルル: '1808',
+  カナダ: '9001', // ログ参照
+  バンクーバー: '9001',
+  トロント: '9001',
 
   // 中南米
   メキシコ: '0052',
@@ -583,11 +585,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         return this.getDefaultSafetyInfo(destination);
       }
 
-      return {
+      const result: SourceResult<SafetyInfo> = {
         success: true,
         data: safetyInfo,
         source: this.createSource(countryCode),
       };
+      console.log(`[mofa-api] Final Result for ${destination}:`, JSON.stringify(result.data, null, 2));
+      return result;
     } catch (error) {
       console.error('[mofa-api] Error:', error);
 
@@ -705,6 +709,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         }
 
         const xmlText = await response.text();
+      console.log(`[mofa-api] Response for ${countryCode}:`, xmlText);
+
+      // XMLかどうかチェック（HTMLエラーページの場合は弾く）
+      if (!xmlText.trim().startsWith('<') || !xmlText.includes('<opendata')) {
+        throw new Error(`Invalid XML response for ${countryCode}`);
+      }
+
         return this.parseXmlResponse(xmlText, countryCode);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
@@ -761,6 +772,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     const riskLevel2Match = xmlText.match(/<riskLevel2>([01])<\/riskLevel2>/i);
     const riskLevel1Match = xmlText.match(/<riskLevel1>([01])<\/riskLevel1>/i);
 
+    console.log('[mofa-api] Danger Level Matches:', {
+      level4: riskLevel4Match?.[1],
+      level3: riskLevel3Match?.[1],
+      level2: riskLevel2Match?.[1],
+      level1: riskLevel1Match?.[1],
+    });
+
     const hasRiskLevel4 = riskLevel4Match?.[1] === '1';
     const hasRiskLevel3 = riskLevel3Match?.[1] === '1';
     const hasRiskLevel2 = riskLevel2Match?.[1] === '1';
@@ -785,6 +803,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     const infectionLevel3Match = xmlText.match(/<infectionLevel3>([01])<\/infectionLevel3>/i);
     const infectionLevel2Match = xmlText.match(/<infectionLevel2>([01])<\/infectionLevel2>/i);
     const infectionLevel1Match = xmlText.match(/<infectionLevel1>([01])<\/infectionLevel1>/i);
+
+    console.log('[mofa-api] Infection Level Matches:', {
+      level4: infectionLevel4Match?.[1],
+      level3: infectionLevel3Match?.[1],
+      level2: infectionLevel2Match?.[1],
+      level1: infectionLevel1Match?.[1],
+    });
 
     const hasLevel4 = infectionLevel4Match?.[1] === '1';
     const hasLevel3 = infectionLevel3Match?.[1] === '1';
