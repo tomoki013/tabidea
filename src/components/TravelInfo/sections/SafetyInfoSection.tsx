@@ -9,9 +9,15 @@ import {
   ShieldAlert,
   ShieldCheck,
   AlertOctagon,
+  ExternalLink,
 } from 'lucide-react';
 import type { SafetyInfo, DangerLevel } from '@/lib/types/travel-info';
 import type { SectionBaseProps } from '../types';
+
+/**
+ * 外務省海外安全情報オープンデータのURL
+ */
+const MOFA_OPENDATA_URL = 'https://www.ezairyu.mofa.go.jp/html/opendata/index.html';
 
 /**
  * 危険度レベルに応じたスタイル定義
@@ -177,6 +183,23 @@ export default function SafetyInfoSection({ data }: SectionBaseProps<SafetyInfo>
           </div>
         </div>
       )}
+
+      {/* 出典表記（外務省オープンデータ利用規約に基づく） */}
+      <div className="mt-6 pt-4 border-t border-stone-200">
+        <p className="text-xs text-stone-500 leading-relaxed">
+          外務省 海外安全情報オープンデータ（
+          <a
+            href={MOFA_OPENDATA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary hover:underline inline-flex items-center gap-1"
+          >
+            {MOFA_OPENDATA_URL}
+            <ExternalLink className="w-3 h-3" />
+          </a>
+          ）を加工して作成
+        </p>
+      </div>
     </div>
   );
 }

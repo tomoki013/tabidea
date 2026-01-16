@@ -46,7 +46,7 @@ export const EmbassySchema = z.object({
 });
 
 export const SafetyInfoSchema = z.object({
-  dangerLevel: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).describe('外務省危険度レベル（1-4）'),
+  dangerLevel: z.union([z.literal(0), z.literal(1), z.literal(2), z.literal(3), z.literal(4)]).describe('外務省危険度レベル（0-4、0は危険情報なし）'),
   dangerLevelDescription: z.string().describe('危険度の説明'),
   warnings: z.array(z.string()).describe('注意事項・警告リスト'),
   emergencyContacts: z.array(EmergencyContactSchema).describe('緊急連絡先'),

@@ -242,7 +242,7 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
 
       safety: `
 【安全情報で必要な項目】
-- 外務省の危険度レベル（1-4、該当なしは1）
+- 外務省の危険度レベル（0-4、0は危険情報なし、1は十分注意、2は不要不急の渡航中止、3は渡航中止勧告、4は退避勧告）
 - 危険度の説明
 - 注意事項・警告
 - 緊急連絡先（警察、救急、日本大使館など）`,

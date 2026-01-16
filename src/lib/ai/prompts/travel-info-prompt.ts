@@ -98,7 +98,7 @@ const JSON_SCHEMAS: Record<TravelInfoCategory, string> = {
 }`,
 
   safety: `{
-  "dangerLevel": "number (1-4の整数、外務省危険度レベル)",
+  "dangerLevel": "number (0-4の整数、外務省危険度レベル。0=危険情報なし、1=十分注意、2=不要不急の渡航中止、3=渡航中止勧告、4=退避勧告)",
   "dangerLevelDescription": "string (危険度の説明)",
   "warnings": ["string (注意事項・警告)"],
   "emergencyContacts": [
@@ -1036,10 +1036,10 @@ function normalizeSafetyInfo(data: Record<string, unknown>): SafetyInfo {
   const nearestEmbassy = data.nearestEmbassy as Record<string, unknown> | undefined;
   const emergencyContacts = data.emergencyContacts as Array<Record<string, unknown>> | undefined;
 
-  // 危険度レベルのバリデーション
+  // 危険度レベルのバリデーション（0=危険情報なし、1-4=危険レベル）
   const rawLevel = data.dangerLevel;
-  let dangerLevel: DangerLevel = 1;
-  if (typeof rawLevel === 'number' && rawLevel >= 1 && rawLevel <= 4) {
+  let dangerLevel: DangerLevel = 0; // デフォルトは「危険情報なし」
+  if (typeof rawLevel === 'number' && rawLevel >= 0 && rawLevel <= 4) {
     dangerLevel = rawLevel as DangerLevel;
   }
 

@@ -458,39 +458,33 @@ const EMBASSIES_BY_COUNTRY: Record<string, Embassy> = {
 // ============================================
 
 /**
- * 外務省オープンデータのXMLレスポンス構造
+ * 外務省オープンデータのXMLレスポンス構造（国別情報）
+ * データフォーマット仕様に基づく
+ * @see https://www.ezairyu.mofa.go.jp/html/opendata/index.html
  */
-interface MofaXmlResponse {
+export interface MofaXmlResponse {
   /** 国・地域コード */
-  code?: string;
+  countryCode?: string;
   /** 国・地域名 */
-  name?: string;
-  /** 危険情報 */
-  dangerInfo?: {
-    /** 危険レベル（複数地域の場合配列） */
-    level?: string | string[];
-    /** 危険情報の詳細テキスト */
-    description?: string;
-    /** 更新日 */
-    updatedAt?: string;
-  };
-  /** スポット情報 */
-  spotInfo?: {
-    title?: string;
-    description?: string;
-    publishedAt?: string;
-  }[];
-  /** 感染症危険情報 */
-  infectiousInfo?: {
-    level?: string;
-    description?: string;
-    updatedAt?: string;
-  };
-  /** 広域情報 */
-  wideAreaInfo?: {
-    title?: string;
-    description?: string;
-  }[];
+  countryName?: string;
+  /** 危険レベル（Y=該当あり、N=該当なし） */
+  riskLevel1?: 'Y' | 'N'; // 十分注意
+  riskLevel2?: 'Y' | 'N'; // 不要不急の渡航中止
+  riskLevel3?: 'Y' | 'N'; // 渡航中止勧告
+  riskLevel4?: 'Y' | 'N'; // 退避勧告
+  /** 感染症危険レベル（Y=該当あり、N=該当なし） */
+  infectionLevel1?: 'Y' | 'N';
+  infectionLevel2?: 'Y' | 'N';
+  infectionLevel3?: 'Y' | 'N';
+  infectionLevel4?: 'Y' | 'N';
+  /** 危険情報日時 */
+  riskLeaveDate?: string;
+  /** 危険情報タイトル */
+  riskTitle?: string;
+  /** 危険情報リード */
+  riskLead?: string;
+  /** 危険情報概要 */
+  riskSubText?: string;
 }
 
 // ============================================
@@ -575,7 +569,6 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       // 3. 外務省オープンデータからXMLを取得
       const safetyInfo = await this.fetchFromOpenData(
         countryCode,
-        destination,
         options?.timeout ?? this.config.timeout
       );
 
@@ -667,7 +660,6 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    * ソース情報を作成
    */
   private createSource(countryCode: string): TravelInfoSource {
-    const countryName = COUNTRY_CODE_TO_NAME[countryCode] || '不明';
     return {
       sourceType: this.sourceType,
       sourceName: this.sourceName,
@@ -682,7 +674,6 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   private async fetchFromOpenData(
     countryCode: string,
-    destination: string,
     timeout: number
   ): Promise<SafetyInfo | null> {
     const url = `${MOFA_OPENDATA_BASE_URL}/country/${countryCode}A.xml`;
@@ -714,7 +705,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
         }
 
         const xmlText = await response.text();
-        return this.parseXmlResponse(xmlText, countryCode, destination);
+        return this.parseXmlResponse(xmlText, countryCode);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
         console.warn(
@@ -741,8 +732,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    */
   private parseXmlResponse(
     xmlText: string,
-    countryCode: string,
-    destination: string
+    countryCode: string
   ): SafetyInfo {
     // シンプルなXMLパース（外部ライブラリなし）
     const dangerLevel = this.extractDangerLevel(xmlText);
@@ -761,103 +751,88 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
   /**
    * XMLから危険度レベルを抽出
+   * 外務省オープンデータ仕様に基づき、riskLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
+   * 全て0の場合はレベル0（危険情報なし）を返す
    */
   private extractDangerLevel(xmlText: string): DangerLevel {
-    // 危険度レベルのパターンマッチング
-    // 外務省XMLには「レベル1」「レベル2」などの形式で記載
-    const levelPatterns = [
-      /レベル(\d)/g,
-      /level[:\s]*(\d)/gi,
-      /危険度[:\s]*(\d)/g,
-      /<level>(\d)<\/level>/gi,
-      /<dangerLevel>(\d)<\/dangerLevel>/gi,
-    ];
+    // 外務省オープンデータ仕様に基づくriskLevel1〜4の1/0形式をパース
+    const riskLevel4Match = xmlText.match(/<riskLevel4>([01])<\/riskLevel4>/i);
+    const riskLevel3Match = xmlText.match(/<riskLevel3>([01])<\/riskLevel3>/i);
+    const riskLevel2Match = xmlText.match(/<riskLevel2>([01])<\/riskLevel2>/i);
+    const riskLevel1Match = xmlText.match(/<riskLevel1>([01])<\/riskLevel1>/i);
 
-    let maxLevel = 0;
+    const hasRiskLevel4 = riskLevel4Match?.[1] === '1';
+    const hasRiskLevel3 = riskLevel3Match?.[1] === '1';
+    const hasRiskLevel2 = riskLevel2Match?.[1] === '1';
+    const hasRiskLevel1 = riskLevel1Match?.[1] === '1';
 
-    for (const pattern of levelPatterns) {
-      let match;
-      while ((match = pattern.exec(xmlText)) !== null) {
-        const level = parseInt(match[1], 10);
-        if (level >= 1 && level <= 4 && level > maxLevel) {
-          maxLevel = level;
-        }
-      }
-    }
+    // 最も高い危険レベルを返す（退避勧告が最優先）
+    if (hasRiskLevel4) return 4;
+    if (hasRiskLevel3) return 3;
+    if (hasRiskLevel2) return 2;
+    if (hasRiskLevel1) return 1;
 
-    // 特定のキーワードによる推測
-    if (maxLevel === 0) {
-      if (
-        xmlText.includes('退避してください') ||
-        xmlText.includes('退避勧告')
-      ) {
-        return 4;
-      }
-      if (
-        xmlText.includes('渡航は止めてください') ||
-        xmlText.includes('渡航中止勧告')
-      ) {
-        return 3;
-      }
-      if (xmlText.includes('不要不急の渡航は止めてください')) {
-        return 2;
-      }
-      if (xmlText.includes('十分注意してください')) {
-        return 1;
-      }
-    }
+    // 全て0の場合はレベル0（危険情報なし）
+    return 0;
+  }
 
-    // デフォルトはレベル0（危険情報なし）
-    return maxLevel as DangerLevel;
+  /**
+   * XMLから感染症危険度レベルを抽出
+   * 外務省オープンデータ仕様に基づき、infectionLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
+   */
+  private extractInfectionLevel(xmlText: string): DangerLevel {
+    const infectionLevel4Match = xmlText.match(/<infectionLevel4>([01])<\/infectionLevel4>/i);
+    const infectionLevel3Match = xmlText.match(/<infectionLevel3>([01])<\/infectionLevel3>/i);
+    const infectionLevel2Match = xmlText.match(/<infectionLevel2>([01])<\/infectionLevel2>/i);
+    const infectionLevel1Match = xmlText.match(/<infectionLevel1>([01])<\/infectionLevel1>/i);
+
+    const hasLevel4 = infectionLevel4Match?.[1] === '1';
+    const hasLevel3 = infectionLevel3Match?.[1] === '1';
+    const hasLevel2 = infectionLevel2Match?.[1] === '1';
+    const hasLevel1 = infectionLevel1Match?.[1] === '1';
+
+    if (hasLevel4) return 4;
+    if (hasLevel3) return 3;
+    if (hasLevel2) return 2;
+    if (hasLevel1) return 1;
+
+    return 0;
   }
 
   /**
    * XMLから警告情報を抽出
+   * 外務省オープンデータ仕様に基づき、riskLead、riskTitle、広域・スポット情報等から抽出
    */
   private extractWarnings(xmlText: string): string[] {
     const warnings: string[] = [];
 
-    // スポット情報のタイトルを抽出
-    const spotTitlePattern =
-      /<spotTitle>([^<]+)<\/spotTitle>|<title>([^<]+)<\/title>/gi;
-    let match;
-    while ((match = spotTitlePattern.exec(xmlText)) !== null) {
-      const title = match[1] || match[2];
-      if (title && title.trim().length > 0) {
-        warnings.push(title.trim());
+    // 危険情報のリード（riskLead）を抽出
+    const riskLeadMatch = xmlText.match(/<riskLead>([^<]+)<\/riskLead>/);
+    if (riskLeadMatch?.[1]) {
+      const lead = riskLeadMatch[1].trim();
+      if (lead.length > 0 && lead.length < 300) {
+        warnings.push(lead);
       }
     }
 
-    // 特定の警告キーワードを含む文を抽出
-    const warningKeywords = [
-      '注意',
-      '警戒',
-      '危険',
-      'テロ',
-      '犯罪',
-      '感染症',
-      '自然災害',
-      'デモ',
-      '暴動',
-    ];
-
-    const sentences = xmlText
-      .replace(/<[^>]+>/g, ' ')
-      .split(/[。.！!？?]/)
-      .map((s) => s.trim())
-      .filter((s) => s.length > 10 && s.length < 200);
-
-    for (const sentence of sentences) {
-      for (const keyword of warningKeywords) {
-        if (
-          sentence.includes(keyword) &&
-          !warnings.some((w) => w.includes(sentence))
-        ) {
-          warnings.push(sentence);
-          break;
-        }
+    // 広域・スポット情報のタイトルを抽出
+    const titlePattern = /<title>([^<]+)<\/title>/gi;
+    let match;
+    while ((match = titlePattern.exec(xmlText)) !== null) {
+      const title = match[1]?.trim();
+      if (title && title.length > 0 && title.length < 200 && !warnings.includes(title)) {
+        warnings.push(title);
+        if (warnings.length >= 5) break;
       }
-      if (warnings.length >= 5) break; // 最大5件
+    }
+
+    // 広域・スポット情報のリードを抽出
+    const leadPattern = /<lead>([^<]+)<\/lead>/gi;
+    while ((match = leadPattern.exec(xmlText)) !== null && warnings.length < 5) {
+      const lead = match[1]?.trim();
+      if (lead && lead.length > 10 && lead.length < 300 && !warnings.includes(lead)) {
+        warnings.push(lead);
+      }
     }
 
     // 警告がない場合は一般的な注意事項を追加
@@ -884,6 +859,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
   /**
    * デフォルトの安全情報を返す
+   * APIからデータを取得できない場合のフォールバック
+   * 危険レベルは0（危険情報なし）として扱う
    */
   private getDefaultSafetyInfo(
     destination: string
@@ -891,8 +868,8 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     console.log(`[mofa-api] Using default safety info for: ${destination}`);
 
     const defaultInfo: SafetyInfo = {
-      dangerLevel: 1,
-      dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[1],
+      dangerLevel: 0,
+      dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[0],
       warnings: [
         '最新の渡航情報は外務省海外安全ホームページでご確認ください',
         '海外旅行保険への加入を強くお勧めします',
