@@ -751,20 +751,20 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
   /**
    * XMLから危険度レベルを抽出
-   * 外務省オープンデータ仕様に基づき、riskLevel1〜4のY/N値から最大レベルを決定
-   * 全てNの場合はレベル0（危険情報なし）を返す
+   * 外務省オープンデータ仕様に基づき、riskLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
+   * 全て0の場合はレベル0（危険情報なし）を返す
    */
   private extractDangerLevel(xmlText: string): DangerLevel {
-    // 外務省オープンデータ仕様に基づくriskLevel1〜4のY/N形式をパース
-    const riskLevel4Match = xmlText.match(/<riskLevel4>([YN])<\/riskLevel4>/i);
-    const riskLevel3Match = xmlText.match(/<riskLevel3>([YN])<\/riskLevel3>/i);
-    const riskLevel2Match = xmlText.match(/<riskLevel2>([YN])<\/riskLevel2>/i);
-    const riskLevel1Match = xmlText.match(/<riskLevel1>([YN])<\/riskLevel1>/i);
+    // 外務省オープンデータ仕様に基づくriskLevel1〜4の1/0形式をパース
+    const riskLevel4Match = xmlText.match(/<riskLevel4>([01])<\/riskLevel4>/i);
+    const riskLevel3Match = xmlText.match(/<riskLevel3>([01])<\/riskLevel3>/i);
+    const riskLevel2Match = xmlText.match(/<riskLevel2>([01])<\/riskLevel2>/i);
+    const riskLevel1Match = xmlText.match(/<riskLevel1>([01])<\/riskLevel1>/i);
 
-    const hasRiskLevel4 = riskLevel4Match?.[1]?.toUpperCase() === 'Y';
-    const hasRiskLevel3 = riskLevel3Match?.[1]?.toUpperCase() === 'Y';
-    const hasRiskLevel2 = riskLevel2Match?.[1]?.toUpperCase() === 'Y';
-    const hasRiskLevel1 = riskLevel1Match?.[1]?.toUpperCase() === 'Y';
+    const hasRiskLevel4 = riskLevel4Match?.[1] === '1';
+    const hasRiskLevel3 = riskLevel3Match?.[1] === '1';
+    const hasRiskLevel2 = riskLevel2Match?.[1] === '1';
+    const hasRiskLevel1 = riskLevel1Match?.[1] === '1';
 
     // 最も高い危険レベルを返す（退避勧告が最優先）
     if (hasRiskLevel4) return 4;
@@ -772,24 +772,24 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     if (hasRiskLevel2) return 2;
     if (hasRiskLevel1) return 1;
 
-    // 全てNの場合はレベル0（危険情報なし）
+    // 全て0の場合はレベル0（危険情報なし）
     return 0;
   }
 
   /**
    * XMLから感染症危険度レベルを抽出
-   * 外務省オープンデータ仕様に基づき、infectionLevel1〜4のY/N値から最大レベルを決定
+   * 外務省オープンデータ仕様に基づき、infectionLevel1〜4の値（1=該当あり、0=該当なし）から最大レベルを決定
    */
   private extractInfectionLevel(xmlText: string): DangerLevel {
-    const infectionLevel4Match = xmlText.match(/<infectionLevel4>([YN])<\/infectionLevel4>/i);
-    const infectionLevel3Match = xmlText.match(/<infectionLevel3>([YN])<\/infectionLevel3>/i);
-    const infectionLevel2Match = xmlText.match(/<infectionLevel2>([YN])<\/infectionLevel2>/i);
-    const infectionLevel1Match = xmlText.match(/<infectionLevel1>([YN])<\/infectionLevel1>/i);
+    const infectionLevel4Match = xmlText.match(/<infectionLevel4>([01])<\/infectionLevel4>/i);
+    const infectionLevel3Match = xmlText.match(/<infectionLevel3>([01])<\/infectionLevel3>/i);
+    const infectionLevel2Match = xmlText.match(/<infectionLevel2>([01])<\/infectionLevel2>/i);
+    const infectionLevel1Match = xmlText.match(/<infectionLevel1>([01])<\/infectionLevel1>/i);
 
-    const hasLevel4 = infectionLevel4Match?.[1]?.toUpperCase() === 'Y';
-    const hasLevel3 = infectionLevel3Match?.[1]?.toUpperCase() === 'Y';
-    const hasLevel2 = infectionLevel2Match?.[1]?.toUpperCase() === 'Y';
-    const hasLevel1 = infectionLevel1Match?.[1]?.toUpperCase() === 'Y';
+    const hasLevel4 = infectionLevel4Match?.[1] === '1';
+    const hasLevel3 = infectionLevel3Match?.[1] === '1';
+    const hasLevel2 = infectionLevel2Match?.[1] === '1';
+    const hasLevel1 = infectionLevel1Match?.[1] === '1';
 
     if (hasLevel4) return 4;
     if (hasLevel3) return 3;

@@ -18,26 +18,26 @@ describe('MofaApiSource', () => {
   });
 
   describe('危険レベル抽出（外務省オープンデータ仕様）', () => {
-    it('riskLevel1〜4が全てNの場合はレベル0を返す', async () => {
-      // 外務省オープンデータ仕様に基づくXML（全てN=危険情報なし）
+    it('riskLevel1〜4が全て0の場合はレベル0を返す', async () => {
+      // 外務省オープンデータ仕様に基づくXML（全て0=危険情報なし）
       const safeXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
           <area>
-            <cd>01</cd>
+            <cd>10</cd>
             <name>アジア</name>
           </area>
-          <country areaCd="01">
+          <country areaCd="10">
             <cd>0066</cd>
             <name>タイ</name>
           </country>
-          <riskLevel4>N</riskLevel4>
-          <riskLevel3>N</riskLevel3>
-          <riskLevel2>N</riskLevel2>
-          <riskLevel1>N</riskLevel1>
-          <infectionLevel4>N</infectionLevel4>
-          <infectionLevel3>N</infectionLevel3>
-          <infectionLevel2>N</infectionLevel2>
-          <infectionLevel1>N</infectionLevel1>
+          <riskLevel4>0</riskLevel4>
+          <riskLevel3>0</riskLevel3>
+          <riskLevel2>0</riskLevel2>
+          <riskLevel1>0</riskLevel1>
+          <infectionLevel4>0</infectionLevel4>
+          <infectionLevel3>0</infectionLevel3>
+          <infectionLevel2>0</infectionLevel2>
+          <infectionLevel1>0</infectionLevel1>
         </opendata>
       `;
 
@@ -57,13 +57,13 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevelDescription).toBe('危険情報なし');
     });
 
-    it('riskLevel1がYの場合はレベル1を返す', async () => {
+    it('riskLevel1が1の場合はレベル1を返す', async () => {
       const cautionXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel4>N</riskLevel4>
-          <riskLevel3>N</riskLevel3>
-          <riskLevel2>N</riskLevel2>
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel4>0</riskLevel4>
+          <riskLevel3>0</riskLevel3>
+          <riskLevel2>0</riskLevel2>
+          <riskLevel1>1</riskLevel1>
           <riskLead>一部地域で十分注意が必要です。</riskLead>
         </opendata>
       `;
@@ -84,13 +84,13 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevelDescription).toBe('十分注意してください');
     });
 
-    it('riskLevel2がYの場合はレベル2を返す', async () => {
+    it('riskLevel2が1の場合はレベル2を返す', async () => {
       const avoidNonEssentialXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel4>N</riskLevel4>
-          <riskLevel3>N</riskLevel3>
-          <riskLevel2>Y</riskLevel2>
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel4>0</riskLevel4>
+          <riskLevel3>0</riskLevel3>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel1>1</riskLevel1>
         </opendata>
       `;
 
@@ -110,13 +110,13 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevelDescription).toBe('不要不急の渡航は止めてください');
     });
 
-    it('riskLevel3がYの場合はレベル3を返す', async () => {
+    it('riskLevel3が1の場合はレベル3を返す', async () => {
       const doNotTravelXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel4>N</riskLevel4>
-          <riskLevel3>Y</riskLevel3>
-          <riskLevel2>Y</riskLevel2>
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel4>0</riskLevel4>
+          <riskLevel3>1</riskLevel3>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel1>1</riskLevel1>
         </opendata>
       `;
 
@@ -136,13 +136,13 @@ describe('MofaApiSource', () => {
       expect(result.data.dangerLevelDescription).toBe('渡航は止めてください（渡航中止勧告）');
     });
 
-    it('riskLevel4がYの場合はレベル4を返す', async () => {
+    it('riskLevel4が1の場合はレベル4を返す', async () => {
       const evacuateXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel4>Y</riskLevel4>
-          <riskLevel3>Y</riskLevel3>
-          <riskLevel2>Y</riskLevel2>
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel4>1</riskLevel4>
+          <riskLevel3>1</riskLevel3>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel1>1</riskLevel1>
           <riskLead>退避勧告が発出されています。</riskLead>
         </opendata>
       `;
@@ -164,13 +164,13 @@ describe('MofaApiSource', () => {
     });
 
     it('最も高い危険レベルを返す（レベル4優先）', async () => {
-      // 複数のレベルがYの場合、最も高いレベルを返す
+      // 複数のレベルが1の場合、最も高いレベルを返す
       const mixedXml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel4>Y</riskLevel4>
-          <riskLevel3>N</riskLevel3>
-          <riskLevel2>Y</riskLevel2>
-          <riskLevel1>N</riskLevel1>
+          <riskLevel4>1</riskLevel4>
+          <riskLevel3>0</riskLevel3>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel1>0</riskLevel1>
         </opendata>
       `;
 
@@ -188,13 +188,55 @@ describe('MofaApiSource', () => {
 
       expect(result.data.dangerLevel).toBe(4);
     });
+
+    it('インドのサンプルXML形式でレベル4を返す', async () => {
+      // 実際の外務省オープンデータのサンプル形式
+      const indiaXml = `
+        <opendata dataType="A" lastModified="2019/03/18 18:30:04" mailCount="80" odType="04">
+          <area>
+            <cd>10</cd>
+            <name>アジア</name>
+          </area>
+          <country areaCd="10" countryCd="1">
+            <cd>0091</cd>
+            <name>インド</name>
+          </country>
+          <riskLevel4>1</riskLevel4>
+          <riskLevel3>1</riskLevel3>
+          <riskLevel2>1</riskLevel2>
+          <riskLevel1>1</riskLevel1>
+          <infectionLevel4>0</infectionLevel4>
+          <infectionLevel3>0</infectionLevel3>
+          <infectionLevel2>0</infectionLevel2>
+          <infectionLevel1>0</infectionLevel1>
+          <riskLeaveDate keyCd="2018T076">2018/08/01 00:00:00</riskLeaveDate>
+          <riskTitle>インドの危険情報【一部地域危険レベル引き下げ】</riskTitle>
+          <riskLead>インドの危険情報【一部地域危険レベル引き下げ】</riskLead>
+        </opendata>
+      `;
+
+      fetchMock.mockResolvedValue({
+        ok: true,
+        status: 200,
+        text: () => Promise.resolve(indiaXml),
+      });
+
+      const result = await source.fetch('インド');
+
+      if (!result.success) {
+        throw new Error('Fetch failed');
+      }
+
+      expect(result.data.dangerLevel).toBe(4);
+      expect(result.data.dangerLevelDescription).toBe('退避してください（退避勧告）');
+    });
   });
 
   describe('警告情報抽出', () => {
     it('riskLeadから警告を抽出する', async () => {
       const xml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel1>1</riskLevel1>
           <riskLead>首都バンコク及びその周辺地域では、一般犯罪に注意してください。</riskLead>
         </opendata>
       `;
@@ -217,7 +259,7 @@ describe('MofaApiSource', () => {
     it('広域・スポット情報のタイトルを抽出する', async () => {
       const xml = `
         <opendata dataType="A" odType="04" lastModified="2025/01/16 00:00:00">
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel1>1</riskLevel1>
           <wideareaSpot>
             <title>タイ：デモ・集会に関する注意喚起</title>
             <lead>バンコク市内でデモが予定されています。</lead>
@@ -275,7 +317,7 @@ describe('MofaApiSource', () => {
     it('都市名から国コードを解決できる', async () => {
       const xml = `
         <opendata dataType="A" odType="04">
-          <riskLevel1>Y</riskLevel1>
+          <riskLevel1>1</riskLevel1>
         </opendata>
       `;
 
