@@ -85,10 +85,7 @@ export default function TravelInfoClient() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fcfbf9] relative overflow-hidden">
-      {/* 背景テクスチャ */}
-      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-10 mix-blend-multiply pointer-events-none fixed" />
-
+    <div className="min-h-screen relative overflow-hidden">
       {/* Hero Section */}
       <section className="relative w-full pt-16 pb-12 sm:pt-24 sm:pb-16 z-10">
         <div className="max-w-5xl mx-auto px-4 text-center relative">

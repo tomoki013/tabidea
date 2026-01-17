@@ -223,7 +223,7 @@ export default function DestinationClient({
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pb-20">
+    <div className="min-h-screen pb-20">
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4">
         <div className="space-y-8">
