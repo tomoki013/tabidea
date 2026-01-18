@@ -965,23 +965,9 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
    * ソースが利用可能かチェック
    */
   async isAvailable(): Promise<boolean> {
-    try {
-      // ヘルスチェックとしてタイ（0066）の情報を取得してみる
-      const testUrl = `${MOFA_OPENDATA_BASE_URL}/country/0066A.xml`;
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
-
-      const response = await fetch(testUrl, {
-        method: 'HEAD',
-        signal: controller.signal,
-      });
-
-      clearTimeout(timeoutId);
-      return response.ok;
-    } catch {
-      console.warn('[mofa-api] Health check failed');
-      return false;
-    }
+    // 事前チェックは行わず、fetch時のエラーハンドリングとリトライに任せる
+    // 厳格なヘルスチェックによる誤検知（False Negative）を防ぐため常にtrueを返す
+    return true;
   }
 
   // ============================================
