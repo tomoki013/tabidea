@@ -12,6 +12,7 @@ export default function ApiResponseDebugPage() {
   const [loadingDestinations, setLoadingDestinations] = useState(true);
 
   const [selectedSource, setSelectedSource] = useState('mofa');
+  const [feedType, setFeedType] = useState('A'); // 'A' | 'L' | 'Normal'
   const [selectedDestination, setSelectedDestination] = useState('');
   const [fetching, setFetching] = useState(false);
   const [result, setResult] = useState<RawDataResult | null>(null);
@@ -41,7 +42,7 @@ export default function ApiResponseDebugPage() {
     setFetching(true);
     setResult(null);
     try {
-      const data = await fetchRawData(password, selectedSource, selectedDestination);
+      const data = await fetchRawData(password, selectedSource, selectedDestination, feedType);
       setResult(data);
     } catch (err) {
       console.error(err);
@@ -55,23 +56,30 @@ export default function ApiResponseDebugPage() {
   const getFormattedBody = () => {
     if (!result?.body) return result?.message || 'No content';
 
+    const MAX_DISPLAY_SIZE = 50 * 1024; // 50KB limit for display
+    let content = result.body;
+    let isTruncated = false;
+
+    if (content.length > MAX_DISPLAY_SIZE) {
+      content = content.substring(0, MAX_DISPLAY_SIZE);
+      isTruncated = true;
+    }
+
     // Check if it's JSON
     try {
-      if (result.body.trim().startsWith('{') || result.body.trim().startsWith('[')) {
-        const json = JSON.parse(result.body);
-        return JSON.stringify(json, null, 2);
+      if (content.trim().startsWith('{') || content.trim().startsWith('[')) {
+        const json = JSON.parse(content); // Note: Might fail if truncated, but try anyway
+        content = JSON.stringify(json, null, 2);
       }
     } catch {
-      // Not valid JSON, return as is
+      // Not valid JSON or truncated JSON, return as is
     }
 
-    // Check if it's XML (simple heuristic)
-    if (result.body.trim().startsWith('<')) {
-        // Return as is, maybe syntax highlight later?
-        return result.body;
+    if (isTruncated) {
+      return content + '\n\n... (Truncated for display to prevent browser lag)';
     }
 
-    return result.body;
+    return content;
   };
 
   if (!isAuthenticated) {
@@ -113,7 +121,7 @@ export default function ApiResponseDebugPage() {
 
         {/* Controls */}
         <div className="rounded-lg bg-white p-6 shadow">
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">API Source</label>
               <select
@@ -127,6 +135,21 @@ export default function ApiResponseDebugPage() {
                 <option value="exchange" disabled>Exchange API (Not Implemented)</option>
               </select>
             </div>
+
+            {selectedSource === 'mofa' && (
+              <div>
+                <label className="mb-2 block text-sm font-medium text-gray-700">Feed Type</label>
+                <select
+                  value={feedType}
+                  onChange={(e) => setFeedType(e.target.value)}
+                  className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                >
+                  <option value="A">All (Risk + Detail + History)</option>
+                  <option value="L">Light (Risk + Titles only)</option>
+                  <option value="Normal">Normal (Risk + Detail)</option>
+                </select>
+              </div>
+            )}
 
             <div>
               <label className="mb-2 block text-sm font-medium text-gray-700">Destination</label>
@@ -204,6 +227,13 @@ export default function ApiResponseDebugPage() {
                     </dd>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
+                    <dt className="font-medium text-gray-500">Size</dt>
+                    <dd className="col-span-2 text-gray-900 font-mono">
+                      {result.size ? `${(result.size / 1024).toFixed(2)} KB` : 'Unknown'}
+                      {result.size && result.size > 1024 * 1024 ? ` (${(result.size / (1024 * 1024)).toFixed(2)} MB)` : ''}
+                    </dd>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4">
                     <dt className="font-medium text-gray-500">Message</dt>
                     <dd className="col-span-2 text-gray-900">{result.message || '-'}</dd>
                   </div>
@@ -213,8 +243,11 @@ export default function ApiResponseDebugPage() {
 
             {/* Raw Body */}
             <div className="rounded-lg bg-white shadow">
-              <div className="border-b border-gray-200 px-6 py-4">
+              <div className="border-b border-gray-200 px-6 py-4 flex justify-between items-center">
                 <h3 className="text-lg font-medium text-gray-900">Raw Response Body</h3>
+                <span className="text-xs text-gray-500">
+                    {result.body && result.body.length > 50 * 1024 ? 'Truncated display' : 'Full display'}
+                </span>
               </div>
               <div className="p-0">
                 <pre className="max-h-[600px] w-full overflow-auto bg-slate-900 p-6 text-xs text-green-400 font-mono leading-relaxed rounded-b-lg">
