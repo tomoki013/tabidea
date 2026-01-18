@@ -23,16 +23,17 @@ export interface RawDataResult {
   statusText?: string;
   headers?: Record<string, string>;
   body?: string;
+  size?: number;
 }
 
-export async function fetchRawData(password: string, source: string, destination: string): Promise<RawDataResult> {
+export async function fetchRawData(password: string, source: string, destination: string, feedType?: string): Promise<RawDataResult> {
   const isValid = await verifyPassword(password);
   if (!isValid) {
     return { success: false, message: 'Invalid password' };
   }
 
   if (source === 'mofa') {
-    return fetchMofaData(destination);
+    return fetchMofaData(destination, feedType);
   } else if (source === 'restcountries') {
     return fetchRestCountriesData(destination);
   }
@@ -40,13 +41,18 @@ export async function fetchRawData(password: string, source: string, destination
   return { success: false, message: `Source '${source}' not implemented` };
 }
 
-async function fetchMofaData(destination: string): Promise<RawDataResult> {
+async function fetchMofaData(destination: string, feedType: string = 'A'): Promise<RawDataResult> {
   const countryCode = getCountryCodeByDestination(destination);
   if (!countryCode) {
     return { success: false, message: `Could not resolve country code for '${destination}'` };
   }
 
-  const url = `https://www.ezairyu.mofa.go.jp/opendata/country/${countryCode}A.xml`;
+  // Construct URL based on feed type (A=All, L=Light, Normal=Standard)
+  let suffix = 'A';
+  if (feedType === 'L') suffix = 'L';
+  else if (feedType === 'Normal') suffix = '';
+
+  const url = `https://www.ezairyu.mofa.go.jp/opendata/country/${countryCode}${suffix}.xml`;
 
   try {
     const response = await fetch(url, {
@@ -75,6 +81,7 @@ async function fetchMofaData(destination: string): Promise<RawDataResult> {
       statusText: response.statusText,
       headers,
       body,
+      size: body.length,
     };
   } catch (error) {
     return {
@@ -130,6 +137,7 @@ async function fetchRestCountriesData(destination: string): Promise<RawDataResul
       statusText: response.statusText,
       headers,
       body,
+      size: body.length,
     };
   } catch (error) {
     return {

@@ -1177,7 +1177,11 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
           throw new Error(`Invalid XML response for ${countryCode}`);
         }
 
-        return await this.parseXmlResponse(xmlText, countryCode, destination);
+        // Pre-process XML to remove large <mainText> blocks which are unused but consume massive memory
+        // This solves the "XML too long" issue (e.g. USA is 2.7MB with mainText, much smaller without)
+        const cleanXmlText = xmlText.replace(/<mainText>[\s\S]*?<\/mainText>/g, '');
+
+        return await this.parseXmlResponse(cleanXmlText, countryCode, destination);
       } catch (error) {
         lastError = error instanceof Error ? error : new Error(String(error));
         console.warn(
