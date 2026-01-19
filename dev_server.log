@@ -1,0 +1,16 @@
+
+> tabidea@0.3.1 dev /app
+> next dev
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1194ms
+ ○ Compiling /about ...
+ GET /about 200 in 9.0s (compile: 7.7s, render: 1262ms)
+ GET /features 200 in 1791ms (compile: 1458ms, render: 333ms)
+ GET /updates 200 in 1306ms (compile: 1043ms, render: 263ms)
+ GET /faq 200 in 1320ms (compile: 1096ms, render: 224ms)
+ GET /terms 200 in 1120ms (compile: 854ms, render: 266ms)

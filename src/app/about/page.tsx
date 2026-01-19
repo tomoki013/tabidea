@@ -70,7 +70,6 @@ export default function AboutPage() {
                   AIパワー
                 </h3>
                 <p className="text-stone-600 leading-relaxed">
-                  Google Gemini
                   AIを活用し、あなたの希望や旅のスタイルに合わせた最適なプランを瞬時に生成します。
                 </p>
               </div>
@@ -152,10 +151,6 @@ export default function AboutPage() {
                     <p>
                       ※
                       将来的な変更で見れなくなる可能性がありますのでご了承ください。
-                    </p>
-                    <p>
-                      ※
-                      絶対に残しておきたいプランは、スクリーンショットを撮るか、ご自身の端末にダウンロードして保存することをお勧めします。
                     </p>
                   </div>
                 </div>

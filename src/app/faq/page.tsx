@@ -44,7 +44,7 @@ export default function FAQPage() {
           </p>
           <a
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-3 bg-[#2c2c2c] text-white font-bold rounded-full hover:bg-[#4a4a4a] transition-all hover:scale-105 shadow-md group"
+            className="inline-flex items-center justify-center px-8 py-3 bg-[#e67e22] text-white font-bold rounded-full hover:bg-[#d35400] transition-all hover:scale-105 shadow-md group"
           >
             <span>お問い合わせへ</span>
           </a>

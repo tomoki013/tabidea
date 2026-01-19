@@ -134,9 +134,11 @@ const rawRoadmapData: RoadmapItem[] = [
       "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
   },
   {
-    status: "planned",
+    status: "done",
+    date: "2026.01.24",
+    updateType: "patch",
     title: "日程の並び替えや時間の調整",
-    description: "日程の並び替えや時間の調整ができる機能を開発中です。",
+    description: "日程の並び替えや時間の調整ができるようになりました。",
   },
   {
     status: "planned",
