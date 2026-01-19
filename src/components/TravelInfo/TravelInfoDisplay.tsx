@@ -107,6 +107,15 @@ export default function TravelInfoDisplay({
     );
   }, [categoryStates]);
 
+  // いずれかがローディング中かどうか（PDF出力ボタンの制御用）
+  const anyLoading = useMemo(() => {
+    // 選択されたカテゴリのうち、状態が存在し、かつローディング中のものがあるか
+    return selectedCategories.some((cat) => {
+      const state = categoryStates.get(cat);
+      return state?.status === "loading";
+    });
+  }, [categoryStates, selectedCategories]);
+
   // 全てエラーかどうか
   const allError = useMemo(() => {
     return Array.from(categoryStates.values()).every(
@@ -122,7 +131,7 @@ export default function TravelInfoDisplay({
           destination={destination}
           country={country}
           categoryStates={categoryStates}
-          disabled={allLoading}
+          disabled={anyLoading}
           dates={dates}
         />
         <ShareButton

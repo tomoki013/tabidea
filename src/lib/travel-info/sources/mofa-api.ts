@@ -942,7 +942,12 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       }
 
       if (!safetyInfo) {
-        return this.getDefaultSafetyInfo(destination);
+        console.warn(`[mofa-api] No safety info found for ${destination} (${countryCode})`);
+        // データが見つからない場合はエラーとして返し、AIフォールバックを有効にする
+        return {
+          success: false,
+          error: `Safety info not found for ${destination}`,
+        };
       }
 
       const result: SourceResult<SafetyInfo> = {
@@ -956,8 +961,12 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
     } catch (error) {
       console.error('[mofa-api] Error:', error);
 
-      // エラー時はデフォルトの安全情報を返す（フォールバック）
-      return this.getDefaultSafetyInfo(destination);
+      // エラーを伝播させてフォールバックチェーン（Gemini等）を有効にする
+      // 以前はデフォルト情報を返していたが、それだとAIフォールバックが機能しないため変更
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+      };
     }
   }
 
