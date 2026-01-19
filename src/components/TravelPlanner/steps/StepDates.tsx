@@ -17,9 +17,15 @@ const parseDate = (str: string) => {
 
 const parseDuration = (str: string) => {
   const daysMatch = str.match(/(\d+)日間/);
-  if (daysMatch) return parseInt(daysMatch[1]);
+  if (daysMatch) {
+    const d = parseInt(daysMatch[1]);
+    return Math.max(1, isNaN(d) ? 1 : d);
+  }
   const nightsMatch = str.match(/(\d+)泊(\d+)日/);
-  if (nightsMatch) return parseInt(nightsMatch[2]);
+  if (nightsMatch) {
+    const d = parseInt(nightsMatch[2]);
+    return Math.max(1, isNaN(d) ? 1 : d);
+  }
   return 3;
 };
 
@@ -119,8 +125,8 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
         {/* Date Section */}
         <div className="space-y-3">
             <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
-                    <span className="text-lg">📅</span> 出発日
+                <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
+                    <span className="text-xl">📅</span> 出発日
                 </label>
                 <div className="flex items-center gap-2">
                     <input
@@ -128,9 +134,9 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                         type="checkbox"
                         checked={isDateUndecided}
                         onChange={(e) => handleDateUndecidedToggle(e.target.checked)}
-                        className="w-4 h-4 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
+                        className="w-5 h-5 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
-                    <label htmlFor="date-undecided" className="text-xs text-stone-500 font-bold cursor-pointer select-none">
+                    <label htmlFor="date-undecided" className="text-sm text-stone-700 font-bold cursor-pointer select-none">
                         未定
                     </label>
                 </div>
@@ -141,8 +147,8 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                 value={startDate}
                 onChange={(e) => handleDateChange(e.target.value)}
                 disabled={isDateUndecided}
-                className={`w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-all cursor-pointer ${
-                    isDateUndecided ? "opacity-40 cursor-not-allowed bg-stone-100" : ""
+                className={`w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl font-bold focus:outline-hidden focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer ${
+                    isDateUndecided ? "opacity-50 cursor-not-allowed bg-stone-100 text-stone-400" : "text-stone-800"
                 }`}
             />
         </div>
@@ -150,8 +156,8 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
         {/* Duration Section */}
         <div className="space-y-3">
              <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-stone-500 uppercase tracking-widest flex items-center gap-2">
-                    <span className="text-lg">⏱️</span> 旅行日数
+                <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
+                    <span className="text-xl">⏱️</span> 旅行日数
                 </label>
                 <div className="flex items-center gap-2">
                     <input
@@ -159,9 +165,9 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                         type="checkbox"
                         checked={isDurationUndecided}
                         onChange={(e) => handleDurationUndecidedToggle(e.target.checked)}
-                        className="w-4 h-4 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
+                        className="w-5 h-5 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
-                    <label htmlFor="duration-undecided" className="text-xs text-stone-500 font-bold cursor-pointer select-none">
+                    <label htmlFor="duration-undecided" className="text-sm text-stone-700 font-bold cursor-pointer select-none">
                         未定
                     </label>
                 </div>

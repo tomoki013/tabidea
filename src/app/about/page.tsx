@@ -175,15 +175,15 @@ export default function AboutPage() {
                 「実際に行った人ならではの視点」を提案に反映しています。
               </p>
             </div>
-            <div className="mt-8 text-center sm:text-left">
+            <div className="mt-6 text-center sm:text-left">
               <Link
                 href="https://travel.tomokichidiary.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-[#e67e22] text-white px-6 py-3 rounded-full font-bold transition-all hover:bg-[#d35400] hover:scale-105 shadow-md"
+                className="inline-flex items-center gap-2 text-[#e67e22] font-bold hover:underline transition-all"
               >
                 <span>ブログを見に行く</span>
-                <FaExternalLinkAlt />
+                <FaExternalLinkAlt className="text-sm" />
               </Link>
             </div>
           </section>

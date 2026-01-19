@@ -306,7 +306,7 @@ describe('MofaApiSource', () => {
       expect(result.source.sourceName).toContain('デフォルト');
     });
 
-    it('404エラーの場合は危険レベル0のデフォルト情報を返す', async () => {
+    it('404エラーの場合は失敗を返し、フォールバックを有効にする', async () => {
       fetchMock.mockResolvedValue({
         ok: false,
         status: 404,
@@ -315,11 +315,8 @@ describe('MofaApiSource', () => {
 
       const result = await source.fetch('タイ');
 
-      if (!result.success) {
-        throw new Error('Fetch failed');
-      }
-
-      expect(result.data.dangerLevel).toBe(0);
+      expect(result.success).toBe(false);
+      expect(result.error).toBeDefined();
     });
   });
 

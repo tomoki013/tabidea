@@ -31,6 +31,11 @@ import {
   LocalFoodInfoSchema,
   SouvenirInfoSchema,
   EventsInfoSchema,
+  TechnologyInfoSchema,
+  HealthcareInfoSchema,
+  RestroomsInfoSchema,
+  SmokingInfoSchema,
+  AlcoholInfoSchema,
 } from '@/lib/ai/schemas/travel-info-schemas';
 import { z } from 'zod';
 
@@ -59,6 +64,11 @@ const CATEGORY_CONTENT_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
   local_food: LocalFoodInfoSchema,
   souvenir: SouvenirInfoSchema,
   events: EventsInfoSchema,
+  technology: TechnologyInfoSchema,
+  healthcare: HealthcareInfoSchema,
+  restrooms: RestroomsInfoSchema,
+  smoking: SmokingInfoSchema,
+  alcohol: AlcoholInfoSchema,
 };
 
 /**
@@ -79,6 +89,11 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
     'local_food',
     'souvenir',
     'events',
+    'technology',
+    'healthcare',
+    'restrooms',
+    'smoking',
+    'alcohol',
   ];
 
   private readonly config: GeminiFallbackConfig;
@@ -287,6 +302,34 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
 【イベント情報で必要な項目】
 - 主要なイベント（名前、開催時期、内容）
 - 季節の祭り`,
+
+      technology: `
+【電源・通信事情で必要な項目】
+- コンセント形状（タイプA, BFなど）
+- 電圧（220Vなど）
+- インターネット・Wi-Fiの普及状況
+- SIMカード事情`,
+
+      healthcare: `
+【医療・衛生事情で必要な項目】
+- 水道水が飲めるか
+- 推奨される予防接種
+- 医療水準・病院事情`,
+
+      restrooms: `
+【トイレ事情で必要な項目】
+- 公衆トイレの普及状況・清潔度
+- 利用上の注意（有料、紙がない等）`,
+
+      smoking: `
+【喫煙事情で必要な項目】
+- 喫煙ルール（屋内禁煙、罰金等）
+- 喫煙場所の状況`,
+
+      alcohol: `
+【飲酒・お酒事情で必要な項目】
+- 飲酒ルール（販売時間制限、年齢制限等）
+- アルコール購入の注意点`,
     };
 
     return `${basePrompt}
