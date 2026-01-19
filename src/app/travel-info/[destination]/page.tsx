@@ -55,6 +55,7 @@ export default async function TravelInfoDestinationPage({
 
   return (
     <DestinationClient
+      key={`${destination}-${resolvedSearchParams.categories || ''}`}
       destination={destination}
       initialCategories={categories}
       dates={dates}

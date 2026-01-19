@@ -7,7 +7,7 @@ import CategoryCard from './CategoryCard';
 import type { CategorySelectorProps } from './types';
 
 // 必須カテゴリ（ユーザーは解除できない）
-const MANDATORY_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety'];
+const MANDATORY_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'visa'];
 
 /**
  * CategorySelector - カテゴリ選択グリッド

@@ -39,7 +39,12 @@ export type CategoryIcon =
   | "Car"
   | "Utensils"
   | "ShoppingBag"
-  | "Calendar";
+  | "Calendar"
+  | "Zap"
+  | "Stethoscope"
+  | "Bath"
+  | "Cigarette"
+  | "Wine";
 
 /**
  * カテゴリ情報マッピング
@@ -89,6 +94,31 @@ export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryDisplayInfo> = {
     label: "イベント・祭り",
     description: "主要イベント・季節の祭り",
     icon: "Calendar",
+  },
+  technology: {
+    label: "電源・通信",
+    description: "コンセント・Wi-Fi・SIM",
+    icon: "Zap",
+  },
+  healthcare: {
+    label: "医療・衛生",
+    description: "水・ワクチン・医療事情",
+    icon: "Stethoscope",
+  },
+  restrooms: {
+    label: "トイレ事情",
+    description: "清潔度・利用時の注意",
+    icon: "Bath",
+  },
+  smoking: {
+    label: "喫煙ルール",
+    description: "喫煙場所・罰金",
+    icon: "Cigarette",
+  },
+  alcohol: {
+    label: "飲酒ルール",
+    description: "年齢制限・販売規制",
+    icon: "Wine",
   },
 };
 

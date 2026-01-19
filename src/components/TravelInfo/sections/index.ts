@@ -7,3 +7,8 @@ export { default as TransportInfoSection } from './TransportInfoSection';
 export { default as LocalFoodSection } from './LocalFoodSection';
 export { default as SouvenirSection } from './SouvenirSection';
 export { default as EventsSection } from './EventsSection';
+export { default as TechnologySection } from './TechnologySection';
+export { default as HealthcareSection } from './HealthcareSection';
+export { default as RestroomsSection } from './RestroomsSection';
+export { default as SmokingSection } from './SmokingSection';
+export { default as AlcoholSection } from './AlcoholSection';

@@ -19,7 +19,12 @@ export type TravelInfoCategory =
   | "transport" // 交通事情
   | "local_food" // グルメ（代表的な料理、マナー）
   | "souvenir" // お土産・買い物（人気のお土産、免税）
-  | "events"; // イベント・祭り
+  | "events" // イベント・祭り
+  | "technology" // 電源・インターネット
+  | "healthcare" // 医療・衛生（水、ワクチン）
+  | "restrooms" // トイレ事情
+  | "smoking" // 喫煙ルール
+  | "alcohol"; // 飲酒ルール
 
 /**
  * 情報ソースの種類
@@ -323,6 +328,62 @@ export interface EventItem {
   description: string;
 }
 
+/**
+ * 電源・インターネット情報
+ */
+export interface TechnologyInfo {
+  /** コンセント形状（例: ["A", "BF"]） */
+  plugs: string[];
+  /** 電圧（例: "220V"） */
+  voltage: string;
+  /** インターネット・Wi-Fi事情 */
+  internet: string[];
+}
+
+/**
+ * 医療・衛生情報
+ */
+export interface HealthcareInfo {
+  /** 水道水が飲めるか */
+  water: string;
+  /** 推奨される予防接種 */
+  vaccines: string[];
+  /** 医療水準・病院事情 */
+  medicalLevel: string;
+}
+
+/**
+ * トイレ事情
+ */
+export interface RestroomsInfo {
+  /** トイレの清潔度・普及状況 */
+  availability: string;
+  /** 利用上の注意（有料、紙がない等） */
+  notes: string[];
+}
+
+/**
+ * 喫煙情報
+ */
+export interface SmokingInfo {
+  /** 喫煙ルール（屋内禁煙、罰金等） */
+  rules: string;
+  /** 喫煙場所の状況 */
+  areas: string;
+}
+
+/**
+ * 飲酒情報
+ */
+export interface AlcoholInfo {
+  /** 飲酒ルール（販売時間制限、年齢制限等） */
+  rules: string;
+  /** 年齢制限（例: "20歳以上"） */
+  ageLimit: string;
+  /** 補足事項 */
+  notes: string[];
+}
+
 // ============================================
 // カテゴリ別データマッピング
 // ============================================
@@ -340,6 +401,11 @@ export interface CategoryDataMap {
   local_food: LocalFoodInfo;
   souvenir: SouvenirInfo;
   events: EventsInfo;
+  technology: TechnologyInfo;
+  healthcare: HealthcareInfo;
+  restrooms: RestroomsInfo;
+  smoking: SmokingInfo;
+  alcohol: AlcoholInfo;
 }
 
 /**
@@ -442,7 +508,12 @@ export type AnyCategoryData =
   | TransportInfo
   | LocalFoodInfo
   | SouvenirInfo
-  | EventsInfo;
+  | EventsInfo
+  | TechnologyInfo
+  | HealthcareInfo
+  | RestroomsInfo
+  | SmokingInfo
+  | AlcoholInfo;
 
 /**
  * 全カテゴリ配列（定数として使用可能）
@@ -457,6 +528,11 @@ export const ALL_TRAVEL_INFO_CATEGORIES: TravelInfoCategory[] = [
   "local_food",
   "souvenir",
   "events",
+  "technology",
+  "healthcare",
+  "restrooms",
+  "smoking",
+  "alcohol",
 ];
 
 /**
@@ -472,6 +548,11 @@ export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = {
   local_food: "グルメ",
   souvenir: "お土産・買い物",
   events: "イベント・祭り",
+  technology: "電源・通信",
+  healthcare: "医療・衛生",
+  restrooms: "トイレ事情",
+  smoking: "喫煙ルール",
+  alcohol: "飲酒ルール",
 };
 
 /**

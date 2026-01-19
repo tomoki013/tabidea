@@ -14,6 +14,11 @@ import type {
   LocalFoodInfo,
   SouvenirInfo,
   EventsInfo,
+  TechnologyInfo,
+  HealthcareInfo,
+  RestroomsInfo,
+  SmokingInfo,
+  AlcoholInfo,
   CategoryDataMap,
   DangerLevel,
 } from '@/lib/types/travel-info';
@@ -197,6 +202,33 @@ const JSON_SCHEMAS: Record<TravelInfoCategory, string> = {
     }
   ]
 }`,
+  technology: `{
+  "plugs": ["string (コンセント形状、例: A, BF)"],
+  "voltage": "string (電圧、例: 220V)",
+  "internet": ["string (インターネット・Wi-Fi事情)"]
+}`,
+
+  healthcare: `{
+  "water": "string (水道水が飲めるか)",
+  "vaccines": ["string (推奨される予防接種)"],
+  "medicalLevel": "string (医療水準・病院事情)"
+}`,
+
+  restrooms: `{
+  "availability": "string (トイレの清潔度・普及状況)",
+  "notes": ["string (利用上の注意)"]
+}`,
+
+  smoking: `{
+  "rules": "string (喫煙ルール)",
+  "areas": "string (喫煙場所の状況)"
+}`,
+
+  alcohol: `{
+  "rules": "string (飲酒ルール)",
+  "ageLimit": "string (年齢制限)",
+  "notes": ["string (補足事項)"]
+}`
 };
 
 // ============================================
@@ -623,6 +655,173 @@ ${JSON_SCHEMAS.events}
 ${SOURCE_PRIORITY_INSTRUCTION}`;
 }
 
+/**
+ * 電源・インターネット情報用プロンプト
+ */
+function generateTechnologyPrompt(destination: string, country: string): string {
+  return `あなたは海外の通信・電源事情に詳しい専門家です。
+${destination}（${country}）のコンセントやインターネット事情について情報を提供してください。
+
+【必須情報】
+- コンセント形状（プラグタイプ）
+- 電圧
+- Wi-Fi・SIMなどのインターネット接続環境
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.technology}
+
+【情報収集の優先ソース】
+1. 政府観光局
+2. 通信会社・SIMカード情報サイト
+3. 旅行ガイド
+
+【Few-shot Example】
+入力: ロンドン（イギリス）
+出力:
+{
+  "plugs": ["BF"],
+  "voltage": "230V",
+  "internet": [
+    "街中のカフェや公共施設で無料Wi-Fiが普及している",
+    "プリペイドSIMカードは空港やコンビニで容易に入手可能",
+    "地下鉄駅構内でもWi-Fiが利用可能な場合が多い"
+  ]
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * 医療・衛生情報用プロンプト
+ */
+function generateHealthcarePrompt(destination: string, country: string): string {
+  return `あなたは海外の医療・衛生事情に詳しい専門家です。
+${destination}（${country}）の衛生状態や医療事情について情報を提供してください。
+
+【必須情報】
+- 水道水が飲めるかどうか
+- 推奨される予防接種
+- 現地の医療水準
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.healthcare}
+
+【情報収集の優先ソース】
+1. 外務省・厚生労働省検疫所
+2. WHO
+3. 旅行医学関連サイト
+
+【Few-shot Example】
+入力: ニューデリー（インド）
+出力:
+{
+  "water": "水道水は飲用不可。必ずボトルウォーターを購入すること。",
+  "vaccines": ["A型肝炎", "破傷風", "腸チフス"],
+  "medicalLevel": "都市部の私立病院は高水準だが、高額な医療費がかかるため海外旅行保険への加入が強く推奨される。"
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * トイレ事情用プロンプト
+ */
+function generateRestroomsPrompt(destination: string, country: string): string {
+  return `あなたは海外の公衆衛生事情に詳しい専門家です。
+${destination}（${country}）のトイレ事情について情報を提供してください。
+
+【必須情報】
+- 公衆トイレの普及状況と清潔度
+- 利用時の注意点（有料か、紙があるかなど）
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.restrooms}
+
+【情報収集の優先ソース】
+1. 旅行ガイドブック
+2. 旅行者口コミ
+3. 公共施設情報
+
+【Few-shot Example】
+入力: パリ（フランス）
+出力:
+{
+  "availability": "公衆トイレは公園や主要広場にあるが、数は多くない。デパートやカフェの利用が一般的。",
+  "notes": [
+    "街中の自動公衆トイレは無料のものが多い",
+    "駅のトイレは有料（0.5〜1ユーロ程度）の場合がある",
+    "便座がないタイプも稀にあるので注意"
+  ]
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * 喫煙情報用プロンプト
+ */
+function generateSmokingPrompt(destination: string, country: string): string {
+  return `あなたは海外の喫煙ルールに詳しい専門家です。
+${destination}（${country}）の喫煙事情について情報を提供してください。
+
+【必須情報】
+- 喫煙ルール（屋内・屋外の規制）
+- 喫煙場所の状況
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.smoking}
+
+【情報収集の優先ソース】
+1. 現地法律・条例情報
+2. 政府観光局
+3. タバコ規制関連ニュース
+
+【Few-shot Example】
+入力: シンガポール
+出力:
+{
+  "rules": "屋内および多くの屋外公共スペースで禁煙。違反すると高額な罰金が科される。電子タバコの持ち込みは禁止。",
+  "areas": "指定された喫煙エリア（黄色い枠内など）でのみ喫煙可能。"
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
+/**
+ * 飲酒情報用プロンプト
+ */
+function generateAlcoholPrompt(destination: string, country: string): string {
+  return `あなたは海外のアルコール事情に詳しい専門家です。
+${destination}（${country}）の飲酒に関するルールや事情について情報を提供してください。
+
+【必須情報】
+- 飲酒・販売に関するルール（時間規制、場所など）
+- 飲酒可能な年齢
+- その他注意点
+
+【出力形式】
+以下のJSON形式で回答してください：
+${JSON_SCHEMAS.alcohol}
+
+【情報収集の優先ソース】
+1. 現地法律情報
+2. 政府観光局
+3. ニュースサイト
+
+【Few-shot Example】
+入力: バンコク（タイ）
+出力:
+{
+  "rules": "アルコール販売時間は11:00-14:00と17:00-24:00に制限されている。仏教の祝日は販売禁止。",
+  "ageLimit": "20歳以上",
+  "notes": [
+    "公園や寺院など公共の場所での飲酒は禁止されている場合がある",
+    "選挙前日なども販売禁止になることがある"
+  ]
+}
+${SOURCE_PRIORITY_INSTRUCTION}`;
+}
+
 // ============================================
 // メイン関数
 // ============================================
@@ -655,6 +854,16 @@ export function generateCategorySpecificPrompt(
       return generateSouvenirPrompt(destination, country);
     case 'events':
       return generateEventsPrompt(destination, country, travelDates);
+    case 'technology':
+      return generateTechnologyPrompt(destination, country);
+    case 'healthcare':
+      return generateHealthcarePrompt(destination, country);
+    case 'restrooms':
+      return generateRestroomsPrompt(destination, country);
+    case 'smoking':
+      return generateSmokingPrompt(destination, country);
+    case 'alcohol':
+      return generateAlcoholPrompt(destination, country);
     default:
       throw new Error(`Unknown category: ${category}`);
   }
@@ -699,6 +908,16 @@ export function generateTravelInfoPrompt(
           return '- souvenir: 人気のお土産、免税情報';
         case 'events':
           return '- events: 主要イベント、季節の祭り';
+        case 'technology':
+          return '- technology: 電源プラグ、Wi-Fi事情';
+        case 'healthcare':
+          return '- healthcare: 水道水、ワクチン、医療事情';
+        case 'restrooms':
+          return '- restrooms: トイレの清潔度、利用注意';
+        case 'smoking':
+          return '- smoking: 喫煙ルール、場所';
+        case 'alcohol':
+          return '- alcohol: 飲酒ルール、年齢制限';
         default:
           return '';
       }
@@ -786,6 +1005,30 @@ export function generateSearchQueries(
       `${destination} イベント`,
       `${destination} 祭り`,
       `${country} 祝日`,
+    ],
+    technology: [
+      `${country} コンセント 電圧`,
+      `${country} Wi-Fi 事情`,
+      `${country} SIMカード おすすめ`,
+    ],
+    healthcare: [
+      `${destination} 水道水 飲める`,
+      `${country} 予防接種 推奨`,
+      `${destination} 医療事情 病院`,
+    ],
+    restrooms: [
+      `${destination} トイレ事情`,
+      `${destination} 公衆トイレ 清潔`,
+    ],
+    smoking: [
+      `${country} 喫煙 ルール 罰金`,
+      `${destination} タバコ 持ち込み`,
+      `${destination} 喫煙所`,
+    ],
+    alcohol: [
+      `${country} お酒 販売時間`,
+      `${country} 飲酒 年齢`,
+      `${country} 飲酒 ルール`,
     ],
   };
 
@@ -989,6 +1232,16 @@ function validateAndNormalizeContent<T extends TravelInfoCategory>(
       return normalizeSouvenirInfo(rawData) as CategoryDataMap[T];
     case 'events':
       return normalizeEventsInfo(rawData) as CategoryDataMap[T];
+    case 'technology':
+      return normalizeTechnologyInfo(rawData) as CategoryDataMap[T];
+    case 'healthcare':
+      return normalizeHealthcareInfo(rawData) as CategoryDataMap[T];
+    case 'restrooms':
+      return normalizeRestroomsInfo(rawData) as CategoryDataMap[T];
+    case 'smoking':
+      return normalizeSmokingInfo(rawData) as CategoryDataMap[T];
+    case 'alcohol':
+      return normalizeAlcoholInfo(rawData) as CategoryDataMap[T];
     default:
       throw new Error(`Unknown category: ${category}`);
   }
@@ -1228,6 +1481,54 @@ function normalizeEventsInfo(data: Record<string, unknown>): EventsInfo {
   return {
     majorEvents,
     seasonalFestivals
+  };
+}
+
+function normalizeTechnologyInfo(data: Record<string, unknown>): TechnologyInfo {
+  return {
+    plugs: Array.isArray(data.plugs)
+      ? data.plugs.filter((p): p is string => typeof p === 'string')
+      : [],
+    voltage: typeof data.voltage === 'string' ? data.voltage : '不明',
+    internet: Array.isArray(data.internet)
+      ? data.internet.filter((i): i is string => typeof i === 'string')
+      : []
+  };
+}
+
+function normalizeHealthcareInfo(data: Record<string, unknown>): HealthcareInfo {
+  return {
+    water: typeof data.water === 'string' ? data.water : '不明',
+    vaccines: Array.isArray(data.vaccines)
+      ? data.vaccines.filter((v): v is string => typeof v === 'string')
+      : [],
+    medicalLevel: typeof data.medicalLevel === 'string' ? data.medicalLevel : '不明'
+  };
+}
+
+function normalizeRestroomsInfo(data: Record<string, unknown>): RestroomsInfo {
+  return {
+    availability: typeof data.availability === 'string' ? data.availability : '不明',
+    notes: Array.isArray(data.notes)
+      ? data.notes.filter((n): n is string => typeof n === 'string')
+      : []
+  };
+}
+
+function normalizeSmokingInfo(data: Record<string, unknown>): SmokingInfo {
+  return {
+    rules: typeof data.rules === 'string' ? data.rules : '不明',
+    areas: typeof data.areas === 'string' ? data.areas : '不明'
+  };
+}
+
+function normalizeAlcoholInfo(data: Record<string, unknown>): AlcoholInfo {
+  return {
+    rules: typeof data.rules === 'string' ? data.rules : '不明',
+    ageLimit: typeof data.ageLimit === 'string' ? data.ageLimit : '不明',
+    notes: Array.isArray(data.notes)
+      ? data.notes.filter((n): n is string => typeof n === 'string')
+      : []
   };
 }
 

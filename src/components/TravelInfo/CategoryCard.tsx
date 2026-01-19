@@ -12,6 +12,11 @@ import {
   Utensils,
   ShoppingBag,
   Calendar,
+  Zap,
+  Stethoscope,
+  Bath,
+  Cigarette,
+  Wine,
 } from 'lucide-react';
 import { CATEGORY_INFO, type CategoryCardProps, type CategoryIcon } from './types';
 
@@ -28,6 +33,11 @@ const IconComponents: Record<CategoryIcon, React.ComponentType<{ className?: str
   Utensils,
   ShoppingBag,
   Calendar,
+  Zap,
+  Stethoscope,
+  Bath,
+  Cigarette,
+  Wine,
 };
 
 /**

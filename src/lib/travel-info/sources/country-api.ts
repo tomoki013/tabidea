@@ -345,9 +345,23 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
     const languages = Object.values(data.languages || {});
 
     // タイムゾーンと時差を計算
-    // APIは "UTC+09:00" のような形式で返す
-    const timezone = data.timezones[0] || 'UTC';
-    const timeDifference = this.calculateTimeDifference(timezone);
+    let timezone = 'UTC';
+    let timeDifference = '時差情報なし';
+
+    if (data.timezones && data.timezones.length > 0) {
+      if (data.timezones.length === 1) {
+        timezone = data.timezones[0];
+        timeDifference = this.calculateTimeDifference(timezone);
+      } else {
+        // 複数のタイムゾーンがある場合
+        // 例: UTC-05:00, UTC-06:00 ... -> UTC-05:00 〜 UTC-10:00
+        const first = data.timezones[0];
+        const last = data.timezones[data.timezones.length - 1];
+        // APIが返す文字列が長すぎる場合があるため、簡易的に表示
+        timezone = `${first} 〜 ${last}`;
+        timeDifference = '地域により異なる';
+      }
+    }
 
     return {
       currency,

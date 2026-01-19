@@ -26,6 +26,12 @@ const POPULAR_DESTINATIONS = [
   { name: "ニューヨーク", country: "アメリカ" },
   { name: "台北", country: "台湾" },
   { name: "シンガポール", country: "シンガポール" },
+  { name: "ロンドン", country: "イギリス" },
+  { name: "ホノルル", country: "アメリカ" },
+  { name: "ローマ", country: "イタリア" },
+  { name: "シドニー", country: "オーストラリア" },
+  { name: "ロサンゼルス", country: "アメリカ" },
+  { name: "バリ島", country: "インドネシア" },
 ];
 
 /**
@@ -139,7 +145,7 @@ export default function TravelInfoClient() {
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder="どこへ行きますか？（例: パリ、バンコク）"
-                    className="w-full bg-white border border-stone-200 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-sans focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all rounded-full shadow-sm"
+                    className="w-full bg-white border-2 border-stone-300 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-sans focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all rounded-xl shadow-sm"
                     disabled={isNavigating}
                   />
                   <div className="absolute right-6 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none">
@@ -147,7 +153,7 @@ export default function TravelInfoClient() {
                   </div>
                 </div>
 
-                {/* 人気の目的地 - 付箋風 */}
+                {/* 人気の目的地 - 付箋（タグ）風デザイン */}
                 <div className="pt-2">
                   <p className="text-sm text-stone-500 font-sans mb-3 ml-1">
                     人気の目的地から選ぶ:
@@ -159,10 +165,10 @@ export default function TravelInfoClient() {
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
                         className="
-                          px-4 py-2 text-sm sm:text-base font-sans text-stone-600
-                          bg-white border border-stone-200 hover:border-primary/50 hover:text-primary
-                          shadow-sm hover:shadow-md rounded-full
-                          transition-all duration-300
+                          px-4 py-2 text-sm font-bold text-stone-600
+                          bg-white border-l-4 border-stone-300 hover:border-primary
+                          shadow-sm hover:shadow-md hover:-translate-y-0.5
+                          transition-all duration-300 rounded-r-md
                         "
                       >
                         {dest.name}
@@ -207,7 +213,7 @@ export default function TravelInfoClient() {
                   "
                 >
                   <span>
-                    {isNavigating ? "ページをめくっています..." : "検索する"}
+                    {isNavigating ? "検索中..." : "検索する"}
                   </span>
                   {!isNavigating && <ArrowRight className="w-6 h-6" />}
                 </button>

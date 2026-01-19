@@ -20,6 +20,11 @@ import type {
   LocalFoodInfo,
   SouvenirInfo,
   EventsInfo,
+  TechnologyInfo,
+  HealthcareInfo,
+  RestroomsInfo,
+  SmokingInfo,
+  AlcoholInfo,
 } from "@/lib/types/travel-info";
 import { CATEGORY_LABELS } from "@/lib/types/travel-info";
 import InfoSection from "./InfoSection";
@@ -34,6 +39,11 @@ import {
   LocalFoodSection,
   SouvenirSection,
   EventsSection,
+  TechnologySection,
+  HealthcareSection,
+  RestroomsSection,
+  SmokingSection,
+  AlcoholSection,
 } from "./sections";
 import type { TravelInfoDisplayProps, CategoryState } from "./types";
 import { CATEGORY_INFO } from "./types";
@@ -106,7 +116,8 @@ export default function TravelInfoDisplay({
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+      {/* Action Buttons: Side-by-side on mobile, centered */}
+      <div className="flex flex-row items-center justify-center gap-4 mb-4">
         <PDFExportButton
           destination={destination}
           country={country}
@@ -414,6 +425,16 @@ function CategoryContent({
       return <SouvenirSection data={data as SouvenirInfo} />;
     case "events":
       return <EventsSection data={data as EventsInfo} />;
+    case "technology":
+      return <TechnologySection data={data as TechnologyInfo} />;
+    case "healthcare":
+      return <HealthcareSection data={data as HealthcareInfo} />;
+    case "restrooms":
+      return <RestroomsSection data={data as RestroomsInfo} />;
+    case "smoking":
+      return <SmokingSection data={data as SmokingInfo} />;
+    case "alcohol":
+      return <AlcoholSection data={data as AlcoholInfo} />;
     default:
       return null;
   }

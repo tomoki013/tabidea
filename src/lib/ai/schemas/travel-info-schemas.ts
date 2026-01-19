@@ -166,6 +166,43 @@ export const EventsInfoSchema = z.object({
 });
 
 // ============================================
+// 新規カテゴリ用スキーマ
+// ============================================
+
+// technology
+export const TechnologyInfoSchema = z.object({
+  plugs: z.array(z.string()).describe('コンセント形状（例: ["A", "BF"]）'),
+  voltage: z.string().describe('電圧（例: "220V"）'),
+  internet: z.array(z.string()).describe('インターネット・Wi-Fi事情'),
+});
+
+// healthcare
+export const HealthcareInfoSchema = z.object({
+  water: z.string().describe('水道水が飲めるか'),
+  vaccines: z.array(z.string()).describe('推奨される予防接種'),
+  medicalLevel: z.string().describe('医療水準・病院事情'),
+});
+
+// restrooms
+export const RestroomsInfoSchema = z.object({
+  availability: z.string().describe('トイレの清潔度・普及状況'),
+  notes: z.array(z.string()).describe('利用上の注意（有料、紙がない等）'),
+});
+
+// smoking
+export const SmokingInfoSchema = z.object({
+  rules: z.string().describe('喫煙ルール（屋内禁煙、罰金等）'),
+  areas: z.string().describe('喫煙場所の状況'),
+});
+
+// alcohol
+export const AlcoholInfoSchema = z.object({
+  rules: z.string().describe('飲酒ルール（販売時間制限等）'),
+  ageLimit: z.string().describe('年齢制限（例: "20歳以上"）'),
+  notes: z.array(z.string()).describe('補足事項'),
+});
+
+// ============================================
 // ソース情報スキーマ
 // ============================================
 
@@ -244,6 +281,42 @@ export const EventsInfoResponseSchema = z.object({
   lastVerified: z.string(),
 });
 
+// 新規カテゴリのレスポンススキーマ
+export const TechnologyInfoResponseSchema = z.object({
+  content: TechnologyInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const HealthcareInfoResponseSchema = z.object({
+  content: HealthcareInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const RestroomsInfoResponseSchema = z.object({
+  content: RestroomsInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const SmokingInfoResponseSchema = z.object({
+  content: SmokingInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
+export const AlcoholInfoResponseSchema = z.object({
+  content: AlcoholInfoSchema,
+  sources: z.array(ParsedSourceSchema),
+  confidence: z.number().min(0).max(100),
+  lastVerified: z.string(),
+});
+
 // ============================================
 // カテゴリ別スキーママッピング
 // ============================================
@@ -258,6 +331,11 @@ export const CATEGORY_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
   local_food: LocalFoodInfoResponseSchema,
   souvenir: SouvenirInfoResponseSchema,
   events: EventsInfoResponseSchema,
+  technology: TechnologyInfoResponseSchema,
+  healthcare: HealthcareInfoResponseSchema,
+  restrooms: RestroomsInfoResponseSchema,
+  smoking: SmokingInfoResponseSchema,
+  alcohol: AlcoholInfoResponseSchema,
 };
 
 /**
@@ -288,6 +366,12 @@ export type TransportInfo = z.infer<typeof TransportInfoSchema>;
 export type LocalFoodInfo = z.infer<typeof LocalFoodInfoSchema>;
 export type SouvenirInfo = z.infer<typeof SouvenirInfoSchema>;
 export type EventsInfo = z.infer<typeof EventsInfoSchema>;
+export type TechnologyInfo = z.infer<typeof TechnologyInfoSchema>;
+export type HealthcareInfo = z.infer<typeof HealthcareInfoSchema>;
+export type RestroomsInfo = z.infer<typeof RestroomsInfoSchema>;
+export type SmokingInfo = z.infer<typeof SmokingInfoSchema>;
+export type AlcoholInfo = z.infer<typeof AlcoholInfoSchema>;
+
 export type ParsedSource = z.infer<typeof ParsedSourceSchema>;
 
 export type BasicInfoResponse = z.infer<typeof BasicInfoResponseSchema>;
@@ -299,3 +383,8 @@ export type TransportInfoResponse = z.infer<typeof TransportInfoResponseSchema>;
 export type LocalFoodInfoResponse = z.infer<typeof LocalFoodInfoResponseSchema>;
 export type SouvenirInfoResponse = z.infer<typeof SouvenirInfoResponseSchema>;
 export type EventsInfoResponse = z.infer<typeof EventsInfoResponseSchema>;
+export type TechnologyInfoResponse = z.infer<typeof TechnologyInfoResponseSchema>;
+export type HealthcareInfoResponse = z.infer<typeof HealthcareInfoResponseSchema>;
+export type RestroomsInfoResponse = z.infer<typeof RestroomsInfoResponseSchema>;
+export type SmokingInfoResponse = z.infer<typeof SmokingInfoResponseSchema>;
+export type AlcoholInfoResponse = z.infer<typeof AlcoholInfoResponseSchema>;
