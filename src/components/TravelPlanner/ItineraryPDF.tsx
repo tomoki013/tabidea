@@ -8,21 +8,29 @@ import {
 } from "@react-pdf/renderer";
 import { Itinerary } from "@/lib/types";
 
-// Create styles
+const theme = {
+  primary: "#e67e22", // Orange
+  text: "#2c2c2c", // Dark Grey
+  textLight: "#6b7280", // Light Grey
+  bg: "#fcfbf9", // Cream
+  border: "#e5e7eb", // Light Border
+  sectionBg: "#ffffff", // White
+};
+
 const styles = StyleSheet.create({
   page: {
-    padding: 30,
+    padding: 40,
     fontFamily: "Noto Sans JP",
-    fontSize: 10,
-    backgroundColor: "#fcfbf9", // Cream paper background
-    color: "#2c2c2c", // Ink black text
+    fontSize: 9,
+    backgroundColor: theme.bg,
+    color: theme.text,
   },
+  // Header
   header: {
-    marginBottom: 20,
-    paddingBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "#e67e22", // Terracotta
-    borderBottomStyle: "dashed",
+    marginBottom: 25,
+    borderBottomWidth: 2,
+    borderBottomColor: theme.primary,
+    paddingBottom: 15,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
@@ -30,66 +38,71 @@ const styles = StyleSheet.create({
   headerLeft: {
     flex: 1,
   },
+  brandTitle: {
+    fontSize: 10,
+    color: theme.primary,
+    letterSpacing: 2,
+    marginBottom: 8,
+    fontWeight: "bold",
+  },
+  destinationTitle: {
+    fontSize: 32,
+    fontWeight: "bold",
+    color: theme.text,
+    lineHeight: 1,
+  },
   headerRight: {
     alignItems: "flex-end",
   },
-  brandText: {
-    fontSize: 8,
-    color: "#e67e22",
-    marginBottom: 4,
-    letterSpacing: 2,
-    textTransform: "uppercase",
+  dateBox: {
+    backgroundColor: theme.sectionBg,
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: theme.border,
   },
-  destinationBox: {
-    marginTop: 10,
-    padding: 10,
-    borderWidth: 2,
-    borderColor: "#2c2c2c",
-    alignSelf: "flex-start",
-    backgroundColor: "#ffffff",
-  },
-  destination: {
-    fontSize: 24,
-    fontWeight: 700,
-    color: "#2c2c2c",
-  },
-  metaInfo: {
+  dateText: {
     fontSize: 9,
-    color: "#6b7280",
-    marginTop: 4,
+    color: theme.textLight,
   },
-  // Hero Image styles removed
-  description: {
-    fontSize: 10,
-    color: "#4b5563",
-    lineHeight: 1.6,
+
+  // Description
+  descriptionBox: {
     marginBottom: 20,
-    padding: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.5)",
-    borderLeftWidth: 3,
-    borderLeftColor: "#e67e22",
+    padding: 15,
+    backgroundColor: theme.sectionBg,
+    borderRadius: 6,
+    borderWidth: 1,
+    borderColor: theme.border,
+    borderLeftWidth: 4,
+    borderLeftColor: theme.primary,
   },
-  // Timeline Container
+  descriptionText: {
+    fontSize: 10,
+    lineHeight: 1.6,
+    color: theme.text,
+  },
+
+  // Timeline
   timelineContainer: {
     marginTop: 10,
     paddingLeft: 10,
   },
   daySection: {
     marginBottom: 25,
-    position: "relative",
     breakInside: "avoid",
   },
-  // Day Marker (The big circle)
   dayHeader: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 15,
+    marginBottom: 10,
   },
   dayMarker: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: "#e67e22",
+    width: 32,
+    height: 32,
+    borderRadius: 16,
+    backgroundColor: theme.primary,
     justifyContent: "center",
     alignItems: "center",
     marginRight: 10,
@@ -97,104 +110,105 @@ const styles = StyleSheet.create({
   dayNumberText: {
     color: "#ffffff",
     fontSize: 12,
-    fontWeight: 700,
+    fontWeight: "bold",
   },
   dayTitleContainer: {
     flex: 1,
     borderBottomWidth: 1,
-    borderBottomColor: "#e5e7eb",
+    borderBottomColor: theme.border,
     paddingBottom: 5,
+    justifyContent: "center",
   },
   dayTitle: {
     fontSize: 12,
-    fontWeight: 700,
-    color: "#2c2c2c",
+    fontWeight: "bold",
+    color: theme.text,
   },
-  // Activity List
+
+  // Activities
   activitiesContainer: {
-    marginLeft: 15, // Align with center of Day Marker (15px)
+    marginLeft: 16, // Center of 32px marker
     borderLeftWidth: 1,
-    borderLeftColor: "#e67e22", // Line color
+    borderLeftColor: theme.primary,
     borderLeftStyle: "dashed",
     paddingLeft: 20,
     paddingBottom: 10,
   },
   activity: {
-    marginBottom: 15,
+    marginBottom: 12,
     position: "relative",
   },
-  // The dot on the timeline
   timelineDot: {
     position: "absolute",
     left: -24, // -20 padding + -4 center alignment
-    top: 2,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: "#ffffff",
+    top: 3,
+    width: 7,
+    height: 7,
+    borderRadius: 3.5,
+    backgroundColor: theme.sectionBg,
     borderWidth: 2,
-    borderColor: "#e67e22",
+    borderColor: theme.primary,
   },
   activityHeader: {
     flexDirection: "row",
     alignItems: "baseline",
-    marginBottom: 4,
+    marginBottom: 2,
   },
   activityTime: {
     fontSize: 9,
     fontFamily: "Noto Sans JP",
-    fontWeight: 700,
-    color: "#e67e22",
+    fontWeight: "bold",
+    color: theme.primary,
     width: 35,
     marginRight: 5,
   },
   activityTitle: {
-    fontSize: 11,
-    fontWeight: 700,
-    color: "#2c2c2c",
+    fontSize: 10,
+    fontWeight: "bold",
+    color: theme.text,
     flex: 1,
   },
   activityDescription: {
     fontSize: 9,
-    color: "#666666",
-    lineHeight: 1.5,
+    color: theme.textLight,
+    lineHeight: 1.4,
     marginTop: 2,
-    paddingLeft: 40, // Align with title
+    paddingLeft: 40,
   },
+
   // Footer
   footer: {
     position: "absolute",
     bottom: 20,
-    left: 30,
-    right: 30,
+    left: 40,
+    right: 40,
+    borderTopWidth: 1,
+    borderTopColor: theme.border,
+    paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
-    borderTopWidth: 1,
-    borderTopColor: "#e5e7eb",
-    paddingTop: 10,
   },
   footerText: {
     fontSize: 8,
-    color: "#9ca3af",
+    color: theme.textLight,
   },
-  footerBrand: {
-    fontSize: 8,
-    color: "#e67e22",
-    fontWeight: 700,
-  },
+
+  // Memo
   memoSection: {
     marginTop: 20,
     padding: 15,
     borderWidth: 1,
-    borderColor: "#e5e7eb",
+    borderColor: theme.border,
     borderStyle: "dashed",
-    backgroundColor: "#ffffff",
+    backgroundColor: theme.sectionBg,
     borderRadius: 4,
+    minHeight: 100,
   },
   memoTitle: {
-    fontSize: 10,
-    color: "#9ca3af",
-    marginBottom: 30, // Space for writing
+    fontSize: 9,
+    fontWeight: "bold",
+    color: theme.textLight,
+    marginBottom: 5,
   },
 });
 
@@ -203,31 +217,31 @@ interface ItineraryPDFProps {
 }
 
 const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
-  // Hero image support removed per request
-
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Text style={styles.brandText}>TRAVEL PLAN</Text>
-            <View style={styles.destinationBox}>
-              <Text style={styles.destination}>{itinerary.destination}</Text>
-            </View>
-            <Text style={styles.metaInfo}>
-              {itinerary.days.length} Days Trip
-            </Text>
+            <Text style={styles.brandTitle}>TRAVEL PLAN</Text>
+            <Text style={styles.destinationTitle}>{itinerary.destination}</Text>
           </View>
           <View style={styles.headerRight}>
-             {/* Date placeholder or creation date */}
-            <Text style={styles.metaInfo}>{new Date().toLocaleDateString('ja-JP')}</Text>
+             <View style={styles.dateBox}>
+                <Text style={styles.dateText}>
+                   作成日: {new Date().toLocaleDateString('ja-JP')}
+                </Text>
+                <Text style={[styles.dateText, { marginTop: 2 }]}>
+                   {itinerary.days.length} Days Trip
+                </Text>
+             </View>
           </View>
         </View>
 
-        {/* Hero Image section removed */}
-
-        <Text style={styles.description}>{itinerary.description}</Text>
+        {/* Description */}
+        <View style={styles.descriptionBox}>
+           <Text style={styles.descriptionText}>{itinerary.description}</Text>
+        </View>
 
         {/* Itinerary Days */}
         <View style={styles.timelineContainer}>
@@ -264,7 +278,7 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
           ))}
         </View>
 
-        {/* Memo Section for last page or after itinerary */}
+        {/* Memo Section */}
         <View style={styles.memoSection}>
            <Text style={styles.memoTitle}>MEMO</Text>
         </View>
@@ -274,7 +288,7 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
           <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
             `${pageNumber} / ${totalPages}`
           } />
-          <Text style={styles.footerBrand}>Powered by Tabidea</Text>
+          <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
         </View>
       </Page>
     </Document>

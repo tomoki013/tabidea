@@ -95,8 +95,6 @@ export default function AboutSection() {
                 <p className="text-sm text-stone-500 font-hand leading-loose">
                   Tabideaは、あなたの「行きたい」という想いを形にします。
                   <br />
-                  AIっぽさを感じさせない、
-                  <br />
                   温かみのあるサポートを目指して。
                 </p>
                 <div className="w-full h-px bg-stone-200 my-2"></div>

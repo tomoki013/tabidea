@@ -31,6 +31,11 @@ const parseDisplayFormat = (str: string): "days" | "nights" => {
 const isDateUndecidedCheck = (str:string) => !/(\d{4}-\d{2}-\d{2})/.test(str);
 const isDurationUndecidedCheck = (str: string) => !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
 
+const getTomorrow = () => {
+  const d = new Date();
+  d.setDate(d.getDate() + 1);
+  return d.toISOString().split('T')[0];
+};
 
 export default function StepDates({ input, onChange }: StepDatesProps) {
   // --- STATE DERIVATION ---
@@ -79,11 +84,16 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
   };
 
   const handleDateUndecidedToggle = (checked: boolean) => {
-    const newDates = formatDatesString(startDate, duration, displayFormat, checked, isDurationUndecided);
+    // If unchecking (deciding the date), set a default date (tomorrow) if none exists
+    const newDate = !checked && !startDate ? getTomorrow() : startDate;
+    const newDates = formatDatesString(newDate, duration, displayFormat, checked, isDurationUndecided);
     onChange({ dates: newDates });
   };
 
   const handleDurationUndecidedToggle = (checked: boolean) => {
+    // If unchecking (deciding the duration), set a default duration (e.g., 3 days) if logic implies it
+    // Actually, duration parsing defaults to 3 if not found, so 'duration' variable is already 3.
+    // Just need to ensure formatDatesString uses it correctly.
     const newDates = formatDatesString(startDate, duration, displayFormat, isDateUndecided, checked);
     onChange({ dates: newDates });
   };

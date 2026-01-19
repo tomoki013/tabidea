@@ -26,14 +26,14 @@ const yomogi = Yomogi({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tabidea - Powered by ともきちの旅行日記",
+    default: "Tabidea - AI Travel Planner",
     template: "%s - Tabidea",
   },
   description:
     "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
   authors: [{ name: "ともきち" }],
   openGraph: {
-    title: "Tabidea - Powered by ともきちの旅行日記",
+    title: "Tabidea - AI Travel Planner",
     description:
       "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。",
     url: "https://ai.tomokichidiary.com/",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Tabidea - Powered by ともきちの旅行日記",
+    title: "Tabidea - AI Travel Planner",
     description:
       "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
     images: ["/icon.png"],
