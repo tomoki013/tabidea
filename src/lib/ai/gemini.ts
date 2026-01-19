@@ -207,10 +207,14 @@ ${prompt}`;
 
       Rules:
       1. If destination is NOT specified, choose the BEST destination based on User Request.
-      2. Plan the route for ALL days.
-      3. For each day, list the "highlight_areas" (e.g. ["Asakusa", "Sky Tree"]).
-      4. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
-      5. Return JSON only.
+      2. CRITICAL: Respect the requested "Region".
+         - If Region is "Japan (Domestic)", choose a destination IN JAPAN.
+         - If Region is "Overseas (International)", choose a destination OUTSIDE JAPAN. Do NOT choose Tokyo, Osaka, etc.
+         - If Region is "Anywhere", choose based on Vibe.
+      3. Plan the route for ALL days.
+      4. For each day, list the "highlight_areas" (e.g. ["Asakusa", "Sky Tree"]).
+      5. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
+      6. Return JSON only.
 
       JSON:
       {

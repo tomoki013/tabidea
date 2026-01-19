@@ -54,12 +54,19 @@ export default function UsageGuideHero() {
               ))}
             </div>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row gap-6">
               <Link
                 href="/usage"
                 className="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-primary/30 hover:border-primary transition-colors pb-0.5 group"
               >
                 <span>詳しい使い方を見る</span>
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="/travel-info"
+                className="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-primary/30 hover:border-primary transition-colors pb-0.5 group"
+              >
+                <span>渡航情報・安全ガイドはこちら</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>

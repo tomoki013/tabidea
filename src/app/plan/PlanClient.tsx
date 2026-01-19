@@ -126,15 +126,10 @@ function PlanContent() {
           // Close modal if URL changes (regeneration complete)
           setIsEditingRequest(false);
 
-          // Scroll to itinerary top only after regeneration (not on initial load)
+          // Scroll to page top after regeneration
           if (!isInitialLoad.current && previousStatus.current === "regenerating") {
             setTimeout(() => {
-              const itinerarySection = document.querySelector(
-                '[data-itinerary-section]'
-              );
-              if (itinerarySection) {
-                itinerarySection.scrollIntoView({ behavior: "smooth", block: "start" });
-              }
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }, 100);
           }
 
@@ -291,6 +286,8 @@ function PlanContent() {
 }
 
 export default function PlanClient() {
+  const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
@@ -320,18 +317,26 @@ export default function PlanClient() {
         {/* Call to Action - Create New Plan */}
         {/* This button allows users to start a fresh planning session easily */}
         <div className="w-full flex justify-center pb-16 pt-8">
-          <Link
-            href="/"
+          <button
+            onClick={() => setIsNewPlanModalOpen(true)}
             className="group relative inline-flex items-center justify-center px-8 py-4 font-bold text-white transition-all duration-200 bg-primary font-serif rounded-full hover:bg-primary/90 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary overflow-hidden"
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             <FaPlus className="mr-2 relative z-10" />
             <span className="relative z-10">新しいプランを作る</span>
-          </Link>
+          </button>
         </div>
 
         <ExampleSection />
         <FAQSection limit={5} />
+
+        {/* New Plan Modal */}
+        <PlanModal
+          isOpen={isNewPlanModalOpen}
+          onClose={() => setIsNewPlanModalOpen(false)}
+          initialInput={null}
+          initialStep={0}
+        />
       </main>
     </div>
   );

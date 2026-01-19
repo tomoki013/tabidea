@@ -76,7 +76,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       `;
     } else {
       prompt = `
-        Region: ${input.region === "domestic" ? "Japan" : input.region === "overseas" ? "Overseas" : "Anywhere"}
+        Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International - NOT Japan)" : "Anywhere"}
         Vibe: ${input.travelVibe || "None"}
         Dates: ${input.dates}
         Total Days: ${totalDays}

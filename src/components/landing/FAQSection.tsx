@@ -23,7 +23,7 @@ export default function FAQSection({ limit }: FAQSectionProps) {
             {limit ? "よくある質問" : "よくある質問（すべて）"}
           </h2>
           <p className="text-stone-600 leading-relaxed font-hand text-lg max-w-2xl mx-auto">
-            Tabideaは、Google Geminiを活用して、あなたの理想の旅行プランを提案するサービスです。<br />
+            Tabideaは、AIを活用して、あなたの理想の旅行プランを提案するサービスです。<br />
             旅のワクワク感を大切にし、手書きの旅行日記のような温かみのあるデザインを目指しました。
           </p>
         </div>
