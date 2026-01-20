@@ -12,50 +12,6 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
- ✓ Ready in 1154ms
+ ✓ Ready in 1556ms
  ○ Compiling /travel-info ...
- GET /travel-info 200 in 17.4s (compile: 15.9s, render: 1530ms)
- GET /travel-info/Tokyo?categories=basic%2Csafety 200 in 4.2s (compile: 4.1s, render: 79ms)
-[2026-01-16T08:35:18.012Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768552518012_1tu959",
-  "destination": "Tokyo",
-  "category": "basic"
-}
-[2026-01-16T08:35:18.016Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768552518012_1tu959'
-}
- POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 209ms (compile: 39ms, render: 170ms)
-[2026-01-16T08:35:18.047Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768552518047_as781x",
-  "destination": "Tokyo",
-  "category": "safety"
-}
-[2026-01-16T08:35:18.048Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1768552518047_as781x'
-}
- POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 25ms (compile: 6ms, render: 18ms)
-[2026-01-16T08:35:18.225Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1768552518225_ipgfri",
-  "destination": "Tokyo",
-  "category": "basic"
-}
-[2026-01-16T08:35:18.225Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1768552518225_ipgfri'
-}
- POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 65ms (compile: 45ms, render: 20ms)
-[2026-01-16T08:35:18.293Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1768552518293_rsg8sp",
-  "destination": "Tokyo",
-  "category": "safety"
-}
-[2026-01-16T08:35:18.293Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1768552518293_rsg8sp'
-}
- POST /travel-info/Tokyo?categories=basic%2Csafety 200 in 37ms (compile: 5ms, render: 32ms)
- HEAD / 200 in 1513ms (compile: 1404ms, render: 109ms)
- GET /travel-info 200 in 175ms (compile: 8ms, render: 167ms)
-[?25h
+ GET /travel-info 200 in 13.2s (compile: 11.6s, render: 1649ms)

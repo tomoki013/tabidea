@@ -338,6 +338,8 @@ export interface TechnologyInfo {
   voltage: string;
   /** インターネット・Wi-Fi事情 */
   internet: string[];
+  /** SIMカード事情（オプション） */
+  sim?: string;
 }
 
 /**
@@ -370,6 +372,8 @@ export interface SmokingInfo {
   rules: string;
   /** 喫煙場所の状況 */
   areas: string;
+  /** 罰金情報（オプション） */
+  fines?: string;
 }
 
 /**
