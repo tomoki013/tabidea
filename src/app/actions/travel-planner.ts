@@ -61,12 +61,13 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     // 2. Prepare Prompt
     let prompt = "";
     const totalDays = extractDuration(input.dates);
+    const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
 
     if (input.isDestinationDecided) {
       prompt = `
         Destination: ${input.destination}
         Dates: ${input.dates}
-        Total Days: ${totalDays}
+        Total Days: ${durationPrompt}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
         Budget: ${input.budget}
@@ -79,7 +80,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International - NOT Japan)" : "Anywhere"}
         Vibe: ${input.travelVibe || "None"}
         Dates: ${input.dates}
-        Total Days: ${totalDays}
+        Total Days: ${durationPrompt}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
         Budget: ${input.budget}

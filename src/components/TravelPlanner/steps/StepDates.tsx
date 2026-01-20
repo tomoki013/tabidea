@@ -148,7 +148,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                 onChange={(e) => handleDateChange(e.target.value)}
                 disabled={isDateUndecided}
                 className={`w-full bg-stone-50 border border-stone-300 rounded-md px-4 py-4 text-foreground text-xl font-bold focus:outline-hidden focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all cursor-pointer ${
-                    isDateUndecided ? "opacity-50 cursor-not-allowed bg-stone-100 text-stone-400" : "text-stone-800"
+                    isDateUndecided ? "opacity-80 cursor-not-allowed bg-stone-100 text-stone-500" : "text-stone-800"
                 }`}
             />
         </div>
@@ -174,7 +174,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
             </div>
 
             {/* Display Format Toggle */}
-            <div className={`flex justify-center gap-1 transition-all duration-300 ${isDurationUndecided ? "opacity-40 pointer-events-none" : ""}`}>
+            <div className={`flex justify-center gap-1 transition-all duration-300 ${isDurationUndecided ? "opacity-60 pointer-events-none" : ""}`}>
                 <button
                     onClick={() => handleDisplayFormatChange("days")}
                     className={`px-3 py-1.5 text-xs font-bold rounded-l-md border transition-all ${
@@ -197,7 +197,7 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
                 </button>
             </div>
 
-            <div className={`flex items-center gap-4 transition-all duration-300 ${isDurationUndecided ? "opacity-40 pointer-events-none grayscale" : ""}`}>
+            <div className={`flex items-center gap-4 transition-all duration-300 ${isDurationUndecided ? "opacity-60 pointer-events-none grayscale" : ""}`}>
                 <button
                     onClick={() => handleDurationChange(-1)}
                     disabled={duration <= 1 || isDurationUndecided}

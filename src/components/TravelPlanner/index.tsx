@@ -43,7 +43,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
       destination: "",
       isDestinationDecided: undefined,
       region: "",
-      dates: "",
+      dates: "時期は未定",
       companions: "",
       theme: [],
       budget: "",
@@ -237,7 +237,12 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
       }
 
       // Step 2: Parallel Chunk Generation
-      const totalDays = extractDuration(updatedInput.dates);
+      let totalDays = extractDuration(updatedInput.dates);
+
+      // If duration is 0 (undecided), fallback to the AI-generated outline duration
+      if (totalDays === 0 && outline.days.length > 0) {
+        totalDays = outline.days.length;
+      }
 
       // If duration is > 1 day, we split. Otherwise just use the outline days (or single chunk)
       // The shared logic handles splits.

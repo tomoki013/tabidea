@@ -30,6 +30,11 @@ export const SOURCE_PRIORITY: Record<TravelInfoCategory, SourceType[]> = {
   local_food: ['web_search', 'ai_generated', 'blog'],
   souvenir: ['web_search', 'ai_generated', 'blog'],
   events: ['official_api', 'web_search', 'ai_generated'],
+  technology: ['web_search', 'ai_generated', 'blog'],
+  healthcare: ['official_api', 'web_search', 'ai_generated'],
+  restrooms: ['web_search', 'ai_generated', 'blog'],
+  smoking: ['official_api', 'web_search', 'ai_generated'],
+  alcohol: ['official_api', 'web_search', 'ai_generated'],
 };
 
 /**
