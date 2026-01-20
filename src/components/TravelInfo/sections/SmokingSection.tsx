@@ -34,6 +34,19 @@ export default function SmokingSection({ data }: SectionBaseProps<SmokingInfo>) 
           <p className="text-stone-700 leading-relaxed">{data.areas}</p>
         </div>
       </div>
+
+      {/* 罰金情報 */}
+      {data.fines && (
+        <div className="space-y-3">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+            <AlertCircle className="w-5 h-5 text-red-500" />
+            違反時の罰金
+          </h4>
+          <div className="p-5 bg-red-50 border border-red-100 rounded-xl shadow-sm">
+            <p className="text-stone-800 leading-relaxed font-medium">{data.fines}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

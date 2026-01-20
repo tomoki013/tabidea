@@ -205,7 +205,8 @@ const JSON_SCHEMAS: Record<TravelInfoCategory, string> = {
   technology: `{
   "plugs": ["string (コンセント形状、例: A, BF)"],
   "voltage": "string (電圧、例: 220V)",
-  "internet": ["string (インターネット・Wi-Fi事情)"]
+  "internet": ["string (インターネット・Wi-Fi事情)"],
+  "sim": "string (SIMカード事情)"
 }`,
 
   healthcare: `{
@@ -221,7 +222,8 @@ const JSON_SCHEMAS: Record<TravelInfoCategory, string> = {
 
   smoking: `{
   "rules": "string (喫煙ルール)",
-  "areas": "string (喫煙場所の状況)"
+  "areas": "string (喫煙場所の状況)",
+  "fines": "string (罰金情報)"
 }`,
 
   alcohol: `{
@@ -660,12 +662,13 @@ ${SOURCE_PRIORITY_INSTRUCTION}`;
  */
 function generateTechnologyPrompt(destination: string, country: string): string {
   return `あなたは海外の通信・電源事情に詳しい専門家です。
-${destination}（${country}）のコンセントやインターネット事情について情報を提供してください。
+${destination}（${country}）のコンセント、Wi-Fi、SIMカード事情について調査し、情報を提供してください。
 
 【必須情報】
 - コンセント形状（プラグタイプ）
 - 電圧
-- Wi-Fi・SIMなどのインターネット接続環境
+- Wi-Fi環境（無料Wi-Fiの普及状況など）
+- SIMカード事情（空港での購入、eSIMの利用可否など）
 
 【出力形式】
 以下のJSON形式で回答してください：
@@ -696,12 +699,12 @@ ${SOURCE_PRIORITY_INSTRUCTION}`;
  */
 function generateHealthcarePrompt(destination: string, country: string): string {
   return `あなたは海外の医療・衛生事情に詳しい専門家です。
-${destination}（${country}）の衛生状態や医療事情について情報を提供してください。
+${destination}（${country}）の水、ワクチン、医療事情について調査し、情報を提供してください。
 
 【必須情報】
-- 水道水が飲めるかどうか
+- 水道水が飲めるかどうか（飲料水についての注意）
 - 推奨される予防接種
-- 現地の医療水準
+- 現地の医療水準・病院事情（日本語対応の可否など）
 
 【出力形式】
 以下のJSON形式で回答してください：
@@ -728,11 +731,11 @@ ${SOURCE_PRIORITY_INSTRUCTION}`;
  */
 function generateRestroomsPrompt(destination: string, country: string): string {
   return `あなたは海外の公衆衛生事情に詳しい専門家です。
-${destination}（${country}）のトイレ事情について情報を提供してください。
+${destination}（${country}）のトイレ事情（清潔度・利用時の注意）について調査し、情報を提供してください。
 
 【必須情報】
-- 公衆トイレの普及状況と清潔度
-- 利用時の注意点（有料か、紙があるかなど）
+- トイレの清潔度・普及状況
+- 利用時の注意点（紙を流せるか、有料か、紙の備え付けがあるかなど）
 
 【出力形式】
 以下のJSON形式で回答してください：
@@ -762,11 +765,12 @@ ${SOURCE_PRIORITY_INSTRUCTION}`;
  */
 function generateSmokingPrompt(destination: string, country: string): string {
   return `あなたは海外の喫煙ルールに詳しい専門家です。
-${destination}（${country}）の喫煙事情について情報を提供してください。
+${destination}（${country}）の喫煙場所や罰金について調査し、情報を提供してください。
 
 【必須情報】
 - 喫煙ルール（屋内・屋外の規制）
 - 喫煙場所の状況
+- 違反時の罰金や罰則について
 
 【出力形式】
 以下のJSON形式で回答してください：
@@ -792,12 +796,12 @@ ${SOURCE_PRIORITY_INSTRUCTION}`;
  */
 function generateAlcoholPrompt(destination: string, country: string): string {
   return `あなたは海外のアルコール事情に詳しい専門家です。
-${destination}（${country}）の飲酒に関するルールや事情について情報を提供してください。
+${destination}（${country}）の飲酒ルール（年齢制限・販売規制）について調査し、情報を提供してください。
 
 【必須情報】
-- 飲酒・販売に関するルール（時間規制、場所など）
+- 飲酒・販売に関するルール（販売時間の規制、販売場所の制限など）
 - 飲酒可能な年齢
-- その他注意点
+- 公共の場所での飲酒規制
 
 【出力形式】
 以下のJSON形式で回答してください：
@@ -1492,7 +1496,8 @@ function normalizeTechnologyInfo(data: Record<string, unknown>): TechnologyInfo 
     voltage: typeof data.voltage === 'string' ? data.voltage : '不明',
     internet: Array.isArray(data.internet)
       ? data.internet.filter((i): i is string => typeof i === 'string')
-      : []
+      : [],
+    sim: typeof data.sim === 'string' ? data.sim : undefined
   };
 }
 
@@ -1518,7 +1523,8 @@ function normalizeRestroomsInfo(data: Record<string, unknown>): RestroomsInfo {
 function normalizeSmokingInfo(data: Record<string, unknown>): SmokingInfo {
   return {
     rules: typeof data.rules === 'string' ? data.rules : '不明',
-    areas: typeof data.areas === 'string' ? data.areas : '不明'
+    areas: typeof data.areas === 'string' ? data.areas : '不明',
+    fines: typeof data.fines === 'string' ? data.fines : undefined
   };
 }
 

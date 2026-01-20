@@ -12,15 +12,6 @@ This information is used to shape Next.js' roadmap and prioritize features.
 You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
 https://nextjs.org/telemetry
 
- ✓ Ready in 1170ms
- ○ Compiling /about ...
- GET /about 200 in 9.9s (compile: 8.6s, render: 1242ms)
- GET /faq 200 in 1880ms (compile: 1624ms, render: 256ms)
- GET / 200 in 1620ms (compile: 1255ms, render: 365ms)
- GET / 200 in 195ms (compile: 8ms, render: 188ms)
- GET / 200 in 188ms (compile: 7ms, render: 180ms)
- GET /travel-planner 404 in 1717ms (compile: 1481ms, render: 236ms)
- GET /travel-planner 404 in 162ms (compile: 9ms, render: 153ms)
- HEAD /travel-planner 404 in 84ms (compile: 11ms, render: 74ms)
- GET / 200 in 165ms (compile: 8ms, render: 156ms)
- GET / 200 in 217ms (compile: 7ms, render: 210ms)
+ ✓ Ready in 1556ms
+ ○ Compiling /travel-info ...
+ GET /travel-info 200 in 13.2s (compile: 11.6s, render: 1649ms)
