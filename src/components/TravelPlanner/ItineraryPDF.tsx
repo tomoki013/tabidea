@@ -6,7 +6,7 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
-import { Itinerary } from "@/lib/types";
+import { Itinerary } from '@/types';
 
 const theme = {
   primary: "#e67e22", // Orange

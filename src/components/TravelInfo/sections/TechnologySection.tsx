@@ -1,7 +1,7 @@
 'use client';
 
 import { Zap, Wifi, Smartphone, Plug } from 'lucide-react';
-import type { TechnologyInfo } from '@/lib/types/travel-info';
+import type { TechnologyInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

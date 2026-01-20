@@ -8,7 +8,7 @@ import {
   TrendingUp,
   TrendingDown,
 } from 'lucide-react';
-import type { BasicCountryInfo } from '@/lib/types/travel-info';
+import type { BasicCountryInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

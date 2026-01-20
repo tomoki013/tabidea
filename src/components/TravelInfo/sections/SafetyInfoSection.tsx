@@ -13,8 +13,8 @@ import {
   Bot,
   MapPinned,
 } from 'lucide-react';
-import type { SafetyInfo, DangerLevel, HighRiskRegion } from '@/lib/types/travel-info';
-import { DANGER_LEVEL_DESCRIPTIONS } from '@/lib/types/travel-info';
+import type { SafetyInfo, DangerLevel, HighRiskRegion } from '@/types';
+import { DANGER_LEVEL_DESCRIPTIONS } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

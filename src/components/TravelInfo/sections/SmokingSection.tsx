@@ -1,7 +1,7 @@
 'use client';
 
 import { Cigarette, MapPin, AlertCircle } from 'lucide-react';
-import type { SmokingInfo } from '@/lib/types/travel-info';
+import type { SmokingInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

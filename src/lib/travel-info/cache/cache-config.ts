@@ -3,7 +3,7 @@
  * カテゴリ別のTTL設定と為替レート用の設定
  */
 
-import { TravelInfoCategory } from '@/lib/types/travel-info';
+import { TravelInfoCategory } from '@/types';
 
 // ============================================
 // カテゴリ別TTL設定（ミリ秒）

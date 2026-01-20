@@ -12,7 +12,7 @@ import {
   TravelInfoSource,
   CurrentWeather,
   WeatherForecast,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import {
   ITravelInfoSource,

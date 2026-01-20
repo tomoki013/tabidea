@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Itinerary } from "@/lib/types";
+import { Itinerary } from '@/types';
 import { generatePdfFilename, downloadBlob } from "@/lib/pdfUtils";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 import PDFPreviewModal from "./PDFPreviewModal";

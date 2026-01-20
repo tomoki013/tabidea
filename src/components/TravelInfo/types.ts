@@ -7,7 +7,7 @@ import type {
   TravelInfoCategory,
   CategoryDataEntry,
   TravelInfoSource,
-} from "@/lib/types/travel-info";
+} from '@/types';
 
 export type { TravelInfoCategory, CategoryDataEntry };
 

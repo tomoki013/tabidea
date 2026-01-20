@@ -1,7 +1,7 @@
 'use client';
 
 import { Utensils, Info } from 'lucide-react';
-import type { LocalFoodInfo } from '@/lib/types/travel-info';
+import type { LocalFoodInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

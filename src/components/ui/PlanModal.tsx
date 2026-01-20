@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import TravelPlanner from "@/components/TravelPlanner";
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 
 interface PlanModalProps {
   isOpen: boolean;

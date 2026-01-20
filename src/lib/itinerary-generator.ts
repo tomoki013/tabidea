@@ -8,7 +8,7 @@ import { GeminiService } from "./ai/gemini";
 import { PineconeRetriever } from "./rag/pinecone-retriever";
 import { getUnsplashImage } from "./unsplash";
 import { extractDuration, splitDaysIntoChunks } from "./planUtils";
-import { Itinerary, DayPlan, UserInput, Article } from "./types";
+import { Itinerary, DayPlan, UserInput, Article } from "@/types";
 
 export interface ItineraryGenerationOptions {
   /** RAG検索で取得する記事の数 */

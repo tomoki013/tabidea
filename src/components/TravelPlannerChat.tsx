@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { useChat } from "ai/react";
-import { Itinerary } from "@/lib/types";
+import { Itinerary } from '@/types';
 
 export default function TravelPlannerChat({
   itinerary,

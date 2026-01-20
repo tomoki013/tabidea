@@ -1,7 +1,7 @@
 'use client';
 
 import { Calendar, Star } from 'lucide-react';
-import type { EventsInfo } from '@/lib/types/travel-info';
+import type { EventsInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

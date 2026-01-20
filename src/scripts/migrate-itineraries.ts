@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
-import { Itinerary } from "../lib/types";
+import { Itinerary } from "@/types";
 
 const jsonPath = path.join(__dirname, "../data/sample-itineraries.json");
 const outputDir = path.join(__dirname, "../data/itineraries");

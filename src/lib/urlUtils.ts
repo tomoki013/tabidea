@@ -1,6 +1,6 @@
 import pako from "pako";
 import LZString from "lz-string";
-import { UserInput, Itinerary, Reference } from "./types";
+import { UserInput, Itinerary, Reference } from "@/types";
 
 // Minified structures for URL compression
 interface MinifiedInput {

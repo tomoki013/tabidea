@@ -11,7 +11,7 @@ import {
   SourceType,
   CategoryDataMap,
   AnyCategoryData,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 // ============================================
 // ソースオプション

@@ -12,7 +12,7 @@ config({ path: path.resolve(process.cwd(), ".env.local") });
 
 import { generateItinerary } from "../lib/itinerary-generator";
 import { samplePlans } from "../lib/sample-plans";
-import { Itinerary, UserInput } from "../lib/types";
+import { Itinerary, UserInput } from "@/types";
 import * as fs from "fs";
 
 async function generateItineraryForSample(

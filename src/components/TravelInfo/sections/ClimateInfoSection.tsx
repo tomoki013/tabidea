@@ -11,7 +11,7 @@ import {
   Thermometer,
   Shirt,
 } from 'lucide-react';
-import type { ClimateInfo, WeatherForecast } from '@/lib/types/travel-info';
+import type { ClimateInfo, WeatherForecast } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

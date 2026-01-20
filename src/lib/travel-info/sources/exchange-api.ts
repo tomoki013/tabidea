@@ -12,7 +12,7 @@ import {
   BasicCountryInfo,
   Currency,
   ExchangeRate,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import {
   ITravelInfoSource,

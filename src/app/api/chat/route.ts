@@ -1,6 +1,6 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { streamText, type Message } from "ai";
-import { Itinerary } from "@/lib/types";
+import { Itinerary } from '@/types';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;

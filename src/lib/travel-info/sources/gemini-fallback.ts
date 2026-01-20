@@ -13,7 +13,7 @@ import {
   TravelInfoSource,
   AnyCategoryData,
   CATEGORY_LABELS,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import {
   ITravelInfoSource,

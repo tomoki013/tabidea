@@ -8,7 +8,7 @@ import {
   XCircle,
   AlertTriangle,
 } from 'lucide-react';
-import type { MannerInfo } from '@/lib/types/travel-info';
+import type { MannerInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

@@ -1,6 +1,6 @@
 "use client";
 
-import { Itinerary, UserInput } from "@/lib/types";
+import { Itinerary, UserInput } from '@/types';
 import Image from "next/image";
 import TravelPlannerChat from "../TravelPlannerChat";
 import ShareButtons from "../ShareButtons";

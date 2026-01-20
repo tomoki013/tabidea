@@ -10,7 +10,7 @@ import {
   XCircle,
   AlertTriangle,
 } from 'lucide-react';
-import type { TransportInfo } from '@/lib/types/travel-info';
+import type { TransportInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

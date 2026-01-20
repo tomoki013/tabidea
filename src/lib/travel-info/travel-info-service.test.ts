@@ -15,7 +15,7 @@ import {
   ITravelInfoSource,
   SourceResult,
 } from './interfaces';
-import { TravelInfoCategory, SafetyInfo, ClimateInfo, AnyCategoryData } from '@/lib/types/travel-info';
+import { TravelInfoCategory, SafetyInfo, ClimateInfo, AnyCategoryData } from '@/types';
 
 // モックソースの作成
 function createMockSource(

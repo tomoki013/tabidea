@@ -1,4 +1,4 @@
-import type { Itinerary } from "@/lib/types";
+import type { Itinerary } from '@/types';
 
 /**
  * Generate a PDF blob from an itinerary using @react-pdf/renderer

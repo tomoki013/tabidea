@@ -13,7 +13,7 @@ import {
   CacheOptions,
 } from '../interfaces';
 
-import { TravelInfoCategory } from '@/lib/types/travel-info';
+import { TravelInfoCategory } from '@/types';
 
 import {
   CacheStats,

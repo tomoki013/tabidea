@@ -11,7 +11,7 @@ import ExampleSection from "@/components/landing/ExampleSection";
 import TravelInfoSection from "@/components/landing/TravelInfoSection";
 import FAQSection from "@/components/landing/FAQSection";
 import { getSamplePlanById } from "@/lib/sample-plans";
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 
 interface HomeProps {
   searchParams: Promise<{ sample?: string }>;

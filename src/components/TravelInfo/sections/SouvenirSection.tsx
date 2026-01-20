@@ -1,7 +1,7 @@
 'use client';
 
 import { ShoppingBag, MapPin, Tag } from 'lucide-react';
-import type { SouvenirInfo } from '@/lib/types/travel-info';
+import type { SouvenirInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

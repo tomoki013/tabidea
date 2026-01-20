@@ -9,8 +9,8 @@ import type {
   TravelInfoCategory,
   CategoryDataEntry,
   TravelInfoSource,
-} from "@/lib/types/travel-info";
-import { CATEGORY_LABELS } from "@/lib/types/travel-info";
+} from '@/types';
+import { CATEGORY_LABELS } from '@/types';
 import { getSingleCategoryInfo } from "@/app/actions/travel-info";
 import { encodeTravelInfoUrl } from "@/lib/travelInfoUrlUtils";
 import {

@@ -25,8 +25,8 @@ import type {
   RestroomsInfo,
   SmokingInfo,
   AlcoholInfo,
-} from "@/lib/types/travel-info";
-import { CATEGORY_LABELS } from "@/lib/types/travel-info";
+} from '@/types';
+import { CATEGORY_LABELS } from '@/types';
 import InfoSection from "./InfoSection";
 import LoadingState from "./LoadingState";
 import {

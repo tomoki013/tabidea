@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { UserInput, Itinerary, DayPlan } from "@/lib/types";
+import { UserInput, Itinerary, DayPlan } from '@/types';
 import { encodePlanData } from "@/lib/urlUtils";
 import { generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils"; // Use the shared helper

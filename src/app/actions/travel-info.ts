@@ -11,7 +11,7 @@ import type {
   TravelInfoCategory,
   TravelInfoResponse,
   CategoryDataEntry,
-} from '@/lib/types/travel-info';
+} from '@/types';
 import {
   getTravelInfo as _getTravelInfo,
   getSingleCategoryInfo as _getSingleCategoryInfo,

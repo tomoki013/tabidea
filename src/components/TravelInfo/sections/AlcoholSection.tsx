@@ -1,7 +1,7 @@
 'use client';
 
 import { Wine, Calendar, AlertCircle, Info } from 'lucide-react';
-import type { AlcoholInfo } from '@/lib/types/travel-info';
+import type { AlcoholInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

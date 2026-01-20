@@ -21,7 +21,7 @@ import type {
   AlcoholInfo,
   CategoryDataMap,
   DangerLevel,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 // ============================================
 // 型定義

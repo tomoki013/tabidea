@@ -6,7 +6,7 @@ import {
   parseCategoriesParam,
   parseDatesParam,
 } from './travelInfoUrlUtils';
-import { ALL_TRAVEL_INFO_CATEGORIES } from './types/travel-info';
+import { ALL_TRAVEL_INFO_CATEGORIES } from '@/types';
 
 describe('travelInfoUrlUtils', () => {
   describe('encodeTravelInfoUrl', () => {

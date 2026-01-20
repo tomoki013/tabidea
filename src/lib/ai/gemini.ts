@@ -1,7 +1,7 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText } from "ai";
 import { AIService, Article } from "@/lib/ai/types";
-import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay } from "@/lib/types";
+import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay } from '@/types';
 
 export class GeminiService implements AIService {
   private google: ReturnType<typeof createGoogleGenerativeAI>;

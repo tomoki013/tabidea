@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { UserInput, Itinerary } from "@/lib/types";
+import { UserInput, Itinerary } from '@/types';
 import ResultView from "@/components/TravelPlanner/ResultView";
 import RequestSummary from "@/components/TravelPlanner/RequestSummary";
 import SamplePlanActions from "@/components/SamplePlanActions";

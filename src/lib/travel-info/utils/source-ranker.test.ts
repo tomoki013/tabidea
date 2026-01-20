@@ -10,7 +10,7 @@ import {
   SOURCE_PRIORITY,
 } from './source-ranker';
 import { ITravelInfoSource, SourceResult } from '../interfaces';
-import { TravelInfoCategory, TravelInfoSource, AnyCategoryData } from '@/lib/types/travel-info';
+import { TravelInfoCategory, TravelInfoSource, AnyCategoryData } from '@/types';
 
 // モックソースの作成
 function createMockSource(

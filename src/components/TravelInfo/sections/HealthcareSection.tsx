@@ -1,7 +1,7 @@
 'use client';
 
 import { Droplets, Syringe, Stethoscope, AlertTriangle } from 'lucide-react';
-import type { HealthcareInfo } from '@/lib/types/travel-info';
+import type { HealthcareInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

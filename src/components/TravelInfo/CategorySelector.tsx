@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, Lock } from 'lucide-react';
-import { ALL_TRAVEL_INFO_CATEGORIES, type TravelInfoCategory } from '@/lib/types/travel-info';
+import { ALL_TRAVEL_INFO_CATEGORIES, type TravelInfoCategory } from '@/types';
 import CategoryCard from './CategoryCard';
 import type { CategorySelectorProps } from './types';
 

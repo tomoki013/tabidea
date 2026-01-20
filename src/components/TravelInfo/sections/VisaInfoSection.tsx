@@ -9,7 +9,7 @@ import {
   AlertCircle,
   Info,
 } from 'lucide-react';
-import type { VisaInfo } from '@/lib/types/travel-info';
+import type { VisaInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

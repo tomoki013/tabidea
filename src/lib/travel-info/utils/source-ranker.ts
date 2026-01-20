@@ -7,7 +7,7 @@ import {
   TravelInfoCategory,
   TravelInfoSource,
   SourceType,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import { ITravelInfoSource } from '../interfaces';
 import { ReliabilityScorer, createReliabilityScorer, ExtendedReliabilityFactors } from './reliability-scorer';

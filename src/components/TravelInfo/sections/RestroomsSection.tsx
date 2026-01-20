@@ -1,7 +1,7 @@
 'use client';
 
 import { Bath, Info, CheckCircle2 } from 'lucide-react';
-import type { RestroomsInfo } from '@/lib/types/travel-info';
+import type { RestroomsInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**

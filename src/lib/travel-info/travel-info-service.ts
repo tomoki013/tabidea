@@ -19,7 +19,7 @@ import {
   CategoryDataEntry,
   FailedCategory,
   ALL_TRAVEL_INFO_CATEGORIES,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import {
   ITravelInfoService,

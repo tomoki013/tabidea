@@ -5,7 +5,7 @@
 
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateObject } from 'ai';
-import type { TravelInfoCategory } from '@/lib/types/travel-info';
+import type { TravelInfoCategory } from '@/types';
 import {
   getCategorySchema,
   CountryExtractionSchema,

@@ -1,6 +1,6 @@
 "use client";
 
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 interface StepDatesProps {

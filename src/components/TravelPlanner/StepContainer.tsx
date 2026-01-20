@@ -3,7 +3,7 @@
 import { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPlane, FaListCheck, FaXmark } from "react-icons/fa6";
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 import RequestSummary from "./RequestSummary";
 
 interface StepContainerProps {

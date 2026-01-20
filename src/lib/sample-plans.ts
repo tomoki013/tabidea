@@ -1,4 +1,4 @@
-import { UserInput, Itinerary } from "./types";
+import { UserInput, Itinerary } from "@/types";
 
 export interface SamplePlan {
   id: string;

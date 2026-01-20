@@ -1,6 +1,6 @@
 
 import { createDefaultTravelInfoService } from '@/lib/travel-info';
-import { TravelInfoCategory, SafetyInfo } from '@/lib/types/travel-info';
+import { TravelInfoCategory, SafetyInfo } from '@/types';
 
 async function verify() {
   const service = createDefaultTravelInfoService();

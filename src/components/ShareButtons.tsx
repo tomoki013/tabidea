@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useSyncExternalStore } from "react";
-import { Itinerary, UserInput } from "@/lib/types";
+import { Itinerary, UserInput } from '@/types';
 import { encodePlanData } from "@/lib/urlUtils";
 import { FaFacebook, FaLine, FaLink, FaShareAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";

@@ -3,7 +3,7 @@
 import { GeminiService } from "@/lib/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/rag/scraper';
 import { PineconeRetriever } from "@/lib/rag/pinecone-retriever";
-import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from "@/lib/types";
+import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/planUtils";
 

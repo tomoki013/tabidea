@@ -4,7 +4,7 @@
  * URL共有機能の実装
  */
 
-import { type TravelInfoCategory, ALL_TRAVEL_INFO_CATEGORIES } from '@/lib/types/travel-info';
+import { type TravelInfoCategory, ALL_TRAVEL_INFO_CATEGORIES } from '@/types';
 
 /**
  * 渡航情報URLパラメータの型定義

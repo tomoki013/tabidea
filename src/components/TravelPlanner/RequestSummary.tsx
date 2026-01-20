@@ -1,4 +1,4 @@
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 import {
   FaMapLocationDot,
   FaCalendarDays,

@@ -10,8 +10,8 @@ import type {
   TravelInfoResponse,
   CategoryDataEntry,
   SourceType,
-} from '@/lib/types/travel-info';
-import { CATEGORY_LABELS } from '@/lib/types/travel-info';
+} from '@/types';
+import { CATEGORY_LABELS } from '@/types';
 import { createDefaultTravelInfoService } from '@/lib/travel-info';
 import { extractCountryFromDestination } from './country-extractor';
 import {

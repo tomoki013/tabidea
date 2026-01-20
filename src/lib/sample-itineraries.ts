@@ -1,4 +1,4 @@
-import { Itinerary } from "./types";
+import { Itinerary } from "@/types";
 import * as fs from "fs/promises";
 import * as path from "path";
 

@@ -5,7 +5,7 @@
 
 import {
   TravelInfoCategory,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import { createCountryApiSource } from '../sources/country-api';
 import { createExchangeApiSource } from '../sources/exchange-api';

@@ -25,7 +25,7 @@ import {
   Embassy,
   HighRiskRegion,
   DANGER_LEVEL_DESCRIPTIONS,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 import {
   ITravelInfoSource,

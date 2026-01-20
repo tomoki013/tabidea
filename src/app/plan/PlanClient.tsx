@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserInput, Itinerary, DayPlan } from "@/lib/types";
+import { UserInput, Itinerary, DayPlan } from '@/types';
 import { decodePlanData, encodePlanData } from "@/lib/urlUtils";
 import { regeneratePlan, fetchHeroImage, generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/planUtils";

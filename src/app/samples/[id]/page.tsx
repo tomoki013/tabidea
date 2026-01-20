@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { getSamplePlanById, samplePlans } from "@/lib/sample-plans";
 import { getSampleItinerary } from "@/lib/sample-itineraries";
 import { FaArrowLeft } from "react-icons/fa";
-import { UserInput } from "@/lib/types";
+import { UserInput } from '@/types';
 import AIPromotionBanner, {
   AIPromotionBannerCompact,
 } from "@/components/AIPromotionBanner";

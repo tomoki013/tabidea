@@ -8,7 +8,7 @@ import type {
   TravelInfoSource,
   CategoryDataEntry,
   SourceType,
-} from '@/lib/types/travel-info';
+} from '@/types';
 
 /**
  * カテゴリデータをシリアライズ可能な形式に変換

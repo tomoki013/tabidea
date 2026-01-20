@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { encodePlanData, decodePlanData } from "./urlUtils";
-import { Itinerary, UserInput } from "./types";
+import { Itinerary, UserInput } from "@/types";
 import LZString from "lz-string";
 import pako from "pako";
 

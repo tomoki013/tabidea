@@ -6,7 +6,7 @@ import type {
   TravelInfoCategory,
   TravelInfoSource,
   SourceType,
-} from '@/lib/types/travel-info';
+} from '@/types';
 import type { ParsedSource } from '@/lib/ai/schemas/travel-info-schemas';
 
 // ============================================

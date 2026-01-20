@@ -14,7 +14,7 @@ import {
   RELIABILITY_THRESHOLDS,
   interpretReliabilityScore,
 } from './reliability-scorer';
-import { TravelInfoSource } from '@/lib/types/travel-info';
+import { TravelInfoSource } from '@/types';
 
 describe('ReliabilityScorer', () => {
   let scorer: ReliabilityScorer;

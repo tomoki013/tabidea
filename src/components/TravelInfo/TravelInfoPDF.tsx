@@ -27,7 +27,7 @@ import {
   SmokingInfo,
   AlcoholInfo,
   DANGER_LEVEL_DESCRIPTIONS,
-} from "@/lib/types/travel-info";
+} from '@/types';
 
 const theme = {
   primary: "#e67e22", // Orange

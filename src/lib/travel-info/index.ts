@@ -6,8 +6,53 @@
  * 複数のソースから収集・統合して提供
  */
 
-// 型定義
-export * from '@/lib/types/travel-info';
+// 型定義（渡航情報関連のみ再エクスポート）
+export type {
+  TravelInfoCategory,
+  SourceType,
+  DangerLevel,
+  TravelInfoSource,
+  HighRiskRegion,
+  SafetyInfo,
+  EmergencyContact,
+  Embassy,
+  ClimateInfo,
+  CurrentWeather,
+  WeatherForecast,
+  BasicCountryInfo,
+  Currency,
+  ExchangeRate,
+  VisaInfo,
+  MannerInfo,
+  TippingInfo,
+  TransportInfo,
+  RideshareInfo,
+  LocalFoodInfo,
+  FoodItem,
+  SouvenirInfo,
+  SouvenirItem,
+  EventsInfo,
+  EventItem,
+  TechnologyInfo,
+  HealthcareInfo,
+  RestroomsInfo,
+  SmokingInfo,
+  AlcoholInfo,
+  CategoryDataMap,
+  CategoryDataEntry,
+  TravelInfoRequest,
+  TravelInfoOptions,
+  FailedCategory,
+  TravelInfoResponse,
+  PartialTravelInfo,
+  AnyCategoryData,
+} from '@/types';
+
+export {
+  ALL_TRAVEL_INFO_CATEGORIES,
+  CATEGORY_LABELS,
+  DANGER_LEVEL_DESCRIPTIONS,
+} from '@/types';
 
 // インターフェース
 export * from './interfaces';

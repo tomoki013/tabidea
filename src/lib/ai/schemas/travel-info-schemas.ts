@@ -4,7 +4,7 @@
  */
 
 import { z } from 'zod';
-import type { TravelInfoCategory } from '@/lib/types/travel-info';
+import type { TravelInfoCategory } from '@/types';
 
 // ============================================
 // 基本情報 (basic) スキーマ

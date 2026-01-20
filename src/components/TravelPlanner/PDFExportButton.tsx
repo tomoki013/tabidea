@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
-import { Itinerary } from "@/lib/types";
+import { Itinerary } from '@/types';
 import {
   generateTravelPlanPdf,
   generatePdfFilename,
