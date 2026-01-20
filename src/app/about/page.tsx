@@ -10,7 +10,7 @@ import {
 export const metadata: Metadata = {
   title: "Tabideaについて",
   description:
-    "Tabideaは、AIがともきちの旅行日記を始めとするWeb上の膨大な知識を組み合わせて、あなただけの旅行プランを提案するサービスです。",
+    "Tabideaは、AIがWeb上の膨大な知識と実際の旅行体験を組み合わせて、あなただけの旅行プランを提案するサービスです。",
 };
 
 export default function AboutPage() {
@@ -24,7 +24,7 @@ export default function AboutPage() {
               Tabideaについて
             </h1>
             <p className="text-xl text-stone-600 font-hand max-w-3xl mx-auto leading-relaxed">
-              AIがともきちの旅行日記を始めとするWeb上の知識を組み合わせて、
+              AIがWeb上の膨大な旅行情報と知識を組み合わせて、
               <br className="hidden sm:block" />
               あなただけの旅の物語を紡ぎ出すサービスです。
             </p>
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 でも、膨大な情報を調べるのは大変ですよね。
               </p>
               <p>
-                Tabideaなら、あなたの希望を伝えるだけで、AIが「ともきちの旅行日記」に蓄積された実際の旅行体験やWeb上に存在する膨大な情報をもとに、
+                Tabideaなら、あなたの希望を伝えるだけで、AIがWeb上に存在する膨大な情報や、実際の旅行体験をもとに、
                 あなたにぴったりのプランを提案します。
               </p>
             </div>
@@ -83,7 +83,7 @@ export default function AboutPage() {
                   実体験ベース
                 </h3>
                 <p className="text-stone-600 leading-relaxed">
-                  「ともきちの旅行日記」の実際の旅行記録をAIが学習。机上の空論ではなく、リアルな体験に基づいた提案を受けられます。
+                  運営者の実際の旅行記録やWeb上の口コミをAIが学習。机上の空論ではなく、リアルな体験に基づいた提案を受けられます。
                 </p>
               </div>
 
@@ -161,18 +161,18 @@ export default function AboutPage() {
           {/* About Tomokichi Diary */}
           <section className="bg-white rounded-3xl border-2 border-dashed border-stone-200 p-8 sm:p-12 shadow-sm">
             <h2 className="text-3xl font-serif font-bold text-[#e67e22] mb-6">
-              「ともきちの旅行日記」とは？
+              運営者・データソースについて
             </h2>
             <div className="space-y-4 text-stone-700 leading-relaxed">
               <p>
-                ともきち（運営者）が実際に訪れた世界中の場所を記録した旅行ブログです。
+                本サービスは、旅行ブログ「ともきちの旅行日記」を運営する個人開発者によって開発されました。
               </p>
               <p>
-                観光地の魅力、グルメ情報、移動手段、宿泊施設のレビューなど、リアルな体験に基づいた情報が詰まっています。
+                ブログで記録された世界中の観光地の魅力、グルメ情報、移動手段などのリアルな体験データを、
+                Web上の膨大な情報と組み合わせることで、より実用的で楽しい旅行プランの提案を目指しています。
               </p>
               <p>
-                Tabideaは、このブログに蓄積された知識をAIで活用することで、単なる観光情報サイトにはない、
-                「実際に行った人ならではの視点」を提案に反映しています。
+                Tabideaは、「実際に行った人ならではの視点」をAIの力で皆様の旅にお届けします。
               </p>
             </div>
             <div className="mt-6 text-center sm:text-left">
@@ -182,7 +182,7 @@ export default function AboutPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[#e67e22] font-bold hover:underline transition-all"
               >
-                <span>ブログを見に行く</span>
+                <span>ともきちの旅行日記を見る</span>
                 <FaExternalLinkAlt className="text-sm" />
               </Link>
             </div>

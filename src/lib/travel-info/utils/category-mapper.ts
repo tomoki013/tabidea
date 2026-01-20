@@ -156,6 +156,11 @@ export class CategoryMapper implements ICategoryMapper {
       local_food: 0,
       souvenir: 0,
       events: 0,
+      technology: 0,
+      healthcare: 0,
+      restrooms: 0,
+      smoking: 0,
+      alcohol: 0,
     };
 
     for (const [category, sources] of this.sourcesByCategory.entries()) {
