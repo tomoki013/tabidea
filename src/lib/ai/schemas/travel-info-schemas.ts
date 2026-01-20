@@ -174,6 +174,7 @@ export const TechnologyInfoSchema = z.object({
   plugs: z.array(z.string()).describe('コンセント形状（例: ["A", "BF"]）'),
   voltage: z.string().describe('電圧（例: "220V"）'),
   internet: z.array(z.string()).describe('インターネット・Wi-Fi事情'),
+  sim: z.string().optional().describe('SIMカード事情'),
 });
 
 // healthcare
@@ -193,6 +194,7 @@ export const RestroomsInfoSchema = z.object({
 export const SmokingInfoSchema = z.object({
   rules: z.string().describe('喫煙ルール（屋内禁煙、罰金等）'),
   areas: z.string().describe('喫煙場所の状況'),
+  fines: z.string().optional().describe('罰金情報'),
 });
 
 // alcohol

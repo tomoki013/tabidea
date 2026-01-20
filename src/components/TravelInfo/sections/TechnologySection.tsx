@@ -47,6 +47,19 @@ export default function TechnologySection({ data }: SectionBaseProps<TechnologyI
           </ul>
         </div>
       </div>
+
+      {/* SIMカード事情 */}
+      {data.sim && (
+        <div className="space-y-3">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+            <Smartphone className="w-5 h-5 text-primary" />
+            SIMカード
+          </h4>
+          <div className="bg-white rounded-xl p-5 border border-stone-100 shadow-sm">
+            <p className="text-stone-700 leading-relaxed text-sm">{data.sim}</p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

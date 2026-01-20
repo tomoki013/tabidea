@@ -45,7 +45,7 @@ export default function TravelInfoClient() {
   const [destination, setDestination] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<
     TravelInfoCategory[]
-  >(["basic", "safety"]);
+  >(["basic", "safety", "visa"]);
   const [isNavigating, setIsNavigating] = useState(false);
 
   /**
