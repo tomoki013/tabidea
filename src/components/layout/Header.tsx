@@ -10,6 +10,7 @@ import {
   FaMap,
   FaQuestionCircle,
   FaPen,
+  FaMapMarkerAlt,
 } from "react-icons/fa";
 import PlanModal from "@/components/ui/PlanModal";
 import { throttle } from "@/lib/utils";
@@ -89,9 +90,13 @@ export default function Header({
         <div className={`max-w-5xl w-full px-4 pointer-events-auto`}>
           <div className="relative bg-[#fcfbf9]/95 backdrop-blur-md shadow-lg rounded-full border border-orange-100/50 px-6 py-3 flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="group flex items-center gap-2">
-              <span className="font-serif text-2xl font-bold text-[#e67e22] tracking-tight group-hover:opacity-80 transition-opacity">
-                Tabidea
+            <Link href="/" className="group flex items-center gap-1">
+              <span className="font-serif text-2xl font-bold text-[#e67e22] tracking-tight group-hover:opacity-80 transition-opacity flex items-center">
+                <span>Tabide</span>
+                <span className="text-[#27ae60] font-extrabold flex items-center ml-px">
+                  .a
+                  <FaMapMarkerAlt className="text-[0.85em] mt-0.5" />
+                </span>
               </span>
             </Link>
 

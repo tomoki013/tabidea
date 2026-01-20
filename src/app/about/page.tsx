@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import TrinityCircle from "@/components/ui/TrinityCircle";
 import {
   FaLightbulb,
   FaHeart,
@@ -52,6 +53,9 @@ export default function AboutPage() {
                 Tabideaなら、あなたの希望を伝えるだけで、AIがWeb上に存在する膨大な情報や、実際の旅行体験をもとに、
                 あなたにぴったりのプランを提案します。
               </p>
+            </div>
+            <div className="mt-8">
+              <TrinityCircle />
             </div>
           </section>
 
