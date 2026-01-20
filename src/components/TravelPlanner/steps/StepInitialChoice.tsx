@@ -41,11 +41,11 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
               whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onDecide(true)}
-              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-white bg-[#fcfbf9] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-stone-100 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
-               {/* Texture Overlay */}
+               {/* Texture Overlay - keep for consistency but on white it might look darker? */}
                <div
-                className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-multiply"
+                className="absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-multiply"
                 style={{
                   backgroundImage: `url('/images/cream-paper.png')`,
                   backgroundSize: 'cover'
@@ -75,11 +75,11 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
               whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onDecide(false)}
-              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-white bg-[#fcfbf9] shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-stone-100 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
                {/* Texture Overlay */}
                <div
-                className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-multiply"
+                className="absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-multiply"
                 style={{
                   backgroundImage: `url('/images/cream-paper.png')`,
                   backgroundSize: 'cover'
