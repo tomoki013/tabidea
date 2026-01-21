@@ -294,16 +294,11 @@ describe('MofaApiSource', () => {
   });
 
   describe('デフォルト安全情報', () => {
-    it('未対応の目的地では危険レベル0のデフォルト情報を返す', async () => {
+    it('未対応の目的地では失敗を返し、フォールバックを有効にする', async () => {
       const result = await source.fetch('未知の国');
 
-      if (!result.success) {
-        throw new Error('Fetch failed');
-      }
-
-      expect(result.data.dangerLevel).toBe(0);
-      expect(result.data.dangerLevelDescription).toBe('危険情報なし');
-      expect(result.source.sourceName).toContain('デフォルト');
+      expect(result.success).toBe(false);
+      expect(result.error).toContain('Country code not found');
     });
 
     it('404エラーの場合は失敗を返し、フォールバックを有効にする', async () => {
