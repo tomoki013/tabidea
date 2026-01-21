@@ -4,6 +4,14 @@ import { useRef, useEffect } from "react";
 import { useChat } from "ai/react";
 import { Itinerary } from '@/types';
 
+const SUGGESTION_CHIPS = [
+  "地元の料理をもっと食べたい！ 🍜",
+  "カフェ巡りを入れたい ☕️",
+  "予算を少し抑えたい 💰",
+  "もっとゆったりしたい 🐢",
+  "写真映えスポットに行きたい 📸",
+];
+
 export default function TravelPlannerChat({
   itinerary,
   onRegenerate,
@@ -16,7 +24,7 @@ export default function TravelPlannerChat({
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const { messages, input, handleInputChange, handleSubmit, isLoading, error } = useChat({
+  const { messages, input, handleInputChange, setInput, handleSubmit, isLoading, error } = useChat({
     api: "/api/chat",
     body: {
       itinerary,
@@ -53,6 +61,13 @@ export default function TravelPlannerChat({
     e.preventDefault();
     if (!input.trim() || isLoading || isRegenerating) return;
     handleSubmit(e);
+  };
+
+  const handleChipClick = (text: string) => {
+    setInput(text);
+    // Optionally auto-submit? Maybe not, let user edit/confirm.
+    // If we want auto submit, we need to hack it or just set input.
+    // Let's just set input for now to let user confirm.
   };
 
   return (
@@ -111,6 +126,21 @@ export default function TravelPlannerChat({
           )}
           <div ref={messagesEndRef} />
         </div>
+
+        {/* Suggestion Chips */}
+        {!isLoading && !isRegenerating && (
+          <div className="flex gap-2 overflow-x-auto pb-2 noscrollbar mask-right-fade">
+            {SUGGESTION_CHIPS.map((chip) => (
+              <button
+                key={chip}
+                onClick={() => handleChipClick(chip)}
+                className="flex-shrink-0 px-3 py-1.5 bg-white border border-stone-200 rounded-full text-xs text-stone-600 hover:border-primary/50 hover:bg-orange-50 hover:text-primary transition-all whitespace-nowrap shadow-xs"
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+        )}
 
         <form onSubmit={onFormSubmit} className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs">
           <input

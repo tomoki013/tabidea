@@ -15,7 +15,7 @@ export default function Footer() {
           <p className="text-stone-600 text-sm leading-relaxed max-w-xs font-hand">
             あなたの旅の物語を、AIと一緒に紡ぎ出す。
             <br />
-            <span className="text-xs opacity-80">Supported by ともきちの旅行日記</span>
+            <span className="text-xs opacity-60">Supported by ともきちの旅行日記</span>
           </p>
           <div className="flex gap-4 pt-2">
             <a

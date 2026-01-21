@@ -138,18 +138,18 @@ export default function TravelInfoClient() {
                   <span>目的地を決める</span>
                 </label>
 
-                <div className="relative group">
+                <div className="relative group max-w-2xl mx-auto w-full">
                   <input
                     type="text"
                     id="destination"
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     placeholder="どこへ行きますか？（例: パリ、バンコク）"
-                    className="w-full bg-white border-2 border-stone-300 px-6 py-4 text-xl sm:text-2xl font-serif text-stone-800 placeholder:text-stone-400 placeholder:font-sans focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all rounded-xl shadow-sm"
+                    className="w-full bg-stone-50 border border-stone-200 px-6 py-4 pl-12 text-lg sm:text-xl font-bold text-stone-800 placeholder:text-stone-400 placeholder:font-normal focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all rounded-full shadow-inner"
                     disabled={isNavigating}
                   />
-                  <div className="absolute right-6 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none">
-                    <Search className="w-6 h-6" />
+                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-stone-400 pointer-events-none">
+                    <Search className="w-5 h-5" />
                   </div>
                 </div>
 
@@ -158,17 +158,17 @@ export default function TravelInfoClient() {
                   <p className="text-sm text-stone-500 font-sans mb-3 ml-1">
                     人気の目的地から選ぶ:
                   </p>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex flex-wrap gap-2">
                     {POPULAR_DESTINATIONS.map((dest, i) => (
                       <button
                         key={dest.name}
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
                         className="
-                          px-4 py-2 text-sm font-bold text-stone-600
-                          bg-white border-l-4 border-stone-300 hover:border-primary
-                          shadow-sm hover:shadow-md hover:-translate-y-0.5
-                          transition-all duration-300 rounded-r-md
+                          px-3 py-1.5 text-xs sm:text-sm font-medium text-stone-600
+                          bg-white border border-stone-200 rounded-full
+                          hover:bg-orange-50 hover:text-primary hover:border-primary/30
+                          transition-all duration-200 shadow-sm
                         "
                       >
                         {dest.name}
@@ -213,7 +213,7 @@ export default function TravelInfoClient() {
                   "
                 >
                   <span>
-                    {isNavigating ? "検索中..." : "検索する"}
+                    {isNavigating ? "検索中..." : "ガイドを作成する"}
                   </span>
                   {!isNavigating && <ArrowRight className="w-6 h-6" />}
                 </button>

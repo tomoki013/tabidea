@@ -183,6 +183,83 @@ export const JAPANESE_TO_ENGLISH_COUNTRY: Record<string, string> = {
 };
 
 /**
+ * 英語の通貨名から日本語名へのマッピング
+ */
+const ENGLISH_TO_JAPANESE_CURRENCY: Record<string, string> = {
+  'United States dollar': '米ドル',
+  'Euro': 'ユーロ',
+  'Japanese yen': '日本円',
+  'Pound sterling': 'ポンド',
+  'Australian dollar': 'オーストラリアドル',
+  'Canadian dollar': 'カナダドル',
+  'Swiss franc': 'スイスフラン',
+  'Chinese yuan': '人民元',
+  'Renminbi': '人民元',
+  'South Korean won': '韓国ウォン',
+  'Singapore dollar': 'シンガポールドル',
+  'New Taiwan dollar': 'ニュー台湾ドル',
+  'Hong Kong dollar': '香港ドル',
+  'Thai baht': 'タイバーツ',
+  'Vietnamese dong': 'ベトナムドン',
+  'Indonesian rupiah': 'ルピア',
+  'Malaysian ringgit': 'リンギット',
+  'Philippine peso': 'フィリピンペソ',
+  'Indian rupee': 'インドルピー',
+  'Turkish lira': 'トルコリラ',
+  'Mexican peso': 'メキシコペソ',
+  'Brazilian real': 'レアル',
+  'Russian ruble': 'ルーブル',
+  'South African rand': 'ランド',
+  'New Zealand dollar': 'ニュージーランドドル',
+  'Egyptian pound': 'エジプトポンド',
+  'Saudi riyal': 'サウジリヤル',
+  'United Arab Emirates dirham': 'UAEディルハム',
+};
+
+/**
+ * 英語の言語名から日本語名へのマッピング
+ */
+const ENGLISH_TO_JAPANESE_LANGUAGE: Record<string, string> = {
+  'English': '英語',
+  'Spanish': 'スペイン語',
+  'French': 'フランス語',
+  'German': 'ドイツ語',
+  'Chinese': '中国語',
+  'Japanese': '日本語',
+  'Korean': '韓国語',
+  'Italian': 'イタリア語',
+  'Portuguese': 'ポルトガル語',
+  'Russian': 'ロシア語',
+  'Arabic': 'アラビア語',
+  'Hindi': 'ヒンディー語',
+  'Bengali': 'ベンガル語',
+  'Thai': 'タイ語',
+  'Vietnamese': 'ベトナム語',
+  'Indonesian': 'インドネシア語',
+  'Malay': 'マレー語',
+  'Turkish': 'トルコ語',
+  'Dutch': 'オランダ語',
+  'Polish': 'ポーランド語',
+  'Greek': 'ギリシャ語',
+  'Swedish': 'スウェーデン語',
+  'Norwegian': 'ノルウェー語',
+  'Danish': 'デンマーク語',
+  'Finnish': 'フィンランド語',
+  'Hungarian': 'ハンガリー語',
+  'Czech': 'チェコ語',
+  'Hebrew': 'ヘブライ語',
+  'Persian': 'ペルシア語',
+  'Urdu': 'ウルドゥー語',
+  'Tagalog': 'タガログ語',
+  'Filipino': 'フィリピノ語',
+  'Swahili': 'スワヒリ語',
+  'Khmer': 'クメール語',
+  'Lao': 'ラオス語',
+  'Burmese': 'ビルマ語',
+  'Mongolian': 'モンゴル語',
+};
+
+/**
  * REST Countries APIレスポンス型（部分）
  */
 interface RestCountryResponse {
@@ -229,8 +306,6 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
 
     try {
       // オプションの国名を優先、なければ目的地をそのまま使用
-      // NOTE: 以前はハードコードされたマップを使用していましたが、
-      // 上流(Gemini)で国名抽出が行われるため、options.countryの使用を優先します。
       let countryName = options?.country || destination;
 
       // 日本語の国名を英語に変換（REST Countries APIは英語名を期待）
@@ -301,8 +376,7 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
     try {
       let response = await fetch(url);
 
-      // 完全一致で失敗した場合、部分一致で再試行（オプション）
-      // しかし、fullText=trueを指定している場合、通常は正確な国名を持っているはず
+      // 完全一致で失敗した場合、部分一致で再試行
       if (!response.ok && fullText && response.status === 404) {
          // フォールバック: 部分一致検索
          const fallbackUrl = `${this.endpoint}/name/${encodeURIComponent(countryName)}`;
@@ -335,14 +409,19 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
     const currencyEntries = Object.entries(data.currencies || {});
     const [currencyCode, currencyData] = currencyEntries[0] || ['', { name: '', symbol: '' }];
 
+    // 通貨名を日本語に変換
+    const translatedCurrencyName = ENGLISH_TO_JAPANESE_CURRENCY[currencyData.name] || currencyData.name;
+
     const currency: Currency = {
       code: currencyCode,
-      name: currencyData.name,
+      name: translatedCurrencyName,
       symbol: currencyData.symbol,
     };
 
-    // 言語を抽出
-    const languages = Object.values(data.languages || {});
+    // 言語を抽出して日本語に変換
+    const languages = Object.values(data.languages || {}).map(lang =>
+      ENGLISH_TO_JAPANESE_LANGUAGE[lang] || lang
+    );
 
     // タイムゾーンと時差を計算
     let timezone = 'UTC';
@@ -385,35 +464,32 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
       if (timezoneStr === 'UTC') {
         offsetHours = 0;
       } else if (timezoneStr.startsWith('UTC')) {
-        // UTC+09:00 形式をパース
-        // regex: UTC([+-])(\d{1,2}):(\d{2})
-        const match = timezoneStr.match(/^UTC([+-])(\d{1,2}):(\d{2})$/);
+        // UTCオフセットのパース (UTC+09:00, UTC+9, UTC-05:30 などに対応)
+        // regex: UTC([+-])(\d{1,2})(?::(\d{2}))?
+        const match = timezoneStr.match(/^UTC([+-])(\d{1,2})(?::(\d{2}))?$/);
         if (match) {
           const sign = match[1] === '+' ? 1 : -1;
           const hours = parseInt(match[2], 10);
-          const minutes = parseInt(match[3], 10);
+          const minutes = match[3] ? parseInt(match[3], 10) : 0;
 
           offsetHours = sign * hours;
 
-          // 分単位の時差がある場合（例: UTC+05:45, UTC-03:30）は小数で表現して計算
+          // 分単位の時差がある場合
           if (minutes > 0) {
              offsetHours += (sign * minutes) / 60;
           }
         } else {
-            // パース失敗時はそのまま
             console.warn(`[country-api] Unknown timezone format: ${timezoneStr}`);
             return '時差情報なし';
         }
       } else {
-          // その他の形式（APIは基本的にUTCオフセットを返すはずだが念のため）
           return '時差情報なし';
       }
 
       // 日本との時差 = 現地時間 - 日本時間
-      // 例: 日本(UTC+9) vs NY(UTC-5) -> -5 - 9 = -14時間
       const diff = offsetHours - JST_OFFSET;
 
-      if (diff === 0) {
+      if (Math.abs(diff) < 0.01) {
         return '時差なし';
       }
 

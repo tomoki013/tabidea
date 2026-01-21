@@ -52,7 +52,7 @@ const MOFA_ANZEN_BASE_URL = 'https://www.anzen.mofa.go.jp';
 /**
  * デフォルトタイムアウト（ミリ秒）
  */
-const DEFAULT_TIMEOUT_MS = 20000;
+const DEFAULT_TIMEOUT_MS = 30000;
 
 /**
  * キャッシュのTTL（秒）- 5分（オープンデータの更新頻度に合わせる）
@@ -908,9 +908,13 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
       if (!countryCode) {
         console.warn(
-          `[mofa-api] Unknown destination: ${destination}, will use default safety info`
+          `[mofa-api] Unknown destination: ${destination}, falling back to next source`
         );
-        return this.getDefaultSafetyInfo(destination);
+        // フォールバックを有効にするためにエラーを返す
+        return {
+          success: false,
+          error: `Country code not found for: ${destination}`
+        };
       }
 
       // 2. キャッシュをチェック
@@ -943,7 +947,6 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
 
       if (!safetyInfo) {
         console.warn(`[mofa-api] No safety info found for ${destination} (${countryCode})`);
-        // データが見つからない場合はエラーとして返し、AIフォールバックを有効にする
         return {
           success: false,
           error: `Safety info not found for ${destination}`,
@@ -962,7 +965,6 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       console.error('[mofa-api] Error:', error);
 
       // エラーを伝播させてフォールバックチェーン（Gemini等）を有効にする
-      // 以前はデフォルト情報を返していたが、それだとAIフォールバックが機能しないため変更
       return {
         success: false,
         error: error instanceof Error ? error.message : 'Unknown error',
@@ -1335,14 +1337,7 @@ export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
       };
     } catch (e) {
       console.error('[mofa-api] XML Parse Error:', e);
-      // パースエラー時はデフォルト値を返す
-      return {
-        dangerLevel: 0,
-        dangerLevelDescription: DANGER_LEVEL_DESCRIPTIONS[0],
-        warnings: ['データの解析中にエラーが発生しました。最新の情報を外務省ホームページでご確認ください。'],
-        emergencyContacts: this.getDefaultEmergencyContacts(),
-        nearestEmbassy: EMBASSIES_BY_COUNTRY[countryCode],
-      };
+      throw e; // Throw error to trigger fallback in fetch
     }
   }
 

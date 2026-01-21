@@ -2,7 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaPlane, FaListCheck, FaXmark } from "react-icons/fa6";
+import { FaPlane, FaListCheck, FaXmark, FaChevronLeft } from "react-icons/fa6";
 import { UserInput } from '@/types';
 import RequestSummary from "./RequestSummary";
 
@@ -57,39 +57,46 @@ export default function StepContainer({
       />
 
       {/* Header / Progress */}
-      <div className="relative z-10 px-6 pt-8 pb-4">
-        <div className="flex justify-between items-center mb-8">
-          {onClose ? (
-             <button
-              onClick={onClose}
-              className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 hover:text-red-500 active:scale-95"
-              title="閉じる"
-            >
-               <FaXmark />
-            </button>
-          ) : (
-            <button
+      <div className="relative z-10 px-6 pt-6 pb-2">
+        {/* Navigation Bar */}
+        <div className="flex justify-between items-center mb-6 h-10">
+          {/* Left: Back Button */}
+          <button
               onClick={onBack}
-              disabled={step === 0}
-              className={`w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 ${
-                step === 0 ? "opacity-0 cursor-default" : ""
+              disabled={step <= 0}
+              className={`w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-500 transition-all hover:bg-stone-100 hover:text-stone-800 active:scale-95 ${
+                step <= 0 ? "opacity-0 pointer-events-none" : ""
               }`}
+              title="戻る"
             >
-              ←
-            </button>
-          )}
+              <FaChevronLeft />
+          </button>
 
-          <span className="text-stone-500 font-mono text-xs tracking-widest bg-white/50 px-2 py-1 rounded-md">
-            STEP {step}/{Math.max(1, totalSteps - 1)}
+          {/* Center: Step Indicator */}
+          <span className="text-stone-400 font-mono text-xs tracking-widest bg-stone-100/50 px-3 py-1 rounded-full border border-stone-100">
+            STEP {step} <span className="text-stone-300">/</span> {safeTotal}
           </span>
 
-          <button
-            onClick={() => setShowSummary(true)}
-            className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-300 text-stone-600 transition-all hover:bg-stone-100 hover:text-primary active:scale-95"
-            title="選択内容を確認"
-          >
-            <FaListCheck />
-          </button>
+          {/* Right: Actions */}
+          <div className="flex items-center gap-2">
+             <button
+                onClick={() => setShowSummary(true)}
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-500 transition-all hover:bg-stone-100 hover:text-primary active:scale-95"
+                title="選択内容を確認"
+              >
+                <FaListCheck />
+              </button>
+
+              {onClose && (
+                <button
+                  onClick={onClose}
+                  className="w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 border border-stone-200 text-stone-500 transition-all hover:bg-red-50 hover:text-red-500 hover:border-red-200 active:scale-95"
+                  title="閉じる"
+                >
+                  <FaXmark />
+                </button>
+              )}
+          </div>
         </div>
 
         {/* Progress Bar Container */}

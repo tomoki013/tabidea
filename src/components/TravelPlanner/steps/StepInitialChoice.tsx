@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import PolicyLink from "@/components/ui/PolicyLink";
+import { FaPaperPlane } from "react-icons/fa6";
 
 interface StepInitialChoiceProps {
   onDecide: (decided: boolean) => void;
@@ -9,51 +10,47 @@ interface StepInitialChoiceProps {
 
 export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) {
   return (
-    <div className="w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 py-4">
-      <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-[#fcfbf9] border-8 border-white">
-        {/* Background Texture */}
+    <div className="w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 py-4 relative">
+      {/* Decorative Badge */}
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+        <div className="bg-[#2c2c2c] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2 tracking-widest uppercase border-2 border-white">
+          <FaPaperPlane className="text-primary" />
+          <span>Free Travel Planner</span>
+        </div>
+      </div>
+
+      <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-white border-4 border-white ring-1 ring-stone-200/50">
+        {/* Background Texture - lighter opacity on white */}
         <div
-          className="absolute inset-0 z-0 opacity-50 pointer-events-none mix-blend-multiply"
+          className="absolute inset-0 z-0 opacity-20 pointer-events-none mix-blend-multiply"
           style={{
             backgroundImage: `url('/images/cream-paper.png')`,
             backgroundSize: 'cover'
           }}
         />
 
-        <div className="relative z-10 flex flex-col justify-center space-y-6 p-6 sm:p-10">
-          <div className="space-y-3 text-center">
-            <div className="inline-block px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-bold tracking-widest uppercase shadow-sm">
-              Start Your Journey
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground leading-tight">
+        <div className="relative z-10 flex flex-col justify-center space-y-8 p-8 sm:p-12">
+          <div className="space-y-4 text-center">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 leading-tight">
               行き先は
               <br className="sm:hidden"/>
               決まっていますか？
             </h2>
-            <p className="text-stone-600 text-base font-hand">
-              旅の計画をはじめましょう
+            <p className="text-stone-500 text-base font-hand">
+              AIがあなたにぴったりの旅をご提案します
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full px-2">
             {/* Yes: Decided */}
             <motion.button
               whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onDecide(true)}
-              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-stone-100 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-6 h-56 rounded-2xl border-2 border-stone-100 bg-white shadow-lg hover:shadow-xl hover:border-primary/30 transition-all duration-300 overflow-hidden"
             >
-               {/* Texture Overlay - keep for consistency but on white it might look darker? */}
-               <div
-                className="absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-multiply"
-                style={{
-                  backgroundImage: `url('/images/cream-paper.png')`,
-                  backgroundSize: 'cover'
-                }}
-              />
-
               <div className="relative z-10 flex flex-col items-center">
-                <div className="mb-3 p-3 bg-orange-100 rounded-full group-hover:bg-orange-200 transition-colors duration-300">
+                <div className="mb-4 p-4 bg-orange-50 rounded-full group-hover:bg-orange-100 transition-colors duration-300 ring-1 ring-orange-100">
                     <span className="text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 block">
                         ✈️
                     </span>
@@ -61,13 +58,10 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
                 <h3 className="text-xl font-bold text-stone-800 mb-1 font-serif group-hover:text-primary transition-colors">
                     決まっている
                 </h3>
-                <p className="text-stone-500 text-sm font-hand">
-                    すでに行きたい場所がある
+                <p className="text-stone-400 text-xs font-bold tracking-wide mt-1">
+                    I HAVE A PLAN
                 </p>
               </div>
-
-              {/* Border Highlight on Hover */}
-              <div className="absolute inset-0 border-4 border-primary/0 group-hover:border-primary/20 rounded-2xl transition-all duration-300" />
             </motion.button>
 
             {/* No: Not Decided */}
@@ -75,19 +69,10 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
               whileHover={{ scale: 1.02, y: -3 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => onDecide(false)}
-              className="group relative flex flex-col items-center justify-center p-6 h-52 rounded-2xl border-4 border-stone-100 bg-white shadow-xl hover:shadow-2xl transition-all duration-300 overflow-hidden"
+              className="group relative flex flex-col items-center justify-center p-6 h-56 rounded-2xl border-2 border-stone-100 bg-white shadow-lg hover:shadow-xl hover:border-teal-400/30 transition-all duration-300 overflow-hidden"
             >
-               {/* Texture Overlay */}
-               <div
-                className="absolute inset-0 z-0 opacity-30 pointer-events-none mix-blend-multiply"
-                style={{
-                  backgroundImage: `url('/images/cream-paper.png')`,
-                  backgroundSize: 'cover'
-                }}
-              />
-
               <div className="relative z-10 flex flex-col items-center">
-                 <div className="mb-3 p-3 bg-teal-100 rounded-full group-hover:bg-teal-200 transition-colors duration-300">
+                 <div className="mb-4 p-4 bg-teal-50 rounded-full group-hover:bg-teal-100 transition-colors duration-300 ring-1 ring-teal-100">
                     <span className="text-5xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 block">
                         🌏
                     </span>
@@ -95,26 +80,23 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
                 <h3 className="text-xl font-bold text-stone-800 mb-1 font-serif group-hover:text-teal-600 transition-colors">
                     決まっていない
                 </h3>
-                <p className="text-stone-500 text-sm font-hand">
-                    おすすめを提案してほしい
+                <p className="text-stone-400 text-xs font-bold tracking-wide mt-1">
+                    INSPIRE ME
                 </p>
               </div>
-
-              {/* Border Highlight on Hover */}
-              <div className="absolute inset-0 border-4 border-teal-400/0 group-hover:border-teal-400/20 rounded-2xl transition-all duration-300" />
             </motion.button>
           </div>
 
-          <div className="text-center space-y-1 mt-2">
-            <p className="text-stone-500 text-xs font-hand">
-              入力内容はAIの学習には使われませんので、安心してご記入ください。
+          <div className="text-center space-y-1 mt-4 pt-4 border-t border-dashed border-stone-200">
+            <p className="text-stone-400 text-[10px] font-sans">
+              入力内容はAIの学習には使用されません
             </p>
-            <p className="text-stone-500 text-xs font-hand">
+            <p className="text-stone-400 text-[10px] font-sans">
               詳細は
-              <PolicyLink href="/ai-policy" className="mx-1">
+              <PolicyLink href="/ai-policy" className="mx-1 font-bold hover:text-primary">
                 AIポリシー
               </PolicyLink>
-              にてご案内しています。
+              をご確認ください
             </p>
           </div>
         </div>
