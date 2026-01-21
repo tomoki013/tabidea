@@ -4,7 +4,6 @@ import TrinityCircle from "@/components/ui/TrinityCircle";
 import {
   FaRobot,
   FaLightbulb,
-  FaExternalLinkAlt,
   FaGlobeAmericas,
   FaUsers,
   FaShieldAlt,
@@ -285,93 +284,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* How it works (Kept as requested) */}
-          <section className="bg-gradient-to-br from-stone-50 to-primary/5 rounded-3xl border-2 border-dashed border-stone-200 p-8 sm:p-12">
-            <h2 className="text-3xl font-serif font-bold text-[#2c2c2c] mb-8 text-center">
-              どうやって使うの？
-            </h2>
-            <div className="space-y-6 max-w-3xl mx-auto">
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  1
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
-                    行き先や条件を入力
-                  </h3>
-                  <p className="text-stone-600">
-                    目的地、日程、予算、旅のテーマなど、あなたの希望を簡単な質問に答えるだけで入力できます。
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  2
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
-                    AIがプランを生成
-                  </h3>
-                  <p className="text-stone-600">
-                    AIがデータベースから関連情報を抽出し、あなた専用の旅行プランを数秒で作成します。
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  3
-                </div>
-                <div>
-                  <h3 className="font-bold text-lg mb-2 text-[#2c2c2c]">
-                    プランを確認・シェア
-                  </h3>
-                  <p className="text-stone-600">
-                    生成されたプランをチェック。気に入ったらURLで簡単にシェアできます。もちろん修正も自由です。
-                  </p>
-                  <div className="mt-3 text-sm text-stone-500 space-y-1">
-                    <p>
-                      ※
-                      将来的な変更で見れなくなる可能性がありますのでご了承ください。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* About Tomokichi Diary (Kept as requested) */}
-          <section className="bg-white rounded-3xl border-2 border-dashed border-stone-200 p-8 sm:p-12 shadow-sm">
-            <h2 className="text-3xl font-serif font-bold text-[#e67e22] mb-6">
-              運営者・データソースについて
-            </h2>
-            <div className="space-y-4 text-stone-700 leading-relaxed">
-              <p>
-                本サービスは、旅行ブログ「ともきちの旅行日記」を運営する個人開発者によって開発されました。
-              </p>
-              <p>
-                ブログで記録された世界中の観光地の魅力、グルメ情報、移動手段などのリアルな体験データを、
-                Web上の膨大な情報と組み合わせることで、より実用的で楽しい旅行プランの提案を目指しています。
-              </p>
-              <p>
-                Tabideaは、「実際に行った人ならではの視点」をAIの力で皆様の旅にお届けします。
-              </p>
-            </div>
-            <div className="mt-6 text-center sm:text-left">
-              <Link
-                href="https://travel.tomokichidiary.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[#e67e22] font-bold hover:underline transition-all"
-              >
-                <span>ともきちの旅行日記を見る</span>
-                <FaExternalLinkAlt className="text-sm" />
-              </Link>
-            </div>
-          </section>
-
-          {/* Important Notice (Kept as requested) */}
+          {/* Important Notice */}
           <section className="bg-orange-50 border-2 border-orange-200 border-dashed rounded-3xl p-8 sm:p-12">
             <h2 className="text-2xl font-serif font-bold text-orange-800 mb-4">
               ⚠️ ご利用の際の注意
@@ -404,6 +317,11 @@ export default function AboutPage() {
               </p>
             </div>
           </section>
+
+          {/* Subtle Branding Mention */}
+           <div className="text-center text-xs text-stone-400 font-hand opacity-70">
+            <p>Supported by <a href="https://travel.tomokichidiary.com/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-500 underline decoration-dashed">ともきちの旅行日記</a></p>
+          </div>
 
           {/* CTA Section */}
           <section className="text-center space-y-6 py-8">
