@@ -5,7 +5,7 @@ import { GeminiService } from "@/lib/services/ai/gemini";
 import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
 import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
-import { extractDuration, splitDaysIntoChunks } from "@/lib/planUtils";
+import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 
 export type ActionState = {
   success: boolean;

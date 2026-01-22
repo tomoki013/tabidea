@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Itinerary } from '@/types';
-import { generatePdfFilename, downloadBlob } from "@/lib/pdfUtils";
+import { generatePdfFilename, downloadBlob } from "@/lib/utils";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 import PDFPreviewModal from "./PDFPreviewModal";
 

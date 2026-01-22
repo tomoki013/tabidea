@@ -12,7 +12,7 @@ import type {
   SourceType,
 } from '@/types';
 import { CATEGORY_LABELS } from '@/types';
-import { createDefaultTravelInfoService } from '@/lib/travel-info';
+import { createDefaultTravelInfoService } from '@/lib/services/travel-info';
 import { extractCountryFromDestination } from './country-extractor';
 import {
   getSourceName,

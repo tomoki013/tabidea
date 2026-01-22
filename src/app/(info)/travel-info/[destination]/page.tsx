@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { parseCategoriesParam, parseDatesParam } from '@/lib/travelInfoUrlUtils';
+import { parseCategoriesParam, parseDatesParam } from '@/lib/utils';
 import DestinationClient from './DestinationClient';
 
 interface PageProps {

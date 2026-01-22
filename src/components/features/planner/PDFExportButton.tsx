@@ -6,7 +6,7 @@ import {
   generateTravelPlanPdf,
   generatePdfFilename,
   downloadBlob,
-} from "@/lib/pdfUtils";
+} from "@/lib/utils";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 import PDFPreviewModal from "./PDFPreviewModal";
 

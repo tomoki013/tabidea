@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import TravelPlanner from "@/components/TravelPlanner";
+import TravelPlanner from "@/components/features/planner";
 import * as TravelPlannerActions from "@/app/actions/travel-planner";
 
 // Mock Image component

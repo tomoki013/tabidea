@@ -12,7 +12,7 @@ import type {
 } from '@/types';
 import { CATEGORY_LABELS } from '@/types';
 import { getSingleCategoryInfo } from "@/app/actions/travel-info";
-import { encodeTravelInfoUrl } from "@/lib/travelInfoUrlUtils";
+import { encodeTravelInfoUrl } from "@/lib/utils";
 import {
   CategorySelector,
   TravelInfoDisplay,

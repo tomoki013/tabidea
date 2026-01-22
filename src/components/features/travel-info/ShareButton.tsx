@@ -7,7 +7,7 @@ import {
   copyShareUrlToClipboard,
   generateTwitterShareUrl,
   generateLineShareUrl,
-} from '@/lib/travelInfoUrlUtils';
+} from '@/lib/utils';
 import type { ShareButtonProps } from './types';
 
 /**

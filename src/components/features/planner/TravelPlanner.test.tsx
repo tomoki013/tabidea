@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
-import TravelPlanner from "@/components/TravelPlanner";
+import TravelPlanner from "@/components/features/planner";
 
 // Mock Image component
 vi.mock("next/image", () => ({
