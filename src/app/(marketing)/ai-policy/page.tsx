@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AiPolicy() {
   return (
-    <div className="min-h-screen p-4 sm:p-20 font-(family-name:--font-noto-sans-jp)">
+    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-20 font-(family-name:--font-noto-sans-jp)">
       <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-stone-100">
         <h1 className="text-3xl font-bold mb-8">AIポリシー</h1>
 

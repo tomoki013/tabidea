@@ -2452,3 +2452,33 @@ export function getAreaFromRegion(region: string): string {
   };
   return areaMap[region] || region;
 }
+
+/**
+ * 任意のプランリストから全てのユニークなタグを取得（地域タグを除く）
+ */
+export function getTagsFromPlans(plans: SamplePlan[]): string[] {
+  const tagSet = new Set<string>();
+  plans.forEach((plan) => {
+    plan.tags.forEach((tag) => {
+      if (!regionTags.includes(tag)) {
+        tagSet.add(tag);
+      }
+    });
+  });
+  return Array.from(tagSet).sort();
+}
+
+/**
+ * 任意のプランリストから地域タグを取得
+ */
+export function getRegionsFromPlans(plans: SamplePlan[]): string[] {
+  const regionSet = new Set<string>();
+  plans.forEach((plan) => {
+    plan.tags.forEach((tag) => {
+      if (regionTags.includes(tag)) {
+        regionSet.add(tag);
+      }
+    });
+  });
+  return Array.from(regionSet);
+}

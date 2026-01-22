@@ -1,21 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import { FaPlus } from "react-icons/fa6";
-import { PlanModal } from "@/components/common";
+import { usePlanModal } from "@/context/PlanModalContext";
 
-/**
- * フローティングプランボタンコンポーネント
- * 画面右下に常に表示され、新しいプランを作成するモーダルを開く
- */
 export default function FloatingPlanButton() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { openModal } = usePlanModal();
 
   return (
     <>
       {/* Floating Action Button */}
       <button
-        onClick={() => setIsModalOpen(true)}
+        onClick={() => openModal()}
         className="fixed bottom-6 right-6 z-40 group bg-primary text-white rounded-full p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         aria-label="新しいプランを作成"
       >
@@ -26,12 +21,6 @@ export default function FloatingPlanButton() {
           新しいプランを作成
         </span>
       </button>
-
-      {/* Modal */}
-      <PlanModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </>
   );
 }

@@ -18,8 +18,8 @@ import SamplePlanCard from "./SamplePlanCard";
 import SamplePlanSkeleton from "./SamplePlanSkeleton";
 import {
   SamplePlan,
-  getAllTags,
-  getAllRegions,
+  getTagsFromPlans,
+  getRegionsFromPlans,
   getDays,
   getAreaFromRegion,
 } from "@/lib/sample-plans";
@@ -305,8 +305,8 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
   const [displayLimit, setDisplayLimit] = useState(20);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
-  const allTags = useMemo(() => getAllTags(), []);
-  const allRegions = useMemo(() => getAllRegions(), []);
+  const allTags = useMemo(() => getTagsFromPlans(plans), [plans]);
+  const allRegions = useMemo(() => getRegionsFromPlans(plans), [plans]);
 
   const filteredPlans = useMemo(() => {
     return plans.filter((plan) => {

@@ -31,6 +31,26 @@ export type ChunkActionState = {
 };
 
 /**
+ * Helper to generate budget context string
+ */
+function getBudgetContext(budget: string): string {
+  if (!budget) return "Budget: Not specified";
+
+  return `
+    Budget Level: ${budget}
+    (Budget Guidance for AI:
+     - If Destination is Domestic (Japan):
+       - Saving: ~30,000 JPY total (Hostels, cheap eats)
+       - Standard: ~50,000 JPY total (Business hotels, standard meals)
+       - High: ~100,000 JPY total (Ryokan/Nice hotels, good dining)
+       - Luxury: ~200,000+ JPY total
+     - If Destination is Overseas:
+       - Adjust scale accordingly. Standard usually implies 150,000-300,000 JPY depending on region (Asia vs Europe).
+     - Please suggest hotels, restaurants, and activities that fit this financial scale.)
+  `;
+}
+
+/**
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
 export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
@@ -59,10 +79,11 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     }
 
     // 2. Prepare Prompt
-    let prompt = "";
     const totalDays = extractDuration(input.dates);
     const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
+    const budgetPrompt = getBudgetContext(input.budget);
 
+    let prompt = "";
     if (input.isDestinationDecided) {
       prompt = `
         Destination: ${input.destination}
@@ -70,7 +91,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Total Days: ${durationPrompt}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
-        Budget: ${input.budget}
+        ${budgetPrompt}
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
@@ -83,7 +104,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Total Days: ${durationPrompt}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
-        Budget: ${input.budget}
+        ${budgetPrompt}
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
@@ -141,13 +162,14 @@ export async function generatePlanChunk(
 
   try {
     const ai = new GeminiService(apiKey);
+    const budgetPrompt = getBudgetContext(input.budget);
 
     const prompt = `
       Destination: ${input.destination}
       Dates: ${input.dates}
       Companions: ${input.companions}
       Themes: ${input.theme.join(", ")}
-      Budget: ${input.budget}
+      ${budgetPrompt}
       Pace: ${input.pace}
       Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
       Request: ${input.freeText || "None"}
@@ -199,6 +221,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
 
     const totalDays = extractDuration(input.dates);
     const shouldSplit = totalDays > 1;
+    const budgetPrompt = getBudgetContext(input.budget);
 
     let plan: Itinerary;
 
@@ -229,7 +252,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
               Companions: ${input.companions}
               Themes: ${input.theme.join(", ")}
-              Budget: ${input.budget || "Not specified"}
+              ${budgetPrompt}
               Pace: ${input.pace || "Not specified"}
               Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
               Specific Requests: ${input.freeText || "None"}
@@ -247,7 +270,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
               Companions: ${input.companions}
               Themes: ${input.theme.join(", ")}
-              Budget: ${input.budget || "Not specified"}
+              ${budgetPrompt}
               Pace: ${input.pace || "Not specified"}
               Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
               Specific Requests: ${input.freeText || "None"}
@@ -310,7 +333,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Dates: ${input.dates}
         Companions: ${input.companions}
         Themes: ${input.theme.join(", ")}
-        Budget: ${input.budget}
+        ${budgetPrompt}
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ")}
         FreeText: ${input.freeText}

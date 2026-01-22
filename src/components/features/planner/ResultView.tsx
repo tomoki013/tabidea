@@ -35,6 +35,7 @@ interface ResultViewProps {
   showChat?: boolean;
   showShareButtons?: boolean;
   showReferences?: boolean;
+  initialChatHistory?: { role: string; text: string }[];
 }
 
 export default function ResultView({
@@ -48,6 +49,7 @@ export default function ResultView({
   showChat = true,
   showShareButtons = true,
   showReferences = true,
+  initialChatHistory,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -608,9 +610,11 @@ export default function ResultView({
 
                 <div className="bg-stone-50/50 rounded-xl">
                   <TravelPlannerChat
+                    key={result.id}
                     itinerary={result}
                     onRegenerate={onRegenerate}
                     isRegenerating={isUpdating}
+                    initialChatHistory={initialChatHistory}
                   />
                 </div>
               </div>

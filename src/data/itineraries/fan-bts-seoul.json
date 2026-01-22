@@ -1,0 +1,50 @@
+{
+  "id": "fan-bts-seoul",
+  "destination": "ソウル（韓国）",
+  "description": "K-POPの世界的スター、BTSゆかりの地を巡るARMYのためのソウル旅。練習生時代の食堂、MV撮影地、所属事務所HYBEのミュージアムなどを訪れ、彼らの軌跡を辿ります。",
+  "heroImage": "",
+  "days": [
+    {
+      "day": 1,
+      "title": "思い出の味とHYBE",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "HYBE INSIGHT",
+          "description": "所属事務所のミュージアムを見学（要予約）。トロフィーや衣装、特別な映像コンテンツを楽しみます。"
+        },
+        {
+          "time": "13:00",
+          "activity": "油井食堂（ユジョンシクタン）",
+          "description": "練習生時代にメンバーが通い詰めた食堂で、名物「バンタンビビンバ」を味わいます。"
+        },
+        {
+          "time": "15:00",
+          "activity": "鶴洞公園",
+          "description": "メンバーが悩みや夢を語り合った思い出の公園を散策。"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MVロケ地と漢江",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "景福宮（キョンボックン）",
+          "description": "「IDOL」のパフォーマンスが行われた勤政殿前を見学。"
+        },
+        {
+          "time": "14:00",
+          "activity": "漢江公園",
+          "description": "メンバーがよく訪れたり、サイクリングを楽しんだりする漢江沿いでリラックス。"
+        },
+        {
+          "time": "18:00",
+          "activity": "LINE FRIENDS 江南",
+          "description": "BT21グッズのショッピングを楽しみます。"
+        }
+      ]
+    }
+  ]
+}

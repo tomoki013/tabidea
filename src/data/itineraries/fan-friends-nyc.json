@@ -1,0 +1,29 @@
+{
+  "id": "fan-friends-nyc",
+  "destination": "ニューヨーク（アメリカ）",
+  "description": "ドラマ『フレンズ』の聖地巡礼。アパートの外観、「The Friends Experience」でのセット体験、そしてキャストゆかりの地を巡り、90年代のNY気分に浸ります。",
+  "heroImage": "",
+  "days": [
+    {
+      "day": 1,
+      "title": "アパートとカフェの世界",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "アパートの外観（ベッドフォード・ストリート）",
+          "description": "モニカたちの部屋の外観として使われたグリニッジ・ビレッジの建物を見学。"
+        },
+        {
+          "time": "13:00",
+          "activity": "The Friends Experience",
+          "description": "セントラル・パークのソファや、ジョーイの部屋、モニカのキッチンなどが再現された体験型展示へ。"
+        },
+        {
+          "time": "16:00",
+          "activity": "ブルーミングデールズ",
+          "description": "レイチェルが働いていたデパートでショッピング。"
+        }
+      ]
+    }
+  ]
+}

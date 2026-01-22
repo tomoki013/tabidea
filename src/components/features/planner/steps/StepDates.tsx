@@ -16,6 +16,9 @@ const parseDate = (str: string) => {
 };
 
 const parseDuration = (str: string) => {
+  // Check for "日帰り" (Day trip = 1 day)
+  if (str.includes("日帰り")) return 1;
+
   const daysMatch = str.match(/(\d+)日間/);
   if (daysMatch) {
     const d = parseInt(daysMatch[1]);
@@ -30,12 +33,15 @@ const parseDuration = (str: string) => {
 };
 
 const parseDisplayFormat = (str: string): "days" | "nights" => {
-  if (/\d+泊\d+日/.test(str)) return "nights";
+  if (str.includes("日帰り") || /\d+泊\d+日/.test(str)) return "nights";
   return "days";
 };
 
 const isDateUndecidedCheck = (str:string) => !/(\d{4}-\d{2}-\d{2})/.test(str);
-const isDurationUndecidedCheck = (str: string) => !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
+
+// Revised check: explicitly exclude "日帰り" from being considered "undecided"
+const isDurationUndecidedCheck = (str: string) =>
+  !str.includes("日帰り") && !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
 
 const getTomorrow = () => {
   const d = new Date();

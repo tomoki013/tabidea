@@ -11,7 +11,7 @@ export default function FAQPage() {
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
       {/* Header Section */}
-      <div className="relative w-full py-16 md:py-24 px-4 overflow-hidden">
+      <div className="relative w-full pt-32 pb-16 px-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none bg-[radial-gradient(#e67e22_1px,transparent_1px)] [background-size:20px_20px]" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-6">

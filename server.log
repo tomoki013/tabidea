@@ -1,17 +1,10 @@
 
-> tabidea@0.3.1 dev
-> next dev
+> tabidea@0.3.1 start /app
+> next start
 
-   ▲ Next.js 16.0.10 (Turbopack)
+   ▲ Next.js 16.0.10
    - Local:         http://localhost:3000
    - Network:       http://192.168.0.2:3000
 
  ✓ Starting...
-Attention: Next.js now collects completely anonymous telemetry regarding usage.
-This information is used to shape Next.js' roadmap and prioritize features.
-You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
-https://nextjs.org/telemetry
-
- ✓ Ready in 1556ms
- ○ Compiling /travel-info ...
- GET /travel-info 200 in 13.2s (compile: 11.6s, render: 1649ms)
+ ✓ Ready in 712ms

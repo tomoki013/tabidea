@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getSamplePlanById, samplePlans } from "@/lib/sample-plans";
+import { getSamplePlanByIdDynamic, loadAllSamplePlans } from "@/lib/sample-plans-loader";
 import { getSampleItinerary } from "@/lib/sample-itineraries";
 import { FaArrowLeft } from "react-icons/fa";
 import { UserInput } from '@/types';
@@ -15,14 +15,15 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return samplePlans.map((plan) => ({
+  const plans = await loadAllSamplePlans();
+  return plans.map((plan) => ({
     id: plan.id,
   }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
-  const plan = getSamplePlanById(id);
+  const plan = await getSamplePlanByIdDynamic(id);
   const itinerary = await getSampleItinerary(id);
 
   if (!plan) {
@@ -90,7 +91,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function SamplePlanDetailPage({ params }: Props) {
   const { id } = await params;
-  const plan = getSamplePlanById(id);
+  const plan = await getSamplePlanByIdDynamic(id);
 
   if (!plan) {
     notFound();

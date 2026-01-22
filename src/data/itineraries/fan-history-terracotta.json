@@ -1,0 +1,29 @@
+{
+  "id": "fan-history-terracotta",
+  "destination": "西安（中国）",
+  "description": "始皇帝を守る兵馬俑の圧倒的なスケールを体感する旅。数千体の兵士や馬の像が並ぶ発掘坑と、秦の始皇帝陵を訪れます。",
+  "heroImage": "",
+  "days": [
+    {
+      "day": 1,
+      "title": "地下の軍団",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "兵馬俑坑博物館",
+          "description": "1号坑の壮大な軍団、司令部とされる3号坑などを見学。一人ひとり異なる兵士の表情に注目。"
+        },
+        {
+          "time": "13:00",
+          "activity": "銅車馬展示館",
+          "description": "精巧な青銅製の馬車を見学。"
+        },
+        {
+          "time": "15:00",
+          "activity": "秦始皇帝陵",
+          "description": "未発掘の巨大な陵墓を遠望し、古代帝国の権力を感じます。"
+        }
+      ]
+    }
+  ]
+}

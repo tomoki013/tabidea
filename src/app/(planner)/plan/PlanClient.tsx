@@ -26,6 +26,9 @@ function PlanContent() {
     "loading" | "idle" | "regenerating" | "generating" | "error"
   >("loading");
 
+  // State to persist chat history across regenerations
+  const [chatHistoryToKeep, setChatHistoryToKeep] = useState<{ role: string; text: string }[]>([]);
+
   // State for request editing modal
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
@@ -120,6 +123,12 @@ function PlanContent() {
           }
 
           setResult(decoded.result);
+
+          // Clear chat history if this wasn't a regeneration flow
+          if (previousStatus.current !== "regenerating") {
+            setChatHistoryToKeep([]);
+          }
+
           setStatus("idle");
           // Close modal if URL changes (regeneration complete)
           setIsEditingRequest(false);
@@ -175,7 +184,11 @@ function PlanContent() {
   ) => {
     const planToUse = overridePlan || result;
     if (!planToUse || !input) return;
+
+    // Save chat history to persist it after page reload/update
+    setChatHistoryToKeep(chatHistory);
     setStatus("regenerating");
+
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
       if (response.success && response.data) {
@@ -270,6 +283,7 @@ function PlanContent() {
         onResultChange={handleResultChange}
         isUpdating={status === "regenerating"}
         onEditRequest={handleEditRequest}
+        initialChatHistory={chatHistoryToKeep}
       />
 
       {/* Request Editing Modal */}
@@ -290,7 +304,7 @@ export default function PlanClient() {
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
         {/* Title Section - Matches the aesthetic of the app */}
-        <div className="w-full pt-16 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
+        <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
             Result
           </div>

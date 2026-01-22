@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import StartPlanningButton from "@/components/common/StartPlanningButton";
 
 const steps = [
   {
@@ -199,13 +199,12 @@ export default function HowToUseSection() {
           <p className="text-muted-foreground font-hand text-lg">
             無料で今すぐ使い始められます
           </p>
-          <Link
-            href="/"
+          <StartPlanningButton
             className="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white font-bold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl group"
           >
             <span>旅行プランを作成する</span>
             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </StartPlanningButton>
         </motion.div>
       </div>
     </section>

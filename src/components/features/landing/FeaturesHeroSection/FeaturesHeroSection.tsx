@@ -5,7 +5,7 @@ import { FaBookOpen, FaMagic, FaPlaneDeparture } from "react-icons/fa";
 
 export default function FeaturesHeroSection() {
   return (
-    <section className="relative w-full py-24 sm:py-32 overflow-hidden">
+    <section className="relative w-full pt-32 pb-24 sm:pb-32 overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 bg-[#fcfbf9]" />
       <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-50 mix-blend-multiply" />
