@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useDebounce } from "@/hooks/use-debounce";
+import { useDebounce } from "@/lib/hooks";
 import {
   FaFilter,
   FaTimes,
