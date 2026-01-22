@@ -1,0 +1,14 @@
+
+> tabidea@0.3.1 dev /app
+> next dev
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1252ms
+ ○ Compiling / ...
+ GET / 200 in 15.4s (compile: 13.7s, render: 1694ms)
+ ELIFECYCLE  Command failed.
+[?25h
