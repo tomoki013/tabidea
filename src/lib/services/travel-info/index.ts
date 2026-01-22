@@ -194,10 +194,17 @@ import { ITravelInfoService } from './interfaces';
 
 /**
  * デフォルト設定でTravelInfoServiceを作成
+ *
+ * categoryTimeout: 45秒に設定
+ * - MOFA APIは内部でAI分析（Gemini）を使用してリスクレベルを判定するため、
+ *   デフォルトの10秒では不十分
+ * - AI分析に10-15秒、フォールバック時のGemini生成にも同程度かかる可能性があるため、
+ *   余裕を持って45秒に設定
  */
 export function createDefaultTravelInfoService(): ITravelInfoService {
   return createTravelInfoService({
     cacheManager: createCacheManager(),
     categoryMapper: createDefaultCategoryMapper(),
+    categoryTimeout: 45000, // 45秒（AI分析を含むため長めに設定）
   });
 }
