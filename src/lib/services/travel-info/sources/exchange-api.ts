@@ -45,6 +45,7 @@ export interface ExchangeRateData {
  * BasicCountryInfoの為替関連フィールドを提供
  */
 export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
+  readonly sourceId = 'exchange-rate-api';
   readonly sourceName = '為替レートAPI';
   readonly sourceType: SourceType = 'official_api';
   readonly reliabilityScore = 90;
@@ -66,7 +67,7 @@ export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
    */
   async fetch(
     destination: string,
-    _options?: SourceOptions
+    options?: SourceOptions
   ): Promise<SourceResult<BasicCountryInfo>> {
     console.log(`[exchange-api] Fetching exchange rate for: ${destination}`);
 
@@ -80,17 +81,16 @@ export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
         };
       }
 
-      // TODO: 目的地から通貨コードを取得
-      const currencyCode = await this.getCurrencyCodeForDestination(destination);
+      const currencyCode = options?.additionalParams?.currencyCode as string;
 
       if (!currencyCode) {
         return {
           success: false,
-          error: `通貨情報が見つかりませんでした: ${destination}`,
+          error: `通貨コードが提供されませんでした: ${destination}`,
         };
       }
 
-      // TODO: 為替レートを取得
+      // 為替レートを取得
       const exchangeData = await this.fetchExchangeRate(
         currencyCode,
         apiKey
@@ -143,60 +143,42 @@ export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
   }
 
   /**
-   * 目的地から通貨コードを取得
-   * TODO: 国・都市と通貨のマッピングデータベースを使用
-   */
-  private async getCurrencyCodeForDestination(
-    destination: string
-  ): Promise<string | null> {
-    // TODO: 実装
-    // 1. ジオコーディングで国を特定
-    // 2. 国と通貨のマッピングテーブルから通貨コードを取得
-
-    // 仮のマッピング（実際は外部データ/APIを使用）
-    const currencyMap: Record<string, string> = {
-      'アメリカ': 'USD',
-      'イギリス': 'GBP',
-      'タイ': 'THB',
-      'バンコク': 'THB',
-      '韓国': 'KRW',
-      'ソウル': 'KRW',
-      '台湾': 'TWD',
-      '台北': 'TWD',
-      'フランス': 'EUR',
-      'パリ': 'EUR',
-      'ドイツ': 'EUR',
-      'イタリア': 'EUR',
-      'ローマ': 'EUR',
-      'オーストラリア': 'AUD',
-      'シドニー': 'AUD',
-    };
-
-    // 部分一致で検索
-    for (const [key, code] of Object.entries(currencyMap)) {
-      if (destination.includes(key)) {
-        return code;
-      }
-    }
-
-    console.warn(`[exchange-api] Currency not found for: ${destination}`);
-    return null;
-  }
-
-  /**
    * 為替レートを取得
-   * TODO: 実際のAPI呼び出し
    */
   private async fetchExchangeRate(
-    _currencyCode: string,
-    _apiKey: string
+    currencyCode: string,
+    apiKey: string
   ): Promise<ExchangeRateData | null> {
-    // TODO: 実際のAPI呼び出しを実装
-    // 例: https://api.exchangerate-api.com/v4/latest/JPY
+    const baseCurrency = this.config.baseCurrency || 'JPY';
+    const url = `https://v6.exchangerate-api.com/v6/${apiKey}/pair/${currencyCode}/${baseCurrency}`;
 
-    console.warn('[exchange-api] Using placeholder - implement actual fetch');
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`API error: ${response.statusText}`);
+      }
+      const data = await response.json();
 
-    return null;
+      if (data.result === 'error') {
+        throw new Error(`Exchange rate API error: ${data['error-type']}`);
+      }
+
+      return {
+        currency: {
+          code: currencyCode,
+          name: '', // このAPIは通貨名を提供しない
+          symbol: '', // このAPIは通貨記号を提供しない
+        },
+        exchangeRate: {
+          rate: data.conversion_rate,
+          lastUpdatedAt: new Date(data.time_last_update_unix * 1000),
+          targetCurrency: baseCurrency,
+        },
+      };
+    } catch (error) {
+      console.error(`[exchange-api] Failed to fetch exchange rate for ${currencyCode}:`, error);
+      return null;
+    }
   }
 }
 

@@ -19,6 +19,7 @@ import {
   CategoryDataEntry,
   FailedCategory,
   ALL_TRAVEL_INFO_CATEGORIES,
+  BasicCountryInfo,
 } from '@/types';
 
 import {
@@ -26,6 +27,7 @@ import {
   ICacheManager,
   ICategoryMapper,
   ITravelInfoSource,
+  SourceOptions,
   SourceResult,
   TravelInfoServiceError,
 } from './interfaces';
@@ -309,38 +311,22 @@ export class TravelInfoService implements ITravelInfoService {
     category: K,
     options?: TravelInfoOptions
   ): Promise<SourceResult<CategoryDataMap[K]>> {
+    if (category === 'basic') {
+      return this.getBasicCountryInfo(destination, options) as Promise<SourceResult<CategoryDataMap[K]>>;
+    }
+
     const sources = this.categoryMapper.getSourcesForCategory(destination, category);
-
     if (sources.length === 0) {
-      return {
-        success: false,
-        error: `No sources available for category: ${category}`,
-      };
+      return { success: false, error: `No sources for category: ${category}` };
     }
 
-    // ソースをランキング
     const rankedSources = this.sourceRanker.getSourcesForCategory(sources, category);
-
-    // サーキットブレーカーを考慮してソースをフィルタリング
-    const availableSources = rankedSources.filter((source) =>
-      this.circuitBreaker.isAvailable(source.sourceName)
-    );
-
+    const availableSources = rankedSources.filter(s => this.circuitBreaker.isAvailable(s.sourceName));
     if (availableSources.length === 0) {
-      return {
-        success: false,
-        error: `All sources are currently unavailable (circuit breaker open) for category: ${category}`,
-      };
+      return { success: false, error: `All sources unavailable for category: ${category}` };
     }
 
-    // フォールバックチェーンを実行
-    const result = await this.trySourcesWithFallback(
-      availableSources,
-      destination,
-      category,
-      options
-    );
-
+    const result = await this.trySourcesWithFallback(availableSources, destination, category, options);
     if (result.success && result.data && result.source) {
       return {
         success: true,
@@ -355,6 +341,81 @@ export class TravelInfoService implements ITravelInfoService {
       fallbackUsed: result.fallbackUsed,
       fallbackSource: result.fallbackSource,
     };
+  }
+
+  /**
+   * 基本情報カテゴリ（'basic'）を特別に処理
+   * 1. CountryApiSourceで基本情報を取得
+   * 2. 通貨コードを使いExchangeApiSourceで為替レートを取得
+   * 3. 2つの情報をマージ
+   */
+  private async getBasicCountryInfo(
+    destination: string,
+    options?: TravelInfoOptions
+  ): Promise<SourceResult<BasicCountryInfo>> {
+    const sources = this.categoryMapper.getSourcesForCategory(destination, 'basic');
+    const countrySource = sources.find(s => s.sourceId === 'rest-countries');
+
+    if (!countrySource) {
+      return { success: false, error: 'CountryApiSource not found' };
+    }
+
+    const countryResult = await this.fetchWithSource(countrySource, destination, 'basic', options);
+    if (!countryResult.success || !countryResult.data) {
+      return { success: false, error: 'Failed to fetch basic country info' };
+    }
+
+    const basicInfo = countryResult.data as BasicCountryInfo;
+    if (!basicInfo.currency?.code) {
+      return countryResult; // 通貨コードがなければそのまま返す
+    }
+
+    const exchangeSource = sources.find(s => s.sourceId === 'exchange-rate-api');
+
+    if (!exchangeSource) {
+      return countryResult; // 為替ソースがなければそのまま返す
+    }
+
+    const exchangeOptions: SourceOptions = {
+      ...options,
+      additionalParams: { currencyCode: basicInfo.currency.code },
+    };
+
+    const exchangeResult = await this.fetchWithSource(exchangeSource, destination, 'basic', exchangeOptions);
+    if (exchangeResult.success && exchangeResult.data) {
+      const exchangeData = exchangeResult.data as BasicCountryInfo;
+      // 情報をマージ
+      basicInfo.exchangeRate = exchangeData.exchangeRate;
+      // 2つのソース情報をマージ
+      const mergedSource: TravelInfoSource = {
+        ...countryResult.source!,
+        sourceName: `${countryResult.source!.sourceName} & ${exchangeResult.source!.sourceName}`,
+      };
+      return { ...countryResult, data: basicInfo, source: mergedSource };
+    }
+
+    return countryResult; // 為替レート取得失敗でも基本情報は返す
+  }
+
+  /**
+   * 特定のソースを使用してデータを取得
+   */
+  private async fetchWithSource<T>(
+    source: ITravelInfoSource,
+    destination: string,
+    category: TravelInfoCategory,
+    options?: TravelInfoOptions
+  ): Promise<SourceResult<T>> {
+    if (!this.circuitBreaker.isAvailable(source.sourceName)) {
+      return { success: false, error: `Source ${source.sourceName} is unavailable` };
+    }
+    const result = await source.fetch(destination, { ...options, additionalParams: { ...options?.additionalParams, category } });
+    if (result.success) {
+      this.circuitBreaker.recordSuccess(source.sourceName);
+    } else {
+      this.circuitBreaker.recordFailure(source.sourceName);
+    }
+    return result as SourceResult<T>;
   }
 
   // ============================================
@@ -445,78 +506,30 @@ export class TravelInfoService implements ITravelInfoService {
     ]);
   }
 
-  /**
-   * フォールバック付きでソースを試行
-   */
   private async trySourcesWithFallback(
     sources: ITravelInfoSource[],
     destination: string,
     category: TravelInfoCategory,
     options?: TravelInfoOptions
-  ): Promise<{
-    success: boolean;
-    data?: unknown;
-    source?: TravelInfoSource;
-    error?: string;
-    fallbackUsed?: boolean;
-    fallbackSource?: string;
-  }> {
-    let fallbackUsed = false;
-    let lastSource: ITravelInfoSource | undefined;
-
-    const result = await executeFallbackChain(
-      sources,
-      async (source) => {
-        const isAvailable = await source.isAvailable();
-        if (!isAvailable) {
-          throw new Error('Source not available');
+  ): Promise<SourceResult<unknown>> {
+    const fallbackPromise = async (): Promise<SourceResult<unknown>> => {
+      for (const source of sources) {
+        const result = await this.fetchWithSource(source, destination, category, options);
+        if (result.success) {
+          return { ...result, fallbackUsed: sources.indexOf(source) > 0 };
         }
-
-        lastSource = source;
-        fallbackUsed = sources.indexOf(source) > 0;
-
-        const fetchResult = await source.fetch(destination, {
-          travelDate: options?.travelDate,
-          timeout: options?.timeout ?? this.defaultTimeout,
-          language: options?.language ?? this.defaultLanguage,
-          country: options?.country,
-          additionalParams: { category },
-        });
-
-        if (!fetchResult.success) {
-          this.circuitBreaker.recordFailure(source.sourceName);
-          throw new Error(fetchResult.error);
-        }
-
-        this.circuitBreaker.recordSuccess(source.sourceName);
-        return fetchResult;
-      },
-      {
-        timeoutMs: this.categoryTimeout,
-        onFailure: (source, error) => {
-          this.log(`Source ${source.sourceName} failed: ${error.message}`);
-        },
       }
+      return { success: false, error: `All sources failed for ${category}` };
+    };
+
+    const timeoutPromise = new Promise<SourceResult<unknown>>((_, reject) =>
+      setTimeout(
+        () => reject(new TravelInfoServiceError('TIMEOUT', `Timeout fetching ${category}`)),
+        this.categoryTimeout
+      )
     );
 
-    if (result.success && result.data) {
-      const successResult = result.data as SourceResult<unknown>;
-      if (successResult.success) {
-        return {
-          success: true,
-          data: successResult.data,
-          source: successResult.source,
-          fallbackUsed,
-          fallbackSource: fallbackUsed ? lastSource?.sourceName : undefined,
-        };
-      }
-    }
-
-    return {
-      success: false,
-      error: result.lastError,
-      fallbackUsed,
-    };
+    return Promise.race([fallbackPromise(), timeoutPromise]);
   }
 
   /**

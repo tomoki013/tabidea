@@ -279,6 +279,7 @@ interface RestCountryResponse {
  * 国情報ソース
  */
 export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
+  readonly sourceId = 'rest-countries';
   readonly sourceName = 'REST Countries API';
   readonly sourceType: SourceType = 'official_api';
   readonly reliabilityScore = 80;
@@ -305,22 +306,10 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
     console.log(`[country-api] Fetching country info for: ${destination}, context: ${options?.country || 'none'}`);
 
     try {
-      // オプションの国名を優先、なければ目的地をそのまま使用
-      let countryName = options?.country || destination;
-
-      // 日本語の国名を英語に変換（REST Countries APIは英語名を期待）
-      const englishName = this.convertToEnglishCountryName(countryName);
-      if (englishName) {
-        console.log(`[country-api] Converted Japanese "${countryName}" to English "${englishName}"`);
-        countryName = englishName;
-      }
-
-      const shouldUseFullText = !!options?.country || !!englishName; // コンテキストがある場合は完全一致検索を試みる
-
-      // REST Countries APIを呼び出し
-      const countryData = await this.fetchCountryData(countryName, shouldUseFullText);
+      const countryData = await this.resolveCountryData(destination, { country: options?.country });
 
       if (!countryData) {
+        const countryName = options?.country || destination;
         return {
           success: false,
           error: `国情報が見つかりませんでした: ${countryName}`,
@@ -357,6 +346,22 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
   async isAvailable(): Promise<boolean> {
     // REST Countries APIは公開APIのため常に利用可能
     return true;
+  }
+
+  /**
+   * 国のデータを解決する
+   * @param destination - 目的地
+   * @param options - オプション（国名など）
+   * @returns 国データ、見つからない場合はnull
+   */
+  private async resolveCountryData(destination: string, options?: { country?: string }): Promise<RestCountryResponse | null> {
+    let countryName = options?.country || destination;
+    const englishName = this.convertToEnglishCountryName(countryName);
+    if (englishName) {
+      countryName = englishName;
+    }
+    const shouldUseFullText = !!options?.country || !!englishName;
+    return await this.fetchCountryData(countryName, shouldUseFullText);
   }
 
   /**

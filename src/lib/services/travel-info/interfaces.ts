@@ -75,6 +75,8 @@ export type SourceResult<T> = SourceResultSuccess<T> | SourceResultFailure;
  * 各APIソース（外務省、天気、為替等）が実装する
  */
 export interface ITravelInfoSource<T extends AnyCategoryData = AnyCategoryData> {
+  /** データソースの一意なID */
+  readonly sourceId: string;
   /** ソース名（例: "外務省海外安全情報"） */
   readonly sourceName: string;
   /** ソースタイプ */
