@@ -16,11 +16,11 @@ export default function SmokingSection({ data }: SectionBaseProps<SmokingInfo>) 
           <AlertCircle className="w-5 h-5 text-primary" />
           喫煙ルール・罰則
         </h4>
-        <div className="p-5 bg-stone-50 border border-stone-100 rounded-xl relative overflow-hidden">
-          <div className="absolute right-0 top-0 opacity-5">
-             <Cigarette className="w-24 h-24" />
+        <div className="p-6 bg-[#fcfbf9] border border-stone-200 rounded-xl relative overflow-hidden shadow-sm">
+          <div className="absolute right-[-10px] top-[-10px] opacity-10 rotate-12">
+             <Cigarette className="w-32 h-32" />
           </div>
-          <p className="text-stone-800 text-lg leading-relaxed relative z-10">{data.rules}</p>
+          <p className="text-stone-700 text-lg leading-loose relative z-10 font-serif">{data.rules}</p>
         </div>
       </div>
 
@@ -30,8 +30,8 @@ export default function SmokingSection({ data }: SectionBaseProps<SmokingInfo>) 
           <MapPin className="w-5 h-5 text-primary" />
           喫煙場所
         </h4>
-        <div className="p-5 bg-white border border-stone-100 rounded-xl shadow-sm">
-          <p className="text-stone-700 leading-relaxed">{data.areas}</p>
+        <div className="p-6 bg-white border-2 border-dashed border-stone-200 rounded-xl">
+          <p className="text-stone-700 leading-relaxed font-serif">{data.areas}</p>
         </div>
       </div>
 
@@ -42,8 +42,8 @@ export default function SmokingSection({ data }: SectionBaseProps<SmokingInfo>) 
             <AlertCircle className="w-5 h-5 text-red-500" />
             違反時の罰金
           </h4>
-          <div className="p-5 bg-red-50 border border-red-100 rounded-xl shadow-sm">
-            <p className="text-stone-800 leading-relaxed font-medium">{data.fines}</p>
+          <div className="p-5 bg-red-50/50 border border-red-200 rounded-xl shadow-sm">
+            <p className="text-red-900 leading-relaxed font-bold font-serif">{data.fines}</p>
           </div>
         </div>
       )}

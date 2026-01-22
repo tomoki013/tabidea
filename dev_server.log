@@ -1,0 +1,32 @@
+
+> tabidea@0.3.1 dev
+> next dev
+
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 1221ms
+ ○ Compiling /travel-info/[destination] ...
+ GET /travel-info/Bangkok 200 in 16.7s (compile: 15.4s, render: 1320ms)
+[2026-01-22T15:02:03.565Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_basic_1769094123565_08ktho",
+  "destination": "Bangkok",
+  "category": "basic"
+}
+[2026-01-22T15:02:03.567Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+  error: { raw: 'undefined' },
+  requestId: 'single_basic_1769094123565_08ktho'
+}
+ POST /travel-info/Bangkok 200 in 431ms (compile: 55ms, render: 376ms)
+[2026-01-22T15:02:03.693Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
+  "requestId": "single_safety_1769094123693_gpkml1",
+  "destination": "Bangkok",
+  "category": "safety"
+}
+[2026-01-22T15:02:03.694Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
+  error: { raw: 'undefined' },
+  requestId: 'single_safety_1769094123693_gpkml1'
+}
+ POST /travel-info/Bangkok 200 in 49ms (compile: 13ms, render: 36ms)

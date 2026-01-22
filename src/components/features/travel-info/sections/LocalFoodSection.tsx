@@ -22,17 +22,24 @@ export default function LocalFoodSection({ data }: SectionBaseProps<LocalFoodInf
           {data.popularDishes.map((dish, index) => (
             <div
               key={index}
-              className="p-5 bg-white border border-stone-100 rounded-xl shadow-sm flex flex-col h-full"
+              className="p-5 bg-[#fcfbf9] border border-stone-200 rounded-sm shadow-sm flex flex-col h-full relative"
+              style={{
+                backgroundImage: 'radial-gradient(#e5e7eb 1px, transparent 1px)',
+                backgroundSize: '12px 12px'
+              }}
             >
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <h5 className="font-bold text-lg text-[#2c2c2c]">{dish.name}</h5>
+              {/* Tape effect */}
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-stone-200/50 rotate-1 shadow-sm backdrop-blur-sm" />
+
+              <div className="flex items-start justify-between gap-2 mb-4 mt-2">
+                <h5 className="font-serif font-bold text-xl text-[#2c2c2c] border-b-2 border-primary/20 pb-1">{dish.name}</h5>
                 {dish.approximatePrice && (
-                  <span className="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full whitespace-nowrap">
+                  <span className="text-xs font-bold text-stone-600 bg-white border border-stone-200 px-3 py-1 rounded-full whitespace-nowrap shadow-sm">
                     {dish.approximatePrice}
                   </span>
                 )}
               </div>
-              <p className="text-sm text-stone-600 leading-relaxed flex-grow">
+              <p className="text-sm text-stone-700 leading-relaxed flex-grow font-serif">
                 {dish.description}
               </p>
             </div>

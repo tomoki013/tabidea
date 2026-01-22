@@ -46,27 +46,31 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-6 bg-gradient-to-br from-blue-50 to-sky-50 rounded-2xl border border-blue-100 shadow-md"
+          className="p-6 bg-[#fcfbf9] rounded-2xl border border-stone-200 shadow-sm relative overflow-hidden"
         >
-          <h4 className="text-sm text-stone-500 mb-3 font-bold">現在の天気</h4>
-          <div className="flex items-center gap-6">
-            <div className="text-blue-500">
-              <WeatherIconDisplay condition={data.currentWeather.condition} className="w-16 h-16" />
+          <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12" />
+
+          <h4 className="text-sm text-stone-500 mb-4 font-bold font-serif uppercase tracking-wider">Current Weather</h4>
+          <div className="flex items-center gap-8 relative z-10">
+            <div className="text-primary/80">
+              <WeatherIconDisplay condition={data.currentWeather.condition} className="w-20 h-20" />
             </div>
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="text-5xl font-bold text-[#2c2c2c]">
+                <span className="text-6xl font-serif font-bold text-[#2c2c2c]">
                   {Math.round(data.currentWeather.temp)}
                 </span>
-                <span className="text-2xl text-stone-400">°C</span>
+                <span className="text-2xl text-stone-400 font-serif">°C</span>
               </div>
-              <p className="text-lg text-stone-600 mt-1">
+              <p className="text-lg text-stone-600 mt-2 font-serif font-bold">
                 {data.currentWeather.condition}
               </p>
             </div>
-            <div className="ml-auto flex items-center gap-2 text-stone-500">
-              <Droplets className="w-5 h-5" />
-              <span>{data.currentWeather.humidity}%</span>
+            <div className="ml-auto flex flex-col items-end gap-1 text-stone-500">
+              <div className="flex items-center gap-2 px-3 py-1 bg-white rounded-full border border-stone-100 shadow-sm">
+                <Droplets className="w-4 h-4 text-blue-400" />
+                <span className="text-sm font-bold">{data.currentWeather.humidity}%</span>
+              </div>
             </div>
           </div>
         </motion.div>
@@ -74,13 +78,13 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
 
       {/* 天気予報 */}
       {data.forecast && data.forecast.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Thermometer className="w-5 h-5 text-primary" />
             天気予報
           </h4>
-          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex gap-3 min-w-max pb-2">
+          <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
+            <div className="flex gap-4 min-w-max">
               {data.forecast.map((forecast, index) => (
                 <ForecastCard key={forecast.date} forecast={forecast} index={index} />
               ))}
@@ -90,36 +94,39 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
       )}
 
       {/* 季節の説明 */}
-      <div className="space-y-3">
-        <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+      <div className="space-y-4">
+        <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
           <Wind className="w-5 h-5 text-primary" />
           季節の特徴
         </h4>
-        <p className="text-stone-600 leading-relaxed p-4 bg-stone-50 rounded-xl">
-          {data.seasonDescription}
-        </p>
+        <div className="p-6 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm relative">
+           <div className="absolute top-4 left-4 w-8 h-1 bg-primary/20" />
+           <p className="text-stone-700 leading-loose font-serif pt-4">
+            {data.seasonDescription}
+           </p>
+        </div>
       </div>
 
       {/* 服装アドバイス */}
       {data.recommendedClothing.length > 0 && (
-        <div className="space-y-3">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+        <div className="space-y-4">
+          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Shirt className="w-5 h-5 text-primary" />
             服装アドバイス
           </h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.recommendedClothing.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="flex items-center gap-4 p-4 bg-white border border-amber-100 rounded-xl shadow-sm"
+                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm hover:border-primary/20 transition-colors"
               >
-                <div className="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-sm flex-shrink-0">
+                <div className="w-6 h-6 rounded-full bg-stone-100 text-stone-500 flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5 font-serif">
                   {index + 1}
                 </div>
-                <p className="text-stone-800 text-sm font-medium">{item}</p>
+                <p className="text-stone-700 text-sm font-medium leading-relaxed">{item}</p>
               </motion.div>
             ))}
           </div>

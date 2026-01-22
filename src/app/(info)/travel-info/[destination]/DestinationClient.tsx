@@ -223,7 +223,7 @@ export default function DestinationClient({
   );
 
   return (
-    <div className="min-h-screen pb-20">
+    <div className="min-h-screen pb-20 pt-32 bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-4">
         <div className="space-y-8">
@@ -257,23 +257,25 @@ export default function DestinationClient({
                 （現在 {selectedCategories.length} 件選択中）
               </span>
             </summary>
-            <div className="p-4 sm:p-6 border-t border-stone-100 space-y-4">
+            <div className="p-4 sm:p-6 border-t border-stone-100 space-y-6">
               <CategorySelector
                 selectedCategories={selectedCategories}
                 onSelectionChange={handleCategoryChange}
                 disabled={isLoading}
               />
-              <button
-                type="button"
-                onClick={handleResearch}
-                disabled={isLoading || selectedCategories.length === 0}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <RefreshCw
-                  className={`w-5 h-5 ${isLoading ? "animate-spin" : ""}`}
-                />
-                {isLoading ? "取得中..." : "選択したカテゴリで再検索"}
-              </button>
+              <div className="flex justify-center">
+                <button
+                  type="button"
+                  onClick={handleResearch}
+                  disabled={isLoading || selectedCategories.length === 0}
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md"
+                >
+                  <RefreshCw
+                    className={`w-5 h-5 ${isLoading ? "animate-spin" : ""}`}
+                  />
+                  {isLoading ? "取得中..." : "選択したカテゴリで再検索"}
+                </button>
+              </div>
             </div>
           </motion.details>
 

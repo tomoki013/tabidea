@@ -1307,7 +1307,11 @@ function normalizeSafetyInfo(data: Record<string, unknown>): SafetyInfo {
         ? data.dangerLevelDescription
         : '情報なし',
     warnings: Array.isArray(data.warnings)
-      ? data.warnings.filter((w): w is string => typeof w === 'string')
+      ? data.warnings.filter((w): w is string => typeof w === 'string').map(w => ({
+          title: w,
+          priority: 'medium' as const,
+          type: 'general' as const
+        }))
       : [],
     emergencyContacts: Array.isArray(emergencyContacts)
       ? emergencyContacts.map((c) => ({

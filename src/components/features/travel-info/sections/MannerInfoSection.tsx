@@ -20,15 +20,15 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
   return (
     <div className="space-y-6">
       {/* チップ情報 */}
-      <div className="space-y-3">
-        <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
+      <div className="space-y-4">
+        <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
           <Coins className="w-5 h-5 text-primary" />
           チップの習慣
         </h4>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className={`p-5 sm:p-6 rounded-2xl border bg-white shadow-md ${
+          className={`p-5 sm:p-6 rounded-xl border bg-[#fcfbf9] shadow-sm relative overflow-hidden ${
             data.tipping.required
               ? 'border-amber-200'
               : data.tipping.customary
@@ -36,10 +36,13 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
                 : 'border-green-200'
           }`}
         >
-          <div className="flex items-center gap-4 mb-3">
+          {/* Tape */}
+          <div className="absolute top-0 right-8 w-8 h-12 bg-stone-100 border-x border-b border-stone-200/50 shadow-sm rounded-b-sm" />
+
+          <div className="flex items-center gap-4 mb-4 relative z-10">
             <TippingBadge tipping={data.tipping} />
           </div>
-          <p className="text-stone-800 text-lg leading-relaxed">
+          <p className="text-stone-700 text-lg leading-loose font-serif relative z-10">
             {data.tipping.guideline}
           </p>
         </motion.div>
@@ -59,12 +62,14 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm"
+                className="flex items-start gap-4 p-4 bg-white border-b border-stone-100 last:border-0 hover:bg-stone-50 transition-colors"
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                <div className="flex-shrink-0 mt-0.5 text-green-500">
+                   <div className="w-5 h-5 rounded-full border-2 border-green-500 flex items-center justify-center">
+                     <span className="w-2.5 h-2.5 bg-green-500 rounded-full" />
+                   </div>
                 </div>
-                <p className="text-stone-800 text-base leading-relaxed">
+                <p className="text-stone-700 text-base leading-relaxed font-serif">
                   {custom}
                 </p>
               </motion.li>
@@ -87,12 +92,12 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-white border border-red-100 rounded-xl shadow-sm"
+                className="flex items-start gap-4 p-4 bg-red-50/30 border border-red-100 rounded-xl"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   <XCircle className="w-5 h-5 text-red-500" />
                 </div>
-                <p className="text-stone-800 text-base leading-relaxed">
+                <p className="text-stone-800 text-base leading-relaxed font-serif">
                   {taboo}
                 </p>
               </motion.li>

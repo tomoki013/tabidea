@@ -28,19 +28,23 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
             <Train className="w-6 h-6 text-primary" />
             公共交通機関
           </h4>
-          <ul className="space-y-3">
+          <ul className="grid gap-4">
             {data.publicTransport.map((transport, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm"
+                className="flex items-start gap-4 p-5 bg-[#fcfbf9] border-2 border-dashed border-stone-200 rounded-xl hover:border-primary/30 transition-colors relative"
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  <Bus className="w-5 h-5 text-blue-500" />
+                {/* Punch holes effect */}
+                <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full border-r border-stone-200" />
+                <div className="absolute right-[-10px] top-1/2 -translate-y-1/2 w-5 h-5 bg-white rounded-full border-l border-stone-200" />
+
+                <div className="flex-shrink-0 mt-0.5 ml-2">
+                  <Bus className="w-5 h-5 text-stone-500" />
                 </div>
-                <p className="text-stone-800 text-base leading-relaxed">
+                <p className="text-stone-700 text-base leading-relaxed font-serif">
                   {transport}
                 </p>
               </motion.li>
@@ -58,24 +62,24 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className={`p-5 sm:p-6 rounded-2xl border bg-white shadow-md ${
+          className={`p-6 rounded-xl border bg-white shadow-sm ${
             data.rideshare.available
               ? 'border-green-200'
               : 'border-stone-200'
           }`}
         >
-          <div className="flex items-center gap-3 mb-3">
+          <div className="flex items-center gap-3 mb-4">
             {data.rideshare.available ? (
               <>
                 <CheckCircle className="w-6 h-6 text-green-500" />
-                <span className="font-bold text-green-800 text-lg">
+                <span className="font-bold text-green-800 text-lg font-serif">
                   配車サービス利用可能
                 </span>
               </>
             ) : (
               <>
                 <XCircle className="w-6 h-6 text-stone-400" />
-                <span className="font-bold text-stone-600 text-lg">
+                <span className="font-bold text-stone-600 text-lg font-serif">
                   配車サービス利用不可または限定的
                 </span>
               </>
@@ -87,7 +91,7 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
               {data.rideshare.services.map((service, index) => (
                 <span
                   key={index}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-green-50 border border-green-200 rounded-full text-sm text-green-800 font-bold"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-green-50 border border-green-200 rounded-lg text-sm text-green-800 font-bold"
                 >
                   <Smartphone className="w-4 h-4" />
                   {service}

@@ -16,8 +16,9 @@ export default function RestroomsSection({ data }: SectionBaseProps<RestroomsInf
           <Bath className="w-5 h-5 text-primary" />
           トイレの清潔度・普及状況
         </h4>
-        <div className="p-5 bg-stone-50 border border-stone-100 rounded-xl">
-          <p className="text-stone-800 text-lg leading-relaxed">{data.availability}</p>
+        <div className="p-6 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm relative overflow-hidden">
+           <div className="absolute left-0 top-0 w-1 h-full bg-primary/20" />
+          <p className="text-stone-700 text-lg leading-loose font-serif pl-4">{data.availability}</p>
         </div>
       </div>
 
@@ -30,9 +31,9 @@ export default function RestroomsSection({ data }: SectionBaseProps<RestroomsInf
           </h4>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.notes.map((note, index) => (
-              <li key={index} className="flex items-start gap-2 p-3 bg-white border border-stone-100 rounded-lg shadow-sm">
-                <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-stone-700">{note}</span>
+              <li key={index} className="flex items-start gap-3 p-4 bg-white border border-stone-100 rounded-xl shadow-sm hover:border-primary/20 transition-colors">
+                <CheckCircle2 className="w-5 h-5 text-stone-400 mt-0.5 flex-shrink-0" />
+                <span className="text-sm text-stone-700 font-serif leading-relaxed">{note}</span>
               </li>
             ))}
           </ul>

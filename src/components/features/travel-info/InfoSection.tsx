@@ -61,13 +61,13 @@ export default function InfoSection({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-white rounded-2xl border-2 border-stone-200 overflow-hidden shadow-sm"
+      className="bg-[#fcfbf9] rounded-2xl border border-stone-200/60 border-l-4 border-l-primary overflow-hidden shadow-sm"
     >
       {/* ヘッダー（クリックで展開/折りたたみ） */}
       <button
         type="button"
         onClick={onToggle}
-        className="w-full flex items-center justify-between gap-4 p-4 sm:p-6 hover:bg-stone-50 transition-colors duration-200 focus:outline-none focus:bg-stone-50"
+        className="w-full flex items-center justify-between gap-4 p-4 sm:p-6 hover:bg-stone-50/50 transition-colors duration-200 focus:outline-none focus:bg-stone-50/50"
         aria-expanded={isExpanded}
         aria-controls={`section-content-${category}`}
       >

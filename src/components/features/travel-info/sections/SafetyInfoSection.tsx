@@ -85,11 +85,11 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="p-4 bg-stone-100 border border-stone-300 rounded-xl flex items-start gap-3"
+          className="p-4 bg-stone-100/50 border border-dashed border-stone-300 rounded-xl flex items-start gap-3"
         >
           <Bot className="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" />
           <div>
-            <h4 className="font-bold text-stone-700 text-sm">
+            <h4 className="font-bold text-stone-700 text-sm font-serif">
               AIによる生成情報です
             </h4>
             <p className="text-xs text-stone-500 mt-1 leading-relaxed">
@@ -104,16 +104,16 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`relative overflow-hidden rounded-3xl border shadow-sm ${style.border} bg-white/50 backdrop-blur-sm`}
+        className={`relative overflow-hidden rounded-3xl border-2 border-dashed ${style.border} bg-[#fcfbf9] shadow-sm`}
       >
         <div className="p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
-          <div className={`flex-shrink-0 p-6 rounded-2xl ${style.bg} ${style.text} shadow-inner`}>
+          <div className={`flex-shrink-0 p-6 rounded-2xl ${style.bg} ${style.text} shadow-sm border border-stone-100`}>
             <DangerIcon className="w-12 h-12" />
           </div>
 
           <div className="flex-1 space-y-3">
             <div className="flex items-center gap-3">
-              <span className="inline-block px-3 py-1 rounded-full bg-stone-100 text-stone-500 text-[10px] font-bold tracking-widest uppercase">
+              <span className="inline-block px-3 py-1 rounded-sm bg-stone-800 text-white text-[10px] font-bold tracking-widest uppercase shadow-sm">
                 Security Level
               </span>
             </div>
@@ -122,7 +122,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
               <h3 className={`text-4xl font-serif font-bold ${style.text}`}>
                 Lv.{data.dangerLevel}
               </h3>
-              <span className={`text-xl font-bold ${style.text} opacity-80`}>
+              <span className={`text-xl font-bold ${style.text} opacity-80 font-serif`}>
                 {style.label}
               </span>
             </div>
@@ -132,7 +132,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
             </p>
 
             {data.isPartialCountryRisk && data.maxCountryLevel !== undefined && (
-              <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-800 text-xs font-bold rounded-xl border border-orange-100/50">
+              <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-800 text-xs font-bold rounded-lg border border-orange-100/50 shadow-sm">
                 <AlertTriangle className="w-3.5 h-3.5" />
                 一部地域でレベル{data.maxCountryLevel}の警告が出ています
               </div>

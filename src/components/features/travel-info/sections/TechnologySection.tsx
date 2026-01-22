@@ -36,12 +36,15 @@ export default function TechnologySection({ data }: SectionBaseProps<TechnologyI
           <Wifi className="w-5 h-5 text-primary" />
           インターネット・Wi-Fi
         </h4>
-        <div className="bg-stone-50 rounded-xl p-5 border border-stone-100">
-          <ul className="space-y-2">
+        <div className="bg-[#fcfbf9] rounded-xl p-6 border border-stone-200 relative shadow-sm">
+          <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary/10 rounded-tr-xl" />
+          <ul className="space-y-3 relative z-10">
             {data.internet.map((item, index) => (
-              <li key={index} className="flex items-start gap-2.5 text-stone-700">
-                <Smartphone className="w-4 h-4 text-primary mt-1 flex-shrink-0" />
-                <span className="text-sm leading-relaxed">{item}</span>
+              <li key={index} className="flex items-start gap-3 text-stone-700">
+                <div className="bg-white p-1 rounded-full border border-stone-200 shadow-sm mt-0.5">
+                  <Smartphone className="w-3 h-3 text-primary" />
+                </div>
+                <span className="text-sm leading-relaxed font-serif">{item}</span>
               </li>
             ))}
           </ul>
@@ -55,8 +58,8 @@ export default function TechnologySection({ data }: SectionBaseProps<TechnologyI
             <Smartphone className="w-5 h-5 text-primary" />
             SIMカード
           </h4>
-          <div className="bg-white rounded-xl p-5 border border-stone-100 shadow-sm">
-            <p className="text-stone-700 leading-relaxed text-sm">{data.sim}</p>
+          <div className="bg-white rounded-xl p-6 border border-stone-200 border-dashed shadow-sm">
+            <p className="text-stone-700 leading-relaxed text-sm font-serif">{data.sim}</p>
           </div>
         </div>
       )}
@@ -74,11 +77,12 @@ function InfoCard({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="p-5 bg-white border border-stone-100 rounded-xl shadow-sm flex flex-col justify-between h-full">
-      <p className="text-xs font-bold text-stone-500 mb-1 tracking-wide">{label}</p>
-      <div className="flex items-center gap-2 mt-auto">
+    <div className="p-5 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm flex flex-col justify-between h-full relative overflow-hidden group hover:shadow-md transition-all">
+       <div className="absolute top-0 right-0 w-8 h-8 bg-stone-100/50 rounded-bl-2xl -mr-4 -mt-4 transition-all group-hover:bg-primary/10" />
+      <p className="text-xs font-bold text-stone-500 mb-2 tracking-wide uppercase">{label}</p>
+      <div className="flex items-center gap-3 mt-auto">
         {icon}
-        <p className="font-bold text-lg text-[#2c2c2c]">{value}</p>
+        <p className="font-serif font-bold text-xl text-[#2c2c2c]">{value}</p>
       </div>
     </div>
   );

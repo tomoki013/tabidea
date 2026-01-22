@@ -24,15 +24,15 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-8 rounded-3xl border shadow-sm bg-white/50 backdrop-blur-sm ${
+        className={`p-8 rounded-3xl border-2 border-dashed shadow-sm bg-[#fcfbf9] ${
           data.required
-            ? 'border-orange-100'
-            : 'border-green-100'
+            ? 'border-orange-200'
+            : 'border-green-200'
         }`}
       >
         <div className="flex items-center gap-6">
           <div
-            className={`p-5 rounded-2xl shadow-inner ${
+            className={`p-5 rounded-2xl shadow-sm border border-stone-100 ${
               data.required ? 'bg-orange-50' : 'bg-green-50'
             }`}
           >
@@ -51,7 +51,7 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
               {data.required ? 'ビザが必要です' : 'ビザ不要'}
             </p>
             {!data.required && data.visaFreeStayDays && (
-              <div className="flex items-center gap-2 text-green-700 font-medium">
+              <div className="flex items-center gap-2 text-green-700 font-medium font-serif">
                 <Calendar className="w-4 h-4" />
                 <span>
                   最大 <strong className="text-lg">{data.visaFreeStayDays}日間</strong>{' '}
@@ -72,19 +72,21 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
             </span>
             入国要件
           </h4>
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {data.requirements.map((requirement, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-5 p-6 bg-white border border-stone-100 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300"
+                className="flex items-start gap-4 p-5 bg-[#fcfbf9] border-b border-stone-100 last:border-0 hover:bg-stone-50 transition-colors duration-200"
               >
-                <div className="flex-shrink-0 mt-0.5 p-1 bg-green-50 rounded-full">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
+                <div className="flex-shrink-0 mt-1">
+                  <div className="w-5 h-5 rounded border-2 border-green-400 flex items-center justify-center bg-white text-green-500">
+                    <CheckCircle className="w-3.5 h-3.5" />
+                  </div>
                 </div>
-                <p className="text-stone-700 text-base leading-relaxed font-medium">
+                <p className="text-stone-700 text-base leading-relaxed font-serif">
                   {requirement}
                 </p>
               </motion.li>

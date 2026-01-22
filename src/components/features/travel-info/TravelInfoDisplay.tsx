@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import type {
   TravelInfoCategory,
+  CategoryDataEntry,
   BasicCountryInfo,
   SafetyInfo,
   ClimateInfo,
@@ -325,7 +326,7 @@ function CategorySection({
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
         }}
-        className="p-6 bg-white rounded-2xl border border-stone-200"
+        className="p-6 bg-[#fcfbf9] rounded-2xl border border-stone-200/60 border-l-4 border-l-stone-200"
       >
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center animate-pulse">
@@ -353,7 +354,7 @@ function CategorySection({
           hidden: { opacity: 0, y: 20 },
           visible: { opacity: 1, y: 0 },
         }}
-        className="p-6 bg-orange-50 rounded-2xl border border-orange-200"
+        className="p-6 bg-[#fffaf5] rounded-2xl border border-orange-100 border-l-4 border-l-orange-400"
       >
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0">

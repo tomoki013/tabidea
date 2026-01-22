@@ -103,14 +103,19 @@ function InfoCard({
   icon?: React.ReactNode;
 }) {
   return (
-    <div className="p-5 bg-white border border-stone-100 rounded-xl shadow-sm">
-      <p className="text-xs font-bold text-stone-500 mb-1 tracking-wide">{label}</p>
-      <div className="flex items-center gap-2">
-        {icon}
-        <p className="font-bold text-lg text-[#2c2c2c]">{value}</p>
+    <div className="p-5 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm relative overflow-hidden group hover:shadow-md transition-all duration-300">
+      {/* Decorative corner */}
+      <div className="absolute top-0 right-0 w-8 h-8 bg-stone-100/50 rounded-bl-2xl -mr-4 -mt-4 transition-all group-hover:bg-primary/10" />
+
+      <p className="text-xs font-bold text-stone-500 mb-2 tracking-wide font-sans uppercase">{label}</p>
+      <div className="flex items-center gap-3">
+        {icon && <div className="text-primary/80">{icon}</div>}
+        <p className="font-serif font-bold text-xl text-[#2c2c2c]">{value}</p>
       </div>
       {subValue && (
-        <p className="text-xs text-stone-400 mt-1">{subValue}</p>
+        <div className="mt-2 pt-2 border-t border-dashed border-stone-200">
+          <p className="text-xs text-stone-400 font-mono">{subValue}</p>
+        </div>
       )}
     </div>
   );
