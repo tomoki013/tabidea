@@ -76,6 +76,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
   const style = DANGER_LEVEL_STYLES[data.dangerLevel];
   const DangerIcon = style.icon;
   const isAiGenerated = source?.sourceType === 'ai_generated';
+  const isMofaSource = source?.sourceType === 'official_api';
 
   return (
     <div className="space-y-8 font-sans">
@@ -306,18 +307,39 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
 
       {/* 出典表記 */}
       <div className="mt-8 pt-4 border-t border-dashed border-stone-200 text-center">
-        <p className="text-[10px] text-stone-400">
-          情報提供: 外務省 海外安全情報オープンデータ
-          <a
-            href={MOFA_OPENDATA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 hover:text-primary hover:underline inline-flex items-center gap-1"
-          >
-            公式サイト
-            <ExternalLink className="w-2.5 h-2.5" />
-          </a>
-        </p>
+        {isMofaSource ? (
+          <p className="text-[10px] text-stone-400">
+            出典：外務省 海外安全情報オープンデータ 提供情報
+            {source?.sourceUrl && (
+              <>
+                （
+                <a
+                  href={source.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary hover:underline"
+                >
+                  {source.sourceUrl}
+                </a>
+                ）
+              </>
+            )}
+            を加工して作成
+          </p>
+        ) : (
+          <p className="text-[10px] text-stone-400">
+            情報提供: 外務省 海外安全情報オープンデータ
+            <a
+              href={MOFA_OPENDATA_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 hover:text-primary hover:underline inline-flex items-center gap-1"
+            >
+              公式サイト
+              <ExternalLink className="w-2.5 h-2.5" />
+            </a>
+          </p>
+        )}
       </div>
     </div>
   );

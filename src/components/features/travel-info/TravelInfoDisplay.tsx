@@ -400,7 +400,11 @@ function CategorySection({
       onToggle={onToggle}
       source={entry.source}
     >
-      <CategoryContent category={category} data={entry.data} />
+      <CategoryContent
+        category={category}
+        data={entry.data}
+        source={entry.source}
+      />
     </InfoSection>
   );
 }
@@ -411,39 +415,56 @@ function CategorySection({
 function CategoryContent({
   category,
   data,
+  source,
 }: {
   category: TravelInfoCategory;
   data: unknown;
+  source: CategoryDataEntry["source"];
 }) {
   switch (category) {
     case "basic":
-      return <BasicInfoSection data={data as BasicCountryInfo} />;
+      return (
+        <BasicInfoSection
+          data={data as BasicCountryInfo}
+          source={source}
+        />
+      );
     case "safety":
-      return <SafetyInfoSection data={data as SafetyInfo} />;
+      return <SafetyInfoSection data={data as SafetyInfo} source={source} />;
     case "climate":
-      return <ClimateInfoSection data={data as ClimateInfo} />;
+      return <ClimateInfoSection data={data as ClimateInfo} source={source} />;
     case "visa":
-      return <VisaInfoSection data={data as VisaInfo} />;
+      return <VisaInfoSection data={data as VisaInfo} source={source} />;
     case "manner":
-      return <MannerInfoSection data={data as MannerInfo} />;
+      return <MannerInfoSection data={data as MannerInfo} source={source} />;
     case "transport":
-      return <TransportInfoSection data={data as TransportInfo} />;
+      return (
+        <TransportInfoSection data={data as TransportInfo} source={source} />
+      );
     case "local_food":
-      return <LocalFoodSection data={data as LocalFoodInfo} />;
+      return (
+        <LocalFoodSection data={data as LocalFoodInfo} source={source} />
+      );
     case "souvenir":
-      return <SouvenirSection data={data as SouvenirInfo} />;
+      return <SouvenirSection data={data as SouvenirInfo} source={source} />;
     case "events":
-      return <EventsSection data={data as EventsInfo} />;
+      return <EventsSection data={data as EventsInfo} source={source} />;
     case "technology":
-      return <TechnologySection data={data as TechnologyInfo} />;
+      return (
+        <TechnologySection data={data as TechnologyInfo} source={source} />
+      );
     case "healthcare":
-      return <HealthcareSection data={data as HealthcareInfo} />;
+      return (
+        <HealthcareSection data={data as HealthcareInfo} source={source} />
+      );
     case "restrooms":
-      return <RestroomsSection data={data as RestroomsInfo} />;
+      return (
+        <RestroomsSection data={data as RestroomsInfo} source={source} />
+      );
     case "smoking":
-      return <SmokingSection data={data as SmokingInfo} />;
+      return <SmokingSection data={data as SmokingInfo} source={source} />;
     case "alcohol":
-      return <AlcoholSection data={data as AlcoholInfo} />;
+      return <AlcoholSection data={data as AlcoholInfo} source={source} />;
     default:
       return null;
   }
