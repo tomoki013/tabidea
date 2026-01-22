@@ -24,37 +24,37 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`p-5 sm:p-6 rounded-2xl border bg-white shadow-md ${
+        className={`p-8 rounded-3xl border shadow-sm bg-white/50 backdrop-blur-sm ${
           data.required
-            ? 'border-orange-200'
-            : 'border-green-200'
+            ? 'border-orange-100'
+            : 'border-green-100'
         }`}
       >
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <div
-            className={`p-4 rounded-xl ${
-              data.required ? 'bg-orange-100' : 'bg-green-100'
+            className={`p-5 rounded-2xl shadow-inner ${
+              data.required ? 'bg-orange-50' : 'bg-green-50'
             }`}
           >
             {data.required ? (
-              <FileX className="w-8 h-8 text-orange-600" />
+              <FileX className="w-10 h-10 text-orange-500" />
             ) : (
-              <FileCheck className="w-8 h-8 text-green-600" />
+              <FileCheck className="w-10 h-10 text-green-500" />
             )}
           </div>
-          <div>
+          <div className="flex-1">
             <p
-              className={`font-bold text-lg ${
+              className={`font-serif font-bold text-2xl mb-1 ${
                 data.required ? 'text-orange-800' : 'text-green-800'
               }`}
             >
               {data.required ? 'ビザが必要です' : 'ビザ不要'}
             </p>
             {!data.required && data.visaFreeStayDays && (
-              <div className="flex items-center gap-2 mt-1 text-green-700">
+              <div className="flex items-center gap-2 text-green-700 font-medium">
                 <Calendar className="w-4 h-4" />
                 <span>
-                  最大 <strong>{data.visaFreeStayDays}日間</strong>{' '}
+                  最大 <strong className="text-lg">{data.visaFreeStayDays}日間</strong>{' '}
                   ビザなしで滞在可能
                 </span>
               </div>
@@ -65,24 +65,26 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
 
       {/* 入国要件 */}
       {data.requirements.length > 0 && (
-        <div className="space-y-4">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
-            <CheckCircle className="w-6 h-6 text-primary" />
+        <div className="space-y-6">
+          <h4 className="flex items-center gap-3 font-serif font-bold text-[#2c2c2c] text-lg">
+            <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+              <CheckCircle className="w-4 h-4" />
+            </span>
             入国要件
           </h4>
-          <ul className="space-y-3">
+          <ul className="space-y-4">
             {data.requirements.map((requirement, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm"
+                className="flex items-start gap-5 p-6 bg-white border border-stone-100 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="flex-shrink-0 mt-0.5">
+                <div className="flex-shrink-0 mt-0.5 p-1 bg-green-50 rounded-full">
                   <CheckCircle className="w-5 h-5 text-green-500" />
                 </div>
-                <p className="text-stone-800 text-base leading-relaxed">
+                <p className="text-stone-700 text-base leading-relaxed font-medium">
                   {requirement}
                 </p>
               </motion.li>
