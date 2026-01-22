@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
-import TrinityCircle from "@/components/ui/TrinityCircle";
+import { TrinityCircle } from "@/components/features/landing";
 
 export default function AboutSection() {
   return (

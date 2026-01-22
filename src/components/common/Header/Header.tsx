@@ -15,7 +15,7 @@ import {
 import { throttle } from "@/lib/utils";
 import { usePlanModal } from "@/context/PlanModalContext";
 
-interface HeaderProps {
+export interface HeaderProps {
   forceShow?: boolean;
   className?: string;
   isSticky?: boolean;

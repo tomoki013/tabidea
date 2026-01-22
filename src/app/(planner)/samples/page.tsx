@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import StartPlanningButton from "@/components/common/StartPlanningButton";
-import SamplePlanList from "@/components/samples/SamplePlanList";
+import { SamplePlanList } from "@/components/features/samples";
 import { loadAllSamplePlans } from "@/lib/sample-plans-loader";
 
 export const metadata: Metadata = {

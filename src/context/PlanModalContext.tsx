@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import PlanModal from "@/components/ui/PlanModal";
+import { PlanModal } from "@/components/common";
 import { UserInput } from "@/types";
 
 interface PlanModalContextType {

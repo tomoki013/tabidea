@@ -1,4 +1,4 @@
-import { createMofaApiSource } from '../lib/travel-info/sources/mofa-api';
+import { createMofaApiSource } from '../lib/services/travel-info/sources/mofa-api';
 
 async function verify() {
   console.log('Verifying MofaApiSource modification...');

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import TrinityCircle from "@/components/ui/TrinityCircle";
+import { TrinityCircle } from "@/components/features/landing";
 import StartPlanningButton from "@/components/common/StartPlanningButton";
 import {
   FaRobot,

@@ -4,7 +4,7 @@
  * UserInputから旅程（Itinerary）を生成するための再利用可能なモジュール
  */
 
-import { GeminiService } from "./ai/gemini";
+import { GeminiService } from "./services/ai/gemini";
 import { PineconeRetriever } from "./services/rag/pinecone-retriever";
 import { getUnsplashImage } from "./unsplash";
 import { extractDuration, splitDaysIntoChunks } from "./utils/plan";

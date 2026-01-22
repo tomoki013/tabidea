@@ -1,10 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, Kaisei_Decol, Yomogi } from "next/font/google";
 import Script from "next/script";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/landing/Footer";
-import CookieBanner from "@/components/ui/CookieBanner";
-import FloatingPlanButton from "@/components/ui/FloatingPlanButton";
+import { Header, Footer, CookieBanner, FloatingPlanButton } from "@/components/common";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import "./globals.css";
 
