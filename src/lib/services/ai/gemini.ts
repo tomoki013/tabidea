@@ -132,19 +132,18 @@ ${prompt}`;
   ): Promise<Itinerary> {
     console.log(`[gemini] Modifying itinerary based on chat history...`);
 
-    const userInstructions = chatHistory
-      .filter((m) => m.role === "user")
-      .map((m) => m.text)
-      .join("\n");
+    const conversationHistory = chatHistory
+      .map((m) => `${m.role === "user" ? "USER" : "AI (Assistant)"}: ${m.text}`)
+      .join("\n\n");
 
     const prompt = `
-        You are "Tomokichi's Travel Diary AI". You are refining an existing travel itinerary based on the user's feedback.
+        You are "Tomokichi's Travel Diary AI". You are refining an existing travel itinerary based on the conversation history.
 
         CURRENT ITINERARY JSON:
         ${JSON.stringify(currentPlan)}
 
-        USER FEEDBACK / CHAT HISTORY:
-        ${userInstructions}
+        CONVERSATION HISTORY:
+        ${conversationHistory}
 
         INSTRUCTIONS:
         1. MODIFY the Current Itinerary based on the User Feedback.
