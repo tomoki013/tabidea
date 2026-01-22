@@ -153,25 +153,23 @@ export default function TravelInfoClient() {
                   </div>
                 </div>
 
-                {/* 人気の目的地 - 付箋（タグ）風デザイン */}
+                {/* 人気の目的地 - Minimal & Stylish */}
                 <div className="pt-2">
-                  <p className="text-sm text-stone-500 font-sans mb-3 ml-1">
-                    人気の目的地から選ぶ:
+                  <p className="text-xs text-stone-400 font-sans mb-3 ml-1 tracking-widest uppercase">
+                    Popular Destinations
                   </p>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-x-4 gap-y-3">
                     {POPULAR_DESTINATIONS.map((dest, i) => (
                       <button
                         key={dest.name}
                         type="button"
                         onClick={() => handlePopularDestination(dest.name)}
                         className="
-                          px-3 py-1.5 text-xs sm:text-sm font-medium text-stone-600
-                          bg-white border border-stone-200 rounded-full
-                          hover:bg-orange-50 hover:text-primary hover:border-primary/30
-                          transition-all duration-200 shadow-sm
+                          group text-sm font-medium text-stone-500 hover:text-primary transition-colors relative font-sans
                         "
                       >
-                        {dest.name}
+                        <span className="relative z-10">#{dest.name}</span>
+                        <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full opacity-50" />
                       </button>
                     ))}
                   </div>

@@ -103,37 +103,36 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        className={`relative overflow-hidden rounded-2xl border-2 shadow-sm ${style.border} bg-white`}
+        className={`relative overflow-hidden rounded-3xl border shadow-sm ${style.border} bg-white/50 backdrop-blur-sm`}
       >
-        <div className={`absolute top-0 left-0 w-full h-2 ${style.bg.replace('bg-', 'bg-').replace('50', '400')}`} /> {/* Accent Bar */}
-
-        <div className="p-6 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-          <div className={`flex-shrink-0 p-4 rounded-full ${style.bg} ${style.text}`}>
+        <div className="p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-8">
+          <div className={`flex-shrink-0 p-6 rounded-2xl ${style.bg} ${style.text} shadow-inner`}>
             <DangerIcon className="w-12 h-12" />
           </div>
 
-          <div className="flex-1 space-y-2">
-            <div className="flex items-center gap-3 mb-1">
-              <span className="text-xs font-bold uppercase tracking-wider text-stone-400">Security Level</span>
-              <div className="flex-1 h-px bg-stone-100" />
+          <div className="flex-1 space-y-3">
+            <div className="flex items-center gap-3">
+              <span className="inline-block px-3 py-1 rounded-full bg-stone-100 text-stone-500 text-[10px] font-bold tracking-widest uppercase">
+                Security Level
+              </span>
             </div>
 
-            <div className="flex flex-wrap items-baseline gap-3">
-              <h3 className={`text-3xl font-bold ${style.text}`}>
+            <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+              <h3 className={`text-4xl font-serif font-bold ${style.text}`}>
                 Lv.{data.dangerLevel}
               </h3>
-              <span className={`text-lg font-bold ${style.text} opacity-90`}>
+              <span className={`text-xl font-bold ${style.text} opacity-80`}>
                 {style.label}
               </span>
             </div>
 
-            <p className="text-sm text-stone-600 leading-relaxed">
+            <p className="text-stone-600 leading-relaxed font-medium">
               {data.dangerLevelDescription}
             </p>
 
             {data.isPartialCountryRisk && data.maxCountryLevel !== undefined && (
-              <div className="mt-2 inline-flex items-center gap-2 px-3 py-1.5 bg-orange-50 text-orange-800 text-xs font-bold rounded-full border border-orange-100">
-                <AlertTriangle className="w-3 h-3" />
+              <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-800 text-xs font-bold rounded-xl border border-orange-100/50">
+                <AlertTriangle className="w-3.5 h-3.5" />
                 一部地域でレベル{data.maxCountryLevel}の警告が出ています
               </div>
             )}
@@ -146,17 +145,20 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm"
+          className="bg-white rounded-3xl border border-stone-100 overflow-hidden shadow-sm"
         >
-          <div className="px-5 py-3 bg-stone-50 border-b border-stone-200 flex items-center gap-2">
-            <MapPinned className="w-4 h-4 text-stone-500" />
-            <h4 className="font-bold text-stone-700 text-sm">地域別の危険情報</h4>
+          <div className="px-8 py-4 bg-stone-50/50 border-b border-stone-100 flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-stone-200/50 flex items-center justify-center">
+              <MapPinned className="w-4 h-4 text-stone-500" />
+            </div>
+            <h4 className="font-serif font-bold text-stone-700 text-base">地域別の危険情報</h4>
           </div>
-          <div className="p-5">
-            <p className="text-xs text-stone-500 mb-4">
-              ※ 以下の地域へ渡航する際は特に注意が必要です
+          <div className="p-8">
+            <p className="text-xs text-stone-400 mb-6 flex items-center gap-1.5 font-bold">
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
+              以下の地域へ渡航する際は特に注意が必要です
             </p>
-            <div className="grid gap-3">
+            <div className="grid gap-4">
               {data.highRiskRegions.map((region, index) => (
                 <HighRiskRegionItem key={index} region={region} />
               ))}
@@ -173,28 +175,33 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
           className="space-y-4"
         >
           {data.lead && (
-            <div className="bg-white p-6 rounded-xl border-l-4 border-primary shadow-sm">
-              <h4 className="font-bold text-stone-800 mb-2 text-sm flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-primary" />
+            <div className="bg-white p-8 rounded-3xl border border-stone-100 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-primary/20" />
+              <h4 className="font-serif font-bold text-stone-800 mb-4 text-base flex items-center gap-2">
+                <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+                  <ShieldCheck className="w-4 h-4" />
+                </span>
                 概要
               </h4>
-              <p className="font-bold text-stone-700 leading-relaxed text-base">
+              <p className="font-medium text-stone-700 leading-loose text-base">
                 {data.lead}
               </p>
             </div>
           )}
 
           {data.subText && (
-            <details className="group bg-white rounded-xl border border-stone-200 shadow-sm overflow-hidden">
-              <summary className="flex items-center justify-between p-4 cursor-pointer hover:bg-stone-50 transition-colors list-none select-none">
-                <span className="font-bold text-stone-700 flex items-center gap-2 text-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
-                  詳細な安全情報を見る
+            <details className="group bg-white rounded-3xl border border-stone-100 shadow-sm overflow-hidden">
+              <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-stone-50/50 transition-colors list-none select-none">
+                <span className="font-bold text-stone-700 flex items-center gap-3 text-base font-serif">
+                  <span className="w-2 h-2 rounded-full bg-stone-300 group-open:bg-primary transition-colors" />
+                  詳細な安全情報
                 </span>
-                <ChevronDown className="w-5 h-5 text-stone-400 transition-transform group-open:rotate-180" />
+                <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center group-hover:bg-stone-200 transition-colors">
+                  <ChevronDown className="w-4 h-4 text-stone-500 transition-transform duration-300 group-open:rotate-180" />
+                </div>
               </summary>
-              <div className="p-5 pt-0 text-sm text-stone-600 leading-loose border-t border-stone-100 mt-2">
-                <p className="whitespace-pre-wrap">{data.subText}</p>
+              <div className="px-8 pb-8 pt-2 text-sm text-stone-600 leading-loose">
+                <p className="whitespace-pre-wrap pl-5 border-l-2 border-stone-100">{data.subText}</p>
               </div>
             </details>
           )}
@@ -203,24 +210,26 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
 
       {/* 警告・注意事項 */}
       {data.warnings.length > 0 && (
-        <div className="space-y-4">
-          <h4 className="flex items-center gap-2 font-bold text-stone-700 text-lg border-b pb-2 border-stone-200">
-            <AlertTriangle className="w-5 h-5 text-orange-500" />
+        <div className="space-y-6">
+          <h4 className="flex items-center gap-3 font-serif font-bold text-stone-700 text-lg">
+            <span className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
+              <AlertTriangle className="w-4 h-4" />
+            </span>
             主な注意事項
           </h4>
-          <ul className="grid gap-3">
+          <ul className="grid gap-4">
             {data.warnings.map((warning, index) => (
               <motion.li
                 key={index}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
-                className="flex items-start gap-4 p-4 bg-white border border-stone-100 rounded-xl shadow-sm hover:shadow-md transition-shadow"
+                className="flex items-start gap-5 p-6 bg-white border border-stone-100 rounded-3xl shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <span className="flex-shrink-0 w-6 h-6 rounded-full bg-stone-100 text-stone-600 flex items-center justify-center text-xs font-bold mt-0.5 border border-stone-200">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-stone-50 text-stone-400 flex items-center justify-center text-sm font-serif font-bold mt-0.5 border border-stone-100">
                   {index + 1}
                 </span>
-                <p className="text-stone-700 text-sm leading-relaxed font-medium">
+                <p className="text-stone-600 text-base leading-relaxed font-medium">
                   {warning}
                 </p>
               </motion.li>

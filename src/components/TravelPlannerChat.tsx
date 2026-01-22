@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import { useChat } from "ai/react";
+import type { Message } from "ai";
 import { Itinerary } from '@/types';
 
 const SUGGESTION_CHIPS = [
@@ -16,26 +17,38 @@ export default function TravelPlannerChat({
   itinerary,
   onRegenerate,
   isRegenerating = false,
+  initialChatHistory,
 }: {
   itinerary: Itinerary;
   onRegenerate: (history: { role: string; text: string }[]) => void;
   isRegenerating?: boolean;
+  initialChatHistory?: { role: string; text: string }[];
 }) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const initialMessages: Message[] =
+    initialChatHistory && initialChatHistory.length > 0
+      ? initialChatHistory.map((h, i) => ({
+          id: `hist-${i}`,
+          role: h.role === "model" ? "assistant" : "user" as const,
+          content: h.text,
+        }))
+      : [
+          {
+            id: "initial",
+            role: "assistant",
+            content:
+              "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
+          },
+        ];
 
   const { messages, input, handleInputChange, setInput, handleSubmit, isLoading, error } = useChat({
     api: "/api/chat",
     body: {
       itinerary,
     },
-    initialMessages: [
-      {
-        id: "initial",
-        role: "assistant",
-        content: "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
-      },
-    ],
+    initialMessages,
   });
 
   // Track if user has interacted (sent at least one message)
