@@ -6,9 +6,11 @@ interface StepBudgetProps {
   value?: string;
   onChange: (val: string) => void;
   onNext?: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
-export default function StepBudget({ value, onChange, onNext }: StepBudgetProps) {
+export default function StepBudget({ value, onChange, onNext, canComplete, onComplete }: StepBudgetProps) {
   const options = [
     {
       id: "saving",
@@ -105,7 +107,7 @@ export default function StepBudget({ value, onChange, onNext }: StepBudgetProps)
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center"
+          className="text-center space-y-4"
         >
           <button
             onClick={onNext}
@@ -113,6 +115,18 @@ export default function StepBudget({ value, onChange, onNext }: StepBudgetProps)
           >
             次へ進む →
           </button>
+
+          {/* Skip & Create Plan Button */}
+          {canComplete && onComplete && (
+              <div className="pt-2">
+                <button
+                  onClick={onComplete}
+                  className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                >
+                  任意項目をスキップしてプランを作成
+                </button>
+              </div>
+          )}
         </motion.div>
       )}
     </div>

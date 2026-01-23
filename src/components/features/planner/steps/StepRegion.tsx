@@ -8,6 +8,8 @@ interface StepRegionProps {
   onChange: (value: string) => void;
   onVibeChange: (value: string) => void;
   onNext: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 export default function StepRegion({
@@ -16,6 +18,8 @@ export default function StepRegion({
   onChange,
   onVibeChange,
   onNext,
+  canComplete,
+  onComplete,
 }: StepRegionProps) {
   const regions = [
     { id: "domestic", label: "国内", sub: "Domestic", icon: "🗾" },
@@ -114,7 +118,7 @@ export default function StepRegion({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center mt-4"
+          className="text-center mt-4 space-y-4"
         >
           <button
             onClick={onNext}
@@ -122,6 +126,18 @@ export default function StepRegion({
           >
             次へ進む →
           </button>
+
+          {/* Skip & Create Plan Button */}
+          {canComplete && onComplete && (
+              <div className="pt-2">
+                <button
+                  onClick={onComplete}
+                  className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                >
+                  任意項目をスキップしてプランを作成
+                </button>
+              </div>
+          )}
         </motion.div>
       )}
     </div>

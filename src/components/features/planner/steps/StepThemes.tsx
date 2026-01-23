@@ -21,6 +21,8 @@ interface StepThemesProps {
   input: UserInput;
   onChange: (value: Partial<UserInput>) => void;
   onNext?: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 const THEME_ITEMS = [
@@ -38,7 +40,7 @@ const THEME_ITEMS = [
   { label: "その他", icon: FaQuestion, id: "その他" },
 ];
 
-export default function StepThemes({ input, onChange, onNext }: StepThemesProps) {
+export default function StepThemes({ input, onChange, onNext, canComplete, onComplete }: StepThemesProps) {
   const toggleTheme = (t: string) => {
     if (input.theme.includes(t)) {
       onChange({ theme: input.theme.filter((x) => x !== t) });
@@ -106,7 +108,7 @@ export default function StepThemes({ input, onChange, onNext }: StepThemesProps)
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-6 text-center"
+            className="mt-6 text-center space-y-4"
           >
             <button
               onClick={onNext}
@@ -114,6 +116,18 @@ export default function StepThemes({ input, onChange, onNext }: StepThemesProps)
             >
               {input.theme.length}つのテーマで次へ進む →
             </button>
+
+            {/* Skip & Create Plan Button */}
+            {canComplete && onComplete && (
+                <div className="pt-2">
+                    <button
+                    onClick={onComplete}
+                    className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                    >
+                    任意項目をスキップしてプランを作成
+                    </button>
+                </div>
+            )}
           </motion.div>
         )}
       </div>

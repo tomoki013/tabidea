@@ -8,6 +8,8 @@ interface StepDatesProps {
   input: UserInput;
   onChange: (value: Partial<UserInput>) => void;
   onNext?: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 // Parsing logic can be moved outside or kept if it's only used here.
@@ -51,7 +53,7 @@ const getTomorrow = () => {
   return d.toISOString().split('T')[0];
 };
 
-export default function StepDates({ input, onChange, onNext }: StepDatesProps) {
+export default function StepDates({ input, onChange, onNext, canComplete, onComplete }: StepDatesProps) {
   // --- STATE DERIVATION ---
   // Derive all state directly from the input prop. No local state needed.
   const startDate = parseDate(input.dates);
@@ -261,7 +263,7 @@ export default function StepDates({ input, onChange, onNext }: StepDatesProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center mt-6"
+          className="text-center mt-6 space-y-4"
         >
           <button
             onClick={onNext}
@@ -269,6 +271,18 @@ export default function StepDates({ input, onChange, onNext }: StepDatesProps) {
           >
             次へ進む →
           </button>
+
+          {/* Skip & Create Plan Button */}
+          {canComplete && onComplete && (
+              <div className="pt-2">
+                <button
+                  onClick={onComplete}
+                  className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                >
+                  任意項目をスキップしてプランを作成
+                </button>
+              </div>
+          )}
         </motion.div>
       )}
     </div>

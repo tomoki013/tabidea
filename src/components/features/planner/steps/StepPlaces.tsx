@@ -10,6 +10,8 @@ interface StepPlacesProps {
   onNext: () => void;
   hasDecided?: boolean;
   onDecisionChange: (decided: boolean) => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 export default function StepPlaces({
@@ -18,6 +20,8 @@ export default function StepPlaces({
   onNext,
   hasDecided,
   onDecisionChange,
+  canComplete,
+  onComplete,
 }: StepPlacesProps) {
   // We use the prop hasDecided if available, otherwise fallback to local logic (though validation relies on parent)
   // To handle the animation/UI state locally, we can derive it or use local state if props aren't passed (backward compat)
@@ -147,7 +151,7 @@ export default function StepPlaces({
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="mt-4 text-center"
+                className="mt-4 text-center space-y-4"
               >
                 <button
                   onClick={onNext}
@@ -155,6 +159,18 @@ export default function StepPlaces({
                 >
                   {mustVisitPlaces.length}箇所を追加して次へ進む →
                 </button>
+
+                {/* Skip & Create Plan Button */}
+                {canComplete && onComplete && (
+                    <div className="pt-2">
+                        <button
+                        onClick={onComplete}
+                        className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                        >
+                        任意項目をスキップしてプランを作成
+                        </button>
+                    </div>
+                )}
               </motion.div>
             )}
           </div>
@@ -165,7 +181,7 @@ export default function StepPlaces({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-8 text-center"
+            className="mt-8 text-center space-y-4"
           >
             <button
               onClick={onNext}
@@ -173,6 +189,18 @@ export default function StepPlaces({
             >
               次へ進む →
             </button>
+
+            {/* Skip & Create Plan Button */}
+            {canComplete && onComplete && (
+                <div className="pt-2">
+                    <button
+                    onClick={onComplete}
+                    className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                    >
+                    任意項目をスキップしてプランを作成
+                    </button>
+                </div>
+            )}
           </motion.div>
         )}
       </div>

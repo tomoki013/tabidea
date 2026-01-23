@@ -1,5 +1,5 @@
 
-> tabidea@0.3.1 dev
+> tabidea@0.3.1 dev /app
 > next dev
 
    ▲ Next.js 16.0.10 (Turbopack)
@@ -7,26 +7,25 @@
    - Network:       http://192.168.0.2:3000
 
  ✓ Starting...
- ✓ Ready in 1221ms
- ○ Compiling /travel-info/[destination] ...
- GET /travel-info/Bangkok 200 in 16.7s (compile: 15.4s, render: 1320ms)
-[2026-01-22T15:02:03.565Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_basic_1769094123565_08ktho",
-  "destination": "Bangkok",
-  "category": "basic"
-}
-[2026-01-22T15:02:03.567Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_basic_1769094123565_08ktho'
-}
- POST /travel-info/Bangkok 200 in 431ms (compile: 55ms, render: 376ms)
-[2026-01-22T15:02:03.693Z] [travel-info] [getSingleCategoryInfo] 処理開始 {
-  "requestId": "single_safety_1769094123693_gpkml1",
-  "destination": "Bangkok",
-  "category": "safety"
-}
-[2026-01-22T15:02:03.694Z] [travel-info] [getSingleCategoryInfo] APIキーが設定されていません {
-  error: { raw: 'undefined' },
-  requestId: 'single_safety_1769094123693_gpkml1'
-}
- POST /travel-info/Bangkok 200 in 49ms (compile: 13ms, render: 36ms)
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 1130ms
+ ○ Compiling / ...
+ GET / 200 in 20.5s (compile: 18.4s, render: 2.1s)
+ GET / 200 in 294ms (compile: 26ms, render: 268ms)
+ GET / 200 in 195ms (compile: 7ms, render: 188ms)
+ GET / 200 in 245ms (compile: 9ms, render: 236ms)
+ GET / 200 in 196ms (compile: 8ms, render: 189ms)
+ GET / 200 in 160ms (compile: 6ms, render: 155ms)
+ GET / 200 in 181ms (compile: 10ms, render: 172ms)
+ GET / 200 in 188ms (compile: 8ms, render: 181ms)
+ GET / 200 in 179ms (compile: 8ms, render: 171ms)
+ GET / 200 in 174ms (compile: 7ms, render: 167ms)
+ GET / 200 in 197ms (compile: 7ms, render: 190ms)
+ GET / 200 in 170ms (compile: 8ms, render: 162ms)
+ GET / 200 in 173ms (compile: 7ms, render: 166ms)
+ GET / 200 in 161ms (compile: 6ms, render: 155ms)
+ GET / 200 in 159ms (compile: 6ms, render: 153ms)

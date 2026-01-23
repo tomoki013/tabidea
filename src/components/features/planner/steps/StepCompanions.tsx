@@ -6,12 +6,16 @@ interface StepCompanionsProps {
   value: string;
   onChange: (value: string) => void;
   onNext?: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 export default function StepCompanions({
   value,
   onChange,
   onNext,
+  canComplete,
+  onComplete,
 }: StepCompanionsProps) {
   const options = [
     { id: "solo", label: "一人旅", icon: "👤", desc: "気ままに" },
@@ -81,7 +85,7 @@ export default function StepCompanions({
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="mt-4 text-center"
+          className="mt-4 text-center space-y-4"
         >
           <button
             onClick={onNext}
@@ -89,6 +93,18 @@ export default function StepCompanions({
           >
             次へ進む →
           </button>
+
+          {/* Skip & Create Plan Button */}
+          {canComplete && onComplete && (
+              <div className="pt-2">
+                <button
+                  onClick={onComplete}
+                  className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                >
+                  任意項目をスキップしてプランを作成
+                </button>
+              </div>
+          )}
         </motion.div>
       )}
     </div>

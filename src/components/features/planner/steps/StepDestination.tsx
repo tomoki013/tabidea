@@ -8,12 +8,16 @@ interface StepDestinationProps {
   value: string[];
   onChange: (value: string[]) => void;
   onNext: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
 export default function StepDestination({
   value,
   onChange,
   onNext,
+  canComplete,
+  onComplete,
 }: StepDestinationProps) {
   const [inputValue, setInputValue] = useState("");
 
@@ -130,7 +134,7 @@ export default function StepDestination({
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-8 text-center"
+            className="mt-8 text-center space-y-4"
           >
             <button
               onClick={onNext}
@@ -138,6 +142,18 @@ export default function StepDestination({
             >
               {value.length}つの行き先で次へ進む →
             </button>
+
+            {/* Skip & Create Plan Button */}
+            {canComplete && onComplete && (
+               <div className="pt-2">
+                 <button
+                   onClick={onComplete}
+                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                 >
+                   任意項目をスキップしてプランを作成
+                 </button>
+               </div>
+            )}
           </motion.div>
         )}
       </div>

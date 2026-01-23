@@ -38,11 +38,14 @@ it("navigates through 'Decided' flow", async () => {
   fireEvent.click(decidedBtn);
 
   // Step 1: Destination
-  const input = await screen.findByPlaceholderText("ここに行きたい...");
+  // Placeholder in StepDestination is dynamic/different.
+  const input = await screen.findByPlaceholderText("パリ、京都...");
   fireEvent.change(input, { target: { value: "Tokyo" } });
+  fireEvent.keyDown(input, { key: "Enter", code: "Enter" });
 
-  const nextBtn = screen.getByRole("button", { name: "次へ" });
-  fireEvent.click(nextBtn);
+  // Find the button specific to StepDestination
+  const destNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(destNextBtn);
 
   // Step 2: Places (New Step)
   await screen.findByText((content) => content.includes("絶対に行きたい"));
@@ -50,36 +53,42 @@ it("navigates through 'Decided' flow", async () => {
   fireEvent.click(noPlacesBtn);
 
   // Proceed to next step
-  fireEvent.click(nextBtn);
+  const placesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(placesNextBtn);
 
   // Step 3: Companions (Click 'Business')
   const businessBtn = await screen.findByText("ビジネス");
   fireEvent.click(businessBtn);
-  fireEvent.click(nextBtn);
+  const companionNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(companionNextBtn);
 
-  // Step 3: Themes (Click 'Gourmet' -> 'グルメ')
+  // Step 4: Themes (Click 'Gourmet' -> 'グルメ')
   const gourmetBtn = await screen.findByText("グルメ");
   fireEvent.click(gourmetBtn);
-  fireEvent.click(nextBtn);
+  const themeNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(themeNextBtn);
 
-  // Step 4: Budget
+  // Step 5: Budget
   await screen.findByText("予算はどれくらい？");
   const budgetBtn = screen.getByText("普通");
   fireEvent.click(budgetBtn);
-  fireEvent.click(nextBtn);
+  const budgetNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(budgetNextBtn);
 
-  // Step 5: Dates
+  // Step 6: Dates
   await screen.findByText("いつ、どれくらい？");
   // Toggle "Flexible" to ensure dates input is set
   const flexibleCheck = screen.getByLabelText("未定", { selector: "#date-undecided" });
   fireEvent.click(flexibleCheck);
-  fireEvent.click(nextBtn);
+  const datesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(datesNextBtn);
 
-  // Step 6: Pace
+  // Step 7: Pace
   await screen.findByText("旅のペースは？");
   const paceBtn = screen.getByText("バランスよく");
   fireEvent.click(paceBtn);
-  fireEvent.click(nextBtn);
+  const paceNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(paceNextBtn);
 
   // Step 7: FreeText
   await screen.findByText((content) => content.includes("最後に") && content.includes("特別なご要望は"));
@@ -87,7 +96,7 @@ it("navigates through 'Decided' flow", async () => {
   // Submit button
   const submitBtn = screen.getByRole("button", { name: /プランを作成する/ });
   expect(submitBtn).toBeDefined();
-});
+}, 15000);
 
 it("navigates through 'Not Decided' flow", async () => {
   render(<TravelPlanner />);
@@ -100,21 +109,16 @@ it("navigates through 'Not Decided' flow", async () => {
   const domesticBtn = await screen.findByText("国内");
   fireEvent.click(domesticBtn);
 
-  const nextBtn1 = screen.getByRole("button", { name: "次へ" });
-  fireEvent.click(nextBtn1);
+  const regionNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(regionNextBtn);
 
   // Step 2: Places
-  // Note: Depending on logic, StepRegion might need to finish animation.
-  // The 'Not Decided' flow goes: Initial(0) -> Region(1) -> Places(2)
-  // The previous click was on 'nextBtn1' after Region selection.
-  // Wait for Places step to appear.
   await screen.findByText((content) => content.includes("絶対に行きたい"));
   const noPlacesBtn = screen.getByText("ない");
   fireEvent.click(noPlacesBtn);
 
-  // Proceed to next step
-  const nextBtn2 = screen.getByRole("button", { name: "次へ" });
-  fireEvent.click(nextBtn2);
+  const placesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(placesNextBtn);
 
   // Step 3: Companions
   const companionStep = await screen.findByText("誰との旅ですか？");
@@ -123,25 +127,28 @@ it("navigates through 'Not Decided' flow", async () => {
   const soloBtn = screen.getByText("一人旅");
   fireEvent.click(soloBtn);
 
-  const nextBtn = screen.getByRole("button", { name: "次へ" });
-  fireEvent.click(nextBtn);
+  const companionNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(companionNextBtn);
 
-  // Step 3: Themes
+  // Step 4: Themes
   const gourmetBtn = await screen.findByText("グルメ");
   fireEvent.click(gourmetBtn);
-  fireEvent.click(nextBtn);
+  const themeNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(themeNextBtn);
 
-  // Step 4: Budget
+  // Step 5: Budget
   await screen.findByText("予算はどれくらい？");
   const budgetBtn = screen.getByText("普通");
   fireEvent.click(budgetBtn);
-  fireEvent.click(nextBtn);
+  const budgetNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(budgetNextBtn);
 
-  // And so on... verifying we are in the flow
+  // Dates
   await screen.findByText("いつ、どれくらい？");
   const flexibleCheck2 = screen.getByLabelText("未定", { selector: "#date-undecided" });
   fireEvent.click(flexibleCheck2);
-  fireEvent.click(nextBtn);
+  const datesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
+  fireEvent.click(datesNextBtn);
 
   // Pace
   await screen.findByText("旅のペースは？");

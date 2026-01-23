@@ -404,6 +404,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 1 && input.isDestinationDecided === false && (
@@ -419,6 +421,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 2 && (
@@ -434,6 +438,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, hasMustVisitPlaces: val }));
             setErrorMessage("");
           }}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 3 && (
@@ -444,6 +450,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 4 && (
@@ -454,6 +462,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 5 && (
@@ -464,6 +474,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 6 && (
@@ -474,6 +486,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 7 && (
@@ -484,6 +498,8 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setErrorMessage("");
           }}
           onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
         />
       )}
       {step === 8 && (

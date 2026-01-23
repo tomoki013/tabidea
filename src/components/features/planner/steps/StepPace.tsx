@@ -6,9 +6,11 @@ interface StepPaceProps {
   value?: string;
   onChange: (val: string) => void;
   onNext?: () => void;
+  canComplete?: boolean;
+  onComplete?: () => void;
 }
 
-export default function StepPace({ value, onChange, onNext }: StepPaceProps) {
+export default function StepPace({ value, onChange, onNext, canComplete, onComplete }: StepPaceProps) {
   const options = [
     {
       id: "relaxed",
@@ -101,7 +103,7 @@ export default function StepPace({ value, onChange, onNext }: StepPaceProps) {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-center"
+          className="text-center space-y-4"
         >
           <button
             onClick={onNext}
@@ -109,6 +111,18 @@ export default function StepPace({ value, onChange, onNext }: StepPaceProps) {
           >
             次へ進む →
           </button>
+
+          {/* Skip & Create Plan Button */}
+          {canComplete && onComplete && (
+              <div className="pt-2">
+                <button
+                  onClick={onComplete}
+                  className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
+                >
+                  任意項目をスキップしてプランを作成
+                </button>
+              </div>
+          )}
         </motion.div>
       )}
     </div>

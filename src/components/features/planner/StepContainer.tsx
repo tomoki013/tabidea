@@ -184,30 +184,7 @@ export default function StepContainer({
       </AnimatePresence>
 
       {/* Footer / Action Buttons */}
-      <div className="relative z-10 p-6 pt-4 bg-linear-to-t from-[#fcfbf9] via-[#fcfbf9]/80 to-transparent">
-        {/* Primary action: Next step or Generate (on last step) */}
-        <button
-          onClick={isLastStep ? onComplete : onNext}
-          disabled={isNextDisabled}
-          className="w-full py-4 rounded-full font-bold text-lg tracking-wide shadow-lg transition-all transform active:scale-95 bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
-        >
-          {isLastStep ? "プランを作成する ✨" : "次へ"}
-        </button>
-        {/* Secondary action: Skip optional steps (shown when all required inputs are complete but not on last step) */}
-        {canComplete && !isLastStep && (
-          <div className="mt-3 text-center">
-            <p className="text-xs text-stone-500 mb-2">
-              ※ この先に追加のご希望を入力できる項目があります
-            </p>
-            <button
-              onClick={onComplete}
-              className="w-full py-3 rounded-full font-medium text-sm tracking-wide transition-all transform active:scale-95 bg-stone-100 text-stone-600 hover:bg-stone-200 border border-stone-200"
-            >
-              任意項目をスキップして作成
-            </button>
-          </div>
-        )}
-      </div>
+      {/* Fixed footer removed as navigation is now handled within each step */}
     </div>
   );
 }

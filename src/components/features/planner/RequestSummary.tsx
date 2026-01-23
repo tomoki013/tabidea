@@ -65,24 +65,49 @@ export default function RequestSummary({
   className = "",
   onEdit,
 }: RequestSummaryProps) {
-  // Helper to determine display text for region/destinations
-  const getDestinationDisplay = () => {
+  // Helper to render destination content
+  const renderDestinationContent = () => {
+    // 1. Multiple Destinations
     if (input.isDestinationDecided && input.destinations.length > 0) {
-      // Join multiple destinations with arrow for multi-city trip
-      return input.destinations.join(" → ");
+      // If single, just show text
+      if (input.destinations.length === 1) {
+        return (
+           <p className="text-stone-600 font-medium">{input.destinations[0]}</p>
+        );
+      }
+      // If multiple, show list
+      return (
+        <ul className="text-stone-600 font-medium list-disc list-inside mt-1">
+          {input.destinations.map((dest, i) => (
+             <li key={i}>{dest}</li>
+          ))}
+        </ul>
+      );
     }
 
-    // Check if region exists and map it, otherwise return raw region
+    // 2. Region
     if (input.region) {
-      return regionMap[input.region] || input.region;
+      return (
+         <p className="text-stone-600 font-medium">
+             {regionMap[input.region] || input.region}
+         </p>
+      );
     }
 
-    // Fallback if no region but travelVibe exists
+    // 3. Travel Vibe
     if (input.travelVibe) {
-      return "エリア未定 (雰囲気重視)";
+       return (
+         <>
+           <p className="text-stone-600 font-medium">エリア未定 (雰囲気重視)</p>
+           <p className="text-xs text-stone-500 mt-1">
+                雰囲気: {input.travelVibe}
+           </p>
+         </>
+       );
     }
 
-    return "未設定";
+    // 4. Fallback
+    return <p className="text-stone-600 font-medium">未設定</p>;
   };
 
   return (
@@ -102,14 +127,7 @@ export default function RequestSummary({
               </h3>
               <EditButton stepIndex={steps.destination} onEdit={onEdit} />
             </div>
-            <p className="text-stone-600 font-medium">
-              {getDestinationDisplay()}
-            </p>
-            {!input.isDestinationDecided && input.travelVibe && (
-              <p className="text-xs text-stone-500 mt-1">
-                雰囲気: {input.travelVibe}
-              </p>
-            )}
+            {renderDestinationContent()}
           </div>
         </div>
       )}
