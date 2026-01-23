@@ -36,6 +36,7 @@ export interface WeatherApiConfig {
  * 天気情報ソース
  */
 export class WeatherApiSource implements ITravelInfoSource<ClimateInfo> {
+  readonly sourceId = 'weather-api';
   readonly sourceName = '天気情報API';
   readonly sourceType: SourceType = 'official_api';
   readonly reliabilityScore = 85;

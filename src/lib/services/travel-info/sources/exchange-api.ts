@@ -171,8 +171,8 @@ export class ExchangeApiSource implements ITravelInfoSource<BasicCountryInfo> {
         },
         exchangeRate: {
           rate: data.conversion_rate,
-          lastUpdatedAt: new Date(data.time_last_update_unix * 1000),
-          targetCurrency: baseCurrency,
+          updatedAt: new Date(data.time_last_update_unix * 1000),
+          baseCurrency: baseCurrency,
         },
       };
     } catch (error) {

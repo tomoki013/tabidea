@@ -21,7 +21,7 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -59,7 +59,7 @@ export default function ResultView({
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
-  const [showTravelInfo, setShowTravelInfo] = useState(false);
+  const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
 
   const startEditing = () => {
     setEditingResult(JSON.parse(JSON.stringify(result))); // Deep clone
@@ -362,343 +362,405 @@ export default function ResultView({
           <PDFDownloadButton itinerary={result} />
         </div>
 
-        {/* Travel Info Button */}
-        <div className="flex justify-center mt-6">
-          <button
-            onClick={() => setShowTravelInfo(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-primary/30 text-primary font-bold rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-all shadow-sm hover:shadow-md"
-          >
-            <FaGlobe className="w-5 h-5" />
-            渡航情報・安全ガイドを見る
-          </button>
-        </div>
-      </div>
-
-      {/* AI Disclaimer Notice */}
-      <div className="w-full max-w-4xl mx-auto mt-8 mb-8 px-4">
-        <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg shadow-sm">
-          <div className="flex items-start gap-3">
-            <div className="flex-shrink-0 text-2xl">⚠️</div>
-            <div className="flex-1">
-              <h3 className="font-bold text-amber-900 mb-2 text-lg">
-                AI生成プランに関する重要なお知らせ
-              </h3>
-              <div className="text-amber-800 text-sm leading-relaxed space-y-2">
-                <p>
-                  このプランはAIによって自動生成されています。以下の点にご注意ください：
-                </p>
-                <ul className="list-disc list-inside space-y-1 ml-2">
-                  <li>施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください</li>
-                  <li>AIは時に事実と異なる情報を生成する可能性があります（ハルシネーション）</li>
-                  <li>季節や天候、予約の必要性など、実際の旅行計画では追加の確認が必要です</li>
-                </ul>
-                <p className="font-semibold mt-3">
-                  このプランはあくまで旅行のアイデアとしてご活用ください。実際の旅行では必ず最新情報を確認し、安全で楽しい旅をお楽しみください。
-                </p>
-              </div>
-            </div>
+        {/* Tab Navigation */}
+        <div className="flex justify-center mt-12 mb-8 border-b border-stone-200">
+          <div className="flex gap-8">
+            <button
+              onClick={() => setActiveTab('plan')}
+              className={`pb-4 px-4 font-serif text-lg font-bold transition-all relative ${
+                activeTab === 'plan'
+                  ? 'text-primary'
+                  : 'text-stone-400 hover:text-stone-600'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <FaCalendarAlt /> 旅程表
+              </span>
+              {activeTab === 'plan' && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-t-full"
+                />
+              )}
+            </button>
+            <button
+              onClick={() => setActiveTab('info')}
+              className={`pb-4 px-4 font-serif text-lg font-bold transition-all relative ${
+                activeTab === 'info'
+                  ? 'text-primary'
+                  : 'text-stone-400 hover:text-stone-600'
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <FaGlobe /> 渡航情報
+              </span>
+              {activeTab === 'info' && (
+                <motion.div
+                  layoutId="activeTab"
+                  className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-t-full"
+                />
+              )}
+            </button>
           </div>
         </div>
       </div>
 
-      <div
-        className={
-          showReferences
-            ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip"
-            : "max-w-4xl mx-auto space-y-16 overflow-x-clip"
-        }
-      >
-        {/* Timeline */}
-        <div className="space-y-16" data-itinerary-section>
-          {displayResult.days.map((day, dayIndex) => (
-            <div key={day.day} className="relative">
-              {/* Day Header - Sticky at top when scrolled */}
-              <div className="sticky top-24 md:top-28 z-30 mb-8 flex items-center gap-4">
-                <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
-                  <span className="text-4xl font-serif text-primary">
-                    {day.day}
-                  </span>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                      Day
-                    </span>
-                    <span className="text-stone-600 font-serif italic text-lg leading-none">
-                      {day.title}
-                    </span>
+      <AnimatePresence mode="wait">
+        {activeTab === 'plan' ? (
+          <motion.div
+            key="plan"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            {/* AI Disclaimer Notice */}
+            <div className="w-full max-w-4xl mx-auto mt-8 mb-8 px-4">
+              <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg shadow-sm">
+                <div className="flex items-start gap-3">
+                  <div className="flex-shrink-0 text-2xl">⚠️</div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-amber-900 mb-2 text-lg">
+                      AI生成プランに関する重要なお知らせ
+                    </h3>
+                    <div className="text-amber-800 text-sm leading-relaxed space-y-2">
+                      <p>
+                        このプランはAIによって自動生成されています。以下の点にご注意ください：
+                      </p>
+                      <ul className="list-disc list-inside space-y-1 ml-2">
+                        <li>
+                          施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください
+                        </li>
+                        <li>
+                          AIは時に事実と異なる情報を生成する可能性があります（ハルシネーション）
+                        </li>
+                        <li>
+                          季節や天候、予約の必要性など、実際の旅行計画では追加の確認が必要です
+                        </li>
+                      </ul>
+                      <p className="font-semibold mt-3">
+                        このプランはあくまで旅行のアイデアとしてご活用ください。実際の旅行では必ず最新情報を確認し、安全で楽しい旅をお楽しみください。
+                      </p>
+                    </div>
                   </div>
                 </div>
-                {/* Day reorder buttons - Only in edit mode */}
-                {isEditing && (
-                  <div className="flex items-center gap-1 bg-white rounded-full shadow-md border border-stone-200 p-1">
-                    <button
-                      onClick={() => handleMoveDayUp(dayIndex)}
-                      disabled={dayIndex === 0}
-                      className={`p-2 rounded-full transition-colors ${
-                        dayIndex === 0
-                          ? "text-stone-300 cursor-not-allowed"
-                          : "text-stone-500 hover:text-primary hover:bg-primary/10"
-                      }`}
-                      title="前の日と入れ替え"
-                    >
-                      <FaArrowUp size={14} />
-                    </button>
-                    <button
-                      onClick={() => handleMoveDayDown(dayIndex)}
-                      disabled={dayIndex >= displayResult.days.length - 1}
-                      className={`p-2 rounded-full transition-colors ${
-                        dayIndex >= displayResult.days.length - 1
-                          ? "text-stone-300 cursor-not-allowed"
-                          : "text-stone-500 hover:text-primary hover:bg-primary/10"
-                      }`}
-                      title="次の日と入れ替え"
-                    >
-                      <FaArrowDown size={14} />
-                    </button>
-                  </div>
-                )}
               </div>
+            </div>
 
-              {/* Activities */}
-              <div className="border-l-2 border-stone-200 ml-8 space-y-8 pb-8 relative">
-                {day.activities.map((act, actIndex) => (
-                  <div key={actIndex} className="relative pl-10 group">
-                    {/* Dot on timeline */}
-                    <div className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-primary shadow-sm z-10"></div>
-
-                    {/* Activity Card */}
-                    <div
-                      className={`bg-white border rounded-xl p-6 shadow-sm transition-all duration-300 relative overflow-hidden ${
-                        isEditing
-                          ? "border-primary/30 ring-2 ring-primary/5"
-                          : "hover:bg-stone-50 border-stone-100 hover:shadow-md group-hover:-translate-y-1"
-                      }`}
-                    >
-                      {/* Decorative background stripe */}
-                      {!isEditing && (
-                        <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
+            <div
+              className={
+                showReferences
+                  ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 overflow-x-clip"
+                  : "max-w-4xl mx-auto space-y-16 overflow-x-clip"
+              }
+            >
+              {/* Timeline */}
+              <div className="space-y-16" data-itinerary-section>
+                {displayResult.days.map((day, dayIndex) => (
+                  <div key={day.day} className="relative">
+                    {/* Day Header - Sticky at top when scrolled */}
+                    <div className="sticky top-24 md:top-28 z-30 mb-8 flex items-center gap-4">
+                      <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
+                        <span className="text-4xl font-serif text-primary">
+                          {day.day}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                            Day
+                          </span>
+                          <span className="text-stone-600 font-serif italic text-lg leading-none">
+                            {day.title}
+                          </span>
+                        </div>
+                      </div>
+                      {/* Day reorder buttons - Only in edit mode */}
+                      {isEditing && (
+                        <div className="flex items-center gap-1 bg-white rounded-full shadow-md border border-stone-200 p-1">
+                          <button
+                            onClick={() => handleMoveDayUp(dayIndex)}
+                            disabled={dayIndex === 0}
+                            className={`p-2 rounded-full transition-colors ${
+                              dayIndex === 0
+                                ? "text-stone-300 cursor-not-allowed"
+                                : "text-stone-500 hover:text-primary hover:bg-primary/10"
+                            }`}
+                            title="前の日と入れ替え"
+                          >
+                            <FaArrowUp size={14} />
+                          </button>
+                          <button
+                            onClick={() => handleMoveDayDown(dayIndex)}
+                            disabled={dayIndex >= displayResult.days.length - 1}
+                            className={`p-2 rounded-full transition-colors ${
+                              dayIndex >= displayResult.days.length - 1
+                                ? "text-stone-300 cursor-not-allowed"
+                                : "text-stone-500 hover:text-primary hover:bg-primary/10"
+                            }`}
+                            title="次の日と入れ替え"
+                          >
+                            <FaArrowDown size={14} />
+                          </button>
+                        </div>
                       )}
+                    </div>
 
-                      {isEditing ? (
-                        <div className="space-y-3">
-                          <div className="flex items-start justify-between gap-4">
-                            <div className="flex-1 space-y-2">
-                              <div className="flex items-center gap-2">
-                                <FaClock className="text-stone-400" />
-                                <input
-                                  value={act.time}
+                    {/* Activities */}
+                    <div className="border-l-2 border-stone-200 ml-8 space-y-8 pb-8 relative">
+                      {day.activities.map((act, actIndex) => (
+                        <div key={actIndex} className="relative pl-10 group">
+                          {/* Dot on timeline */}
+                          <div className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-primary shadow-sm z-10"></div>
+
+                          {/* Activity Card */}
+                          <div
+                            className={`bg-white border rounded-xl p-6 shadow-sm transition-all duration-300 relative overflow-hidden ${
+                              isEditing
+                                ? "border-primary/30 ring-2 ring-primary/5"
+                                : "hover:bg-stone-50 border-stone-100 hover:shadow-md group-hover:-translate-y-1"
+                            }`}
+                          >
+                            {/* Decorative background stripe */}
+                            {!isEditing && (
+                              <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
+                            )}
+
+                            {isEditing ? (
+                              <div className="space-y-3">
+                                <div className="flex items-start justify-between gap-4">
+                                  <div className="flex-1 space-y-2">
+                                    <div className="flex items-center gap-2">
+                                      <FaClock className="text-stone-400" />
+                                      <input
+                                        value={act.time}
+                                        onChange={(e) =>
+                                          handleActivityChange(
+                                            dayIndex,
+                                            actIndex,
+                                            "time",
+                                            e.target.value
+                                          )
+                                        }
+                                        className="bg-stone-50 border border-stone-200 rounded px-2 py-1 text-sm font-mono w-24 focus:outline-hidden focus:border-primary"
+                                        placeholder="Time"
+                                      />
+                                    </div>
+                                    <input
+                                      value={act.activity}
+                                      onChange={(e) =>
+                                        handleActivityChange(
+                                          dayIndex,
+                                          actIndex,
+                                          "activity",
+                                          e.target.value
+                                        )
+                                      }
+                                      className="w-full font-bold text-stone-800 border-b border-stone-200 focus:border-primary focus:outline-hidden py-1"
+                                      placeholder="Activity Name"
+                                    />
+                                  </div>
+                                  {/* Activity action buttons */}
+                                  <div className="flex items-center gap-1">
+                                    {/* Move up/down buttons */}
+                                    <div className="flex flex-col gap-0.5">
+                                      <button
+                                        onClick={() =>
+                                          handleMoveActivityUp(dayIndex, actIndex)
+                                        }
+                                        disabled={actIndex === 0}
+                                        className={`p-1.5 rounded transition-colors ${
+                                          actIndex === 0
+                                            ? "text-stone-300 cursor-not-allowed"
+                                            : "text-stone-400 hover:text-primary hover:bg-primary/10"
+                                        }`}
+                                        title="上に移動"
+                                      >
+                                        <FaArrowUp size={12} />
+                                      </button>
+                                      <button
+                                        onClick={() =>
+                                          handleMoveActivityDown(
+                                            dayIndex,
+                                            actIndex
+                                          )
+                                        }
+                                        disabled={
+                                          actIndex >= day.activities.length - 1
+                                        }
+                                        className={`p-1.5 rounded transition-colors ${
+                                          actIndex >= day.activities.length - 1
+                                            ? "text-stone-300 cursor-not-allowed"
+                                            : "text-stone-400 hover:text-primary hover:bg-primary/10"
+                                        }`}
+                                        title="下に移動"
+                                      >
+                                        <FaArrowDown size={12} />
+                                      </button>
+                                    </div>
+                                    {/* Delete button */}
+                                    <button
+                                      onClick={() =>
+                                        handleDeleteActivity(dayIndex, actIndex)
+                                      }
+                                      className="text-stone-400 hover:text-red-500 p-2"
+                                      title="削除"
+                                    >
+                                      <FaTrash />
+                                    </button>
+                                  </div>
+                                </div>
+                                <textarea
+                                  value={act.description}
                                   onChange={(e) =>
                                     handleActivityChange(
                                       dayIndex,
                                       actIndex,
-                                      "time",
+                                      "description",
                                       e.target.value
                                     )
                                   }
-                                  className="bg-stone-50 border border-stone-200 rounded px-2 py-1 text-sm font-mono w-24 focus:outline-hidden focus:border-primary"
-                                  placeholder="Time"
+                                  className="w-full text-sm text-stone-600 bg-stone-50 border border-stone-200 rounded p-2 focus:outline-hidden focus:border-primary h-24"
+                                  placeholder="Description"
                                 />
                               </div>
-                              <input
-                                value={act.activity}
-                                onChange={(e) =>
-                                  handleActivityChange(
-                                    dayIndex,
-                                    actIndex,
-                                    "activity",
-                                    e.target.value
-                                  )
-                                }
-                                className="w-full font-bold text-stone-800 border-b border-stone-200 focus:border-primary focus:outline-hidden py-1"
-                                placeholder="Activity Name"
-                              />
-                            </div>
-                            {/* Activity action buttons */}
-                            <div className="flex items-center gap-1">
-                              {/* Move up/down buttons */}
-                              <div className="flex flex-col gap-0.5">
-                                <button
-                                  onClick={() =>
-                                    handleMoveActivityUp(dayIndex, actIndex)
-                                  }
-                                  disabled={actIndex === 0}
-                                  className={`p-1.5 rounded transition-colors ${
-                                    actIndex === 0
-                                      ? "text-stone-300 cursor-not-allowed"
-                                      : "text-stone-400 hover:text-primary hover:bg-primary/10"
-                                  }`}
-                                  title="上に移動"
-                                >
-                                  <FaArrowUp size={12} />
-                                </button>
-                                <button
-                                  onClick={() =>
-                                    handleMoveActivityDown(dayIndex, actIndex)
-                                  }
-                                  disabled={
-                                    actIndex >= day.activities.length - 1
-                                  }
-                                  className={`p-1.5 rounded transition-colors ${
-                                    actIndex >= day.activities.length - 1
-                                      ? "text-stone-300 cursor-not-allowed"
-                                      : "text-stone-400 hover:text-primary hover:bg-primary/10"
-                                  }`}
-                                  title="下に移動"
-                                >
-                                  <FaArrowDown size={12} />
-                                </button>
-                              </div>
-                              {/* Delete button */}
-                              <button
-                                onClick={() =>
-                                  handleDeleteActivity(dayIndex, actIndex)
-                                }
-                                className="text-stone-400 hover:text-red-500 p-2"
-                                title="削除"
-                              >
-                                <FaTrash />
-                              </button>
-                            </div>
-                          </div>
-                          <textarea
-                            value={act.description}
-                            onChange={(e) =>
-                              handleActivityChange(
-                                dayIndex,
-                                actIndex,
-                                "description",
-                                e.target.value
-                              )
-                            }
-                            className="w-full text-sm text-stone-600 bg-stone-50 border border-stone-200 rounded p-2 focus:outline-hidden focus:border-primary h-24"
-                            placeholder="Description"
-                          />
-                        </div>
-                      ) : (
-                        <>
-                          <div className="flex items-center gap-2 mb-2 text-stone-500 text-sm font-mono bg-stone-100 inline-block px-2 py-1 rounded-md">
-                            <FaClock className="text-primary/70" />
-                            {act.time}
-                          </div>
+                            ) : (
+                              <>
+                                <div className="flex items-center gap-2 mb-2 text-stone-500 text-sm font-mono bg-stone-100 inline-block px-2 py-1 rounded-md">
+                                  <FaClock className="text-primary/70" />
+                                  {act.time}
+                                </div>
 
-                          <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
-                            {act.activity}
-                          </h4>
-                          <p className="text-stone-600 leading-relaxed text-sm">
-                            {act.description}
-                          </p>
-                        </>
+                                <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
+                                  {act.activity}
+                                </h4>
+                                <p className="text-stone-600 leading-relaxed text-sm">
+                                  {act.description}
+                                </p>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+
+                      {/* Add Activity Button (Only in edit mode) */}
+                      {isEditing && (
+                        <div className="pl-10">
+                          <button
+                            onClick={() => handleAddActivity(dayIndex)}
+                            className="w-full py-3 border-2 border-dashed border-stone-200 rounded-xl text-stone-400 hover:text-primary hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 font-bold"
+                          >
+                            <FaPlus /> アクティビティを追加
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
                 ))}
 
-                {/* Add Activity Button (Only in edit mode) */}
-                {isEditing && (
-                  <div className="pl-10">
-                    <button
-                      onClick={() => handleAddActivity(dayIndex)}
-                      className="w-full py-3 border-2 border-dashed border-stone-200 rounded-xl text-stone-400 hover:text-primary hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 font-bold"
-                    >
-                      <FaPlus /> アクティビティを追加
-                    </button>
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
+                {/* Chat Section - Restyled */}
+                {!isEditing && showChat && (
+                  <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden">
+                    {/* Texture overlay */}
+                    <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-20 pointer-events-none mix-blend-multiply" />
 
-          {/* Chat Section - Restyled */}
-          {!isEditing && showChat && (
-            <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden">
-              {/* Texture overlay */}
-              <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-20 pointer-events-none mix-blend-multiply" />
-
-              <div className="relative z-10">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
-                    🤖
-                  </div>
-                  <h3 className="text-xl font-bold text-stone-800 font-serif">
-                    Customize Plan with AI
-                  </h3>
-                </div>
-
-                <div className="bg-stone-50/50 rounded-xl">
-                  <TravelPlannerChat
-                    key={result.id}
-                    itinerary={result}
-                    onRegenerate={onRegenerate}
-                    isRegenerating={isUpdating}
-                    initialChatHistory={initialChatHistory}
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Sidebar / References */}
-        {showReferences && (
-          <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
-            <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
-              <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
-                <FaCalendarAlt /> Reference Articles
-              </h3>
-
-              <div className="space-y-6">
-                {result.references && result.references.length > 0 ? (
-                  result.references.map((ref, i) => (
-                    <a
-                      key={i}
-                      href={ref.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block group relative"
-                    >
-                      <div className="relative h-32 w-full rounded-lg overflow-hidden border border-stone-200 shadow-sm group-hover:shadow-md transition-all">
-                        {ref.image ? (
-                          <Image
-                            src={ref.image}
-                            alt={ref.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-stone-100 flex items-center justify-center text-xs text-stone-400">
-                            No Image
-                          </div>
-                        )}
-                        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                    <div className="relative z-10">
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+                          🤖
+                        </div>
+                        <h3 className="text-xl font-bold text-stone-800 font-serif">
+                          Customize Plan with AI
+                        </h3>
                       </div>
-                      <h5 className="mt-2 text-stone-700 text-sm font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
-                        {ref.title}
-                      </h5>
-                    </a>
-                  ))
-                ) : (
-                  <div className="p-4 bg-stone-50 rounded-xl border border-stone-100 text-sm text-stone-500 italic text-center">
-                    No specific references linked.
+
+                      <div className="bg-stone-50/50 rounded-xl">
+                        <TravelPlannerChat
+                          key={result.id}
+                          itinerary={result}
+                          onRegenerate={onRegenerate}
+                          isRegenerating={isUpdating}
+                          initialChatHistory={initialChatHistory}
+                        />
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>
+
+              {/* Sidebar / References */}
+              {showReferences && (
+                <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
+                  <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
+                    <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
+                      <FaCalendarAlt /> Reference Articles
+                    </h3>
+
+                    <div className="space-y-6">
+                      {result.references && result.references.length > 0 ? (
+                        result.references.map((ref, i) => (
+                          <a
+                            key={i}
+                            href={ref.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block group relative"
+                          >
+                            <div className="relative h-32 w-full rounded-lg overflow-hidden border border-stone-200 shadow-sm group-hover:shadow-md transition-all">
+                              {ref.image ? (
+                                <Image
+                                  src={ref.image}
+                                  alt={ref.title}
+                                  fill
+                                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-stone-100 flex items-center justify-center text-xs text-stone-400">
+                                  No Image
+                                </div>
+                              )}
+                              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
+                            </div>
+                            <h5 className="mt-2 text-stone-700 text-sm font-bold leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                              {ref.title}
+                            </h5>
+                          </a>
+                        ))
+                      ) : (
+                        <div className="p-4 bg-stone-50 rounded-xl border border-stone-100 text-sm text-stone-500 italic text-center">
+                          No specific references linked.
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-        )}
-      </div>
 
-      {showRequestSummary && (
-        <div className="mt-16 mb-12">
-          <RequestSummary input={input} onEdit={onEditRequest} />
-        </div>
-      )}
-
-      {/* Travel Info Modal */}
-      <AnimatePresence>
-        {showTravelInfo && (
-          <EmbeddedTravelInfo
-            destinations={input.destinations.length > 0 ? input.destinations : [result.destination]}
-            onClose={() => setShowTravelInfo(false)}
-          />
+            {showRequestSummary && (
+              <div className="mt-16 mb-12">
+                <RequestSummary input={input} onEdit={onEditRequest} />
+              </div>
+            )}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="info"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            <EmbeddedTravelInfo
+              destinations={
+                input.destinations.length > 0
+                  ? input.destinations
+                  : [result.destination]
+              }
+              onClose={() => {}}
+              inline={true}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

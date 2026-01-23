@@ -861,6 +861,7 @@ export interface MofaApiConfig {
  * 外務省オープンデータAPIを使用して安全情報を取得
  */
 export class MofaApiSource implements ITravelInfoSource<SafetyInfo> {
+  readonly sourceId = 'mofa-api';
   readonly sourceName = '外務省海外安全情報';
   readonly sourceType: SourceType = 'official_api';
   readonly reliabilityScore = 95; // 公式情報のため高信頼性

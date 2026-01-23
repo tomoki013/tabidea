@@ -327,7 +327,7 @@ export class TravelInfoService implements ITravelInfoService {
     }
 
     const result = await this.trySourcesWithFallback(availableSources, destination, category, options);
-    if (result.success && result.data && result.source) {
+    if (result.success) {
       return {
         success: true,
         data: result.data as CategoryDataMap[K],
@@ -360,7 +360,7 @@ export class TravelInfoService implements ITravelInfoService {
       return { success: false, error: 'CountryApiSource not found' };
     }
 
-    const countryResult = await this.fetchWithSource(countrySource, destination, 'basic', options);
+    const countryResult = await this.fetchWithSource<BasicCountryInfo>(countrySource, destination, 'basic', options);
     if (!countryResult.success || !countryResult.data) {
       return { success: false, error: 'Failed to fetch basic country info' };
     }
@@ -404,7 +404,7 @@ export class TravelInfoService implements ITravelInfoService {
     source: ITravelInfoSource,
     destination: string,
     category: TravelInfoCategory,
-    options?: TravelInfoOptions
+    options?: SourceOptions
   ): Promise<SourceResult<T>> {
     if (!this.circuitBreaker.isAvailable(source.sourceName)) {
       return { success: false, error: `Source ${source.sourceName} is unavailable` };

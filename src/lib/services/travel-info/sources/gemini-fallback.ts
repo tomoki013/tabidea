@@ -76,6 +76,7 @@ const CATEGORY_CONTENT_SCHEMAS: Record<TravelInfoCategory, z.ZodType> = {
  * 全カテゴリに対応するが、信頼性スコアは低め
  */
 export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> {
+  readonly sourceId = 'gemini-fallback';
   readonly sourceName = 'Gemini AI';
   readonly sourceType: SourceType = 'ai_generated';
   readonly reliabilityScore = 60; // AI生成のため低めの信頼性

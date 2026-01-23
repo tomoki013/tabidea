@@ -354,18 +354,6 @@ const TravelInfoSection: React.FC<{
 // Content components for each category
 const BasicInfoContent: React.FC<{ data: BasicCountryInfo }> = ({ data }) => (
   <>
-    {data.officialName && (
-      <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>正式名称</Text>
-        <Text style={styles.infoValue}>{data.officialName}</Text>
-      </View>
-    )}
-    {data.capital && (
-      <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>首都</Text>
-        <Text style={styles.infoValue}>{data.capital}</Text>
-      </View>
-    )}
     {data.languages && data.languages.length > 0 && (
       <View style={styles.infoRow}>
         <Text style={styles.infoLabel}>公用語</Text>
@@ -378,29 +366,37 @@ const BasicInfoContent: React.FC<{ data: BasicCountryInfo }> = ({ data }) => (
         <Text style={styles.infoValue}>{data.timezone}</Text>
       </View>
     )}
+    {data.currency && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>通貨</Text>
+        <Text style={styles.infoValue}>
+          {data.currency.name} ({data.currency.code})
+        </Text>
+      </View>
+    )}
   </>
 );
 
 const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
   <>
-    {data.dangerLevel && (
+    {data.dangerLevel !== undefined && (
       <View style={styles.infoRow}>
         <Text style={styles.infoLabel}>危険度</Text>
         <Text style={styles.infoValue}>{data.dangerLevel}</Text>
       </View>
     )}
-    {data.summary && (
+    {data.dangerLevelDescription && (
       <View style={styles.warningBox}>
-        <Text style={styles.warningText}>{data.summary}</Text>
+        <Text style={styles.warningText}>{data.dangerLevelDescription}</Text>
       </View>
     )}
-    {data.tips && data.tips.length > 0 && (
+    {data.warnings && data.warnings.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>安全のヒント</Text>
-        {data.tips.slice(0, 5).map((tip, i) => (
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>安全警告</Text>
+        {data.warnings.slice(0, 5).map((warning, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
-            <Text style={styles.listText}>{tip}</Text>
+            <Text style={styles.listText}>{warning.title}</Text>
           </View>
         ))}
       </View>
@@ -410,16 +406,16 @@ const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
 
 const VisaInfoContent: React.FC<{ data: VisaInfo }> = ({ data }) => (
   <>
-    {data.visaRequired !== undefined && (
+    {data.required !== undefined && (
       <View style={styles.infoRow}>
         <Text style={styles.infoLabel}>ビザ要否</Text>
-        <Text style={styles.infoValue}>{data.visaRequired ? "必要" : "不要"}</Text>
+        <Text style={styles.infoValue}>{data.required ? "必要" : "不要"}</Text>
       </View>
     )}
-    {data.stayDuration && (
+    {data.visaFreeStayDays !== undefined && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>滞在可能日数</Text>
-        <Text style={styles.infoValue}>{data.stayDuration}</Text>
+        <Text style={styles.infoLabel}>ビザなし滞在</Text>
+        <Text style={styles.infoValue}>{data.visaFreeStayDays}日</Text>
       </View>
     )}
     {data.requirements && data.requirements.length > 0 && (
@@ -438,16 +434,16 @@ const VisaInfoContent: React.FC<{ data: VisaInfo }> = ({ data }) => (
 
 const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => (
   <>
-    {data.healthcareQuality && (
+    {data.medicalLevel && (
       <View style={styles.infoRow}>
         <Text style={styles.infoLabel}>医療水準</Text>
-        <Text style={styles.infoValue}>{data.healthcareQuality}</Text>
+        <Text style={styles.infoValue}>{data.medicalLevel}</Text>
       </View>
     )}
-    {data.vaccinations && data.vaccinations.length > 0 && (
+    {data.vaccines && data.vaccines.length > 0 && (
       <View style={{ marginTop: 8 }}>
         <Text style={[styles.infoLabel, { marginBottom: 4 }]}>推奨予防接種</Text>
-        {data.vaccinations.slice(0, 5).map((vac, i) => (
+        {data.vaccines.slice(0, 5).map((vac, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
             <Text style={styles.listText}>{vac}</Text>
@@ -455,9 +451,10 @@ const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => 
         ))}
       </View>
     )}
-    {data.emergencyInfo && (
-      <View style={styles.dangerBox}>
-        <Text style={styles.dangerText}>{data.emergencyInfo}</Text>
+    {data.water && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>飲料水</Text>
+        <Text style={styles.infoValue}>{data.water}</Text>
       </View>
     )}
   </>
@@ -465,10 +462,15 @@ const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => 
 
 const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
   <>
-    {data.greetings && (
-      <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>挨拶</Text>
-        <Text style={styles.infoValue}>{data.greetings}</Text>
+    {data.customs && data.customs.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>現地の習慣</Text>
+        {data.customs.slice(0, 5).map((custom, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{custom}</Text>
+          </View>
+        ))}
       </View>
     )}
     {data.taboos && data.taboos.length > 0 && (
@@ -482,10 +484,10 @@ const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
         ))}
       </View>
     )}
-    {data.dressCode && (
+    {data.tipping && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>服装</Text>
-        <Text style={styles.infoValue}>{data.dressCode}</Text>
+        <Text style={styles.infoLabel}>チップ</Text>
+        <Text style={styles.infoValue}>{data.tipping.guideline}</Text>
       </View>
     )}
   </>
@@ -493,22 +495,16 @@ const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
 
 const ClimateInfoContent: React.FC<{ data: ClimateInfo }> = ({ data }) => (
   <>
-    {data.climate && (
+    {data.seasonDescription && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>気候</Text>
-        <Text style={styles.infoValue}>{data.climate}</Text>
+        <Text style={styles.infoLabel}>季節</Text>
+        <Text style={styles.infoValue}>{data.seasonDescription}</Text>
       </View>
     )}
-    {data.bestSeason && (
-      <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>ベストシーズン</Text>
-        <Text style={styles.infoValue}>{data.bestSeason}</Text>
-      </View>
-    )}
-    {data.packingTips && data.packingTips.length > 0 && (
+    {data.recommendedClothing && data.recommendedClothing.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>持ち物のヒント</Text>
-        {data.packingTips.slice(0, 5).map((tip, i) => (
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>おすすめの服装</Text>
+        {data.recommendedClothing.slice(0, 5).map((tip, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
             <Text style={styles.listText}>{tip}</Text>

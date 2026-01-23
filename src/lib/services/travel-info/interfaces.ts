@@ -46,6 +46,10 @@ export interface SourceResultSuccess<T> {
   data: T;
   /** ソース情報 */
   source: TravelInfoSource;
+  /** フォールバックが使用されたか */
+  fallbackUsed?: boolean;
+  /** フォールバックソース名 */
+  fallbackSource?: TravelInfoSource;
 }
 
 /**
