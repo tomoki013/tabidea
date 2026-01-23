@@ -42,7 +42,6 @@ const DEFAULT_CATEGORIES: TravelInfoCategory[] = [
   "basic",
   "safety",
   "visa",
-  "manner",
 ];
 
 /**
