@@ -150,6 +150,8 @@ export async function generateItinerary(
     }
 
     // 5. Generate Chunks in parallel
+    // Each chunk receives the starting location from the outline's previous day's overnight_location
+    // This ensures geographic continuity even with parallel processing
     const chunks = splitDaysIntoChunks(totalDays);
     log(`[generateItinerary] Generating ${chunks.length} chunk(s)...`);
 
@@ -157,12 +159,28 @@ export async function generateItinerary(
       const chunkOutlineDays = outline.days.filter(
         (d) => d.day >= chunk.start && d.day <= chunk.end
       );
+
+      // Determine starting location for this chunk
+      // If this chunk starts on day 1, no starting location constraint
+      // Otherwise, use the overnight_location from the previous day in the outline
+      let startingLocation: string | undefined;
+      if (chunk.start > 1) {
+        const previousDay = outline.days.find((d) => d.day === chunk.start - 1);
+        if (previousDay?.overnight_location) {
+          startingLocation = previousDay.overnight_location;
+          log(
+            `[generateItinerary] Chunk starting Day ${chunk.start} will begin at: ${startingLocation}`
+          );
+        }
+      }
+
       return ai.generateDayDetails(
         prompt,
         contextArticles,
         chunk.start,
         chunk.end,
-        chunkOutlineDays
+        chunkOutlineDays,
+        startingLocation
       );
     });
 

@@ -79,6 +79,10 @@ export interface PlanOutlineDay {
   title: string;
   /** ハイライトエリア */
   highlight_areas: string[];
+  /** 宿泊地（その日の終了地点） */
+  overnight_location: string;
+  /** 翌日への移動手段（最終日は不要） */
+  travel_method_to_next?: string;
 }
 
 /**

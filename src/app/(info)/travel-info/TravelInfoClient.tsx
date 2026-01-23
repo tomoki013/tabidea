@@ -43,9 +43,11 @@ const POPULAR_DESTINATIONS = [
 export default function TravelInfoClient() {
   const router = useRouter();
   const [destination, setDestination] = useState("");
+  // Initial categories match MANDATORY_CATEGORIES in CategorySelector
+  // basic: 基本情報, safety: 治安, manner: マナー
   const [selectedCategories, setSelectedCategories] = useState<
     TravelInfoCategory[]
-  >(["basic", "safety", "visa"]);
+  >(["basic", "safety", "manner"]);
   const [isNavigating, setIsNavigating] = useState(false);
 
   /**

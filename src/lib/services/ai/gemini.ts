@@ -182,6 +182,8 @@ ${prompt}`;
   /**
    * Step 1: Generate Master Outline (No detailed activities yet)
    * Focus on selecting destination (if needed) and high-level routing.
+   * IMPORTANT: This now includes overnight_location and travel_method_to_next
+   * to ensure continuity between days and prevent "teleportation" bugs.
    */
   async generateOutline(
     prompt: string,
@@ -223,6 +225,13 @@ ${prompt}`;
       - The "destination" field should combine all cities (e.g., "東京・大阪・京都周遊").
       - Ensure logical geographic order (e.g., Tokyo → Osaka → Kyoto, not random jumps).
 
+      CRITICAL - OVERNIGHT LOCATION & TRAVEL CONTINUITY:
+      - For EACH day, you MUST specify "overnight_location" - the city/area where the traveler will sleep that night.
+      - For days that are NOT the last day, specify "travel_method_to_next" - how the traveler will get to the next day's location.
+      - The next day's activities MUST start from the previous day's overnight_location.
+      - This prevents "teleportation" bugs where travelers appear in different countries/cities without travel.
+      - Example: If Day 1 ends in Istanbul, Day 2 MUST start in Istanbul (not suddenly in Cairo).
+
       JSON:
       {
         "destination": "string (The chosen destination name, or combined name for multi-city trips)",
@@ -231,7 +240,9 @@ ${prompt}`;
           {
             "day": number,
             "title": "string (Theme/Area of the day, include city name for multi-city trips)",
-            "highlight_areas": ["string", "string"]
+            "highlight_areas": ["string", "string"],
+            "overnight_location": "string (City/Area where traveler sleeps this night - REQUIRED)",
+            "travel_method_to_next": "string (How to get to next day's location, e.g., '新幹線で移動', '飛行機でカイロへ', null for last day)"
           }
         ]
       }
@@ -259,15 +270,20 @@ ${prompt}`;
 
   /**
    * Step 2: Generate Detailed Activities for specific days based on Outline
+   * IMPORTANT: Now accepts startingLocation to ensure continuity from previous chunk.
    */
   async generateDayDetails(
     prompt: string,
     context: Article[],
     startDay: number,
     endDay: number,
-    outlineDays: PlanOutlineDay[]
+    outlineDays: PlanOutlineDay[],
+    startingLocation?: string
   ): Promise<DayPlan[]> {
     console.log(`[gemini] Generating details for days ${startDay}-${endDay}...`);
+    if (startingLocation) {
+      console.log(`[gemini] Starting location context: ${startingLocation}`);
+    }
 
     // Provide ONLY relevant outline info to keep context small
     const outlineInfo = JSON.stringify(outlineDays);
@@ -284,18 +300,31 @@ ${prompt}`;
       })
       .join("\n");
 
+    // Build starting location constraint if provided
+    const startingLocationConstraint = startingLocation
+      ? `
+      CRITICAL - STARTING LOCATION CONSTRAINT:
+      The traveler is waking up in "${startingLocation}" on Day ${startDay}.
+      Day ${startDay}'s first activity MUST be in or departing from "${startingLocation}".
+      DO NOT start the day in a different city/country - this would be physically impossible.
+      If travel to another location is needed, include the travel as an activity.
+      `
+      : "";
+
     const systemInstruction = `
       Create detailed itinerary for Days ${startDay} to ${endDay} in JAPANESE.
 
       MASTER PLAN OUTLINE (You MUST follow this):
       ${outlineInfo}
-
+      ${startingLocationConstraint}
       ${contextText ? `Context: ${contextText}` : ""}
 
       Rules:
-      1. Strictly follow the "highlight_areas" defined in the Master Plan Outline for each day.
+      1. Strictly follow the "highlight_areas" and "overnight_location" defined in the Master Plan Outline for each day.
       2. Create detailed activities (3 meals + spots) fitting the user's pace.
       3. Return JSON array of DayPlans.
+      4. CRITICAL: Each day MUST start from the previous day's overnight_location (or startingLocation if specified).
+      5. If travel_method_to_next is specified in the outline, include that travel as an activity at the appropriate time.
 
       MULTI-CITY TRIP HANDLING:
       - If this is a multi-city trip, ensure smooth transitions between cities.
@@ -305,6 +334,11 @@ ${prompt}`;
         - Arrival and check-in at the new destination
       - Balance the activities appropriately for travel days (fewer sightseeing spots).
       - Always mention which city each activity is in when it might be ambiguous.
+
+      GEOGRAPHIC CONTINUITY (VERY IMPORTANT):
+      - The traveler cannot teleport. If Day N ends in City A, Day N+1 MUST start in City A.
+      - If moving to City B, include the actual travel (flight, train, etc.) as activities.
+      - Travel time should be realistic (e.g., international flights take several hours).
 
       JSON:
       {

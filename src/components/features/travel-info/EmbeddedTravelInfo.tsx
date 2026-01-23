@@ -34,11 +34,13 @@ interface EmbeddedTravelInfoProps {
   initialCategories?: TravelInfoCategory[];
 }
 
+// Default categories for embedded modal
+// Must use valid TravelInfoCategory values: basic, safety, visa, manner, etc.
 const DEFAULT_CATEGORIES: TravelInfoCategory[] = [
+  "basic",
   "safety",
-  "entry",
-  "climate",
-  "currency",
+  "visa",
+  "manner",
 ];
 
 /**
