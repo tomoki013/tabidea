@@ -51,6 +51,10 @@ const tagCategoryMap: Record<string, TagInfo> = {
   カップル: { category: "companion", icon: "💑", color: "pink" },
   友人旅行: { category: "companion", icon: "👫", color: "purple" },
   一人旅: { category: "companion", icon: "🚶", color: "indigo" },
+  "家族（子供あり）": { category: "companion", icon: "👨‍👩‍👧‍👦", color: "blue" },
+  "家族（大人のみ）": { category: "companion", icon: "👨‍👩‍👧‍👦", color: "sky" },
+  "カップル・夫婦": { category: "companion", icon: "💑", color: "pink" },
+  友人: { category: "companion", icon: "👫", color: "purple" },
   // 季節
   春: { category: "season", icon: "🌸", color: "pink" },
   夏: { category: "season", icon: "☀️", color: "orange" },
@@ -58,18 +62,27 @@ const tagCategoryMap: Record<string, TagInfo> = {
   冬: { category: "season", icon: "❄️", color: "cyan" },
   通年: { category: "season", icon: "📅", color: "gray" },
   // テーマ
+  推し活: { category: "theme", icon: "🧡", color: "rose" },
+  ディズニー: { category: "theme", icon: "🏰", color: "rose" },
+  ジブリ: { category: "theme", icon: "🌱", color: "green" },
+  ハリーポッター: { category: "theme", icon: "🧙", color: "violet" },
+  "K-Pop": { category: "theme", icon: "🎤", color: "pink" },
   グルメ: { category: "theme", icon: "🍽️", color: "red" },
   文化体験: { category: "theme", icon: "🏛️", color: "violet" },
+  "文化・歴史": { category: "theme", icon: "🏛️", color: "violet" },
   アート: { category: "theme", icon: "🎨", color: "fuchsia" },
+  "アート・美術館": { category: "theme", icon: "🎨", color: "fuchsia" },
   ビーチ: { category: "theme", icon: "🏖️", color: "cyan" },
   リゾート: { category: "theme", icon: "🌴", color: "emerald" },
   温泉: { category: "theme", icon: "♨️", color: "rose" },
   リラックス: { category: "theme", icon: "🧘", color: "teal" },
   世界遺産: { category: "theme", icon: "🏰", color: "amber" },
   自然: { category: "theme", icon: "🌲", color: "green" },
+  "自然・絶景": { category: "theme", icon: "🏞️", color: "cyan" },
   絶景: { category: "theme", icon: "🏞️", color: "cyan" },
   ショッピング: { category: "theme", icon: "🛍️", color: "pink" },
   エンターテイメント: { category: "theme", icon: "🎡", color: "orange" },
+  アクティビティ: { category: "theme", icon: "🏃", color: "orange" },
   夜景: { category: "theme", icon: "🌃", color: "indigo" },
   街歩き: { category: "theme", icon: "🚶‍♀️", color: "gray" },
   歴史: { category: "theme", icon: "📜", color: "amber" },
@@ -101,6 +114,33 @@ const tagCategoryMap: Record<string, TagInfo> = {
   アフリカ: { category: "theme", icon: "🌍", color: "orange" },
   オセアニア: { category: "theme", icon: "🌏", color: "cyan" },
   中東: { category: "theme", icon: "🕌", color: "amber" },
+};
+
+// タグ翻訳マップ（フィルタ表示用）
+const tagTranslationMap: Record<string, string> = {
+  // 推し活
+  "Disney": "ディズニー",
+  "Ghibli": "ジブリ",
+  "HarryPotter": "ハリーポッター",
+  "K-Pop": "K-Pop",
+  // 英語タグ -> 日本語タグ
+  "Nature": "自然・絶景",
+  "View": "自然・絶景",
+  "Culture": "文化・歴史",
+  "History": "文化・歴史",
+  "Shopping": "ショッピング",
+  "Food": "グルメ",
+  "Gourmet": "グルメ",
+  "Relax": "リラックス",
+  "Resort": "リゾート",
+  "Activity": "アクティビティ",
+  "Art": "アート・美術館",
+  "Museum": "アート・美術館",
+  // 同行者
+  "Solo": "一人旅",
+  "Couple": "カップル・夫婦",
+  "Friends": "友人",
+  "Family": "家族旅行",
 };
 
 const colorStyles: Record<
@@ -292,6 +332,80 @@ const regionIconMap: Record<string, string> = {
   長崎: "⛪",
   鹿児島: "🌲",
   島根: "⛩️",
+  // English mappings
+  "Madrid": "🇪🇸",
+  "Barcelona": "🇪🇸",
+  "Paris": "🇫🇷",
+  "London": "🇬🇧",
+  "Rome": "🇮🇹",
+  "Milan": "🇮🇹",
+  "Venice": "🇮🇹",
+  "Florence": "🇮🇹",
+  "Berlin": "🇩🇪",
+  "Munich": "🇩🇪",
+  "Vienna": "🇦🇹",
+  "Salzburg": "🇦🇹",
+  "Prague": "🇨🇿",
+  "Budapest": "🇭🇺",
+  "Amsterdam": "🇳🇱",
+  "Brussels": "🇧🇪",
+  "Zurich": "🇨🇭",
+  "Geneva": "🇨🇭",
+  "Lisbon": "🇵🇹",
+  "Porto": "🇵🇹",
+  "Dubrovnik": "🇭🇷",
+  "Athens": "🇬🇷",
+  "Santorini": "🇬🇷",
+  "Istanbul": "🇹🇷",
+  "Cappadocia": "🇹🇷",
+  "Dubai": "🇦🇪",
+  "Abu Dhabi": "🇦🇪",
+  "Cairo": "🇪🇬",
+  "Cape Town": "🇿🇦",
+  "Marrakech": "🇲🇦",
+  "New York": "🇺🇸",
+  "Los Angeles": "🇺🇸",
+  "San Francisco": "🇺🇸",
+  "Las Vegas": "🇺🇸",
+  "Orlando": "🇺🇸",
+  "Chicago": "🇺🇸",
+  "Boston": "🇺🇸",
+  "Miami": "🇺🇸",
+  "Vancouver": "🇨🇦",
+  "Toronto": "🇨🇦",
+  "Banff": "🇨🇦",
+  "Cancun": "🇲🇽",
+  "Mexico City": "🇲🇽",
+  "Lima": "🇵🇪",
+  "Cusco": "🇵🇪",
+  "Rio de Janeiro": "🇧🇷",
+  "Buenos Aires": "🇦🇷",
+  "Santiago": "🇨🇱",
+  "Sydney": "🇦🇺",
+  "Melbourne": "🇦🇺",
+  "Gold Coast": "🇦🇺",
+  "Cairns": "🇦🇺",
+  "Auckland": "🇳🇿",
+  "Queenstown": "🇳🇿",
+  "Seoul": "🇰🇷",
+  "Busan": "🇰🇷",
+  "Taipei": "🇹🇼",
+  "Hanoi": "🇻🇳",
+  "Ho Chi Minh": "🇻🇳",
+  "Da Nang": "🇻🇳",
+  "Bangkok": "🇹🇭",
+  "Phuket": "🇹🇭",
+  "Chiang Mai": "🇹🇭",
+  "Singapore": "🇸🇬",
+  "Kuala Lumpur": "🇲🇾",
+  "Bali": "🇮🇩",
+  "Cebu": "🇵🇭",
+  "Siem Reap": "🇰🇭",
+  "Reykjavik": "🇮🇸",
+  "Helsinki": "🇫🇮",
+  "Stockholm": "🇸🇪",
+  "Oslo": "🇳🇴",
+  "Copenhagen": "🇩🇰",
 };
 
 export default function SamplePlanList({ plans }: SamplePlanListProps) {
@@ -304,6 +418,18 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const [displayLimit, setDisplayLimit] = useState(20);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  // モーダル表示中のスクロール制御
+  useEffect(() => {
+    if (isFilterOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isFilterOpen]);
 
   const allTags = useMemo(() => getTagsFromPlans(plans), [plans]);
   const allRegions = useMemo(() => getRegionsFromPlans(plans), [plans]);
@@ -333,7 +459,10 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
       // Tag filter
       const tagMatch =
         selectedTags.length === 0 ||
-        selectedTags.some((tag) => plan.tags.includes(tag));
+        selectedTags.some((tag) => {
+          // タグそのものが一致するか、翻訳前のタグが含まれているか
+          return plan.tags.includes(tag) || plan.tags.some(planTag => tagTranslationMap[planTag] === tag);
+        });
 
       // Region filter
       const regionMatch =
@@ -435,25 +564,47 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
     const companions: string[] = [];
     const seasons: string[] = [];
     const themes: string[] = [];
+    const processedTags = new Set<string>();
 
+    // 既存のタグを処理
     allTags.forEach((tag) => {
-      const info = tagCategoryMap[tag];
+      // 翻訳マップにあれば変換後のタグを使用、なければそのまま
+      const displayTag = tagTranslationMap[tag] || tag;
+
+      // 既に処理済みのタグはスキップ
+      if (processedTags.has(displayTag)) return;
+
+      const info = tagCategoryMap[displayTag];
       if (info) {
+        processedTags.add(displayTag);
         switch (info.category) {
           case "companion":
-            companions.push(tag);
+            companions.push(displayTag);
             break;
           case "season":
-            seasons.push(tag);
+            seasons.push(displayTag);
             break;
           case "theme":
-            themes.push(tag);
+            themes.push(displayTag);
             break;
         }
       }
     });
 
-    return { companions, seasons, themes };
+    // 定義されているが表示されていないタグも追加（プランに含まれていなくてもボタンを表示する場合）
+    // 今回はプランに含まれているタグのみを表示する方針とするが、
+    // マッピングされたタグ（例：Disney -> ディズニー）がallTagsに含まれていない場合があるので、
+    // allTagsに含まれるタグが翻訳マップ経由でtagCategoryMapにヒットするかを確認する必要がある。
+
+    // 上記のforEachループで翻訳後のタグをチェックしているので、基本的にはカバーできているはず。
+    // ただし、「推し活」などの親タグがプランに含まれていない場合でも、Disneyなどが含まれていれば「推し活」を表示したいなどの要件があれば調整が必要。
+    // 現状は tagCategoryMap に定義されているものだけが表示される。
+
+    return {
+      companions: companions.sort(),
+      seasons: seasons.sort(),
+      themes: themes.sort()
+    };
   }, [allTags]);
 
   const renderTagButton = (tag: string, isSelected: boolean) => {
