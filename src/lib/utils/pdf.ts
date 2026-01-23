@@ -1,11 +1,18 @@
-import type { Itinerary } from '@/types';
+import type { Itinerary, TravelInfoCategory } from '@/types';
+import type { CategoryState } from '@/components/features/travel-info/types';
+
+export interface PDFGenerationOptions {
+  includeTravelInfo?: boolean;
+  travelInfoData?: Map<TravelInfoCategory, CategoryState>;
+}
 
 /**
  * Generate a PDF blob from an itinerary using @react-pdf/renderer
  * This function dynamically imports the renderer to avoid SSR issues
  */
 export async function generateTravelPlanPdf(
-  itinerary: Itinerary
+  itinerary: Itinerary,
+  options?: PDFGenerationOptions
 ): Promise<Blob> {
   const { pdf, Font } = await import("@react-pdf/renderer");
   const React = await import("react");
@@ -24,7 +31,11 @@ export async function generateTravelPlanPdf(
 
   // Create React element and generate PDF blob
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const pdfElement = React.createElement(ItineraryPDF, { itinerary }) as any;
+  const pdfElement = React.createElement(ItineraryPDF, {
+    itinerary,
+    includeTravelInfo: options?.includeTravelInfo,
+    travelInfoData: options?.travelInfoData,
+  }) as any;
   const pdfBlob = await pdf(pdfElement).toBlob();
 
   return pdfBlob;

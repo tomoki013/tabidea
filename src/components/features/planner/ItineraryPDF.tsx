@@ -6,7 +6,9 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
-import { Itinerary } from '@/types';
+import { Itinerary, TravelInfoCategory, SafetyInfo, BasicCountryInfo, VisaInfo, HealthcareInfo, MannerInfo, ClimateInfo } from '@/types';
+import type { CategoryState } from "@/components/features/travel-info/types";
+import { CATEGORY_INFO } from "@/components/features/travel-info/types";
 
 const theme = {
   primary: "#e67e22", // Orange
@@ -210,15 +212,328 @@ const styles = StyleSheet.create({
     color: theme.textLight,
     marginBottom: 5,
   },
+
+  // Travel Info Styles
+  travelInfoHeader: {
+    marginBottom: 20,
+    borderBottomWidth: 2,
+    borderBottomColor: theme.primary,
+    paddingBottom: 10,
+  },
+  travelInfoTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: theme.text,
+  },
+  travelInfoSubtitle: {
+    fontSize: 10,
+    color: theme.textLight,
+    marginTop: 4,
+  },
+  categorySection: {
+    marginBottom: 20,
+    breakInside: "avoid",
+  },
+  categoryHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 8,
+    backgroundColor: theme.sectionBg,
+    padding: 10,
+    borderRadius: 4,
+    borderLeftWidth: 4,
+    borderLeftColor: theme.primary,
+  },
+  categoryTitle: {
+    fontSize: 12,
+    fontWeight: "bold",
+    color: theme.text,
+  },
+  categoryContent: {
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  infoRow: {
+    flexDirection: "row",
+    marginBottom: 6,
+    alignItems: "flex-start",
+  },
+  infoLabel: {
+    fontSize: 9,
+    fontWeight: "bold",
+    color: theme.text,
+    width: 100,
+    flexShrink: 0,
+  },
+  infoValue: {
+    fontSize: 9,
+    color: theme.textLight,
+    flex: 1,
+    lineHeight: 1.4,
+  },
+  warningBox: {
+    backgroundColor: "#fef3c7",
+    padding: 10,
+    borderRadius: 4,
+    marginTop: 8,
+    borderLeftWidth: 3,
+    borderLeftColor: "#f59e0b",
+  },
+  warningText: {
+    fontSize: 9,
+    color: "#92400e",
+    lineHeight: 1.4,
+  },
+  dangerBox: {
+    backgroundColor: "#fee2e2",
+    padding: 10,
+    borderRadius: 4,
+    marginTop: 8,
+    borderLeftWidth: 3,
+    borderLeftColor: "#ef4444",
+  },
+  dangerText: {
+    fontSize: 9,
+    color: "#991b1b",
+    lineHeight: 1.4,
+  },
+  listItem: {
+    flexDirection: "row",
+    marginBottom: 4,
+    paddingLeft: 10,
+  },
+  bulletPoint: {
+    fontSize: 9,
+    color: theme.primary,
+    marginRight: 6,
+  },
+  listText: {
+    fontSize: 9,
+    color: theme.textLight,
+    flex: 1,
+    lineHeight: 1.4,
+  },
 });
 
 interface ItineraryPDFProps {
   itinerary: Itinerary;
+  includeTravelInfo?: boolean;
+  travelInfoData?: Map<TravelInfoCategory, CategoryState>;
 }
 
-const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
+// Helper component for rendering travel info categories
+const TravelInfoSection: React.FC<{
+  category: TravelInfoCategory;
+  state: CategoryState;
+}> = ({ category, state }) => {
+  if (state.status !== "success" || !state.data) return null;
+
+  const info = CATEGORY_INFO[category];
+  if (!info) return null;
+
+  const data = state.data.data;
+
+  return (
+    <View style={styles.categorySection}>
+      <View style={styles.categoryHeader}>
+        <Text style={styles.categoryTitle}>{info.label}</Text>
+      </View>
+      <View style={styles.categoryContent}>
+        {category === "basic" && <BasicInfoContent data={data as BasicCountryInfo} />}
+        {category === "safety" && <SafetyInfoContent data={data as SafetyInfo} />}
+        {category === "visa" && <VisaInfoContent data={data as VisaInfo} />}
+        {category === "healthcare" && <HealthcareInfoContent data={data as HealthcareInfo} />}
+        {category === "manner" && <MannerInfoContent data={data as MannerInfo} />}
+        {category === "climate" && <ClimateInfoContent data={data as ClimateInfo} />}
+        {/* Add more categories as needed */}
+      </View>
+    </View>
+  );
+};
+
+// Content components for each category
+const BasicInfoContent: React.FC<{ data: BasicCountryInfo }> = ({ data }) => (
+  <>
+    {data.officialName && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>正式名称</Text>
+        <Text style={styles.infoValue}>{data.officialName}</Text>
+      </View>
+    )}
+    {data.capital && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>首都</Text>
+        <Text style={styles.infoValue}>{data.capital}</Text>
+      </View>
+    )}
+    {data.languages && data.languages.length > 0 && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>公用語</Text>
+        <Text style={styles.infoValue}>{data.languages.join(", ")}</Text>
+      </View>
+    )}
+    {data.timezone && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>タイムゾーン</Text>
+        <Text style={styles.infoValue}>{data.timezone}</Text>
+      </View>
+    )}
+  </>
+);
+
+const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
+  <>
+    {data.dangerLevel && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>危険度</Text>
+        <Text style={styles.infoValue}>{data.dangerLevel}</Text>
+      </View>
+    )}
+    {data.summary && (
+      <View style={styles.warningBox}>
+        <Text style={styles.warningText}>{data.summary}</Text>
+      </View>
+    )}
+    {data.tips && data.tips.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>安全のヒント</Text>
+        {data.tips.slice(0, 5).map((tip, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{tip}</Text>
+          </View>
+        ))}
+      </View>
+    )}
+  </>
+);
+
+const VisaInfoContent: React.FC<{ data: VisaInfo }> = ({ data }) => (
+  <>
+    {data.visaRequired !== undefined && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>ビザ要否</Text>
+        <Text style={styles.infoValue}>{data.visaRequired ? "必要" : "不要"}</Text>
+      </View>
+    )}
+    {data.stayDuration && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>滞在可能日数</Text>
+        <Text style={styles.infoValue}>{data.stayDuration}</Text>
+      </View>
+    )}
+    {data.requirements && data.requirements.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>必要書類</Text>
+        {data.requirements.slice(0, 5).map((req, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{req}</Text>
+          </View>
+        ))}
+      </View>
+    )}
+  </>
+);
+
+const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => (
+  <>
+    {data.healthcareQuality && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>医療水準</Text>
+        <Text style={styles.infoValue}>{data.healthcareQuality}</Text>
+      </View>
+    )}
+    {data.vaccinations && data.vaccinations.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>推奨予防接種</Text>
+        {data.vaccinations.slice(0, 5).map((vac, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{vac}</Text>
+          </View>
+        ))}
+      </View>
+    )}
+    {data.emergencyInfo && (
+      <View style={styles.dangerBox}>
+        <Text style={styles.dangerText}>{data.emergencyInfo}</Text>
+      </View>
+    )}
+  </>
+);
+
+const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
+  <>
+    {data.greetings && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>挨拶</Text>
+        <Text style={styles.infoValue}>{data.greetings}</Text>
+      </View>
+    )}
+    {data.taboos && data.taboos.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>タブー・注意事項</Text>
+        {data.taboos.slice(0, 5).map((taboo, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{taboo}</Text>
+          </View>
+        ))}
+      </View>
+    )}
+    {data.dressCode && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>服装</Text>
+        <Text style={styles.infoValue}>{data.dressCode}</Text>
+      </View>
+    )}
+  </>
+);
+
+const ClimateInfoContent: React.FC<{ data: ClimateInfo }> = ({ data }) => (
+  <>
+    {data.climate && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>気候</Text>
+        <Text style={styles.infoValue}>{data.climate}</Text>
+      </View>
+    )}
+    {data.bestSeason && (
+      <View style={styles.infoRow}>
+        <Text style={styles.infoLabel}>ベストシーズン</Text>
+        <Text style={styles.infoValue}>{data.bestSeason}</Text>
+      </View>
+    )}
+    {data.packingTips && data.packingTips.length > 0 && (
+      <View style={{ marginTop: 8 }}>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>持ち物のヒント</Text>
+        {data.packingTips.slice(0, 5).map((tip, i) => (
+          <View key={i} style={styles.listItem}>
+            <Text style={styles.bulletPoint}>•</Text>
+            <Text style={styles.listText}>{tip}</Text>
+          </View>
+        ))}
+      </View>
+    )}
+  </>
+);
+
+const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
+  itinerary,
+  includeTravelInfo,
+  travelInfoData,
+}) => {
+  // Get categories that have successful data
+  const successfulCategories = travelInfoData
+    ? Array.from(travelInfoData.entries())
+        .filter(([, state]) => state.status === "success")
+        .map(([cat]) => cat)
+    : [];
+
   return (
     <Document>
+      {/* Itinerary Page */}
       <Page size="A4" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
@@ -291,6 +606,44 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({ itinerary }) => {
           <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
         </View>
       </Page>
+
+      {/* Travel Info Pages */}
+      {includeTravelInfo && travelInfoData && successfulCategories.length > 0 && (
+        <Page size="A4" style={styles.page} wrap>
+          {/* Travel Info Header */}
+          <View style={styles.travelInfoHeader}>
+            <Text style={styles.travelInfoTitle}>渡航情報・安全ガイド</Text>
+            <Text style={styles.travelInfoSubtitle}>
+              {itinerary.destination} - Travel Information & Safety Guide
+            </Text>
+          </View>
+
+          {/* Render each category */}
+          {successfulCategories.map((category) => {
+            const state = travelInfoData.get(category);
+            if (!state) return null;
+            return (
+              <TravelInfoSection key={category} category={category} state={state} />
+            );
+          })}
+
+          {/* Disclaimer */}
+          <View style={[styles.descriptionBox, { marginTop: 20 }]}>
+            <Text style={[styles.descriptionText, { fontSize: 8, color: theme.textLight }]}>
+              ※ この情報はAIによって生成されたものであり、正確性を保証するものではありません。
+              渡航前には必ず外務省海外安全ホームページ等の公式情報をご確認ください。
+            </Text>
+          </View>
+
+          {/* Footer */}
+          <View style={styles.footer} fixed>
+            <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
+              `${pageNumber} / ${totalPages}`
+            } />
+            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+          </View>
+        </Page>
+      )}
     </Document>
   );
 };

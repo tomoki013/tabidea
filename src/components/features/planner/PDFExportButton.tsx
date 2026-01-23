@@ -9,6 +9,7 @@ import {
 } from "@/lib/utils";
 import { FaFilePdf, FaSpinner } from "react-icons/fa";
 import PDFPreviewModal from "./PDFPreviewModal";
+import PDFExportModal, { PDFExportOptions } from "./PDFExportModal";
 
 interface PDFExportButtonProps {
   itinerary: Itinerary;
@@ -17,6 +18,7 @@ interface PDFExportButtonProps {
 
 /**
  * PDF Export Button with responsive behavior:
+ * - Opens settings modal to choose what to include
  * - Mobile (Web Share API supported): Opens native share sheet
  * - Desktop/Tablet: Shows modal with PDF preview and download option
  */
@@ -25,7 +27,8 @@ export default function PDFExportButton({
   className = "",
 }: PDFExportButtonProps) {
   const [isGenerating, setIsGenerating] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
+  const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
   const [pdfBlobUrl, setPdfBlobUrl] = useState<string | null>(null);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -95,18 +98,30 @@ export default function PDFExportButton({
     const url = URL.createObjectURL(blob);
     setPdfBlobUrl(url);
     setPdfBlob(blob);
-    setIsModalOpen(true);
+    setIsPreviewModalOpen(true);
   }, [pdfBlobUrl]);
 
-  // Main export handler
-  const handleExportPDF = useCallback(async () => {
+  // Handle click on the button - open settings modal
+  const handleButtonClick = useCallback(() => {
+    setError(null);
+    setIsSettingsModalOpen(true);
+  }, []);
+
+  // Handle export from settings modal
+  const handleExport = useCallback(async (options: PDFExportOptions) => {
     setError(null);
     setIsGenerating(true);
 
     try {
-      console.log("Starting PDF generation...");
-      const blob = await generateTravelPlanPdf(itinerary);
+      console.log("Starting PDF generation with options:", options);
+      const blob = await generateTravelPlanPdf(itinerary, {
+        includeTravelInfo: options.includeTravelInfo,
+        travelInfoData: options.travelInfoData,
+      });
       console.log("PDF generated successfully:", blob.size, "bytes");
+
+      // Close settings modal
+      setIsSettingsModalOpen(false);
 
       if (canUseWebShare()) {
         // Mobile: Use Web Share API
@@ -135,9 +150,9 @@ export default function PDFExportButton({
     }
   }, [pdfBlob, filename]);
 
-  // Handle modal close
-  const handleCloseModal = useCallback(() => {
-    setIsModalOpen(false);
+  // Handle preview modal close
+  const handleClosePreviewModal = useCallback(() => {
+    setIsPreviewModalOpen(false);
     // Cleanup blob URL after a short delay to allow animation
     setTimeout(() => {
       if (pdfBlobUrl) {
@@ -155,7 +170,7 @@ export default function PDFExportButton({
           <FaFilePdf /> Download
         </h4>
         <button
-          onClick={handleExportPDF}
+          onClick={handleButtonClick}
           disabled={isGenerating}
           className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed font-bold"
           aria-label="PDFとして出力"
@@ -180,10 +195,19 @@ export default function PDFExportButton({
         )}
       </div>
 
+      {/* PDF Settings Modal */}
+      <PDFExportModal
+        isOpen={isSettingsModalOpen}
+        onClose={() => setIsSettingsModalOpen(false)}
+        onExport={handleExport}
+        destination={itinerary.destination}
+        isGenerating={isGenerating}
+      />
+
       {/* PDF Preview Modal for Desktop/Tablet */}
       <PDFPreviewModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
+        isOpen={isPreviewModalOpen}
+        onClose={handleClosePreviewModal}
         pdfBlobUrl={pdfBlobUrl}
         filename={filename}
         onDownload={handleDownload}

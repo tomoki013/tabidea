@@ -443,6 +443,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, companions: val }));
             setErrorMessage("");
           }}
+          onNext={handleNext}
         />
       )}
       {step === 4 && (
@@ -452,6 +453,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, ...val }));
             setErrorMessage("");
           }}
+          onNext={handleNext}
         />
       )}
       {step === 5 && (
@@ -461,6 +463,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, budget: val }));
             setErrorMessage("");
           }}
+          onNext={handleNext}
         />
       )}
       {step === 6 && (
@@ -470,6 +473,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, ...val }));
             setErrorMessage("");
           }}
+          onNext={handleNext}
         />
       )}
       {step === 7 && (
@@ -479,6 +483,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, pace: val }));
             setErrorMessage("");
           }}
+          onNext={handleNext}
         />
       )}
       {step === 8 && (
@@ -488,6 +493,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
             setInput(prev => ({ ...prev, freeText: val }));
             setErrorMessage("");
           }}
+          onComplete={handlePlan}
         />
       )}
     </StepContainer>

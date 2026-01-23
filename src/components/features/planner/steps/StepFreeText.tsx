@@ -1,11 +1,14 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 interface StepFreeTextProps {
   value: string | undefined;
   onChange: (value: string) => void;
+  onComplete?: () => void;
 }
 
-export default function StepFreeText({ value, onChange }: StepFreeTextProps) {
+export default function StepFreeText({ value, onChange, onComplete }: StepFreeTextProps) {
   return (
     <div className="flex flex-col h-full space-y-4 md:space-y-6 pt-2 md:pt-4">
       <div className="space-y-2 md:space-y-4 text-center">
@@ -35,6 +38,22 @@ export default function StepFreeText({ value, onChange }: StepFreeTextProps) {
             {(value || "").length}文字
         </div>
       </div>
+
+      {/* Proceed hint for last step - optional so always visible */}
+      {onComplete && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center"
+        >
+          <button
+            onClick={onComplete}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            プランを作成する →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

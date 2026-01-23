@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface StepPaceProps {
   value?: string;
   onChange: (val: string) => void;
+  onNext?: () => void;
 }
 
-export default function StepPace({ value, onChange }: StepPaceProps) {
+export default function StepPace({ value, onChange, onNext }: StepPaceProps) {
   const options = [
     {
       id: "relaxed",
@@ -94,6 +95,22 @@ export default function StepPace({ value, onChange }: StepPaceProps) {
           );
         })}
       </div>
+
+      {/* Proceed hint when pace is selected */}
+      {value && onNext && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center"
+        >
+          <button
+            onClick={onNext}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            次へ進む →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

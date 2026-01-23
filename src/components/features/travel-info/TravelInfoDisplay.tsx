@@ -317,6 +317,39 @@ function CategorySection({
   onRetry?: () => void;
 }) {
   const info = CATEGORY_INFO[category];
+  const categoryLabel = info?.label || category;
+
+  // If category info is undefined, use fallbacks
+  if (!info) {
+    // For unknown categories, show a warning-style error state
+    if (state.status === "error") {
+      return (
+        <motion.div
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          className="p-6 bg-[#fffaf5] rounded-2xl border border-orange-100 border-l-4 border-l-orange-400"
+        >
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-xl bg-orange-100 flex items-center justify-center flex-shrink-0">
+              <AlertTriangle className="w-6 h-6 text-orange-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-bold text-orange-800 mb-1">
+                {categoryLabel}の取得に失敗しました
+              </h3>
+              <p className="text-orange-700 text-sm mb-4">
+                不明なカテゴリです。
+              </p>
+            </div>
+          </div>
+        </motion.div>
+      );
+    }
+    // For other states with unknown category, skip rendering
+    return null;
+  }
 
   // ローディング中
   if (state.status === "loading") {
@@ -362,10 +395,10 @@ function CategorySection({
           </div>
           <div className="flex-1">
             <h3 className="font-bold text-orange-800 mb-1">
-              {info.label}の取得に失敗しました
+              {categoryLabel}の取得に失敗しました
             </h3>
             <p className="text-orange-700 text-sm mb-4">
-              申し訳ありません。{info.label}の情報を取得できませんでした。
+              申し訳ありません。{categoryLabel}の情報を取得できませんでした。
               <br />
               しばらく経ってから再度お試しください。
             </p>
