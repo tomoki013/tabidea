@@ -13,6 +13,10 @@ import {
   FaPlane,
   FaTrain,
   FaSearch,
+  FaHeart,
+  FaUserFriends,
+  FaSun,
+  FaUmbrellaBeach,
 } from "react-icons/fa";
 import SamplePlanCard from "./SamplePlanCard";
 import SamplePlanSkeleton from "./SamplePlanSkeleton";
@@ -37,7 +41,7 @@ const dayOptions = [
 ];
 
 // タグカテゴリ定義
-type TagCategory = "companion" | "season" | "theme";
+type TagCategory = "companion" | "season" | "theme" | "oshikatsu";
 
 interface TagInfo {
   category: TagCategory;
@@ -46,101 +50,199 @@ interface TagInfo {
 }
 
 const tagCategoryMap: Record<string, TagInfo> = {
-  // 同行者
-  家族旅行: { category: "companion", icon: "👨‍👩‍👧‍👦", color: "blue" },
-  カップル: { category: "companion", icon: "💑", color: "pink" },
-  友人旅行: { category: "companion", icon: "👫", color: "purple" },
-  一人旅: { category: "companion", icon: "🚶", color: "indigo" },
+  // --- 推し活 (Oshikatsu) ---
+  "ディズニー": { category: "oshikatsu", icon: "🏰", color: "rose" },
+  "ジブリ": { category: "oshikatsu", icon: "🌱", color: "green" },
+  "ハリーポッター": { category: "oshikatsu", icon: "🧙", color: "violet" },
+  "K-Pop": { category: "oshikatsu", icon: "🎤", color: "pink" },
+  "推し活": { category: "oshikatsu", icon: "🧡", color: "rose" },
+  "スターウォーズ": { category: "oshikatsu", icon: "⚔️", color: "slate" },
+  "マーベル": { category: "oshikatsu", icon: "🦸", color: "red" },
+  "F1": { category: "oshikatsu", icon: "🏎️", color: "red" },
+  "MLB": { category: "oshikatsu", icon: "⚾", color: "blue" },
+  "NBA": { category: "oshikatsu", icon: "🏀", color: "orange" },
+  "プレミアリーグ": { category: "oshikatsu", icon: "⚽", color: "purple" },
+  "ラ・リーガ": { category: "oshikatsu", icon: "⚽", color: "amber" },
+  "シャーロック・ホームズ": { category: "oshikatsu", icon: "🕵️", color: "stone" },
+  "ゲーム・オブ・スローンズ": { category: "oshikatsu", icon: "🐉", color: "stone" },
+  "愛の不時着": { category: "oshikatsu", icon: "🪂", color: "pink" },
+  "エミリー、パリへ行く": { category: "oshikatsu", icon: "👗", color: "rose" },
+  "SATC": { category: "oshikatsu", icon: "🍸", color: "fuchsia" },
+  "ビートルズ": { category: "oshikatsu", icon: "🎸", color: "stone" },
+  "ロード・オブ・ザ・リング": { category: "oshikatsu", icon: "💍", color: "amber" },
+  "アニメ": { category: "oshikatsu", icon: "📺", color: "pink" },
+  "映画ロケ地": { category: "oshikatsu", icon: "🎬", color: "stone" },
+
+  // --- テーマ (Theme) ---
+  "自然・絶景": { category: "theme", icon: "🏞️", color: "green" },
+  "絶景": { category: "theme", icon: "🏞️", color: "cyan" },
+  "文化・歴史": { category: "theme", icon: "🏛️", color: "amber" },
+  "世界遺産": { category: "theme", icon: "🏰", color: "amber" },
+  "神社仏閣": { category: "theme", icon: "⛩️", color: "red" },
+  "城めぐり": { category: "theme", icon: "🏯", color: "stone" },
+  "建築": { category: "theme", icon: "🏗️", color: "gray" },
+  "グルメ": { category: "theme", icon: "🍽️", color: "orange" },
+  "屋台": { category: "theme", icon: "🍜", color: "red" },
+  "お酒": { category: "theme", icon: "🍷", color: "rose" },
+  "カフェ巡り": { category: "theme", icon: "☕", color: "stone" },
+  "ショッピング": { category: "theme", icon: "🛍️", color: "pink" },
+  "雑貨": { category: "theme", icon: "🧺", color: "orange" },
+  "おしゃれ": { category: "theme", icon: "👗", color: "fuchsia" },
+  "フォトジェニック": { category: "theme", icon: "📸", color: "pink" },
+  "リラックス": { category: "theme", icon: "🧘", color: "teal" },
+  "癒し": { category: "theme", icon: "🌿", color: "green" },
+  "温泉": { category: "theme", icon: "♨️", color: "rose" },
+  "サウナ": { category: "theme", icon: "🧖", color: "stone" },
+  "リゾート": { category: "theme", icon: "🌴", color: "emerald" },
+  "ビーチ・海": { category: "theme", icon: "🏖️", color: "cyan" },
+  "離島": { category: "theme", icon: "🏝️", color: "blue" },
+  "都市観光": { category: "theme", icon: "🏙️", color: "slate" },
+  "街歩き": { category: "theme", icon: "🚶", color: "stone" },
+  "夜景": { category: "theme", icon: "🌃", color: "indigo" },
+  "アート・美術館": { category: "theme", icon: "🎨", color: "violet" },
+  "音楽": { category: "theme", icon: "🎵", color: "fuchsia" },
+  "ジャズ": { category: "theme", icon: "🎷", color: "stone" },
+  "クラシック音楽": { category: "theme", icon: "🎻", color: "amber" },
+  "エンターテイメント": { category: "theme", icon: "🎡", color: "orange" },
+  "テーマパーク": { category: "theme", icon: "🎢", color: "purple" },
+  "アクティビティ": { category: "theme", icon: "🏃", color: "orange" },
+  "スポーツ": { category: "theme", icon: "⚽", color: "blue" },
+  "ダイビング": { category: "theme", icon: "🤿", color: "blue" },
+  "ハイキング": { category: "theme", icon: "🥾", color: "green" },
+  "ドライブ": { category: "theme", icon: "🚗", color: "sky" },
+  "クルーズ": { category: "theme", icon: "🚢", color: "blue" },
+  "鉄道": { category: "theme", icon: "🚂", color: "slate" },
+  "冒険": { category: "theme", icon: "🤠", color: "amber" },
+  "秘境": { category: "theme", icon: "🏜️", color: "stone" },
+  "動物": { category: "theme", icon: "🦁", color: "amber" },
+  "体験": { category: "theme", icon: "👐", color: "teal" },
+  "レトロ": { category: "theme", icon: "📻", color: "amber" },
+  "ラグジュアリー": { category: "theme", icon: "💎", color: "violet" },
+  "平和学習": { category: "theme", icon: "🕊️", color: "sky" },
+
+  // --- 同行者 (Companion) ---
+  "家族旅行": { category: "companion", icon: "👨‍👩‍👧‍👦", color: "blue" },
   "家族（子供あり）": { category: "companion", icon: "👨‍👩‍👧‍👦", color: "blue" },
   "家族（大人のみ）": { category: "companion", icon: "👨‍👩‍👧‍👦", color: "sky" },
   "カップル・夫婦": { category: "companion", icon: "💑", color: "pink" },
-  友人: { category: "companion", icon: "👫", color: "purple" },
-  // 季節
-  春: { category: "season", icon: "🌸", color: "pink" },
-  夏: { category: "season", icon: "☀️", color: "orange" },
-  秋: { category: "season", icon: "🍁", color: "amber" },
-  冬: { category: "season", icon: "❄️", color: "cyan" },
-  通年: { category: "season", icon: "📅", color: "gray" },
-  // テーマ
-  推し活: { category: "theme", icon: "🧡", color: "rose" },
-  ディズニー: { category: "theme", icon: "🏰", color: "rose" },
-  ジブリ: { category: "theme", icon: "🌱", color: "green" },
-  ハリーポッター: { category: "theme", icon: "🧙", color: "violet" },
-  "K-Pop": { category: "theme", icon: "🎤", color: "pink" },
-  グルメ: { category: "theme", icon: "🍽️", color: "red" },
-  文化体験: { category: "theme", icon: "🏛️", color: "violet" },
-  "文化・歴史": { category: "theme", icon: "🏛️", color: "violet" },
-  アート: { category: "theme", icon: "🎨", color: "fuchsia" },
-  "アート・美術館": { category: "theme", icon: "🎨", color: "fuchsia" },
-  ビーチ: { category: "theme", icon: "🏖️", color: "cyan" },
-  リゾート: { category: "theme", icon: "🌴", color: "emerald" },
-  温泉: { category: "theme", icon: "♨️", color: "rose" },
-  リラックス: { category: "theme", icon: "🧘", color: "teal" },
-  世界遺産: { category: "theme", icon: "🏰", color: "amber" },
-  自然: { category: "theme", icon: "🌲", color: "green" },
-  "自然・絶景": { category: "theme", icon: "🏞️", color: "cyan" },
-  絶景: { category: "theme", icon: "🏞️", color: "cyan" },
-  ショッピング: { category: "theme", icon: "🛍️", color: "pink" },
-  エンターテイメント: { category: "theme", icon: "🎡", color: "orange" },
-  アクティビティ: { category: "theme", icon: "🏃", color: "orange" },
-  夜景: { category: "theme", icon: "🌃", color: "indigo" },
-  街歩き: { category: "theme", icon: "🚶‍♀️", color: "gray" },
-  歴史: { category: "theme", icon: "📜", color: "amber" },
-  冒険: { category: "theme", icon: "🤠", color: "orange" },
-  鉄道: { category: "theme", icon: "🚂", color: "slate" },
-  写真: { category: "theme", icon: "📷", color: "teal" },
-  動物: { category: "theme", icon: "🐨", color: "green" },
-  スポーツ: { category: "theme", icon: "⚽", color: "red" },
-  ダイビング: { category: "theme", icon: "🤿", color: "blue" },
-  クルーズ: { category: "theme", icon: "🚢", color: "sky" },
-  秘境: { category: "theme", icon: "🏜️", color: "amber" },
-  建築: { category: "theme", icon: "🏛️", color: "gray" },
-  雑貨: { category: "theme", icon: "🧺", color: "orange" },
-  おしゃれ: { category: "theme", icon: "👗", color: "pink" },
-  ドライブ: { category: "theme", icon: "🚗", color: "sky" },
-  山: { category: "theme", icon: "⛰️", color: "green" },
-  城めぐり: { category: "theme", icon: "🏰", color: "amber" },
-  テーマパーク: { category: "theme", icon: "🎢", color: "purple" },
-  子供: { category: "theme", icon: "👶", color: "orange" },
-  屋台: { category: "theme", icon: "🍜", color: "red" },
-  神社仏閣: { category: "theme", icon: "⛩️", color: "red" },
-  初夏: { category: "season", icon: "🍃", color: "green" },
-  離島: { category: "theme", icon: "🏝️", color: "cyan" },
-  フォトジェニック: { category: "theme", icon: "📸", color: "pink" },
-  北米: { category: "theme", icon: "🌎", color: "blue" },
-  南米: { category: "theme", icon: "🌎", color: "green" },
-  アジア: { category: "theme", icon: "🌏", color: "red" },
-  ヨーロッパ: { category: "theme", icon: "🌍", color: "blue" },
-  アフリカ: { category: "theme", icon: "🌍", color: "orange" },
-  オセアニア: { category: "theme", icon: "🌏", color: "cyan" },
-  中東: { category: "theme", icon: "🕌", color: "amber" },
+  "友人": { category: "companion", icon: "👫", color: "purple" },
+  "友人旅行": { category: "companion", icon: "👫", color: "purple" },
+  "一人旅": { category: "companion", icon: "🚶", color: "indigo" },
+  "子供": { category: "companion", icon: "👶", color: "orange" },
+
+  // --- 季節 (Season) ---
+  "春": { category: "season", icon: "🌸", color: "pink" },
+  "夏": { category: "season", icon: "☀️", color: "orange" },
+  "秋": { category: "season", icon: "🍁", color: "amber" },
+  "冬": { category: "season", icon: "❄️", color: "cyan" },
+  "通年": { category: "season", icon: "📅", color: "gray" },
+  "初夏": { category: "season", icon: "🍃", color: "green" },
 };
 
 // タグ翻訳マップ（フィルタ表示用）
 const tagTranslationMap: Record<string, string> = {
-  // 推し活
+  // Oshikatsu
   "Disney": "ディズニー",
   "Ghibli": "ジブリ",
   "HarryPotter": "ハリーポッター",
   "K-Pop": "K-Pop",
-  // 英語タグ -> 日本語タグ
+  "StarWars": "スターウォーズ",
+  "Marvel": "マーベル",
+  "F1": "F1",
+  "MLB": "MLB",
+  "NBA": "NBA",
+  "PremierLeague": "プレミアリーグ",
+  "LaLiga": "ラ・リーガ",
+  "Sherlock": "シャーロック・ホームズ",
+  "GameOfThrones": "ゲーム・オブ・スローンズ",
+  "CrashLandingOnYou": "愛の不時着",
+  "EmilyInParis": "エミリー、パリへ行く",
+  "SexAndTheCity": "SATC",
+  "Beatles": "ビートルズ",
+  "LordOfTheRings": "ロード・オブ・ザ・リング",
+  "Silverstone": "F1",
+  "Matamata": "ロード・オブ・ザ・リング",
+  "Oxford": "ハリーポッター",
+  "Anaheim": "ディズニー",
+  "Universal": "テーマパーク",
+  "Liverpool": "ビートルズ",
+  "Manchester": "プレミアリーグ",
+
+  // Theme
   "Nature": "自然・絶景",
   "View": "自然・絶景",
+  "Mountain": "自然・絶景",
   "Culture": "文化・歴史",
   "History": "文化・歴史",
+  "WorldHeritage": "世界遺産",
   "Shopping": "ショッピング",
   "Food": "グルメ",
   "Gourmet": "グルメ",
+  "StreetFood": "屋台",
   "Relax": "リラックス",
   "Resort": "リゾート",
+  "Spa": "温泉",
+  "Onsen": "温泉",
   "Activity": "アクティビティ",
   "Art": "アート・美術館",
   "Museum": "アート・美術館",
-  // 同行者
+  "Architecture": "建築",
+  "NightView": "夜景",
+  "City": "都市観光",
+  "CitySightseeing": "都市観光",
+  "Beach": "ビーチ・海",
+  "Sea": "ビーチ・海",
+  "Island": "離島",
+  "Train": "鉄道",
+  "Photo": "フォトジェニック",
+  "Photogenic": "フォトジェニック",
+  "Animal": "動物",
+  "Zoo": "動物",
+  "Aquarium": "動物",
+  "Sports": "スポーツ",
+  "Diving": "ダイビング",
+  "Cruise": "クルーズ",
+  "HiddenGem": "秘境",
+  "Goods": "雑貨",
+  "Stylish": "おしゃれ",
+  "Drive": "ドライブ",
+  "Castle": "城めぐり",
+  "ThemePark": "テーマパーク",
+  "Kids": "子供",
+  "Shrine": "神社仏閣",
+  "Jazz": "ジャズ",
+  "ClassicalMusic": "クラシック音楽",
+
+  // Companion
   "Solo": "一人旅",
   "Couple": "カップル・夫婦",
   "Friends": "友人",
   "Family": "家族旅行",
+
+  // Season
+  "Spring": "春",
+  "Summer": "夏",
+  "Autumn": "秋",
+  "Winter": "冬",
+  "AllSeason": "通年",
+
+  // Japanese variations
+  "お酒": "お酒",
+  "音楽": "音楽",
+  "都市観光": "都市観光",
+  "癒し": "癒し",
+  "海": "ビーチ・海",
+  "ビーチ": "ビーチ・海",
+  "散歩": "街歩き",
+  "体験": "体験",
+  "レトロ": "レトロ",
+  "ラグジュアリー": "ラグジュアリー",
+  "エンタメ": "エンターテイメント",
+  "アート": "アート・美術館",
+  "カップル": "カップル・夫婦",
+  "文化体験": "文化・歴史",
+  "歴史": "文化・歴史",
+  "自然": "自然・絶景",
 };
 
 const colorStyles: Record<
@@ -194,6 +296,12 @@ const colorStyles: Record<
     border: "border-stone-200",
     text: "text-stone-700",
     activeBg: "bg-stone-500",
+  },
+  stone: {
+    bg: "bg-stone-100",
+    border: "border-stone-300",
+    text: "text-stone-800",
+    activeBg: "bg-stone-600",
   },
   red: {
     bg: "bg-red-50",
@@ -419,6 +527,9 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
   const [displayLimit, setDisplayLimit] = useState(20);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+  // Tag Filter Tabs
+  const [activeTagTab, setActiveTagTab] = useState<TagCategory>("theme");
+
   // モーダル表示中のスクロール制御
   useEffect(() => {
     if (isFilterOpen) {
@@ -490,7 +601,6 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   const handleShowMore = () => {
     setIsLoadingMore(true);
-    // スケルトンを表示するための擬似的な遅延
     setTimeout(() => {
       setDisplayLimit((prev) => prev + 20);
       setIsLoadingMore(false);
@@ -564,6 +674,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
     const companions: string[] = [];
     const seasons: string[] = [];
     const themes: string[] = [];
+    const oshikatsu: string[] = [];
     const processedTags = new Set<string>();
 
     // 既存のタグを処理
@@ -587,23 +698,18 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
           case "theme":
             themes.push(displayTag);
             break;
+          case "oshikatsu":
+            oshikatsu.push(displayTag);
+            break;
         }
       }
     });
 
-    // 定義されているが表示されていないタグも追加（プランに含まれていなくてもボタンを表示する場合）
-    // 今回はプランに含まれているタグのみを表示する方針とするが、
-    // マッピングされたタグ（例：Disney -> ディズニー）がallTagsに含まれていない場合があるので、
-    // allTagsに含まれるタグが翻訳マップ経由でtagCategoryMapにヒットするかを確認する必要がある。
-
-    // 上記のforEachループで翻訳後のタグをチェックしているので、基本的にはカバーできているはず。
-    // ただし、「推し活」などの親タグがプランに含まれていない場合でも、Disneyなどが含まれていれば「推し活」を表示したいなどの要件があれば調整が必要。
-    // 現状は tagCategoryMap に定義されているものだけが表示される。
-
     return {
-      companions: companions.sort(),
-      seasons: seasons.sort(),
-      themes: themes.sort()
+      companion: companions.sort(),
+      season: seasons.sort(),
+      theme: themes.sort(),
+      oshikatsu: oshikatsu.sort(),
     };
   }, [allTags]);
 
@@ -655,6 +761,13 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
       </motion.button>
     );
   };
+
+  const tabItems: { id: TagCategory; label: string; icon: React.ReactNode }[] = [
+    { id: "theme", label: "テーマ", icon: <FaUmbrellaBeach /> },
+    { id: "oshikatsu", label: "推し活", icon: <FaHeart /> },
+    { id: "companion", label: "同行者", icon: <FaUserFriends /> },
+    { id: "season", label: "季節", icon: <FaSun /> },
+  ];
 
   return (
     <div className="space-y-8">
@@ -814,8 +927,52 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                   </div>
                 </div>
 
-                {/* Region Filter (Grouped) */}
+                {/* Tag Filters (Tabbed) */}
                 <div className="space-y-4">
+                   <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
+                    <FaTag className="text-[#e67e22]" />
+                    タグ（カテゴリ）
+                  </h4>
+
+                  {/* Category Tabs */}
+                  <div className="flex bg-stone-100 p-1 rounded-xl w-full sm:w-max overflow-x-auto">
+                    {tabItems.map((tab) => (
+                      <button
+                        key={tab.id}
+                        onClick={() => setActiveTagTab(tab.id)}
+                        className={`
+                          flex-1 sm:flex-none px-4 py-2 rounded-lg text-sm font-bold transition-all flex items-center justify-center gap-2 whitespace-nowrap
+                          ${
+                            activeTagTab === tab.id
+                              ? "bg-white text-[#e67e22] shadow-sm"
+                              : "text-stone-500 hover:text-stone-700 hover:bg-stone-200/50"
+                          }
+                        `}
+                      >
+                        {tab.icon}
+                        <span>{tab.label}</span>
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Tab Content */}
+                  <div className="bg-stone-50/50 rounded-2xl p-4 border border-stone-100 min-h-[150px]">
+                    <div className="flex flex-wrap gap-2">
+                      {categorizedTags[activeTagTab as keyof typeof categorizedTags].length > 0 ? (
+                        categorizedTags[activeTagTab as keyof typeof categorizedTags].map((tag) =>
+                          renderTagButton(tag, selectedTags.includes(tag))
+                        )
+                      ) : (
+                         <div className="w-full text-center py-8 text-stone-400 text-sm">
+                           該当するタグがありません
+                         </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Region Filter (Grouped) */}
+                <div className="space-y-4 pt-4 border-t border-stone-100">
                   <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
                     <FaMapMarkerAlt className="text-[#e67e22]" />
                     エリア
@@ -834,57 +991,6 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                   </div>
                 </div>
 
-                {/* Tag Filters */}
-                <div className="space-y-6 pt-4 border-t border-stone-100">
-                  <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
-                    <FaTag className="text-[#e67e22]" />
-                    タグ
-                  </h4>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Theme */}
-                    {categorizedTags.themes.length > 0 && (
-                      <div className="space-y-2">
-                        <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                          旅のテーマ
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {categorizedTags.themes.map((tag) =>
-                            renderTagButton(tag, selectedTags.includes(tag))
-                          )}
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Companion & Season */}
-                    <div className="space-y-6">
-                      {categorizedTags.companions.length > 0 && (
-                        <div className="space-y-2">
-                          <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                            同行者
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {categorizedTags.companions.map((tag) =>
-                              renderTagButton(tag, selectedTags.includes(tag))
-                            )}
-                          </div>
-                        </div>
-                      )}
-                      {categorizedTags.seasons.length > 0 && (
-                        <div className="space-y-2">
-                          <p className="text-xs font-semibold text-stone-500 uppercase tracking-wider">
-                            おすすめの季節
-                          </p>
-                          <div className="flex flex-wrap gap-2">
-                            {categorizedTags.seasons.map((tag) =>
-                              renderTagButton(tag, selectedTags.includes(tag))
-                            )}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Footer / Close Button */}
