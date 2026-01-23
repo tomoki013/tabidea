@@ -77,7 +77,7 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.01.13",
-    updateType: "minor",
+    updateType: "patch",
     title: "旅程サンプル集の公開",
     description:
       "様々な旅行プランのサンプルを閲覧できる旅程サンプル集を公開しました。プラン作成の参考にご活用ください。",
@@ -89,6 +89,13 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "サンプルの大幅追加と検索・絞り込み機能の実装",
     description:
       "旅程サンプルを大幅に追加し、地域やキーワードでプランを探せる検索・絞り込み機能を実装しました。よりスムーズに理想の旅程を見つけられるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.14",
+    updateType: "patch",
+    title: "日程の並び替えや時間の調整",
+    description: "日程の並び替えや時間の調整ができるようになりました。",
   },
   {
     status: "done",
@@ -114,12 +121,87 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "渡航情報をPDFとしてダウンロードできる機能を追加しました。オフラインでの閲覧や印刷に便利です。",
   },
+  {
+    status: "done",
+    date: "2026.01.17",
+    updateType: "patch",
+    title: "渡航情報・安全ガイドで、外部APIを使用",
+    description:
+      "渡航情報・安全ガイドで、外部APIを使用して情報を取得するようになりました。より正確でリアルタイムな情報を確認できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.19",
+    updateType: "patch",
+    title: "ブランドイメージとTabideaへの想いをTabideaについてページに追加",
+    description:
+      "ブランドイメージとTabideaへの想いをTabideaについてページに追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.19",
+    updateType: "patch",
+    title: "渡航情報・安全ガイドのカテゴリを追加",
+    description:
+      "渡航情報・安全ガイドのカテゴリを追加しました。より多くの情報を検索できます。",
+  },
+  {
+    status: "done",
+    date: "2026.01.20",
+    updateType: "patch",
+    title: "ブランドイメージに合わせて一部ページのUIを修正",
+    description: "ブランドイメージに合わせて一部ページのUIを修正しました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.21",
+    updateType: "patch",
+    title:
+      "旅程生成後のチャットでよく使われる文章をボタン一つで追加できるように",
+    description:
+      "旅程生成後のチャットでよく使われる文章をボタン一つで追加できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.22",
+    updateType: "patch",
+    title: "渡航情報・安全ガイドのデザインを更新",
+    description:
+      "渡航情報・安全ガイドのデザインを更新し、見やすくてすぐに理解できるような見た目にしました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.23",
+    updateType: "patch",
+    title: "複数地域を周遊する旅程プラン生成に対応",
+    description: "複数地域を周遊する旅程プランを生成できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.23",
+    updateType: "patch",
+    title: "プランページで渡航情報・安全ガイドを確認できるように",
+    description:
+      "プランページで生成された旅程の地域の渡航情報・安全ガイドをボタン一つで確認できるようにしました。",
+  },
   // Future items
   {
     status: "developing",
     title: "ユーザーアカウント機能",
     description:
       "ログインすることで、複数のデバイスでプランを同期したり、過去の履歴を管理できるようになります。",
+  },
+  {
+    status: "planned",
+    title: "持ち物リストの作成",
+    description:
+      "旅行の目的地や期間に合わせて、必要な持ち物リストを自動で作成・管理できる機能を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "予算を詳細に制御する機能",
+    description:
+      "宿泊費や交通費などの項目ごとに予算を細かく設定し、全体の費用をより正確にシミュレーション・管理できる機能を計画しています。",
   },
   {
     status: "planned",
@@ -134,11 +216,10 @@ const rawRoadmapData: RoadmapItem[] = [
       "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
   },
   {
-    status: "done",
-    date: "2026.01.24",
-    updateType: "patch",
-    title: "日程の並び替えや時間の調整",
-    description: "日程の並び替えや時間の調整ができるようになりました。",
+    status: "planned",
+    title: "旅行中のメモ機能",
+    description:
+      "旅行中に何を食べたかやどこが良かったかを生成されたプランに直接書き込める機能を開発しています。",
   },
   {
     status: "planned",
@@ -282,23 +363,23 @@ export default function UpdatesPage() {
                             item.updateType === "release"
                               ? "bg-orange-50 text-red-600 border-orange-200"
                               : item.updateType === "pre_release"
-                              ? "bg-blue-50 text-blue-600 border-blue-200"
-                              : item.updateType === "major"
-                              ? "bg-red-50 text-orange-600 border-red-200"
-                              : item.updateType === "minor"
-                              ? "bg-green-50 text-green-600 border-green-200"
-                              : "bg-stone-50 text-stone-500 border-stone-200"
+                                ? "bg-blue-50 text-blue-600 border-blue-200"
+                                : item.updateType === "major"
+                                  ? "bg-red-50 text-orange-600 border-red-200"
+                                  : item.updateType === "minor"
+                                    ? "bg-green-50 text-green-600 border-green-200"
+                                    : "bg-stone-50 text-stone-500 border-stone-200"
                           }`}
                         >
                           {item.updateType === "release"
                             ? "Release"
                             : item.updateType === "pre_release"
-                            ? "Pre-release"
-                            : item.updateType === "major"
-                            ? "Major"
-                            : item.updateType === "minor"
-                            ? "Minor"
-                            : "Patch"}
+                              ? "Pre-release"
+                              : item.updateType === "major"
+                                ? "Major"
+                                : item.updateType === "minor"
+                                  ? "Minor"
+                                  : "Patch"}
                         </span>
                       )}
                     </span>
