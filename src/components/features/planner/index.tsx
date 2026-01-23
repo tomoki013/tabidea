@@ -32,14 +32,14 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
   const [input, setInput] = useState<UserInput>(() => {
     if (initialInput) {
       const merged = { ...initialInput };
-      // Ensure consistency: If destination is set, it must be decided
-      if (merged.destination && !merged.isDestinationDecided) {
+      // Ensure consistency: If destinations exist, it must be decided
+      if (merged.destinations && merged.destinations.length > 0 && !merged.isDestinationDecided) {
          merged.isDestinationDecided = true;
       }
       return merged;
     }
     return {
-      destination: "",
+      destinations: [],
       isDestinationDecided: undefined,
       region: "",
       dates: "時期は未定",
@@ -64,9 +64,9 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     // Step 0: Initial choice
     if (input.isDestinationDecided === undefined) return false;
 
-    // Step 1: Destination or Region
+    // Step 1: Destinations or Region
     if (input.isDestinationDecided) {
-      if (!input.destination.trim()) return false;
+      if (input.destinations.length === 0) return false;
     } else {
       if (!input.region && !input.travelVibe?.trim()) return false;
     }
@@ -103,10 +103,10 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
            return false;
         }
         break;
-      case 1: // Destination or Region
+      case 1: // Destinations or Region
         if (input.isDestinationDecided) {
-          if (!input.destination.trim()) {
-            setErrorMessage("行き先を入力してください ✈️");
+          if (input.destinations.length === 0) {
+            setErrorMessage("行き先を少なくとも1つ入力してください ✈️");
             return false;
           }
         } else {
@@ -200,7 +200,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     if (decided) {
       setInput(prev => ({ ...prev, isDestinationDecided: true, region: "" }));
     } else {
-      setInput(prev => ({ ...prev, isDestinationDecided: false, destination: "" }));
+      setInput(prev => ({ ...prev, isDestinationDecided: false, destinations: [] }));
     }
 
     // Trigger transition animation
@@ -398,9 +398,9 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     >
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
-          value={input.destination}
+          value={input.destinations}
           onChange={(val) => {
-            setInput(prev => ({ ...prev, destination: val }));
+            setInput(prev => ({ ...prev, destinations: val }));
             setErrorMessage("");
           }}
           onNext={handleNext}

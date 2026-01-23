@@ -323,7 +323,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
         const searchTargets = [
           plan.title,
           plan.description,
-          plan.input.destination,
+          ...plan.input.destinations,
           ...plan.tags,
         ].join(" ").toLowerCase();
 

@@ -7,8 +7,8 @@
  * ユーザーの旅行計画入力
  */
 export interface UserInput {
-  /** 目的地 */
-  destination: string;
+  /** 目的地（複数の周遊先をサポート） */
+  destinations: string[];
   /** 目的地が決まっているか */
   isDestinationDecided?: boolean;
   /** 地域タイプ: "domestic" | "overseas" | "anywhere" */

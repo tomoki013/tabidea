@@ -65,10 +65,11 @@ export default function RequestSummary({
   className = "",
   onEdit,
 }: RequestSummaryProps) {
-  // Helper to determine display text for region/destination
+  // Helper to determine display text for region/destinations
   const getDestinationDisplay = () => {
-    if (input.isDestinationDecided) {
-      return input.destination;
+    if (input.isDestinationDecided && input.destinations.length > 0) {
+      // Join multiple destinations with arrow for multi-city trip
+      return input.destinations.join(" → ");
     }
 
     // Check if region exists and map it, otherwise return raw region
@@ -88,8 +89,8 @@ export default function RequestSummary({
     <div
       className={`space-y-6 bg-white p-6 rounded-xl shadow-xs border border-stone-100 ${className}`}
     >
-      {/* Destination / Region */}
-      {(input.isDestinationDecided || input.region || input.travelVibe) && (
+      {/* Destinations / Region */}
+      {((input.isDestinationDecided && input.destinations.length > 0) || input.region || input.travelVibe) && (
         <div className="flex items-start gap-3 first:border-t-0 first:pt-0">
           <div className="mt-1 text-primary text-xl">
             <FaMapLocationDot />

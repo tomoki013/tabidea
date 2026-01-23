@@ -87,7 +87,7 @@ const SamplePlanCard = memo(function SamplePlanCard({ plan, index }: SamplePlanC
             <div className="flex flex-wrap gap-3 text-xs text-stone-500">
               <div className="flex items-center gap-1.5">
                 <FaMapMarkerAlt className="text-[#e67e22]" />
-                <span>{plan.input.destination}</span>
+                <span>{plan.input.destinations.join(" → ")}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <FaCalendarAlt className="text-[#e67e22]" />

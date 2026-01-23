@@ -15,6 +15,7 @@ interface MinifiedInput {
   hmv?: number; // hasMustVisitPlaces (1 for true, 0 for false)
   idd?: number; // isDestinationDecided (1 for true, 0 for false)
   ft?: string; // freeText
+  dsts?: string[]; // destinations (multi-city support)
 }
 
 interface MinifiedReference {
@@ -59,14 +60,15 @@ export function encodeInputData(input: UserInput): string {
     mv: input.mustVisitPlaces,
     hmv: input.hasMustVisitPlaces ? 1 : 0,
     idd: input.isDestinationDecided ? 1 : 0,
-    ft: input.freeText
+    ft: input.freeText,
+    dsts: input.destinations // Include destinations for multi-city support
   };
 
-  // Add destination to minified input
+  // Add destinations to data
   const data = {
     v: 1,
     in: minInput,
-    dst: input.destination // Include destination for API call
+    dsts: input.destinations // Include destinations for API call
   };
 
   const stringified = JSON.stringify(data);
@@ -85,7 +87,7 @@ export function decodeInputData(encoded: string): UserInput | null {
     if (data.v === 1 && data.in) {
       const minInput = data.in;
       const input: UserInput = {
-        destination: data.dst || "",
+        destinations: data.dsts || minInput.dsts || [],
         dates: minInput.d,
         theme: minInput.t,
         region: minInput.r || "anywhere",
@@ -120,7 +122,8 @@ export function encodePlanData(input: UserInput, result: Itinerary): string {
     mv: input.mustVisitPlaces,
     hmv: input.hasMustVisitPlaces ? 1 : 0,
     idd: input.isDestinationDecided ? 1 : 0,
-    ft: input.freeText
+    ft: input.freeText,
+    dsts: input.destinations
   };
 
   const minResult: MinifiedItinerary = {
@@ -216,10 +219,12 @@ function hydrateMinifiedData(data: MinifiedData): { input: UserInput, result: It
     const { in: minInput, res: minResult } = data;
 
     // Hydrate Input
+    // Support both new destinations array and legacy single destination
+    const destinations = minInput.dsts || (minResult.dst ? [minResult.dst] : []);
     const input: UserInput = {
         dates: minInput.d,
         theme: minInput.t,
-        destination: minResult.dst, // Destination is also stored in result
+        destinations: destinations,
         region: minInput.r || "anywhere",
         isDestinationDecided: minInput.idd === 1,
         companions: minInput.c || "any",

@@ -215,14 +215,22 @@ ${prompt}`;
       5. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
       6. Return JSON only.
 
+      MULTI-CITY TRIP HANDLING:
+      - If multiple destinations are specified (e.g., "Tokyo、Osaka、Kyoto"), this is a multi-city trip.
+      - Plan the route to visit ALL specified cities efficiently, considering travel time between them.
+      - Allocate appropriate days to each city based on total trip duration.
+      - Include travel/transfer days between cities when needed.
+      - The "destination" field should combine all cities (e.g., "東京・大阪・京都周遊").
+      - Ensure logical geographic order (e.g., Tokyo → Osaka → Kyoto, not random jumps).
+
       JSON:
       {
-        "destination": "string (The chosen destination name)",
-        "description": "string (Overview of the entire trip in Japanese)",
+        "destination": "string (The chosen destination name, or combined name for multi-city trips)",
+        "description": "string (Overview of the entire trip in Japanese, mentioning the multi-city route if applicable)",
         "days": [
           {
             "day": number,
-            "title": "string (Theme/Area of the day)",
+            "title": "string (Theme/Area of the day, include city name for multi-city trips)",
             "highlight_areas": ["string", "string"]
           }
         ]
@@ -289,16 +297,25 @@ ${prompt}`;
       2. Create detailed activities (3 meals + spots) fitting the user's pace.
       3. Return JSON array of DayPlans.
 
+      MULTI-CITY TRIP HANDLING:
+      - If this is a multi-city trip, ensure smooth transitions between cities.
+      - For travel days, include:
+        - Check-out and departure activities in the morning
+        - Transportation details (Shinkansen, flight, etc.) with approximate times
+        - Arrival and check-in at the new destination
+      - Balance the activities appropriately for travel days (fewer sightseeing spots).
+      - Always mention which city each activity is in when it might be ambiguous.
+
       JSON:
       {
         "days": [
           {
             "day": number,
-            "title": "string (Same as outline)",
+            "title": "string (Same as outline, include city name for multi-city)",
             "activities": [
                {
                 "time": "string",
-                "activity": "string",
+                "activity": "string (include city/location prefix for multi-city trips)",
                 "description": "string"
                }
             ]

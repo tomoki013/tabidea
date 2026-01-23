@@ -6,7 +6,7 @@ import pako from "pako";
 
 describe("urlUtils", () => {
   const mockInput: UserInput = {
-    destination: "Tokyo",
+    destinations: ["Tokyo"],
     dates: "2024-01-01",
     companions: "solo",
     theme: ["food", "history"],
@@ -51,7 +51,7 @@ describe("urlUtils", () => {
     // Verify Input
     expect(decoded?.input.dates).toBe(mockInput.dates);
     expect(decoded?.input.theme).toEqual(mockInput.theme);
-    expect(decoded?.input.destination).toBe(mockResult.destination); // Inferred from result or input
+    expect(decoded?.input.destinations[0]).toBe(mockResult.destination); // Inferred from result or input
 
     // Now these fields should be preserved
     expect(decoded?.input.budget).toBe(mockInput.budget);
@@ -75,13 +75,13 @@ describe("urlUtils", () => {
   });
 
   it("should handle unicode characters with LZString", () => {
-    const unicodeInput = { ...mockInput, destination: "東京" };
+    const unicodeInput = { ...mockInput, destinations: ["東京"] };
     // result destination must match input destination for consistency in this test logic
     const unicodeResult = { ...mockResult, destination: "東京" };
 
     const encoded = encodePlanData(unicodeInput, unicodeResult);
     const decoded = decodePlanData(encoded);
-    expect(decoded?.input.destination).toBe("東京");
+    expect(decoded?.input.destinations[0]).toBe("東京");
     expect(decoded?.result.destination).toBe("東京");
   });
 
@@ -126,7 +126,7 @@ describe("urlUtils", () => {
 
       const decoded = decodeInputData(encoded);
       expect(decoded).not.toBeNull();
-      expect(decoded?.destination).toBe(mockInput.destination);
+      expect(decoded?.destinations[0]).toBe(mockInput.destinations[0]);
       expect(decoded?.dates).toBe(mockInput.dates);
       expect(decoded?.theme).toEqual(mockInput.theme);
       expect(decoded?.companions).toBe(mockInput.companions);
@@ -141,13 +141,13 @@ describe("urlUtils", () => {
     it("should handle unicode characters in input data", () => {
       const unicodeInput: UserInput = {
         ...mockInput,
-        destination: "東京",
+        destinations: ["東京"],
         freeText: "日本料理を楽しみたい",
       };
 
       const encoded = encodeInputData(unicodeInput);
       const decoded = decodeInputData(encoded);
-      expect(decoded?.destination).toBe("東京");
+      expect(decoded?.destinations[0]).toBe("東京");
       expect(decoded?.freeText).toBe("日本料理を楽しみたい");
     });
 
@@ -161,7 +161,7 @@ describe("urlUtils", () => {
 
     it("should handle input with minimal fields", () => {
       const minimalInput: UserInput = {
-        destination: "Paris",
+        destinations: ["Paris"],
         dates: "2024-06-01",
         theme: ["culture"],
         isDestinationDecided: false,
@@ -178,7 +178,7 @@ describe("urlUtils", () => {
       const encoded = encodeInputData(minimalInput);
       const decoded = decodeInputData(encoded);
       expect(decoded).not.toBeNull();
-      expect(decoded?.destination).toBe("Paris");
+      expect(decoded?.destinations[0]).toBe("Paris");
       expect(decoded?.isDestinationDecided).toBe(false);
       expect(decoded?.hasMustVisitPlaces).toBe(false);
     });

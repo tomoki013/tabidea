@@ -6,6 +6,7 @@ import TravelPlannerChat from "@/components/TravelPlannerChat";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import RequestSummary from "./RequestSummary";
+import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import {
   FaMapMarkerAlt,
   FaClock,
@@ -17,8 +18,10 @@ import {
   FaTimes,
   FaArrowUp,
   FaArrowDown,
+  FaGlobe,
 } from "react-icons/fa";
 import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -56,6 +59,7 @@ export default function ResultView({
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
+  const [showTravelInfo, setShowTravelInfo] = useState(false);
 
   const startEditing = () => {
     setEditingResult(JSON.parse(JSON.stringify(result))); // Deep clone
@@ -356,6 +360,17 @@ export default function ResultView({
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
           {showShareButtons && <ShareButtons input={input} result={result} />}
           <PDFDownloadButton itinerary={result} />
+        </div>
+
+        {/* Travel Info Button */}
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={() => setShowTravelInfo(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border-2 border-primary/30 text-primary font-bold rounded-xl hover:bg-primary/5 hover:border-primary/50 transition-all shadow-sm hover:shadow-md"
+          >
+            <FaGlobe className="w-5 h-5" />
+            渡航情報・安全ガイドを見る
+          </button>
         </div>
       </div>
 
@@ -676,6 +691,16 @@ export default function ResultView({
           <RequestSummary input={input} onEdit={onEditRequest} />
         </div>
       )}
+
+      {/* Travel Info Modal */}
+      <AnimatePresence>
+        {showTravelInfo && (
+          <EmbeddedTravelInfo
+            destinations={input.destinations.length > 0 ? input.destinations : [result.destination]}
+            onClose={() => setShowTravelInfo(false)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -25,7 +25,7 @@ vi.mock("@/app/actions/travel-planner", () => ({
 }));
 
 const mockInput = {
-  destination: "Tokyo",
+  destinations: ["Tokyo"],
   isDestinationDecided: true,
   region: "",
   dates: "2024-01-01",

@@ -68,8 +68,9 @@ export async function generateItinerary(
     const ai = new GeminiService(apiKey);
 
     // 1. RAG Search
+    const destinationsStr = input.destinations.join("、");
     const query = input.isDestinationDecided
-      ? `${input.destination}で${input.companions}と${input.theme.join(
+      ? `${destinationsStr}で${input.companions}と${input.theme.join(
           "や"
         )}を楽しむ旅行`
       : `${
@@ -99,9 +100,10 @@ export async function generateItinerary(
     log(`[generateItinerary] Total days: ${totalDays}`);
 
     let prompt: string;
+    const isMultiCity = input.destinations.length > 1;
     if (input.isDestinationDecided) {
       prompt = `
-        Destination: ${input.destination}
+        Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
         Dates: ${input.dates}
         Total Days: ${totalDays}
         Companions: ${input.companions}
@@ -110,6 +112,7 @@ export async function generateItinerary(
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
+        ${isMultiCity ? `IMPORTANT: This is a multi-city trip visiting: ${destinationsStr}. Plan the route efficiently.` : ""}
       `;
     } else {
       prompt = `
@@ -142,7 +145,7 @@ export async function generateItinerary(
     // 4. Update Input if destination was chosen
     const updatedInput = { ...input };
     if (!updatedInput.isDestinationDecided) {
-      updatedInput.destination = outline.destination;
+      updatedInput.destinations = [outline.destination];
       updatedInput.isDestinationDecided = true;
     }
 

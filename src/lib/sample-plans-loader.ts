@@ -34,7 +34,7 @@ export async function loadAllSamplePlans(): Promise<SamplePlan[]> {
         // UserInputを推論
         const dates = `${Math.max(0, itinerary.days.length - 1)}泊${itinerary.days.length}日`;
         const input: UserInput = {
-          destination: itinerary.destination,
+          destinations: [itinerary.destination],
           dates: dates,
           companions: "その他", // 推論できないため
           theme: [], // 推論できないため
@@ -93,7 +93,7 @@ export async function getSamplePlanByIdDynamic(
 
     const dates = `${Math.max(0, itinerary.days.length - 1)}泊${itinerary.days.length}日`;
     const input: UserInput = {
-      destination: itinerary.destination,
+      destinations: [itinerary.destination],
       dates: dates,
       companions: "その他",
       theme: [],

@@ -13,6 +13,7 @@ export { default as SourceBadge } from './SourceBadge';
 export { default as LoadingState } from './LoadingState';
 export { default as ShareButton } from './ShareButton';
 export { default as PDFExportButton } from './PDFExportButton';
+export { default as EmbeddedTravelInfo } from './EmbeddedTravelInfo';
 
 // セクションコンポーネント
 export {

@@ -67,8 +67,9 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     const ai = new GeminiService(apiKey);
 
     // 1. RAG Search
+    const destinationsStr = input.destinations.join("、");
     const query = input.isDestinationDecided
-      ? `${input.destination}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
+      ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
       : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
 
     let contextArticles: any[] = [];
@@ -85,8 +86,9 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
 
     let prompt = "";
     if (input.isDestinationDecided) {
+      const isMultiCity = input.destinations.length > 1;
       prompt = `
-        Destination: ${input.destination}
+        Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip - please create an efficient route visiting all locations)" : ""}
         Dates: ${input.dates}
         Total Days: ${durationPrompt}
         Companions: ${input.companions}
@@ -95,6 +97,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
+        ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a logical order, considering travel time between locations.` : ""}
       `;
     } else {
       prompt = `
@@ -119,7 +122,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     // 4. Update Input if destination was chosen
     const updatedInput = { ...input };
     if (!updatedInput.isDestinationDecided) {
-      updatedInput.destination = outline.destination;
+      // When AI decides the destination, store it in destinations array
+      updatedInput.destinations = [outline.destination];
       updatedInput.isDestinationDecided = true;
     }
 
@@ -163,9 +167,11 @@ export async function generatePlanChunk(
   try {
     const ai = new GeminiService(apiKey);
     const budgetPrompt = getBudgetContext(input.budget);
+    const destinationsStr = input.destinations.join("、");
+    const isMultiCity = input.destinations.length > 1;
 
     const prompt = `
-      Destination: ${input.destination}
+      Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
       Dates: ${input.dates}
       Companions: ${input.companions}
       Themes: ${input.theme.join(", ")}
@@ -173,6 +179,7 @@ export async function generatePlanChunk(
       Pace: ${input.pace}
       Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
       Request: ${input.freeText || "None"}
+      ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
     `;
 
     const days = await ai.generateDayDetails(prompt, context, startDay, endDay, outlineDays);
@@ -208,8 +215,9 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
     const scraper = new PineconeRetriever();
     const ai = new GeminiService(apiKey);
 
+    const destinationsStr = input.destinations.join("、");
     const query = input.isDestinationDecided
-      ? `${input.destination}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
+      ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
       : `${input.region}で${input.travelVibe || ""}楽しむ旅行`;
 
     let contextArticles: any[] = [];
@@ -245,9 +253,10 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
           console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
 
           let prompt = "";
+          const isMultiCity = input.destinations.length > 1;
           if (input.isDestinationDecided) {
             prompt = `
-              Destination: ${input.destination}
+              Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
               Dates: ${input.dates}
               Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
               Companions: ${input.companions}
@@ -260,6 +269,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
               ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
+              ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Plan the route efficiently.` : ""}
             `;
           } else {
             prompt = `
@@ -327,8 +337,9 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
       plan.references = Array.from(referenceMap.values());
 
     } else {
+        const isMultiCity = input.destinations.length > 1;
         let prompt = `
-        Destination: ${input.destination || "Decide based on request"}
+        Destinations: ${destinationsStr || "Decide based on request"}${isMultiCity ? " (Multi-city trip)" : ""}
         Region: ${input.region}
         Dates: ${input.dates}
         Companions: ${input.companions}
@@ -337,6 +348,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ")}
         FreeText: ${input.freeText}
+        ${isMultiCity ? `Note: Plan a multi-city trip visiting: ${destinationsStr} in an efficient order.` : ""}
         `;
 
         plan = await ai.generateItinerary(prompt, contextArticles);

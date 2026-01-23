@@ -37,8 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const ogImage = itinerary?.heroImage || `${siteUrl}/og-default.png`;
 
   // キーワードとしてタグとテーマを活用
+  const destinationsStr = plan.input.destinations.join("、");
   const keywords = [
-    plan.input.destination,
+    ...plan.input.destinations,
     ...plan.input.theme,
     plan.input.companions,
     plan.input.dates,
@@ -52,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const enhancedDescription = `${
     plan.description
   } Tabidea(タビデア)のAIが作成した${plan.input.dates}の旅行プラン。${
-    plan.input.destination
+    destinationsStr
   }で${plan.input.theme.join("・")}を楽しむ${
     plan.input.companions
   }向けプラン。`;
@@ -71,7 +72,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${plan.input.destination}の旅行プラン`,
+          alt: `${destinationsStr}の旅行プラン`,
         },
       ],
       type: "article",

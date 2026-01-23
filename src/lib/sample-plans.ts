@@ -40,7 +40,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "北海道の王道ルート！札幌の時計台から小樽運河まで、子供も大人も楽しめるグルメと観光スポットを巡る旅。新鮮な海鮮丼やラーメン、スイーツも堪能できます。",
     input: {
-      destination: "札幌・小樽",
+      destinations: ["札幌・小樽"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -60,7 +60,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産と古都の魅力を堪能する王道コース。金閣寺、清水寺、東大寺など定番スポットから、穴場の古寺まで。春の桜や秋の紅葉シーズンに特におすすめ。",
     input: {
-      destination: "京都・奈良",
+      destinations: ["京都・奈良"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "3泊4日",
@@ -80,7 +80,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "石垣島と竹富島を巡るリゾートトリップ。エメラルドグリーンの海でシュノーケリング、赤瓦の街並み散策、満天の星空を楽しむ大人の癒し旅。",
     input: {
-      destination: "石垣島・竹富島",
+      destinations: ["石垣島・竹富島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "4泊5日",
@@ -100,7 +100,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "一人でゆっくり過ごす東京アート旅。美術館巡りからおしゃれなカフェ、夜景スポットまで。週末だけで気軽にリフレッシュできるプラン。",
     input: {
-      destination: "東京（六本木・渋谷・表参道）",
+      destinations: ["東京（六本木・渋谷・表参道）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -120,7 +120,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "北陸新幹線で行く金沢グルメ旅。近江町市場の海鮮、金沢おでん、加賀料理を堪能。兼六園、ひがし茶屋街、21世紀美術館も巡る充実の旅。",
     input: {
-      destination: "金沢",
+      destinations: ["金沢"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -140,7 +140,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "東京から気軽に行ける温泉リゾート。露天風呂付き客室でゆったり、美術館巡りや芦ノ湖クルーズも。日頃の疲れを癒す大人の週末旅。",
     input: {
-      destination: "箱根",
+      destinations: ["箱根"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -160,7 +160,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "原爆ドームと厳島神社、2つの世界遺産を巡る旅。平和への祈りを捧げ、瀬戸内海の絶景と広島グルメを満喫。お好み焼き、牡蠣、もみじ饅頭も。",
     input: {
-      destination: "広島・宮島",
+      destinations: ["広島・宮島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "3泊4日",
@@ -180,7 +180,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "食の都・福岡で食べ歩き！博多ラーメン、もつ鍋、明太子はもちろん、夜は中洲の屋台で地元の雰囲気を楽しむ。太宰府天満宮への参拝も忘れずに。",
     input: {
-      destination: "福岡（博多・天神・太宰府）",
+      destinations: ["福岡（博多・天神・太宰府）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -200,7 +200,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "家族で楽しむ大阪旅行！USJで一日中遊んだ後は、道頓堀でたこ焼きやお好み焼きを堪能。笑いとグルメがいっぱいの思い出作り。",
     input: {
-      destination: "大阪",
+      destinations: ["大阪"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -220,7 +220,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "話題のジブリパークを探索！ひつまぶし、味噌カツなどの名古屋めしも満喫。レゴランドや名古屋港水族館など、子供が喜ぶスポットも充実。",
     input: {
-      destination: "愛知（名古屋・長久手）",
+      destinations: ["愛知（名古屋・長久手）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -240,7 +240,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "伊勢神宮で心を清め、賢島のリゾートホテルでゆったり。おかげ横丁での食べ歩きや、鳥羽水族館も楽しめる、大人のための休日プラン。",
     input: {
-      destination: "伊勢・志摩",
+      destinations: ["伊勢・志摩"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -260,7 +260,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "香川の讃岐うどんの名店を巡り、愛媛の道後温泉でほっこり。しまなみ海道の絶景ドライブや、高知のカツオのたたきも味わう四国周遊旅。",
     input: {
-      destination: "四国（香川・愛媛・高知）",
+      destinations: ["四国（香川・愛媛・高知）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "3泊4日",
@@ -280,7 +280,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "日本三景の一つ、松島の絶景を遊覧船から堪能。仙台では厚切りの牛タンやずんだ餅を味わう。歴史ある伊達政宗ゆかりのスポットも巡る旅。",
     input: {
-      destination: "宮城（仙台・松島）",
+      destinations: ["宮城（仙台・松島）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -299,7 +299,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "避暑地・軽井沢でショッピングとカフェ巡り。国宝・松本城の雄姿に感動し、信州そばや新鮮な野菜料理など山の幸も楽しむリフレッシュ旅。",
     input: {
-      destination: "長野（軽井沢・松本）",
+      destinations: ["長野（軽井沢・松本）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -319,7 +319,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "異国情緒あふれる北野異人館街や南京町を散策。夜は「1000万ドルの夜景」と称される六甲山からの景色や、神戸牛ディナーでロマンチックに。",
     input: {
-      destination: "神戸",
+      destinations: ["神戸"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -339,7 +339,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "古都・鎌倉で大仏や鶴岡八幡宮を参拝し、江ノ電に乗って江ノ島へ。海沿いのカフェでのんびりしたり、新鮮なしらす丼を食べたりする癒しの旅。",
     input: {
-      destination: "鎌倉・江ノ島",
+      destinations: ["鎌倉・江ノ島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -358,7 +358,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "おんせん県・大分の2大温泉地を巡る。別府の地獄めぐりで迫力を体感し、湯布院の金鱗湖周辺を散策。最高の湯と豊後牛やとり天などの地元グルメを満喫。",
     input: {
-      destination: "大分（別府・湯布院）",
+      destinations: ["大分（別府・湯布院）"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -377,7 +377,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "常夏の楽園ハワイで過ごす、究極のリゾートステイ。ワイキキビーチでのんびり、ダイヤモンドヘッド登山で絶景を楽しみ、ショッピングやグルメも満喫。心身ともにリフレッシュするカップル・家族に人気のプラン。",
     input: {
-      destination: "ホノルル",
+      destinations: ["ホノルル"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -397,7 +397,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ルーヴル、オルセーなど世界的な美術館を巡り、エッフェル塔や凱旋門などの名所を訪れる。セーヌ川沿いの散策や、おしゃれなカフェでのひとときも楽しむ、パリの魔法にかかる旅。",
     input: {
-      destination: "パリ",
+      destinations: ["パリ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -417,7 +417,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "大英博物館やバッキンガム宮殿で英国の伝統に触れ、ソーホーやショーディッチで最先端のカルチャーを感じる。ミュージカル鑑賞やアフタヌーンティーも欠かせない、刺激的なロンドン旅。",
     input: {
-      destination: "ロンドン",
+      destinations: ["ロンドン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -437,7 +437,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "タイムズスクエアの熱気、セントラルパークの憩い、ブロードウェイの興奮。美術館巡りや最新グルメも楽しむ、エネルギー溢れるニューヨークを体感する旅。",
     input: {
-      destination: "ニューヨーク",
+      destinations: ["ニューヨーク"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -457,7 +457,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "コロッセオ、フォロ・ロマーノなど古代ローマの遺跡を巡り、バチカン市国で荘厳な芸術に触れる。本場のパスタやジェラートも堪能する、歴史好きにはたまらないローマの休日。",
     input: {
-      destination: "ローマ",
+      destinations: ["ローマ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -477,7 +477,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "サグラダ・ファミリアをはじめとするガウディの独創的な建築群を巡る。活気あるボケリア市場やバル巡りでタパスを味わう、情熱の街バルセロナを満喫する旅。",
     input: {
-      destination: "バルセロナ",
+      destinations: ["バルセロナ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -497,7 +497,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ワット・アルンなどの荘厳な寺院を巡り、活気あふれるナイトマーケットでショッピングと屋台グルメを楽しむ。タイ式マッサージで癒やされる、エネルギッシュなバンコク旅。",
     input: {
-      destination: "バンコク",
+      destinations: ["バンコク"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -517,7 +517,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "明洞や弘大でショッピング、流行のカフェ巡り。本場の韓国焼肉や屋台フードを楽しみ、美容クリニックやコスメ探しも充実。週末サクッと行けるソウル女子旅。",
     input: {
-      destination: "ソウル",
+      destinations: ["ソウル"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "2泊3日",
@@ -537,7 +537,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "士林夜市などでB級グルメを食べ歩き。九份のノスタルジックな街並みを散策し、台北101からの夜景も楽しむ。近くて美味しい、台湾満喫の旅。",
     input: {
-      destination: "台北",
+      destinations: ["台北"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "2泊3日",
@@ -557,7 +557,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "マリーナベイ・サンズやガーデンズ・バイ・ザ・ベイなど近未来的なスポットを巡る。多民族国家ならではの多様なグルメや、セントーサ島でのレジャーも楽しむ旅。",
     input: {
-      destination: "シンガポール",
+      destinations: ["シンガポール"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -577,7 +577,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産オペラハウスを眺め、ボンダイビーチで海風を感じる。コアラやカンガルーとの触れ合いや、ブルーマウンテンズへの小旅行も楽しむ、オーストラリアの自然と都市の融合。",
     input: {
-      destination: "シドニー",
+      destinations: ["シドニー"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -604,7 +604,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "スタンレーパークでのサイクリング、グランビルアイランドでのショッピング。海と山に囲まれた美しい都市で、アウトドアと都会的な楽しみを両立するカナダの旅。",
     input: {
-      destination: "バンクーバー",
+      destinations: ["バンクーバー"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -623,7 +623,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ハリウッドで映画の世界に浸り、サンタモニカビーチで西海岸の風を感じる。ビバリーヒルズでの散策や、テーマパークも楽しむエンターテイメント満載の旅。",
     input: {
-      destination: "ロサンゼルス",
+      destinations: ["ロサンゼルス"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -648,7 +648,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ウブドの棚田や寺院を巡り、伝統舞踊を鑑賞。ビーチリゾートでのんびり過ごし、スパで心身を癒やす。スピリチュアルな空気に包まれる極上の休息。",
     input: {
-      destination: "バリ島",
+      destinations: ["バリ島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -668,7 +668,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ダナンの美しいビーチでリゾートを満喫し、世界遺産ホイアンのランタンが彩る幻想的な夜景を楽しむ。ベトナム中部の魅力を凝縮した、フォトジェニックな旅。",
     input: {
-      destination: "ダナン・ホイアン",
+      destinations: ["ダナン・ホイアン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -688,7 +688,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界一高いビル・ブルジュハリファからの眺望、巨大モールでのショッピング。砂漠サファリでの冒険も楽しむ、驚きと興奮に満ちたアラビアンナイト。",
     input: {
-      destination: "ドバイ",
+      destinations: ["ドバイ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -707,7 +707,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "アジアとヨーロッパに跨る歴史都市。ブルーモスクやアヤソフィアの壮麗な建築に圧倒され、グランドバザールで異国情緒を味わう。ボスポラス海峡クルーズも魅力。",
     input: {
-      destination: "イスタンブール",
+      destinations: ["イスタンブール"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -726,7 +726,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ギザの三大ピラミッドとスフィンクスに対面する感動。エジプト考古学博物館で古代の秘宝に触れ、ハン・ハリーリ市場で活気を感じる。古代文明の謎に迫る冒険。",
     input: {
-      destination: "カイロ",
+      destinations: ["カイロ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -745,7 +745,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "断崖絶壁に並ぶ白い家々と青いドームの教会。エーゲ海を見下ろす絶景カフェでくつろぎ、世界一とも言われるイアの夕日を眺める。ハネムーンにも最適なロマンチックな島。",
     input: {
-      destination: "サントリーニ島",
+      destinations: ["サントリーニ島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -765,7 +765,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "アンデスの山奥に潜むインカ帝国の遺跡マチュピチュへ。クスコの街並みや聖なる谷も巡り、南米の壮大な自然と謎多き歴史に触れる一生に一度の感動体験。",
     input: {
-      destination: "マチュピチュ・クスコ",
+      destinations: ["マチュピチュ・クスコ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -784,7 +784,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ビクトリアピークからの絶景夜景と、本場の点心・飲茶を楽しむ食い倒れ旅。エネルギッシュな街並みと、古い寺院が共存する独特の雰囲気を味わう。",
     input: {
-      destination: "香港",
+      destinations: ["香港"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "2泊3日",
@@ -803,7 +803,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "フィリピンの楽園セブ島で、世界最大の魚ジンベイザメと一緒に泳ぐ感動体験。透明度の高い海でのシュノーケリングや、ビーチリゾートでのんびり過ごす。",
     input: {
-      destination: "セブ島",
+      destinations: ["セブ島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊4日",
@@ -822,7 +822,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ベトナムの首都ハノイの古い街並みをシクロで巡り、世界遺産ハロン湾で幻想的なクルーズ体験。フランス統治時代の建築や、ヘルシーなベトナム料理も魅力。",
     input: {
-      destination: "ハノイ・ハロン湾",
+      destinations: ["ハノイ・ハロン湾"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -842,7 +842,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "マレー系、中華系、インド系が融合する多文化都市。ペトロナスツインタワーの威容や、バトゥ洞窟の神秘に触れる。安くて美味しい屋台メシも充実。",
     input: {
-      destination: "クアラルンプール",
+      destinations: ["クアラルンプール"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊5日",
@@ -862,7 +862,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「世界で最も住みやすい都市」で、こだわりのカフェ巡りとストリートアート散策。グレートオーシャンロードへのドライブで絶景も楽しむおしゃれな旅。",
     input: {
-      destination: "メルボルン",
+      destinations: ["メルボルン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -881,7 +881,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "延々と続く白い砂浜でビーチライフを満喫。カランビン野生動物保護区でコアラを抱っこしたり、カンガルーに餌やり体験もできる、家族みんなが笑顔になる旅。",
     input: {
-      destination: "ゴールドコースト",
+      destinations: ["ゴールドコースト"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -907,7 +907,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ニュージーランド南島の美しい湖畔の街。ミルフォードサウンドへのフィヨルド観光や、バンジージャンプなどのアクティビティ、美味しいワインも楽しめる。",
     input: {
-      destination: "クイーンズタウン",
+      destinations: ["クイーンズタウン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -933,7 +933,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "カジノ、シルク・ドゥ・ソレイユのショー、巨大ホテルの噴水ショーなどエンタメ尽くし。ヘリコプターでグランドキャニオンへ飛ぶ絶景ツアーも。",
     input: {
-      destination: "ラスベガス",
+      destinations: ["ラスベガス"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -952,7 +952,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "赤い吊り橋ゴールデンゲートブリッジや、フィッシャーマンズワーフの活気ある港町。ケーブルカーに乗って坂道を上り下りし、シリコンバレーの空気も感じる。",
     input: {
-      destination: "サンフランシスコ",
+      destinations: ["サンフランシスコ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -971,7 +971,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "雄大なロッキー山脈と、宝石のように輝くルイーズ湖やモレーン湖。コロンビア大氷原での雪上車体験など、大自然の神秘を体感する感動の旅。",
     input: {
-      destination: "バンフ・ジャスパー",
+      destinations: ["バンフ・ジャスパー"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -990,7 +990,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "メキシコのカリブ海リゾート。飲食代込みのオールインクルーシブホテルで贅沢に過ごす。神秘的なセノーテでの遊泳や、チチェン・イッツァ遺跡観光も。",
     input: {
-      destination: "カンクン",
+      destinations: ["カンクン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1010,7 +1010,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "音楽の都ウィーンでオペラ座やシェーンブルン宮殿を見学。ザッハトルテを味わいながらカフェ文化に浸る、優雅で芸術的なひととき。",
     input: {
-      destination: "ウィーン",
+      destinations: ["ウィーン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1036,7 +1036,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ビアホールで本場のドイツビールとソーセージを堪能。少し足を延ばして、ディズニーの城のモデルとも言われるノイシュバンシュタイン城へ。",
     input: {
-      destination: "ミュンヘン",
+      destinations: ["ミュンヘン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1055,7 +1055,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "網の目のように広がる運河沿いを散策。ゴッホ美術館やアンネ・フランクの家を訪れ、風車村ザーンセ・スカンスへの小旅行も楽しむ。",
     input: {
-      destination: "アムステルダム",
+      destinations: ["アムステルダム"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1074,7 +1074,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "哀愁漂うファドを聴きながら、ポルトガル料理に舌鼓。黄色い路面電車が走る石畳の坂道や、ジェロニモス修道院などの大航海時代の遺産を巡る。",
     input: {
-      destination: "リスボン",
+      destinations: ["リスボン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1093,7 +1093,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "オレンジ色の屋根と紺碧の海が美しい城壁都市。城壁を一周ウォーキングしたり、ケーブルカーで山頂から旧市街を一望したりする絶景の旅。",
     input: {
-      destination: "ドゥブロヴニク",
+      destinations: ["ドゥブロヴニク"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1120,7 +1120,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "冬の北欧でオーロラ鑑賞に挑戦。ロヴァニエミでサンタクロースに会い、犬ぞり体験や本場のサウナで温まる、幻想的な冬の体験。",
     input: {
-      destination: "ヘルシンキ・ロヴァニエミ",
+      destinations: ["ヘルシンキ・ロヴァニエミ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1139,7 +1139,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "活気あふれるジャマ・エル・フナ広場や、迷路のようなスーク（市場）を探検。美しいイスラム建築や、おしゃれなリヤド（邸宅ホテル）滞在も魅力。",
     input: {
-      destination: "マラケシュ",
+      destinations: ["マラケシュ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -1158,7 +1158,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "1島1リゾートの楽園。海に直接降りられる水上コテージに滞在し、シュノーケリングやスパを楽しむ。何もしない贅沢を味わうハネムーンの定番。",
     input: {
-      destination: "モルディブ",
+      destinations: ["モルディブ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1177,7 +1177,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "登山鉄道に乗ってユングフラウヨッホやマッターホルンの絶景展望台へ。ハイジのような牧歌的な風景の中をハイキングし、チーズフォンデュを味わう。",
     input: {
-      destination: "インターラーケン・ツェルマット",
+      destinations: ["インターラーケン・ツェルマット"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1196,7 +1196,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "豪華絢爛な日光東照宮を見学し、華厳の滝や中禅寺湖の自然美に触れる。夜は鬼怒川温泉でゆっくりくつろぐ、歴史と癒やしの関東近郊旅。",
     input: {
-      destination: "日光・鬼怒川",
+      destinations: ["日光・鬼怒川"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -1215,7 +1215,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "富士山を望む河口湖でボートやサイクリングを楽しむ。富士急ハイランドで絶叫マシンに挑戦したり、ほうとう鍋を食べたりと充実の週末。",
     input: {
-      destination: "河口湖",
+      destinations: ["河口湖"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -1234,7 +1234,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「宮古ブルー」と呼ばれる驚異的な青さの海。与那覇前浜ビーチでのんびりし、ウミガメと一緒に泳ぐシュノーケリング体験。伊良部大橋のドライブも最高。",
     input: {
-      destination: "宮古島",
+      destinations: ["宮古島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -1253,7 +1253,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「百塔の街」プラハでカレル橋やプラハ城を散策。夜は本場のピルスナービールとチェコ料理を堪能する、ロマンチックで歴史深い旅。",
     input: {
-      destination: "プラハ",
+      destinations: ["プラハ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1281,7 +1281,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ドナウ川の夜景クルーズと、歴史ある豪華な温泉体験。国会議事堂や漁夫の砦などの建築美にも酔いしれる、優雅な東欧の旅。",
     input: {
-      destination: "ブダペスト",
+      destinations: ["ブダペスト"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1308,7 +1308,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "グランプラスの豪華さに圧倒され、ブルージュの運河沿いを散歩。本場のワッフル、チョコレート、ベルギービールを味わい尽くす美食旅。",
     input: {
-      destination: "ブリュッセル・ブルージュ",
+      destinations: ["ブリュッセル・ブルージュ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1336,7 +1336,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "はちみつ色の要塞都市バレッタを探索し、青の洞門やコミノ島のブルーラグーンで絶景を楽しむ。歴史とリゾートが融合した地中海の宝石。",
     input: {
-      destination: "マルタ",
+      destinations: ["マルタ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -1363,7 +1363,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ゴールデンサークルで間欠泉や滝の迫力を体感。世界最大の露天風呂ブルーラグーンで癒やされ、オーロラハントにも挑戦する大自然満喫旅。",
     input: {
-      destination: "レイキャビク",
+      destinations: ["レイキャビク"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1390,7 +1390,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ベルゲンからソグネフィヨルドへ。山岳鉄道とフェリーを乗り継ぎ、断崖絶壁と深い入江が織りなす大迫力の絶景を目の当たりにする。",
     input: {
-      destination: "ベルゲン・オスロ",
+      destinations: ["ベルゲン・オスロ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1417,7 +1417,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "14の島からなる美しい首都。ガムラスタンのカラフルな街並みを歩き、ノーベル賞晩餐会の市庁舎を見学。北欧デザインの雑貨探しも。",
     input: {
-      destination: "ストックホルム",
+      destinations: ["ストックホルム"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1443,7 +1443,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "カラフルなニューハウン、人魚姫の像、チボリ公園を巡る。洗練されたデンマークデザインの家具や建築に触れ、ヒュッゲな時間を過ごす。",
     input: {
-      destination: "コペンハーゲン",
+      destinations: ["コペンハーゲン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1470,7 +1470,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "テンプルバーエリアでアイリッシュパブをはしごし、ギネスビールを堪能。トリニティカレッジで「ケルズの書」を見て歴史を感じる大人の旅。",
     input: {
-      destination: "ダブリン",
+      destinations: ["ダブリン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1489,7 +1489,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「北のパリ」ワルシャワの復興された旧市街と、古都クラクフを巡る。アウシュビッツ強制収容所を訪れ、平和について深く考える時間も。",
     input: {
-      destination: "ワルシャワ・クラクフ",
+      destinations: ["ワルシャワ・クラクフ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1516,7 +1516,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産アンコールワットの日の出に感動し、巨大な顔が並ぶバイヨン寺院や、樹木に覆われたタ・プロームを探検。カンボジアの神秘に触れる。",
     input: {
-      destination: "シェムリアップ",
+      destinations: ["シェムリアップ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -1543,7 +1543,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界一美しい霊廟タージマハルと、ピンク色の建物が並ぶジャイプールを巡るゴールデントライアングル。カレーやチャイなど本場の味も満喫。",
     input: {
-      destination: "デリー・アグラ・ジャイプール",
+      destinations: ["デリー・アグラ・ジャイプール"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1563,7 +1563,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "カトマンズ盆地の古都パタンやバクタプルを散策。ナガルコットからヒマラヤ山脈の日の出を眺め、チベット仏教の聖地で祈りの空気に触れる。",
     input: {
-      destination: "カトマンズ",
+      destinations: ["カトマンズ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1590,7 +1590,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "街全体が世界遺産の古都。早朝の托鉢を見学し、美しい滝で水遊び。メコン川の夕日を眺めながらビールを飲む、何もしない贅沢な時間。",
     input: {
-      destination: "ルアンパバーン",
+      destinations: ["ルアンパバーン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -1617,7 +1617,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界三大仏教遺跡のひとつ。数千もの仏塔が地平線まで続く景色は圧巻。eバイクで遺跡を巡り、夕日に染まるパゴダのシルエットに感動する。",
     input: {
-      destination: "バガン",
+      destinations: ["バガン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -1645,7 +1645,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "巨大な岩山の上に築かれたシギリヤロックに登頂。高原列車で茶畑を抜け、本場のセイロンティーを楽しむ。アーユルヴェーダでデトックスも。",
     input: {
-      destination: "コロンボ・シギリヤ",
+      destinations: ["コロンボ・シギリヤ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1664,7 +1664,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「世界一幸福な国」の人々の笑顔と、透明度抜群の海に癒やされる。離島のプライベートリゾートでシュノーケリングやハンモックでのんびり。",
     input: {
-      destination: "ナンディ・ママヌザ諸島",
+      destinations: ["ナンディ・ママヌザ諸島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1691,7 +1691,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「太平洋の真珠」ボラボラ島のラグーンは言葉を失う美しさ。水上バンガローから海に飛び込み、カヌーで運ばれる朝食を楽しむ究極のハネムーン。",
     input: {
-      destination: "ボラボラ島",
+      destinations: ["ボラボラ島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊7日",
@@ -1719,7 +1719,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産のサンゴ礁に囲まれた美しい海。フランスの雰囲気漂うヌメアでマルシェを散策し、イル・デ・パンの天然プールで魚と戯れる。",
     input: {
-      destination: "ヌメア",
+      destinations: ["ヌメア"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊6日",
@@ -1746,7 +1746,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "無数のクラゲと一緒に泳ぐジェリーフィッシュレイクや、美肌効果のある泥パックができるミルキーウェイ。世界遺産の海でダイビングやシュノーケル。",
     input: {
-      destination: "コロール",
+      destinations: ["コロール"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -1773,7 +1773,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "バラ色の岩肌を削って造られた巨大な遺跡都市。シークと呼ばれる峡谷を抜け、エル・ハズネ（宝物殿）が現れた瞬間の感動は一生もの。",
     input: {
-      destination: "ペトラ",
+      destinations: ["ペトラ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -1800,7 +1800,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "テーブルマウンテンからの絶景、喜望峰へのドライブ、そしてボルダーズビーチで野生のペンギンと触れ合う。アフリカの大自然と洗練された街を楽しむ。",
     input: {
-      destination: "ケープタウン",
+      destinations: ["ケープタウン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1827,7 +1827,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "地平線まで続くサバンナで、ライオン、ゾウ、キリンなどの野生動物を探すゲームドライブ。豪華なロッジに泊まり、大自然の音を聞きながら眠る。",
     input: {
-      destination: "マサイマラ国立保護区",
+      destinations: ["マサイマラ国立保護区"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1846,7 +1846,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「星の王子さま」にも登場するバオバブの巨木が並ぶ街道の夕日は圧巻。固有種のキツネザルに会い、独自の進化を遂げた不思議な島を探検。",
     input: {
-      destination: "ムロンダバ",
+      destinations: ["ムロンダバ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1873,7 +1873,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "雨季には湖面が鏡のようになり、空を映し出す奇跡の絶景。昼間のトリックアート写真撮影や、満天の星空が湖面に映る宇宙のような光景を楽しむ。",
     input: {
-      destination: "ウユニ",
+      destinations: ["ウユニ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "6泊9日",
@@ -1900,7 +1900,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ブラジルとアルゼンチンに跨る巨大な滝。「悪魔の喉笛」を間近で見下ろし、ボートで滝壺に突っ込むずぶ濡れツアーで迫力を体感。",
     input: {
-      destination: "イグアス",
+      destinations: ["イグアス"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1928,7 +1928,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "コルコバードの丘に立つ巨大なキリスト像と、コパカバーナビーチの賑わい。情熱的なサンバのリズムを感じながら、絶景と都市を楽しむ。",
     input: {
-      destination: "リオデジャネイロ",
+      destinations: ["リオデジャネイロ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1947,7 +1947,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ペリト・モレノ氷河の轟音を伴う崩落を目撃し、フィッツロイ峰の朝焼け「燃える山」を拝む。地球の息吹を感じるトレッキング旅。",
     input: {
-      destination: "エル・カラファテ",
+      destinations: ["エル・カラファテ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "6泊9日",
@@ -1975,7 +1975,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "太平洋の孤島に立ち並ぶ巨大なモアイ像。アフ・トンガリキの15体のモアイや、製造工場だったラノ・ララクを巡り、古代のミステリーに触れる。",
     input: {
-      destination: "イースター島",
+      destinations: ["イースター島"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "5泊8日",
@@ -1994,7 +1994,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "カラフルなコロニアル建築が残る旧市街を、アメ車クラシックカーでドライブ。夜はモヒートを片手にサルサ音楽に酔いしれる、時が止まったような街。",
     input: {
-      destination: "ハバナ",
+      destinations: ["ハバナ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -2022,7 +2022,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "陽気なレゲエのリズムが流れるカリブ海の楽園。美しいビーチでのんびりし、ボブ・マーリーゆかりの地を訪れる。ジャークチキンも必食。",
     input: {
-      destination: "モンテゴベイ",
+      destinations: ["モンテゴベイ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "4泊7日",
@@ -2042,7 +2042,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "キノコのような奇岩が連なる不思議な風景。早朝の熱気球ツアーで空から絶景を見下ろし、洞窟ホテルに宿泊する非日常体験。",
     input: {
-      destination: "カッパドキア",
+      destinations: ["カッパドキア"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊6日",
@@ -2061,7 +2061,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "断崖絶壁にカラフルな家々が張り付くポジターノやアマルフィを巡る。レモンの香りが漂う街で、シーフードパスタとリモンチェッロを楽しむ。",
     input: {
-      destination: "アマルフィ・ポジターノ",
+      destinations: ["アマルフィ・ポジターノ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊6日",
@@ -2080,7 +2080,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "ミシュランの星の数とバルのクオリティで世界中の美食家を魅了する街。カウンターに並ぶピンチョスを食べ歩き、チャコリ（微発泡ワイン）で乾杯。",
     input: {
-      destination: "サン・セバスティアン",
+      destinations: ["サン・セバスティアン"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊6日",
@@ -2108,7 +2108,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "「北方のバラ」と呼ばれる古都。ランタンが一斉に空へ放たれる幻想的なコムローイ祭りの時期は特におすすめ。おしゃれなカフェや雑貨巡りも。",
     input: {
-      destination: "チェンマイ",
+      destinations: ["チェンマイ"],
       isDestinationDecided: true,
       region: "overseas",
       dates: "3泊5日",
@@ -2127,7 +2127,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "樹齢数千年の縄文杉を目指す往復10時間のトレッキング。もののけ姫の舞台のような「白谷雲水峡」の苔むす森で、太古の自然に包まれる。",
     input: {
-      destination: "屋久島",
+      destinations: ["屋久島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -2146,7 +2146,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "草間彌生の「南瓜」や地中美術館など、島全体がアート。フェリーで島々を渡り、現代アートと瀬戸内の穏やかな風景の融合を楽しむ。",
     input: {
-      destination: "直島・豊島",
+      destinations: ["直島・豊島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -2165,7 +2165,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産・白川郷の合掌造り集落を散策。飛騨高山では古い町並みで食べ歩きや朝市を楽しみ、日本の伝統と美しさを再発見する旅。",
     input: {
-      destination: "白川郷・高山",
+      destinations: ["白川郷・高山"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "1泊2日",
@@ -2184,7 +2184,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "世界遺産「長崎と天草地方の潜伏キリシタン関連遺産」の構成資産である教会を巡る。日本一とも言われる美しいビーチ「高浜海水浴場」にも感動。",
     input: {
-      destination: "五島列島",
+      destinations: ["五島列島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "2泊3日",
@@ -2203,7 +2203,7 @@ export const samplePlans: SamplePlan[] = [
     description:
       "定期船で24時間かけて行く絶海の孤島。固有の動植物を観察するネイチャーツアーや、イルカ・クジラと出会うドルフィンスイムはここだけの体験。",
     input: {
-      destination: "父島",
+      destinations: ["父島"],
       isDestinationDecided: true,
       region: "domestic",
       dates: "5泊6日",

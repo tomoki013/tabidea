@@ -159,7 +159,7 @@ describe('sample-plans', () => {
         expect(plan.title).toBeTruthy();
         expect(plan.description).toBeTruthy();
         expect(plan.input).toBeDefined();
-        expect(plan.input.destination).toBeTruthy();
+        expect(plan.input.destinations.length).toBeGreaterThan(0);
         expect(plan.tags.length).toBeGreaterThan(0);
       });
     });
