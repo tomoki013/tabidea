@@ -1,4 +1,5 @@
 import { UserInput, Itinerary } from "@/types";
+import { additionalSamplePlans } from "./additional-sample-plans";
 
 export interface SamplePlan {
   id: string;
@@ -33,7 +34,7 @@ export function getDays(dates: string): number {
   return 1;
 }
 
-export const samplePlans: SamplePlan[] = [
+const baseSamplePlans: SamplePlan[] = [
   {
     id: "sapporo-otaru-family",
     title: "札幌・小樽 家族で楽しむ2泊3日",
@@ -2218,6 +2219,8 @@ export const samplePlans: SamplePlan[] = [
     tags: ["一人旅", "5泊6日", "東京", "関東", "国内", "世界遺産", "秘境", "自然"],
   },
 ];
+
+export const samplePlans: SamplePlan[] = [...baseSamplePlans, ...additionalSamplePlans as SamplePlan[]];
 
 /**
  * IDでサンプルプランを取得
