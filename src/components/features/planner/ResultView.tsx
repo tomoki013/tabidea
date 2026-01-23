@@ -21,7 +21,7 @@ import {
   FaGlobe,
 } from "react-icons/fa";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -279,7 +279,7 @@ export default function ResultView({
           ) : (
             <button
               onClick={startEditing}
-              className="flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20"
+              className={`flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20 ${activeTab === 'info' ? 'hidden' : ''}`}
             >
               <FaPen /> プラン内容を編集
             </button>
@@ -288,7 +288,7 @@ export default function ResultView({
       </div>
 
       {/* Journal Header Section */}
-      <div className="relative mb-16 overflow-x-hidden">
+      <div className="relative mb-8 overflow-x-hidden">
         {heroImg ? (
           <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-xl border-8 border-white bg-white rotate-1">
             <Image
@@ -361,62 +361,67 @@ export default function ResultView({
           {showShareButtons && <ShareButtons input={input} result={result} />}
           <PDFDownloadButton itinerary={result} />
         </div>
+      </div>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center mt-12 mb-8 border-b border-stone-200">
-          <div className="flex gap-8">
-            <button
-              onClick={() => setActiveTab('plan')}
-              className={`pb-4 px-4 font-serif text-lg font-bold transition-all relative ${
-                activeTab === 'plan'
-                  ? 'text-primary'
-                  : 'text-stone-400 hover:text-stone-600'
-              }`}
-            >
-              <span className="flex items-center gap-2">
-                <FaCalendarAlt /> 旅程表
-              </span>
-              {activeTab === 'plan' && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-t-full"
-                />
-              )}
-            </button>
-            <button
-              onClick={() => setActiveTab('info')}
-              className={`pb-4 px-4 font-serif text-lg font-bold transition-all relative ${
-                activeTab === 'info'
-                  ? 'text-primary'
-                  : 'text-stone-400 hover:text-stone-600'
-              }`}
-            >
-              <span className="flex items-center gap-2">
-                <FaGlobe /> 渡航情報
-              </span>
-              {activeTab === 'info' && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute bottom-0 left-0 right-0 h-1 bg-primary rounded-t-full"
-                />
-              )}
-            </button>
-          </div>
+      {/* Sticky Tab Navigation */}
+      <div className="sticky top-24 z-40 bg-[#fcfbf9]/95 backdrop-blur-md pt-4 pb-2 -mx-4 sm:-mx-8 lg:-mx-12 px-4 sm:px-8 lg:px-12 border-b border-stone-200/60 shadow-xs mb-8">
+        <div className="max-w-4xl mx-auto flex justify-center gap-4">
+          <button
+            onClick={() => setActiveTab('plan')}
+            className={`
+              flex-1 sm:flex-none sm:w-48 py-3 px-4 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 relative overflow-hidden group
+              ${activeTab === 'plan'
+                ? 'bg-white text-primary shadow-md border-2 border-primary/10 translate-y-0'
+                : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700 border-2 border-transparent'}
+            `}
+          >
+            <div className="flex items-center justify-center gap-2 relative z-10">
+              <FaCalendarAlt className={activeTab === 'plan' ? 'text-primary' : 'text-stone-400'} />
+              <span>旅程表</span>
+            </div>
+            {activeTab === 'plan' && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute bottom-0 left-0 right-0 h-1 bg-primary"
+              />
+            )}
+          </button>
+
+          <button
+            onClick={() => setActiveTab('info')}
+            className={`
+              flex-1 sm:flex-none sm:w-48 py-3 px-4 rounded-xl font-bold text-sm sm:text-base transition-all duration-300 relative overflow-hidden group
+              ${activeTab === 'info'
+                ? 'bg-white text-primary shadow-md border-2 border-primary/10 translate-y-0'
+                : 'bg-stone-100 text-stone-500 hover:bg-stone-200 hover:text-stone-700 border-2 border-transparent'}
+            `}
+          >
+            <div className="flex items-center justify-center gap-2 relative z-10">
+              <FaGlobe className={activeTab === 'info' ? 'text-primary' : 'text-stone-400'} />
+              <span>渡航情報</span>
+            </div>
+            {activeTab === 'info' && (
+              <motion.div
+                layoutId="activeTabIndicator"
+                className="absolute bottom-0 left-0 right-0 h-1 bg-primary"
+              />
+            )}
+          </button>
         </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        {activeTab === 'plan' ? (
+      {/* Main Content Area (No conditional unmounting for persistence) */}
+      <div className="relative min-h-[500px]">
+        {/* Plan Tab Content */}
+        <div className={activeTab === 'plan' ? 'block' : 'hidden'}>
           <motion.div
-            key="plan"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="w-full"
           >
             {/* AI Disclaimer Notice */}
-            <div className="w-full max-w-4xl mx-auto mt-8 mb-8 px-4">
+            <div className="w-full max-w-4xl mx-auto mt-0 mb-8 px-4">
               <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg shadow-sm">
                 <div className="flex items-start gap-3">
                   <div className="flex-shrink-0 text-2xl">⚠️</div>
@@ -459,8 +464,8 @@ export default function ResultView({
               <div className="space-y-16" data-itinerary-section>
                 {displayResult.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
-                    {/* Day Header - Sticky at top when scrolled */}
-                    <div className="sticky top-24 md:top-28 z-30 mb-8 flex items-center gap-4">
+                    {/* Day Header - Sticky position updated to top-44 to avoid overlap with new tabs */}
+                    <div className="sticky top-44 z-30 mb-8 flex items-center gap-4">
                       <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
                         <span className="text-4xl font-serif text-primary">
                           {day.day}
@@ -689,7 +694,7 @@ export default function ResultView({
 
               {/* Sidebar / References */}
               {showReferences && (
-                <div className="lg:sticky lg:top-0 lg:pt-4 lg:self-start lg:max-h-screen lg:overflow-y-auto space-y-8">
+                <div className="lg:sticky lg:top-44 lg:self-start lg:max-h-[calc(100vh-12rem)] lg:overflow-y-auto space-y-8 custom-scrollbar">
                   <div className="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm">
                     <h3 className="text-xs font-mono uppercase tracking-[0.2em] text-stone-400 border-b border-stone-100 pb-4 mb-4 flex items-center gap-2">
                       <FaCalendarAlt /> Reference Articles
@@ -742,12 +747,13 @@ export default function ResultView({
               </div>
             )}
           </motion.div>
-        ) : (
+        </div>
+
+        {/* Info Tab Content */}
+        <div className={activeTab === 'info' ? 'block' : 'hidden'}>
           <motion.div
-            key="info"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 0.3 }}
             className="w-full"
           >
@@ -761,8 +767,8 @@ export default function ResultView({
               inline={true}
             />
           </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      </div>
     </div>
   );
 }
