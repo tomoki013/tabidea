@@ -1,11 +1,13 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { UserInput } from '@/types';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
 interface StepDatesProps {
   input: UserInput;
   onChange: (value: Partial<UserInput>) => void;
+  onNext?: () => void;
 }
 
 // Parsing logic can be moved outside or kept if it's only used here.
@@ -49,7 +51,7 @@ const getTomorrow = () => {
   return d.toISOString().split('T')[0];
 };
 
-export default function StepDates({ input, onChange }: StepDatesProps) {
+export default function StepDates({ input, onChange, onNext }: StepDatesProps) {
   // --- STATE DERIVATION ---
   // Derive all state directly from the input prop. No local state needed.
   const startDate = parseDate(input.dates);
@@ -253,6 +255,22 @@ export default function StepDates({ input, onChange }: StepDatesProps) {
         </div>
 
       </div>
+
+      {/* Proceed hint - always visible since dates can be flexible */}
+      {onNext && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center mt-6"
+        >
+          <button
+            onClick={onNext}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            次へ進む →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

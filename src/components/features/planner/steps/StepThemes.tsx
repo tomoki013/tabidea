@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { UserInput } from '@/types';
 import {
   FaUtensils,
@@ -19,6 +20,7 @@ import {
 interface StepThemesProps {
   input: UserInput;
   onChange: (value: Partial<UserInput>) => void;
+  onNext?: () => void;
 }
 
 const THEME_ITEMS = [
@@ -36,7 +38,7 @@ const THEME_ITEMS = [
   { label: "その他", icon: FaQuestion, id: "その他" },
 ];
 
-export default function StepThemes({ input, onChange }: StepThemesProps) {
+export default function StepThemes({ input, onChange, onNext }: StepThemesProps) {
   const toggleTheme = (t: string) => {
     if (input.theme.includes(t)) {
       onChange({ theme: input.theme.filter((x) => x !== t) });
@@ -98,6 +100,22 @@ export default function StepThemes({ input, onChange }: StepThemesProps) {
             );
           })}
         </div>
+
+        {/* Proceed hint when themes are selected */}
+        {input.theme.length > 0 && onNext && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-6 text-center"
+          >
+            <button
+              onClick={onNext}
+              className="text-primary font-medium hover:underline font-hand text-lg"
+            >
+              {input.theme.length}つのテーマで次へ進む →
+            </button>
+          </motion.div>
+        )}
       </div>
     </div>
   );

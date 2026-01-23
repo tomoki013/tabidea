@@ -15,6 +15,7 @@ export default function StepRegion({
   vibe,
   onChange,
   onVibeChange,
+  onNext,
 }: StepRegionProps) {
   const regions = [
     { id: "domestic", label: "国内", sub: "Domestic", icon: "🗾" },
@@ -107,6 +108,22 @@ export default function StepRegion({
           })}
         </div>
       </div>
+
+      {/* Proceed hint when region is selected or vibe is entered */}
+      {(value || vibe?.trim()) && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center mt-4"
+        >
+          <button
+            onClick={onNext}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            次へ進む →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 interface StepBudgetProps {
   value?: string;
   onChange: (val: string) => void;
+  onNext?: () => void;
 }
 
-export default function StepBudget({ value, onChange }: StepBudgetProps) {
+export default function StepBudget({ value, onChange, onNext }: StepBudgetProps) {
   const options = [
     {
       id: "saving",
@@ -98,6 +99,22 @@ export default function StepBudget({ value, onChange }: StepBudgetProps) {
           );
         })}
       </div>
+
+      {/* Proceed hint when budget is selected */}
+      {value && onNext && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center"
+        >
+          <button
+            onClick={onNext}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            次へ進む →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }

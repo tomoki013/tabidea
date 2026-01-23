@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { FaPlus, FaTrash } from "react-icons/fa";
 
 interface StepPlacesProps {
@@ -14,6 +15,7 @@ interface StepPlacesProps {
 export default function StepPlaces({
   mustVisitPlaces,
   onChange,
+  onNext,
   hasDecided,
   onDecisionChange,
 }: StepPlacesProps) {
@@ -139,7 +141,39 @@ export default function StepPlaces({
                 ))}
               </div>
             )}
+
+            {/* Proceed hint when places are added */}
+            {mustVisitPlaces.length > 0 && !currentInput.trim() && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="mt-4 text-center"
+              >
+                <button
+                  onClick={onNext}
+                  className="text-primary font-medium hover:underline font-hand text-lg"
+                >
+                  {mustVisitPlaces.length}箇所を追加して次へ進む →
+                </button>
+              </motion.div>
+            )}
           </div>
+        )}
+
+        {/* Proceed hint when "No" is selected */}
+        {hasDecided === false && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-8 text-center"
+          >
+            <button
+              onClick={onNext}
+              className="text-primary font-medium hover:underline font-hand text-lg"
+            >
+              次へ進む →
+            </button>
+          </motion.div>
         )}
       </div>
     </div>

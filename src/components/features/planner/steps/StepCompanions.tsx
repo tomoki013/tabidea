@@ -1,13 +1,17 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 interface StepCompanionsProps {
   value: string;
   onChange: (value: string) => void;
+  onNext?: () => void;
 }
 
 export default function StepCompanions({
   value,
   onChange,
+  onNext,
 }: StepCompanionsProps) {
   const options = [
     { id: "solo", label: "一人旅", icon: "👤", desc: "気ままに" },
@@ -71,6 +75,22 @@ export default function StepCompanions({
           </button>
         ))}
       </div>
+
+      {/* Proceed hint when companion is selected */}
+      {value && onNext && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="mt-4 text-center"
+        >
+          <button
+            onClick={onNext}
+            className="text-primary font-medium hover:underline font-hand text-lg"
+          >
+            次へ進む →
+          </button>
+        </motion.div>
+      )}
     </div>
   );
 }
