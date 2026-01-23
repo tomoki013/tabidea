@@ -95,9 +95,21 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Themes: ${input.theme.join(", ")}
         ${budgetPrompt}
         Pace: ${input.pace}
-        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
-        ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a logical order, considering travel time between locations.` : ""}
+
+        === ROUTE OPTIMIZATION INSTRUCTIONS ===
+        1. You are NOT bound by the order in which destinations were entered by the user.
+        2. Freely rearrange the visiting order to optimize for:
+           - Geographic efficiency (minimize backtracking)
+           - Travel convenience (logical flow between locations)
+           - Time of day considerations (e.g., morning activities vs evening activities)
+
+        === MANDATORY VISITS ===
+        1. ALL destinations listed above (${destinationsStr}) MUST be included in the itinerary. No destination may be omitted.
+        2. ALL "Must-Visit Places" listed above MUST be incorporated into the plan. Omitting any specified place is NOT acceptable.
+        3. If time constraints make it difficult to visit everything, compress visit durations rather than removing locations.
+        ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a geographically optimized order, considering travel time between locations.` : ""}
       `;
     } else {
       prompt = `
@@ -109,8 +121,13 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Themes: ${input.theme.join(", ")}
         ${budgetPrompt}
         Pace: ${input.pace}
-        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
+
+        === MANDATORY VISITS ===
+        1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
+        2. Omitting any specified place is NOT acceptable.
+        3. These places should influence destination selection - choose a destination that allows visiting all specified places.
 
         TASK: Select best destination and outline plan.
       `;
