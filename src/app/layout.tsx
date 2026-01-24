@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_JP, Kaisei_Decol, Yomogi } from "next/font/google";
 import Script from "next/script";
-import { Header, Footer, CookieBanner, FloatingPlanButton } from "@/components/common";
+import { Header, Footer, CookieBanner, FloatingPlanButton, GlobalAuthUI } from "@/components/common";
 import { PlanModalProvider } from "@/context/PlanModalContext";
+import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -95,13 +96,16 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${kaiseiDecol.variable} ${yomogi.variable} font-sans antialiased bg-background text-foreground`}
       >
-        <PlanModalProvider>
-          <Header />
-          {children}
-          <FloatingPlanButton />
-          <CookieBanner />
-          <Footer />
-        </PlanModalProvider>
+        <AuthProvider>
+          <PlanModalProvider>
+            <Header />
+            {children}
+            <FloatingPlanButton />
+            <CookieBanner />
+            <GlobalAuthUI />
+            <Footer />
+          </PlanModalProvider>
+        </AuthProvider>
       </body>
     </html>
   );

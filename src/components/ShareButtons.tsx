@@ -10,6 +10,7 @@ interface ShareButtonsProps {
   input: UserInput;
   result: Itinerary;
   className?: string;
+  shareCode?: string;
 }
 
 const emptySubscribe = () => () => {};
@@ -18,6 +19,7 @@ export default function ShareButtons({
   input,
   result,
   className = "",
+  shareCode,
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
@@ -27,9 +29,12 @@ export default function ShareButtons({
     [input, result]
   );
 
+  // Use shareCode for short URL if available, otherwise use encoded URL
   const shareUrl = useSyncExternalStore(
     emptySubscribe,
-    () => `${window.location.origin}/plan?q=${encodedData}`,
+    () => shareCode
+      ? `${window.location.origin}/plan/${shareCode}`
+      : `${window.location.origin}/plan?q=${encodedData}`,
     () => ""
   );
 
