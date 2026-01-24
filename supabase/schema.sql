@@ -34,6 +34,12 @@ CREATE POLICY "Users can update own profile"
   ON users FOR UPDATE
   USING (auth.uid() = id);
 
+-- システムトリガー（handle_new_user）からの挿入を許可
+-- auth.uid()はトリガー実行時にNULLまたは新規ユーザーIDとなる
+CREATE POLICY "Allow user creation via trigger"
+  ON users FOR INSERT
+  WITH CHECK (TRUE);
+
 -- ============================================
 -- 2. PLANS TABLE
 -- ============================================
@@ -346,6 +352,15 @@ CREATE POLICY "Users can view own grants"
   ON entitlement_grants FOR SELECT
   USING (auth.uid() = user_id);
 
+-- システム関数（grant_free_tier, consume_entitlement等）からの操作を許可
+CREATE POLICY "Allow system insert grants"
+  ON entitlement_grants FOR INSERT
+  WITH CHECK (TRUE);
+
+CREATE POLICY "Allow system update grants"
+  ON entitlement_grants FOR UPDATE
+  USING (TRUE);
+
 -- ============================================
 -- 7. SUBSCRIPTIONS TABLE
 -- ============================================
@@ -379,6 +394,15 @@ CREATE POLICY "Users can view own subscriptions"
   ON subscriptions FOR SELECT
   USING (auth.uid() = user_id);
 
+-- 決済Webhook等からの操作を許可
+CREATE POLICY "Allow system insert subscriptions"
+  ON subscriptions FOR INSERT
+  WITH CHECK (TRUE);
+
+CREATE POLICY "Allow system update subscriptions"
+  ON subscriptions FOR UPDATE
+  USING (TRUE);
+
 -- ============================================
 -- 8. TICKET_PACKS TABLE
 -- ============================================
@@ -406,6 +430,15 @@ ALTER TABLE ticket_packs ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users can view own ticket packs"
   ON ticket_packs FOR SELECT
   USING (auth.uid() = user_id);
+
+-- 決済Webhook等からの操作を許可
+CREATE POLICY "Allow system insert ticket packs"
+  ON ticket_packs FOR INSERT
+  WITH CHECK (TRUE);
+
+CREATE POLICY "Allow system update ticket packs"
+  ON ticket_packs FOR UPDATE
+  USING (TRUE);
 
 -- ============================================
 -- 9. CAMPAIGNS TABLE
@@ -474,6 +507,11 @@ ALTER TABLE billing_transactions ENABLE ROW LEVEL SECURITY;
 CREATE POLICY "Users can view own transactions"
   ON billing_transactions FOR SELECT
   USING (auth.uid() = user_id);
+
+-- 決済Webhook等からの操作を許可
+CREATE POLICY "Allow system insert transactions"
+  ON billing_transactions FOR INSERT
+  WITH CHECK (TRUE);
 
 -- ============================================
 -- 12. PRODUCT_CONFIG TABLE
