@@ -1,6 +1,6 @@
 /**
- * Supabase middleware utilities
- * For use in Next.js middleware to handle session refresh
+ * Supabase proxy utilities
+ * For use in Next.js proxy to handle session refresh
  */
 
 import { createServerClient } from '@supabase/ssr';

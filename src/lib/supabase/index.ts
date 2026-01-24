@@ -9,4 +9,4 @@ export {
   getUser,
   getSession,
 } from './server';
-export { updateSession } from './middleware';
+export { updateSession } from './proxy';
