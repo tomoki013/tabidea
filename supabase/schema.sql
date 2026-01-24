@@ -88,7 +88,8 @@ VALUES (1, 'sha256', 1, 'active', 'Initial version - simple SHA256 derivation');
 CREATE INDEX idx_plans_share_code ON plans(share_code);
 CREATE INDEX idx_plans_user_id ON plans(user_id);
 CREATE INDEX idx_plans_public ON plans(is_public, created_at DESC) WHERE is_public = TRUE;
-CREATE INDEX idx_plans_key_version ON plans(key_version) WHERE key_version < (SELECT MAX(version) FROM encryption_key_versions WHERE status = 'active');
+-- Index for finding plans that may need re-encryption (query by specific version in app code)
+CREATE INDEX idx_plans_key_version ON plans(key_version);
 
 -- RLS
 ALTER TABLE plans ENABLE ROW LEVEL SECURITY;
