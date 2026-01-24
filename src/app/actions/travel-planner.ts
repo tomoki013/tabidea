@@ -6,6 +6,10 @@ import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
 import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
+import { getUser } from "@/lib/supabase/server";
+import { planService } from "@/lib/plans/service";
+import { EntitlementService } from "@/lib/entitlements";
+import { createClient } from "@/lib/supabase/server";
 
 export type ActionState = {
   success: boolean;
@@ -20,7 +24,7 @@ export type OutlineActionState = {
     outline: PlanOutline;
     context: Article[];
     input: UserInput;
-    heroImage?: any;
+    heroImage?: { url: string; photographer: string; photographerUrl: string } | null;
   };
 };
 
@@ -72,11 +76,11 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
       : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
 
-    let contextArticles: any[] = [];
+    let contextArticles: Article[] = [];
     try {
         contextArticles = await scraper.search(query, { topK: 1 });
-    } catch (e) {
-        console.warn("[action] Vector search failed:", e);
+    } catch (searchError) {
+        console.warn("[action] Vector search failed:", searchError);
     }
 
     // 2. Prepare Prompt
@@ -159,7 +163,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       }
     };
 
-  } catch (error: any) {
+  } catch (error) {
     console.error("[action] Outline generation failed:", error);
     return { success: false, message: "プラン概要の作成に失敗しました。" };
   }
@@ -204,7 +208,7 @@ export async function generatePlanChunk(
     console.log(`[action] Chunk ${startDay}-${endDay} generated in ${Date.now() - startTime}ms`);
     return { success: true, data: days };
 
-  } catch (error: any) {
+  } catch (error) {
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
     return { success: false, message: "詳細プランの生成に失敗しました。" };
   }
@@ -428,5 +432,150 @@ export async function regeneratePlan(
   } catch (e) {
     console.error("Regeneration failed", e);
     return { success: false, message: "プランの再生成に失敗しました。" };
+  }
+}
+
+// ============================================
+// Plan Storage Actions (for authenticated users)
+// ============================================
+
+export type SavePlanResult = {
+  success: boolean;
+  shareCode?: string;
+  error?: string;
+};
+
+/**
+ * Save a plan to the database (for authenticated users)
+ */
+export async function savePlan(
+  input: UserInput,
+  itinerary: Itinerary,
+  isPublic: boolean = false
+): Promise<SavePlanResult> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const result = await planService.createPlan({
+      userId: user.id,
+      input,
+      itinerary,
+      isPublic,
+    });
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    return { success: true, shareCode: result.shareCode };
+  } catch (error) {
+    console.error("Failed to save plan:", error);
+    return { success: false, error: "プランの保存に失敗しました" };
+  }
+}
+
+/**
+ * Get user's plans count (for sync preview)
+ */
+export async function getUserPlansCount(): Promise<number> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return 0;
+    }
+
+    const supabase = await createClient();
+    const { count } = await supabase
+      .from("plans")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id);
+
+    return count || 0;
+  } catch (error) {
+    console.error("Failed to get plans count:", error);
+    return 0;
+  }
+}
+
+/**
+ * Delete a plan
+ */
+export async function deletePlan(planId: string): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const result = await planService.deletePlan(planId, user.id);
+    return result;
+  } catch (error) {
+    console.error("Failed to delete plan:", error);
+    return { success: false, error: "プランの削除に失敗しました" };
+  }
+}
+
+/**
+ * Update plan visibility
+ */
+export async function updatePlanVisibility(
+  planId: string,
+  isPublic: boolean
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const result = await planService.updatePlan(planId, user.id, { isPublic });
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update plan visibility:", error);
+    return { success: false, error: "プランの更新に失敗しました" };
+  }
+}
+
+/**
+ * Check if user can generate plans (entitlement check)
+ */
+export async function canGeneratePlan(): Promise<{
+  canGenerate: boolean;
+  remaining: number | null;
+  isAuthenticated: boolean;
+}> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      // Unauthenticated users can always generate (stored locally)
+      return { canGenerate: true, remaining: null, isAuthenticated: false };
+    }
+
+    const supabase = await createClient();
+    const entitlementService = new EntitlementService(supabase);
+    const status = await entitlementService.checkEntitlement(user.id, "plan_generation");
+
+    return {
+      canGenerate: status.hasAccess,
+      remaining: status.remaining,
+      isAuthenticated: true,
+    };
+  } catch (error) {
+    console.error("Failed to check entitlement:", error);
+    // Allow on error (fail open for better UX)
+    return { canGenerate: true, remaining: null, isAuthenticated: false };
   }
 }

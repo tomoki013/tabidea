@@ -83,3 +83,35 @@ export type {
   DeepPartial,
   DateRange,
 } from './common';
+
+// 認証関連型
+export type {
+  User,
+  AuthState,
+  Session,
+  AuthProvider,
+  LoginOptions,
+  AuthError,
+} from './auth';
+
+// プラン保存・課金関連型
+export type {
+  Plan,
+  CreatePlanParams,
+  UpdatePlanParams,
+  PlanListItem,
+  LocalPlan,
+  LocalPlanStorage,
+  EncryptedPlanData,
+  PlanEncryptionResult,
+  EntitlementType,
+  GrantType,
+  EntitlementStatus,
+  GrantSource,
+  ConsumeResult,
+  UserEntitlements,
+  RateLimitInfo,
+  RateLimitConfig,
+  SyncResult,
+  SyncPreviewInfo,
+} from './plans';

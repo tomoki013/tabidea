@@ -14,6 +14,7 @@ import {
 } from "react-icons/fa";
 import { throttle } from "@/lib/utils";
 import { usePlanModal } from "@/context/PlanModalContext";
+import { AuthButton } from "../AuthButton";
 
 export interface HeaderProps {
   forceShow?: boolean;
@@ -112,6 +113,8 @@ export default function Header({
                 <FaPen className="text-xs" />
                 <span>旅を計画する</span>
               </button>
+
+              <AuthButton />
             </nav>
 
             {/* Mobile Menu Toggle */}
