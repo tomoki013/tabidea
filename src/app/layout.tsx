@@ -9,18 +9,24 @@ import "./globals.css";
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
   variable: "--font-noto-sans-jp",
+  display: "swap",
+  preload: true,
 });
 
 const kaiseiDecol = Kaisei_Decol({
   weight: ["400", "700"],
   subsets: ["latin"],
   variable: "--font-kaisei-decol",
+  display: "swap",
+  preload: true,
 });
 
 const yomogi = Yomogi({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-yomogi",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
