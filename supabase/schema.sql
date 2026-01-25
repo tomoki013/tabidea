@@ -730,11 +730,16 @@ BEGIN
     NEW.id,
     NEW.email,
     COALESCE(NEW.raw_user_meta_data->>'full_name', NEW.raw_user_meta_data->>'name'),
-    NEW.raw_user_meta_data->>'avatar_url',
+    COALESCE(NEW.raw_user_meta_data->>'avatar_url', NEW.raw_user_meta_data->>'picture'),
     NEW.raw_app_meta_data->>'provider'
   );
 
-  PERFORM grant_free_tier(NEW.id);
+  -- Grant free tier entitlements (ignore errors to not block user creation)
+  BEGIN
+    PERFORM grant_free_tier(NEW.id);
+  EXCEPTION WHEN OTHERS THEN
+    RAISE WARNING 'Failed to grant free tier for user %: %', NEW.id, SQLERRM;
+  END;
 
   RETURN NEW;
 END;
