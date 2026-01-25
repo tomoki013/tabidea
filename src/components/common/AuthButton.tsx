@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaUser, FaMapMarkedAlt, FaSignOutAlt, FaChevronDown } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
 
@@ -25,7 +26,7 @@ export function AuthButton() {
 
   if (isLoading) {
     return (
-      <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse" />
+      <div className="w-8 h-8 rounded-full bg-[#e67e22]/20 animate-pulse" />
     );
   }
 
@@ -33,9 +34,10 @@ export function AuthButton() {
     return (
       <Link
         href="/auth/login"
-        className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors"
+        className="flex items-center gap-1.5 font-medium text-sm text-[#e67e22] hover:text-[#d35400] transition-colors group"
       >
-        ログイン
+        <FaUser className="text-[#e67e22]/70 group-hover:text-[#d35400] transition-colors" />
+        <span>ログイン</span>
       </Link>
     );
   }
@@ -53,7 +55,7 @@ export function AuthButton() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="flex items-center gap-2 rounded-full hover:ring-2 hover:ring-primary/20 transition-all"
+        className="flex items-center gap-2 p-1 rounded-full hover:bg-[#e67e22]/10 transition-all group"
         aria-label="ユーザーメニュー"
       >
         {user?.avatarUrl ? (
@@ -62,42 +64,67 @@ export function AuthButton() {
             alt={user.displayName || 'ユーザー'}
             width={32}
             height={32}
-            className="rounded-full"
+            className="rounded-full ring-2 ring-[#e67e22]/20 group-hover:ring-[#e67e22]/40 transition-all"
           />
         ) : (
-          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-            <span className="text-primary text-sm font-medium">
+          <div className="w-8 h-8 rounded-full bg-[#e67e22]/10 ring-2 ring-[#e67e22]/20 flex items-center justify-center group-hover:ring-[#e67e22]/40 transition-all">
+            <span className="text-[#e67e22] text-sm font-bold">
               {user?.displayName?.[0] || user?.email?.[0] || 'U'}
             </span>
           </div>
         )}
+        <FaChevronDown className={`text-xs text-[#e67e22]/60 transition-transform ${isMenuOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isMenuOpen && (
-        <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
-          <div className="px-4 py-3 border-b border-gray-100">
-            <p className="text-sm font-medium text-gray-900 truncate">
-              {user?.displayName || 'ユーザー'}
-            </p>
-            <p className="text-xs text-gray-500 truncate">{user?.email}</p>
+        <div className="absolute right-0 mt-3 w-64 bg-[#fcfbf9] rounded-xl shadow-xl border-2 border-dashed border-[#e67e22]/20 py-2 z-50 overflow-hidden">
+          {/* User info header */}
+          <div className="px-4 py-3 bg-[#e67e22]/5 border-b border-dashed border-[#e67e22]/20">
+            <div className="flex items-center gap-3">
+              {user?.avatarUrl ? (
+                <Image
+                  src={user.avatarUrl}
+                  alt={user.displayName || 'ユーザー'}
+                  width={40}
+                  height={40}
+                  className="rounded-full ring-2 ring-[#e67e22]/30"
+                />
+              ) : (
+                <div className="w-10 h-10 rounded-full bg-[#e67e22]/10 ring-2 ring-[#e67e22]/30 flex items-center justify-center">
+                  <span className="text-[#e67e22] text-lg font-bold">
+                    {user?.displayName?.[0] || user?.email?.[0] || 'U'}
+                  </span>
+                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-bold text-stone-800 truncate">
+                  {user?.displayName || 'ユーザー'}
+                </p>
+                <p className="text-xs text-stone-500 truncate">{user?.email}</p>
+              </div>
+            </div>
           </div>
 
-          <div className="py-1">
+          {/* Menu items */}
+          <div className="py-2">
             <Link
               href="/my-plans"
               onClick={() => setIsMenuOpen(false)}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              className="flex items-center gap-3 px-4 py-2.5 text-sm text-stone-700 hover:bg-[#e67e22]/5 hover:text-[#e67e22] transition-colors group"
             >
-              マイプラン
+              <FaMapMarkedAlt className="text-[#e67e22]/50 group-hover:text-[#e67e22] transition-colors" />
+              <span className="font-medium">マイプラン</span>
             </Link>
           </div>
 
-          <div className="border-t border-gray-100 pt-1">
+          {/* Logout */}
+          <div className="border-t border-dashed border-stone-200 py-2">
             <button
               onClick={handleSignOut}
-              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-stone-500 hover:bg-red-50 hover:text-red-600 transition-colors group"
             >
-              ログアウト
+              <FaSignOutAlt className="text-stone-400 group-hover:text-red-500 transition-colors" />
+              <span className="font-medium">ログアウト</span>
             </button>
           </div>
         </div>

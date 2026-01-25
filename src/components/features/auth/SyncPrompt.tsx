@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaCloudUploadAlt, FaCheck, FaTimes, FaSpinner } from 'react-icons/fa';
+import { FaCloudUploadAlt, FaCheck, FaTimes, FaSpinner, FaPlane } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
 import { getLocalPlans, syncLocalPlansToServer } from '@/lib/local-storage/plans';
@@ -84,14 +84,17 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
   // Show success message
   if (syncResult?.success) {
     return (
-      <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-green-50 border border-green-200 rounded-xl p-4 shadow-lg animate-in slide-in-from-bottom-4">
+      <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-[#fcfbf9] border-2 border-dashed border-[#27ae60]/40 rounded-2xl p-4 shadow-xl animate-in slide-in-from-bottom-4">
+        {/* Corner decoration */}
+        <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#27ae60]/20 rotate-45 rounded-sm" />
+
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-green-100 rounded-full">
-            <FaCheck className="text-green-600" />
+          <div className="p-3 bg-[#27ae60]/10 rounded-full">
+            <FaCheck className="text-[#27ae60]" />
           </div>
           <div>
-            <p className="font-medium text-green-800">同期完了</p>
-            <p className="text-sm text-green-600">
+            <p className="font-serif font-bold text-[#27ae60]">同期完了</p>
+            <p className="text-sm text-stone-600">
               {syncResult.syncedCount}件のプランを保存しました
             </p>
           </div>
@@ -102,29 +105,34 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
 
   // Show sync prompt
   return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-white border border-stone-200 rounded-xl p-4 shadow-lg animate-in slide-in-from-bottom-4">
+    <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-[#fcfbf9] border-2 border-dashed border-[#e67e22]/30 rounded-2xl p-4 shadow-xl animate-in slide-in-from-bottom-4">
+      {/* Corner decorations */}
+      <div className="absolute -top-1.5 -left-1.5 w-5 h-5 bg-[#e67e22]/20 rotate-45 rounded-sm" />
+      <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#27ae60]/20 -rotate-45 rounded-sm" />
+
       <button
         onClick={handleDismiss}
-        className="absolute top-2 right-2 p-1 text-stone-400 hover:text-stone-600"
+        className="absolute top-3 right-3 p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
         aria-label="閉じる"
       >
         <FaTimes size={12} />
       </button>
 
       <div className="flex items-start gap-3">
-        <div className="p-2 bg-primary/10 rounded-full">
-          <FaCloudUploadAlt className="text-primary" />
+        <div className="p-3 bg-[#e67e22]/10 rounded-full">
+          <FaCloudUploadAlt className="text-[#e67e22]" />
         </div>
         <div className="flex-1">
-          <p className="font-medium text-stone-800 pr-4">
+          <p className="font-serif font-bold text-stone-800 pr-6">
             ローカルのプランを同期
           </p>
-          <p className="text-sm text-stone-600 mt-1 mb-3">
+          <p className="text-sm text-stone-600 mt-1 mb-3 flex items-center gap-1">
+            <FaPlane className="text-[#e67e22]/50 text-xs" />
             {localPlansCount}件のプランをクラウドに保存しますか？
           </p>
 
           {syncResult && !syncResult.success && (
-            <div className="mb-3 p-2 bg-red-50 rounded text-xs text-red-600">
+            <div className="mb-3 p-2 bg-red-50 border border-dashed border-red-200 rounded-lg text-xs text-red-600">
               一部のプランの同期に失敗しました
             </div>
           )}
@@ -133,7 +141,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
             <button
               onClick={handleSync}
               disabled={isSyncing}
-              className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
+              className="flex items-center gap-2 px-4 py-2.5 bg-[#e67e22] text-white rounded-full text-sm font-bold hover:bg-[#d35400] disabled:opacity-50 transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
             >
               {isSyncing ? (
                 <>
@@ -150,7 +158,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
             <button
               onClick={handleDismiss}
               disabled={isSyncing}
-              className="px-4 py-2 text-stone-600 hover:text-stone-800 text-sm"
+              className="px-4 py-2.5 text-stone-500 hover:text-[#e67e22] text-sm font-medium transition-colors"
             >
               後で
             </button>

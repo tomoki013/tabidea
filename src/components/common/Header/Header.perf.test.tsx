@@ -3,6 +3,7 @@ import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 import Header from "./Header";
 import React from "react";
 import { PlanModalProvider } from "@/context/PlanModalContext";
+import { AuthProvider } from "@/context/AuthContext";
 
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
@@ -14,12 +15,24 @@ vi.mock("@/components/common", () => ({
   PlanModal: () => <div data-testid="plan-modal" />,
 }));
 
+// Mock Supabase client for AuthProvider
+vi.mock("@/lib/supabase/client", () => ({
+  createClient: () => ({
+    auth: {
+      getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+      onAuthStateChange: () => ({
+        data: { subscription: { unsubscribe: () => {} } },
+      }),
+    },
+  }),
+}));
+
 describe("Header Performance Benchmark", () => {
   let scrollYSpy: ReturnType<typeof vi.spyOn>;
 
   beforeEach(() => {
     // Reset scroll position
-    // @ts-ignore
+    // @ts-expect-error - scrollY is read-only but we need to set it for testing
     window.scrollY = 0;
 
     // Spy on window.scrollY getter
@@ -33,9 +46,11 @@ describe("Header Performance Benchmark", () => {
 
   it("measures window.scrollY accesses during scroll events", () => {
     render(
-      <PlanModalProvider>
-        <Header forceShow={true} />
-      </PlanModalProvider>
+      <AuthProvider>
+        <PlanModalProvider>
+          <Header forceShow={true} />
+        </PlanModalProvider>
+      </AuthProvider>
     );
 
     // Initial check consumes 1 access

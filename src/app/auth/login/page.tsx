@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { FaMapMarkerAlt, FaPlane, FaPassport, FaArrowLeft } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
 import type { AuthProvider } from '@/types';
@@ -35,31 +37,49 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-muted/30 px-4">
+    <main className="min-h-screen flex items-center justify-center bg-[#fcfbf9] px-4 py-12">
+      {/* Decorative elements */}
+      <div className="fixed top-20 left-10 text-[#e67e22]/10 rotate-12 hidden lg:block">
+        <FaPlane className="text-8xl" />
+      </div>
+      <div className="fixed bottom-20 right-10 text-[#27ae60]/10 -rotate-12 hidden lg:block">
+        <FaPassport className="text-8xl" />
+      </div>
+
       <div className="w-full max-w-md">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
+        {/* Card with scrapbook aesthetic */}
+        <div className="relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-[#e67e22]/30 p-8 shadow-lg">
+          {/* Corner tape decorations */}
+          <div className="absolute -top-2 -left-2 w-8 h-8 bg-[#e67e22]/20 rotate-45 rounded-sm" />
+          <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#27ae60]/20 -rotate-45 rounded-sm" />
+
+          {/* Header with travel icon */}
           <div className="text-center mb-8">
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#e67e22]/10 mb-4">
+              <FaMapMarkerAlt className="text-2xl text-[#e67e22]" />
+            </div>
+            <h1 className="font-serif text-3xl font-bold text-stone-800 mb-2">
               ログイン
             </h1>
-            <p className="text-gray-600 text-sm">
-              ログインすると、プランを保存して
+            <p className="text-stone-500 text-sm font-hand">
+              あなたの旅の思い出を
               <br />
-              いつでも見返すことができます
+              大切に保存しましょう
             </p>
           </div>
 
           {error && (
-            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
-              <p className="text-red-600 text-sm">{error}</p>
+            <div className="mb-6 p-4 bg-red-50 border border-dashed border-red-300 rounded-xl">
+              <p className="text-red-600 text-sm text-center">{error}</p>
             </div>
           )}
 
           <div className="space-y-4">
+            {/* Google Login Button */}
             <button
               onClick={() => handleSignIn('google')}
               disabled={isSigningIn || isLoading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white border-2 border-stone-200 rounded-xl hover:border-[#e67e22]/50 hover:bg-[#e67e22]/5 transition-all disabled:opacity-50 disabled:cursor-not-allowed group"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
@@ -79,43 +99,72 @@ export default function LoginPage() {
                   d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
                 />
               </svg>
-              <span className="text-gray-700 font-medium">
+              <span className="text-stone-700 font-bold group-hover:text-[#e67e22] transition-colors">
                 Googleでログイン
               </span>
             </button>
 
-            <button
+            {/* X Login Button - Commented out */}
+            {/* <button
               onClick={() => handleSignIn('twitter')}
               disabled={isSigningIn || isLoading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-stone-900 text-white rounded-xl hover:bg-stone-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
-              <span className="font-medium">Xでログイン</span>
-            </button>
+              <span className="font-bold">Xでログイン</span>
+            </button> */}
           </div>
 
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-500 text-center">
+          {/* Benefits section */}
+          <div className="mt-8 pt-6 border-t border-dashed border-stone-200">
+            <p className="text-xs text-stone-400 text-center mb-4">
+              ログインするとできること
+            </p>
+            <div className="grid grid-cols-2 gap-3 text-xs text-stone-600">
+              <div className="flex items-center gap-2 bg-[#e67e22]/5 p-2 rounded-lg">
+                <span className="text-[#e67e22]">✓</span>
+                プランの保存
+              </div>
+              <div className="flex items-center gap-2 bg-[#27ae60]/5 p-2 rounded-lg">
+                <span className="text-[#27ae60]">✓</span>
+                プランの共有
+              </div>
+              <div className="flex items-center gap-2 bg-[#e67e22]/5 p-2 rounded-lg">
+                <span className="text-[#e67e22]">✓</span>
+                いつでも閲覧
+              </div>
+              <div className="flex items-center gap-2 bg-[#27ae60]/5 p-2 rounded-lg">
+                <span className="text-[#27ae60]">✓</span>
+                複数デバイス対応
+              </div>
+            </div>
+          </div>
+
+          {/* Terms */}
+          <div className="mt-6 pt-4 border-t border-dashed border-stone-200">
+            <p className="text-xs text-stone-400 text-center">
               ログインすることで、
-              <a href="/terms" className="text-primary hover:underline">
+              <Link href="/terms" className="text-[#e67e22] hover:underline">
                 利用規約
-              </a>
+              </Link>
               と
-              <a href="/privacy" className="text-primary hover:underline">
+              <Link href="/privacy" className="text-[#e67e22] hover:underline">
                 プライバシーポリシー
-              </a>
+              </Link>
               に同意したものとみなされます。
             </p>
           </div>
         </div>
 
+        {/* Back button */}
         <div className="mt-6 text-center">
           <button
             onClick={() => router.back()}
-            className="text-gray-600 hover:text-gray-900 text-sm"
+            className="inline-flex items-center gap-2 text-stone-500 hover:text-[#e67e22] text-sm transition-colors"
           >
+            <FaArrowLeft className="text-xs" />
             戻る
           </button>
         </div>
