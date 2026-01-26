@@ -40,6 +40,7 @@ interface ResultViewProps {
   showReferences?: boolean;
   initialChatHistory?: { role: string; text: string }[];
   shareCode?: string;
+  localId?: string;
 }
 
 export default function ResultView({
@@ -55,6 +56,7 @@ export default function ResultView({
   showReferences = true,
   initialChatHistory,
   shareCode,
+  localId,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -360,7 +362,7 @@ export default function ResultView({
 
         {/* Share Buttons and PDF Download */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
-          {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} />}
+          {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
           <PDFDownloadButton itinerary={result} />
         </div>
       </div>

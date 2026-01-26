@@ -11,6 +11,7 @@ vi.mock("next/image", () => ({
 vi.mock("@/app/actions/travel-planner", () => ({
   generatePlan: vi.fn(),
   regeneratePlan: vi.fn(),
+  savePlan: vi.fn(),
 }));
 
 // Mock next/navigation
@@ -21,6 +22,25 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),
   }),
+}));
+
+// Mock AuthContext
+vi.mock("@/context/AuthContext", () => ({
+  useAuth: () => ({
+    isAuthenticated: false,
+    user: null,
+    session: null,
+    isLoading: false,
+    signIn: vi.fn(),
+    signOut: vi.fn(),
+    refreshSession: vi.fn(),
+  }),
+}));
+
+// Mock local storage
+vi.mock("@/lib/local-storage/plans", () => ({
+  saveLocalPlan: vi.fn(() => ({ id: "local_test_123" })),
+  getLocalPlans: vi.fn(() => []),
 }));
 
 it("renders the initial form", () => {

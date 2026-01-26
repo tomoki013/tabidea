@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useMemo, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Itinerary, UserInput } from '@/types';
-import { encodePlanData } from "@/lib/utils";
 import { FaFacebook, FaLine, FaLink, FaShareAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
@@ -11,6 +10,7 @@ interface ShareButtonsProps {
   result: Itinerary;
   className?: string;
   shareCode?: string;
+  localId?: string;
 }
 
 const emptySubscribe = () => () => {};
@@ -20,21 +20,23 @@ export default function ShareButtons({
   result,
   className = "",
   shareCode,
+  localId,
 }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  // Memoize the encoded plan data to avoid recalculating on every render
-  const encodedData = useMemo(
-    () => encodePlanData(input, result),
-    [input, result]
-  );
-
-  // Use shareCode for short URL if available, otherwise use encoded URL
+  // Generate share URL based on shareCode or localId
   const shareUrl = useSyncExternalStore(
     emptySubscribe,
-    () => shareCode
-      ? `${window.location.origin}/plan/${shareCode}`
-      : `${window.location.origin}/plan?q=${encodedData}`,
+    () => {
+      if (shareCode) {
+        return `${window.location.origin}/plan/${shareCode}`;
+      }
+      if (localId) {
+        return `${window.location.origin}/plan/local/${localId}`;
+      }
+      // No share URL available
+      return "";
+    },
     () => ""
   );
 
@@ -80,6 +82,7 @@ export default function ShareButtons({
     shareUrl
   )}`;
 
+  // Don't render if no share URL available
   if (!shareUrl) return null;
 
   return (

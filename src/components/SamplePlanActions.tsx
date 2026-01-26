@@ -4,8 +4,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaWandMagicSparkles, FaPenToSquare } from "react-icons/fa6";
 import { UserInput, Itinerary, DayPlan } from '@/types';
-import { encodePlanData, splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
+import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
+import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
+import { saveLocalPlan } from "@/lib/local-storage/plans";
+import { useAuth } from "@/context/AuthContext";
 import { PlanModal } from "@/components/common";
 import LoadingView from "@/components/features/planner/LoadingView";
 
@@ -15,8 +17,10 @@ interface SamplePlanActionsProps {
 
 export default function SamplePlanActions({ sampleInput }: SamplePlanActionsProps) {
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const [showCustomizeModal, setShowCustomizeModal] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState<string>("");
 
   const handleGenerate = async () => {
@@ -34,7 +38,13 @@ export default function SamplePlanActions({ sampleInput }: SamplePlanActionsProp
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
 
       // Step 2: Parallel Chunk Generation
-      const totalDays = extractDuration(updatedInput.dates);
+      let totalDays = extractDuration(updatedInput.dates);
+
+      // If duration is 0 (undecided), fallback to the AI-generated outline duration
+      if (totalDays === 0 && outline.days.length > 0) {
+        totalDays = outline.days.length;
+      }
+
       const chunks = splitDaysIntoChunks(totalDays);
 
       const chunkPromises = chunks.map(chunk => {
@@ -60,9 +70,9 @@ export default function SamplePlanActions({ sampleInput }: SamplePlanActionsProp
         id: simpleId,
         destination: outline.destination,
         description: outline.description,
-        heroImage: heroImage?.url || null,
-        heroImagePhotographer: heroImage?.photographer || null,
-        heroImagePhotographerUrl: heroImage?.photographerUrl || null,
+        heroImage: heroImage?.url || undefined,
+        heroImagePhotographer: heroImage?.photographer || undefined,
+        heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
         days: mergedDays,
         references: context.map(c => ({
           title: c.title,
@@ -72,21 +82,45 @@ export default function SamplePlanActions({ sampleInput }: SamplePlanActionsProp
         }))
       };
 
-      // Redirect to result URL
-      const encoded = encodePlanData(updatedInput, finalPlan);
-      router.push(`/plan?q=${encoded}`);
+      // Step 4: Save and Redirect
+      setIsSaving(true);
+
+      if (isAuthenticated) {
+        // Save to database for authenticated users
+        const saveResult = await savePlan(updatedInput, finalPlan, false);
+        if (saveResult.success && saveResult.shareCode) {
+          router.push(`/plan/${saveResult.shareCode}`);
+        } else {
+          // Fallback to local storage if DB save fails
+          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
+          const localPlan = saveLocalPlan(updatedInput, finalPlan);
+          router.push(`/plan/local/${localPlan.id}`);
+        }
+      } else {
+        // Save to local storage for unauthenticated users
+        const localPlan = saveLocalPlan(updatedInput, finalPlan);
+        router.push(`/plan/local/${localPlan.id}`);
+      }
 
     } catch (e: unknown) {
       console.error(e);
       setError(e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。");
       setIsGenerating(false);
+      setIsSaving(false);
     }
   };
 
   if (isGenerating) {
     return (
       <div className="fixed inset-0 z-50 bg-[#fcfbf9]">
-        <LoadingView />
+        {isSaving ? (
+          <div className="flex flex-col items-center justify-center min-h-screen gap-4">
+            <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+            <p className="text-stone-600">プランを保存しています...</p>
+          </div>
+        ) : (
+          <LoadingView />
+        )}
       </div>
     );
   }
