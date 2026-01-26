@@ -2,8 +2,9 @@ import { Metadata } from 'next';
 import { redirect, notFound } from 'next/navigation';
 
 import { planService } from '@/lib/plans/service';
-import { getUser } from '@/lib/supabase/server';
+import { getUser, createClient } from '@/lib/supabase/server';
 import PlanIdClient from './PlanIdClient';
+import type { ChatMessage } from '@/app/actions/travel-planner';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -61,12 +62,33 @@ export default async function PlanIdPage({ params }: PageProps) {
     notFound();
   }
 
+  // Load chat messages
+  let initialChatMessages: ChatMessage[] = [];
+  try {
+    const supabase = await createClient();
+    const { data: messages } = await supabase
+      .from('plan_chat_messages')
+      .select('role, content')
+      .eq('plan_id', plan.id)
+      .order('sequence_number', { ascending: true });
+
+    if (messages) {
+      initialChatMessages = messages.map((msg) => ({
+        role: msg.role as 'user' | 'assistant',
+        content: msg.content,
+      }));
+    }
+  } catch (e) {
+    console.error('Failed to load chat messages:', e);
+  }
+
   return (
     <PlanIdClient
       plan={plan}
       input={plan.input}
       itinerary={plan.itinerary}
       planId={id}
+      initialChatMessages={initialChatMessages}
     />
   );
 }

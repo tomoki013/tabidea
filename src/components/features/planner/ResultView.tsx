@@ -32,6 +32,7 @@ interface ResultViewProps {
     overridePlan?: Itinerary
   ) => void;
   onResultChange?: (result: Itinerary) => void;
+  onChatChange?: (messages: { role: string; text: string }[]) => void;
   isUpdating?: boolean;
   onEditRequest?: (stepIndex: number) => void;
   showRequestSummary?: boolean;
@@ -48,6 +49,7 @@ export default function ResultView({
   input,
   onRegenerate,
   onResultChange,
+  onChatChange,
   isUpdating = false,
   onEditRequest,
   showRequestSummary = true,
@@ -674,6 +676,7 @@ export default function ResultView({
                           onRegenerate={onRegenerate}
                           isRegenerating={isUpdating}
                           initialChatHistory={initialChatHistory}
+                          onChatChange={onChatChange}
                         />
                       </div>
                     </div>

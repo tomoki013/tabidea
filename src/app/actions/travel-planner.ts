@@ -698,6 +698,37 @@ export async function deleteAccount(): Promise<{ success: boolean; error?: strin
 }
 
 /**
+ * Update plan itinerary and input (for plan changes/regeneration)
+ */
+export async function updatePlanItinerary(
+  planId: string,
+  itinerary: Itinerary,
+  input?: UserInput
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const result = await planService.updatePlan(planId, user.id, {
+      itinerary,
+      ...(input && { input }),
+    });
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update plan itinerary:", error);
+    return { success: false, error: "プランの更新に失敗しました" };
+  }
+}
+
+/**
  * Get plan by ID (for logged-in user only)
  */
 export async function getPlanById(planId: string): Promise<{
@@ -745,5 +776,239 @@ export async function getPlanById(planId: string): Promise<{
   } catch (error) {
     console.error("Failed to get plan:", error);
     return { success: false, error: "プランの取得に失敗しました" };
+  }
+}
+
+// ============================================
+// Chat Message Actions
+// ============================================
+
+export type ChatMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+};
+
+/**
+ * Save chat messages for a plan
+ */
+export async function savePlanChatMessages(
+  planId: string,
+  messages: ChatMessage[]
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const supabase = await createClient();
+
+    // Verify plan ownership
+    const { data: plan, error: planError } = await supabase
+      .from('plans')
+      .select('id, user_id')
+      .eq('id', planId)
+      .eq('user_id', user.id)
+      .single();
+
+    if (planError || !plan) {
+      return { success: false, error: "プランが見つからないか、アクセス権がありません" };
+    }
+
+    // Delete existing messages
+    await supabase
+      .from('plan_chat_messages')
+      .delete()
+      .eq('plan_id', planId);
+
+    // Insert new messages if there are any
+    if (messages.length > 0) {
+      const messagesToInsert = messages.map((msg, index) => ({
+        plan_id: planId,
+        role: msg.role,
+        content: msg.content,
+        sequence_number: index + 1,
+      }));
+
+      const { error: insertError } = await supabase
+        .from('plan_chat_messages')
+        .insert(messagesToInsert);
+
+      if (insertError) {
+        console.error("Failed to insert chat messages:", insertError);
+        return { success: false, error: "チャット履歴の保存に失敗しました" };
+      }
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to save chat messages:", error);
+    return { success: false, error: "チャット履歴の保存に失敗しました" };
+  }
+}
+
+/**
+ * Load chat messages for a plan
+ */
+export async function loadPlanChatMessages(
+  planId: string
+): Promise<{
+  success: boolean;
+  messages?: ChatMessage[];
+  error?: string;
+}> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const supabase = await createClient();
+
+    // Verify plan ownership
+    const { data: plan, error: planError } = await supabase
+      .from('plans')
+      .select('id, user_id')
+      .eq('id', planId)
+      .eq('user_id', user.id)
+      .single();
+
+    if (planError || !plan) {
+      return { success: false, error: "プランが見つからないか、アクセス権がありません" };
+    }
+
+    // Get chat messages
+    const { data: messages, error: messagesError } = await supabase
+      .from('plan_chat_messages')
+      .select('role, content')
+      .eq('plan_id', planId)
+      .order('sequence_number', { ascending: true });
+
+    if (messagesError) {
+      console.error("Failed to load chat messages:", messagesError);
+      return { success: false, error: "チャット履歴の取得に失敗しました" };
+    }
+
+    return {
+      success: true,
+      messages: (messages || []).map((msg) => ({
+        role: msg.role as 'user' | 'assistant',
+        content: msg.content,
+      })),
+    };
+  } catch (error) {
+    console.error("Failed to load chat messages:", error);
+    return { success: false, error: "チャット履歴の取得に失敗しました" };
+  }
+}
+
+// ============================================
+// Admin Actions
+// ============================================
+
+/**
+ * Check if current user is admin
+ */
+export async function isCurrentUserAdmin(): Promise<boolean> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return false;
+    }
+
+    const supabase = await createClient();
+    const { data, error } = await supabase
+      .from('users')
+      .select('is_admin')
+      .eq('id', user.id)
+      .single();
+
+    if (error || !data) {
+      return false;
+    }
+
+    return data.is_admin === true;
+  } catch (error) {
+    console.error("Failed to check admin status:", error);
+    return false;
+  }
+}
+
+/**
+ * Grant admin role to a user (admin only)
+ */
+export async function grantAdminRole(
+  targetUserId: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    // Check if current user is admin
+    const isAdmin = await isCurrentUserAdmin();
+    if (!isAdmin) {
+      return { success: false, error: "管理者権限が必要です" };
+    }
+
+    const adminClient = await createAdminClient();
+    const { error } = await adminClient
+      .from('users')
+      .update({ is_admin: true })
+      .eq('id', targetUserId);
+
+    if (error) {
+      console.error("Failed to grant admin role:", error);
+      return { success: false, error: "管理者権限の付与に失敗しました" };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to grant admin role:", error);
+    return { success: false, error: "管理者権限の付与に失敗しました" };
+  }
+}
+
+/**
+ * Set initial admin user (via service role - for setup)
+ * This should only be used once during initial setup
+ */
+export async function setInitialAdmin(
+  userEmail: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    // This requires the admin client (service role)
+    const adminClient = await createAdminClient();
+
+    // Find user by email
+    const { data: users, error: findError } = await adminClient
+      .from('users')
+      .select('id, email')
+      .eq('email', userEmail);
+
+    if (findError || !users || users.length === 0) {
+      return { success: false, error: "ユーザーが見つかりません" };
+    }
+
+    // Set as admin
+    const { error } = await adminClient
+      .from('users')
+      .update({ is_admin: true })
+      .eq('id', users[0].id);
+
+    if (error) {
+      console.error("Failed to set initial admin:", error);
+      return { success: false, error: "管理者の設定に失敗しました" };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to set initial admin:", error);
+    return { success: false, error: "管理者の設定に失敗しました" };
   }
 }

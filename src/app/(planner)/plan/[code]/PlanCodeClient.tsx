@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
-import { regeneratePlan } from '@/app/actions/travel-planner';
+import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
@@ -17,6 +17,7 @@ interface PlanCodeClientProps {
   shareCode: string;
   isOwner: boolean;
   isAuthenticated: boolean;
+  initialChatMessages?: ChatMessage[];
 }
 
 export default function PlanCodeClient({
@@ -24,22 +25,55 @@ export default function PlanCodeClient({
   input: initialInput,
   itinerary: initialItinerary,
   shareCode,
-  isOwner: _isOwner,
-  isAuthenticated: _isAuthenticated,
+  isOwner,
+  isAuthenticated,
+  initialChatMessages,
 }: PlanCodeClientProps) {
-  // Reserved for future use: save button for owners, login prompt for unauthenticated
-  void _isOwner;
-  void _isAuthenticated;
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
-  const [status, setStatus] = useState<'idle' | 'regenerating'>('idle');
+  const [status, setStatus] = useState<'idle' | 'regenerating' | 'saving'>('idle');
   const [chatHistoryToKeep, setChatHistoryToKeep] = useState<
     { role: string; text: string }[]
-  >([]);
+  >(initialChatMessages?.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', text: m.content })) || []);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+
+  // Track if save is pending to debounce
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Save plan to DB (for owners only)
+  const savePlanToDb = useCallback(async (itinerary: Itinerary) => {
+    if (!isOwner || !isAuthenticated) return;
+
+    try {
+      const result = await updatePlanItinerary(plan.id, itinerary, input);
+      if (!result.success) {
+        console.error('Failed to save plan:', result.error);
+      }
+    } catch (e) {
+      console.error('Failed to save plan:', e);
+    }
+  }, [isOwner, isAuthenticated, plan.id, input]);
+
+  // Save chat messages to DB (for owners only)
+  const saveChatToDb = useCallback(async (messages: { role: string; text: string }[]) => {
+    if (!isOwner || !isAuthenticated) return;
+
+    try {
+      const chatMessages: ChatMessage[] = messages.map(m => ({
+        role: m.role === 'model' ? 'assistant' : 'user',
+        content: m.text,
+      }));
+      const result = await savePlanChatMessages(plan.id, chatMessages);
+      if (!result.success) {
+        console.error('Failed to save chat:', result.error);
+      }
+    } catch (e) {
+      console.error('Failed to save chat:', e);
+    }
+  }, [isOwner, isAuthenticated, plan.id]);
 
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[],
@@ -54,11 +88,14 @@ export default function PlanCodeClient({
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
       if (response.success && response.data) {
-        // For share_code based plans, update the result in place
-        // The changes will only be temporary (not saved to DB)
-        // unless the user explicitly saves
         setResult(response.data);
         setStatus('idle');
+
+        // Save to DB if owner
+        if (isOwner && isAuthenticated) {
+          await savePlanToDb(response.data);
+          await saveChatToDb(chatHistory);
+        }
 
         // Scroll to top
         setTimeout(() => {
@@ -78,11 +115,27 @@ export default function PlanCodeClient({
     router.push('/');
   };
 
-  const handleResultChange = (newResult: Itinerary) => {
+  const handleResultChange = useCallback((newResult: Itinerary) => {
     setResult(newResult);
-    // For share_code plans, changes are local only
-    // Could add a "save changes" button for owners
-  };
+
+    // Debounce save to DB for owners
+    if (isOwner && isAuthenticated) {
+      if (saveTimeoutRef.current) {
+        clearTimeout(saveTimeoutRef.current);
+      }
+      saveTimeoutRef.current = setTimeout(() => {
+        savePlanToDb(newResult);
+      }, 1000); // Save 1 second after last change
+    }
+  }, [isOwner, isAuthenticated, savePlanToDb]);
+
+  // Save chat messages when they change
+  const handleChatChange = useCallback((messages: { role: string; text: string }[]) => {
+    setChatHistoryToKeep(messages);
+    if (isOwner && isAuthenticated) {
+      saveChatToDb(messages);
+    }
+  }, [isOwner, isAuthenticated, saveChatToDb]);
 
   const handleEditRequest = (stepIndex: number) => {
     setInitialEditStep(stepIndex);
@@ -113,6 +166,7 @@ export default function PlanCodeClient({
           onRestart={handleRestart}
           onRegenerate={handleRegenerate}
           onResultChange={handleResultChange}
+          onChatChange={handleChatChange}
           isUpdating={status === 'regenerating'}
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
