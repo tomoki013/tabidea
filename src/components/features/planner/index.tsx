@@ -3,8 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserInput, Itinerary, DayPlan } from '@/types';
-import { encodePlanData, splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { generatePlanOutline, generatePlanChunk } from "@/app/actions/travel-planner";
+import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
+import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
+import { saveLocalPlan } from "@/lib/local-storage/plans";
+import { useAuth } from "@/context/AuthContext";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -27,6 +29,7 @@ interface TravelPlannerProps {
 
 export default function TravelPlanner({ initialInput, initialStep, onClose }: TravelPlannerProps) {
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const [step, setStep] = useState(initialStep ?? 0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [input, setInput] = useState<UserInput>(() => {
@@ -277,9 +280,9 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         id: simpleId,
         destination: outline.destination,
         description: outline.description,
-        heroImage: heroImage?.url || null,
-        heroImagePhotographer: heroImage?.photographer || null,
-        heroImagePhotographerUrl: heroImage?.photographerUrl || null,
+        heroImage: heroImage?.url || undefined,
+        heroImagePhotographer: heroImage?.photographer || undefined,
+        heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
         days: mergedDays,
         // References from context
         references: context.map(c => ({
@@ -290,9 +293,23 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         }))
       };
 
-      // Step 4: Redirect
-      const encoded = encodePlanData(updatedInput, finalPlan);
-      router.push(`/plan?q=${encoded}`);
+      // Step 4: Save and Redirect
+      if (isAuthenticated) {
+        // Save to database for authenticated users
+        const saveResult = await savePlan(updatedInput, finalPlan, false);
+        if (saveResult.success && saveResult.shareCode) {
+          router.push(`/plan/${saveResult.shareCode}`);
+        } else {
+          // Fallback to local storage if DB save fails
+          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
+          const localPlan = saveLocalPlan(updatedInput, finalPlan);
+          router.push(`/plan/local/${localPlan.id}`);
+        }
+      } else {
+        // Save to local storage for unauthenticated users
+        const localPlan = saveLocalPlan(updatedInput, finalPlan);
+        router.push(`/plan/local/${localPlan.id}`);
+      }
 
       // Close modal if it's open
       if (onClose) {

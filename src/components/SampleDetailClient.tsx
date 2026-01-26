@@ -7,8 +7,9 @@ import ResultView from "@/components/features/planner/ResultView";
 import RequestSummary from "@/components/features/planner/RequestSummary";
 import SamplePlanActions from "@/components/SamplePlanActions";
 import { PlanModal } from "@/components/common";
-import { regeneratePlan } from "@/app/actions/travel-planner";
-import { encodePlanData } from "@/lib/utils";
+import { regeneratePlan, savePlan } from "@/app/actions/travel-planner";
+import { saveLocalPlan } from "@/lib/local-storage/plans";
+import { useAuth } from "@/context/AuthContext";
 
 interface SampleDetailClientProps {
   sampleInput: UserInput;
@@ -20,6 +21,7 @@ export default function SampleDetailClient({
   sampleItinerary,
 }: SampleDetailClientProps) {
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const [result, setResult] = useState<Itinerary>(sampleItinerary);
   const [isUpdating, setIsUpdating] = useState(false);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
@@ -34,8 +36,20 @@ export default function SampleDetailClient({
     try {
       const response = await regeneratePlan(planToUse, chatHistory);
       if (response.success && response.data) {
-        const encoded = encodePlanData(sampleInput, response.data);
-        router.push(`/plan?q=${encoded}`);
+        // Save the regenerated plan
+        if (isAuthenticated) {
+          const saveResult = await savePlan(sampleInput, response.data, false);
+          if (saveResult.success && saveResult.shareCode) {
+            router.push(`/plan/${saveResult.shareCode}`);
+          } else {
+            console.error("Failed to save to DB:", saveResult.error);
+            const localPlan = saveLocalPlan(sampleInput, response.data);
+            router.push(`/plan/local/${localPlan.id}`);
+          }
+        } else {
+          const localPlan = saveLocalPlan(sampleInput, response.data);
+          router.push(`/plan/local/${localPlan.id}`);
+        }
       } else {
         console.error(response.message);
       }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -13,11 +13,13 @@ import {
   FaExternalLinkAlt,
   FaSuitcase,
   FaPlane,
+  FaSync,
 } from 'react-icons/fa';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, updatePlanVisibility } from '@/app/actions/travel-planner';
+import { deletePlan, updatePlanVisibility, savePlan } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
+import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
 
 interface MyPlansClientProps {
   initialPlans: PlanListItem[];
@@ -32,6 +34,60 @@ export default function MyPlansClient({
   const [plans, setPlans] = useState<PlanListItem[]>(initialPlans);
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState<string | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+
+  // Sync local plans to database when component mounts
+  const syncLocalPlans = useCallback(async () => {
+    const localPlans = getLocalPlans();
+    if (localPlans.length === 0) return;
+
+    setIsSyncing(true);
+    setSyncMessage(`${localPlans.length}件のローカルプランを同期中...`);
+
+    let syncedCount = 0;
+    const newPlans: PlanListItem[] = [];
+
+    for (const localPlan of localPlans) {
+      try {
+        const result = await savePlan(localPlan.input, localPlan.itinerary, false);
+        if (result.success && result.shareCode) {
+          syncedCount++;
+          deleteLocalPlan(localPlan.id);
+
+          // Add to plans list
+          newPlans.push({
+            id: result.shareCode,
+            shareCode: result.shareCode,
+            destination: localPlan.itinerary.destination || null,
+            durationDays: localPlan.itinerary.days?.length || null,
+            thumbnailUrl: localPlan.itinerary.heroImage || null,
+            isPublic: false,
+            createdAt: new Date(),
+            updatedAt: new Date(),
+          });
+        }
+      } catch (error) {
+        console.error('Failed to sync local plan:', error);
+      }
+    }
+
+    if (syncedCount > 0) {
+      setPlans(prev => [...newPlans, ...prev]);
+      setSyncMessage(`${syncedCount}件のプランを同期しました`);
+    } else {
+      setSyncMessage(null);
+    }
+
+    setIsSyncing(false);
+
+    // Clear message after 3 seconds
+    setTimeout(() => setSyncMessage(null), 3000);
+  }, []);
+
+  useEffect(() => {
+    syncLocalPlans();
+  }, [syncLocalPlans]);
 
   const handleDelete = async (planId: string) => {
     if (!confirm('このプランを削除しますか？この操作は取り消せません。')) {
@@ -101,6 +157,20 @@ export default function MyPlansClient({
             </button>
           </div>
         </div>
+
+        {/* Sync Status */}
+        {(isSyncing || syncMessage) && (
+          <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${
+            isSyncing ? 'bg-blue-50 text-blue-700' : 'bg-green-50 text-green-700'
+          }`}>
+            {isSyncing ? (
+              <FaSync className="animate-spin" />
+            ) : (
+              <FaSync />
+            )}
+            <span>{syncMessage}</span>
+          </div>
+        )}
 
         {/* Plans List */}
         {plans.length === 0 ? (

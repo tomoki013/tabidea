@@ -22,6 +22,26 @@ vi.mock("next/navigation", () => ({
 vi.mock("@/app/actions/travel-planner", () => ({
   generatePlanOutline: vi.fn(),
   generatePlanChunk: vi.fn(),
+  savePlan: vi.fn(),
+}));
+
+// Mock AuthContext
+vi.mock("@/context/AuthContext", () => ({
+  useAuth: () => ({
+    isAuthenticated: false,
+    user: null,
+    session: null,
+    isLoading: false,
+    signIn: vi.fn(),
+    signOut: vi.fn(),
+    refreshSession: vi.fn(),
+  }),
+}));
+
+// Mock local storage
+vi.mock("@/lib/local-storage/plans", () => ({
+  saveLocalPlan: vi.fn(() => ({ id: "local_test_123" })),
+  getLocalPlans: vi.fn(() => []),
 }));
 
 const mockInput = {
