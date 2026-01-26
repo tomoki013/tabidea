@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
+/* Fontsource - Self-hosted fonts (avoids Turbopack Google Fonts issues) */
+@import "@fontsource-variable/noto-sans-jp";
+@import "@fontsource/kaisei-decol/400.css";
+@import "@fontsource/kaisei-decol/700.css";
+@import "@fontsource/yomogi/400.css";
+
 :root {
+  /* Font family variables for fontsource fonts */
+  --font-noto-sans-jp: "Noto Sans JP Variable", "Noto Sans JP", sans-serif;
+  --font-kaisei-decol: "Kaisei Decol", serif;
+  --font-yomogi: "Yomogi", cursive;
   /* Travel Journal Theme Palette */
   --background: #fcfbf9; /* Warm Paper White */
   --foreground: #2c2c2c; /* Ink Black */

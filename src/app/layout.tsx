@@ -1,33 +1,12 @@
 import type { Metadata, Viewport } from "next";
-import { Noto_Sans_JP, Kaisei_Decol, Yomogi } from "next/font/google";
 import Script from "next/script";
 import { Header, Footer, CookieBanner, FloatingPlanButton, GlobalAuthUI } from "@/components/common";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import "./globals.css";
 
-const notoSansJP = Noto_Sans_JP({
-  subsets: ["latin"],
-  variable: "--font-noto-sans-jp",
-  display: "swap",
-  preload: true,
-});
-
-const kaiseiDecol = Kaisei_Decol({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-kaisei-decol",
-  display: "swap",
-  preload: true,
-});
-
-const yomogi = Yomogi({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-yomogi",
-  display: "swap",
-  preload: true,
-});
+// Fonts are now loaded via fontsource CSS imports in globals.css
+// This avoids Turbopack's issues with fetching Google Fonts during development
 
 export const metadata: Metadata = {
   title: {
@@ -99,9 +78,7 @@ export default function RootLayout({
           src="https://www.googletagmanager.com/gtag/js?id=G-S35FPGY6NW"
         ></Script>
       </head>
-      <body
-        className={`${notoSansJP.variable} ${kaiseiDecol.variable} ${yomogi.variable} font-sans antialiased bg-background text-foreground`}
-      >
+      <body className="font-sans antialiased bg-background text-foreground">
         <AuthProvider>
           <PlanModalProvider>
             <Header />

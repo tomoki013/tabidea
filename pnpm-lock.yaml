@@ -11,6 +11,15 @@ importers:
       '@ai-sdk/google':
         specifier: ~0.0.55
         version: 0.0.55(zod@3.25.76)
+      '@fontsource-variable/noto-sans-jp':
+        specifier: ^5.2.10
+        version: 5.2.10
+      '@fontsource/kaisei-decol':
+        specifier: ^5.2.7
+        version: 5.2.7
+      '@fontsource/yomogi':
+        specifier: ^5.2.7
+        version: 5.2.7
       '@langchain/core':
         specifier: ^1.1.8
         version: 1.1.8(@opentelemetry/api@1.9.0)
@@ -699,6 +708,15 @@ packages:
   '@eslint/plugin-kit@0.4.1':
     resolution: {integrity: sha512-43/qtrDUokr7LJqoF2c3+RInu/t4zfrpYdoSDfYyhg52rwLV6TnOvdG4fXm7IkSB3wErkcmJS9iEhjVtOSEjjA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@fontsource-variable/noto-sans-jp@5.2.10':
+    resolution: {integrity: sha512-m0XfZ38rZtCaGAuAQL0cBPQ6fc/RguYEOqw66zvuLOV9vNRUBf9MFqyoazTu2JVCRIcnkrxbwF29UUaHHgTKdg==}
+
+  '@fontsource/kaisei-decol@5.2.7':
+    resolution: {integrity: sha512-7SvyKTqZWON4XhH7HpA0gFyCznvWIEKS2ln77elgdkPaAigySo3iw/gfL1s4sjxBViXOhnNJwQUhmo7+RfwJHA==}
+
+  '@fontsource/yomogi@5.2.7':
+    resolution: {integrity: sha512-FtbtAOqRJlsjSK/wlw/S+uOkJXGWVp9yq6/utDmR6YXvvmTMoZQ75/mWimOS87Scg7gWlP4HU9gAgDUup6dLWg==}
 
   '@google/generative-ai@0.24.1':
     resolution: {integrity: sha512-MqO+MLfM6kjxcKoy0p1wRzG3b4ZZXtPI+z2IE26UogS2Cm/XHO+7gGRBh6gcJsOiIVoH93UwKvW4HdgiOZCy9Q==}
@@ -4588,6 +4606,12 @@ snapshots:
     dependencies:
       '@eslint/core': 0.17.0
       levn: 0.4.1
+
+  '@fontsource-variable/noto-sans-jp@5.2.10': {}
+
+  '@fontsource/kaisei-decol@5.2.7': {}
+
+  '@fontsource/yomogi@5.2.7': {}
 
   '@google/generative-ai@0.24.1': {}
 
