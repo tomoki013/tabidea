@@ -67,7 +67,30 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              4. 禁止事項
+              4. ユーザー登録（アカウント）
+            </h2>
+            <p>
+              ユーザーは、当サービスの定める方法（Googleログイン等）により、アカウント登録を行うことができます。
+            </p>
+            <ul className="list-disc pl-6 mt-3 space-y-2">
+              <li>
+                <strong>アカウントの管理：</strong>
+                ユーザーは、自身のGoogleアカウントおよびログイン情報を自己の責任において管理するものとします。当サービスは、登録されたアカウントを用いて行われた一切の行為を、当該ユーザー本人による行為とみなします。
+              </li>
+              <li>
+                <strong>アカウントの譲渡禁止：</strong>
+                ユーザーは、アカウントを第三者に譲渡、貸与、または共有することはできません。
+              </li>
+              <li>
+                <strong>登録抹消：</strong>
+                ユーザーが本規約に違反した場合、または長期間利用がない場合、当サービスは事前の通知なく当該ユーザーのアカウントを停止または削除することができるものとします。
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+              5. 禁止事項
             </h2>
             <p>
               ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。
@@ -84,6 +107,7 @@ export default function TermsOfService() {
                 当サービスのシステム等に不正にアクセスし、またはこれを試みる行為
               </li>
               <li>他のユーザーに関する個人情報等を収集または蓄積する行為</li>
+              <li>他のユーザーのIDまたはパスワードを不正に使用する行為</li>
               <li>他のユーザーに成りすます行為</li>
               <li>
                 当サービスのサービスに関連して、反社会的勢力に対して直接または間接に利益を供与する行為
@@ -100,7 +124,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              5. 免責事項（重要）
+              6. 免責事項（重要）
             </h2>
             <p className="mb-4">
               当サービスは、ユーザーに対し、本サービスの信頼性、正確性、適法性、有用性、第三者の権利侵害の有無等について、明示的にも黙示的にも一切保証しません。
@@ -123,8 +147,8 @@ export default function TermsOfService() {
                   当サービスからリンクされている外部サイト（予約サイト、アフィリエイト先等）における商品購入やサービス利用に関するトラブル。これらはユーザーと当該外部サイト運営者との間で解決するものとします。
                 </li>
                 <li>
-                  <strong>システム障害：</strong>
-                  通信回線の障害、システムメンテナンス、サイバー攻撃等によるサービスの停止・中断・遅延・データ消失によってユーザーに生じた損害。
+                  <strong>システム障害・データ消失：</strong>
+                  通信回線の障害、システムメンテナンス、サイバー攻撃等によるサービスの停止・中断・遅延・データ消失によってユーザーに生じた損害。なお、ログインユーザーの保存データについても、バックアップの完全性を保証するものではありません。
                 </li>
               </ul>
             </HighlightBox>
@@ -135,7 +159,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              6. アフィリエイト・広告について
+              7. アフィリエイト・広告について
             </h2>
             <p>
               当サービスには、アフィリエイトリンクや広告が含まれる場合があります。これらのリンクを経由して商品やサービスを購入された場合、当サービスは一定の報酬を得ることがあります。ただし、紹介される商品やサービスはアフィリエイトパートナーにより提供されるものであり、当サービスが管理・販売するものではありません。
@@ -144,7 +168,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              7. サービス内容の変更等
+              8. サービス内容の変更等
             </h2>
             <p>
               当サービスは、ユーザーに通知することなく、当サービスの内容を変更し、または当サービスの提供を中止することができるものとし、これによってユーザーに生じた損害について一切の責任を負いません。
@@ -153,7 +177,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              8. 利用規約の変更
+              9. 利用規約の変更
             </h2>
             <p>
               当サービスは、必要と判断した場合には、ユーザーに通知することなくいつでも本規約を変更することができるものとします。変更後の利用規約は、本サービス上に掲示された時点で効力を生じるものとします。本規約の変更後、当サービスの利用を開始した場合には、当該ユーザーは変更後の規約に同意したものとみなします。
@@ -162,7 +186,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              9. 準拠法・裁判管轄
+              10. 準拠法・裁判管轄
             </h2>
             <p>
               本規約の解釈にあたっては、日本法を準拠法とします。

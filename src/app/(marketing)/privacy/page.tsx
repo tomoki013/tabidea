@@ -36,6 +36,10 @@ export default function PrivacyPolicy() {
                 </h3>
                 <ul className="list-disc pl-6 mt-2 space-y-1">
                   <li>
+                    <strong>アカウント情報（ログイン時）：</strong>
+                    Googleアカウントの基本情報（メールアドレス、ユーザーID、プロフィール画像等）。
+                  </li>
+                  <li>
                     旅行計画に関する情報（目的地、日程、予算、同行者、興味・関心、その他要望等）
                   </li>
                   <li>
@@ -68,6 +72,10 @@ export default function PrivacyPolicy() {
             </h2>
             <p>当サービスは、収集した情報を以下の目的で利用します。</p>
             <ol className="list-decimal pl-6 mt-3 space-y-2">
+              <li>
+                <strong>ユーザー認証・管理：</strong>
+                ログイン機能の提供、本人確認、設定の保存のため。
+              </li>
               <li>
                 <strong>サービスの提供・運営：</strong>
                 AIによる旅行プランの生成、提案、保存、共有機能の提供のため。
@@ -167,11 +175,29 @@ export default function PrivacyPolicy() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              6. 個人情報の管理
+              6. 個人情報の管理とセキュリティ
             </h2>
             <p>
               当サービスは、個人情報の漏洩、滅失または毀損の防止その他の個人情報の安全管理のために必要かつ適切な措置を講じます。また、個人情報を取り扱う従業員や委託先（もしあれば）に対して、必要かつ適切な監督を行います。
             </p>
+            <div className="mt-4 space-y-4">
+              <div>
+                <h3 className="font-medium text-foreground">
+                  6-1. データの暗号化
+                </h3>
+                <p className="mt-1">
+                  データベースに保存されるユーザーの旅行プラン等の情報は、暗号化技術を用いて保護されています。
+                </p>
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground">
+                  6-2. 管理者のアクセス権限
+                </h3>
+                <p className="mt-1">
+                  システムの保守運用やトラブルシューティングのため、技術的にはシステム管理者がデータベース内の情報を閲覧可能な状態にありますが、ユーザーの事前の同意がある場合、法令に基づく場合、またはサービスの重大な不具合の調査など正当な理由がある場合を除き、管理者がユーザーの保存した個人的なプラン内容を閲覧することはありません。
+                </p>
+              </div>
+            </div>
           </section>
 
           <section>
