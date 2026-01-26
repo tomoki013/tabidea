@@ -184,13 +184,23 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "プランページで生成された旅程の地域の渡航情報・安全ガイドをボタン一つで確認できるようにしました。",
   },
-  // Future items
   {
-    status: "developing",
+    status: "done",
+    date: "2026.01.26",
+    updateType: "minor",
     title: "ユーザーアカウント機能",
     description:
-      "ログインすることで、複数のデバイスでプランを同期したり、過去の履歴を管理できるようになります。",
+      "ログインすることで、複数のデバイスでプランを同期したり、過去の履歴を管理できるようになりました。",
   },
+  {
+    status: "done",
+    date: "2026.01.26",
+    updateType: "patch",
+    title: "プランの保存機能",
+    description:
+      "生成した旅行プランを保存し、後から確認できるようになりました。",
+  },
+  // Future items
   {
     status: "planned",
     title: "持ち物リストの作成",
@@ -202,12 +212,6 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "予算を詳細に制御する機能",
     description:
       "宿泊費や交通費などの項目ごとに予算を細かく設定し、全体の費用をより正確にシミュレーション・管理できる機能を計画しています。",
-  },
-  {
-    status: "planned",
-    title: "プランの保存機能",
-    description:
-      "生成した旅行プランをブラウザに保存し、後から確認できる機能を開発中です。",
   },
   {
     status: "planned",
