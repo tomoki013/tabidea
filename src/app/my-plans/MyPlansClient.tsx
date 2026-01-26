@@ -294,15 +294,17 @@ export default function MyPlansClient({
             {plans.map((plan) => (
               <div
                 key={plan.id}
-                className="relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 overflow-hidden hover:border-[#e67e22]/40 hover:shadow-lg transition-all group"
+                className="relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 hover:border-[#e67e22]/40 hover:shadow-lg transition-all group"
               >
-                {/* Corner tape decorations */}
-                <div className="absolute top-0 left-0 w-6 h-6 bg-[#e67e22]/15 rotate-45 -translate-x-3 -translate-y-3" />
-                <div className="absolute top-0 right-0 w-6 h-6 bg-[#27ae60]/15 -rotate-45 translate-x-3 -translate-y-3" />
+                {/* Corner tape decorations - clipped by this inner container */}
+                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-10">
+                  <div className="absolute top-0 left-0 w-6 h-6 bg-[#e67e22]/15 rotate-45 -translate-x-3 -translate-y-3" />
+                  <div className="absolute top-0 right-0 w-6 h-6 bg-[#27ae60]/15 -rotate-45 translate-x-3 -translate-y-3" />
+                </div>
 
-                <div className="flex flex-col sm:flex-row">
+                <div className="flex flex-col sm:flex-row relative z-0">
                   {/* Thumbnail */}
-                  <div className="sm:w-48 h-36 sm:h-auto relative bg-stone-100 overflow-hidden">
+                  <div className="sm:w-48 h-36 sm:h-auto relative bg-stone-100 overflow-hidden rounded-t-2xl sm:rounded-tr-none sm:rounded-l-2xl">
                     {plan.thumbnailUrl ? (
                       <Image
                         src={plan.thumbnailUrl}

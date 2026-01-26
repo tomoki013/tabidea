@@ -130,6 +130,8 @@ export default function CookiePolicy() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
+            策定日：2026年1月8日
+            <br />
             最終更新日: 2026年1月8日
           </div>
         </div>

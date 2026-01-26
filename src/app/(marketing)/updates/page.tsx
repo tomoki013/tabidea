@@ -200,6 +200,14 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "生成した旅行プランを保存し、後から確認できるようになりました。",
   },
+  {
+    status: "done",
+    date: "2026.01.27",
+    updateType: "patch",
+    title: "ユーザーアカウント機能の追加に伴う法務関連文書の更新",
+    description:
+      "ユーザーアカウント機能の追加に伴い、利用規約およびプライバシーポリシーを改定しました。",
+  },
   // Future items
   {
     status: "planned",
@@ -220,10 +228,15 @@ const rawRoadmapData: RoadmapItem[] = [
       "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
   },
   {
-    status: "planned",
+    status: "developing",
     title: "旅行中のメモ機能",
     description:
       "旅行中に何を食べたかやどこが良かったかを生成されたプランに直接書き込める機能を開発しています。",
+  },
+  {
+    status: "developing",
+    title: "プラン生成時の個別カスタマイズ",
+    description: "プラン生成時に、より詳細な要望を反映できる機能を開発中です。",
   },
   {
     status: "planned",
@@ -234,6 +247,17 @@ const rawRoadmapData: RoadmapItem[] = [
     status: "planned",
     title: "ホテル、飛行機を含めたプラン提案",
     description: "ホテル、飛行機を含めたプランを提案する機能を検討しています。",
+  },
+  {
+    status: "planned",
+    title: "ダークモード対応",
+    description: "目に優しいダークモードへの対応を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "多言語対応",
+    description:
+      "日本語以外の言語でもサービスを利用できるよう、多言語対応を計画しています。",
   },
 ];
 
