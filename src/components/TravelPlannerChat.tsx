@@ -18,11 +18,13 @@ export default function TravelPlannerChat({
   onRegenerate,
   isRegenerating = false,
   initialChatHistory,
+  onChatChange,
 }: {
   itinerary: Itinerary;
   onRegenerate: (history: { role: string; text: string }[]) => void;
   isRegenerating?: boolean;
   initialChatHistory?: { role: string; text: string }[];
+  onChatChange?: (messages: { role: string; text: string }[]) => void;
 }) {
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
@@ -60,6 +62,20 @@ export default function TravelPlannerChat({
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
   }, [messages, isLoading]);
+
+  // Notify parent when messages change (for persistence)
+  const prevMessagesLengthRef = useRef(initialMessages.length);
+  useEffect(() => {
+    // Only notify if messages changed (not on initial load)
+    if (messages.length > prevMessagesLengthRef.current && onChatChange) {
+      const formattedMessages = messages.map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        text: m.content,
+      }));
+      onChatChange(formattedMessages);
+    }
+    prevMessagesLengthRef.current = messages.length;
+  }, [messages, onChatChange]);
 
   // Convert messages to the format expected by onRegenerate
   const handleRegenerate = () => {

@@ -1,11 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
-import { regeneratePlan } from '@/app/actions/travel-planner';
+import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
@@ -15,26 +15,57 @@ interface PlanIdClientProps {
   input: UserInput;
   itinerary: Itinerary;
   planId: string;
+  initialChatMessages?: ChatMessage[];
 }
 
 export default function PlanIdClient({
   plan,
   input: initialInput,
   itinerary: initialItinerary,
-  planId: _planId,
+  planId,
+  initialChatMessages,
 }: PlanIdClientProps) {
-  // Reserved for future use
-  void _planId;
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
-  const [status, setStatus] = useState<'idle' | 'regenerating'>('idle');
+  const [status, setStatus] = useState<'idle' | 'regenerating' | 'saving'>('idle');
   const [chatHistoryToKeep, setChatHistoryToKeep] = useState<
     { role: string; text: string }[]
-  >([]);
+  >(initialChatMessages?.map(m => ({ role: m.role === 'assistant' ? 'model' : 'user', text: m.content })) || []);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+
+  // Track if save is pending to debounce
+  const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Save plan to DB (user is owner since they accessed by ID)
+  const savePlanToDb = useCallback(async (itinerary: Itinerary) => {
+    try {
+      const result = await updatePlanItinerary(planId, itinerary, input);
+      if (!result.success) {
+        console.error('Failed to save plan:', result.error);
+      }
+    } catch (e) {
+      console.error('Failed to save plan:', e);
+    }
+  }, [planId, input]);
+
+  // Save chat messages to DB
+  const saveChatToDb = useCallback(async (messages: { role: string; text: string }[]) => {
+    try {
+      const chatMessages: ChatMessage[] = messages.map(m => ({
+        role: m.role === 'model' ? 'assistant' : 'user',
+        content: m.text,
+      }));
+      const result = await savePlanChatMessages(planId, chatMessages);
+      if (!result.success) {
+        console.error('Failed to save chat:', result.error);
+      }
+    } catch (e) {
+      console.error('Failed to save chat:', e);
+    }
+  }, [planId]);
 
   const handleRegenerate = async (
     chatHistory: { role: string; text: string }[],
@@ -51,6 +82,10 @@ export default function PlanIdClient({
       if (response.success && response.data) {
         setResult(response.data);
         setStatus('idle');
+
+        // Save to DB
+        await savePlanToDb(response.data);
+        await saveChatToDb(chatHistory);
 
         // Scroll to top
         setTimeout(() => {
@@ -70,9 +105,23 @@ export default function PlanIdClient({
     router.push('/');
   };
 
-  const handleResultChange = (newResult: Itinerary) => {
+  const handleResultChange = useCallback((newResult: Itinerary) => {
     setResult(newResult);
-  };
+
+    // Debounce save to DB
+    if (saveTimeoutRef.current) {
+      clearTimeout(saveTimeoutRef.current);
+    }
+    saveTimeoutRef.current = setTimeout(() => {
+      savePlanToDb(newResult);
+    }, 1000); // Save 1 second after last change
+  }, [savePlanToDb]);
+
+  // Save chat messages when they change
+  const handleChatChange = useCallback((messages: { role: string; text: string }[]) => {
+    setChatHistoryToKeep(messages);
+    saveChatToDb(messages);
+  }, [saveChatToDb]);
 
   const handleEditRequest = (stepIndex: number) => {
     setInitialEditStep(stepIndex);
@@ -103,6 +152,7 @@ export default function PlanIdClient({
           onRestart={handleRestart}
           onRegenerate={handleRegenerate}
           onResultChange={handleResultChange}
+          onChatChange={handleChatChange}
           isUpdating={status === 'regenerating'}
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
