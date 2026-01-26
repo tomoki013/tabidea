@@ -15,6 +15,10 @@ interface ShareButtonsProps {
 
 const emptySubscribe = () => () => {};
 
+// Cached server snapshots to prevent infinite loop
+const getEmptyStringSnapshot = () => "";
+const getFalseSnapshot = () => false;
+
 export default function ShareButtons({
   input,
   result,
@@ -37,13 +41,13 @@ export default function ShareButtons({
       // No share URL available
       return "";
     },
-    () => ""
+    getEmptyStringSnapshot
   );
 
   const canShare = useSyncExternalStore(
     emptySubscribe,
     () => !!navigator.share,
-    () => false
+    getFalseSnapshot
   );
 
   const shareText = `AIに旅行プランを作ってもらいました！\n目的地: ${

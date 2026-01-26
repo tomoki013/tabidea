@@ -137,10 +137,10 @@ export default function Header({
       >
         <div className={`max-w-5xl w-full px-4 pointer-events-auto`}>
           <div className="relative bg-[#fcfbf9]/95 backdrop-blur-md shadow-lg rounded-full border border-orange-100/50 px-4 md:px-6 py-3 flex items-center justify-between">
-            {/* Mobile: Hamburger on left */}
+            {/* Hamburger menu - always visible for sidebar access */}
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="md:hidden p-2 text-[#e67e22] hover:opacity-80 transition-opacity"
+              className="p-2 text-[#e67e22] hover:opacity-80 transition-opacity"
               aria-label="メニューを開く"
             >
               <FaBars size={20} />
