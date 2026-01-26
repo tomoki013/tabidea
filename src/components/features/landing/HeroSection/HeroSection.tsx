@@ -15,24 +15,6 @@ export default function HeroSection({ children }: HeroSectionProps) {
       {/* Background Elements - Paper Texture */}
       <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-60 mix-blend-multiply pointer-events-none -z-10" />
 
-      {/* Decorative Floating Elements (Stamps/Icons) - Adjusted for more subtle, analog feel */}
-      <motion.div
-        initial={{ opacity: 0, rotate: -20, x: -50 }}
-        animate={{ opacity: 0.05, rotate: -15, x: 0 }}
-        transition={{ duration: 1.5 }}
-        className="absolute top-20 left-4 md:left-20 text-9xl text-stone-800 pointer-events-none select-none hidden lg:block font-serif tracking-widest"
-      >
-        Travel
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, rotate: 15, x: 50 }}
-        animate={{ opacity: 0.05, rotate: 10, x: 0 }}
-        transition={{ duration: 1.5, delay: 0.2 }}
-        className="absolute bottom-40 right-4 md:right-20 text-9xl text-[#d35400] pointer-events-none select-none hidden lg:block font-hand"
-      >
-        Memories
-      </motion.div>
-
       <div className="max-w-5xl mx-auto px-4 w-full flex flex-col gap-10 items-center text-center relative z-10">
         <div className="space-y-6 max-w-3xl">
           {/* Badge - Paper scrap style */}
