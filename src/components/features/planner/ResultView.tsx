@@ -20,8 +20,8 @@ import {
   FaArrowDown,
   FaGlobe,
 } from "react-icons/fa";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -67,14 +67,56 @@ export default function ResultView({
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
 
+  // Guard against navigation when editing
+  useEffect(() => {
+    if (!isEditing) return;
+
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    // Guard internal links
+    const handleLinkClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const link = target.closest('a');
+
+      if (link && link.href && !link.href.startsWith('javascript:') && !link.target) {
+        // Allow anchor links on the same page
+        const url = new URL(link.href, window.location.href);
+        if (url.pathname === window.location.pathname && url.search === window.location.search && url.hash) {
+          return;
+        }
+
+        e.preventDefault();
+        if (window.confirm('編集中の内容が破棄されますが、移動しますか？')) {
+          window.removeEventListener('beforeunload', handleBeforeUnload);
+          window.location.href = link.href;
+        }
+      }
+    };
+
+    window.addEventListener('click', handleLinkClick, { capture: true });
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+      window.removeEventListener('click', handleLinkClick, { capture: true });
+    };
+  }, [isEditing]);
+
   const startEditing = () => {
     setEditingResult(JSON.parse(JSON.stringify(result))); // Deep clone
     setIsEditing(true);
   };
 
   const cancelEditing = () => {
-    setIsEditing(false);
-    setEditingResult(null);
+    if (confirm('編集中の内容は破棄されます。よろしいですか？')) {
+      setIsEditing(false);
+      setEditingResult(null);
+    }
   };
 
   const saveChanges = () => {

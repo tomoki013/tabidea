@@ -21,7 +21,9 @@ import {
   FaExclamationTriangle,
   FaGlobe,
   FaLock,
+  FaTimes,
 } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
 import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, deleteAccount } from '@/app/actions/travel-planner';
@@ -46,6 +48,7 @@ export default function MyPlansClient({
   const [isUpdating, setIsUpdating] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
+  const [hasLocalPlans, setHasLocalPlans] = useState(false);
 
   // Rename functionality
   const [isRenaming, setIsRenaming] = useState<string | null>(null);
@@ -55,6 +58,10 @@ export default function MyPlansClient({
   // Menu state for mobile actions
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  // Deletion state
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [planToDelete, setPlanToDelete] = useState<string | null>(null);
 
   // Account deletion state
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
@@ -83,7 +90,13 @@ export default function MyPlansClient({
     }
   }, [openMenuId]);
 
-  // Sync local plans to database when component mounts
+  // Check local plans on mount
+  useEffect(() => {
+    const localPlans = getLocalPlans();
+    setHasLocalPlans(localPlans.length > 0);
+  }, []);
+
+  // Sync local plans to database
   const syncLocalPlans = useCallback(async () => {
     const localPlans = getLocalPlans();
     if (localPlans.length === 0) return;
@@ -125,30 +138,35 @@ export default function MyPlansClient({
       setSyncMessage(null);
     }
 
+    // Refresh local plans count
+    setHasLocalPlans(getLocalPlans().length > 0);
     setIsSyncing(false);
 
     // Clear message after 3 seconds
     setTimeout(() => setSyncMessage(null), 3000);
   }, []);
 
-  useEffect(() => {
-    syncLocalPlans();
-  }, [syncLocalPlans]);
+  const confirmDelete = (planId: string) => {
+    setPlanToDelete(planId);
+    setShowDeleteModal(true);
+    setOpenMenuId(null);
+  };
 
-  const handleDelete = async (planId: string) => {
-    if (!confirm('このプランを削除しますか？この操作は取り消せません。')) {
-      return;
-    }
+  const handleDelete = async () => {
+    if (!planToDelete) return;
 
-    setIsDeleting(planId);
-    const result = await deletePlan(planId);
+    setIsDeleting(planToDelete);
+    setShowDeleteModal(false);
+
+    const result = await deletePlan(planToDelete);
 
     if (result.success) {
-      setPlans((prev) => prev.filter((p) => p.id !== planId));
+      setPlans((prev) => prev.filter((p) => p.id !== planToDelete));
     } else {
       alert(result.error || '削除に失敗しました');
     }
     setIsDeleting(null);
+    setPlanToDelete(null);
   };
 
   const handleToggleVisibility = async (planId: string, currentPublic: boolean) => {
@@ -241,13 +259,25 @@ export default function MyPlansClient({
                 保存した旅行プラン ({totalPlans}件)
               </p>
             </div>
-            <button
-              onClick={() => openModal()}
-              className="flex items-center gap-2 px-6 py-3 bg-[#e67e22] text-white rounded-full font-bold hover:bg-[#d35400] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-            >
-              <FaPlus />
-              <span>新規作成</span>
-            </button>
+            <div className="flex items-center gap-3">
+              {hasLocalPlans && (
+                <button
+                  onClick={syncLocalPlans}
+                  disabled={isSyncing}
+                  className="flex items-center gap-2 px-4 py-3 text-[#e67e22] bg-[#e67e22]/10 rounded-full font-bold hover:bg-[#e67e22]/20 transition-all disabled:opacity-50"
+                >
+                  {isSyncing ? <FaSync className="animate-spin" /> : <FaSync />}
+                  <span className="hidden sm:inline">ローカルプランを同期</span>
+                </button>
+              )}
+              <button
+                onClick={() => openModal()}
+                className="flex items-center gap-2 px-6 py-3 bg-[#e67e22] text-white rounded-full font-bold hover:bg-[#d35400] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+              >
+                <FaPlus />
+                <span>新規作成</span>
+              </button>
+            </div>
           </div>
         </div>
 
@@ -294,7 +324,9 @@ export default function MyPlansClient({
             {plans.map((plan) => (
               <div
                 key={plan.id}
-                className="relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 hover:border-[#e67e22]/40 hover:shadow-lg transition-all group"
+                className={`relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 hover:border-[#e67e22]/40 hover:shadow-lg transition-all group ${
+                  openMenuId === plan.id ? 'z-50' : 'z-0'
+                }`}
               >
                 {/* Corner tape decorations - clipped by this inner container */}
                 <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-10">
@@ -445,8 +477,7 @@ export default function MyPlansClient({
                             <hr className="my-2 border-stone-100" />
                             <button
                               onClick={() => {
-                                setOpenMenuId(null);
-                                handleDelete(plan.id);
+                                confirmDelete(plan.id);
                               }}
                               disabled={isDeleting === plan.id}
                               className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors disabled:opacity-50"
@@ -527,9 +558,67 @@ export default function MyPlansClient({
         </div>
       </main>
 
+      {/* Delete Plan Modal */}
+      <AnimatePresence>
+        {showDeleteModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setShowDeleteModal(false)}
+                className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
+              >
+                <FaTimes />
+              </button>
+
+              <div className="flex flex-col items-center text-center">
+                <div className="p-4 bg-red-100 rounded-full mb-4">
+                  <FaTrash className="text-red-500 text-2xl" />
+                </div>
+
+                <h3 className="font-serif text-xl font-bold text-stone-800 mb-2">
+                  プランを削除しますか？
+                </h3>
+
+                <p className="text-sm text-stone-600 mb-6">
+                  この操作は取り消すことができません。<br/>
+                  本当にこのプランを削除しますか？
+                </p>
+
+                <div className="flex gap-3 w-full">
+                  <button
+                    onClick={() => setShowDeleteModal(false)}
+                    className="flex-1 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-medium hover:bg-stone-200 transition-colors"
+                  >
+                    キャンセル
+                  </button>
+                  <button
+                    onClick={handleDelete}
+                    className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors"
+                  >
+                    削除する
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Delete Account Modal */}
       {showDeleteAccountModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
           <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 bg-red-100 rounded-full">
