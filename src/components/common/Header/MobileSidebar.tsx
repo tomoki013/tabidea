@@ -21,27 +21,23 @@ import {
 import { useAuth } from '@/context/AuthContext';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useLocalPlans } from '@/lib/local-storage/plans';
+import { useUserPlans } from '@/context/UserPlansContext';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
 import type { PlanListItem } from '@/types';
 
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
-  serverPlans?: PlanListItem[];
-  isLoadingPlans?: boolean;
-  onPlansUpdate?: () => void;
 }
 
 export default function MobileSidebar({
   isOpen,
   onClose,
-  serverPlans = [],
-  isLoadingPlans = false,
-  onPlansUpdate,
 }: MobileSidebarProps) {
   const { isAuthenticated } = useAuth();
   const { openModal } = usePlanModal();
   const { plans: localPlans, deletePlan: deleteLocalPlan } = useLocalPlans();
+  const { plans: serverPlans, isLoading: isServerPlansLoading, removePlan, updatePlan } = useUserPlans();
 
   // Menu state
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -52,13 +48,10 @@ export default function MobileSidebar({
   const menuRef = useRef<HTMLDivElement>(null);
   const renameInputRef = useRef<HTMLInputElement>(null);
 
-  // Local state for optimistic updates
-  const [localServerPlans, setLocalServerPlans] = useState<PlanListItem[]>(serverPlans);
-
-  // Sync serverPlans with local state
-  useEffect(() => {
-    setLocalServerPlans(serverPlans);
-  }, [serverPlans]);
+  // Delete modal state
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [planToDelete, setPlanToDelete] = useState<string | null>(null);
+  const [isLocalDelete, setIsLocalDelete] = useState(false);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -112,11 +105,7 @@ export default function MobileSidebar({
     const result = await updatePlanName(planId, renameValue.trim());
 
     if (result.success) {
-      // Optimistic update
-      setLocalServerPlans(prev =>
-        prev.map(p => p.id === planId ? { ...p, destination: renameValue.trim() } : p)
-      );
-      onPlansUpdate?.();
+      updatePlan(planId, { destination: renameValue.trim() });
     } else {
       alert(result.error || '名前の変更に失敗しました');
     }
@@ -125,28 +114,35 @@ export default function MobileSidebar({
     setIsUpdating(false);
   };
 
-  const handleDelete = async (planId: string, isLocal: boolean, e: React.MouseEvent) => {
+  const handleDeleteClick = (planId: string, isLocal: boolean, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     setOpenMenuId(null);
 
-    if (!confirm('このプランを削除しますか？')) return;
+    setPlanToDelete(planId);
+    setIsLocalDelete(isLocal);
+    setShowDeleteModal(true);
+  };
 
-    setIsDeleting(planId);
+  const executeDelete = async () => {
+    if (!planToDelete) return;
 
-    if (isLocal) {
-      deleteLocalPlan(planId);
+    setIsDeleting(planToDelete);
+    setShowDeleteModal(false);
+
+    if (isLocalDelete) {
+      deleteLocalPlan(planToDelete);
     } else {
-      const result = await deletePlan(planId);
+      const result = await deletePlan(planToDelete);
       if (result.success) {
-        setLocalServerPlans(prev => prev.filter(p => p.id !== planId));
-        onPlansUpdate?.();
+        removePlan(planToDelete);
       } else {
         alert(result.error || '削除に失敗しました');
       }
     }
 
     setIsDeleting(null);
+    setPlanToDelete(null);
   };
 
   // Prevent body scroll when sidebar is open
@@ -175,7 +171,8 @@ export default function MobileSidebar({
   };
 
   // Decide which plans to show
-  const displayPlans = isAuthenticated ? localServerPlans : localPlans;
+  const displayPlans = isAuthenticated ? serverPlans : localPlans;
+  const isLoading = isAuthenticated ? isServerPlansLoading : false;
   const hasPlans = displayPlans.length > 0;
 
   return (
@@ -252,7 +249,7 @@ export default function MobileSidebar({
 
               {/* Plans List */}
               <div className="flex-1 overflow-y-auto px-4 pb-4">
-                {isLoadingPlans ? (
+                {isLoading ? (
                   <div className="space-y-2">
                     {[...Array(3)].map((_, i) => (
                       <div
@@ -373,7 +370,7 @@ export default function MobileSidebar({
                                           名前を変更
                                         </button>
                                         <button
-                                          onClick={(e) => handleDelete(plan.id, isLocalPlan, e)}
+                                          onClick={(e) => handleDeleteClick(plan.id, isLocalPlan, e)}
                                           className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                                         >
                                           <FaTrash className="text-red-400" />
@@ -448,6 +445,62 @@ export default function MobileSidebar({
               </button>
             </div>
           </motion.aside>
+
+          {/* Delete Plan Modal */}
+          {showDeleteModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4"
+              onClick={() => setShowDeleteModal(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => setShowDeleteModal(false)}
+                  className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
+                >
+                  <FaTimes />
+                </button>
+
+                <div className="flex flex-col items-center text-center">
+                  <div className="p-4 bg-red-100 rounded-full mb-4">
+                    <FaTrash className="text-red-500 text-2xl" />
+                  </div>
+
+                  <h3 className="font-serif text-xl font-bold text-stone-800 mb-2">
+                    プランを削除しますか？
+                  </h3>
+
+                  <p className="text-sm text-stone-600 mb-6">
+                    この操作は取り消すことができません。<br/>
+                    本当にこのプランを削除しますか？
+                  </p>
+
+                  <div className="flex gap-3 w-full">
+                    <button
+                      onClick={() => setShowDeleteModal(false)}
+                      className="flex-1 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-medium hover:bg-stone-200 transition-colors"
+                    >
+                      キャンセル
+                    </button>
+                    <button
+                      onClick={executeDelete}
+                      className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors"
+                    >
+                      削除する
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
         </>
       )}
     </AnimatePresence>

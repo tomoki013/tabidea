@@ -29,6 +29,7 @@ import type { PlanListItem } from '@/types';
 import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, deleteAccount } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
+import { useUserPlans } from '@/context/UserPlansContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
 
 interface MyPlansClientProps {
@@ -42,8 +43,9 @@ export default function MyPlansClient({
 }: MyPlansClientProps) {
   const { openModal } = usePlanModal();
   const { user, signOut } = useAuth();
+  const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
   const router = useRouter();
-  const [plans, setPlans] = useState<PlanListItem[]>(initialPlans);
+
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState<string | null>(null);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -67,6 +69,13 @@ export default function MyPlansClient({
   const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
   const [deleteConfirmText, setDeleteConfirmText] = useState('');
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
+
+  // Hydrate context with initial plans on mount
+  useEffect(() => {
+    if (initialPlans && initialPlans.length > 0) {
+      setPlans(initialPlans);
+    }
+  }, [initialPlans, setPlans]);
 
   // Focus rename input when opening
   useEffect(() => {
@@ -105,25 +114,24 @@ export default function MyPlansClient({
     setSyncMessage(`${localPlans.length}件のローカルプランを同期中...`);
 
     let syncedCount = 0;
-    const newPlans: PlanListItem[] = [];
 
     for (const localPlan of localPlans) {
       try {
         const result = await savePlan(localPlan.input, localPlan.itinerary, false);
-        if (result.success && result.shareCode) {
+        if (result.success && result.shareCode && result.plan) {
           syncedCount++;
           deleteLocalPlan(localPlan.id);
 
-          // Add to plans list
-          newPlans.push({
-            id: result.shareCode,
-            shareCode: result.shareCode,
-            destination: localPlan.itinerary.destination || null,
-            durationDays: localPlan.itinerary.days?.length || null,
-            thumbnailUrl: localPlan.itinerary.heroImage || null,
-            isPublic: false,
-            createdAt: new Date(),
-            updatedAt: new Date(),
+          // Add to plans list via context
+          addPlan({
+            id: result.plan.id,
+            shareCode: result.plan.shareCode,
+            destination: result.plan.destination,
+            durationDays: result.plan.durationDays,
+            thumbnailUrl: result.plan.thumbnailUrl,
+            isPublic: result.plan.isPublic,
+            createdAt: new Date(result.plan.createdAt),
+            updatedAt: new Date(result.plan.updatedAt),
           });
         }
       } catch (error) {
@@ -132,7 +140,6 @@ export default function MyPlansClient({
     }
 
     if (syncedCount > 0) {
-      setPlans(prev => [...newPlans, ...prev]);
       setSyncMessage(`${syncedCount}件のプランを同期しました`);
     } else {
       setSyncMessage(null);
@@ -161,7 +168,7 @@ export default function MyPlansClient({
     const result = await deletePlan(planToDelete);
 
     if (result.success) {
-      setPlans((prev) => prev.filter((p) => p.id !== planToDelete));
+      removePlan(planToDelete);
     } else {
       alert(result.error || '削除に失敗しました');
     }
@@ -174,11 +181,7 @@ export default function MyPlansClient({
     const result = await updatePlanVisibility(planId, !currentPublic);
 
     if (result.success) {
-      setPlans((prev) =>
-        prev.map((p) =>
-          p.id === planId ? { ...p, isPublic: !currentPublic } : p
-        )
-      );
+      updatePlan(planId, { isPublic: !currentPublic });
     } else {
       alert(result.error || '更新に失敗しました');
     }
@@ -201,11 +204,7 @@ export default function MyPlansClient({
     const result = await updatePlanName(planId, renameValue.trim());
 
     if (result.success) {
-      setPlans((prev) =>
-        prev.map((p) =>
-          p.id === planId ? { ...p, destination: renameValue.trim() } : p
-        )
-      );
+      updatePlan(planId, { destination: renameValue.trim() });
     } else {
       alert(result.error || '名前の変更に失敗しました');
     }

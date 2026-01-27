@@ -442,6 +442,16 @@ export async function regeneratePlan(
 export type SavePlanResult = {
   success: boolean;
   shareCode?: string;
+  plan?: {
+    id: string;
+    shareCode: string;
+    destination: string | null;
+    durationDays: number | null;
+    thumbnailUrl: string | null;
+    isPublic: boolean;
+    createdAt: string;
+    updatedAt: string;
+  };
   error?: string;
 };
 
@@ -467,11 +477,24 @@ export async function savePlan(
       isPublic,
     });
 
-    if (!result.success) {
+    if (!result.success || !result.plan) {
       return { success: false, error: result.error };
     }
 
-    return { success: true, shareCode: result.shareCode };
+    return {
+      success: true,
+      shareCode: result.shareCode,
+      plan: {
+        id: result.plan.id,
+        shareCode: result.plan.shareCode,
+        destination: result.plan.destination,
+        durationDays: result.plan.durationDays,
+        thumbnailUrl: result.plan.thumbnailUrl,
+        isPublic: result.plan.isPublic,
+        createdAt: result.plan.createdAt.toISOString(),
+        updatedAt: result.plan.updatedAt.toISOString(),
+      },
+    };
   } catch (error) {
     console.error("Failed to save plan:", error);
     return { success: false, error: "プランの保存に失敗しました" };
@@ -622,8 +645,11 @@ export async function getUserPlansList(limit: number = 5): Promise<{
     id: string;
     shareCode: string;
     destination: string | null;
+    durationDays: number | null;
     thumbnailUrl: string | null;
+    isPublic: boolean;
     createdAt: string;
+    updatedAt: string;
   }>;
   error?: string;
 }> {
@@ -646,8 +672,11 @@ export async function getUserPlansList(limit: number = 5): Promise<{
         id: plan.id,
         shareCode: plan.shareCode,
         destination: plan.destination,
+        durationDays: plan.durationDays,
         thumbnailUrl: plan.thumbnailUrl,
+        isPublic: plan.isPublic,
         createdAt: plan.createdAt.toISOString(),
+        updatedAt: plan.updatedAt.toISOString(),
       })),
     };
   } catch (error) {

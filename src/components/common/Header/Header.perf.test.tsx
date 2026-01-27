@@ -4,6 +4,7 @@ import Header from "./Header";
 import React from "react";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { UserPlansProvider } from "@/context/UserPlansContext";
 
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
@@ -65,9 +66,11 @@ describe("Header Performance Benchmark", () => {
   it("measures window.scrollY accesses during scroll events", () => {
     render(
       <AuthProvider>
-        <PlanModalProvider>
-          <Header forceShow={true} />
-        </PlanModalProvider>
+        <UserPlansProvider>
+          <PlanModalProvider>
+            <Header forceShow={true} />
+          </PlanModalProvider>
+        </UserPlansProvider>
       </AuthProvider>
     );
 

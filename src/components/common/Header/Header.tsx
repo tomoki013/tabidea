@@ -17,8 +17,6 @@ import { usePlanModal } from "@/context/PlanModalContext";
 import { useAuth } from "@/context/AuthContext";
 import { AuthButton } from "../AuthButton";
 import MobileSidebar from "./MobileSidebar";
-import { getUserPlansList } from "@/app/actions/travel-planner";
-import type { PlanListItem } from "@/types";
 
 export interface HeaderProps {
   forceShow?: boolean;
@@ -37,50 +35,8 @@ export default function Header({
   const { user, isAuthenticated, isLoading: isAuthLoading } = useAuth();
   const isHome = pathname === "/";
 
-  // Server plans for sidebar
-  const [serverPlans, setServerPlans] = useState<PlanListItem[]>([]);
-  const [isLoadingPlans, setIsLoadingPlans] = useState(false);
-
   // Scroll-based visibility for homepage
   const [scrollPastThreshold, setScrollPastThreshold] = useState(false);
-
-  // Fetch user plans when authenticated
-  const fetchUserPlans = useCallback(async () => {
-    if (!isAuthenticated) {
-      setServerPlans([]);
-      return;
-    }
-
-    setIsLoadingPlans(true);
-    try {
-      const result = await getUserPlansList(5);
-      if (result.success && result.plans) {
-        setServerPlans(
-          result.plans.map((p) => ({
-            id: p.id,
-            shareCode: p.shareCode,
-            destination: p.destination,
-            durationDays: null,
-            thumbnailUrl: p.thumbnailUrl,
-            isPublic: false,
-            createdAt: new Date(p.createdAt),
-            updatedAt: new Date(p.createdAt),
-          }))
-        );
-      }
-    } catch (error) {
-      console.error("Failed to fetch user plans:", error);
-    } finally {
-      setIsLoadingPlans(false);
-    }
-  }, [isAuthenticated]);
-
-  // Fetch plans when auth state changes
-  useEffect(() => {
-    if (!isAuthLoading) {
-      fetchUserPlans();
-    }
-  }, [isAuthLoading, fetchUserPlans]);
 
   // Close sidebar when path changes
   useEffect(() => {
@@ -215,9 +171,6 @@ export default function Header({
       <MobileSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
-        serverPlans={serverPlans}
-        isLoadingPlans={isLoadingPlans}
-        onPlansUpdate={fetchUserPlans}
       />
     </>
   );
