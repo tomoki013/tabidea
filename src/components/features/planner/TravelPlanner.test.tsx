@@ -43,6 +43,13 @@ vi.mock("@/lib/local-storage/plans", () => ({
   getLocalPlans: vi.fn(() => []),
 }));
 
+// Mock UserPlansContext
+vi.mock("@/context/UserPlansContext", () => ({
+  useUserPlans: () => ({
+    refreshPlans: vi.fn(),
+  }),
+}));
+
 it("renders the initial form", () => {
   render(<TravelPlanner />);
   // Updated text assertions for the new Initial Choice Step

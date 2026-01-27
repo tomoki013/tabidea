@@ -3,12 +3,15 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, usePathname } from 'next/navigation';
 import { FaUser, FaMapMarkedAlt, FaSignOutAlt, FaChevronDown } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
 
 export function AuthButton() {
   const { user, isLoading, isAuthenticated, signOut } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -46,6 +49,9 @@ export function AuthButton() {
     try {
       await signOut();
       setIsMenuOpen(false);
+      if (pathname === '/my-plans') {
+        router.push('/');
+      }
     } catch (error) {
       console.error('Sign out error:', error);
     }

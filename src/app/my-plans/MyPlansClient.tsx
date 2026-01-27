@@ -42,9 +42,15 @@ export default function MyPlansClient({
   totalPlans,
 }: MyPlansClientProps) {
   const { openModal } = usePlanModal();
-  const { user, signOut } = useAuth();
+  const { user, signOut, isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
   const router = useRouter();
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.push('/auth/login?redirect=/my-plans');
+    }
+  }, [isLoading, isAuthenticated, router]);
 
   const [isDeleting, setIsDeleting] = useState<string | null>(null);
   const [isUpdating, setIsUpdating] = useState<string | null>(null);

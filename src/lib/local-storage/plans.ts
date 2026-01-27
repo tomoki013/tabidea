@@ -193,8 +193,10 @@ export function getSyncPreviewInfo(): {
 
 // Subscribers for localStorage changes
 let listeners: Array<() => void> = [];
+let cachedPlans: LocalPlan[] | undefined;
 
-function emitChange() {
+export function notifyPlanChange() {
+  cachedPlans = undefined;
   for (const listener of listeners) {
     listener();
   }
@@ -208,11 +210,15 @@ function subscribeToLocalPlans(callback: () => void) {
 }
 
 function getLocalPlansSnapshot(): LocalPlan[] {
-  return getLocalPlans();
+  if (cachedPlans) return cachedPlans;
+  cachedPlans = getLocalPlans();
+  return cachedPlans;
 }
 
+const SERVER_SNAPSHOT: LocalPlan[] = [];
+
 function getLocalPlansServerSnapshot(): LocalPlan[] {
-  return [];
+  return SERVER_SNAPSHOT;
 }
 
 export function useLocalPlans() {
@@ -227,7 +233,7 @@ export function useLocalPlans() {
 
   const savePlan = useCallback((input: UserInput, itinerary: Itinerary) => {
     const newPlan = saveLocalPlan(input, itinerary);
-    emitChange();
+    notifyPlanChange();
     return newPlan;
   }, []);
 
@@ -235,7 +241,7 @@ export function useLocalPlans() {
     (id: string, updates: Partial<Pick<LocalPlan, 'input' | 'itinerary'>>) => {
       const updated = updateLocalPlan(id, updates);
       if (updated) {
-        emitChange();
+        notifyPlanChange();
       }
       return updated;
     },
@@ -245,14 +251,14 @@ export function useLocalPlans() {
   const deletePlan = useCallback((id: string) => {
     const success = deleteLocalPlan(id);
     if (success) {
-      emitChange();
+      notifyPlanChange();
     }
     return success;
   }, []);
 
   const clearAll = useCallback(() => {
     clearLocalPlans();
-    emitChange();
+    notifyPlanChange();
   }, []);
 
   return {

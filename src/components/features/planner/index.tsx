@@ -5,8 +5,9 @@ import { useRouter } from "next/navigation";
 import { UserInput, Itinerary, DayPlan } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
-import { saveLocalPlan } from "@/lib/local-storage/plans";
+import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
+import { useUserPlans } from "@/context/UserPlansContext";
 import StepContainer from "./StepContainer";
 import LoadingView from "./LoadingView";
 import StepDestination from "./steps/StepDestination";
@@ -30,6 +31,7 @@ interface TravelPlannerProps {
 export default function TravelPlanner({ initialInput, initialStep, onClose }: TravelPlannerProps) {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
+  const { refreshPlans } = useUserPlans();
   const [step, setStep] = useState(initialStep ?? 0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [input, setInput] = useState<UserInput>(() => {
@@ -298,16 +300,19 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         // Save to database for authenticated users
         const saveResult = await savePlan(updatedInput, finalPlan, false);
         if (saveResult.success && saveResult.shareCode) {
+          await refreshPlans();
           router.push(`/plan/${saveResult.shareCode}`);
         } else {
           // Fallback to local storage if DB save fails
           console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
           const localPlan = saveLocalPlan(updatedInput, finalPlan);
+          notifyPlanChange();
           router.push(`/plan/local/${localPlan.id}`);
         }
       } else {
         // Save to local storage for unauthenticated users
         const localPlan = saveLocalPlan(updatedInput, finalPlan);
+        notifyPlanChange();
         router.push(`/plan/local/${localPlan.id}`);
       }
 

@@ -10,6 +10,7 @@ import {
   FaUsers,
   FaWallet,
   FaCompass,
+  FaCloud,
 } from "react-icons/fa";
 
 const features = [
@@ -99,6 +100,17 @@ const features = [
       "複数のテーマを組み合わせて提案可能",
       "マニアックな専門スポットも網羅",
       "現地ならではの体験を重視",
+    ],
+  },
+  {
+    icon: FaCloud,
+    title: "アカウント機能でさらに便利に",
+    description:
+      "アカウントを作成すれば、作成したプランを無期限に保存可能。PCで作ったプランをスマホで確認したり、過去の旅行を振り返ることも簡単です。",
+    details: [
+      "プランの無期限保存・編集",
+      "PC・スマホ・タブレットでの同期",
+      "過去の旅行履歴の管理",
     ],
   },
 ];

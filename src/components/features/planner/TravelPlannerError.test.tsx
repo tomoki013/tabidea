@@ -44,6 +44,13 @@ vi.mock("@/lib/local-storage/plans", () => ({
   getLocalPlans: vi.fn(() => []),
 }));
 
+// Mock UserPlansContext
+vi.mock("@/context/UserPlansContext", () => ({
+  useUserPlans: () => ({
+    refreshPlans: vi.fn(),
+  }),
+}));
+
 const mockInput = {
   destinations: ["Tokyo"],
   isDestinationDecided: true,

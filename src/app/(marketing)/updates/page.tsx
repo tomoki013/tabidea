@@ -210,10 +210,10 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   // Future items
   {
-    status: "planned",
+    status: "developing",
     title: "持ち物リストの作成",
     description:
-      "旅行の目的地や期間に合わせて、必要な持ち物リストを自動で作成・管理できる機能を計画しています。",
+      "旅行の目的地や期間に合わせて、必要な持ち物リストを自動で作成・管理できる機能を開発しています。",
   },
   {
     status: "planned",
@@ -228,15 +228,16 @@ const rawRoadmapData: RoadmapItem[] = [
       "旅行プランを綺麗な画像として書き出し、SNSでシェアしやすくする機能を検討しています。",
   },
   {
-    status: "developing",
+    status: "planned",
     title: "旅行中のメモ機能",
     description:
-      "旅行中に何を食べたかやどこが良かったかを生成されたプランに直接書き込める機能を開発しています。",
+      "旅行中に何を食べたかやどこが良かったかを生成されたプランに直接書き込める機能を計画しています。",
   },
   {
     status: "developing",
-    title: "プラン生成時の個別カスタマイズ",
-    description: "プラン生成時に、より詳細な要望を反映できる機能を開発中です。",
+    title: "AI生成設定の保存",
+    description:
+      "ユーザーごとに、AI生成時に常に考慮してほしい要望（例：安さ重視、ゆったり等）を設定・保存できる機能を開発中です。",
   },
   {
     status: "planned",
