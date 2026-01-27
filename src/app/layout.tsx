@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Header, Footer, CookieBanner, FloatingPlanButton, GlobalAuthUI } from "@/components/common";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
+import { UserPlansProvider } from "@/context/UserPlansContext";
 import "./globals.css";
 
 // Fonts are now loaded via fontsource CSS imports in globals.css
@@ -80,14 +81,16 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <AuthProvider>
-          <PlanModalProvider>
-            <Header />
-            {children}
-            <FloatingPlanButton />
-            <CookieBanner />
-            <GlobalAuthUI />
-            <Footer />
-          </PlanModalProvider>
+          <UserPlansProvider>
+            <PlanModalProvider>
+              <Header />
+              {children}
+              <FloatingPlanButton />
+              <CookieBanner />
+              <GlobalAuthUI />
+              <Footer />
+            </PlanModalProvider>
+          </UserPlansProvider>
         </AuthProvider>
       </body>
     </html>
