@@ -261,152 +261,177 @@ export default function MobileSidebar({
                       />
                     ))}
                   </div>
-                ) : hasPlans ? (
-                  <div className="space-y-2">
-                    {displayPlans.slice(0, 5).map((plan) => {
-                      // Determine link and plan info based on type
-                      const isLocalPlan = 'itinerary' in plan;
-                      const href = isLocalPlan
-                        ? `/plan/local/${plan.id}`
-                        : `/plan/id/${plan.id}`;
-                      const destination = isLocalPlan
-                        ? (plan as { itinerary: { destination?: string } }).itinerary?.destination
-                        : (plan as PlanListItem).destination;
-                      const thumbnailUrl = isLocalPlan
-                        ? (plan as { itinerary: { heroImage?: string } }).itinerary?.heroImage
-                        : (plan as PlanListItem).thumbnailUrl;
-                      const createdAt = plan.createdAt;
-                      const isMenuOpen = openMenuId === plan.id;
-                      const isCurrentlyRenaming = isRenaming === plan.id;
-                      const isCurrentlyDeleting = isDeleting === plan.id;
+                ) : (
+                  <div className="space-y-4">
+                    {hasPlans ? (
+                      <div className="space-y-2">
+                        {displayPlans.slice(0, 5).map((plan) => {
+                          // Determine link and plan info based on type
+                          const isLocalPlan = 'itinerary' in plan;
+                          const href = isLocalPlan
+                            ? `/plan/local/${plan.id}`
+                            : `/plan/id/${plan.id}`;
+                          const destination = isLocalPlan
+                            ? (plan as { itinerary: { destination?: string } }).itinerary?.destination
+                            : (plan as PlanListItem).destination;
+                          const thumbnailUrl = isLocalPlan
+                            ? (plan as { itinerary: { heroImage?: string } }).itinerary?.heroImage
+                            : (plan as PlanListItem).thumbnailUrl;
+                          const createdAt = plan.createdAt;
+                          const isMenuOpen = openMenuId === plan.id;
+                          const isCurrentlyRenaming = isRenaming === plan.id;
+                          const isCurrentlyDeleting = isDeleting === plan.id;
 
-                      return (
-                        <div
-                          key={plan.id}
-                          className={`relative flex items-center gap-3 p-2 rounded-lg transition-colors group ${
-                            isCurrentlyDeleting ? 'opacity-50' : 'hover:bg-[#e67e22]/5'
-                          }`}
-                        >
-                          {/* Main content as link */}
-                          <Link
-                            href={href}
-                            onClick={onClose}
-                            className="flex items-center gap-3 flex-1 min-w-0"
-                          >
-                            {/* Thumbnail */}
-                            <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0">
-                              {thumbnailUrl ? (
-                                <Image
-                                  src={thumbnailUrl}
-                                  alt={destination || '旅行プラン'}
-                                  width={48}
-                                  height={48}
-                                  className="w-full h-full object-cover"
-                                />
-                              ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e67e22]/10 to-[#27ae60]/10">
-                                  <FaMapMarkerAlt className="text-[#e67e22]/40" />
+                          return (
+                            <div
+                              key={plan.id}
+                              className={`relative flex items-center gap-3 p-2 rounded-lg transition-colors group ${
+                                isCurrentlyDeleting ? 'opacity-50' : 'hover:bg-[#e67e22]/5'
+                              }`}
+                            >
+                              {/* Main content as link */}
+                              <Link
+                                href={href}
+                                onClick={onClose}
+                                className="flex items-center gap-3 flex-1 min-w-0"
+                              >
+                                {/* Thumbnail */}
+                                <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0">
+                                  {thumbnailUrl ? (
+                                    <Image
+                                      src={thumbnailUrl}
+                                      alt={destination || '旅行プラン'}
+                                      width={48}
+                                      height={48}
+                                      className="w-full h-full object-cover"
+                                    />
+                                  ) : (
+                                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e67e22]/10 to-[#27ae60]/10">
+                                      <FaMapMarkerAlt className="text-[#e67e22]/40" />
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Info */}
+                                <div className="flex-1 min-w-0">
+                                  {isCurrentlyRenaming ? (
+                                    <input
+                                      ref={renameInputRef}
+                                      type="text"
+                                      value={renameValue}
+                                      onChange={(e) => setRenameValue(e.target.value)}
+                                      onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                          e.preventDefault();
+                                          handleRename(plan.id, isLocalPlan);
+                                        } else if (e.key === 'Escape') {
+                                          setIsRenaming(null);
+                                        }
+                                      }}
+                                      onBlur={() => handleRename(plan.id, isLocalPlan)}
+                                      onClick={(e) => e.preventDefault()}
+                                      className="w-full text-sm font-medium text-stone-800 bg-white border border-[#e67e22] rounded px-2 py-0.5 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50"
+                                      disabled={isUpdating}
+                                    />
+                                  ) : (
+                                    <p className="text-sm font-medium text-stone-800 truncate group-hover:text-[#e67e22] transition-colors">
+                                      {destination || '目的地未設定'}
+                                    </p>
+                                  )}
+                                  <p className="text-xs text-stone-400">
+                                    {formatDate(createdAt)}
+                                  </p>
+                                </div>
+                              </Link>
+
+                              {/* Three-dot menu button (only for authenticated users with server plans) */}
+                              {isAuthenticated && !isLocalPlan && !isCurrentlyRenaming && (
+                                <div className="relative" ref={isMenuOpen ? menuRef : null}>
+                                  <button
+                                    onClick={(e) => handleMenuToggle(plan.id, e)}
+                                    className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                                    aria-label="メニューを開く"
+                                  >
+                                    <FaEllipsisV className="text-sm" />
+                                  </button>
+
+                                  {/* Dropdown menu */}
+                                  <AnimatePresence>
+                                    {isMenuOpen && (
+                                      <motion.div
+                                        initial={{ opacity: 0, scale: 0.95, y: -5 }}
+                                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                                        exit={{ opacity: 0, scale: 0.95, y: -5 }}
+                                        transition={{ duration: 0.15 }}
+                                        className="absolute right-0 top-full mt-1 w-36 bg-white rounded-lg shadow-lg border border-stone-200 py-1 z-50"
+                                      >
+                                        <button
+                                          onClick={(e) => handleStartRename(plan.id, destination || '', e)}
+                                          className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                        >
+                                          <FaEdit className="text-stone-400" />
+                                          名前を変更
+                                        </button>
+                                        <button
+                                          onClick={(e) => handleDelete(plan.id, isLocalPlan, e)}
+                                          className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                                        >
+                                          <FaTrash className="text-red-400" />
+                                          削除
+                                        </button>
+                                      </motion.div>
+                                    )}
+                                  </AnimatePresence>
                                 </div>
                               )}
                             </div>
+                          );
+                        })}
 
-                            {/* Info */}
-                            <div className="flex-1 min-w-0">
-                              {isCurrentlyRenaming ? (
-                                <input
-                                  ref={renameInputRef}
-                                  type="text"
-                                  value={renameValue}
-                                  onChange={(e) => setRenameValue(e.target.value)}
-                                  onKeyDown={(e) => {
-                                    if (e.key === 'Enter') {
-                                      e.preventDefault();
-                                      handleRename(plan.id, isLocalPlan);
-                                    } else if (e.key === 'Escape') {
-                                      setIsRenaming(null);
-                                    }
-                                  }}
-                                  onBlur={() => handleRename(plan.id, isLocalPlan)}
-                                  onClick={(e) => e.preventDefault()}
-                                  className="w-full text-sm font-medium text-stone-800 bg-white border border-[#e67e22] rounded px-2 py-0.5 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50"
-                                  disabled={isUpdating}
-                                />
-                              ) : (
-                                <p className="text-sm font-medium text-stone-800 truncate group-hover:text-[#e67e22] transition-colors">
-                                  {destination || '目的地未設定'}
-                                </p>
-                              )}
-                              <p className="text-xs text-stone-400">
-                                {formatDate(createdAt)}
-                              </p>
-                            </div>
+                        {displayPlans.length > 5 && (
+                          <Link
+                            href={isAuthenticated ? '/my-plans' : '#'}
+                            onClick={onClose}
+                            className="block text-center text-xs text-stone-500 hover:text-[#e67e22] py-2 transition-colors"
+                          >
+                            他 {displayPlans.length - 5} 件のプラン
                           </Link>
-
-                          {/* Three-dot menu button (only for authenticated users with server plans) */}
-                          {isAuthenticated && !isLocalPlan && !isCurrentlyRenaming && (
-                            <div className="relative" ref={isMenuOpen ? menuRef : null}>
-                              <button
-                                onClick={(e) => handleMenuToggle(plan.id, e)}
-                                className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
-                                aria-label="メニューを開く"
-                              >
-                                <FaEllipsisV className="text-sm" />
-                              </button>
-
-                              {/* Dropdown menu */}
-                              <AnimatePresence>
-                                {isMenuOpen && (
-                                  <motion.div
-                                    initial={{ opacity: 0, scale: 0.95, y: -5 }}
-                                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.95, y: -5 }}
-                                    transition={{ duration: 0.15 }}
-                                    className="absolute right-0 top-full mt-1 w-36 bg-white rounded-lg shadow-lg border border-stone-200 py-1 z-50"
-                                  >
-                                    <button
-                                      onClick={(e) => handleStartRename(plan.id, destination || '', e)}
-                                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
-                                    >
-                                      <FaEdit className="text-stone-400" />
-                                      名前を変更
-                                    </button>
-                                    <button
-                                      onClick={(e) => handleDelete(plan.id, isLocalPlan, e)}
-                                      className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
-                                    >
-                                      <FaTrash className="text-red-400" />
-                                      削除
-                                    </button>
-                                  </motion.div>
-                                )}
-                              </AnimatePresence>
-                            </div>
-                          )}
+                        )}
+                      </div>
+                    ) : (
+                      <div className="text-center py-8">
+                        <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#e67e22]/5 flex items-center justify-center">
+                          <FaPlane className="text-[#e67e22]/30 text-xl" />
                         </div>
-                      );
-                    })}
-
-                    {displayPlans.length > 5 && (
-                      <Link
-                        href={isAuthenticated ? '/my-plans' : '#'}
-                        onClick={onClose}
-                        className="block text-center text-xs text-stone-500 hover:text-[#e67e22] py-2 transition-colors"
-                      >
-                        他 {displayPlans.length - 5} 件のプラン
-                      </Link>
+                        <p className="text-sm text-stone-500 mb-1">
+                          プランがありません
+                        </p>
+                        <p className="text-xs text-stone-400">
+                          新しい旅を計画しましょう
+                        </p>
+                      </div>
                     )}
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-[#e67e22]/5 flex items-center justify-center">
-                      <FaPlane className="text-[#e67e22]/30 text-xl" />
-                    </div>
-                    <p className="text-sm text-stone-500 mb-1">
-                      プランがありません
-                    </p>
-                    <p className="text-xs text-stone-400">
-                      新しい旅を計画しましょう
-                    </p>
+
+                    {/* Unauthenticated User Call to Action */}
+                    {!isAuthenticated && (
+                      <div className="pt-4 border-t border-dashed border-stone-200">
+                        <div className="bg-[#e67e22]/5 p-4 rounded-xl text-center">
+                          <p className="text-sm font-bold text-stone-700 mb-1">
+                            保存したプランを表示
+                          </p>
+                          <p className="text-xs text-stone-500 mb-3">
+                            ログインして、保存したすべての<br/>プランにアクセスしましょう
+                          </p>
+                          <Link
+                            href="/auth/login"
+                            onClick={onClose}
+                            className="inline-flex items-center justify-center w-full px-4 py-2 bg-white border border-[#e67e22]/30 text-[#e67e22] rounded-lg text-sm font-bold hover:bg-[#e67e22] hover:text-white transition-all shadow-sm"
+                          >
+                            ログインする
+                          </Link>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>

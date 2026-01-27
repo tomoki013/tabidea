@@ -15,7 +15,7 @@ export default function LoginPage() {
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const redirectTo = searchParams.get('redirect') || '/';
+  const redirectTo = searchParams.get('redirect') || '/my-plans';
 
   // Redirect if already authenticated
   if (isAuthenticated && !isLoading) {

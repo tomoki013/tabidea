@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { FaCloudUploadAlt, FaCheck, FaTimes, FaSpinner, FaPlane } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useAuth } from '@/context/AuthContext';
 import { getLocalPlans, syncLocalPlansToServer } from '@/lib/local-storage/plans';
@@ -81,90 +82,115 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
     return null;
   }
 
-  // Show success message
+  // Show success message as a simpler toast/modal
   if (syncResult?.success) {
     return (
-      <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-[#fcfbf9] border-2 border-dashed border-[#27ae60]/40 rounded-2xl p-4 shadow-xl animate-in slide-in-from-bottom-4">
-        {/* Corner decoration */}
-        <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#27ae60]/20 rotate-45 rounded-sm" />
-
-        <div className="flex items-center gap-3">
-          <div className="p-3 bg-[#27ae60]/10 rounded-full">
-            <FaCheck className="text-[#27ae60]" />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 50 }}
+        className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none"
+      >
+        <div className="bg-[#fcfbf9] border-2 border-dashed border-[#27ae60]/40 rounded-2xl p-6 shadow-2xl max-w-sm w-full mx-4 pointer-events-auto flex items-center gap-4">
+          <div className="p-4 bg-[#27ae60]/10 rounded-full">
+            <FaCheck className="text-[#27ae60] text-xl" />
           </div>
           <div>
-            <p className="font-serif font-bold text-[#27ae60]">同期完了</p>
-            <p className="text-sm text-stone-600">
+            <p className="font-serif font-bold text-[#27ae60] text-lg">同期完了</p>
+            <p className="text-stone-600">
               {syncResult.syncedCount}件のプランを保存しました
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
-  // Show sync prompt
+  // Show sync prompt as a centered modal
   return (
-    <div className="fixed bottom-4 right-4 z-50 max-w-sm bg-[#fcfbf9] border-2 border-dashed border-[#e67e22]/30 rounded-2xl p-4 shadow-xl animate-in slide-in-from-bottom-4">
-      {/* Corner decorations */}
-      <div className="absolute -top-1.5 -left-1.5 w-5 h-5 bg-[#e67e22]/20 rotate-45 rounded-sm" />
-      <div className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#27ae60]/20 -rotate-45 rounded-sm" />
+    <AnimatePresence>
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+          onClick={handleDismiss}
+        />
 
-      <button
-        onClick={handleDismiss}
-        className="absolute top-3 right-3 p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
-        aria-label="閉じる"
-      >
-        <FaTimes size={12} />
-      </button>
+        {/* Modal */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          className="relative w-full max-w-md bg-[#fcfbf9] border-2 border-dashed border-[#e67e22]/30 rounded-3xl p-6 shadow-2xl"
+        >
+          {/* Corner decorations */}
+          <div className="absolute -top-2 -left-2 w-8 h-8 bg-[#e67e22]/20 rotate-45 rounded-sm" />
+          <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#27ae60]/20 -rotate-45 rounded-sm" />
 
-      <div className="flex items-start gap-3">
-        <div className="p-3 bg-[#e67e22]/10 rounded-full">
-          <FaCloudUploadAlt className="text-[#e67e22]" />
-        </div>
-        <div className="flex-1">
-          <p className="font-serif font-bold text-stone-800 pr-6">
-            ローカルのプランを同期
-          </p>
-          <p className="text-sm text-stone-600 mt-1 mb-3 flex items-center gap-1">
-            <FaPlane className="text-[#e67e22]/50 text-xs" />
-            {localPlansCount}件のプランをクラウドに保存しますか？
-          </p>
+          <button
+            onClick={handleDismiss}
+            className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
+            aria-label="閉じる"
+          >
+            <FaTimes size={16} />
+          </button>
 
-          {syncResult && !syncResult.success && (
-            <div className="mb-3 p-2 bg-red-50 border border-dashed border-red-200 rounded-lg text-xs text-red-600">
-              一部のプランの同期に失敗しました
+          <div className="flex flex-col items-center text-center pt-2">
+            <div className="p-4 bg-[#e67e22]/10 rounded-full mb-4">
+              <FaCloudUploadAlt className="text-[#e67e22] text-3xl" />
             </div>
-          )}
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleSync}
-              disabled={isSyncing}
-              className="flex items-center gap-2 px-4 py-2.5 bg-[#e67e22] text-white rounded-full text-sm font-bold hover:bg-[#d35400] disabled:opacity-50 transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-            >
-              {isSyncing ? (
-                <>
-                  <FaSpinner className="animate-spin" />
-                  同期中...
-                </>
-              ) : (
-                <>
-                  <FaCloudUploadAlt />
-                  同期する
-                </>
-              )}
-            </button>
-            <button
-              onClick={handleDismiss}
-              disabled={isSyncing}
-              className="px-4 py-2.5 text-stone-500 hover:text-[#e67e22] text-sm font-medium transition-colors"
-            >
-              後で
-            </button>
+            <h3 className="font-serif text-2xl font-bold text-stone-800 mb-2">
+              プランを同期しますか？
+            </h3>
+
+            <p className="text-stone-600 mb-6 flex flex-col items-center justify-center gap-1">
+              <span>お使いのブラウザに保存されている</span>
+              <span className="font-bold flex items-center gap-1 text-stone-800 bg-[#e67e22]/10 px-2 py-0.5 rounded-full">
+                <FaPlane className="text-[#e67e22]" />
+                {localPlansCount}件のプラン
+              </span>
+              <span>をアカウントに保存します。</span>
+            </p>
+
+            {syncResult && !syncResult.success && (
+              <div className="mb-6 p-3 bg-red-50 border border-dashed border-red-200 rounded-xl text-sm text-red-600 w-full">
+                一部のプランの同期に失敗しました
+              </div>
+            )}
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full">
+              <button
+                onClick={handleSync}
+                disabled={isSyncing}
+                className="w-full sm:flex-1 flex items-center justify-center gap-2 px-6 py-3.5 bg-[#e67e22] text-white rounded-xl text-base font-bold hover:bg-[#d35400] disabled:opacity-50 transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+              >
+                {isSyncing ? (
+                  <>
+                    <FaSpinner className="animate-spin" />
+                    同期中...
+                  </>
+                ) : (
+                  <>
+                    <FaCloudUploadAlt />
+                    同期する
+                  </>
+                )}
+              </button>
+              <button
+                onClick={handleDismiss}
+                disabled={isSyncing}
+                className="w-full sm:w-auto px-6 py-3.5 text-stone-500 hover:text-[#e67e22] hover:bg-stone-50 rounded-xl text-base font-medium transition-colors"
+              >
+                後で
+              </button>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   );
 }
