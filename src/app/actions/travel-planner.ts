@@ -10,6 +10,7 @@ import { getUser, createAdminClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
+import { getUserSettings } from "@/app/actions/user-settings";
 
 export type ActionState = {
   success: boolean;
@@ -55,6 +56,25 @@ function getBudgetContext(budget: string): string {
 }
 
 /**
+ * Helper to fetch and format user custom instructions
+ */
+async function getUserConstraintPrompt(): Promise<string> {
+  const { settings } = await getUserSettings();
+  const customInstructions = settings?.customInstructions;
+
+  if (customInstructions && customInstructions.trim().length > 0) {
+    return `
+    === CRITICAL USER INSTRUCTIONS (MUST FOLLOW) ===
+    The user has set the following global preferences/constraints.
+    You MUST strictly adhere to these instructions. Priority: HIGHEST.
+    ${customInstructions}
+    ================================================
+    `;
+  }
+  return "";
+}
+
+/**
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
 export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
@@ -87,6 +107,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     const totalDays = extractDuration(input.dates);
     const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
     const budgetPrompt = getBudgetContext(input.budget);
+    const userConstraintPrompt = await getUserConstraintPrompt();
 
     let prompt = "";
     if (input.isDestinationDecided) {
@@ -101,6 +122,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Pace: ${input.pace}
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
+
+        ${userConstraintPrompt}
 
         === ROUTE OPTIMIZATION INSTRUCTIONS ===
         1. You are NOT bound by the order in which destinations were entered by the user.
@@ -127,6 +150,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Pace: ${input.pace}
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
+
+        ${userConstraintPrompt}
 
         === MANDATORY VISITS ===
         1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
@@ -190,6 +215,7 @@ export async function generatePlanChunk(
     const budgetPrompt = getBudgetContext(input.budget);
     const destinationsStr = input.destinations.join("、");
     const isMultiCity = input.destinations.length > 1;
+    const userConstraintPrompt = await getUserConstraintPrompt();
 
     const prompt = `
       Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
@@ -201,6 +227,8 @@ export async function generatePlanChunk(
       Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
       Request: ${input.freeText || "None"}
       ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
+
+      ${userConstraintPrompt}
     `;
 
     const days = await ai.generateDayDetails(prompt, context, startDay, endDay, outlineDays);
@@ -235,6 +263,7 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
   try {
     const scraper = new PineconeRetriever();
     const ai = new GeminiService(apiKey);
+    const userConstraintPrompt = await getUserConstraintPrompt();
 
     const destinationsStr = input.destinations.join("、");
     const query = input.isDestinationDecided
@@ -287,6 +316,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
               Specific Requests: ${input.freeText || "None"}
 
+              ${userConstraintPrompt}
+
               IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
               Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
               ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
@@ -305,6 +336,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
               Pace: ${input.pace || "Not specified"}
               Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
               Specific Requests: ${input.freeText || "None"}
+
+              ${userConstraintPrompt}
 
               Task:
               1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
@@ -370,6 +403,8 @@ export async function generatePlan(input: UserInput): Promise<ActionState> {
         Must-Visit: ${input.mustVisitPlaces?.join(", ")}
         FreeText: ${input.freeText}
         ${isMultiCity ? `Note: Plan a multi-city trip visiting: ${destinationsStr} in an efficient order.` : ""}
+
+        ${userConstraintPrompt}
         `;
 
         plan = await ai.generateItinerary(prompt, contextArticles);
@@ -411,7 +446,25 @@ export async function regeneratePlan(
 
   try {
     const ai = new GeminiService(apiKey);
-    const newPlan = await ai.modifyItinerary(currentPlan, chatHistory);
+
+    // Inject user constraint prompt into chat history context if possible,
+    // or we might need to modify modifyItinerary signature.
+    // But better to append it as a "System" message in the history or similar.
+    // However, GeminiService.modifyItinerary takes history as is.
+    // We can prepend a system instruction to the history.
+
+    const userConstraintPrompt = await getUserConstraintPrompt();
+    let effectiveHistory = chatHistory;
+
+    if (userConstraintPrompt) {
+        // Prepend as a high-priority user message or system note
+        effectiveHistory = [
+            { role: 'user', text: `[SYSTEM NOTE: ${userConstraintPrompt}]` },
+            ...chatHistory
+        ];
+    }
+
+    const newPlan = await ai.modifyItinerary(currentPlan, effectiveHistory);
 
     // If the destination changed, fetch a new image
     if (newPlan.destination !== currentPlan.destination) {
