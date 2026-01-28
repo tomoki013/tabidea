@@ -1,0 +1,28 @@
+
+> tabidea@0.3.1 dev /app
+> next dev
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 2s
+ ○ Compiling /verify-ui ...
+ ⨯ Error: Missing Supabase environment variables
+    at createClient (src/lib/supabase/client.ts:13:11)
+    at AuthProvider (src/context/AuthContext.tsx:48:32)
+  11 |
+  12 |   if (!supabaseUrl || !supabaseAnonKey) {
+> 13 |     throw new Error('Missing Supabase environment variables');
+     |           ^
+  14 |   }
+  15 |
+  16 |   return createBrowserClient(supabaseUrl, supabaseAnonKey); {
+  digest: '3860325331'
+}
+ GET /verify-ui 500 in 14.7s (compile: 13.1s, proxy.ts: 269ms, render: 1326ms)
+ ELIFECYCLE  Command failed.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[?25h

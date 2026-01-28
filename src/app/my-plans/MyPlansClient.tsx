@@ -17,8 +17,6 @@ import {
   FaSync,
   FaEdit,
   FaEllipsisV,
-  FaUserCog,
-  FaExclamationTriangle,
   FaGlobe,
   FaLock,
   FaTimes,
@@ -26,7 +24,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, deleteAccount } from '@/app/actions/travel-planner';
+import { deletePlan, updatePlanVisibility, savePlan, updatePlanName } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
@@ -42,7 +40,7 @@ export default function MyPlansClient({
   totalPlans,
 }: MyPlansClientProps) {
   const { openModal } = usePlanModal();
-  const { user, signOut, isAuthenticated, isLoading } = useAuth();
+  const { isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
   const router = useRouter();
 
@@ -70,11 +68,6 @@ export default function MyPlansClient({
   // Deletion state
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<string | null>(null);
-
-  // Account deletion state
-  const [showDeleteAccountModal, setShowDeleteAccountModal] = useState(false);
-  const [deleteConfirmText, setDeleteConfirmText] = useState('');
-  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
 
   // Hydrate context with initial plans on mount
   useEffect(() => {
@@ -217,24 +210,6 @@ export default function MyPlansClient({
 
     setIsRenaming(null);
     setIsUpdating(null);
-  };
-
-  const handleDeleteAccount = async () => {
-    if (deleteConfirmText !== '削除する') {
-      alert('確認テキストが正しくありません');
-      return;
-    }
-
-    setIsDeletingAccount(true);
-    const result = await deleteAccount();
-
-    if (result.success) {
-      await signOut();
-      router.push('/');
-    } else {
-      alert(result.error || 'アカウントの削除に失敗しました');
-      setIsDeletingAccount(false);
-    }
   };
 
   const formatDate = (date: Date) => {
@@ -500,67 +475,6 @@ export default function MyPlansClient({
             ))}
           </div>
         )}
-
-        {/* Account Management Section */}
-        <div className="mt-16 pt-8 border-t border-dashed border-stone-200">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-stone-100 rounded-full">
-              <FaUserCog className="text-stone-500" />
-            </div>
-            <h2 className="font-serif text-xl font-bold text-stone-700">
-              アカウント設定
-            </h2>
-          </div>
-
-          {/* User Info Card */}
-          {user && (
-            <div className="bg-white rounded-xl border border-stone-200 p-6 mb-6">
-              <div className="flex items-center gap-4">
-                {user.avatarUrl ? (
-                  <Image
-                    src={user.avatarUrl}
-                    alt={user.displayName || 'ユーザー'}
-                    width={56}
-                    height={56}
-                    className="rounded-full"
-                  />
-                ) : (
-                  <div className="w-14 h-14 rounded-full bg-[#e67e22]/10 flex items-center justify-center">
-                    <span className="text-[#e67e22] text-xl font-bold">
-                      {user.displayName?.[0] || user.email?.[0] || 'U'}
-                    </span>
-                  </div>
-                )}
-                <div>
-                  <p className="font-medium text-stone-800">
-                    {user.displayName || 'ユーザー'}
-                  </p>
-                  <p className="text-sm text-stone-500">{user.email}</p>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Danger Zone */}
-          <div className="bg-red-50/50 rounded-xl border border-red-200 p-6">
-            <div className="flex items-start gap-3 mb-4">
-              <FaExclamationTriangle className="text-red-500 mt-0.5" />
-              <div>
-                <h3 className="font-medium text-red-700 mb-1">危険な操作</h3>
-                <p className="text-sm text-red-600/80">
-                  この操作は取り消すことができません
-                </p>
-              </div>
-            </div>
-
-            <button
-              onClick={() => setShowDeleteAccountModal(true)}
-              className="w-full sm:w-auto px-6 py-3 bg-white border-2 border-red-300 text-red-600 rounded-xl font-medium hover:bg-red-50 hover:border-red-400 transition-all"
-            >
-              アカウントを削除
-            </button>
-          </div>
-        </div>
       </main>
 
       {/* Delete Plan Modal */}
@@ -620,68 +534,6 @@ export default function MyPlansClient({
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Delete Account Modal */}
-      {showDeleteAccountModal && (
-        <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4">
-          <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-red-100 rounded-full">
-                <FaExclamationTriangle className="text-red-500 text-xl" />
-              </div>
-              <h3 className="font-serif text-xl font-bold text-stone-800">
-                アカウント削除
-              </h3>
-            </div>
-
-            <div className="mb-6 space-y-3 text-sm text-stone-600">
-              <p>
-                アカウントを削除すると、以下のデータがすべて<span className="font-bold text-red-600">完全に削除</span>されます：
-              </p>
-              <ul className="list-disc list-inside space-y-1 text-stone-500">
-                <li>保存したすべてのプラン</li>
-                <li>アカウント情報</li>
-                <li>利用履歴</li>
-              </ul>
-              <p className="text-red-600 font-medium">
-                この操作は取り消すことができません。
-              </p>
-            </div>
-
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-stone-700 mb-2">
-                確認のため「削除する」と入力してください
-              </label>
-              <input
-                type="text"
-                value={deleteConfirmText}
-                onChange={(e) => setDeleteConfirmText(e.target.value)}
-                placeholder="削除する"
-                className="w-full px-4 py-3 border border-stone-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-500/50 focus:border-red-500"
-              />
-            </div>
-
-            <div className="flex gap-3">
-              <button
-                onClick={() => {
-                  setShowDeleteAccountModal(false);
-                  setDeleteConfirmText('');
-                }}
-                className="flex-1 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-medium hover:bg-stone-200 transition-colors"
-              >
-                キャンセル
-              </button>
-              <button
-                onClick={handleDeleteAccount}
-                disabled={deleteConfirmText !== '削除する' || isDeletingAccount}
-                className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-medium hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isDeletingAccount ? '削除中...' : '削除する'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
