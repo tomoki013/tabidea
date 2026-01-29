@@ -6,6 +6,7 @@ import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
 import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
+import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getUser, createAdminClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { EntitlementService } from "@/lib/entitlements";
@@ -133,6 +134,10 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     const budgetPrompt = getBudgetContext(input.budget);
     const userConstraintPrompt = await getUserConstraintPrompt();
 
+    // Enhanced Transit Constraints
+    const transitConstraints = buildConstraintsPrompt(input.transits);
+    const transitSchedule = buildTransitSchedulePrompt(input.transits);
+
     let prompt = "";
     if (input.isDestinationDecided) {
       const isMultiCity = input.destinations.length > 1;
@@ -147,14 +152,19 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
 
+        ${transitSchedule}
+
         ${userConstraintPrompt}
 
+        ${transitConstraints}
+
         === ROUTE OPTIMIZATION INSTRUCTIONS ===
-        1. You are NOT bound by the order in which destinations were entered by the user.
+        1. You are NOT bound by the order in which destinations were entered by the user, UNLESS fixed by transit anchors above.
         2. Freely rearrange the visiting order to optimize for:
            - Geographic efficiency (minimize backtracking)
            - Travel convenience (logical flow between locations)
            - Time of day considerations (e.g., morning activities vs evening activities)
+        3. **RESPECT ANCHORS**: If the user has a booked flight to a city, you MUST start the relevant day there.
 
         === MANDATORY VISITS ===
         1. ALL destinations listed above (${destinationsStr}) MUST be included in the itinerary. No destination may be omitted.
@@ -175,7 +185,11 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
 
+        ${transitSchedule}
+
         ${userConstraintPrompt}
+
+        ${transitConstraints}
 
         === MANDATORY VISITS ===
         1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
@@ -242,6 +256,10 @@ export async function generatePlanChunk(
     const isMultiCity = input.destinations.length > 1;
     const userConstraintPrompt = await getUserConstraintPrompt();
 
+    // Enhanced Transit Constraints for Chunk
+    const transitConstraints = buildConstraintsPrompt(input.transits);
+    const transitSchedule = buildTransitSchedulePrompt(input.transits);
+
     const prompt = `
       Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
       Dates: ${input.dates}
@@ -253,7 +271,11 @@ export async function generatePlanChunk(
       Request: ${input.freeText || "None"}
       ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
 
+      ${transitSchedule}
+
       ${userConstraintPrompt}
+
+      ${transitConstraints}
     `;
 
     const days = await ai.generateDayDetails(

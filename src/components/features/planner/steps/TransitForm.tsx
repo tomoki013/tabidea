@@ -36,6 +36,8 @@ export default function TransitForm({
   const [arrPlace, setArrPlace] = useState(initialData?.arrival.place || "");
   const [arrTime, setArrTime] = useState(initialData?.arrival.time || "");
   const [memo, setMemo] = useState(initialData?.memo || "");
+  // Default to true if undefined, as users typically enter booked flights
+  const [isBooked, setIsBooked] = useState(initialData?.isBooked ?? true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -44,6 +46,7 @@ export default function TransitForm({
       departure: { place: depPlace, time: depTime },
       arrival: { place: arrPlace, time: arrTime },
       memo,
+      isBooked,
     });
   };
 
@@ -63,6 +66,30 @@ export default function TransitForm({
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Is Booked Switch */}
+        <div className="bg-stone-50 p-3 rounded-lg flex items-center justify-between border border-stone-200">
+          <div className="flex flex-col">
+            <span className="font-bold text-stone-800 text-sm">予約状況</span>
+            <span className="text-[10px] text-stone-500">
+              {isBooked
+                ? "この移動を確定事項としてプランを作成します"
+                : "あくまで希望としてAIに伝えます（変更の可能性あり）"}
+            </span>
+          </div>
+          <label className="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              checked={isBooked}
+              onChange={(e) => setIsBooked(e.target.checked)}
+              className="sr-only peer"
+            />
+            <div className="w-11 h-6 bg-stone-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#e67e22]/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#e67e22]"></div>
+            <span className="ml-2 text-xs font-bold text-stone-600">
+              {isBooked ? "予約済" : "未予約"}
+            </span>
+          </label>
+        </div>
+
         {/* Type Selection */}
         <div className="space-y-2">
           <label className="text-xs font-bold text-stone-500 uppercase tracking-wide">移動タイプ</label>

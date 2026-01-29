@@ -28,6 +28,8 @@ export interface TransitInfo {
   duration?: string;
   /** メモ（便名など） */
   memo?: string;
+  /** 予約済みかどうか（true: 確定/遵守必須, false: 候補/変更可） */
+  isBooked?: boolean;
 }
 
 /**
