@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { UserInput, Itinerary, DayPlan } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
@@ -23,6 +23,10 @@ import StepPlaces from "./steps/StepPlaces";
 import PlaneTransition from "./PlaneTransition";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
 import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
+import {
+  restorePendingState,
+  clearPendingState,
+} from '@/lib/restore/pending-state';
 
 interface TravelPlannerProps {
   initialInput?: UserInput | null;
@@ -32,8 +36,13 @@ interface TravelPlannerProps {
 
 export default function TravelPlanner({ initialInput, initialStep, onClose }: TravelPlannerProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { isAuthenticated } = useAuth();
   const { refreshPlans } = useUserPlans();
+
+  // 復元フラグをチェック
+  const shouldRestore = searchParams.get('restore') === 'true';
+
   const [step, setStep] = useState(initialStep ?? 0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [input, setInput] = useState<UserInput>(() => {
@@ -71,6 +80,47 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
   const [showLimitExceeded, setShowLimitExceeded] = useState(false);
   const [limitResetAt, setLimitResetAt] = useState<Date | null>(null);
   const [userType, setUserType] = useState<string>('anonymous');
+
+  // 復元関連のステート
+  const [showExpiredNotice, setShowExpiredNotice] = useState(false);
+  const [showRestoredNotice, setShowRestoredNotice] = useState(false);
+  const [loginPromptProps, setLoginPromptProps] = useState<{
+    userInput?: UserInput;
+    currentStep?: number;
+    isInModal?: boolean;
+  }>({});
+
+  // ★ 状態復元
+  useEffect(() => {
+    if (!shouldRestore) return;
+
+    const result = restorePendingState();
+
+    if (result.expired) {
+      // 期限切れ通知
+      setShowExpiredNotice(true);
+      // URLからパラメータを削除
+      const url = new URL(window.location.href);
+      url.searchParams.delete('restore');
+      window.history.replaceState({}, '', url.toString());
+      return;
+    }
+
+    if (result.success && result.data && result.data.restoreType === 'wizard') {
+      // 状態を復元
+      setInput(result.data.userInput);
+      setStep(result.data.currentStep);
+      setShowRestoredNotice(true);
+
+      // ローカルストレージをクリア
+      clearPendingState();
+
+      // URLからパラメータを削除
+      const url = new URL(window.location.href);
+      url.searchParams.delete('restore');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [shouldRestore]);
 
   // Check if all required inputs are filled (for showing "Generate" button from any step)
   const isAllInputsComplete = (): boolean => {
@@ -243,6 +293,11 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
 
         if (outlineResponse.userType === 'anonymous') {
           // 未ログイン → ログイン促進
+          setLoginPromptProps({
+            userInput: input,
+            currentStep: 8, // 確認画面
+            isInModal: false,
+          });
           setShowLoginPrompt(true);
         } else {
           // ログイン済み → 待機メッセージ
@@ -441,19 +496,108 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
   }
 
   return (
-    <StepContainer
-      step={step}
-      totalSteps={TOTAL_STEPS}
-      onBack={handleBack}
-      onNext={handleNext}
-      onComplete={handlePlan}
-      errorMessage={errorMessage}
-      input={input}
-      onJumpToStep={handleJumpToStep}
-      widthClass={step === 8 ? "max-w-3xl" : "max-w-lg"}
-      onClose={onClose}
-      canComplete={isAllInputsComplete()}
-    >
+    <>
+      {/* 期限切れ通知 */}
+      {showExpiredNotice && (
+        <div className="fixed top-4 right-4 z-50 bg-amber-50 border border-amber-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+          <div className="flex items-start gap-3">
+            <svg
+              className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+              />
+            </svg>
+            <div className="flex-1">
+              <p className="text-amber-800 text-sm font-medium">
+                保存から24時間以上経過したため、入力内容は削除されました。
+              </p>
+            </div>
+            <button
+              onClick={() => setShowExpiredNotice(false)}
+              className="text-amber-500 hover:text-amber-700"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 復元成功通知 */}
+      {showRestoredNotice && (
+        <div className="fixed top-4 right-4 z-50 bg-green-50 border border-green-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+          <div className="flex items-start gap-3">
+            <svg
+              className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+            <div className="flex-1">
+              <p className="text-green-800 text-sm font-medium">
+                入力内容を復元しました
+              </p>
+            </div>
+            <button
+              onClick={() => setShowRestoredNotice(false)}
+              className="text-green-500 hover:text-green-700"
+            >
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      <StepContainer
+        step={step}
+        totalSteps={TOTAL_STEPS}
+        onBack={handleBack}
+        onNext={handleNext}
+        onComplete={handlePlan}
+        errorMessage={errorMessage}
+        input={input}
+        onJumpToStep={handleJumpToStep}
+        widthClass={step === 8 ? "max-w-3xl" : "max-w-lg"}
+        onClose={onClose}
+        canComplete={isAllInputsComplete()}
+      >
       {step === 1 && input.isDestinationDecided === true && (
         <StepDestination
           value={input.destinations}
@@ -571,17 +715,21 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         />
       )}
 
-      {/* 利用制限モーダル */}
-      <LoginPromptModal
-        isOpen={showLoginPrompt}
-        onClose={() => setShowLoginPrompt(false)}
-      />
-      <LimitExceededModal
-        isOpen={showLimitExceeded}
-        onClose={() => setShowLimitExceeded(false)}
-        resetAt={limitResetAt}
-        actionType="plan_generation"
-      />
-    </StepContainer>
+        {/* 利用制限モーダル */}
+        <LoginPromptModal
+          isOpen={showLoginPrompt}
+          onClose={() => setShowLoginPrompt(false)}
+          userInput={loginPromptProps?.userInput}
+          currentStep={loginPromptProps?.currentStep}
+          isInModal={loginPromptProps?.isInModal}
+        />
+        <LimitExceededModal
+          isOpen={showLimitExceeded}
+          onClose={() => setShowLimitExceeded(false)}
+          resetAt={limitResetAt}
+          actionType="plan_generation"
+        />
+      </StepContainer>
+    </>
   );
 }

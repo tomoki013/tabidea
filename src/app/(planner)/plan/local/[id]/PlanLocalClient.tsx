@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
 
@@ -12,6 +12,7 @@ import { useAuth } from '@/context/AuthContext';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
+import { restorePendingState, clearPendingState } from '@/lib/restore/pending-state';
 
 interface PlanLocalClientProps {
   localId: string;
@@ -19,33 +20,93 @@ interface PlanLocalClientProps {
 
 export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+
+  // 復元パラメータをチェック
+  const shouldRestore = searchParams.get('restore') === 'true';
+  const shouldAutoSave = searchParams.get('autoSave') === 'true';
 
   const [plan, setPlan] = useState<LocalPlan | null>(null);
   const [result, setResult] = useState<Itinerary | null>(null);
   const [input, setInput] = useState<UserInput | null>(null);
   const [status, setStatus] = useState<'loading' | 'idle' | 'regenerating' | 'syncing' | 'error'>('loading');
   const [error, setError] = useState<string>('');
+  const [autoSaveError, setAutoSaveError] = useState<string | null>(null);
   const [chatHistoryToKeep, setChatHistoryToKeep] = useState<{ role: string; text: string }[]>([]);
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
 
-  // Load plan from local storage
+  // 自動保存処理
+  const handleAutoSave = useCallback(async (restoredInput: UserInput, restoredItinerary: Itinerary) => {
+    setStatus('syncing');
+
+    try {
+      const saveResult = await savePlan(restoredInput, restoredItinerary, false);
+
+      if (saveResult.success && saveResult.shareCode) {
+        // ローカルプランを削除
+        await deleteLocalPlan(localId);
+
+        // 保存成功 → /plan/[shareCode] へリダイレクト
+        router.replace(`/plan/${saveResult.shareCode}`);
+      } else {
+        setAutoSaveError(saveResult.error || '保存に失敗しました');
+        setStatus('idle');
+        cleanupUrl();
+      }
+    } catch (error) {
+      setAutoSaveError('保存中にエラーが発生しました');
+      setStatus('idle');
+      cleanupUrl();
+    }
+  }, [localId, router]);
+
+  const cleanupUrl = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('restore');
+    url.searchParams.delete('autoSave');
+    window.history.replaceState({}, '', url.toString());
+  };
+
+  // Load plan from local storage & 復元＆自動保存処理
   useEffect(() => {
     const plans = getLocalPlans();
     const foundPlan = plans.find(p => p.id === localId);
 
-    if (foundPlan) {
-      setPlan(foundPlan);
-      setInput(foundPlan.input);
-      setResult(foundPlan.itinerary);
-      setStatus('idle');
-    } else {
+    if (!foundPlan) {
       setError('プランが見つかりませんでした。');
       setStatus('error');
+      return;
     }
-  }, [localId]);
+
+    setPlan(foundPlan);
+    setInput(foundPlan.input);
+    setResult(foundPlan.itinerary);
+    setStatus('idle');
+
+    // 復元フラグがある場合
+    if (shouldRestore) {
+      const restoreResult = restorePendingState();
+
+      if (restoreResult.expired) {
+        setAutoSaveError('保存から24時間以上経過したため、自動保存できませんでした。');
+        clearPendingState();
+        cleanupUrl();
+        return;
+      }
+
+      // 自動保存
+      if (shouldAutoSave && restoreResult.success && restoreResult.data?.itinerary) {
+        handleAutoSave(restoreResult.data.userInput, restoreResult.data.itinerary);
+      } else {
+        cleanupUrl();
+      }
+
+      clearPendingState();
+    }
+  }, [localId, shouldRestore, shouldAutoSave, handleAutoSave]);
 
   // Auto-sync to database when user logs in
   const syncToDatabase = useCallback(async () => {
@@ -178,6 +239,48 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
+        {/* エラー表示 */}
+        {autoSaveError && (
+          <div className="fixed top-4 right-4 z-50 bg-red-50 border border-red-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+            <div className="flex items-start gap-3">
+              <svg
+                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <div className="flex-1">
+                <p className="text-red-800 text-sm font-medium">{autoSaveError}</p>
+              </div>
+              <button
+                onClick={() => setAutoSaveError(null)}
+                className="text-red-500 hover:text-red-700"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Title Section */}
         <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">

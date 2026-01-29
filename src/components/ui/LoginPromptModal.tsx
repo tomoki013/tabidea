@@ -1,18 +1,74 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { savePendingState } from '@/lib/restore/pending-state';
+import type { UserInput, Itinerary } from '@/types';
 
 interface LoginPromptModalProps {
   isOpen: boolean;
   onClose: () => void;
+  /** 現在の入力状態 */
+  userInput?: UserInput;
+  /** 生成済みプラン（ある場合） */
+  itinerary?: Itinerary;
+  /** ローカルプランID（/plan/local/[id] から来た場合） */
+  localPlanId?: string;
+  /** 現在のステップ */
+  currentStep?: number;
+  /** モーダル内のウィザードか */
+  isInModal?: boolean;
+  /** 自動保存するか（プラン生成後の場合） */
+  autoSaveOnLogin?: boolean;
 }
 
-export function LoginPromptModal({ isOpen, onClose }: LoginPromptModalProps) {
+export function LoginPromptModal({
+  isOpen,
+  onClose,
+  userInput,
+  itinerary,
+  localPlanId,
+  currentStep = 8,
+  isInModal = false,
+  autoSaveOnLogin = false,
+}: LoginPromptModalProps) {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogin = () => {
-    // ログインページへリダイレクト
-    router.push('/login?redirect=' + encodeURIComponent(window.location.pathname));
+    // 状態を保存
+    if (userInput) {
+      savePendingState({
+        userInput,
+        itinerary,
+        localPlanId,
+        currentStep,
+        restoreType: itinerary ? 'plan' : isInModal ? 'modal' : 'wizard',
+        returnPath: isInModal ? pathname : undefined,
+      });
+    }
+
+    // リダイレクトURLを構築
+    // ローカルプランがある場合はそのページに戻る
+    const redirectPath = localPlanId
+      ? `/plan/local/${localPlanId}`
+      : isInModal
+        ? pathname
+        : '/';
+
+    const params = new URLSearchParams({
+      redirect: redirectPath,
+      restore: 'true',
+    });
+
+    if (isInModal) {
+      params.set('modal', 'true');
+    }
+
+    if (autoSaveOnLogin && itinerary) {
+      params.set('autoSave', 'true');
+    }
+
+    router.push(`/auth/login?${params.toString()}`);
   };
 
   if (!isOpen) return null;
@@ -52,7 +108,7 @@ export function LoginPromptModal({ isOpen, onClose }: LoginPromptModalProps) {
             プランを生成できます。
           </p>
 
-          <ul className="space-y-2 text-sm text-stone-600 mb-6">
+          <ul className="space-y-2 text-sm text-stone-600 mb-4">
             <li className="flex items-center gap-2">
               <span className="w-1.5 h-1.5 bg-primary rounded-full" />
               プランの保存・管理
@@ -66,6 +122,37 @@ export function LoginPromptModal({ isOpen, onClose }: LoginPromptModalProps) {
               渡航情報の週次更新
             </li>
           </ul>
+
+          {/* 入力内容の保持について */}
+          {userInput && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+              <div className="flex items-start gap-2">
+                <svg
+                  className="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <div className="text-sm">
+                  <p className="text-blue-700 font-medium">入力内容は保持されます</p>
+                  <p className="text-blue-600">
+                    ログイン後、入力内容が復元されます。
+                    <br />
+                    <span className="text-xs">
+                      ※ 24時間以内にログインしてください
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="flex gap-3">
             <button

@@ -16,6 +16,9 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
 
   const redirectTo = searchParams.get('redirect') || '/my-plans';
+  const restore = searchParams.get('restore');
+  const modal = searchParams.get('modal');
+  const autoSave = searchParams.get('autoSave');
 
   // Redirect if already authenticated
   if (isAuthenticated && !isLoading) {
@@ -28,7 +31,28 @@ export default function LoginPage() {
     setError(null);
 
     try {
-      await signIn(provider);
+      // Build callback URL with restoration parameters
+      const callbackParams = new URLSearchParams();
+      callbackParams.set('redirect', redirectTo);
+      if (restore) callbackParams.set('restore', restore);
+      if (modal) callbackParams.set('modal', modal);
+      if (autoSave) callbackParams.set('autoSave', autoSave);
+
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      const callbackUrl = `${appUrl}/auth/callback?${callbackParams.toString()}`;
+
+      // Manually trigger OAuth with custom redirect
+      const supabase = (await import('@/lib/supabase/client')).createClient();
+      const { error: signInError } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: callbackUrl,
+        },
+      });
+
+      if (signInError) {
+        throw signInError;
+      }
     } catch (err) {
       console.error('Sign in error:', err);
       setError('ログインに失敗しました。もう一度お試しください。');
@@ -71,6 +95,30 @@ export default function LoginPage() {
           {error && (
             <div className="mb-6 p-4 bg-red-50 border border-dashed border-red-300 rounded-xl">
               <p className="text-red-600 text-sm text-center">{error}</p>
+            </div>
+          )}
+
+          {/* 復元予定の通知 */}
+          {restore === 'true' && (
+            <div className="mb-6 p-4 bg-blue-50 border border-dashed border-blue-300 rounded-xl">
+              <div className="flex items-start gap-2">
+                <svg
+                  className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <p className="text-sm text-blue-700">
+                  ログイン後、入力内容が復元されます。
+                </p>
+              </div>
             </div>
           )}
 
