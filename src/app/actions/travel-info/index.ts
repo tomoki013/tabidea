@@ -18,6 +18,9 @@ import {
   getSourceName,
 } from './helpers';
 import { logInfo, logWarn, logError, generateRequestId } from './logger';
+import { checkAndRecordUsage } from '@/lib/limits/check';
+import { getUserInfo } from '@/lib/limits/user-type';
+import { getAccessibleCategories } from '@/lib/limits/config';
 
 // ============================================
 // 型定義
@@ -32,6 +35,11 @@ export type TravelInfoResult =
       success: false;
       error: string;
       partialData?: Partial<TravelInfoResponse>;
+      // 利用制限関連
+      limitExceeded?: boolean;
+      userType?: string;
+      resetAt?: string | null;
+      accessibleCategories?: string[];
     };
 
 /**
@@ -86,6 +94,57 @@ export async function getTravelInfo(
     return { success: false, error: 'カテゴリを1つ以上指定してください。' };
   }
 
+  // 利用制限チェック
+  const limitResult = await checkAndRecordUsage('travel_info', {
+    destination,
+    categories: categories.join(','),
+  });
+
+  if (!limitResult.allowed) {
+    logWarn('getTravelInfo', '利用制限超過', {
+      requestId,
+      userType: limitResult.userType,
+    });
+    return {
+      success: false,
+      limitExceeded: true,
+      userType: limitResult.userType,
+      resetAt: limitResult.resetAt?.toISOString() ?? null,
+      error: '利用制限に達しました',
+    };
+  }
+
+  // アクセス可能なカテゴリのみにフィルタ
+  const userInfo = await getUserInfo();
+  const accessibleCategories = getAccessibleCategories(userInfo.type);
+  const filteredCategories = categories.filter((cat) =>
+    accessibleCategories.includes(cat)
+  );
+
+  // フィルタ後のカテゴリが空の場合
+  if (filteredCategories.length === 0) {
+    logWarn('getTravelInfo', 'アクセス可能なカテゴリなし', {
+      requestId,
+      userType: userInfo.type,
+      requestedCategories: categories,
+    });
+    return {
+      success: false,
+      error: '閲覧可能なカテゴリがありません',
+      accessibleCategories,
+    };
+  }
+
+  // ログに記録
+  if (filteredCategories.length < categories.length) {
+    logInfo('getTravelInfo', 'カテゴリフィルタリング実施', {
+      requestId,
+      original: categories,
+      filtered: filteredCategories,
+      userType: userInfo.type,
+    });
+  }
+
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
     logError('getTravelInfo', 'APIキーが設定されていません', undefined, { requestId });
@@ -113,11 +172,11 @@ export async function getTravelInfo(
       requestId,
       destination,
       country,
-      categories,
+      categories: filteredCategories,
     });
 
-    // サービスを使用して情報を取得
-    const response = await service.getInfo(destination, categories, {
+    // サービスを使用して情報を取得（フィルタ済みカテゴリを使用）
+    const response = await service.getInfo(destination, filteredCategories, {
       travelDate: options?.travelDates ? new Date(options.travelDates.start) : undefined,
       useCache: !options?.forceRefresh,
       country: country, // 抽出した国名をコンテキストとして渡す

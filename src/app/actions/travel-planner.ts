@@ -11,6 +11,8 @@ import { planService } from "@/lib/plans/service";
 import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
+import { checkAndRecordUsage } from "@/lib/limits/check";
+import type { UserType } from "@/lib/limits/config";
 
 export type ActionState = {
   success: boolean;
@@ -27,6 +29,11 @@ export type OutlineActionState = {
     input: UserInput;
     heroImage?: { url: string; photographer: string; photographerUrl: string } | null;
   };
+  // 利用制限関連
+  limitExceeded?: boolean;
+  userType?: UserType;
+  resetAt?: string | null; // ISO string
+  remaining?: number;
 };
 
 export type ChunkActionState = {
@@ -80,6 +87,23 @@ async function getUserConstraintPrompt(): Promise<string> {
 export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
   const startTime = Date.now();
   console.log(`[action] generatePlanOutline started`);
+
+  // 利用制限チェック（最初に実行）
+  const limitResult = await checkAndRecordUsage('plan_generation', {
+    destination: input.destinations.join(', ') || input.region,
+    isDestinationDecided: input.isDestinationDecided,
+  });
+
+  if (!limitResult.allowed) {
+    return {
+      success: false,
+      limitExceeded: true,
+      userType: limitResult.userType,
+      resetAt: limitResult.resetAt?.toISOString() ?? null,
+      remaining: limitResult.remaining,
+      message: '利用制限に達しました',
+    };
+  }
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {

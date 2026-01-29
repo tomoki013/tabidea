@@ -21,6 +21,8 @@ import StepBudget from "./steps/StepBudget";
 import StepPace from "./steps/StepPace";
 import StepPlaces from "./steps/StepPlaces";
 import PlaneTransition from "./PlaneTransition";
+import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
+import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
 
 interface TravelPlannerProps {
   initialInput?: UserInput | null;
@@ -63,6 +65,12 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     "idle" | "loading" | "updating" | "complete" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // 利用制限関連のステート
+  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
+  const [showLimitExceeded, setShowLimitExceeded] = useState(false);
+  const [limitResetAt, setLimitResetAt] = useState<Date | null>(null);
+  const [userType, setUserType] = useState<string>('anonymous');
 
   // Check if all required inputs are filled (for showing "Generate" button from any step)
   const isAllInputsComplete = (): boolean => {
@@ -227,6 +235,24 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
       // Step 1: Generate Master Outline (Client-Side Orchestration)
       // This step decides destination (if undecided) and sets high-level route
       const outlineResponse = await generatePlanOutline(input);
+
+      // 利用制限超過のハンドリング
+      if (!outlineResponse.success && outlineResponse.limitExceeded) {
+        setStatus("idle");
+        setUserType(outlineResponse.userType || 'anonymous');
+
+        if (outlineResponse.userType === 'anonymous') {
+          // 未ログイン → ログイン促進
+          setShowLoginPrompt(true);
+        } else {
+          // ログイン済み → 待機メッセージ
+          setLimitResetAt(
+            outlineResponse.resetAt ? new Date(outlineResponse.resetAt) : null
+          );
+          setShowLimitExceeded(true);
+        }
+        return;
+      }
 
       if (!outlineResponse.success || !outlineResponse.data) {
         throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
@@ -534,6 +560,18 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
           onComplete={handlePlan}
         />
       )}
+
+      {/* 利用制限モーダル */}
+      <LoginPromptModal
+        isOpen={showLoginPrompt}
+        onClose={() => setShowLoginPrompt(false)}
+      />
+      <LimitExceededModal
+        isOpen={showLimitExceeded}
+        onClose={() => setShowLimitExceeded(false)}
+        resetAt={limitResetAt}
+        actionType="plan_generation"
+      />
     </StepContainer>
   );
 }
