@@ -18,6 +18,7 @@ import StepFreeText from "./steps/StepFreeText";
 import StepInitialChoice from "./steps/StepInitialChoice";
 import StepRegion from "./steps/StepRegion";
 import StepBudget from "./steps/StepBudget";
+import StepTransit from "./steps/StepTransit";
 import StepPace from "./steps/StepPace";
 import StepPlaces from "./steps/StepPlaces";
 import PlaneTransition from "./PlaneTransition";
@@ -150,10 +151,12 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     // Step 6: Dates
     if (!input.dates) return false;
 
-    // Step 7: Pace
+    // Step 7: Transit (optional)
+
+    // Step 8: Pace
     if (!input.pace) return false;
 
-    // Step 8: FreeText (optional, no check needed)
+    // Step 9: FreeText (optional, no check needed)
 
     return true;
   };
@@ -222,13 +225,15 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
           return false;
         }
         break;
-      case 7: // Pace
+      case 7: // Transit (Optional)
+        break;
+      case 8: // Pace
          if (!input.pace) {
           setErrorMessage("旅行のペースを選択してください ⚡");
           return false;
         }
         break;
-      case 8: // FreeText (Optional)
+      case 9: // FreeText (Optional)
         break;
     }
     return true;
@@ -482,9 +487,10 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
   // 4: Themes
   // 5: Budget
   // 6: Dates
-  // 7: Pace
-  // 8: FreeText
-  const TOTAL_STEPS = 9;
+  // 7: Transit
+  // 8: Pace
+  // 9: FreeText
+  const TOTAL_STEPS = 10;
 
   if (step === 0) {
     return (
@@ -594,7 +600,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         errorMessage={errorMessage}
         input={input}
         onJumpToStep={handleJumpToStep}
-        widthClass={step === 8 ? "max-w-3xl" : "max-w-lg"}
+        widthClass={step === 9 ? "max-w-3xl" : "max-w-lg"}
         onClose={onClose}
         canComplete={isAllInputsComplete()}
       >
@@ -693,6 +699,18 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
         />
       )}
       {step === 7 && (
+         <StepTransit
+          input={input}
+          onChange={(val) => {
+            setInput(prev => ({ ...prev, ...val }));
+            setErrorMessage("");
+          }}
+          onNext={handleNext}
+          canComplete={isAllInputsComplete()}
+          onComplete={handlePlan}
+        />
+      )}
+      {step === 8 && (
          <StepPace
           value={input.pace}
           onChange={(val) => {
@@ -704,7 +722,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
           onComplete={handlePlan}
         />
       )}
-      {step === 8 && (
+      {step === 9 && (
         <StepFreeText
           value={input.freeText}
           onChange={(val) => {

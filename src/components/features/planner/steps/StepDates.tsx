@@ -1,12 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { UserInput, TransitInfo } from '@/types';
+import { UserInput } from '@/types';
 import { FaPlus, FaMinus } from "react-icons/fa6";
-import { FaTicketAlt } from "react-icons/fa";
-import TransitForm from "./TransitForm";
-import TransitListItem from "./TransitListItem";
 
 interface StepDatesProps {
   input: UserInput;
@@ -64,12 +60,6 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
   const isDateUndecided = isDateUndecidedCheck(input.dates);
   const isDurationUndecided = isDurationUndecidedCheck(input.dates);
 
-  // --- TRANSIT STATE ---
-  const [isAddingTransit, setIsAddingTransit] = useState(false);
-  const [editingDay, setEditingDay] = useState<number | null>(null);
-  const [selectedDayForAdd, setSelectedDayForAdd] = useState<number | null>(null);
-  const transits = input.transits || {};
-
   // --- LOGIC ---
   const formatDatesString = (
     sDate: string,
@@ -96,12 +86,6 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
     const newDur = Math.max(1, Math.min(30, duration + delta));
     const newDates = formatDatesString(startDate, newDur, displayFormat, isDateUndecided, false);
     onChange({ dates: newDates });
-    // Reset transit form if open as days might change
-    if (isAddingTransit) {
-        setIsAddingTransit(false);
-        setEditingDay(null);
-        setSelectedDayForAdd(null);
-    }
   };
 
   const handleDateChange = (newDate: string) => {
@@ -118,37 +102,11 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
   const handleDurationUndecidedToggle = (checked: boolean) => {
     const newDates = formatDatesString(startDate, duration, displayFormat, isDateUndecided, checked);
     onChange({ dates: newDates });
-    if (checked) {
-        // If duration becomes undecided, clear transits? Or just hide UI?
-        // Let's keep data but UI will hide as per !isDurationUndecided check
-        setIsAddingTransit(false);
-    }
   };
 
   const handleDisplayFormatChange = (newFormat: "days" | "nights") => {
     const newDates = formatDatesString(startDate, duration, newFormat, isDateUndecided, isDurationUndecided);
     onChange({ dates: newDates });
-  };
-
-  // --- TRANSIT HANDLERS ---
-  const handleAddTransit = () => {
-    setIsAddingTransit(true);
-    setEditingDay(null);
-    setSelectedDayForAdd(1); // Default to Day 1
-  };
-
-  const handleSaveTransit = (dayIndex: number, data: TransitInfo) => {
-    const newTransits = { ...transits, [dayIndex]: data };
-    onChange({ transits: newTransits });
-    setIsAddingTransit(false);
-    setEditingDay(null);
-    setSelectedDayForAdd(null);
-  };
-
-  const handleDeleteTransit = (dayIndex: number) => {
-     const newTransits = { ...transits };
-     delete newTransits[dayIndex];
-     onChange({ transits: newTransits });
   };
 
   return (
@@ -287,88 +245,6 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                  )}
             </div>
         </div>
-
-        {/* Transit Section */}
-        {!isDurationUndecided && (
-            <div className="space-y-3 pt-6 border-t-2 border-dashed border-stone-100">
-                <div className="flex items-center justify-between">
-                    <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
-                        <span className="text-xl text-primary"><FaTicketAlt /></span>
-                        <span className="flex flex-col leading-none">
-                            移動情報
-                            <span className="text-[10px] text-stone-400 font-normal normal-case">飛行機など予約済みのもの</span>
-                        </span>
-                    </label>
-                    {!isAddingTransit && (
-                        <button
-                            onClick={() => handleAddTransit()}
-                            className="text-xs text-white bg-stone-800 px-3 py-1.5 rounded-full font-bold hover:bg-black transition-colors flex items-center gap-1 shadow-sm"
-                        >
-                            <FaPlus size={10} /> 追加
-                        </button>
-                    )}
-                </div>
-
-                {/* Transit List */}
-                <div className="space-y-2">
-                    {Object.entries(transits).map(([dayIdx, data]) => (
-                        <TransitListItem
-                            key={dayIdx}
-                            dayIndex={Number(dayIdx)}
-                            data={data}
-                            onEdit={() => {
-                                setEditingDay(Number(dayIdx));
-                                setIsAddingTransit(true);
-                            }}
-                            onDelete={() => handleDeleteTransit(Number(dayIdx))}
-                        />
-                    ))}
-                </div>
-
-                {/* Add/Edit Form */}
-                {isAddingTransit && (
-                    <div className="mt-2">
-                        {/* Day Selector if new */}
-                        {!editingDay && (
-                            <div className="mb-2 bg-stone-50 p-2 rounded-lg border border-stone-200">
-                                <label className="text-xs font-bold text-stone-500 mb-2 block">何日目の移動？</label>
-                                <div className="flex gap-2 flex-wrap max-h-32 overflow-y-auto custom-scrollbar">
-                                    {Array.from({ length: duration }, (_, i) => i + 1).map(d => (
-                                        <button
-                                            key={d}
-                                            onClick={() => setSelectedDayForAdd(d)}
-                                            className={`px-3 py-1.5 rounded-md text-xs font-bold border transition-all ${
-                                                selectedDayForAdd === d
-                                                    ? "bg-stone-800 text-white border-stone-800 shadow-sm"
-                                                    : "bg-white text-stone-500 border-stone-200 hover:border-primary hover:text-primary"
-                                            } ${transits[d] ? "opacity-50" : ""}`}
-                                        >
-                                            Day {d}
-                                        </button>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
-
-                        {/* Form */}
-                        {(editingDay || selectedDayForAdd) && (
-                            <TransitForm
-                                dayIndex={editingDay || selectedDayForAdd!}
-                                totalDays={duration}
-                                startDate={startDate}
-                                initialData={editingDay ? transits[editingDay] : undefined}
-                                onSave={(data) => handleSaveTransit(editingDay || selectedDayForAdd!, data)}
-                                onCancel={() => {
-                                    setIsAddingTransit(false);
-                                    setEditingDay(null);
-                                    setSelectedDayForAdd(null);
-                                }}
-                            />
-                        )}
-                    </div>
-                )}
-            </div>
-        )}
 
       </div>
 
