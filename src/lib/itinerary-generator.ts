@@ -8,6 +8,7 @@ import { GeminiService } from "./services/ai/gemini";
 import { PineconeRetriever } from "./services/rag/pinecone-retriever";
 import { getUnsplashImage } from "./unsplash";
 import { extractDuration, splitDaysIntoChunks } from "./utils/plan";
+import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { Itinerary, DayPlan, UserInput, Article } from "@/types";
 
 export interface ItineraryGenerationOptions {
@@ -99,18 +100,9 @@ export async function generateItinerary(
     const totalDays = extractDuration(input.dates);
     log(`[generateItinerary] Total days: ${totalDays}`);
 
-    // Pre-booked Transit Info string for prompt
-    let transitInfoStr = "";
-    if (input.transits) {
-      transitInfoStr = "\nPre-booked Transit Info (Must be respected):\n";
-      Object.entries(input.transits).forEach(([day, info]) => {
-        transitInfoStr += `- Day ${day}: ${info.type} from ${
-          info.departure.place
-        } (${info.departure.time || "?"}) to ${info.arrival.place} (${
-          info.arrival.time || "?"
-        }). Note: ${info.memo || ""}\n`;
-      });
-    }
+    // Enhanced Transit Constraints
+    const transitConstraints = buildConstraintsPrompt(input.transits);
+    const transitSchedule = buildTransitSchedulePrompt(input.transits);
 
     let prompt: string;
     const isMultiCity = input.destinations.length > 1;
@@ -127,7 +119,10 @@ export async function generateItinerary(
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
-        ${transitInfoStr}
+
+        ${transitSchedule}
+        ${transitConstraints}
+
         ${
           isMultiCity
             ? `IMPORTANT: This is a multi-city trip visiting: ${destinationsStr}. Plan the route efficiently.`
@@ -152,7 +147,9 @@ export async function generateItinerary(
         Pace: ${input.pace}
         Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
-        ${transitInfoStr}
+
+        ${transitSchedule}
+        ${transitConstraints}
 
         TASK: Select best destination and outline plan.
       `;
