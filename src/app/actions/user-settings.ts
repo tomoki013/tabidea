@@ -4,6 +4,7 @@ import { getUser, createClient } from "@/lib/supabase/server";
 
 export interface UserSettings {
   customInstructions?: string;
+  travelStyle?: string;
 }
 
 /**
@@ -37,6 +38,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
       success: true,
       settings: {
         customInstructions: metadata.customInstructions || "",
+        travelStyle: metadata.travelStyle || "",
       }
     };
   } catch (error) {

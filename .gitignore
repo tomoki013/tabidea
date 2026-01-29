@@ -44,3 +44,9 @@ next-env.d.ts
 public/sitemap.xml
 public/sitemap-*.xml
 public/robots.txt
+
+# Logs
+dev.log
+next_output.log
+server.pid
+test-results/

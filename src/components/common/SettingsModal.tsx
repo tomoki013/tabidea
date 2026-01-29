@@ -33,6 +33,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   // AI Settings State
   const [customInstructions, setCustomInstructions] = useState("");
+  const [travelStyle, setTravelStyle] = useState("");
   const [isLoadingSettings, setIsLoadingSettings] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [settingsError, setSettingsError] = useState<string | null>(null);
@@ -74,6 +75,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       const result = await getUserSettings();
       if (result.success && result.settings) {
         setCustomInstructions(result.settings.customInstructions || "");
+        setTravelStyle(result.settings.travelStyle || "");
       } else {
         // If no settings exist yet, it's fine, just empty
       }
@@ -88,7 +90,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     setIsSaving(true);
     setSettingsError(null);
     try {
-      const result = await updateUserSettings({ customInstructions });
+      const result = await updateUserSettings({ customInstructions, travelStyle });
       if (result.success) {
         onClose();
       } else {
@@ -216,6 +218,27 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   </div>
                 ) : (
                   <div className="space-y-4">
+                    <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
+                      <label className="block text-sm font-bold text-stone-700 mb-2">
+                        旅のスタイル
+                      </label>
+                      <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-lg">
+                        <p className="mb-1 font-bold">💡 ヒント</p>
+                        AIがあなたの好みを理解するための参考情報です。
+                        <ul className="list-disc list-inside mt-1 space-y-0.5 ml-1">
+                          <li>「ゆったりと現地の空気を楽しみたい」</li>
+                          <li>「とにかく美味しいものをたくさん食べたい」</li>
+                          <li>「できるだけ費用を抑えて多くの場所を回りたい」</li>
+                        </ul>
+                      </div>
+                      <textarea
+                        value={travelStyle}
+                        onChange={(e) => setTravelStyle(e.target.value)}
+                        className="w-full h-32 p-4 rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#e67e22] focus:border-transparent bg-white resize-none text-stone-800 placeholder-stone-400 transition-all"
+                        placeholder="例：歴史的な場所が好きです。朝はゆっくりスタートしたいです..."
+                      />
+                    </div>
+
                     <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
                       <label className="block text-sm font-bold text-stone-700 mb-2">
                         カスタム指示（制約事項）

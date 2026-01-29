@@ -7,10 +7,10 @@ import CategoryCard from './CategoryCard';
 import type { CategorySelectorProps } from './types';
 
 // 必須カテゴリ（ユーザーは解除できない）
-// 基本ガイドの主要3カテゴリ: 基本情報、治安、マナー
+// 基本ガイドの主要3カテゴリ: 基本情報、治安、ビザ
 // Note: "climate"(気候) is intentionally excluded from mandatory
-// Note: "visa" is now selectable but not mandatory
-const MANDATORY_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'manner'];
+// Note: "visa" is now mandatory
+const MANDATORY_CATEGORIES: TravelInfoCategory[] = ['basic', 'safety', 'visa'];
 
 /**
  * CategorySelector - カテゴリ選択グリッド
