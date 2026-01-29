@@ -8,9 +8,10 @@
 import { useState, useCallback, useSyncExternalStore } from 'react';
 
 import type { UserInput, Itinerary, LocalPlan, SyncResult } from '@/types';
+import { withLock } from './lock';
 
 const STORAGE_KEY = 'tabidea_local_plans';
-const MAX_LOCAL_PLANS = 10;
+const MAX_LOCAL_PLANS = 10; // Fallback limit if not logged in
 
 // ============================================
 // Local Storage Operations
@@ -31,7 +32,44 @@ export function getLocalPlans(): LocalPlan[] {
   }
 }
 
-export function saveLocalPlan(
+export async function saveLocalPlan(
+  input: UserInput,
+  itinerary: Itinerary
+): Promise<LocalPlan> {
+  return withLock(() => {
+    const plans = getLocalPlans();
+
+    const newPlan: LocalPlan = {
+      id: `local_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      input,
+      itinerary,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    plans.unshift(newPlan);
+
+    if (plans.length > MAX_LOCAL_PLANS) {
+      plans.splice(MAX_LOCAL_PLANS);
+    }
+
+    saveLocalPlans(plans);
+
+    // Set cookie to indicate user has local plans (for auth callback)
+    if (typeof document !== 'undefined') {
+      document.cookie =
+        'tabidea_has_local_plans=true; path=/; max-age=2592000; SameSite=Lax';
+    }
+
+    return newPlan;
+  });
+}
+
+/**
+ * Synchronous version for backward compatibility
+ * @deprecated Use saveLocalPlan instead
+ */
+export function saveLocalPlanSync(
   input: UserInput,
   itinerary: Itinerary
 ): LocalPlan {
@@ -52,37 +90,48 @@ export function saveLocalPlan(
   }
 
   saveLocalPlans(plans);
+
+  // Set cookie to indicate user has local plans (for auth callback)
+  if (typeof document !== 'undefined') {
+    document.cookie =
+      'tabidea_has_local_plans=true; path=/; max-age=2592000; SameSite=Lax';
+  }
+
   return newPlan;
 }
 
-export function updateLocalPlan(
+export async function updateLocalPlan(
   id: string,
   updates: Partial<Pick<LocalPlan, 'input' | 'itinerary'>>
-): LocalPlan | null {
-  const plans = getLocalPlans();
-  const index = plans.findIndex((p) => p.id === id);
+): Promise<LocalPlan | null> {
+  return withLock(() => {
+    const plans = getLocalPlans();
+    const index = plans.findIndex((p) => p.id === id);
 
-  if (index === -1) return null;
+    if (index === -1) return null;
 
-  plans[index] = {
-    ...plans[index],
-    ...updates,
-    updatedAt: new Date().toISOString(),
-  };
+    plans[index] = {
+      ...plans[index],
+      ...updates,
+      updatedAt: new Date().toISOString(),
+    };
 
-  saveLocalPlans(plans);
-  return plans[index];
+    saveLocalPlans(plans);
+    return plans[index];
+  });
 }
 
-export function deleteLocalPlan(id: string): boolean {
-  const plans = getLocalPlans();
-  const index = plans.findIndex((p) => p.id === id);
+export async function deleteLocalPlan(id: string): Promise<boolean> {
+  return withLock(() => {
+    const plans = getLocalPlans();
+    const index = plans.findIndex((p) => p.id === id);
 
-  if (index === -1) return false;
+    if (index === -1) return false;
 
-  plans.splice(index, 1);
-  saveLocalPlans(plans);
-  return true;
+    plans.splice(index, 1);
+    saveLocalPlans(plans);
+    return true;
+  });
 }
 
 export function clearLocalPlans(): void {
@@ -102,8 +151,64 @@ function saveLocalPlans(plans: LocalPlan[]): void {
 }
 
 // ============================================
+// Sync Capacity Check
+// ============================================
+
+export interface SyncPreCheckResult {
+  canSyncAll: boolean;
+  localPlanCount: number;
+  dbPlanCount: number;
+  dbLimit: number;
+  availableSlots: number;
+  excessCount: number; // Number of plans that cannot be synced
+}
+
+/**
+ * Check sync capacity before syncing
+ * @param getUserPlanCount - Function to get current DB plan count
+ * @param getStorageLimit - Function to get user's storage limit
+ */
+export async function checkSyncCapacity(
+  getUserPlanCount: () => Promise<number>,
+  getStorageLimit: () => Promise<{ limit: number }>
+): Promise<SyncPreCheckResult> {
+  const localPlans = getLocalPlans();
+  const dbCount = await getUserPlanCount();
+  const { limit } = await getStorageLimit();
+
+  const availableSlots =
+    limit === -1 ? Infinity : Math.max(0, limit - dbCount);
+  const excessCount = Math.max(0, localPlans.length - availableSlots);
+
+  return {
+    canSyncAll: localPlans.length <= availableSlots,
+    localPlanCount: localPlans.length,
+    dbPlanCount: dbCount,
+    dbLimit: limit,
+    availableSlots: limit === -1 ? -1 : availableSlots,
+    excessCount,
+  };
+}
+
+// ============================================
 // Sync with Server
 // ============================================
+
+export interface SelectiveSyncOptions {
+  /** IDs of plans to sync (if not specified, syncs oldest plans up to limit) */
+  planIdsToSync?: string[];
+  /** What to do with unsynced plans */
+  unsyncedAction: 'keep_local' | 'delete' | 'ask_user';
+}
+
+export interface DetailedSyncResult extends SyncResult {
+  /** Plans that could not be synced (for user selection) */
+  unsyncedPlans?: Array<{
+    id: string;
+    destination: string;
+    createdAt: string;
+  }>;
+}
 
 export async function syncLocalPlansToServer(
   uploadPlan: (
@@ -112,9 +217,26 @@ export async function syncLocalPlansToServer(
   ) => Promise<{ success: boolean; shareCode?: string; error?: string }>,
   getExistingPlansCount?: () => Promise<number>
 ): Promise<SyncResult> {
+  return syncLocalPlansSelectively(uploadPlan, {
+    unsyncedAction: 'delete',
+  });
+}
+
+/**
+ * Selectively sync local plans to server
+ * Allows choosing which plans to sync when storage limit is exceeded
+ */
+export async function syncLocalPlansSelectively(
+  uploadPlan: (
+    input: UserInput,
+    itinerary: Itinerary
+  ) => Promise<{ success: boolean; shareCode?: string; error?: string }>,
+  options: SelectiveSyncOptions,
+  getExistingPlansCount?: () => Promise<number>
+): Promise<DetailedSyncResult> {
   const localPlans = getLocalPlans();
 
-  const result: SyncResult = {
+  const result: DetailedSyncResult = {
     success: true,
     syncedCount: 0,
     failedCount: 0,
@@ -139,10 +261,28 @@ export async function syncLocalPlansToServer(
     }
   }
 
+  // Determine which plans to sync
+  let plansToSync: LocalPlan[];
+  let plansToSkip: LocalPlan[];
+
+  if (options.planIdsToSync) {
+    // User-selected plans
+    plansToSync = localPlans.filter((p) =>
+      options.planIdsToSync!.includes(p.id)
+    );
+    plansToSkip = localPlans.filter(
+      (p) => !options.planIdsToSync!.includes(p.id)
+    );
+  } else {
+    // Sync all (default behavior)
+    plansToSync = localPlans;
+    plansToSkip = [];
+  }
+
   const syncedIds: string[] = [];
 
-  // Upload all local plans (merge strategy - no overwrite)
-  for (const plan of localPlans) {
+  // Upload selected plans
+  for (const plan of plansToSync) {
     try {
       const uploadResult = await uploadPlan(plan.input, plan.itinerary);
 
@@ -155,17 +295,47 @@ export async function syncLocalPlansToServer(
         result.errors.push(
           uploadResult.error || `Failed to sync plan ${plan.id}`
         );
+        // Move failed plans to skip list
+        plansToSkip.push(plan);
       }
     } catch (error) {
       result.failedCount++;
       result.errors.push(`Error syncing plan ${plan.id}: ${error}`);
+      plansToSkip.push(plan);
     }
   }
 
-  // Remove synced plans from local storage
-  if (syncedIds.length > 0) {
-    const remainingPlans = localPlans.filter((p) => !syncedIds.includes(p.id));
-    saveLocalPlans(remainingPlans);
+  // Handle unsynced plans
+  if (plansToSkip.length > 0) {
+    result.skippedCount = plansToSkip.length;
+
+    switch (options.unsyncedAction) {
+      case 'delete':
+        // Delete all local plans
+        clearLocalPlans();
+        break;
+      case 'keep_local':
+        // Keep unsynced plans, remove synced ones
+        saveLocalPlans(plansToSkip);
+        result.unsyncedPlans = plansToSkip.map((p) => ({
+          id: p.id,
+          destination: p.itinerary.destination || '未設定',
+          createdAt: p.createdAt,
+        }));
+        break;
+      case 'ask_user':
+        // Return unsynced plans for user to decide
+        result.unsyncedPlans = plansToSkip.map((p) => ({
+          id: p.id,
+          destination: p.itinerary.destination || '未設定',
+          createdAt: p.createdAt,
+        }));
+        // Keep all plans until user decides
+        break;
+    }
+  } else {
+    // All synced, clear local storage
+    clearLocalPlans();
   }
 
   result.success = result.failedCount === 0;
