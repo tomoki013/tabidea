@@ -66,20 +66,32 @@ function getBudgetContext(budget: string): string {
 /**
  * Helper to fetch and format user custom instructions
  */
-async function getUserConstraintPrompt(): Promise<string> {
+export async function getUserConstraintPrompt(): Promise<string> {
   const { settings } = await getUserSettings();
-  const customInstructions = settings?.customInstructions;
+  let prompt = "";
 
-  if (customInstructions && customInstructions.trim().length > 0) {
-    return `
+  // Travel Style (Preferences)
+  if (settings?.travelStyle && settings.travelStyle.trim().length > 0) {
+    prompt += `
+    === USER TRAVEL STYLE / PREFERENCES ===
+    The user describes their travel style as:
+    "${settings.travelStyle}"
+    Please consider this tone and style when generating the plan.
+    =======================================
+    \n`;
+  }
+
+  // Custom Instructions (Constraints)
+  if (settings?.customInstructions && settings.customInstructions.trim().length > 0) {
+    prompt += `
     === CRITICAL USER INSTRUCTIONS (MUST FOLLOW) ===
     The user has set the following global preferences/constraints.
     You MUST strictly adhere to these instructions. Priority: HIGHEST.
-    ${customInstructions}
+    ${settings.customInstructions}
     ================================================
     `;
   }
-  return "";
+  return prompt;
 }
 
 /**
