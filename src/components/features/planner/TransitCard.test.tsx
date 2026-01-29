@@ -14,7 +14,8 @@ describe('TransitCard', () => {
   it('renders transit information correctly', () => {
     render(<TransitCard transit={mockTransit} />);
 
-    expect(screen.getByText('flight')).toBeDefined();
+    // Expect capitalized label "Flight"
+    expect(screen.getByText('Flight')).toBeDefined();
     expect(screen.getByText('Osaka')).toBeDefined();
     expect(screen.getByText('KL')).toBeDefined();
     expect(screen.getByText('10:00')).toBeDefined();
@@ -31,7 +32,8 @@ describe('TransitCard', () => {
 
     render(<TransitCard transit={minimalTransit} />);
 
-    expect(screen.getByText('train')).toBeDefined();
+    // Expect capitalized label "Train"
+    expect(screen.getByText('Train')).toBeDefined();
     expect(screen.getByText('Tokyo')).toBeDefined();
     expect(screen.getByText('Kyoto')).toBeDefined();
     // Check if time placeholder exists
