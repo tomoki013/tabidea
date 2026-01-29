@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "lh3.googleusercontent.com",
+        hostname: "*.googleusercontent.com", // 先頭に *. をつけることで全て許可されます
+        port: "",
         pathname: "/**",
       },
     ],
