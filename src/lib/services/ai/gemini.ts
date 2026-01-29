@@ -217,6 +217,12 @@ ${prompt}`;
       5. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
       6. Return JSON only.
 
+      TONE & QUALITY INSTRUCTIONS:
+      - The "description" should NOT be a dry list. It must be a **Compelling, Human-like Travel Concept**.
+      - Write it like a professional travel editor pitching a feature story.
+      - Evoke emotion, atmosphere, and the specific "Vibe" the user requested.
+      - Avoid robotic phrases like "Here is a plan for...". Instead start with "Escape to..." or "Immerse yourself in...".
+
       MULTI-CITY TRIP HANDLING:
       - If multiple destinations are specified (e.g., "Tokyo、Osaka、Kyoto"), this is a multi-city trip.
       - Plan the route to visit ALL specified cities efficiently, considering travel time between them.
@@ -235,7 +241,7 @@ ${prompt}`;
       JSON:
       {
         "destination": "string (The chosen destination name, or combined name for multi-city trips)",
-        "description": "string (Overview of the entire trip in Japanese, mentioning the multi-city route if applicable)",
+        "description": "string (Overview of the entire trip in Japanese. WRITE LIKE A TRAVEL MAGAZINE. Emotional, descriptive, cohesive.)",
         "days": [
           {
             "day": number,
@@ -326,6 +332,13 @@ ${prompt}`;
       4. CRITICAL: Each day MUST start from the previous day's overnight_location (or startingLocation if specified).
       5. If travel_method_to_next is specified in the outline, include that travel as an activity at the appropriate time.
 
+      QUALITY & TONE INSTRUCTIONS (IMPORTANT):
+      - WRITE LIKE A HUMAN TRAVEL WRITER, not a robot.
+      - Descriptions should be engaging, atmospheric, and practical.
+      - Avoid repetitive sentence structures (e.g. don't start every line with "Go to...").
+      - ONE-SHOT FEEL: Even though you are generating a part of the trip, write as if it flows naturally from the previous days.
+      - Morning Transition: Explicitly mention the context of waking up in the starting location (e.g., "Waking up to the sounds of [Location]...").
+
       MULTI-CITY TRIP HANDLING:
       - If this is a multi-city trip, ensure smooth transitions between cities.
       - For travel days, include:
@@ -350,7 +363,7 @@ ${prompt}`;
                {
                 "time": "string",
                 "activity": "string (include city/location prefix for multi-city trips)",
-                "description": "string"
+                "description": "string (Detailed, engaging description. 1-2 sentences. Mention specific dishes for food or specific photo spots.)"
                }
             ]
           }

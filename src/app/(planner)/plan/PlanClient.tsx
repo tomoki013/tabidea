@@ -55,7 +55,17 @@ function PlanContent() {
 
       const chunkPromises = chunks.map(chunk => {
         const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end);
+
+        // Determine start location from previous day's overnight location in outline
+        let previousOvernightLocation: string | undefined = undefined;
+        if (chunk.start > 1) {
+          const prevDay = outline.days.find(d => d.day === chunk.start - 1);
+          if (prevDay) {
+            previousOvernightLocation = prevDay.overnight_location;
+          }
+        }
+
+        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end, previousOvernightLocation);
       });
 
       const chunkResults = await Promise.all(chunkPromises);

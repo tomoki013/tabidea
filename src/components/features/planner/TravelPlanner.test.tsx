@@ -9,7 +9,8 @@ vi.mock("next/image", () => ({
 
 // Mock server actions
 vi.mock("@/app/actions/travel-planner", () => ({
-  generatePlan: vi.fn(),
+  generatePlanOutline: vi.fn(),
+  generatePlanChunk: vi.fn(),
   regeneratePlan: vi.fn(),
   savePlan: vi.fn(),
 }));

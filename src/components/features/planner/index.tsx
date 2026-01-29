@@ -256,7 +256,17 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
       const chunkPromises = chunks.map(chunk => {
         // Filter outline days relevant to this chunk
         const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end);
+
+        // Determine start location from previous day's overnight location in outline
+        let previousOvernightLocation: string | undefined = undefined;
+        if (chunk.start > 1) {
+          const prevDay = outline.days.find(d => d.day === chunk.start - 1);
+          if (prevDay) {
+            previousOvernightLocation = prevDay.overnight_location;
+          }
+        }
+
+        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end, previousOvernightLocation);
       });
 
       // Execute all chunks in parallel

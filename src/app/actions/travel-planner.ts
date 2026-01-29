@@ -202,7 +202,8 @@ export async function generatePlanChunk(
   context: Article[],
   outlineDays: PlanOutlineDay[],
   startDay: number,
-  endDay: number
+  endDay: number,
+  previousOvernightLocation?: string
 ): Promise<ChunkActionState> {
   const startTime = Date.now();
   console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
@@ -231,7 +232,14 @@ export async function generatePlanChunk(
       ${userConstraintPrompt}
     `;
 
-    const days = await ai.generateDayDetails(prompt, context, startDay, endDay, outlineDays);
+    const days = await ai.generateDayDetails(
+      prompt,
+      context,
+      startDay,
+      endDay,
+      outlineDays,
+      previousOvernightLocation
+    );
 
     console.log(`[action] Chunk ${startDay}-${endDay} generated in ${Date.now() - startTime}ms`);
     return { success: true, data: days };
@@ -239,189 +247,6 @@ export async function generatePlanChunk(
   } catch (error) {
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
     return { success: false, message: "詳細プランの生成に失敗しました。" };
-  }
-}
-
-
-/**
- * Legacy Function - Kept for reference or fallback if needed, but primary flow uses Outline+Chunks now.
- */
-export async function generatePlan(input: UserInput): Promise<ActionState> {
-    // Forwarding to new logic wrapper if we wanted to support direct call,
-    // but here we just keep the old implementation or better yet, deprecate it.
-    // For now, I'll keep the original implementation below to ensure I don't break anything
-    // that might still rely on it, although the client will switch to the new actions.
-
-  const startTime = Date.now();
-  console.log(`[action] generatePlan (Legacy) started at ${new Date().toISOString()}`);
-
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) {
-    return { success: false, message: "API Key missing" };
-  }
-
-  try {
-    const scraper = new PineconeRetriever();
-    const ai = new GeminiService(apiKey);
-    const userConstraintPrompt = await getUserConstraintPrompt();
-
-    const destinationsStr = input.destinations.join("、");
-    const query = input.isDestinationDecided
-      ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
-      : `${input.region}で${input.travelVibe || ""}楽しむ旅行`;
-
-    let contextArticles: any[] = [];
-    try {
-        contextArticles = await scraper.search(query, { topK: 1 });
-    } catch (e) {
-        contextArticles = [];
-    }
-
-    const totalDays = extractDuration(input.dates);
-    const shouldSplit = totalDays > 1;
-    const budgetPrompt = getBudgetContext(input.budget);
-
-    let plan: Itinerary;
-
-    if (shouldSplit) {
-      console.log(`[action] Duration is ${totalDays} days. Splitting into 2-day chunks...`);
-      const chunks = splitDaysIntoChunks(totalDays);
-      console.log(`[action] Created ${chunks.length} chunks:`, chunks);
-
-      // Generate plan for each chunk with aggressive parallel processing
-      const chunkPlans: Itinerary[] = [];
-      const BATCH_SIZE = 5;
-
-      for (let batchStart = 0; batchStart < chunks.length; batchStart += BATCH_SIZE) {
-        const batchEnd = Math.min(batchStart + BATCH_SIZE, chunks.length);
-        const batchChunks = chunks.slice(batchStart, batchEnd);
-
-        console.log(`[action] Processing batch ${Math.floor(batchStart / BATCH_SIZE) + 1}/${Math.ceil(chunks.length / BATCH_SIZE)} (${batchChunks.length} chunks)...`);
-
-        const batchPromises = batchChunks.map(async (chunk, batchIndex) => {
-          const i = batchStart + batchIndex;
-          console.log(`[action] Generating chunk ${i + 1}/${chunks.length} (days ${chunk.start}-${chunk.end})...`);
-
-          let prompt = "";
-          const isMultiCity = input.destinations.length > 1;
-          if (input.isDestinationDecided) {
-            prompt = `
-              Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
-              Dates: ${input.dates}
-              Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
-              Companions: ${input.companions}
-              Themes: ${input.theme.join(", ")}
-              ${budgetPrompt}
-              Pace: ${input.pace || "Not specified"}
-              Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-              Specific Requests: ${input.freeText || "None"}
-
-              ${userConstraintPrompt}
-
-              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
-              Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
-              ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Plan the route efficiently.` : ""}
-            `;
-          } else {
-            prompt = `
-              User has NOT decided on a specific destination yet.
-              Preferred Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International)" : "Anywhere"}
-              Travel Vibe/Preference: ${input.travelVibe || "None specified"}
-              Dates: ${input.dates}
-              Total Trip Duration: ${totalDays} days (${totalDays - 1} nights)
-              Companions: ${input.companions}
-              Themes: ${input.theme.join(", ")}
-              ${budgetPrompt}
-              Pace: ${input.pace || "Not specified"}
-              Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-              Specific Requests: ${input.freeText || "None"}
-
-              ${userConstraintPrompt}
-
-              Task:
-              1. Select the BEST single destination that matches the user's themes, budget, region preference, and specifically their Vibe/Preference ("${input.travelVibe}").
-              2. Create a detailed travel itinerary for that chosen destination.
-              3. The "destination" field in the JSON must be the name of the place you chose.
-
-              IMPORTANT: This is part ${i + 1} of ${chunks.length} of a multi-part itinerary for a ${totalDays}-day trip.
-              Please create a travel itinerary ONLY for days ${chunk.start} to ${chunk.end} (${chunk.end - chunk.start + 1} days).
-              ${i === 0 ? `This is the beginning of the trip. In the "description" field, write an overview of the ENTIRE ${totalDays}-day trip.` : i === chunks.length - 1 ? "This is the end of the trip." : "This is a middle section of the trip."}
-            `;
-          }
-
-          return await ai.generateItinerary(prompt, contextArticles, chunk.start, chunk.end);
-        });
-
-        const batchResults = await Promise.all(batchPromises);
-        chunkPlans.push(...batchResults);
-      }
-
-      console.log(`[action] All chunks generated. Merging results...`);
-
-      // Merge all chunk plans into one, normalizing day numbers
-      const mergedDays = chunkPlans.flatMap((chunkPlan, chunkIndex) => {
-        const chunk = chunks[chunkIndex];
-        return chunkPlan.days.map((day, index) => ({
-          ...day,
-          // Ensure day numbers are correct based on chunk position
-          day: chunk.start + index,
-        }));
-      });
-
-      plan = {
-        id: chunkPlans[0].id,
-        destination: chunkPlans[0].destination,
-        description: chunkPlans[0].description,
-        reasoning: chunkPlans[0].reasoning,
-        heroImage: chunkPlans[0].heroImage,
-        days: mergedDays,
-        references: [],
-      };
-
-      // Merge references and deduplicate by URL
-      const referenceMap = new Map<string, any>();
-      chunkPlans.forEach(p => {
-        (p.references || []).forEach(ref => {
-          if (!referenceMap.has(ref.url)) {
-            referenceMap.set(ref.url, ref);
-          }
-        });
-      });
-      plan.references = Array.from(referenceMap.values());
-
-    } else {
-        const isMultiCity = input.destinations.length > 1;
-        let prompt = `
-        Destinations: ${destinationsStr || "Decide based on request"}${isMultiCity ? " (Multi-city trip)" : ""}
-        Region: ${input.region}
-        Dates: ${input.dates}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        ${budgetPrompt}
-        Pace: ${input.pace}
-        Must-Visit: ${input.mustVisitPlaces?.join(", ")}
-        FreeText: ${input.freeText}
-        ${isMultiCity ? `Note: Plan a multi-city trip visiting: ${destinationsStr} in an efficient order.` : ""}
-
-        ${userConstraintPrompt}
-        `;
-
-        plan = await ai.generateItinerary(prompt, contextArticles);
-    }
-
-    // Fetch hero image
-    const heroImageData = await getUnsplashImage(plan.destination);
-    if (heroImageData) {
-      plan.heroImage = heroImageData.url;
-      plan.heroImagePhotographer = heroImageData.photographer;
-      plan.heroImagePhotographerUrl = heroImageData.photographerUrl;
-    }
-
-    return { success: true, data: plan };
-  } catch (error: any) {
-    console.error("[action] Plan generation failed:", error);
-    return { success: false, message: "Error" };
   }
 }
 
