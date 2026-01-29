@@ -186,6 +186,14 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "done",
+    date: "2026.01.24",
+    updateType: "patch",
+    title: "サンプルプラン集の絞り込み画面の更新",
+    description:
+      "サンプルプラン集の絞り込み画面をタブ形式にして、カテゴリごとに分けて絞り込みやすくしました。",
+  },
+  {
+    status: "done",
     date: "2026.01.26",
     updateType: "minor",
     title: "ユーザーアカウント機能",
@@ -207,6 +215,37 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "ユーザーアカウント機能の追加に伴う法務関連文書の更新",
     description:
       "ユーザーアカウント機能の追加に伴い、利用規約およびプライバシーポリシーを改定しました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.27",
+    updateType: "patch",
+    title: "サイドーで保存したプランを確認できるように",
+    description: "サイドバーで保存したプランを確認できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.28",
+    updateType: "patch",
+    title: "アイコンを選択したときにマイページモーダルを表示",
+    description:
+      "アイコンを選択したときにマイページモーダルを表示し、アカウント設定を変更できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.28",
+    updateType: "patch",
+    title: "飛行機等の移動手段の入力方法を簡略化",
+    description:
+      "飛行機等の移動手段の入力を希望入力の際に簡単に入力できるようにしました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.29",
+    updateType: "patch",
+    title: "AIに考慮してほしい要望の設定機能",
+    description:
+      "ユーザーごとに、AI生成時に常に考慮してほしい要望（例：朝食あり、カフェ巡り多め、ホテルの星数など）を設定・保存できるようになりました。",
   },
   // Future items
   {
@@ -232,12 +271,6 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "旅行中のメモ機能",
     description:
       "旅行中に何を食べたかやどこが良かったかを生成されたプランに直接書き込める機能を計画しています。",
-  },
-  {
-    status: "developing",
-    title: "AI生成設定の保存",
-    description:
-      "ユーザーごとに、AI生成時に常に考慮してほしい要望（例：安さ重視、ゆったり等）を設定・保存できる機能を開発中です。",
   },
   {
     status: "planned",
