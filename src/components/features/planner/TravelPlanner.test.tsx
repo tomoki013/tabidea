@@ -23,6 +23,7 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: vi.fn(),
   }),
+  usePathname: () => "/",
 }));
 
 // Mock AuthContext
@@ -111,14 +112,19 @@ it("navigates through 'Decided' flow", async () => {
   const datesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
   fireEvent.click(datesNextBtn);
 
-  // Step 7: Pace
+  // Step 7: Transit
+  await screen.findByText("移動手段は決まっていますか？");
+  const transitNextBtn = await screen.findByRole("button", { name: /次へ/ });
+  fireEvent.click(transitNextBtn);
+
+  // Step 8: Pace
   await screen.findByText("旅のペースは？");
   const paceBtn = screen.getByText("バランスよく");
   fireEvent.click(paceBtn);
   const paceNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
   fireEvent.click(paceNextBtn);
 
-  // Step 7: FreeText
+  // Step 9: FreeText
   await screen.findByText((content) => content.includes("最後に") && content.includes("特別なご要望は"));
 
   // Submit button
@@ -177,6 +183,11 @@ it("navigates through 'Not Decided' flow", async () => {
   fireEvent.click(flexibleCheck2);
   const datesNextBtn = await screen.findByRole("button", { name: /次へ進む/ });
   fireEvent.click(datesNextBtn);
+
+  // Transit
+  await screen.findByText("移動手段は決まっていますか？");
+  const transitNextBtn = await screen.findByRole("button", { name: /次へ/ });
+  fireEvent.click(transitNextBtn);
 
   // Pace
   await screen.findByText("旅のペースは？");

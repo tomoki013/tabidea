@@ -27,6 +27,9 @@ export default function StepCompanions({
     },
     { id: "family", label: "家族", icon: "👨‍👩‍👧‍👦", desc: "みんなで楽しく" },
     { id: "friends", label: "友人", icon: "👯", desc: "ワイワイと" },
+    { id: "male_trip", label: "男旅", icon: "🍻", desc: "とことん" },
+    { id: "female_trip", label: "女旅", icon: "💅", desc: "華やかに" },
+    { id: "backpacker", label: "バックパッカー", icon: "🎒", desc: "冒険を" },
     { id: "business", label: "ビジネス", icon: "💼", desc: "効率的に" },
     { id: "pet", label: "ペットと", icon: "🐕", desc: "一緒に" },
   ];
