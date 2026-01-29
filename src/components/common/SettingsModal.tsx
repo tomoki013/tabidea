@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
@@ -27,7 +28,8 @@ type Tab = 'ai' | 'account';
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const router = useRouter();
   const { user, signOut } = useAuth();
-  const [activeTab, setActiveTab] = useState<Tab>('ai');
+  const [activeTab, setActiveTab] = useState<Tab>('account');
+  const [mounted, setMounted] = useState(false);
 
   // AI Settings State
   const [customInstructions, setCustomInstructions] = useState("");
@@ -40,12 +42,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   // Load settings when modal opens
   useEffect(() => {
     if (isOpen) {
       loadSettings();
       // Reset states
-      setActiveTab('ai');
+      setActiveTab('account');
       setShowDeleteConfirm(false);
       setDeleteConfirmText('');
 
@@ -128,9 +134,9 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     }
   };
 
-  if (!isOpen) return null;
+  if (!isOpen || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] bg-stone-900/50 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
       onClick={onClose}
@@ -147,17 +153,6 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
           <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible no-scrollbar">
             <button
-              onClick={() => setActiveTab('ai')}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
-                activeTab === 'ai'
-                  ? 'bg-white text-[#e67e22] shadow-sm ring-1 ring-[#e67e22]/20'
-                  : 'text-stone-500 hover:bg-stone-100 hover:text-stone-700'
-              }`}
-            >
-              <FaRobot className={activeTab === 'ai' ? 'text-[#e67e22]' : 'text-stone-400'} />
-              AI設定
-            </button>
-            <button
               onClick={() => setActiveTab('account')}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
                 activeTab === 'account'
@@ -167,6 +162,17 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             >
               <FaUserCog className={activeTab === 'account' ? 'text-[#e67e22]' : 'text-stone-400'} />
               アカウント
+            </button>
+            <button
+              onClick={() => setActiveTab('ai')}
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
+                activeTab === 'ai'
+                  ? 'bg-white text-[#e67e22] shadow-sm ring-1 ring-[#e67e22]/20'
+                  : 'text-stone-500 hover:bg-stone-100 hover:text-stone-700'
+              }`}
+            >
+              <FaRobot className={activeTab === 'ai' ? 'text-[#e67e22]' : 'text-stone-400'} />
+              AI設定
             </button>
           </div>
 
@@ -370,6 +376,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
