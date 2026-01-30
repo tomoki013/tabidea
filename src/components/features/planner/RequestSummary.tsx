@@ -8,6 +8,7 @@ import {
   FaPersonRunning,
   FaPen,
 } from "react-icons/fa6";
+import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion } from "react-icons/fa";
 
 interface RequestSummaryProps {
   input: UserInput;
@@ -38,6 +39,24 @@ const regionMap: Record<string, string> = {
   domestic: "国内",
   overseas: "海外",
   anywhere: "どこでも",
+};
+
+const transitTypeMap: Record<string, string> = {
+  flight: "飛行機",
+  train: "電車",
+  bus: "バス",
+  ship: "船",
+  car: "車",
+  other: "その他",
+};
+
+const transitIconMap: Record<string, any> = {
+  flight: FaPlane,
+  train: FaTrain,
+  bus: FaBus,
+  ship: FaShip,
+  car: FaCar,
+  other: FaQuestion,
 };
 
 const EditButton = ({
@@ -260,6 +279,45 @@ export default function RequestSummary({
                 input.pace
               ) && input.pace}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Transits / Transportation Preferences */}
+      {input.transits && Object.keys(input.transits).length > 0 && (
+        <div className="flex items-start gap-3 border-t border-stone-100 pt-3 first:border-t-0 first:pt-0">
+          <div className="mt-1 text-primary text-xl">
+            <FaPlane />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-bold text-stone-700 text-sm">移動手段</h3>
+            <div className="mt-2 space-y-2">
+              {Object.entries(input.transits).map(([dayIndex, transit]) => {
+                const Icon = transitIconMap[transit.type] || FaQuestion;
+                return (
+                  <div key={dayIndex} className="flex items-start gap-2 text-sm">
+                    <div className="flex items-center gap-1.5 mt-0.5 px-2 py-1 bg-stone-100 rounded-full">
+                      <Icon className="text-primary text-xs" />
+                      <span className="font-medium text-stone-700">
+                        {transitTypeMap[transit.type] || transit.type}
+                      </span>
+                    </div>
+                    <div className="flex-1 text-stone-600">
+                      <div className="flex items-center gap-2">
+                        <span>{transit.departure.place}</span>
+                        <span className="text-stone-400">→</span>
+                        <span>{transit.arrival.place}</span>
+                      </div>
+                      {transit.departure.time && transit.arrival.time && (
+                        <div className="text-xs text-stone-500 mt-0.5">
+                          {transit.departure.time} - {transit.arrival.time}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       )}
