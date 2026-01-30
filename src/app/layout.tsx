@@ -4,6 +4,7 @@ import { Header, Footer, CookieBanner, FloatingPlanButton, GlobalAuthUI } from "
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 import "./globals.css";
 
 // Fonts are now loaded via fontsource CSS imports in globals.css
@@ -81,16 +82,18 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <AuthProvider>
-          <UserPlansProvider>
-            <PlanModalProvider>
-              <Header />
-              {children}
-              <FloatingPlanButton />
-              <CookieBanner />
-              <GlobalAuthUI />
-              <Footer />
-            </PlanModalProvider>
-          </UserPlansProvider>
+          <FavoritesProvider>
+            <UserPlansProvider>
+              <PlanModalProvider>
+                <Header />
+                {children}
+                <FloatingPlanButton />
+                <CookieBanner />
+                <GlobalAuthUI />
+                <Footer />
+              </PlanModalProvider>
+            </UserPlansProvider>
+          </FavoritesProvider>
         </AuthProvider>
       </body>
     </html>

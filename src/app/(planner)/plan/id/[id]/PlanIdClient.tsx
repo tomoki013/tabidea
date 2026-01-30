@@ -157,6 +157,7 @@ export default function PlanIdClient({
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
           shareCode={plan.shareCode}
+          planId={planId}
         />
 
         {/* Request Editing Modal */}

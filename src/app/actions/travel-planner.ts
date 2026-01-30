@@ -977,3 +977,120 @@ export async function setInitialAdmin(
     return { success: false, error: "管理者の設定に失敗しました" };
   }
 }
+
+// ============================================
+// Favorites Actions
+// ============================================
+
+/**
+ * Add a plan to user's favorites
+ */
+export async function addPlanToFavorites(
+  planId: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const { favoritesService } = await import("@/lib/favorites/service");
+    return await favoritesService.addFavorite(user.id, planId);
+  } catch (error) {
+    console.error("Failed to add plan to favorites:", error);
+    return { success: false, error: "お気に入りへの追加に失敗しました" };
+  }
+}
+
+/**
+ * Remove a plan from user's favorites
+ */
+export async function removePlanFromFavorites(
+  planId: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const { favoritesService } = await import("@/lib/favorites/service");
+    return await favoritesService.removeFavorite(user.id, planId);
+  } catch (error) {
+    console.error("Failed to remove plan from favorites:", error);
+    return { success: false, error: "お気に入りからの削除に失敗しました" };
+  }
+}
+
+/**
+ * Check if a plan is favorited by the current user
+ */
+export async function isPlanFavorited(
+  planId: string
+): Promise<{ success: boolean; isFavorited: boolean; error?: string }> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, isFavorited: false, error: "認証が必要です" };
+    }
+
+    const { favoritesService } = await import("@/lib/favorites/service");
+    return await favoritesService.isFavorited(user.id, planId);
+  } catch (error) {
+    console.error("Failed to check favorite status:", error);
+    return { success: false, isFavorited: false, error: "お気に入り状態の確認に失敗しました" };
+  }
+}
+
+/**
+ * Get all favorited plan IDs for the current user
+ */
+export async function getFavoritePlanIds(): Promise<{
+  success: boolean;
+  planIds: string[];
+  error?: string;
+}> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, planIds: [], error: "認証が必要です" };
+    }
+
+    const { favoritesService } = await import("@/lib/favorites/service");
+    return await favoritesService.getFavoritePlanIds(user.id);
+  } catch (error) {
+    console.error("Failed to get favorite plan IDs:", error);
+    return { success: false, planIds: [], error: "お気に入りプランIDの取得に失敗しました" };
+  }
+}
+
+/**
+ * Get user's favorite plans with full details
+ */
+export async function getFavoritePlans(options?: {
+  limit?: number;
+  offset?: number;
+}): Promise<{
+  success: boolean;
+  plans?: import("@/types").PlanListItem[];
+  total?: number;
+  error?: string;
+}> {
+  try {
+    const user = await getUser();
+
+    if (!user) {
+      return { success: false, error: "認証が必要です" };
+    }
+
+    const { favoritesService } = await import("@/lib/favorites/service");
+    return await favoritesService.getFavoritePlans(user.id, options);
+  } catch (error) {
+    console.error("Failed to get favorite plans:", error);
+    return { success: false, error: "お気に入りプランの取得に失敗しました" };
+  }
+}
