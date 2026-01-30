@@ -20,8 +20,8 @@ import {
   FaArrowUp,
   FaArrowDown,
   FaGlobe,
-  FaHeart,
-  FaRegHeart,
+  FaFlag,
+  FaRegFlag,
   FaPlane,
   FaTrain,
   FaBus,
@@ -33,7 +33,7 @@ import {
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useFavorites } from "@/context/FavoritesContext";
+import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
 
 interface ResultViewProps {
@@ -82,20 +82,20 @@ export default function ResultView({
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
 
-  // Favorites
+  // Flags
   const { isAuthenticated } = useAuth();
-  const { isFavorited, toggleFavorite } = useFavorites();
-  const [isFavoritingInProgress, setIsFavoritingInProgress] = useState(false);
+  const { isFlagged, toggleFlag } = useFlags();
+  const [isFlaggingInProgress, setIsFlaggingInProgress] = useState(false);
 
-  const handleToggleFavorite = async () => {
+  const handleToggleFlag = async () => {
     if (!planId || !isAuthenticated) return;
 
-    setIsFavoritingInProgress(true);
-    await toggleFavorite(planId);
-    setIsFavoritingInProgress(false);
+    setIsFlaggingInProgress(true);
+    await toggleFlag(planId);
+    setIsFlaggingInProgress(false);
   };
 
-  const isThisPlanFavorited = planId ? isFavorited(planId) : false;
+  const isThisPlanFlagged = planId ? isFlagged(planId) : false;
 
   // Guard against navigation when editing
   useEffect(() => {
@@ -428,6 +428,40 @@ export default function ResultView({
 
         <div className="mt-8 text-center relative z-10">
           <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-sm shadow-sm border border-stone-100 -rotate-1 relative group max-w-full">
+            {/* Flag Button - Positioned at top right */}
+            {planId && isAuthenticated && (
+              <motion.button
+                onClick={handleToggleFlag}
+                disabled={isFlaggingInProgress}
+                className={`
+                  absolute -top-3 -left-3 sm:-left-4 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full shadow-xl border-4 border-white transition-all flex items-center justify-center
+                  ${isThisPlanFlagged
+                    ? 'bg-gradient-to-br from-amber-400 to-orange-500 text-white'
+                    : 'bg-white text-stone-400 hover:text-amber-500'
+                  }
+                  ${isFlaggingInProgress ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110 active:scale-95'}
+                `}
+                whileHover={!isFlaggingInProgress ? { rotate: [0, -10, 10, -10, 0] } : {}}
+                whileTap={!isFlaggingInProgress ? { scale: 0.9 } : {}}
+                title={isThisPlanFlagged ? 'フラグを外す' : 'フラグを付ける'}
+              >
+                <motion.div
+                  animate={
+                    isThisPlanFlagged
+                      ? { scale: [1, 1.2, 1], rotate: [0, 5, -5, 0] }
+                      : { scale: 1, rotate: 0 }
+                  }
+                  transition={{ duration: 0.5 }}
+                >
+                  {isThisPlanFlagged ? (
+                    <FaFlag className="text-2xl" />
+                  ) : (
+                    <FaRegFlag className="text-2xl" />
+                  )}
+                </motion.div>
+              </motion.button>
+            )}
+
             {/* Date Stamp */}
             <div className="absolute -top-6 -right-4 sm:-right-8 bg-white border-2 border-primary/30 text-stone-600 font-mono text-xs font-bold px-3 py-1.5 shadow-sm rotate-12 rounded-sm z-20">
               <div className="flex flex-col items-center gap-0.5 whitespace-nowrap">
@@ -456,46 +490,9 @@ export default function ResultView({
           </div>
         </div>
 
-        {/* Share Buttons, Favorite Button, and PDF Download */}
+        {/* Share Buttons and PDF Download */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
-
-          {/* Favorite Button */}
-          {planId && isAuthenticated && (
-            <motion.button
-              onClick={handleToggleFavorite}
-              disabled={isFavoritingInProgress}
-              className={`
-                flex items-center gap-2 px-6 py-3 rounded-sm shadow-sm border-2 transition-all font-medium
-                ${isThisPlanFavorited
-                  ? 'bg-pink-50 border-pink-300 text-pink-600 hover:bg-pink-100'
-                  : 'bg-white border-stone-200 text-stone-600 hover:bg-stone-50'
-                }
-                ${isFavoritingInProgress ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md'}
-              `}
-              whileHover={!isFavoritingInProgress ? { scale: 1.05 } : {}}
-              whileTap={!isFavoritingInProgress ? { scale: 0.95 } : {}}
-            >
-              <motion.div
-                animate={
-                  isThisPlanFavorited
-                    ? { scale: [1, 1.3, 1], rotate: [0, 10, -10, 0] }
-                    : { scale: 1, rotate: 0 }
-                }
-                transition={{ duration: 0.4 }}
-              >
-                {isThisPlanFavorited ? (
-                  <FaHeart className="text-xl" />
-                ) : (
-                  <FaRegHeart className="text-xl" />
-                )}
-              </motion.div>
-              <span className="text-sm">
-                {isThisPlanFavorited ? 'お気に入り済み' : 'お気に入りに追加'}
-              </span>
-            </motion.button>
-          )}
-
           <PDFDownloadButton itinerary={result} />
         </div>
       </div>

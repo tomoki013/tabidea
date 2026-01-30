@@ -10,7 +10,7 @@ import {
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
-import { FavoritesProvider } from "@/context/FavoritesContext";
+import { FlagsProvider } from "@/context/FlagsContext";
 import "./globals.css";
 
 // Fonts are now loaded via fontsource CSS imports in globals.css
@@ -88,7 +88,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <AuthProvider>
-          <FavoritesProvider>
+          <FlagsProvider>
             <UserPlansProvider>
               <PlanModalProvider>
                 <Header />
@@ -99,7 +99,7 @@ export default function RootLayout({
                 <Footer />
               </PlanModalProvider>
             </UserPlansProvider>
-          </FavoritesProvider>
+          </FlagsProvider>
         </AuthProvider>
       </body>
     </html>
