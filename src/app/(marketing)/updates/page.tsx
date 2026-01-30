@@ -247,6 +247,22 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "ユーザーごとに、AI生成時に常に考慮してほしい要望（例：朝食あり、カフェ巡り多め、ホテルの星数など）を設定・保存できるようになりました。",
   },
+  {
+    status: "done",
+    date: "2026.01.30",
+    updateType: "patch",
+    title: "個人の旅のスタイルを設定可能に",
+    description:
+      "どんなスタイルで旅をするのかを設定して、よりパーソナライズドされたプラン生成が可能になりました。",
+  },
+  {
+    status: "done",
+    date: "2026.01.30",
+    updateType: "patch",
+    title: "保存済みプランにフラグを立てれるように",
+    description:
+      "保存済みプランにフラグを立てることができ、フラグを立てたプランは一番上に表示されます。",
+  },
   // Future items
   {
     status: "developing",

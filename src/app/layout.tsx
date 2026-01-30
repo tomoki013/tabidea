@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import { Header, Footer, CookieBanner, FloatingPlanButton, GlobalAuthUI } from "@/components/common";
+import {
+  Header,
+  Footer,
+  CookieBanner,
+  FloatingPlanButton,
+  GlobalAuthUI,
+} from "@/components/common";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
@@ -22,7 +28,7 @@ export const metadata: Metadata = {
     title: "Tabidea - AI Travel Planner",
     description:
       "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。",
-    url: "https://ai.tomokichidiary.com/",
+    url: "https://tabide.ai",
     siteName: "Tabidea",
     type: "website",
     images: [
@@ -41,7 +47,7 @@ export const metadata: Metadata = {
       "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
     images: ["/icon.png"],
   },
-  metadataBase: new URL("https://ai.tomokichidiary.com"),
+  metadataBase: new URL("https://tabide.ai"),
   // manifest: "/manifest.json",
   // appleWebApp: {
   //   capable: true,
