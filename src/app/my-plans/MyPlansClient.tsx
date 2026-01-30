@@ -44,7 +44,7 @@ export default function MyPlansClient({
   const { openModal } = usePlanModal();
   const { isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
-  const { favoritePlanIds } = useFavorites();
+  const { favoritePlanIds, isFavorited, toggleFavorite } = useFavorites();
   const router = useRouter();
 
   useEffect(() => {
@@ -249,8 +249,29 @@ export default function MyPlansClient({
     }).format(new Date(date));
   };
 
+  const handleToggleFavorite = async (planId: string) => {
+    await toggleFavorite(planId);
+    // Reload favorite plans if currently viewing favorites
+    if (filter === 'favorites') {
+      loadFavoritePlans();
+    }
+  };
+
   // Determine which plans to display based on filter
-  const displayedPlans = filter === 'favorites' ? favoritePlans : plans;
+  // For 'all' filter, sort with favorites at the top
+  const displayedPlans = filter === 'favorites'
+    ? favoritePlans
+    : [...plans].sort((a, b) => {
+        const aIsFavorite = isFavorited(a.id);
+        const bIsFavorite = isFavorited(b.id);
+
+        // Favorites first
+        if (aIsFavorite && !bIsFavorite) return -1;
+        if (!aIsFavorite && bIsFavorite) return 1;
+
+        // Otherwise maintain original order (by updatedAt descending)
+        return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+      });
   const displayedTotal = filter === 'favorites' ? favoritePlans.length : totalPlans;
 
   return (
@@ -492,15 +513,32 @@ export default function MyPlansClient({
                         </p>
                       </div>
 
-                      {/* Actions - Three dot menu */}
-                      <div className="relative" ref={openMenuId === plan.id ? menuRef : null}>
-                        <button
-                          onClick={() => setOpenMenuId(openMenuId === plan.id ? null : plan.id)}
-                          className="p-2.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-all"
-                          title="メニュー"
+                      {/* Actions - Favorite button and Three dot menu */}
+                      <div className="flex items-center gap-2">
+                        {/* Favorite Button */}
+                        <motion.button
+                          onClick={() => handleToggleFavorite(plan.id)}
+                          className={`p-2.5 rounded-full transition-all ${
+                            isFavorited(plan.id)
+                              ? 'text-pink-500 hover:bg-pink-50'
+                              : 'text-stone-300 hover:text-pink-400 hover:bg-stone-100'
+                          }`}
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          title={isFavorited(plan.id) ? 'お気に入りから削除' : 'お気に入りに追加'}
                         >
-                          <FaEllipsisV />
-                        </button>
+                          <FaHeart className="text-lg" />
+                        </motion.button>
+
+                        {/* Three dot menu */}
+                        <div className="relative" ref={openMenuId === plan.id ? menuRef : null}>
+                          <button
+                            onClick={() => setOpenMenuId(openMenuId === plan.id ? null : plan.id)}
+                            className="p-2.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-all"
+                            title="メニュー"
+                          >
+                            <FaEllipsisV />
+                          </button>
 
                         {/* Dropdown menu */}
                         {openMenuId === plan.id && (
@@ -545,6 +583,7 @@ export default function MyPlansClient({
                             </button>
                           </div>
                         )}
+                        </div>
                       </div>
                     </div>
                   </div>

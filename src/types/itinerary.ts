@@ -30,6 +30,8 @@ export interface TransitInfo {
   memo?: string;
   /** 予約済みかどうか（true: 確定/遵守必須, false: 候補/変更可） */
   isBooked?: boolean;
+  /** ロックされているか（true: 変更不可, false: 変更可） */
+  isLocked?: boolean;
 }
 
 /**
@@ -42,6 +44,8 @@ export interface Activity {
   activity: string;
   /** 説明 */
   description: string;
+  /** ロックされているか（true: 変更不可, false: 変更可） */
+  isLocked?: boolean;
 }
 
 /**

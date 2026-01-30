@@ -57,7 +57,8 @@ describe('TransitForm', () => {
       type: 'flight', // default
       departure: { place: 'Osaka', time: '' },
       arrival: { place: 'Tokyo', time: '' },
-      memo: ''
+      memo: '',
+      isBooked: true // default value
     });
   });
 

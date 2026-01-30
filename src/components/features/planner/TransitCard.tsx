@@ -1,12 +1,14 @@
 "use client";
 
 import { TransitInfo, TransitType } from "@/types";
-import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight } from "react-icons/fa";
+import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight, FaLock, FaUnlock } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 interface TransitCardProps {
   transit: TransitInfo;
   className?: string;
+  isEditing?: boolean;
+  onLockToggle?: () => void;
 }
 
 const ICONS: Record<TransitType, any> = {
@@ -72,89 +74,126 @@ const TYPE_COLORS: Record<TransitType, {
   },
 };
 
-export default function TransitCard({ transit, className = "" }: TransitCardProps) {
+export default function TransitCard({ transit, className = "", isEditing = false, onLockToggle }: TransitCardProps) {
   const Icon = ICONS[transit.type] || FaQuestion;
   const label = TYPE_LABELS[transit.type] || "Transit";
   const colors = TYPE_COLORS[transit.type] || TYPE_COLORS.other;
 
   return (
     <motion.div
-      className={`w-full max-w-2xl mx-auto my-6 ${className}`}
+      className={`w-full max-w-2xl mx-auto my-8 ${className}`}
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
-      {/* Ticket Container with Gradient Background */}
+      {/* Enhanced Ticket Container with stronger visual identity */}
       <motion.div
-        className={`relative flex flex-col sm:flex-row bg-gradient-to-br ${colors.gradient} border-2 ${colors.accentColor} rounded-lg shadow-md overflow-hidden group`}
-        whileHover={{ scale: 1.02, shadow: "lg" }}
-        transition={{ type: "spring", stiffness: 300 }}
+        className={`relative flex flex-col sm:flex-row bg-gradient-to-br ${colors.gradient} border-4 ${colors.accentColor} rounded-xl shadow-2xl overflow-hidden group transform hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.3)]`}
+        whileHover={{ scale: 1.03, y: -4 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
+        {/* Perforated edge effect on left side */}
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-white/40 hidden sm:block" style={{
+          backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 8px, rgba(255,255,255,0.6) 8px, rgba(255,255,255,0.6) 12px)'
+        }} />
 
-        {/* Left Stub (Type & Icon) */}
-        <div className={`sm:w-32 bg-gradient-to-b ${colors.gradient} p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-3 border-b sm:border-b-0 sm:border-r-2 border-dashed ${colors.accentColor} relative`}>
-           {/* Notches (Only visible on SM+ where layout is horizontal) */}
-           <div className="hidden sm:block absolute -top-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border-2 border-current z-10 box-content"></div>
-           <div className="hidden sm:block absolute -bottom-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border-2 border-current z-10 box-content"></div>
+        {/* Enhanced Left Stub (Type & Icon) */}
+        <div className={`sm:w-40 bg-gradient-to-b ${colors.gradient} p-5 flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-3 border-b-4 sm:border-b-0 sm:border-r-4 border-dashed ${colors.accentColor} relative`}>
+           {/* Larger, more prominent notches */}
+           <div className="hidden sm:block absolute -top-3 -right-3 w-6 h-6 bg-[#fcfbf9] rounded-full border-4 border-current z-10 box-content shadow-md"></div>
+           <div className="hidden sm:block absolute -bottom-3 -right-3 w-6 h-6 bg-[#fcfbf9] rounded-full border-4 border-current z-10 box-content shadow-md"></div>
 
-           <div className="flex flex-col items-center gap-1">
+           <div className="flex flex-col items-center gap-2">
              <motion.div
-               className={`p-3 ${colors.iconBg} ${colors.iconColor} rounded-full shadow-lg`}
-               whileHover={{ rotate: 360, scale: 1.1 }}
+               className={`p-4 ${colors.iconBg} ${colors.iconColor} rounded-full shadow-xl border-2 border-white/50`}
+               whileHover={{ rotate: 360, scale: 1.15 }}
                transition={{ duration: 0.6 }}
              >
-               <Icon className="text-xl" />
+               <Icon className="text-2xl" />
              </motion.div>
-             <span className="text-[10px] font-bold uppercase tracking-widest text-stone-600">{label}</span>
+             <span className="text-xs font-bold uppercase tracking-widest text-stone-700 bg-white/60 px-2 py-1 rounded">{label}</span>
            </div>
 
            {transit.duration && (
-             <div className="text-[10px] font-mono bg-white/70 text-stone-700 font-semibold px-2 py-1 rounded-full shadow-sm">
-               {transit.duration}
+             <div className="text-xs font-mono bg-white/80 text-stone-800 font-bold px-3 py-1.5 rounded-full shadow-md border-2 border-white/50">
+               ⏱️ {transit.duration}
              </div>
            )}
         </div>
 
-        {/* Right Content (Route) */}
-        <div className="flex-1 p-4 sm:p-5 flex flex-col justify-center gap-2">
+        {/* Enhanced Right Content (Route) */}
+        <div className="flex-1 p-5 sm:p-6 flex flex-col justify-center gap-3 bg-white/30">
            <div className="flex items-center justify-between gap-4">
               {/* Departure */}
               <div className="flex-1 min-w-0">
-                 <div className="text-[10px] text-stone-400 font-bold uppercase tracking-wider mb-0.5">Dep</div>
-                 <div className="text-lg font-bold text-stone-800 font-serif leading-tight truncate" title={transit.departure.place}>
+                 <div className="text-xs text-stone-500 font-bold uppercase tracking-wider mb-1 flex items-center gap-1">
+                   <span className="w-2 h-2 rounded-full bg-stone-400"></span>
+                   Departure
+                 </div>
+                 <div className="text-xl font-bold text-stone-900 font-serif leading-tight truncate" title={transit.departure.place}>
                    {transit.departure.place}
                  </div>
-                 <div className="text-sm font-mono text-stone-500">
+                 <div className="text-base font-mono text-stone-600 font-semibold mt-1">
                    {transit.departure.time || "--:--"}
                  </div>
               </div>
 
-              {/* Arrow */}
-              <div className="flex-shrink-0 text-stone-300 flex flex-col items-center justify-center px-2">
-                <FaLongArrowAltRight size={20} />
-                {transit.isBooked && (
-                  <span className="text-[9px] bg-stone-800 text-white px-1.5 py-0.5 rounded font-bold mt-1">
-                    BOOKED
-                  </span>
-                )}
+              {/* Enhanced Arrow */}
+              <div className="flex-shrink-0 flex flex-col items-center justify-center px-3 gap-2">
+                <motion.div
+                  className="text-stone-400"
+                  animate={{ x: [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                >
+                  <FaLongArrowAltRight size={28} />
+                </motion.div>
+                <div className="flex flex-col gap-1 items-center">
+                  {transit.isBooked && (
+                    <span className="text-[10px] bg-green-600 text-white px-2 py-1 rounded-full font-bold shadow-sm whitespace-nowrap">
+                      ✓ BOOKED
+                    </span>
+                  )}
+                  {transit.isLocked && !isEditing && (
+                    <span className="text-[10px] bg-amber-600 text-white px-2 py-1 rounded-full font-bold shadow-sm whitespace-nowrap flex items-center gap-1">
+                      <FaLock size={8} /> 固定
+                    </span>
+                  )}
+                  {isEditing && onLockToggle && (
+                    <button
+                      onClick={onLockToggle}
+                      className={`text-xs px-2 py-1 rounded-full font-bold shadow-sm transition-colors whitespace-nowrap flex items-center gap-1 ${
+                        transit.isLocked
+                          ? 'bg-amber-600 text-white hover:bg-amber-700'
+                          : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
+                      }`}
+                      title={transit.isLocked ? "ロック解除" : "ロック"}
+                    >
+                      {transit.isLocked ? <FaLock size={8} /> : <FaUnlock size={8} />}
+                      {transit.isLocked ? '固定' : 'ロック'}
+                    </button>
+                  )}
+                </div>
               </div>
 
               {/* Arrival */}
               <div className="flex-1 min-w-0 text-right">
-                 <div className="text-[10px] text-stone-400 font-bold uppercase tracking-wider mb-0.5">Arr</div>
-                 <div className="text-lg font-bold text-stone-800 font-serif leading-tight truncate" title={transit.arrival.place}>
+                 <div className="text-xs text-stone-500 font-bold uppercase tracking-wider mb-1 flex items-center justify-end gap-1">
+                   Arrival
+                   <span className="w-2 h-2 rounded-full bg-stone-400"></span>
+                 </div>
+                 <div className="text-xl font-bold text-stone-900 font-serif leading-tight truncate" title={transit.arrival.place}>
                    {transit.arrival.place}
                  </div>
-                 <div className="text-sm font-mono text-stone-500">
+                 <div className="text-base font-mono text-stone-600 font-semibold mt-1">
                    {transit.arrival.time || "--:--"}
                  </div>
               </div>
            </div>
 
            {transit.memo && (
-             <div className="mt-2 pt-2 border-t border-dashed border-stone-300/50 text-xs text-stone-600 flex items-center gap-2">
-               <span className="font-bold flex-shrink-0">Memo:</span>
-               <span className="truncate">{transit.memo}</span>
+             <div className="mt-3 pt-3 border-t-2 border-dashed border-stone-300/60 text-sm text-stone-700 flex items-start gap-2 bg-white/40 -mx-6 px-6 -mb-6 pb-6">
+               <span className="font-bold flex-shrink-0 text-stone-600">📝 Memo:</span>
+               <span className="font-medium">{transit.memo}</span>
              </div>
            )}
         </div>

@@ -28,6 +28,8 @@ import {
   FaShip,
   FaCar,
   FaQuestion,
+  FaLock,
+  FaUnlock,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -266,6 +268,28 @@ export default function ResultView({
     newResult.days.forEach((day: { day: number }, index: number) => {
       day.day = index + 1;
     });
+    setEditingResult(newResult);
+  };
+
+  // Toggle lock on activity
+  const handleToggleLockActivity = (dayIndex: number, actIndex: number) => {
+    if (!editingResult) return;
+    const newResult = { ...editingResult };
+    newResult.days[dayIndex].activities[actIndex] = {
+      ...newResult.days[dayIndex].activities[actIndex],
+      isLocked: !newResult.days[dayIndex].activities[actIndex].isLocked,
+    };
+    setEditingResult(newResult);
+  };
+
+  // Toggle lock on transit
+  const handleToggleLockTransit = (dayIndex: number) => {
+    if (!editingResult || !editingResult.days[dayIndex].transit) return;
+    const newResult = { ...editingResult };
+    newResult.days[dayIndex].transit = {
+      ...newResult.days[dayIndex].transit!,
+      isLocked: !newResult.days[dayIndex].transit!.isLocked,
+    };
     setEditingResult(newResult);
   };
 
@@ -639,7 +663,11 @@ export default function ResultView({
                             </div>
                             {/* Background accent for transit */}
                             <div className="absolute left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-transparent via-stone-100/50 to-transparent blur-sm"></div>
-                            <TransitCard transit={day.transit} />
+                            <TransitCard
+                              transit={day.transit}
+                              isEditing={isEditing}
+                              onLockToggle={() => handleToggleLockTransit(dayIndex)}
+                            />
                           </div>
                         );
                       })()}
@@ -698,6 +726,20 @@ export default function ResultView({
                                   </div>
                                   {/* Activity action buttons */}
                                   <div className="flex items-center gap-1">
+                                    {/* Lock/Unlock button */}
+                                    <button
+                                      onClick={() =>
+                                        handleToggleLockActivity(dayIndex, actIndex)
+                                      }
+                                      className={`p-2 rounded transition-colors ${
+                                        act.isLocked
+                                          ? "text-amber-600 hover:text-amber-700 hover:bg-amber-50"
+                                          : "text-stone-400 hover:text-amber-600 hover:bg-amber-50"
+                                      }`}
+                                      title={act.isLocked ? "ロック解除" : "ロック"}
+                                    >
+                                      {act.isLocked ? <FaLock size={14} /> : <FaUnlock size={14} />}
+                                    </button>
                                     {/* Move up/down buttons */}
                                     <div className="flex flex-col gap-0.5">
                                       <button
@@ -762,9 +804,17 @@ export default function ResultView({
                               </div>
                             ) : (
                               <>
-                                <div className="flex items-center gap-2 mb-2 text-stone-500 text-sm font-mono bg-stone-100 inline-block px-2 py-1 rounded-md">
-                                  <FaClock className="text-primary/70" />
-                                  {act.time}
+                                <div className="flex items-center gap-2 mb-2">
+                                  <div className="text-stone-500 text-sm font-mono bg-stone-100 px-2 py-1 rounded-md flex items-center gap-2">
+                                    <FaClock className="text-primary/70" />
+                                    {act.time}
+                                  </div>
+                                  {act.isLocked && (
+                                    <div className="flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
+                                      <FaLock size={10} />
+                                      <span>固定</span>
+                                    </div>
+                                  )}
                                 </div>
 
                                 <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
