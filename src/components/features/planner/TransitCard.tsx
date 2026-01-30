@@ -2,6 +2,7 @@
 
 import { TransitInfo, TransitType } from "@/types";
 import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 interface TransitCardProps {
   transit: TransitInfo;
@@ -26,30 +27,89 @@ const TYPE_LABELS: Record<TransitType, string> = {
   other: "Transit",
 };
 
+// Color themes for each transit type
+const TYPE_COLORS: Record<TransitType, {
+  gradient: string;
+  iconBg: string;
+  iconColor: string;
+  accentColor: string;
+}> = {
+  flight: {
+    gradient: "from-sky-50 via-blue-50 to-indigo-50",
+    iconBg: "bg-blue-500",
+    iconColor: "text-white",
+    accentColor: "border-blue-300",
+  },
+  train: {
+    gradient: "from-emerald-50 via-green-50 to-teal-50",
+    iconBg: "bg-green-600",
+    iconColor: "text-white",
+    accentColor: "border-green-300",
+  },
+  bus: {
+    gradient: "from-orange-50 via-amber-50 to-yellow-50",
+    iconBg: "bg-orange-500",
+    iconColor: "text-white",
+    accentColor: "border-orange-300",
+  },
+  ship: {
+    gradient: "from-cyan-50 via-sky-50 to-blue-50",
+    iconBg: "bg-cyan-600",
+    iconColor: "text-white",
+    accentColor: "border-cyan-300",
+  },
+  car: {
+    gradient: "from-slate-50 via-gray-50 to-zinc-50",
+    iconBg: "bg-slate-600",
+    iconColor: "text-white",
+    accentColor: "border-slate-300",
+  },
+  other: {
+    gradient: "from-stone-50 via-neutral-50 to-gray-50",
+    iconBg: "bg-stone-500",
+    iconColor: "text-white",
+    accentColor: "border-stone-300",
+  },
+};
+
 export default function TransitCard({ transit, className = "" }: TransitCardProps) {
   const Icon = ICONS[transit.type] || FaQuestion;
   const label = TYPE_LABELS[transit.type] || "Transit";
+  const colors = TYPE_COLORS[transit.type] || TYPE_COLORS.other;
 
   return (
-    <div className={`w-full max-w-2xl mx-auto my-6 ${className}`}>
-      {/* Ticket Container */}
-      <div className="relative flex flex-col sm:flex-row bg-white border border-stone-300 rounded-lg shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
+    <motion.div
+      className={`w-full max-w-2xl mx-auto my-6 ${className}`}
+      initial={{ opacity: 0, x: -50 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
+    >
+      {/* Ticket Container with Gradient Background */}
+      <motion.div
+        className={`relative flex flex-col sm:flex-row bg-gradient-to-br ${colors.gradient} border-2 ${colors.accentColor} rounded-lg shadow-md overflow-hidden group`}
+        whileHover={{ scale: 1.02, shadow: "lg" }}
+        transition={{ type: "spring", stiffness: 300 }}
+      >
 
         {/* Left Stub (Type & Icon) */}
-        <div className="sm:w-32 bg-stone-50 p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-3 border-b sm:border-b-0 sm:border-r-2 border-dashed border-stone-300 relative">
+        <div className={`sm:w-32 bg-gradient-to-b ${colors.gradient} p-4 flex flex-row sm:flex-col items-center justify-between sm:justify-center gap-3 border-b sm:border-b-0 sm:border-r-2 border-dashed ${colors.accentColor} relative`}>
            {/* Notches (Only visible on SM+ where layout is horizontal) */}
-           <div className="hidden sm:block absolute -top-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border border-stone-300 z-10 box-content"></div>
-           <div className="hidden sm:block absolute -bottom-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border border-stone-300 z-10 box-content"></div>
+           <div className="hidden sm:block absolute -top-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border-2 border-current z-10 box-content"></div>
+           <div className="hidden sm:block absolute -bottom-2 -right-2 w-4 h-4 bg-[#fcfbf9] rounded-full border-2 border-current z-10 box-content"></div>
 
            <div className="flex flex-col items-center gap-1">
-             <div className="p-2 bg-white border border-stone-200 rounded-full text-stone-600 shadow-sm group-hover:text-primary transition-colors">
-               <Icon className="text-lg" />
-             </div>
-             <span className="text-[10px] font-bold uppercase tracking-widest text-stone-500">{label}</span>
+             <motion.div
+               className={`p-3 ${colors.iconBg} ${colors.iconColor} rounded-full shadow-lg`}
+               whileHover={{ rotate: 360, scale: 1.1 }}
+               transition={{ duration: 0.6 }}
+             >
+               <Icon className="text-xl" />
+             </motion.div>
+             <span className="text-[10px] font-bold uppercase tracking-widest text-stone-600">{label}</span>
            </div>
 
            {transit.duration && (
-             <div className="text-[10px] font-mono bg-stone-200/50 text-stone-500 px-2 py-0.5 rounded-full">
+             <div className="text-[10px] font-mono bg-white/70 text-stone-700 font-semibold px-2 py-1 rounded-full shadow-sm">
                {transit.duration}
              </div>
            )}
@@ -92,14 +152,14 @@ export default function TransitCard({ transit, className = "" }: TransitCardProp
            </div>
 
            {transit.memo && (
-             <div className="mt-2 pt-2 border-t border-dashed border-stone-200 text-xs text-stone-500 flex items-center gap-2">
+             <div className="mt-2 pt-2 border-t border-dashed border-stone-300/50 text-xs text-stone-600 flex items-center gap-2">
                <span className="font-bold flex-shrink-0">Memo:</span>
                <span className="truncate">{transit.memo}</span>
              </div>
            )}
         </div>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }

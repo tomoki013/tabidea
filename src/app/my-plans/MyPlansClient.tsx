@@ -20,14 +20,16 @@ import {
   FaGlobe,
   FaLock,
   FaTimes,
+  FaHeart,
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, updatePlanVisibility, savePlan, updatePlanName } from '@/app/actions/travel-planner';
+import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, getFavoritePlans } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
+import { useFavorites } from '@/context/FavoritesContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
 
 interface MyPlansClientProps {
@@ -42,6 +44,7 @@ export default function MyPlansClient({
   const { openModal } = usePlanModal();
   const { isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
+  const { favoritePlanIds } = useFavorites();
   const router = useRouter();
 
   useEffect(() => {
@@ -55,6 +58,11 @@ export default function MyPlansClient({
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncMessage, setSyncMessage] = useState<string | null>(null);
   const [hasLocalPlans, setHasLocalPlans] = useState(false);
+
+  // Filter state
+  const [filter, setFilter] = useState<'all' | 'favorites'>('all');
+  const [favoritePlans, setFavoritePlans] = useState<PlanListItem[]>([]);
+  const [isLoadingFavorites, setIsLoadingFavorites] = useState(false);
 
   // Rename functionality
   const [isRenaming, setIsRenaming] = useState<string | null>(null);
@@ -102,6 +110,27 @@ export default function MyPlansClient({
   useEffect(() => {
     const localPlans = getLocalPlans();
     setHasLocalPlans(localPlans.length > 0);
+  }, []);
+
+  // Load favorite plans when filter changes
+  useEffect(() => {
+    if (filter === 'favorites') {
+      loadFavoritePlans();
+    }
+  }, [filter]);
+
+  const loadFavoritePlans = useCallback(async () => {
+    setIsLoadingFavorites(true);
+    try {
+      const result = await getFavoritePlans();
+      if (result.success && result.plans) {
+        setFavoritePlans(result.plans);
+      }
+    } catch (error) {
+      console.error('Failed to load favorite plans:', error);
+    } finally {
+      setIsLoadingFavorites(false);
+    }
   }, []);
 
   // Sync local plans to database
@@ -220,6 +249,10 @@ export default function MyPlansClient({
     }).format(new Date(date));
   };
 
+  // Determine which plans to display based on filter
+  const displayedPlans = filter === 'favorites' ? favoritePlans : plans;
+  const displayedTotal = filter === 'favorites' ? favoritePlans.length : totalPlans;
+
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8">
@@ -259,6 +292,42 @@ export default function MyPlansClient({
               </button>
             </div>
           </div>
+
+          {/* Filter Tabs */}
+          <div className="flex items-center gap-2 mt-6 bg-stone-100/50 p-1 rounded-full inline-flex">
+            <button
+              onClick={() => setFilter('all')}
+              className={`
+                flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all
+                ${filter === 'all'
+                  ? 'bg-white text-stone-800 shadow-sm'
+                  : 'text-stone-500 hover:text-stone-700'
+                }
+              `}
+            >
+              <FaSuitcase className="text-sm" />
+              <span>すべて</span>
+              <span className="text-xs bg-stone-200/50 px-2 py-0.5 rounded-full">
+                {totalPlans}
+              </span>
+            </button>
+            <button
+              onClick={() => setFilter('favorites')}
+              className={`
+                flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all
+                ${filter === 'favorites'
+                  ? 'bg-white text-pink-600 shadow-sm'
+                  : 'text-stone-500 hover:text-stone-700'
+                }
+              `}
+            >
+              <FaHeart className="text-sm" />
+              <span>お気に入り</span>
+              <span className="text-xs bg-stone-200/50 px-2 py-0.5 rounded-full">
+                {favoritePlanIds.size}
+              </span>
+            </button>
+          </div>
         </div>
 
         {/* Sync Status */}
@@ -276,17 +345,26 @@ export default function MyPlansClient({
         )}
 
         {/* Plans List */}
-        {plans.length === 0 ? (
+        {isLoadingFavorites && filter === 'favorites' ? (
+          <div className="text-center py-16">
+            <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
+            <p className="text-stone-600">お気に入りプランを読み込み中...</p>
+          </div>
+        ) : displayedPlans.length === 0 ? (
           <div className="text-center py-16">
             <div className="relative inline-block">
               {/* Decorative background */}
               <div className="absolute inset-0 bg-[#e67e22]/5 rounded-full scale-150" />
               <div className="relative p-8 bg-[#fcfbf9] rounded-full border-2 border-dashed border-[#e67e22]/30 mb-6">
-                <FaPlane className="text-6xl text-[#e67e22]/30" />
+                {filter === 'favorites' ? (
+                  <FaHeart className="text-6xl text-pink-300" />
+                ) : (
+                  <FaPlane className="text-6xl text-[#e67e22]/30" />
+                )}
               </div>
             </div>
             <h2 className="font-serif text-xl font-bold text-stone-600 mb-2">
-              プランがありません
+              {filter === 'favorites' ? 'お気に入りプランがありません' : 'プランがありません'}
             </h2>
             <p className="text-stone-500 mb-8 font-hand">
               新しい旅行プランを作成して、ここに保存しましょう
@@ -301,7 +379,7 @@ export default function MyPlansClient({
           </div>
         ) : (
           <div className="grid gap-5">
-            {plans.map((plan) => (
+            {displayedPlans.map((plan) => (
               <div
                 key={plan.id}
                 className={`relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 hover:border-[#e67e22]/40 hover:shadow-lg transition-all group ${

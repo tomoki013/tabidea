@@ -171,6 +171,7 @@ export default function PlanCodeClient({
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
           shareCode={shareCode}
+          planId={plan.id}
         />
 
         {/* Request Editing Modal */}

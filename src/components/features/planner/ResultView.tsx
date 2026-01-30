@@ -20,9 +20,19 @@ import {
   FaArrowUp,
   FaArrowDown,
   FaGlobe,
+  FaHeart,
+  FaRegHeart,
+  FaPlane,
+  FaTrain,
+  FaBus,
+  FaShip,
+  FaCar,
+  FaQuestion,
 } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useFavorites } from "@/context/FavoritesContext";
+import { useAuth } from "@/context/AuthContext";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -43,6 +53,7 @@ interface ResultViewProps {
   initialChatHistory?: { role: string; text: string }[];
   shareCode?: string;
   localId?: string;
+  planId?: string;
 }
 
 export default function ResultView({
@@ -60,6 +71,7 @@ export default function ResultView({
   initialChatHistory,
   shareCode,
   localId,
+  planId,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -67,6 +79,21 @@ export default function ResultView({
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
+
+  // Favorites
+  const { isAuthenticated } = useAuth();
+  const { isFavorited, toggleFavorite } = useFavorites();
+  const [isFavoritingInProgress, setIsFavoritingInProgress] = useState(false);
+
+  const handleToggleFavorite = async () => {
+    if (!planId || !isAuthenticated) return;
+
+    setIsFavoritingInProgress(true);
+    await toggleFavorite(planId);
+    setIsFavoritingInProgress(false);
+  };
+
+  const isThisPlanFavorited = planId ? isFavorited(planId) : false;
 
   // Guard against navigation when editing
   useEffect(() => {
@@ -405,9 +432,46 @@ export default function ResultView({
           </div>
         </div>
 
-        {/* Share Buttons and PDF Download */}
+        {/* Share Buttons, Favorite Button, and PDF Download */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
+
+          {/* Favorite Button */}
+          {planId && isAuthenticated && (
+            <motion.button
+              onClick={handleToggleFavorite}
+              disabled={isFavoritingInProgress}
+              className={`
+                flex items-center gap-2 px-6 py-3 rounded-sm shadow-sm border-2 transition-all font-medium
+                ${isThisPlanFavorited
+                  ? 'bg-pink-50 border-pink-300 text-pink-600 hover:bg-pink-100'
+                  : 'bg-white border-stone-200 text-stone-600 hover:bg-stone-50'
+                }
+                ${isFavoritingInProgress ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md'}
+              `}
+              whileHover={!isFavoritingInProgress ? { scale: 1.05 } : {}}
+              whileTap={!isFavoritingInProgress ? { scale: 0.95 } : {}}
+            >
+              <motion.div
+                animate={
+                  isThisPlanFavorited
+                    ? { scale: [1, 1.3, 1], rotate: [0, 10, -10, 0] }
+                    : { scale: 1, rotate: 0 }
+                }
+                transition={{ duration: 0.4 }}
+              >
+                {isThisPlanFavorited ? (
+                  <FaHeart className="text-xl" />
+                ) : (
+                  <FaRegHeart className="text-xl" />
+                )}
+              </motion.div>
+              <span className="text-sm">
+                {isThisPlanFavorited ? 'お気に入り済み' : 'お気に入りに追加'}
+              </span>
+            </motion.button>
+          )}
+
           <PDFDownloadButton itinerary={result} />
         </div>
       </div>
@@ -547,13 +611,38 @@ export default function ResultView({
                     {/* Activities */}
                     <div className="border-l-2 border-stone-200 ml-8 space-y-8 pb-8 relative">
                       {/* Transit Card */}
-                      {day.transit && (
-                        <div className="relative pl-4 sm:pl-10 mb-8">
-                          {/* Dot on timeline (Black for transit) */}
-                          <div className="absolute left-[-9px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-stone-800 border-2 border-white shadow-sm z-10 ring-1 ring-stone-200"></div>
-                          <TransitCard transit={day.transit} />
-                        </div>
-                      )}
+                      {day.transit && (() => {
+                        const transitIcons = {
+                          flight: FaPlane,
+                          train: FaTrain,
+                          bus: FaBus,
+                          ship: FaShip,
+                          car: FaCar,
+                          other: FaQuestion,
+                        };
+                        const transitColors = {
+                          flight: 'bg-blue-500',
+                          train: 'bg-green-600',
+                          bus: 'bg-orange-500',
+                          ship: 'bg-cyan-600',
+                          car: 'bg-slate-600',
+                          other: 'bg-stone-500',
+                        };
+                        const TransitIcon = transitIcons[day.transit.type] || FaQuestion;
+                        const iconColor = transitColors[day.transit.type] || 'bg-stone-500';
+
+                        return (
+                          <div className="relative pl-4 sm:pl-10 mb-8">
+                            {/* Enhanced Transit Icon on timeline */}
+                            <div className={`absolute left-[-13px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full ${iconColor} border-2 border-white shadow-lg z-20 flex items-center justify-center`}>
+                              <TransitIcon className="text-white text-xs" />
+                            </div>
+                            {/* Background accent for transit */}
+                            <div className="absolute left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-transparent via-stone-100/50 to-transparent blur-sm"></div>
+                            <TransitCard transit={day.transit} />
+                          </div>
+                        );
+                      })()}
 
                       {day.activities.map((act, actIndex) => (
                         <div key={actIndex} className="relative pl-10 group">
