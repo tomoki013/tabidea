@@ -979,13 +979,13 @@ export async function setInitialAdmin(
 }
 
 // ============================================
-// Favorites Actions
+// Flags Actions (formerly Favorites)
 // ============================================
 
 /**
- * Add a plan to user's favorites
+ * Add a plan to user's flags
  */
-export async function addPlanToFavorites(
+export async function addPlanToFlags(
   planId: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
@@ -998,15 +998,15 @@ export async function addPlanToFavorites(
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.addFavorite(user.id, planId);
   } catch (error) {
-    console.error("Failed to add plan to favorites:", error);
-    return { success: false, error: "お気に入りへの追加に失敗しました" };
+    console.error("Failed to add plan to flags:", error);
+    return { success: false, error: "フラグへの追加に失敗しました" };
   }
 }
 
 /**
- * Remove a plan from user's favorites
+ * Remove a plan from user's flags
  */
-export async function removePlanFromFavorites(
+export async function removePlanFromFlags(
   planId: string
 ): Promise<{ success: boolean; error?: string }> {
   try {
@@ -1019,36 +1019,41 @@ export async function removePlanFromFavorites(
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.removeFavorite(user.id, planId);
   } catch (error) {
-    console.error("Failed to remove plan from favorites:", error);
-    return { success: false, error: "お気に入りからの削除に失敗しました" };
+    console.error("Failed to remove plan from flags:", error);
+    return { success: false, error: "フラグからの削除に失敗しました" };
   }
 }
 
 /**
- * Check if a plan is favorited by the current user
+ * Check if a plan is flagged by the current user
  */
-export async function isPlanFavorited(
+export async function isPlanFlagged(
   planId: string
-): Promise<{ success: boolean; isFavorited: boolean; error?: string }> {
+): Promise<{ success: boolean; isFlagged: boolean; error?: string }> {
   try {
     const user = await getUser();
 
     if (!user) {
-      return { success: false, isFavorited: false, error: "認証が必要です" };
+      return { success: false, isFlagged: false, error: "認証が必要です" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
-    return await favoritesService.isFavorited(user.id, planId);
+    const result = await favoritesService.isFavorited(user.id, planId);
+    return {
+      success: result.success,
+      isFlagged: result.isFavorited,
+      error: result.error,
+    };
   } catch (error) {
-    console.error("Failed to check favorite status:", error);
-    return { success: false, isFavorited: false, error: "お気に入り状態の確認に失敗しました" };
+    console.error("Failed to check flag status:", error);
+    return { success: false, isFlagged: false, error: "フラグ状態の確認に失敗しました" };
   }
 }
 
 /**
- * Get all favorited plan IDs for the current user
+ * Get all flagged plan IDs for the current user
  */
-export async function getFavoritePlanIds(): Promise<{
+export async function getFlaggedPlanIds(): Promise<{
   success: boolean;
   planIds: string[];
   error?: string;
@@ -1063,15 +1068,15 @@ export async function getFavoritePlanIds(): Promise<{
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.getFavoritePlanIds(user.id);
   } catch (error) {
-    console.error("Failed to get favorite plan IDs:", error);
-    return { success: false, planIds: [], error: "お気に入りプランIDの取得に失敗しました" };
+    console.error("Failed to get flagged plan IDs:", error);
+    return { success: false, planIds: [], error: "フラグプランIDの取得に失敗しました" };
   }
 }
 
 /**
- * Get user's favorite plans with full details
+ * Get user's flagged plans with full details
  */
-export async function getFavoritePlans(options?: {
+export async function getFlaggedPlans(options?: {
   limit?: number;
   offset?: number;
 }): Promise<{
@@ -1090,7 +1095,42 @@ export async function getFavoritePlans(options?: {
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.getFavoritePlans(user.id, options);
   } catch (error) {
-    console.error("Failed to get favorite plans:", error);
-    return { success: false, error: "お気に入りプランの取得に失敗しました" };
+    console.error("Failed to get flagged plans:", error);
+    return { success: false, error: "フラグプランの取得に失敗しました" };
   }
+}
+
+// ============================================
+// Deprecated: Legacy Favorites Actions
+// For backward compatibility
+// ============================================
+
+/** @deprecated Use addPlanToFlags instead */
+export async function addPlanToFavorites(planId: string) {
+  return addPlanToFlags(planId);
+}
+
+/** @deprecated Use removePlanFromFlags instead */
+export async function removePlanFromFavorites(planId: string) {
+  return removePlanFromFlags(planId);
+}
+
+/** @deprecated Use isPlanFlagged instead */
+export async function isPlanFavorited(planId: string) {
+  const result = await isPlanFlagged(planId);
+  return {
+    success: result.success,
+    isFavorited: result.isFlagged,
+    error: result.error,
+  };
+}
+
+/** @deprecated Use getFlaggedPlanIds instead */
+export async function getFavoritePlanIds() {
+  return getFlaggedPlanIds();
+}
+
+/** @deprecated Use getFlaggedPlans instead */
+export async function getFavoritePlans(options?: { limit?: number; offset?: number }) {
+  return getFlaggedPlans(options);
 }

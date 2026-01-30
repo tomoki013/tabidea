@@ -9,7 +9,52 @@ import { PineconeRetriever } from "./services/rag/pinecone-retriever";
 import { getUnsplashImage } from "./unsplash";
 import { extractDuration, splitDaysIntoChunks } from "./utils/plan";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
-import { Itinerary, DayPlan, UserInput, Article } from "@/types";
+import { Itinerary, DayPlan, UserInput, Article, TransitType } from "@/types";
+
+/**
+ * Infer transit type from travel method description
+ */
+function inferTransitType(travelMethod: string): TransitType {
+  const method = travelMethod.toLowerCase();
+
+  if (method.includes("飛行機") || method.includes("flight") || method.includes("fly")) {
+    return "flight";
+  }
+  if (method.includes("新幹線") || method.includes("電車") || method.includes("train") || method.includes("鉄道")) {
+    return "train";
+  }
+  if (method.includes("バス") || method.includes("bus")) {
+    return "bus";
+  }
+  if (method.includes("船") || method.includes("フェリー") || method.includes("ship") || method.includes("ferry")) {
+    return "ship";
+  }
+  if (method.includes("車") || method.includes("レンタカー") || method.includes("car") || method.includes("drive")) {
+    return "car";
+  }
+
+  return "other";
+}
+
+/**
+ * Calculate approximate duration based on transit type
+ */
+function calculateApproximateDuration(transitType: TransitType): string {
+  switch (transitType) {
+    case "flight":
+      return "2-3時間";
+    case "train":
+      return "2-4時間";
+    case "bus":
+      return "3-5時間";
+    case "ship":
+      return "4-6時間";
+    case "car":
+      return "3-4時間";
+    default:
+      return "2-3時間";
+  }
+}
 
 export interface ItineraryGenerationOptions {
   /** RAG検索で取得する記事の数 */
@@ -208,7 +253,42 @@ export async function generateItinerary(
     const mergedDays: DayPlan[] = chunkResults.flat();
     mergedDays.sort((a, b) => a.day - b.day);
 
-    // Inject user transit info
+    // Auto-generate transit from outline if AI didn't generate it
+    mergedDays.forEach((dayPlan, index) => {
+      // If AI already generated transit, keep it
+      if (dayPlan.transit) {
+        return;
+      }
+
+      // Check if there's travel from previous day
+      if (index > 0) {
+        const previousOutlineDay = outline.days.find((d) => d.day === dayPlan.day - 1);
+        if (previousOutlineDay?.travel_method_to_next) {
+          const currentOutlineDay = outline.days.find((d) => d.day === dayPlan.day);
+
+          // Infer transit type from travel_method_to_next
+          const transitType = inferTransitType(previousOutlineDay.travel_method_to_next);
+
+          dayPlan.transit = {
+            type: transitType,
+            departure: {
+              place: previousOutlineDay.overnight_location,
+              time: "09:00", // Default departure time
+            },
+            arrival: {
+              place: currentOutlineDay?.overnight_location || dayPlan.title,
+              time: "12:00", // Default arrival time
+            },
+            duration: calculateApproximateDuration(transitType),
+            memo: previousOutlineDay.travel_method_to_next,
+          };
+
+          log(`[generateItinerary] Auto-generated transit for Day ${dayPlan.day}: ${transitType}`);
+        }
+      }
+    });
+
+    // Inject user transit info (overrides auto-generated or AI-generated)
     if (input.transits) {
       mergedDays.forEach((dayPlan) => {
         const transit = input.transits![dayPlan.day];

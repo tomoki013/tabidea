@@ -20,16 +20,16 @@ import {
   FaGlobe,
   FaLock,
   FaTimes,
-  FaHeart,
+  FaFlag,
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, getFavoritePlans } from '@/app/actions/travel-planner';
+import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, getFlaggedPlans } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
-import { useFavorites } from '@/context/FavoritesContext';
+import { useFlags } from '@/context/FlagsContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
 
 interface MyPlansClientProps {
@@ -44,7 +44,7 @@ export default function MyPlansClient({
   const { openModal } = usePlanModal();
   const { isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
-  const { favoritePlanIds, isFavorited, toggleFavorite } = useFavorites();
+  const { flaggedPlanIds, isFlagged, toggleFlag } = useFlags();
   const router = useRouter();
 
   useEffect(() => {
@@ -60,9 +60,9 @@ export default function MyPlansClient({
   const [hasLocalPlans, setHasLocalPlans] = useState(false);
 
   // Filter state
-  const [filter, setFilter] = useState<'all' | 'favorites'>('all');
-  const [favoritePlans, setFavoritePlans] = useState<PlanListItem[]>([]);
-  const [isLoadingFavorites, setIsLoadingFavorites] = useState(false);
+  const [filter, setFilter] = useState<'all' | 'flagged'>('all');
+  const [flaggedPlans, setFlaggedPlans] = useState<PlanListItem[]>([]);
+  const [isLoadingFlags, setIsLoadingFlags] = useState(false);
 
   // Rename functionality
   const [isRenaming, setIsRenaming] = useState<string | null>(null);
@@ -112,24 +112,24 @@ export default function MyPlansClient({
     setHasLocalPlans(localPlans.length > 0);
   }, []);
 
-  // Load favorite plans when filter changes
+  // Load flagged plans when filter changes
   useEffect(() => {
-    if (filter === 'favorites') {
-      loadFavoritePlans();
+    if (filter === 'flagged') {
+      loadFlaggedPlans();
     }
   }, [filter]);
 
-  const loadFavoritePlans = useCallback(async () => {
-    setIsLoadingFavorites(true);
+  const loadFlaggedPlans = useCallback(async () => {
+    setIsLoadingFlags(true);
     try {
-      const result = await getFavoritePlans();
+      const result = await getFlaggedPlans();
       if (result.success && result.plans) {
-        setFavoritePlans(result.plans);
+        setFlaggedPlans(result.plans);
       }
     } catch (error) {
-      console.error('Failed to load favorite plans:', error);
+      console.error('Failed to load flagged plans:', error);
     } finally {
-      setIsLoadingFavorites(false);
+      setIsLoadingFlags(false);
     }
   }, []);
 
@@ -249,30 +249,30 @@ export default function MyPlansClient({
     }).format(new Date(date));
   };
 
-  const handleToggleFavorite = async (planId: string) => {
-    await toggleFavorite(planId);
-    // Reload favorite plans if currently viewing favorites
-    if (filter === 'favorites') {
-      loadFavoritePlans();
+  const handleToggleFlag = async (planId: string) => {
+    await toggleFlag(planId);
+    // Reload flagged plans if currently viewing flags
+    if (filter === 'flagged') {
+      loadFlaggedPlans();
     }
   };
 
   // Determine which plans to display based on filter
-  // For 'all' filter, sort with favorites at the top
-  const displayedPlans = filter === 'favorites'
-    ? favoritePlans
+  // For 'all' filter, sort with flags at the top
+  const displayedPlans = filter === 'flagged'
+    ? flaggedPlans
     : [...plans].sort((a, b) => {
-        const aIsFavorite = isFavorited(a.id);
-        const bIsFavorite = isFavorited(b.id);
+        const aIsFlagged = isFlagged(a.id);
+        const bIsFlagged = isFlagged(b.id);
 
-        // Favorites first
-        if (aIsFavorite && !bIsFavorite) return -1;
-        if (!aIsFavorite && bIsFavorite) return 1;
+        // Flags first
+        if (aIsFlagged && !bIsFlagged) return -1;
+        if (!aIsFlagged && bIsFlagged) return 1;
 
         // Otherwise maintain original order (by updatedAt descending)
         return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       });
-  const displayedTotal = filter === 'favorites' ? favoritePlans.length : totalPlans;
+  const displayedTotal = filter === 'flagged' ? flaggedPlans.length : totalPlans;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
@@ -333,19 +333,19 @@ export default function MyPlansClient({
               </span>
             </button>
             <button
-              onClick={() => setFilter('favorites')}
+              onClick={() => setFilter('flagged')}
               className={`
                 flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all
-                ${filter === 'favorites'
-                  ? 'bg-white text-pink-600 shadow-sm'
+                ${filter === 'flagged'
+                  ? 'bg-white text-amber-600 shadow-sm'
                   : 'text-stone-500 hover:text-stone-700'
                 }
               `}
             >
-              <FaHeart className="text-sm" />
-              <span>お気に入り</span>
+              <FaFlag className="text-sm" />
+              <span>フラグ付き</span>
               <span className="text-xs bg-stone-200/50 px-2 py-0.5 rounded-full">
-                {favoritePlanIds.size}
+                {flaggedPlanIds.size}
               </span>
             </button>
           </div>
@@ -366,10 +366,10 @@ export default function MyPlansClient({
         )}
 
         {/* Plans List */}
-        {isLoadingFavorites && filter === 'favorites' ? (
+        {isLoadingFlags && filter === 'flagged' ? (
           <div className="text-center py-16">
             <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
-            <p className="text-stone-600">お気に入りプランを読み込み中...</p>
+            <p className="text-stone-600">フラグ付きプランを読み込み中...</p>
           </div>
         ) : displayedPlans.length === 0 ? (
           <div className="text-center py-16">
@@ -377,15 +377,15 @@ export default function MyPlansClient({
               {/* Decorative background */}
               <div className="absolute inset-0 bg-[#e67e22]/5 rounded-full scale-150" />
               <div className="relative p-8 bg-[#fcfbf9] rounded-full border-2 border-dashed border-[#e67e22]/30 mb-6">
-                {filter === 'favorites' ? (
-                  <FaHeart className="text-6xl text-pink-300" />
+                {filter === 'flagged' ? (
+                  <FaFlag className="text-6xl text-amber-300" />
                 ) : (
                   <FaPlane className="text-6xl text-[#e67e22]/30" />
                 )}
               </div>
             </div>
             <h2 className="font-serif text-xl font-bold text-stone-600 mb-2">
-              {filter === 'favorites' ? 'お気に入りプランがありません' : 'プランがありません'}
+              {filter === 'flagged' ? 'フラグ付きプランがありません' : 'プランがありません'}
             </h2>
             <p className="text-stone-500 mb-8 font-hand">
               新しい旅行プランを作成して、ここに保存しましょう
@@ -513,21 +513,21 @@ export default function MyPlansClient({
                         </p>
                       </div>
 
-                      {/* Actions - Favorite button and Three dot menu */}
+                      {/* Actions - Flag button and Three dot menu */}
                       <div className="flex items-center gap-2">
-                        {/* Favorite Button */}
+                        {/* Flag Button */}
                         <motion.button
-                          onClick={() => handleToggleFavorite(plan.id)}
+                          onClick={() => handleToggleFlag(plan.id)}
                           className={`p-2.5 rounded-full transition-all ${
-                            isFavorited(plan.id)
-                              ? 'text-pink-500 hover:bg-pink-50'
-                              : 'text-stone-300 hover:text-pink-400 hover:bg-stone-100'
+                            isFlagged(plan.id)
+                              ? 'text-amber-500 hover:bg-amber-50'
+                              : 'text-stone-300 hover:text-amber-400 hover:bg-stone-100'
                           }`}
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.9 }}
-                          title={isFavorited(plan.id) ? 'お気に入りから削除' : 'お気に入りに追加'}
+                          title={isFlagged(plan.id) ? 'フラグを外す' : 'フラグを付ける'}
                         >
-                          <FaHeart className="text-lg" />
+                          <FaFlag className="text-lg" />
                         </motion.button>
 
                         {/* Three dot menu */}

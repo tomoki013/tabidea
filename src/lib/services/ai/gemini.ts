@@ -330,7 +330,16 @@ ${prompt}`;
       2. Create detailed activities (3 meals + spots) fitting the user's pace.
       3. Return JSON array of DayPlans.
       4. CRITICAL: Each day MUST start from the previous day's overnight_location (or startingLocation if specified).
-      5. If travel_method_to_next is specified in the outline, include that travel as an activity at the appropriate time.
+      5. CRITICAL - TRANSIT CARD GENERATION:
+         - If travel_method_to_next is specified in the outline for the PREVIOUS day, you MUST generate a "transit" object for this day.
+         - The transit object should include:
+           * type: Choose from "flight", "train", "bus", "ship", "car", "other" based on the travel_method_to_next description
+           * departure: Include the previous day's overnight_location and an appropriate departure time
+           * arrival: Include this day's starting location and an appropriate arrival time
+           * duration: Calculate realistic travel duration
+           * memo: Optional details like flight numbers, train names, etc.
+         - Transit should appear at the BEGINNING of the day, before other activities.
+         - If there is no travel between locations, do NOT include a transit object.
 
       QUALITY & TONE INSTRUCTIONS (IMPORTANT):
       - WRITE LIKE A HUMAN TRAVEL WRITER, not a robot.
@@ -359,6 +368,19 @@ ${prompt}`;
           {
             "day": number,
             "title": "string (Same as outline, include city name for multi-city)",
+            "transit": {
+              "type": "flight" | "train" | "bus" | "ship" | "car" | "other",
+              "departure": {
+                "place": "string (Departure location)",
+                "time": "string (Departure time, e.g., '09:00')"
+              },
+              "arrival": {
+                "place": "string (Arrival location)",
+                "time": "string (Arrival time, e.g., '12:30')"
+              },
+              "duration": "string (Travel duration, e.g., '3h 30m')",
+              "memo": "string (Optional: Flight number, train name, etc.)"
+            },
             "activities": [
                {
                 "time": "string",
