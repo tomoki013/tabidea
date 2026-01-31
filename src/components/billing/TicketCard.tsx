@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import { useTransition } from 'react';
+import { useTransition } from "react";
 
-import type { PricingPlanInfo, PurchaseType } from '@/types/billing';
+import type { PricingPlanInfo, PurchaseType } from "@/types/billing";
 
 interface TicketCardProps {
   plan: PricingPlanInfo;
   isLoggedIn: boolean;
+  isLoading: boolean;
   onPurchase: (planType: PurchaseType) => void;
   onLoginRequired: () => void;
 }
@@ -14,6 +15,7 @@ interface TicketCardProps {
 export function TicketCard({
   plan,
   isLoggedIn,
+  isLoading,
   onPurchase,
   onLoginRequired,
 }: TicketCardProps) {
@@ -34,8 +36,8 @@ export function TicketCard({
     <div
       className={`relative flex flex-col p-5 bg-white rounded-xl border-2 transition-all ${
         plan.isRecommended
-          ? 'border-primary shadow-lg'
-          : 'border-stone-200 shadow-md hover:shadow-lg'
+          ? "border-primary shadow-lg"
+          : "border-stone-200 shadow-md hover:shadow-lg"
       }`}
     >
       {plan.isRecommended && (
@@ -52,7 +54,9 @@ export function TicketCard({
           <p className="text-xs text-stone-500">{plan.description}</p>
         </div>
         <div className="text-right">
-          <span className="text-2xl font-bold text-stone-800">{plan.priceDisplay}</span>
+          <span className="text-2xl font-bold text-stone-800">
+            {plan.priceDisplay}
+          </span>
         </div>
       </div>
 
@@ -82,8 +86,8 @@ export function TicketCard({
         disabled={isPending}
         className={`w-full py-2 px-3 rounded-lg font-bold text-sm transition-colors ${
           plan.isRecommended
-            ? 'bg-primary text-white hover:bg-primary/90'
-            : 'bg-stone-100 text-stone-700 hover:bg-stone-200'
+            ? "bg-primary text-white hover:bg-primary/90"
+            : "bg-stone-100 text-stone-700 hover:bg-stone-200"
         } disabled:opacity-50 disabled:cursor-not-allowed`}
       >
         {isPending ? (
@@ -107,7 +111,7 @@ export function TicketCard({
             処理中...
           </span>
         ) : !isLoggedIn ? (
-          'ログインして購入'
+          "ログインして購入"
         ) : (
           plan.buttonLabel
         )}

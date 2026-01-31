@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useTransition } from 'react';
+import { useTransition } from "react";
 
-import type { PricingPlanInfo, PurchaseType } from '@/types/billing';
+import type { PricingPlanInfo, PurchaseType } from "@/types/billing";
 
 interface PricingCardProps {
   plan: PricingPlanInfo;
   isCurrentPlan?: boolean;
   isLoggedIn: boolean;
+  isLoading?: boolean;
   onPurchase: (planType: PurchaseType) => void;
   onLoginRequired: () => void;
   onManageSubscription?: () => void;
@@ -17,6 +18,7 @@ export function PricingCard({
   plan,
   isCurrentPlan = false,
   isLoggedIn,
+  isLoading,
   onPurchase,
   onLoginRequired,
   onManageSubscription,
@@ -25,12 +27,12 @@ export function PricingCard({
 
   const handleClick = () => {
     // Freeプランの場合は何もしない
-    if (plan.id === 'free') {
+    if (plan.id === "free") {
       return;
     }
 
     // 現在のProプランユーザーの場合はポータルへ
-    if (isCurrentPlan && plan.id === 'pro_monthly' && onManageSubscription) {
+    if (isCurrentPlan && plan.id === "pro_monthly" && onManageSubscription) {
       startTransition(() => {
         onManageSubscription();
       });
@@ -50,26 +52,26 @@ export function PricingCard({
   };
 
   const getButtonLabel = () => {
-    if (plan.id === 'free') {
-      return isCurrentPlan ? '現在のプラン' : '無料で始める';
+    if (plan.id === "free") {
+      return isCurrentPlan ? "現在のプラン" : "無料で始める";
     }
-    if (isCurrentPlan && plan.id === 'pro_monthly') {
-      return 'プランを管理';
+    if (isCurrentPlan && plan.id === "pro_monthly") {
+      return "プランを管理";
     }
     if (!isLoggedIn) {
-      return 'ログインして購入';
+      return "ログインして購入";
     }
     return plan.buttonLabel;
   };
 
-  const isDisabled = plan.id === 'free' || isPending;
+  const isDisabled = plan.id === "free" || isPending;
 
   return (
     <div
       className={`relative flex flex-col p-6 bg-white rounded-2xl border-2 transition-all ${
         plan.isRecommended
-          ? 'border-primary shadow-xl scale-105'
-          : 'border-stone-200 shadow-lg hover:shadow-xl'
+          ? "border-primary shadow-xl scale-105"
+          : "border-stone-200 shadow-lg hover:shadow-xl"
       }`}
     >
       {plan.isRecommended && (
@@ -80,7 +82,7 @@ export function PricingCard({
         </div>
       )}
 
-      {isCurrentPlan && plan.id !== 'free' && (
+      {isCurrentPlan && plan.id !== "free" && (
         <div className="absolute -top-3 right-4">
           <span className="px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
             現在のプラン
@@ -94,15 +96,20 @@ export function PricingCard({
       </div>
 
       <div className="mb-6">
-        <span className="text-3xl font-bold text-stone-800">{plan.priceDisplay}</span>
-        {plan.id === 'pro_monthly' && (
+        <span className="text-3xl font-bold text-stone-800">
+          {plan.priceDisplay}
+        </span>
+        {plan.id === "pro_monthly" && (
           <span className="text-sm text-stone-500 ml-1">/ 月</span>
         )}
       </div>
 
       <ul className="flex-1 space-y-3 mb-6">
         {plan.features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-2 text-sm text-stone-600">
+          <li
+            key={index}
+            className="flex items-start gap-2 text-sm text-stone-600"
+          >
             <svg
               className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5"
               fill="none"
@@ -125,13 +132,13 @@ export function PricingCard({
         onClick={handleClick}
         disabled={isDisabled}
         className={`w-full py-3 px-4 rounded-xl font-bold transition-colors ${
-          plan.id === 'free'
-            ? 'bg-stone-100 text-stone-400 cursor-default'
-            : isCurrentPlan && plan.id === 'pro_monthly'
-              ? 'bg-stone-200 text-stone-700 hover:bg-stone-300'
+          plan.id === "free"
+            ? "bg-stone-100 text-stone-400 cursor-default"
+            : isCurrentPlan && plan.id === "pro_monthly"
+              ? "bg-stone-200 text-stone-700 hover:bg-stone-300"
               : plan.isRecommended
-                ? 'bg-primary text-white hover:bg-primary/90'
-                : 'bg-stone-800 text-white hover:bg-stone-700'
+                ? "bg-primary text-white hover:bg-primary/90"
+                : "bg-stone-800 text-white hover:bg-stone-700"
         } disabled:opacity-50 disabled:cursor-not-allowed`}
       >
         {isPending ? (

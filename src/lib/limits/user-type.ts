@@ -10,15 +10,7 @@ export interface UserInfo {
 
 /**
  * Server Action内でユーザー種別を取得
- *
- * 判定順序:
- * 1. 未認証 → 'anonymous'
- * 2. 管理者メール → 'admin'
- * 3. サブスク有効 → 'premium' (課金実装後)
- * 4. それ以外 → 'free'
  */
-// src/lib/limits/user-type.ts の修正
-
 export async function getUserInfo(): Promise<UserInfo> {
   const supabase = await createClient();
 
@@ -41,24 +33,20 @@ export async function getUserInfo(): Promise<UserInfo> {
     .from("subscriptions")
     .select("status, current_period_end")
     .eq("user_id", user.id)
-    .eq("status", "active")
+    .in("status", ["active", "trialing"])
     .single();
 
-  if (subscription && new Date(subscription.current_period_end) > new Date()) {
-    return { type: "premium", userId: user.id, email: user.email ?? null };
+  if (subscription && subscription.current_period_end) {
+    const periodEnd = new Date(subscription.current_period_end);
+    if (periodEnd > new Date()) {
+      return { type: "premium", userId: user.id, email: user.email ?? null };
+    }
   }
 
   return { type: "free", userId: user.id, email: user.email ?? null };
 }
 
-/**
- * クライアント用ユーザー種別（表示用のみ）
- *
- * 注意: 実際の制限チェックはサーバーで行うため、表示用途のみ使用
- */
 export async function getUserTypeClient(): Promise<UserType> {
-  // クライアントコンポーネント用
-  // 実際の制限チェックはサーバーで行うため、表示用途のみ
   const supabase = await createClient();
 
   const {
@@ -67,6 +55,20 @@ export async function getUserTypeClient(): Promise<UserType> {
 
   if (!user) return "anonymous";
   if (isAdmin(user.email)) return "admin";
-  // TODO: premium判定
+
+  const { data: subscription } = await supabase
+    .from("subscriptions")
+    .select("status, current_period_end")
+    .eq("user_id", user.id)
+    .in("status", ["active", "trialing"])
+    .single();
+
+  if (subscription && subscription.current_period_end) {
+    const periodEnd = new Date(subscription.current_period_end);
+    if (periodEnd > new Date()) {
+      return "premium";
+    }
+  }
+
   return "free";
 }
