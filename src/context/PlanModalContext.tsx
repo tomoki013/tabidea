@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode, Suspense } from "react";
 import { PlanModal } from "@/components/common";
 import { UserInput } from "@/types";
 
@@ -37,12 +37,14 @@ export function PlanModalProvider({ children }: { children: ReactNode }) {
   return (
     <PlanModalContext.Provider value={{ isOpen, openModal, closeModal }}>
       {children}
-      <PlanModal
-        isOpen={isOpen}
-        onClose={closeModal}
-        initialInput={modalOptions.initialInput}
-        initialStep={modalOptions.initialStep}
-      />
+      <Suspense fallback={null}>
+        <PlanModal
+          isOpen={isOpen}
+          onClose={closeModal}
+          initialInput={modalOptions.initialInput}
+          initialStep={modalOptions.initialStep}
+        />
+      </Suspense>
     </PlanModalContext.Provider>
   );
 }
