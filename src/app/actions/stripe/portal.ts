@@ -47,6 +47,8 @@ export async function createPortalSession(): Promise<void> {
   // 末尾のスラッシュを削除して正規化
   const returnUrl = `${baseUrl.replace(/\/$/, '')}/pricing`;
 
+  let sessionUrl: string | null = null;
+
   try {
     const session = await stripe.billingPortal.sessions.create({
       customer: userData.stripe_customer_id,
@@ -54,11 +56,15 @@ export async function createPortalSession(): Promise<void> {
     });
 
     if (session.url) {
-      redirect(session.url);
+      sessionUrl = session.url;
     }
   } catch (error) {
     console.error('Failed to create portal session:', error);
     redirect('/pricing?error=portal_failed');
+  }
+
+  if (sessionUrl) {
+    redirect(sessionUrl);
   }
 
   redirect('/pricing?error=unknown');

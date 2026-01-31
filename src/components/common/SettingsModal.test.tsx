@@ -39,6 +39,7 @@ vi.mock('next/navigation', () => ({
     push: vi.fn(),
     refresh: vi.fn(),
   }),
+  usePathname: () => '/current-path',
 }));
 
 // Mock AuthContext hook
@@ -80,14 +81,17 @@ describe('SettingsModal', () => {
   it('renders correctly when open', async () => {
     render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
 
-    // Should show AI settings by default now
-    // Check for heading specifically to avoid ambiguity with tab button
-    expect(screen.getByRole('heading', { name: /AI設定/ })).toBeDefined();
-    expect(screen.getByText('旅行プラン生成時のAIの挙動をカスタマイズできます。')).toBeDefined();
+    // Should show Account settings by default
+    expect(screen.getByRole('heading', { name: /アカウント設定/ })).toBeDefined();
+    expect(screen.getByText('ユーザー情報の確認やアカウントの管理が行えます。')).toBeDefined();
   });
 
   it('switches to AI settings and shows Travel Style input', async () => {
     render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    // Switch to AI tab
+    const aiTab = screen.getByText('AI設定');
+    fireEvent.click(aiTab);
 
     // AI settings is default tab
     await waitFor(() => {
@@ -103,6 +107,10 @@ describe('SettingsModal', () => {
   it('loads existing travel style', async () => {
     render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
 
+    // Switch to AI tab
+    const aiTab = screen.getByText('AI設定');
+    fireEvent.click(aiTab);
+
     await waitFor(() => {
       expect(screen.getByDisplayValue('Original style')).toBeDefined();
     });
@@ -110,6 +118,10 @@ describe('SettingsModal', () => {
 
   it('saves travel style', async () => {
     render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    // Switch to AI tab
+    const aiTab = screen.getByText('AI設定');
+    fireEvent.click(aiTab);
 
     // Wait for load
     await waitFor(() => {
