@@ -17,87 +17,96 @@ export default function SpecifiedPage() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <tbody>
-                <TableRow label="販売事業者名" value="Tabidea（タビデア）" />
-                <TableRow label="代表者" value="tomokichi" />
+                <TableRow label="事業者" value="Tabidea" />
                 <TableRow
-                  label="所在地"
+                  label="事業者の所在"
                   value="請求があった場合には遅滞なく開示いたします。"
                 />
+                <TableRow label="運営責任者" value="髙木　友喜" />
                 <TableRow
-                  label="電話番号"
-                  value="請求があった場合には遅滞なく開示いたします。"
-                />
-                <TableRow
-                  label="メールアドレス"
+                  label="お問合せ先"
                   value={
-                    <span>
-                      お問い合わせフォーム（
-                      <PolicyLink href="/contact">こちら</PolicyLink>
-                      ）よりご連絡ください
-                    </span>
-                  }
-                />
-                <TableRow
-                  label="販売URL"
-                  value="https://tabidea.vercel.app/pricing"
-                />
-                <TableRow
-                  label="販売価格"
-                  value={
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Proプラン（月額）：1,500円（税込）</li>
-                      <li>回数券（1回）：300円（税込）</li>
-                      <li>回数券（5回）：1,200円（税込）</li>
-                      <li>回数券（10回）：2,000円（税込）</li>
-                    </ul>
-                  }
-                />
-                <TableRow
-                  label="商品代金以外の必要料金"
-                  value="なし（インターネット接続料金はお客様のご負担となります）"
-                />
-                <TableRow
-                  label="お支払い方法"
-                  value="クレジットカード（Visa, Mastercard, American Express, JCB）"
-                />
-                <TableRow
-                  label="お支払い時期"
-                  value="サブスクリプション：お申し込み時に初回課金、以降毎月同日に自動課金。回数券：ご注文時に即時決済。"
-                />
-                <TableRow
-                  label="商品の引き渡し時期"
-                  value="決済完了後、即時にサービスをご利用いただけます。"
-                />
-                <TableRow
-                  label="返品・キャンセルについて"
-                  value={
-                    <div className="space-y-2">
+                    <div className="space-y-1">
+                      <p>gaomuyouxi@gmail.com</p>
                       <p>
-                        <strong>サブスクリプション：</strong>
-                        いつでも解約可能です。解約後も現在の請求期間終了までサービスをご利用いただけます。購入後7日以内で、サービスを利用されていない場合に限り、返金に対応いたします。
-                      </p>
-                      <p>
-                        <strong>回数券：</strong>
-                        デジタルコンテンツの性質上、購入後の返品・返金は原則としてお受けしておりません。
+                        <PolicyLink href="/contact">
+                          お問い合わせページへのリンク
+                        </PolicyLink>
                       </p>
                     </div>
                   }
                 />
                 <TableRow
-                  label="動作環境"
-                  value="インターネット接続環境が必要です。推奨ブラウザ：Google Chrome、Safari、Microsoft Edgeの最新版"
+                  label="販売価格と手数料"
+                  value={
+                    <div className="space-y-2">
+                      <p>
+                        販売ページおよび購入手続きの画面において、消費税・手数料を含む価格で表示されています。
+                      </p>
+                      <p>
+                        本サービスの利用に必要となるインターネット通信料金はお客様のご負担となります。
+                      </p>
+                      <p>
+                        デジタルコンテンツ（役務）のため送料や返品送料は発生しません。
+                      </p>
+                    </div>
+                  }
                 />
                 <TableRow
-                  label="サービス提供条件"
+                  label="提供時期"
+                  value="お支払いが確認でき次第、すぐに利用できるようになります。"
+                />
+                <TableRow
+                  label="お支払方法"
+                  value="クレジットカード、またはその他当社が定める方法（Apple Pay、Google Pay、Stripe Link）によりお支払いいただきます"
+                />
+                <TableRow
+                  label="お支払時期"
                   value={
-                    <span>
-                      <PolicyLink href="/terms">利用規約</PolicyLink>
-                      および
-                      <PolicyLink href="/privacy">
-                        プライバシーポリシー
-                      </PolicyLink>
-                      に同意いただく必要があります。
-                    </span>
+                    <div className="space-y-2">
+                      <p>
+                        利用料金のお支払いは利用期間ごとの前払いとし、お支払時期は初回を有料サービス登録時、以降は1ヶ月または1年ごとの同日となります（翌月または翌年に同日がない場合は、その月の末日となります）。
+                      </p>
+                      <p>
+                        クレジットカード会社からお客様への請求時期は、お客様とクレジットカード会社との間の契約に基づきます。
+                      </p>
+                    </div>
+                  }
+                />
+                <TableRow
+                  label="返品・キャンセル・解約について"
+                  value={
+                    <div className="space-y-2">
+                      <p>
+                        デジタルサービスという性質上、お客様都合による返金・キャンセルはお受けしておりません。
+                      </p>
+                      <p>
+                        弊社の責による長期システム停止等、当社利用規約で定める場合に限り、未提供日数を日割り計算の上で返金いたします。
+                      </p>
+                      <p>
+                        次回更新日の24時間前までに解約いただけます。解約後も当該請求期間の終了日まではサービスをご利用いただけます。
+                      </p>
+                    </div>
+                  }
+                />
+                <TableRow
+                  label="推奨するご利用環境"
+                  value={
+                    <div className="space-y-2">
+                      <p>以下の環境でのご利用を推奨します。</p>
+                      <p>
+                        お支払い前にあらかじめご利用環境での動作をご確認ください。
+                      </p>
+                      <div className="mt-2">
+                        <p className="font-semibold">Web版（ブラウザ）</p>
+                        <ul className="list-disc list-inside ml-1 space-y-1">
+                          <li>macOSの場合、ChromeまたはSafariの最新版</li>
+                          <li>Windowsの場合、EdgeまたはChromeの最新版</li>
+                          <li>iOSの場合、Safariの最新版</li>
+                          <li>Androidの場合、Chromeの最新版</li>
+                        </ul>
+                      </div>
+                    </div>
                   }
                 />
               </tbody>
@@ -105,7 +114,7 @@ export default function SpecifiedPage() {
           </div>
 
           <div className="text-right text-sm text-stone-500 mt-12 font-serif">
-            制定日：2026年1月31日
+            最終更新日：2026年2月1日
           </div>
         </div>
       </main>
