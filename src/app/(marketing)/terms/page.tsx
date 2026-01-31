@@ -233,7 +233,7 @@ export default function TermsOfService() {
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            策定日：2024年12月23日
+            策定日：2025年12月23日
             <br />
             最終更新日：2026年2月1日
           </div>
