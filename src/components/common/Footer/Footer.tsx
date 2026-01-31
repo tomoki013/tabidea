@@ -116,14 +116,6 @@ export default function Footer() {
           <ul className="space-y-2 text-sm text-stone-600">
             <li>
               <Link
-                href="/specified"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                特定商取引法に基づく表記
-              </Link>
-            </li>
-            <li>
-              <Link
                 href="/terms"
                 className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
               >
@@ -152,6 +144,14 @@ export default function Footer() {
                 className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
               >
                 AIポリシー
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/specified"
+                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
+              >
+                特定商取引法に基づく表記
               </Link>
             </li>
           </ul>
