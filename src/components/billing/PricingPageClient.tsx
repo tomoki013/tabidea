@@ -86,8 +86,8 @@ export function PricingPageClient({
   const isPro = billingStatus?.isSubscribed === true;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
-      <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
+      <div className="max-w-6xl mx-auto px-4 pt-32 pb-16">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-4xl font-bold text-stone-800 mb-4">
@@ -267,7 +267,7 @@ export function PricingPageClient({
 
         {/* Legal Links */}
         <div className="mt-12 text-center text-sm text-stone-500">
-          <a href="/tokushoho" className="hover:text-[#e67e22] underline">
+          <a href="/specified" className="hover:text-[#e67e22] underline">
             特定商取引法に基づく表記
           </a>
           <span className="mx-2">|</span>
@@ -299,7 +299,7 @@ function FeatureRow({
     if (typeof value === "boolean") {
       return value ? (
         <svg
-          className="w-5 h-5 text-green-500 mx-auto\"
+          className="w-5 h-5 text-green-500 mx-auto"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

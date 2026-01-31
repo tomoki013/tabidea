@@ -5,13 +5,15 @@ export const metadata: Metadata = {
   title: "特定商取引法に基づく表記",
 };
 
-export default function Tokushoho() {
+export default function SpecifiedPage() {
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-20 font-(family-name:--font-noto-sans-jp)">
-      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-stone-100">
-        <h1 className="text-3xl font-bold mb-8">特定商取引法に基づく表記</h1>
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4">
+      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-12 text-center">
+          特定商取引法に基づく表記
+        </h1>
 
-        <div className="space-y-6 text-muted-foreground leading-relaxed">
+        <div className="space-y-6 text-stone-600 leading-relaxed font-sans">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <tbody>
@@ -102,7 +104,7 @@ export default function Tokushoho() {
             </table>
           </div>
 
-          <div className="text-right text-sm text-muted-foreground mt-12">
+          <div className="text-right text-sm text-stone-500 mt-12 font-serif">
             制定日：2026年1月31日
           </div>
         </div>
@@ -119,11 +121,11 @@ function TableRow({
   value: React.ReactNode;
 }) {
   return (
-    <tr className="border-b border-stone-200">
-      <th className="py-4 px-4 text-left font-semibold text-foreground bg-stone-50 w-1/3 align-top">
+    <tr className="border-b border-stone-200/60 last:border-0">
+      <th className="py-4 px-4 text-left font-serif font-bold text-[#2c2c2c] bg-stone-50/50 w-1/3 align-top whitespace-nowrap sm:whitespace-normal">
         {label}
       </th>
-      <td className="py-4 px-4">{value}</td>
+      <td className="py-4 px-4 text-stone-600">{value}</td>
     </tr>
   );
 }

@@ -20,8 +20,8 @@ export default function SuccessPageClient({
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white flex items-center justify-center px-4">
-      <div className="max-w-md w-full text-center">
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] px-4 pt-32 pb-16">
+      <div className="max-w-md w-full mx-auto text-center">
         {/* Success Icon */}
         <div className="mb-6">
           <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto shadow-lg shadow-green-200">
