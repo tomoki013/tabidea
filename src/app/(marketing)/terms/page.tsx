@@ -159,7 +159,43 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              7. アフィリエイト・広告について
+              7. 有料サービス・サブスクリプションについて
+            </h2>
+            <p className="mb-4">
+              当サービスでは、一部機能について有料プランを提供しています。
+            </p>
+            <ul className="list-disc pl-6 space-y-2 mb-4">
+              <li>
+                <strong>料金体系：</strong>
+                無料プラン、Proプラン（月額サブスクリプション）、回数券の3種類があります。詳細は料金プランページをご確認ください。
+              </li>
+              <li>
+                <strong>決済：</strong>
+                クレジットカード決済はStripe社のシステムを利用しています。当サービスはユーザーのクレジットカード情報を直接保存・管理することはありません。
+              </li>
+              <li>
+                <strong>サブスクリプションの更新：</strong>
+                Proプランは月単位の自動更新となります。解約しない限り、毎月同日に自動的に課金されます。
+              </li>
+              <li>
+                <strong>解約：</strong>
+                サブスクリプションはいつでも解約できます。解約後も、現在の請求期間が終了するまではProプランの機能をご利用いただけます。
+              </li>
+              <li>
+                <strong>返金：</strong>
+                サブスクリプションの返金は、ご購入後7日以内で、サービスを利用されていない場合に限り対応いたします。回数券の返金は原則として対応しておりません。
+              </li>
+            </ul>
+            <p>
+              有料サービスに関する詳細は、
+              <PolicyLink href="/tokushoho">特定商取引法に基づく表記</PolicyLink>
+              をご確認ください。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+              8. アフィリエイト・広告について
             </h2>
             <p>
               当サービスには、アフィリエイトリンクや広告が含まれる場合があります。これらのリンクを経由して商品やサービスを購入された場合、当サービスは一定の報酬を得ることがあります。ただし、紹介される商品やサービスはアフィリエイトパートナーにより提供されるものであり、当サービスが管理・販売するものではありません。
@@ -168,7 +204,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              8. サービス内容の変更等
+              9. サービス内容の変更等
             </h2>
             <p>
               当サービスは、ユーザーに通知することなく、当サービスの内容を変更し、または当サービスの提供を中止することができるものとし、これによってユーザーに生じた損害について一切の責任を負いません。
@@ -177,7 +213,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              9. 利用規約の変更
+              10. 利用規約の変更
             </h2>
             <p>
               当サービスは、必要と判断した場合には、ユーザーに通知することなくいつでも本規約を変更することができるものとします。変更後の利用規約は、本サービス上に掲示された時点で効力を生じるものとします。本規約の変更後、当サービスの利用を開始した場合には、当該ユーザーは変更後の規約に同意したものとみなします。
@@ -186,7 +222,7 @@ export default function TermsOfService() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              10. 準拠法・裁判管轄
+              11. 準拠法・裁判管轄
             </h2>
             <p>
               本規約の解釈にあたっては、日本法を準拠法とします。

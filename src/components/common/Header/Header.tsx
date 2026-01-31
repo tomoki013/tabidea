@@ -11,6 +11,7 @@ import {
   FaPen,
   FaMapMarkerAlt,
   FaUser,
+  FaCrown,
 } from "react-icons/fa";
 import { throttle } from "@/lib/utils";
 import { usePlanModal } from "@/context/PlanModalContext";
@@ -116,6 +117,7 @@ export default function Header({
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-6">
               <NavLink href="/usage" label="使い方" icon={<FaMap />} />
+              <NavLink href="/pricing" label="料金" icon={<FaCrown />} />
               <NavLink href="/faq" label="FAQ" icon={<FaQuestionCircle />} />
 
               <button
