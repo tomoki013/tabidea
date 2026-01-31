@@ -8,6 +8,7 @@ import { TicketCard } from "./TicketCard";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
+import { faqCategories } from "@/lib/data/faq";
 
 import type { UserBillingStatus, PurchaseType } from "@/types/billing";
 
@@ -85,6 +86,9 @@ export function PricingPageClient({
 
   const isPro = billingStatus?.isSubscribed === true;
 
+  // Filter FAQs for billing category
+  const billingFaqs = faqCategories.find(c => c.id === 'billing')?.items || [];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
       <div className="max-w-6xl mx-auto px-4 pt-32 pb-16">
@@ -112,7 +116,7 @@ export function PricingPageClient({
               <div>
                 <p className="text-sm text-stone-500">現在のプラン</p>
                 <p className="text-lg font-bold text-stone-800">
-                  {isPro ? "Pro" : "Free"}
+                  {billingStatus.planType === 'admin' ? "Administrator" : (isPro ? "Pro" : "Free")}
                 </p>
               </div>
               {billingStatus.ticketCount > 0 && (
@@ -159,7 +163,7 @@ export function PricingPageClient({
           </div>
         </div>
 
-        {/* Ticket Plans */}
+        {/* Ticket Plans - Commented out as requested
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-xl font-bold text-stone-800 mb-2">回数券</h2>
@@ -180,6 +184,7 @@ export function PricingPageClient({
             ))}
           </div>
         </div>
+        */}
 
         {/* Feature Comparison */}
         <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto">
@@ -199,8 +204,8 @@ export function PricingPageClient({
                   <th className="text-center py-3 px-4 font-medium text-primary">
                     Pro
                   </th>
-                  <th className="text-center py-3 px-4 font-medium text-stone-600">
-                    回数券
+                  <th className="text-center py-3 px-4 font-medium text-stone-600 text-stone-400">
+                    回数券 (一時停止中)
                   </th>
                 </tr>
               </thead>
@@ -235,6 +240,18 @@ export function PricingPageClient({
                   pro="無制限"
                   ticket="2件"
                 />
+                <FeatureRow
+                  feature="カスタム指示 (AI)"
+                  free={true}
+                  pro={true}
+                  ticket={true}
+                />
+                <FeatureRow
+                  feature="旅のスタイル (AI)"
+                  free={false}
+                  pro={true}
+                  ticket={false}
+                />
               </tbody>
             </table>
           </div>
@@ -246,22 +263,16 @@ export function PricingPageClient({
             よくある質問
           </h2>
           <div className="space-y-4">
-            <FaqItem
-              question="回数券とProプランの違いは？"
-              answer="Proプランはサブスクリプション形式で、プラン生成が無制限、全ての渡航情報カテゴリにアクセスでき、プラン内で渡航情報を直接閲覧できます。回数券は購入した回数分のプラン生成のみが可能で、渡航情報は無料ユーザーと同じ制限があります。"
-            />
-            <FaqItem
-              question="回数券の有効期限は？"
-              answer="1回券は30日、5回券は90日、10回券は180日です。期限内であれば複数回に分けて使用できます。"
-            />
-            <FaqItem
-              question="Proプランはいつでも解約できますか？"
-              answer="はい、いつでも解約できます。解約後も請求期間の終了まではProプランの機能をご利用いただけます。解約は設定画面の「プランを管理」から行えます。"
-            />
-            <FaqItem
-              question="支払い方法は？"
-              answer="クレジットカード（Visa, Mastercard, American Express, JCB）でお支払いいただけます。安全な決済はStripe社のシステムを利用しています。"
-            />
+            {billingFaqs.map((faq, index) => (
+              <FaqItem
+                key={index}
+                question={faq.q}
+                answer={faq.a}
+              />
+            ))}
+            {billingFaqs.length === 0 && (
+              <p className="text-center text-stone-500">FAQの読み込みに失敗しました。</p>
+            )}
           </div>
         </div>
 
@@ -295,11 +306,11 @@ function FeatureRow({
   pro: string | boolean;
   ticket: string | boolean;
 }) {
-  const renderCell = (value: string | boolean) => {
+  const renderCell = (value: string | boolean, isTicket: boolean = false) => {
     if (typeof value === "boolean") {
       return value ? (
         <svg
-          className="w-5 h-5 text-green-500 mx-auto"
+          className={`w-5 h-5 mx-auto ${isTicket ? 'text-stone-300' : 'text-green-500'}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -327,7 +338,7 @@ function FeatureRow({
         </svg>
       );
     }
-    return <span>{value}</span>;
+    return <span className={isTicket ? 'text-stone-400' : ''}>{value}</span>;
   };
 
   return (
@@ -340,7 +351,7 @@ function FeatureRow({
         {renderCell(pro)}
       </td>
       <td className="py-3 px-4 text-center text-stone-600">
-        {renderCell(ticket)}
+        {renderCell(ticket, true)}
       </td>
     </tr>
   );
@@ -365,7 +376,7 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           />
         </svg>
       </summary>
-      <div className="px-4 pb-4 text-sm text-stone-600">{answer}</div>
+      <div className="px-4 pb-4 text-sm text-stone-600 whitespace-pre-line">{answer}</div>
     </details>
   );
 }

@@ -9,7 +9,7 @@ import type { UserType } from '@/lib/limits/config';
 // ============================================
 
 /** サブスクリプションプランの種類 */
-export type PlanType = 'free' | 'pro_monthly';
+export type PlanType = 'free' | 'pro_monthly' | 'admin';
 
 /** 回数券の種類 */
 export type TicketType = 'ticket_1' | 'ticket_5' | 'ticket_10';

@@ -2,6 +2,7 @@
 
 import { getUserBillingStatus } from "@/lib/billing/user-billing-status";
 import { checkBillingAccess } from "@/lib/billing/billing-checker";
+import { getUsageStatus, checkPlanStorageLimit } from "@/lib/limits/check";
 import type { UserBillingStatus, BillingAccessInfo } from "@/types/billing";
 
 /**
@@ -26,4 +27,56 @@ export async function getBillingStatus(): Promise<UserBillingStatus | null> {
  */
 export async function getBillingAccessInfo(): Promise<BillingAccessInfo> {
   return checkBillingAccess();
+}
+
+/**
+ * Usage statistics for the UI
+ */
+export interface UsageStats {
+  planGeneration: {
+    current: number;
+    limit: number;
+    remaining: number;
+    resetAt: Date | null;
+  };
+  travelInfo: {
+    current: number;
+    limit: number;
+    remaining: number;
+    resetAt: Date | null;
+  };
+  planStorage: {
+    current: number;
+    limit: number;
+  };
+}
+
+/**
+ * Get usage statistics for the current user
+ */
+export async function getUserUsageStats(): Promise<UsageStats> {
+  const [planGen, travelInfo, storage] = await Promise.all([
+    getUsageStatus('plan_generation'),
+    getUsageStatus('travel_info'),
+    checkPlanStorageLimit(),
+  ]);
+
+  return {
+    planGeneration: {
+      current: planGen.currentCount,
+      limit: planGen.limit,
+      remaining: planGen.remaining,
+      resetAt: planGen.resetAt,
+    },
+    travelInfo: {
+      current: travelInfo.currentCount,
+      limit: travelInfo.limit,
+      remaining: travelInfo.remaining,
+      resetAt: travelInfo.resetAt,
+    },
+    planStorage: {
+      current: storage.currentCount,
+      limit: storage.limit,
+    },
+  };
 }
