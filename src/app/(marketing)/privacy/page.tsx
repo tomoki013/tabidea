@@ -159,7 +159,15 @@ export default function PrivacyPolicy() {
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  5-3. アフィリエイトプログラム
+                  5-3. 決済サービスプロバイダー
+                </h3>
+                <p className="mt-1">
+                  有料サービスの決済処理には、Stripe社のサービスを利用しています。クレジットカード情報は当サービスのサーバーには保存されず、Stripe社のセキュアな環境で処理されます。Stripe社は国際的なセキュリティ基準（PCI DSS）に準拠しています。
+                </p>
+              </div>
+              <div>
+                <h3 className="font-medium text-foreground">
+                  5-4. アフィリエイトプログラム
                 </h3>
                 <p className="mt-1">
                   当サービスは、Amazonアソシエイト・プログラム、楽天アフィリエイトなどのアフィリエイトプログラムに参加しています。これらのリンクを通じて購入等が行われた場合、第三者がCookie等を使用して情報を収集する可能性があります。
