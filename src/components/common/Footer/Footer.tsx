@@ -61,6 +61,14 @@ export default function Footer() {
                 アップデート情報
               </Link>
             </li>
+            <li>
+              <Link
+                href="/pricing"
+                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
+              >
+                料金プラン
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -151,7 +159,7 @@ export default function Footer() {
                 href="/specified"
                 className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
               >
-                特定商取引法に基づく表記
+                特商法表記
               </Link>
             </li>
           </ul>
