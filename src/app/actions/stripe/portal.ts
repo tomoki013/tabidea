@@ -25,24 +25,17 @@ export async function createPortalSession(): Promise<void> {
     apiVersion: '2026-01-28.clover' as any, // Type assertion for newer API version
   });
 
-  // Supabaseからstripe_customer_idとis_adminを取得
+  // Supabaseからstripe_customer_idを取得
   const supabase = await createClient();
   const { data: userData, error } = await supabase
     .from('users')
-    .select('stripe_customer_id, is_admin')
+    .select('stripe_customer_id')
     .eq('id', user.id)
     .single();
 
   if (error) {
     console.error('User data fetch error:', error);
     redirect('/pricing?error=unknown');
-  }
-
-  // 管理者の場合
-  if (userData?.is_admin) {
-    // 管理者はポータルへ行かせず、管理画面である旨を伝える（が、Server Actionなのでリダイレクトするしかない）
-    // クライアント側でボタンを制御しているはずだが、直接叩かれた場合のガード
-    redirect('/pricing?error=admin_account');
   }
 
   if (!userData?.stripe_customer_id) {

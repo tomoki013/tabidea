@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
 import { deleteAccount } from "@/app/actions/travel-planner";
@@ -33,12 +33,13 @@ interface SettingsModalProps {
   onClose: () => void;
 }
 
-type Tab = 'ai' | 'plan' | 'account';
+type Tab = 'account' | 'plan' | 'ai';
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const router = useRouter();
+  const pathname = usePathname();
   const { user, signOut } = useAuth();
-  const [activeTab, setActiveTab] = useState<Tab>('ai');
+  const [activeTab, setActiveTab] = useState<Tab>('account');
   const [mounted, setMounted] = useState(false);
 
   // AI Settings State
@@ -63,13 +64,20 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     setMounted(true);
   }, []);
 
+  // Close modal when path changes
+  useEffect(() => {
+    if (isOpen) {
+      onClose();
+    }
+  }, [pathname]);
+
   // Load settings when modal opens
   useEffect(() => {
     if (isOpen) {
       loadSettings();
       loadBillingInfo();
       // Reset states
-      setActiveTab('ai');
+      setActiveTab('account');
       setShowDeleteConfirm(false);
       setDeleteConfirmText('');
 
@@ -198,17 +206,20 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </h2>
 
           <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible no-scrollbar">
+            {/* Account Tab */}
             <button
-              onClick={() => setActiveTab('ai')}
+              onClick={() => setActiveTab('account')}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
-                activeTab === 'ai'
+                activeTab === 'account'
                   ? 'bg-white text-[#e67e22] shadow-sm ring-1 ring-[#e67e22]/20'
                   : 'text-stone-500 hover:bg-stone-100 hover:text-stone-700'
               }`}
             >
-              <FaRobot className={activeTab === 'ai' ? 'text-[#e67e22]' : 'text-stone-400'} />
-              AI設定
+              <FaUserCog className={activeTab === 'account' ? 'text-[#e67e22]' : 'text-stone-400'} />
+              アカウント
             </button>
+
+            {/* Plan Tab */}
             <button
               onClick={() => setActiveTab('plan')}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
@@ -220,16 +231,18 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               <FaChartPie className={activeTab === 'plan' ? 'text-[#e67e22]' : 'text-stone-400'} />
               プラン
             </button>
+
+            {/* AI Tab */}
             <button
-              onClick={() => setActiveTab('account')}
+              onClick={() => setActiveTab('ai')}
               className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold transition-all whitespace-nowrap ${
-                activeTab === 'account'
+                activeTab === 'ai'
                   ? 'bg-white text-[#e67e22] shadow-sm ring-1 ring-[#e67e22]/20'
                   : 'text-stone-500 hover:bg-stone-100 hover:text-stone-700'
               }`}
             >
-              <FaUserCog className={activeTab === 'account' ? 'text-[#e67e22]' : 'text-stone-400'} />
-              アカウント
+              <FaRobot className={activeTab === 'ai' ? 'text-[#e67e22]' : 'text-stone-400'} />
+              AI設定
             </button>
           </div>
 
@@ -256,121 +269,111 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
 
           <div className="p-6 md:p-8 flex-1">
-            {activeTab === 'ai' && (
-              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {activeTab === 'account' && (
+              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2 flex items-center gap-2">
-                    AI設定
-                    {isPro && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
-                        <FaCrown className="text-[0.6rem]" />
-                        Pro
-                      </span>
-                    )}
+                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2">
+                    アカウント設定
                   </h3>
                   <p className="text-stone-500 text-sm">
-                    旅行プラン生成時のAIの挙動をカスタマイズできます。
+                    ユーザー情報の確認やアカウントの管理が行えます。
                   </p>
                 </div>
 
-                {isLoadingSettings ? (
-                  <div className="py-12 flex justify-center">
-                    <FaSpinner className="animate-spin text-3xl text-[#e67e22]" />
+                {/* User Info Card */}
+                <div className="bg-white rounded-xl border border-stone-200 p-6 flex items-center gap-5 shadow-sm">
+                  {user?.avatarUrl ? (
+                    <Image
+                      src={user.avatarUrl}
+                      alt={user.displayName || 'ユーザー'}
+                      width={64}
+                      height={64}
+                      className="rounded-full ring-4 ring-stone-100"
+                    />
+                  ) : (
+                    <div className="w-16 h-16 rounded-full bg-[#e67e22]/10 ring-4 ring-stone-100 flex items-center justify-center">
+                      <span className="text-[#e67e22] text-2xl font-bold">
+                        {user?.displayName?.[0] || user?.email?.[0] || 'U'}
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-bold text-lg text-stone-800 truncate">
+                      {user?.displayName || 'ユーザー'}
+                    </h4>
+                    <p className="text-stone-500 truncate">{user?.email}</p>
                   </div>
-                ) : (
-                  <div className="space-y-6">
-                    {/* Custom Instructions - Available to Everyone */}
-                    <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
-                      <label className="block text-sm font-bold text-stone-700 mb-2">
-                        カスタム指示（制約事項）
-                      </label>
-                      <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-lg">
-                        <p className="mb-1 font-bold">💡 ヒント</p>
-                        AIに対して必ず守らせたい条件を入力してください。
-                        <ul className="list-disc list-inside mt-1 space-y-0.5 ml-1">
-                          <li>「美術館は含めないで」</li>
-                          <li>「足が悪いので移動の少ないプランで」</li>
-                          <li>「朝は10時以降に行動開始したい」</li>
-                        </ul>
-                      </div>
-                      <textarea
-                        value={customInstructions}
-                        onChange={(e) => setCustomInstructions(e.target.value)}
-                        className="w-full h-32 p-4 rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#e67e22] focus:border-transparent bg-white resize-none text-stone-800 placeholder-stone-400 transition-all"
-                        placeholder="ここに指示を入力..."
+                </div>
+
+                {/* Actions */}
+                <div className="space-y-4">
+                  <button
+                    onClick={handleSignOut}
+                    className="w-full flex items-center justify-between p-4 bg-white border border-stone-200 rounded-xl hover:bg-stone-50 transition-all group"
+                  >
+                    <span className="font-bold text-stone-700">ログアウト</span>
+                    <FaSignOutAlt className="text-stone-400 group-hover:text-stone-600" />
+                  </button>
+                </div>
+
+                {/* Danger Zone */}
+                <div className="pt-6 border-t border-dashed border-stone-200">
+                  <h4 className="font-bold text-red-600 mb-4 flex items-center gap-2">
+                    <FaExclamationTriangle /> 危険なエリア
+                  </h4>
+
+                  {!showDeleteConfirm ? (
+                    <button
+                      onClick={() => setShowDeleteConfirm(true)}
+                      className="px-4 py-2 text-red-600 border border-red-200 rounded-lg text-sm font-medium hover:bg-red-50 transition-colors"
+                    >
+                      アカウントを削除する
+                    </button>
+                  ) : (
+                    <div className="bg-red-50 rounded-xl p-5 border border-red-100 animate-in fade-in zoom-in-95">
+                      <h5 className="font-bold text-red-800 mb-2">
+                        本当に削除しますか？
+                      </h5>
+                      <p className="text-sm text-red-700/80 mb-4">
+                        保存したすべての旅行プランが削除され、復元することはできません。<br/>
+                        確認のため、下に「削除する」と入力してください。
+                      </p>
+                      <input
+                        type="text"
+                        value={deleteConfirmText}
+                        onChange={(e) => setDeleteConfirmText(e.target.value)}
+                        placeholder="削除する"
+                        className="w-full px-3 py-2 border border-red-200 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-red-500/20"
                       />
-                    </div>
-
-                    {/* Travel Style - Pro Only */}
-                    <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm relative overflow-hidden">
-                      <div className="flex justify-between items-center mb-2">
-                        <label className="block text-sm font-bold text-stone-700">
-                          旅のスタイル
-                        </label>
-                        {!isPro && !isAdmin && (
-                          <span className="text-xs font-bold text-[#e67e22] bg-[#e67e22]/10 px-2 py-1 rounded-full flex items-center gap-1">
-                            <FaLock size={10} /> Pro限定
-                          </span>
-                        )}
-                      </div>
-                      <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-lg">
-                        <p className="mb-1 font-bold">💡 ヒント</p>
-                        AIがあなたの好みを理解するための参考情報です。
-                      </div>
-
-                      <div className="relative">
-                        <textarea
-                          value={travelStyle}
-                          onChange={(e) => setTravelStyle(e.target.value)}
-                          disabled={!isPro && !isAdmin}
-                          className={`w-full h-32 p-4 rounded-lg border focus:ring-2 focus:ring-[#e67e22] focus:border-transparent resize-none transition-all
-                            ${!isPro && !isAdmin
-                              ? "bg-stone-50 border-stone-200 text-stone-400 cursor-not-allowed"
-                              : "bg-white border-stone-300 text-stone-800 placeholder-stone-400"
-                            }`}
-                          placeholder={!isPro && !isAdmin ? "Proプランにアップグレードして、旅のスタイルを設定しましょう" : "例：歴史的な場所が好きです。朝はゆっくりスタートしたいです..."}
-                        />
-
-                        {!isPro && !isAdmin && (
-                          <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-[1px] rounded-lg">
-                            <a
-                              href="/pricing"
-                              onClick={onClose}
-                              className="px-4 py-2 bg-[#e67e22] text-white text-sm font-bold rounded-full shadow-md hover:bg-[#d35400] transition-colors flex items-center gap-2"
-                            >
-                              <FaCrown /> Proにアップグレード
-                            </a>
-                          </div>
-                        )}
+                      <div className="flex gap-3">
+                        <button
+                          onClick={() => {
+                            setShowDeleteConfirm(false);
+                            setDeleteConfirmText('');
+                          }}
+                          className="px-4 py-2 bg-white text-stone-600 rounded-lg text-sm font-bold border border-stone-200 hover:bg-stone-50"
+                        >
+                          キャンセル
+                        </button>
+                        <button
+                          onClick={handleDeleteAccount}
+                          disabled={deleteConfirmText !== '削除する' || isDeletingAccount}
+                          className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                        >
+                          {isDeletingAccount ? (
+                            <>
+                              <FaSpinner className="animate-spin" /> 削除中...
+                            </>
+                          ) : (
+                            <>
+                              <FaTrash /> アカウント削除
+                            </>
+                          )}
+                        </button>
                       </div>
                     </div>
-
-                    {settingsError && (
-                      <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100 flex items-center gap-2">
-                        <FaExclamationTriangle />
-                        {settingsError}
-                      </div>
-                    )}
-
-                    <div className="flex justify-end pt-2">
-                      <button
-                        onClick={handleSaveSettings}
-                        disabled={isSaving}
-                        className="px-8 py-3 bg-[#e67e22] hover:bg-[#d35400] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
-                      >
-                        {isSaving ? (
-                          <>
-                            <FaSpinner className="animate-spin" /> 保存中...
-                          </>
-                        ) : (
-                          <>
-                            <FaSave /> 設定を保存
-                          </>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             )}
 
@@ -503,111 +506,121 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
               </div>
             )}
 
-            {activeTab === 'account' && (
-              <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
+            {activeTab === 'ai' && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2">
-                    アカウント設定
+                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2 flex items-center gap-2">
+                    AI設定
+                    {isPro && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
+                        <FaCrown className="text-[0.6rem]" />
+                        Pro
+                      </span>
+                    )}
                   </h3>
                   <p className="text-stone-500 text-sm">
-                    ユーザー情報の確認やアカウントの管理が行えます。
+                    旅行プラン生成時のAIの挙動をカスタマイズできます。
                   </p>
                 </div>
 
-                {/* User Info Card */}
-                <div className="bg-white rounded-xl border border-stone-200 p-6 flex items-center gap-5 shadow-sm">
-                  {user?.avatarUrl ? (
-                    <Image
-                      src={user.avatarUrl}
-                      alt={user.displayName || 'ユーザー'}
-                      width={64}
-                      height={64}
-                      className="rounded-full ring-4 ring-stone-100"
-                    />
-                  ) : (
-                    <div className="w-16 h-16 rounded-full bg-[#e67e22]/10 ring-4 ring-stone-100 flex items-center justify-center">
-                      <span className="text-[#e67e22] text-2xl font-bold">
-                        {user?.displayName?.[0] || user?.email?.[0] || 'U'}
-                      </span>
-                    </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <h4 className="font-bold text-lg text-stone-800 truncate">
-                      {user?.displayName || 'ユーザー'}
-                    </h4>
-                    <p className="text-stone-500 truncate">{user?.email}</p>
+                {isLoadingSettings ? (
+                  <div className="py-12 flex justify-center">
+                    <FaSpinner className="animate-spin text-3xl text-[#e67e22]" />
                   </div>
-                </div>
-
-                {/* Actions */}
-                <div className="space-y-4">
-                  <button
-                    onClick={handleSignOut}
-                    className="w-full flex items-center justify-between p-4 bg-white border border-stone-200 rounded-xl hover:bg-stone-50 transition-all group"
-                  >
-                    <span className="font-bold text-stone-700">ログアウト</span>
-                    <FaSignOutAlt className="text-stone-400 group-hover:text-stone-600" />
-                  </button>
-                </div>
-
-                {/* Danger Zone */}
-                <div className="pt-6 border-t border-dashed border-stone-200">
-                  <h4 className="font-bold text-red-600 mb-4 flex items-center gap-2">
-                    <FaExclamationTriangle /> 危険なエリア
-                  </h4>
-
-                  {!showDeleteConfirm ? (
-                    <button
-                      onClick={() => setShowDeleteConfirm(true)}
-                      className="px-4 py-2 text-red-600 border border-red-200 rounded-lg text-sm font-medium hover:bg-red-50 transition-colors"
-                    >
-                      アカウントを削除する
-                    </button>
-                  ) : (
-                    <div className="bg-red-50 rounded-xl p-5 border border-red-100 animate-in fade-in zoom-in-95">
-                      <h5 className="font-bold text-red-800 mb-2">
-                        本当に削除しますか？
-                      </h5>
-                      <p className="text-sm text-red-700/80 mb-4">
-                        保存したすべての旅行プランが削除され、復元することはできません。<br/>
-                        確認のため、下に「削除する」と入力してください。
-                      </p>
-                      <input
-                        type="text"
-                        value={deleteConfirmText}
-                        onChange={(e) => setDeleteConfirmText(e.target.value)}
-                        placeholder="削除する"
-                        className="w-full px-3 py-2 border border-red-200 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-red-500/20"
+                ) : (
+                  <div className="space-y-6">
+                    {/* Custom Instructions - Available to Everyone */}
+                    <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm">
+                      <label className="block text-sm font-bold text-stone-700 mb-2">
+                        カスタム指示（制約事項）
+                      </label>
+                      <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-lg">
+                        <p className="mb-1 font-bold">💡 ヒント</p>
+                        AIに対して必ず守らせたい条件を入力してください。
+                        <ul className="list-disc list-inside mt-1 space-y-0.5 ml-1">
+                          <li>「美術館は含めないで」</li>
+                          <li>「足が悪いので移動の少ないプランで」</li>
+                          <li>「朝は10時以降に行動開始したい」</li>
+                        </ul>
+                      </div>
+                      <textarea
+                        value={customInstructions}
+                        onChange={(e) => setCustomInstructions(e.target.value)}
+                        className="w-full h-32 p-4 rounded-lg border border-stone-300 focus:ring-2 focus:ring-[#e67e22] focus:border-transparent bg-white resize-none text-stone-800 placeholder-stone-400 transition-all"
+                        placeholder="ここに指示を入力..."
                       />
-                      <div className="flex gap-3">
-                        <button
-                          onClick={() => {
-                            setShowDeleteConfirm(false);
-                            setDeleteConfirmText('');
-                          }}
-                          className="px-4 py-2 bg-white text-stone-600 rounded-lg text-sm font-bold border border-stone-200 hover:bg-stone-50"
-                        >
-                          キャンセル
-                        </button>
-                        <button
-                          onClick={handleDeleteAccount}
-                          disabled={deleteConfirmText !== '削除する' || isDeletingAccount}
-                          className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-bold hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
-                        >
-                          {isDeletingAccount ? (
-                            <>
-                              <FaSpinner className="animate-spin" /> 削除中...
-                            </>
-                          ) : (
-                            <>
-                              <FaTrash /> アカウント削除
-                            </>
-                          )}
-                        </button>
+                    </div>
+
+                    {/* Travel Style - Pro Only */}
+                    <div className="bg-white p-5 rounded-xl border border-stone-200 shadow-sm relative overflow-hidden">
+                      <div className="flex justify-between items-center mb-2">
+                        <label className="block text-sm font-bold text-stone-700">
+                          旅のスタイル
+                        </label>
+                        {!isPro && !isAdmin && (
+                          <span className="text-xs font-bold text-[#e67e22] bg-[#e67e22]/10 px-2 py-1 rounded-full flex items-center gap-1">
+                            <FaLock size={10} /> Pro限定
+                          </span>
+                        )}
+                      </div>
+                      <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-lg">
+                        <p className="mb-1 font-bold">💡 ヒント</p>
+                        AIがあなたの好みを理解するための参考情報です。
+                      </div>
+
+                      <div className="relative">
+                        <textarea
+                          value={travelStyle}
+                          onChange={(e) => setTravelStyle(e.target.value)}
+                          disabled={!isPro && !isAdmin}
+                          className={`w-full h-32 p-4 rounded-lg border focus:ring-2 focus:ring-[#e67e22] focus:border-transparent resize-none transition-all
+                            ${!isPro && !isAdmin
+                              ? "bg-stone-50 border-stone-200 text-stone-400 cursor-not-allowed"
+                              : "bg-white border-stone-300 text-stone-800 placeholder-stone-400"
+                            }`}
+                          placeholder={!isPro && !isAdmin ? "Proプランにアップグレードして、旅のスタイルを設定しましょう" : "例：歴史的な場所が好きです。朝はゆっくりスタートしたいです..."}
+                        />
+
+                        {!isPro && !isAdmin && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-[1px] rounded-lg">
+                            <a
+                              href="/pricing"
+                              onClick={onClose}
+                              className="px-4 py-2 bg-[#e67e22] text-white text-sm font-bold rounded-full shadow-md hover:bg-[#d35400] transition-colors flex items-center gap-2"
+                            >
+                              <FaCrown /> Proにアップグレード
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </div>
-                  )}
-                </div>
+
+                    {settingsError && (
+                      <div className="p-3 bg-red-50 text-red-600 text-sm rounded-lg border border-red-100 flex items-center gap-2">
+                        <FaExclamationTriangle />
+                        {settingsError}
+                      </div>
+                    )}
+
+                    <div className="flex justify-end pt-2">
+                      <button
+                        onClick={handleSaveSettings}
+                        disabled={isSaving}
+                        className="px-8 py-3 bg-[#e67e22] hover:bg-[#d35400] text-white rounded-full font-bold shadow-md hover:shadow-lg transition-all flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed transform hover:-translate-y-0.5"
+                      >
+                        {isSaving ? (
+                          <>
+                            <FaSpinner className="animate-spin" /> 保存中...
+                          </>
+                        ) : (
+                          <>
+                            <FaSave /> 設定を保存
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
