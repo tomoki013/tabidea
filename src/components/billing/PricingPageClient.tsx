@@ -1,38 +1,89 @@
-'use client';
+"use client";
 
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { PricingCard } from './PricingCard';
-import { TicketCard } from './TicketCard';
-import { createCheckoutSession } from '@/app/actions/stripe/checkout';
-import { createPortalSession } from '@/app/actions/stripe/portal';
-import { PRICING_PLANS, TICKET_PLANS } from '@/lib/billing/pricing-plans';
+import { PricingCard } from "./PricingCard";
+import { TicketCard } from "./TicketCard";
+import { createCheckoutSession } from "@/app/actions/stripe/checkout";
+import { createPortalSession } from "@/app/actions/stripe/portal";
+import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
 
-import type { UserBillingStatus, PurchaseType } from '@/types/billing';
+import type { UserBillingStatus, PurchaseType } from "@/types/billing";
 
 interface PricingPageClientProps {
   isLoggedIn: boolean;
   billingStatus: UserBillingStatus | null;
 }
 
-export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClientProps) {
+export function PricingPageClient({
+  isLoggedIn,
+  billingStatus,
+}: PricingPageClientProps) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(
+    searchParams.get("error") === "checkout_failed"
+      ? "決済処理に失敗しました。もう一度お試しください。"
+      : null,
+  );
 
   const handlePurchase = async (planType: PurchaseType) => {
-    if (planType === 'free') return;
+    if (planType === "free") return;
 
-    await createCheckoutSession(planType as 'pro_monthly' | 'ticket_1' | 'ticket_5' | 'ticket_10');
+    // 既にProプランの場合、サブスク購入を防ぐ
+    if (planType === "pro_monthly" && billingStatus?.isSubscribed) {
+      setError("既にProプランに加入しています。プラン管理からご確認ください。");
+      return;
+    }
+
+    setIsLoading(planType);
+    setError(null);
+
+    try {
+      const result = await createCheckoutSession(
+        planType as "pro_monthly" | "ticket_1" | "ticket_5" | "ticket_10",
+      );
+
+      if (result.success && result.url) {
+        window.location.href = result.url;
+      } else if (result.error === "not_authenticated") {
+        router.push("/auth/login?redirect=/pricing");
+      } else if (result.error === "already_subscribed") {
+        setError(
+          "既にProプランに加入しています。プラン管理からご確認ください。",
+        );
+        // ページをリロードして最新状態を表示
+        router.refresh();
+      } else {
+        setError("決済処理に失敗しました。もう一度お試しください。");
+      }
+    } catch (err) {
+      console.error("Purchase error:", err);
+      setError("予期せぬエラーが発生しました。");
+    } finally {
+      setIsLoading(null);
+    }
   };
 
   const handleLoginRequired = () => {
-    router.push('/auth/login?redirect=/pricing');
+    router.push("/auth/login?redirect=/pricing");
   };
 
   const handleManageSubscription = async () => {
-    await createPortalSession();
+    setIsLoading("manage");
+    try {
+      await createPortalSession();
+    } catch (err) {
+      console.error("Portal error:", err);
+      setError("ポータルの読み込みに失敗しました。");
+    } finally {
+      setIsLoading(null);
+    }
   };
 
-  const isPro = billingStatus?.planType === 'pro_monthly';
+  const isPro = billingStatus?.isSubscribed === true;
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-stone-50 to-white">
@@ -47,6 +98,13 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
           </p>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="mb-8 p-4 bg-red-50 border border-red-200 rounded-xl max-w-md mx-auto">
+            <p className="text-red-700 text-center">{error}</p>
+          </div>
+        )}
+
         {/* Current Plan Status */}
         {isLoggedIn && billingStatus && (
           <div className="mb-8 p-4 bg-white rounded-xl border border-stone-200 shadow-sm max-w-md mx-auto">
@@ -54,7 +112,7 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
               <div>
                 <p className="text-sm text-stone-500">現在のプラン</p>
                 <p className="text-lg font-bold text-stone-800">
-                  {isPro ? 'Pro' : 'Free'}
+                  {isPro ? "Pro" : "Free"}
                 </p>
               </div>
               {billingStatus.ticketCount > 0 && (
@@ -68,7 +126,10 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
             </div>
             {isPro && billingStatus.subscriptionEndsAt && (
               <p className="text-xs text-stone-500 mt-2">
-                次回更新日: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString('ja-JP')}
+                次回更新日:{" "}
+                {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString(
+                  "ja-JP",
+                )}
               </p>
             )}
           </div>
@@ -85,10 +146,11 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
                 key={plan.id}
                 plan={plan}
                 isCurrentPlan={
-                  (plan.id === 'free' && !isPro) ||
-                  (plan.id === 'pro_monthly' && isPro)
+                  (plan.id === "free" && !isPro) ||
+                  (plan.id === "pro_monthly" && isPro)
                 }
                 isLoggedIn={isLoggedIn}
+                isLoading={isLoading === plan.id}
                 onPurchase={handlePurchase}
                 onLoginRequired={handleLoginRequired}
                 onManageSubscription={handleManageSubscription}
@@ -100,9 +162,7 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
         {/* Ticket Plans */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <h2 className="text-xl font-bold text-stone-800 mb-2">
-              回数券
-            </h2>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">回数券</h2>
             <p className="text-sm text-stone-600">
               サブスクリプションなしで、必要な分だけ購入できます
             </p>
@@ -113,6 +173,7 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
                 key={plan.id}
                 plan={plan}
                 isLoggedIn={isLoggedIn}
+                isLoading={isLoading === plan.id}
                 onPurchase={handlePurchase}
                 onLoginRequired={handleLoginRequired}
               />
@@ -129,10 +190,18 @@ export function PricingPageClient({ isLoggedIn, billingStatus }: PricingPageClie
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-stone-200">
-                  <th className="text-left py-3 px-4 font-medium text-stone-600">機能</th>
-                  <th className="text-center py-3 px-4 font-medium text-stone-600">Free</th>
-                  <th className="text-center py-3 px-4 font-medium text-primary">Pro</th>
-                  <th className="text-center py-3 px-4 font-medium text-stone-600">回数券</th>
+                  <th className="text-left py-3 px-4 font-medium text-stone-600">
+                    機能
+                  </th>
+                  <th className="text-center py-3 px-4 font-medium text-stone-600">
+                    Free
+                  </th>
+                  <th className="text-center py-3 px-4 font-medium text-primary">
+                    Pro
+                  </th>
+                  <th className="text-center py-3 px-4 font-medium text-stone-600">
+                    回数券
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -227,14 +296,34 @@ function FeatureRow({
   ticket: string | boolean;
 }) {
   const renderCell = (value: string | boolean) => {
-    if (typeof value === 'boolean') {
+    if (typeof value === "boolean") {
       return value ? (
-        <svg className="w-5 h-5 text-green-500 mx-auto\" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+        <svg
+          className="w-5 h-5 text-green-500 mx-auto\"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 13l4 4L19 7"
+          />
         </svg>
       ) : (
-        <svg className="w-5 h-5 text-stone-300 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        <svg
+          className="w-5 h-5 text-stone-300 mx-auto"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M6 18L18 6M6 6l12 12"
+          />
         </svg>
       );
     }
@@ -244,9 +333,15 @@ function FeatureRow({
   return (
     <tr className="border-b border-stone-100">
       <td className="py-3 px-4 text-stone-700">{feature}</td>
-      <td className="py-3 px-4 text-center text-stone-600">{renderCell(free)}</td>
-      <td className="py-3 px-4 text-center text-primary font-medium">{renderCell(pro)}</td>
-      <td className="py-3 px-4 text-center text-stone-600">{renderCell(ticket)}</td>
+      <td className="py-3 px-4 text-center text-stone-600">
+        {renderCell(free)}
+      </td>
+      <td className="py-3 px-4 text-center text-primary font-medium">
+        {renderCell(pro)}
+      </td>
+      <td className="py-3 px-4 text-center text-stone-600">
+        {renderCell(ticket)}
+      </td>
     </tr>
   );
 }
@@ -262,12 +357,15 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
           stroke="currentColor"
           viewBox="0 0 24 24"
         >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
         </svg>
       </summary>
-      <div className="px-4 pb-4 text-sm text-stone-600">
-        {answer}
-      </div>
+      <div className="px-4 pb-4 text-sm text-stone-600">{answer}</div>
     </details>
   );
 }
