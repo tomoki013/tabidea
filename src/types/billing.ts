@@ -2,6 +2,8 @@
  * 課金関連の型定義
  */
 
+import type { UserType } from '@/lib/limits/config';
+
 // ============================================
 // Plan Types
 // ============================================
@@ -16,10 +18,13 @@ export type TicketType = 'ticket_1' | 'ticket_5' | 'ticket_10';
 export type PurchaseType = PlanType | TicketType;
 
 // ============================================
-// User Billing Status
+// User Billing Status (Legacy - use BillingAccessInfo instead)
 // ============================================
 
-/** ユーザーの課金状態 */
+/**
+ * ユーザーの課金状態
+ * @deprecated Use BillingAccessInfo from billing-checker.ts instead
+ */
 export interface UserBillingStatus {
   /** 現在のプラン */
   planType: PlanType;
@@ -29,6 +34,42 @@ export interface UserBillingStatus {
   subscriptionEndsAt?: string;
   /** 保有回数券の数 */
   ticketCount: number;
+}
+
+// ============================================
+// Billing Access Info (New unified type)
+// ============================================
+
+/**
+ * 包括的な課金アクセス情報
+ * 全ての課金関連チェックにこの型を使用してください
+ */
+export interface BillingAccessInfo {
+  // ユーザー識別情報
+  userId: string | null;
+  email: string | null;
+
+  // ユーザー分類
+  userType: UserType;
+
+  // サブスクリプション状態
+  isSubscribed: boolean;
+  planType: PlanType;
+  subscriptionEndsAt: string | null;
+
+  // 回数券情報
+  ticketCount: number;
+
+  // 便利なアクセスフラグ
+  isPremium: boolean;
+  isAdmin: boolean;
+  isFree: boolean;
+  isAnonymous: boolean;
+
+  // サブスクリプション詳細（内部使用）
+  subscriptionId?: string;
+  externalSubscriptionId?: string;
+  subscriptionStatus?: string;
 }
 
 // ============================================

@@ -51,7 +51,6 @@ describe("Header Performance Benchmark", () => {
 
   beforeEach(() => {
     // Reset scroll position
-    // @ts-expect-error - scrollY is read-only but we need to set it for testing
     window.scrollY = 0;
 
     // Spy on window.scrollY getter

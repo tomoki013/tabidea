@@ -16,14 +16,10 @@ describe('pdf utilities', () => {
 
     it('generates filename with destination and timestamp', () => {
       const itinerary: Itinerary = {
+        id: 'test-1',
         destination: '東京',
+        description: 'Test trip',
         days: [],
-        input: {
-          destination: '東京',
-          dates: '2024-03-20',
-          companions: 'family',
-          themes: ['food'],
-        },
       };
 
       const filename = generatePdfFilename(itinerary);
@@ -32,14 +28,10 @@ describe('pdf utilities', () => {
 
     it('sanitizes special characters in destination', () => {
       const itinerary: Itinerary = {
+        id: 'test-2',
         destination: 'Tokyo/Paris?Berlin',
+        description: 'Multi-city trip',
         days: [],
-        input: {
-          destination: 'Tokyo/Paris?Berlin',
-          dates: '2024-03-20',
-          companions: 'solo',
-          themes: [],
-        },
       };
 
       const filename = generatePdfFilename(itinerary);
@@ -48,14 +40,10 @@ describe('pdf utilities', () => {
 
     it('handles all special characters that need sanitization', () => {
       const itinerary: Itinerary = {
+        id: 'test-3',
         destination: 'A/B\\C?D%E*F:G|H"I<J>K',
+        description: 'Special chars test',
         days: [],
-        input: {
-          destination: 'test',
-          dates: '2024-03-20',
-          companions: 'solo',
-          themes: [],
-        },
       };
 
       const filename = generatePdfFilename(itinerary);
@@ -66,14 +54,10 @@ describe('pdf utilities', () => {
       vi.setSystemTime(new Date('2024-01-05T09:05:03'));
 
       const itinerary: Itinerary = {
+        id: 'test-4',
         destination: 'Paris',
+        description: 'Paris trip',
         days: [],
-        input: {
-          destination: 'Paris',
-          dates: '2024-01-10',
-          companions: 'couple',
-          themes: [],
-        },
       };
 
       const filename = generatePdfFilename(itinerary);

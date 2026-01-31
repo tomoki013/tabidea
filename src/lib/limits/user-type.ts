@@ -1,6 +1,14 @@
-import { createClient } from "@/lib/supabase/server";
-import { isAdmin } from "./admin";
-import type { UserType } from "./config";
+/**
+ * User Type Detection
+ *
+ * This module provides backwards-compatible functions for user type detection.
+ * Internally, it delegates to the unified BillingChecker service.
+ *
+ * @deprecated For new code, use checkBillingAccess() from billing-checker.ts directly
+ */
+
+import { checkBillingAccess } from '@/lib/billing/billing-checker';
+import type { UserType } from './config';
 
 export interface UserInfo {
   type: UserType;
@@ -10,65 +18,30 @@ export interface UserInfo {
 
 /**
  * Server Action内でユーザー種別を取得
+ *
+ * @deprecated Use checkBillingAccess() from billing-checker.ts instead
+ * This function is kept for backwards compatibility
  */
 export async function getUserInfo(): Promise<UserInfo> {
-  const supabase = await createClient();
+  const billing = await checkBillingAccess();
 
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
-
-  if (error || !user) {
-    return { type: "anonymous", userId: null, email: null };
-  }
-
-  // 管理者チェック
-  if (isAdmin(user.email)) {
-    return { type: "admin", userId: user.id, email: user.email ?? null };
-  }
-
-  // サブスクリプションチェック
-  const { data: subscription } = await supabase
-    .from("subscriptions")
-    .select("status, current_period_end")
-    .eq("user_id", user.id)
-    .in("status", ["active", "trialing"])
-    .single();
-
-  if (subscription && subscription.current_period_end) {
-    const periodEnd = new Date(subscription.current_period_end);
-    if (periodEnd > new Date()) {
-      return { type: "premium", userId: user.id, email: user.email ?? null };
-    }
-  }
-
-  return { type: "free", userId: user.id, email: user.email ?? null };
+  return {
+    type: billing.userType,
+    userId: billing.userId,
+    email: billing.email,
+  };
 }
 
+/**
+ * Get user type (client-callable version)
+ *
+ * @deprecated Use checkBillingAccess() from billing-checker.ts instead
+ * This function is kept for backwards compatibility
+ */
 export async function getUserTypeClient(): Promise<UserType> {
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) return "anonymous";
-  if (isAdmin(user.email)) return "admin";
-
-  const { data: subscription } = await supabase
-    .from("subscriptions")
-    .select("status, current_period_end")
-    .eq("user_id", user.id)
-    .in("status", ["active", "trialing"])
-    .single();
-
-  if (subscription && subscription.current_period_end) {
-    const periodEnd = new Date(subscription.current_period_end);
-    if (periodEnd > new Date()) {
-      return "premium";
-    }
-  }
-
-  return "free";
+  const billing = await checkBillingAccess();
+  return billing.userType;
 }
+
+// Re-export the new unified function for gradual migration
+export { checkBillingAccess } from '@/lib/billing/billing-checker';

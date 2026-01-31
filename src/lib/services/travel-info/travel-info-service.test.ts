@@ -29,6 +29,7 @@ function createMockSource(
   }
 ): ITravelInfoSource {
   return {
+    sourceId: `mock_${config.sourceName.replace(/\s+/g, '_').toLowerCase()}`,
     sourceName: config.sourceName,
     sourceType: config.sourceType,
     reliabilityScore: config.sourceType === 'official_api' ? 95 : 60,

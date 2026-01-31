@@ -124,6 +124,7 @@ export type {
   TicketType,
   PurchaseType,
   UserBillingStatus,
+  BillingAccessInfo,
   PricingPlanInfo,
   CheckoutSessionResult,
   PortalSessionResult,
