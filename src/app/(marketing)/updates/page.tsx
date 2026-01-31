@@ -263,6 +263,14 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "保存済みプランにフラグを立てることができ、フラグを立てたプランは一番上に表示されます。",
   },
+  {
+    status: "done",
+    date: "2026.02.01",
+    updateType: "minor",
+    title: "有料プラン（Proプラン）の提供開始",
+    description:
+      "旅のスタイル設定や広告非表示など、より快適にサービスをご利用いただける有料プランの提供を開始しました。",
+  },
   // Future items
   {
     status: "developing",

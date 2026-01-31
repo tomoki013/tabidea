@@ -32,11 +32,13 @@ import type { UserBillingStatus } from '@/types/billing';
 interface MobileSidebarProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenSettings?: () => void;
 }
 
 export default function MobileSidebar({
   isOpen,
   onClose,
+  onOpenSettings,
 }: MobileSidebarProps) {
   const { isAuthenticated, user } = useAuth();
   const { openModal } = usePlanModal();
@@ -235,51 +237,55 @@ export default function MobileSidebar({
             {isAuthenticated && user && (
               <div className="p-4 bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 border-b border-dashed border-stone-200">
                 <div className="flex items-center gap-3">
-                  {user.avatarUrl ? (
-                    <Image
-                      src={user.avatarUrl}
-                      alt={user.displayName || 'ユーザー'}
-                      width={40}
-                      height={40}
-                      className="rounded-full ring-2 ring-[#e67e22]/20"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#e67e22]/10 ring-2 ring-[#e67e22]/20 flex items-center justify-center">
-                      <span className="text-[#e67e22] font-bold">
-                        {user.displayName?.[0] || user.email?.[0] || 'U'}
-                      </span>
+                  <button
+                    onClick={onOpenSettings}
+                    className="flex items-center gap-3 flex-1 min-w-0 text-left group"
+                  >
+                    {user.avatarUrl ? (
+                      <Image
+                        src={user.avatarUrl}
+                        alt={user.displayName || 'ユーザー'}
+                        width={40}
+                        height={40}
+                        className="rounded-full ring-2 ring-[#e67e22]/20 group-hover:ring-[#e67e22]/40 transition-all"
+                      />
+                    ) : (
+                      <div className="w-10 h-10 rounded-full bg-[#e67e22]/10 ring-2 ring-[#e67e22]/20 flex items-center justify-center group-hover:ring-[#e67e22]/40 transition-all">
+                        <span className="text-[#e67e22] font-bold">
+                          {user.displayName?.[0] || user.email?.[0] || 'U'}
+                        </span>
+                      </div>
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-stone-800 truncate text-sm group-hover:text-[#e67e22] transition-colors">
+                        {user.displayName || 'ユーザー'}
+                      </p>
+                      <div className="flex items-center gap-1.5">
+                        {billingStatus?.isSubscribed ? (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
+                            <FaCrown className="text-[0.6rem]" />
+                            Pro
+                          </span>
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-full">
+                            Free
+                          </span>
+                        )}
+                        {billingStatus && billingStatus.ticketCount > 0 && (
+                          <span className="text-xs text-stone-500">
+                            回数券: {billingStatus.ticketCount}回
+                          </span>
+                        )}
+                      </div>
                     </div>
-                  )}
-                  <div className="flex-1 min-w-0">
-                    <p className="font-bold text-stone-800 truncate text-sm">
-                      {user.displayName || 'ユーザー'}
-                    </p>
-                    <div className="flex items-center gap-1.5">
-                      {billingStatus?.isSubscribed ? (
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
-                          <FaCrown className="text-[0.6rem]" />
-                          Pro
-                        </span>
-                      ) : (
-                        <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-full">
-                          Free
-                        </span>
-                      )}
-                      {billingStatus && billingStatus.ticketCount > 0 && (
-                        <span className="text-xs text-stone-500">
-                          回数券: {billingStatus.ticketCount}回
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  <Link
-                    href="/pricing"
-                    onClick={onClose}
+                  </button>
+                  <button
+                    onClick={onOpenSettings}
                     className="p-2 text-stone-400 hover:text-[#e67e22] hover:bg-[#e67e22]/5 rounded-full transition-colors"
                     aria-label="設定"
                   >
                     <FaCog size={16} />
-                  </Link>
+                  </button>
                 </div>
               </div>
             )}

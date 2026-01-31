@@ -175,6 +175,10 @@ export default function Header({
       <MobileSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
+        onOpenSettings={() => {
+          setIsSidebarOpen(false);
+          setIsMobileSettingsOpen(true);
+        }}
       />
 
       <SettingsModal
