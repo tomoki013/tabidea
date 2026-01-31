@@ -2,18 +2,13 @@
 > tabidea@0.3.1 dev /app
 > next dev
 
+ ⚠ Port 3000 is in use by an unknown process, using available port 3001 instead.
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
    ▲ Next.js 16.0.10 (Turbopack)
-   - Local:         http://localhost:3000
-   - Network:       http://192.168.0.2:3000
+   - Local:         http://localhost:3001
+   - Network:       http://192.168.0.2:3001
 
  ✓ Starting...
- ✓ Ready in 1887ms
- ○ Compiling /specified ...
- GET /specified 200 in 13.1s (compile: 11.7s, proxy.ts: 263ms, render: 1141ms)
- ○ Compiling /terms ...
- GET /terms 200 in 4.8s (compile: 4.4s, proxy.ts: 16ms, render: 380ms)
- GET /privacy 200 in 2.3s (compile: 1890ms, proxy.ts: 7ms, render: 399ms)
- ELIFECYCLE  Command failed.
-[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-[?25h
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ GET / 200 in 19.0s (compile: 16.1s, proxy.ts: 443ms, render: 2.4s)
