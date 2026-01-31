@@ -1,6 +1,6 @@
-import { createClient } from '@/lib/supabase/server';
-import { isAdmin } from './admin';
-import type { UserType } from './config';
+import { createClient } from "@/lib/supabase/server";
+import { isAdmin } from "./admin";
+import type { UserType } from "./config";
 
 export interface UserInfo {
   type: UserType;
@@ -17,6 +17,8 @@ export interface UserInfo {
  * 3. サブスク有効 → 'premium' (課金実装後)
  * 4. それ以外 → 'free'
  */
+// src/lib/limits/user-type.ts の修正
+
 export async function getUserInfo(): Promise<UserInfo> {
   const supabase = await createClient();
 
@@ -26,27 +28,27 @@ export async function getUserInfo(): Promise<UserInfo> {
   } = await supabase.auth.getUser();
 
   if (error || !user) {
-    return { type: 'anonymous', userId: null, email: null };
+    return { type: "anonymous", userId: null, email: null };
   }
 
   // 管理者チェック
   if (isAdmin(user.email)) {
-    return { type: 'admin', userId: user.id, email: user.email ?? null };
+    return { type: "admin", userId: user.id, email: user.email ?? null };
   }
 
-  // TODO: 課金実装後にサブスクチェックを追加
-  // const { data: subscription } = await supabase
-  //   .from('subscriptions')
-  //   .select('status')
-  //   .eq('user_id', user.id)
-  //   .eq('status', 'active')
-  //   .single();
-  //
-  // if (subscription) {
-  //   return { type: 'premium', userId: user.id, email: user.email ?? null };
-  // }
+  // サブスクリプションチェック
+  const { data: subscription } = await supabase
+    .from("subscriptions")
+    .select("status, current_period_end")
+    .eq("user_id", user.id)
+    .eq("status", "active")
+    .single();
 
-  return { type: 'free', userId: user.id, email: user.email ?? null };
+  if (subscription && new Date(subscription.current_period_end) > new Date()) {
+    return { type: "premium", userId: user.id, email: user.email ?? null };
+  }
+
+  return { type: "free", userId: user.id, email: user.email ?? null };
 }
 
 /**
@@ -63,8 +65,8 @@ export async function getUserTypeClient(): Promise<UserType> {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user) return 'anonymous';
-  if (isAdmin(user.email)) return 'admin';
+  if (!user) return "anonymous";
+  if (isAdmin(user.email)) return "admin";
   // TODO: premium判定
-  return 'free';
+  return "free";
 }
