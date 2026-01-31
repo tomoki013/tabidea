@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 interface LimitExceededModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -101,15 +103,17 @@ export function LimitExceededModal({
             </div>
           )}
 
-          {/* 課金実装後に追加 */}
-          {/* <div className="bg-primary/5 p-4 rounded-lg mb-4">
+          <div className="bg-primary/5 p-4 rounded-lg mb-4">
             <p className="text-sm text-stone-600 mb-3">
-              プレミアムプランなら<strong>無制限</strong>で利用できます
+              プレミアムプランなら<strong>無制限</strong>で利用できます。
+              回数券も購入可能です。
             </p>
-            <button className="w-full px-4 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">
-              プランを見る
-            </button>
-          </div> */}
+            <Link href="/pricing">
+              <button className="w-full px-4 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">
+                プランを見る
+              </button>
+            </Link>
+          </div>
 
           <button
             type="button"

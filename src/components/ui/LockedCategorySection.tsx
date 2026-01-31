@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 interface LockedCategorySectionProps {
   category: string;
   categoryLabel: string;
@@ -31,10 +33,11 @@ export function LockedCategorySection({
           <p className="text-sm text-stone-500 mt-1">
             プレミアムプランで閲覧可能
           </p>
-          {/* 課金実装後にアップグレードボタンを追加 */}
-          {/* <button className="mt-3 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
-            プランを見る
-          </button> */}
+          <Link href="/pricing">
+            <button className="mt-3 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+              プランを見る
+            </button>
+          </Link>
         </div>
       </div>
 

@@ -117,3 +117,14 @@ export type {
   SyncResult,
   SyncPreviewInfo,
 } from './plans';
+
+// 課金関連型
+export type {
+  PlanType,
+  TicketType,
+  PurchaseType,
+  UserBillingStatus,
+  PricingPlanInfo,
+  CheckoutSessionResult,
+  PortalSessionResult,
+} from './billing';
