@@ -285,7 +285,7 @@ function createAdminBillingInfo(userId: string, email: string | null): BillingAc
     email,
     userType: 'admin',
     isSubscribed: false,
-    planType: 'free',
+    planType: 'admin',
     subscriptionEndsAt: null,
     ticketCount: 0,
     isPremium: true, // Admins have premium access
