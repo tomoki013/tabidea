@@ -114,6 +114,8 @@ export default function SpecifiedPage() {
           </div>
 
           <div className="text-right text-sm text-stone-500 mt-12 font-serif">
+            制定日：2026年1月31日
+            <br />
             最終更新日：2026年2月1日
           </div>
         </div>

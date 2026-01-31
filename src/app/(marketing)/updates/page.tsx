@@ -269,7 +269,7 @@ const rawRoadmapData: RoadmapItem[] = [
     updateType: "minor",
     title: "有料プラン（Proプラン）の提供開始",
     description:
-      "旅のスタイル設定や広告非表示など、より快適にサービスをご利用いただける有料プランの提供を開始しました。",
+      "旅のスタイル設定やプラン生成数・保存数の無制限化など、より快適にサービスをご利用いただける有料プランの提供を開始しました。",
   },
   // Future items
   {
@@ -316,6 +316,24 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "多言語対応",
     description:
       "日本語以外の言語でもサービスを利用できるよう、多言語対応を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "回数券の導入",
+    description:
+      "サブスクリプションなしで、必要な分だけ機能を利用できる回数券の導入を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "Google Maps連携",
+    description:
+      "生成されたプランをGoogle Mapsで直接開ける連携機能を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "モバイルアプリ化",
+    description:
+      "より手軽にプランの確認や作成ができるモバイルアプリの開発を計画しています。",
   },
 ];
 

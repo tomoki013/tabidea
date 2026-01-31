@@ -77,11 +77,15 @@ export default function MyPlansClient({
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<string | null>(null);
 
+  // Initialization state to prevent flash of empty content
+  const [isInitializing, setIsInitializing] = useState(true);
+
   // Hydrate context with initial plans on mount
   useEffect(() => {
     if (initialPlans && initialPlans.length > 0) {
       setPlans(initialPlans);
     }
+    setIsInitializing(false);
   }, [initialPlans, setPlans]);
 
   // Focus rename input when opening
@@ -366,7 +370,12 @@ export default function MyPlansClient({
         )}
 
         {/* Plans List */}
-        {isLoadingFlags && filter === 'flagged' ? (
+        {isInitializing ? (
+          <div className="text-center py-16">
+            <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
+            <p className="text-stone-600">プランを読み込み中...</p>
+          </div>
+        ) : isLoadingFlags && filter === 'flagged' ? (
           <div className="text-center py-16">
             <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
             <p className="text-stone-600">フラグ付きプランを読み込み中...</p>

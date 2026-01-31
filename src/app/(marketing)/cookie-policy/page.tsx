@@ -7,13 +7,15 @@ export const metadata: Metadata = {
 
 export default function CookiePolicy() {
   return (
-    <div className="min-h-screen pt-32 pb-20 px-8 sm:px-20 font-(family-name:--font-noto-sans-jp)">
-      <main className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8">クッキーポリシー</h1>
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4">
+      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-12 text-center">
+          クッキーポリシー
+        </h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed">
+        <div className="space-y-8 text-stone-600 leading-relaxed font-sans">
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
               1. クッキー（Cookie）とは
             </h2>
             <p>
@@ -23,28 +25,28 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
               2. クッキーの利用目的
             </h2>
             <p>当サービスでは、以下の目的でクッキーを使用しています。</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <strong>サービスの利便性向上：</strong>{" "}
+                <strong className="text-stone-700">サービスの利便性向上：</strong>{" "}
                 お客様の設定内容（言語設定や入力内容の一時保存など）を記憶し、再度入力する手間を省くため。
               </li>
               <li>
-                <strong>アクセス解析：</strong>{" "}
+                <strong className="text-stone-700">アクセス解析：</strong>{" "}
                 Google Analyticsなどの分析ツールを使用し、サイトの訪問数や閲覧ページなどの利用状況を把握し、サービスの改善に役立てるため。
               </li>
               <li>
-                <strong>広告配信：</strong>{" "}
+                <strong className="text-stone-700">広告配信：</strong>{" "}
                 お客様の興味・関心に合わせた適切な広告を配信するため（第三者配信事業者による広告配信を含む場合があります）。
               </li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
               3. Google Analyticsの利用について
             </h2>
             <p>
@@ -61,7 +63,7 @@ export default function CookiePolicy() {
                   href="https://policies.google.com/technologies/partner-sites?hl=ja"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-[#e67e22] hover:underline"
                 >
                   Googleのサービスを使用するサイトやアプリから収集した情報のGoogleによる使用
                 </a>
@@ -71,7 +73,7 @@ export default function CookiePolicy() {
                   href="https://policies.google.com/privacy?hl=ja"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-500 hover:underline"
+                  className="text-[#e67e22] hover:underline"
                 >
                   Google プライバシーポリシー
                 </a>
@@ -80,7 +82,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
               4. クッキーの無効化（オプトアウト）について
             </h2>
             <p>
@@ -88,26 +90,26 @@ export default function CookiePolicy() {
               ただし、クッキーを無効にした場合、当サービスの一部機能が正常に動作しなくなる可能性がありますので、あらかじめご了承ください。
             </p>
 
-            <h3 className="text-lg font-medium text-foreground mt-6 mb-2">
+            <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2 font-serif">
               ブラウザの設定変更方法
             </h3>
             <p>主要なブラウザの設定方法は以下の各社サポートページをご確認ください。</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <a href="https://support.google.com/chrome/answer/95647?hl=ja" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Google Chrome</a>
+                <a href="https://support.google.com/chrome/answer/95647?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Chrome</a>
               </li>
               <li>
-                <a href="https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Apple Safari (Mac)</a> / <a href="https://support.apple.com/ja-jp/HT201265" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">iPhone・iPad</a>
+                <a href="https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Apple Safari (Mac)</a> / <a href="https://support.apple.com/ja-jp/HT201265" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">iPhone・iPad</a>
               </li>
               <li>
-                <a href="https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Mozilla Firefox</a>
+                <a href="https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Mozilla Firefox</a>
               </li>
               <li>
-                <a href="https://support.microsoft.com/ja-jp/microsoft-edge/microsoft-edge-%E3%81%A7-cookie-%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B-63947406-40ac-c2b9-25b4-935471955f0e" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Microsoft Edge</a>
+                <a href="https://support.microsoft.com/ja-jp/microsoft-edge/microsoft-edge-%E3%81%A7-cookie-%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B-63947406-40ac-c2b9-25b4-935471955f0e" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Microsoft Edge</a>
               </li>
             </ul>
 
-             <h3 className="text-lg font-medium text-foreground mt-6 mb-2">
+             <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2 font-serif">
               Google Analyticsのオプトアウト
             </h3>
             <p>
@@ -115,13 +117,13 @@ export default function CookiePolicy() {
             </p>
              <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
-                <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">Google Analytics オプトアウト アドオン</a>
+                <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Analytics オプトアウト アドオン</a>
               </li>
              </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
               5. お問い合わせ
             </h2>
             <p>
@@ -129,7 +131,7 @@ export default function CookiePolicy() {
             </p>
           </section>
 
-          <div className="text-right text-sm text-muted-foreground mt-12">
+          <div className="text-right text-sm text-stone-500 mt-12 font-serif">
             策定日：2026年1月8日
             <br />
             最終更新日: 2026年1月8日
