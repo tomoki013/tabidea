@@ -256,13 +256,28 @@ export function PricingPageClient({
             />
             <FaqItem
               question="Proプランはいつでも解約できますか？"
-              answer="はい、いつでも解約できます。解約後も請求期間の終了まではProプランの機能をご利用いただけます。"
+              answer="はい、いつでも解約できます。解約後も請求期間の終了まではProプランの機能をご利用いただけます。解約は設定画面の「プランを管理」から行えます。"
             />
             <FaqItem
               question="支払い方法は？"
-              answer="クレジットカード（Visa, Mastercard, American Express, JCB）でお支払いいただけます。"
+              answer="クレジットカード（Visa, Mastercard, American Express, JCB）でお支払いいただけます。安全な決済はStripe社のシステムを利用しています。"
             />
           </div>
+        </div>
+
+        {/* Legal Links */}
+        <div className="mt-12 text-center text-sm text-stone-500">
+          <a href="/tokushoho" className="hover:text-[#e67e22] underline">
+            特定商取引法に基づく表記
+          </a>
+          <span className="mx-2">|</span>
+          <a href="/terms" className="hover:text-[#e67e22] underline">
+            利用規約
+          </a>
+          <span className="mx-2">|</span>
+          <a href="/privacy" className="hover:text-[#e67e22] underline">
+            プライバシーポリシー
+          </a>
         </div>
       </div>
     </div>

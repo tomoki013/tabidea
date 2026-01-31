@@ -6,7 +6,10 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
 import { deleteAccount } from "@/app/actions/travel-planner";
+import { getBillingStatus } from "@/app/actions/billing";
+import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
+import type { UserBillingStatus } from "@/types/billing";
 import {
   FaSpinner,
   FaSave,
@@ -15,7 +18,11 @@ import {
   FaRobot,
   FaSignOutAlt,
   FaExclamationTriangle,
-  FaTrash
+  FaTrash,
+  FaCrown,
+  FaCreditCard,
+  FaLock,
+  FaCog,
 } from "react-icons/fa";
 
 interface SettingsModalProps {
@@ -43,6 +50,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
+  // Billing State
+  const [billingStatus, setBillingStatus] = useState<UserBillingStatus | null>(null);
+  const [isLoadingBilling, setIsLoadingBilling] = useState(false);
+  const [isRedirectingToPortal, setIsRedirectingToPortal] = useState(false);
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -51,6 +63,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   useEffect(() => {
     if (isOpen) {
       loadSettings();
+      loadBillingStatus();
       // Reset states
       setActiveTab('account');
       setShowDeleteConfirm(false);
@@ -67,6 +80,28 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       };
     }
   }, [isOpen]);
+
+  const loadBillingStatus = async () => {
+    setIsLoadingBilling(true);
+    try {
+      const status = await getBillingStatus();
+      setBillingStatus(status);
+    } catch (e) {
+      console.error("Failed to load billing status:", e);
+    } finally {
+      setIsLoadingBilling(false);
+    }
+  };
+
+  const handleManageSubscription = async () => {
+    setIsRedirectingToPortal(true);
+    try {
+      await createPortalSession();
+    } catch (e) {
+      console.error("Failed to open portal:", e);
+      setIsRedirectingToPortal(false);
+    }
+  };
 
   const loadSettings = async () => {
     setIsLoadingSettings(true);
@@ -204,15 +239,41 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
             {activeTab === 'ai' && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
                 <div>
-                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2">
+                  <h3 className="text-2xl font-serif font-bold text-stone-800 mb-2 flex items-center gap-2">
                     AI設定
+                    {billingStatus?.isSubscribed && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
+                        <FaCrown className="text-[0.6rem]" />
+                        Pro
+                      </span>
+                    )}
                   </h3>
                   <p className="text-stone-500 text-sm">
                     旅行プラン生成時のAIの挙動をカスタマイズできます。
                   </p>
                 </div>
 
-                {isLoadingSettings ? (
+                {!billingStatus?.isSubscribed && !isLoadingBilling ? (
+                  <div className="bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 rounded-xl border border-[#e67e22]/20 p-6 text-center">
+                    <div className="w-16 h-16 bg-[#e67e22]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <FaLock className="text-[#e67e22] text-2xl" />
+                    </div>
+                    <h4 className="font-bold text-stone-800 mb-2">Pro限定機能</h4>
+                    <p className="text-sm text-stone-600 mb-4">
+                      AI設定はProプランでご利用いただけます。<br />
+                      旅のスタイルやカスタム指示を設定して、<br />
+                      あなたにぴったりのプランを生成しましょう。
+                    </p>
+                    <a
+                      href="/pricing"
+                      onClick={onClose}
+                      className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#e67e22] text-white font-bold rounded-full hover:bg-[#d35400] transition-all"
+                    >
+                      <FaCrown />
+                      Proにアップグレード
+                    </a>
+                  </div>
+                ) : isLoadingSettings || isLoadingBilling ? (
                   <div className="py-12 flex justify-center">
                     <FaSpinner className="animate-spin text-3xl text-[#e67e22]" />
                   </div>
@@ -323,6 +384,84 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     </h4>
                     <p className="text-stone-500 truncate">{user?.email}</p>
                   </div>
+                </div>
+
+                {/* Plan Management */}
+                <div className="bg-white rounded-xl border border-stone-200 p-6 shadow-sm space-y-4">
+                  <h4 className="font-bold text-stone-800 flex items-center gap-2">
+                    <FaCreditCard className="text-[#e67e22]" />
+                    プラン管理
+                  </h4>
+
+                  {isLoadingBilling ? (
+                    <div className="flex justify-center py-4">
+                      <FaSpinner className="animate-spin text-[#e67e22]" />
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between p-4 bg-stone-50 rounded-lg">
+                        <div>
+                          <p className="text-sm text-stone-500">現在のプラン</p>
+                          <div className="flex items-center gap-2 mt-1">
+                            {billingStatus?.isSubscribed ? (
+                              <>
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-sm font-bold rounded-full">
+                                  <FaCrown className="text-xs" />
+                                  Pro
+                                </span>
+                                {billingStatus.subscriptionEndsAt && (
+                                  <span className="text-xs text-stone-500">
+                                    次回更新: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString('ja-JP')}
+                                  </span>
+                                )}
+                              </>
+                            ) : (
+                              <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-sm font-medium rounded-full">
+                                Free
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        {billingStatus?.ticketCount && billingStatus.ticketCount > 0 && (
+                          <div className="text-right">
+                            <p className="text-sm text-stone-500">回数券</p>
+                            <p className="text-lg font-bold text-[#e67e22]">{billingStatus.ticketCount}回</p>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        {billingStatus?.isSubscribed ? (
+                          <button
+                            onClick={handleManageSubscription}
+                            disabled={isRedirectingToPortal}
+                            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-bold hover:bg-stone-200 transition-colors disabled:opacity-50"
+                          >
+                            {isRedirectingToPortal ? (
+                              <>
+                                <FaSpinner className="animate-spin" />
+                                <span>読み込み中...</span>
+                              </>
+                            ) : (
+                              <>
+                                <FaCog className="text-stone-500" />
+                                <span>プランを管理</span>
+                              </>
+                            )}
+                          </button>
+                        ) : (
+                          <a
+                            href="/pricing"
+                            onClick={onClose}
+                            className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors"
+                          >
+                            <FaCrown />
+                            <span>Proにアップグレード</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Actions */}

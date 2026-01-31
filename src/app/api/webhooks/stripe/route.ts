@@ -239,7 +239,7 @@ async function handleSubscriptionChange(
       current_period_end: periodEnd.toISOString(),
       cancel_at_period_end: subscription.cancel_at_period_end,
     })
-    .eq("stripe_subscription_id", subscription.id);
+    .eq("external_subscription_id", subscription.id);
 }
 
 async function handlePaymentFailed(supabase: any, invoice: Stripe.Invoice) {

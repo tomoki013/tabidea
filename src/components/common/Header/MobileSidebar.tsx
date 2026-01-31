@@ -16,6 +16,8 @@ import {
   FaEllipsisV,
   FaEdit,
   FaTrash,
+  FaCrown,
+  FaCog,
 } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
@@ -23,7 +25,9 @@ import { usePlanModal } from '@/context/PlanModalContext';
 import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
+import { getBillingStatus } from '@/app/actions/billing';
 import type { PlanListItem } from '@/types';
+import type { UserBillingStatus } from '@/types/billing';
 
 interface MobileSidebarProps {
   isOpen: boolean;
@@ -34,7 +38,7 @@ export default function MobileSidebar({
   isOpen,
   onClose,
 }: MobileSidebarProps) {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, user } = useAuth();
   const { openModal } = usePlanModal();
   const { plans: localPlans, deletePlan: deleteLocalPlan } = useLocalPlans();
   const { plans: serverPlans, isLoading: isServerPlansLoading, removePlan, updatePlan } = useUserPlans();
@@ -52,6 +56,16 @@ export default function MobileSidebar({
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<string | null>(null);
   const [isLocalDelete, setIsLocalDelete] = useState(false);
+
+  // Billing status state
+  const [billingStatus, setBillingStatus] = useState<UserBillingStatus | null>(null);
+
+  // Fetch billing status when authenticated
+  useEffect(() => {
+    if (isAuthenticated && isOpen) {
+      getBillingStatus().then(setBillingStatus);
+    }
+  }, [isAuthenticated, isOpen]);
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -217,10 +231,64 @@ export default function MobileSidebar({
               </button>
             </div>
 
+            {/* User Info Section */}
+            {isAuthenticated && user && (
+              <div className="p-4 bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 border-b border-dashed border-stone-200">
+                <div className="flex items-center gap-3">
+                  {user.avatarUrl ? (
+                    <Image
+                      src={user.avatarUrl}
+                      alt={user.displayName || 'ユーザー'}
+                      width={40}
+                      height={40}
+                      className="rounded-full ring-2 ring-[#e67e22]/20"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 rounded-full bg-[#e67e22]/10 ring-2 ring-[#e67e22]/20 flex items-center justify-center">
+                      <span className="text-[#e67e22] font-bold">
+                        {user.displayName?.[0] || user.email?.[0] || 'U'}
+                      </span>
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-stone-800 truncate text-sm">
+                      {user.displayName || 'ユーザー'}
+                    </p>
+                    <div className="flex items-center gap-1.5">
+                      {billingStatus?.isSubscribed ? (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
+                          <FaCrown className="text-[0.6rem]" />
+                          Pro
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-full">
+                          Free
+                        </span>
+                      )}
+                      {billingStatus && billingStatus.ticketCount > 0 && (
+                        <span className="text-xs text-stone-500">
+                          回数券: {billingStatus.ticketCount}回
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  <Link
+                    href="/pricing"
+                    onClick={onClose}
+                    className="p-2 text-stone-400 hover:text-[#e67e22] hover:bg-[#e67e22]/5 rounded-full transition-colors"
+                    aria-label="設定"
+                  >
+                    <FaCog size={16} />
+                  </Link>
+                </div>
+              </div>
+            )}
+
             {/* Navigation Links */}
             <nav className="p-4 space-y-2">
               <SidebarLink href="/" icon={<FaHome />} label="ホーム" onClick={onClose} />
               <SidebarLink href="/usage" icon={<FaMap />} label="使い方" onClick={onClose} />
+              <SidebarLink href="/pricing" icon={<FaCrown />} label="料金プラン" onClick={onClose} />
               <SidebarLink href="/faq" icon={<FaQuestionCircle />} label="よくある質問" onClick={onClose} />
             </nav>
 
