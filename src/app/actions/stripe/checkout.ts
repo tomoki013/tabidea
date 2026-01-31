@@ -1,6 +1,7 @@
 "use server";
 
 import { stripe } from "@/lib/stripe/client";
+import { createServiceRoleClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { hasActiveSubscription } from "@/lib/billing/user-billing-status";
 
@@ -98,30 +99,37 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
           `[checkout] Customer ${customerId} already has active Stripe subscription`,
         );
 
-        // DBと同期
+        // DBと同期 (Service Role Client を使用して RLS をバイパス)
         const stripeSub = existingSubscriptions.data[0];
         const item = stripeSub.items.data[0];
+        const adminClient = createServiceRoleClient();
 
-        await supabase.from("subscriptions").upsert(
-          {
-            user_id: user.id,
-            external_subscription_id: stripeSub.id,
-            external_customer_id: customerId,
-            payment_provider: "stripe",
-            status: stripeSub.status,
-            plan_code: "pro_monthly",
-            current_period_start: item?.current_period_start
-              ? new Date(item.current_period_start * 1000).toISOString()
-              : null,
-            current_period_end: item?.current_period_end
-              ? new Date(item.current_period_end * 1000).toISOString()
-              : null,
-            cancel_at_period_end: stripeSub.cancel_at_period_end,
-          },
-          {
-            onConflict: "external_subscription_id",
-          },
-        );
+        const { error: syncError } = await adminClient
+          .from("subscriptions")
+          .upsert(
+            {
+              user_id: user.id,
+              external_subscription_id: stripeSub.id,
+              external_customer_id: customerId,
+              payment_provider: "stripe",
+              status: stripeSub.status,
+              plan_code: "pro_monthly",
+              current_period_start: item?.current_period_start
+                ? new Date(item.current_period_start * 1000).toISOString()
+                : null,
+              current_period_end: item?.current_period_end
+                ? new Date(item.current_period_end * 1000).toISOString()
+                : null,
+              cancel_at_period_end: stripeSub.cancel_at_period_end,
+            },
+            {
+              onConflict: "external_subscription_id",
+            },
+          );
+
+        if (syncError) {
+          console.error("[checkout] Failed to sync subscription:", syncError);
+        }
 
         return { success: false, error: "already_subscribed" };
       }

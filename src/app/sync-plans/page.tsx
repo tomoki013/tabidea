@@ -6,9 +6,8 @@ import { SyncSelectionModal } from '@/components/ui/SyncSelectionModal';
 import {
   getLocalPlans,
   syncLocalPlansSelectively,
-  checkSyncCapacity,
 } from '@/lib/local-storage/plans';
-import { checkPlanStorageLimit } from '@/lib/limits/check';
+import { checkPlanStorageLimit } from '@/app/actions/limits';
 import { savePlan } from '@/app/actions/travel-planner';
 import { createClient } from '@/lib/supabase/client';
 
