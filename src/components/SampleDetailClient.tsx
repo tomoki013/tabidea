@@ -43,11 +43,11 @@ export default function SampleDetailClient({
             router.push(`/plan/${saveResult.shareCode}`);
           } else {
             console.error("Failed to save to DB:", saveResult.error);
-            const localPlan = saveLocalPlan(sampleInput, response.data);
+            const localPlan = await saveLocalPlan(sampleInput, response.data);
             router.push(`/plan/local/${localPlan.id}`);
           }
         } else {
-          const localPlan = saveLocalPlan(sampleInput, response.data);
+          const localPlan = await saveLocalPlan(sampleInput, response.data);
           router.push(`/plan/local/${localPlan.id}`);
         }
       } else {

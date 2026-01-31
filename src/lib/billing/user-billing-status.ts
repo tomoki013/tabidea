@@ -1,66 +1,46 @@
-import { createClient } from "@/lib/supabase/server";
-import type { UserBillingStatus, PlanType } from "@/types/billing";
+/**
+ * User Billing Status
+ *
+ * This module provides backwards-compatible functions for billing status checks.
+ * Internally, it delegates to the unified BillingChecker service.
+ *
+ * @deprecated For new code, use checkBillingAccess() from billing-checker.ts directly
+ */
 
+import type { UserBillingStatus } from '@/types/billing';
+import {
+  checkBillingAccess,
+  hasActiveSubscription as billingHasActiveSubscription,
+} from './billing-checker';
+
+/**
+ * Get the billing status for the current user
+ *
+ * @deprecated Use checkBillingAccess() from billing-checker.ts instead
+ * This function is kept for backwards compatibility
+ */
 export async function getUserBillingStatus(): Promise<UserBillingStatus | null> {
-  const supabase = await createClient();
+  const billing = await checkBillingAccess();
 
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser();
-
-  if (authError || !user) {
+  // Return null for anonymous users (backwards compatibility)
+  if (billing.isAnonymous) {
     return null;
   }
 
-  // サブスクリプション情報を取得
-  const { data: subscription } = await supabase
-    .from("subscriptions")
-    .select("*")
-    .eq("user_id", user.id)
-    .in("status", ["active", "trialing", "past_due"])
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .single();
-
-  // 回数券の残数を取得
-  const { data: tickets } = await supabase
-    .from("entitlement_grants")
-    .select("remaining_count")
-    .eq("user_id", user.id)
-    .eq("entitlement_type", "plan_generation")
-    .eq("grant_type", "ticket_pack")
-    .eq("status", "active")
-    .gt("valid_until", new Date().toISOString());
-
-  const ticketCount =
-    tickets?.reduce((sum, t) => sum + (t.remaining_count || 0), 0) || 0;
-
-  let isSubscribed = false;
-  let planType: PlanType = "free";
-  let subscriptionEndsAt: string | undefined;
-
-  if (subscription) {
-    const periodEnd = subscription.current_period_end
-      ? new Date(subscription.current_period_end)
-      : null;
-
-    if (periodEnd && periodEnd > new Date()) {
-      isSubscribed = true;
-      // plan_code を使用
-      planType = (subscription.plan_code as PlanType) || "pro_monthly";
-      subscriptionEndsAt = subscription.current_period_end;
-    }
-  }
-
   return {
-    planType,
-    isSubscribed,
-    subscriptionEndsAt,
-    ticketCount,
+    planType: billing.planType,
+    isSubscribed: billing.isSubscribed,
+    subscriptionEndsAt: billing.subscriptionEndsAt ?? undefined,
+    ticketCount: billing.ticketCount,
   };
 }
 
+/**
+ * Check if a user has an active subscription
+ *
+ * @deprecated Use hasActiveSubscription() from billing-checker.ts instead
+ * This function is kept for backwards compatibility
+ */
 export async function hasActiveSubscription(userId: string): Promise<{
   hasActive: boolean;
   subscription?: {
@@ -70,33 +50,8 @@ export async function hasActiveSubscription(userId: string): Promise<{
     currentPeriodEnd: string;
   };
 }> {
-  const supabase = await createClient();
-
-  const { data: subscription, error } = await supabase
-    .from("subscriptions")
-    .select("id, external_subscription_id, status, current_period_end")
-    .eq("user_id", userId)
-    .in("status", ["active", "trialing"])
-    .order("created_at", { ascending: false })
-    .limit(1)
-    .single();
-
-  if (error || !subscription) {
-    return { hasActive: false };
-  }
-
-  const periodEnd = new Date(subscription.current_period_end);
-  if (periodEnd <= new Date()) {
-    return { hasActive: false };
-  }
-
-  return {
-    hasActive: true,
-    subscription: {
-      id: subscription.id,
-      externalSubscriptionId: subscription.external_subscription_id,
-      status: subscription.status,
-      currentPeriodEnd: subscription.current_period_end,
-    },
-  };
+  return billingHasActiveSubscription(userId);
 }
+
+// Re-export the new unified function for gradual migration
+export { checkBillingAccess } from './billing-checker';

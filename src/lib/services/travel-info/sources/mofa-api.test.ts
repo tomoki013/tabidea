@@ -364,7 +364,9 @@ describe('MofaApiSource', () => {
       const result = await source.fetch('未知の国');
 
       expect(result.success).toBe(false);
-      expect(result.error).toContain('Country code not found');
+      if (!result.success) {
+        expect(result.error).toContain('Country code not found');
+      }
     });
 
     it('404エラーの場合は失敗を返し、フォールバックを有効にする', async () => {
@@ -377,7 +379,9 @@ describe('MofaApiSource', () => {
       const result = await source.fetch('タイ');
 
       expect(result.success).toBe(false);
-      expect(result.error).toBeDefined();
+      if (!result.success) {
+        expect(result.error).toBeDefined();
+      }
     });
   });
 

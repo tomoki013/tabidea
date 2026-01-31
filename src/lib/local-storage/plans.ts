@@ -401,15 +401,15 @@ export function useLocalPlans() {
 
   const [isLoading] = useState(false);
 
-  const savePlan = useCallback((input: UserInput, itinerary: Itinerary) => {
-    const newPlan = saveLocalPlan(input, itinerary);
+  const savePlan = useCallback(async (input: UserInput, itinerary: Itinerary) => {
+    const newPlan = await saveLocalPlan(input, itinerary);
     notifyPlanChange();
     return newPlan;
   }, []);
 
   const updatePlan = useCallback(
-    (id: string, updates: Partial<Pick<LocalPlan, 'input' | 'itinerary'>>) => {
-      const updated = updateLocalPlan(id, updates);
+    async (id: string, updates: Partial<Pick<LocalPlan, 'input' | 'itinerary'>>) => {
+      const updated = await updateLocalPlan(id, updates);
       if (updated) {
         notifyPlanChange();
       }
@@ -418,8 +418,8 @@ export function useLocalPlans() {
     []
   );
 
-  const deletePlan = useCallback((id: string) => {
-    const success = deleteLocalPlan(id);
+  const deletePlan = useCallback(async (id: string) => {
+    const success = await deleteLocalPlan(id);
     if (success) {
       notifyPlanChange();
     }

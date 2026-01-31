@@ -103,12 +103,12 @@ export default function SamplePlanActions({ sampleInput }: SamplePlanActionsProp
         } else {
           // Fallback to local storage if DB save fails
           console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
-          const localPlan = saveLocalPlan(updatedInput, finalPlan);
+          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
           router.push(`/plan/local/${localPlan.id}`);
         }
       } else {
         // Save to local storage for unauthenticated users
-        const localPlan = saveLocalPlan(updatedInput, finalPlan);
+        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
         router.push(`/plan/local/${localPlan.id}`);
       }
 

@@ -30,11 +30,13 @@ function createMockSource(
   reliability: number
 ): ITravelInfoSource {
   return {
+    sourceId: `mock_${name.replace(/-/g, '_')}`,
     sourceName: name,
+    sourceType: 'official_api' as const,
     supportedCategories: categories,
     reliabilityScore: reliability,
     fetch: vi.fn().mockResolvedValue({ success: true, data: {} }),
-    shouldSkip: vi.fn().mockReturnValue(false),
+    isAvailable: vi.fn().mockResolvedValue(true),
   };
 }
 
@@ -207,7 +209,7 @@ describe('CategoryMapper', () => {
 
 describe('createCategoryMapper', () => {
   it('should create a new CategoryMapper instance', () => {
-    const mapper = createCategoryMapper();
+    const mapper = createCategoryMapper() as CategoryMapper;
     expect(mapper).toBeDefined();
     expect(mapper.getAllSources()).toEqual([]);
   });
@@ -219,12 +221,12 @@ describe('createDefaultCategoryMapper', () => {
   });
 
   it('should create a mapper with default sources registered', () => {
-    const mapper = createDefaultCategoryMapper();
+    const mapper = createDefaultCategoryMapper() as CategoryMapper;
 
     const sources = mapper.getAllSources();
     expect(sources.length).toBeGreaterThan(0);
 
-    const sourceNames = sources.map(s => s.sourceName);
+    const sourceNames = sources.map((s: ITravelInfoSource) => s.sourceName);
     expect(sourceNames).toContain('mofa-api');
     expect(sourceNames).toContain('weather-api');
     expect(sourceNames).toContain('exchange-api');

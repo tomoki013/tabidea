@@ -1,3 +1,4 @@
+import { describe, it, expect } from "vitest";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "./prompts";
 import { TransitInfo } from "@/types";
 

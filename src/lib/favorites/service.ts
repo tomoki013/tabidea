@@ -63,14 +63,27 @@ export class FavoritesService {
       return { success: false, error: insertError.message };
     }
 
-    // Increment save_count on the plan
-    const { error: updateError } = await supabase
-      .from('plans')
-      .update({ save_count: supabase.raw('save_count + 1') })
-      .eq('id', planId);
+    // Increment save_count on the plan using RPC or fetch-update pattern
+    try {
+      const { data: currentPlan } = await supabase
+        .from('plans')
+        .select('save_count')
+        .eq('id', planId)
+        .single();
 
-    if (updateError) {
-      console.error('Failed to increment save_count:', updateError);
+      if (currentPlan) {
+        const { error: updateError } = await supabase
+          .from('plans')
+          .update({ save_count: (currentPlan.save_count || 0) + 1 })
+          .eq('id', planId);
+
+        if (updateError) {
+          console.error('Failed to increment save_count:', updateError);
+          // Don't fail the operation if count update fails
+        }
+      }
+    } catch (e) {
+      console.error('Failed to update save_count:', e);
       // Don't fail the operation if count update fails
     }
 
@@ -101,15 +114,27 @@ export class FavoritesService {
     }
 
     // Decrement save_count on the plan (but don't go below 0)
-    const { error: updateError } = await supabase
-      .from('plans')
-      .update({
-        save_count: supabase.raw('GREATEST(save_count - 1, 0)'),
-      })
-      .eq('id', planId);
+    try {
+      const { data: currentPlan } = await supabase
+        .from('plans')
+        .select('save_count')
+        .eq('id', planId)
+        .single();
 
-    if (updateError) {
-      console.error('Failed to decrement save_count:', updateError);
+      if (currentPlan) {
+        const newCount = Math.max((currentPlan.save_count || 0) - 1, 0);
+        const { error: updateError } = await supabase
+          .from('plans')
+          .update({ save_count: newCount })
+          .eq('id', planId);
+
+        if (updateError) {
+          console.error('Failed to decrement save_count:', updateError);
+          // Don't fail the operation if count update fails
+        }
+      }
+    } catch (e) {
+      console.error('Failed to update save_count:', e);
       // Don't fail the operation if count update fails
     }
 
