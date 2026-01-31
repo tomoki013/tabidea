@@ -1,7 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
+
 import { savePendingState } from '@/lib/restore/pending-state';
+
 import type { UserInput, Itinerary } from '@/types';
 
 interface LoginPromptModalProps {
@@ -182,6 +185,19 @@ export function LoginPromptModal({
               </svg>
               ログイン / 登録
             </button>
+          </div>
+
+          {/* 回数券への導線 */}
+          <div className="mt-4 pt-4 border-t border-stone-100 text-center">
+            <p className="text-xs text-stone-500">
+              ログインせずに使いたい場合は{' '}
+              <Link
+                href="/pricing"
+                className="text-primary hover:underline font-medium"
+              >
+                回数券を購入
+              </Link>
+            </p>
           </div>
         </div>
       </div>
