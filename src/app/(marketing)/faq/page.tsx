@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
       {/* Header Section */}
       <div className="relative w-full pt-32 pb-16 px-4 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none bg-[radial-gradient(#e67e22_1px,transparent_1px)] [background-size:20px_20px]" />

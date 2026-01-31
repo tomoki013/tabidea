@@ -8,11 +8,13 @@ export const metadata: Metadata = {
 
 export default function TermsOfService() {
   return (
-    <div className="min-h-screen pt-32 pb-20 px-4 sm:px-20 font-(family-name:--font-noto-sans-jp)">
-      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-2xl shadow-sm border border-stone-100">
-        <h1 className="text-3xl font-bold mb-8">利用規約</h1>
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
+      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
+        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-12 text-center">
+          利用規約
+        </h1>
 
-        <div className="space-y-8 text-muted-foreground leading-relaxed">
+        <div className="space-y-8 text-stone-600 leading-relaxed font-sans">
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
               1. はじめに
@@ -188,7 +190,7 @@ export default function TermsOfService() {
             </ul>
             <p>
               有料サービスに関する詳細は、
-              <PolicyLink href="/tokushoho">特定商取引法に基づく表記</PolicyLink>
+              <PolicyLink href="/specified">特定商取引法に基づく表記</PolicyLink>
               をご確認ください。
             </p>
           </section>
