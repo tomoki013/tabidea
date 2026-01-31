@@ -3,24 +3,30 @@
 import Link from "next/link";
 import { useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
-import { faqs } from "@/lib/data/faq";
+import { faqs, faqCategories } from "@/lib/data/faq";
 import FAQCard from "@/components/faq/FAQCard";
 
 interface FAQSectionProps {
   limit?: number;
+  categoryId?: string;
 }
 
-export default function FAQSection({ limit }: FAQSectionProps) {
+export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const displayFaqs = limit ? faqs.slice(0, limit) : faqs;
+  let sourceFaqs = faqs;
+  if (categoryId) {
+    sourceFaqs = faqCategories.find((c) => c.id === categoryId)?.items || [];
+  }
+
+  const displayFaqs = limit ? sourceFaqs.slice(0, limit) : sourceFaqs;
 
   return (
     <section className="w-full py-24 px-4 bg-[#fcfbf9]">
       <div className="max-w-3xl mx-auto space-y-12">
         <div className="text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c]">
-            {limit ? "よくある質問" : "よくある質問（すべて）"}
+            {limit || categoryId ? "よくある質問" : "よくある質問（すべて）"}
           </h2>
           <p className="text-stone-600 leading-relaxed font-hand text-lg max-w-2xl mx-auto">
             Tabideaは、AIを活用して、あなたの理想の旅行プランを提案するサービスです。<br />
@@ -38,9 +44,12 @@ export default function FAQSection({ limit }: FAQSectionProps) {
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
             />
           ))}
+          {displayFaqs.length === 0 && (
+            <p className="text-center text-stone-500">該当する質問がありません。</p>
+          )}
         </div>
 
-        {limit && (
+        {limit && !categoryId && (
           <div className="mt-12 text-center">
             <Link
               href="/faq"

@@ -1,0 +1,46 @@
+
+> tabidea@0.3.1 dev /app
+> next dev
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 2.1s
+ ○ Compiling /pricing ...
+ ⨯ Error: Missing Supabase environment variables
+    at createClient (src/lib/supabase/client.ts:13:11)
+    at AuthProvider (src/context/AuthContext.tsx:47:32)
+  11 |
+  12 |   if (!supabaseUrl || !supabaseAnonKey) {
+> 13 |     throw new Error('Missing Supabase environment variables');
+     |           ^
+  14 |   }
+  15 |
+  16 |   return createBrowserClient(supabaseUrl, supabaseAnonKey); {
+  digest: '1100336597'
+}
+ ⨯ Error: Missing Supabase environment variables
+    at createClient (src/lib/supabase/server.ts:16:11)
+    at async getUser (src/lib/supabase/server.ts:74:20)
+    at async PricingPage (src/app/(marketing)/pricing/page.tsx:14:16)
+  14 |
+  15 |   if (!supabaseUrl || !supabaseAnonKey) {
+> 16 |     throw new Error('Missing Supabase environment variables');
+     |           ^
+  17 |   }
+  18 |
+  19 |   return createServerClient(supabaseUrl, supabaseAnonKey, { {
+  digest: '3530979064'
+}
+ GET /pricing 500 in 18.0s (compile: 15.9s, proxy.ts: 261ms, render: 1815ms)
+ ELIFECYCLE  Command failed.
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[?25h

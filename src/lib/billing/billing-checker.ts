@@ -121,8 +121,8 @@ export async function checkBillingAccess(
     return createAnonymousBillingInfo();
   }
 
-  // Check admin status first (via email or database)
-  const isAdmin = !options?.skipAdminCheck && (isAdminEmail(user.email) || (await checkAdminInDb(supabase, user.id)));
+  // Check admin status first (via email only for now, as is_admin column is missing)
+  const isAdmin = !options?.skipAdminCheck && isAdminEmail(user.email);
 
   if (isAdmin) {
     return createAdminBillingInfo(user.id, user.email ?? null);
@@ -172,12 +172,12 @@ export async function checkBillingAccessForUser(
   // Fetch user info
   const { data: userData } = await supabase
     .from('users')
-    .select('email, is_admin')
+    .select('email')
     .eq('id', userId)
     .single();
 
   const email = userData?.email ?? null;
-  const isAdmin = userData?.is_admin === true || isAdminEmail(email);
+  const isAdmin = isAdminEmail(email);
 
   if (isAdmin) {
     return createAdminBillingInfo(userId, email);
@@ -297,18 +297,15 @@ function createAdminBillingInfo(userId: string, email: string | null): BillingAc
 
 /**
  * Check if user is admin in database
+ * @deprecated database column removed
  */
 async function checkAdminInDb(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   supabase: Awaited<ReturnType<typeof createClient>>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   userId: string
 ): Promise<boolean> {
-  const { data } = await supabase
-    .from('users')
-    .select('is_admin')
-    .eq('id', userId)
-    .single();
-
-  return data?.is_admin === true;
+  return false;
 }
 
 /**

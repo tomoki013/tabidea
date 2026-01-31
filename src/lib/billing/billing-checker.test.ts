@@ -111,7 +111,7 @@ describe('BillingChecker', () => {
 
       // Mock admin check in DB returns false (not needed since email check succeeds)
       const mockSingle = vi.fn().mockResolvedValue({
-        data: { is_admin: false },
+        data: { },
         error: null,
       });
 
@@ -146,7 +146,7 @@ describe('BillingChecker', () => {
 
       // Mock admin check (not admin)
       const mockAdminSingle = vi.fn().mockResolvedValue({
-        data: { is_admin: false },
+        data: { },
         error: null,
       });
 
@@ -229,7 +229,7 @@ describe('BillingChecker', () => {
 
       // Mock admin check (not admin)
       const mockAdminSingle = vi.fn().mockResolvedValue({
-        data: { is_admin: false },
+        data: { },
         error: null,
       });
 
@@ -319,7 +319,7 @@ describe('BillingChecker', () => {
 
       // Mock admin check (not admin)
       const mockAdminSingle = vi.fn().mockResolvedValue({
-        data: { is_admin: false },
+        data: { },
         error: null,
       });
 
@@ -398,7 +398,7 @@ describe('BillingChecker', () => {
 
       // Mock user data fetch
       const mockUserSingle = vi.fn().mockResolvedValue({
-        data: { email: 'specific@example.com', is_admin: false },
+        data: { email: 'specific@example.com' },
         error: null,
       });
 

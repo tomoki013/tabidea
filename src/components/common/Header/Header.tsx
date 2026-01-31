@@ -18,6 +18,7 @@ import { usePlanModal } from "@/context/PlanModalContext";
 import { useAuth } from "@/context/AuthContext";
 import { AuthButton } from "../AuthButton";
 import MobileSidebar from "./MobileSidebar";
+import SettingsModal from "../SettingsModal";
 
 export interface HeaderProps {
   forceShow?: boolean;
@@ -32,6 +33,7 @@ export default function Header({
 }: HeaderProps) {
   const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobileSettingsOpen, setIsMobileSettingsOpen] = useState(false);
   const { openModal } = usePlanModal();
   const { user, isAuthenticated, isLoading: isAuthLoading } = useAuth();
   const isHome = pathname === "/";
@@ -136,8 +138,8 @@ export default function Header({
               {isAuthLoading ? (
                 <div className="w-8 h-8 rounded-full bg-[#e67e22]/20 animate-pulse" />
               ) : isAuthenticated ? (
-                <Link
-                  href="/my-plans"
+                <button
+                  onClick={() => setIsMobileSettingsOpen(true)}
                   className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-[#e67e22]/10 transition-all"
                 >
                   {user?.avatarUrl ? (
@@ -155,7 +157,7 @@ export default function Header({
                       </span>
                     </div>
                   )}
-                </Link>
+                </button>
               ) : (
                 <Link
                   href="/auth/login"
@@ -173,6 +175,11 @@ export default function Header({
       <MobileSidebar
         isOpen={isSidebarOpen}
         onClose={() => setIsSidebarOpen(false)}
+      />
+
+      <SettingsModal
+        isOpen={isMobileSettingsOpen}
+        onClose={() => setIsMobileSettingsOpen(false)}
       />
     </>
   );

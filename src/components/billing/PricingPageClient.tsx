@@ -5,10 +5,10 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { PricingCard } from "./PricingCard";
 import { TicketCard } from "./TicketCard";
+import { FAQSection } from "@/components/features/landing";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
-import { faqCategories } from "@/lib/data/faq";
 
 import type { UserBillingStatus, PurchaseType } from "@/types/billing";
 
@@ -85,9 +85,6 @@ export function PricingPageClient({
   };
 
   const isPro = billingStatus?.isSubscribed === true;
-
-  // Filter FAQs for billing category
-  const billingFaqs = faqCategories.find(c => c.id === 'billing')?.items || [];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
@@ -187,7 +184,7 @@ export function PricingPageClient({
         */}
 
         {/* Feature Comparison */}
-        <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto">
+        <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto mb-16">
           <h2 className="text-xl font-bold text-stone-800 text-center mb-6">
             プラン比較
           </h2>
@@ -257,24 +254,8 @@ export function PricingPageClient({
           </div>
         </div>
 
-        {/* FAQ */}
-        <div className="mt-16 max-w-2xl mx-auto">
-          <h2 className="text-xl font-bold text-stone-800 text-center mb-8">
-            よくある質問
-          </h2>
-          <div className="space-y-4">
-            {billingFaqs.map((faq, index) => (
-              <FaqItem
-                key={index}
-                question={faq.q}
-                answer={faq.a}
-              />
-            ))}
-            {billingFaqs.length === 0 && (
-              <p className="text-center text-stone-500">FAQの読み込みに失敗しました。</p>
-            )}
-          </div>
-        </div>
+        {/* FAQ - Using generic component */}
+        <FAQSection categoryId="billing" />
 
         {/* Legal Links */}
         <div className="mt-12 text-center text-sm text-stone-500">
@@ -354,29 +335,5 @@ function FeatureRow({
         {renderCell(ticket, true)}
       </td>
     </tr>
-  );
-}
-
-function FaqItem({ question, answer }: { question: string; answer: string }) {
-  return (
-    <details className="group bg-white rounded-xl border border-stone-200 overflow-hidden">
-      <summary className="flex items-center justify-between p-4 cursor-pointer hover:bg-stone-50 transition-colors">
-        <span className="font-medium text-stone-800">{question}</span>
-        <svg
-          className="w-5 h-5 text-stone-400 group-open:rotate-180 transition-transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 9l-7 7-7-7"
-          />
-        </svg>
-      </summary>
-      <div className="px-4 pb-4 text-sm text-stone-600 whitespace-pre-line">{answer}</div>
-    </details>
   );
 }
