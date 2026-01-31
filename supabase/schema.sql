@@ -13,6 +13,9 @@ CREATE TABLE users (
   avatar_url TEXT,
   auth_provider TEXT,  -- 'google', 'twitter'
 
+  -- Stripe Customer ID（決済連携用）
+  stripe_customer_id TEXT,
+
   -- 暗号化用ソルト（キー生成に使用）
   encryption_salt TEXT NOT NULL DEFAULT encode(gen_random_bytes(32), 'base64'),
 
@@ -22,6 +25,8 @@ CREATE TABLE users (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   updated_at TIMESTAMPTZ DEFAULT NOW()
 );
+
+CREATE INDEX idx_users_stripe_customer_id ON users(stripe_customer_id);
 
 -- RLS (Row Level Security)
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
@@ -354,7 +359,7 @@ CREATE TABLE subscriptions (
   user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
   plan_code TEXT NOT NULL,
   payment_provider TEXT,
-  external_subscription_id TEXT,
+  external_subscription_id TEXT UNIQUE,  -- UNIQUE for idempotent upsert
   external_customer_id TEXT,
   status TEXT NOT NULL DEFAULT 'active'
     CHECK (status IN ('active', 'canceled', 'past_due', 'trialing', 'paused', 'expired')),
@@ -371,6 +376,7 @@ CREATE TABLE subscriptions (
 
 CREATE INDEX idx_subscriptions_user ON subscriptions(user_id);
 CREATE INDEX idx_subscriptions_status ON subscriptions(status);
+-- Note: UNIQUE constraint creates an implicit index, so separate index is optional
 CREATE INDEX idx_subscriptions_external ON subscriptions(external_subscription_id);
 
 ALTER TABLE subscriptions ENABLE ROW LEVEL SECURITY;
@@ -456,7 +462,7 @@ CREATE TABLE billing_transactions (
   amount INTEGER NOT NULL,
   currency TEXT DEFAULT 'jpy',
   payment_provider TEXT,
-  external_transaction_id TEXT,
+  external_transaction_id TEXT UNIQUE,  -- UNIQUE for idempotent upsert
   status TEXT DEFAULT 'succeeded'
     CHECK (status IN ('pending', 'succeeded', 'failed', 'refunded', 'disputed')),
   related_type TEXT,
@@ -468,6 +474,7 @@ CREATE TABLE billing_transactions (
 
 CREATE INDEX idx_billing_user ON billing_transactions(user_id);
 CREATE INDEX idx_billing_created ON billing_transactions(created_at DESC);
+-- Note: UNIQUE constraint creates an implicit index for external_transaction_id
 
 ALTER TABLE billing_transactions ENABLE ROW LEVEL SECURITY;
 
