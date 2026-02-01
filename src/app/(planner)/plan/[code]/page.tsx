@@ -22,14 +22,45 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const { plan } = result;
+  const title = plan.destination ? `${plan.destination}の旅行プラン` : '旅行プラン';
+  const description = plan.itinerary?.description || 'AIが生成した旅行プラン';
+
+  // Build dynamic OGP image URL
+  const ogParams = new URLSearchParams();
+  if (plan.destination) {
+    ogParams.set('destination', plan.destination);
+  }
+  if (plan.itinerary?.days?.length) {
+    ogParams.set('days', plan.itinerary.days.length.toString());
+  }
+  if (plan.itinerary?.heroImage) {
+    ogParams.set('imageUrl', plan.itinerary.heroImage);
+  }
+
+  // Get base URL from environment or default
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tabidea.app';
+  const ogImageUrl = `${baseUrl}/api/og?${ogParams.toString()}`;
 
   return {
-    title: plan.destination ? `${plan.destination}の旅行プラン` : '旅行プラン',
-    description: plan.itinerary?.description || 'AIが生成した旅行プラン',
+    title,
+    description,
     openGraph: {
-      title: plan.destination ? `${plan.destination}の旅行プラン` : '旅行プラン',
-      description: plan.itinerary?.description || 'AIが生成した旅行プラン',
-      images: plan.thumbnailUrl ? [{ url: plan.thumbnailUrl }] : undefined,
+      title,
+      description,
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImageUrl],
     },
   };
 }
