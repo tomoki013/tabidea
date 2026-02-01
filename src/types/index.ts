@@ -6,6 +6,7 @@
 // 旅程関連型
 export type {
   Activity,
+  ActivityValidation,
   DayPlan,
   Reference,
   Itinerary,

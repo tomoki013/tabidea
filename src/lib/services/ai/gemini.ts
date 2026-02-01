@@ -1,16 +1,117 @@
 import { createGoogleGenerativeAI } from "@ai-sdk/google";
-import { generateText } from "ai";
+import { generateObject } from "ai";
 import { AIService, Article } from "./types";
-import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay } from '@/types';
+import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus } from '@/types';
+import {
+  PlanOutlineSchema,
+  DayPlanArrayResponseSchema,
+  ItinerarySchema,
+  LegacyItineraryResponseSchema,
+} from './schemas/itinerary-schemas';
+import {
+  selectModel,
+  extractComplexity,
+  getTemperature,
+  type ModelSelectionInput,
+  type RequestComplexity,
+  type GenerationPhase,
+} from './model-selector';
+
+// ============================================
+// Types
+// ============================================
+
+export interface GeminiServiceOptions {
+  /** premium_ai 権限ステータス（サブスクユーザー判定用） */
+  premiumAiStatus?: EntitlementStatus;
+  /** ユーザーがProモデルを明示的に選択したか */
+  userPrefersPro?: boolean;
+  /** リクエストの複雑度（自動判定されない場合） */
+  complexity?: RequestComplexity;
+}
+
+// ============================================
+// Constants
+// ============================================
+
+const MAX_RETRIES = 2;
+const RETRY_DELAY_MS = 1000;
+
+// ============================================
+// Helper Functions
+// ============================================
+
+/**
+ * Delay execution for specified milliseconds
+ */
+function delay(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/**
+ * Execute with retry logic
+ */
+async function withRetry<T>(
+  operation: () => Promise<T>,
+  maxRetries: number = MAX_RETRIES,
+  delayMs: number = RETRY_DELAY_MS
+): Promise<T> {
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error instanceof Error ? error : new Error(String(error));
+      console.warn(`[gemini] Attempt ${attempt + 1}/${maxRetries + 1} failed:`, lastError.message);
+
+      if (attempt < maxRetries) {
+        await delay(delayMs * (attempt + 1)); // Exponential backoff
+      }
+    }
+  }
+
+  throw lastError || new Error('Unknown error during retry');
+}
+
+// ============================================
+// GeminiService
+// ============================================
 
 export class GeminiService implements AIService {
   private google: ReturnType<typeof createGoogleGenerativeAI>;
-  private modelName: string;
+  private defaultModelName: string;
+  private options: GeminiServiceOptions;
 
-  constructor(apiKey: string) {
+  constructor(apiKey: string, options: GeminiServiceOptions = {}) {
     this.google = createGoogleGenerativeAI({ apiKey });
-    this.modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
-    console.log(`[gemini] Service initialized. Using model: ${this.modelName}`);
+    this.defaultModelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+    this.options = options;
+    console.log(`[gemini] Service initialized. Default model: ${this.defaultModelName}`);
+    if (options.premiumAiStatus?.hasAccess) {
+      console.log(`[gemini] Premium AI access enabled`);
+    }
+  }
+
+  /**
+   * 指定されたフェーズに適したモデルを選択
+   */
+  private getModel(phase: GenerationPhase, complexity?: RequestComplexity) {
+    const input: ModelSelectionInput = {
+      premiumAiStatus: this.options.premiumAiStatus,
+      userPrefersPro: this.options.userPrefersPro,
+      complexity: complexity || this.options.complexity,
+      phase,
+    };
+
+    const selection = selectModel(input);
+
+    return {
+      model: this.google(selection.modelName, { structuredOutputs: true }),
+      temperature: selection.temperature,
+      modelName: selection.modelName,
+      tier: selection.tier,
+    };
   }
 
   // Legacy method - can be kept for fallback or specific uses
@@ -41,34 +142,13 @@ export class GeminiService implements AIService {
       Rules:
       1. Follow User Request (Destination, Dates, Companions, Themes, Budget, Pace).
       2. 3 meals/day + activities by pace: relaxed(1-2), balanced(3-4), active(5-6), packed(7-8).
-      3. Return JSON only.
+      3. Return valid JSON matching the schema.
 
-      JSON:
-      {
-        "reasoning": "string (Why you chose this plan/spots, logic behind decisions)",
-        "id": "string (unique-ish id)",
-        "destination": "string",
-        "heroImage": "string | null (URL from one of the context articles if available, otherwise null)",
-        "description": "string (A compelling intro in Japanese, mentioning if you used specific blog tips)",
-        "days": [
-          {
-            "day": number,
-            "title": "string (Theme of the day)",
-            "activities": [
-              {
-                "time": "string (e.g. 10:00)",
-                "activity": "string",
-                "description": "string (detailed description)"
-              }
-            ]
-          }
-        ],
-        "reference_indices": [
-           // Array of numbers (0-based) corresponding to the [ID: n] of Context articles used.
-           // ONLY include IDs of articles that are RELEVANT to the destination.
-           // Example: [0, 2] means Article [ID: 0] and [ID: 2] were used.
-        ]
-      }
+      The "id" should be a unique-ish identifier.
+      The "description" should be compelling, mentioning if you used specific blog tips.
+      The "heroImage" should be a URL from context articles if available, otherwise null.
+      Each activity should have detailed descriptions in Japanese.
+      "reference_indices" should only include IDs of articles RELEVANT to the destination.
     `;
 
     const fullPrompt = `${systemInstruction}
@@ -77,52 +157,50 @@ USER REQUEST:
 ${prompt}`;
 
     try {
-      console.log(`[gemini] Request prepared. Sending to Vercel AI SDK...`);
+      console.log(`[gemini] Request prepared. Sending to Vercel AI SDK with structured output...`);
       const startTime = Date.now();
 
-      const { text } = await generateText({
-        model: this.google(this.modelName, { structuredOutputs: true }),
-        prompt: fullPrompt,
-        temperature: 0.1,
+      const { model, temperature, modelName } = this.getModel('details');
+      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+
+      const result = await withRetry(async () => {
+        const { object } = await generateObject({
+          model,
+          schema: LegacyItineraryResponseSchema,
+          prompt: fullPrompt,
+          temperature,
+        });
+        return object;
       });
 
       const endTime = Date.now();
       console.log(`[gemini] Response received in ${endTime - startTime}ms.`);
-      console.log(`[gemini] Response text length: ${text.length} characters.`);
 
-      // Sanitize JSON if markdown fences are present
-      const cleanedText = text
-        .replace(/```json/g, "")
-        .replace(/```/g, "")
-        .trim();
+      // Quick reference processing
+      const indices = result.reference_indices || [];
+      const references = indices
+        .map((idx: number) => context[idx])
+        .filter(Boolean)
+        .map((a: Article) => ({
+          title: a.title,
+          url: a.url,
+          image: a.imageUrl || "",
+          snippet: a.snippet,
+        }));
 
-      try {
-        const data = JSON.parse(cleanedText);
-
-        // Quick reference processing
-        const indices = data.reference_indices || [];
-        data.references = indices
-          .map((idx: number) => context[idx])
-          .filter(Boolean)
-          .map((a: Article) => ({
-            title: a.title,
-            url: a.url,
-            image: a.imageUrl || "",
-            snippet: a.snippet,
-          }));
-
-        return data as Itinerary;
-      } catch (jsonError) {
-        console.error(`[gemini] JSON Parse Error:`, jsonError);
-        console.error(`[gemini] Raw Response text:`, cleanedText);
-        throw new Error("Failed to parse AI response as JSON");
-      }
+      return {
+        ...result,
+        heroImage: result.heroImage ?? undefined,
+        references,
+      } as Itinerary;
     } catch (error) {
       console.error(
         "[gemini] Generation failed details:",
-        JSON.stringify(error, null, 2)
+        error instanceof Error ? error.message : error
       );
-      throw error;
+      throw new Error(
+        `旅程の生成に失敗しました。しばらくしてから再度お試しください。`
+      );
     }
   }
 
@@ -149,33 +227,39 @@ ${prompt}`;
         1. MODIFY the Current Itinerary based on the User Feedback.
         2. KEEP all parts of the itinerary that the user did NOT ask to change EXACTLY THE SAME. Do not invent new changes.
         3. If the user asks to change a restaurant, time, or activity, update only that specific part.
-        4. RETURN the FULL updated JSON object strictly following the original schema.
-        5. NO markdown formatting. Output raw JSON.
+        4. RETURN the FULL updated itinerary strictly following the schema.
+        5. Preserve the id, heroImage, and other metadata.
      `;
 
     try {
-      const { text } = await generateText({
-        model: this.google(this.modelName, { structuredOutputs: true }),
-        prompt,
-        temperature: 0.1,
+      const { model, temperature, modelName } = this.getModel('modify');
+      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+
+      const result = await withRetry(async () => {
+        const { object } = await generateObject({
+          model,
+          schema: ItinerarySchema,
+          prompt,
+          temperature,
+        });
+        return object;
       });
 
-      const cleanedText = text
-        .replace(/```json/g, "")
-        .replace(/```/g, "")
-        .trim();
-
-      const data = JSON.parse(cleanedText);
-
       // Preserve original references if not present in new data
-      if (!data.references && currentPlan.references) {
-        data.references = currentPlan.references;
-      }
+      const references = result.references || currentPlan.references;
 
-      return data as Itinerary;
-    } catch (e) {
-      console.error("Failed to modify itinerary", e);
-      throw e;
+      return {
+        ...result,
+        heroImage: result.heroImage ?? currentPlan.heroImage,
+        heroImagePhotographer: result.heroImagePhotographer ?? currentPlan.heroImagePhotographer,
+        heroImagePhotographerUrl: result.heroImagePhotographerUrl ?? currentPlan.heroImagePhotographerUrl,
+        references,
+      } as Itinerary;
+    } catch (error) {
+      console.error("Failed to modify itinerary", error);
+      throw new Error(
+        `旅程の修正に失敗しました。しばらくしてから再度お試しください。`
+      );
     }
   }
 
@@ -187,7 +271,8 @@ ${prompt}`;
    */
   async generateOutline(
     prompt: string,
-    context: Article[]
+    context: Article[],
+    complexity?: RequestComplexity
   ): Promise<PlanOutline> {
     console.log(`[gemini] Generating Plan Outline...`);
 
@@ -215,7 +300,6 @@ ${prompt}`;
       3. Plan the route for ALL days.
       4. For each day, list the "highlight_areas" (e.g. ["Asakusa", "Sky Tree"]).
       5. Ensure NO DUPLICATE areas across days unless necessary (e.g. return to hub).
-      6. Return JSON only.
 
       TONE & QUALITY INSTRUCTIONS:
       - The "description" should NOT be a dry list. It must be a **Compelling, Human-like Travel Concept**.
@@ -237,21 +321,7 @@ ${prompt}`;
       - The next day's activities MUST start from the previous day's overnight_location.
       - This prevents "teleportation" bugs where travelers appear in different countries/cities without travel.
       - Example: If Day 1 ends in Istanbul, Day 2 MUST start in Istanbul (not suddenly in Cairo).
-
-      JSON:
-      {
-        "destination": "string (The chosen destination name, or combined name for multi-city trips)",
-        "description": "string (Overview of the entire trip in Japanese. WRITE LIKE A TRAVEL MAGAZINE. Emotional, descriptive, cohesive.)",
-        "days": [
-          {
-            "day": number,
-            "title": "string (Theme/Area of the day, include city name for multi-city trips)",
-            "highlight_areas": ["string", "string"],
-            "overnight_location": "string (City/Area where traveler sleeps this night - REQUIRED)",
-            "travel_method_to_next": "string (How to get to next day's location, e.g., '新幹線で移動', '飛行機でカイロへ', null for last day)"
-          }
-        ]
-      }
+      - For the last day, "travel_method_to_next" should be null.
     `;
 
     const fullPrompt = `${systemInstruction}
@@ -260,17 +330,37 @@ USER REQUEST:
 ${prompt}`;
 
     try {
-      const { text } = await generateText({
-        model: this.google(this.modelName, { structuredOutputs: true }),
-        prompt: fullPrompt,
-        temperature: 0.2, // Slightly higher for creative destination choice
+      const { model, temperature, modelName } = this.getModel('outline', complexity);
+      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+
+      const result = await withRetry(async () => {
+        const { object } = await generateObject({
+          model,
+          schema: PlanOutlineSchema,
+          prompt: fullPrompt,
+          temperature,
+        });
+        return object;
       });
 
-      const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
-      return JSON.parse(cleanedText) as PlanOutline;
-    } catch (e) {
-      console.error("[gemini] Outline generation failed:", e);
-      throw e;
+      // Normalize travel_method_to_next: convert null strings to undefined
+      const normalizedDays = result.days.map((day, index) => ({
+        ...day,
+        travel_method_to_next:
+          index === result.days.length - 1 ? undefined :
+          day.travel_method_to_next ?? undefined,
+      }));
+
+      return {
+        destination: result.destination,
+        description: result.description,
+        days: normalizedDays as PlanOutlineDay[],
+      };
+    } catch (error) {
+      console.error("[gemini] Outline generation failed:", error);
+      throw new Error(
+        `旅程アウトラインの生成に失敗しました。しばらくしてから再度お試しください。`
+      );
     }
   }
 
@@ -284,7 +374,8 @@ ${prompt}`;
     startDay: number,
     endDay: number,
     outlineDays: PlanOutlineDay[],
-    startingLocation?: string
+    startingLocation?: string,
+    complexity?: RequestComplexity
   ): Promise<DayPlan[]> {
     console.log(`[gemini] Generating details for days ${startDay}-${endDay}...`);
     if (startingLocation) {
@@ -328,7 +419,7 @@ ${prompt}`;
       Rules:
       1. Strictly follow the "highlight_areas" and "overnight_location" defined in the Master Plan Outline for each day.
       2. Create detailed activities (3 meals + spots) fitting the user's pace.
-      3. Return JSON array of DayPlans.
+      3. Return the days array following the schema.
       4. CRITICAL: Each day MUST start from the previous day's overnight_location (or startingLocation if specified).
       5. CRITICAL - TRANSIT CARD GENERATION:
          - If travel_method_to_next is specified in the outline for the PREVIOUS day, you MUST generate a "transit" object for this day.
@@ -361,37 +452,6 @@ ${prompt}`;
       - The traveler cannot teleport. If Day N ends in City A, Day N+1 MUST start in City A.
       - If moving to City B, include the actual travel (flight, train, etc.) as activities.
       - Travel time should be realistic (e.g., international flights take several hours).
-
-      JSON:
-      {
-        "days": [
-          {
-            "day": number,
-            "title": "string (Same as outline, include city name for multi-city)",
-            "transit": {
-              "type": "flight" | "train" | "bus" | "ship" | "car" | "other",
-              "departure": {
-                "place": "string (Departure location)",
-                "time": "string (Departure time, e.g., '09:00')"
-              },
-              "arrival": {
-                "place": "string (Arrival location)",
-                "time": "string (Arrival time, e.g., '12:30')"
-              },
-              "duration": "string (Travel duration, e.g., '3h 30m')",
-              "memo": "string (Optional: Flight number, train name, etc.)"
-            },
-            "activities": [
-               {
-                "time": "string",
-                "activity": "string (include city/location prefix for multi-city trips)",
-                "description": "string (Detailed, engaging description. 1-2 sentences. Mention specific dishes for food or specific photo spots.)"
-               }
-            ]
-          }
-        ],
-        "reference_indices": []
-      }
     `;
 
     const fullPrompt = `${systemInstruction}
@@ -400,20 +460,48 @@ USER REQUEST:
 ${prompt}`;
 
     try {
-      const { text } = await generateText({
-        model: this.google(this.modelName, { structuredOutputs: true }),
-        prompt: fullPrompt,
-        temperature: 0.1,
+      const { model, temperature, modelName } = this.getModel('details', complexity);
+      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+
+      const result = await withRetry(async () => {
+        const { object } = await generateObject({
+          model,
+          schema: DayPlanArrayResponseSchema,
+          prompt: fullPrompt,
+          temperature,
+        });
+        return object;
       });
 
-      const cleanedText = text.replace(/```json/g, "").replace(/```/g, "").trim();
-      const data = JSON.parse(cleanedText);
-
       // Ensure we just return the days array
-      return data.days as DayPlan[];
-    } catch (e) {
-      console.error(`[gemini] Detail generation failed for days ${startDay}-${endDay}:`, e);
-      throw e;
+      return result.days as DayPlan[];
+    } catch (error) {
+      console.error(`[gemini] Detail generation failed for days ${startDay}-${endDay}:`, error);
+      throw new Error(
+        `日程詳細の生成に失敗しました（Day ${startDay}-${endDay}）。しばらくしてから再度お試しください。`
+      );
     }
   }
+
+  /**
+   * ユーザー入力から複雑度を抽出するヘルパー
+   */
+  static extractComplexityFromUserInput(userInput: {
+    destinations?: string;
+    duration?: number;
+    companions?: string;
+    specialRequirements?: string;
+  }): RequestComplexity {
+    return extractComplexity(userInput);
+  }
+
+  /**
+   * フェーズに対応する温度設定を取得
+   */
+  static getTemperatureForPhase(phase: GenerationPhase): number {
+    return getTemperature(phase);
+  }
 }
+
+// Re-export types for convenience
+export { extractComplexity, type RequestComplexity, type GenerationPhase };
