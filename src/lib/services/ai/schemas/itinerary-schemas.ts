@@ -1,0 +1,135 @@
+/**
+ * 旅程生成用のZodスキーマ定義
+ * generateObjectでJSON形式のレスポンスを確実に取得するために使用
+ */
+
+import { z } from 'zod';
+
+// ============================================
+// TransitInfo スキーマ
+// ============================================
+
+export const TransitTypeSchema = z.enum([
+  'flight',
+  'train',
+  'bus',
+  'ship',
+  'car',
+  'other',
+]);
+
+export const TransitInfoSchema = z.object({
+  type: TransitTypeSchema.describe('移動手段'),
+  departure: z.object({
+    place: z.string().describe('出発地'),
+    time: z.string().optional().describe('出発時刻（例: "09:00"）'),
+  }),
+  arrival: z.object({
+    place: z.string().describe('到着地'),
+    time: z.string().optional().describe('到着時刻（例: "12:30"）'),
+  }),
+  duration: z.string().optional().describe('所要時間（例: "3h 30m"）'),
+  memo: z.string().optional().describe('メモ（便名など）'),
+});
+
+// ============================================
+// Activity スキーマ
+// ============================================
+
+export const ActivitySchema = z.object({
+  time: z.string().describe('時間（例: "10:00"）'),
+  activity: z.string().describe('アクティビティ名'),
+  description: z.string().describe('詳細な説明（1-2文）'),
+});
+
+// ============================================
+// DayPlan スキーマ
+// ============================================
+
+export const DayPlanSchema = z.object({
+  day: z.number().int().min(1).describe('日数（1から開始）'),
+  title: z.string().describe('日のタイトル・テーマ'),
+  transit: TransitInfoSchema.optional().describe('その日の主要な移動'),
+  activities: z.array(ActivitySchema).min(1).describe('アクティビティ一覧'),
+  reference_indices: z.array(z.number()).optional().describe('参考記事のインデックス'),
+});
+
+// ============================================
+// PlanOutline スキーマ（Step 1用）
+// ============================================
+
+export const PlanOutlineDaySchema = z.object({
+  day: z.number().int().min(1).describe('日数'),
+  title: z.string().describe('タイトル'),
+  highlight_areas: z.array(z.string()).describe('ハイライトエリア'),
+  overnight_location: z.string().describe('宿泊地（その日の終了地点）'),
+  travel_method_to_next: z.string().nullable().optional().describe('翌日への移動手段（最終日はnull）'),
+});
+
+export const PlanOutlineSchema = z.object({
+  destination: z.string().describe('目的地名'),
+  description: z.string().describe('旅行全体の説明（トラベルマガジン風に）'),
+  days: z.array(PlanOutlineDaySchema).min(1).describe('日程アウトライン'),
+});
+
+// ============================================
+// DayPlan Array スキーマ（Step 2用）
+// ============================================
+
+export const DayPlanArrayResponseSchema = z.object({
+  days: z.array(DayPlanSchema).min(1).describe('日程プラン配列'),
+  reference_indices: z.array(z.number()).optional().describe('参考記事のインデックス'),
+});
+
+// ============================================
+// Itinerary スキーマ（modifyItinerary用）
+// ============================================
+
+export const ReferenceSchema = z.object({
+  title: z.string().describe('タイトル'),
+  url: z.string().describe('URL'),
+  image: z.string().optional().describe('画像URL'),
+  snippet: z.string().optional().describe('スニペット'),
+});
+
+export const ItinerarySchema = z.object({
+  id: z.string().describe('一意識別子'),
+  destination: z.string().describe('目的地'),
+  description: z.string().describe('説明'),
+  reasoning: z.string().optional().describe('AIの思考プロセス'),
+  heroImage: z.string().nullable().optional().describe('ヒーロー画像URL'),
+  heroImagePhotographer: z.string().optional().describe('フォトグラファー名'),
+  heroImagePhotographerUrl: z.string().optional().describe('フォトグラファープロフィールURL'),
+  days: z.array(DayPlanSchema).min(1).describe('日程プラン'),
+  references: z.array(ReferenceSchema).optional().describe('参考情報'),
+  reference_indices: z.array(z.number()).optional().describe('使用記事インデックス'),
+});
+
+// ============================================
+// Legacy Itinerary スキーマ（generateItinerary用）
+// ============================================
+
+export const LegacyItineraryResponseSchema = z.object({
+  reasoning: z.string().optional().describe('AIの思考プロセス'),
+  id: z.string().describe('一意識別子'),
+  destination: z.string().describe('目的地'),
+  heroImage: z.string().nullable().optional().describe('ヒーロー画像URL'),
+  description: z.string().describe('説明'),
+  days: z.array(DayPlanSchema).min(1).describe('日程プラン'),
+  reference_indices: z.array(z.number()).optional().describe('使用記事インデックス'),
+});
+
+// ============================================
+// 型エクスポート
+// ============================================
+
+export type TransitType = z.infer<typeof TransitTypeSchema>;
+export type TransitInfoParsed = z.infer<typeof TransitInfoSchema>;
+export type ActivityParsed = z.infer<typeof ActivitySchema>;
+export type DayPlanParsed = z.infer<typeof DayPlanSchema>;
+export type PlanOutlineDayParsed = z.infer<typeof PlanOutlineDaySchema>;
+export type PlanOutlineParsed = z.infer<typeof PlanOutlineSchema>;
+export type DayPlanArrayResponse = z.infer<typeof DayPlanArrayResponseSchema>;
+export type ReferenceParsed = z.infer<typeof ReferenceSchema>;
+export type ItineraryParsed = z.infer<typeof ItinerarySchema>;
+export type LegacyItineraryResponse = z.infer<typeof LegacyItineraryResponseSchema>;

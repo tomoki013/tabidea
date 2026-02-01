@@ -35,6 +35,29 @@ export interface TransitInfo {
 }
 
 /**
+ * スポット検証結果（Phase 3で拡張予定）
+ */
+export interface ActivityValidation {
+  /** スポット名 */
+  spotName: string;
+  /** 検証済みかどうか */
+  isVerified: boolean;
+  /** 信頼度 */
+  confidence: 'high' | 'medium' | 'low' | 'unverified';
+  /** 情報源 */
+  source?: 'google_places' | 'blog' | 'ai_generated';
+  /** Google Place ID */
+  placeId?: string;
+  /** 詳細情報 */
+  details?: {
+    address?: string;
+    rating?: number;
+    openingHours?: string[];
+    photos?: string[];
+  };
+}
+
+/**
  * アクティビティ
  */
 export interface Activity {
@@ -46,6 +69,8 @@ export interface Activity {
   description: string;
   /** ロックされているか（true: 変更不可, false: 変更可） */
   isLocked?: boolean;
+  /** スポット検証結果（Phase 3で設定予定） */
+  validation?: ActivityValidation;
 }
 
 /**
