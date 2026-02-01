@@ -7,10 +7,11 @@ import Image from "next/image";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
 import { deleteAccount } from "@/app/actions/travel-planner";
 import { getBillingAccessInfo, getUserUsageStats } from "@/app/actions/billing";
+import type { UsageStats } from "@/app/actions/billing";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
 import { PRO_PLAN_NAME } from "@/lib/billing/constants";
-import type { BillingAccessInfo, UsageStats } from "@/app/actions/billing";
+import type { BillingAccessInfo } from "@/types";
 import {
   FaSpinner,
   FaSave,

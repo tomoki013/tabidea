@@ -58,6 +58,11 @@ export interface ActivityValidation {
 }
 
 /**
+ * アクティビティタイプ
+ */
+export type ActivityType = 'spot' | 'transit' | 'accommodation' | 'meal' | 'other';
+
+/**
  * アクティビティ
  */
 export interface Activity {
@@ -67,6 +72,8 @@ export interface Activity {
   activity: string;
   /** 説明 */
   description: string;
+  /** アクティビティの種類（カード表示用） */
+  activityType?: ActivityType;
   /** ロックされているか（true: 変更不可, false: 変更可） */
   isLocked?: boolean;
   /** スポット検証結果（Phase 3で設定予定） */
