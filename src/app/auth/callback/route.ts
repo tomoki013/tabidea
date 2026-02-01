@@ -12,8 +12,8 @@ export async function GET(request: Request) {
   const modal = searchParams.get('modal');
   const autoSave = searchParams.get('autoSave');
 
-  // Determine base URL: Prioritize environment variable
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || origin;
+  // Determine base URL: Prioritize origin from request
+  const baseUrl = origin || process.env.NEXT_PUBLIC_APP_URL;
 
   if (code) {
     const supabase = await createClient();

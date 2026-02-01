@@ -95,7 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       provider: AuthProvider,
       options?: { queryParams?: Record<string, string> },
     ) => {
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+      const appUrl = window.location.origin || process.env.NEXT_PUBLIC_APP_URL;
 
       let callbackUrl = `${appUrl}/auth/callback`;
 
