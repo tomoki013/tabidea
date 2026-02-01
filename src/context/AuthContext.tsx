@@ -19,7 +19,10 @@ interface AuthContextType {
   session: Session | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  signIn: (provider: AuthProvider) => Promise<void>;
+  signIn: (
+    provider: AuthProvider,
+    options?: { queryParams?: Record<string, string> },
+  ) => Promise<void>;
   signOut: () => Promise<void>;
   refreshSession: () => Promise<void>;
 }
@@ -88,13 +91,31 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [supabase.auth]);
 
   const signIn = useCallback(
-    async (provider: AuthProvider) => {
+    async (
+      provider: AuthProvider,
+      options?: { queryParams?: Record<string, string> },
+    ) => {
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
+
+      let callbackUrl = `${appUrl}/auth/callback`;
+
+      if (options?.queryParams) {
+        const params = new URLSearchParams();
+        Object.entries(options.queryParams).forEach(([key, value]) => {
+          if (value) {
+            params.set(key, value);
+          }
+        });
+        const queryString = params.toString();
+        if (queryString) {
+          callbackUrl += `?${queryString}`;
+        }
+      }
 
       const { error } = await supabase.auth.signInWithOAuth({
         provider,
         options: {
-          redirectTo: `${appUrl}/auth/callback`,
+          redirectTo: callbackUrl,
         },
       });
 

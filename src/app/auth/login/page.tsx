@@ -32,27 +32,14 @@ export default function LoginPage() {
 
     try {
       // Build callback URL with restoration parameters
-      const callbackParams = new URLSearchParams();
-      callbackParams.set('redirect', redirectTo);
-      if (restore) callbackParams.set('restore', restore);
-      if (modal) callbackParams.set('modal', modal);
-      if (autoSave) callbackParams.set('autoSave', autoSave);
+      const queryParams: Record<string, string> = {
+        redirect: redirectTo,
+      };
+      if (restore) queryParams.restore = restore;
+      if (modal) queryParams.modal = modal;
+      if (autoSave) queryParams.autoSave = autoSave;
 
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || window.location.origin;
-      const callbackUrl = `${appUrl}/auth/callback?${callbackParams.toString()}`;
-
-      // Manually trigger OAuth with custom redirect
-      const supabase = (await import('@/lib/supabase/client')).createClient();
-      const { error: signInError } = await supabase.auth.signInWithOAuth({
-        provider,
-        options: {
-          redirectTo: callbackUrl,
-        },
-      });
-
-      if (signInError) {
-        throw signInError;
-      }
+      await signIn(provider, { queryParams });
     } catch (err) {
       console.error('Sign in error:', err);
       setError('ログインに失敗しました。もう一度お試しください。');
