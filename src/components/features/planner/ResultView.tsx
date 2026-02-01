@@ -630,7 +630,20 @@ export default function ResultView({
                     </div>
 
                     {/* Activities */}
-                    <div className="border-l-2 border-stone-200 ml-8 space-y-8 pb-8 relative">
+                    <div className={`
+                      ${day.ui_type === 'compact' ? 'border-l border-stone-200 ml-4 space-y-4 pb-4' :
+                        day.ui_type === 'narrative' ? 'ml-0 space-y-8 pb-8' :
+                        'border-l-2 border-stone-200 ml-8 space-y-8 pb-8'}
+                      relative transition-all
+                    `}>
+                      {/* Generative UI Label */}
+                      {!isEditing && day.ui_type && day.ui_type !== 'default' && (
+                        <div className="absolute right-0 -top-12 flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-primary/10 to-transparent rounded-full text-xs font-mono text-primary/70 pointer-events-none">
+                          <span className="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
+                          {day.ui_type === 'compact' ? 'Compact View' : 'Narrative View'}
+                        </div>
+                      )}
+
                       {/* Transit Card */}
                       {day.transit && (() => {
                         const transitIcons = {
@@ -653,13 +666,14 @@ export default function ResultView({
                         const iconColor = transitColors[day.transit.type] || 'bg-stone-500';
 
                         return (
-                          <div className="relative pl-4 sm:pl-10 mb-8">
-                            {/* Enhanced Transit Icon on timeline */}
-                            <div className={`absolute left-[-13px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full ${iconColor} border-2 border-white shadow-lg z-20 flex items-center justify-center`}>
-                              <TransitIcon className="text-white text-xs" />
-                            </div>
-                            {/* Background accent for transit */}
-                            <div className="absolute left-[-30px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gradient-to-r from-transparent via-stone-100/50 to-transparent blur-sm"></div>
+                          <div className={`relative ${day.ui_type === 'compact' ? 'pl-6' : day.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' : 'pl-4 sm:pl-10'} mb-8`}>
+                            {/* Enhanced Transit Icon on timeline - Hide in Narrative */}
+                            {day.ui_type !== 'narrative' && (
+                              <div className={`absolute ${day.ui_type === 'compact' ? 'left-[-9px]' : 'left-[-13px]'} top-1/2 -translate-y-1/2 ${day.ui_type === 'compact' ? 'w-4 h-4 text-[10px]' : 'w-6 h-6 text-xs'} rounded-full ${iconColor} border-2 border-white shadow-lg z-20 flex items-center justify-center`}>
+                                <TransitIcon className="text-white" />
+                              </div>
+                            )}
+
                             <TransitCard
                               transit={day.transit}
                               isEditing={isEditing}
@@ -670,25 +684,37 @@ export default function ResultView({
                       })()}
 
                       {day.activities.map((act, actIndex) => (
-                        <div key={actIndex} className="relative pl-10 group">
-                          {/* Dot on timeline */}
-                          <div className="absolute left-[-9px] top-6 w-4 h-4 rounded-full bg-white border-4 border-primary shadow-sm z-10"></div>
+                        <div
+                          key={actIndex}
+                          className={`
+                            relative group
+                            ${day.ui_type === 'compact' ? 'pl-6' :
+                              day.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' :
+                              'pl-10'}
+                          `}
+                        >
+                          {/* Dot on timeline - Hide in Narrative */}
+                          {day.ui_type !== 'narrative' && (
+                            <div className={`absolute ${day.ui_type === 'compact' ? 'left-[-5px] top-4 w-2.5 h-2.5' : 'left-[-9px] top-6 w-4 h-4'} rounded-full bg-white border-4 border-primary shadow-sm z-10`}></div>
+                          )}
 
                           {/* Activity Card */}
                           <div
-                            className={`bg-white border rounded-xl p-6 shadow-sm transition-all duration-300 relative overflow-hidden ${
-                              isEditing
-                                ? "border-primary/30 ring-2 ring-primary/5"
-                                : "hover:bg-stone-50 border-stone-100 hover:shadow-md group-hover:-translate-y-1"
-                            }`}
+                            className={`
+                              bg-white rounded-xl shadow-sm transition-all duration-300 relative overflow-hidden
+                              ${isEditing ? "border border-primary/30 ring-2 ring-primary/5 p-6" :
+                                day.ui_type === 'compact' ? "border border-stone-100 p-3 hover:bg-stone-50 flex items-center gap-4" :
+                                day.ui_type === 'narrative' ? "border-none shadow-none bg-transparent p-0 hover:bg-transparent" :
+                                "border border-stone-100 p-6 hover:bg-stone-50 hover:shadow-md group-hover:-translate-y-1"}
+                            `}
                           >
-                            {/* Decorative background stripe */}
-                            {!isEditing && (
+                            {/* Decorative background stripe - Only Default */}
+                            {!isEditing && day.ui_type !== 'narrative' && day.ui_type !== 'compact' && (
                               <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
                             )}
 
                             {isEditing ? (
-                              <div className="space-y-3">
+                              <div className="space-y-3 w-full">
                                 <div className="flex items-start justify-between gap-4">
                                   <div className="flex-1 space-y-2">
                                     <div className="flex items-center gap-2">
@@ -800,26 +826,73 @@ export default function ResultView({
                                 />
                               </div>
                             ) : (
+                              // ==========================================
+                              // VIEW MODE RENDERING BASED ON UI_TYPE
+                              // ==========================================
                               <>
-                                <div className="flex items-center gap-2 mb-2">
-                                  <div className="text-stone-500 text-sm font-mono bg-stone-100 px-2 py-1 rounded-md flex items-center gap-2">
-                                    <FaClock className="text-primary/70" />
-                                    {act.time}
-                                  </div>
-                                  {act.isLocked && (
-                                    <div className="flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
-                                      <FaLock size={10} />
-                                      <span>固定</span>
+                                {/* NARRATIVE VIEW */}
+                                {day.ui_type === 'narrative' ? (
+                                  <div className="relative border-l-4 border-primary/20 pl-6 py-1">
+                                    <div className="flex items-baseline gap-3 mb-2">
+                                      <span className="text-primary font-serif font-bold text-lg">{act.time}</span>
+                                      <h4 className="text-2xl font-serif font-bold text-stone-800">
+                                        {act.activity}
+                                      </h4>
                                     </div>
-                                  )}
-                                </div>
+                                    <p className="text-stone-600 leading-relaxed text-lg font-serif">
+                                      {act.description}
+                                    </p>
+                                    {act.isLocked && (
+                                      <div className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
+                                        <FaLock size={10} />
+                                        <span>固定</span>
+                                      </div>
+                                    )}
+                                  </div>
+                                ) : day.ui_type === 'compact' ? (
+                                  /* COMPACT VIEW */
+                                  <>
+                                    <div className="flex-shrink-0 w-16 text-stone-500 text-xs font-mono font-bold text-right">
+                                      {act.time}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <div className="flex items-center gap-2">
+                                        <h4 className="text-sm font-bold text-stone-800 truncate">
+                                          {act.activity}
+                                        </h4>
+                                        {act.isLocked && (
+                                          <FaLock size={10} className="text-amber-500 flex-shrink-0" />
+                                        )}
+                                      </div>
+                                      <p className="text-stone-500 text-xs truncate">
+                                        {act.description}
+                                      </p>
+                                    </div>
+                                  </>
+                                ) : (
+                                  /* DEFAULT VIEW */
+                                  <>
+                                    <div className="flex items-center gap-2 mb-2">
+                                      <div className="text-stone-500 text-sm font-mono bg-stone-100 px-2 py-1 rounded-md flex items-center gap-2">
+                                        <FaClock className="text-primary/70" />
+                                        {act.time}
+                                      </div>
+                                      {act.isLocked && (
+                                        <div className="flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
+                                          <FaLock size={10} />
+                                          <span>固定</span>
+                                        </div>
+                                      )}
+                                    </div>
 
-                                <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
-                                  {act.activity}
-                                </h4>
-                                <p className="text-stone-600 leading-relaxed text-sm">
-                                  {act.description}
-                                </p>
+                                    <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
+                                      {act.activity}
+                                    </h4>
+                                    <p className="text-stone-600 leading-relaxed text-sm">
+                                      {act.description}
+                                    </p>
+                                  </>
+                                )}
                               </>
                             )}
                           </div>

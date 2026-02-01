@@ -52,6 +52,7 @@ export const DayPlanSchema = z.object({
   transit: TransitInfoSchema.optional().describe('その日の主要な移動'),
   activities: z.array(ActivitySchema).min(1).describe('アクティビティ一覧'),
   reference_indices: z.array(z.number()).optional().describe('参考記事のインデックス'),
+  ui_type: z.enum(['default', 'compact', 'narrative']).optional().describe('AIが推奨するUIタイプ（default: 標準, compact: 詰め込み/移動多め, narrative: ゆったり/物語重視）'),
 });
 
 // ============================================
