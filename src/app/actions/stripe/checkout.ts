@@ -135,7 +135,12 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
       }
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000";
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+    if (!appUrl) {
+      console.error("NEXT_PUBLIC_APP_URL is not set");
+      return { success: false, error: "configuration_error" };
+    }
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,

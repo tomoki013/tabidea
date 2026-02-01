@@ -2,7 +2,7 @@
 const { existsSync, readFileSync } = require("fs");
 const { join } = require("path");
 
-const siteUrl = "https://tabideai";
+const siteUrl = "https://tabide.ai";
 
 module.exports = {
   siteUrl,

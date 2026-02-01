@@ -12,6 +12,9 @@ export async function GET(request: Request) {
   const modal = searchParams.get('modal');
   const autoSave = searchParams.get('autoSave');
 
+  // Determine base URL: Prioritize environment variable
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || origin;
+
   if (code) {
     const supabase = await createClient();
     const { error, data } = await supabase.auth.exchangeCodeForSession(code);
@@ -23,15 +26,6 @@ export async function GET(request: Request) {
 
       // Clear the cookie
       cookieStore.delete('tabidea_has_local_plans');
-
-      // Determine base URL
-      const forwardedHost = request.headers.get('x-forwarded-host');
-      const isLocalEnv = process.env.NODE_ENV === 'development';
-      const baseUrl = isLocalEnv
-        ? origin
-        : forwardedHost
-          ? `https://${forwardedHost}`
-          : origin;
 
       // If user has local plans, redirect to sync page (unless restoring state)
       if (hasLocalPlans && !restore) {
@@ -56,5 +50,5 @@ export async function GET(request: Request) {
   }
 
   // Return to error page or home on failure
-  return NextResponse.redirect(`${origin}/auth/login?error=auth_failed`);
+  return NextResponse.redirect(`${baseUrl}/auth/login?error=auth_failed`);
 }

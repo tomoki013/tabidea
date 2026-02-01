@@ -43,7 +43,13 @@ export async function createPortalSession(): Promise<void> {
     redirect('/pricing?error=no_subscription');
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+
+  if (!baseUrl) {
+    console.error('NEXT_PUBLIC_APP_URL is not configured');
+    redirect('/pricing?error=configuration');
+  }
+
   // 末尾のスラッシュを削除して正規化
   const returnUrl = `${baseUrl.replace(/\/$/, '')}/pricing`;
 
