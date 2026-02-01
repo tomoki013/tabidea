@@ -1,5 +1,6 @@
 "use server";
 
+import { headers } from "next/headers";
 import { stripe } from "@/lib/stripe/client";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
@@ -135,10 +136,16 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
       }
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+    const headersList = await headers();
+    const host = headersList.get("host");
+    const protocol = headersList.get("x-forwarded-proto") || "https";
+
+    const appUrl = host
+      ? `${protocol}://${host}`
+      : process.env.NEXT_PUBLIC_APP_URL;
 
     if (!appUrl) {
-      console.error("NEXT_PUBLIC_APP_URL is not set");
+      console.error("Base URL could not be determined");
       return { success: false, error: "configuration_error" };
     }
 

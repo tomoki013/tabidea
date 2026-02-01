@@ -1,6 +1,7 @@
 'use server';
 
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import Stripe from 'stripe';
 
 import { getUser, createClient } from '@/lib/supabase/server';
@@ -43,10 +44,16 @@ export async function createPortalSession(): Promise<void> {
     redirect('/pricing?error=no_subscription');
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
+  const headersList = await headers();
+  const host = headersList.get('host');
+  const protocol = headersList.get('x-forwarded-proto') || 'https';
+
+  const baseUrl = host
+    ? `${protocol}://${host}`
+    : process.env.NEXT_PUBLIC_APP_URL;
 
   if (!baseUrl) {
-    console.error('NEXT_PUBLIC_APP_URL is not configured');
+    console.error('Base URL could not be determined');
     redirect('/pricing?error=configuration');
   }
 

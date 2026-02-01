@@ -12,8 +12,10 @@ export async function GET(request: Request) {
   const modal = searchParams.get('modal');
   const autoSave = searchParams.get('autoSave');
 
-  // Determine base URL: Prioritize origin from request
-  const baseUrl = origin || process.env.NEXT_PUBLIC_APP_URL;
+  // Determine base URL: Prioritize headers (x-forwarded-host), then request origin
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host');
+  const protocol = request.headers.get('x-forwarded-proto') || 'https';
+  const baseUrl = host ? `${protocol}://${host}` : (origin || process.env.NEXT_PUBLIC_APP_URL);
 
   if (code) {
     const supabase = await createClient();
