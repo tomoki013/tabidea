@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import TravelPlanner from "@/components/features/planner";
+import TravelPlannerSimplified from "@/components/features/planner/TravelPlannerSimplified";
 import { Header } from "@/components/common";
 import {
   HeroSection,
@@ -52,9 +52,8 @@ export default async function Home({ searchParams }: HomeProps) {
               </div>
             }
           >
-            <TravelPlanner
+            <TravelPlannerSimplified
               initialInput={initialInput}
-              initialStep={initialInput ? 1 : undefined}
             />
           </Suspense>
         </HeroSection>

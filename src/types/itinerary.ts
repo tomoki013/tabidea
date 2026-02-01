@@ -94,6 +94,8 @@ export interface DayPlan {
   activities: Activity[];
   /** 参考記事のインデックス */
   reference_indices?: number[];
+  /** UIタイプ（Generative UI） */
+  ui_type?: 'default' | 'compact' | 'narrative';
 }
 
 /**

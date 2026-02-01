@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from 'next/navigation';
-import TravelPlanner from "@/components/features/planner";
+import TravelPlannerSimplified from "@/components/features/planner/TravelPlannerSimplified";
 import { UserInput } from '@/types';
 import { restorePendingState, clearPendingState } from '@/lib/restore/pending-state';
 
@@ -129,9 +129,8 @@ export default function PlanModal({
           </svg>
         </button>
 
-        <TravelPlanner
+        <TravelPlannerSimplified
           initialInput={restoredInput ?? initialInput}
-          initialStep={restoredStep ?? initialStep}
           onClose={handleClose}
         />
       </div>

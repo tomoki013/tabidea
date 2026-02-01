@@ -431,6 +431,11 @@ ${prompt}`;
            * memo: Optional details like flight numbers, train names, etc.
          - Transit should appear at the BEGINNING of the day, before other activities.
          - If there is no travel between locations, do NOT include a transit object.
+      6. GENERATIVE UI SELECTION:
+         - Select the best \`ui_type\` for each day based on its content:
+           * "compact": For days with MANY short activities, heavy transit, or business-like schedules.
+           * "narrative": For relaxed days, nature exploration, cultural immersion, or when the "vibe" is more important than the schedule.
+           * "default": For standard sightseeing days with a balanced mix of spots and meals.
 
       QUALITY & TONE INSTRUCTIONS (IMPORTANT):
       - WRITE LIKE A HUMAN TRAVEL WRITER, not a robot.
