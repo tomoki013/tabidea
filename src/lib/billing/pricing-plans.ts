@@ -1,4 +1,5 @@
 import type { PricingPlanInfo } from '@/types/billing';
+import { PRO_PLAN_NAME } from './constants';
 
 /**
  * 料金プラン情報
@@ -19,7 +20,7 @@ export const PRICING_PLANS: PricingPlanInfo[] = [
   },
   {
     id: 'pro_monthly',
-    name: 'Pro',
+    name: PRO_PLAN_NAME,
     description: 'すべての機能を無制限に',
     price: 1500,
     priceDisplay: '¥1,500',
