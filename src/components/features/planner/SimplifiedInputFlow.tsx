@@ -203,6 +203,38 @@ export default function SimplifiedInputFlow({
   const duration = parseDuration(input.dates);
   const isOmakase = input.isDestinationDecided === false;
 
+  // Parse date state
+  const dateMatch = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
+  const currentStartDate = dateMatch ? dateMatch[1] : "";
+  const isDateUndecided = !currentStartDate && !input.dates.includes("から");
+
+  // Local state for dates
+  const [startDate, setStartDate] = useState(currentStartDate);
+  const [endDate, setEndDate] = useState(() => {
+    if (currentStartDate && duration) {
+      const d = new Date(currentStartDate);
+      d.setDate(d.getDate() + (duration - 1));
+      return d.toISOString().split('T')[0];
+    }
+    return "";
+  });
+  // Default to calendar view unless explicitly explicitly duration-only (and not just the default)
+  const [useCalendar, setUseCalendar] = useState(true);
+
+  // Sync local date state when input changes externally
+  useEffect(() => {
+    const match = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
+    if (match) {
+        setStartDate(match[1]);
+        const dur = parseDuration(input.dates);
+        if (dur > 0) {
+            const d = new Date(match[1]);
+            d.setDate(d.getDate() + (dur - 1));
+            setEndDate(d.toISOString().split('T')[0]);
+        }
+    }
+  }, [input.dates]);
+
   // Phase completion checks
   const isPhase1Complete =
     (input.isDestinationDecided === true && input.destinations.length > 0) ||
@@ -217,7 +249,11 @@ export default function SimplifiedInputFlow({
   const hasCompanion = !!input.companions;
   const hasDates = !!input.dates;
 
-  const canGenerate = hasDestinationOrOmakase && hasCompanion && hasDates;
+  // Fix: Ensure canGenerate is true if mandatory fields are filled
+  // Even if isDestinationDecided is technically undefined but destinations exist, it should work.
+  const hasDest = (input.destinations && input.destinations.length > 0) || input.isDestinationDecided === false;
+
+  const canGenerate = hasDest && hasCompanion && hasDates;
 
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
@@ -272,7 +308,38 @@ export default function SimplifiedInputFlow({
   };
 
   const handleDurationChange = (newDuration: number) => {
-    onChange({ dates: formatDuration(newDuration) });
+    if (useCalendar && startDate) {
+        // Update end date based on new duration
+        const d = new Date(startDate);
+        d.setDate(d.getDate() + (newDuration - 1));
+        const newEndDate = d.toISOString().split('T')[0];
+        setEndDate(newEndDate);
+
+        const nights = newDuration - 1;
+        const dateString = `${startDate}から${nights}泊${newDuration}日`;
+        onChange({ dates: dateString });
+    } else {
+        onChange({ dates: formatDuration(newDuration) });
+    }
+  };
+
+  const handleDateRangeChange = (newStart: string, newEnd: string) => {
+    setStartDate(newStart);
+    setEndDate(newEnd);
+
+    if (newStart && newEnd) {
+        const s = new Date(newStart);
+        const e = new Date(newEnd);
+        const diffTime = e.getTime() - s.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays >= 0) {
+            const durationDays = diffDays + 1;
+            const nights = durationDays - 1;
+            const dateString = `${newStart}から${nights}泊${durationDays}日`;
+            onChange({ dates: dateString });
+        }
+    }
   };
 
   const toggleTheme = (themeId: string) => {
@@ -427,46 +494,116 @@ export default function SimplifiedInputFlow({
 
         {/* Duration Selector */}
         <div className="space-y-3">
-          <label className="block text-sm font-bold text-stone-700">
-            日程
-          </label>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
-            {DURATION_OPTIONS.map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => handleDurationChange(opt.value)}
-                className={`py-2 px-2 text-xs sm:text-sm font-medium rounded-lg border-2 transition-all ${
-                  duration === opt.value
-                    ? "border-primary bg-primary text-white"
-                    : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
-          {/* Custom Duration */}
-          {duration > 7 && (
-            <div className="flex items-center justify-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => handleDurationChange(Math.max(1, duration - 1))}
-                className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-              <span className="text-lg font-bold text-stone-800 min-w-[80px] text-center">
-                {formatDuration(duration)}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleDurationChange(Math.min(30, duration + 1))}
-                className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-              </button>
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-bold text-stone-700">
+              日程
+            </label>
+
+            {/* Toggle Switch */}
+            <div className="bg-stone-100 p-1 rounded-lg flex text-xs font-bold">
+                <button
+                    type="button"
+                    onClick={() => setUseCalendar(true)}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                        useCalendar
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-stone-500 hover:text-stone-700"
+                    }`}
+                >
+                    カレンダー
+                </button>
+                <button
+                    type="button"
+                    onClick={() => {
+                        setUseCalendar(false);
+                        onChange({ dates: formatDuration(duration || 3) });
+                        setStartDate("");
+                        setEndDate("");
+                    }}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                        !useCalendar
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-stone-500 hover:text-stone-700"
+                    }`}
+                >
+                    日数のみ
+                </button>
             </div>
+          </div>
+
+          {useCalendar ? (
+            <div className="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                        <span className="text-xs font-bold text-stone-500">出発日</span>
+                        <input
+                            type="date"
+                            value={startDate}
+                            min={new Date().toISOString().split('T')[0]}
+                            onChange={(e) => handleDateRangeChange(e.target.value, endDate)}
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        />
+                    </div>
+                    <div className="space-y-1">
+                        <span className="text-xs font-bold text-stone-500">帰着日</span>
+                        <input
+                            type="date"
+                            value={endDate}
+                            min={startDate || new Date().toISOString().split('T')[0]}
+                            onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        />
+                    </div>
+                </div>
+                <div className="text-center">
+                    {startDate && endDate ? (
+                        <p className="text-sm font-bold text-stone-700 bg-white inline-block px-4 py-1 rounded-full border border-stone-200 shadow-sm">
+                           🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
+                        </p>
+                    ) : (
+                        <p className="text-xs text-stone-400">日付を選択してください</p>
+                    )}
+                </div>
+            </div>
+          ) : (
+            <>
+                <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                    {DURATION_OPTIONS.map((opt) => (
+                    <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => handleDurationChange(opt.value)}
+                        className={`py-2 px-2 text-xs sm:text-sm font-medium rounded-lg border-2 transition-all ${
+                        duration === opt.value
+                            ? "border-primary bg-primary text-white"
+                            : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
+                        }`}
+                    >
+                        {opt.label}
+                    </button>
+                    ))}
+                </div>
+                {/* Custom Duration */}
+                <div className="flex items-center justify-center gap-4 pt-2">
+                <button
+                    type="button"
+                    onClick={() => handleDurationChange(Math.max(1, duration - 1))}
+                    className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
+                >
+                    <Minus className="w-4 h-4" />
+                </button>
+                <span className="text-lg font-bold text-stone-800 min-w-[80px] text-center">
+                    {formatDuration(duration)}
+                </span>
+                <button
+                    type="button"
+                    onClick={() => handleDurationChange(Math.min(30, duration + 1))}
+                    className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
+                >
+                    <Plus className="w-4 h-4" />
+                </button>
+                </div>
+            </>
           )}
         </div>
 
@@ -475,7 +612,7 @@ export default function SimplifiedInputFlow({
           <label className="block text-sm font-bold text-stone-700">
             誰と行く？
           </label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {COMPANION_OPTIONS.map((opt) => (
               <button
                 key={opt.id}
@@ -488,7 +625,7 @@ export default function SimplifiedInputFlow({
                 }`}
               >
                 <span>{opt.icon}</span>
-                <span className="hidden sm:inline">{opt.label}</span>
+                <span>{opt.label}</span>
               </button>
             ))}
           </div>
@@ -546,7 +683,7 @@ export default function SimplifiedInputFlow({
             <label className="block text-sm font-bold text-stone-700">
               テーマ（複数選択可）
             </label>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {THEME_OPTIONS.map((theme) => {
                 const Icon = theme.icon;
                 const isSelected = input.theme.includes(theme.id);
