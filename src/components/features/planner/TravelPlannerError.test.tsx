@@ -78,7 +78,7 @@ describe("TravelPlanner Error Handling", () => {
 
     render(
       <TravelPlanner
-        initialStep={8}
+        initialStep={9}
         initialInput={mockInput}
       />
     );
@@ -104,7 +104,7 @@ describe("TravelPlanner Error Handling", () => {
 
     render(
       <TravelPlanner
-        initialStep={8}
+        initialStep={9}
         initialInput={mockInput}
       />
     );

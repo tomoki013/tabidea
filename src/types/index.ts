@@ -131,3 +131,14 @@ export type {
   CheckoutSessionResult,
   PortalSessionResult,
 } from './billing';
+
+// ストリーミング生成関連型
+export type {
+  GenerationPhase,
+  DayGenerationStatus,
+  HeroImageData,
+  ChunkInfo,
+  GenerationState,
+} from './streaming';
+
+export { initialGenerationState } from './streaming';

@@ -1,15 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { UserInput, Itinerary, DayPlan } from '@/types';
+import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
+import type { DayGenerationStatus, ChunkInfo } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
 import StepContainer from "./StepContainer";
-import LoadingView from "./LoadingView";
+import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
+import StreamingResultView from "./StreamingResultView";
 import StepDestination from "./steps/StepDestination";
 import StepDates from "./steps/StepDates";
 import StepCompanions from "./steps/StepCompanions";
@@ -75,6 +77,10 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     "idle" | "loading" | "updating" | "complete" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Streaming generation state
+  const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
+  const chunkPromisesRef = useRef<Map<string, Promise<void>>>(new Map());
 
   // 利用制限関連のステート
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -279,33 +285,183 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
     }, 700); // Wait for most of the animation to play before switching view
   };
 
+  // Helper to update day status in generationState
+  const updateDayStatus = useCallback((dayNumber: number, status: DayGenerationStatus) => {
+    setGenerationState(prev => {
+      const newStatuses = new Map(prev.dayStatuses);
+      newStatuses.set(dayNumber, status);
+      return { ...prev, dayStatuses: newStatuses };
+    });
+  }, []);
+
+  // Helper to add completed days
+  const addCompletedDays = useCallback((days: DayPlan[]) => {
+    setGenerationState(prev => {
+      const newCompletedDays = [...prev.completedDays, ...days];
+      // Sort by day number
+      newCompletedDays.sort((a, b) => a.day - b.day);
+      return { ...prev, completedDays: newCompletedDays };
+    });
+  }, []);
+
+  // Generate a single chunk and update state
+  const generateChunk = useCallback(async (
+    chunkInput: UserInput,
+    context: any[],
+    outlineDays: any[],
+    chunk: ChunkInfo,
+    allOutlineDays: any[]
+  ) => {
+    // Mark days as generating
+    for (let d = chunk.start; d <= chunk.end; d++) {
+      updateDayStatus(d, 'generating');
+    }
+
+    // Determine start location from previous day
+    let previousOvernightLocation: string | undefined = undefined;
+    if (chunk.start > 1) {
+      const prevDay = allOutlineDays.find((d: any) => d.day === chunk.start - 1);
+      if (prevDay) {
+        previousOvernightLocation = prevDay.overnight_location;
+      }
+    }
+
+    try {
+      const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
+      const result = await generatePlanChunk(
+        chunkInput,
+        context,
+        chunkOutlineDays,
+        chunk.start,
+        chunk.end,
+        previousOvernightLocation
+      );
+
+      if (result.success && result.data) {
+        // Mark days as completed and add them
+        for (const day of result.data) {
+          updateDayStatus(day.day, 'completed');
+        }
+        addCompletedDays(result.data);
+      } else {
+        // Mark days as error
+        for (let d = chunk.start; d <= chunk.end; d++) {
+          updateDayStatus(d, 'error');
+        }
+      }
+    } catch (error) {
+      console.error(`Chunk ${chunk.start}-${chunk.end} failed:`, error);
+      for (let d = chunk.start; d <= chunk.end; d++) {
+        updateDayStatus(d, 'error');
+      }
+    }
+  }, [updateDayStatus, addCompletedDays]);
+
+  // Save the completed plan
+  const saveCompletedPlan = useCallback(async () => {
+    const { outline, heroImage, completedDays, context, updatedInput } = generationState;
+
+    if (!outline || !updatedInput || completedDays.length === 0) {
+      return;
+    }
+
+    const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
+    const simpleId = Math.random().toString(36).substring(2, 15);
+
+    const finalPlan: Itinerary = {
+      id: simpleId,
+      destination: outline.destination,
+      description: outline.description,
+      heroImage: heroImage?.url || undefined,
+      heroImagePhotographer: heroImage?.photographer || undefined,
+      heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
+      days: sortedDays,
+      references: (context || []).map(c => ({
+        title: c.title,
+        url: c.url,
+        image: c.imageUrl,
+        snippet: c.snippet
+      }))
+    };
+
+    try {
+      if (isAuthenticated) {
+        const saveResult = await savePlan(updatedInput, finalPlan, false);
+        if (saveResult.success && saveResult.shareCode) {
+          await refreshPlans();
+          router.push(`/plan/${saveResult.shareCode}`);
+        } else {
+          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
+          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+          notifyPlanChange();
+          router.push(`/plan/local/${localPlan.id}`);
+        }
+      } else {
+        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+        notifyPlanChange();
+        router.push(`/plan/local/${localPlan.id}`);
+      }
+
+      if (onClose) {
+        onClose();
+      }
+    } catch (error) {
+      console.error("Failed to save plan:", error);
+      setGenerationState(prev => ({
+        ...prev,
+        phase: 'error',
+        error: 'プランの保存に失敗しました。',
+        errorType: 'save'
+      }));
+    }
+  }, [generationState, isAuthenticated, refreshPlans, router, onClose]);
+
+  // Watch for completion and auto-save
+  useEffect(() => {
+    const { phase, completedDays, totalDays } = generationState;
+
+    if (phase === 'generating_details' && totalDays > 0 && completedDays.length === totalDays) {
+      // All days completed, mark as complete and save
+      setGenerationState(prev => ({ ...prev, phase: 'completed' }));
+    }
+  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase]);
+
+  // Auto-save when completed
+  useEffect(() => {
+    if (generationState.phase === 'completed') {
+      saveCompletedPlan();
+    }
+  }, [generationState.phase, saveCompletedPlan]);
+
   const handlePlan = async () => {
     if (!validateStep(step)) return;
 
-    // Start loading state while generating plan
-    setStatus("loading");
+    // Reset generation state and start outline generation
+    setGenerationState({
+      ...initialGenerationState,
+      phase: 'generating_outline',
+      dayStatuses: new Map(),
+      completedDays: [],
+    });
     setErrorMessage("");
 
     try {
-      // Step 1: Generate Master Outline (Client-Side Orchestration)
-      // This step decides destination (if undecided) and sets high-level route
+      // Step 1: Generate Master Outline
       const outlineResponse = await generatePlanOutline(input);
 
       // 利用制限超過のハンドリング
       if (!outlineResponse.success && outlineResponse.limitExceeded) {
-        setStatus("idle");
+        setGenerationState(prev => ({ ...prev, phase: 'idle' }));
         setUserType(outlineResponse.userType || 'anonymous');
 
         if (outlineResponse.userType === 'anonymous') {
-          // 未ログイン → ログイン促進
           setLoginPromptProps({
             userInput: input,
-            currentStep: 8, // 確認画面
+            currentStep: 8,
             isInModal: false,
           });
           setShowLoginPrompt(true);
         } else {
-          // ログイン済み → 待機メッセージ
           setLimitResetAt(
             outlineResponse.resetAt ? new Date(outlineResponse.resetAt) : null
           );
@@ -320,131 +476,114 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
 
-      // Update local input state with chosen destination if it was undecided
-      // (Though we are about to redirect, good for consistency)
+      // Update local input if destination was decided
       if (input.isDestinationDecided === false) {
-         setInput(updatedInput);
+        setInput(updatedInput);
       }
 
-      // Step 2: Parallel Chunk Generation
+      // Calculate total days
       let totalDays = extractDuration(updatedInput.dates);
-
-      // If duration is 0 (undecided), fallback to the AI-generated outline duration
       if (totalDays === 0 && outline.days.length > 0) {
         totalDays = outline.days.length;
       }
 
-      // If duration is > 1 day, we split. Otherwise just use the outline days (or single chunk)
-      // The shared logic handles splits.
+      // Initialize day statuses as pending
+      const initialDayStatuses = new Map<number, DayGenerationStatus>();
+      for (let d = 1; d <= totalDays; d++) {
+        initialDayStatuses.set(d, 'pending');
+      }
+
+      // Split into chunks
       const chunks = splitDaysIntoChunks(totalDays);
 
-      // Map chunks to promises
-      const chunkPromises = chunks.map(chunk => {
-        // Filter outline days relevant to this chunk
-        const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-
-        // Determine start location from previous day's overnight location in outline
-        let previousOvernightLocation: string | undefined = undefined;
-        if (chunk.start > 1) {
-          const prevDay = outline.days.find(d => d.day === chunk.start - 1);
-          if (prevDay) {
-            previousOvernightLocation = prevDay.overnight_location;
-          }
-        }
-
-        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end, previousOvernightLocation);
+      // Update state to show outline and transition to streaming view
+      setGenerationState({
+        phase: 'outline_ready',
+        outline,
+        heroImage: heroImage || null,
+        updatedInput,
+        context,
+        dayStatuses: initialDayStatuses,
+        completedDays: [],
+        totalDays,
+        currentChunks: chunks,
       });
 
-      // Execute all chunks in parallel
-      const chunkResults = await Promise.all(chunkPromises);
+      // Immediately start detail generation
+      setGenerationState(prev => ({ ...prev, phase: 'generating_details' }));
 
-      // Verify all chunks succeeded
-      const failedChunk = chunkResults.find(r => !r.success);
-      if (failedChunk) {
-        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
-      }
+      // Start all chunk generations in parallel
+      const chunkPromises = chunks.map(chunk =>
+        generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+      );
 
-      // Step 3: Merge Results
-      const mergedDays: DayPlan[] = chunkResults.flatMap(r => r.data || []);
-
-      // Sort just in case parallel execution messed up order (unlikely with map but safe)
-      mergedDays.sort((a, b) => a.day - b.day);
-
-      // Construct Final Itinerary
-      // Use a simple random ID generator that doesn't rely on crypto.randomUUID (HTTPS/Env restriction)
-      const simpleId = Math.random().toString(36).substring(2, 15);
-
-      const finalPlan: Itinerary = {
-        id: simpleId,
-        destination: outline.destination,
-        description: outline.description,
-        heroImage: heroImage?.url || undefined,
-        heroImagePhotographer: heroImage?.photographer || undefined,
-        heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
-        days: mergedDays,
-        // References from context
-        references: context.map(c => ({
-            title: c.title,
-            url: c.url,
-            image: c.imageUrl,
-            snippet: c.snippet
-        }))
-      };
-
-      // Step 4: Save and Redirect
-      if (isAuthenticated) {
-        // Save to database for authenticated users
-        const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
-          await refreshPlans();
-          router.push(`/plan/${saveResult.shareCode}`);
-        } else {
-          // Fallback to local storage if DB save fails
-          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
-          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-          notifyPlanChange();
-          router.push(`/plan/local/${localPlan.id}`);
-        }
-      } else {
-        // Save to local storage for unauthenticated users
-        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-        notifyPlanChange();
-        router.push(`/plan/local/${localPlan.id}`);
-      }
-
-      // Close modal if it's open
-      if (onClose) {
-        onClose();
-      }
+      // Wait for all chunks (they update state as they complete)
+      await Promise.all(chunkPromises);
 
     } catch (e: any) {
       console.error(e);
-      setStatus("error");
       const msg = e.message || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
-      // Check for stale deployment error
-      // Error: Server Action "..." was not found on the server
+
       if (msg.includes("Server Action") && msg.includes("not found")) {
-         setErrorMessage("DEPLOYMENT_UPDATE_ERROR");
+        setGenerationState(prev => ({
+          ...prev,
+          phase: 'error',
+          error: "DEPLOYMENT_UPDATE_ERROR",
+          errorType: 'network'
+        }));
+        setErrorMessage("DEPLOYMENT_UPDATE_ERROR");
       } else {
-         setErrorMessage(msg);
+        setGenerationState(prev => ({
+          ...prev,
+          phase: 'error',
+          error: msg,
+          errorType: 'outline'
+        }));
+        setErrorMessage(msg);
       }
     }
   };
+
+  // Handler to retry a failed chunk
+  const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
+    const { updatedInput, context, outline } = generationState;
+    if (!updatedInput || !context || !outline) return;
+
+    const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
+    await generateChunk(updatedInput, context, outline.days, chunk, outline.days);
+  }, [generationState, generateChunk]);
 
   const handleJumpToStep = (targetStep: number) => {
     setErrorMessage("");
     setStep(targetStep);
   };
 
-  if (status === "loading") {
-    return <LoadingView />;
+  // Show outline loading animation during outline generation
+  if (generationState.phase === 'generating_outline') {
+    return <OutlineLoadingAnimation />;
   }
 
-  if (status === "error") {
-    const isDeploymentError = errorMessage === "DEPLOYMENT_UPDATE_ERROR";
+  // Show streaming result view during/after detail generation
+  if (
+    generationState.phase === 'outline_ready' ||
+    generationState.phase === 'generating_details' ||
+    generationState.phase === 'completed'
+  ) {
+    return (
+      <StreamingResultView
+        generationState={generationState}
+        input={generationState.updatedInput || input}
+        onRetryChunk={handleRetryChunk}
+      />
+    );
+  }
+
+  // Show error state
+  if (generationState.phase === 'error' || status === "error") {
+    const isDeploymentError = errorMessage === "DEPLOYMENT_UPDATE_ERROR" || generationState.error === "DEPLOYMENT_UPDATE_ERROR";
     const displayMessage = isDeploymentError
         ? "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。"
-        : (errorMessage || "エラーが発生しました");
+        : (generationState.error || errorMessage || "エラーが発生しました");
 
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -458,6 +597,7 @@ export default function TravelPlanner({ initialInput, initialStep, onClose }: Tr
                 window.location.reload();
             } else {
                 setErrorMessage("");
+                setGenerationState(initialGenerationState);
                 handlePlan();
             }
           }}
