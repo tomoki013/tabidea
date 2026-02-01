@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePlanModal } from "@/context/PlanModalContext";
 import { FaCheck, FaRocket } from "react-icons/fa";
+import { PRO_PLAN_NAME } from "@/lib/billing/constants";
 
 interface SuccessPageClientProps {
   sessionId?: string;
@@ -35,7 +36,7 @@ export default function SuccessPageClient({
         </h1>
         <p className="text-stone-600 mb-2">
           {isSubscription
-            ? "Proプランへのアップグレードが完了しました。"
+            ? `${PRO_PLAN_NAME}プランへのアップグレードが完了しました。`
             : "回数券の購入が完了しました。"}
         </p>
         <p className="text-stone-500 text-sm mb-8">
@@ -100,7 +101,7 @@ export default function SuccessPageClient({
         {isSubscription && (
           <div className="mt-6 p-4 bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 rounded-xl border border-[#e67e22]/20">
             <h4 className="font-bold text-[#e67e22] mb-3 text-sm">
-              Proプランで利用可能な機能
+              {PRO_PLAN_NAME}プランで利用可能な機能
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-stone-600">
               <div className="flex items-center gap-1.5">

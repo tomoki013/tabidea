@@ -9,6 +9,7 @@ import { deleteAccount } from "@/app/actions/travel-planner";
 import { getBillingAccessInfo, getUserUsageStats } from "@/app/actions/billing";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
+import { PRO_PLAN_NAME } from "@/lib/billing/constants";
 import type { BillingAccessInfo, UsageStats } from "@/app/actions/billing";
 import {
   FaSpinner,
@@ -412,7 +413,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             ) : isPro ? (
                               <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-sm font-bold rounded-full">
                                 <FaCrown className="text-xs" />
-                                Pro
+                                {PRO_PLAN_NAME}
                               </span>
                             ) : (
                               <span className="inline-flex items-center px-3 py-1 bg-stone-200 text-stone-600 text-sm font-medium rounded-full">
@@ -464,7 +465,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors"
                           >
                             <FaCrown />
-                            <span>Proにアップグレード</span>
+                            <span>{PRO_PLAN_NAME}にアップグレード</span>
                           </a>
                         )}
                       </div>
@@ -514,7 +515,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     {isPro && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
                         <FaCrown className="text-[0.6rem]" />
-                        Pro
+                        {PRO_PLAN_NAME}
                       </span>
                     )}
                   </h3>
@@ -559,7 +560,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         </label>
                         {!isPro && !isAdmin && (
                           <span className="text-xs font-bold text-[#e67e22] bg-[#e67e22]/10 px-2 py-1 rounded-full flex items-center gap-1">
-                            <FaLock size={10} /> Pro限定
+                            <FaLock size={10} /> {PRO_PLAN_NAME}限定
                           </span>
                         )}
                       </div>
@@ -578,7 +579,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               ? "bg-stone-50 border-stone-200 text-stone-400 cursor-not-allowed"
                               : "bg-white border-stone-300 text-stone-800 placeholder-stone-400"
                             }`}
-                          placeholder={!isPro && !isAdmin ? "Proプランにアップグレードして、旅のスタイルを設定しましょう" : "例：歴史的な場所が好きです。朝はゆっくりスタートしたいです..."}
+                          placeholder={!isPro && !isAdmin ? `${PRO_PLAN_NAME}プランにアップグレードして、旅のスタイルを設定しましょう` : "例：歴史的な場所が好きです。朝はゆっくりスタートしたいです..."}
                         />
 
                         {!isPro && !isAdmin && (
@@ -588,7 +589,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               onClick={onClose}
                               className="px-4 py-2 bg-[#e67e22] text-white text-sm font-bold rounded-full shadow-md hover:bg-[#d35400] transition-colors flex items-center gap-2"
                             >
-                              <FaCrown /> Proにアップグレード
+                              <FaCrown /> {PRO_PLAN_NAME}にアップグレード
                             </a>
                           </div>
                         )}

@@ -5,7 +5,9 @@ import { getUserBillingStatus } from '@/lib/billing/user-billing-status';
 import { getUser } from '@/lib/supabase/server';
 
 export const metadata: Metadata = {
-  title: '料金プラン | Tabidea',
+  title: {
+    absolute: '料金プラン',
+  },
   description:
     'Tabideaの料金プランをご覧ください。無料プランから始めて、必要に応じてProプランや回数券をお選びいただけます。',
 };

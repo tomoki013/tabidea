@@ -26,8 +26,14 @@ export function PricingCard({
   const [isPending, startTransition] = useTransition();
 
   const handleClick = () => {
-    // Freeプランの場合は何もしない
-    if (plan.id === "free") {
+    // Freeプランの場合は何もしない（ログイン済の場合）
+    if (plan.id === "free" && isLoggedIn) {
+      return;
+    }
+
+    // 未ログインでFreeプラン選択の場合はログイン促進
+    if (plan.id === "free" && !isLoggedIn) {
+      onLoginRequired();
       return;
     }
 
@@ -53,6 +59,7 @@ export function PricingCard({
 
   const getButtonLabel = () => {
     if (plan.id === "free") {
+      if (!isLoggedIn) return "ログインして始める";
       return isCurrentPlan ? "現在のプラン" : "無料で始める";
     }
     if (isCurrentPlan && plan.id === "pro_monthly") {
@@ -64,7 +71,8 @@ export function PricingCard({
     return plan.buttonLabel;
   };
 
-  const isDisabled = plan.id === "free" || isPending;
+  // ログインしていない場合はFreeプランも押せるようにする
+  const isDisabled = (plan.id === "free" && isLoggedIn) || isPending;
 
   return (
     <div
@@ -132,13 +140,15 @@ export function PricingCard({
         onClick={handleClick}
         disabled={isDisabled}
         className={`w-full py-3 px-4 rounded-xl font-bold transition-colors ${
-          plan.id === "free"
-            ? "bg-stone-100 text-stone-400 cursor-default"
-            : isCurrentPlan && plan.id === "pro_monthly"
-              ? "bg-stone-200 text-stone-700 hover:bg-stone-300"
-              : plan.isRecommended
-                ? "bg-primary text-white hover:bg-primary/90"
-                : "bg-stone-800 text-white hover:bg-stone-700"
+          plan.id === "free" && isLoggedIn
+            ? "bg-stone-100 text-stone-400 cursor-default" // ログイン済みFreeプラン（無効）
+            : plan.id === "free" && !isLoggedIn
+              ? "bg-stone-800 text-white hover:bg-stone-700" // 未ログインFreeプラン（有効・ログインへ）
+              : isCurrentPlan && plan.id === "pro_monthly"
+                ? "bg-stone-200 text-stone-700 hover:bg-stone-300"
+                : plan.isRecommended
+                  ? "bg-primary text-white hover:bg-primary/90"
+                  : "bg-stone-800 text-white hover:bg-stone-700"
         } disabled:opacity-50 disabled:cursor-not-allowed`}
       >
         {isPending ? (

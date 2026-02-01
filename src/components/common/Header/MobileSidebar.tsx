@@ -26,6 +26,7 @@ import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
 import { getBillingStatus } from '@/app/actions/billing';
+import { PRO_PLAN_NAME } from '@/lib/billing/constants';
 import type { PlanListItem } from '@/types';
 import type { UserBillingStatus } from '@/types/billing';
 
@@ -264,7 +265,7 @@ export default function MobileSidebar({
                         {billingStatus?.isSubscribed ? (
                           <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-xs font-bold rounded-full">
                             <FaCrown className="text-[0.6rem]" />
-                            Pro
+                            {PRO_PLAN_NAME}
                           </span>
                         ) : (
                           <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-full">

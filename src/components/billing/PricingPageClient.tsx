@@ -9,6 +9,7 @@ import { FAQSection } from "@/components/features/landing";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
+import { PRO_PLAN_NAME } from "@/lib/billing/constants";
 
 import type { UserBillingStatus, PurchaseType } from "@/types/billing";
 
@@ -35,7 +36,7 @@ export function PricingPageClient({
 
     // 既にProプランの場合、サブスク購入を防ぐ
     if (planType === "pro_monthly" && billingStatus?.isSubscribed) {
-      setError("既にProプランに加入しています。プラン管理からご確認ください。");
+      setError(`既に${PRO_PLAN_NAME}プランに加入しています。プラン管理からご確認ください。`);
       return;
     }
 
@@ -53,7 +54,7 @@ export function PricingPageClient({
         router.push("/auth/login?redirect=/pricing");
       } else if (result.error === "already_subscribed") {
         setError(
-          "既にProプランに加入しています。プラン管理からご確認ください。",
+          `既に${PRO_PLAN_NAME}プランに加入しています。プラン管理からご確認ください。`,
         );
         // ページをリロードして最新状態を表示
         router.refresh();
@@ -113,7 +114,7 @@ export function PricingPageClient({
               <div>
                 <p className="text-sm text-stone-500">現在のプラン</p>
                 <p className="text-lg font-bold text-stone-800">
-                  {billingStatus.planType === 'admin' ? "Administrator" : (isPro ? "Pro" : "Free")}
+                  {billingStatus.planType === 'admin' ? "Administrator" : (isPro ? PRO_PLAN_NAME : "Free")}
                 </p>
               </div>
               {billingStatus.ticketCount > 0 && (
@@ -199,7 +200,7 @@ export function PricingPageClient({
                     Free
                   </th>
                   <th className="text-center py-3 px-4 font-medium text-primary">
-                    Pro
+                    {PRO_PLAN_NAME}
                   </th>
                   <th className="text-center py-3 px-4 font-medium text-stone-600 text-stone-400">
                     回数券 (一時停止中)

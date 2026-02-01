@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { PRO_PLAN_NAME } from '@/lib/billing/constants';
 
 import type { UserBillingStatus } from '@/types/billing';
 
@@ -24,7 +25,7 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
             isPro ? 'bg-primary/10 text-primary' : 'bg-stone-100 text-stone-600'
           }`}
         >
-          {isPro ? 'Pro' : 'Free'}
+          {isPro ? PRO_PLAN_NAME : 'Free'}
         </span>
         {billingStatus.ticketCount > 0 && (
           <span className="text-stone-500">
@@ -43,7 +44,7 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
           <p className="text-lg font-bold text-stone-800 flex items-center gap-2">
             {isPro ? (
               <>
-                Pro
+                {PRO_PLAN_NAME}
                 <span className="px-1.5 py-0.5 bg-primary/10 text-primary text-xs rounded-full">
                   アクティブ
                 </span>
