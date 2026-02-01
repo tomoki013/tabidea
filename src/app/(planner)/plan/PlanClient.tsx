@@ -3,13 +3,15 @@
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { UserInput, Itinerary, DayPlan } from '@/types';
+import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
+import type { DayGenerationStatus, ChunkInfo } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
-import LoadingView from "@/components/features/planner/LoadingView";
+import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
+import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
 import { FAQSection, ExampleSection } from "@/components/features/landing";
 import { FaPlus } from "react-icons/fa6";
@@ -25,13 +27,159 @@ function PlanContent() {
   const [status, setStatus] = useState<
     "loading" | "generating" | "saving" | "error"
   >("loading");
+  const [currentInput, setCurrentInput] = useState<UserInput | null>(null);
+  const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
 
   const hasStartedGeneration = useRef(false);
 
-  // Generate plan from sample and save to DB/local storage
+  // Helper to update day status
+  const updateDayStatus = useCallback((dayNumber: number, dayStatus: DayGenerationStatus) => {
+    setGenerationState(prev => {
+      const newStatuses = new Map(prev.dayStatuses);
+      newStatuses.set(dayNumber, dayStatus);
+      return { ...prev, dayStatuses: newStatuses };
+    });
+  }, []);
+
+  // Helper to add completed days
+  const addCompletedDays = useCallback((days: DayPlan[]) => {
+    setGenerationState(prev => {
+      const newCompletedDays = [...prev.completedDays, ...days];
+      newCompletedDays.sort((a, b) => a.day - b.day);
+      return { ...prev, completedDays: newCompletedDays };
+    });
+  }, []);
+
+  // Generate a single chunk
+  const generateChunk = useCallback(async (
+    chunkInput: UserInput,
+    context: any[],
+    outlineDays: any[],
+    chunk: ChunkInfo,
+    allOutlineDays: any[]
+  ) => {
+    // Mark days as generating
+    for (let d = chunk.start; d <= chunk.end; d++) {
+      updateDayStatus(d, 'generating');
+    }
+
+    // Determine start location from previous day
+    let previousOvernightLocation: string | undefined = undefined;
+    if (chunk.start > 1) {
+      const prevDay = allOutlineDays.find((d: any) => d.day === chunk.start - 1);
+      if (prevDay) {
+        previousOvernightLocation = prevDay.overnight_location;
+      }
+    }
+
+    try {
+      const chunkOutlineDays = outlineDays.filter(d => d.day >= chunk.start && d.day <= chunk.end);
+      const result = await generatePlanChunk(
+        chunkInput,
+        context,
+        chunkOutlineDays,
+        chunk.start,
+        chunk.end,
+        previousOvernightLocation
+      );
+
+      if (result.success && result.data) {
+        for (const day of result.data) {
+          updateDayStatus(day.day, 'completed');
+        }
+        addCompletedDays(result.data);
+      } else {
+        for (let d = chunk.start; d <= chunk.end; d++) {
+          updateDayStatus(d, 'error');
+        }
+      }
+    } catch (err) {
+      console.error(`Chunk ${chunk.start}-${chunk.end} failed:`, err);
+      for (let d = chunk.start; d <= chunk.end; d++) {
+        updateDayStatus(d, 'error');
+      }
+    }
+  }, [updateDayStatus, addCompletedDays]);
+
+  // Save completed plan
+  const saveCompletedPlan = useCallback(async (isAuth: boolean) => {
+    const { outline, heroImage, completedDays, context, updatedInput } = generationState;
+
+    if (!outline || !updatedInput || completedDays.length === 0) {
+      return;
+    }
+
+    setStatus("saving");
+
+    const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
+    const simpleId = Math.random().toString(36).substring(2, 15);
+
+    const finalPlan: Itinerary = {
+      id: simpleId,
+      destination: outline.destination,
+      description: outline.description,
+      heroImage: heroImage?.url || undefined,
+      heroImagePhotographer: heroImage?.photographer || undefined,
+      heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
+      days: sortedDays,
+      references: (context || []).map(c => ({
+        title: c.title,
+        url: c.url,
+        image: c.imageUrl,
+        snippet: c.snippet
+      }))
+    };
+
+    try {
+      if (isAuth) {
+        const saveResult = await savePlan(updatedInput, finalPlan, false);
+        if (saveResult.success && saveResult.shareCode) {
+          router.replace(`/plan/${saveResult.shareCode}`);
+        } else {
+          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
+          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+          router.replace(`/plan/local/${localPlan.id}`);
+        }
+      } else {
+        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+        router.replace(`/plan/local/${localPlan.id}`);
+      }
+    } catch (err) {
+      console.error("Failed to save plan:", err);
+      setStatus("error");
+      setError("プランの保存に失敗しました。");
+    }
+  }, [generationState, router]);
+
+  // Watch for completion
+  useEffect(() => {
+    const { phase, completedDays, totalDays } = generationState;
+
+    if (phase === 'generating_details' && totalDays > 0 && completedDays.length === totalDays) {
+      setGenerationState(prev => ({ ...prev, phase: 'completed' }));
+    }
+  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase]);
+
+  // Auto-save when completed
+  useEffect(() => {
+    if (generationState.phase === 'completed') {
+      saveCompletedPlan(isAuthenticated);
+    }
+  }, [generationState.phase, saveCompletedPlan, isAuthenticated]);
+
+  // Generate plan from sample with streaming
   const generateFromSample = useCallback(async (sampleInput: UserInput, isAuth: boolean) => {
     setStatus("generating");
     setError("");
+    setCurrentInput(sampleInput);
+
+    // Start outline generation
+    setGenerationState({
+      ...initialGenerationState,
+      phase: 'generating_outline',
+      dayStatuses: new Map(),
+      completedDays: [],
+    });
 
     try {
       // Step 1: Generate Master Outline
@@ -43,87 +191,63 @@ function PlanContent() {
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
 
-      // Step 2: Parallel Chunk Generation
+      // Calculate total days
       let totalDays = extractDuration(updatedInput.dates);
-
-      // If duration is 0 (undecided), fallback to the AI-generated outline duration
       if (totalDays === 0 && outline.days.length > 0) {
         totalDays = outline.days.length;
       }
 
+      // Initialize day statuses
+      const initialDayStatuses = new Map<number, DayGenerationStatus>();
+      for (let d = 1; d <= totalDays; d++) {
+        initialDayStatuses.set(d, 'pending');
+      }
+
       const chunks = splitDaysIntoChunks(totalDays);
 
-      const chunkPromises = chunks.map(chunk => {
-        const chunkOutlineDays = outline.days.filter(d => d.day >= chunk.start && d.day <= chunk.end);
-
-        // Determine start location from previous day's overnight location in outline
-        let previousOvernightLocation: string | undefined = undefined;
-        if (chunk.start > 1) {
-          const prevDay = outline.days.find(d => d.day === chunk.start - 1);
-          if (prevDay) {
-            previousOvernightLocation = prevDay.overnight_location;
-          }
-        }
-
-        return generatePlanChunk(updatedInput, context, chunkOutlineDays, chunk.start, chunk.end, previousOvernightLocation);
+      // Update state to show outline
+      setGenerationState({
+        phase: 'outline_ready',
+        outline,
+        heroImage: heroImage || null,
+        updatedInput,
+        context,
+        dayStatuses: initialDayStatuses,
+        completedDays: [],
+        totalDays,
+        currentChunks: chunks,
       });
 
-      const chunkResults = await Promise.all(chunkPromises);
+      // Start detail generation
+      setGenerationState(prev => ({ ...prev, phase: 'generating_details' }));
 
-      const failedChunk = chunkResults.find(r => !r.success);
-      if (failedChunk) {
-        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
-      }
+      // Generate all chunks in parallel
+      const chunkPromises = chunks.map(chunk =>
+        generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+      );
 
-      // Step 3: Merge Results
-      const mergedDays: DayPlan[] = chunkResults.flatMap(r => r.data || []);
-      mergedDays.sort((a, b) => a.day - b.day);
-
-      // Construct Final Itinerary
-      const simpleId = Math.random().toString(36).substring(2, 15);
-
-      const finalPlan: Itinerary = {
-        id: simpleId,
-        destination: outline.destination,
-        description: outline.description,
-        heroImage: heroImage?.url || undefined,
-        heroImagePhotographer: heroImage?.photographer || undefined,
-        heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
-        days: mergedDays,
-        references: context.map(c => ({
-          title: c.title,
-          url: c.url,
-          image: c.imageUrl,
-          snippet: c.snippet
-        }))
-      };
-
-      // Step 4: Save and Redirect
-      setStatus("saving");
-
-      if (isAuth) {
-        // Save to database for authenticated users
-        const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
-          router.replace(`/plan/${saveResult.shareCode}`);
-        } else {
-          // Fallback to local storage if DB save fails
-          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
-          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-          router.replace(`/plan/local/${localPlan.id}`);
-        }
-      } else {
-        // Save to local storage for unauthenticated users
-        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-        router.replace(`/plan/local/${localPlan.id}`);
-      }
+      await Promise.all(chunkPromises);
 
     } catch (e: unknown) {
       console.error(e);
       setStatus("error");
+      setGenerationState(prev => ({
+        ...prev,
+        phase: 'error',
+        error: e instanceof Error ? e.message : "エラーが発生しました",
+      }));
       setError(e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。");
     }
-  }, [router]);
+  }, [generateChunk]);
+
+  // Handler to retry a failed chunk
+  const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
+    const { updatedInput, context, outline } = generationState;
+    if (!updatedInput || !context || !outline) return;
+
+    const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
+    await generateChunk(updatedInput, context, outline.days, chunk, outline.days);
+  }, [generationState, generateChunk]);
 
   useEffect(() => {
     // Wait for auth state to be determined
@@ -166,8 +290,33 @@ function PlanContent() {
     );
   }
 
-  if (status === "generating") {
-    return <LoadingView />;
+  // Show outline loading animation during outline generation
+  if (generationState.phase === 'generating_outline') {
+    return <OutlineLoadingAnimation />;
+  }
+
+  // Show streaming result view during/after detail generation
+  if (
+    generationState.phase === 'outline_ready' ||
+    generationState.phase === 'generating_details' ||
+    generationState.phase === 'completed'
+  ) {
+    return (
+      <StreamingResultView
+        generationState={generationState}
+        input={generationState.updatedInput || currentInput || {
+          destinations: [],
+          region: "",
+          dates: "",
+          companions: "",
+          theme: [],
+          budget: "",
+          pace: "",
+          freeText: "",
+        }}
+        onRetryChunk={handleRetryChunk}
+      />
+    );
   }
 
   if (status === "saving") {
@@ -179,18 +328,19 @@ function PlanContent() {
     );
   }
 
-  if (status === "error") {
+  if (status === "error" || generationState.phase === 'error') {
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
         <div className="text-6xl mb-4">😢</div>
         <p className="text-destructive font-medium text-lg">
-          {error || "エラーが発生しました"}
+          {error || generationState.error || "エラーが発生しました"}
         </p>
         {sampleId && (
           <button
             onClick={() => {
               hasStartedGeneration.current = false;
               setStatus("loading");
+              setGenerationState(initialGenerationState);
             }}
             className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
           >
