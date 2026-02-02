@@ -83,7 +83,7 @@ const DURATION_OPTIONS = [
 interface SimplifiedInputFlowProps {
   input: UserInput;
   onChange: (update: Partial<UserInput>) => void;
-  onGenerate: () => void;
+  onGenerate: (inputOverride?: UserInput) => void;
   isGenerating?: boolean;
 }
 
@@ -186,7 +186,7 @@ function AccordionSection({
 export default function SimplifiedInputFlow({
   input,
   onChange,
-  onGenerate,
+  onGenerate: parentOnGenerate,
   isGenerating = false,
 }: SimplifiedInputFlowProps) {
   // Accordion state
@@ -203,6 +203,38 @@ export default function SimplifiedInputFlow({
   const duration = parseDuration(input.dates);
   const isOmakase = input.isDestinationDecided === false;
 
+  // Parse date state
+  const dateMatch = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
+  const currentStartDate = dateMatch ? dateMatch[1] : "";
+  const isDateUndecided = !currentStartDate && !input.dates.includes("から");
+
+  // Local state for dates
+  const [startDate, setStartDate] = useState(currentStartDate);
+  const [endDate, setEndDate] = useState(() => {
+    if (currentStartDate && duration) {
+      const d = new Date(currentStartDate);
+      d.setDate(d.getDate() + (duration - 1));
+      return d.toISOString().split('T')[0];
+    }
+    return "";
+  });
+  // Default to calendar view unless explicitly explicitly duration-only (and not just the default)
+  const [useCalendar, setUseCalendar] = useState(!!currentStartDate);
+
+  // Sync local date state when input changes externally
+  useEffect(() => {
+    const match = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
+    if (match) {
+        setStartDate(match[1]);
+        const dur = parseDuration(input.dates);
+        if (dur > 0) {
+            const d = new Date(match[1]);
+            d.setDate(d.getDate() + (dur - 1));
+            setEndDate(d.toISOString().split('T')[0]);
+        }
+    }
+  }, [input.dates]);
+
   // Phase completion checks
   const isPhase1Complete =
     (input.isDestinationDecided === true && input.destinations.length > 0) ||
@@ -217,7 +249,31 @@ export default function SimplifiedInputFlow({
   const hasCompanion = !!input.companions;
   const hasDates = !!input.dates;
 
-  const canGenerate = hasDestinationOrOmakase && hasCompanion && hasDates;
+  // Fix: Ensure canGenerate is true if mandatory fields are filled
+  // We also consider the pending destinationInput as valid if the user hasn't pressed Enter yet
+  const hasDest = (input.destinations && input.destinations.length > 0) ||
+                  input.isDestinationDecided === false ||
+                  (destinationInput.trim().length > 0);
+
+  // Date validation must respect the current mode
+  const hasValidDates = useCalendar
+    ? (!!startDate && !!endDate)
+    : !!input.dates;
+
+  const canGenerate = hasDest && hasCompanion && hasValidDates;
+
+  const hasDetailedInput = (useCalendar && !!startDate) ||
+                         input.theme.length > 0 ||
+                         !!input.budget ||
+                         !!input.pace ||
+                         (input.mustVisitPlaces?.length ?? 0) > 0 ||
+                         !!input.freeText;
+
+  // Phase 1 is strictly just destination/date/companion.
+  // If we have detailed input, we shift to the bottom button mode.
+  // If not, we show the intermediate button.
+  const showIntermediateButton = canGenerate && !hasDetailedInput;
+  const showBottomButton = canGenerate && hasDetailedInput;
 
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
@@ -243,6 +299,35 @@ export default function SimplifiedInputFlow({
         isDestinationDecided: true,
       });
       setDestinationInput("");
+    }
+  };
+
+  const handleGenerateClick = () => {
+    // Scroll to top to ensure loading animation is visible
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // If there is pending destination input, add it before generating
+    const trimmed = destinationInput.trim();
+    if (trimmed && !input.destinations.includes(trimmed)) {
+        const updatedDestinations = [...input.destinations, trimmed];
+        // Update local state first to clear input
+        setDestinationInput("");
+
+        // Update parent state
+        onChange({
+            destinations: updatedDestinations,
+            isDestinationDecided: true,
+        });
+
+        // Pass the updated input state to the generation function to avoid race conditions
+        const inputOverride = {
+            ...input,
+            destinations: updatedDestinations,
+            isDestinationDecided: true,
+        };
+        parentOnGenerate(inputOverride);
+    } else {
+        parentOnGenerate();
     }
   };
 
@@ -272,7 +357,38 @@ export default function SimplifiedInputFlow({
   };
 
   const handleDurationChange = (newDuration: number) => {
-    onChange({ dates: formatDuration(newDuration) });
+    if (useCalendar && startDate) {
+        // Update end date based on new duration
+        const d = new Date(startDate);
+        d.setDate(d.getDate() + (newDuration - 1));
+        const newEndDate = d.toISOString().split('T')[0];
+        setEndDate(newEndDate);
+
+        const nights = newDuration - 1;
+        const dateString = `${startDate}から${nights}泊${newDuration}日`;
+        onChange({ dates: dateString });
+    } else {
+        onChange({ dates: formatDuration(newDuration) });
+    }
+  };
+
+  const handleDateRangeChange = (newStart: string, newEnd: string) => {
+    setStartDate(newStart);
+    setEndDate(newEnd);
+
+    if (newStart && newEnd) {
+        const s = new Date(newStart);
+        const e = new Date(newEnd);
+        const diffTime = e.getTime() - s.getTime();
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays >= 0) {
+            const durationDays = diffDays + 1;
+            const nights = durationDays - 1;
+            const dateString = `${newStart}から${nights}泊${durationDays}日`;
+            onChange({ dates: dateString });
+        }
+    }
   };
 
   const toggleTheme = (themeId: string) => {
@@ -409,7 +525,7 @@ export default function SimplifiedInputFlow({
                   onChange={(e) => setDestinationInput(e.target.value)}
                   onKeyDown={handleDestinationKeyDown}
                   placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
-                  className="flex-1 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                  className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
                 {destinationInput.trim() && (
                   <button
@@ -427,45 +543,117 @@ export default function SimplifiedInputFlow({
 
         {/* Duration Selector */}
         <div className="space-y-3">
-          <label className="block text-sm font-bold text-stone-700">
-            日程
-          </label>
-          <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
-            {DURATION_OPTIONS.map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => handleDurationChange(opt.value)}
-                className={`py-2 px-2 text-xs sm:text-sm font-medium rounded-lg border-2 transition-all ${
-                  duration === opt.value
-                    ? "border-primary bg-primary text-white"
-                    : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
-                }`}
-              >
-                {opt.label}
-              </button>
-            ))}
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-sm font-bold text-stone-700">
+              日程
+            </label>
+
+            {/* Toggle Switch */}
+            <div className="bg-stone-100 p-1 rounded-lg flex text-xs font-bold">
+                <button
+                    type="button"
+                    onClick={() => {
+                        setUseCalendar(false);
+                        onChange({ dates: formatDuration(duration || 3) });
+                        setStartDate("");
+                        setEndDate("");
+                    }}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                        !useCalendar
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-stone-500 hover:text-stone-700"
+                    }`}
+                >
+                    日数のみ
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setUseCalendar(true)}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                        useCalendar
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-stone-500 hover:text-stone-700"
+                    }`}
+                >
+                    カレンダー
+                </button>
+            </div>
           </div>
-          {/* Custom Duration */}
-          {duration > 7 && (
-            <div className="flex items-center justify-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => handleDurationChange(Math.max(1, duration - 1))}
-                className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-              <span className="text-lg font-bold text-stone-800 min-w-[80px] text-center">
-                {formatDuration(duration)}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleDurationChange(Math.min(30, duration + 1))}
-                className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-              >
-                <Plus className="w-4 h-4" />
-              </button>
+
+          {useCalendar ? (
+            <div className="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1">
+                        <span className="text-xs font-bold text-stone-500">出発日</span>
+                        <input
+                            type="date"
+                            value={startDate}
+                            min={new Date().toISOString().split('T')[0]}
+                            onChange={(e) => handleDateRangeChange(e.target.value, endDate)}
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        />
+                    </div>
+                    <div className="space-y-1">
+                        <span className="text-xs font-bold text-stone-500">帰着日</span>
+                        <input
+                            type="date"
+                            value={endDate}
+                            min={startDate || new Date().toISOString().split('T')[0]}
+                            onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        />
+                    </div>
+                </div>
+                <div className="text-center">
+                    {startDate && endDate ? (
+                        <p className="text-sm font-bold text-stone-700 bg-white inline-block px-4 py-1 rounded-full border border-stone-200 shadow-sm">
+                           🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
+                        </p>
+                    ) : (
+                        <p className="text-xs text-stone-400">日付を選択してください</p>
+                    )}
+                </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+                {/* Custom Duration (Top) */}
+                <div className="flex items-center justify-center gap-6 py-2 bg-stone-50 rounded-xl border border-stone-200">
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.max(1, duration - 1))}
+                        className="w-12 h-12 rounded-full bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 flex items-center justify-center transition-all shadow-sm active:scale-95"
+                    >
+                        <Minus className="w-5 h-5" />
+                    </button>
+                    <span className="text-xl font-bold text-stone-800 min-w-[100px] text-center font-serif">
+                        {formatDuration(duration)}
+                    </span>
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.min(30, duration + 1))}
+                        className="w-12 h-12 rounded-full bg-primary text-white hover:bg-primary/90 flex items-center justify-center transition-all shadow-md active:scale-95"
+                    >
+                        <Plus className="w-5 h-5" />
+                    </button>
+                </div>
+
+                {/* Preset Buttons (Bottom) */}
+                <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
+                    {DURATION_OPTIONS.map((opt) => (
+                    <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => handleDurationChange(opt.value)}
+                        className={`py-2 px-2 text-xs sm:text-sm font-medium rounded-lg border-2 transition-all ${
+                        duration === opt.value
+                            ? "border-primary bg-primary/10 text-primary"
+                            : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
+                        }`}
+                    >
+                        {opt.label}
+                    </button>
+                    ))}
+                </div>
             </div>
           )}
         </div>
@@ -475,7 +663,7 @@ export default function SimplifiedInputFlow({
           <label className="block text-sm font-bold text-stone-700">
             誰と行く？
           </label>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
             {COMPANION_OPTIONS.map((opt) => (
               <button
                 key={opt.id}
@@ -488,25 +676,25 @@ export default function SimplifiedInputFlow({
                 }`}
               >
                 <span>{opt.icon}</span>
-                <span className="hidden sm:inline">{opt.label}</span>
+                <span>{opt.label}</span>
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Generate Button (Phase 1 Complete) */}
+      {/* Intermediate Generate Button (Phase 1 Only) */}
       <AnimatePresence>
-        {canGenerate && (
+        {showIntermediateButton && (
           <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="sticky bottom-4 z-10"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="space-y-2"
           >
             <button
               type="button"
-              onClick={onGenerate}
+              onClick={handleGenerateClick}
               disabled={isGenerating}
               className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
             >
@@ -522,12 +710,13 @@ export default function SimplifiedInputFlow({
                 </>
               )}
             </button>
-            <p className="text-center text-xs text-stone-500 mt-2">
-              下の詳細設定を追加すると、より良いプランが作れます
+            <p className="text-center text-xs text-stone-500">
+                👇 下の詳細設定を追加すると、より精度の高いプランが作成されます
             </p>
           </motion.div>
         )}
       </AnimatePresence>
+
 
       {/* ================================================================== */}
       {/* Phase 2: Recommended (Accordion) */}
@@ -546,7 +735,7 @@ export default function SimplifiedInputFlow({
             <label className="block text-sm font-bold text-stone-700">
               テーマ（複数選択可）
             </label>
-            <div className="grid grid-cols-3 sm:grid-cols-4 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
               {THEME_OPTIONS.map((theme) => {
                 const Icon = theme.icon;
                 const isSelected = input.theme.includes(theme.id);
@@ -658,7 +847,7 @@ export default function SimplifiedInputFlow({
               </div>
             )}
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 w-full">
               <input
                 type="text"
                 value={placeInput}
@@ -670,13 +859,13 @@ export default function SimplifiedInputFlow({
                   }
                 }}
                 placeholder="場所名を入力（例：清水寺）"
-                className="flex-1 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-colors text-sm"
+                className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-colors text-sm"
               />
               {placeInput.trim() && (
                 <button
                   type="button"
                   onClick={addPlace}
-                  className="px-4 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition-colors"
+                  className="flex-shrink-0 px-4 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition-colors"
                 >
                   <FaPlus />
                 </button>
@@ -698,6 +887,37 @@ export default function SimplifiedInputFlow({
           </div>
         </div>
       </AccordionSection>
+
+      {/* Bottom Generate Button (Detailed Mode) */}
+      <AnimatePresence>
+        {showBottomButton && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className="w-full mt-8"
+          >
+            <button
+              type="button"
+              onClick={handleGenerateClick}
+              disabled={isGenerating}
+              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+            >
+              {isGenerating ? (
+                <>
+                  <span className="animate-spin">⏳</span>
+                  プランを作成中...
+                </>
+              ) : (
+                <>
+                  <span>✨</span>
+                  詳細条件でプランを作成
+                </>
+              )}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom spacer for sticky button */}
       <div className="h-20" />

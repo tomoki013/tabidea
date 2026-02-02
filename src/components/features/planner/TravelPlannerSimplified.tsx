@@ -14,12 +14,15 @@ import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
 import LoadingView from "./LoadingView";
+import OutlineReview from "./OutlineReview";
+import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
 import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
 import {
   restorePendingState,
   clearPendingState,
 } from "@/lib/restore/pending-state";
+import { PlanOutline, Article, HeroImageData } from "@/types";
 
 interface TravelPlannerSimplifiedProps {
   initialInput?: UserInput | null;
@@ -64,9 +67,14 @@ export default function TravelPlannerSimplified({
   });
 
   const [status, setStatus] = useState<
-    "idle" | "loading" | "updating" | "complete" | "error"
+    "idle" | "generating_outline" | "review_outline" | "generating_details" | "complete" | "error"
   >("idle");
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Intermediate state for Outline -> Details
+  const [outline, setOutline] = useState<PlanOutline | null>(null);
+  const [generationContext, setGenerationContext] = useState<Article[]>([]);
+  const [heroImage, setHeroImage] = useState<HeroImageData | undefined>(undefined);
 
   // Rate limiting state
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -112,29 +120,20 @@ export default function TravelPlannerSimplified({
     setErrorMessage("");
   };
 
-  const handleGenerate = async () => {
-    setStatus("loading");
+  const handleGenerateOutline = async (inputOverride?: UserInput) => {
+    setStatus("generating_outline");
     setErrorMessage("");
 
     try {
-      // Prepare input for generation
-      const preparedInput = { ...input };
+      const preparedInput = { ...(inputOverride || input) };
 
-      // If omakase mode and no region specified, default to 'anywhere'
       if (preparedInput.isDestinationDecided === false && !preparedInput.region) {
         preparedInput.region = "anywhere";
       }
 
-      // Set default values for optional fields if not specified
-      if (!preparedInput.budget) {
-        preparedInput.budget = "standard";
-      }
-      if (!preparedInput.pace) {
-        preparedInput.pace = "balanced";
-      }
-      if (preparedInput.theme.length === 0) {
-        preparedInput.theme = ["グルメ"];
-      }
+      if (!preparedInput.budget) preparedInput.budget = "standard";
+      if (!preparedInput.pace) preparedInput.pace = "balanced";
+      if (preparedInput.theme.length === 0) preparedInput.theme = ["グルメ"];
       if (preparedInput.hasMustVisitPlaces === undefined) {
         preparedInput.hasMustVisitPlaces = (preparedInput.mustVisitPlaces?.length ?? 0) > 0;
       }
@@ -142,11 +141,9 @@ export default function TravelPlannerSimplified({
       // Step 1: Generate Master Outline
       const outlineResponse = await generatePlanOutline(preparedInput);
 
-      // Handle rate limiting
       if (!outlineResponse.success && outlineResponse.limitExceeded) {
         setStatus("idle");
         setUserType(outlineResponse.userType || "anonymous");
-
         if (outlineResponse.userType === "anonymous") {
           setLoginPromptProps({
             userInput: preparedInput,
@@ -169,33 +166,49 @@ export default function TravelPlannerSimplified({
         );
       }
 
-      const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
+      const { outline: newOutline, context, input: updatedInput, heroImage: newHeroImage } = outlineResponse.data;
 
+      // Update state for review
+      setOutline(newOutline);
+      setGenerationContext(context);
+      setHeroImage(newHeroImage || undefined);
+      setInput(updatedInput); // Important: Update input in case AI normalized it
+      setStatus("review_outline");
+
+    } catch (e: any) {
+      console.error(e);
+      setStatus("error");
+      setErrorMessage(e.message || "エラーが発生しました。");
+    }
+  };
+
+  const handleProceedToDetails = async (confirmedOutline: PlanOutline) => {
+    setStatus("generating_details");
+
+    try {
       // Step 2: Parallel Chunk Generation
-      let totalDays = extractDuration(updatedInput.dates);
-
-      if (totalDays === 0 && outline.days.length > 0) {
-        totalDays = outline.days.length;
+      let totalDays = extractDuration(input.dates);
+      if (totalDays === 0 && confirmedOutline.days.length > 0) {
+        totalDays = confirmedOutline.days.length;
       }
 
       const chunks = splitDaysIntoChunks(totalDays);
-
       const chunkPromises = chunks.map((chunk) => {
-        const chunkOutlineDays = outline.days.filter(
+        const chunkOutlineDays = confirmedOutline.days.filter(
           (d) => d.day >= chunk.start && d.day <= chunk.end
         );
 
         let previousOvernightLocation: string | undefined = undefined;
         if (chunk.start > 1) {
-          const prevDay = outline.days.find((d) => d.day === chunk.start - 1);
+          const prevDay = confirmedOutline.days.find((d) => d.day === chunk.start - 1);
           if (prevDay) {
             previousOvernightLocation = prevDay.overnight_location;
           }
         }
 
         return generatePlanChunk(
-          updatedInput,
-          context,
+          input,
+          generationContext,
           chunkOutlineDays,
           chunk.start,
           chunk.end,
@@ -204,29 +217,25 @@ export default function TravelPlannerSimplified({
       });
 
       const chunkResults = await Promise.all(chunkPromises);
-
       const failedChunk = chunkResults.find((r) => !r.success);
       if (failedChunk) {
-        throw new Error(
-          failedChunk.message || "詳細プランの生成に失敗しました。"
-        );
+        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
       }
 
-      // Step 3: Merge Results
+      // Step 3: Merge
       const mergedDays: DayPlan[] = chunkResults.flatMap((r) => r.data || []);
       mergedDays.sort((a, b) => a.day - b.day);
-
       const simpleId = Math.random().toString(36).substring(2, 15);
 
       const finalPlan: Itinerary = {
         id: simpleId,
-        destination: outline.destination,
-        description: outline.description,
+        destination: confirmedOutline.destination,
+        description: confirmedOutline.description,
         heroImage: heroImage?.url || undefined,
         heroImagePhotographer: heroImage?.photographer || undefined,
         heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
         days: mergedDays,
-        references: context.map((c) => ({
+        references: generationContext.map((c) => ({
           title: c.title,
           url: c.url,
           image: c.imageUrl,
@@ -234,44 +243,47 @@ export default function TravelPlannerSimplified({
         })),
       };
 
-      // Step 4: Save and Redirect
+      // Step 4: Save & Redirect
       if (isAuthenticated) {
-        const saveResult = await savePlan(updatedInput, finalPlan, false);
+        const saveResult = await savePlan(input, finalPlan, false);
         if (saveResult.success && saveResult.shareCode) {
           await refreshPlans();
           router.push(`/plan/${saveResult.shareCode}`);
         } else {
-          console.error(
-            "Failed to save to DB, falling back to local storage:",
-            saveResult.error
-          );
-          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+          const localPlan = await saveLocalPlan(input, finalPlan);
           notifyPlanChange();
           router.push(`/plan/local/${localPlan.id}`);
         }
       } else {
-        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+        const localPlan = await saveLocalPlan(input, finalPlan);
         notifyPlanChange();
         router.push(`/plan/local/${localPlan.id}`);
       }
 
-      if (onClose) {
-        onClose();
-      }
+      if (onClose) onClose();
+
     } catch (e: any) {
       console.error(e);
       setStatus("error");
-      const msg =
-        e.message || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
-      if (msg.includes("Server Action") && msg.includes("not found")) {
-        setErrorMessage("DEPLOYMENT_UPDATE_ERROR");
-      } else {
-        setErrorMessage(msg);
-      }
+      setErrorMessage(e.message || "エラーが発生しました。");
     }
   };
 
-  if (status === "loading") {
+  if (status === "generating_outline") {
+    return <OutlineLoadingAnimation />;
+  }
+
+  if (status === "review_outline" && outline) {
+    return (
+      <OutlineReview
+        outline={outline}
+        onConfirm={handleProceedToDetails}
+        isGenerating={false}
+      />
+    );
+  }
+
+  if (status === "generating_details") {
     return <LoadingView />;
   }
 
@@ -291,7 +303,7 @@ export default function TravelPlannerSimplified({
               window.location.reload();
             } else {
               setErrorMessage("");
-              handleGenerate();
+              handleGenerateOutline();
             }
           }}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
@@ -405,7 +417,7 @@ export default function TravelPlannerSimplified({
       <SimplifiedInputFlow
         input={input}
         onChange={handleChange}
-        onGenerate={handleGenerate}
+        onGenerate={handleGenerateOutline}
         isGenerating={false}
       />
 
