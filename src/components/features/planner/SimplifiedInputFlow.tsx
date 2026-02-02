@@ -262,12 +262,12 @@ export default function SimplifiedInputFlow({
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
 
-  const hasDetailedInput = (useCalendar && !!startDate) ||
-                         input.theme.length > 0 ||
+  const hasPhase3Input = (input.mustVisitPlaces?.length ?? 0) > 0 || !!input.freeText;
+
+  const hasDetailedInput = input.theme.length > 0 ||
                          !!input.budget ||
                          !!input.pace ||
-                         (input.mustVisitPlaces?.length ?? 0) > 0 ||
-                         !!input.freeText;
+                         hasPhase3Input;
 
   // Phase 1 is strictly just destination/date/companion.
   // If we have detailed input, we shift to the bottom button mode.
@@ -527,15 +527,18 @@ export default function SimplifiedInputFlow({
                   placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
                   className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
-                {destinationInput.trim() && (
-                  <button
-                    type="button"
-                    onClick={addDestination}
-                    className="px-4 py-2 bg-primary text-white rounded-xl hover:bg-primary/90 transition-colors"
-                  >
-                    <Plus className="w-5 h-5" />
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={addDestination}
+                  disabled={!destinationInput.trim()}
+                  className={`px-4 py-2 rounded-xl transition-colors ${
+                    destinationInput.trim()
+                      ? "bg-primary text-white hover:bg-primary/90"
+                      : "bg-stone-200 text-stone-400 cursor-not-allowed"
+                  }`}
+                >
+                  <Plus className="w-5 h-5" />
+                </button>
               </div>
             </>
           )}
@@ -589,7 +592,17 @@ export default function SimplifiedInputFlow({
                             type="date"
                             value={startDate}
                             min={new Date().toISOString().split('T')[0]}
-                            onChange={(e) => handleDateRangeChange(e.target.value, endDate)}
+                            onChange={(e) => {
+                                const newStart = e.target.value;
+                                if (newStart && duration) {
+                                    const d = new Date(newStart);
+                                    d.setDate(d.getDate() + (duration - 1));
+                                    const newEnd = d.toISOString().split('T')[0];
+                                    handleDateRangeChange(newStart, newEnd);
+                                } else {
+                                    handleDateRangeChange(newStart, endDate);
+                                }
+                            }}
                             className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
                         />
                     </div>
@@ -810,7 +823,7 @@ export default function SimplifiedInputFlow({
 
       {/* Button below Phase 2 (Recommended) */}
       <AnimatePresence>
-        {(phase2Open || isPhase2Complete) && (
+        {(phase2Open || isPhase2Complete) && !hasPhase3Input && (
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -925,7 +938,7 @@ export default function SimplifiedInputFlow({
 
       {/* Button below Phase 3 (Optional) */}
       <AnimatePresence>
-        {hasDetailedInput && (
+        {hasPhase3Input && (
             <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
