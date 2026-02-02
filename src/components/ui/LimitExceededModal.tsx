@@ -6,7 +6,7 @@ interface LimitExceededModalProps {
   isOpen: boolean;
   onClose: () => void;
   resetAt: Date | null;
-  actionType: 'plan_generation' | 'travel_info';
+  actionType: 'plan_generation' | 'travel_info' | 'chat' | 'regenerate';
 }
 
 export function LimitExceededModal({
@@ -15,8 +15,14 @@ export function LimitExceededModal({
   resetAt,
   actionType,
 }: LimitExceededModalProps) {
-  const actionLabel =
-    actionType === 'plan_generation' ? 'プラン生成' : '渡航情報取得';
+  const actionLabels = {
+    plan_generation: 'プラン生成',
+    travel_info: '渡航情報取得',
+    chat: 'チャット',
+    regenerate: '再生成',
+  };
+
+  const actionLabel = actionLabels[actionType];
 
   const formatResetDate = (date: Date) => {
     const month = date.getMonth() + 1;
