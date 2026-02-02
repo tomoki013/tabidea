@@ -5,22 +5,19 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaMapMarkerAlt,
-  FaClock,
   FaCalendarAlt,
-  FaPlane,
-  FaTrain,
-  FaBus,
-  FaShip,
-  FaCar,
-  FaQuestion,
-  FaLock,
 } from "react-icons/fa";
 import type { GenerationState, UserInput, DayPlan, Itinerary } from "@/types";
 import DayPlaceholder from "./DayPlaceholder";
 import GeneratingOverlay from "./GeneratingOverlay";
-import TransitCard from "./TransitCard";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
+import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
+import type { CardState } from "@/components/features/plan/cards";
+
+// ============================================================================
+// Types
+// ============================================================================
 
 interface StreamingResultViewProps {
   generationState: GenerationState;
@@ -28,12 +25,19 @@ interface StreamingResultViewProps {
   onRetryChunk?: (dayStart: number, dayEnd: number) => void;
 }
 
+// ============================================================================
+// Component
+// ============================================================================
+
 export default function StreamingResultView({
   generationState,
   input,
   onRetryChunk,
 }: StreamingResultViewProps) {
   const [showOverlay, setShowOverlay] = useState(true);
+
+  // Card expansion state: track which cards are expanded
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
 
   const { outline, heroImage, dayStatuses, completedDays, totalDays, phase } =
     generationState;
@@ -110,35 +114,35 @@ export default function StreamingResultView({
   const handleRetry = useCallback(
     (day: number) => {
       if (onRetryChunk) {
-        // Retry a single day chunk
         onRetryChunk(day, day);
       }
     },
     [onRetryChunk]
   );
 
+  // Handle card state change
+  const handleCardStateChange = useCallback((cardId: string, state: CardState) => {
+    setExpandedCards((prev) => {
+      const next = new Set(prev);
+      if (state === "expanded") {
+        next.add(cardId);
+      } else {
+        next.delete(cardId);
+      }
+      return next;
+    });
+  }, []);
+
+  const getCardState = useCallback(
+    (cardId: string): CardState => {
+      return expandedCards.has(cardId) ? "expanded" : "collapsed";
+    },
+    [expandedCards]
+  );
+
   if (!outline) {
     return null;
   }
-
-  // Transit icons mapping
-  const transitIcons = {
-    flight: FaPlane,
-    train: FaTrain,
-    bus: FaBus,
-    ship: FaShip,
-    car: FaCar,
-    other: FaQuestion,
-  };
-
-  const transitColors = {
-    flight: "bg-blue-500",
-    train: "bg-green-600",
-    bus: "bg-orange-500",
-    ship: "bg-cyan-600",
-    car: "bg-slate-600",
-    other: "bg-stone-500",
-  };
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
@@ -294,7 +298,7 @@ export default function StreamingResultView({
             const dayStatus = dayStatuses.get(outlineDay.day) || "pending";
             const completedDay = completedDayMap.get(outlineDay.day);
 
-            // If day is completed, render actual content
+            // If day is completed, render actual content with card components
             if (dayStatus === "completed" && completedDay) {
               return (
                 <AnimatePresence key={outlineDay.day} mode="wait">
@@ -321,133 +325,55 @@ export default function StreamingResultView({
                       </div>
                     </div>
 
-                    {/* Activities */}
-                    <div className={`
-                      ${completedDay.ui_type === 'compact' ? 'border-l border-stone-200 ml-4 space-y-4 pb-4' :
-                        completedDay.ui_type === 'narrative' ? 'ml-0 space-y-8 pb-8' :
-                        'border-l-2 border-stone-200 ml-8 space-y-8 pb-8'}
-                      relative transition-all
-                    `}>
-                      {/* Generative UI Label */}
-                      {completedDay.ui_type && completedDay.ui_type !== 'default' && (
-                        <div className="absolute right-0 -top-12 flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-primary/10 to-transparent rounded-full text-xs font-mono text-primary/70 pointer-events-none">
-                          <span className="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
-                          {completedDay.ui_type === 'compact' ? 'Compact View' : 'Narrative View'}
-                        </div>
+                    {/* Day Content with Cards */}
+                    <div className="space-y-4 ml-4 sm:ml-8">
+                      {/* Transit Card (if exists) */}
+                      {completedDay.transit && (
+                        <CardTransitCard
+                          transit={completedDay.transit}
+                          state={getCardState(`transit-${completedDay.day}`)}
+                          onStateChange={(state) =>
+                            handleCardStateChange(`transit-${completedDay.day}`, state)
+                          }
+                          className="mb-6"
+                        />
                       )}
 
-                      {/* Transit Card */}
-                      {completedDay.transit && (() => {
-                        const TransitIcon =
-                          transitIcons[completedDay.transit.type] || FaQuestion;
-                        const iconColor =
-                          transitColors[completedDay.transit.type] || "bg-stone-500";
-
-                        return (
-                          <div className={`relative ${completedDay.ui_type === 'compact' ? 'pl-6' : completedDay.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' : 'pl-4 sm:pl-10'} mb-8`}>
-                            {/* Enhanced Transit Icon on timeline - Hide in Narrative */}
-                            {completedDay.ui_type !== 'narrative' && (
-                              <div className={`absolute ${completedDay.ui_type === 'compact' ? 'left-[-9px]' : 'left-[-13px]'} top-1/2 -translate-y-1/2 ${completedDay.ui_type === 'compact' ? 'w-4 h-4 text-[10px]' : 'w-6 h-6 text-xs'} rounded-full ${iconColor} border-2 border-white shadow-lg z-20 flex items-center justify-center`}>
-                                <TransitIcon className="text-white text-xs" />
-                              </div>
-                            )}
-                            <TransitCard transit={completedDay.transit} isEditing={false} />
-                          </div>
-                        );
-                      })()}
-
-                      {completedDay.activities.map((act, actIndex) => (
-                        <div key={actIndex}
-                          className={`
-                            relative group
-                            ${completedDay.ui_type === 'compact' ? 'pl-6' :
-                              completedDay.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' :
-                              'pl-10'}
-                          `}
-                        >
-                          {/* Dot on timeline */}
-                          {completedDay.ui_type !== 'narrative' && (
-                            <div className={`absolute ${completedDay.ui_type === 'compact' ? 'left-[-5px] top-4 w-2.5 h-2.5' : 'left-[-9px] top-6 w-4 h-4'} rounded-full bg-white border-4 border-primary shadow-sm z-10`}></div>
+                      {/* Activity Cards */}
+                      {completedDay.activities.map((activity, actIndex) => (
+                        <SpotCard
+                          key={`activity-${completedDay.day}-${actIndex}`}
+                          activity={activity}
+                          state={getCardState(
+                            `activity-${completedDay.day}-${actIndex}`
                           )}
-
-                          {/* Activity Card */}
-                          <div
-                            className={`
-                              bg-white rounded-xl shadow-sm transition-all duration-300 relative overflow-hidden
-                              ${completedDay.ui_type === 'compact' ? "border border-stone-100 p-3 hover:bg-stone-50 flex items-center gap-4" :
-                                completedDay.ui_type === 'narrative' ? "border-none shadow-none bg-transparent p-0 hover:bg-transparent" :
-                                "border border-stone-100 p-6 hover:bg-stone-50 hover:shadow-md group-hover:-translate-y-1"}
-                            `}
-                          >
-                            {/* Decorative stripe - Only Default */}
-                            {completedDay.ui_type !== 'narrative' && completedDay.ui_type !== 'compact' && (
-                              <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
-                            )}
-
-                            {/* View Content Switch */}
-                            {completedDay.ui_type === 'narrative' ? (
-                              <div className="relative border-l-4 border-primary/20 pl-6 py-1">
-                                <div className="flex items-baseline gap-3 mb-2">
-                                  <span className="text-primary font-serif font-bold text-lg">{act.time}</span>
-                                  <h4 className="text-2xl font-serif font-bold text-stone-800">
-                                    {act.activity}
-                                  </h4>
-                                </div>
-                                <p className="text-stone-600 leading-relaxed text-lg font-serif">
-                                  {act.description}
-                                </p>
-                                {act.isLocked && (
-                                  <div className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
-                                    <FaLock size={10} />
-                                    <span>固定</span>
-                                  </div>
-                                )}
-                              </div>
-                            ) : completedDay.ui_type === 'compact' ? (
-                              <>
-                                <div className="flex-shrink-0 w-16 text-stone-500 text-xs font-mono font-bold text-right">
-                                  {act.time}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-2">
-                                    <h4 className="text-sm font-bold text-stone-800 truncate">
-                                      {act.activity}
-                                    </h4>
-                                    {act.isLocked && (
-                                      <FaLock size={10} className="text-amber-500 flex-shrink-0" />
-                                    )}
-                                  </div>
-                                  <p className="text-stone-500 text-xs truncate">
-                                    {act.description}
-                                  </p>
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="flex items-center gap-2 mb-2">
-                                  <div className="text-stone-500 text-sm font-mono bg-stone-100 px-2 py-1 rounded-md flex items-center gap-2">
-                                    <FaClock className="text-primary/70" />
-                                    {act.time}
-                                  </div>
-                                  {act.isLocked && (
-                                    <div className="flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
-                                      <FaLock size={10} />
-                                      <span>固定</span>
-                                    </div>
-                                  )}
-                                </div>
-
-                                <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
-                                  {act.activity}
-                                </h4>
-                                <p className="text-stone-600 leading-relaxed text-sm">
-                                  {act.description}
-                                </p>
-                              </>
-                            )}
-                          </div>
-                        </div>
+                          onStateChange={(state) =>
+                            handleCardStateChange(
+                              `activity-${completedDay.day}-${actIndex}`,
+                              state
+                            )
+                          }
+                        />
                       ))}
+
+                      {/* Accommodation Card (for overnight stay - show on all days except last) */}
+                      {completedDay.day < totalDays && outlineDay.overnight_location && (
+                        <AccommodationCard
+                          accommodation={{
+                            name: outlineDay.overnight_location,
+                            description: `${completedDay.day}日目の宿泊エリア`,
+                          }}
+                          dayNumber={completedDay.day}
+                          state={getCardState(`accommodation-${completedDay.day}`)}
+                          onStateChange={(state) =>
+                            handleCardStateChange(
+                              `accommodation-${completedDay.day}`,
+                              state
+                            )
+                          }
+                          className="mt-6"
+                        />
+                      )}
                     </div>
                   </motion.div>
                 </AnimatePresence>
