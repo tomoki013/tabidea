@@ -67,6 +67,7 @@ const PACE_OPTIONS = [
 ];
 
 const DURATION_OPTIONS = [
+  { value: 0, label: "未定" },
   { value: 1, label: "日帰り" },
   { value: 2, label: "1泊2日" },
   { value: 3, label: "2泊3日" },
@@ -92,6 +93,7 @@ interface SimplifiedInputFlowProps {
 // ============================================================================
 
 const parseDuration = (str: string): number => {
+  if (str === "未定") return 0;
   if (str.includes("日帰り")) return 1;
   const nightsMatch = str.match(/(\d+)泊(\d+)日/);
   if (nightsMatch) {
@@ -105,6 +107,7 @@ const parseDuration = (str: string): number => {
 };
 
 const formatDuration = (days: number): string => {
+  if (days === 0) return "未定";
   if (days === 1) return "日帰り";
   return `${days - 1}泊${days}日`;
 };
@@ -219,6 +222,8 @@ export default function SimplifiedInputFlow({
     return "";
   });
   // Default to calendar view unless explicitly explicitly duration-only (and not just the default)
+  // カレンダーの方はデフォルトで未定という扱い (Default to undecided for Calendar)
+  // This means if I pick calendar but haven't selected dates, it is treated as "Undecided"
   const [useCalendar, setUseCalendar] = useState(!!currentStartDate);
 
   // Sync local date state when input changes externally
@@ -256,9 +261,10 @@ export default function SimplifiedInputFlow({
                   (destinationInput.trim().length > 0);
 
   // Date validation must respect the current mode
+  // If useCalendar is true but dates are empty, we treat it as "Undecided" (Valid)
   const hasValidDates = useCalendar
-    ? (!!startDate && !!endDate)
-    : !!input.dates;
+    ? true // Always valid in Calendar mode (empty = undecided)
+    : (input.dates === "未定" || !!input.dates);
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
 
@@ -306,6 +312,14 @@ export default function SimplifiedInputFlow({
     // Scroll to top to ensure loading animation is visible
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    // Handle "Undecided" date logic for Calendar Mode
+    // If in calendar mode and dates are missing, explicitly set dates to "未定"
+    let finalInput = { ...input };
+    if (useCalendar && (!startDate || !endDate)) {
+        finalInput.dates = "未定";
+        onChange({ dates: "未定" });
+    }
+
     // If there is pending destination input, add it before generating
     const trimmed = destinationInput.trim();
     if (trimmed && !input.destinations.includes(trimmed)) {
@@ -318,17 +332,12 @@ export default function SimplifiedInputFlow({
             destinations: updatedDestinations,
             isDestinationDecided: true,
         });
-
-        // Pass the updated input state to the generation function to avoid race conditions
-        const inputOverride = {
-            ...input,
-            destinations: updatedDestinations,
-            isDestinationDecided: true,
-        };
-        parentOnGenerate(inputOverride);
-    } else {
-        parentOnGenerate();
+        finalInput.destinations = updatedDestinations;
+        finalInput.isDestinationDecided = true;
     }
+
+    // Pass the updated input state to the generation function to avoid race conditions
+    parentOnGenerate(finalInput);
   };
 
   const removeDestination = (index: number) => {
