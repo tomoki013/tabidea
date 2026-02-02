@@ -8,12 +8,10 @@
    - Network:       http://192.168.0.2:3000
 
  ✓ Starting...
- ✓ Ready in 6.5s
+ ✓ Ready in 5.6s
  ○ Compiling / ...
- GET / 200 in 29.4s (compile: 26.1s, proxy.ts: 617ms, render: 2.7s)
- GET / 200 in 545ms (compile: 19ms, proxy.ts: 18ms, render: 508ms)
- GET / 200 in 378ms (compile: 16ms, proxy.ts: 12ms, render: 349ms)
- GET / 200 in 275ms (compile: 9ms, proxy.ts: 7ms, render: 258ms)
+ GET / 200 in 28.2s (compile: 25.1s, proxy.ts: 498ms, render: 2.6s)
+ GET / 200 in 255ms (compile: 11ms, proxy.ts: 11ms, render: 232ms)
  ELIFECYCLE  Command failed.
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
 [?25h

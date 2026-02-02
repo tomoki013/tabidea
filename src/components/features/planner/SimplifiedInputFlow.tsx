@@ -805,32 +805,42 @@ export default function SimplifiedInputFlow({
               ))}
             </div>
           </div>
-
-          <div className="pt-2">
-            <button
-                type="button"
-                onClick={handleGenerateClick}
-                disabled={isGenerating}
-                className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-            >
-                {isGenerating ? (
-                    <>
-                        <span className="animate-spin">⏳</span>
-                        プランを作成中...
-                    </>
-                ) : (
-                    <>
-                        <span>✨</span>
-                        詳細条件でプランを作成
-                    </>
-                )}
-            </button>
-            <p className="text-center text-xs text-stone-500 mt-2">
-                詳しく入力すると、よりカスタマイズされたプランが生成できます✨
-            </p>
-          </div>
         </div>
       </AccordionSection>
+
+      {/* Button below Phase 2 (Recommended) */}
+      <AnimatePresence>
+        {(phase2Open || isPhase2Complete) && (
+            <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="pt-2"
+            >
+                <button
+                    type="button"
+                    onClick={handleGenerateClick}
+                    disabled={isGenerating}
+                    className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                >
+                    {isGenerating ? (
+                        <>
+                            <span className="animate-spin">⏳</span>
+                            プランを作成中...
+                        </>
+                    ) : (
+                        <>
+                            <span>✨</span>
+                            詳細条件でプランを作成
+                        </>
+                    )}
+                </button>
+                <p className="text-center text-xs text-stone-500 mt-2">
+                    👇 下の『さらに詳しく』を入力すると、よりカスタマイズされたプランが生成できます✨
+                </p>
+            </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ================================================================== */}
       {/* Phase 3: Optional (Accordion) */}
@@ -910,28 +920,39 @@ export default function SimplifiedInputFlow({
             />
           </div>
 
-          <div className="pt-2">
-            <button
-                type="button"
-                onClick={handleGenerateClick}
-                disabled={isGenerating}
-                className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-            >
-                {isGenerating ? (
-                    <>
-                        <span className="animate-spin">⏳</span>
-                        プランを作成中...
-                    </>
-                ) : (
-                    <>
-                        <span>✨</span>
-                        詳細条件でプランを作成
-                    </>
-                )}
-            </button>
-          </div>
         </div>
       </AccordionSection>
+
+      {/* Button below Phase 3 (Optional) */}
+      <AnimatePresence>
+        {hasDetailedInput && (
+            <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="pt-2"
+            >
+                <button
+                    type="button"
+                    onClick={handleGenerateClick}
+                    disabled={isGenerating}
+                    className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                >
+                    {isGenerating ? (
+                        <>
+                            <span className="animate-spin">⏳</span>
+                            プランを作成中...
+                        </>
+                    ) : (
+                        <>
+                            <span>✨</span>
+                            詳細条件でプランを作成
+                        </>
+                    )}
+                </button>
+            </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom spacer for sticky button */}
       <div className="h-20" />
