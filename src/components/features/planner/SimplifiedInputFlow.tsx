@@ -219,7 +219,7 @@ export default function SimplifiedInputFlow({
     return "";
   });
   // Default to calendar view unless explicitly explicitly duration-only (and not just the default)
-  const [useCalendar, setUseCalendar] = useState(true);
+  const [useCalendar, setUseCalendar] = useState(!!currentStartDate);
 
   // Sync local date state when input changes externally
   useEffect(() => {
@@ -261,6 +261,13 @@ export default function SimplifiedInputFlow({
     : !!input.dates;
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
+
+  const hasDetailedInput = (useCalendar && !!startDate) ||
+                         input.theme.length > 0 ||
+                         !!input.budget ||
+                         !!input.pace ||
+                         (input.mustVisitPlaces?.length ?? 0) > 0 ||
+                         !!input.freeText;
 
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
@@ -516,7 +523,7 @@ export default function SimplifiedInputFlow({
                   onChange={(e) => setDestinationInput(e.target.value)}
                   onKeyDown={handleDestinationKeyDown}
                   placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
-                  className="flex-1 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                  className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
                 />
                 {destinationInput.trim() && (
                   <button
@@ -543,17 +550,6 @@ export default function SimplifiedInputFlow({
             <div className="bg-stone-100 p-1 rounded-lg flex text-xs font-bold">
                 <button
                     type="button"
-                    onClick={() => setUseCalendar(true)}
-                    className={`px-3 py-1.5 rounded-md transition-all ${
-                        useCalendar
-                            ? "bg-white text-primary shadow-sm"
-                            : "text-stone-500 hover:text-stone-700"
-                    }`}
-                >
-                    カレンダー
-                </button>
-                <button
-                    type="button"
                     onClick={() => {
                         setUseCalendar(false);
                         onChange({ dates: formatDuration(duration || 3) });
@@ -567,6 +563,17 @@ export default function SimplifiedInputFlow({
                     }`}
                 >
                     日数のみ
+                </button>
+                <button
+                    type="button"
+                    onClick={() => setUseCalendar(true)}
+                    className={`px-3 py-1.5 rounded-md transition-all ${
+                        useCalendar
+                            ? "bg-white text-primary shadow-sm"
+                            : "text-stone-500 hover:text-stone-700"
+                    }`}
+                >
+                    カレンダー
                 </button>
             </div>
           </div>
@@ -674,39 +681,6 @@ export default function SimplifiedInputFlow({
         </div>
       </div>
 
-      {/* Generate Button (Phase 1 Complete) */}
-      <AnimatePresence>
-        {canGenerate && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="sticky bottom-4 z-10"
-          >
-            <button
-              type="button"
-              onClick={handleGenerateClick}
-              disabled={isGenerating}
-              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-            >
-              {isGenerating ? (
-                <>
-                  <span className="animate-spin">⏳</span>
-                  プランを作成中...
-                </>
-              ) : (
-                <>
-                  <span>✨</span>
-                  とりあえず生成する
-                </>
-              )}
-            </button>
-            <p className="text-center text-xs text-stone-500 mt-2">
-              下の詳細設定を追加すると、より良いプランが作れます
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* ================================================================== */}
       {/* Phase 2: Recommended (Accordion) */}
@@ -877,6 +851,42 @@ export default function SimplifiedInputFlow({
           </div>
         </div>
       </AccordionSection>
+
+      {/* Generate Button */}
+      <AnimatePresence>
+        {canGenerate && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            className={hasDetailedInput ? "w-full mt-8" : "sticky bottom-4 z-10"}
+          >
+            <button
+              type="button"
+              onClick={handleGenerateClick}
+              disabled={isGenerating}
+              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+            >
+              {isGenerating ? (
+                <>
+                  <span className="animate-spin">⏳</span>
+                  プランを作成中...
+                </>
+              ) : (
+                <>
+                  <span>✨</span>
+                  {hasDetailedInput ? "詳細条件でプランを作成" : "とりあえず生成する"}
+                </>
+              )}
+            </button>
+            {!hasDetailedInput && (
+              <p className="text-center text-xs text-stone-500 mt-2">
+                下の詳細設定を追加すると、より良いプランが作れます
+              </p>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Bottom spacer for sticky button */}
       <div className="h-20" />
