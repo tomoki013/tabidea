@@ -83,7 +83,7 @@ const DURATION_OPTIONS = [
 interface SimplifiedInputFlowProps {
   input: UserInput;
   onChange: (update: Partial<UserInput>) => void;
-  onGenerate: () => void;
+  onGenerate: (inputOverride?: UserInput) => void;
   isGenerating?: boolean;
 }
 
@@ -269,6 +269,12 @@ export default function SimplifiedInputFlow({
                          (input.mustVisitPlaces?.length ?? 0) > 0 ||
                          !!input.freeText;
 
+  // Phase 1 is strictly just destination/date/companion.
+  // If we have detailed input, we shift to the bottom button mode.
+  // If not, we show the intermediate button.
+  const showIntermediateButton = canGenerate && !hasDetailedInput;
+  const showBottomButton = canGenerate && hasDetailedInput;
+
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
 
@@ -297,6 +303,9 @@ export default function SimplifiedInputFlow({
   };
 
   const handleGenerateClick = () => {
+    // Scroll to top to ensure loading animation is visible
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
     // If there is pending destination input, add it before generating
     const trimmed = destinationInput.trim();
     if (trimmed && !input.destinations.includes(trimmed)) {
@@ -311,18 +320,11 @@ export default function SimplifiedInputFlow({
         });
 
         // Pass the updated input state to the generation function to avoid race conditions
-        // We cast to any because the prop definition might not strictly match yet,
-        // but typically parents accept arguments if they are properly typed.
-        // Actually, let's construct the full UserInput object if needed,
-        // but typically we can pass just the override or the full object.
-        // Assuming parentOnGenerate accepts optional override.
-        // We need to construct the expected UserInput object.
         const inputOverride = {
             ...input,
             destinations: updatedDestinations,
             isDestinationDecided: true,
         };
-        // @ts-ignore - The parent component has been updated to accept this argument
         parentOnGenerate(inputOverride);
     } else {
         parentOnGenerate();
@@ -681,6 +683,40 @@ export default function SimplifiedInputFlow({
         </div>
       </div>
 
+      {/* Intermediate Generate Button (Phase 1 Only) */}
+      <AnimatePresence>
+        {showIntermediateButton && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="space-y-2"
+          >
+            <button
+              type="button"
+              onClick={handleGenerateClick}
+              disabled={isGenerating}
+              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+            >
+              {isGenerating ? (
+                <>
+                  <span className="animate-spin">⏳</span>
+                  プランを作成中...
+                </>
+              ) : (
+                <>
+                  <span>✨</span>
+                  とりあえず生成する
+                </>
+              )}
+            </button>
+            <p className="text-center text-xs text-stone-500">
+                👇 下の詳細設定を追加すると、より精度の高いプランが作成されます
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
 
       {/* ================================================================== */}
       {/* Phase 2: Recommended (Accordion) */}
@@ -852,14 +888,14 @@ export default function SimplifiedInputFlow({
         </div>
       </AccordionSection>
 
-      {/* Generate Button */}
+      {/* Bottom Generate Button (Detailed Mode) */}
       <AnimatePresence>
-        {canGenerate && (
+        {showBottomButton && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
-            className={hasDetailedInput ? "w-full mt-8" : "sticky bottom-4 z-10"}
+            className="w-full mt-8"
           >
             <button
               type="button"
@@ -875,15 +911,10 @@ export default function SimplifiedInputFlow({
               ) : (
                 <>
                   <span>✨</span>
-                  {hasDetailedInput ? "詳細条件でプランを作成" : "とりあえず生成する"}
+                  詳細条件でプランを作成
                 </>
               )}
             </button>
-            {!hasDetailedInput && (
-              <p className="text-center text-xs text-stone-500 mt-2">
-                下の詳細設定を追加すると、より良いプランが作れます
-              </p>
-            )}
           </motion.div>
         )}
       </AnimatePresence>
