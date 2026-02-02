@@ -43,6 +43,7 @@ vi.mock("@/context/AuthContext", () => ({
 vi.mock("@/lib/local-storage/plans", () => ({
   saveLocalPlan: vi.fn(() => ({ id: "local_test_123" })),
   getLocalPlans: vi.fn(() => []),
+  notifyPlanChange: vi.fn(),
 }));
 
 // Mock UserPlansContext
@@ -53,14 +54,16 @@ vi.mock("@/context/UserPlansContext", () => ({
 }));
 
 it("renders the initial form", () => {
-  render(<TravelPlanner />);
+  // Use initialStep={0} to test the legacy 10-step wizard
+  render(<TravelPlanner initialStep={0} />);
   // Updated text assertions for the new Initial Choice Step
   expect(screen.getByText((content) => content.includes("行き先は"))).toBeDefined();
   expect(screen.getByText((content) => content.includes("決まっていますか？"))).toBeDefined();
 });
 
 it("navigates through 'Decided' flow", async () => {
-  render(<TravelPlanner />);
+  // Use initialStep={0} to test the legacy 10-step wizard
+  render(<TravelPlanner initialStep={0} />);
 
   // Step 0: Initial Choice -> Decided
   const decidedBtn = screen.getByText("決まっている");
@@ -133,7 +136,8 @@ it("navigates through 'Decided' flow", async () => {
 }, 15000);
 
 it("navigates through 'Not Decided' flow", async () => {
-  render(<TravelPlanner />);
+  // Use initialStep={0} to test the legacy 10-step wizard
+  render(<TravelPlanner initialStep={0} />);
 
   // Step 0: Initial Choice -> Not Decided
   const notDecidedBtn = screen.getByText("決まっていない");

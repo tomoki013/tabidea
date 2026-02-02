@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import TravelPlannerSimplified from "./TravelPlannerSimplified";
 
@@ -85,9 +85,11 @@ describe("TravelPlannerSimplified", () => {
     // Check if tag added
     expect(screen.getByText("北海道")).toBeDefined();
 
-    // 2. Select Duration
-    const dayBtn = screen.getByText("2泊3日");
-    fireEvent.click(dayBtn);
+    // 2. Select Duration (use getAllByText and click the button, not the selected value)
+    const dayBtns = screen.getAllByText("2泊3日");
+    // Click the button (it's inside a button element)
+    const dayBtn = dayBtns.find(el => el.closest('button'));
+    if (dayBtn) fireEvent.click(dayBtn);
 
     // 3. Select Companion
     const friendBtn = screen.getByText("友人");

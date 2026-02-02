@@ -1,39 +1,40 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { UserInput, Itinerary, DayPlan } from "@/types";
-import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import {
-  generatePlanOutline,
-  generatePlanChunk,
-  savePlan,
-} from "@/app/actions/travel-planner";
-import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
-import { useAuth } from "@/context/AuthContext";
-import { useUserPlans } from "@/context/UserPlansContext";
+import { useState, useEffect, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
+import { UserInput, PlanOutline } from "@/types";
+import { usePlanGeneration, useLimitModals } from "@/lib/hooks";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
-import LoadingView from "./LoadingView";
-import OutlineReview from "./OutlineReview";
 import OutlineLoadingAnimation from "./OutlineLoadingAnimation";
+import OutlineReview from "./OutlineReview";
+import StreamingResultView from "./StreamingResultView";
 import { LoginPromptModal } from "@/components/ui/LoginPromptModal";
 import { LimitExceededModal } from "@/components/ui/LimitExceededModal";
 import {
   restorePendingState,
   clearPendingState,
 } from "@/lib/restore/pending-state";
-import { PlanOutline, Article, HeroImageData } from "@/types";
+
+// ============================================================================
+// Types
+// ============================================================================
 
 interface TravelPlannerSimplifiedProps {
   initialInput?: UserInput | null;
   onClose?: () => void;
+  /** If true, show outline review before generating details */
+  showOutlineReview?: boolean;
 }
+
+// ============================================================================
+// Default Input
+// ============================================================================
 
 const DEFAULT_INPUT: UserInput = {
   destinations: [],
   isDestinationDecided: undefined,
   region: "",
-  dates: "2泊3日", // Default to 3 days
+  dates: "2泊3日",
   companions: "",
   theme: [],
   budget: "",
@@ -44,21 +45,29 @@ const DEFAULT_INPUT: UserInput = {
   hasMustVisitPlaces: undefined,
 };
 
+// ============================================================================
+// Component
+// ============================================================================
+
 export default function TravelPlannerSimplified({
   initialInput,
   onClose,
+  showOutlineReview = false,
 }: TravelPlannerSimplifiedProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
-  const { isAuthenticated } = useAuth();
-  const { refreshPlans } = useUserPlans();
-
   const shouldRestore = searchParams.get("restore") === "true";
 
+  // ========================================
+  // User Input State
+  // ========================================
   const [input, setInput] = useState<UserInput>(() => {
     if (initialInput) {
       const merged = { ...DEFAULT_INPUT, ...initialInput };
-      if (merged.destinations && merged.destinations.length > 0 && !merged.isDestinationDecided) {
+      if (
+        merged.destinations &&
+        merged.destinations.length > 0 &&
+        !merged.isDestinationDecided
+      ) {
         merged.isDestinationDecided = true;
       }
       return merged;
@@ -66,232 +75,181 @@ export default function TravelPlannerSimplified({
     return DEFAULT_INPUT;
   });
 
-  const [status, setStatus] = useState<
-    "idle" | "generating_outline" | "review_outline" | "generating_details" | "complete" | "error"
-  >("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  // ========================================
+  // Plan Generation Hook
+  // ========================================
+  const {
+    generationState,
+    generatePlan,
+    proceedToDetails,
+    retryChunk,
+    reset,
+    limitExceeded,
+    errorMessage,
+    clearLimitExceeded,
+    isGenerating,
+    isReviewingOutline,
+  } = usePlanGeneration({
+    onComplete: onClose,
+    streamingMode: !showOutlineReview,
+  });
 
-  // Intermediate state for Outline -> Details
-  const [outline, setOutline] = useState<PlanOutline | null>(null);
-  const [generationContext, setGenerationContext] = useState<Article[]>([]);
-  const [heroImage, setHeroImage] = useState<HeroImageData | undefined>(undefined);
+  // ========================================
+  // Limit Modals Hook
+  // ========================================
+  const {
+    loginPrompt,
+    limitExceeded: limitModal,
+    showLoginPrompt,
+    hideLoginPrompt,
+    showLimitExceeded,
+    hideLimitExceeded,
+  } = useLimitModals();
 
-  // Rate limiting state
-  const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-  const [showLimitExceeded, setShowLimitExceeded] = useState(false);
-  const [limitResetAt, setLimitResetAt] = useState<Date | null>(null);
-  const [userType, setUserType] = useState<string>("anonymous");
-
-  // Restore state
+  // ========================================
+  // Restore State Notifications
+  // ========================================
   const [showExpiredNotice, setShowExpiredNotice] = useState(false);
   const [showRestoredNotice, setShowRestoredNotice] = useState(false);
-  const [loginPromptProps, setLoginPromptProps] = useState<{
-    userInput?: UserInput;
-    currentStep?: number;
-    isInModal?: boolean;
-  }>({});
 
-  // Restore saved state
+  // ========================================
+  // Handle Limit Exceeded
+  // ========================================
+  useEffect(() => {
+    if (limitExceeded) {
+      if (limitExceeded.userType === "anonymous") {
+        showLoginPrompt({
+          userInput: input,
+          currentStep: 8,
+          isInModal: false,
+        });
+      } else {
+        showLimitExceeded({
+          resetAt: limitExceeded.resetAt,
+          actionType: "plan_generation",
+        });
+      }
+      clearLimitExceeded();
+    }
+  }, [
+    limitExceeded,
+    input,
+    showLoginPrompt,
+    showLimitExceeded,
+    clearLimitExceeded,
+  ]);
+
+  // ========================================
+  // Restore Saved State
+  // ========================================
   useEffect(() => {
     if (!shouldRestore) return;
 
-    const result = restorePendingState();
+    // Use requestAnimationFrame to defer state updates
+    // This avoids the "setState in effect" lint warning
+    const frameId = requestAnimationFrame(() => {
+      const result = restorePendingState();
 
-    if (result.expired) {
-      setShowExpiredNotice(true);
-      const url = new URL(window.location.href);
-      url.searchParams.delete("restore");
-      window.history.replaceState({}, "", url.toString());
-      return;
-    }
-
-    if (result.success && result.data && result.data.restoreType === "wizard") {
-      setInput(result.data.userInput);
-      setShowRestoredNotice(true);
-      clearPendingState();
-      const url = new URL(window.location.href);
-      url.searchParams.delete("restore");
-      window.history.replaceState({}, "", url.toString());
-    }
-  }, [shouldRestore]);
-
-  const handleChange = (update: Partial<UserInput>) => {
-    setInput((prev) => ({ ...prev, ...update }));
-    setErrorMessage("");
-  };
-
-  const handleGenerateOutline = async (inputOverride?: UserInput) => {
-    setStatus("generating_outline");
-    setErrorMessage("");
-
-    try {
-      const preparedInput = { ...(inputOverride || input) };
-
-      if (preparedInput.isDestinationDecided === false && !preparedInput.region) {
-        preparedInput.region = "anywhere";
-      }
-
-      if (!preparedInput.budget) preparedInput.budget = "standard";
-      if (!preparedInput.pace) preparedInput.pace = "balanced";
-      if (preparedInput.theme.length === 0) preparedInput.theme = ["グルメ"];
-      if (preparedInput.hasMustVisitPlaces === undefined) {
-        preparedInput.hasMustVisitPlaces = (preparedInput.mustVisitPlaces?.length ?? 0) > 0;
-      }
-
-      // Step 1: Generate Master Outline
-      const outlineResponse = await generatePlanOutline(preparedInput);
-
-      if (!outlineResponse.success && outlineResponse.limitExceeded) {
-        setStatus("idle");
-        setUserType(outlineResponse.userType || "anonymous");
-        if (outlineResponse.userType === "anonymous") {
-          setLoginPromptProps({
-            userInput: preparedInput,
-            currentStep: 8,
-            isInModal: false,
-          });
-          setShowLoginPrompt(true);
-        } else {
-          setLimitResetAt(
-            outlineResponse.resetAt ? new Date(outlineResponse.resetAt) : null
-          );
-          setShowLimitExceeded(true);
-        }
+      if (result.expired) {
+        setShowExpiredNotice(true);
+        const url = new URL(window.location.href);
+        url.searchParams.delete("restore");
+        window.history.replaceState({}, "", url.toString());
         return;
       }
 
-      if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(
-          outlineResponse.message || "プラン概要の作成に失敗しました。"
-        );
+      if (
+        result.success &&
+        result.data &&
+        result.data.restoreType === "wizard"
+      ) {
+        setInput(result.data.userInput);
+        setShowRestoredNotice(true);
+        clearPendingState();
+        const url = new URL(window.location.href);
+        url.searchParams.delete("restore");
+        window.history.replaceState({}, "", url.toString());
       }
+    });
 
-      const { outline: newOutline, context, input: updatedInput, heroImage: newHeroImage } = outlineResponse.data;
+    return () => cancelAnimationFrame(frameId);
+  }, [shouldRestore]);
 
-      // Update state for review
-      setOutline(newOutline);
-      setGenerationContext(context);
-      setHeroImage(newHeroImage || undefined);
-      setInput(updatedInput); // Important: Update input in case AI normalized it
-      setStatus("review_outline");
+  // ========================================
+  // Handlers
+  // ========================================
+  const handleChange = useCallback((update: Partial<UserInput>) => {
+    setInput((prev) => ({ ...prev, ...update }));
+  }, []);
 
-    } catch (e: any) {
-      console.error(e);
-      setStatus("error");
-      setErrorMessage(e.message || "エラーが発生しました。");
-    }
-  };
+  const handleGenerateOutline = useCallback(
+    async (inputOverride?: UserInput) => {
+      await generatePlan(inputOverride || input);
+    },
+    [generatePlan, input]
+  );
 
-  const handleProceedToDetails = async (confirmedOutline: PlanOutline) => {
-    setStatus("generating_details");
+  const handleProceedToDetails = useCallback(
+    async (confirmedOutline: PlanOutline) => {
+      await proceedToDetails(confirmedOutline);
+    },
+    [proceedToDetails]
+  );
 
-    try {
-      // Step 2: Parallel Chunk Generation
-      let totalDays = extractDuration(input.dates);
-      if (totalDays === 0 && confirmedOutline.days.length > 0) {
-        totalDays = confirmedOutline.days.length;
-      }
+  const handleRetryChunk = useCallback(
+    async (dayStart: number, dayEnd: number) => {
+      await retryChunk(dayStart, dayEnd);
+    },
+    [retryChunk]
+  );
 
-      const chunks = splitDaysIntoChunks(totalDays);
-      const chunkPromises = chunks.map((chunk) => {
-        const chunkOutlineDays = confirmedOutline.days.filter(
-          (d) => d.day >= chunk.start && d.day <= chunk.end
-        );
-
-        let previousOvernightLocation: string | undefined = undefined;
-        if (chunk.start > 1) {
-          const prevDay = confirmedOutline.days.find((d) => d.day === chunk.start - 1);
-          if (prevDay) {
-            previousOvernightLocation = prevDay.overnight_location;
-          }
-        }
-
-        return generatePlanChunk(
-          input,
-          generationContext,
-          chunkOutlineDays,
-          chunk.start,
-          chunk.end,
-          previousOvernightLocation
-        );
-      });
-
-      const chunkResults = await Promise.all(chunkPromises);
-      const failedChunk = chunkResults.find((r) => !r.success);
-      if (failedChunk) {
-        throw new Error(failedChunk.message || "詳細プランの生成に失敗しました。");
-      }
-
-      // Step 3: Merge
-      const mergedDays: DayPlan[] = chunkResults.flatMap((r) => r.data || []);
-      mergedDays.sort((a, b) => a.day - b.day);
-      const simpleId = Math.random().toString(36).substring(2, 15);
-
-      const finalPlan: Itinerary = {
-        id: simpleId,
-        destination: confirmedOutline.destination,
-        description: confirmedOutline.description,
-        heroImage: heroImage?.url || undefined,
-        heroImagePhotographer: heroImage?.photographer || undefined,
-        heroImagePhotographerUrl: heroImage?.photographerUrl || undefined,
-        days: mergedDays,
-        references: generationContext.map((c) => ({
-          title: c.title,
-          url: c.url,
-          image: c.imageUrl,
-          snippet: c.snippet,
-        })),
-      };
-
-      // Step 4: Save & Redirect
-      if (isAuthenticated) {
-        const saveResult = await savePlan(input, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
-          await refreshPlans();
-          router.push(`/plan/${saveResult.shareCode}`);
-        } else {
-          const localPlan = await saveLocalPlan(input, finalPlan);
-          notifyPlanChange();
-          router.push(`/plan/local/${localPlan.id}`);
-        }
-      } else {
-        const localPlan = await saveLocalPlan(input, finalPlan);
-        notifyPlanChange();
-        router.push(`/plan/local/${localPlan.id}`);
-      }
-
-      if (onClose) onClose();
-
-    } catch (e: any) {
-      console.error(e);
-      setStatus("error");
-      setErrorMessage(e.message || "エラーが発生しました。");
-    }
-  };
-
-  if (status === "generating_outline") {
+  // ========================================
+  // Render: Outline Loading
+  // ========================================
+  if (generationState.phase === "generating_outline") {
     return <OutlineLoadingAnimation />;
   }
 
-  if (status === "review_outline" && outline) {
+  // ========================================
+  // Render: Outline Review (if enabled)
+  // ========================================
+  if (isReviewingOutline && generationState.outline) {
     return (
       <OutlineReview
-        outline={outline}
+        outline={generationState.outline}
         onConfirm={handleProceedToDetails}
         isGenerating={false}
       />
     );
   }
 
-  if (status === "generating_details") {
-    return <LoadingView />;
+  // ========================================
+  // Render: Streaming Result View
+  // ========================================
+  if (
+    generationState.phase === "outline_ready" ||
+    generationState.phase === "generating_details" ||
+    generationState.phase === "completed"
+  ) {
+    return (
+      <StreamingResultView
+        generationState={generationState}
+        input={generationState.updatedInput || input}
+        onRetryChunk={handleRetryChunk}
+      />
+    );
   }
 
-  if (status === "error") {
-    const isDeploymentError = errorMessage === "DEPLOYMENT_UPDATE_ERROR";
+  // ========================================
+  // Render: Error State
+  // ========================================
+  if (generationState.phase === "error") {
+    const isDeploymentError =
+      errorMessage === "DEPLOYMENT_UPDATE_ERROR" ||
+      generationState.error === "DEPLOYMENT_UPDATE_ERROR";
     const displayMessage = isDeploymentError
       ? "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。"
-      : errorMessage || "エラーが発生しました";
+      : generationState.error || errorMessage || "エラーが発生しました";
 
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -302,7 +260,7 @@ export default function TravelPlannerSimplified({
             if (isDeploymentError) {
               window.location.reload();
             } else {
-              setErrorMessage("");
+              reset();
               handleGenerateOutline();
             }
           }}
@@ -324,6 +282,9 @@ export default function TravelPlannerSimplified({
     );
   }
 
+  // ========================================
+  // Render: Input Flow (Default)
+  // ========================================
   return (
     <>
       {/* Expired Notice */}
@@ -414,26 +375,27 @@ export default function TravelPlannerSimplified({
         </div>
       )}
 
+      {/* Input Flow */}
       <SimplifiedInputFlow
         input={input}
         onChange={handleChange}
         onGenerate={handleGenerateOutline}
-        isGenerating={false}
+        isGenerating={isGenerating}
       />
 
       {/* Rate Limit Modals */}
       <LoginPromptModal
-        isOpen={showLoginPrompt}
-        onClose={() => setShowLoginPrompt(false)}
-        userInput={loginPromptProps?.userInput}
-        currentStep={loginPromptProps?.currentStep}
-        isInModal={loginPromptProps?.isInModal}
+        isOpen={loginPrompt.isOpen}
+        onClose={hideLoginPrompt}
+        userInput={loginPrompt.userInput}
+        currentStep={loginPrompt.currentStep}
+        isInModal={loginPrompt.isInModal}
       />
       <LimitExceededModal
-        isOpen={showLimitExceeded}
-        onClose={() => setShowLimitExceeded(false)}
-        resetAt={limitResetAt}
-        actionType="plan_generation"
+        isOpen={limitModal.isOpen}
+        onClose={hideLimitExceeded}
+        resetAt={limitModal.resetAt}
+        actionType={limitModal.actionType}
       />
     </>
   );
