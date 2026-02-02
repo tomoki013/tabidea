@@ -915,6 +915,9 @@ export default function SimplifiedInputFlow({
                 </>
               )}
             </button>
+            <p className="text-center text-xs text-stone-500 mt-2">
+              一緒に詳しく入力することで、よりあなた好みのプランが作成できます✨
+            </p>
           </motion.div>
         )}
       </AnimatePresence>
