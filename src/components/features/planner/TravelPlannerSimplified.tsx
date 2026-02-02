@@ -112,13 +112,14 @@ export default function TravelPlannerSimplified({
     setErrorMessage("");
   };
 
-  const handleGenerate = async () => {
+  const handleGenerate = async (inputOverride?: UserInput) => {
     setStatus("loading");
     setErrorMessage("");
 
     try {
       // Prepare input for generation
-      const preparedInput = { ...input };
+      // Use the override if provided, otherwise use current state
+      const preparedInput = { ...(inputOverride || input) };
 
       // If omakase mode and no region specified, default to 'anywhere'
       if (preparedInput.isDestinationDecided === false && !preparedInput.region) {

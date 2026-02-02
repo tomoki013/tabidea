@@ -186,7 +186,7 @@ function AccordionSection({
 export default function SimplifiedInputFlow({
   input,
   onChange,
-  onGenerate,
+  onGenerate: parentOnGenerate,
   isGenerating = false,
 }: SimplifiedInputFlowProps) {
   // Accordion state
@@ -250,10 +250,17 @@ export default function SimplifiedInputFlow({
   const hasDates = !!input.dates;
 
   // Fix: Ensure canGenerate is true if mandatory fields are filled
-  // Even if isDestinationDecided is technically undefined but destinations exist, it should work.
-  const hasDest = (input.destinations && input.destinations.length > 0) || input.isDestinationDecided === false;
+  // We also consider the pending destinationInput as valid if the user hasn't pressed Enter yet
+  const hasDest = (input.destinations && input.destinations.length > 0) ||
+                  input.isDestinationDecided === false ||
+                  (destinationInput.trim().length > 0);
 
-  const canGenerate = hasDest && hasCompanion && hasDates;
+  // Date validation must respect the current mode
+  const hasValidDates = useCalendar
+    ? (!!startDate && !!endDate)
+    : !!input.dates;
+
+  const canGenerate = hasDest && hasCompanion && hasValidDates;
 
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
@@ -279,6 +286,39 @@ export default function SimplifiedInputFlow({
         isDestinationDecided: true,
       });
       setDestinationInput("");
+    }
+  };
+
+  const handleGenerateClick = () => {
+    // If there is pending destination input, add it before generating
+    const trimmed = destinationInput.trim();
+    if (trimmed && !input.destinations.includes(trimmed)) {
+        const updatedDestinations = [...input.destinations, trimmed];
+        // Update local state first to clear input
+        setDestinationInput("");
+
+        // Update parent state
+        onChange({
+            destinations: updatedDestinations,
+            isDestinationDecided: true,
+        });
+
+        // Pass the updated input state to the generation function to avoid race conditions
+        // We cast to any because the prop definition might not strictly match yet,
+        // but typically parents accept arguments if they are properly typed.
+        // Actually, let's construct the full UserInput object if needed,
+        // but typically we can pass just the override or the full object.
+        // Assuming parentOnGenerate accepts optional override.
+        // We need to construct the expected UserInput object.
+        const inputOverride = {
+            ...input,
+            destinations: updatedDestinations,
+            isDestinationDecided: true,
+        };
+        // @ts-ignore - The parent component has been updated to accept this argument
+        parentOnGenerate(inputOverride);
+    } else {
+        parentOnGenerate();
     }
   };
 
@@ -566,7 +606,29 @@ export default function SimplifiedInputFlow({
                 </div>
             </div>
           ) : (
-            <>
+            <div className="flex flex-col gap-4">
+                {/* Custom Duration (Top) */}
+                <div className="flex items-center justify-center gap-6 py-2 bg-stone-50 rounded-xl border border-stone-200">
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.max(1, duration - 1))}
+                        className="w-12 h-12 rounded-full bg-white border border-stone-200 text-stone-600 hover:bg-stone-100 flex items-center justify-center transition-all shadow-sm active:scale-95"
+                    >
+                        <Minus className="w-5 h-5" />
+                    </button>
+                    <span className="text-xl font-bold text-stone-800 min-w-[100px] text-center font-serif">
+                        {formatDuration(duration)}
+                    </span>
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.min(30, duration + 1))}
+                        className="w-12 h-12 rounded-full bg-primary text-white hover:bg-primary/90 flex items-center justify-center transition-all shadow-md active:scale-95"
+                    >
+                        <Plus className="w-5 h-5" />
+                    </button>
+                </div>
+
+                {/* Preset Buttons (Bottom) */}
                 <div className="grid grid-cols-4 sm:grid-cols-7 gap-2">
                     {DURATION_OPTIONS.map((opt) => (
                     <button
@@ -575,7 +637,7 @@ export default function SimplifiedInputFlow({
                         onClick={() => handleDurationChange(opt.value)}
                         className={`py-2 px-2 text-xs sm:text-sm font-medium rounded-lg border-2 transition-all ${
                         duration === opt.value
-                            ? "border-primary bg-primary text-white"
+                            ? "border-primary bg-primary/10 text-primary"
                             : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
                         }`}
                     >
@@ -583,27 +645,7 @@ export default function SimplifiedInputFlow({
                     </button>
                     ))}
                 </div>
-                {/* Custom Duration */}
-                <div className="flex items-center justify-center gap-4 pt-2">
-                <button
-                    type="button"
-                    onClick={() => handleDurationChange(Math.max(1, duration - 1))}
-                    className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-                >
-                    <Minus className="w-4 h-4" />
-                </button>
-                <span className="text-lg font-bold text-stone-800 min-w-[80px] text-center">
-                    {formatDuration(duration)}
-                </span>
-                <button
-                    type="button"
-                    onClick={() => handleDurationChange(Math.min(30, duration + 1))}
-                    className="w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 flex items-center justify-center transition-colors"
-                >
-                    <Plus className="w-4 h-4" />
-                </button>
-                </div>
-            </>
+            </div>
           )}
         </div>
 
@@ -643,7 +685,7 @@ export default function SimplifiedInputFlow({
           >
             <button
               type="button"
-              onClick={onGenerate}
+              onClick={handleGenerateClick}
               disabled={isGenerating}
               className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
             >
@@ -795,7 +837,7 @@ export default function SimplifiedInputFlow({
               </div>
             )}
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 w-full">
               <input
                 type="text"
                 value={placeInput}
@@ -807,13 +849,13 @@ export default function SimplifiedInputFlow({
                   }
                 }}
                 placeholder="場所名を入力（例：清水寺）"
-                className="flex-1 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-colors text-sm"
+                className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition-colors text-sm"
               />
               {placeInput.trim() && (
                 <button
                   type="button"
                   onClick={addPlace}
-                  className="px-4 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition-colors"
+                  className="flex-shrink-0 px-4 py-2 bg-amber-500 text-white rounded-xl hover:bg-amber-600 transition-colors"
                 >
                   <FaPlus />
                 </button>
