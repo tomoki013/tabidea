@@ -11,10 +11,12 @@ import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
+import OutlineReview from "@/components/features/planner/OutlineReview";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
 import { PlanModal } from "@/components/common";
 import { FAQSection, ExampleSection } from "@/components/features/landing";
 import { FaPlus } from "react-icons/fa6";
+import { PlanOutline } from "@/types";
 
 function PlanContent() {
   const searchParams = useSearchParams();
@@ -22,6 +24,7 @@ function PlanContent() {
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
+  const mode = searchParams.get("mode");
 
   const [error, setError] = useState<string>("");
   const [status, setStatus] = useState<
@@ -100,6 +103,49 @@ function PlanContent() {
       }
     }
   }, [updateDayStatus, addCompletedDays]);
+
+  // Start Detail Generation (Loop through chunks)
+  const startDetailGeneration = useCallback(async (
+    outline: any,
+    updatedInput: UserInput,
+    context: any[]
+  ) => {
+    // Calculate total days
+    let totalDays = extractDuration(updatedInput.dates);
+    if (totalDays === 0 && outline.days.length > 0) {
+      totalDays = outline.days.length;
+    }
+
+    // Initialize day statuses
+    const initialDayStatuses = new Map<number, DayGenerationStatus>();
+    for (let d = 1; d <= totalDays; d++) {
+      initialDayStatuses.set(d, 'pending');
+    }
+
+    const chunks = splitDaysIntoChunks(totalDays);
+
+    // Update state to show chunks pending
+    setGenerationState(prev => ({
+      ...prev,
+      phase: 'generating_details',
+      dayStatuses: initialDayStatuses,
+      totalDays,
+      currentChunks: chunks,
+    }));
+
+    // Generate all chunks in parallel
+    const chunkPromises = chunks.map(chunk =>
+      generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+    );
+
+    try {
+      await Promise.all(chunkPromises);
+    } catch (e) {
+      console.error("Detail generation error:", e);
+      setStatus("error");
+      setError("詳細プランの生成中にエラーが発生しました。");
+    }
+  }, [generateChunk]);
 
   // Save completed plan
   const saveCompletedPlan = useCallback(async (isAuth: boolean) => {
@@ -191,42 +237,22 @@ function PlanContent() {
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
 
-      // Calculate total days
-      let totalDays = extractDuration(updatedInput.dates);
-      if (totalDays === 0 && outline.days.length > 0) {
-        totalDays = outline.days.length;
-      }
+      // Update state to show outline (skip direct detail generation here, call startDetailGeneration instead)
+      // Actually we want streaming immediately for sample
 
-      // Initialize day statuses
-      const initialDayStatuses = new Map<number, DayGenerationStatus>();
-      for (let d = 1; d <= totalDays; d++) {
-        initialDayStatuses.set(d, 'pending');
-      }
-
-      const chunks = splitDaysIntoChunks(totalDays);
-
-      // Update state to show outline
       setGenerationState({
         phase: 'outline_ready',
         outline,
         heroImage: heroImage || null,
         updatedInput,
         context,
-        dayStatuses: initialDayStatuses,
+        dayStatuses: new Map(), // Will be reset in startDetailGeneration
         completedDays: [],
-        totalDays,
-        currentChunks: chunks,
+        totalDays: 0, // Will be set in startDetailGeneration
       });
 
-      // Start detail generation
-      setGenerationState(prev => ({ ...prev, phase: 'generating_details' }));
-
-      // Generate all chunks in parallel
-      const chunkPromises = chunks.map(chunk =>
-        generateChunk(updatedInput, context, outline.days, chunk, outline.days)
-      );
-
-      await Promise.all(chunkPromises);
+      // Step 2: Generate Details
+      await startDetailGeneration(outline, updatedInput, context);
 
     } catch (e: unknown) {
       console.error(e);
@@ -238,7 +264,7 @@ function PlanContent() {
       }));
       setError(e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。");
     }
-  }, [generateChunk]);
+  }, [startDetailGeneration]);
 
   // Handler to retry a failed chunk
   const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
@@ -249,9 +275,49 @@ function PlanContent() {
     await generateChunk(updatedInput, context, outline.days, chunk, outline.days);
   }, [generationState, generateChunk]);
 
+  // Proceed from outline review to details
+  const handleProceedToDetails = useCallback(async (confirmedOutline: PlanOutline) => {
+    const { updatedInput, context } = generationState;
+    if (!updatedInput || !context) return;
+
+    setGenerationState(prev => ({ ...prev, outline: confirmedOutline }));
+    await startDetailGeneration(confirmedOutline, updatedInput, context);
+  }, [generationState, startDetailGeneration]);
+
   useEffect(() => {
     // Wait for auth state to be determined
     if (authLoading) return;
+
+    // Handle Outline Mode (from redirection)
+    if (mode === 'outline' && !hasStartedGeneration.current) {
+      const storedState = localStorage.getItem("tabidea_outline_state");
+      if (storedState) {
+        try {
+          const { outline, context, input, heroImage } = JSON.parse(storedState);
+          // Restore state
+          setGenerationState({
+            ...initialGenerationState,
+            phase: 'outline_ready',
+            outline,
+            context,
+            updatedInput: input,
+            heroImage,
+          });
+          setCurrentInput(input);
+          setStatus('generating'); // Use generating status to show UI
+          hasStartedGeneration.current = true;
+
+          // Clear localStorage to prevent reuse? Maybe keep it for refresh safety
+          // localStorage.removeItem("tabidea_outline_state");
+        } catch (e) {
+          console.error("Failed to parse stored outline state", e);
+          router.replace("/");
+        }
+      } else {
+        router.replace("/");
+      }
+      return;
+    }
 
     // Handle legacy q parameter - redirect to home with a message
     if (legacyQ && !sampleId) {
@@ -276,11 +342,11 @@ function PlanContent() {
         setError("指定されたサンプルプランが見つかりませんでした。");
         setStatus("error");
       }
-    } else if (!sampleId && !legacyQ) {
+    } else if (!sampleId && !legacyQ && !mode) {
       // No parameters - redirect to home
       router.replace("/");
     }
-  }, [authLoading, sampleId, legacyQ, isAuthenticated, router, generateFromSample]);
+  }, [authLoading, sampleId, legacyQ, mode, isAuthenticated, router, generateFromSample]);
 
   if (status === "loading" || authLoading) {
     return (
@@ -295,9 +361,19 @@ function PlanContent() {
     return <OutlineLoadingAnimation />;
   }
 
+  // Show Outline Review
+  if (generationState.phase === 'outline_ready' && generationState.outline) {
+    return (
+      <OutlineReview
+        outline={generationState.outline}
+        onConfirm={handleProceedToDetails}
+        isGenerating={false}
+      />
+    );
+  }
+
   // Show streaming result view during/after detail generation
   if (
-    generationState.phase === 'outline_ready' ||
     generationState.phase === 'generating_details' ||
     generationState.phase === 'completed'
   ) {

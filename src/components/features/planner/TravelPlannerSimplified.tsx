@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { UserInput, PlanOutline } from "@/types";
 import { usePlanGeneration, useLimitModals } from "@/lib/hooks";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
@@ -52,8 +52,9 @@ const DEFAULT_INPUT: UserInput = {
 export default function TravelPlannerSimplified({
   initialInput,
   onClose,
-  showOutlineReview = false,
+  showOutlineReview = true, // Force true to handle redirection after outline
 }: TravelPlannerSimplifiedProps) {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const shouldRestore = searchParams.get("restore") === "true";
 
@@ -93,6 +94,26 @@ export default function TravelPlannerSimplified({
     onComplete: onClose,
     streamingMode: !showOutlineReview,
   });
+
+  // ========================================
+  // Handle Outline Ready -> Redirect
+  // ========================================
+  useEffect(() => {
+    if (isReviewingOutline && generationState.outline) {
+      // Save state to localStorage
+      const stateToSave = {
+        outline: generationState.outline,
+        context: generationState.context,
+        input: generationState.updatedInput || input,
+        heroImage: generationState.heroImage,
+        savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem("tabidea_outline_state", JSON.stringify(stateToSave));
+
+      // Redirect to plan page with outline mode
+      router.push("/plan?mode=outline");
+    }
+  }, [isReviewingOutline, generationState, input, router]);
 
   // ========================================
   // Limit Modals Hook
@@ -214,13 +235,8 @@ export default function TravelPlannerSimplified({
   // Render: Outline Review (if enabled)
   // ========================================
   if (isReviewingOutline && generationState.outline) {
-    return (
-      <OutlineReview
-        outline={generationState.outline}
-        onConfirm={handleProceedToDetails}
-        isGenerating={false}
-      />
-    );
+    // Should redirecting, but show loading state just in case
+    return <OutlineLoadingAnimation />;
   }
 
   // ========================================
