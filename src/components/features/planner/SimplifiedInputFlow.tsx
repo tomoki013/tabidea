@@ -805,6 +805,30 @@ export default function SimplifiedInputFlow({
               ))}
             </div>
           </div>
+
+          <div className="pt-2">
+            <button
+                type="button"
+                onClick={handleGenerateClick}
+                disabled={isGenerating}
+                className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+            >
+                {isGenerating ? (
+                    <>
+                        <span className="animate-spin">⏳</span>
+                        プランを作成中...
+                    </>
+                ) : (
+                    <>
+                        <span>✨</span>
+                        詳細条件でプランを作成
+                    </>
+                )}
+            </button>
+            <p className="text-center text-xs text-stone-500 mt-2">
+                詳しく入力すると、よりカスタマイズされたプランが生成できます✨
+            </p>
+          </div>
         </div>
       </AccordionSection>
 
@@ -885,42 +909,29 @@ export default function SimplifiedInputFlow({
               className="w-full h-24 bg-stone-50 border border-stone-300 rounded-xl p-3 text-foreground placeholder:text-stone-400 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors resize-none text-sm"
             />
           </div>
+
+          <div className="pt-2">
+            <button
+                type="button"
+                onClick={handleGenerateClick}
+                disabled={isGenerating}
+                className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+            >
+                {isGenerating ? (
+                    <>
+                        <span className="animate-spin">⏳</span>
+                        プランを作成中...
+                    </>
+                ) : (
+                    <>
+                        <span>✨</span>
+                        詳細条件でプランを作成
+                    </>
+                )}
+            </button>
+          </div>
         </div>
       </AccordionSection>
-
-      {/* Bottom Generate Button (Detailed Mode) */}
-      <AnimatePresence>
-        {showBottomButton && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            className="w-full mt-8"
-          >
-            <button
-              type="button"
-              onClick={handleGenerateClick}
-              disabled={isGenerating}
-              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-            >
-              {isGenerating ? (
-                <>
-                  <span className="animate-spin">⏳</span>
-                  プランを作成中...
-                </>
-              ) : (
-                <>
-                  <span>✨</span>
-                  詳細条件でプランを作成
-                </>
-              )}
-            </button>
-            <p className="text-center text-xs text-stone-500 mt-2">
-              一緒に詳しく入力することで、よりあなた好みのプランが作成できます✨
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Bottom spacer for sticky button */}
       <div className="h-20" />
