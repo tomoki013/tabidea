@@ -294,7 +294,7 @@ function PlanContent() {
       if (storedState) {
         try {
           const { outline, context, input, heroImage } = JSON.parse(storedState);
-          // Restore state
+          // Restore state and start detail generation immediately (skip review)
           setGenerationState({
             ...initialGenerationState,
             phase: 'outline_ready',
@@ -306,6 +306,10 @@ function PlanContent() {
           setCurrentInput(input);
           setStatus('generating'); // Use generating status to show UI
           hasStartedGeneration.current = true;
+
+          // Trigger detail generation immediately
+          // This ensures we skip the manual confirmation step
+          startDetailGeneration(outline, input, context);
 
           // Clear localStorage to prevent reuse? Maybe keep it for refresh safety
           // localStorage.removeItem("tabidea_outline_state");
