@@ -132,6 +132,7 @@ export default function PlanModal({
         <TravelPlannerSimplified
           initialInput={restoredInput ?? initialInput}
           onClose={handleClose}
+          isInModal={true}
         />
       </div>
     </div>

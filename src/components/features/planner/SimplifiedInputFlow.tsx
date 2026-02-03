@@ -86,6 +86,7 @@ interface SimplifiedInputFlowProps {
   onChange: (update: Partial<UserInput>) => void;
   onGenerate: (inputOverride?: UserInput) => void;
   isGenerating?: boolean;
+  isInModal?: boolean;
 }
 
 // ============================================================================
@@ -191,6 +192,7 @@ export default function SimplifiedInputFlow({
   onChange,
   onGenerate: parentOnGenerate,
   isGenerating = false,
+  isInModal = false,
 }: SimplifiedInputFlowProps) {
   // Accordion state
   const [phase2Open, setPhase2Open] = useState(false);
@@ -276,10 +278,9 @@ export default function SimplifiedInputFlow({
                          hasPhase3Input;
 
   // Phase 1 is strictly just destination/date/companion.
-  // If we have detailed input, we shift to the bottom button mode.
-  // If not, we show the intermediate button.
-  const showIntermediateButton = canGenerate && !hasDetailedInput;
-  const showBottomButton = canGenerate && hasDetailedInput;
+  // We used to shift button position, but now we keep it at the bottom.
+  // const showIntermediateButton = canGenerate && !hasDetailedInput;
+  // const showBottomButton = canGenerate && hasDetailedInput;
 
   const isPhase2Complete =
     input.theme.length > 0 && !!input.budget && !!input.pace;
@@ -705,39 +706,7 @@ export default function SimplifiedInputFlow({
         </div>
       </div>
 
-      {/* Intermediate Generate Button (Phase 1 Only) */}
-      <AnimatePresence>
-        {showIntermediateButton && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="space-y-2"
-          >
-            <button
-              type="button"
-              onClick={handleGenerateClick}
-              disabled={isGenerating}
-              className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-            >
-              {isGenerating ? (
-                <>
-                  <span className="animate-spin">⏳</span>
-                  プランを作成中...
-                </>
-              ) : (
-                <>
-                  <span>✨</span>
-                  とりあえず生成する
-                </>
-              )}
-            </button>
-            <p className="text-center text-xs text-stone-500">
-                👇 下の詳細設定を追加すると、より精度の高いプランが作成されます
-            </p>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Intermediate Generate Button Removed - Unified at bottom */}
 
 
       {/* ================================================================== */}
@@ -830,39 +799,7 @@ export default function SimplifiedInputFlow({
         </div>
       </AccordionSection>
 
-      {/* Button below Phase 2 (Recommended) */}
-      <AnimatePresence>
-        {(phase2Open || isPhase2Complete) && !hasPhase3Input && (
-            <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="pt-2"
-            >
-                <button
-                    type="button"
-                    onClick={handleGenerateClick}
-                    disabled={isGenerating}
-                    className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-                >
-                    {isGenerating ? (
-                        <>
-                            <span className="animate-spin">⏳</span>
-                            プランを作成中...
-                        </>
-                    ) : (
-                        <>
-                            <span>✨</span>
-                            詳細条件でプランを作成
-                        </>
-                    )}
-                </button>
-                <p className="text-center text-xs text-stone-500 mt-2">
-                    👇 下の『さらに詳しく』を入力すると、よりカスタマイズされたプランが生成できます✨
-                </p>
-            </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Button below Phase 2 Removed - Unified at bottom */}
 
       {/* ================================================================== */}
       {/* Phase 3: Optional (Accordion) */}
@@ -945,36 +882,46 @@ export default function SimplifiedInputFlow({
         </div>
       </AccordionSection>
 
-      {/* Button below Phase 3 (Optional) */}
-      <AnimatePresence>
-        {hasPhase3Input && (
-            <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                className="pt-2"
-            >
-                <button
-                    type="button"
-                    onClick={handleGenerateClick}
-                    disabled={isGenerating}
-                    className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
-                >
-                    {isGenerating ? (
-                        <>
-                            <span className="animate-spin">⏳</span>
-                            プランを作成中...
-                        </>
-                    ) : (
-                        <>
-                            <span>✨</span>
-                            詳細条件でプランを作成
-                        </>
-                    )}
-                </button>
-            </motion.div>
+      {/* Unified Generate Button (Always visible at bottom) */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="pt-2"
+      >
+        <button
+          type="button"
+          onClick={handleGenerateClick}
+          disabled={isGenerating || !canGenerate}
+          className="w-full py-4 px-6 bg-primary text-white font-bold text-lg rounded-2xl shadow-lg hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+        >
+          {isGenerating ? (
+            <>
+              <span className="animate-spin">⏳</span>
+              プランを作成中...
+            </>
+          ) : !canGenerate ? (
+            <>
+              <span>⚠️</span>
+              必須項目を入力してください
+            </>
+          ) : hasDetailedInput ? (
+            <>
+              <span>✨</span>
+              詳細条件でプランを作成
+            </>
+          ) : (
+            <>
+              <span>✨</span>
+              とりあえず生成する
+            </>
+          )}
+        </button>
+        {canGenerate && !hasDetailedInput && (
+          <p className={`text-center text-xs mt-2 ${isInModal ? "text-stone-300" : "text-stone-500"}`}>
+            詳細設定を追加すると、より精度の高いプランが作成されます✨
+          </p>
         )}
-      </AnimatePresence>
+      </motion.div>
 
       {/* Bottom spacer for sticky button */}
       <div className="h-20" />
