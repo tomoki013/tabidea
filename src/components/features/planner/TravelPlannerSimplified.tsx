@@ -24,6 +24,7 @@ interface TravelPlannerSimplifiedProps {
   onClose?: () => void;
   /** If true, show outline review before generating details */
   showOutlineReview?: boolean;
+  isInModal?: boolean;
 }
 
 // ============================================================================
@@ -53,6 +54,7 @@ export default function TravelPlannerSimplified({
   initialInput,
   onClose,
   showOutlineReview = true, // Force true to handle redirection after outline
+  isInModal = false,
 }: TravelPlannerSimplifiedProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -142,7 +144,7 @@ export default function TravelPlannerSimplified({
         showLoginPrompt({
           userInput: input,
           currentStep: 8,
-          isInModal: false,
+          isInModal: isInModal,
         });
       } else {
         showLimitExceeded({
@@ -397,6 +399,7 @@ export default function TravelPlannerSimplified({
         onChange={handleChange}
         onGenerate={handleGenerateOutline}
         isGenerating={isGenerating}
+        isInModal={isInModal}
       />
 
       {/* Rate Limit Modals */}

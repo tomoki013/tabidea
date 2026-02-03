@@ -9,6 +9,7 @@ import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getUser, createAdminClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
+import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
@@ -882,6 +883,11 @@ export async function isCurrentUserAdmin(): Promise<boolean> {
 
     if (!user) {
       return false;
+    }
+
+    // Check environment variable first (supports multiple emails)
+    if (isAdminEmail(user.email)) {
+      return true;
     }
 
     const supabase = await createClient();
