@@ -7,15 +7,15 @@ export const metadata: Metadata = {
 
 export default function CookiePolicy() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
       <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-12 text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
           クッキーポリシー
         </h1>
 
-        <div className="space-y-8 text-stone-600 leading-relaxed font-sans">
+        <div className="space-y-8 text-stone-600 leading-relaxed">
           <section>
-            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
               1. クッキー（Cookie）とは
             </h2>
             <p>
@@ -25,7 +25,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
               2. クッキーの利用目的
             </h2>
             <p>当サービスでは、以下の目的でクッキーを使用しています。</p>
@@ -46,7 +46,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
               3. Google Analyticsの利用について
             </h2>
             <p>
@@ -82,7 +82,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
               4. クッキーの無効化（オプトアウト）について
             </h2>
             <p>
@@ -90,7 +90,7 @@ export default function CookiePolicy() {
               ただし、クッキーを無効にした場合、当サービスの一部機能が正常に動作しなくなる可能性がありますので、あらかじめご了承ください。
             </p>
 
-            <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2 font-serif">
+            <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
               ブラウザの設定変更方法
             </h3>
             <p>主要なブラウザの設定方法は以下の各社サポートページをご確認ください。</p>
@@ -109,7 +109,7 @@ export default function CookiePolicy() {
               </li>
             </ul>
 
-             <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2 font-serif">
+             <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
               Google Analyticsのオプトアウト
             </h3>
             <p>
@@ -123,7 +123,7 @@ export default function CookiePolicy() {
           </section>
 
           <section>
-            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2 font-serif">
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
               5. お問い合わせ
             </h2>
             <p>
@@ -131,7 +131,7 @@ export default function CookiePolicy() {
             </p>
           </section>
 
-          <div className="text-right text-sm text-stone-500 mt-12 font-serif">
+          <div className="text-right text-sm text-stone-500 mt-12">
             策定日：2026年1月8日
             <br />
             最終更新日: 2026年1月8日
