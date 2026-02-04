@@ -27,6 +27,10 @@ export default function SpecifiedPage() {
                   label="お問合せ先"
                   value={
                     <div className="space-y-1">
+                      <p>080-6648-1475</p>
+                      <p className="text-sm text-stone-500">
+                        ※電話がつながらない場合がございます。あらかじめご了承ください。
+                      </p>
                       <p>gaomuyouxi@gmail.com</p>
                       <p>
                         <PolicyLink href="/contact">

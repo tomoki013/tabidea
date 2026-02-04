@@ -271,6 +271,20 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "旅のスタイル設定やプラン生成数・保存数の無制限化など、より快適にサービスをご利用いただける有料プランの提供を開始しました。",
   },
+  {
+    status: "done",
+    date: "2026.02.02",
+    updateType: "patch",
+    title: "希望入力フォームのUI変更",
+    description: "希望入力が簡単かつ見やすくなりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.02",
+    updateType: "patch",
+    title: "プラン画面のUI変更",
+    description: "プラン画面で移動の独自UIを実装しました。",
+  },
   // Future items
   {
     status: "developing",

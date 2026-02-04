@@ -55,7 +55,7 @@ export default function ContactPage() {
 
               {/* X (Twitter) DM */}
               <Link
-                href="https://x.com/tomoki013"
+                href="https://x.com/tomokichi178694"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block group relative overflow-hidden rounded-xl border border-stone-200 bg-white p-6 transition-all hover:shadow-md hover:border-[#e67e22]/50"
