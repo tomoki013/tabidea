@@ -9,11 +9,11 @@ export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
       <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
-        <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-12 text-center">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
           プライバシーポリシー
         </h1>
 
-        <div className="space-y-8 text-stone-600 leading-relaxed font-sans">
+        <div className="space-y-8 text-stone-600 leading-relaxed">
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
               1. はじめに

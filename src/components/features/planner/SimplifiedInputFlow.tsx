@@ -454,104 +454,146 @@ export default function SimplifiedInputFlow({
           </span>
         </div>
 
-        {/* Destination Input */}
-        <div className="space-y-3">
+        {/* Destination Mode Selector */}
+        <div className="space-y-4">
           <label className="block text-sm font-bold text-stone-700">
-            行き先
+            目的地はどうしますか？
           </label>
 
-          {/* Omakase Toggle */}
-          <button
-            type="button"
-            onClick={toggleOmakase}
-            className={`w-full py-3 px-4 rounded-xl border-2 text-left flex items-center gap-3 transition-all ${
-              isOmakase
-                ? "border-secondary bg-secondary/5 text-secondary"
-                : "border-stone-200 hover:border-stone-300 text-stone-600"
-            }`}
-          >
-            <span className="text-2xl">🎲</span>
-            <div className="flex-1">
-              <span className={`font-bold ${isOmakase ? "text-secondary" : "text-stone-800"}`}>
-                おまかせで決める
-              </span>
-              <span className="block text-xs text-stone-500">
-                AIにお任せ！希望のイメージだけ伝えてください
-              </span>
-            </div>
-            {isOmakase && (
-              <Check className="w-5 h-5 text-secondary" />
-            )}
-          </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {/* Specific Destination Tile */}
+            <button
+              type="button"
+              onClick={() => {
+                if (isOmakase) toggleOmakase();
+              }}
+              className={`relative p-4 rounded-2xl border-2 text-left transition-all group ${
+                !isOmakase
+                  ? "border-primary bg-primary/5 ring-4 ring-primary/10"
+                  : "border-stone-200 bg-white hover:border-primary/40"
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-2xl">📍</span>
+                {!isOmakase && (
+                  <div className="bg-primary text-white p-1 rounded-full">
+                    <Check className="w-3 h-3" />
+                  </div>
+                )}
+              </div>
+              <div className="font-bold text-stone-800 mb-1">目的地を入力</div>
+              <div className="text-xs text-stone-500 leading-relaxed">
+                京都、ハワイなど特定の場所が決まっている場合
+              </div>
+            </button>
 
-          {/* Omakase Input */}
+            {/* Omakase Tile */}
+            <button
+              type="button"
+              onClick={() => {
+                if (!isOmakase) toggleOmakase();
+              }}
+              className={`relative p-4 rounded-2xl border-2 text-left transition-all group ${
+                isOmakase
+                  ? "border-secondary bg-secondary/5 ring-4 ring-secondary/10"
+                  : "border-stone-200 bg-white hover:border-secondary/40"
+              }`}
+            >
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-2xl">🎲</span>
+                {isOmakase && (
+                  <div className="bg-secondary text-white p-1 rounded-full">
+                    <Check className="w-3 h-3" />
+                  </div>
+                )}
+              </div>
+              <div className="font-bold text-stone-800 mb-1">おまかせで決める</div>
+              <div className="text-xs text-stone-500 leading-relaxed">
+                まだ未定！AIにぴったりの行き先を提案してほしい場合
+              </div>
+            </button>
+          </div>
+
+          {/* Input Fields (Omakase or Direct) */}
           <AnimatePresence mode="wait">
-            {isOmakase && (
+            {isOmakase ? (
               <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.2 }}
+                key="omakase-input"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="pt-2"
               >
-                <textarea
-                  value={input.travelVibe || ""}
-                  onChange={(e) => onChange({ travelVibe: e.target.value })}
-                  placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
-                  className="w-full h-24 bg-stone-50 border border-stone-300 rounded-lg p-3 text-foreground placeholder:text-stone-400 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-colors resize-none text-sm"
-                />
+                <div className="bg-secondary/5 border border-secondary/20 rounded-2xl p-4 space-y-3">
+                  <label className="block text-sm font-bold text-secondary">
+                    どんな旅にしたいですか？
+                  </label>
+                  <textarea
+                    value={input.travelVibe || ""}
+                    onChange={(e) => onChange({ travelVibe: e.target.value })}
+                    placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
+                    className="w-full h-28 bg-white border border-secondary/30 rounded-xl p-3 text-foreground placeholder:text-stone-400 focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition-colors resize-none text-sm"
+                  />
+                  <p className="text-[10px] text-secondary/70">
+                    ※入力した内容をもとに、AIが最適な目的地とプランをセットで提案します。
+                  </p>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="direct-input"
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="space-y-3 pt-2"
+              >
+                {/* Tags */}
+                {input.destinations.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {input.destinations.map((dest, index) => (
+                      <span
+                        key={dest}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium"
+                      >
+                        {dest}
+                        <button
+                          type="button"
+                          onClick={() => removeDestination(index)}
+                          className="p-0.5 hover:bg-primary/20 rounded-full transition-colors"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* Input Field */}
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={destinationInput}
+                    onChange={(e) => setDestinationInput(e.target.value)}
+                    onKeyDown={handleDestinationKeyDown}
+                    placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
+                    className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
+                  />
+                  <button
+                    type="button"
+                    onClick={addDestination}
+                    disabled={!destinationInput.trim()}
+                    className={`px-4 py-2 rounded-xl transition-colors ${
+                      destinationInput.trim()
+                        ? "bg-primary text-white hover:bg-primary/90"
+                        : "bg-stone-200 text-stone-400 cursor-not-allowed"
+                    }`}
+                  >
+                    <Plus className="w-5 h-5" />
+                  </button>
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
-
-          {/* Direct Destination Input */}
-          {!isOmakase && (
-            <>
-              {/* Tags */}
-              {input.destinations.length > 0 && (
-                <div className="flex flex-wrap gap-2">
-                  {input.destinations.map((dest, index) => (
-                    <span
-                      key={dest}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium"
-                    >
-                      {dest}
-                      <button
-                        type="button"
-                        onClick={() => removeDestination(index)}
-                        className="p-0.5 hover:bg-primary/20 rounded-full transition-colors"
-                      >
-                        <X className="w-3 h-3" />
-                      </button>
-                    </span>
-                  ))}
-                </div>
-              )}
-
-              {/* Input Field */}
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={destinationInput}
-                  onChange={(e) => setDestinationInput(e.target.value)}
-                  onKeyDown={handleDestinationKeyDown}
-                  placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
-                  className="flex-1 min-w-0 px-4 py-3 bg-stone-50 border border-stone-300 rounded-xl focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
-                />
-                <button
-                  type="button"
-                  onClick={addDestination}
-                  disabled={!destinationInput.trim()}
-                  className={`px-4 py-2 rounded-xl transition-colors ${
-                    destinationInput.trim()
-                      ? "bg-primary text-white hover:bg-primary/90"
-                      : "bg-stone-200 text-stone-400 cursor-not-allowed"
-                  }`}
-                >
-                  <Plus className="w-5 h-5" />
-                </button>
-              </div>
-            </>
-          )}
         </div>
 
         {/* Duration Selector */}
