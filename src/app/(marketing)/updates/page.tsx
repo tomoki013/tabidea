@@ -285,7 +285,98 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "プラン画面のUI変更",
     description: "プラン画面で移動の独自UIを実装しました。",
   },
+  {
+    status: "done",
+    date: "2026.02.02",
+    updateType: "patch",
+    title: "動的OGP作成",
+    description:
+      "SNSシェア時に、プラン名と写真が入った魅力的なカード画像を自動生成するようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.03",
+    updateType: "patch",
+    title: "サブスクリプションユーザーの複雑な旅程生成時にProモデルを使用",
+    description:
+      "サブスクリプションプランに加入しているユーザーが複雑なプランを生成する際に、Proモデルを使用するようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.03",
+    updateType: "patch",
+    title: "希望入力を3フェーズ化",
+    description:
+      "希望入力のステップが多く、また分かりにくかったのをまとめ、簡単にプラン生成に移行できるようにしました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.03",
+    updateType: "patch",
+    title: "生成待ち時間の減少",
+    description:
+      "プランの概要生成後にプランを見ることができるようにし、体感的な待ち時間を減少しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.04",
+    updateType: "patch",
+    title: "信頼性バッジ表示",
+    description:
+      "生成されたスポットに対して、検証済み、AI生成、要確認のバッジを表示するようにしました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.05",
+    updateType: "patch",
+    title: "Google Map連携",
+    description:
+      "提案されたスポットをGoogle Mapですぐに確認できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.05",
+    updateType: "patch",
+    title: "詳細プランの生成失敗問題の修正",
+    description: "1,2日目の詳細プラン生成が失敗する問題を修正しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.05",
+    updateType: "patch",
+    title: "ホテル・航空券予約のリンクを設置",
+    description:
+      "AIが生成した旅程プランにホテルや航空券が含まれている場合、リンクをクリックすることで直接予約サイトを訪問できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.05",
+    updateType: "patch",
+    title: "スポットの詳細を表示",
+    description:
+      "生成されたスポットの詳細をカードを開くことで表示されるようにしました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.05",
+    updateType: "patch",
+    title: "旅程カードのUI更新",
+    description:
+      "プランページの旅程カードを、旅程・しおりらしいデザインを目指し、何をするのかがわかりやすいUIに変更しました。",
+  },
   // Future items
+  {
+    status: "planned",
+    title: "共同編集機能",
+    description:
+      "友人や家族と一緒に旅行プランを編集できる機能を計画しています。",
+  },
+  {
+    status: "planned",
+    title: "フィードバックシステム",
+    description:
+      "サービス改善のため、ユーザーの皆様からのフィードバックを収集するシステムを計画しています。",
+  },
   {
     status: "developing",
     title: "持ち物リストの作成",
@@ -425,32 +516,25 @@ export default function UpdatesPage() {
               <span>開発ロードマップ</span>
             </h2>
 
-            <div className="relative border-l-2 border-dashed border-stone-300 ml-3 md:ml-6 space-y-10 pl-8 pb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {sortedRoadmap
                 .filter((i) => i.status !== "done")
                 .map((item, index) => (
-                  <div key={index} className="relative">
-                    <div
-                      className={`absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 bg-[#fcfbf9] z-10
-                      ${
-                        item.status === "developing"
-                          ? "border-blue-400"
-                          : "border-stone-300"
-                      }`}
-                    ></div>
-                    <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 relative">
-                      {item.status === "developing" && (
-                        <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
-                          開発中
-                        </span>
-                      )}
-                      <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
-                        {item.title}
-                      </h3>
-                      <p className="text-stone-600 leading-relaxed text-sm">
-                        {item.description}
-                      </p>
-                    </div>
+                  <div
+                    key={index}
+                    className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 relative h-full flex flex-col"
+                  >
+                    {item.status === "developing" && (
+                      <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
+                        開発中
+                      </span>
+                    )}
+                    <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                      {item.title}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed text-sm flex-grow">
+                      {item.description}
+                    </p>
                   </div>
                 ))}
             </div>
@@ -463,53 +547,77 @@ export default function UpdatesPage() {
               <span>更新履歴</span>
             </h2>
 
-            <div className="relative border-l-2 border-stone-300 ml-3 md:ml-6 space-y-8 pl-8">
-              {historyItems.map((item, index) => (
-                <div key={index} className="relative">
-                  <div className="absolute -left-[41px] md:-left-[53px] top-1 w-6 h-6 rounded-full border-4 border-green-500 bg-[#fcfbf9] z-10"></div>
-                  <div>
-                    <span className="text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap">
-                      {item.date}
-                      {item.version && (
-                        <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
-                          v{item.version}
-                        </span>
-                      )}
-                      {item.updateType && (
+            <div className="relative mt-8">
+              {/* Vertical Line */}
+              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-stone-300 md:left-1/2 md:-translate-x-1/2"></div>
+
+              <div className="space-y-8">
+                {historyItems.map((item, index) => {
+                  const isEven = index % 2 === 0;
+                  return (
+                    <div
+                      key={index}
+                      className="relative md:flex md:justify-between md:items-start group"
+                    >
+                      {/* Dot */}
+                      <div className="absolute left-0 md:left-1/2 top-1 w-6 h-6 rounded-full border-4 border-green-500 bg-[#fcfbf9] z-10 md:-translate-x-1/2"></div>
+
+                      {/* Content */}
+                      <div
+                        className={`pl-10 md:pl-0 md:w-[calc(50%-2rem)] ${
+                          isEven
+                            ? "md:mr-auto md:text-right"
+                            : "md:ml-auto md:text-left"
+                        }`}
+                      >
                         <span
-                          className={`px-2 py-0.5 rounded text-xs border ${
-                            item.updateType === "release"
-                              ? "bg-orange-50 text-red-600 border-orange-200"
-                              : item.updateType === "pre_release"
-                                ? "bg-blue-50 text-blue-600 border-blue-200"
-                                : item.updateType === "major"
-                                  ? "bg-red-50 text-orange-600 border-red-200"
-                                  : item.updateType === "minor"
-                                    ? "bg-green-50 text-green-600 border-green-200"
-                                    : "bg-stone-50 text-stone-500 border-stone-200"
+                          className={`text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap ${
+                            isEven ? "md:justify-end" : "md:justify-start"
                           }`}
                         >
-                          {item.updateType === "release"
-                            ? "Release"
-                            : item.updateType === "pre_release"
-                              ? "Pre-release"
-                              : item.updateType === "major"
-                                ? "Major"
-                                : item.updateType === "minor"
-                                  ? "Minor"
-                                  : "Patch"}
+                          {item.date}
+                          {item.version && (
+                            <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
+                              v{item.version}
+                            </span>
+                          )}
+                          {item.updateType && (
+                            <span
+                              className={`px-2 py-0.5 rounded text-xs border ${
+                                item.updateType === "release"
+                                  ? "bg-orange-50 text-red-600 border-orange-200"
+                                  : item.updateType === "pre_release"
+                                    ? "bg-blue-50 text-blue-600 border-blue-200"
+                                    : item.updateType === "major"
+                                      ? "bg-red-50 text-orange-600 border-red-200"
+                                      : item.updateType === "minor"
+                                        ? "bg-green-50 text-green-600 border-green-200"
+                                        : "bg-stone-50 text-stone-500 border-stone-200"
+                              }`}
+                            >
+                              {item.updateType === "release"
+                                ? "Release"
+                                : item.updateType === "pre_release"
+                                  ? "Pre-release"
+                                  : item.updateType === "major"
+                                    ? "Major"
+                                    : item.updateType === "minor"
+                                      ? "Minor"
+                                      : "Patch"}
+                            </span>
+                          )}
                         </span>
-                      )}
-                    </span>
-                    <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
-                      {item.title}
-                    </h3>
-                    <p className="text-stone-600 leading-relaxed text-sm">
-                      {item.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
+                        <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                          {item.title}
+                        </h3>
+                        <p className="text-stone-600 leading-relaxed text-sm">
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </section>
 
