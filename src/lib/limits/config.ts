@@ -24,7 +24,7 @@ export interface StorageLimitConfig {
 export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 3, period: 'month' },
-  premium: { limit: 30, period: 'month' }, // 変更: 無制限 -> 月30回
+  premium: { limit: 30, period: 'month' },
   admin: { limit: -1, period: 'unlimited' },
 };
 
@@ -33,8 +33,8 @@ export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
 // ============================================
 export const PLAN_STORAGE_LIMITS: Record<UserType, StorageLimitConfig> = {
   anonymous: { limit: 1 },
-  free: { limit: 2 },
-  premium: { limit: 30 }, // 変更: 無制限 -> 30件
+  free: { limit: -1 },    // 変更: 2件 -> 無制限
+  premium: { limit: -1 }, // 変更: 30件 -> 無制限
   admin: { limit: -1 },
 };
 

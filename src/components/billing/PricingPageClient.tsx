@@ -114,7 +114,7 @@ export function PricingPageClient({
               <div>
                 <p className="text-sm text-stone-500">現在のプラン</p>
                 <p className="text-lg font-bold text-stone-800">
-                  {billingStatus.planType === 'admin' ? "Administrator" : (isPro ? PRO_PLAN_NAME : "Free")}
+                  {billingStatus.planType === 'admin' ? "管理者" : (isPro ? PRO_PLAN_NAME : "Free")}
                 </p>
               </div>
               {billingStatus.ticketCount > 0 && (
@@ -211,7 +211,7 @@ export function PricingPageClient({
                 <FeatureRow
                   feature="プラン生成"
                   free="月3回"
-                  pro="無制限"
+                  pro="月30回"
                   ticket="購入分"
                 />
                 <FeatureRow
@@ -234,9 +234,9 @@ export function PricingPageClient({
                 />
                 <FeatureRow
                   feature="プラン保存"
-                  free="2件"
+                  free="無制限"
                   pro="無制限"
-                  ticket="2件"
+                  ticket="無制限"
                 />
                 <FeatureRow
                   feature="カスタム指示 (AI)"

@@ -409,7 +409,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             {isAdmin ? (
                               <span className="inline-flex items-center gap-1 px-3 py-1 bg-stone-800 text-white text-sm font-bold rounded-full">
                                 <FaUserCog className="text-xs" />
-                                Administrator
+                                管理者
                               </span>
                             ) : isPro ? (
                               <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#e67e22] to-[#f39c12] text-white text-sm font-bold rounded-full">

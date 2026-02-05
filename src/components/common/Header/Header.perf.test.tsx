@@ -9,6 +9,11 @@ import { UserPlansProvider } from "@/context/UserPlansContext";
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+    prefetch: vi.fn(),
+  }),
 }));
 
 // Mock PlanModal to avoid deep rendering issues
