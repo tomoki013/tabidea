@@ -24,7 +24,7 @@ export interface StorageLimitConfig {
 export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 3, period: 'month' },
-  premium: { limit: -1, period: 'unlimited' }, // 課金実装時に調整
+  premium: { limit: 30, period: 'month' }, // 変更: 無制限 -> 月30回
   admin: { limit: -1, period: 'unlimited' },
 };
 
@@ -34,9 +34,18 @@ export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
 export const PLAN_STORAGE_LIMITS: Record<UserType, StorageLimitConfig> = {
   anonymous: { limit: 1 },
   free: { limit: 2 },
-  premium: { limit: -1 }, // 課金実装時に調整
+  premium: { limit: 30 }, // 変更: 無制限 -> 30件
   admin: { limit: -1 },
 };
+
+// ============================================
+// チケット有効期限（日数）
+// ============================================
+export const TICKET_VALIDITY_DAYS = {
+  ticket_1: 30,
+  ticket_5: 90,
+  ticket_10: 180,
+} as const;
 
 // ============================================
 // 渡航情報取得制限
@@ -44,7 +53,7 @@ export const PLAN_STORAGE_LIMITS: Record<UserType, StorageLimitConfig> = {
 export const TRAVEL_INFO_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 1, period: 'week' },
-  premium: { limit: -1, period: 'unlimited' }, // 課金実装時に調整
+  premium: { limit: -1, period: 'unlimited' },
   admin: { limit: -1, period: 'unlimited' },
 };
 

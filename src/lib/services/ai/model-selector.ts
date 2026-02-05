@@ -50,9 +50,9 @@ export interface ModelSelection {
 // ============================================
 
 /** Flash モデル（デフォルト） */
-const MODEL_FLASH = process.env.GOOGLE_MODEL_FLASH || 'gemini-2.5-flash';
+const MODEL_FLASH = process.env.GOOGLE_MODEL_FLASH || 'gemini-3-flash-preview'; // Fallback: gemini-2.0-flash-exp
 /** Pro モデル（プレミアムユーザー向け） */
-const MODEL_PRO = process.env.GOOGLE_MODEL_PRO || 'gemini-2.5-pro';
+const MODEL_PRO = process.env.GOOGLE_MODEL_PRO || 'gemini-3-pro-preview'; // Fallback: gemini-2.5-pro
 
 /** フェーズ別温度設定 */
 const TEMPERATURE_CONFIG: Record<GenerationPhase, number> = {

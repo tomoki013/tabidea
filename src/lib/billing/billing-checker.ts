@@ -4,137 +4,95 @@
  * This is the SINGLE SOURCE OF TRUTH for all billing-related checks.
  * All billing status checks, subscription verifications, and access
  * control decisions should go through this service.
- *
- * Usage:
- *   const billing = await checkBillingAccess();
- *   if (billing.isPremium) { ... }
  */
 
 import { createClient } from '@/lib/supabase/server';
+import { headers } from 'next/headers';
 import type { PlanType } from '@/types/billing';
-import type { UserType } from '@/lib/limits/config';
+import {
+  type UserType,
+  type ActionType,
+  PLAN_GENERATION_LIMITS,
+  TRAVEL_INFO_LIMITS,
+  isUnlimited
+} from '@/lib/limits/config';
 
 // ============================================
 // Types
 // ============================================
 
-/**
- * Comprehensive billing access information
- * This interface provides all billing-related data in a single object
- */
 export interface BillingAccessInfo {
-  // User identity
   userId: string | null;
   email: string | null;
-
-  // User classification
   userType: UserType;
-
-  // Subscription status
   isSubscribed: boolean;
   planType: PlanType;
   subscriptionEndsAt: string | null;
-
-  // Ticket information
   ticketCount: number;
-
-  // Derived access flags (for convenience)
   isPremium: boolean;
   isAdmin: boolean;
   isFree: boolean;
   isAnonymous: boolean;
-
-  // Subscription details (for internal use)
   subscriptionId?: string;
   externalSubscriptionId?: string;
   subscriptionStatus?: string;
 }
 
-/**
- * Options for billing access check
- */
+export interface LimitCheckResult {
+  allowed: boolean;
+  source?: 'subscription' | 'ticket' | 'free' | 'admin' | 'anonymous';
+  remaining: number;
+  limit: number;
+  resetAt: Date | null;
+  error?: string;
+}
+
 export interface CheckBillingOptions {
-  /**
-   * If true, skip the admin check (for performance when admin status is not needed)
-   */
   skipAdminCheck?: boolean;
+}
+
+interface QuotaSource {
+  type: 'subscription' | 'ticket' | 'free' | 'admin';
+  id?: string; // ticket grant id
+  remaining: number;
+  expiresAt: Date;
+  priorityDate: Date; // Used for sorting (usually same as expiresAt)
 }
 
 // ============================================
 // Admin Check Helper
 // ============================================
 
-/**
- * Check if the given email belongs to an admin user
- * Admin emails are configured via ADMIN_EMAILS environment variable
- */
 function isAdminEmail(email: string | null | undefined): boolean {
   if (!email) return false;
-
   const adminEmails = process.env.ADMIN_EMAILS?.split(',').map((e) => e.trim().toLowerCase()) || [];
   return adminEmails.includes(email.toLowerCase());
 }
 
 // ============================================
-// Core Billing Check Function
+// Core Billing Check Functions
 // ============================================
 
-/**
- * Check the billing access status for the current user
- *
- * This is the PRIMARY function for all billing checks in the application.
- * It performs a single, optimized query to gather all billing-related information.
- *
- * @param options - Optional configuration for the check
- * @returns BillingAccessInfo with comprehensive billing status
- *
- * @example
- * // Basic usage
- * const billing = await checkBillingAccess();
- * if (billing.isPremium) {
- *   // Allow premium features
- * }
- *
- * @example
- * // Check user type
- * const billing = await checkBillingAccess();
- * switch (billing.userType) {
- *   case 'admin': // Full access
- *   case 'premium': // Paid features
- *   case 'free': // Limited features
- *   case 'anonymous': // Very limited
- * }
- */
 export async function checkBillingAccess(
   options?: CheckBillingOptions
 ): Promise<BillingAccessInfo> {
   const supabase = await createClient();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-  // Get current user
-  const {
-    data: { user },
-    error: authError,
-  } = await supabase.auth.getUser();
-
-  // Anonymous user - no billing data
   if (authError || !user) {
     return createAnonymousBillingInfo();
   }
 
-  // Check admin status first (via email only for now, as is_admin column is missing)
   const isAdmin = !options?.skipAdminCheck && isAdminEmail(user.email);
-
   if (isAdmin) {
     return createAdminBillingInfo(user.id, user.email ?? null);
   }
 
-  // Fetch subscription and tickets in parallel for performance
   const [subscriptionResult, ticketsResult] = await Promise.all([
     fetchActiveSubscription(supabase, user.id),
     fetchTicketCount(supabase, user.id),
   ]);
 
-  // Determine user type based on subscription status
   const hasValidSubscription =
     subscriptionResult.hasActive && isSubscriptionPeriodValid(subscriptionResult.subscription?.currentPeriodEnd);
 
@@ -161,105 +119,312 @@ export async function checkBillingAccess(
 }
 
 /**
- * Check billing access for a specific user ID
- * Useful for admin operations or webhook processing
+ * Check and Consume Quota based on Priority Logic
+ * Priority: Expires Soonest (Subscription Month End vs Ticket Expiry)
  */
-export async function checkBillingAccessForUser(
-  userId: string
-): Promise<BillingAccessInfo> {
+export async function checkAndConsumeQuota(
+  action: ActionType,
+  metadata?: Record<string, unknown>
+): Promise<LimitCheckResult> {
   const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  // Fetch user info
-  const { data: userData } = await supabase
-    .from('users')
-    .select('email')
-    .eq('id', userId)
-    .single();
-
-  const email = userData?.email ?? null;
-  const isAdmin = isAdminEmail(email);
-
-  if (isAdmin) {
-    return createAdminBillingInfo(userId, email);
+  // 1. Handle Anonymous Users (IP-based, legacy logic)
+  if (!user) {
+    return handleAnonymousUsage(action, metadata);
   }
 
-  // Fetch subscription and tickets in parallel
-  const [subscriptionResult, ticketsResult] = await Promise.all([
-    fetchActiveSubscription(supabase, userId),
-    fetchTicketCount(supabase, userId),
+  // 2. Handle Admin
+  if (isAdminEmail(user.email)) {
+    return {
+      allowed: true,
+      source: 'admin',
+      remaining: -1,
+      limit: -1,
+      resetAt: null
+    };
+  }
+
+  // 3. Gather Quota Sources
+  // Fetch Subscription & Tickets
+  const [subscriptionData, ticketsData, usageCount] = await Promise.all([
+    fetchActiveSubscription(supabase, user.id),
+    fetchValidTickets(supabase, user.id),
+    fetchMonthlyUsageCount(supabase, user.id, action) // Excludes tickets
   ]);
 
-  const hasValidSubscription =
-    subscriptionResult.hasActive && isSubscriptionPeriodValid(subscriptionResult.subscription?.currentPeriodEnd);
+  const now = new Date();
+  const candidates: QuotaSource[] = [];
 
-  const userType: UserType = hasValidSubscription ? 'premium' : 'free';
+  // Source A: Subscription / Free Plan
+  const isPremium = subscriptionData.hasActive && isSubscriptionPeriodValid(subscriptionData.subscription?.currentPeriodEnd);
+  const userType: UserType = isPremium ? 'premium' : 'free';
+
+  const config = action === 'plan_generation'
+    ? PLAN_GENERATION_LIMITS[userType]
+    : TRAVEL_INFO_LIMITS[userType];
+
+  // If unlimited, add as candidate with far future expiry
+  if (isUnlimited(config)) {
+     candidates.push({
+       type: 'subscription', // or 'premium_unlimited'
+       remaining: 999999,
+       expiresAt: new Date(now.getFullYear() + 100, 0, 1), // Far future
+       priorityDate: new Date(now.getFullYear() + 100, 0, 1)
+     });
+  } else {
+    // Monthly Limit
+    const limit = config.limit;
+    const remaining = Math.max(0, limit - usageCount);
+
+    // Calculate reset date (Month End)
+    // Note: This aligns with "Subscription expires at next reset"
+    const nextMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1));
+
+    if (remaining > 0) {
+      candidates.push({
+        type: isPremium ? 'subscription' : 'free',
+        remaining,
+        expiresAt: nextMonth,
+        priorityDate: nextMonth
+      });
+    }
+  }
+
+  // Source B: Tickets
+  // Only for plan_generation usually, but generic enough
+  if (action === 'plan_generation') {
+    for (const ticket of ticketsData) {
+      if (ticket.remaining_count > 0 && ticket.valid_until) {
+        const validUntil = new Date(ticket.valid_until);
+        if (validUntil > now) {
+          candidates.push({
+            type: 'ticket',
+            id: ticket.id,
+            remaining: ticket.remaining_count,
+            expiresAt: validUntil,
+            priorityDate: validUntil
+          });
+        }
+      }
+    }
+  }
+
+  // 4. Select Best Source
+  // Filter out expired or empty sources (already done above mostly)
+  // Sort by Priority Date (ASC) -> Earliest expiry first
+  candidates.sort((a, b) => a.priorityDate.getTime() - b.priorityDate.getTime());
+
+  const selectedSource = candidates[0];
+
+  if (!selectedSource) {
+    return {
+      allowed: false,
+      currentCount: usageCount, // approx
+      limit: config.limit,
+      remaining: 0,
+      resetAt: null, // Calc if needed
+      error: 'Limit exceeded'
+    } as any; // Cast to satisfy loose return type or fix type
+  }
+
+  // 5. Consume
+  try {
+    if (selectedSource.type === 'ticket' && selectedSource.id) {
+      // Consume Ticket
+      // Decrement
+      const { error: updateError } = await supabase.rpc('decrement_ticket', {
+        p_grant_id: selectedSource.id
+      });
+
+      // If RPC missing, use raw update (less safe but works for now if RPC not there)
+      if (updateError) {
+         // Fallback to raw update
+         const { error: rawError } = await supabase
+           .from('entitlement_grants')
+           .update({ remaining_count: selectedSource.remaining - 1 })
+           .eq('id', selectedSource.id)
+           .eq('remaining_count', selectedSource.remaining); // optimistic lock
+
+         if (rawError) throw rawError;
+      }
+
+      // Log Usage
+      await supabase.from('usage_logs').insert({
+        user_id: user.id,
+        action_type: action,
+        metadata: {
+          ...metadata,
+          source: 'ticket',
+          grant_id: selectedSource.id
+        }
+      });
+
+      return {
+        allowed: true,
+        source: 'ticket',
+        remaining: selectedSource.remaining - 1,
+        limit: selectedSource.remaining, // Ticket limit is itself
+        resetAt: selectedSource.expiresAt
+      };
+
+    } else {
+      // Consume Subscription / Free
+      await supabase.from('usage_logs').insert({
+        user_id: user.id,
+        action_type: action,
+        metadata: {
+          ...metadata,
+          source: selectedSource.type // 'subscription' or 'free'
+        }
+      });
+
+      return {
+        allowed: true,
+        source: selectedSource.type as any,
+        remaining: selectedSource.remaining - 1,
+        limit: config.limit,
+        resetAt: selectedSource.expiresAt
+      };
+    }
+  } catch (err) {
+    console.error('Consumption error:', err);
+    return {
+      allowed: false,
+      error: 'Transaction failed',
+      limit: 0,
+      remaining: 0,
+      resetAt: null
+    };
+  }
+}
+
+/**
+ * Handle Anonymous Usage (Delegate to existing RPC or simplified logic)
+ */
+async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise<LimitCheckResult> {
+  // Use the legacy check logic which handles IP hashing
+  // Importing dynamically to avoid circular deps if any, or just replicate logic
+  // For now, let's assume we can reuse the existing RPC via a helper
+  // But wait, check.ts imports billing-checker.ts. Circular dependency risk!
+  // I should move the IP logic here or keep it in a separate utils file.
+  // The RPC `check_and_record_usage` is perfect for anonymous users.
+  const supabase = await createClient();
+  const headersList = await headers();
+  const ip = headersList.get('x-forwarded-for')?.split(',')[0].trim() || '0.0.0.0';
+
+  const { data: hashData } = await supabase.rpc('get_ip_hash', { p_ip: ip });
+  const ipHash = hashData;
+
+  const limitConfig = PLAN_GENERATION_LIMITS['anonymous']; // Default to plan gen limits for anon
+  // Note: if action is travel_info, use that.
+  const config = action === 'plan_generation'
+    ? PLAN_GENERATION_LIMITS['anonymous']
+    : TRAVEL_INFO_LIMITS['anonymous'];
+
+  const { data, error } = await supabase.rpc('check_and_record_usage', {
+    p_user_id: null,
+    p_ip_hash: ipHash,
+    p_action_type: action,
+    p_limit: config.limit,
+    p_period: config.period,
+    p_metadata: metadata || {},
+  });
+
+  if (error || !data.allowed) {
+    return {
+      allowed: false,
+      source: 'anonymous',
+      limit: config.limit,
+      remaining: 0,
+      resetAt: null,
+      error: 'Limit exceeded'
+    };
+  }
 
   return {
-    userId,
-    email,
-    userType,
-    isSubscribed: hasValidSubscription,
-    planType: hasValidSubscription
-      ? (subscriptionResult.subscription?.planCode as PlanType) ?? 'pro_monthly'
-      : 'free',
-    subscriptionEndsAt: subscriptionResult.subscription?.currentPeriodEnd ?? null,
-    ticketCount: ticketsResult,
-    isPremium: hasValidSubscription,
-    isAdmin: false,
-    isFree: !hasValidSubscription,
-    isAnonymous: false,
-    subscriptionId: subscriptionResult.subscription?.id,
-    externalSubscriptionId: subscriptionResult.subscription?.externalSubscriptionId,
-    subscriptionStatus: subscriptionResult.subscription?.status,
+    allowed: true,
+    source: 'anonymous',
+    limit: data.limit,
+    remaining: data.remaining,
+    resetAt: data.reset_at ? new Date(data.reset_at) : null
   };
 }
 
+
 // ============================================
-// Specialized Check Functions
+// Data Fetching Helpers
 // ============================================
 
-/**
- * Check if the current user has an active subscription
- * This is a lightweight check for double-payment prevention in checkout flow
- */
-export async function hasActiveSubscription(userId: string): Promise<{
-  hasActive: boolean;
-  subscription?: {
-    id: string;
-    externalSubscriptionId: string;
-    status: string;
-    currentPeriodEnd: string;
+async function fetchActiveSubscription(supabase: any, userId: string) {
+  const { data: subscription } = await supabase
+    .from('subscriptions')
+    .select('id, external_subscription_id, status, current_period_end, plan_code')
+    .eq('user_id', userId)
+    .in('status', ['active', 'trialing', 'past_due'])
+    .order('created_at', { ascending: false })
+    .limit(1)
+    .single();
+
+  if (!subscription) {
+    return { hasActive: false };
+  }
+
+  return {
+    hasActive: true,
+    subscription: {
+      id: subscription.id,
+      externalSubscriptionId: subscription.external_subscription_id,
+      status: subscription.status,
+      currentPeriodEnd: subscription.current_period_end,
+      planCode: subscription.plan_code
+    }
   };
-}> {
-  const supabase = await createClient();
-  return fetchActiveSubscription(supabase, userId);
 }
 
-/**
- * Quick check if current user is premium (subscription or admin)
- * Optimized for performance-critical paths
- */
-export async function isPremiumUser(): Promise<boolean> {
-  const billing = await checkBillingAccess();
-  return billing.isPremium || billing.isAdmin;
+async function fetchValidTickets(supabase: any, userId: string) {
+  const { data: tickets } = await supabase
+    .from('entitlement_grants')
+    .select('id, remaining_count, valid_until')
+    .eq('user_id', userId)
+    .eq('entitlement_type', 'plan_generation')
+    .eq('grant_type', 'ticket_pack')
+    .eq('status', 'active')
+    .gt('remaining_count', 0)
+    .gt('valid_until', new Date().toISOString());
+
+  return tickets || [];
 }
 
-/**
- * Get the user type for the current user
- * Backwards-compatible with existing code
- */
-export async function getUserType(): Promise<UserType> {
-  const billing = await checkBillingAccess();
-  return billing.userType;
+async function fetchTicketCount(supabase: any, userId: string): Promise<number> {
+  const tickets = await fetchValidTickets(supabase, userId);
+  return tickets.reduce((sum: number, t: any) => sum + (t.remaining_count || 0), 0);
 }
 
-// ============================================
-// Internal Helper Functions
-// ============================================
+async function fetchMonthlyUsageCount(supabase: any, userId: string, action: ActionType): Promise<number> {
+  const now = new Date();
+  const startOfMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1));
 
-/**
- * Create billing info for anonymous users
- */
+  // Count logs where user_id matches, action matches, after start of month
+  // AND source is NOT 'ticket'.
+  // We use .or() to include rows where source is null (legacy/standard) OR source != ticket.
+  // Note: Standard 'neq' filters out nulls, so we must explicitly handle nulls.
+  const { count } = await supabase
+    .from('usage_logs')
+    .select('*', { count: 'exact', head: true })
+    .eq('user_id', userId)
+    .eq('action_type', action)
+    .gte('created_at', startOfMonth.toISOString())
+    .or('metadata->>source.is.null,metadata->>source.neq.ticket');
+
+  return count || 0;
+}
+
+function isSubscriptionPeriodValid(periodEnd: string | null | undefined): boolean {
+  if (!periodEnd) return false;
+  return new Date(periodEnd) > new Date();
+}
+
 function createAnonymousBillingInfo(): BillingAccessInfo {
   return {
     userId: null,
@@ -276,9 +441,6 @@ function createAnonymousBillingInfo(): BillingAccessInfo {
   };
 }
 
-/**
- * Create billing info for admin users
- */
 function createAdminBillingInfo(userId: string, email: string | null): BillingAccessInfo {
   return {
     userId,
@@ -288,101 +450,106 @@ function createAdminBillingInfo(userId: string, email: string | null): BillingAc
     planType: 'admin',
     subscriptionEndsAt: null,
     ticketCount: 0,
-    isPremium: true, // Admins have premium access
+    isPremium: true,
     isAdmin: true,
     isFree: false,
     isAnonymous: false,
   };
 }
 
-/**
- * Check if user is admin in database
- * @deprecated database column removed
- */
-async function checkAdminInDb(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  userId: string
-): Promise<boolean> {
-  return false;
+// ============================================
+// Specialized Exports
+// ============================================
+
+export async function hasActiveSubscription(userId: string) {
+  const supabase = await createClient();
+  return fetchActiveSubscription(supabase, userId);
+}
+
+export async function isPremiumUser(): Promise<boolean> {
+  const billing = await checkBillingAccess();
+  return billing.isPremium || billing.isAdmin;
+}
+
+export async function getUserType(): Promise<UserType> {
+  const billing = await checkBillingAccess();
+  return billing.userType;
 }
 
 /**
- * Fetch active subscription for a user
+ * Get simple usage status (for UI display)
  */
-async function fetchActiveSubscription(
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  userId: string
-): Promise<{
-  hasActive: boolean;
-  subscription?: {
-    id: string;
-    externalSubscriptionId: string;
-    status: string;
-    currentPeriodEnd: string;
-    planCode?: string;
-  };
+export async function getUsageStatus(action: ActionType): Promise<{
+  limit: number;
+  remaining: number;
+  resetAt: Date | null;
+  ticketCount: number;
 }> {
-  const { data: subscription, error } = await supabase
-    .from('subscriptions')
-    .select('id, external_subscription_id, status, current_period_end, plan_code')
-    .eq('user_id', userId)
-    .in('status', ['active', 'trialing', 'past_due'])
-    .order('created_at', { ascending: false })
-    .limit(1)
-    .single();
+  const billing = await checkBillingAccess();
 
-  if (error || !subscription) {
-    return { hasActive: false };
+  if (billing.isAdmin) {
+    return { limit: -1, remaining: -1, resetAt: null, ticketCount: 0 };
   }
 
-  // Verify period is still valid
-  if (!isSubscriptionPeriodValid(subscription.current_period_end)) {
-    return { hasActive: false };
+  // Calculate Subscription Usage
+  const supabase = await createClient();
+  const usageCount = billing.userId ? await fetchMonthlyUsageCount(supabase, billing.userId, action) : 0;
+
+  const config = action === 'plan_generation'
+      ? PLAN_GENERATION_LIMITS[billing.userType]
+      : TRAVEL_INFO_LIMITS[billing.userType];
+
+  let subRemaining = -1;
+  let resetAt: Date | null = null;
+
+  if (!isUnlimited(config)) {
+    subRemaining = Math.max(0, config.limit - usageCount);
+    const now = new Date();
+    resetAt = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1));
   }
 
   return {
-    hasActive: true,
-    subscription: {
-      id: subscription.id,
-      externalSubscriptionId: subscription.external_subscription_id,
-      status: subscription.status,
-      currentPeriodEnd: subscription.current_period_end,
-      planCode: subscription.plan_code,
-    },
+    limit: config.limit,
+    remaining: subRemaining, // This is just Subscription remaining
+    resetAt,
+    ticketCount: billing.ticketCount
   };
 }
 
 /**
- * Fetch total ticket count for a user
+ * Check Plan Storage Limit
  */
-async function fetchTicketCount(
-  supabase: Awaited<ReturnType<typeof createClient>>,
-  userId: string
-): Promise<number> {
-  const { data: tickets } = await supabase
-    .from('entitlement_grants')
-    .select('remaining_count')
-    .eq('user_id', userId)
-    .eq('entitlement_type', 'plan_generation')
-    .eq('grant_type', 'ticket_pack')
-    .eq('status', 'active')
-    .gt('valid_until', new Date().toISOString());
+export async function checkPlanStorageLimit(): Promise<{
+  allowed: boolean;
+  currentCount: number;
+  limit: number;
+}> {
+  const supabase = await createClient();
+  const billing = await checkBillingAccess();
 
-  return tickets?.reduce((sum, t) => sum + (t.remaining_count || 0), 0) || 0;
+  // Use config to get limit
+  // We need to import PLAN_STORAGE_LIMITS at the top or here
+  const { PLAN_STORAGE_LIMITS } = await import('@/lib/limits/config');
+  const limitConfig = PLAN_STORAGE_LIMITS[billing.userType];
+
+  if (limitConfig.limit === -1) {
+    return { allowed: true, currentCount: 0, limit: -1 };
+  }
+
+  if (!billing.userId) {
+    // For anonymous, use client-side logic limit reference
+    return { allowed: true, currentCount: 0, limit: limitConfig.limit };
+  }
+
+  const { data } = await supabase.rpc('count_user_plans', {
+    p_user_id: billing.userId,
+  });
+
+  const currentCount = data || 0;
+
+  return {
+    allowed: currentCount < limitConfig.limit,
+    currentCount,
+    limit: limitConfig.limit,
+  };
 }
-
-/**
- * Check if subscription period end date is valid (in the future)
- */
-function isSubscriptionPeriodValid(periodEnd: string | null | undefined): boolean {
-  if (!periodEnd) return false;
-  return new Date(periodEnd) > new Date();
-}
-
-// ============================================
-// Re-exports for convenience
-// ============================================
-
-export { isAdminEmail };
