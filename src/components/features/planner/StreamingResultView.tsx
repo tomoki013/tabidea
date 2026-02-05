@@ -344,6 +344,7 @@ export default function StreamingResultView({
                         <SpotCard
                           key={`activity-${completedDay.day}-${actIndex}`}
                           activity={activity}
+                          destination={outline.destination}
                           state={getCardState(
                             `activity-${completedDay.day}-${actIndex}`
                           )}

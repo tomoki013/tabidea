@@ -143,20 +143,24 @@ export function usePlanGeneration(
       context: Article[],
       outlineDays: PlanOutline["days"],
       chunk: ChunkInfo,
-      allOutlineDays: PlanOutline["days"]
+      allOutlineDays: PlanOutline["days"],
+      destination?: string
     ) => {
       // Mark days as generating
       for (let d = chunk.start; d <= chunk.end; d++) {
         updateDayStatus(d, "generating");
       }
 
-      // Determine start location from previous day
+      // Determine start location from previous day's outline overnight_location,
+      // or use the destination for the first chunk so the AI knows where the traveler starts
       let previousOvernightLocation: string | undefined = undefined;
       if (chunk.start > 1) {
         const prevDay = allOutlineDays.find((d) => d.day === chunk.start - 1);
         if (prevDay) {
           previousOvernightLocation = prevDay.overnight_location;
         }
+      } else if (destination) {
+        previousOvernightLocation = destination;
       }
 
       try {
@@ -388,13 +392,20 @@ export function usePlanGeneration(
           // Immediately start detail generation in streaming mode
           setGenerationState((prev) => ({ ...prev, phase: "generating_details" }));
 
-          // Start all chunk generations in parallel
-          const chunkPromises = chunks.map((chunk) =>
-            generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+          // Generate first chunk sequentially with destination context,
+          // then generate remaining chunks in parallel
+          const [firstChunk, ...remainingChunks] = chunks;
+
+          await generateChunk(
+            updatedInput, context, outline.days, firstChunk, outline.days, outline.destination
           );
 
-          // Wait for all chunks
-          await Promise.all(chunkPromises);
+          if (remainingChunks.length > 0) {
+            const remainingPromises = remainingChunks.map((chunk) =>
+              generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+            );
+            await Promise.all(remainingPromises);
+          }
         } else {
           // Non-streaming mode: Generate all, then show review
           setGenerationState({
@@ -463,19 +474,23 @@ export function usePlanGeneration(
 
         const chunks = splitDaysIntoChunks(totalDays);
 
-        // Start all chunk generations in parallel
-        const chunkPromises = chunks.map((chunk) =>
-          generateChunk(
-            input,
-            context,
-            confirmedOutline.days,
-            chunk,
-            confirmedOutline.days
-          )
+        // Generate first chunk sequentially with destination context,
+        // then generate remaining chunks in parallel
+        const [firstChunk, ...remainingChunks] = chunks;
+
+        await generateChunk(
+          input, context, confirmedOutline.days, firstChunk,
+          confirmedOutline.days, confirmedOutline.destination
         );
 
-        // Wait for all chunks
-        await Promise.all(chunkPromises);
+        if (remainingChunks.length > 0) {
+          const remainingPromises = remainingChunks.map((chunk) =>
+            generateChunk(
+              input, context, confirmedOutline.days, chunk, confirmedOutline.days
+            )
+          );
+          await Promise.all(remainingPromises);
+        }
       } catch (e: unknown) {
         console.error(e);
         const errMsg = (e instanceof Error ? e.message : null) || "詳細プランの生成に失敗しました。";
@@ -505,7 +520,9 @@ export function usePlanGeneration(
       }
 
       const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
-      await generateChunk(input, context, outline.days, chunk, outline.days);
+      // Pass destination for first chunk retries
+      const destination = dayStart === 1 ? outline.destination : undefined;
+      await generateChunk(input, context, outline.days, chunk, outline.days, destination);
     },
     [generationState, generateChunk]
   );

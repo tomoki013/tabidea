@@ -139,4 +139,122 @@ describe("GeminiService", () => {
     expect(result.references![0].title).toBe("Blog 1");
     expect(result.references![1].title).toBe("Blog 2");
   });
+
+  describe("generateDayDetails", () => {
+    it("includes Day 1 starting location constraint when startingLocation is provided for day 1", async () => {
+      const mockDaysResponse = {
+        days: [
+          {
+            day: 1,
+            title: "Day 1 - Arrival",
+            activities: [
+              { time: "14:00", activity: "Check in", description: "Check in to hotel" },
+            ],
+          },
+        ],
+      };
+      mockGenerateObject.mockResolvedValue({ object: mockDaysResponse });
+
+      const outlineDays = [
+        {
+          day: 1,
+          title: "Day 1",
+          highlight_areas: ["Downtown"],
+          overnight_location: "Kyoto Station Area",
+        },
+      ];
+
+      await service.generateDayDetails(
+        "Kyoto trip",
+        [],
+        1,
+        1,
+        outlineDays,
+        "Kyoto" // startingLocation = destination for day 1
+      );
+
+      const callArgs = mockGenerateObject.mock.calls[0][0];
+      const prompt = callArgs.prompt;
+
+      // Verify day 1 specific starting location constraint is included
+      expect(prompt).toContain("DAY 1");
+      expect(prompt).toContain("Kyoto");
+    });
+
+    it("includes standard starting location constraint for day 2+", async () => {
+      const mockDaysResponse = {
+        days: [
+          {
+            day: 3,
+            title: "Day 3 - Exploration",
+            activities: [
+              { time: "09:00", activity: "Breakfast", description: "Breakfast at hotel" },
+            ],
+          },
+        ],
+      };
+      mockGenerateObject.mockResolvedValue({ object: mockDaysResponse });
+
+      const outlineDays = [
+        {
+          day: 3,
+          title: "Day 3",
+          highlight_areas: ["Nara"],
+          overnight_location: "Nara",
+        },
+      ];
+
+      await service.generateDayDetails(
+        "Kyoto trip",
+        [],
+        3,
+        3,
+        outlineDays,
+        "Kyoto Station Area"
+      );
+
+      const callArgs = mockGenerateObject.mock.calls[0][0];
+      const prompt = callArgs.prompt;
+
+      // Verify standard constraint references waking up
+      expect(prompt).toContain("waking up");
+      expect(prompt).toContain("Kyoto Station Area");
+    });
+
+    it("returns generated days correctly", async () => {
+      const mockDaysResponse = {
+        days: [
+          {
+            day: 1,
+            title: "Day 1",
+            activities: [
+              { time: "10:00", activity: "Visit Temple", description: "Explore" },
+            ],
+          },
+          {
+            day: 2,
+            title: "Day 2",
+            activities: [
+              { time: "09:00", activity: "Morning Walk", description: "Walk around" },
+            ],
+          },
+        ],
+      };
+      mockGenerateObject.mockResolvedValue({ object: mockDaysResponse });
+
+      const outlineDays = [
+        { day: 1, title: "Day 1", highlight_areas: ["A"], overnight_location: "X" },
+        { day: 2, title: "Day 2", highlight_areas: ["B"], overnight_location: "Y" },
+      ];
+
+      const result = await service.generateDayDetails(
+        "Test trip", [], 1, 2, outlineDays, "Tokyo"
+      );
+
+      expect(result).toHaveLength(2);
+      expect(result[0].day).toBe(1);
+      expect(result[1].day).toBe(2);
+      expect(result[0].activities[0].activity).toBe("Visit Temple");
+    });
+  });
 });

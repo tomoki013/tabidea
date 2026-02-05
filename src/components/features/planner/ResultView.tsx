@@ -6,9 +6,9 @@ import TravelPlannerChat from "@/components/TravelPlannerChat";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import RequestSummary from "./RequestSummary";
-import TransitCard from "./TransitCard";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
-import { ActivityAccordion } from "./ActivityAccordion";
+import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
+import type { CardState } from "@/components/features/plan/cards";
 import {
   FaMapMarkerAlt,
   FaClock,
@@ -23,17 +23,11 @@ import {
   FaGlobe,
   FaFlag,
   FaRegFlag,
-  FaPlane,
-  FaTrain,
-  FaBus,
-  FaShip,
-  FaCar,
-  FaQuestion,
   FaLock,
   FaUnlock,
 } from "react-icons/fa";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
 
@@ -82,6 +76,28 @@ export default function ResultView({
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
+
+  // Card expansion state: track which cards are expanded
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+
+  const handleCardStateChange = useCallback((cardId: string, state: CardState) => {
+    setExpandedCards((prev) => {
+      const next = new Set(prev);
+      if (state === "expanded") {
+        next.add(cardId);
+      } else {
+        next.delete(cardId);
+      }
+      return next;
+    });
+  }, []);
+
+  const getCardState = useCallback(
+    (cardId: string): CardState => {
+      return expandedCards.has(cardId) ? "expanded" : "collapsed";
+    },
+    [expandedCards]
+  );
 
   // Flags
   const { isAuthenticated } = useAuth();
@@ -544,28 +560,14 @@ export default function ResultView({
             <div className="w-full max-w-4xl mx-auto mt-0 mb-8 px-4">
               <div className="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-lg shadow-sm">
                 <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 text-2xl">⚠️</div>
+                  <div className="flex-shrink-0 text-2xl">&#x26A0;&#xFE0F;</div>
                   <div className="flex-1">
                     <h3 className="font-bold text-amber-900 mb-2 text-lg">
                       AI生成プランに関する重要なお知らせ
                     </h3>
                     <div className="text-amber-800 text-sm leading-relaxed space-y-2">
                       <p>
-                        このプランはAIによって自動生成されています。以下の点にご注意ください：
-                      </p>
-                      <ul className="list-disc list-inside space-y-1 ml-2">
-                        <li>
-                          施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください
-                        </li>
-                        <li>
-                          AIは時に事実と異なる情報を生成する可能性があります（ハルシネーション）
-                        </li>
-                        <li>
-                          季節や天候、予約の必要性など、実際の旅行計画では追加の確認が必要です
-                        </li>
-                      </ul>
-                      <p className="font-semibold mt-3">
-                        このプランはあくまで旅行のアイデアとしてご活用ください。実際の旅行では必ず最新情報を確認し、安全で楽しい旅をお楽しみください。
+                        このプランはAIによって自動生成されています。施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください。
                       </p>
                     </div>
                   </div>
@@ -630,83 +632,30 @@ export default function ResultView({
                       )}
                     </div>
 
-                    {/* Activities */}
-                    <div className={`
-                      ${day.ui_type === 'compact' ? 'border-l border-stone-200 ml-4 space-y-4 pb-4' :
-                        day.ui_type === 'narrative' ? 'ml-0 space-y-8 pb-8' :
-                        'border-l-2 border-stone-200 ml-8 space-y-8 pb-8'}
-                      relative transition-all
-                    `}>
-                      {/* Generative UI Label */}
-                      {!isEditing && day.ui_type && day.ui_type !== 'default' && (
-                        <div className="absolute right-0 -top-12 flex items-center gap-1.5 px-3 py-1 bg-gradient-to-r from-primary/10 to-transparent rounded-full text-xs font-mono text-primary/70 pointer-events-none">
-                          <span className="w-2 h-2 rounded-full bg-primary/50 animate-pulse"></span>
-                          {day.ui_type === 'compact' ? 'Compact View' : 'Narrative View'}
-                        </div>
-                      )}
-
-                      {/* Transit Card */}
-                      {day.transit && (() => {
-                        const transitIcons = {
-                          flight: FaPlane,
-                          train: FaTrain,
-                          bus: FaBus,
-                          ship: FaShip,
-                          car: FaCar,
-                          other: FaQuestion,
-                        };
-                        const transitColors = {
-                          flight: 'bg-blue-500',
-                          train: 'bg-green-600',
-                          bus: 'bg-orange-500',
-                          ship: 'bg-cyan-600',
-                          car: 'bg-slate-600',
-                          other: 'bg-stone-500',
-                        };
-                        const TransitIcon = transitIcons[day.transit.type] || FaQuestion;
-                        const iconColor = transitColors[day.transit.type] || 'bg-stone-500';
-
-                        return (
-                          <div className={`relative ${day.ui_type === 'compact' ? 'pl-6' : day.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' : 'pl-4 sm:pl-10'} mb-8`}>
-                            {/* Enhanced Transit Icon on timeline - Hide in Narrative */}
-                            {day.ui_type !== 'narrative' && (
-                              <div className={`absolute ${day.ui_type === 'compact' ? 'left-[-9px]' : 'left-[-13px]'} top-1/2 -translate-y-1/2 ${day.ui_type === 'compact' ? 'w-4 h-4 text-[10px]' : 'w-6 h-6 text-xs'} rounded-full ${iconColor} border-2 border-white shadow-lg z-20 flex items-center justify-center`}>
-                                <TransitIcon className="text-white" />
-                              </div>
-                            )}
-
-                            <TransitCard
+                    {/* Day Content */}
+                    <div className="space-y-4 ml-4 sm:ml-8">
+                      {isEditing ? (
+                        <>
+                          {/* Edit Mode: Transit Card */}
+                          {day.transit && (
+                            <CardTransitCard
                               transit={day.transit}
-                              isEditing={isEditing}
+                              state={getCardState(`transit-${day.day}`)}
+                              onStateChange={(state) =>
+                                handleCardStateChange(`transit-${day.day}`, state)
+                              }
+                              isEditing={true}
                               onLockToggle={() => handleToggleLockTransit(dayIndex)}
+                              className="mb-6"
                             />
-                          </div>
-                        );
-                      })()}
-
-                      {day.activities.map((act, actIndex) => (
-                        <div
-                          key={actIndex}
-                          className={`
-                            relative group
-                            ${day.ui_type === 'compact' ? 'pl-6' :
-                              day.ui_type === 'narrative' ? 'pl-0 max-w-2xl mx-auto' :
-                              'pl-10'}
-                          `}
-                        >
-                          {/* Dot on timeline - Hide in Narrative */}
-                          {day.ui_type !== 'narrative' && (
-                            <div className={`absolute ${day.ui_type === 'compact' ? 'left-[-5px] top-4 w-2.5 h-2.5' : 'left-[-9px] top-6 w-4 h-4'} rounded-full bg-white border-4 border-primary shadow-sm z-10`}></div>
                           )}
 
-                          {/* Activity Card */}
-                          <div
-                            className={`
-                              relative overflow-hidden transition-all duration-300
-                              ${isEditing ? "bg-white rounded-xl shadow-sm border border-primary/30 ring-2 ring-primary/5 p-6" : ""}
-                            `}
-                          >
-                            {isEditing ? (
+                          {/* Edit Mode: Activity Cards */}
+                          {day.activities.map((act, actIndex) => (
+                            <div
+                              key={actIndex}
+                              className="relative bg-white rounded-xl shadow-sm border border-primary/30 ring-2 ring-primary/5 p-6"
+                            >
                               <div className="space-y-3 w-full">
                                 <div className="flex items-start justify-between gap-4">
                                   <div className="flex-1 space-y-2">
@@ -740,9 +689,7 @@ export default function ResultView({
                                       placeholder="Activity Name"
                                     />
                                   </div>
-                                  {/* Activity action buttons */}
                                   <div className="flex items-center gap-1">
-                                    {/* Lock/Unlock button */}
                                     <button
                                       onClick={() =>
                                         handleToggleLockActivity(dayIndex, actIndex)
@@ -756,7 +703,6 @@ export default function ResultView({
                                     >
                                       {act.isLocked ? <FaLock size={14} /> : <FaUnlock size={14} />}
                                     </button>
-                                    {/* Move up/down buttons */}
                                     <div className="flex flex-col gap-0.5">
                                       <button
                                         onClick={() =>
@@ -792,7 +738,6 @@ export default function ResultView({
                                         <FaArrowDown size={12} />
                                       </button>
                                     </div>
-                                    {/* Delete button */}
                                     <button
                                       onClick={() =>
                                         handleDeleteActivity(dayIndex, actIndex)
@@ -818,32 +763,68 @@ export default function ResultView({
                                   placeholder="Description"
                                 />
                               </div>
-                            ) : (
-                              // ==========================================
-                              // VIEW MODE - ACTIVITY ACCORDION
-                              // ==========================================
-                              <ActivityAccordion
-                                activity={act}
-                                destination={result.destination}
-                                dayIndex={dayIndex}
-                                activityIndex={actIndex}
-                                uiType={day.ui_type || 'default'}
-                              />
-                            )}
-                          </div>
-                        </div>
-                      ))}
+                            </div>
+                          ))}
 
-                      {/* Add Activity Button (Only in edit mode) */}
-                      {isEditing && (
-                        <div className="pl-10">
+                          {/* Add Activity Button */}
                           <button
                             onClick={() => handleAddActivity(dayIndex)}
                             className="w-full py-3 border-2 border-dashed border-stone-200 rounded-xl text-stone-400 hover:text-primary hover:border-primary hover:bg-primary/5 transition-all flex items-center justify-center gap-2 font-bold"
                           >
                             <FaPlus /> アクティビティを追加
                           </button>
-                        </div>
+                        </>
+                      ) : (
+                        <>
+                          {/* View Mode: Transit Card */}
+                          {day.transit && (
+                            <CardTransitCard
+                              transit={day.transit}
+                              state={getCardState(`transit-${day.day}`)}
+                              onStateChange={(state) =>
+                                handleCardStateChange(`transit-${day.day}`, state)
+                              }
+                              className="mb-6"
+                            />
+                          )}
+
+                          {/* View Mode: Activity Cards */}
+                          {day.activities.map((act, actIndex) => (
+                            <SpotCard
+                              key={`activity-${day.day}-${actIndex}`}
+                              activity={act}
+                              destination={result.destination}
+                              state={getCardState(
+                                `activity-${day.day}-${actIndex}`
+                              )}
+                              onStateChange={(state) =>
+                                handleCardStateChange(
+                                  `activity-${day.day}-${actIndex}`,
+                                  state
+                                )
+                              }
+                            />
+                          ))}
+
+                          {/* View Mode: Accommodation Card */}
+                          {dayIndex < displayResult.days.length - 1 && (
+                            <AccommodationCard
+                              accommodation={{
+                                name: `${result.destination}`,
+                                description: `${day.day}日目の宿泊エリア`,
+                              }}
+                              dayNumber={day.day}
+                              state={getCardState(`accommodation-${day.day}`)}
+                              onStateChange={(state) =>
+                                handleCardStateChange(
+                                  `accommodation-${day.day}`,
+                                  state
+                                )
+                              }
+                              className="mt-6"
+                            />
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
