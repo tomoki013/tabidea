@@ -100,9 +100,10 @@ describe('PLAN_GENERATION_LIMITS', () => {
     expect(isUnlimited(limit)).toBe(true);
   });
 
-  it('premiumは無制限', () => {
+  it('premiumは月30回', () => {
     const limit = PLAN_GENERATION_LIMITS.premium;
-    expect(isUnlimited(limit)).toBe(true);
+    expect(limit.limit).toBe(30);
+    expect(limit.period).toBe('month');
   });
 });
 

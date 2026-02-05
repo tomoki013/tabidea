@@ -196,10 +196,10 @@ describe('BillingChecker', () => {
 
       // If I want to test the sorting, I accept that Ticket is prioritized over Unlimited.
       expect(result.allowed).toBe(true);
-      // With unlimited premium, the subscription "expires" in 100 years.
+      // With limited premium (30/month), subscription expires at end of month (approx 30 days).
       // Ticket expires in 90 days.
-      // So Ticket comes first.
-      expect(result.source).toBe('ticket');
+      // So Subscription comes first (expires sooner).
+      expect(result.source).toBe('subscription');
     });
 
     it('should fall back to Ticket if Subscription is exhausted', async () => {

@@ -211,7 +211,7 @@ export function PricingPageClient({
                 <FeatureRow
                   feature="プラン生成"
                   free="月3回"
-                  pro="無制限"
+                  pro="月30回"
                   ticket="購入分"
                 />
                 <FeatureRow

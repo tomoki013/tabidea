@@ -24,7 +24,7 @@ export interface StorageLimitConfig {
 export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 3, period: 'month' },
-  premium: { limit: -1, period: 'month' },
+  premium: { limit: 30, period: 'month' },
   admin: { limit: -1, period: 'unlimited' },
 };
 
