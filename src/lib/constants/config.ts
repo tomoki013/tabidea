@@ -71,6 +71,9 @@ export const PAGINATION_CONFIG = {
 export const ENV_KEYS = {
   GOOGLE_API_KEY: 'GOOGLE_GENERATIVE_AI_API_KEY',
   GOOGLE_MODEL_NAME: 'GOOGLE_MODEL_NAME',
+  GOOGLE_MAPS_API_KEY: 'GOOGLE_MAPS_API_KEY',
+  /** クライアントサイドで使用するMaps API キー */
+  GOOGLE_MAPS_API_KEY_PUBLIC: 'NEXT_PUBLIC_GOOGLE_MAPS_API_KEY',
   PINECONE_API_KEY: 'PINECONE_API_KEY',
   PINECONE_INDEX: 'PINECONE_INDEX',
   WEATHER_API_KEY: 'WEATHER_API_KEY',
@@ -79,4 +82,12 @@ export const ENV_KEYS = {
   REDIS_URL: 'REDIS_URL',
   GMAIL_USER: 'GMAIL_USER',
   GMAIL_PASS: 'GMAIL_PASS',
+} as const;
+
+/**
+ * Places APIキャッシュ設定
+ */
+export const PLACES_CACHE_CONFIG = {
+  /** キャッシュTTL（ミリ秒） - 7日間 */
+  TTL_MS: 7 * 24 * 60 * 60 * 1000,
 } as const;

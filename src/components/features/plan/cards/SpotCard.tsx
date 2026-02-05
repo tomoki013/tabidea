@@ -1,9 +1,11 @@
 "use client";
 
-import { MapPin, Clock, Star, ExternalLink } from "lucide-react";
+import { useEffect, useState } from "react";
+import { MapPin, Clock, Star, ExternalLink, Camera, AlertCircle, Loader2 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
-import { Activity, ActivityValidation } from "@/types";
+import { Activity, ActivityValidation, PlacePhoto } from "@/types";
 import TrustBadge from "./TrustBadge";
+import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
 
 // ============================================================================
 // Types
@@ -12,6 +14,8 @@ import TrustBadge from "./TrustBadge";
 export interface SpotCardProps {
   /** Activity data */
   activity: Activity;
+  /** Destination for location-based search */
+  destination?: string;
   /** Card state */
   state?: CardState;
   /** Callback when state changes */
@@ -21,22 +25,148 @@ export interface SpotCardProps {
 }
 
 // ============================================================================
+// Photo Carousel Component
+// ============================================================================
+
+interface PhotoCarouselProps {
+  photos: PlacePhoto[];
+}
+
+function PhotoCarousel({ photos }: PhotoCarouselProps) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  if (photos.length === 0) return null;
+
+  return (
+    <div className="relative">
+      {/* Photo */}
+      <div className="aspect-video rounded-lg overflow-hidden bg-stone-100">
+        {photos[currentIndex]?.url ? (
+          <img
+            src={photos[currentIndex].url}
+            alt={`写真 ${currentIndex + 1}`}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-stone-400">
+            <Camera className="w-8 h-8" />
+          </div>
+        )}
+      </div>
+
+      {/* Navigation dots */}
+      {photos.length > 1 && (
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
+          {photos.map((_, index) => (
+            <button
+              key={index}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentIndex(index);
+              }}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                index === currentIndex ? "bg-white" : "bg-white/50"
+              }`}
+              aria-label={`写真 ${index + 1}`}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Attribution */}
+      {photos[currentIndex]?.attributions?.length > 0 && (
+        <div className="absolute bottom-2 right-2 text-[10px] text-white/80 bg-black/40 px-1.5 py-0.5 rounded">
+          📷 {photos[currentIndex].attributions[0]}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
+// Loading Skeleton Component
+// ============================================================================
+
+function DetailsSkeleton() {
+  return (
+    <div className="space-y-3 animate-pulse">
+      {/* Photo skeleton */}
+      <div className="aspect-video rounded-lg bg-stone-200" />
+
+      {/* Rating skeleton */}
+      <div className="flex items-center gap-2">
+        <div className="w-4 h-4 rounded bg-stone-200" />
+        <div className="w-20 h-4 rounded bg-stone-200" />
+      </div>
+
+      {/* Hours skeleton */}
+      <div className="space-y-1">
+        <div className="w-full h-3 rounded bg-stone-200" />
+        <div className="w-3/4 h-3 rounded bg-stone-200" />
+      </div>
+
+      {/* Address skeleton */}
+      <div className="w-2/3 h-4 rounded bg-stone-200" />
+    </div>
+  );
+}
+
+// ============================================================================
 // Component
 // ============================================================================
 
 export default function SpotCard({
   activity,
+  destination,
   state = "collapsed",
   onStateChange,
   className = "",
 }: SpotCardProps) {
   const { time, activity: name, description, validation } = activity;
 
+  // Lazy loading hook
+  const {
+    details: fetchedDetails,
+    isLoading,
+    error,
+    fetchDetails,
+  } = usePlaceDetails(name, destination);
+
+  // Merge validation data with fetched details
+  const mergedValidation: ActivityValidation | undefined = fetchedDetails
+    ? {
+        spotName: fetchedDetails.spotName,
+        isVerified: fetchedDetails.isVerified,
+        confidence: fetchedDetails.confidence,
+        source: fetchedDetails.source,
+        placeId: fetchedDetails.placeId,
+        details: fetchedDetails.details
+          ? {
+              address: fetchedDetails.details.address,
+              rating: fetchedDetails.details.rating,
+              openingHours: fetchedDetails.details.openingHours,
+              photos: fetchedDetails.details.photos?.map((p) => p.url || "").filter(Boolean),
+            }
+          : undefined,
+      }
+    : validation;
+
+  // Photos from fetched details (with full PlacePhoto data)
+  const photos = fetchedDetails?.details?.photos || [];
+
+  // Trigger fetch when card is expanded
+  useEffect(() => {
+    if (state === "expanded" && !validation?.isVerified && !fetchedDetails && !isLoading) {
+      fetchDetails();
+    }
+  }, [state, validation?.isVerified, fetchedDetails, isLoading, fetchDetails]);
+
   // Determine trust level from validation
   const getTrustLevel = (): "verified" | "ai_generated" | "needs_check" => {
-    if (!validation) return "ai_generated";
-    if (validation.isVerified) return "verified";
-    if (validation.confidence === "low") return "needs_check";
+    const v = mergedValidation;
+    if (!v) return "ai_generated";
+    if (v.isVerified) return "verified";
+    if (v.confidence === "low") return "needs_check";
     return "ai_generated";
   };
 
@@ -61,47 +191,95 @@ export default function SpotCard({
           <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
         </div>
 
+        {/* Loading State */}
+        {isLoading && <DetailsSkeleton />}
+
+        {/* Error State */}
+        {error && (
+          <div className="flex items-center gap-2 text-sm text-amber-600 bg-amber-50 rounded-lg p-3">
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <span>{error}</span>
+          </div>
+        )}
+
+        {/* Photos Carousel */}
+        {photos.length > 0 && <PhotoCarousel photos={photos} />}
+
         {/* Validation Details (if available) */}
-        {validation?.details && (
+        {mergedValidation?.details && !isLoading && (
           <div className="space-y-2">
             {/* Rating */}
-            {validation.details.rating && (
+            {mergedValidation.details.rating && (
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
                 <span className="text-sm font-medium text-stone-700">
-                  {validation.details.rating.toFixed(1)}
+                  {mergedValidation.details.rating.toFixed(1)}
                 </span>
+                {fetchedDetails?.details?.reviewCount && (
+                  <span className="text-sm text-stone-500">
+                    ({fetchedDetails.details.reviewCount}件の口コミ)
+                  </span>
+                )}
               </div>
             )}
 
             {/* Opening Hours */}
-            {validation.details.openingHours && validation.details.openingHours.length > 0 && (
+            {mergedValidation.details.openingHours && mergedValidation.details.openingHours.length > 0 && (
               <div className="flex items-start gap-2">
                 <Clock className="w-4 h-4 text-stone-500 mt-0.5" />
                 <div className="text-sm text-stone-600">
-                  {validation.details.openingHours.slice(0, 3).map((hours, i) => (
+                  {mergedValidation.details.openingHours.slice(0, 3).map((hours, i) => (
                     <div key={i}>{hours}</div>
                   ))}
+                  {mergedValidation.details.openingHours.length > 3 && (
+                    <details className="mt-1">
+                      <summary className="text-blue-600 cursor-pointer hover:underline">
+                        すべての営業時間を見る
+                      </summary>
+                      <div className="mt-1">
+                        {mergedValidation.details.openingHours.slice(3).map((hours, i) => (
+                          <div key={i}>{hours}</div>
+                        ))}
+                      </div>
+                    </details>
+                  )}
                 </div>
               </div>
             )}
 
             {/* Address */}
-            {validation.details.address && (
+            {mergedValidation.details.address && (
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-stone-500 mt-0.5" />
                 <span className="text-sm text-stone-600">
-                  {validation.details.address}
+                  {mergedValidation.details.address}
                 </span>
               </div>
             )}
           </div>
         )}
 
-        {/* Google Maps Link (placeholder for Phase 3) */}
-        {validation?.placeId && (
+        {/* Fetch Button (if not yet fetched and no validation) */}
+        {!isLoading && !fetchedDetails && !validation?.isVerified && !error && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              fetchDetails();
+            }}
+            className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            <Loader2 className="w-4 h-4" />
+            詳細情報を取得
+          </button>
+        )}
+
+        {/* Google Maps Link */}
+        {(mergedValidation?.placeId || fetchedDetails?.details?.googleMapsUrl) && (
           <a
-            href={`https://www.google.com/maps/place/?q=place_id:${validation.placeId}`}
+            href={
+              fetchedDetails?.details?.googleMapsUrl ||
+              `https://www.google.com/maps/place/?q=place_id:${mergedValidation?.placeId}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"

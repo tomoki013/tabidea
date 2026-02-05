@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import {
   Plane,
   Train,
@@ -11,9 +12,15 @@ import {
   Clock,
   Lock,
   Unlock,
+  ExternalLink,
+  Info,
 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { TransitInfo, TransitType } from "@/types";
+import {
+  generateFlightLinks,
+  trackAffiliateClick,
+} from "@/lib/utils/affiliate-links";
 
 // ============================================================================
 // Types
@@ -22,6 +29,12 @@ import { TransitInfo, TransitType } from "@/types";
 export interface TransitCardProps {
   /** Transit information */
   transit: TransitInfo;
+  /** Departure date (YYYY-MM-DD) for affiliate links */
+  departureDate?: string;
+  /** Return date (YYYY-MM-DD) for affiliate links */
+  returnDate?: string;
+  /** Number of adults */
+  adults?: number;
   /** Card state */
   state?: CardState;
   /** Callback when state changes */
@@ -84,6 +97,9 @@ const TRANSIT_CONFIG: Record<
 
 export default function TransitCard({
   transit,
+  departureDate,
+  returnDate,
+  adults = 1,
   state = "collapsed",
   onStateChange,
   isEditing = false,
@@ -92,6 +108,19 @@ export default function TransitCard({
 }: TransitCardProps) {
   const config = TRANSIT_CONFIG[transit.type];
   const Icon = config.icon;
+
+  // Generate flight affiliate links (only for flights)
+  const flightLinks = useMemo(() => {
+    if (transit.type !== "flight") return [];
+
+    return generateFlightLinks({
+      origin: transit.departure.place,
+      destination: transit.arrival.place,
+      departureDate,
+      returnDate,
+      adults,
+    });
+  }, [transit.type, transit.departure.place, transit.arrival.place, departureDate, returnDate, adults]);
 
   // Build route string
   const route = `${transit.departure.place} → ${transit.arrival.place}`;
@@ -109,6 +138,17 @@ export default function TransitCard({
       return transit.memo;
     }
     return parts.join(" - ");
+  };
+
+  const handleFlightLinkClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (flightLinks.length > 0) {
+      trackAffiliateClick(
+        flightLinks[0].service,
+        transit.arrival.place,
+        "flight"
+      );
+    }
   };
 
   return (
@@ -139,7 +179,9 @@ export default function TransitCard({
               {transit.departure.place}
             </div>
             {transit.departure.time && (
-              <div className="text-sm text-stone-500">{transit.departure.time}</div>
+              <div className="text-sm text-stone-500">
+                {transit.departure.time}
+              </div>
             )}
           </div>
           <div className="flex flex-col items-center px-4">
@@ -156,7 +198,9 @@ export default function TransitCard({
               {transit.arrival.place}
             </div>
             {transit.arrival.time && (
-              <div className="text-sm text-stone-500">{transit.arrival.time}</div>
+              <div className="text-sm text-stone-500">
+                {transit.arrival.time}
+              </div>
             )}
           </div>
         </div>
@@ -166,6 +210,33 @@ export default function TransitCard({
           <div>
             <h4 className="text-sm font-bold text-stone-700 mb-1">メモ</h4>
             <p className="text-sm text-stone-600">{transit.memo}</p>
+          </div>
+        )}
+
+        {/* Flight Affiliate Links */}
+        {transit.type === "flight" && flightLinks.length > 0 && !transit.isBooked && (
+          <div className="pt-2 space-y-3 border-t border-stone-100">
+            {/* PR disclosure */}
+            <div className="flex items-center gap-1.5 text-xs text-stone-400">
+              <Info className="w-3 h-3" />
+              <span>PR: 以下は広告リンクです</span>
+            </div>
+
+            {/* Flight Search Button */}
+            <a
+              href={flightLinks[0].url}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              onClick={handleFlightLinkClick}
+              className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium"
+            >
+              <Plane className="w-4 h-4" />
+              航空券を探す
+              <ExternalLink className="w-3 h-3 ml-1" />
+            </a>
+            <p className="text-xs text-stone-400 text-center">
+              {flightLinks[0].displayName}で航空券を検索
+            </p>
           </div>
         )}
 

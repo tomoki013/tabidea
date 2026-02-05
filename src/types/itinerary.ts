@@ -35,7 +35,7 @@ export interface TransitInfo {
 }
 
 /**
- * スポット検証結果（Phase 3で拡張予定）
+ * スポット検証結果（Phase 3: Google Places API連携）
  */
 export interface ActivityValidation {
   /** スポット名 */
@@ -54,6 +54,14 @@ export interface ActivityValidation {
     rating?: number;
     openingHours?: string[];
     photos?: string[];
+    /** 緯度 */
+    latitude?: number;
+    /** 経度 */
+    longitude?: number;
+    /** レビュー数 */
+    reviewCount?: number;
+    /** Google Maps URL */
+    googleMapsUrl?: string;
   };
 }
 

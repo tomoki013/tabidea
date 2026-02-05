@@ -1,8 +1,15 @@
 "use client";
 
-import { Building2, MapPin, ExternalLink, Star } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Building2, MapPin, ExternalLink, Star, ChevronDown, Info } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import TrustBadge from "./TrustBadge";
+import {
+  generateHotelLinks,
+  trackAffiliateClick,
+  type TravelRegion,
+  type AffiliateLink,
+} from "@/lib/utils/affiliate-links";
 
 // ============================================================================
 // Types
@@ -13,6 +20,10 @@ export interface AccommodationData {
   name: string;
   /** Optional description */
   description?: string;
+  /** Check-in date (YYYY-MM-DD) for affiliate link */
+  checkInDate?: string;
+  /** Check-out date (YYYY-MM-DD) for affiliate link */
+  checkOutDate?: string;
   /** Check-in time */
   checkIn?: string;
   /** Check-out time */
@@ -32,6 +43,12 @@ export interface AccommodationData {
 export interface AccommodationCardProps {
   /** Accommodation data */
   accommodation: AccommodationData;
+  /** Destination for affiliate links */
+  destination?: string;
+  /** Travel region */
+  region?: TravelRegion;
+  /** Number of adults */
+  adults?: number;
   /** Day number for display */
   dayNumber?: number;
   /** Card state */
@@ -43,21 +60,116 @@ export interface AccommodationCardProps {
 }
 
 // ============================================================================
+// Affiliate Links Dropdown
+// ============================================================================
+
+interface AffiliateDropdownProps {
+  links: AffiliateLink[];
+  destination: string;
+}
+
+function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  if (links.length === 0) return null;
+
+  const handleClick = (link: AffiliateLink, e: React.MouseEvent) => {
+    e.stopPropagation();
+    trackAffiliateClick(link.service, destination, "hotel");
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        className="flex items-center gap-2 px-3 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm font-medium"
+      >
+        🏨 ホテルを探す
+        <ChevronDown
+          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+        />
+      </button>
+
+      {isOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-10"
+            onClick={(e) => {
+              e.stopPropagation();
+              setIsOpen(false);
+            }}
+          />
+          <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-stone-200 overflow-hidden z-20 min-w-[180px]">
+            {links.map((link) => (
+              <a
+                key={link.service}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer sponsored"
+                onClick={(e) => handleClick(link, e)}
+                className="flex items-center gap-2 px-4 py-2.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0"
+              >
+                <span>{link.icon}</span>
+                <span>{link.displayName}</span>
+                <ExternalLink className="w-3 h-3 ml-auto text-stone-400" />
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
+// ============================================================================
 // Component
 // ============================================================================
 
 export default function AccommodationCard({
   accommodation,
+  destination,
+  region,
+  adults = 2,
   dayNumber,
   state = "collapsed",
   onStateChange,
   className = "",
 }: AccommodationCardProps) {
-  const { name, description, checkIn, checkOut, rating, address, bookingUrl, isVerified, placeId } =
-    accommodation;
+  const {
+    name,
+    description,
+    checkIn,
+    checkOut,
+    checkInDate,
+    checkOutDate,
+    rating,
+    address,
+    bookingUrl,
+    isVerified,
+    placeId,
+  } = accommodation;
+
+  // Generate affiliate links
+  const affiliateLinks = useMemo(() => {
+    const searchDestination = destination || name;
+    return generateHotelLinks(
+      {
+        destination: searchDestination,
+        checkIn: checkInDate,
+        checkOut: checkOutDate,
+        adults,
+        rooms: 1,
+      },
+      region
+    );
+  }, [destination, name, checkInDate, checkOutDate, adults, region]);
 
   // Build time range if available
-  const timeRange = checkIn && checkOut ? `${checkIn} - ${checkOut}` : checkIn || checkOut;
+  const timeRange =
+    checkIn && checkOut ? `${checkIn} - ${checkOut}` : checkIn || checkOut;
 
   return (
     <BaseCard
@@ -83,7 +195,9 @@ export default function AccommodationCard({
         {description && (
           <div>
             <h4 className="text-sm font-bold text-stone-700 mb-1">詳細</h4>
-            <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
+            <p className="text-sm text-stone-600 leading-relaxed">
+              {description}
+            </p>
           </div>
         )}
 
@@ -111,13 +225,17 @@ export default function AccommodationCard({
             <div className="grid grid-cols-2 gap-4">
               {checkIn && (
                 <div>
-                  <span className="text-purple-600 font-medium">チェックイン</span>
+                  <span className="text-purple-600 font-medium">
+                    チェックイン
+                  </span>
                   <div className="text-purple-800 font-bold">{checkIn}</div>
                 </div>
               )}
               {checkOut && (
                 <div>
-                  <span className="text-purple-600 font-medium">チェックアウト</span>
+                  <span className="text-purple-600 font-medium">
+                    チェックアウト
+                  </span>
                   <div className="text-purple-800 font-bold">{checkOut}</div>
                 </div>
               )}
@@ -125,33 +243,48 @@ export default function AccommodationCard({
           </div>
         )}
 
-        {/* Action Links */}
-        <div className="flex gap-3 pt-2">
+        {/* Affiliate Links Section */}
+        <div className="pt-2 space-y-3">
+          {/* PR disclosure */}
+          <div className="flex items-center gap-1.5 text-xs text-stone-400">
+            <Info className="w-3 h-3" />
+            <span>PR: 以下は広告リンクです</span>
+          </div>
+
+          {/* Affiliate Dropdown */}
+          <AffiliateDropdown
+            links={affiliateLinks}
+            destination={destination || name}
+          />
+
+          {/* Direct booking link if available */}
           {bookingUrl && (
             <a
               href={bookingUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-800 hover:underline"
               onClick={(e) => e.stopPropagation()}
+              className="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-800 hover:underline"
             >
               <ExternalLink className="w-4 h-4" />
               予約サイトを見る
             </a>
           )}
-          {placeId && (
-            <a
-              href={`https://www.google.com/maps/place/?q=place_id:${placeId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="w-4 h-4" />
-              Google マップで見る
-            </a>
-          )}
         </div>
+
+        {/* Google Maps Link */}
+        {placeId && (
+          <a
+            href={`https://www.google.com/maps/place/?q=place_id:${placeId}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+          >
+            <ExternalLink className="w-4 h-4" />
+            Google マップで見る
+          </a>
+        )}
       </div>
     </BaseCard>
   );

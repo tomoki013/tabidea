@@ -1,7 +1,10 @@
 /**
  * スポット検証サービス
- * Phase 3 の Google Places API 連携に向けた基盤実装
+ * Phase 3: Google Places API 連携による検証
  */
+
+import { GooglePlacesService } from '@/lib/services/google/places';
+import type { PlaceValidationResult, PlacePhoto } from '@/types/places';
 
 // ============================================
 // Types
@@ -47,6 +50,8 @@ export interface SpotDetails {
   openingHours?: string[];
   /** 写真URL */
   photos?: string[];
+  /** 写真（詳細情報付き） */
+  photoDetails?: PlacePhoto[];
   /** 電話番号 */
   phoneNumber?: string;
   /** ウェブサイト */
@@ -55,6 +60,12 @@ export interface SpotDetails {
   priceLevel?: number;
   /** 口コミ数 */
   reviewCount?: number;
+  /** 緯度 */
+  latitude?: number;
+  /** 経度 */
+  longitude?: number;
+  /** Google Maps URL */
+  googleMapsUrl?: string;
 }
 
 /**
@@ -69,6 +80,8 @@ export interface ValidationOptions {
   useCache?: boolean;
   /** タイムアウト（ミリ秒） */
   timeout?: number;
+  /** Places API を使用するか（falseの場合スタブモード） */
+  usePlacesApi?: boolean;
 }
 
 /**
@@ -92,53 +105,96 @@ export interface BatchValidationResult {
 /**
  * スポット検証サービス
  *
- * Phase 3 までのスタブ実装:
- * - すべてのスポットを confidence='unverified' として返す
- * - Phase 3 で Google Places API に差し替え予定
+ * Google Places API を使用してスポットを検証
  */
 export class SpotValidator {
   private cache: Map<string, ValidationResult>;
-  private options: ValidationOptions;
+  private options: Required<ValidationOptions>;
+  private placesService: GooglePlacesService | null = null;
 
   constructor(options: ValidationOptions = {}) {
     this.cache = new Map();
     this.options = {
-      skipValidation: false,
-      minConfidence: 'unverified',
-      useCache: true,
-      timeout: 5000,
-      ...options,
+      skipValidation: options.skipValidation ?? false,
+      minConfidence: options.minConfidence ?? 'unverified',
+      useCache: options.useCache ?? true,
+      timeout: options.timeout ?? 10000,
+      usePlacesApi: options.usePlacesApi ?? this.isPlacesApiAvailable(),
     };
+
+    // Places API が利用可能な場合、サービスを初期化
+    if (this.options.usePlacesApi) {
+      try {
+        this.placesService = new GooglePlacesService(undefined, {
+          timeout: this.options.timeout,
+        });
+      } catch {
+        console.warn('Google Places API not available, falling back to stub mode');
+        this.options.usePlacesApi = false;
+      }
+    }
+  }
+
+  /**
+   * Places API が利用可能かチェック
+   */
+  private isPlacesApiAvailable(): boolean {
+    return !!process.env.GOOGLE_MAPS_API_KEY;
   }
 
   /**
    * 単一スポットを検証
-   *
-   * Phase 3 までのスタブ: unverified を返す
    */
   async validateSpot(
     spotName: string,
-    _location?: string
+    location?: string
   ): Promise<ValidationResult> {
     // キャッシュチェック
-    if (this.options.useCache && this.cache.has(spotName)) {
-      return this.cache.get(spotName)!;
+    const cacheKey = this.getCacheKey(spotName, location);
+    if (this.options.useCache && this.cache.has(cacheKey)) {
+      return this.cache.get(cacheKey)!;
     }
 
-    // Phase 3 までのスタブ実装
-    // すべてのスポットを unverified として返す
-    const result: ValidationResult = {
-      spotName,
-      isVerified: false,
-      confidence: 'unverified',
-      source: 'ai_generated',
-    };
+    // 検証スキップの場合
+    if (this.options.skipValidation) {
+      const result = this.createUnverifiedResult(spotName);
+      if (this.options.useCache) {
+        this.cache.set(cacheKey, result);
+      }
+      return result;
+    }
 
-    // キャッシュに保存
+    // Places API を使用する場合
+    if (this.options.usePlacesApi && this.placesService) {
+      try {
+        const placeValidation = await this.placesService.validateSpot(
+          spotName,
+          location
+        );
+        const result = this.mapPlaceValidationToResult(placeValidation);
+
+        // キャッシュに保存
+        if (this.options.useCache) {
+          this.cache.set(cacheKey, result);
+        }
+
+        return result;
+      } catch (error) {
+        console.error('Places API validation error:', error);
+        // エラー時はスタブモードにフォールバック
+        const result = this.createUnverifiedResult(spotName);
+        if (this.options.useCache) {
+          this.cache.set(cacheKey, result);
+        }
+        return result;
+      }
+    }
+
+    // スタブモード（API未設定時）
+    const result = this.createUnverifiedResult(spotName);
     if (this.options.useCache) {
-      this.cache.set(spotName, result);
+      this.cache.set(cacheKey, result);
     }
-
     return result;
   }
 
@@ -157,15 +213,16 @@ export class SpotValidator {
       try {
         const result = await this.validateSpot(spot.name, spot.location);
         results.set(spot.name, result);
+        // 処理が成功したらsuccessCount（検証済みかどうかは関係なく）
         successCount++;
       } catch {
         failureCount++;
-        results.set(spot.name, {
-          spotName: spot.name,
-          isVerified: false,
-          confidence: 'unverified',
-          source: 'ai_generated',
-        });
+        const fallbackResult = this.createUnverifiedResult(spot.name);
+        results.set(spot.name, fallbackResult);
+        if (this.options.useCache) {
+          const cacheKey = this.getCacheKey(spot.name, spot.location);
+          this.cache.set(cacheKey, fallbackResult);
+        }
       }
     }
 
@@ -213,6 +270,51 @@ export class SpotValidator {
    */
   getCacheSize(): number {
     return this.cache.size;
+  }
+
+  // ============================================
+  // Private Methods
+  // ============================================
+
+  private getCacheKey(spotName: string, location?: string): string {
+    const normalized = spotName.toLowerCase().trim();
+    return location
+      ? `${normalized}__${location.toLowerCase().trim()}`
+      : normalized;
+  }
+
+  private createUnverifiedResult(spotName: string): ValidationResult {
+    return {
+      spotName,
+      isVerified: false,
+      confidence: 'unverified',
+      source: 'ai_generated',
+    };
+  }
+
+  private mapPlaceValidationToResult(
+    placeValidation: PlaceValidationResult
+  ): ValidationResult {
+    return {
+      spotName: placeValidation.spotName,
+      isVerified: placeValidation.isVerified,
+      confidence: placeValidation.confidence,
+      source: placeValidation.source,
+      placeId: placeValidation.placeId,
+      details: placeValidation.details
+        ? {
+            address: placeValidation.details.address,
+            rating: placeValidation.details.rating,
+            openingHours: placeValidation.details.openingHours,
+            photos: placeValidation.details.photos?.map((p) => p.url || '').filter(Boolean),
+            photoDetails: placeValidation.details.photos,
+            reviewCount: placeValidation.details.reviewCount,
+            latitude: placeValidation.details.latitude,
+            longitude: placeValidation.details.longitude,
+            googleMapsUrl: placeValidation.details.googleMapsUrl,
+          }
+        : undefined,
+    };
   }
 }
 

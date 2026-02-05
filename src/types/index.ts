@@ -142,3 +142,21 @@ export type {
 } from './streaming';
 
 export { initialGenerationState } from './streaming';
+
+// Places API関連型
+export type {
+  PlacePhoto,
+  PlaceOpeningHours,
+  PlaceDetails,
+  PlaceSearchQuery,
+  PlaceSearchType,
+  PlaceSearchResult,
+  PlaceValidationResult,
+  PlacesCacheEntry,
+  PlacesCacheConfig,
+  PlacesSearchRequest,
+  PlacesSearchResponse,
+  PlacesApiErrorCode,
+} from './places';
+
+export { PlacesApiError } from './places';
