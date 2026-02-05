@@ -15,7 +15,7 @@ export const PRICING_PLANS: PricingPlanInfo[] = [
     features: [
       '月3回までプラン生成',
       '渡航情報は週1回・3カテゴリのみ',
-      'プランの保存（2件まで）',
+      'プランの保存数：無制限',
     ],
     buttonLabel: '現在のプラン',
   },
@@ -26,10 +26,10 @@ export const PRICING_PLANS: PricingPlanInfo[] = [
     price: 1500,
     priceDisplay: '¥1,500',
     features: [
-      '月30回までプラン生成',
+      'プラン生成数：無制限',
+      'プラン保存数：無制限',
       '渡航情報無制限・全カテゴリ',
       'プラン内で渡航情報・持ち物リスト閲覧',
-      'プランの保存（30件まで）',
       'AI設定（旅のスタイル・カスタム指示）',
     ],
     isRecommended: true,
