@@ -399,7 +399,15 @@ ${prompt}`;
 
     // Build starting location constraint if provided
     const startingLocationConstraint = startingLocation
-      ? `
+      ? startDay === 1
+        ? `
+      CRITICAL - STARTING LOCATION CONSTRAINT (DAY 1):
+      The traveler is arriving at or starting their trip in "${startingLocation}".
+      Day 1's activities MUST take place in or near "${startingLocation}".
+      This is the beginning of the trip - set the scene properly.
+      Include arrival activities if appropriate (e.g., check-in, first exploration).
+      `
+        : `
       CRITICAL - STARTING LOCATION CONSTRAINT:
       The traveler is waking up in "${startingLocation}" on Day ${startDay}.
       Day ${startDay}'s first activity MUST be in or departing from "${startingLocation}".

@@ -59,20 +59,25 @@ function PlanContent() {
     context: any[],
     outlineDays: any[],
     chunk: ChunkInfo,
-    allOutlineDays: any[]
+    allOutlineDays: any[],
+    destination?: string
   ) => {
     // Mark days as generating
     for (let d = chunk.start; d <= chunk.end; d++) {
       updateDayStatus(d, 'generating');
     }
 
-    // Determine start location from previous day
+    // Determine start location from previous day's outline overnight_location,
+    // or use the destination for the first chunk so the AI knows where the traveler starts
     let previousOvernightLocation: string | undefined = undefined;
     if (chunk.start > 1) {
       const prevDay = allOutlineDays.find((d: any) => d.day === chunk.start - 1);
       if (prevDay) {
         previousOvernightLocation = prevDay.overnight_location;
       }
+    } else if (destination) {
+      // For chunk starting at day 1, use the destination as starting location context
+      previousOvernightLocation = destination;
     }
 
     try {
@@ -133,13 +138,24 @@ function PlanContent() {
       currentChunks: chunks,
     }));
 
-    // Generate all chunks in parallel
-    const chunkPromises = chunks.map(chunk =>
-      generateChunk(updatedInput, context, outline.days, chunk, outline.days)
-    );
-
     try {
-      await Promise.all(chunkPromises);
+      // Generate first chunk sequentially with destination context,
+      // then generate remaining chunks in parallel.
+      // This ensures day 1-2 gets proper starting location and reduces failures.
+      const [firstChunk, ...remainingChunks] = chunks;
+
+      // First chunk: pass destination as starting location
+      await generateChunk(
+        updatedInput, context, outline.days, firstChunk, outline.days, outline.destination
+      );
+
+      // Remaining chunks: generate in parallel (they use outline's overnight_location)
+      if (remainingChunks.length > 0) {
+        const remainingPromises = remainingChunks.map(chunk =>
+          generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+        );
+        await Promise.all(remainingPromises);
+      }
     } catch (e) {
       console.error("Detail generation error:", e);
       setStatus("error");
@@ -272,7 +288,9 @@ function PlanContent() {
     if (!updatedInput || !context || !outline) return;
 
     const chunk: ChunkInfo = { start: dayStart, end: dayEnd };
-    await generateChunk(updatedInput, context, outline.days, chunk, outline.days);
+    // Pass destination for first chunk retries
+    const destination = dayStart === 1 ? outline.destination : undefined;
+    await generateChunk(updatedInput, context, outline.days, chunk, outline.days, destination);
   }, [generationState, generateChunk]);
 
   // Proceed from outline review to details
