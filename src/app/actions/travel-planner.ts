@@ -14,6 +14,7 @@ import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
 import { checkAndRecordUsage } from "@/lib/limits/check";
+import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
 
 export type ActionState = {
@@ -407,6 +408,12 @@ export async function savePlan(
       return { success: false, error: "認証が必要です" };
     }
 
+    // Rate Limit Check (Spam Protection)
+    const rateLimit = await checkPlanCreationRate(user.id);
+    if (!rateLimit.success) {
+      return { success: false, error: rateLimit.message };
+    }
+
     const result = await planService.createPlan({
       userId: user.id,
       input,
@@ -495,6 +502,12 @@ export async function updatePlanVisibility(
       return { success: false, error: "認証が必要です" };
     }
 
+    // Rate Limit
+    const rateLimit = await checkPlanUpdateRate(planId);
+    if (!rateLimit.success) {
+      return { success: false, error: rateLimit.message };
+    }
+
     const result = await planService.updatePlan(planId, user.id, { isPublic });
 
     if (!result.success) {
@@ -520,6 +533,12 @@ export async function updatePlanName(
 
     if (!user) {
       return { success: false, error: "認証が必要です" };
+    }
+
+    // Rate Limit
+    const rateLimit = await checkPlanUpdateRate(planId);
+    if (!rateLimit.success) {
+      return { success: false, error: rateLimit.message };
     }
 
     if (!newName || newName.trim().length === 0) {
@@ -676,6 +695,12 @@ export async function updatePlanItinerary(
 
     if (!user) {
       return { success: false, error: "認証が必要です" };
+    }
+
+    // Rate Limit
+    const rateLimit = await checkPlanUpdateRate(planId);
+    if (!rateLimit.success) {
+      return { success: false, error: rateLimit.message };
     }
 
     const result = await planService.updatePlan(planId, user.id, {

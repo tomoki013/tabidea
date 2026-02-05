@@ -63,7 +63,7 @@ describe("TravelPlannerSimplified", () => {
   it("renders the simplified form", () => {
     render(<TravelPlannerSimplified />);
     expect(screen.getByText("旅行プランを作成")).toBeDefined();
-    expect(screen.getByText("行き先")).toBeDefined();
+    expect(screen.getByText("目的地はどうしますか？")).toBeDefined();
     expect(screen.getByText("日程")).toBeDefined();
     expect(screen.getByText("誰と行く？")).toBeDefined();
   });
