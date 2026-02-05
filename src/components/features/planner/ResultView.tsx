@@ -8,6 +8,7 @@ import PDFDownloadButton from "./PDFDownloadButton";
 import RequestSummary from "./RequestSummary";
 import TransitCard from "./TransitCard";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
+import { ActivityAccordion } from "./ActivityAccordion";
 import {
   FaMapMarkerAlt,
   FaClock,
@@ -701,18 +702,10 @@ export default function ResultView({
                           {/* Activity Card */}
                           <div
                             className={`
-                              bg-white rounded-xl shadow-sm transition-all duration-300 relative overflow-hidden
-                              ${isEditing ? "border border-primary/30 ring-2 ring-primary/5 p-6" :
-                                day.ui_type === 'compact' ? "border border-stone-100 p-3 hover:bg-stone-50 flex items-center gap-4" :
-                                day.ui_type === 'narrative' ? "border-none shadow-none bg-transparent p-0 hover:bg-transparent" :
-                                "border border-stone-100 p-6 hover:bg-stone-50 hover:shadow-md group-hover:-translate-y-1"}
+                              relative overflow-hidden transition-all duration-300
+                              ${isEditing ? "bg-white rounded-xl shadow-sm border border-primary/30 ring-2 ring-primary/5 p-6" : ""}
                             `}
                           >
-                            {/* Decorative background stripe - Only Default */}
-                            {!isEditing && day.ui_type !== 'narrative' && day.ui_type !== 'compact' && (
-                              <div className="absolute top-0 left-0 w-1 h-full bg-stone-200 group-hover:bg-primary transition-colors"></div>
-                            )}
-
                             {isEditing ? (
                               <div className="space-y-3 w-full">
                                 <div className="flex items-start justify-between gap-4">
@@ -827,73 +820,15 @@ export default function ResultView({
                               </div>
                             ) : (
                               // ==========================================
-                              // VIEW MODE RENDERING BASED ON UI_TYPE
+                              // VIEW MODE - ACTIVITY ACCORDION
                               // ==========================================
-                              <>
-                                {/* NARRATIVE VIEW */}
-                                {day.ui_type === 'narrative' ? (
-                                  <div className="relative border-l-4 border-primary/20 pl-6 py-1">
-                                    <div className="flex items-baseline gap-3 mb-2">
-                                      <span className="text-primary font-serif font-bold text-lg">{act.time}</span>
-                                      <h4 className="text-2xl font-serif font-bold text-stone-800">
-                                        {act.activity}
-                                      </h4>
-                                    </div>
-                                    <p className="text-stone-600 leading-relaxed text-lg font-serif">
-                                      {act.description}
-                                    </p>
-                                    {act.isLocked && (
-                                      <div className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
-                                        <FaLock size={10} />
-                                        <span>固定</span>
-                                      </div>
-                                    )}
-                                  </div>
-                                ) : day.ui_type === 'compact' ? (
-                                  /* COMPACT VIEW */
-                                  <>
-                                    <div className="flex-shrink-0 w-16 text-stone-500 text-xs font-mono font-bold text-right">
-                                      {act.time}
-                                    </div>
-                                    <div className="flex-1 min-w-0">
-                                      <div className="flex items-center gap-2">
-                                        <h4 className="text-sm font-bold text-stone-800 truncate">
-                                          {act.activity}
-                                        </h4>
-                                        {act.isLocked && (
-                                          <FaLock size={10} className="text-amber-500 flex-shrink-0" />
-                                        )}
-                                      </div>
-                                      <p className="text-stone-500 text-xs truncate">
-                                        {act.description}
-                                      </p>
-                                    </div>
-                                  </>
-                                ) : (
-                                  /* DEFAULT VIEW */
-                                  <>
-                                    <div className="flex items-center gap-2 mb-2">
-                                      <div className="text-stone-500 text-sm font-mono bg-stone-100 px-2 py-1 rounded-md flex items-center gap-2">
-                                        <FaClock className="text-primary/70" />
-                                        {act.time}
-                                      </div>
-                                      {act.isLocked && (
-                                        <div className="flex items-center gap-1 text-xs font-medium text-amber-700 bg-amber-50 px-2 py-1 rounded-md border border-amber-200">
-                                          <FaLock size={10} />
-                                          <span>固定</span>
-                                        </div>
-                                      )}
-                                    </div>
-
-                                    <h4 className="text-xl font-bold text-stone-800 mb-2 font-serif">
-                                      {act.activity}
-                                    </h4>
-                                    <p className="text-stone-600 leading-relaxed text-sm">
-                                      {act.description}
-                                    </p>
-                                  </>
-                                )}
-                              </>
+                              <ActivityAccordion
+                                activity={act}
+                                destination={result.destination}
+                                dayIndex={dayIndex}
+                                activityIndex={actIndex}
+                                uiType={day.ui_type || 'default'}
+                              />
                             )}
                           </div>
                         </div>
