@@ -6,9 +6,13 @@ import TravelPlannerChat from "@/components/TravelPlannerChat";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import RequestSummary from "./RequestSummary";
+import CalendarExportButton from "./CalendarExportButton";
+import CostEstimate from "./CostEstimate";
+import BookingLinkButton from "./BookingLinkButton";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
+import { getActivityIcon, groupActivitiesByTimePeriod } from "@/lib/utils/activity-icon";
 import {
   FaMapMarkerAlt,
   FaClock,
@@ -507,10 +511,11 @@ export default function ResultView({
           </div>
         </div>
 
-        {/* Share Buttons and PDF Download */}
-        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-6 sm:gap-8 mt-6">
+        {/* Share Buttons, PDF Download, Calendar Export */}
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 mt-6 flex-wrap">
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
           <PDFDownloadButton itinerary={result} />
+          <CalendarExportButton itinerary={result} dates={input.dates} />
         </div>
       </div>
 
@@ -633,7 +638,13 @@ export default function ResultView({
                     </div>
 
                     {/* Day Content */}
-                    <div className="space-y-4 ml-4 sm:ml-8">
+                    <div className="relative ml-4 sm:ml-8">
+                      {/* Enhanced Timeline Line */}
+                      {!isEditing && (
+                        <div className="absolute left-3 top-0 bottom-0 w-[3px] bg-gradient-to-b from-primary/40 via-primary/20 to-primary/5 rounded-full hidden md:block" />
+                      )}
+
+                      <div className="space-y-4">
                       {isEditing ? (
                         <>
                           {/* Edit Mode: Transit Card */}
@@ -778,61 +789,144 @@ export default function ResultView({
                         <>
                           {/* View Mode: Transit Card */}
                           {day.transit && (
-                            <CardTransitCard
-                              transit={day.transit}
-                              state={getCardState(`transit-${day.day}`)}
-                              onStateChange={(state) =>
-                                handleCardStateChange(`transit-${day.day}`, state)
-                              }
-                              className="mb-6"
-                            />
+                            <div className="relative md:pl-8">
+                              {/* Timeline dot for transit */}
+                              <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-blue-100 border-2 border-blue-400 flex items-center justify-center text-xs z-10 hidden md:flex">
+                                🚃
+                              </div>
+                              <CardTransitCard
+                                transit={day.transit}
+                                state={getCardState(`transit-${day.day}`)}
+                                onStateChange={(state) =>
+                                  handleCardStateChange(`transit-${day.day}`, state)
+                                }
+                                className="mb-6"
+                              />
+                            </div>
                           )}
 
-                          {/* View Mode: Activity Cards */}
-                          {day.activities.map((act, actIndex) => (
-                            <SpotCard
-                              key={`activity-${day.day}-${actIndex}`}
-                              activity={act}
-                              destination={result.destination}
-                              state={getCardState(
-                                `activity-${day.day}-${actIndex}`
-                              )}
-                              onStateChange={(state) =>
-                                handleCardStateChange(
-                                  `activity-${day.day}-${actIndex}`,
-                                  state
-                                )
-                              }
-                            />
-                          ))}
+                          {/* View Mode: Activity Cards with Time Period Sections */}
+                          {groupActivitiesByTimePeriod(day.activities).map(
+                            (group) => (
+                              <div key={group.period.period} className="space-y-4">
+                                {/* Time Period Label */}
+                                <div className="flex items-center gap-3 md:pl-8 pt-2">
+                                  <div className="flex items-center gap-2 text-sm font-medium text-stone-500">
+                                    <span className="text-base">{group.period.icon}</span>
+                                    <span className="uppercase tracking-wider text-xs font-bold">
+                                      {group.period.label}
+                                    </span>
+                                  </div>
+                                  <div className="flex-1 h-px bg-gradient-to-r from-stone-200 to-transparent" />
+                                </div>
+
+                                {/* Activities in this period */}
+                                {group.activities.map((act, actIndex) => {
+                                  const globalIndex = day.activities.indexOf(act);
+                                  const iconInfo = getActivityIcon(act.activity);
+                                  return (
+                                    <div
+                                      key={`activity-${day.day}-${globalIndex}`}
+                                      className="relative md:pl-8"
+                                    >
+                                      {/* Timeline dot with activity icon */}
+                                      <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-white border-2 border-primary/30 flex items-center justify-center text-xs z-10 shadow-sm hidden md:flex">
+                                        {iconInfo.icon}
+                                      </div>
+                                      <SpotCard
+                                        activity={act}
+                                        destination={result.destination}
+                                        state={getCardState(
+                                          `activity-${day.day}-${globalIndex}`
+                                        )}
+                                        onStateChange={(state) =>
+                                          handleCardStateChange(
+                                            `activity-${day.day}-${globalIndex}`,
+                                            state
+                                          )
+                                        }
+                                      />
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                            )
+                          )}
 
                           {/* View Mode: Accommodation Card */}
                           {dayIndex < displayResult.days.length - 1 && (
-                            <AccommodationCard
-                              accommodation={{
-                                name: `${result.destination}`,
-                                description: `${day.day}日目の宿泊エリア`,
-                              }}
-                              dayNumber={day.day}
-                              state={getCardState(`accommodation-${day.day}`)}
-                              onStateChange={(state) =>
-                                handleCardStateChange(
-                                  `accommodation-${day.day}`,
-                                  state
-                                )
-                              }
-                              className="mt-6"
-                            />
+                            <div className="relative md:pl-8">
+                              {/* Timeline dot for accommodation */}
+                              <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-purple-100 border-2 border-purple-400 flex items-center justify-center text-xs z-10 hidden md:flex">
+                                🏨
+                              </div>
+                              <AccommodationCard
+                                accommodation={{
+                                  name: `${result.destination}`,
+                                  description: `${day.day}日目の宿泊エリア`,
+                                }}
+                                destination={result.destination}
+                                dayNumber={day.day}
+                                state={getCardState(`accommodation-${day.day}`)}
+                                onStateChange={(state) =>
+                                  handleCardStateChange(
+                                    `accommodation-${day.day}`,
+                                    state
+                                  )
+                                }
+                                className="mt-6"
+                              />
+                            </div>
                           )}
                         </>
                       )}
+                      </div>
                     </div>
                   </div>
                 ))}
 
+                {/* Cost Estimate Section */}
+                {!isEditing && (
+                  <CostEstimate
+                    input={input}
+                    itinerary={displayResult}
+                    className="mt-4"
+                  />
+                )}
+
+                {/* Booking Summary Section */}
+                {!isEditing && (
+                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-6 border border-primary/10 mt-4">
+                    <h3 className="font-bold text-stone-800 text-lg mb-4 flex items-center gap-2">
+                      <span className="text-xl">🧳</span>
+                      この旅を予約する
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      <BookingLinkButton
+                        type="hotel"
+                        destination={result.destination}
+                        label="ホテルを予約"
+                      />
+                      <BookingLinkButton
+                        type="flight"
+                        destination={result.destination}
+                        label="航空券を探す"
+                      />
+                      <BookingLinkButton
+                        type="activity"
+                        destination={result.destination}
+                        label="体験を予約"
+                      />
+                    </div>
+                    <p className="text-[11px] text-stone-400 mt-3 flex items-center gap-1">
+                      PR: 上記リンクにはアフィリエイトリンクが含まれる場合があります
+                    </p>
+                  </div>
+                )}
+
                 {/* Chat Section - Restyled */}
                 {!isEditing && showChat && (
-                  <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden">
+                  <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden mt-4">
                     {/* Texture overlay */}
                     <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-20 pointer-events-none mix-blend-multiply" />
 
