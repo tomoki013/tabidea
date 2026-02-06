@@ -9,6 +9,8 @@ import RequestSummary from "./RequestSummary";
 import CalendarExportButton from "./CalendarExportButton";
 import CostEstimate from "./CostEstimate";
 import BookingLinkButton from "./BookingLinkButton";
+import DayMap from "./DayMap";
+import { PackingListView } from "./PackingList";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
@@ -25,6 +27,7 @@ import {
   FaArrowUp,
   FaArrowDown,
   FaGlobe,
+  FaSuitcase,
   FaFlag,
   FaRegFlag,
   FaLock,
@@ -79,7 +82,7 @@ export default function ResultView({
 
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
-  const [activeTab, setActiveTab] = useState<'plan' | 'info'>('plan');
+  const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
 
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -525,11 +528,12 @@ export default function ResultView({
         <div className="bg-stone-200/40 p-1.5 rounded-full inline-flex relative shadow-inner border border-stone-200/50 pointer-events-auto backdrop-blur-sm">
           {[
             { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
-            { id: 'info', icon: FaGlobe, label: '渡航情報' }
+            { id: 'info', icon: FaGlobe, label: '渡航情報' },
+            { id: 'packing', icon: FaSuitcase, label: '持ち物' }
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'plan' | 'info')}
+              onClick={() => setActiveTab(tab.id as 'plan' | 'info' | 'packing')}
               className={`
                 relative px-4 sm:px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10
                 ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-500 hover:text-stone-700'}
@@ -787,6 +791,13 @@ export default function ResultView({
                         </>
                       ) : (
                         <>
+                          {/* Day Map */}
+                          <DayMap
+                            activities={day.activities}
+                            dayNumber={day.day}
+                            className="mb-6"
+                          />
+
                           {/* View Mode: Transit Card */}
                           {day.transit && (
                             <div className="relative md:pl-8">
@@ -968,13 +979,13 @@ export default function ResultView({
 
                 {/* Chat Section - Restyled */}
                 {!isEditing && showChat && (
-                  <div className="bg-white rounded-3xl p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden mt-4">
+                  <div className="bg-white rounded-3xl p-4 sm:p-8 border-2 border-stone-100 shadow-lg relative overflow-hidden mt-4 w-full min-w-0">
                     {/* Texture overlay */}
                     <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-20 pointer-events-none mix-blend-multiply" />
 
-                    <div className="relative z-10">
+                    <div className="relative z-10 w-full min-w-0 overflow-hidden">
                       <div className="flex items-center gap-3 mb-6">
-                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-2xl">
+                        <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-2xl flex-shrink-0">
                           🤖
                         </div>
                         <h3 className="text-xl font-bold text-stone-800 font-serif">
@@ -982,7 +993,7 @@ export default function ResultView({
                         </h3>
                       </div>
 
-                      <div className="bg-stone-50/50 rounded-xl">
+                      <div className="bg-stone-50/50 rounded-xl w-full min-w-0 overflow-hidden">
                         <TravelPlannerChat
                           key={result.id}
                           itinerary={result}
@@ -1070,6 +1081,26 @@ export default function ResultView({
               }
               onClose={() => {}}
               inline={true}
+            />
+          </motion.div>
+        </div>
+
+        {/* Packing List Tab Content */}
+        <div className={activeTab === 'packing' ? 'block' : 'hidden'}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+            className="w-full"
+          >
+            <PackingListView
+              destination={result.destination}
+              days={result.days.length}
+              themes={input.theme}
+              companions={input.companions}
+              budget={input.budget}
+              region={input.region}
+              planId={planId}
             />
           </motion.div>
         </div>

@@ -8,6 +8,7 @@ export type {
   Activity,
   ActivityType,
   ActivityValidation,
+  BudgetEstimate,
   DayPlan,
   Reference,
   Itinerary,
@@ -160,3 +161,16 @@ export type {
 } from './places';
 
 export { PlacesApiError } from './places';
+
+// 持ち物リスト関連型
+export type {
+  PackingItem,
+  PackingCategory,
+  PackingList,
+} from './packing-list';
+
+export {
+  PACKING_CATEGORY_LABELS,
+  PACKING_CATEGORY_ICONS,
+  PACKING_PRIORITY_LABELS,
+} from './packing-list';
