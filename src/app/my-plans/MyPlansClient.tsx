@@ -475,7 +475,7 @@ export default function MyPlansClient({
                           </div>
                         ) : (
                           <Link
-                            href={`/plan/${plan.shareCode}`}
+                            href={`/plan/id/${plan.id}`}
                             className="group/link"
                           >
                             <h3 className="font-serif text-lg font-bold text-stone-800 group-hover/link:text-[#e67e22] transition-colors flex items-center gap-2">

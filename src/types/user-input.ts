@@ -35,4 +35,6 @@ export interface UserInput {
   hasMustVisitPlaces?: boolean;
   /** 既定の移動情報（DayIndexをキーとするマップ） */
   transits?: Record<number, TransitInfo>;
+  /** 希望する移動手段 */
+  preferredTransport?: string[];
 }
