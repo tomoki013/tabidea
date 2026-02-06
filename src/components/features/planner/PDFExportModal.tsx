@@ -2,8 +2,9 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaTimes, FaFilePdf, FaSpinner, FaCheck, FaGlobe } from "react-icons/fa";
+import { FaTimes, FaFilePdf, FaSpinner, FaCheck, FaGlobe, FaSuitcase } from "react-icons/fa";
 import type { TravelInfoCategory } from "@/types";
+import type { PackingList } from "@/types/packing-list";
 import type { CategoryState } from "@/components/features/travel-info/types";
 import { CATEGORY_INFO } from "@/components/features/travel-info/types";
 import { getSingleCategoryInfo } from "@/app/actions/travel-info";
@@ -14,13 +15,16 @@ interface PDFExportModalProps {
   onExport: (options: PDFExportOptions) => Promise<void>;
   destination: string;
   isGenerating: boolean;
+  packingList?: PackingList | null;
 }
 
 export interface PDFExportOptions {
   includeItinerary: boolean;
   includeTravelInfo: boolean;
+  includePackingList: boolean;
   travelInfoCategories: TravelInfoCategory[];
   travelInfoData?: Map<TravelInfoCategory, CategoryState>;
+  packingList?: PackingList | null;
 }
 
 const TRAVEL_INFO_PRESETS = {
@@ -46,8 +50,10 @@ export default function PDFExportModal({
   onExport,
   destination,
   isGenerating,
+  packingList,
 }: PDFExportModalProps) {
   const [includeTravelInfo, setIncludeTravelInfo] = useState(false);
+  const [includePackingList, setIncludePackingList] = useState(false);
   const [selectedPreset, setSelectedPreset] = useState<"essential" | "full" | "custom">("essential");
   const [selectedCategories, setSelectedCategories] = useState<TravelInfoCategory[]>(
     TRAVEL_INFO_PRESETS.essential.categories
@@ -158,8 +164,10 @@ export default function PDFExportModal({
     await onExport({
       includeItinerary: true,
       includeTravelInfo,
+      includePackingList: includePackingList && !!packingList,
       travelInfoCategories: selectedCategories,
       travelInfoData: travelData,
+      packingList: includePackingList ? packingList : undefined,
     });
   };
 
@@ -308,6 +316,34 @@ export default function PDFExportModal({
                 </motion.div>
               )}
             </AnimatePresence>
+          </div>
+
+          {/* Packing List Option */}
+          <div className="space-y-2">
+            <label className={`flex items-center gap-4 p-4 bg-white rounded-xl border-2 transition-colors ${
+              packingList
+                ? "border-stone-200 cursor-pointer hover:border-primary/50"
+                : "border-stone-100 opacity-50 cursor-not-allowed"
+            }`}>
+              <input
+                type="checkbox"
+                checked={includePackingList}
+                onChange={(e) => setIncludePackingList(e.target.checked)}
+                disabled={!packingList}
+                className="w-5 h-5 text-primary border-stone-300 rounded focus:ring-primary cursor-pointer disabled:cursor-not-allowed"
+              />
+              <div className="flex items-center gap-3 flex-1">
+                <FaSuitcase className="text-primary" size={20} />
+                <div>
+                  <p className="font-bold text-stone-800">持ち物リスト</p>
+                  <p className="text-xs text-stone-500">
+                    {packingList
+                      ? `${packingList.items.length}アイテム`
+                      : "先に持ち物リストを生成してください"}
+                  </p>
+                </div>
+              </div>
+            </label>
           </div>
 
           {/* Fetching Progress */}

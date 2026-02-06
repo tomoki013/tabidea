@@ -56,6 +56,17 @@ export interface PackingListResult {
 export async function generatePackingList(
   params: GeneratePackingListParams
 ): Promise<PackingListResult> {
+  // Pro entitlement check
+  try {
+    const { checkBillingAccess } = await import("@/lib/billing/billing-checker");
+    const billing = await checkBillingAccess();
+    if (!billing.isPremium) {
+      return { success: false, error: "pro_required" };
+    }
+  } catch {
+    // If billing check fails, allow generation (graceful degradation)
+  }
+
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
     return { success: false, error: "API Key missing" };

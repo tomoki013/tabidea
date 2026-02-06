@@ -10,6 +10,7 @@ import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
+import { useUserPlans } from "@/context/UserPlansContext";
 import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
 import OutlineReview from "@/components/features/planner/OutlineReview";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
@@ -22,6 +23,7 @@ function PlanContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
+  const { addPlan } = useUserPlans();
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
   const mode = searchParams.get("mode");
@@ -196,6 +198,19 @@ function PlanContent() {
       if (isAuth) {
         const saveResult = await savePlan(updatedInput, finalPlan, false);
         if (saveResult.success && saveResult.shareCode) {
+          // Add plan to sidebar immediately
+          if (saveResult.plan) {
+            addPlan({
+              id: saveResult.plan.id,
+              destination: saveResult.plan.destination || finalPlan.destination || '',
+              thumbnailUrl: saveResult.plan.thumbnailUrl || null,
+              durationDays: saveResult.plan.durationDays || null,
+              isPublic: saveResult.plan.isPublic,
+              createdAt: new Date(saveResult.plan.createdAt),
+              updatedAt: new Date(saveResult.plan.updatedAt),
+              shareCode: saveResult.plan.shareCode,
+            });
+          }
           router.replace(`/plan/${saveResult.shareCode}`);
         } else {
           console.error("Failed to save to DB, falling back to local storage:", saveResult.error);

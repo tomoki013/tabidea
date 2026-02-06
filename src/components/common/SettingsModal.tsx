@@ -61,6 +61,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [usageStats, setUsageStats] = useState<UsageStats | null>(null);
   const [isLoadingBilling, setIsLoadingBilling] = useState(false);
   const [isRedirectingToPortal, setIsRedirectingToPortal] = useState(false);
+  const [portalError, setPortalError] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -113,18 +114,26 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   const handleManageSubscription = async () => {
     setIsRedirectingToPortal(true);
+    setPortalError(null);
     try {
       const result = await createPortalSession();
       if (result.success && result.url) {
         window.location.href = result.url;
       } else if (result.error === 'not_authenticated') {
         window.location.href = '/auth/login?redirect=/pricing';
+      } else if (result.error === 'no_subscription') {
+        setPortalError('サブスクリプション情報が見つかりません。まずプランにご加入ください。');
+        setIsRedirectingToPortal(false);
+      } else if (result.error === 'portal_not_configured') {
+        setPortalError('カスタマーポータルの設定が完了していません。管理者にお問い合わせください。');
+        setIsRedirectingToPortal(false);
       } else {
-        console.error("Portal session error:", result.error);
+        setPortalError('ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。');
         setIsRedirectingToPortal(false);
       }
     } catch (e) {
       console.error("Failed to open portal:", e);
+      setPortalError('ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。');
       setIsRedirectingToPortal(false);
     }
   };
@@ -478,6 +487,12 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           </a>
                         )}
                       </div>
+
+                      {portalError && (
+                        <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                          <p className="text-red-700 text-sm text-center">{portalError}</p>
+                        </div>
+                      )}
 
                       {isPro && !isAdmin && (
                         <div className="mt-4 text-xs text-stone-400 text-center">

@@ -35,6 +35,20 @@ const budgetMap: Record<string, string> = {
   luxury: "リッチに",
 };
 
+function formatBudgetDisplay(budget: string): string {
+  if (budget.startsWith("range:")) {
+    const parts = budget.split(":");
+    if (parts.length >= 3) {
+      const min = parseInt(parts[1], 10);
+      const max = parseInt(parts[2], 10);
+      const fmtMin = min >= 10000 ? `${(min / 10000).toFixed(min % 10000 === 0 ? 0 : 1)}万円` : `${min.toLocaleString()}円`;
+      const fmtMax = max >= 10000 ? `${(max / 10000).toFixed(max % 10000 === 0 ? 0 : 1)}万円` : `${max.toLocaleString()}円`;
+      return `${fmtMin} 〜 ${fmtMax}`;
+    }
+  }
+  return budgetMap[budget] || budget;
+}
+
 const regionMap: Record<string, string> = {
   domestic: "国内",
   overseas: "海外",
@@ -236,7 +250,7 @@ export default function RequestSummary({
               <EditButton stepIndex={steps.budget} onEdit={onEdit} />
             </div>
             <p className="text-stone-600 font-medium">
-              {budgetMap[input.budget] || input.budget}
+              {formatBudgetDisplay(input.budget)}
             </p>
           </div>
         </div>

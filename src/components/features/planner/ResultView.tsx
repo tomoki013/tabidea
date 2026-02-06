@@ -33,7 +33,7 @@ import {
   FaLock,
   FaUnlock,
 } from "react-icons/fa";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
@@ -83,6 +83,17 @@ export default function ResultView({
   const [isEditing, setIsEditing] = useState(false);
   const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
+  const tabBarRef = useRef<HTMLDivElement>(null);
+
+  const handleTabSwitch = useCallback((tab: 'plan' | 'info' | 'packing') => {
+    setActiveTab(tab);
+    // Scroll to tab content area with offset for sticky header
+    if (tabBarRef.current) {
+      const offset = 120; // account for sticky header
+      const top = tabBarRef.current.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }, []);
 
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -524,7 +535,7 @@ export default function ResultView({
 
       {/* Modern Toggle Switch Navigation */}
       {/* Sticky Container for Tabs - positioned to align with Day Header */}
-      <div className="sticky top-24 md:top-28 z-40 mb-10 w-full flex justify-end md:justify-center px-2 sm:px-0 pointer-events-none">
+      <div ref={tabBarRef} className="sticky top-24 md:top-28 z-40 mb-10 w-full flex justify-end md:justify-center px-2 sm:px-0 pointer-events-none">
         <div className="bg-stone-200/40 p-1.5 rounded-full inline-flex relative shadow-inner border border-stone-200/50 pointer-events-auto backdrop-blur-sm">
           {[
             { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
@@ -533,7 +544,7 @@ export default function ResultView({
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'plan' | 'info' | 'packing')}
+              onClick={() => handleTabSwitch(tab.id as 'plan' | 'info' | 'packing')}
               className={`
                 relative px-4 sm:px-8 py-2.5 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10
                 ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-500 hover:text-stone-700'}

@@ -308,6 +308,28 @@ export default function PackingListView({
     );
   }
 
+  // Pro required state
+  if (error === "pro_required") {
+    return (
+      <div className="max-w-2xl mx-auto text-center py-12">
+        <div className="text-5xl mb-4">🔒</div>
+        <h3 className="text-xl font-bold text-stone-800 mb-2">
+          Pro限定機能
+        </h3>
+        <p className="text-sm text-stone-500 mb-6 leading-relaxed">
+          AI持ち物リスト生成はProプラン限定の機能です。<br />
+          アップグレードして、旅の準備をもっと便利に。
+        </p>
+        <a
+          href="/pricing"
+          className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors shadow-md"
+        >
+          Proにアップグレード
+        </a>
+      </div>
+    );
+  }
+
   // Error state
   if (error) {
     return (

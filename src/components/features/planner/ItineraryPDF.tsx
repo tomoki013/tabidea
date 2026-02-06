@@ -7,6 +7,8 @@ import {
   StyleSheet,
 } from "@react-pdf/renderer";
 import { Itinerary, TravelInfoCategory, SafetyInfo, BasicCountryInfo, VisaInfo, HealthcareInfo, MannerInfo, ClimateInfo } from '@/types';
+import type { PackingList, PackingCategory } from '@/types/packing-list';
+import { PACKING_CATEGORY_LABELS } from '@/types/packing-list';
 import type { CategoryState } from "@/components/features/travel-info/types";
 import { CATEGORY_INFO } from "@/components/features/travel-info/types";
 
@@ -319,6 +321,8 @@ interface ItineraryPDFProps {
   itinerary: Itinerary;
   includeTravelInfo?: boolean;
   travelInfoData?: Map<TravelInfoCategory, CategoryState>;
+  includePackingList?: boolean;
+  packingList?: PackingList | null;
 }
 
 // Helper component for rendering travel info categories
@@ -519,6 +523,8 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
   itinerary,
   includeTravelInfo,
   travelInfoData,
+  includePackingList,
+  packingList,
 }) => {
   // Get categories that have successful data
   const successfulCategories = travelInfoData
@@ -630,6 +636,76 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
               渡航前には必ず外務省海外安全ホームページ等の公式情報をご確認ください。
             </Text>
           </View>
+
+          {/* Footer */}
+          <View style={styles.footer} fixed>
+            <Text style={styles.footerText} render={({ pageNumber, totalPages }) =>
+              `${pageNumber} / ${totalPages}`
+            } />
+            <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+          </View>
+        </Page>
+      )}
+
+      {/* Packing List Page */}
+      {includePackingList && packingList && packingList.items.length > 0 && (
+        <Page size="A4" style={styles.page} wrap>
+          <View style={styles.travelInfoHeader}>
+            <Text style={styles.travelInfoTitle}>持ち物リスト</Text>
+            <Text style={styles.travelInfoSubtitle}>
+              {itinerary.destination} への旅行に必要なもの
+            </Text>
+          </View>
+
+          {/* Group items by category */}
+          {Object.entries(
+            packingList.items.reduce((acc, item) => {
+              const cat = item.category || 'other';
+              if (!acc[cat]) acc[cat] = [];
+              acc[cat].push(item);
+              return acc;
+            }, {} as Record<string, typeof packingList.items>)
+          ).map(([category, items]) => (
+            <View key={category} style={{ marginBottom: 12 }} wrap={false}>
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: 6,
+                paddingBottom: 4,
+                borderBottomWidth: 1,
+                borderBottomColor: theme.border,
+              }}>
+                <Text style={{ fontSize: 11, fontWeight: 'bold', color: theme.primary }}>
+                  {PACKING_CATEGORY_LABELS[category as PackingCategory] || category}
+                </Text>
+                <Text style={{ fontSize: 8, color: theme.textLight, marginLeft: 8 }}>
+                  {items.length}アイテム
+                </Text>
+              </View>
+              {items.map((item, idx) => (
+                <View key={idx} style={{
+                  flexDirection: 'row',
+                  alignItems: 'flex-start',
+                  paddingVertical: 3,
+                  paddingLeft: 8,
+                }}>
+                  <Text style={{ fontSize: 9, marginRight: 6, color: theme.textLight }}>
+                    □
+                  </Text>
+                  <View style={{ flex: 1 }}>
+                    <Text style={{ fontSize: 9, color: theme.text }}>
+                      {item.name}
+                    </Text>
+                    {item.note && (
+                      <Text style={{ fontSize: 7, color: theme.textLight, marginTop: 1 }}>
+                        {item.note}
+                      </Text>
+                    )}
+                  </View>
+                </View>
+              ))}
+            </View>
+          ))}
 
           {/* Footer */}
           <View style={styles.footer} fixed>
