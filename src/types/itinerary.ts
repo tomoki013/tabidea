@@ -82,6 +82,8 @@ export interface Activity {
   description: string;
   /** アクティビティの種類（カード表示用） */
   activityType?: ActivityType;
+  /** 英語での場所名（予約リンク生成用） */
+  locationEn?: string;
   /** ロックされているか（true: 変更不可, false: 変更可） */
   isLocked?: boolean;
   /** スポット検証結果（Phase 3で設定予定） */
@@ -144,6 +146,26 @@ export interface Itinerary {
   references?: Reference[];
   /** コンテキスト配列内の使用記事インデックス */
   reference_indices?: number[];
+  /** 予算概算 */
+  estimatedBudget?: BudgetEstimate;
+}
+
+/**
+ * 予算概算
+ */
+export interface BudgetEstimate {
+  /** フライト費用 */
+  flights?: { description: string; estimatedCost: string };
+  /** 1泊あたりの宿泊費 */
+  accommodationPerNight?: string;
+  /** 1日あたりの生活費 */
+  dailyExpenses?: string;
+  /** 合計概算 */
+  total?: string;
+  /** 通貨 */
+  currency: string;
+  /** 注記 */
+  note?: string;
 }
 
 /**

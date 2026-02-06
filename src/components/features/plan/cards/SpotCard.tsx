@@ -6,6 +6,7 @@ import BaseCard, { CardState } from "./BaseCard";
 import { Activity, ActivityValidation, PlacePhoto } from "@/types";
 import TrustBadge from "./TrustBadge";
 import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
+import { shouldSkipPlacesSearch, classifyActivity } from "@/lib/utils/activity-classifier";
 
 // ============================================================================
 // Types
@@ -122,7 +123,11 @@ export default function SpotCard({
   onStateChange,
   className = "",
 }: SpotCardProps) {
-  const { time, activity: name, description, validation } = activity;
+  const { time, activity: name, description, validation, activityType } = activity;
+
+  // Determine if this activity should trigger Places API search
+  const classification = classifyActivity(name, description, activityType);
+  const skipPlacesSearch = classification.decision === 'skip';
 
   // Lazy loading hook
   const {
@@ -154,15 +159,16 @@ export default function SpotCard({
   // Photos from fetched details (with full PlacePhoto data)
   const photos = fetchedDetails?.details?.photos || [];
 
-  // Trigger fetch when card is expanded
+  // Trigger fetch when card is expanded (skip for transit/accommodation/free time)
   useEffect(() => {
-    if (state === "expanded" && !validation?.isVerified && !fetchedDetails && !isLoading) {
+    if (state === "expanded" && !skipPlacesSearch && !validation?.isVerified && !fetchedDetails && !isLoading) {
       fetchDetails();
     }
-  }, [state, validation?.isVerified, fetchedDetails, isLoading, fetchDetails]);
+  }, [state, skipPlacesSearch, validation?.isVerified, fetchedDetails, isLoading, fetchDetails]);
 
   // Determine trust level from validation
   const getTrustLevel = (): "verified" | "ai_generated" | "needs_check" => {
+    if (skipPlacesSearch) return "ai_generated";
     const v = mergedValidation;
     if (!v) return "ai_generated";
     if (v.isVerified) return "verified";
@@ -170,10 +176,24 @@ export default function SpotCard({
     return "ai_generated";
   };
 
+  // Choose icon based on classification
+  const getCardIcon = () => {
+    switch (classification.category) {
+      case 'transport':
+        return <MapPin className="w-5 h-5" />;
+      case 'hotel':
+        return <MapPin className="w-5 h-5" />;
+      case 'free_time':
+        return <Clock className="w-5 h-5" />;
+      default:
+        return <MapPin className="w-5 h-5" />;
+    }
+  };
+
   return (
     <BaseCard
       cardType="spot"
-      icon={<MapPin className="w-5 h-5" />}
+      icon={getCardIcon()}
       title={name}
       subtitle={description.length > 50 ? description.substring(0, 50) + "..." : description}
       time={time}
@@ -181,7 +201,7 @@ export default function SpotCard({
       onStateChange={onStateChange}
       colorTheme="orange"
       className={className}
-      badge={<TrustBadge level={getTrustLevel()} size="sm" />}
+      badge={skipPlacesSearch ? undefined : <TrustBadge level={getTrustLevel()} size="sm" />}
     >
       {/* Expanded Content */}
       <div className="space-y-4 pt-2">
@@ -191,105 +211,110 @@ export default function SpotCard({
           <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
         </div>
 
-        {/* Loading State */}
-        {isLoading && <DetailsSkeleton />}
+        {/* Places API details - only show for searchable activities */}
+        {!skipPlacesSearch && (
+          <>
+            {/* Loading State */}
+            {isLoading && <DetailsSkeleton />}
 
-        {/* Error State */}
-        {error && (
-          <div className="flex items-center gap-2 text-sm text-amber-600 bg-amber-50 rounded-lg p-3">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
-            <span>{error}</span>
-          </div>
-        )}
+            {/* Error State */}
+            {error && (
+              <div className="flex items-center gap-2 text-sm text-amber-600 bg-amber-50 rounded-lg p-3">
+                <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                <span>{error}</span>
+              </div>
+            )}
 
-        {/* Photos Carousel */}
-        {photos.length > 0 && <PhotoCarousel photos={photos} />}
+            {/* Photos Carousel */}
+            {photos.length > 0 && <PhotoCarousel photos={photos} />}
 
-        {/* Validation Details (if available) */}
-        {mergedValidation?.details && !isLoading && (
-          <div className="space-y-2">
-            {/* Rating */}
-            {mergedValidation.details.rating && (
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-                <span className="text-sm font-medium text-stone-700">
-                  {mergedValidation.details.rating.toFixed(1)}
-                </span>
-                {fetchedDetails?.details?.reviewCount && (
-                  <span className="text-sm text-stone-500">
-                    ({fetchedDetails.details.reviewCount}件の口コミ)
-                  </span>
+            {/* Validation Details (if available) */}
+            {mergedValidation?.details && !isLoading && (
+              <div className="space-y-2">
+                {/* Rating */}
+                {mergedValidation.details.rating && (
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                    <span className="text-sm font-medium text-stone-700">
+                      {mergedValidation.details.rating.toFixed(1)}
+                    </span>
+                    {fetchedDetails?.details?.reviewCount && (
+                      <span className="text-sm text-stone-500">
+                        ({fetchedDetails.details.reviewCount}件の口コミ)
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {/* Opening Hours */}
+                {mergedValidation.details.openingHours && mergedValidation.details.openingHours.length > 0 && (
+                  <div className="flex items-start gap-2">
+                    <Clock className="w-4 h-4 text-stone-500 mt-0.5" />
+                    <div className="text-sm text-stone-600">
+                      {mergedValidation.details.openingHours.slice(0, 3).map((hours, i) => (
+                        <div key={i}>{hours}</div>
+                      ))}
+                      {mergedValidation.details.openingHours.length > 3 && (
+                        <details className="mt-1">
+                          <summary className="text-blue-600 cursor-pointer hover:underline">
+                            すべての営業時間を見る
+                          </summary>
+                          <div className="mt-1">
+                            {mergedValidation.details.openingHours.slice(3).map((hours, i) => (
+                              <div key={i}>{hours}</div>
+                            ))}
+                          </div>
+                        </details>
+                      )}
+                    </div>
+                  </div>
+                )}
+
+                {/* Address */}
+                {mergedValidation.details.address && (
+                  <div className="flex items-start gap-2">
+                    <MapPin className="w-4 h-4 text-stone-500 mt-0.5" />
+                    <span className="text-sm text-stone-600">
+                      {mergedValidation.details.address}
+                    </span>
+                  </div>
                 )}
               </div>
             )}
 
-            {/* Opening Hours */}
-            {mergedValidation.details.openingHours && mergedValidation.details.openingHours.length > 0 && (
-              <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 text-stone-500 mt-0.5" />
-                <div className="text-sm text-stone-600">
-                  {mergedValidation.details.openingHours.slice(0, 3).map((hours, i) => (
-                    <div key={i}>{hours}</div>
-                  ))}
-                  {mergedValidation.details.openingHours.length > 3 && (
-                    <details className="mt-1">
-                      <summary className="text-blue-600 cursor-pointer hover:underline">
-                        すべての営業時間を見る
-                      </summary>
-                      <div className="mt-1">
-                        {mergedValidation.details.openingHours.slice(3).map((hours, i) => (
-                          <div key={i}>{hours}</div>
-                        ))}
-                      </div>
-                    </details>
-                  )}
-                </div>
-              </div>
+            {/* Fetch Button (if not yet fetched and no validation) */}
+            {!isLoading && !fetchedDetails && !validation?.isVerified && !error && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  fetchDetails();
+                }}
+                className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+              >
+                <Loader2 className="w-4 h-4" />
+                詳細情報を取得
+              </button>
             )}
 
-            {/* Address */}
-            {mergedValidation.details.address && (
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-stone-500 mt-0.5" />
-                <span className="text-sm text-stone-600">
-                  {mergedValidation.details.address}
-                </span>
-              </div>
+            {/* Google Maps Link */}
+            {(mergedValidation?.placeId || fetchedDetails?.details?.googleMapsUrl || name) && (
+              <a
+                href={
+                  fetchedDetails?.details?.googleMapsUrl ||
+                  (mergedValidation?.placeId
+                    ? `https://www.google.com/maps/place/?q=place_id:${mergedValidation.placeId}`
+                    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination ? `${name} ${destination}` : name)}`)
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ExternalLink className="w-4 h-4" />
+                Google マップで見る
+              </a>
             )}
-          </div>
-        )}
-
-        {/* Fetch Button (if not yet fetched and no validation) */}
-        {!isLoading && !fetchedDetails && !validation?.isVerified && !error && (
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              fetchDetails();
-            }}
-            className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
-          >
-            <Loader2 className="w-4 h-4" />
-            詳細情報を取得
-          </button>
-        )}
-
-        {/* Google Maps Link */}
-        {(mergedValidation?.placeId || fetchedDetails?.details?.googleMapsUrl || name) && (
-          <a
-            href={
-              fetchedDetails?.details?.googleMapsUrl ||
-              (mergedValidation?.placeId
-                ? `https://www.google.com/maps/place/?q=place_id:${mergedValidation.placeId}`
-                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination ? `${name} ${destination}` : name)}`)
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ExternalLink className="w-4 h-4" />
-            Google マップで見る
-          </a>
+          </>
         )}
       </div>
     </BaseCard>

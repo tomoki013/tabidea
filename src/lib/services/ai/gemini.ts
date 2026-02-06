@@ -465,6 +465,27 @@ ${prompt}`;
       - The traveler cannot teleport. If Day N ends in City A, Day N+1 MUST start in City A.
       - If moving to City B, include the actual travel (flight, train, etc.) as activities.
       - Travel time should be realistic (e.g., international flights take several hours).
+
+      ACTIVITY TYPE CLASSIFICATION (IMPORTANT):
+      - For EACH activity, set the "activityType" field to help the UI display correctly:
+        * "spot" - Sightseeing, museums, temples, parks, landmarks (will show Google Places info)
+        * "meal" - Restaurants, cafes, food markets (will show Google Places info)
+        * "transit" - Any travel/movement between places (will NOT show Google Places info)
+        * "accommodation" - Hotel check-in/check-out (will NOT show Google Places info)
+        * "other" - Free time, rest, packing, etc. (will NOT show Google Places info)
+      - This is CRITICAL for transit activities like "アスワン出発、砂漠を越えてアブシンベルへ" - these MUST be "transit", not "spot"
+
+      LOCATION ENGLISH NAME (IMPORTANT):
+      - For EACH activity, set the "locationEn" field to the English name of the city/area where the activity takes place.
+      - Format: "City, Country" (e.g., "Aswan, Egypt", "Ubud, Bali", "Kyoto, Japan")
+      - This is used for generating correct booking links. Use specific city names, not broad regions.
+      - For transit activities, use the destination city name.
+
+      FLIGHT & BUDGET INFORMATION:
+      - If the trip is international/overseas, include departure and return flights as activities on Day 1 and the last day.
+      - On Day 1, include an activity for the departure flight from Japan (Tokyo/Osaka/nearest airport) to the destination.
+      - On the last day, include an activity for the return flight from the destination back to Japan.
+      - Set activityType to "transit" for these flight activities.
     `;
 
     const fullPrompt = `${systemInstruction}

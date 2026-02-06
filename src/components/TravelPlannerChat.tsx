@@ -100,12 +100,12 @@ export default function TravelPlannerChat({
   };
 
   return (
-    <div className="mt-8 pt-8 animate-in fade-in duration-700">
+    <div className="mt-8 pt-8 animate-in fade-in duration-700 w-full min-w-0 overflow-hidden">
       <h3 className="text-xl font-serif text-stone-800 mb-4 px-2">
         Chat with your Planner
       </h3>
-      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-4 sm:p-6 border border-stone-200 shadow-sm space-y-4">
-        <div ref={chatContainerRef} className="max-h-[300px] overflow-y-auto space-y-4 pr-2 custom-scrollbar">
+      <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-3 sm:p-6 border border-stone-200 shadow-sm space-y-4 w-full min-w-0 overflow-hidden">
+        <div ref={chatContainerRef} className="max-h-[300px] overflow-y-auto space-y-4 pr-1 sm:pr-2 custom-scrollbar w-full min-w-0">
           {messages.length === 0 && (
             <p className="text-stone-500 text-sm italic text-center">
               Ask me to adjust the schedule, suggest restaurants, or explain
@@ -120,7 +120,7 @@ export default function TravelPlannerChat({
               }`}
             >
               <div
-                className={`max-w-[85%] rounded-2xl px-5 py-3 text-sm leading-relaxed shadow-xs ${
+                className={`max-w-[85%] rounded-2xl px-4 sm:px-5 py-3 text-sm leading-relaxed shadow-xs break-words overflow-wrap-anywhere ${
                   m.role === "user"
                     ? "bg-primary text-white rounded-br-none"
                     : "bg-white border border-stone-100 text-stone-700 rounded-bl-none"
@@ -158,7 +158,7 @@ export default function TravelPlannerChat({
 
         {/* Suggestion Chips */}
         {!isLoading && !isRegenerating && (
-          <div className="flex gap-2 overflow-x-auto pb-2 noscrollbar mask-right-fade">
+          <div className="flex gap-2 overflow-x-auto pb-2 noscrollbar mask-right-fade w-full min-w-0 -mx-1 px-1">
             {SUGGESTION_CHIPS.map((chip) => (
               <button
                 key={chip}
@@ -171,13 +171,13 @@ export default function TravelPlannerChat({
           </div>
         )}
 
-        <form onSubmit={onFormSubmit} className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs">
+        <form onSubmit={onFormSubmit} className="flex gap-2 items-center bg-white rounded-full border border-stone-200 px-2 py-2 focus-within:ring-2 focus-within:ring-primary/20 transition-all shadow-xs w-full min-w-0">
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="例: もっと安いランチの選択肢はありますか？"
+            placeholder="例: もっと安いランチの選択肢は？"
             disabled={isRegenerating}
-            className="flex-1 bg-transparent border-none px-4 py-1 text-stone-800 text-sm focus:outline-hidden placeholder:text-stone-400 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 min-w-0 bg-transparent border-none px-3 sm:px-4 py-1 text-stone-800 text-sm focus:outline-hidden placeholder:text-stone-400 disabled:opacity-50 disabled:cursor-not-allowed"
           />
           <button
             type="submit"

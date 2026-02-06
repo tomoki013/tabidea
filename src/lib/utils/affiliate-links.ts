@@ -33,6 +33,8 @@ export type AffiliateService =
 export interface HotelSearchParams {
   /** 目的地 */
   destination: string;
+  /** 目的地（英語、Booking.com等の検索用） */
+  destinationEn?: string;
   /** チェックイン日（YYYY-MM-DD） */
   checkIn?: string;
   /** チェックアウト日（YYYY-MM-DD） */
@@ -185,6 +187,125 @@ export function isDomesticDestination(destination: string): boolean {
 }
 
 /**
+ * 日本語の都市名・地域名を英語に変換するマッピング
+ */
+const CITY_NAME_MAP: Record<string, string> = {
+  // エジプト
+  'カイロ': 'Cairo, Egypt',
+  'アスワン': 'Aswan, Egypt',
+  'アブシンベル': 'Abu Simbel, Egypt',
+  'ルクソール': 'Luxor, Egypt',
+  'アレキサンドリア': 'Alexandria, Egypt',
+  'ギザ': 'Giza, Egypt',
+  'エジプト': 'Egypt',
+  // 東南アジア
+  'バリ': 'Bali, Indonesia',
+  'ウブド': 'Ubud, Bali',
+  'クタ': 'Kuta, Bali',
+  'バンコク': 'Bangkok, Thailand',
+  'プーケット': 'Phuket, Thailand',
+  'チェンマイ': 'Chiang Mai, Thailand',
+  'ハノイ': 'Hanoi, Vietnam',
+  'ホーチミン': 'Ho Chi Minh City, Vietnam',
+  'シンガポール': 'Singapore',
+  'クアラルンプール': 'Kuala Lumpur, Malaysia',
+  'セブ': 'Cebu, Philippines',
+  'マニラ': 'Manila, Philippines',
+  // ヨーロッパ
+  'パリ': 'Paris, France',
+  'ロンドン': 'London, UK',
+  'ローマ': 'Rome, Italy',
+  'バルセロナ': 'Barcelona, Spain',
+  'マドリード': 'Madrid, Spain',
+  'ベルリン': 'Berlin, Germany',
+  'ミュンヘン': 'Munich, Germany',
+  'ウィーン': 'Vienna, Austria',
+  'プラハ': 'Prague, Czech Republic',
+  'ブダペスト': 'Budapest, Hungary',
+  'アムステルダム': 'Amsterdam, Netherlands',
+  'イスタンブール': 'Istanbul, Turkey',
+  'アテネ': 'Athens, Greece',
+  'サントリーニ': 'Santorini, Greece',
+  'フィレンツェ': 'Florence, Italy',
+  'ヴェネツィア': 'Venice, Italy',
+  'ミラノ': 'Milan, Italy',
+  // 北米
+  'ニューヨーク': 'New York, USA',
+  'ロサンゼルス': 'Los Angeles, USA',
+  'サンフランシスコ': 'San Francisco, USA',
+  'ハワイ': 'Hawaii, USA',
+  'ホノルル': 'Honolulu, Hawaii',
+  'ラスベガス': 'Las Vegas, USA',
+  'バンクーバー': 'Vancouver, Canada',
+  'トロント': 'Toronto, Canada',
+  // オセアニア
+  'シドニー': 'Sydney, Australia',
+  'メルボルン': 'Melbourne, Australia',
+  'オークランド': 'Auckland, New Zealand',
+  // 韓国
+  'ソウル': 'Seoul, South Korea',
+  '釜山': 'Busan, South Korea',
+  'プサン': 'Busan, South Korea',
+  '済州': 'Jeju, South Korea',
+  'チェジュ': 'Jeju, South Korea',
+  // 台湾
+  '台北': 'Taipei, Taiwan',
+  '高雄': 'Kaohsiung, Taiwan',
+  '台中': 'Taichung, Taiwan',
+  // 中国
+  '上海': 'Shanghai, China',
+  '北京': 'Beijing, China',
+  '香港': 'Hong Kong',
+  // その他
+  'ドバイ': 'Dubai, UAE',
+  'モルディブ': 'Maldives',
+  'カンクン': 'Cancun, Mexico',
+};
+
+/**
+ * 日本語の目的地名を英語のBooking.com検索用文字列に変換
+ * 括弧や中黒で区切られた複数都市名から最初の具体的な都市名を抽出
+ */
+export function toEnglishDestination(destination: string): string {
+  // 括弧内の都市名を抽出: "エジプト（カイロ・アスワン・アブシンベル）" → ["カイロ", "アスワン", "アブシンベル"]
+  const bracketMatch = destination.match(/[（(]([^）)]+)[）)]/);
+  if (bracketMatch) {
+    const cities = bracketMatch[1].split(/[・、,]/);
+    // 最初の都市名で変換を試みる
+    for (const city of cities) {
+      const trimmed = city.trim();
+      if (CITY_NAME_MAP[trimmed]) {
+        return CITY_NAME_MAP[trimmed];
+      }
+    }
+  }
+
+  // 中黒で区切られた場合: "カイロ・ルクソール・アスワン" → 最初の都市名
+  const parts = destination.split(/[・、,/]/);
+  for (const part of parts) {
+    const trimmed = part.trim();
+    if (CITY_NAME_MAP[trimmed]) {
+      return CITY_NAME_MAP[trimmed];
+    }
+  }
+
+  // 全体で一致を試みる
+  if (CITY_NAME_MAP[destination.trim()]) {
+    return CITY_NAME_MAP[destination.trim()];
+  }
+
+  // 部分一致を試みる
+  for (const [jaName, enName] of Object.entries(CITY_NAME_MAP)) {
+    if (destination.includes(jaName)) {
+      return enName;
+    }
+  }
+
+  // フォールバック: そのまま返す（英語が混在していればそれが使われる）
+  return destination;
+}
+
+/**
  * 日付を YYYYMMDD 形式に変換
  */
 function formatDateCompact(date: string): string {
@@ -248,8 +369,11 @@ function generateBookingComLink(params: HotelSearchParams): { url: string; isAff
 
   const baseUrl = 'https://www.booking.com/searchresults.ja.html';
 
+  // Use English destination name for reliable Booking.com search
+  const searchDestination = params.destinationEn || toEnglishDestination(params.destination);
+
   const queryParams = new URLSearchParams({
-    ss: params.destination,
+    ss: searchDestination,
     lang: 'ja',
     dest_type: 'city',
   });
