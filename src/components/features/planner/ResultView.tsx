@@ -16,6 +16,8 @@ import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
 import { getActivityIcon, groupActivitiesByTimePeriod } from "@/lib/utils/activity-icon";
+import PlanFeedbackBar from "./PlanFeedbackBar";
+import ActivityFeedbackButton from "./ActivityFeedbackButton";
 import type { PackingList } from "@/types/packing-list";
 import {
   FaMapMarkerAlt,
@@ -898,19 +900,30 @@ export default function ResultView({
                                       <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-white border-2 border-primary/30 flex items-center justify-center text-xs z-10 shadow-sm hidden md:flex">
                                         {iconInfo.icon}
                                       </div>
-                                      <SpotCard
-                                        activity={act}
-                                        destination={result.destination}
-                                        state={getCardState(
-                                          `activity-${day.day}-${globalIndex}`
+                                      <div className="relative">
+                                        <SpotCard
+                                          activity={act}
+                                          destination={result.destination}
+                                          state={getCardState(
+                                            `activity-${day.day}-${globalIndex}`
+                                          )}
+                                          onStateChange={(state) =>
+                                            handleCardStateChange(
+                                              `activity-${day.day}-${globalIndex}`,
+                                              state
+                                            )
+                                          }
+                                        />
+                                        {!isEditing && (
+                                          <div className="absolute top-2 right-2 z-10">
+                                            <ActivityFeedbackButton
+                                              day={day.day}
+                                              activityIndex={globalIndex}
+                                              destination={result.destination}
+                                            />
+                                          </div>
                                         )}
-                                        onStateChange={(state) =>
-                                          handleCardStateChange(
-                                            `activity-${day.day}-${globalIndex}`,
-                                            state
-                                          )
-                                        }
-                                      />
+                                      </div>
                                     </div>
                                   );
                                 })}
@@ -957,6 +970,15 @@ export default function ResultView({
                     itinerary={displayResult}
                     className="mt-4"
                   />
+                )}
+
+                {/* Plan Feedback */}
+                {!isEditing && (
+                  <div className="mt-4">
+                    <PlanFeedbackBar
+                      destination={result.destination}
+                    />
+                  </div>
                 )}
 
                 {/* Booking Summary Section */}
