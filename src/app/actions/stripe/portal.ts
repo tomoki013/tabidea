@@ -1,24 +1,29 @@
 'use server';
 
-import { redirect } from 'next/navigation';
 import Stripe from 'stripe';
 
 import { getUser, createClient } from '@/lib/supabase/server';
 
+export interface PortalSessionResult {
+  success: boolean;
+  url?: string;
+  error?: string;
+}
+
 /**
- * Stripeカスタマーポータルセッションを作成してリダイレクト
+ * Stripeカスタマーポータルセッションを作成してURLを返す
  */
-export async function createPortalSession(): Promise<void> {
+export async function createPortalSession(): Promise<PortalSessionResult> {
   const user = await getUser();
 
   if (!user) {
-    redirect('/auth/login?redirect=/pricing');
+    return { success: false, error: 'not_authenticated' };
   }
 
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
   if (!stripeSecretKey) {
     console.error('STRIPE_SECRET_KEY is not configured');
-    redirect('/pricing?error=configuration');
+    return { success: false, error: 'configuration' };
   }
 
   const stripe = new Stripe(stripeSecretKey, {
@@ -35,25 +40,23 @@ export async function createPortalSession(): Promise<void> {
 
   if (error) {
     console.error('User data fetch error:', error);
-    redirect('/pricing?error=unknown');
+    return { success: false, error: 'unknown' };
   }
 
   if (!userData?.stripe_customer_id) {
     console.error('Stripe customer ID not found');
-    redirect('/pricing?error=no_subscription');
+    return { success: false, error: 'no_subscription' };
   }
 
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL;
 
   if (!baseUrl) {
     console.error('NEXT_PUBLIC_APP_URL is not configured');
-    redirect('/pricing?error=configuration');
+    return { success: false, error: 'configuration' };
   }
 
   // 末尾のスラッシュを削除して正規化
   const returnUrl = `${baseUrl.replace(/\/$/, '')}/pricing`;
-
-  let sessionUrl: string | null = null;
 
   try {
     const session = await stripe.billingPortal.sessions.create({
@@ -62,16 +65,12 @@ export async function createPortalSession(): Promise<void> {
     });
 
     if (session.url) {
-      sessionUrl = session.url;
+      return { success: true, url: session.url };
     }
-  } catch (error) {
-    console.error('Failed to create portal session:', error);
-    redirect('/pricing?error=portal_failed');
+  } catch (err) {
+    console.error('Failed to create portal session:', err);
+    return { success: false, error: 'portal_failed' };
   }
 
-  if (sessionUrl) {
-    redirect(sessionUrl);
-  }
-
-  redirect('/pricing?error=unknown');
+  return { success: false, error: 'unknown' };
 }

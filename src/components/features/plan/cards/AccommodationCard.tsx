@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Building2, MapPin, ExternalLink, Star, ChevronDown, Info } from "lucide-react";
+import { Building2, MapPin, ExternalLink, Star, ChevronDown } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import TrustBadge from "./TrustBadge";
 import {
@@ -79,30 +79,31 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
   };
 
   return (
-    <div className="relative">
+    <div className="relative inline-block">
       <button
         onClick={(e) => {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="flex items-center gap-2 px-3 py-2 bg-purple-100 text-purple-700 rounded-lg hover:bg-purple-200 transition-colors text-sm font-medium"
+        className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-xl hover:from-purple-100 hover:to-purple-200 transition-all text-sm font-bold border border-purple-200/60 shadow-sm"
       >
-        🏨 ホテルを探す
+        <Building2 className="w-4 h-4" />
+        ホテルを探す
         <ChevronDown
-          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen && (
         <>
           <div
-            className="fixed inset-0 z-10"
+            className="fixed inset-0 z-40"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
           />
-          <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-stone-200 overflow-hidden z-20 min-w-[180px]">
+          <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[200px]">
             {links.map((link) => (
               <a
                 key={link.service}
@@ -110,11 +111,11 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 onClick={(e) => handleClick(link, e)}
-                className="flex items-center gap-2 px-4 py-2.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
               >
-                <span>{link.icon}</span>
-                <span>{link.displayName}</span>
-                <ExternalLink className="w-3 h-3 ml-auto text-stone-400" />
+                <span className="text-base">{link.icon}</span>
+                <span className="font-medium group-hover:text-purple-700 transition-colors">{link.displayName}</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-300 group-hover:text-purple-500 transition-colors" />
               </a>
             ))}
           </div>
@@ -245,12 +246,6 @@ export default function AccommodationCard({
 
         {/* Affiliate Links Section */}
         <div className="pt-2 space-y-3">
-          {/* PR disclosure */}
-          <div className="flex items-center gap-1.5 text-xs text-stone-400">
-            <Info className="w-3 h-3" />
-            <span>PR: 以下は広告リンクです</span>
-          </div>
-
           {/* Affiliate Dropdown */}
           <AffiliateDropdown
             links={affiliateLinks}

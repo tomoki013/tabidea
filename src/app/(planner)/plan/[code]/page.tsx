@@ -37,8 +37,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ogParams.set('imageUrl', plan.itinerary.heroImage);
   }
 
-  // Get base URL from environment or default
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tabidea.app';
+  // Get base URL from environment or default (check both env vars for compatibility)
+  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://tabidea.app').replace(/\/$/, '');
   const ogImageUrl = `${baseUrl}/api/og?${ogParams.toString()}`;
 
   return {

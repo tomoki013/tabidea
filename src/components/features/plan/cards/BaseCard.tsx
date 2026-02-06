@@ -123,7 +123,7 @@ export default function BaseCard({
     <motion.div
       layout
       className={`
-        rounded-xl border-2 bg-white overflow-hidden transition-shadow
+        rounded-xl border-2 bg-white transition-shadow
         ${isExpanded ? theme.activeBorder : theme.border}
         ${isExpanded ? "shadow-md" : "shadow-sm"}
         ${expandable ? "cursor-pointer" : ""}
@@ -196,9 +196,10 @@ export default function BaseCard({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="px-4 pb-4 pt-1 border-t border-stone-100">
+            <div className="px-4 pb-4 pt-1 border-t border-stone-100 overflow-visible">
               {children}
             </div>
           </motion.div>

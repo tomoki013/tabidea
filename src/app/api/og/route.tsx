@@ -36,7 +36,9 @@ export async function GET(request: NextRequest) {
   // Extract parameters
   const destination = searchParams.get("destination") || "旅行プラン";
   const days = searchParams.get("days") || "";
-  const imageUrl = searchParams.get("imageUrl") || "";
+  // Validate imageUrl: only allow https URLs to prevent errors
+  const rawImageUrl = searchParams.get("imageUrl") || "";
+  const imageUrl = rawImageUrl.startsWith("https://") ? rawImageUrl : "";
 
   // Duration text formatting
   let durationText = "";

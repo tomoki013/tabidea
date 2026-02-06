@@ -40,7 +40,7 @@ export interface BookingLinkResult {
 /**
  * Klookのアクティビティリンクを生成
  */
-function generateKlookLink(destination: string): string {
+function generateKlookLink(destination: string): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_KLOOK_AFFILIATE_ID || '';
   const baseUrl = 'https://www.klook.com/ja/search/';
   const queryParams = new URLSearchParams({
@@ -51,20 +51,20 @@ function generateKlookLink(destination: string): string {
     queryParams.set('aid', affiliateId);
   }
 
-  return `${baseUrl}?${queryParams.toString()}`;
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
 }
 
 /**
  * GetYourGuideのアクティビティリンクを生成
  */
-function generateGetYourGuideLink(destination: string): string {
+function generateGetYourGuideLink(destination: string): { url: string; isAffiliate: boolean } {
   const baseUrl = 'https://www.getyourguide.com/s/';
   const queryParams = new URLSearchParams({
     q: destination,
     lc: 'ja',
   });
 
-  return `${baseUrl}?${queryParams.toString()}`;
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: false };
 }
 
 /**
@@ -73,21 +73,25 @@ function generateGetYourGuideLink(destination: string): string {
 function generateActivityLinks(destination: string): AffiliateLink[] {
   const links: AffiliateLink[] = [];
 
+  const klook = generateKlookLink(destination);
   links.push({
     service: 'booking_com' as const,
     displayName: 'Klook',
-    url: generateKlookLink(destination),
+    url: klook.url,
     icon: '🎫',
     priority: 1,
+    isAffiliate: klook.isAffiliate,
   });
 
   if (!isDomesticDestination(destination)) {
+    const gyg = generateGetYourGuideLink(destination);
     links.push({
       service: 'booking_com' as const,
       displayName: 'GetYourGuide',
-      url: generateGetYourGuideLink(destination),
+      url: gyg.url,
       icon: '🎯',
       priority: 2,
+      isAffiliate: gyg.isAffiliate,
     });
   }
 
