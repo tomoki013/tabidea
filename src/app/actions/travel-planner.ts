@@ -17,6 +17,10 @@ import { getUserSettings } from "@/app/actions/user-settings";
 import { checkAndRecordUsage } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
+import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
+import { getSpotValidator } from "@/lib/services/validation/spot-validator";
+import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
+import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
 
 export type ActionState = {
   success: boolean;
@@ -181,7 +185,9 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
 
   try {
     const scraper = new PineconeRetriever();
-    const ai = new GeminiService(apiKey);
+    const ai = new GeminiService(apiKey, {
+      goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
+    });
 
     // 1. RAG Search
     const destinationsStr = input.destinations.join("、");
@@ -270,8 +276,20 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       `;
     }
 
-    // 3. Generate Outline
+    // 3. Generate Outline (with metrics)
+    const metricsCollector = new MetricsCollector();
+    metricsCollector.startGeneration(
+      input.destinations.join('、') || 'unknown',
+      extractDuration(input.dates) || 1
+    );
+    metricsCollector.recordRagArticles(contextArticles.length);
+
+    const outlineStartTime = Date.now();
     const outline = await ai.generateOutline(prompt, contextArticles);
+    metricsCollector.recordOutlineTime(Date.now() - outlineStartTime);
+
+    // Flush metrics asynchronously (non-blocking)
+    metricsCollector.flush().catch(() => {});
 
     // 4. Update Input if destination was chosen
     const updatedInput = { ...input };
@@ -340,7 +358,9 @@ export async function generatePlanChunk(
   if (!apiKey) return { success: false, message: "API Key missing" };
 
   try {
-    const ai = new GeminiService(apiKey);
+    const ai = new GeminiService(apiKey, {
+      goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
+    });
     const budgetPrompt = getBudgetContext(input.budget);
     const destinationsStr = input.destinations.join("、");
     const isMultiCity = input.destinations.length > 1;
@@ -383,6 +403,68 @@ export async function generatePlanChunk(
   } catch (error) {
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
     return { success: false, message: "詳細プランの生成に失敗しました。" };
+  }
+}
+
+/**
+ * Auto-verify generated itinerary spots and self-correct if needed
+ * Only runs when ENABLE_SPOT_VALIDATION=true
+ */
+export async function autoVerifyItinerary(
+  itinerary: Itinerary,
+  context: Article[],
+  destination: string
+): Promise<{ itinerary: Itinerary; validationResult?: { totalSpots: number; failedCount: number; corrected: boolean } }> {
+  if (process.env.ENABLE_SPOT_VALIDATION !== 'true') {
+    return { itinerary };
+  }
+
+  try {
+    const validator = getSpotValidator({ usePlacesApi: true });
+    const validationMap = await validator.validateItinerarySpots(
+      itinerary.days,
+      destination
+    );
+
+    // Count failures
+    const failedSpots: Array<{ day: number; activityIndex: number; activityName: string; reason: string }> = [];
+    for (const dayPlan of itinerary.days) {
+      for (let i = 0; i < dayPlan.activities.length; i++) {
+        const act = dayPlan.activities[i];
+        const validation = validationMap.get(act.activity);
+        if (validation && !validation.isVerified && validation.confidence === 'low') {
+          failedSpots.push({
+            day: dayPlan.day,
+            activityIndex: i,
+            activityName: act.activity,
+            reason: 'not_found',
+          });
+        }
+      }
+    }
+
+    const totalSpots = validationMap.size;
+
+    if (failedSpots.length > 0 && failedSpots.length / totalSpots < 0.3) {
+      console.warn(`[action] ${failedSpots.length} spots failed validation, attempting self-correction`);
+      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      if (apiKey) {
+        const ai = new GeminiService(apiKey);
+        const corrected = await selfCorrectItinerary(ai, itinerary, failedSpots, context);
+        return {
+          itinerary: corrected,
+          validationResult: { totalSpots, failedCount: failedSpots.length, corrected: true },
+        };
+      }
+    }
+
+    return {
+      itinerary,
+      validationResult: { totalSpots, failedCount: failedSpots.length, corrected: false },
+    };
+  } catch (error) {
+    console.warn('[action] Auto-verification failed (non-blocking):', error);
+    return { itinerary };
   }
 }
 

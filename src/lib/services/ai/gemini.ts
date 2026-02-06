@@ -16,6 +16,9 @@ import {
   type RequestComplexity,
   type GenerationPhase,
 } from './model-selector';
+import { buildContextSandwich, type PromptBuilderOptions } from './prompt-builder';
+import type { GoldenPlanExample } from '@/data/golden-plans/types';
+import type { TravelInfoSnapshot } from './adapters/travel-info-adapter';
 
 // ============================================
 // Types
@@ -28,6 +31,10 @@ export interface GeminiServiceOptions {
   userPrefersPro?: boolean;
   /** リクエストの複雑度（自動判定されない場合） */
   complexity?: RequestComplexity;
+  /** Golden Planサンプル（Context Sandwich Layer 3） */
+  goldenPlanExamples?: GoldenPlanExample[];
+  /** 渡航情報スナップショット（Context Sandwich Layer 4） */
+  travelInfo?: TravelInfoSnapshot;
 }
 
 // ============================================
@@ -214,8 +221,16 @@ ${prompt}`;
       .map((m) => `${m.role === "user" ? "USER" : "AI (Assistant)"}: ${m.text}`)
       .join("\n\n");
 
+    // Use Context Sandwich for modify (lighter version - no golden plans needed)
+    const { systemInstruction: sandwichSystem } = buildContextSandwich({
+      context: [],
+      travelInfo: this.options.travelInfo,
+      userPrompt: '',
+      generationType: 'modify',
+    });
+
     const prompt = `
-        You are "Tomokichi's Travel Diary AI". You are refining an existing travel itinerary based on the conversation history.
+        ${sandwichSystem}
 
         CURRENT ITINERARY JSON:
         ${JSON.stringify(currentPlan)}
@@ -276,21 +291,16 @@ ${prompt}`;
   ): Promise<PlanOutline> {
     console.log(`[gemini] Generating Plan Outline...`);
 
-    const MAX_CONTENT_LENGTH = 150;
-    const contextText = context
-      .map((a, i) => {
-        const truncatedContent =
-          a.content.length > MAX_CONTENT_LENGTH
-            ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
-            : a.content;
-        return `[${i}] ${a.title}: ${truncatedContent}`;
-      })
-      .join("\n");
+    // Build Context Sandwich prompt
+    const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
+      context,
+      goldenPlanExamples: this.options.goldenPlanExamples,
+      travelInfo: this.options.travelInfo,
+      userPrompt: prompt,
+      generationType: 'outline',
+    });
 
-    const systemInstruction = `
-      Create a Travel Plan Outline in JAPANESE.
-      ${contextText ? `Context: ${contextText}` : ""}
-
+    const outlineInstructions = `
       Rules:
       1. If destination is NOT specified, choose the BEST destination based on User Request.
       2. CRITICAL: Respect the requested "Region".
@@ -324,10 +334,8 @@ ${prompt}`;
       - For the last day, "travel_method_to_next" should be null.
     `;
 
-    const fullPrompt = `${systemInstruction}
-
-USER REQUEST:
-${prompt}`;
+    const systemInstruction = `${sandwichSystem}\n\n${outlineInstructions}`;
+    const fullPrompt = `${systemInstruction}\n\nUSER REQUEST:\n${sandwichUser}`;
 
     try {
       const { model, temperature, modelName } = this.getModel('outline', complexity);
@@ -385,17 +393,14 @@ ${prompt}`;
     // Provide ONLY relevant outline info to keep context small
     const outlineInfo = JSON.stringify(outlineDays);
 
-    // Use limited context for speed
-    const MAX_CONTENT_LENGTH = 150;
-    const contextText = context
-      .map((a, i) => {
-        const truncatedContent =
-          a.content.length > MAX_CONTENT_LENGTH
-            ? a.content.substring(0, MAX_CONTENT_LENGTH) + "..."
-            : a.content;
-        return `[${i}] ${a.title}: ${truncatedContent}`;
-      })
-      .join("\n");
+    // Build Context Sandwich prompt
+    const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
+      context,
+      goldenPlanExamples: this.options.goldenPlanExamples,
+      travelInfo: this.options.travelInfo,
+      userPrompt: prompt,
+      generationType: 'dayDetails',
+    });
 
     // Build starting location constraint if provided
     const startingLocationConstraint = startingLocation
@@ -416,13 +421,12 @@ ${prompt}`;
       `
       : "";
 
-    const systemInstruction = `
+    const detailInstructions = `
       Create detailed itinerary for Days ${startDay} to ${endDay} in JAPANESE.
 
       MASTER PLAN OUTLINE (You MUST follow this):
       ${outlineInfo}
       ${startingLocationConstraint}
-      ${contextText ? `Context: ${contextText}` : ""}
 
       Rules:
       1. Strictly follow the "highlight_areas" and "overnight_location" defined in the Master Plan Outline for each day.
@@ -488,10 +492,8 @@ ${prompt}`;
       - Set activityType to "transit" for these flight activities.
     `;
 
-    const fullPrompt = `${systemInstruction}
-
-USER REQUEST:
-${prompt}`;
+    const systemInstruction = `${sandwichSystem}\n\n${detailInstructions}`;
+    const fullPrompt = `${systemInstruction}\n\nUSER REQUEST:\n${sandwichUser}`;
 
     try {
       const { model, temperature, modelName } = this.getModel('details', complexity);

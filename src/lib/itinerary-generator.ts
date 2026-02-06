@@ -5,11 +5,13 @@
  */
 
 import { GeminiService } from "./services/ai/gemini";
+import { createAIService } from "./services/ai/factory";
 import { PineconeRetriever } from "./services/rag/pinecone-retriever";
 import { getUnsplashImage } from "./unsplash";
 import { extractDuration, splitDaysIntoChunks } from "./utils/plan";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { Itinerary, DayPlan, UserInput, Article, TransitType } from "@/types";
+import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 
 /**
  * Infer transit type from travel method description
@@ -111,7 +113,10 @@ export async function generateItinerary(
 
   try {
     const scraper = new PineconeRetriever();
-    const ai = new GeminiService(apiKey);
+    const ai = createAIService({
+      apiKey,
+      geminiOptions: { goldenPlanExamples: GOLDEN_PLAN_EXAMPLES },
+    });
 
     // 1. RAG Search
     const destinationsStr = input.destinations.join("、");
@@ -358,7 +363,7 @@ export async function regenerateItinerary(
   }
 
   try {
-    const ai = new GeminiService(apiKey);
+    const ai = createAIService({ apiKey });
     const newPlan = await ai.modifyItinerary(currentPlan, chatHistory);
 
     // If the destination changed, fetch a new image

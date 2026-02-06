@@ -7,6 +7,8 @@
 export type {
   Activity,
   ActivityType,
+  ActivitySource,
+  ActivitySourceType,
   ActivityValidation,
   BudgetEstimate,
   DayPlan,

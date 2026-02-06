@@ -71,6 +71,25 @@ export interface ActivityValidation {
 export type ActivityType = 'spot' | 'transit' | 'accommodation' | 'meal' | 'other';
 
 /**
+ * アクティビティの情報源
+ */
+export type ActivitySourceType = 'blog' | 'google_places' | 'ai_knowledge' | 'golden_plan';
+
+/**
+ * アクティビティの情報源詳細
+ */
+export interface ActivitySource {
+  /** 情報源の種類 */
+  type: ActivitySourceType;
+  /** ブログ記事のタイトル（type: 'blog' の場合） */
+  title?: string;
+  /** ブログ記事のURL（type: 'blog' の場合） */
+  url?: string;
+  /** 信頼度 */
+  confidence?: 'high' | 'medium' | 'low';
+}
+
+/**
  * アクティビティ
  */
 export interface Activity {
@@ -88,6 +107,8 @@ export interface Activity {
   isLocked?: boolean;
   /** スポット検証結果（Phase 3で設定予定） */
   validation?: ActivityValidation;
+  /** 情報源（Citation） */
+  source?: ActivitySource;
 }
 
 /**

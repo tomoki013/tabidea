@@ -5,6 +5,7 @@ import { MapPin, Clock, Star, ExternalLink, Camera, AlertCircle, Loader2 } from 
 import BaseCard, { CardState } from "./BaseCard";
 import { Activity, ActivityValidation, PlacePhoto } from "@/types";
 import TrustBadge from "./TrustBadge";
+import CitationBadge from "@/components/features/planner/CitationBadge";
 import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
 import { shouldSkipPlacesSearch, classifyActivity } from "@/lib/utils/activity-classifier";
 
@@ -207,7 +208,10 @@ export default function SpotCard({
       <div className="space-y-4 pt-2">
         {/* Description */}
         <div>
-          <h4 className="text-sm font-bold text-stone-700 mb-1">詳細</h4>
+          <div className="flex items-center justify-between mb-1">
+            <h4 className="text-sm font-bold text-stone-700">詳細</h4>
+            {activity.source && <CitationBadge source={activity.source} />}
+          </div>
           <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
         </div>
 
