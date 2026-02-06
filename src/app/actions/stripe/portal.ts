@@ -59,6 +59,18 @@ export async function createPortalSession(): Promise<PortalSessionResult> {
   const returnUrl = `${baseUrl.replace(/\/$/, '')}/pricing`;
 
   try {
+    // Verify the customer exists in Stripe before creating portal session
+    try {
+      const customer = await stripe.customers.retrieve(userData.stripe_customer_id);
+      if ((customer as Stripe.DeletedCustomer).deleted) {
+        console.error('Stripe customer has been deleted');
+        return { success: false, error: 'no_subscription' };
+      }
+    } catch (customerErr) {
+      console.error('Stripe customer not found:', customerErr);
+      return { success: false, error: 'no_subscription' };
+    }
+
     const session = await stripe.billingPortal.sessions.create({
       customer: userData.stripe_customer_id,
       return_url: returnUrl,
@@ -67,8 +79,17 @@ export async function createPortalSession(): Promise<PortalSessionResult> {
     if (session.url) {
       return { success: true, url: session.url };
     }
-  } catch (err) {
-    console.error('Failed to create portal session:', err);
+  } catch (err: unknown) {
+    const stripeErr = err as { type?: string; message?: string };
+    console.error('Failed to create portal session:', stripeErr.message || err);
+
+    // Provide more specific error messages
+    if (stripeErr.type === 'StripeInvalidRequestError') {
+      if (stripeErr.message?.includes('portal configuration')) {
+        return { success: false, error: 'portal_not_configured' };
+      }
+    }
+
     return { success: false, error: 'portal_failed' };
   }
 

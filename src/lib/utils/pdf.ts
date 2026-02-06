@@ -1,9 +1,12 @@
 import type { Itinerary, TravelInfoCategory } from '@/types';
+import type { PackingList } from '@/types/packing-list';
 import type { CategoryState } from '@/components/features/travel-info/types';
 
 export interface PDFGenerationOptions {
   includeTravelInfo?: boolean;
   travelInfoData?: Map<TravelInfoCategory, CategoryState>;
+  includePackingList?: boolean;
+  packingList?: PackingList | null;
 }
 
 /**
@@ -35,6 +38,8 @@ export async function generateTravelPlanPdf(
     itinerary,
     includeTravelInfo: options?.includeTravelInfo,
     travelInfoData: options?.travelInfoData,
+    includePackingList: options?.includePackingList,
+    packingList: options?.packingList,
   }) as any;
   const pdfBlob = await pdf(pdfElement).toBlob();
 

@@ -829,6 +829,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       {step === 5 && (
         <StepBudget
           value={input.budget}
+          region={input.region}
           onChange={(val) => {
             setInput(prev => ({ ...prev, budget: val }));
             setErrorMessage("");

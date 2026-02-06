@@ -52,6 +52,21 @@ export type ChunkActionState = {
 function getBudgetContext(budget: string): string {
   if (!budget) return "Budget: Not specified";
 
+  // Handle range format: "range:50000:100000"
+  if (budget.startsWith("range:")) {
+    const parts = budget.split(":");
+    if (parts.length >= 3) {
+      const min = parseInt(parts[1], 10);
+      const max = parseInt(parts[2], 10);
+      const minStr = (min / 10000).toFixed(0);
+      const maxStr = (max / 10000).toFixed(0);
+      return `
+    Budget: ${minStr}万円 〜 ${maxStr}万円 (${min.toLocaleString()} JPY - ${max.toLocaleString()} JPY)
+    (Please suggest hotels, restaurants, and activities that fit within this specific budget range per person for the entire trip.)
+      `;
+    }
+  }
+
   return `
     Budget Level: ${budget}
     (Budget Guidance for AI:

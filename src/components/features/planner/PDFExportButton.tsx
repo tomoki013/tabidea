@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect } from "react";
 import { Itinerary } from '@/types';
+import type { PackingList } from '@/types/packing-list';
 import {
   generateTravelPlanPdf,
   generatePdfFilename,
@@ -14,6 +15,7 @@ import PDFExportModal, { PDFExportOptions } from "./PDFExportModal";
 interface PDFExportButtonProps {
   itinerary: Itinerary;
   className?: string;
+  packingList?: PackingList | null;
 }
 
 /**
@@ -25,6 +27,7 @@ interface PDFExportButtonProps {
 export default function PDFExportButton({
   itinerary,
   className = "",
+  packingList,
 }: PDFExportButtonProps) {
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
@@ -117,6 +120,8 @@ export default function PDFExportButton({
       const blob = await generateTravelPlanPdf(itinerary, {
         includeTravelInfo: options.includeTravelInfo,
         travelInfoData: options.travelInfoData,
+        includePackingList: options.includePackingList,
+        packingList: options.packingList,
       });
       console.log("PDF generated successfully:", blob.size, "bytes");
 
@@ -202,6 +207,7 @@ export default function PDFExportButton({
         onExport={handleExport}
         destination={itinerary.destination}
         isGenerating={isGenerating}
+        packingList={packingList}
       />
 
       {/* PDF Preview Modal for Desktop/Tablet */}

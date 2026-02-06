@@ -75,18 +75,23 @@ export function PricingPageClient({
 
   const handleManageSubscription = async () => {
     setIsLoading("manage");
+    setError(null);
     try {
       const result = await createPortalSession();
       if (result.success && result.url) {
         window.location.href = result.url;
       } else if (result.error === 'not_authenticated') {
         router.push("/auth/login?redirect=/pricing");
+      } else if (result.error === 'no_subscription') {
+        setError("サブスクリプション情報が見つかりません。まずプランにご加入ください。");
+      } else if (result.error === 'portal_not_configured') {
+        setError("カスタマーポータルの設定が完了していません。管理者にお問い合わせください。");
       } else {
-        setError("ポータルの読み込みに失敗しました。");
+        setError("ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。");
       }
     } catch (err) {
       console.error("Portal error:", err);
-      setError("ポータルの読み込みに失敗しました。");
+      setError("ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。");
     } finally {
       setIsLoading(null);
     }
@@ -114,31 +119,66 @@ export function PricingPageClient({
           </div>
         )}
 
-        {/* Current Plan Status */}
+        {/* Current Plan Status - matching SettingsModal format */}
         {isLoggedIn && billingStatus && (
-          <div className="mb-8 p-4 bg-white rounded-xl border border-stone-200 shadow-sm max-w-md mx-auto">
-            <div className="flex items-center justify-between">
+          <div className="mb-8 bg-white rounded-xl border border-stone-200 shadow-sm max-w-md mx-auto p-6">
+            <h4 className="font-bold text-stone-800 flex items-center gap-2 mb-4">
+              <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+              現在のプラン
+            </h4>
+
+            <div className="flex items-center justify-between p-4 bg-stone-50 rounded-lg mb-4">
               <div>
-                <p className="text-sm text-stone-500">現在のプラン</p>
-                <p className="text-lg font-bold text-stone-800">
-                  {billingStatus.planType === 'admin' ? "管理者" : (isPro ? PRO_PLAN_NAME : "Free")}
-                </p>
+                <div className="flex items-center gap-2">
+                  {billingStatus.planType === 'admin' ? (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-stone-800 text-white text-sm font-bold rounded-full">
+                      管理者
+                    </span>
+                  ) : isPro ? (
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-primary to-[#f39c12] text-white text-sm font-bold rounded-full">
+                      {PRO_PLAN_NAME}
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center px-3 py-1 bg-stone-200 text-stone-600 text-sm font-medium rounded-full">
+                      Free
+                    </span>
+                  )}
+                </div>
+                {isPro && billingStatus.subscriptionEndsAt && (
+                  <p className="text-xs text-stone-500 mt-2">
+                    次回更新: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString("ja-JP")}
+                  </p>
+                )}
               </div>
               {billingStatus.ticketCount > 0 && (
                 <div className="text-right">
-                  <p className="text-sm text-stone-500">回数券残数</p>
+                  <p className="text-sm text-stone-500">回数券</p>
                   <p className="text-lg font-bold text-primary">
                     {billingStatus.ticketCount}回
                   </p>
                 </div>
               )}
             </div>
-            {isPro && billingStatus.subscriptionEndsAt && (
-              <p className="text-xs text-stone-500 mt-2">
-                次回更新日:{" "}
-                {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString(
-                  "ja-JP",
+
+            {isPro && (
+              <button
+                onClick={handleManageSubscription}
+                disabled={isLoading === "manage"}
+                className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-bold hover:bg-stone-200 transition-colors disabled:opacity-50"
+              >
+                {isLoading === "manage" ? (
+                  <span>読み込み中...</span>
+                ) : (
+                  <span>プランを管理・解約</span>
                 )}
+              </button>
+            )}
+
+            {!isPro && billingStatus.planType !== 'admin' && (
+              <p className="text-xs text-stone-400 text-center">
+                下記のプランからアップグレードできます
               </p>
             )}
           </div>

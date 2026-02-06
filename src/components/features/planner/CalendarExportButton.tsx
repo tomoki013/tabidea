@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Calendar, ChevronDown, Download, ExternalLink } from "lucide-react";
 import {
   parseTripDates,
@@ -84,8 +85,30 @@ export default function CalendarExportButton({
   const [pendingAction, setPendingAction] = useState<"ics" | "google" | null>(
     null
   );
+  const [dropdownPosition, setDropdownPosition] = useState<{
+    top: number;
+    left: number;
+    openUpward: boolean;
+  }>({ top: 0, left: 0, openUpward: false });
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   const tripDates = parseTripDates(dates);
+
+  // Calculate dropdown position when opening
+  useEffect(() => {
+    if (isOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      const dropdownHeight = 140; // approximate height of dropdown
+      const spaceBelow = window.innerHeight - rect.bottom;
+      const openUpward = spaceBelow < dropdownHeight + 16;
+
+      setDropdownPosition({
+        top: openUpward ? rect.top - dropdownHeight - 8 : rect.bottom + 8,
+        left: Math.max(8, rect.right - 240), // 240 = min-w-[240px], with 8px margin
+        openUpward,
+      });
+    }
+  }, [isOpen]);
 
   const getStartDate = useCallback((): Date | null => {
     if (tripDates.hasSpecificDates && tripDates.startDate) {
@@ -132,6 +155,7 @@ export default function CalendarExportButton({
     <>
       <div className={`relative inline-block ${className}`}>
         <button
+          ref={buttonRef}
           onClick={(e) => {
             e.stopPropagation();
             setIsOpen(!isOpen);
@@ -154,42 +178,51 @@ export default function CalendarExportButton({
                 setIsOpen(false);
               }}
             />
-            <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[240px]">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleAction("ics");
+            {createPortal(
+              <div
+                className="fixed z-50 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden min-w-[240px]"
+                style={{
+                  top: `${dropdownPosition.top}px`,
+                  left: `${dropdownPosition.left}px`,
                 }}
-                className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 group"
               >
-                <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <Download className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
-                </div>
-                <div className="text-left">
-                  <div className="font-medium group-hover:text-primary transition-colors">.ics ファイル</div>
-                  <div className="text-[11px] text-stone-400">
-                    Apple / Outlook カレンダー
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAction("ics");
+                  }}
+                  className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <Download className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
                   </div>
-                </div>
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  handleAction("google");
-                }}
-                className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 group"
-              >
-                <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                  <ExternalLink className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
-                </div>
-                <div className="text-left">
-                  <div className="font-medium group-hover:text-primary transition-colors">Google カレンダー</div>
-                  <div className="text-[11px] text-stone-400">
-                    ブラウザで追加
+                  <div className="text-left">
+                    <div className="font-medium group-hover:text-primary transition-colors">.ics ファイル</div>
+                    <div className="text-[11px] text-stone-400">
+                      Apple / Outlook カレンダー
+                    </div>
                   </div>
-                </div>
-              </button>
-            </div>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleAction("google");
+                  }}
+                  className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 group"
+                >
+                  <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <ExternalLink className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
+                  </div>
+                  <div className="text-left">
+                    <div className="font-medium group-hover:text-primary transition-colors">Google カレンダー</div>
+                    <div className="text-[11px] text-stone-400">
+                      ブラウザで追加
+                    </div>
+                  </div>
+                </button>
+              </div>,
+              document.body
+            )}
           </>
         )}
       </div>

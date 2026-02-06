@@ -1,8 +1,9 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaTimes,
@@ -18,12 +19,14 @@ import {
   FaTrash,
   FaCrown,
   FaCog,
+  FaFlag,
 } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
+import { useFlags } from '@/context/FlagsContext';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
 import { getBillingStatus } from '@/app/actions/billing';
 import { PRO_PLAN_NAME } from '@/lib/billing/constants';
@@ -45,6 +48,8 @@ export default function MobileSidebar({
   const { openModal } = usePlanModal();
   const { plans: localPlans, deletePlan: deleteLocalPlan } = useLocalPlans();
   const { plans: serverPlans, isLoading: isServerPlansLoading, removePlan, updatePlan } = useUserPlans();
+  const { isFlagged, toggleFlag } = useFlags();
+  const pathname = usePathname();
 
   // Menu state
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -112,8 +117,6 @@ export default function MobileSidebar({
     setIsUpdating(true);
 
     if (isLocal) {
-      // For local plans, we would need to update the itinerary destination
-      // This is more complex, so for now we'll just close the modal
       setIsRenaming(null);
       setIsUpdating(false);
       return;
@@ -139,6 +142,13 @@ export default function MobileSidebar({
     setPlanToDelete(planId);
     setIsLocalDelete(isLocal);
     setShowDeleteModal(true);
+  };
+
+  const handleToggleFlag = async (planId: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setOpenMenuId(null);
+    await toggleFlag(planId);
   };
 
   const executeDelete = async () => {
@@ -187,10 +197,28 @@ export default function MobileSidebar({
     }).format(d);
   };
 
-  // Decide which plans to show
-  const displayPlans = isAuthenticated ? serverPlans : localPlans;
+  // Decide which plans to show, sorted by flagged first then by updatedAt desc
+  const displayPlans = useMemo(() => {
+    const plans = isAuthenticated ? serverPlans : localPlans;
+    return [...plans].sort((a, b) => {
+      const aFlagged = isFlagged(a.id);
+      const bFlagged = isFlagged(b.id);
+      if (aFlagged && !bFlagged) return -1;
+      if (!aFlagged && bFlagged) return 1;
+      return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+    });
+  }, [isAuthenticated, serverPlans, localPlans, isFlagged]);
+
   const isLoading = isAuthenticated ? isServerPlansLoading : false;
   const hasPlans = displayPlans.length > 0;
+
+  // Check if a plan is currently active based on URL
+  const isActivePlan = (planId: string, isLocalPlan: boolean) => {
+    if (isLocalPlan) {
+      return pathname === `/plan/local/${planId}`;
+    }
+    return pathname === `/plan/id/${planId}`;
+  };
 
   return (
     <AnimatePresence>
@@ -353,12 +381,18 @@ export default function MobileSidebar({
                           const isMenuOpen = openMenuId === plan.id;
                           const isCurrentlyRenaming = isRenaming === plan.id;
                           const isCurrentlyDeleting = isDeleting === plan.id;
+                          const isActive = isActivePlan(plan.id, isLocalPlan);
+                          const planIsFlagged = isFlagged(plan.id);
 
                           return (
                             <div
                               key={plan.id}
                               className={`relative flex items-center gap-3 p-2 rounded-lg transition-colors group ${
-                                isCurrentlyDeleting ? 'opacity-50' : 'hover:bg-[#e67e22]/5'
+                                isCurrentlyDeleting
+                                  ? 'opacity-50'
+                                  : isActive
+                                  ? 'bg-[#e67e22]/10 border border-[#e67e22]/30'
+                                  : 'hover:bg-[#e67e22]/5'
                               }`}
                             >
                               {/* Main content as link */}
@@ -368,7 +402,7 @@ export default function MobileSidebar({
                                 className="flex items-center gap-3 flex-1 min-w-0"
                               >
                                 {/* Thumbnail */}
-                                <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0">
+                                <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0 relative">
                                   {thumbnailUrl ? (
                                     <Image
                                       src={thumbnailUrl}
@@ -380,6 +414,12 @@ export default function MobileSidebar({
                                   ) : (
                                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e67e22]/10 to-[#27ae60]/10">
                                       <FaMapMarkerAlt className="text-[#e67e22]/40" />
+                                    </div>
+                                  )}
+                                  {/* Flag indicator on thumbnail */}
+                                  {planIsFlagged && (
+                                    <div className="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 rounded-full flex items-center justify-center">
+                                      <FaFlag className="text-[6px] text-white" />
                                     </div>
                                   )}
                                 </div>
@@ -406,7 +446,9 @@ export default function MobileSidebar({
                                       disabled={isUpdating}
                                     />
                                   ) : (
-                                    <p className="text-sm font-medium text-stone-800 truncate group-hover:text-[#e67e22] transition-colors">
+                                    <p className={`text-sm font-medium truncate transition-colors ${
+                                      isActive ? 'text-[#e67e22]' : 'text-stone-800 group-hover:text-[#e67e22]'
+                                    }`}>
                                       {destination || '目的地未設定'}
                                     </p>
                                   )}
@@ -416,12 +458,12 @@ export default function MobileSidebar({
                                 </div>
                               </Link>
 
-                              {/* Three-dot menu button (only for authenticated users with server plans) */}
-                              {isAuthenticated && !isLocalPlan && !isCurrentlyRenaming && (
+                              {/* Three-dot menu button - Always visible */}
+                              {!isCurrentlyRenaming && (
                                 <div className="relative" ref={isMenuOpen ? menuRef : null}>
                                   <button
                                     onClick={(e) => handleMenuToggle(plan.id, e)}
-                                    className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                                    className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
                                     aria-label="メニューを開く"
                                   >
                                     <FaEllipsisV className="text-sm" />
@@ -435,15 +477,27 @@ export default function MobileSidebar({
                                         animate={{ opacity: 1, scale: 1, y: 0 }}
                                         exit={{ opacity: 0, scale: 0.95, y: -5 }}
                                         transition={{ duration: 0.15 }}
-                                        className="absolute right-0 top-full mt-1 w-36 bg-white rounded-lg shadow-lg border border-stone-200 py-1 z-50"
+                                        className="absolute right-0 top-full mt-1 w-40 bg-white rounded-lg shadow-lg border border-stone-200 py-1 z-50"
                                       >
-                                        <button
-                                          onClick={(e) => handleStartRename(plan.id, destination || '', e)}
-                                          className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
-                                        >
-                                          <FaEdit className="text-stone-400" />
-                                          名前を変更
-                                        </button>
+                                        {/* Flag/Unflag action */}
+                                        {isAuthenticated && !isLocalPlan && (
+                                          <button
+                                            onClick={(e) => handleToggleFlag(plan.id, e)}
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                          >
+                                            <FaFlag className={planIsFlagged ? 'text-amber-500' : 'text-stone-400'} />
+                                            {planIsFlagged ? 'ピン解除' : 'ピン留め'}
+                                          </button>
+                                        )}
+                                        {isAuthenticated && !isLocalPlan && (
+                                          <button
+                                            onClick={(e) => handleStartRename(plan.id, destination || '', e)}
+                                            className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                          >
+                                            <FaEdit className="text-stone-400" />
+                                            名前を変更
+                                          </button>
+                                        )}
                                         <button
                                           onClick={(e) => handleDeleteClick(plan.id, isLocalPlan, e)}
                                           className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
