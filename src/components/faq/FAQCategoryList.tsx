@@ -7,6 +7,8 @@ import {
   FaShieldAlt,
   FaQuestionCircle,
   FaTools,
+  FaUserCircle,
+  FaCreditCard,
 } from "react-icons/fa";
 import { faqCategories } from "@/lib/data/faq";
 import FAQCard from "./FAQCard";
@@ -18,6 +20,8 @@ const iconMap: Record<string, React.ElementType> = {
   trouble: FaTools,
   security: FaShieldAlt,
   others: FaRegLightbulb,
+  account: FaUserCircle,
+  billing: FaCreditCard,
 };
 
 export default function FAQCategoryList() {
@@ -30,7 +34,7 @@ export default function FAQCategoryList() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto space-y-16 pb-24">
+    <div className="w-full max-w-5xl mx-auto space-y-16 pb-24">
       {faqCategories.map((category) => {
         const Icon = iconMap[category.id] || FaQuestionCircle;
 
@@ -46,8 +50,8 @@ export default function FAQCategoryList() {
               </h2>
             </div>
 
-            {/* Questions List */}
-            <div className="space-y-4">
+            {/* Questions List - 2 Columns on MD+ */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
               {category.items.map((item, index) => {
                 const uniqueId = `${category.id}-${index}`;
                 const isOpen = openId === uniqueId;

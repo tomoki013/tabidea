@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, KeyboardEvent } from "react";
+import { useState, useEffect, KeyboardEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserInput, TransitInfo } from "@/types";
 import { ChevronDown, Check, X, Plus, Minus } from "lucide-react";
@@ -194,6 +194,8 @@ export default function SimplifiedInputFlow({
   isGenerating = false,
   isInModal = false,
 }: SimplifiedInputFlowProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
   // Accordion state
   const [phase2Open, setPhase2Open] = useState(false);
   const [phase3Open, setPhase3Open] = useState(false);
@@ -311,7 +313,8 @@ export default function SimplifiedInputFlow({
 
   const handleGenerateClick = () => {
     // Scroll to top to ensure loading animation is visible
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Modified to scroll to the container instead of window top
+    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     // Handle "Undecided" date logic for Calendar Mode
     // If in calendar mode and dates are missing, explicitly set dates to "未定"
@@ -429,7 +432,10 @@ export default function SimplifiedInputFlow({
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-6 space-y-6">
+    <div
+      ref={containerRef}
+      className="w-full max-w-2xl mx-auto px-4 py-6 space-y-6 scroll-mt-24"
+    >
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-2xl sm:text-3xl font-serif font-bold text-foreground mb-2">
