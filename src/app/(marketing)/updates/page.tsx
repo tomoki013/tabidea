@@ -319,6 +319,14 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "done",
+    date: "2026.02.03", // User request: 2026-02-03
+    updateType: "patch",
+    title: "プラン保存数を全ログインユーザーが無制限に",
+    description:
+      "作成したプランをログインするだけで制限なく保存できるようになりました。",
+  },
+  {
+    status: "done",
     date: "2026.02.04",
     updateType: "patch",
     title: "信頼性バッジ表示",
@@ -363,6 +371,22 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "旅程カードのUI更新",
     description:
       "プランページの旅程カードを、旅程・しおりらしいデザインを目指し、何をするのかがわかりやすいUIに変更しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.06", // User request: 2026-02-06
+    updateType: "patch",
+    title: "コスト表示機能の追加",
+    description:
+      "生成されたプランからAIがコストの概算を計算し表示する機能を追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.06", // User request: 2026-02-06 (Corrected from 2026-026)
+    updateType: "patch",
+    title: "カレンダー連携",
+    description:
+      "Google CalendarおよびiCalenderにエクスポートする機能を追加しました。",
   },
   // Future items
   {
@@ -498,7 +522,7 @@ const historyItems = roadmapData
 export default function UpdatesPage() {
   return (
     <div className="min-h-screen pt-32 pb-20 px-8 sm:px-20 font-sans">
-      <main className="max-w-3xl mx-auto">
+      <main className="max-w-4xl mx-auto">
         <header className="mb-12 text-center">
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-4">
             Updates & Roadmap
@@ -547,77 +571,60 @@ export default function UpdatesPage() {
               <span>更新履歴</span>
             </h2>
 
-            <div className="relative mt-8">
-              {/* Vertical Line */}
-              <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-stone-300 md:left-1/2 md:-translate-x-1/2"></div>
+            {/* 2-column Timeline Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-8">
+              {historyItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="relative pl-6 border-l-2 border-stone-200"
+                >
+                  {/* Dot */}
+                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
 
-              <div className="space-y-8">
-                {historyItems.map((item, index) => {
-                  const isEven = index % 2 === 0;
-                  return (
-                    <div
-                      key={index}
-                      className="relative md:flex md:justify-between md:items-start group"
-                    >
-                      {/* Dot */}
-                      <div className="absolute left-0 md:left-1/2 top-1 w-6 h-6 rounded-full border-4 border-green-500 bg-[#fcfbf9] z-10 md:-translate-x-1/2"></div>
-
-                      {/* Content */}
-                      <div
-                        className={`pl-10 md:pl-0 md:w-[calc(50%-2rem)] ${
-                          isEven
-                            ? "md:mr-auto md:text-right"
-                            : "md:ml-auto md:text-left"
-                        }`}
-                      >
+                  {/* Content */}
+                  <div>
+                    <span className="text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap">
+                      {item.date}
+                      {item.version && (
+                        <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
+                          v{item.version}
+                        </span>
+                      )}
+                      {item.updateType && (
                         <span
-                          className={`text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap ${
-                            isEven ? "md:justify-end" : "md:justify-start"
+                          className={`px-2 py-0.5 rounded text-xs border ${
+                            item.updateType === "release"
+                              ? "bg-orange-50 text-red-600 border-orange-200"
+                              : item.updateType === "pre_release"
+                                ? "bg-blue-50 text-blue-600 border-blue-200"
+                                : item.updateType === "major"
+                                  ? "bg-red-50 text-orange-600 border-red-200"
+                                  : item.updateType === "minor"
+                                    ? "bg-green-50 text-green-600 border-green-200"
+                                    : "bg-stone-50 text-stone-500 border-stone-200"
                           }`}
                         >
-                          {item.date}
-                          {item.version && (
-                            <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
-                              v{item.version}
-                            </span>
-                          )}
-                          {item.updateType && (
-                            <span
-                              className={`px-2 py-0.5 rounded text-xs border ${
-                                item.updateType === "release"
-                                  ? "bg-orange-50 text-red-600 border-orange-200"
-                                  : item.updateType === "pre_release"
-                                    ? "bg-blue-50 text-blue-600 border-blue-200"
-                                    : item.updateType === "major"
-                                      ? "bg-red-50 text-orange-600 border-red-200"
-                                      : item.updateType === "minor"
-                                        ? "bg-green-50 text-green-600 border-green-200"
-                                        : "bg-stone-50 text-stone-500 border-stone-200"
-                              }`}
-                            >
-                              {item.updateType === "release"
-                                ? "Release"
-                                : item.updateType === "pre_release"
-                                  ? "Pre-release"
-                                  : item.updateType === "major"
-                                    ? "Major"
-                                    : item.updateType === "minor"
-                                      ? "Minor"
-                                      : "Patch"}
-                            </span>
-                          )}
+                          {item.updateType === "release"
+                            ? "Release"
+                            : item.updateType === "pre_release"
+                              ? "Pre-release"
+                              : item.updateType === "major"
+                                ? "Major"
+                                : item.updateType === "minor"
+                                  ? "Minor"
+                                  : "Patch"}
                         </span>
-                        <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
-                          {item.title}
-                        </h3>
-                        <p className="text-stone-600 leading-relaxed text-sm">
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
+                      )}
+                    </span>
+                    <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                      {item.title}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed text-sm">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
