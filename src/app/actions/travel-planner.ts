@@ -7,6 +7,7 @@ import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } f
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
+import { getOutlineCache, setOutlineCache } from "@/lib/cache";
 import { getUser, createAdminClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
@@ -125,6 +126,44 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     return { success: false, message: "API Key missing" };
   }
 
+  // キャッシュチェック
+  try {
+    const cacheParams = {
+      destinations: input.destinations,
+      days: input.dates,
+      companions: input.companions,
+      theme: input.theme,
+      budget: input.budget,
+      pace: input.pace,
+      isDestinationDecided: input.isDestinationDecided,
+      region: input.region,
+      travelVibe: input.travelVibe,
+    };
+
+    const cached = await getOutlineCache(cacheParams);
+    if (cached) {
+      console.log(`[action] Outline served from cache in ${Date.now() - startTime}ms`);
+
+      const updatedInput = { ...input };
+      if (!updatedInput.isDestinationDecided) {
+        updatedInput.destinations = [cached.outline.destination];
+        updatedInput.isDestinationDecided = true;
+      }
+
+      return {
+        success: true,
+        data: {
+          outline: cached.outline,
+          context: cached.context,
+          input: updatedInput,
+          heroImage: cached.heroImage,
+        },
+      };
+    }
+  } catch (cacheError) {
+    console.warn("[action] Cache check failed:", cacheError);
+  }
+
   try {
     const scraper = new PineconeRetriever();
     const ai = new GeminiService(apiKey);
@@ -229,6 +268,26 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     const heroImageData = await getUnsplashImage(outline.destination);
 
     console.log(`[action] Outline generated in ${Date.now() - startTime}ms`);
+
+    // キャッシュに保存（非同期、失敗しても問題なし）
+    setOutlineCache(
+      {
+        destinations: input.destinations,
+        days: input.dates,
+        companions: input.companions,
+        theme: input.theme,
+        budget: input.budget,
+        pace: input.pace,
+        isDestinationDecided: input.isDestinationDecided,
+        region: input.region,
+        travelVibe: input.travelVibe,
+      },
+      {
+        outline,
+        context: contextArticles,
+        heroImage: heroImageData,
+      }
+    ).catch((e) => console.warn("[action] Cache save failed:", e));
 
     return {
       success: true,
