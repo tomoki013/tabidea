@@ -274,11 +274,13 @@ export default function SpotCard({
         )}
 
         {/* Google Maps Link */}
-        {(mergedValidation?.placeId || fetchedDetails?.details?.googleMapsUrl) && (
+        {(mergedValidation?.placeId || fetchedDetails?.details?.googleMapsUrl || name) && (
           <a
             href={
               fetchedDetails?.details?.googleMapsUrl ||
-              `https://www.google.com/maps/place/?q=place_id:${mergedValidation?.placeId}`
+              (mergedValidation?.placeId
+                ? `https://www.google.com/maps/place/?q=place_id:${mergedValidation.placeId}`
+                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination ? `${name} ${destination}` : name)}`)
             }
             target="_blank"
             rel="noopener noreferrer"

@@ -179,6 +179,7 @@ function MapControls({
 interface MarkerClusterProps {
   spots: MapSpot[];
   selectedDay?: number;
+  destination: string;
   onSpotClick: (spot: MapSpot) => void;
   selectedSpot: MapSpot | null;
   onInfoWindowClose: () => void;
@@ -187,6 +188,7 @@ interface MarkerClusterProps {
 function MarkerCluster({
   spots,
   selectedDay,
+  destination,
   onSpotClick,
   selectedSpot,
   onInfoWindowClose,
@@ -229,17 +231,19 @@ function MarkerCluster({
             <h3 className="font-bold text-sm text-stone-800 mt-1">
               {selectedSpot.name}
             </h3>
-            {selectedSpot.placeId && (
-              <a
-                href={`https://www.google.com/maps/place/?q=place_id:${selectedSpot.placeId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs text-blue-600 hover:underline flex items-center gap-1 mt-1"
-              >
-                <Navigation className="w-3 h-3" />
-                Google マップで開く
-              </a>
-            )}
+            <a
+              href={
+                selectedSpot.placeId
+                  ? `https://www.google.com/maps/place/?q=place_id:${selectedSpot.placeId}`
+                  : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${selectedSpot.name} ${destination}`)}`
+              }
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-blue-600 hover:underline flex items-center gap-1 mt-1"
+            >
+              <Navigation className="w-3 h-3" />
+              Google マップで開く
+            </a>
           </div>
         </InfoWindow>
       )}
@@ -250,10 +254,11 @@ function MarkerCluster({
 interface MapContentProps {
   spots: MapSpot[];
   selectedDay?: number;
+  destination: string;
   onSpotSelect?: (spotName: string, day: number, activityIndex: number) => void;
 }
 
-function MapContent({ spots, selectedDay, onSpotSelect }: MapContentProps) {
+function MapContent({ spots, selectedDay, destination, onSpotSelect }: MapContentProps) {
   const map = useMap();
   const coreLibrary = useMapsLibrary("core");
   const [selectedSpot, setSelectedSpot] = useState<MapSpot | null>(null);
@@ -288,6 +293,7 @@ function MapContent({ spots, selectedDay, onSpotSelect }: MapContentProps) {
     <MarkerCluster
       spots={spots}
       selectedDay={selectedDay}
+      destination={destination}
       onSpotClick={handleSpotClick}
       selectedSpot={selectedSpot}
       onInfoWindowClose={() => setSelectedSpot(null)}
@@ -422,6 +428,7 @@ export default function ItineraryMap({
             <MapContent
               spots={spots}
               selectedDay={selectedDay}
+              destination={destination}
               onSpotSelect={onSpotSelect}
             />
           </Map>

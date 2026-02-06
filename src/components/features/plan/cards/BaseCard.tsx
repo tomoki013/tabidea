@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, ReactNode } from "react";
+import { useState, ReactNode, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 
@@ -103,9 +103,18 @@ export default function BaseCard({
   badge,
 }: BaseCardProps) {
   const [internalState, setInternalState] = useState<CardState>(state);
+  const [isAnimating, setIsAnimating] = useState(false);
   const currentState = onStateChange ? state : internalState;
   const isExpanded = currentState === "expanded";
   const isLoading = currentState === "loading";
+
+  const handleAnimationStart = useCallback(() => {
+    setIsAnimating(true);
+  }, []);
+
+  const handleAnimationComplete = useCallback(() => {
+    setIsAnimating(false);
+  }, []);
 
   const theme = COLOR_THEMES[colorTheme];
 
@@ -123,20 +132,20 @@ export default function BaseCard({
     <motion.div
       layout
       className={`
-        rounded-xl border-2 bg-white transition-shadow
+        rounded-xl border-2 bg-white transition-all duration-200
         ${isExpanded ? theme.activeBorder : theme.border}
-        ${isExpanded ? "shadow-md" : "shadow-sm"}
+        ${isExpanded ? "shadow-lg" : "shadow-sm hover:shadow-md"}
         ${expandable ? "cursor-pointer" : ""}
         ${className}
       `}
       onClick={handleToggle}
     >
       {/* Collapsed Header */}
-      <div className="flex items-center gap-3 p-3">
+      <div className="flex items-center gap-3 p-3.5">
         {/* Icon */}
         <div
           className={`
-            w-10 h-10 rounded-lg flex items-center justify-center shrink-0
+            w-10 h-10 rounded-xl flex items-center justify-center shrink-0
             ${theme.iconBg} ${theme.iconColor}
           `}
         >
@@ -146,7 +155,7 @@ export default function BaseCard({
         {/* Content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2">
-            <h3 className="font-bold text-stone-800 truncate">{title}</h3>
+            <h3 className="font-bold text-stone-800 truncate text-[15px]">{title}</h3>
             {badge}
           </div>
           {subtitle && (
@@ -196,7 +205,9 @@ export default function BaseCard({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
+            className={isAnimating ? "overflow-hidden" : "overflow-visible"}
+            onAnimationStart={handleAnimationStart}
+            onAnimationComplete={handleAnimationComplete}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="px-4 pb-4 pt-1 border-t border-stone-100 overflow-visible">

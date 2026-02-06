@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Building2, MapPin, ExternalLink, Star, ChevronDown } from "lucide-react";
+import { Building2, MapPin, ExternalLink, Star, ChevronDown, Moon, Sun } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import TrustBadge from "./TrustBadge";
 import {
@@ -85,7 +85,7 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-50 to-purple-100 text-purple-700 rounded-xl hover:from-purple-100 hover:to-purple-200 transition-all text-sm font-bold border border-purple-200/60 shadow-sm"
+        className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all text-sm font-bold shadow-sm hover:shadow-md"
       >
         <Building2 className="w-4 h-4" />
         ホテルを探す
@@ -103,7 +103,7 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
               setIsOpen(false);
             }}
           />
-          <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[200px]">
+          <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[220px]">
             {links.map((link) => (
               <a
                 key={link.service}
@@ -111,7 +111,7 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 onClick={(e) => handleClick(link, e)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-purple-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
               >
                 <span className="text-base">{link.icon}</span>
                 <span className="font-medium group-hover:text-purple-700 transition-colors">{link.displayName}</span>
@@ -194,58 +194,67 @@ export default function AccommodationCard({
       <div className="space-y-4 pt-2">
         {/* Description */}
         {description && (
-          <div>
-            <h4 className="text-sm font-bold text-stone-700 mb-1">詳細</h4>
-            <p className="text-sm text-stone-600 leading-relaxed">
-              {description}
-            </p>
-          </div>
+          <p className="text-sm text-stone-600 leading-relaxed">
+            {description}
+          </p>
         )}
 
-        {/* Rating */}
-        {rating && (
-          <div className="flex items-center gap-2">
-            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-            <span className="text-sm font-medium text-stone-700">
-              {rating.toFixed(1)}
-            </span>
-          </div>
-        )}
-
-        {/* Address */}
-        {address && (
-          <div className="flex items-start gap-2">
-            <MapPin className="w-4 h-4 text-stone-500 mt-0.5" />
-            <span className="text-sm text-stone-600">{address}</span>
+        {/* Rating & Address row */}
+        {(rating || address) && (
+          <div className="space-y-2">
+            {rating && (
+              <div className="flex items-center gap-2">
+                <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
+                <span className="text-sm font-medium text-stone-700">
+                  {rating.toFixed(1)}
+                </span>
+              </div>
+            )}
+            {address && (
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-stone-500 mt-0.5" />
+                <span className="text-sm text-stone-600">{address}</span>
+              </div>
+            )}
           </div>
         )}
 
         {/* Check-in/out times */}
         {(checkIn || checkOut) && (
-          <div className="bg-purple-50 rounded-lg p-3 text-sm">
+          <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-4 text-sm">
             <div className="grid grid-cols-2 gap-4">
               {checkIn && (
-                <div>
-                  <span className="text-purple-600 font-medium">
-                    チェックイン
-                  </span>
-                  <div className="text-purple-800 font-bold">{checkIn}</div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center">
+                    <Moon className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div>
+                    <span className="text-purple-600 font-medium text-xs">
+                      チェックイン
+                    </span>
+                    <div className="text-purple-800 font-bold">{checkIn}</div>
+                  </div>
                 </div>
               )}
               {checkOut && (
-                <div>
-                  <span className="text-purple-600 font-medium">
-                    チェックアウト
-                  </span>
-                  <div className="text-purple-800 font-bold">{checkOut}</div>
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center">
+                    <Sun className="w-4 h-4 text-indigo-600" />
+                  </div>
+                  <div>
+                    <span className="text-indigo-600 font-medium text-xs">
+                      チェックアウト
+                    </span>
+                    <div className="text-indigo-800 font-bold">{checkOut}</div>
+                  </div>
                 </div>
               )}
             </div>
           </div>
         )}
 
-        {/* Affiliate Links Section */}
-        <div className="pt-2 space-y-3">
+        {/* Action Buttons */}
+        <div className="flex flex-wrap items-center gap-3 pt-1">
           {/* Affiliate Dropdown */}
           <AffiliateDropdown
             links={affiliateLinks}
@@ -259,27 +268,29 @@ export default function AccommodationCard({
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1.5 text-sm text-purple-600 hover:text-purple-800 hover:underline"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-xl font-medium transition-colors border border-purple-200/60"
             >
               <ExternalLink className="w-4 h-4" />
               予約サイトを見る
             </a>
           )}
-        </div>
 
-        {/* Google Maps Link */}
-        {placeId && (
+          {/* Google Maps Link */}
           <a
-            href={`https://www.google.com/maps/place/?q=place_id:${placeId}`}
+            href={
+              placeId
+                ? `https://www.google.com/maps/place/?q=place_id:${placeId}`
+                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination ? `${name} ${destination}` : name)}`
+            }
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-800 hover:underline"
+            className="inline-flex items-center gap-1.5 px-3 py-2.5 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-xl transition-colors"
           >
-            <ExternalLink className="w-4 h-4" />
-            Google マップで見る
+            <MapPin className="w-4 h-4" />
+            地図で見る
           </a>
-        )}
+        </div>
       </div>
     </BaseCard>
   );

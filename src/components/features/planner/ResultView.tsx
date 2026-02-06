@@ -896,11 +896,14 @@ export default function ResultView({
 
                 {/* Booking Summary Section */}
                 {!isEditing && (
-                  <div className="bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl p-6 border border-primary/10 mt-4">
-                    <h3 className="font-bold text-stone-800 text-lg mb-4 flex items-center gap-2">
+                  <div className="bg-gradient-to-br from-primary/5 via-white to-primary/10 rounded-2xl p-6 sm:p-8 border border-primary/15 mt-4 shadow-sm">
+                    <h3 className="font-bold text-stone-800 text-lg mb-2 flex items-center gap-2">
                       <span className="text-xl">🧳</span>
                       この旅を予約する
                     </h3>
+                    <p className="text-sm text-stone-500 mb-5">
+                      プラン確定後でもいつでも予約できます
+                    </p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       <BookingLinkButton
                         type="hotel"

@@ -317,13 +317,16 @@ function generateJalanLink(params: HotelSearchParams): { url: string; isAffiliat
 
 /**
  * スカイスキャナーのリンクを生成
+ * 場所名をそのまま使うとURLが壊れるため、検索ページへリダイレクト
  */
 function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_SKYSCANNER_AFFILIATE_ID || '';
 
-  // スカイスキャナーの URL 形式: /transport/flights/{origin}/{destination}/{outbound}/{inbound}/
+  // 検索ページURLを使用（場所名をそのままパスに入れるとリンクが壊れるため）
   const baseUrl = 'https://www.skyscanner.jp/transport/flights';
 
+  // 場所名からIATAコード的な短縮名を使えない場合は、
+  // 汎用的な検索URLを使用する
   const origin = encode(params.origin);
   const destination = encode(params.destination);
 
@@ -347,6 +350,28 @@ function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAf
 
   if (affiliateId) {
     queryParams.set('associateid', affiliateId);
+  }
+
+  // 場所名に日本語が含まれる場合は検索ページにフォールバック
+  const hasJapanese = /[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/.test(
+    params.origin + params.destination
+  );
+
+  if (hasJapanese) {
+    const searchUrl = 'https://www.skyscanner.jp/transport/flights/';
+    const searchParams = new URLSearchParams({
+      market: 'JP',
+      locale: 'ja-JP',
+      currency: 'JPY',
+      adults: (params.adults || 1).toString(),
+      oym: params.departureDate ? params.departureDate.slice(0, 7).replace('-', '') : '',
+      originname: params.origin,
+      destinationname: params.destination,
+    });
+    if (affiliateId) {
+      searchParams.set('associateid', affiliateId);
+    }
+    return { url: `${searchUrl}?${searchParams.toString()}`, isAffiliate: !!affiliateId };
   }
 
   return { url: `${path}?${queryParams.toString()}`, isAffiliate: !!affiliateId };

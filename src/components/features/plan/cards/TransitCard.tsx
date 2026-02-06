@@ -171,36 +171,51 @@ export default function TransitCard({
     >
       {/* Expanded Content */}
       <div className="space-y-4 pt-2">
-        {/* Route Details */}
-        <div className="flex items-center justify-between bg-stone-50 rounded-lg p-3">
-          <div className="text-center">
-            <div className="text-lg font-bold text-stone-800">
-              {transit.departure.place}
+        {/* Route Details - Visual Route Card */}
+        <div className="bg-gradient-to-r from-stone-50 to-stone-100/50 rounded-xl p-4">
+          <div className="flex items-center gap-3">
+            {/* Departure */}
+            <div className="flex-1 min-w-0">
+              <div className="text-xs text-stone-500 font-medium mb-0.5">出発</div>
+              <div className="text-base font-bold text-stone-800 truncate">
+                {transit.departure.place}
+              </div>
+              {transit.departure.time && (
+                <div className="text-sm text-stone-500 font-mono">
+                  {transit.departure.time}
+                </div>
+              )}
             </div>
-            {transit.departure.time && (
-              <div className="text-sm text-stone-500">
-                {transit.departure.time}
+
+            {/* Route Line */}
+            <div className="flex flex-col items-center shrink-0 px-2">
+              <div className="flex items-center gap-1">
+                <div className="w-2 h-2 rounded-full bg-stone-400" />
+                <div className="w-8 sm:w-12 h-0.5 bg-stone-300 relative">
+                  <Icon className="w-4 h-4 text-stone-500 absolute -top-1.5 left-1/2 -translate-x-1/2" />
+                </div>
+                <ArrowRight className="w-3 h-3 text-stone-400" />
               </div>
-            )}
-          </div>
-          <div className="flex flex-col items-center px-4">
-            <ArrowRight className="w-6 h-6 text-stone-400" />
-            {transit.duration && (
-              <div className="flex items-center gap-1 text-xs text-stone-500 mt-1">
-                <Clock className="w-3 h-3" />
-                {transit.duration}
-              </div>
-            )}
-          </div>
-          <div className="text-center">
-            <div className="text-lg font-bold text-stone-800">
-              {transit.arrival.place}
+              {transit.duration && (
+                <div className="flex items-center gap-1 text-[11px] text-stone-500 mt-1.5">
+                  <Clock className="w-3 h-3" />
+                  {transit.duration}
+                </div>
+              )}
             </div>
-            {transit.arrival.time && (
-              <div className="text-sm text-stone-500">
-                {transit.arrival.time}
+
+            {/* Arrival */}
+            <div className="flex-1 min-w-0 text-right">
+              <div className="text-xs text-stone-500 font-medium mb-0.5">到着</div>
+              <div className="text-base font-bold text-stone-800 truncate">
+                {transit.arrival.place}
               </div>
-            )}
+              {transit.arrival.time && (
+                <div className="text-sm text-stone-500 font-mono">
+                  {transit.arrival.time}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -213,15 +228,20 @@ export default function TransitCard({
         )}
 
         {/* Flight Affiliate Links */}
-        {transit.type === "flight" && flightLinks.length > 0 && !transit.isBooked && (
-          <div className="pt-2 space-y-3 border-t border-stone-100">
+        {transit.type === "flight" && flightLinks.length > 0 && (
+          <div className="pt-2 space-y-2 border-t border-stone-100">
+            {transit.isBooked && (
+              <p className="text-xs text-green-600 font-medium text-center">
+                予約済みですが、別の航空券も検索できます
+              </p>
+            )}
             {/* Flight Search Button */}
             <a
               href={flightLinks[0].url}
               target="_blank"
               rel="noopener noreferrer sponsored"
               onClick={handleFlightLinkClick}
-              className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-sm font-medium"
+              className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all text-sm font-bold shadow-sm hover:shadow-md"
             >
               <Plane className="w-4 h-4" />
               航空券を探す
