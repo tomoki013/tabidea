@@ -127,6 +127,20 @@ describe('affiliate-links', () => {
         returnDate: '2024-07-15',
       });
 
+      // Japanese place names use search page URL with originname/destinationname
+      expect(links[0].url).toContain('originname=');
+      expect(links[0].url).toContain('destinationname=');
+      expect(links[0].url).toContain('oym=202407');
+    });
+
+    it('should include departure dates in path for non-Japanese names', () => {
+      const links = generateFlightLinks({
+        origin: 'NRT',
+        destination: 'LHR',
+        departureDate: '2024-07-01',
+        returnDate: '2024-07-15',
+      });
+
       expect(links[0].url).toContain('240701');
       expect(links[0].url).toContain('240715');
     });
@@ -141,14 +155,25 @@ describe('affiliate-links', () => {
       expect(links[0].url).toContain('adults=2');
     });
 
-    it('should include cabin class', () => {
+    it('should include cabin class for non-Japanese names', () => {
       const links = generateFlightLinks({
-        origin: '関西',
-        destination: 'シンガポール',
+        origin: 'KIX',
+        destination: 'SIN',
         cabinClass: 'business',
       });
 
       expect(links[0].url).toContain('business');
+    });
+
+    it('should use search URL for Japanese place names', () => {
+      const links = generateFlightLinks({
+        origin: '関西',
+        destination: 'シンガポール',
+      });
+
+      expect(links[0].url).toContain('skyscanner.jp');
+      expect(links[0].url).toContain('originname=');
+      expect(links[0].url).toContain('destinationname=');
     });
   });
 

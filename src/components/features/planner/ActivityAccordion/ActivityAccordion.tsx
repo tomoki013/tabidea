@@ -306,6 +306,7 @@ export default function ActivityAccordion({
             longitude={mergedDetails.longitude}
             placeId={placeId}
             googleMapsUrl={fetchedDetails?.details?.googleMapsUrl}
+            destination={destination}
           />
         )}
 

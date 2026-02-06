@@ -24,6 +24,8 @@ export interface ActivityMapProps {
   placeId?: string;
   /** Google Maps URL */
   googleMapsUrl?: string;
+  /** 目的地（検索コンテキスト用） */
+  destination?: string;
   /** クラス名 */
   className?: string;
 }
@@ -44,6 +46,7 @@ export default function ActivityMap({
   longitude,
   placeId,
   googleMapsUrl,
+  destination,
   className = "",
 }: ActivityMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -86,12 +89,13 @@ export default function ActivityMap({
     );
   }
 
-  // Generate Google Maps URL
+  // Generate Google Maps URL with destination context for accuracy
+  const searchQuery = destination ? `${name} ${destination}` : name;
   const mapsUrl =
     googleMapsUrl ||
     (placeId
       ? `https://www.google.com/maps/place/?q=place_id:${placeId}`
-      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}`);
+      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery)}`);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
