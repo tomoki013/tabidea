@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, KeyboardEvent, useRef } from "react";
+import { useState, useEffect, useCallback, KeyboardEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserInput, TransitInfo } from "@/types";
 import { ChevronDown, Check, X, Plus, Minus } from "lucide-react";
@@ -19,6 +19,11 @@ import {
   FaQuestion,
   FaPlus,
   FaTrash,
+  FaPlane,
+  FaTrain,
+  FaBus,
+  FaCar,
+  FaShip,
 } from "react-icons/fa";
 
 // ============================================================================
@@ -52,11 +57,11 @@ const THEME_OPTIONS = [
   { label: "その他", icon: FaQuestion, id: "その他" },
 ];
 
-const BUDGET_OPTIONS = [
-  { id: "saving", label: "なるべく安く", icon: "💸" },
-  { id: "standard", label: "普通", icon: "💰" },
-  { id: "high", label: "少し贅沢に", icon: "✨" },
-  { id: "luxury", label: "リッチに", icon: "💎" },
+const BUDGET_PRESETS = [
+  { id: "saving", label: "なるべく安く", icon: "💸", desc: "お財布に優しく" },
+  { id: "standard", label: "普通", icon: "💰", desc: "一般的な予算" },
+  { id: "high", label: "少し贅沢に", icon: "✨", desc: "良いホテル・食事" },
+  { id: "luxury", label: "リッチに", icon: "💎", desc: "最高級の体験" },
 ];
 
 const PACE_OPTIONS = [
@@ -76,6 +81,20 @@ const DURATION_OPTIONS = [
   { value: 6, label: "5泊6日" },
   { value: 7, label: "6泊7日" },
 ];
+
+const TRANSPORT_OPTIONS = [
+  { id: "flight", label: "飛行機", icon: FaPlane },
+  { id: "shinkansen", label: "新幹線", icon: FaTrain },
+  { id: "train", label: "電車", icon: FaTrain },
+  { id: "bus", label: "バス", icon: FaBus },
+  { id: "car", label: "車・レンタカー", icon: FaCar },
+  { id: "ferry", label: "フェリー", icon: FaShip },
+];
+
+const BUDGET_CONFIG = {
+  domestic: { min: 10000, max: 500000, step: 10000, defaultMin: 30000, defaultMax: 100000, unit: "円" },
+  overseas: { min: 50000, max: 2000000, step: 10000, defaultMin: 100000, defaultMax: 500000, unit: "円" },
+} as const;
 
 // ============================================================================
 // Types
@@ -112,6 +131,26 @@ const formatDuration = (days: number): string => {
   if (days === 1) return "日帰り";
   return `${days - 1}泊${days}日`;
 };
+
+function formatBudget(amount: number): string {
+  if (amount >= 10000) {
+    return `${(amount / 10000).toFixed(amount % 10000 === 0 ? 0 : 1)}万円`;
+  }
+  return `${amount.toLocaleString()}円`;
+}
+
+function parseBudgetRange(value: string): { min: number; max: number } | null {
+  if (!value || !value.startsWith("range:")) return null;
+  const parts = value.split(":");
+  if (parts.length >= 3) {
+    return { min: parseInt(parts[1], 10), max: parseInt(parts[2], 10) };
+  }
+  return null;
+}
+
+function encodeBudgetRange(min: number, max: number): string {
+  return `range:${min}:${max}`;
+}
 
 // ============================================================================
 // Sub-Components
@@ -230,6 +269,41 @@ export default function SimplifiedInputFlow({
   // This means if I pick calendar but haven't selected dates, it is treated as "Undecided"
   const [useCalendar, setUseCalendar] = useState(!!currentStartDate);
 
+  // Budget Slider State
+  // Determine if using overseas config (default to overseas if region is unknown or overseas)
+  // "Domestic" only if region is explicitly domestic
+  const isOverseas = input.region !== "domestic";
+  const budgetConfig = isOverseas ? BUDGET_CONFIG.overseas : BUDGET_CONFIG.domestic;
+
+  const existingBudgetRange = parseBudgetRange(input.budget);
+  const [useBudgetSlider, setUseBudgetSlider] = useState(!!existingBudgetRange);
+  const [budgetMin, setBudgetMin] = useState(existingBudgetRange?.min ?? budgetConfig.defaultMin);
+  const [budgetMax, setBudgetMax] = useState(existingBudgetRange?.max ?? budgetConfig.defaultMax);
+
+  // Sync slider logic
+  const handleBudgetMinChange = useCallback((newMin: number) => {
+    const clampedMin = Math.min(newMin, budgetMax - budgetConfig.step);
+    setBudgetMin(clampedMin);
+    onChange({ budget: encodeBudgetRange(clampedMin, budgetMax) });
+  }, [budgetMax, budgetConfig.step, onChange]);
+
+  const handleBudgetMaxChange = useCallback((newMax: number) => {
+    const clampedMax = Math.max(newMax, budgetMin + budgetConfig.step);
+    setBudgetMax(clampedMax);
+    onChange({ budget: encodeBudgetRange(budgetMin, clampedMax) });
+  }, [budgetMin, budgetConfig.step, onChange]);
+
+  const toggleBudgetSlider = (enable: boolean) => {
+    setUseBudgetSlider(enable);
+    if (enable) {
+      // Switch to slider mode, use current slider values
+      onChange({ budget: encodeBudgetRange(budgetMin, budgetMax) });
+    } else {
+      // Switch to preset mode (default to empty or 'standard' if needed, but let user pick)
+      onChange({ budget: "" });
+    }
+  };
+
   // Sync local date state when input changes externally
   useEffect(() => {
     const match = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
@@ -272,7 +346,7 @@ export default function SimplifiedInputFlow({
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
 
-  const hasPhase3Input = (input.mustVisitPlaces?.length ?? 0) > 0 || !!input.freeText;
+  const hasPhase3Input = (input.mustVisitPlaces?.length ?? 0) > 0 || !!input.freeText || (input.preferredTransport?.length ?? 0) > 0;
 
   const hasDetailedInput = input.theme.length > 0 ||
                          !!input.budget ||
@@ -288,7 +362,7 @@ export default function SimplifiedInputFlow({
     input.theme.length > 0 && !!input.budget && !!input.pace;
 
   const isPhase3Complete =
-    input.hasMustVisitPlaces !== undefined;
+    input.hasMustVisitPlaces !== undefined || (input.preferredTransport?.length ?? 0) > 0;
 
   // Handlers
   const handleDestinationKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -314,7 +388,9 @@ export default function SimplifiedInputFlow({
   const handleGenerateClick = () => {
     // Scroll to top to ensure loading animation is visible
     // Modified to scroll to the container instead of window top
-    containerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (containerRef.current?.scrollIntoView) {
+      containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 
     // Handle "Undecided" date logic for Calendar Mode
     // If in calendar mode and dates are missing, explicitly set dates to "未定"
@@ -412,6 +488,15 @@ export default function SimplifiedInputFlow({
     }
   };
 
+  const toggleTransport = (transportId: string) => {
+    const current = input.preferredTransport || [];
+    if (current.includes(transportId)) {
+      onChange({ preferredTransport: current.filter(t => t !== transportId) });
+    } else {
+      onChange({ preferredTransport: [...current, transportId] });
+    }
+  };
+
   const addPlace = () => {
     const trimmed = placeInput.trim();
     if (trimmed) {
@@ -430,6 +515,10 @@ export default function SimplifiedInputFlow({
       hasMustVisitPlaces: newPlaces.length > 0 ? true : input.hasMustVisitPlaces,
     });
   };
+
+  // Calculate percentages for slider visualization
+  const minPercent = ((budgetMin - budgetConfig.min) / (budgetConfig.max - budgetConfig.min)) * 100;
+  const maxPercent = ((budgetMax - budgetConfig.min) / (budgetConfig.max - budgetConfig.min)) * 100;
 
   return (
     <div
@@ -642,7 +731,7 @@ export default function SimplifiedInputFlow({
           </div>
 
           {useCalendar ? (
-            <div className="bg-stone-50 p-4 rounded-xl border border-stone-200 space-y-4">
+            <div className="bg-orange-50/50 p-4 rounded-xl border-2 border-dashed border-primary/20 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
                         <span className="text-xs font-bold text-stone-500">出発日</span>
@@ -661,7 +750,7 @@ export default function SimplifiedInputFlow({
                                     handleDateRangeChange(newStart, endDate);
                                 }
                             }}
-                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none shadow-sm"
                         />
                     </div>
                     <div className="space-y-1">
@@ -671,17 +760,17 @@ export default function SimplifiedInputFlow({
                             value={endDate}
                             min={startDate || new Date().toISOString().split('T')[0]}
                             onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
-                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                            className="w-full p-2 bg-white border border-stone-300 rounded-lg text-sm font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none shadow-sm"
                         />
                     </div>
                 </div>
                 <div className="text-center">
                     {startDate && endDate ? (
-                        <p className="text-sm font-bold text-stone-700 bg-white inline-block px-4 py-1 rounded-full border border-stone-200 shadow-sm">
+                        <p className="text-sm font-bold text-primary bg-white inline-block px-4 py-1.5 rounded-full border border-primary/20 shadow-sm">
                            🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
                         </p>
                     ) : (
-                        <p className="text-xs text-stone-400">日付を選択してください</p>
+                        <p className="text-xs text-stone-400 font-medium">日付を選択してください</p>
                     )}
                 </div>
             </div>
@@ -802,23 +891,98 @@ export default function SimplifiedInputFlow({
             <label className="block text-sm font-bold text-stone-700">
               予算感
             </label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              {BUDGET_OPTIONS.map((opt) => (
+
+            {/* Mode Switch (Slider vs Presets) */}
+            {!useBudgetSlider ? (
+              <div className="space-y-3">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                  {BUDGET_PRESETS.map((opt) => (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => onChange({ budget: opt.id })}
+                      className={`py-3 px-3 text-sm font-medium rounded-lg border-2 transition-all flex flex-col items-center justify-center gap-1 h-24 ${
+                        input.budget === opt.id
+                          ? "border-primary bg-primary/5 text-primary"
+                          : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
+                      }`}
+                    >
+                      <span className="text-xl">{opt.icon}</span>
+                      <span className="font-bold">{opt.label}</span>
+                      <span className="text-[10px] text-stone-500 font-normal">{opt.desc}</span>
+                    </button>
+                  ))}
+                </div>
                 <button
-                  key={opt.id}
                   type="button"
-                  onClick={() => onChange({ budget: opt.id })}
-                  className={`py-3 px-3 text-sm font-medium rounded-lg border-2 transition-all flex items-center justify-center gap-2 ${
-                    input.budget === opt.id
-                      ? "border-primary bg-primary/5 text-primary"
-                      : "border-stone-200 bg-white hover:border-primary/50 text-stone-700"
-                  }`}
+                  onClick={() => toggleBudgetSlider(true)}
+                  className="w-full py-2 text-xs text-stone-500 hover:text-primary underline flex items-center justify-center gap-1"
                 >
-                  <span>{opt.icon}</span>
-                  <span>{opt.label}</span>
+                  <span>🎚️</span>
+                  <span>具体的な金額で指定する</span>
                 </button>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-bold text-stone-500">金額範囲を指定</span>
+                  <button
+                    type="button"
+                    onClick={() => toggleBudgetSlider(false)}
+                    className="text-xs text-stone-400 hover:text-stone-600 underline"
+                  >
+                    選択式に戻す
+                  </button>
+                </div>
+
+                <div className="text-center">
+                  <span className="text-xl font-bold text-primary font-mono">
+                    {formatBudget(budgetMin)} 〜 {formatBudget(budgetMax)}
+                  </span>
+                </div>
+
+                {/* Slider UI */}
+                <div className="relative pt-2 pb-6 px-2">
+                   <div className="relative h-2 bg-stone-200 rounded-full">
+                     <div
+                        className="absolute h-full bg-gradient-to-r from-primary to-amber-400 rounded-full"
+                        style={{
+                          left: `${minPercent}%`,
+                          width: `${maxPercent - minPercent}%`,
+                        }}
+                     />
+                   </div>
+                   {/* Inputs */}
+                   <input
+                      type="range"
+                      min={budgetConfig.min}
+                      max={budgetConfig.max}
+                      step={budgetConfig.step}
+                      value={budgetMin}
+                      onChange={(e) => handleBudgetMinChange(Number(e.target.value))}
+                      className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
+                   />
+                   <input
+                      type="range"
+                      min={budgetConfig.min}
+                      max={budgetConfig.max}
+                      step={budgetConfig.step}
+                      value={budgetMax}
+                      onChange={(e) => handleBudgetMaxChange(Number(e.target.value))}
+                      className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
+                   />
+                   {/* Thumb Indicators */}
+                   <div
+                      className="absolute w-5 h-5 bg-white border-2 border-primary rounded-full shadow-md -translate-x-1/2 z-10 top-0.5 pointer-events-none"
+                      style={{ left: `${minPercent}%` }}
+                   />
+                   <div
+                      className="absolute w-5 h-5 bg-white border-2 border-primary rounded-full shadow-md -translate-x-1/2 z-10 top-0.5 pointer-events-none"
+                      style={{ left: `${maxPercent}%` }}
+                   />
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Pace Selection */}
@@ -861,6 +1025,35 @@ export default function SimplifiedInputFlow({
         icon={<span className="text-xs">3</span>}
       >
         <div className="space-y-6">
+          {/* Preferred Transport */}
+          <div className="space-y-3">
+             <label className="block text-sm font-bold text-stone-700">
+                希望する移動手段（複数選択可）
+             </label>
+             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {TRANSPORT_OPTIONS.map((opt) => {
+                   const isSelected = input.preferredTransport?.includes(opt.id) || false;
+                   const Icon = opt.icon;
+                   return (
+                      <button
+                         key={opt.id}
+                         type="button"
+                         onClick={() => toggleTransport(opt.id)}
+                         className={`py-2 px-3 text-xs font-medium rounded-lg border-2 transition-all flex items-center gap-2 ${
+                            isSelected
+                               ? "border-sky-500 bg-sky-50 text-sky-700"
+                               : "border-stone-200 bg-white hover:border-sky-300 text-stone-600"
+                         }`}
+                      >
+                         <Icon />
+                         <span>{opt.label}</span>
+                         {isSelected && <Check className="w-3 h-3 ml-auto" />}
+                      </button>
+                   );
+                })}
+             </div>
+          </div>
+
           {/* Must-Visit Places */}
           <div className="space-y-3">
             <label className="block text-sm font-bold text-stone-700">

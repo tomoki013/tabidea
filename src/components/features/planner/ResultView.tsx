@@ -4,17 +4,19 @@ import { Itinerary, UserInput } from '@/types';
 import Image from "next/image";
 import TravelPlannerChat from "@/components/TravelPlannerChat";
 import ShareButtons from "@/components/ShareButtons";
-import PDFDownloadButton from "./PDFDownloadButton";
+import PDFExportButton from "./PDFExportButton";
 import RequestSummary from "./RequestSummary";
 import CalendarExportButton from "./CalendarExportButton";
 import CostEstimate from "./CostEstimate";
 import BookingLinkButton from "./BookingLinkButton";
 import DayMap from "./DayMap";
 import { PackingListView } from "./PackingList";
+import { getStorageKey } from "./PackingList/PackingListView";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
 import { getActivityIcon, groupActivitiesByTimePeriod } from "@/lib/utils/activity-icon";
+import type { PackingList } from "@/types/packing-list";
 import {
   FaMapMarkerAlt,
   FaClock,
@@ -85,13 +87,54 @@ export default function ResultView({
   const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
   const tabBarRef = useRef<HTMLDivElement>(null);
 
+  // Packing List State (Lifted for PDF Export)
+  const [packingList, setPackingList] = useState<PackingList | null>(null);
+
+  // Load packing list on mount
+  useEffect(() => {
+    // Only load if browser side
+    if (typeof window !== 'undefined') {
+      const key = getStorageKey(planId, result.destination);
+      try {
+        const stored = localStorage.getItem(key);
+        if (stored) {
+          setPackingList(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.error("Failed to load packing list", e);
+      }
+    }
+  }, [planId, result.destination]);
+
+  const handlePackingListChange = useCallback((list: PackingList) => {
+    setPackingList(list);
+    // Note: LocalStorage update is handled within PackingListView or here?
+    // Since PackingListView handles its own persistence when generating,
+    // and we're controlling it now, we should ensure it persists.
+    // However, PackingListView's handleGenerate updates localStorage too.
+    // So we just update state.
+  }, []);
+
   const handleTabSwitch = useCallback((tab: 'plan' | 'info' | 'packing') => {
     setActiveTab(tab);
     // Scroll to tab content area with offset for sticky header
     if (tabBarRef.current) {
-      const offset = 120; // account for sticky header
-      const top = tabBarRef.current.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: 'smooth' });
+      // Calculate offset based on sticky header (approx 24-28 rem units + tab bar)
+      // Header is usually around 64px + TabBar around 60px.
+      // The tabBar is sticky at top-24 (96px) or top-28 (112px).
+      // We want to scroll so the content starts right below the sticky tabs.
+      const stickyOffset = 112; // md:top-28 = 7rem = 112px
+      const rect = tabBarRef.current.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const elementTop = rect.top + scrollTop;
+
+      // Target position: Element Top - Sticky Offset
+      const targetY = elementTop - stickyOffset;
+
+      // Only scroll if we are below the target (scrolling UP to content start)
+      // or if we are way above? Usually tab switch implies focus on content.
+      // Let's just scroll to alignment.
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
     }
   }, []);
 
@@ -528,7 +571,7 @@ export default function ResultView({
         {/* Share Buttons, PDF Download, Calendar Export */}
         <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 mt-6 flex-wrap">
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
-          <PDFDownloadButton itinerary={result} />
+          <PDFExportButton itinerary={result} packingList={packingList} />
           <CalendarExportButton itinerary={result} dates={input.dates} />
         </div>
       </div>
@@ -1112,6 +1155,8 @@ export default function ResultView({
               budget={input.budget}
               region={input.region}
               planId={planId}
+              packingList={packingList}
+              onPackingListChange={handlePackingListChange}
             />
           </motion.div>
         </div>

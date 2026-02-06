@@ -218,6 +218,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         ${budgetPrompt}
         Pace: ${input.pace}
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
 
         ${transitSchedule}
@@ -251,6 +252,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         ${budgetPrompt}
         Pace: ${input.pace}
         Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
         Note: ${input.freeText || "None"}
 
         ${transitSchedule}

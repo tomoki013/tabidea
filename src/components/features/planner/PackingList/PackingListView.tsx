@@ -27,13 +27,16 @@ interface PackingListViewProps {
   budget: string;
   region: string;
   planId?: string;
+  // Controlled props
+  packingList?: PackingList | null;
+  onPackingListChange?: (list: PackingList) => void;
 }
 
 // ============================================================================
 // Helpers
 // ============================================================================
 
-function getStorageKey(planId?: string, destination?: string): string {
+export function getStorageKey(planId?: string, destination?: string): string {
   const id = planId || destination || "default";
   return `packingList:${id}`;
 }
@@ -157,8 +160,12 @@ export default function PackingListView({
   budget,
   region,
   planId,
+  packingList: controlledList,
+  onPackingListChange,
 }: PackingListViewProps) {
-  const [packingList, setPackingList] = useState<PackingList | null>(() => {
+  // Only initialize from localStorage if NOT controlled
+  const [internalList, setInternalList] = useState<PackingList | null>(() => {
+    if (controlledList !== undefined) return null;
     if (typeof window === "undefined") return null;
     try {
       const stored = localStorage.getItem(getStorageKey(planId, destination));
@@ -167,6 +174,9 @@ export default function PackingListView({
       return null;
     }
   });
+
+  const packingList = controlledList !== undefined ? controlledList : internalList;
+
   const [checkedItems, setCheckedItems] = useState<Set<string>>(() => {
     if (typeof window === "undefined") return new Set();
     try {
@@ -224,7 +234,11 @@ export default function PackingListView({
     });
 
     if (result.success && result.data) {
-      setPackingList(result.data);
+      if (onPackingListChange) {
+        onPackingListChange(result.data);
+      } else {
+        setInternalList(result.data);
+      }
       setCheckedItems(new Set());
       try {
         localStorage.setItem(
