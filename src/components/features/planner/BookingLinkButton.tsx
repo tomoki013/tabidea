@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ChevronDown, ExternalLink, Info } from "lucide-react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 import {
   generateBookingLinks,
   type BookingType,
@@ -71,11 +71,11 @@ export default function BookingLinkButton({
         target="_blank"
         rel="noopener noreferrer sponsored"
         onClick={(e) => handleLinkClick(link, e)}
-        className={`inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors text-sm font-medium border border-primary/20 ${className}`}
+        className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md ${className}`}
       >
-        <span>{bookingResult.icon}</span>
+        <span className="text-base">{bookingResult.icon}</span>
         <span>{displayLabel}</span>
-        <ExternalLink className="w-3.5 h-3.5" />
+        <ExternalLink className="w-3.5 h-3.5 text-stone-400" />
       </a>
     );
   }
@@ -87,31 +87,25 @@ export default function BookingLinkButton({
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-lg hover:bg-primary/20 transition-colors text-sm font-medium border border-primary/20"
+        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md w-full"
       >
-        <span>{bookingResult.icon}</span>
+        <span className="text-base">{bookingResult.icon}</span>
         <span>{displayLabel}</span>
         <ChevronDown
-          className={`w-3.5 h-3.5 transition-transform ${isOpen ? "rotate-180" : ""}`}
+          className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen && (
         <>
           <div
-            className="fixed inset-0 z-10"
+            className="fixed inset-0 z-40"
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
           />
-          <div className="absolute top-full left-0 mt-1 bg-white rounded-xl shadow-lg border border-stone-200 overflow-hidden z-20 min-w-[200px]">
-            {/* PR disclosure */}
-            <div className="flex items-center gap-1.5 px-4 py-2 text-[11px] text-stone-400 bg-stone-50 border-b border-stone-100">
-              <Info className="w-3 h-3" />
-              <span>PR: 以下は広告リンクです</span>
-            </div>
-
+          <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[200px]">
             {bookingResult.links.map((link) => (
               <a
                 key={link.service + link.displayName}
@@ -119,11 +113,11 @@ export default function BookingLinkButton({
                 target="_blank"
                 rel="noopener noreferrer sponsored"
                 onClick={(e) => handleLinkClick(link, e)}
-                className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0"
+                className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 last:border-b-0 group"
               >
-                <span className="text-lg">{link.icon}</span>
-                <span className="font-medium">{link.displayName}</span>
-                <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-400" />
+                <span className="text-base">{link.icon}</span>
+                <span className="font-medium group-hover:text-primary transition-colors">{link.displayName}</span>
+                <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-300 group-hover:text-primary/60 transition-colors" />
               </a>
             ))}
           </div>

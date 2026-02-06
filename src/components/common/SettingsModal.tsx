@@ -114,7 +114,15 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const handleManageSubscription = async () => {
     setIsRedirectingToPortal(true);
     try {
-      await createPortalSession();
+      const result = await createPortalSession();
+      if (result.success && result.url) {
+        window.location.href = result.url;
+      } else if (result.error === 'not_authenticated') {
+        window.location.href = '/auth/login?redirect=/pricing';
+      } else {
+        console.error("Portal session error:", result.error);
+        setIsRedirectingToPortal(false);
+      }
     } catch (e) {
       console.error("Failed to open portal:", e);
       setIsRedirectingToPortal(false);

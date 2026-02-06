@@ -136,35 +136,37 @@ export default function CalendarExportButton({
             e.stopPropagation();
             setIsOpen(!isOpen);
           }}
-          className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-colors text-sm font-medium border border-stone-200 shadow-sm"
+          className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md"
         >
           <Calendar className="w-4 h-4 text-primary" />
           <span>カレンダーに追加</span>
           <ChevronDown
-            className={`w-3.5 h-3.5 text-stone-400 transition-transform ${isOpen ? "rotate-180" : ""}`}
+            className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           />
         </button>
 
         {isOpen && (
           <>
             <div
-              className="fixed inset-0 z-10"
+              className="fixed inset-0 z-40"
               onClick={(e) => {
                 e.stopPropagation();
                 setIsOpen(false);
               }}
             />
-            <div className="absolute top-full right-0 mt-1 bg-white rounded-xl shadow-lg border border-stone-200 overflow-hidden z-20 min-w-[220px]">
+            <div className="absolute top-full right-0 mt-2 bg-white rounded-xl shadow-xl border border-stone-200/80 overflow-hidden z-50 min-w-[240px]">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handleAction("ics");
                 }}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100"
+                className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 border-b border-stone-100 group"
               >
-                <Download className="w-4 h-4 text-stone-500" />
+                <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <Download className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
+                </div>
                 <div className="text-left">
-                  <div className="font-medium">.ics ファイル</div>
+                  <div className="font-medium group-hover:text-primary transition-colors">.ics ファイル</div>
                   <div className="text-[11px] text-stone-400">
                     Apple / Outlook カレンダー
                   </div>
@@ -175,11 +177,13 @@ export default function CalendarExportButton({
                   e.stopPropagation();
                   handleAction("google");
                 }}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-stone-50 transition-colors text-sm text-stone-700"
+                className="flex items-center gap-3 w-full px-4 py-3.5 hover:bg-stone-50 transition-colors text-sm text-stone-700 group"
               >
-                <ExternalLink className="w-4 h-4 text-stone-500" />
+                <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                  <ExternalLink className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
+                </div>
                 <div className="text-left">
-                  <div className="font-medium">Google カレンダー</div>
+                  <div className="font-medium group-hover:text-primary transition-colors">Google カレンダー</div>
                   <div className="text-[11px] text-stone-400">
                     ブラウザで追加
                   </div>

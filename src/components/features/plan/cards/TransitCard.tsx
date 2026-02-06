@@ -13,7 +13,6 @@ import {
   Lock,
   Unlock,
   ExternalLink,
-  Info,
 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { TransitInfo, TransitType } from "@/types";
@@ -216,12 +215,6 @@ export default function TransitCard({
         {/* Flight Affiliate Links */}
         {transit.type === "flight" && flightLinks.length > 0 && !transit.isBooked && (
           <div className="pt-2 space-y-3 border-t border-stone-100">
-            {/* PR disclosure */}
-            <div className="flex items-center gap-1.5 text-xs text-stone-400">
-              <Info className="w-3 h-3" />
-              <span>PR: 以下は広告リンクです</span>
-            </div>
-
             {/* Flight Search Button */}
             <a
               href={flightLinks[0].url}

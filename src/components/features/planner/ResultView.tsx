@@ -918,9 +918,48 @@ export default function ResultView({
                         label="体験を予約"
                       />
                     </div>
-                    <p className="text-[11px] text-stone-400 mt-3 flex items-center gap-1">
-                      PR: 上記リンクにはアフィリエイトリンクが含まれる場合があります
-                    </p>
+                  </div>
+                )}
+
+                {/* Trust Badge Legend & Affiliate Disclaimer */}
+                {!isEditing && (
+                  <div className="mt-4 space-y-4">
+                    {/* Trust Badge Legend */}
+                    <div className="bg-stone-50 rounded-xl p-4 border border-stone-200">
+                      <h4 className="text-xs font-bold text-stone-500 uppercase tracking-wider mb-3">
+                        信頼性アイコンについて
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-stone-600">
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-full border bg-green-50 text-green-700 border-green-200 text-[10px] font-medium gap-1">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                            検証済み
+                          </span>
+                          <span>Google Places等で存在を確認済み</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-full border bg-blue-50 text-blue-700 border-blue-200 text-[10px] font-medium gap-1">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" /></svg>
+                            AI生成
+                          </span>
+                          <span>AIが生成した情報（未検証）</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-flex items-center px-1.5 py-0.5 rounded-full border bg-amber-50 text-amber-700 border-amber-200 text-[10px] font-medium gap-1">
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" /></svg>
+                            要確認
+                          </span>
+                          <span>存在が不確かな場合があります</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Affiliate Disclaimer */}
+                    <div className="text-xs text-stone-400 leading-relaxed bg-stone-50/50 rounded-lg px-4 py-3 border border-stone-100">
+                      <p>
+                        このページには広告・アフィリエイトリンクが含まれる場合があります。リンク先での購入により、当サイトが報酬を得る場合があります。ご利用者様の追加負担はありません。
+                      </p>
+                    </div>
                   </div>
                 )}
 

@@ -76,7 +76,14 @@ export function PricingPageClient({
   const handleManageSubscription = async () => {
     setIsLoading("manage");
     try {
-      await createPortalSession();
+      const result = await createPortalSession();
+      if (result.success && result.url) {
+        window.location.href = result.url;
+      } else if (result.error === 'not_authenticated') {
+        router.push("/auth/login?redirect=/pricing");
+      } else {
+        setError("ポータルの読み込みに失敗しました。");
+      }
     } catch (err) {
       console.error("Portal error:", err);
       setError("ポータルの読み込みに失敗しました。");

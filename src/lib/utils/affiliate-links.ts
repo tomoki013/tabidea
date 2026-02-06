@@ -77,6 +77,8 @@ export interface AffiliateLink {
   icon: string;
   /** 優先度（低いほど上に表示） */
   priority: number;
+  /** アフィリエイトIDが設定済みかどうか */
+  isAffiliate: boolean;
 }
 
 // ============================================
@@ -203,14 +205,13 @@ function encode(str: string): string {
 /**
  * 楽天トラベルのリンクを生成
  */
-function generateRakutenTravelLink(params: HotelSearchParams): string {
+function generateRakutenTravelLink(params: HotelSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_RAKUTEN_AFFILIATE_ID || '';
 
   const baseUrl = 'https://travel.rakuten.co.jp/hotel/search/';
 
   const queryParams = new URLSearchParams({
     f_keyword: params.destination,
-    f_teikei: affiliateId ? '1' : '0',
   });
 
   if (params.checkIn) {
@@ -226,19 +227,23 @@ function generateRakutenTravelLink(params: HotelSearchParams): string {
     queryParams.set('f_room_num', params.rooms.toString());
   }
 
-  // アフィリエイトラッパー
+  const searchUrl = `${baseUrl}?${queryParams.toString()}`;
+
+  // アフィリエイトIDが設定されている場合のみラッパーURLを使用
   if (affiliateId) {
-    const targetUrl = `${baseUrl}?${queryParams.toString()}`;
-    return `https://hb.afl.rakuten.co.jp/hgc/${affiliateId}/?pc=${encode(targetUrl)}`;
+    return {
+      url: `https://hb.afl.rakuten.co.jp/hgc/${affiliateId}/?pc=${encode(searchUrl)}`,
+      isAffiliate: true,
+    };
   }
 
-  return `${baseUrl}?${queryParams.toString()}`;
+  return { url: searchUrl, isAffiliate: false };
 }
 
 /**
  * Booking.comのリンクを生成
  */
-function generateBookingComLink(params: HotelSearchParams): string {
+function generateBookingComLink(params: HotelSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_BOOKING_AFFILIATE_ID || '';
 
   const baseUrl = 'https://www.booking.com/searchresults.ja.html';
@@ -269,13 +274,13 @@ function generateBookingComLink(params: HotelSearchParams): string {
     queryParams.set('aid', affiliateId);
   }
 
-  return `${baseUrl}?${queryParams.toString()}`;
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
 }
 
 /**
  * じゃらんのリンクを生成
  */
-function generateJalanLink(params: HotelSearchParams): string {
+function generateJalanLink(params: HotelSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_JALAN_AFFILIATE_ID || '';
 
   const baseUrl = 'https://www.jalan.net/yad/search_yad.html';
@@ -297,19 +302,23 @@ function generateJalanLink(params: HotelSearchParams): string {
     queryParams.set('roomCount', params.rooms.toString());
   }
 
-  // アフィリエイトラッパー
+  const searchUrl = `${baseUrl}?${queryParams.toString()}`;
+
+  // アフィリエイトIDが設定されている場合のみラッパーURLを使用
   if (affiliateId) {
-    const targetUrl = `${baseUrl}?${queryParams.toString()}`;
-    return `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=${affiliateId}&pid=&vc_url=${encode(targetUrl)}`;
+    return {
+      url: `https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=${affiliateId}&pid=&vc_url=${encode(searchUrl)}`,
+      isAffiliate: true,
+    };
   }
 
-  return `${baseUrl}?${queryParams.toString()}`;
+  return { url: searchUrl, isAffiliate: false };
 }
 
 /**
  * スカイスキャナーのリンクを生成
  */
-function generateSkyscannerLink(params: FlightSearchParams): string {
+function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAffiliate: boolean } {
   const affiliateId = process.env.NEXT_PUBLIC_SKYSCANNER_AFFILIATE_ID || '';
 
   // スカイスキャナーの URL 形式: /transport/flights/{origin}/{destination}/{outbound}/{inbound}/
@@ -340,7 +349,7 @@ function generateSkyscannerLink(params: FlightSearchParams): string {
     queryParams.set('associateid', affiliateId);
   }
 
-  return `${path}?${queryParams.toString()}`;
+  return { url: `${path}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
 }
 
 // ============================================
@@ -362,42 +371,52 @@ export function generateHotelLinks(
 
   if (isDomestic) {
     // 国内旅行: 楽天、じゃらんを優先
+    const rakuten = generateRakutenTravelLink(params);
     links.push({
       service: 'rakuten_travel',
       displayName: SERVICE_DISPLAY_NAMES.rakuten_travel,
-      url: generateRakutenTravelLink(params),
+      url: rakuten.url,
       icon: SERVICE_ICONS.rakuten_travel,
       priority: 1,
+      isAffiliate: rakuten.isAffiliate,
     });
+    const jalan = generateJalanLink(params);
     links.push({
       service: 'jalan',
       displayName: SERVICE_DISPLAY_NAMES.jalan,
-      url: generateJalanLink(params),
+      url: jalan.url,
       icon: SERVICE_ICONS.jalan,
       priority: 2,
+      isAffiliate: jalan.isAffiliate,
     });
+    const booking = generateBookingComLink(params);
     links.push({
       service: 'booking_com',
       displayName: SERVICE_DISPLAY_NAMES.booking_com,
-      url: generateBookingComLink(params),
+      url: booking.url,
       icon: SERVICE_ICONS.booking_com,
       priority: 3,
+      isAffiliate: booking.isAffiliate,
     });
   } else {
     // 海外旅行: Booking.com を優先
+    const booking = generateBookingComLink(params);
     links.push({
       service: 'booking_com',
       displayName: SERVICE_DISPLAY_NAMES.booking_com,
-      url: generateBookingComLink(params),
+      url: booking.url,
       icon: SERVICE_ICONS.booking_com,
       priority: 1,
+      isAffiliate: booking.isAffiliate,
     });
+    const rakuten = generateRakutenTravelLink(params);
     links.push({
       service: 'rakuten_travel',
       displayName: SERVICE_DISPLAY_NAMES.rakuten_travel,
-      url: generateRakutenTravelLink(params),
+      url: rakuten.url,
       icon: SERVICE_ICONS.rakuten_travel,
       priority: 2,
+      isAffiliate: rakuten.isAffiliate,
     });
   }
 
@@ -410,15 +429,24 @@ export function generateHotelLinks(
 export function generateFlightLinks(
   params: FlightSearchParams
 ): AffiliateLink[] {
+  const skyscanner = generateSkyscannerLink(params);
   return [
     {
       service: 'skyscanner',
       displayName: SERVICE_DISPLAY_NAMES.skyscanner,
-      url: generateSkyscannerLink(params),
+      url: skyscanner.url,
       icon: SERVICE_ICONS.skyscanner,
       priority: 1,
+      isAffiliate: skyscanner.isAffiliate,
     },
   ];
+}
+
+/**
+ * リンクリストにアフィリエイトリンクが含まれるかどうか
+ */
+export function hasAffiliateLinks(links: AffiliateLink[]): boolean {
+  return links.some((link) => link.isAffiliate);
 }
 
 /**
