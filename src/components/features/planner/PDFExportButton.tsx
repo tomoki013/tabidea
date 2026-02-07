@@ -35,6 +35,7 @@ export default function PDFExportButton({
   const [pdfBlobUrl, setPdfBlobUrl] = useState<string | null>(null);
   const [pdfBlob, setPdfBlob] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [canShare, setCanShare] = useState(false);
 
   const filename = generatePdfFilename(itinerary);
 
@@ -65,6 +66,11 @@ export default function PDFExportButton({
     return false;
   }, []);
 
+  // Initialize share capability on mount
+  useEffect(() => {
+    setCanShare(canUseWebShare());
+  }, [canUseWebShare]);
+
   // Handle mobile share via Web Share API
   const handleMobileShare = useCallback(
     async (blob: Blob) => {
@@ -90,8 +96,8 @@ export default function PDFExportButton({
     [filename, itinerary.destination]
   );
 
-  // Handle desktop modal preview
-  const handleDesktopPreview = useCallback((blob: Blob) => {
+  // Handle showing preview modal (renamed from handleDesktopPreview for clarity)
+  const handleShowPreview = useCallback((blob: Blob) => {
     // Revoke previous URL if exists
     if (pdfBlobUrl) {
       URL.revokeObjectURL(pdfBlobUrl);
@@ -128,13 +134,9 @@ export default function PDFExportButton({
       // Close settings modal
       setIsSettingsModalOpen(false);
 
-      if (canUseWebShare()) {
-        // Mobile: Use Web Share API
-        await handleMobileShare(blob);
-      } else {
-        // Desktop/Tablet: Show modal with preview
-        handleDesktopPreview(blob);
-      }
+      // Always show preview modal (which handles sharing flow if enabled)
+      handleShowPreview(blob);
+
     } catch (err) {
       console.error("PDF generation failed:", err);
       const errorMessage =
@@ -146,7 +148,7 @@ export default function PDFExportButton({
     } finally {
       setIsGenerating(false);
     }
-  }, [itinerary, canUseWebShare, handleMobileShare, handleDesktopPreview]);
+  }, [itinerary, handleShowPreview]);
 
   // Handle download from modal
   const handleDownload = useCallback(() => {
@@ -154,6 +156,13 @@ export default function PDFExportButton({
       downloadBlob(pdfBlob, filename);
     }
   }, [pdfBlob, filename]);
+
+  // Wrapper for share action from modal
+  const handleShareAction = useCallback(() => {
+    if (pdfBlob) {
+      handleMobileShare(pdfBlob);
+    }
+  }, [pdfBlob, handleMobileShare]);
 
   // Handle preview modal close
   const handleClosePreviewModal = useCallback(() => {
@@ -217,6 +226,8 @@ export default function PDFExportButton({
         pdfBlobUrl={pdfBlobUrl}
         filename={filename}
         onDownload={handleDownload}
+        onShare={canShare ? handleShareAction : undefined}
+        enablePreview={!canShare}
       />
     </>
   );
