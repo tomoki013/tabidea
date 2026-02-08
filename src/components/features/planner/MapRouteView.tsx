@@ -1,14 +1,14 @@
 "use client";
 
-import { useMemo, useState, useCallback } from "react";
+import { useMemo, useState, useCallback, useEffect } from "react";
 import {
   APIProvider,
-  Map,
+  Map as GoogleMap,
   AdvancedMarker,
   Pin,
   useMap,
 } from "@vis.gl/react-google-maps";
-import type { DayPlan, Activity } from "@/types";
+import type { DayPlan } from "@/types";
 import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
 import { FaMapMarkedAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
 
@@ -57,6 +57,9 @@ function getDayColor(dayIndex: number) {
 // Route Line Component
 // ============================================================================
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type MapWithRouteLines = { __routeLines?: any[] };
+
 function RouteLines({
   markers,
   selectedDay,
@@ -66,13 +69,17 @@ function RouteLines({
 }) {
   const map = useMap();
 
-  useMemo(() => {
+  useEffect(() => {
     if (!map) return;
+    // Wait for google.maps to be available
+    if (typeof window === 'undefined' || !('google' in window)) return;
+
+    const gMaps = (window as unknown as { google: { maps: { Polyline: new (opts: unknown) => { setMap: (m: unknown) => void } } } }).google.maps;
 
     // Clear existing polylines
-    const existingOverlays = (map as unknown as { __routeLines?: google.maps.Polyline[] }).__routeLines;
-    if (existingOverlays) {
-      existingOverlays.forEach((line) => line.setMap(null));
+    const mapWithLines = map as unknown as MapWithRouteLines;
+    if (mapWithLines.__routeLines) {
+      mapWithLines.__routeLines.forEach((line) => line.setMap(null));
     }
 
     // Group markers by day
@@ -83,7 +90,8 @@ function RouteLines({
       dayGroups.set(marker.dayNumber, group);
     }
 
-    const lines: google.maps.Polyline[] = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const lines: any[] = [];
 
     dayGroups.forEach((dayMarkers, dayNum) => {
       if (selectedDay !== null && selectedDay !== dayNum) return;
@@ -92,7 +100,7 @@ function RouteLines({
       const color = getDayColor(dayNum - 1);
       const path = dayMarkers.map((m) => m.position);
 
-      const polyline = new google.maps.Polyline({
+      const polyline = new gMaps.Polyline({
         path,
         geodesic: true,
         strokeColor: color.bg,
@@ -104,7 +112,11 @@ function RouteLines({
       lines.push(polyline);
     });
 
-    (map as unknown as { __routeLines: google.maps.Polyline[] }).__routeLines = lines;
+    mapWithLines.__routeLines = lines;
+
+    return () => {
+      lines.forEach((line) => line.setMap(null));
+    };
   }, [map, markers, selectedDay]);
 
   return null;
@@ -256,7 +268,7 @@ export default function MapRouteView({
           {/* Map */}
           <APIProvider apiKey={apiKey}>
             <div className="relative w-full h-64 sm:h-80 md:h-96">
-              <Map
+              <GoogleMap
                 defaultCenter={center}
                 defaultZoom={zoom}
                 gestureHandling="cooperative"
@@ -283,7 +295,7 @@ export default function MapRouteView({
                   );
                 })}
                 <RouteLines markers={filteredMarkers} selectedDay={selectedDay} />
-              </Map>
+              </GoogleMap>
 
               {/* Legend */}
               <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50">
