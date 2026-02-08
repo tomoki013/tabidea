@@ -7,6 +7,7 @@ import {
   DayPlanArrayResponseSchema,
   ItinerarySchema,
   LegacyItineraryResponseSchema,
+  TransitInfoParsed,
 } from './schemas/itinerary-schemas';
 import {
   selectModel,
@@ -79,6 +80,87 @@ async function withRetry<T>(
   }
 
   throw lastError || new Error('Unknown error during retry');
+}
+
+/**
+ * Normalize TransitInfo departure/arrival if they are simple strings
+ */
+function normalizeTransitInfo(transit: any): TransitInfoParsed {
+  if (!transit) return transit;
+
+  const normalizeLocation = (loc: string | { place: string; time?: string }) => {
+    if (typeof loc === 'string') {
+      return { place: loc };
+    }
+    return loc;
+  };
+
+  return {
+    ...transit,
+    departure: normalizeLocation(transit.departure),
+    arrival: normalizeLocation(transit.arrival),
+  };
+}
+
+/**
+ * Normalize Activity source if it is a simple string
+ */
+function normalizeActivitySource(activity: any) {
+  if (!activity.source) return activity;
+
+  if (typeof activity.source === 'string') {
+    // If "ai_knowledge" or any other string, convert to object
+    if (activity.source === 'ai_knowledge') {
+      return {
+        ...activity,
+        source: { type: 'ai_knowledge', confidence: 'medium' }
+      };
+    }
+    // Default fallback
+    return {
+      ...activity,
+      source: { type: 'ai_knowledge', confidence: 'medium', title: activity.source }
+    };
+  }
+
+  return activity;
+}
+
+/**
+ * Post-process generated day plan to normalize data structures
+ */
+function normalizeDayPlan(day: DayPlan): DayPlan {
+  // Normalize main transit
+  let normalizedTransit = day.transit;
+  if (normalizedTransit) {
+    normalizedTransit = normalizeTransitInfo(normalizedTransit);
+  }
+
+  // Normalize activities source
+  const normalizedActivities = day.activities.map(normalizeActivitySource);
+
+  // Normalize timeline items
+  const normalizedTimelineItems = day.timelineItems?.map(item => {
+    if (item.itemType === 'transit') {
+      return {
+        ...item,
+        data: normalizeTransitInfo(item.data),
+      };
+    } else if (item.itemType === 'activity') {
+      return {
+        ...item,
+        data: normalizeActivitySource(item.data),
+      };
+    }
+    return item;
+  });
+
+  return {
+    ...day,
+    transit: normalizedTransit,
+    activities: normalizedActivities,
+    timelineItems: normalizedTimelineItems,
+  };
 }
 
 // ============================================
@@ -437,8 +519,8 @@ ${prompt}`;
          - If travel_method_to_next is specified in the outline for the PREVIOUS day, you MUST generate a "transit" object for this day.
          - The transit object should include:
            * type: Choose from "flight", "train", "bus", "ship", "car", "other" based on the travel_method_to_next description
-           * departure: Include the previous day's overnight_location and an appropriate departure time
-           * arrival: Include this day's starting location and an appropriate arrival time
+           * departure: Include the previous day's overnight_location and an appropriate departure time. Try to use an object { place: "...", time: "..." } but a string is acceptable if time is unknown.
+           * arrival: Include this day's starting location and an appropriate arrival time. Try to use an object { place: "...", time: "..." } but a string is acceptable if time is unknown.
            * duration: Calculate realistic travel duration
            * memo: Optional details like flight numbers, train names, etc.
          - Transit should appear at the BEGINNING of the day, before other activities.
@@ -498,6 +580,7 @@ ${prompt}`;
       - For example, if a train ride happens between two sightseeing spots, include it as a transit item.
       - Transit items should also have a "time" field for display.
       - This array allows the UI to render a unified chronological timeline.
+      - "source" field in Activity MUST be an object { type: "ai_knowledge", confidence: "medium" } if not from context.
     `;
 
     const systemInstruction = `${sandwichSystem}\n\n${detailInstructions}`;
@@ -517,8 +600,11 @@ ${prompt}`;
         return object;
       });
 
+      // Post-process to normalize any string fields that should be objects
+      const normalizedDays = result.days.map(normalizeDayPlan);
+
       // Ensure we just return the days array
-      return result.days as DayPlan[];
+      return normalizedDays as DayPlan[];
     } catch (error) {
       console.error(`[gemini] Detail generation failed for days ${startDay}-${endDay}:`, error);
       throw new Error(

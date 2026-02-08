@@ -18,16 +18,19 @@ export const TransitTypeSchema = z.enum([
   'other',
 ]);
 
+// 柔軟な出発・到着地スキーマ（文字列またはオブジェクト）
+const TransitLocationInputSchema = z.union([
+  z.string(),
+  z.object({
+    place: z.string(),
+    time: z.string().optional(),
+  }),
+]);
+
 export const TransitInfoSchema = z.object({
   type: TransitTypeSchema.describe('移動手段'),
-  departure: z.object({
-    place: z.string().describe('出発地'),
-    time: z.string().optional().describe('出発時刻（例: "09:00"）'),
-  }),
-  arrival: z.object({
-    place: z.string().describe('到着地'),
-    time: z.string().optional().describe('到着時刻（例: "12:30"）'),
-  }),
+  departure: TransitLocationInputSchema.describe('出発地（場所名または { place, time }）'),
+  arrival: TransitLocationInputSchema.describe('到着地（場所名または { place, time }）'),
   duration: z.string().optional().describe('所要時間（例: "3h 30m"）'),
   memo: z.string().optional().describe('メモ（便名など）'),
 });
@@ -36,12 +39,20 @@ export const TransitInfoSchema = z.object({
 // Activity スキーマ
 // ============================================
 
+export const ActivitySourceTypeSchema = z.enum(['blog', 'google_places', 'ai_knowledge', 'golden_plan']);
+
 export const ActivitySourceSchema = z.object({
-  type: z.enum(['blog', 'google_places', 'ai_knowledge', 'golden_plan']).describe('情報源の種類'),
+  type: ActivitySourceTypeSchema.describe('情報源の種類'),
   title: z.string().optional().describe('ブログ記事のタイトル（type: blog の場合）'),
   url: z.string().optional().describe('ブログ記事のURL（type: blog の場合）'),
   confidence: z.enum(['high', 'medium', 'low']).optional().describe('信頼度'),
 });
+
+// 柔軟なSourceスキーマ（文字列またはオブジェクト）
+const FlexibleSourceSchema = z.union([
+  z.string(), // "ai_knowledge" などの文字列を許容
+  ActivitySourceSchema,
+]);
 
 export const ActivitySchema = z.object({
   time: z.string().describe('時間（例: "10:00"）'),
@@ -49,7 +60,7 @@ export const ActivitySchema = z.object({
   description: z.string().describe('詳細な説明（1-2文）'),
   activityType: z.enum(['spot', 'transit', 'accommodation', 'meal', 'other']).optional().describe('アクティビティの種類: spot=観光地, transit=移動, accommodation=宿泊, meal=食事, other=その他'),
   locationEn: z.string().optional().describe('英語での場所名（例: "Aswan, Egypt"）。予約リンク生成に使用'),
-  source: ActivitySourceSchema.optional().describe('情報源（Citation）: CONTEXTから採用した場合はblog、AI知識はai_knowledge'),
+  source: FlexibleSourceSchema.optional().nullable().describe('情報源（Citation）: CONTEXTから採用した場合はblog、AI知識はai_knowledge'),
 });
 
 // ============================================
