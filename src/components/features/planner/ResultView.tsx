@@ -965,7 +965,7 @@ export default function ResultView({
                 ))}
 
                 {/* Full Trip Route Map */}
-                {!isEditing && displayResult.days.length > 1 && (
+                {!isEditing && displayResult.days.length >= 1 && (
                   <MapRouteView
                     days={displayResult.days}
                     destination={result.destination}
