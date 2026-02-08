@@ -107,14 +107,21 @@ function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
 }
 
 /**
- * Normalize Activity source if it is a simple string
+ * Normalize Activity source if it is a simple string or null
  */
 function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
-  // Base activity object with strict type cast (source handled separately)
+  // Base activity object with strict type cast
   const baseActivity = { ...activity } as any;
 
-  if (!activity.source) return baseActivity;
+  // Handle null explicitly: convert to undefined
+  if (activity.source === null || activity.source === undefined) {
+    return {
+      ...baseActivity,
+      source: undefined,
+    };
+  }
 
+  // Handle string
   if (typeof activity.source === 'string') {
     // If "ai_knowledge" or any other string, convert to object
     if (activity.source === 'ai_knowledge') {
@@ -130,10 +137,10 @@ function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
     };
   }
 
-  // Already an object
+  // Already an object (ActivitySource)
   return {
     ...baseActivity,
-    source: activity.source
+    source: activity.source,
   };
 }
 

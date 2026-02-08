@@ -68,13 +68,14 @@ export const ActivitySourceSchema = z.object({
 });
 
 // 厳格なスキーマ（出力用）
+// NOTE: source field must NOT be nullable to match application Activity type (undefined allowed, null not allowed)
 export const ActivityStrictSchema = z.object({
   time: z.string().describe('時間（例: "10:00"）'),
   activity: z.string().describe('アクティビティ名'),
   description: z.string().describe('詳細な説明（1-2文）'),
   activityType: z.enum(['spot', 'transit', 'accommodation', 'meal', 'other']).optional().describe('アクティビティの種類: spot=観光地, transit=移動, accommodation=宿泊, meal=食事, other=その他'),
   locationEn: z.string().optional().describe('英語での場所名（例: "Aswan, Egypt"）。予約リンク生成に使用'),
-  source: ActivitySourceSchema.optional().nullable().describe('情報源（Citation）'),
+  source: ActivitySourceSchema.optional().describe('情報源（Citation）'),
 });
 
 // 緩和されたスキーマ（入力用）
