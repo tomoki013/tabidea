@@ -1,12 +1,12 @@
 "use client";
 
-import { Check, Bot, AlertTriangle } from "lucide-react";
+import { Check, Bot, AlertTriangle, XCircle } from "lucide-react";
 
 // ============================================================================
 // Types
 // ============================================================================
 
-export type TrustLevel = "verified" | "ai_generated" | "needs_check";
+export type TrustLevel = "verified" | "ai_generated" | "needs_check" | "unverified";
 
 export interface TrustBadgeProps {
   /** Trust level to display */
@@ -57,6 +57,14 @@ const TRUST_CONFIG: Record<
     textColor: "text-amber-700",
     borderColor: "border-amber-200",
     tooltip: "存在が不確かな場合があります",
+  },
+  unverified: {
+    icon: XCircle,
+    label: "位置情報未確認",
+    bgColor: "bg-red-50",
+    textColor: "text-red-700",
+    borderColor: "border-red-200",
+    tooltip: "Google Placesで該当スポットが見つかりませんでした",
   },
 };
 

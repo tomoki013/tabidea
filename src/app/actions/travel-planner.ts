@@ -432,7 +432,7 @@ export async function autoVerifyItinerary(
       for (let i = 0; i < dayPlan.activities.length; i++) {
         const act = dayPlan.activities[i];
         const validation = validationMap.get(act.activity);
-        if (validation && !validation.isVerified && validation.confidence === 'low') {
+        if (validation && !validation.isVerified && (validation.confidence === 'low' || validation.confidence === 'unverified')) {
           failedSpots.push({
             day: dayPlan.day,
             activityIndex: i,
