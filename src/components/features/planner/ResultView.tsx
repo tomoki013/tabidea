@@ -10,6 +10,7 @@ import CalendarExportButton from "./CalendarExportButton";
 import CostEstimate from "./CostEstimate";
 import BookingLinkButton from "./BookingLinkButton";
 import DayMap from "./DayMap";
+import MapRouteView from "./MapRouteView";
 import { PackingListView } from "./PackingList";
 import { getStorageKey } from "./PackingList/PackingListView";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
@@ -962,6 +963,15 @@ export default function ResultView({
                     </div>
                   </div>
                 ))}
+
+                {/* Full Trip Route Map */}
+                {!isEditing && displayResult.days.length > 1 && (
+                  <MapRouteView
+                    days={displayResult.days}
+                    destination={result.destination}
+                    className="mt-4"
+                  />
+                )}
 
                 {/* Cost Estimate Section */}
                 {!isEditing && (

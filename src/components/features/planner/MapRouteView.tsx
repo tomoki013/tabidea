@@ -1,0 +1,302 @@
+"use client";
+
+import { useMemo, useState, useCallback } from "react";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  Pin,
+  useMap,
+} from "@vis.gl/react-google-maps";
+import type { DayPlan, Activity } from "@/types";
+import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
+import { FaMapMarkedAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
+
+// ============================================================================
+// Types
+// ============================================================================
+
+interface MapRouteViewProps {
+  /** All days in the itinerary */
+  days: DayPlan[];
+  /** Destination name for display */
+  destination: string;
+  /** Custom class name */
+  className?: string;
+}
+
+interface DayMarker {
+  position: { lat: number; lng: number };
+  label: string;
+  name: string;
+  dayNumber: number;
+  spotIndex: number;
+}
+
+// ============================================================================
+// Constants
+// ============================================================================
+
+/** Day colors for markers */
+const DAY_COLORS = [
+  { bg: "#e67e22", border: "#d35400" }, // Orange
+  { bg: "#3498db", border: "#2980b9" }, // Blue
+  { bg: "#2ecc71", border: "#27ae60" }, // Green
+  { bg: "#9b59b6", border: "#8e44ad" }, // Purple
+  { bg: "#e74c3c", border: "#c0392b" }, // Red
+  { bg: "#1abc9c", border: "#16a085" }, // Teal
+  { bg: "#f39c12", border: "#e67e22" }, // Yellow
+  { bg: "#34495e", border: "#2c3e50" }, // Dark
+];
+
+function getDayColor(dayIndex: number) {
+  return DAY_COLORS[dayIndex % DAY_COLORS.length];
+}
+
+// ============================================================================
+// Route Line Component
+// ============================================================================
+
+function RouteLines({
+  markers,
+  selectedDay,
+}: {
+  markers: DayMarker[];
+  selectedDay: number | null;
+}) {
+  const map = useMap();
+
+  useMemo(() => {
+    if (!map) return;
+
+    // Clear existing polylines
+    const existingOverlays = (map as unknown as { __routeLines?: google.maps.Polyline[] }).__routeLines;
+    if (existingOverlays) {
+      existingOverlays.forEach((line) => line.setMap(null));
+    }
+
+    // Group markers by day
+    const dayGroups = new Map<number, DayMarker[]>();
+    for (const marker of markers) {
+      const group = dayGroups.get(marker.dayNumber) || [];
+      group.push(marker);
+      dayGroups.set(marker.dayNumber, group);
+    }
+
+    const lines: google.maps.Polyline[] = [];
+
+    dayGroups.forEach((dayMarkers, dayNum) => {
+      if (selectedDay !== null && selectedDay !== dayNum) return;
+      if (dayMarkers.length < 2) return;
+
+      const color = getDayColor(dayNum - 1);
+      const path = dayMarkers.map((m) => m.position);
+
+      const polyline = new google.maps.Polyline({
+        path,
+        geodesic: true,
+        strokeColor: color.bg,
+        strokeOpacity: 0.7,
+        strokeWeight: 3,
+        map,
+      });
+
+      lines.push(polyline);
+    });
+
+    (map as unknown as { __routeLines: google.maps.Polyline[] }).__routeLines = lines;
+  }, [map, markers, selectedDay]);
+
+  return null;
+}
+
+// ============================================================================
+// Component
+// ============================================================================
+
+export default function MapRouteView({
+  days,
+  destination,
+  className = "",
+}: MapRouteViewProps) {
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Collect all markers from all days
+  const allMarkers: DayMarker[] = useMemo(() => {
+    const result: DayMarker[] = [];
+
+    for (const day of days) {
+      let spotIndex = 1;
+      for (const act of day.activities) {
+        if (shouldSkipPlacesSearch(act.activity, act.description, act.activityType)) {
+          continue;
+        }
+
+        const lat = act.validation?.details?.latitude;
+        const lng = act.validation?.details?.longitude;
+
+        if (lat && lng && lat !== 0 && lng !== 0) {
+          result.push({
+            position: { lat, lng },
+            label: String(spotIndex),
+            name: act.activity,
+            dayNumber: day.day,
+            spotIndex,
+          });
+          spotIndex++;
+        }
+      }
+    }
+
+    return result;
+  }, [days]);
+
+  // Filter markers by selected day
+  const filteredMarkers = useMemo(() => {
+    if (selectedDay === null) return allMarkers;
+    return allMarkers.filter((m) => m.dayNumber === selectedDay);
+  }, [allMarkers, selectedDay]);
+
+  // Calculate center
+  const center = useMemo(() => {
+    const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
+    if (markers.length === 0) return { lat: 35.6762, lng: 139.6503 }; // Default Tokyo
+    const avgLat = markers.reduce((sum, m) => sum + m.position.lat, 0) / markers.length;
+    const avgLng = markers.reduce((sum, m) => sum + m.position.lng, 0) / markers.length;
+    return { lat: avgLat, lng: avgLng };
+  }, [filteredMarkers, allMarkers]);
+
+  // Calculate zoom
+  const zoom = useMemo(() => {
+    const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
+    if (markers.length <= 1) return 13;
+
+    const lats = markers.map((m) => m.position.lat);
+    const lngs = markers.map((m) => m.position.lng);
+    const latSpread = Math.max(...lats) - Math.min(...lats);
+    const lngSpread = Math.max(...lngs) - Math.min(...lngs);
+    const maxSpread = Math.max(latSpread, lngSpread);
+
+    if (maxSpread > 10) return 4;
+    if (maxSpread > 5) return 6;
+    if (maxSpread > 2) return 8;
+    if (maxSpread > 1) return 10;
+    if (maxSpread > 0.5) return 11;
+    if (maxSpread > 0.1) return 13;
+    return 14;
+  }, [filteredMarkers, allMarkers]);
+
+  const handleDayFilter = useCallback((dayNum: number | null) => {
+    setSelectedDay((prev) => (prev === dayNum ? null : dayNum));
+  }, []);
+
+  // Don't render if no markers or no API key
+  if (!apiKey || allMarkers.length === 0) {
+    return null;
+  }
+
+  return (
+    <div className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white ${className}`}>
+      {/* Header */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-between px-4 py-3 bg-stone-50 hover:bg-stone-100 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <FaMapMarkedAlt className="text-primary" />
+          <span className="font-bold text-sm text-stone-700">
+            全日程マップ
+          </span>
+          <span className="text-xs text-stone-500">
+            ({allMarkers.length} spots)
+          </span>
+        </div>
+        {isExpanded ? (
+          <FaChevronUp className="text-stone-400 w-3 h-3" />
+        ) : (
+          <FaChevronDown className="text-stone-400 w-3 h-3" />
+        )}
+      </button>
+
+      {isExpanded && (
+        <>
+          {/* Day Filter Buttons */}
+          <div className="flex flex-wrap gap-2 px-4 py-2 border-t border-stone-100">
+            <button
+              onClick={() => handleDayFilter(null)}
+              className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                selectedDay === null
+                  ? "bg-stone-800 text-white"
+                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+              }`}
+            >
+              全日程
+            </button>
+            {days.map((day) => {
+              const color = getDayColor(day.day - 1);
+              const isActive = selectedDay === day.day;
+              return (
+                <button
+                  key={day.day}
+                  onClick={() => handleDayFilter(day.day)}
+                  className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
+                  style={{
+                    backgroundColor: isActive ? color.bg : `${color.bg}20`,
+                    color: isActive ? "#fff" : color.bg,
+                  }}
+                >
+                  Day {day.day}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Map */}
+          <APIProvider apiKey={apiKey}>
+            <div className="relative w-full h-64 sm:h-80 md:h-96">
+              <Map
+                defaultCenter={center}
+                defaultZoom={zoom}
+                gestureHandling="cooperative"
+                disableDefaultUI={true}
+                zoomControl={true}
+                mapId="route-map"
+                style={{ width: "100%", height: "100%" }}
+              >
+                {filteredMarkers.map((marker) => {
+                  const color = getDayColor(marker.dayNumber - 1);
+                  return (
+                    <AdvancedMarker
+                      key={`route-${marker.dayNumber}-${marker.spotIndex}`}
+                      position={marker.position}
+                      title={`Day ${marker.dayNumber}: ${marker.name}`}
+                    >
+                      <Pin
+                        background={color.bg}
+                        borderColor={color.border}
+                        glyphColor="#fff"
+                        glyph={marker.label}
+                      />
+                    </AdvancedMarker>
+                  );
+                })}
+                <RouteLines markers={filteredMarkers} selectedDay={selectedDay} />
+              </Map>
+
+              {/* Legend */}
+              <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50">
+                <span className="font-medium">{destination}</span>
+                <span className="mx-1.5 text-stone-300">|</span>
+                <span>
+                  {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
+                </span>
+              </div>
+            </div>
+          </APIProvider>
+        </>
+      )}
+    </div>
+  );
+}
