@@ -16,6 +16,8 @@ import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
 import { getActivityIcon, groupActivitiesByTimePeriod } from "@/lib/utils/activity-icon";
+import { extractStartDate, getDayCheckInOutDates } from "@/lib/utils/plan";
+import { isDomesticDestination, type TravelRegion } from "@/lib/utils/affiliate-links";
 import PlanFeedbackBar from "./PlanFeedbackBar";
 import ActivityFeedbackButton from "./ActivityFeedbackButton";
 import type { PackingList } from "@/types/packing-list";
@@ -939,11 +941,23 @@ export default function ResultView({
                                 🏨
                               </div>
                               <AccommodationCard
-                                accommodation={{
-                                  name: `${result.destination}`,
-                                  description: `${day.day}日目の宿泊エリア`,
-                                }}
-                                destination={result.destination}
+                                accommodation={(() => {
+                                  const startDate = extractStartDate(input.dates);
+                                  const dates = startDate ? getDayCheckInOutDates(startDate, day.day) : undefined;
+                                  const lastActivity = day.activities[day.activities.length - 1];
+                                  const overnightArea = lastActivity?.locationEn || result.destination;
+                                  return {
+                                    name: overnightArea,
+                                    description: `${day.day}日目の宿泊エリア`,
+                                    checkInDate: dates?.checkIn,
+                                    checkOutDate: dates?.checkOut,
+                                  };
+                                })()}
+                                destination={(() => {
+                                  const lastActivity = day.activities[day.activities.length - 1];
+                                  return lastActivity?.locationEn || result.destination;
+                                })()}
+                                region={isDomesticDestination(result.destination) ? 'domestic' as TravelRegion : 'overseas' as TravelRegion}
                                 dayNumber={day.day}
                                 state={getCardState(`accommodation-${day.day}`)}
                                 onStateChange={(state) =>
