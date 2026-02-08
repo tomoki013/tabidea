@@ -112,18 +112,32 @@ export class GooglePlacesService {
     const startTime = Date.now();
 
     try {
-      // 1. Initial Search (with "near" if provided)
+      const originalQuery = query.query;
+      const cleanedQuery = this.cleanSearchQuery(originalQuery);
+
+      // 1. Initial Search: cleaned query with location context
       let searchQuery = query.near
-        ? `${query.query} near ${query.near}`
-        : query.query;
+        ? `${cleanedQuery} ${query.near}`
+        : cleanedQuery;
 
       let searchResult = await this.performSearch(searchQuery, query);
 
-      // 2. Fallback Search (without "near") if initial search failed and "near" was used
+      // 2. Fallback: cleaned query without location
       if (!searchResult.found && query.near) {
-        // Retry with just the query name
-        searchQuery = query.query;
+        searchResult = await this.performSearch(cleanedQuery, query);
+      }
+
+      // 3. Fallback: original query with location (in case cleaning removed important info)
+      if (!searchResult.found && cleanedQuery !== originalQuery) {
+        searchQuery = query.near
+          ? `${originalQuery} ${query.near}`
+          : originalQuery;
         searchResult = await this.performSearch(searchQuery, query);
+      }
+
+      // 4. Fallback: original query without location
+      if (!searchResult.found && query.near && cleanedQuery !== originalQuery) {
+        searchResult = await this.performSearch(originalQuery, query);
       }
 
       if (!searchResult.found || !searchResult.place) {
@@ -138,7 +152,7 @@ export class GooglePlacesService {
 
       // マッチスコアの計算（名前の類似度）
       const matchScore = this.calculateMatchScore(
-        query.query,
+        originalQuery,
         placeDetails.name
       );
 
@@ -288,6 +302,69 @@ export class GooglePlacesService {
   // ============================================
   // Private Methods
   // ============================================
+
+  /**
+   * 検索クエリからアクティビティの説明的な部分を除去し、スポット名を抽出
+   * 例: "金閣寺で抹茶体験" → "金閣寺"
+   *     "錦市場で食べ歩き" → "錦市場"
+   *     "嵐山竹林散策" → "嵐山竹林"
+   */
+  cleanSearchQuery(query: string): string {
+    let cleaned = query;
+
+    // 括弧内の補足情報を除去（例: "金閣寺 (Kinkaku-ji)" → "金閣寺"）
+    cleaned = cleaned.replace(/\s*[（(][^）)]*[）)]\s*/g, '');
+
+    // 「〜で〜する」パターン: 「で」以降のアクション部分を除去
+    // 「で」の後にオプショナルな修飾語 + アクション動詞/名詞
+    const actionWords = '散策|食べ歩き|体験|見学|観光|参拝|ショッピング|買い物|食事|昼食|夕食|朝食|ランチ|ディナー|休憩|鑑賞|堪能|満喫|探索|巡り|めぐり|探訪|訪問|立ち寄り|寄り道|楽しむ|過ごす|味わう|堪能する|楽しみ|ひと休み';
+    const dePattern = new RegExp(`^(.{2,})で.{0,10}(${actionWords}).*$`);
+    const deMatch = cleaned.match(dePattern);
+    if (deMatch) {
+      cleaned = deMatch[1];
+    }
+
+    // 「〜を〜する」パターン
+    const woPattern = /^(.{2,})を(散策|見学|観光|参拝|探索|巡る|訪れる|訪問|堪能|満喫|楽しむ|味わう|鑑賞).*$/;
+    const woMatch = cleaned.match(woPattern);
+    if (woMatch) {
+      cleaned = woMatch[1];
+    }
+
+    // 「〜に〜する」パターン（例: "〜に立ち寄る"）
+    const niPattern = /^(.{2,})に(立ち寄る|訪れる|向かう|行く|寄る).*$/;
+    const niMatch = cleaned.match(niPattern);
+    if (niMatch) {
+      cleaned = niMatch[1];
+    }
+
+    // 末尾のアクション動詞・名詞を除去
+    const suffixes = [
+      '散策', '探索', '観光', '見学', '体験', '参拝', '巡り', 'めぐり',
+      '探訪', '訪問', 'ショッピング', '買い物', '食べ歩き',
+      'でランチ', 'でディナー', 'で昼食', 'で夕食', 'で朝食',
+      'で食事', 'で休憩', 'でひと休み',
+    ];
+    for (const suffix of suffixes) {
+      if (cleaned.endsWith(suffix) && cleaned.length > suffix.length) {
+        cleaned = cleaned.slice(0, -suffix.length);
+        break;
+      }
+    }
+
+    // 先頭の絵文字を除去
+    cleaned = cleaned.replace(/^[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1FA00}-\u{1FAFF}\s]+/u, '');
+
+    // 前後の空白を除去
+    cleaned = cleaned.trim();
+
+    // クリーニングの結果が短すぎる場合は元のクエリを返す
+    if (cleaned.length < 2) {
+      return query.trim();
+    }
+
+    return cleaned;
+  }
 
   private async fetchWithTimeout(
     url: string,

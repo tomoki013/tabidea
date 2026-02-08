@@ -133,7 +133,7 @@ export default function MapRouteView({
 }: MapRouteViewProps) {
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   // Collect all markers from all days
   const allMarkers: DayMarker[] = useMemo(() => {

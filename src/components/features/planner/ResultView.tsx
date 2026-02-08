@@ -44,6 +44,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
+import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -404,6 +405,12 @@ export default function ResultView({
   const durationString = `${numberOfNights}泊${numberOfDays}日`;
 
   const displayResult = isEditing && editingResult ? editingResult : result;
+
+  // マップ用: 全スポットの座標をバックグラウンドで取得
+  const { enrichedDays } = useSpotCoordinates(
+    displayResult.days,
+    result.destination
+  );
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
@@ -852,7 +859,7 @@ export default function ResultView({
                         <>
                           {/* Day Map */}
                           <DayMap
-                            activities={day.activities}
+                            activities={enrichedDays.find(d => d.day === day.day)?.activities || day.activities}
                             dayNumber={day.day}
                             className="mb-6"
                           />
@@ -965,9 +972,9 @@ export default function ResultView({
                 ))}
 
                 {/* Full Trip Route Map */}
-                {!isEditing && displayResult.days.length >= 1 && (
+                {!isEditing && enrichedDays.length >= 1 && (
                   <MapRouteView
-                    days={displayResult.days}
+                    days={enrichedDays}
                     destination={result.destination}
                     className="mt-4"
                   />

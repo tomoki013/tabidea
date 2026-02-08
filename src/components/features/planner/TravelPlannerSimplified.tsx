@@ -112,10 +112,15 @@ export default function TravelPlannerSimplified({
       };
       localStorage.setItem("tabidea_outline_state", JSON.stringify(stateToSave));
 
+      // Close modal before navigating (prevents modal staying open on new page)
+      if (onClose) {
+        onClose();
+      }
+
       // Redirect to plan page with outline mode
       router.push("/plan?mode=outline");
     }
-  }, [isReviewingOutline, generationState, input, router]);
+  }, [isReviewingOutline, generationState, input, router, onClose]);
 
   // ========================================
   // Limit Modals Hook
