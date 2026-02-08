@@ -112,39 +112,21 @@ export class GooglePlacesService {
     const startTime = Date.now();
 
     try {
-      // 検索クエリを構築
-      const searchQuery = query.near
+      // 1. Initial Search (with "near" if provided)
+      let searchQuery = query.near
         ? `${query.query} near ${query.near}`
         : query.query;
 
-      const requestBody = {
-        textQuery: searchQuery,
-        languageCode: query.language || 'ja',
-        maxResultCount: 1, // 最も関連性の高い1件のみ
-        ...(query.type && { includedType: query.type }),
-      };
+      let searchResult = await this.performSearch(searchQuery, query);
 
-      const response = await this.fetchWithTimeout(
-        `${PLACES_API_BASE_URL}/places:searchText`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'X-Goog-Api-Key': this.apiKey,
-            'X-Goog-FieldMask': PLACE_FIELDS.map((f) => `places.${f}`).join(','),
-          },
-          body: JSON.stringify(requestBody),
-        }
-      );
-
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw this.handleApiError(response.status, errorData);
+      // 2. Fallback Search (without "near") if initial search failed and "near" was used
+      if (!searchResult.found && query.near) {
+        // Retry with just the query name
+        searchQuery = query.query;
+        searchResult = await this.performSearch(searchQuery, query);
       }
 
-      const data: PlacesTextSearchResponse = await response.json();
-
-      if (!data.places || data.places.length === 0) {
+      if (!searchResult.found || !searchResult.place) {
         return {
           found: false,
           searchTime: Date.now() - startTime,
@@ -152,8 +134,7 @@ export class GooglePlacesService {
         };
       }
 
-      const place = data.places[0];
-      const placeDetails = await this.mapToPlaceDetails(place);
+      const placeDetails = await this.mapToPlaceDetails(searchResult.place);
 
       // マッチスコアの計算（名前の類似度）
       const matchScore = this.calculateMatchScore(
@@ -177,6 +158,50 @@ export class GooglePlacesService {
       }
       throw error;
     }
+  }
+
+  /**
+   * 内部検索処理
+   */
+  private async performSearch(
+    textQuery: string,
+    options: PlaceSearchQuery
+  ): Promise<{
+    found: boolean;
+    place?: NonNullable<PlacesTextSearchResponse['places']>[0];
+  }> {
+    const requestBody = {
+      textQuery,
+      languageCode: options.language || 'ja',
+      maxResultCount: 1,
+      ...(options.type && { includedType: options.type }),
+    };
+
+    const response = await this.fetchWithTimeout(
+      `${PLACES_API_BASE_URL}/places:searchText`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Goog-Api-Key': this.apiKey,
+          'X-Goog-FieldMask': PLACE_FIELDS.map((f) => `places.${f}`).join(','),
+        },
+        body: JSON.stringify(requestBody),
+      }
+    );
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw this.handleApiError(response.status, errorData);
+    }
+
+    const data: PlacesTextSearchResponse = await response.json();
+
+    if (!data.places || data.places.length === 0) {
+      return { found: false };
+    }
+
+    return { found: true, place: data.places[0] };
   }
 
   /**

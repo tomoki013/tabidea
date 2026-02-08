@@ -104,6 +104,12 @@ describe('GooglePlacesService', () => {
     });
 
     it('should include near parameter in search', async () => {
+      // First call (with near) - returns empty
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ places: [] }),
+      });
+      // Second call (fallback) - returns empty
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
@@ -115,6 +121,48 @@ describe('GooglePlacesService', () => {
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse(callArgs[1].body);
       expect(body.textQuery).toBe('温泉 near 箱根');
+    });
+
+    it('should retry without "near" if the first search fails', async () => {
+      // First call: Returns empty (simulating strict "near" failure)
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({ places: [] }),
+      });
+
+      // Second call: Returns result (simulating loose search success)
+      mockFetch.mockResolvedValueOnce({
+        ok: true,
+        json: () => Promise.resolve({
+          places: [
+            {
+              id: 'ChIJ123',
+              displayName: { text: 'Target Place', languageCode: 'ja' },
+              formattedAddress: 'Address',
+              location: { latitude: 35.0, longitude: 139.0 },
+            },
+          ],
+        }),
+      });
+
+      const service = new GooglePlacesService();
+      // This call should trigger the retry logic internally
+      const result = await service.searchPlace({ query: 'Target Place', near: 'Strict Location' });
+
+      // Expect successful result due to fallback
+      expect(result.found).toBe(true);
+      expect(result.place?.name).toBe('Target Place');
+
+      // Verify fetch was called twice
+      expect(mockFetch).toHaveBeenCalledTimes(2);
+
+      // First call with "near"
+      const firstCallBody = JSON.parse(mockFetch.mock.calls[0][1].body);
+      expect(firstCallBody.textQuery).toContain('near Strict Location');
+
+      // Second call without "near" (just the query)
+      const secondCallBody = JSON.parse(mockFetch.mock.calls[1][1].body);
+      expect(secondCallBody.textQuery).toBe('Target Place');
     });
   });
 
