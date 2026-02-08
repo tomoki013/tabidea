@@ -4,10 +4,14 @@ import { AIService, Article } from "./types";
 import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus } from '@/types';
 import {
   PlanOutlineSchema,
-  DayPlanArrayResponseSchema,
+  DayPlanArrayResponseInputSchema,
   ItinerarySchema,
   LegacyItineraryResponseSchema,
   TransitInfoParsed,
+  TransitInfoInput,
+  ActivityParsed,
+  ActivityInput,
+  DayPlanInput,
 } from './schemas/itinerary-schemas';
 import {
   selectModel,
@@ -85,8 +89,8 @@ async function withRetry<T>(
 /**
  * Normalize TransitInfo departure/arrival if they are simple strings
  */
-function normalizeTransitInfo(transit: any): TransitInfoParsed {
-  if (!transit) return transit;
+function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
+  if (!transit) return transit as any;
 
   const normalizeLocation = (loc: string | { place: string; time?: string }) => {
     if (typeof loc === 'string') {
@@ -105,35 +109,42 @@ function normalizeTransitInfo(transit: any): TransitInfoParsed {
 /**
  * Normalize Activity source if it is a simple string
  */
-function normalizeActivitySource(activity: any) {
-  if (!activity.source) return activity;
+function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
+  // Base activity object with strict type cast (source handled separately)
+  const baseActivity = { ...activity } as any;
+
+  if (!activity.source) return baseActivity;
 
   if (typeof activity.source === 'string') {
     // If "ai_knowledge" or any other string, convert to object
     if (activity.source === 'ai_knowledge') {
       return {
-        ...activity,
+        ...baseActivity,
         source: { type: 'ai_knowledge', confidence: 'medium' }
       };
     }
     // Default fallback
     return {
-      ...activity,
+      ...baseActivity,
       source: { type: 'ai_knowledge', confidence: 'medium', title: activity.source }
     };
   }
 
-  return activity;
+  // Already an object
+  return {
+    ...baseActivity,
+    source: activity.source
+  };
 }
 
 /**
  * Post-process generated day plan to normalize data structures
  */
-function normalizeDayPlan(day: DayPlan): DayPlan {
+function normalizeDayPlan(day: DayPlanInput): DayPlan {
   // Normalize main transit
-  let normalizedTransit = day.transit;
-  if (normalizedTransit) {
-    normalizedTransit = normalizeTransitInfo(normalizedTransit);
+  let normalizedTransit = undefined;
+  if (day.transit) {
+    normalizedTransit = normalizeTransitInfo(day.transit);
   }
 
   // Normalize activities source
@@ -159,7 +170,7 @@ function normalizeDayPlan(day: DayPlan): DayPlan {
     ...day,
     transit: normalizedTransit,
     activities: normalizedActivities,
-    timelineItems: normalizedTimelineItems,
+    timelineItems: normalizedTimelineItems as any, // Cast to any to satisfy the complex union type match
   };
 }
 
@@ -593,7 +604,7 @@ ${prompt}`;
       const result = await withRetry(async () => {
         const { object } = await generateObject({
           model,
-          schema: DayPlanArrayResponseSchema,
+          schema: DayPlanArrayResponseInputSchema,
           prompt: fullPrompt,
           temperature,
         });
