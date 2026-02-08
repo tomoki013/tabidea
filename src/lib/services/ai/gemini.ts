@@ -486,10 +486,10 @@ ${prompt}`;
       - For transit activities, use the destination city name.
 
       FLIGHT & BUDGET INFORMATION:
-      - If the trip is international/overseas, include departure and return flights as activities on Day 1 and the last day.
-      - On Day 1, include an activity for the departure flight from Japan (Tokyo/Osaka/nearest airport) to the destination.
-      - On the last day, include an activity for the return flight from the destination back to Japan.
-      - Set activityType to "transit" for these flight activities.
+      - If the trip is international/overseas, include departure and return flights as "transit" objects (NOT as activities).
+      - On Day 1, generate a transit object with type "flight" for the departure from Japan to the destination.
+      - On the last day, generate a transit object with type "flight" for the return to Japan.
+      - These MUST use the "transit" field of DayPlan, not the "activities" array.
     `;
 
     const systemInstruction = `${sandwichSystem}\n\n${detailInstructions}`;
