@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const siteUrl = "https://ai.tomokichidiary.com";
+  const siteUrl = "https://tabide.ai";
   const pageUrl = `${siteUrl}/samples/${id}`;
   const ogImage = itinerary?.heroImage || `${siteUrl}/og-default.png`;
 
@@ -119,14 +119,14 @@ export default async function SamplePlanDetailPage({ params }: Props) {
     author: {
       "@type": "Organization",
       name: "Tabidea",
-      url: "https://tabidea.tomokichidiary.com",
+      url: "https://tabide.ai",
     },
     publisher: {
       "@type": "Organization",
       name: "Tabidea",
       logo: {
         "@type": "ImageObject",
-        url: "https://tabidea.tomokichidiary.com/icon-512x512.png",
+        url: "https://tabide.ai/icon-512x512.png",
       },
     },
     image: itinerary?.heroImage,

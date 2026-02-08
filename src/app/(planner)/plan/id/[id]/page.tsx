@@ -44,7 +44,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ogParams.set('imageUrl', plan.itinerary.heroImage);
   }
 
-  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://tabidea.app').replace(/\/$/, '');
+  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://tabide.ai').replace(/\/$/, '');
   const ogImageUrl = `${baseUrl}/api/og?${ogParams.toString()}`;
 
   return {

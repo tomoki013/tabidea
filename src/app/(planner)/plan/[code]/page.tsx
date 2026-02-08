@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   // Get base URL from environment or default (check both env vars for compatibility)
-  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://tabidea.app').replace(/\/$/, '');
+  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || process.env.NEXT_PUBLIC_SITE_URL || 'https://tabide.ai').replace(/\/$/, '');
   const ogImageUrl = `${baseUrl}/api/og?${ogParams.toString()}`;
 
   return {
