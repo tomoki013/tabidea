@@ -18,6 +18,8 @@ export type {
   PlanOutline,
   TransitType,
   TransitInfo,
+  TimelineItem,
+  TimelineItemType,
 } from './itinerary';
 
 // ユーザー入力型

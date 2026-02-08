@@ -168,14 +168,19 @@ export default function SpotCard({
   }, [state, skipPlacesSearch, validation?.isVerified, fetchedDetails, isLoading, fetchDetails]);
 
   // Determine trust level from validation
-  const getTrustLevel = (): "verified" | "ai_generated" | "needs_check" => {
+  const getTrustLevel = (): "verified" | "ai_generated" | "needs_check" | "unverified" => {
     if (skipPlacesSearch) return "ai_generated";
     const v = mergedValidation;
     if (!v) return "ai_generated";
+    if (v.isVerified && v.confidence === "high") return "verified";
+    if (v.confidence === "medium") return "needs_check";
+    if (v.confidence === "low" || v.confidence === "unverified") return "unverified";
     if (v.isVerified) return "verified";
-    if (v.confidence === "low") return "needs_check";
     return "ai_generated";
   };
+
+  // Check if spot was not found in Places API
+  const isNotFound = mergedValidation?.confidence === "unverified" || mergedValidation?.confidence === "low";
 
   // Choose icon based on classification
   const getCardIcon = () => {
@@ -202,7 +207,7 @@ export default function SpotCard({
       onStateChange={onStateChange}
       colorTheme="orange"
       className={className}
-      badge={skipPlacesSearch ? undefined : <TrustBadge level={getTrustLevel()} size="sm" />}
+      badge={skipPlacesSearch ? undefined : <TrustBadge level={getTrustLevel()} size="sm" showLabel={getTrustLevel() === "unverified"} />}
     >
       {/* Expanded Content */}
       <div className="space-y-4 pt-2">
@@ -215,8 +220,16 @@ export default function SpotCard({
           <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
         </div>
 
+        {/* Unverified spot alert */}
+        {isNotFound && !skipPlacesSearch && (
+          <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 rounded-lg p-3 border border-red-200">
+            <AlertCircle className="w-4 h-4 flex-shrink-0" />
+            <span>位置情報未確認：Google Placesで該当スポットが見つかりませんでした。AI生成の情報のため、実在しない可能性があります。</span>
+          </div>
+        )}
+
         {/* Places API details - only show for searchable activities */}
-        {!skipPlacesSearch && (
+        {!skipPlacesSearch && !isNotFound && (
           <>
             {/* Loading State */}
             {isLoading && <DetailsSkeleton />}

@@ -25,7 +25,10 @@ export type AffiliateService =
   | 'rakuten_travel'
   | 'booking_com'
   | 'jalan'
-  | 'skyscanner';
+  | 'skyscanner'
+  | 'trip_com'
+  | 'klook'
+  | 'getyourguide';
 
 /**
  * 宿泊検索パラメータ
@@ -95,6 +98,9 @@ const SERVICE_DISPLAY_NAMES: Record<AffiliateService, string> = {
   booking_com: 'Booking.com',
   jalan: 'じゃらん',
   skyscanner: 'スカイスキャナー',
+  trip_com: 'Trip.com',
+  klook: 'Klook',
+  getyourguide: 'GetYourGuide',
 };
 
 /**
@@ -105,6 +111,9 @@ const SERVICE_ICONS: Record<AffiliateService, string> = {
   booking_com: '🌍',
   jalan: '♨️',
   skyscanner: '✈️',
+  trip_com: '🏨',
+  klook: '🎫',
+  getyourguide: '🎯',
 };
 
 /**
@@ -501,6 +510,90 @@ function generateSkyscannerLink(params: FlightSearchParams): { url: string; isAf
   return { url: `${path}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
 }
 
+/**
+ * Trip.comのホテルリンクを生成
+ */
+function generateTripComLink(params: HotelSearchParams): { url: string; isAffiliate: boolean } {
+  const affiliateId = process.env.NEXT_PUBLIC_TRIP_COM_AFFILIATE_ID || '';
+  const searchDestination = params.destinationEn || toEnglishDestination(params.destination);
+
+  const baseUrl = 'https://jp.trip.com/hotels/list';
+  const queryParams = new URLSearchParams({
+    city: searchDestination,
+    locale: 'ja-JP',
+    curr: 'JPY',
+  });
+
+  if (params.checkIn) {
+    queryParams.set('checkin', params.checkIn);
+  }
+  if (params.checkOut) {
+    queryParams.set('checkout', params.checkOut);
+  }
+
+  if (affiliateId) {
+    queryParams.set('AllianceID', affiliateId);
+  }
+
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
+}
+
+/**
+ * Klookのアクティビティリンクを生成
+ */
+function generateKlookLink(destination: string): { url: string; isAffiliate: boolean } {
+  const affiliateId = process.env.NEXT_PUBLIC_KLOOK_AFFILIATE_ID || '';
+  const baseUrl = 'https://www.klook.com/ja/search/';
+  const queryParams = new URLSearchParams({ query: destination });
+
+  if (affiliateId) {
+    queryParams.set('aid', affiliateId);
+  }
+
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
+}
+
+/**
+ * GetYourGuideのアクティビティリンクを生成
+ */
+function generateGetYourGuideLink(destination: string): { url: string; isAffiliate: boolean } {
+  const baseUrl = 'https://www.getyourguide.com/s/';
+  const queryParams = new URLSearchParams({ q: destination, lc: 'ja' });
+
+  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: false };
+}
+
+/**
+ * アクティビティ予約リンクを生成
+ */
+export function generateActivityLinks(destination: string): AffiliateLink[] {
+  const links: AffiliateLink[] = [];
+
+  const klook = generateKlookLink(destination);
+  links.push({
+    service: 'klook',
+    displayName: SERVICE_DISPLAY_NAMES.klook,
+    url: klook.url,
+    icon: SERVICE_ICONS.klook,
+    priority: 1,
+    isAffiliate: klook.isAffiliate,
+  });
+
+  if (!isDomesticDestination(destination)) {
+    const gyg = generateGetYourGuideLink(destination);
+    links.push({
+      service: 'getyourguide',
+      displayName: SERVICE_DISPLAY_NAMES.getyourguide,
+      url: gyg.url,
+      icon: SERVICE_ICONS.getyourguide,
+      priority: 2,
+      isAffiliate: gyg.isAffiliate,
+    });
+  }
+
+  return links;
+}
+
 // ============================================
 // Main Functions
 // ============================================
@@ -548,7 +641,7 @@ export function generateHotelLinks(
       isAffiliate: booking.isAffiliate,
     });
   } else {
-    // 海外旅行: Booking.com を優先
+    // 海外旅行: Booking.com > Trip.com > 楽天
     const booking = generateBookingComLink(params);
     links.push({
       service: 'booking_com',
@@ -558,13 +651,22 @@ export function generateHotelLinks(
       priority: 1,
       isAffiliate: booking.isAffiliate,
     });
+    const tripCom = generateTripComLink(params);
+    links.push({
+      service: 'trip_com',
+      displayName: SERVICE_DISPLAY_NAMES.trip_com,
+      url: tripCom.url,
+      icon: SERVICE_ICONS.trip_com,
+      priority: 2,
+      isAffiliate: tripCom.isAffiliate,
+    });
     const rakuten = generateRakutenTravelLink(params);
     links.push({
       service: 'rakuten_travel',
       displayName: SERVICE_DISPLAY_NAMES.rakuten_travel,
       url: rakuten.url,
       icon: SERVICE_ICONS.rakuten_travel,
-      priority: 2,
+      priority: 3,
       isAffiliate: rakuten.isAffiliate,
     });
   }
@@ -604,7 +706,7 @@ export function hasAffiliateLinks(links: AffiliateLink[]): boolean {
 export function createAffiliateClickEvent(
   service: AffiliateService,
   destination: string,
-  cardType: 'hotel' | 'flight'
+  cardType: 'hotel' | 'flight' | 'activity'
 ): Record<string, string> {
   return {
     event_name: 'affiliate_click',
@@ -620,7 +722,7 @@ export function createAffiliateClickEvent(
 export function trackAffiliateClick(
   service: AffiliateService,
   destination: string,
-  cardType: 'hotel' | 'flight'
+  cardType: 'hotel' | 'flight' | 'activity'
 ): void {
   if (typeof window !== 'undefined' && 'gtag' in window) {
     const gtag = (window as unknown as { gtag: (...args: unknown[]) => void }).gtag;

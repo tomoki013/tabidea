@@ -49,6 +49,13 @@ describe("TrustBadge", () => {
     expect(badge).toHaveAttribute("title", "Google Places等で存在を確認済み");
   });
 
+  it("renders unverified badge correctly", () => {
+    const { container } = render(<TrustBadge level="unverified" showLabel />);
+
+    expect(screen.getByText("位置情報未確認")).toBeInTheDocument();
+    expect(container.querySelector(".bg-red-50")).toBeInTheDocument();
+  });
+
   it("applies custom className", () => {
     const { container } = render(
       <TrustBadge level="verified" className="custom-class" />

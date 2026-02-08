@@ -6,7 +6,7 @@
 import {
   generateHotelLinks,
   generateFlightLinks,
-  isDomesticDestination,
+  generateActivityLinks,
   type AffiliateLink,
   type TravelRegion,
 } from './affiliate-links';
@@ -31,71 +31,6 @@ export interface BookingLinkResult {
   label: string;
   icon: string;
   links: AffiliateLink[];
-}
-
-// ============================================
-// Activity Link Generators
-// ============================================
-
-/**
- * Klookのアクティビティリンクを生成
- */
-function generateKlookLink(destination: string): { url: string; isAffiliate: boolean } {
-  const affiliateId = process.env.NEXT_PUBLIC_KLOOK_AFFILIATE_ID || '';
-  const baseUrl = 'https://www.klook.com/ja/search/';
-  const queryParams = new URLSearchParams({
-    query: destination,
-  });
-
-  if (affiliateId) {
-    queryParams.set('aid', affiliateId);
-  }
-
-  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: !!affiliateId };
-}
-
-/**
- * GetYourGuideのアクティビティリンクを生成
- */
-function generateGetYourGuideLink(destination: string): { url: string; isAffiliate: boolean } {
-  const baseUrl = 'https://www.getyourguide.com/s/';
-  const queryParams = new URLSearchParams({
-    q: destination,
-    lc: 'ja',
-  });
-
-  return { url: `${baseUrl}?${queryParams.toString()}`, isAffiliate: false };
-}
-
-/**
- * アクティビティ予約リンクを生成
- */
-function generateActivityLinks(destination: string): AffiliateLink[] {
-  const links: AffiliateLink[] = [];
-
-  const klook = generateKlookLink(destination);
-  links.push({
-    service: 'booking_com' as const,
-    displayName: 'Klook',
-    url: klook.url,
-    icon: '🎫',
-    priority: 1,
-    isAffiliate: klook.isAffiliate,
-  });
-
-  if (!isDomesticDestination(destination)) {
-    const gyg = generateGetYourGuideLink(destination);
-    links.push({
-      service: 'booking_com' as const,
-      displayName: 'GetYourGuide',
-      url: gyg.url,
-      icon: '🎯',
-      priority: 2,
-      isAffiliate: gyg.isAffiliate,
-    });
-  }
-
-  return links;
 }
 
 // ============================================

@@ -10,7 +10,7 @@ export const APP_CONFIG = {
   /** アプリ名 */
   APP_NAME: 'Tabidea',
   /** アプリURL */
-  APP_URL: 'https://ai.tomokichidiary.com',
+  APP_URL: 'https://tabide.ai',
   /** デフォルト言語 */
   DEFAULT_LANGUAGE: 'ja',
   /** コンタクトメール */

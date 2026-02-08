@@ -112,6 +112,18 @@ export interface Activity {
 }
 
 /**
+ * タイムラインアイテムの種類
+ */
+export type TimelineItemType = 'activity' | 'transit';
+
+/**
+ * タイムラインアイテム（discriminated union）
+ */
+export type TimelineItem =
+  | { itemType: 'activity'; data: Activity }
+  | { itemType: 'transit'; data: TransitInfo; time?: string };
+
+/**
  * 日程プラン
  */
 export interface DayPlan {
@@ -123,6 +135,8 @@ export interface DayPlan {
   transit?: TransitInfo;
   /** アクティビティ一覧 */
   activities: Activity[];
+  /** 時系列タイムライン（transit + activities統合表示用） */
+  timelineItems?: TimelineItem[];
   /** 参考記事のインデックス */
   reference_indices?: number[];
   /** UIタイプ（Generative UI） */

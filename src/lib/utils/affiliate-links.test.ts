@@ -7,6 +7,7 @@ import {
   isDomesticDestination,
   generateHotelLinks,
   generateFlightLinks,
+  generateActivityLinks,
   createAffiliateClickEvent,
 } from './affiliate-links';
 
@@ -49,9 +50,10 @@ describe('affiliate-links', () => {
     it('should generate international hotel links for overseas destinations', () => {
       const links = generateHotelLinks({ destination: 'Paris' });
 
-      expect(links.length).toBe(2);
+      expect(links.length).toBe(3);
       expect(links[0].service).toBe('booking_com');
-      expect(links[1].service).toBe('rakuten_travel');
+      expect(links[1].service).toBe('trip_com');
+      expect(links[2].service).toBe('rakuten_travel');
     });
 
     it('should respect explicit region parameter', () => {
@@ -174,6 +176,26 @@ describe('affiliate-links', () => {
       expect(links[0].url).toContain('skyscanner.jp');
       expect(links[0].url).toContain('originname=');
       expect(links[0].url).toContain('destinationname=');
+    });
+  });
+
+  describe('generateActivityLinks', () => {
+    it('should generate Klook link for domestic destinations', () => {
+      const links = generateActivityLinks('東京');
+
+      expect(links.length).toBe(1);
+      expect(links[0].service).toBe('klook');
+      expect(links[0].displayName).toBe('Klook');
+      expect(links[0].url).toContain('klook.com');
+    });
+
+    it('should generate Klook and GetYourGuide links for overseas destinations', () => {
+      const links = generateActivityLinks('Paris');
+
+      expect(links.length).toBe(2);
+      expect(links[0].service).toBe('klook');
+      expect(links[1].service).toBe('getyourguide');
+      expect(links[1].url).toContain('getyourguide.com');
     });
   });
 
