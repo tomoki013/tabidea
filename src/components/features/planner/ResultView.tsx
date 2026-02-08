@@ -16,7 +16,7 @@ import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
 import { getActivityIcon, groupActivitiesByTimePeriod } from "@/lib/utils/activity-icon";
-import { extractStartDate, getDayCheckInOutDates } from "@/lib/utils/plan";
+import { extractStartDate, getDayCheckInOutDates, buildTimeline, getTimelineItemTime } from "@/lib/utils/plan";
 import { isDomesticDestination, type TravelRegion } from "@/lib/utils/affiliate-links";
 import PlanFeedbackBar from "./PlanFeedbackBar";
 import ActivityFeedbackButton from "./ActivityFeedbackButton";
@@ -856,82 +856,68 @@ export default function ResultView({
                             className="mb-6"
                           />
 
-                          {/* View Mode: Transit Card */}
-                          {day.transit && (
-                            <div className="relative md:pl-8">
-                              {/* Timeline dot for transit */}
-                              <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-blue-100 border-2 border-blue-400 flex items-center justify-center text-xs z-10 hidden md:flex">
-                                🚃
-                              </div>
-                              <CardTransitCard
-                                transit={day.transit}
-                                state={getCardState(`transit-${day.day}`)}
-                                onStateChange={(state) =>
-                                  handleCardStateChange(`transit-${day.day}`, state)
-                                }
-                                className="mb-6"
-                              />
-                            </div>
-                          )}
-
-                          {/* View Mode: Activity Cards with Time Period Sections */}
-                          {groupActivitiesByTimePeriod(day.activities).map(
-                            (group) => (
-                              <div key={group.period.period} className="space-y-4">
-                                {/* Time Period Label */}
-                                <div className="flex items-center gap-3 md:pl-8 pt-2">
-                                  <div className="flex items-center gap-2 text-sm font-medium text-stone-500">
-                                    <span className="text-base">{group.period.icon}</span>
-                                    <span className="uppercase tracking-wider text-xs font-bold">
-                                      {group.period.label}
-                                    </span>
+                          {/* View Mode: Unified Timeline (transit + activities) */}
+                          {buildTimeline(day).map((item, itemIndex) => {
+                            if (item.itemType === 'transit') {
+                              return (
+                                <div key={`timeline-transit-${day.day}-${itemIndex}`} className="relative md:pl-8">
+                                  {/* Timeline dot for transit */}
+                                  <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-blue-100 border-2 border-blue-400 flex items-center justify-center text-xs z-10 hidden md:flex">
+                                    🚃
                                   </div>
-                                  <div className="flex-1 h-px bg-gradient-to-r from-stone-200 to-transparent" />
+                                  <CardTransitCard
+                                    transit={item.data}
+                                    state={getCardState(`transit-${day.day}-${itemIndex}`)}
+                                    onStateChange={(state) =>
+                                      handleCardStateChange(`transit-${day.day}-${itemIndex}`, state)
+                                    }
+                                    className="mb-4"
+                                  />
                                 </div>
+                              );
+                            }
 
-                                {/* Activities in this period */}
-                                {group.activities.map((act, actIndex) => {
-                                  const globalIndex = day.activities.indexOf(act);
-                                  const iconInfo = getActivityIcon(act.activity);
-                                  return (
-                                    <div
-                                      key={`activity-${day.day}-${globalIndex}`}
-                                      className="relative md:pl-8"
-                                    >
-                                      {/* Timeline dot with activity icon */}
-                                      <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-white border-2 border-primary/30 flex items-center justify-center text-xs z-10 shadow-sm hidden md:flex">
-                                        {iconInfo.icon}
-                                      </div>
-                                      <div className="relative">
-                                        <SpotCard
-                                          activity={act}
-                                          destination={result.destination}
-                                          state={getCardState(
-                                            `activity-${day.day}-${globalIndex}`
-                                          )}
-                                          onStateChange={(state) =>
-                                            handleCardStateChange(
-                                              `activity-${day.day}-${globalIndex}`,
-                                              state
-                                            )
-                                          }
-                                        />
-                                        {!isEditing && (
-                                          <div className="absolute top-2 right-2 z-10">
-                                            <ActivityFeedbackButton
-                                              day={day.day}
-                                              activityIndex={globalIndex}
-                                              destination={result.destination}
-                                            />
-                                          </div>
-                                        )}
-                                      </div>
+                            // Activity item
+                            const act = item.data;
+                            const globalIndex = day.activities.indexOf(act);
+                            const actIdx = globalIndex >= 0 ? globalIndex : itemIndex;
+                            const iconInfo = getActivityIcon(act.activity);
+                            return (
+                              <div
+                                key={`timeline-activity-${day.day}-${actIdx}`}
+                                className="relative md:pl-8"
+                              >
+                                {/* Timeline dot with activity icon */}
+                                <div className="absolute left-0 top-4 w-7 h-7 rounded-full bg-white border-2 border-primary/30 flex items-center justify-center text-xs z-10 shadow-sm hidden md:flex">
+                                  {iconInfo.icon}
+                                </div>
+                                <div className="relative">
+                                  <SpotCard
+                                    activity={act}
+                                    destination={result.destination}
+                                    state={getCardState(
+                                      `activity-${day.day}-${actIdx}`
+                                    )}
+                                    onStateChange={(state) =>
+                                      handleCardStateChange(
+                                        `activity-${day.day}-${actIdx}`,
+                                        state
+                                      )
+                                    }
+                                  />
+                                  {!isEditing && (
+                                    <div className="absolute top-2 right-2 z-10">
+                                      <ActivityFeedbackButton
+                                        day={day.day}
+                                        activityIndex={actIdx}
+                                        destination={result.destination}
+                                      />
                                     </div>
-                                  );
-                                })}
+                                  )}
+                                </div>
                               </div>
-                            )
-                          )}
+                            );
+                          })}
 
                           {/* View Mode: Accommodation Card */}
                           {dayIndex < displayResult.days.length - 1 && (

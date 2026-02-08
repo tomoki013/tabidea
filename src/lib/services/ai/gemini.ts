@@ -490,6 +490,14 @@ ${prompt}`;
       - On Day 1, generate a transit object with type "flight" for the departure from Japan to the destination.
       - On the last day, generate a transit object with type "flight" for the return to Japan.
       - These MUST use the "transit" field of DayPlan, not the "activities" array.
+
+      TIMELINE ITEMS (時系列タイムライン):
+      - Generate a "timelineItems" array for each day that interleaves transit and activities in chronological order.
+      - Each item has "itemType" ("activity" or "transit") and "data" (matching Activity or TransitInfo schema).
+      - Include ALL movements within the day as transit items (not just the main transit).
+      - For example, if a train ride happens between two sightseeing spots, include it as a transit item.
+      - Transit items should also have a "time" field for display.
+      - This array allows the UI to render a unified chronological timeline.
     `;
 
     const systemInstruction = `${sandwichSystem}\n\n${detailInstructions}`;

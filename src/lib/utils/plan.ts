@@ -1,3 +1,5 @@
+import type { DayPlan, TimelineItem } from '@/types';
+
 export function extractDuration(dates: string): number {
   // Support "X日間" format (e.g., "3日間")
   const daysMatch = dates.match(/(\d+)日間/);
@@ -78,4 +80,40 @@ export function getDayCheckInOutDates(
     `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 
   return { checkIn: format(checkIn), checkOut: format(checkOut) };
+}
+
+/**
+ * DayPlanからタイムラインアイテムの配列を構築
+ * AIが生成したtimelineItemsがあればそれを使い、なければtransit + activitiesから構築
+ */
+export function buildTimeline(day: DayPlan): TimelineItem[] {
+  if (day.timelineItems && day.timelineItems.length > 0) {
+    return day.timelineItems;
+  }
+
+  const items: TimelineItem[] = [];
+
+  if (day.transit) {
+    items.push({
+      itemType: 'transit',
+      data: day.transit,
+      time: day.transit.departure.time,
+    });
+  }
+
+  for (const activity of day.activities) {
+    items.push({ itemType: 'activity', data: activity });
+  }
+
+  return items;
+}
+
+/**
+ * タイムラインアイテムの時刻を取得
+ */
+export function getTimelineItemTime(item: TimelineItem): string | undefined {
+  if (item.itemType === 'transit') {
+    return item.time || item.data.departure.time;
+  }
+  return item.data.time;
 }

@@ -53,6 +53,26 @@ export const ActivitySchema = z.object({
 });
 
 // ============================================
+// Timeline Item スキーマ
+// ============================================
+
+export const TimelineActivityItemSchema = z.object({
+  itemType: z.literal('activity').describe('アクティビティアイテム'),
+  data: ActivitySchema,
+});
+
+export const TimelineTransitItemSchema = z.object({
+  itemType: z.literal('transit').describe('移動アイテム'),
+  data: TransitInfoSchema,
+  time: z.string().optional().describe('表示用時刻'),
+});
+
+export const TimelineItemSchema = z.discriminatedUnion('itemType', [
+  TimelineActivityItemSchema,
+  TimelineTransitItemSchema,
+]);
+
+// ============================================
 // DayPlan スキーマ
 // ============================================
 
@@ -61,6 +81,7 @@ export const DayPlanSchema = z.object({
   title: z.string().describe('日のタイトル・テーマ'),
   transit: TransitInfoSchema.optional().describe('その日の主要な移動'),
   activities: z.array(ActivitySchema).min(1).describe('アクティビティ一覧'),
+  timelineItems: z.array(TimelineItemSchema).optional().describe('時系列タイムライン（transit + activities統合）'),
   reference_indices: z.array(z.number()).optional().describe('参考記事のインデックス'),
   ui_type: z.enum(['default', 'compact', 'narrative']).optional().describe('AIが推奨するUIタイプ（default: 標準, compact: 詰め込み/移動多め, narrative: ゆったり/物語重視）'),
 });
