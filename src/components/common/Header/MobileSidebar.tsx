@@ -247,7 +247,7 @@ export default function MobileSidebar({
               Changed: overflow-y-auto to allow full sidebar scrolling.
               Removed flex-1 from children to allow natural flow.
             */}
-            <JournalSheet variant="notebook" className="w-full h-full flex flex-col pointer-events-auto shadow-2xl overflow-y-auto p-0 rounded-l-none">
+            <JournalSheet variant="notebook" className="w-full h-full flex flex-col pointer-events-auto shadow-2xl overflow-y-auto overflow-x-hidden p-0 rounded-l-none overscroll-contain">
 
               {/* Decorative Tape */}
               <Tape color="yellow" position="top-right" rotation="right" className="opacity-90 sticky top-2 z-20" />

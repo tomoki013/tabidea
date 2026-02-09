@@ -212,7 +212,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-4xl h-[90vh] flex flex-col md:flex-row relative"
+        className="w-full max-w-4xl h-[85vh] md:h-[90vh] flex flex-col md:flex-row relative"
         onClick={(e) => e.stopPropagation()}
       >
         <JournalSheet variant="notebook" className="w-full h-full p-0 flex flex-col md:flex-row overflow-hidden shadow-2xl relative">
@@ -266,11 +266,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto bg-white/50 relative">
+          <div className="flex-1 overflow-y-auto bg-white/50 relative overscroll-contain">
              {/* Paper Texture */}
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-30 pointer-events-none" />
 
-            <div className="p-6 md:p-8 relative z-10">
+            <div className="p-6 md:p-8 relative z-10 pb-20 md:pb-8">
               {activeTab === 'account' && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
