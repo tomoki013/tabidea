@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Stamp } from "@/components/ui/journal";
 
 const loadingSteps = [
   { icon: "🗺️", text: "目的地を分析中...", subText: "Analyzing destinations" },
@@ -42,84 +43,54 @@ export default function OutlineLoadingAnimation({
 
   return (
     <div
-      className={`w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-3xl overflow-hidden shadow-2xl bg-[#fcfbf9] border-8 border-white flex items-center justify-center ${className}`}
+      className={`w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-sm overflow-hidden shadow-2xl bg-[#fcfbf9] border border-stone-200 flex items-center justify-center ${className}`}
     >
       {/* Paper Overlay Texture */}
-      <div className="absolute inset-0 bg-[url('/images/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
 
       {/* Dotted line background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern
-              id="dotted-pattern"
-              x="0"
-              y="0"
-              width="20"
-              height="20"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="2" cy="2" r="1" fill="currentColor" className="text-stone-600" />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#dotted-pattern)" />
-        </svg>
-      </div>
+      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:20px_20px]" />
 
       <div className="relative z-10 flex flex-col items-center gap-10 p-10 text-center max-w-md">
-        {/* Animated Travel Icon */}
+
+        {/* Animated Stamp Container */}
         <div className="relative">
           {/* Rotating dashed border */}
           <motion.div
-            className="absolute inset-0 w-32 h-32 border-4 border-dashed border-primary/30 rounded-full"
+            className="absolute inset-0 w-40 h-40 border-4 border-dashed border-primary/30 rounded-full"
             animate={{ rotate: 360 }}
             transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
           />
 
-          {/* Pulsing background ring */}
-          <motion.div
-            className="absolute inset-2 w-28 h-28 rounded-full bg-primary/5"
-            animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.3, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
-
-          {/* Main Icon Container */}
-          <div className="relative w-32 h-32 flex items-center justify-center">
+          <Stamp color="red" size="lg" className="w-40 h-40 border-4 animate-pulse">
             <AnimatePresence mode="wait">
               <motion.div
                 key={step}
-                initial={{ scale: 0.5, opacity: 0, y: 10 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.5, opacity: 0, y: -10 }}
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.5, opacity: 0 }}
                 transition={{ duration: 0.5 }}
                 className="text-6xl"
               >
                 {currentStep.icon}
               </motion.div>
             </AnimatePresence>
-          </div>
+          </Stamp>
 
           {/* Floating travel icons */}
           <motion.span
-            className="absolute -top-2 -right-2 text-2xl"
-            animate={{ y: [0, -5, 0], rotate: [0, 5, 0] }}
+            className="absolute -top-4 -right-4 text-3xl transform rotate-12"
+            animate={{ y: [0, -10, 0], rotate: [12, 24, 12] }}
             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
           >
             ✈️
           </motion.span>
           <motion.span
-            className="absolute -bottom-2 -left-2 text-2xl"
-            animate={{ y: [0, 5, 0], rotate: [0, -5, 0] }}
+            className="absolute -bottom-4 -left-4 text-3xl transform -rotate-12"
+            animate={{ y: [0, 10, 0], rotate: [-12, -24, -12] }}
             transition={{ duration: 2, repeat: Infinity, delay: 1 }}
           >
             🧳
-          </motion.span>
-          <motion.span
-            className="absolute top-1/2 -right-4 text-lg"
-            animate={{ x: [0, 3, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            📍
           </motion.span>
         </div>
 
@@ -133,19 +104,19 @@ export default function OutlineLoadingAnimation({
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-2xl font-serif text-foreground leading-tight min-h-16">
+              <p className="text-2xl font-hand font-bold text-stone-800 leading-tight min-h-16">
                 {currentStep.text.replace("...", dots.padEnd(3, " "))}
               </p>
-              <p className="text-xs text-stone-400 uppercase tracking-widest mt-2">
+              <p className="text-xs text-stone-400 font-mono uppercase tracking-widest mt-2">
                 {currentStep.subText}
               </p>
             </motion.div>
           </AnimatePresence>
 
-          {/* Progress Bar */}
-          <div className="w-32 h-1.5 bg-primary/10 mx-auto rounded-full overflow-hidden">
+          {/* Progress Bar (Hand-drawn style) */}
+          <div className="w-48 h-2 border-2 border-stone-300 rounded-full overflow-hidden bg-white mx-auto transform -rotate-1">
             <motion.div
-              className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full"
+              className="h-full bg-primary/70 rounded-full"
               initial={{ width: "0%" }}
               animate={{ width: "100%" }}
               transition={{
@@ -157,27 +128,13 @@ export default function OutlineLoadingAnimation({
           </div>
         </div>
 
-        {/* Step indicators */}
-        <div className="flex items-center gap-2">
-          {loadingSteps.map((_, index) => (
-            <motion.div
-              key={index}
-              className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                index === step ? "bg-primary" : "bg-stone-200"
-              }`}
-              animate={index === step ? { scale: [1, 1.3, 1] } : {}}
-              transition={{ duration: 0.5 }}
-            />
-          ))}
-        </div>
-
         {/* Footer Text */}
         <motion.p
-          className="text-sm font-hand text-muted-foreground"
-          animate={{ rotate: [-2, 0, -2] }}
+          className="text-sm font-hand text-stone-500"
+          animate={{ rotate: [-2, 2, -2] }}
           transition={{ duration: 4, repeat: Infinity }}
         >
-          旅の計画を練っています
+          旅の計画を練っています...
         </motion.p>
       </div>
     </div>

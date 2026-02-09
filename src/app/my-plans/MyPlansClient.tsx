@@ -31,6 +31,7 @@ import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
+import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from '@/components/ui/journal';
 
 interface MyPlansClientProps {
   initialPlans: PlanListItem[];
@@ -64,23 +65,18 @@ export default function MyPlansClient({
   const [flaggedPlans, setFlaggedPlans] = useState<PlanListItem[]>([]);
   const [isLoadingFlags, setIsLoadingFlags] = useState(false);
 
-  // Rename functionality
   const [isRenaming, setIsRenaming] = useState<string | null>(null);
   const [renameValue, setRenameValue] = useState('');
   const renameInputRef = useRef<HTMLInputElement>(null);
 
-  // Menu state for mobile actions
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  // Deletion state
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [planToDelete, setPlanToDelete] = useState<string | null>(null);
 
-  // Initialization state to prevent flash of empty content
   const [isInitializing, setIsInitializing] = useState(true);
 
-  // Hydrate context with initial plans on mount
   useEffect(() => {
     if (initialPlans && initialPlans.length > 0) {
       setPlans(initialPlans);
@@ -88,7 +84,6 @@ export default function MyPlansClient({
     setIsInitializing(false);
   }, [initialPlans, setPlans]);
 
-  // Focus rename input when opening
   useEffect(() => {
     if (isRenaming && renameInputRef.current) {
       renameInputRef.current.focus();
@@ -96,7 +91,6 @@ export default function MyPlansClient({
     }
   }, [isRenaming]);
 
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -110,13 +104,11 @@ export default function MyPlansClient({
     }
   }, [openMenuId]);
 
-  // Check local plans on mount
   useEffect(() => {
     const localPlans = getLocalPlans();
     setHasLocalPlans(localPlans.length > 0);
   }, []);
 
-  // Load flagged plans when filter changes
   useEffect(() => {
     if (filter === 'flagged') {
       loadFlaggedPlans();
@@ -137,7 +129,6 @@ export default function MyPlansClient({
     }
   }, []);
 
-  // Sync local plans to database
   const syncLocalPlans = useCallback(async () => {
     const localPlans = getLocalPlans();
     if (localPlans.length === 0) return;
@@ -154,7 +145,6 @@ export default function MyPlansClient({
           syncedCount++;
           deleteLocalPlan(localPlan.id);
 
-          // Add to plans list via context
           addPlan({
             id: result.plan.id,
             shareCode: result.plan.shareCode,
@@ -177,11 +167,9 @@ export default function MyPlansClient({
       setSyncMessage(null);
     }
 
-    // Refresh local plans count
     setHasLocalPlans(getLocalPlans().length > 0);
     setIsSyncing(false);
 
-    // Clear message after 3 seconds
     setTimeout(() => setSyncMessage(null), 3000);
   }, []);
 
@@ -255,205 +243,170 @@ export default function MyPlansClient({
 
   const handleToggleFlag = async (planId: string) => {
     await toggleFlag(planId);
-    // Reload flagged plans if currently viewing flags
     if (filter === 'flagged') {
       loadFlaggedPlans();
     }
   };
 
-  // Determine which plans to display based on filter
-  // For 'all' filter, sort with flags at the top
   const displayedPlans = filter === 'flagged'
     ? flaggedPlans
     : [...plans].sort((a, b) => {
         const aIsFlagged = isFlagged(a.id);
         const bIsFlagged = isFlagged(b.id);
-
-        // Flags first
         if (aIsFlagged && !bIsFlagged) return -1;
         if (!aIsFlagged && bIsFlagged) return 1;
-
-        // Otherwise maintain original order (by updatedAt descending)
         return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       });
-  const displayedTotal = filter === 'flagged' ? flaggedPlans.length : totalPlans;
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8">
         {/* Header */}
-        <div className="pt-24 pb-8">
+        <div className="pt-24 pb-8 relative">
           <div className="flex items-center justify-between">
-            <div>
+            <div className="flex flex-col">
               <div className="flex items-center gap-3 mb-2">
-                <div className="p-2 bg-[#e67e22]/10 rounded-full">
-                  <FaSuitcase className="text-[#e67e22]" />
-                </div>
-                <h1 className="font-serif text-3xl font-bold text-stone-800">
+                <Stamp color="black" size="sm" className="w-12 h-12 text-[0.6rem] border-2 rotate-6">
+                   MY<br/>PLANS
+                </Stamp>
+                <HandwrittenText tag="h1" className="text-4xl font-bold text-stone-800">
                   マイプラン
-                </h1>
+                </HandwrittenText>
               </div>
-              <p className="text-stone-500 ml-12">
-                保存した旅行プラン ({totalPlans}件)
+              <p className="text-stone-500 font-hand ml-2">
+                旅の記録 ({totalPlans}件)
               </p>
             </div>
             <div className="flex items-center gap-3">
               {hasLocalPlans && (
-                <button
+                <JournalButton
+                  variant="outline"
                   onClick={syncLocalPlans}
                   disabled={isSyncing}
-                  className="flex items-center gap-2 px-4 py-3 text-[#e67e22] bg-[#e67e22]/10 rounded-full font-bold hover:bg-[#e67e22]/20 transition-all disabled:opacity-50"
+                  className="hidden sm:flex"
                 >
-                  {isSyncing ? <FaSync className="animate-spin" /> : <FaSync />}
-                  <span className="hidden sm:inline">ローカルプランを同期</span>
-                </button>
+                  {isSyncing ? <FaSync className="animate-spin mr-2" /> : <FaSync className="mr-2" />}
+                  ローカル同期
+                </JournalButton>
               )}
-              <button
+              <JournalButton
+                variant="primary"
                 onClick={() => openModal()}
-                className="flex items-center gap-2 px-6 py-3 bg-[#e67e22] text-white rounded-full font-bold hover:bg-[#d35400] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
+                className="font-bold shadow-md hover:rotate-1"
               >
-                <FaPlus />
-                <span>新規作成</span>
-              </button>
+                <FaPlus className="mr-2" />
+                新規作成
+              </JournalButton>
             </div>
           </div>
 
           {/* Filter Tabs */}
-          <div className="flex items-center gap-2 mt-6 bg-stone-100/50 p-1 rounded-full inline-flex">
+          <div className="flex items-center gap-2 mt-8">
             <button
               onClick={() => setFilter('all')}
               className={`
-                flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all
+                flex items-center gap-2 px-6 py-2 rounded-sm font-bold transition-all font-hand border-b-2
                 ${filter === 'all'
-                  ? 'bg-white text-stone-800 shadow-sm'
-                  : 'text-stone-500 hover:text-stone-700'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-stone-400 hover:text-stone-600'
                 }
               `}
             >
-              <FaSuitcase className="text-sm" />
-              <span>すべて</span>
-              <span className="text-xs bg-stone-200/50 px-2 py-0.5 rounded-full">
-                {totalPlans}
-              </span>
+              すべて
             </button>
             <button
               onClick={() => setFilter('flagged')}
               className={`
-                flex items-center gap-2 px-4 py-2 rounded-full font-medium transition-all
+                flex items-center gap-2 px-6 py-2 rounded-sm font-bold transition-all font-hand border-b-2
                 ${filter === 'flagged'
-                  ? 'bg-white text-amber-600 shadow-sm'
-                  : 'text-stone-500 hover:text-stone-700'
+                  ? 'border-amber-500 text-amber-600'
+                  : 'border-transparent text-stone-400 hover:text-stone-600'
                 }
               `}
             >
               <FaFlag className="text-sm" />
-              <span>フラグ付き</span>
-              <span className="text-xs bg-stone-200/50 px-2 py-0.5 rounded-full">
-                {flaggedPlanIds.size}
-              </span>
+              フラグ付き
             </button>
           </div>
         </div>
 
         {/* Sync Status */}
         {(isSyncing || syncMessage) && (
-          <div className={`mb-6 p-4 rounded-xl flex items-center gap-3 ${
-            isSyncing ? 'bg-blue-50 text-blue-700' : 'bg-green-50 text-green-700'
+          <div className={`mb-6 p-4 rounded-sm flex items-center gap-3 border border-dashed ${
+            isSyncing ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-green-50 text-green-700 border-green-200'
           }`}>
-            {isSyncing ? (
-              <FaSync className="animate-spin" />
-            ) : (
-              <FaSync />
-            )}
-            <span>{syncMessage}</span>
+            {isSyncing ? <FaSync className="animate-spin" /> : <FaSync />}
+            <span className="font-hand">{syncMessage}</span>
           </div>
         )}
 
         {/* Plans List */}
         {isInitializing ? (
           <div className="text-center py-16">
-            <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
-            <p className="text-stone-600">プランを読み込み中...</p>
+            <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
+            <p className="text-stone-600 font-hand">ページをめくっています...</p>
           </div>
         ) : isLoadingFlags && filter === 'flagged' ? (
           <div className="text-center py-16">
-            <FaSync className="animate-spin text-4xl text-[#e67e22] mx-auto mb-4" />
-            <p className="text-stone-600">フラグ付きプランを読み込み中...</p>
+            <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
+            <p className="text-stone-600 font-hand">お気に入りのページを探しています...</p>
           </div>
         ) : displayedPlans.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="relative inline-block">
-              {/* Decorative background */}
-              <div className="absolute inset-0 bg-[#e67e22]/5 rounded-full scale-150" />
-              <div className="relative p-8 bg-[#fcfbf9] rounded-full border-2 border-dashed border-[#e67e22]/30 mb-6">
-                {filter === 'flagged' ? (
-                  <FaFlag className="text-6xl text-amber-300" />
-                ) : (
-                  <FaPlane className="text-6xl text-[#e67e22]/30" />
-                )}
-              </div>
+          <div className="text-center py-16 opacity-70">
+            <div className="w-32 h-32 mx-auto mb-6 bg-stone-100 rounded-full border-4 border-stone-200 border-dashed flex items-center justify-center">
+               <FaPlane className="text-4xl text-stone-300" />
             </div>
-            <h2 className="font-serif text-xl font-bold text-stone-600 mb-2">
-              {filter === 'flagged' ? 'フラグ付きプランがありません' : 'プランがありません'}
+            <h2 className="font-hand text-xl font-bold text-stone-500 mb-2">
+              まだ記録がありません
             </h2>
-            <p className="text-stone-500 mb-8 font-hand">
-              新しい旅行プランを作成して、ここに保存しましょう
+            <p className="text-stone-400 mb-8 font-hand text-sm">
+              新しい旅の計画を立てて、ここに思い出を残しましょう
             </p>
-            <button
-              onClick={() => openModal()}
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#e67e22] text-white rounded-full font-bold hover:bg-[#d35400] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
-            >
-              <FaPlus />
-              <span>プランを作成する</span>
-            </button>
           </div>
         ) : (
-          <div className="grid gap-5">
-            {displayedPlans.map((plan) => (
-              <div
+          <div className="grid gap-8">
+            {displayedPlans.map((plan, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
                 key={plan.id}
-                className={`relative bg-[#fcfbf9] rounded-2xl border-2 border-dashed border-stone-200 hover:border-[#e67e22]/40 hover:shadow-lg transition-all group ${
-                  openMenuId === plan.id ? 'z-50' : 'z-0'
-                }`}
               >
-                {/* Corner tape decorations - clipped by this inner container */}
-                <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-10">
-                  <div className="absolute top-0 left-0 w-6 h-6 bg-[#e67e22]/15 rotate-45 -translate-x-3 -translate-y-3" />
-                  <div className="absolute top-0 right-0 w-6 h-6 bg-[#27ae60]/15 -rotate-45 translate-x-3 -translate-y-3" />
-                </div>
+                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group ${openMenuId === plan.id ? 'z-50' : 'z-0'}`}>
+                  {/* Tape Decorations */}
+                  <Tape color="white" position="top-right" rotation="right" className="opacity-70 w-24 -top-3" />
 
-                <div className="flex flex-col sm:flex-row relative z-0">
-                  {/* Thumbnail */}
-                  <div className="sm:w-48 h-36 sm:h-auto relative bg-stone-100 overflow-hidden rounded-t-2xl sm:rounded-tr-none sm:rounded-l-2xl">
-                    {plan.thumbnailUrl ? (
-                      <Image
-                        src={plan.thumbnailUrl}
-                        alt={plan.destination || '旅行プラン'}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#e67e22]/5 to-[#27ae60]/5">
-                        <FaMapMarkerAlt className="text-4xl text-[#e67e22]/30" />
+                  <div className="flex flex-col sm:flex-row">
+                    {/* Thumbnail */}
+                    <div className="sm:w-56 h-48 sm:h-auto relative bg-stone-100 overflow-hidden border-r border-stone-200 border-dashed">
+                      {plan.thumbnailUrl ? (
+                        <Image
+                          src={plan.thumbnailUrl}
+                          alt={plan.destination || '旅行プラン'}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-[#fcfbf9]">
+                          <FaMapMarkerAlt className="text-4xl text-stone-200" />
+                        </div>
+                      )}
+
+                      {/* Visibility Badge (Stamp style) */}
+                      <div className={`absolute bottom-3 left-3 px-3 py-1 border-2 font-bold text-xs transform -rotate-2 ${
+                        plan.isPublic
+                          ? 'border-green-600 text-green-700 bg-white/90'
+                          : 'border-stone-500 text-stone-600 bg-white/90'
+                      }`}>
+                        {plan.isPublic ? 'PUBLIC' : 'PRIVATE'}
                       </div>
-                    )}
-                    {/* Visibility badge */}
-                    <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ${
-                      plan.isPublic
-                        ? 'bg-[#27ae60]/90 text-white'
-                        : 'bg-stone-700/90 text-white'
-                    }`}>
-                      {plan.isPublic ? <FaEye className="text-[10px]" /> : <FaEyeSlash className="text-[10px]" />}
-                      {plan.isPublic ? '公開' : '非公開'}
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="flex-1 p-5 sm:p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1">
-                        {isRenaming === plan.id ? (
-                          <div className="flex items-center gap-2">
+                    {/* Content */}
+                    <div className="flex-1 p-6 relative">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          {isRenaming === plan.id ? (
                             <input
                               ref={renameInputRef}
                               type="text"
@@ -468,142 +421,92 @@ export default function MyPlansClient({
                                 }
                               }}
                               onBlur={() => handleRename(plan.id)}
-                              className="flex-1 font-serif text-lg font-bold text-stone-800 bg-white border-2 border-[#e67e22] rounded-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50"
-                              disabled={isUpdating === plan.id}
-                              placeholder="プラン名を入力"
+                              className="w-full font-hand text-2xl font-bold bg-transparent border-b-2 border-primary focus:outline-none"
+                              placeholder="タイトルを入力"
                             />
-                          </div>
-                        ) : (
-                          <Link
-                            href={`/plan/id/${plan.id}`}
-                            className="group/link"
-                          >
-                            <h3 className="font-serif text-lg font-bold text-stone-800 group-hover/link:text-[#e67e22] transition-colors flex items-center gap-2">
-                              {plan.destination || '目的地未設定'}
-                              <FaExternalLinkAlt className="text-xs opacity-0 group-hover/link:opacity-100 transition-opacity" />
-                            </h3>
-                          </Link>
-                        )}
-
-                        <div className="flex flex-wrap items-center gap-3 mt-3 text-sm text-stone-500">
-                          {plan.durationDays && (
-                            <span className="flex items-center gap-1.5 bg-[#e67e22]/5 px-2.5 py-1 rounded-full">
-                              <FaCalendarAlt className="text-[#e67e22]/60 text-xs" />
-                              {plan.durationDays}日間
-                            </span>
+                          ) : (
+                            <Link href={`/plan/id/${plan.id}`} className="group/link block">
+                              <h3 className="font-hand text-2xl font-bold text-stone-800 group-hover/link:text-primary transition-colors mb-2">
+                                {plan.destination || 'Untitled Trip'}
+                              </h3>
+                            </Link>
                           )}
-                          {/* Improved visibility indicator */}
-                          <button
-                            onClick={() => handleToggleVisibility(plan.id, plan.isPublic)}
-                            disabled={isUpdating === plan.id}
-                            className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium transition-all disabled:opacity-50 ${
-                              plan.isPublic
-                                ? 'bg-[#27ae60]/10 text-[#27ae60] hover:bg-[#27ae60]/20'
-                                : 'bg-stone-100 text-stone-500 hover:bg-stone-200'
-                            }`}
-                            title={plan.isPublic ? 'クリックで非公開にする' : 'クリックで公開する'}
-                          >
-                            {plan.isPublic ? (
-                              <>
-                                <FaGlobe className="text-[10px]" />
-                                公開中
-                              </>
-                            ) : (
-                              <>
-                                <FaLock className="text-[10px]" />
-                                非公開
-                              </>
+
+                          <div className="flex items-center gap-4 text-sm text-stone-500 font-hand mt-2">
+                            {plan.durationDays && (
+                              <span className="flex items-center gap-1">
+                                <FaCalendarAlt className="text-stone-400" />
+                                {plan.durationDays} Days
+                              </span>
                             )}
-                          </button>
+                            <span className="text-stone-300">|</span>
+                            <span>Created: {formatDate(plan.createdAt)}</span>
+                          </div>
                         </div>
 
-                        <p className="text-xs text-stone-400 mt-3 font-hand">
-                          作成日: {formatDate(plan.createdAt)}
-                        </p>
-                      </div>
-
-                      {/* Actions - Flag button and Three dot menu */}
-                      <div className="flex items-center gap-2">
-                        {/* Flag Button */}
-                        <motion.button
-                          onClick={() => handleToggleFlag(plan.id)}
-                          className={`p-2.5 rounded-full transition-all ${
-                            isFlagged(plan.id)
-                              ? 'text-amber-500 hover:bg-amber-50'
-                              : 'text-stone-300 hover:text-amber-400 hover:bg-stone-100'
-                          }`}
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          title={isFlagged(plan.id) ? 'フラグを外す' : 'フラグを付ける'}
-                        >
-                          <FaFlag className="text-lg" />
-                        </motion.button>
-
-                        {/* Three dot menu */}
-                        <div className="relative" ref={openMenuId === plan.id ? menuRef : null}>
+                        {/* Actions */}
+                        <div className="flex items-center gap-1">
+                          {/* Flag */}
                           <button
-                            onClick={() => setOpenMenuId(openMenuId === plan.id ? null : plan.id)}
-                            className="p-2.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-all"
-                            title="メニュー"
+                            onClick={() => handleToggleFlag(plan.id)}
+                            className={`p-2 rounded-full transition-all ${
+                              isFlagged(plan.id)
+                                ? 'text-amber-500'
+                                : 'text-stone-300 hover:text-amber-400'
+                            }`}
                           >
-                            <FaEllipsisV />
+                            <FaFlag className="text-lg" />
                           </button>
 
-                        {/* Dropdown menu */}
-                        {openMenuId === plan.id && (
-                          <div className="absolute right-0 top-full mt-1 w-44 bg-white rounded-xl shadow-lg border border-stone-200 py-2 z-50">
+                          {/* Menu */}
+                          <div className="relative" ref={openMenuId === plan.id ? menuRef : null}>
                             <button
-                              onClick={() => handleStartRename(plan.id, plan.destination || '')}
-                              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                              onClick={() => setOpenMenuId(openMenuId === plan.id ? null : plan.id)}
+                              className="p-2 text-stone-400 hover:text-stone-600 transition-all"
                             >
-                              <FaEdit className="text-stone-400" />
-                              名前を変更
+                              <FaEllipsisV />
                             </button>
-                            <button
-                              onClick={() => {
-                                handleToggleVisibility(plan.id, plan.isPublic);
-                                setOpenMenuId(null);
-                              }}
-                              disabled={isUpdating === plan.id}
-                              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-stone-700 hover:bg-stone-50 transition-colors disabled:opacity-50"
-                            >
-                              {plan.isPublic ? (
-                                <>
-                                  <FaLock className="text-stone-400" />
-                                  非公開にする
-                                </>
-                              ) : (
-                                <>
-                                  <FaGlobe className="text-stone-400" />
-                                  公開する
-                                </>
-                              )}
-                            </button>
-                            <hr className="my-2 border-stone-100" />
-                            <button
-                              onClick={() => {
-                                confirmDelete(plan.id);
-                              }}
-                              disabled={isDeleting === plan.id}
-                              className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-red-600 hover:bg-red-50 transition-colors disabled:opacity-50"
-                            >
-                              <FaTrash className="text-red-400" />
-                              削除
-                            </button>
+
+                            {openMenuId === plan.id && (
+                              <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-sm shadow-xl border border-stone-200 z-50 font-hand">
+                                <button
+                                  onClick={() => handleStartRename(plan.id, plan.destination || '')}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                >
+                                  <FaEdit /> 名前を変更
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    handleToggleVisibility(plan.id, plan.isPublic);
+                                    setOpenMenuId(null);
+                                  }}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                >
+                                  {plan.isPublic ? <FaLock /> : <FaGlobe />}
+                                  {plan.isPublic ? '非公開にする' : '公開する'}
+                                </button>
+                                <div className="border-t border-stone-100 border-dashed my-1" />
+                                <button
+                                  onClick={() => confirmDelete(plan.id)}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                                >
+                                  <FaTrash /> 削除
+                                </button>
+                              </div>
+                            )}
                           </div>
-                        )}
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </JournalSheet>
+              </motion.div>
             ))}
           </div>
         )}
       </main>
 
-      {/* Delete Plan Modal */}
+      {/* Delete Modal */}
       <AnimatePresence>
         {showDeleteModal && (
           <motion.div
@@ -613,50 +516,28 @@ export default function MyPlansClient({
             className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4"
             onClick={() => setShowDeleteModal(false)}
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl relative"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setShowDeleteModal(false)}
-                className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
-              >
-                <FaTimes />
-              </button>
-
-              <div className="flex flex-col items-center text-center">
-                <div className="p-4 bg-red-100 rounded-full mb-4">
-                  <FaTrash className="text-red-500 text-2xl" />
-                </div>
-
-                <h3 className="font-serif text-xl font-bold text-stone-800 mb-2">
-                  プランを削除しますか？
-                </h3>
-
-                <p className="text-sm text-stone-600 mb-6">
-                  この操作は取り消すことができません。<br/>
-                  本当にこのプランを削除しますか？
-                </p>
-
-                <div className="flex gap-3 w-full">
-                  <button
-                    onClick={() => setShowDeleteModal(false)}
-                    className="flex-1 px-4 py-3 bg-stone-100 text-stone-700 rounded-xl font-medium hover:bg-stone-200 transition-colors"
-                  >
-                    キャンセル
-                  </button>
-                  <button
-                    onClick={handleDelete}
-                    className="flex-1 px-4 py-3 bg-red-600 text-white rounded-xl font-bold hover:bg-red-700 transition-colors"
-                  >
-                    削除する
-                  </button>
-                </div>
-              </div>
-            </motion.div>
+            <div onClick={(e) => e.stopPropagation()} className="max-w-sm w-full transform rotate-1">
+               <JournalSheet className="relative text-center p-8">
+                  <Tape color="red" position="top-center" className="w-32 -top-4 opacity-80" />
+                  <div className="mb-4">
+                     <FaTrash className="text-4xl text-red-400 mx-auto" />
+                  </div>
+                  <HandwrittenText className="text-xl font-bold text-stone-800 mb-2">
+                     本当に削除しますか？
+                  </HandwrittenText>
+                  <p className="text-sm text-stone-500 mb-6 font-hand">
+                     この操作は取り消せません。
+                  </p>
+                  <div className="flex gap-3">
+                     <JournalButton variant="ghost" onClick={() => setShowDeleteModal(false)} className="flex-1">
+                        キャンセル
+                     </JournalButton>
+                     <JournalButton variant="primary" onClick={handleDelete} className="flex-1 bg-red-600 border-red-800 text-white hover:bg-red-700">
+                        削除する
+                     </JournalButton>
+                  </div>
+               </JournalSheet>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
