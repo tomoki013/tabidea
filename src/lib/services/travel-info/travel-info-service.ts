@@ -18,7 +18,6 @@ import {
   CategoryDataMap,
   CategoryDataEntry,
   FailedCategory,
-  ALL_TRAVEL_INFO_CATEGORIES,
   BasicCountryInfo,
 } from '@/types';
 
@@ -251,7 +250,7 @@ export class TravelInfoService implements ITravelInfoService {
 
     // キャッシュチェック
     if (useCache) {
-      const cached = await this.getCachedInfo(destination);
+      const cached = await this.getCachedInfo(destination, categories);
       if (cached) {
         this.log(`Cache hit for ${destination}`);
         return cached;
@@ -287,8 +286,11 @@ export class TravelInfoService implements ITravelInfoService {
   /**
    * キャッシュされた情報を取得する
    */
-  async getCachedInfo(destination: string): Promise<TravelInfoResponse | null> {
-    const cacheKey = generateCompositeCacheKey(destination, ALL_TRAVEL_INFO_CATEGORIES);
+  async getCachedInfo(
+    destination: string,
+    categories: TravelInfoCategory[]
+  ): Promise<TravelInfoResponse | null> {
+    const cacheKey = generateCompositeCacheKey(destination, categories);
     const cached = await this.cacheManager.get<TravelInfoResponse>(cacheKey);
 
     if (cached && cached.expiresAt > new Date()) {

@@ -263,7 +263,7 @@ describe('TravelInfoService', () => {
       await service.invalidateCache('Tokyo');
 
       // キャッシュが空であることを確認
-      const cached = await service.getCachedInfo('Tokyo');
+      const cached = await service.getCachedInfo('Tokyo', ['safety']);
       expect(cached).toBeNull();
     });
   });
