@@ -12,3 +12,5 @@
  ○ Compiling / ...
  GET / 200 in 19.1s (compile: 15.4s, proxy.ts: 265ms, render: 3.5s)
  GET / 200 in 347ms (compile: 15ms, proxy.ts: 18ms, render: 314ms)
+ ✓ Compiled in 783ms
+ ✓ Compiled in 4.9s

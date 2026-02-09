@@ -243,13 +243,17 @@ export default function MobileSidebar({
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="fixed left-0 top-0 bottom-0 w-80 max-w-[85vw] z-[80] flex flex-col pointer-events-none"
           >
-            <JournalSheet variant="notebook" className="w-full h-full flex flex-col pointer-events-auto shadow-2xl overflow-hidden p-0 rounded-l-none">
+            {/*
+              Changed: overflow-y-auto to allow full sidebar scrolling.
+              Removed flex-1 from children to allow natural flow.
+            */}
+            <JournalSheet variant="notebook" className="w-full h-full flex flex-col pointer-events-auto shadow-2xl overflow-y-auto p-0 rounded-l-none">
 
               {/* Decorative Tape */}
-              <Tape color="yellow" position="top-right" rotation="right" className="opacity-90" />
+              <Tape color="yellow" position="top-right" rotation="right" className="opacity-90 sticky top-2 z-20" />
 
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b-2 border-dashed border-stone-200 bg-white/50">
+              <div className="flex items-center justify-between p-4 border-b-2 border-dashed border-stone-200 bg-white/50 sticky top-0 z-10 backdrop-blur-sm">
                 <Link href="/" onClick={onClose} className="group flex items-center gap-2">
                   <Stamp color="black" size="sm" className="w-10 h-10 text-[0.6rem] border-2 bg-white">
                      <div className="flex flex-col items-center leading-none">
@@ -336,8 +340,8 @@ export default function MobileSidebar({
               {/* Divider */}
               <div className="mx-4 border-t-2 border-dashed border-stone-200" />
 
-              {/* Plans Section */}
-              <div className="flex-1 flex flex-col overflow-hidden">
+              {/* Plans Section - Removed flex-1/overflow-hidden to allow full scroll */}
+              <div className="flex flex-col">
                 <div className="flex items-center justify-between px-4 py-3">
                   <div className="flex items-center gap-2">
                     <FaSuitcase className="text-stone-400" />
@@ -356,8 +360,8 @@ export default function MobileSidebar({
                   )}
                 </div>
 
-                {/* Plans List */}
-                <div className="flex-1 overflow-y-auto px-4 pb-4">
+                {/* Plans List - Removed overflow-y-auto */}
+                <div className="px-4 pb-4">
                   {isLoading ? (
                     <div className="space-y-2">
                       {[...Array(3)].map((_, i) => (

@@ -99,10 +99,35 @@ const TRANSPORT_OPTIONS = [
   { id: "ferry", label: "フェリー", icon: FaShip },
 ];
 
-const BUDGET_CONFIG = {
-  domestic: { min: 10000, max: 500000, step: 10000, defaultMin: 30000, defaultMax: 100000, unit: "円" },
-  overseas: { min: 50000, max: 2000000, step: 10000, defaultMin: 100000, defaultMax: 500000, unit: "円" },
-} as const;
+// New Budget Logic
+const BUDGET_MIN = 10000;
+const BUDGET_MAX = 2000000;
+const BREAKPOINT_AMOUNT = 500000;
+const STEP_SMALL = 10000;
+const STEP_LARGE = 100000;
+
+// Calculate max index for slider
+// Range 1: 10k to 500k (step 10k) -> (500k - 10k)/10k = 49 steps
+const STEPS_RANGE_1 = (BREAKPOINT_AMOUNT - BUDGET_MIN) / STEP_SMALL; // 49
+// Range 2: 500k to 2M (step 100k) -> (2M - 500k)/100k = 15 steps
+const STEPS_RANGE_2 = (BUDGET_MAX - BREAKPOINT_AMOUNT) / STEP_LARGE; // 15
+const SLIDER_MAX = STEPS_RANGE_1 + STEPS_RANGE_2; // 64
+
+function getBudgetAmount(index: number): number {
+  if (index <= STEPS_RANGE_1) {
+    return BUDGET_MIN + (index * STEP_SMALL);
+  } else {
+    return BREAKPOINT_AMOUNT + ((index - STEPS_RANGE_1) * STEP_LARGE);
+  }
+}
+
+function getBudgetIndex(amount: number): number {
+  if (amount <= BREAKPOINT_AMOUNT) {
+    return Math.round((amount - BUDGET_MIN) / STEP_SMALL);
+  } else {
+    return STEPS_RANGE_1 + Math.round((amount - BREAKPOINT_AMOUNT) / STEP_LARGE);
+  }
+}
 
 // ============================================================================
 // Types
@@ -142,7 +167,7 @@ const formatDuration = (days: number): string => {
 
 function formatBudget(amount: number): string {
   if (amount >= 10000) {
-    return `${(amount / 10000).toFixed(amount % 10000 === 0 ? 0 : 1)}万円`;
+    return `${(amount / 10000).toLocaleString()}万円`;
   }
   return `${amount.toLocaleString()}円`;
 }
@@ -196,14 +221,14 @@ function AccordionSection({
               <Check className="w-3 h-3" />
             </div>
           ) : (
-            <div className="w-6 h-6 rounded-full border-2 border-stone-300 text-stone-400 flex items-center justify-center font-hand text-xs">
+            <div className="w-6 h-6 rounded-full border-2 border-stone-300 text-stone-400 flex items-center justify-center font-bold font-sans text-xs">
               {icon}
             </div>
           )}
           <div className="text-left flex items-baseline gap-2">
-            <HandwrittenText className="font-bold text-lg text-stone-700">{title}</HandwrittenText>
+            <span className="font-bold text-lg text-stone-700 font-sans">{title}</span>
             {subtitle && (
-              <span className="text-xs text-stone-400 font-hand">{subtitle}</span>
+              <span className="text-xs text-stone-400 font-sans">{subtitle}</span>
             )}
           </div>
         </div>
@@ -275,31 +300,32 @@ export default function SimplifiedInputFlow({
   const [useCalendar, setUseCalendar] = useState(!!currentStartDate);
 
   // Budget Slider State
-  const isOverseas = input.region !== "domestic";
-  const budgetConfig = isOverseas ? BUDGET_CONFIG.overseas : BUDGET_CONFIG.domestic;
-
   const existingBudgetRange = parseBudgetRange(input.budget);
   const [useBudgetSlider, setUseBudgetSlider] = useState(!!existingBudgetRange);
-  const [budgetMin, setBudgetMin] = useState(existingBudgetRange?.min ?? budgetConfig.defaultMin);
-  const [budgetMax, setBudgetMax] = useState(existingBudgetRange?.max ?? budgetConfig.defaultMax);
+  // Store actual amounts
+  const [budgetMinAmount, setBudgetMinAmount] = useState(existingBudgetRange?.min ?? 30000);
+  const [budgetMaxAmount, setBudgetMaxAmount] = useState(existingBudgetRange?.max ?? 100000);
 
   // Sync slider logic
-  const handleBudgetMinChange = useCallback((newMin: number) => {
-    const clampedMin = Math.min(newMin, budgetMax - budgetConfig.step);
-    setBudgetMin(clampedMin);
-    onChange({ budget: encodeBudgetRange(clampedMin, budgetMax) });
-  }, [budgetMax, budgetConfig.step, onChange]);
+  const handleBudgetMinIndexChange = useCallback((newIndex: number) => {
+    const newAmount = getBudgetAmount(newIndex);
+    // Clamp so min doesn't exceed max
+    const clampedAmount = Math.min(newAmount, budgetMaxAmount); // Allow overlap or enforce step? Let's just clamp.
+    setBudgetMinAmount(clampedAmount);
+    onChange({ budget: encodeBudgetRange(clampedAmount, budgetMaxAmount) });
+  }, [budgetMaxAmount, onChange]);
 
-  const handleBudgetMaxChange = useCallback((newMax: number) => {
-    const clampedMax = Math.max(newMax, budgetMin + budgetConfig.step);
-    setBudgetMax(clampedMax);
-    onChange({ budget: encodeBudgetRange(budgetMin, clampedMax) });
-  }, [budgetMin, budgetConfig.step, onChange]);
+  const handleBudgetMaxIndexChange = useCallback((newIndex: number) => {
+    const newAmount = getBudgetAmount(newIndex);
+    const clampedAmount = Math.max(newAmount, budgetMinAmount);
+    setBudgetMaxAmount(clampedAmount);
+    onChange({ budget: encodeBudgetRange(budgetMinAmount, clampedAmount) });
+  }, [budgetMinAmount, onChange]);
 
   const toggleBudgetSlider = (enable: boolean) => {
     setUseBudgetSlider(enable);
     if (enable) {
-      onChange({ budget: encodeBudgetRange(budgetMin, budgetMax) });
+      onChange({ budget: encodeBudgetRange(budgetMinAmount, budgetMaxAmount) });
     } else {
       onChange({ budget: "" });
     }
@@ -484,8 +510,11 @@ export default function SimplifiedInputFlow({
     });
   };
 
-  const minPercent = ((budgetMin - budgetConfig.min) / (budgetConfig.max - budgetConfig.min)) * 100;
-  const maxPercent = ((budgetMax - budgetConfig.min) / (budgetConfig.max - budgetConfig.min)) * 100;
+  // Calculate percentages for slider background
+  const minIndex = getBudgetIndex(budgetMinAmount);
+  const maxIndex = getBudgetIndex(budgetMaxAmount);
+  const minPercent = (minIndex / SLIDER_MAX) * 100;
+  const maxPercent = (maxIndex / SLIDER_MAX) * 100;
 
   return (
     <div
@@ -494,10 +523,10 @@ export default function SimplifiedInputFlow({
     >
       {/* Header */}
       <div className="text-center mb-8">
-        <HandwrittenText tag="h1" className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2">
+        <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2 font-sans">
           <span className="border-b-2 border-primary/30 pb-1">旅行プランを作成</span>
-        </HandwrittenText>
-        <p className="text-stone-500 font-hand text-sm sm:text-base">
+        </h1>
+        <p className="text-stone-500 font-bold font-sans text-sm sm:text-base">
           必要な情報を入力して、AIがあなただけのプランを作成します
         </p>
       </div>
@@ -514,8 +543,8 @@ export default function SimplifiedInputFlow({
         <div className="flex items-center gap-3 mb-4 border-b-2 border-stone-200 border-dashed pb-2">
           <Stamp color="red" size="sm" className="w-10 h-10 text-[0.6rem] border-2">step 1</Stamp>
           <div className="flex flex-col">
-             <HandwrittenText className="font-bold text-xl text-stone-800">基本情報</HandwrittenText>
-             <span className="text-xs text-primary font-hand font-bold">
+             <span className="font-bold text-xl text-stone-800 font-sans">基本情報</span>
+             <span className="text-xs text-primary font-bold font-sans">
                ※ここは必ず書いてね
              </span>
           </div>
@@ -523,7 +552,7 @@ export default function SimplifiedInputFlow({
 
         {/* Destination Mode Selector */}
         <div className="space-y-4">
-          <label className="block text-sm font-bold text-stone-600 font-hand ml-1">
+          <label className="block text-sm font-bold text-stone-700 font-sans ml-1">
             ① 目的地はどうしますか？
           </label>
 
@@ -540,8 +569,8 @@ export default function SimplifiedInputFlow({
                 <span className="text-2xl">📍</span>
                 {!isOmakase && <Check className="w-4 h-4" />}
               </div>
-              <div className="font-bold text-lg font-hand">目的地を入力</div>
-              <div className="text-xs opacity-70 font-hand text-left">
+              <div className="font-bold text-lg font-sans">目的地を入力</div>
+              <div className="text-xs opacity-70 font-sans text-left">
                 京都、ハワイなど<br/>行きたい場所が決まっている
               </div>
             </JournalButton>
@@ -558,8 +587,8 @@ export default function SimplifiedInputFlow({
                 <span className="text-2xl">🎲</span>
                 {isOmakase && <Check className="w-4 h-4" />}
               </div>
-              <div className="font-bold text-lg font-hand">おまかせで決める</div>
-              <div className="text-xs opacity-70 font-hand text-left">
+              <div className="font-bold text-lg font-sans">おまかせで決める</div>
+              <div className="text-xs opacity-70 font-sans text-left">
                 まだ未定！<br/>AIに提案してほしい
               </div>
             </JournalButton>
@@ -577,14 +606,14 @@ export default function SimplifiedInputFlow({
               >
                 <div className="bg-white/50 border border-stone-200 rounded-sm p-4 space-y-3 relative">
                   <Tape color="green" position="top-right" className="w-16 h-4 opacity-70" />
-                  <label className="block text-sm font-bold text-stone-600 font-hand">
+                  <label className="block text-sm font-bold text-stone-600 font-sans">
                     どんな旅にしたい？
                   </label>
                   <textarea
                     value={input.travelVibe || ""}
                     onChange={(e) => onChange({ travelVibe: e.target.value })}
                     placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
-                    className="w-full h-28 bg-transparent border-b-2 border-stone-300 p-2 text-lg font-hand placeholder:text-stone-300 focus:outline-none focus:border-primary transition-colors resize-none leading-relaxed"
+                    className="w-full h-28 bg-white border border-stone-300 rounded-sm p-3 text-base font-sans placeholder:text-stone-400 focus:outline-none focus:border-primary transition-colors resize-none leading-relaxed"
                   />
                 </div>
               </motion.div>
@@ -602,7 +631,7 @@ export default function SimplifiedInputFlow({
                     {input.destinations.map((dest, index) => (
                       <span
                         key={dest}
-                        className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-stone-300 rounded-sm text-stone-700 font-hand shadow-sm transform rotate-1"
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-stone-300 rounded-sm text-stone-700 font-sans shadow-sm transform rotate-1"
                       >
                         {dest}
                         <button
@@ -643,12 +672,12 @@ export default function SimplifiedInputFlow({
         {/* Duration Selector */}
         <div className="space-y-3">
           <div className="flex items-center justify-between mb-2">
-            <label className="block text-sm font-bold text-stone-600 font-hand ml-1">
+            <label className="block text-sm font-bold text-stone-700 font-sans ml-1">
               ② 日程
             </label>
 
             {/* Toggle Switch */}
-            <div className="flex text-xs font-bold font-hand gap-2">
+            <div className="flex text-xs font-bold font-sans gap-2">
                 <button
                     type="button"
                     onClick={() => {
@@ -684,7 +713,7 @@ export default function SimplifiedInputFlow({
                 <Tape color="white" position="top-center" className="w-16 h-4 opacity-50" />
                 <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1">
-                        <span className="text-xs font-bold text-stone-500 font-hand">出発日</span>
+                        <span className="text-xs font-bold text-stone-500 font-sans">出発日</span>
                         <input
                             type="date"
                             value={startDate}
@@ -700,21 +729,21 @@ export default function SimplifiedInputFlow({
                                     handleDateRangeChange(newStart, endDate);
                                 }
                             }}
-                            className="w-full p-2 bg-transparent border-b border-stone-300 font-hand text-lg focus:outline-none focus:border-primary"
+                            className="w-full p-2 bg-transparent border-b border-stone-300 font-sans text-lg focus:outline-none focus:border-primary"
                         />
                     </div>
                     <div className="space-y-1">
-                        <span className="text-xs font-bold text-stone-500 font-hand">帰着日</span>
+                        <span className="text-xs font-bold text-stone-500 font-sans">帰着日</span>
                         <input
                             type="date"
                             value={endDate}
                             min={startDate || new Date().toISOString().split('T')[0]}
                             onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
-                            className="w-full p-2 bg-transparent border-b border-stone-300 font-hand text-lg focus:outline-none focus:border-primary"
+                            className="w-full p-2 bg-transparent border-b border-stone-300 font-sans text-lg focus:outline-none focus:border-primary"
                         />
                     </div>
                 </div>
-                <div className="text-center font-hand">
+                <div className="text-center font-sans">
                     {startDate && endDate ? (
                         <p className="text-sm font-bold text-primary inline-block border-b-2 border-primary/20">
                            🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
@@ -735,9 +764,9 @@ export default function SimplifiedInputFlow({
                     >
                         <Minus className="w-4 h-4" />
                     </button>
-                    <HandwrittenText className="text-2xl font-bold text-stone-800 min-w-[120px] text-center">
+                    <span className="text-2xl font-bold text-stone-800 min-w-[120px] text-center font-sans">
                         {formatDuration(duration)}
-                    </HandwrittenText>
+                    </span>
                     <button
                         type="button"
                         onClick={() => handleDurationChange(Math.min(30, duration + 1))}
@@ -754,7 +783,7 @@ export default function SimplifiedInputFlow({
                         key={opt.value}
                         type="button"
                         onClick={() => handleDurationChange(opt.value)}
-                        className={`py-1.5 px-2 text-xs font-hand font-bold rounded-sm border transition-all transform hover:-translate-y-0.5 ${
+                        className={`py-1.5 px-2 text-xs font-sans font-bold rounded-sm border transition-all transform hover:-translate-y-0.5 ${
                         duration === opt.value
                             ? "border-primary bg-primary/10 text-primary -rotate-2 shadow-sm"
                             : "border-stone-200 bg-white hover:border-primary/50 text-stone-600 rotate-1"
@@ -770,7 +799,7 @@ export default function SimplifiedInputFlow({
 
         {/* Companion Selector */}
         <div className="space-y-3">
-          <label className="block text-sm font-bold text-stone-600 font-hand ml-1">
+          <label className="block text-sm font-bold text-stone-700 font-sans ml-1">
             ③ 誰と行く？
           </label>
           <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
@@ -779,7 +808,7 @@ export default function SimplifiedInputFlow({
                 key={opt.id}
                 type="button"
                 onClick={() => onChange({ companions: opt.id })}
-                className={`py-3 px-2 text-sm font-hand font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 ${
+                className={`py-3 px-2 text-sm font-sans font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 ${
                   input.companions === opt.id
                     ? "border-primary bg-white text-stone-800 shadow-md transform -rotate-1 ring-2 ring-primary/20"
                     : "border-stone-200 bg-white/50 hover:bg-white text-stone-500 hover:text-stone-800"
@@ -808,7 +837,7 @@ export default function SimplifiedInputFlow({
             <div className="space-y-8">
             {/* Theme Selection */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                 テーマ（複数選択可）
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -820,7 +849,7 @@ export default function SimplifiedInputFlow({
                         key={theme.id}
                         type="button"
                         onClick={() => toggleTheme(theme.id)}
-                        className={`py-2 px-2 text-xs font-medium rounded-sm border transition-all flex flex-col items-center gap-1 font-hand ${
+                        className={`py-2 px-2 text-xs font-bold rounded-sm border transition-all flex flex-col items-center gap-1 font-sans ${
                         isSelected
                             ? "border-primary bg-white text-primary shadow-sm transform -rotate-1"
                             : "border-stone-200 bg-white/50 hover:bg-white text-stone-500 hover:text-primary"
@@ -836,7 +865,7 @@ export default function SimplifiedInputFlow({
 
             {/* Budget Selection */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                 予算感
                 </label>
 
@@ -849,7 +878,7 @@ export default function SimplifiedInputFlow({
                         key={opt.id}
                         type="button"
                         onClick={() => onChange({ budget: opt.id })}
-                        className={`py-3 px-3 text-sm font-medium rounded-sm border transition-all flex flex-col items-center justify-center gap-1 h-24 font-hand ${
+                        className={`py-3 px-3 text-sm font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 h-24 font-sans ${
                             input.budget === opt.id
                             ? "border-primary bg-white text-primary shadow-sm -rotate-1"
                             : "border-stone-200 bg-white/50 hover:bg-white text-stone-600"
@@ -864,7 +893,7 @@ export default function SimplifiedInputFlow({
                     <button
                     type="button"
                     onClick={() => toggleBudgetSlider(true)}
-                    className="w-full py-2 text-xs text-stone-400 hover:text-primary underline flex items-center justify-center gap-1 font-hand"
+                    className="w-full py-3 px-4 rounded-md bg-stone-100 hover:bg-stone-200 text-stone-700 text-sm font-bold transition-colors flex items-center justify-center gap-2 border border-stone-300"
                     >
                     <span>🎚️</span>
                     <span>具体的な金額で指定する</span>
@@ -874,11 +903,11 @@ export default function SimplifiedInputFlow({
                 <div className="bg-white/50 border border-stone-200 rounded-sm p-4 space-y-4 relative">
                     <Tape color="white" position="top-right" className="opacity-50 w-12 h-4" />
                     <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-stone-500 font-hand">金額範囲を指定</span>
+                    <span className="text-xs font-bold text-stone-500 font-sans">金額範囲を指定</span>
                     <button
                         type="button"
                         onClick={() => toggleBudgetSlider(false)}
-                        className="text-xs text-stone-400 hover:text-stone-600 underline font-hand"
+                        className="text-xs text-stone-400 hover:text-stone-600 underline font-sans"
                     >
                         選択式に戻す
                     </button>
@@ -886,7 +915,7 @@ export default function SimplifiedInputFlow({
 
                     <div className="text-center">
                     <span className="text-xl font-bold text-primary font-mono">
-                        {formatBudget(budgetMin)} 〜 {formatBudget(budgetMax)}
+                        {formatBudget(budgetMinAmount)} 〜 {formatBudget(budgetMaxAmount)}
                     </span>
                     </div>
 
@@ -901,23 +930,23 @@ export default function SimplifiedInputFlow({
                             }}
                         />
                     </div>
-                    {/* Inputs */}
+                    {/* Inputs using mapped values */}
                     <input
                         type="range"
-                        min={budgetConfig.min}
-                        max={budgetConfig.max}
-                        step={budgetConfig.step}
-                        value={budgetMin}
-                        onChange={(e) => handleBudgetMinChange(Number(e.target.value))}
+                        min={0}
+                        max={SLIDER_MAX}
+                        step={1}
+                        value={minIndex}
+                        onChange={(e) => handleBudgetMinIndexChange(Number(e.target.value))}
                         className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
                     />
                     <input
                         type="range"
-                        min={budgetConfig.min}
-                        max={budgetConfig.max}
-                        step={budgetConfig.step}
-                        value={budgetMax}
-                        onChange={(e) => handleBudgetMaxChange(Number(e.target.value))}
+                        min={0}
+                        max={SLIDER_MAX}
+                        step={1}
+                        value={maxIndex}
+                        onChange={(e) => handleBudgetMaxIndexChange(Number(e.target.value))}
                         className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
                     />
                     {/* Thumb Indicators */}
@@ -936,7 +965,7 @@ export default function SimplifiedInputFlow({
 
             {/* Pace Selection */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                 旅のペース
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -945,7 +974,7 @@ export default function SimplifiedInputFlow({
                     key={opt.id}
                     type="button"
                     onClick={() => onChange({ pace: opt.id })}
-                    className={`py-3 px-3 text-sm font-medium rounded-sm border transition-all flex items-center justify-center gap-2 font-hand ${
+                    className={`py-3 px-3 text-sm font-bold rounded-sm border transition-all flex items-center justify-center gap-2 font-sans ${
                         input.pace === opt.id
                         ? "border-primary bg-white text-stone-800 shadow-sm -rotate-1"
                         : "border-stone-200 bg-white/50 hover:bg-white text-stone-600"
@@ -976,7 +1005,7 @@ export default function SimplifiedInputFlow({
             <div className="space-y-6">
             {/* Preferred Transport */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                     希望する移動手段
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -988,7 +1017,7 @@ export default function SimplifiedInputFlow({
                             key={opt.id}
                             type="button"
                             onClick={() => toggleTransport(opt.id)}
-                            className={`py-2 px-3 text-xs font-medium rounded-sm border transition-all flex items-center gap-2 font-hand ${
+                            className={`py-2 px-3 text-xs font-bold rounded-sm border transition-all flex items-center gap-2 font-sans ${
                                 isSelected
                                 ? "border-primary bg-white text-primary shadow-sm -rotate-1"
                                 : "border-stone-200 bg-white/50 hover:bg-white text-stone-600"
@@ -1005,7 +1034,7 @@ export default function SimplifiedInputFlow({
 
             {/* Must-Visit Places */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                 絶対行きたい場所
                 </label>
 
@@ -1015,7 +1044,7 @@ export default function SimplifiedInputFlow({
                     {input.mustVisitPlaces?.map((place, index) => (
                     <span
                         key={index}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-stone-200 rounded-sm text-sm font-hand shadow-sm rotate-1"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-stone-200 rounded-sm text-sm font-sans font-bold shadow-sm rotate-1"
                     >
                         📍 {place}
                         <button
@@ -1057,7 +1086,7 @@ export default function SimplifiedInputFlow({
 
             {/* Free Text */}
             <div className="space-y-3">
-                <label className="block text-sm font-bold text-stone-600 font-hand">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
                 その他のリクエスト
                 </label>
                 <div className="bg-white/50 border border-stone-200 rounded-sm p-2 relative">
@@ -1065,7 +1094,7 @@ export default function SimplifiedInputFlow({
                         value={input.freeText || ""}
                         onChange={(e) => onChange({ freeText: e.target.value })}
                         placeholder="美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
-                        className="w-full h-24 bg-transparent border-none p-2 text-sm font-hand placeholder:text-stone-300 focus:outline-none resize-none leading-relaxed"
+                        className="w-full h-24 bg-transparent border-none p-2 text-sm font-sans placeholder:text-stone-300 focus:outline-none resize-none leading-relaxed"
                     />
                 </div>
             </div>
@@ -1087,7 +1116,7 @@ export default function SimplifiedInputFlow({
           size="lg"
           onClick={handleGenerateClick}
           disabled={isGenerating || !canGenerate}
-          className="w-full h-16 text-lg font-bold shadow-lg hover:rotate-1"
+          className="w-full h-16 text-lg font-bold shadow-lg hover:rotate-1 font-sans"
         >
           {isGenerating ? (
             <>
@@ -1112,7 +1141,7 @@ export default function SimplifiedInputFlow({
           )}
         </JournalButton>
         {canGenerate && !hasDetailedInput && (
-          <p className="text-center text-xs mt-3 text-stone-500 font-hand">
+          <p className="text-center text-xs mt-3 text-stone-500 font-sans font-medium">
             詳細設定を追加すると、より精度の高いプランが作成されます✨
           </p>
         )}

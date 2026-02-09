@@ -11,14 +11,14 @@ export const JournalInput = React.forwardRef<HTMLInputElement, JournalInputProps
     return (
       <div className="space-y-1">
         {label && (
-          <label className="text-sm font-hand font-bold text-stone-600 ml-1">
+          <label className="text-sm font-bold text-stone-600 ml-1 font-sans">
             {label}
           </label>
         )}
         <input
           ref={ref}
           className={cn(
-            "flex h-12 w-full rounded-sm border-b-2 border-stone-300 bg-transparent px-3 py-2 text-lg font-hand placeholder:text-stone-400 focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors",
+            "flex h-12 w-full rounded-sm border-b-2 border-stone-300 bg-transparent px-3 py-2 text-lg font-sans font-medium text-stone-800 placeholder:text-stone-400 focus-visible:outline-none focus-visible:border-primary disabled:cursor-not-allowed disabled:opacity-50 transition-colors",
             error && "border-destructive placeholder:text-destructive/50",
             className
           )}
