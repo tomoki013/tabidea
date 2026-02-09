@@ -287,7 +287,7 @@ if (safetyInfo.success) {
 
 ```typescript
 // キャッシュされた情報を取得
-const cached = await service.getCachedInfo('Tokyo');
+const cached = await service.getCachedInfo('Tokyo', ['safety']);
 
 // キャッシュを無効化
 await service.invalidateCache('Tokyo');

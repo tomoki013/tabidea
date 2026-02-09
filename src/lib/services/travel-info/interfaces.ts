@@ -127,8 +127,12 @@ export interface ITravelInfoService {
   /**
    * キャッシュされた情報を取得する
    * @param destination 目的地
+   * @param categories 取得するカテゴリ
    */
-  getCachedInfo(destination: string): Promise<TravelInfoResponse | null>;
+  getCachedInfo(
+    destination: string,
+    categories: TravelInfoCategory[]
+  ): Promise<TravelInfoResponse | null>;
 
   /**
    * キャッシュを無効化する
