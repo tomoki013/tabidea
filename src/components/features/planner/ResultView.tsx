@@ -332,7 +332,7 @@ export default function ResultView({
   const { enrichedDays } = useSpotCoordinates(displayResult.days, result.destination);
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-4 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
+    <div className="w-full max-w-6xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
       {/* Updating Overlay */}
       {isUpdating && (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-md animate-in fade-in duration-500 p-4">
@@ -447,7 +447,7 @@ export default function ResultView({
       </JournalSheet>
 
       {/* Tabs */}
-      <div ref={tabBarRef} className="sticky top-24 md:top-28 z-40 mb-10 w-full flex justify-center px-2 sm:px-0 pointer-events-none">
+      <div ref={tabBarRef} className="sticky top-[90px] md:top-[100px] z-40 mb-10 w-full flex justify-center px-2 sm:px-0 pointer-events-none">
         <div className="bg-white/80 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
           {[
             { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
@@ -490,7 +490,7 @@ export default function ResultView({
                 {displayResult.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
                     {/* Day Header */}
-                    <div className="sticky top-32 z-30 mb-8 flex items-center gap-4 pointer-events-none">
+                    <div className="sticky top-[140px] md:top-[150px] z-30 mb-8 flex items-center gap-4 pointer-events-none">
                       <div className="inline-flex items-center gap-4 bg-white py-2 px-4 rounded-sm shadow-sm border border-stone-200 pointer-events-auto transform -rotate-1">
                         <Stamp color="red" size="sm" className="w-10 h-10 text-xs border-2">Day {day.day}</Stamp>
                         <div className="flex flex-col">

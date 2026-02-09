@@ -82,13 +82,15 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       setShowDeleteConfirm(false);
       setDeleteConfirmText('');
 
-      const scrollY = window.scrollY;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
 
       return () => {
         document.documentElement.style.overflow = "";
         document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
       };
     }
   }, [isOpen]);
@@ -212,7 +214,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-4xl h-[85vh] md:h-[90vh] flex flex-col md:flex-row relative"
+        className="w-full max-w-5xl h-full max-h-[90vh] flex flex-col md:flex-row relative min-h-0"
         onClick={(e) => e.stopPropagation()}
       >
         <JournalSheet variant="notebook" className="w-full h-full p-0 flex flex-col md:flex-row overflow-hidden shadow-2xl relative">

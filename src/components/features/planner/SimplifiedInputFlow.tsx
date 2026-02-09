@@ -78,10 +78,10 @@ const BUDGET_PRESETS = [
 ];
 
 const PACE_OPTIONS = [
-  { id: "relaxed", label: "ゆったり", icon: "☕" },
-  { id: "balanced", label: "バランスよく", icon: "⚖️" },
-  { id: "active", label: "アクティブ", icon: "👟" },
-  { id: "packed", label: "詰め込み", icon: "🔥" },
+  { id: "relaxed", label: "ゆったり", icon: "☕", desc: "1日1〜2箇所" },
+  { id: "balanced", label: "バランスよく", icon: "⚖️", desc: "1日3〜4箇所" },
+  { id: "active", label: "アクティブ", icon: "👟", desc: "1日5箇所以上" },
+  { id: "packed", label: "詰め込み", icon: "🔥", desc: "限界まで回る" },
 ];
 
 const DURATION_OPTIONS = [
@@ -614,14 +614,14 @@ export default function SimplifiedInputFlow({
               onClick={() => {
                 if (isOmakase) toggleOmakase();
               }}
-              className={`h-auto p-4 flex flex-col items-start gap-2 border-2 ${!isOmakase ? "border-primary bg-white" : "border-stone-300 border-dashed bg-white"}`}
+              className={`h-auto p-4 flex flex-col items-start gap-2 border-2 shadow-sm transition-all ${!isOmakase ? "border-primary bg-white ring-2 ring-primary/10" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
             >
               <div className="flex items-center justify-between w-full">
-                <span className="text-2xl">📍</span>
-                {!isOmakase && <Check className="w-4 h-4" />}
+                <span className={`text-2xl ${!isOmakase ? "opacity-100" : "opacity-50"}`}>📍</span>
+                {!isOmakase && <Check className="w-5 h-5 text-primary" />}
               </div>
               <div className="font-bold text-lg font-sans">目的地を入力</div>
-              <div className="text-xs opacity-70 font-sans text-left text-stone-500">
+              <div className="text-xs opacity-70 font-sans text-left">
                 京都、ハワイなど<br/>行きたい場所が決まっている
               </div>
             </JournalButton>
@@ -632,14 +632,14 @@ export default function SimplifiedInputFlow({
               onClick={() => {
                 if (!isOmakase) toggleOmakase();
               }}
-              className={`h-auto p-4 flex flex-col items-start gap-2 border-2 ${isOmakase ? "border-primary bg-white" : "border-stone-300 border-dashed bg-white"}`}
+              className={`h-auto p-4 flex flex-col items-start gap-2 border-2 shadow-sm transition-all ${isOmakase ? "border-primary bg-white ring-2 ring-primary/10" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
             >
               <div className="flex items-center justify-between w-full">
-                <span className="text-2xl">🎲</span>
-                {isOmakase && <Check className="w-4 h-4" />}
+                <span className={`text-2xl ${isOmakase ? "opacity-100" : "opacity-50"}`}>🎲</span>
+                {isOmakase && <Check className="w-5 h-5 text-primary" />}
               </div>
               <div className="font-bold text-lg font-sans">おまかせで決める</div>
-              <div className="text-xs opacity-70 font-sans text-left text-stone-500">
+              <div className="text-xs opacity-70 font-sans text-left">
                 まだ未定！<br/>AIに提案してほしい
               </div>
             </JournalButton>
@@ -655,7 +655,7 @@ export default function SimplifiedInputFlow({
                 exit={{ opacity: 0, height: 0 }}
                 className="pt-2"
               >
-                <div className="bg-white border border-stone-200 rounded-sm p-4 space-y-3 relative shadow-sm">
+                <div className="bg-white border-2 border-stone-200 rounded-sm p-4 space-y-3 relative shadow-sm">
                   <Tape color="green" position="top-right" className="w-16 h-4 opacity-70" />
                   <label className="block text-sm font-bold text-stone-600 font-sans">
                     どんな旅にしたい？
@@ -704,7 +704,7 @@ export default function SimplifiedInputFlow({
                     onChange={(e) => setDestinationInput(e.target.value)}
                     onKeyDown={handleDestinationKeyDown}
                     placeholder={input.destinations.length === 0 ? "京都、パリ、ハワイ..." : "次の行き先を追加..."}
-                    className="flex-1 text-lg bg-white border-b-2 border-stone-300 focus:border-primary"
+                    className="flex-1 text-lg bg-white border-b-2 border-stone-300 focus:border-primary text-stone-800"
                   />
                   <JournalButton
                     variant="secondary"
@@ -834,10 +834,10 @@ export default function SimplifiedInputFlow({
                         key={opt.value}
                         type="button"
                         onClick={() => handleDurationChange(opt.value)}
-                        className={`py-1.5 px-2 text-xs font-sans font-bold rounded-sm border transition-all transform hover:-translate-y-0.5 ${
+                        className={`py-2 px-3 text-sm font-sans font-bold rounded-sm border transition-all transform hover:-translate-y-0.5 ${
                         duration === opt.value
-                            ? "border-primary bg-primary/10 text-primary -rotate-2 shadow-sm"
-                            : "border-stone-200 bg-white hover:border-primary/50 text-stone-600 rotate-1 shadow-sm"
+                            ? "border-primary bg-primary/10 text-primary shadow-sm"
+                            : "border-stone-200 bg-white hover:border-primary/50 text-stone-600 shadow-sm"
                         }`}
                     >
                         {opt.label}
@@ -861,7 +861,7 @@ export default function SimplifiedInputFlow({
                 onClick={() => onChange({ companions: opt.id })}
                 className={`py-3 px-2 text-sm font-sans font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 shadow-sm ${
                   input.companions === opt.id
-                    ? "border-primary bg-white text-stone-800 shadow-md transform -rotate-1 ring-2 ring-primary/20"
+                    ? "border-primary bg-white text-stone-800 shadow-md ring-2 ring-primary/20"
                     : "border-stone-200 bg-white hover:bg-stone-50 text-stone-500 hover:text-stone-800"
                 }`}
               >
@@ -902,7 +902,7 @@ export default function SimplifiedInputFlow({
                         onClick={() => toggleTheme(theme.id)}
                         className={`py-2 px-2 text-xs font-bold rounded-sm border transition-all flex flex-col items-center gap-1 font-sans shadow-sm ${
                         isSelected
-                            ? "border-primary bg-white text-primary shadow-md transform -rotate-1"
+                            ? "border-primary bg-white text-primary shadow-md"
                             : "border-stone-200 bg-white hover:bg-stone-50 text-stone-500 hover:text-primary"
                         }`}
                     >
@@ -931,7 +931,7 @@ export default function SimplifiedInputFlow({
                         onClick={() => onChange({ budget: opt.id })}
                         className={`py-3 px-3 text-sm font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 h-24 font-sans shadow-sm ${
                             input.budget === opt.id
-                            ? "border-primary bg-white text-primary shadow-md -rotate-1"
+                            ? "border-primary bg-white text-primary shadow-md"
                             : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
                         }`}
                         >
@@ -1025,14 +1025,15 @@ export default function SimplifiedInputFlow({
                     key={opt.id}
                     type="button"
                     onClick={() => onChange({ pace: opt.id })}
-                    className={`py-3 px-3 text-sm font-bold rounded-sm border transition-all flex items-center justify-center gap-2 font-sans shadow-sm ${
+                    className={`py-3 px-3 text-sm font-bold rounded-sm border transition-all flex flex-col items-center justify-center gap-1 font-sans shadow-sm min-h-[5rem] ${
                         input.pace === opt.id
-                        ? "border-primary bg-white text-stone-800 shadow-md -rotate-1"
+                        ? "border-primary bg-white text-stone-800 shadow-md"
                         : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
                     }`}
                     >
-                    <span>{opt.icon}</span>
+                    <span className="text-xl">{opt.icon}</span>
                     <span>{opt.label}</span>
+                    <span className="text-[10px] text-stone-400 font-normal">{opt.desc}</span>
                     </button>
                 ))}
                 </div>
@@ -1128,7 +1129,7 @@ export default function SimplifiedInputFlow({
                     value={resName}
                     onChange={e => setResName(e.target.value)}
                     placeholder="名前（例：JL123便、ヒルトン東京）"
-                    className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary"
+                    className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
                   />
 
                   {/* Date & Time */}
@@ -1137,13 +1138,13 @@ export default function SimplifiedInputFlow({
                       type="date"
                       value={resDate}
                       onChange={e => setResDate(e.target.value)}
-                      className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary"
+                      className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
                     />
                     <input
                       type="time"
                       value={resTime}
                       onChange={e => setResTime(e.target.value)}
-                      className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary"
+                      className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
                     />
                   </div>
 
@@ -1152,7 +1153,7 @@ export default function SimplifiedInputFlow({
                     value={resNotes}
                     onChange={e => setResNotes(e.target.value)}
                     placeholder="メモ（任意）"
-                    className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary h-16 resize-none"
+                    className="w-full p-2 border border-stone-300 rounded-sm text-sm font-sans focus:outline-none focus:border-primary h-16 resize-none text-stone-800"
                   />
 
                   {/* Actions */}
@@ -1198,7 +1199,7 @@ export default function SimplifiedInputFlow({
                             onClick={() => toggleTransport(opt.id)}
                             className={`py-2 px-3 text-xs font-bold rounded-sm border transition-all flex items-center gap-2 font-sans shadow-sm ${
                                 isSelected
-                                ? "border-primary bg-white text-primary shadow-md -rotate-1"
+                                ? "border-primary bg-white text-primary shadow-md"
                                 : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
                             }`}
                         >
@@ -1223,7 +1224,7 @@ export default function SimplifiedInputFlow({
                     {input.mustVisitPlaces?.map((place, index) => (
                     <span
                         key={index}
-                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-stone-200 rounded-sm text-sm font-sans font-bold shadow-sm rotate-1"
+                        className="inline-flex items-center gap-1.5 px-3 py-1 bg-white border border-stone-200 rounded-sm text-sm font-sans font-bold shadow-sm"
                     >
                         📍 {place}
                         <button
@@ -1249,17 +1250,17 @@ export default function SimplifiedInputFlow({
                     }
                     }}
                     placeholder="場所名を入力（例：清水寺）"
-                    className="flex-1 text-sm bg-white border-b-2 border-stone-300 focus:border-primary"
+                    className="flex-1 text-sm bg-white border-b-2 border-stone-300 focus:border-primary text-stone-800"
                 />
-                {placeInput.trim() && (
-                    <JournalButton
+
+                <JournalButton
                     variant="secondary"
                     onClick={addPlace}
+                    disabled={!placeInput.trim()}
                     className="h-10 w-10 p-0 rounded-full shadow-sm"
                     >
                     <FaPlus />
-                    </JournalButton>
-                )}
+                </JournalButton>
                 </div>
             </div>
 

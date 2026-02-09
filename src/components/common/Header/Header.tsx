@@ -104,7 +104,7 @@ export default function Header({
             {/* Hamburger menu - always visible for sidebar access */}
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="p-2 text-stone-600 hover:text-stone-800 hover:bg-stone-100 rounded-sm transition-all md:hidden border border-transparent hover:border-stone-300 hover:border-dashed"
+              className="p-2 text-stone-600 hover:text-stone-800 hover:bg-stone-100 rounded-sm transition-all border border-transparent hover:border-stone-300 hover:border-dashed mr-2"
               aria-label="メニューを開く"
             >
               <FaBars size={20} />
