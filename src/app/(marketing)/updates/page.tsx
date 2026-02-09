@@ -397,18 +397,6 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "planned",
-    title: "フィードバックシステム",
-    description:
-      "サービス改善のため、ユーザーの皆様からのフィードバックを収集するシステムを計画しています。",
-  },
-  {
-    status: "developing",
-    title: "持ち物リストの作成",
-    description:
-      "旅行の目的地や期間に合わせて、必要な持ち物リストを自動で作成・管理できる機能を開発しています。",
-  },
-  {
-    status: "planned",
     title: "予算を詳細に制御する機能",
     description:
       "宿泊費や交通費などの項目ごとに予算を細かく設定し、全体の費用をより正確にシミュレーション・管理できる機能を計画しています。",
@@ -454,15 +442,81 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "planned",
-    title: "Google Maps連携",
-    description:
-      "生成されたプランをGoogle Mapsで直接開ける連携機能を計画しています。",
-  },
-  {
-    status: "planned",
     title: "モバイルアプリ化",
     description:
       "より手軽にプランの確認や作成ができるモバイルアプリの開発を計画しています。",
+  },
+  {
+    status: "done",
+    date: "2026.02.07",
+    updateType: "patch",
+    title: "予約リンクの精度向上",
+    description:
+      "予約リンクの精度を向上させ、より正確なページに遷移するようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.07",
+    updateType: "patch",
+    title: "スポット詳細情報の精度向上",
+    description:
+      "スポットの詳細情報の精度を向上させ、より正確な情報を表示するようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.07",
+    updateType: "patch",
+    title: "予算精度の向上",
+    description:
+      "AIによる予算見積もりの精度を向上させ、より実態に近い費用を算出できるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.08",
+    updateType: "patch",
+    title: "サイト全体のUI修正",
+    description:
+      "サイト全体のUIを見直し、より使いやすく見やすいデザインに修正しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.08",
+    updateType: "patch",
+    title: "持ち物リスト生成の追加",
+    description:
+      "旅行の目的地や期間に合わせて、必要な持ち物リストを自動で生成する機能を追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.08",
+    updateType: "patch",
+    title: "フィードバックシステムの実装",
+    description:
+      "サービス改善のため、ユーザーからのフィードバックを送信できるシステムを実装しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.09",
+    updateType: "patch",
+    title: "PDF出力機能の拡充",
+    description:
+      "PDF出力に旅程、渡航情報、持ち物リストを含められるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.09",
+    updateType: "patch",
+    title: "AI生成精度の向上",
+    description:
+      "AIによるプラン生成の精度をさらに向上させ、より満足度の高いプランが提案されるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.09",
+    updateType: "patch",
+    title: "GoogleMapによるルート表示",
+    description:
+      "生成されたプランのルートをGoogle Map上で表示できるようになりました。",
   },
 ];
 
@@ -572,11 +626,11 @@ export default function UpdatesPage() {
             </h2>
 
             {/* 2-column Timeline Layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 mt-8">
+            <div className="md:columns-2 gap-12 mt-8 space-y-0">
               {historyItems.map((item, index) => (
                 <div
                   key={index}
-                  className="relative pl-6 border-l-2 border-stone-200"
+                  className="relative pl-6 border-l-2 border-stone-200 pb-10 break-inside-avoid"
                 >
                   {/* Dot */}
                   <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
