@@ -23,7 +23,7 @@ export type {
 } from './itinerary';
 
 // ユーザー入力型
-export type { UserInput } from './user-input';
+export type { UserInput, FixedScheduleItem } from './user-input';
 
 // 渡航情報関連型
 export type {

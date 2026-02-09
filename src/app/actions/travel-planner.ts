@@ -3,7 +3,7 @@
 import { GeminiService } from "@/lib/services/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/services/rag/scraper';
 import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
-import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article } from '@/types';
+import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article, FixedScheduleItem } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
@@ -53,6 +53,20 @@ export type ChunkActionState = {
 /**
  * Helper to generate budget context string
  */
+/**
+ * Helper to generate fixed schedule prompt
+ */
+function getFixedSchedulePrompt(schedule?: FixedScheduleItem[]): string {
+  if (!schedule || schedule.length === 0) return "";
+
+  return `
+    === FIXED SCHEDULE (USER BOOKINGS) ===
+    The user has the following fixed reservations. You MUST incorporate these into the itinerary at the specified times.
+    ${schedule.map(item => `- [${item.type}] ${item.name} ${item.date ? `(Date: ${item.date})` : ''} ${item.time ? `(Time: ${item.time})` : ''} ${item.notes ? `Note: ${item.notes}` : ''}`).join('\n')}
+    ======================================
+  `;
+}
+
 function getBudgetContext(budget: string): string {
   if (!budget) return "Budget: Not specified";
 
@@ -211,6 +225,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     // Enhanced Transit Constraints
     const transitConstraints = buildConstraintsPrompt(input.transits);
     const transitSchedule = buildTransitSchedulePrompt(input.transits);
+    const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
 
     let prompt = "";
     if (input.isDestinationDecided) {
@@ -228,6 +243,10 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Note: ${input.freeText || "None"}
 
         ${transitSchedule}
+
+        ${fixedSchedulePrompt}
+
+        ${fixedSchedulePrompt}
 
         ${userConstraintPrompt}
 
@@ -262,6 +281,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         Note: ${input.freeText || "None"}
 
         ${transitSchedule}
+
+        ${fixedSchedulePrompt}
 
         ${userConstraintPrompt}
 
@@ -369,6 +390,7 @@ export async function generatePlanChunk(
     // Enhanced Transit Constraints for Chunk
     const transitConstraints = buildConstraintsPrompt(input.transits);
     const transitSchedule = buildTransitSchedulePrompt(input.transits);
+    const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
 
     const prompt = `
       Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
@@ -382,6 +404,8 @@ export async function generatePlanChunk(
       ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
 
       ${transitSchedule}
+
+      ${fixedSchedulePrompt}
 
       ${userConstraintPrompt}
 

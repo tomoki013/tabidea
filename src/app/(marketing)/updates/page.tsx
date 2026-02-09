@@ -100,7 +100,7 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.01.15",
-    updateType: "minor",
+    updateType: "patch",
     title: "渡航情報のAI検索機能を追加",
     description:
       "渡航情報・安全ガイド詳細ページにて、AIが最新の渡航情報を調べてくれる機能を追加しました。より詳細でリアルタイムな情報を確認できるようになりました。",

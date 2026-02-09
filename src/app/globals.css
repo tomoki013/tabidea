@@ -92,6 +92,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
   /* Combine dot grid with subtle paper noise texture */
   background-image:
     radial-gradient(#d6d3d1 1px, transparent 1px),

@@ -6,6 +6,22 @@
 import { TransitInfo } from './itinerary';
 
 /**
+ * 予約済みの予定アイテム
+ */
+export interface FixedScheduleItem {
+  /** 種類 */
+  type: 'flight' | 'train' | 'bus' | 'hotel' | 'activity' | 'other';
+  /** 日付 (YYYY-MM-DD) */
+  date?: string;
+  /** 時間 (HH:mm) */
+  time?: string;
+  /** 名前・詳細（便名、ホテル名など） */
+  name: string;
+  /** メモ */
+  notes?: string;
+}
+
+/**
  * ユーザーの旅行計画入力
  */
 export interface UserInput {
@@ -37,4 +53,6 @@ export interface UserInput {
   transits?: Record<number, TransitInfo>;
   /** 希望する移動手段 */
   preferredTransport?: string[];
+  /** 予約済みのスケジュール（飛行機、ホテルなど） */
+  fixedSchedule?: FixedScheduleItem[];
 }
