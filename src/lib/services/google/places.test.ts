@@ -103,13 +103,13 @@ describe('GooglePlacesService', () => {
       expect(result.error).toBeDefined();
     });
 
-    it('should include near parameter in search', async () => {
-      // First call (with near) - returns empty
+    it('should include location in search query', async () => {
+      // First call (with location) - returns empty
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });
-      // Second call (fallback) - returns empty
+      // Second call (fallback without location) - returns empty
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
@@ -120,17 +120,18 @@ describe('GooglePlacesService', () => {
 
       const callArgs = mockFetch.mock.calls[0];
       const body = JSON.parse(callArgs[1].body);
-      expect(body.textQuery).toBe('温泉 near 箱根');
+      // Location is appended directly (not with "near" keyword)
+      expect(body.textQuery).toBe('温泉 箱根');
     });
 
-    it('should retry without "near" if the first search fails', async () => {
-      // First call: Returns empty (simulating strict "near" failure)
+    it('should retry without location if the first search fails', async () => {
+      // First call: Returns empty (with location)
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });
 
-      // Second call: Returns result (simulating loose search success)
+      // Second call: Returns result (without location)
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({
@@ -146,7 +147,6 @@ describe('GooglePlacesService', () => {
       });
 
       const service = new GooglePlacesService();
-      // This call should trigger the retry logic internally
       const result = await service.searchPlace({ query: 'Target Place', near: 'Strict Location' });
 
       // Expect successful result due to fallback
@@ -156,13 +156,56 @@ describe('GooglePlacesService', () => {
       // Verify fetch was called twice
       expect(mockFetch).toHaveBeenCalledTimes(2);
 
-      // First call with "near"
+      // First call with location appended
       const firstCallBody = JSON.parse(mockFetch.mock.calls[0][1].body);
-      expect(firstCallBody.textQuery).toContain('near Strict Location');
+      expect(firstCallBody.textQuery).toContain('Strict Location');
 
-      // Second call without "near" (just the query)
+      // Second call without location (just the cleaned query)
       const secondCallBody = JSON.parse(mockFetch.mock.calls[1][1].body);
       expect(secondCallBody.textQuery).toBe('Target Place');
+    });
+  });
+
+  describe('cleanSearchQuery', () => {
+    it('should extract place name from "〜で〜" pattern', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('金閣寺で抹茶体験')).toBe('金閣寺');
+      expect(service.cleanSearchQuery('錦市場で食べ歩き')).toBe('錦市場');
+      expect(service.cleanSearchQuery('嵐山で散策')).toBe('嵐山');
+    });
+
+    it('should extract place name from "〜を〜" pattern', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('伏見稲荷大社を参拝')).toBe('伏見稲荷大社');
+      expect(service.cleanSearchQuery('清水寺を見学')).toBe('清水寺');
+    });
+
+    it('should remove trailing action words', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('嵐山竹林散策')).toBe('嵐山竹林');
+      expect(service.cleanSearchQuery('祇園探訪')).toBe('祇園');
+    });
+
+    it('should remove parenthetical content', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('金閣寺 (Kinkaku-ji)')).toBe('金閣寺');
+      expect(service.cleanSearchQuery('東京スカイツリー（展望台）')).toBe('東京スカイツリー');
+    });
+
+    it('should remove leading emojis', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('🏯 大阪城')).toBe('大阪城');
+    });
+
+    it('should return original query if cleaning results in too short string', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('A')).toBe('A');
+    });
+
+    it('should not modify simple place names', () => {
+      const service = new GooglePlacesService();
+      expect(service.cleanSearchQuery('東京スカイツリー')).toBe('東京スカイツリー');
+      expect(service.cleanSearchQuery('浅草寺')).toBe('浅草寺');
     });
   });
 
