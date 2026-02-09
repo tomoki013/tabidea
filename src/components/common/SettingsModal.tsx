@@ -82,13 +82,15 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       setShowDeleteConfirm(false);
       setDeleteConfirmText('');
 
-      const scrollY = window.scrollY;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
       document.documentElement.style.overflow = "hidden";
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
 
       return () => {
         document.documentElement.style.overflow = "";
         document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
       };
     }
   }, [isOpen]);
@@ -212,10 +214,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       onClick={onClose}
     >
       <div
-        className="w-full max-w-4xl h-[85vh] md:h-[90vh] flex flex-col md:flex-row relative"
+        className="w-full max-w-5xl h-full max-h-[90vh] flex flex-col md:flex-row relative min-h-0"
         onClick={(e) => e.stopPropagation()}
       >
-        <JournalSheet variant="notebook" className="w-full h-full p-0 flex flex-col md:flex-row overflow-hidden shadow-2xl relative">
+        <JournalSheet variant="notebook" className="w-full h-full p-0 overflow-hidden shadow-2xl relative">
+          <div className="flex flex-col md:flex-row h-full w-full">
            <Tape color="white" position="top-right" rotation="right" className="opacity-80 z-20" />
 
            {/* Close Button (Mobile) */}
@@ -266,11 +269,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto bg-white/50 relative overscroll-contain">
+          <div className="flex-1 overflow-y-auto bg-white/50 relative overscroll-contain h-full">
              {/* Paper Texture */}
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-30 pointer-events-none" />
 
-            <div className="p-6 md:p-8 relative z-10 pb-20 md:pb-8">
+            <div className="p-6 md:p-8 relative z-10 pb-20 md:pb-8 min-h-full">
               {activeTab === 'account' && (
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
@@ -599,6 +602,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 </div>
               )}
             </div>
+          </div>
           </div>
         </JournalSheet>
       </div>

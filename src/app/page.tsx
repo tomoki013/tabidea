@@ -13,6 +13,15 @@ import {
 } from "@/components/features/landing";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from '@/types';
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "Tabidea - AI Travel Planner",
+  },
+  description:
+    "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、しおり作成、持ち物リストも自動生成。",
+};
 
 interface HomeProps {
   searchParams: Promise<{ sample?: string }>;

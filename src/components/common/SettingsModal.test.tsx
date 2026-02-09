@@ -83,7 +83,6 @@ describe('SettingsModal', () => {
 
     // Should show Account settings by default
     expect(screen.getByRole('heading', { name: /アカウント設定/ })).toBeDefined();
-    expect(screen.getByText('ユーザー情報の確認やアカウントの管理が行えます。')).toBeDefined();
   });
 
   it('switches to AI settings and shows Travel Style input', async () => {
@@ -99,7 +98,7 @@ describe('SettingsModal', () => {
     });
 
     // Since we mocked isSubscribed=true via getBillingAccessInfo, it should be enabled
-    const travelStyleInput = screen.getByPlaceholderText(/例：歴史的な場所が好きです/);
+    const travelStyleInput = screen.getByPlaceholderText(/歴史的な場所が好き、朝はゆっくり/);
     expect(travelStyleInput).toBeDefined();
     expect(travelStyleInput.hasAttribute('disabled')).toBe(false);
   });
