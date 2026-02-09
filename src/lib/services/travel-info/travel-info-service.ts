@@ -32,7 +32,11 @@ import {
   TravelInfoServiceError,
 } from './interfaces';
 
-import { getCategoryTtlSeconds, generateCompositeCacheKey } from './cache/cache-config';
+import {
+  getCategoryTtlSeconds,
+  generateCompositeCacheKey,
+  generateCacheKeyPattern,
+} from './cache/cache-config';
 import { ReliabilityScorer, createReliabilityScorer } from './utils/reliability-scorer';
 import { SourceRanker, createSourceRanker, executeFallbackChain } from './utils/source-ranker';
 
@@ -298,7 +302,7 @@ export class TravelInfoService implements ITravelInfoService {
    * キャッシュを無効化する
    */
   async invalidateCache(destination: string): Promise<void> {
-    const pattern = `travel-info:${destination.toLowerCase().trim()}:*`;
+    const pattern = generateCacheKeyPattern(destination);
     await this.cacheManager.deleteByPattern(pattern);
     this.log(`Cache invalidated for ${destination}`);
   }
