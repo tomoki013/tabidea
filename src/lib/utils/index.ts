@@ -53,3 +53,6 @@ export * from './plan';
 
 // PDF utilities
 export * from './pdf';
+
+// Classnames utility
+export * from './cn';

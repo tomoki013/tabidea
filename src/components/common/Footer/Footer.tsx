@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FaGithub } from "react-icons/fa";
+import { Stamp, HandwrittenText, Tape } from "@/components/ui/journal";
 
 /**
  * フッターコンポーネント
@@ -7,168 +8,102 @@ import { FaGithub } from "react-icons/fa";
  */
 export default function Footer() {
   return (
-    <footer className="w-full bg-[#fcfbf9] text-[#2c2c2c] py-16 px-4 border-t-2 border-stone-200 border-dashed">
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10">
+    <footer className="w-full relative pt-20 pb-16 px-4 overflow-hidden">
+      {/* Background with texture */}
+      <div className="absolute inset-0 bg-[#f7f5f0] border-t-8 border-double border-stone-200/50" />
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]" />
+
+      {/* Decorative Tape */}
+      <Tape color="blue" position="top-center" className="opacity-70 rotate-1" />
+
+      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10 relative z-10">
         {/* Brand */}
-        <div className="space-y-4 col-span-2 md:col-span-1">
-          <Link href="/">
-            <h3 className="text-2xl font-serif font-bold text-[#e67e22] hover:opacity-80 transition-opacity inline-block">
-              Tabidea
-            </h3>
+        <div className="space-y-6 col-span-2 md:col-span-1 flex flex-col items-start">
+          <Link href="/" className="group">
+             <div className="relative inline-block transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
+               <Stamp color="black" size="md" className="w-20 h-20 text-xs border-4 bg-white/50 backdrop-blur-sm">
+                  <div className="flex flex-col items-center leading-none">
+                    <span>TABI</span>
+                    <span>DEA</span>
+                  </div>
+               </Stamp>
+             </div>
           </Link>
-          <p className="text-stone-600 text-sm leading-relaxed max-w-xs font-hand">
-            あなたの旅の物語を、AIと一緒に紡ぎ出す。
+          <HandwrittenText className="text-stone-600 text-sm leading-relaxed max-w-xs">
+            あなたの旅の物語を、<br/>AIと一緒に紡ぎ出す。
             <br />
-            <span className="text-xs opacity-60">Supported by ともきちの旅行日記</span>
-          </p>
+            <span className="text-xs opacity-60 block mt-2">Supported by ともきちの旅行日記</span>
+          </HandwrittenText>
           <div className="flex gap-4 pt-2">
             <a
               href="https://github.com/tomoki013/ai-travel-planner"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-stone-400 hover:text-[#e67e22] transition-colors"
+              className="text-stone-400 hover:text-stone-800 transition-colors transform hover:scale-110 duration-300"
             >
               <FaGithub size={24} />
             </a>
           </div>
         </div>
 
-        {/* About */}
-        <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif">About</h4>
-          <ul className="space-y-2 text-sm text-stone-600">
-            <li>
-              <Link
-                href="/about"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                Tabideaについて
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/features"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                機能紹介・使い方
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/updates"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                アップデート情報
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/pricing"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                料金プラン
-              </Link>
-            </li>
-          </ul>
-        </div>
+        {/* Links Sections */}
+        <FooterSection title="About">
+          <FooterLink href="/about">Tabideaについて</FooterLink>
+          <FooterLink href="/features">機能紹介・使い方</FooterLink>
+          <FooterLink href="/updates">アップデート情報</FooterLink>
+          <FooterLink href="/pricing">料金プラン</FooterLink>
+        </FooterSection>
 
-        {/* Explore */}
-        <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif">Explore</h4>
-          <ul className="space-y-2 text-sm text-stone-600">
-            <li>
-              <Link
-                href="/samples"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                サンプルプラン集
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/travel-info"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                渡航情報・安全ガイド
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <FooterSection title="Explore">
+          <FooterLink href="/samples">サンプルプラン集</FooterLink>
+          <FooterLink href="/travel-info">渡航情報・安全ガイド</FooterLink>
+        </FooterSection>
 
-        {/* Help */}
-        <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif">Help</h4>
-          <ul className="space-y-2 text-sm text-stone-600">
-            <li>
-              <Link
-                href="/faq"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                よくある質問
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/contact"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                お問い合わせ
-              </Link>
-            </li>
-          </ul>
-        </div>
+        <FooterSection title="Help">
+          <FooterLink href="/faq">よくある質問</FooterLink>
+          <FooterLink href="/contact">お問い合わせ</FooterLink>
+        </FooterSection>
 
-        {/* Legal */}
+        {/* Legal - Keep clean but integrated */}
         <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif">Legal</h4>
-          <ul className="space-y-2 text-sm text-stone-600">
-            <li>
-              <Link
-                href="/terms"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                利用規約
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/privacy"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                プライバシーポリシー
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/cookie-policy"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                クッキーポリシー
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/ai-policy"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                AIポリシー
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/specified"
-                className="hover:text-[#e67e22] transition-colors decoration-dashed hover:underline"
-              >
-                特商法表記
-              </Link>
-            </li>
+          <h4 className="font-bold text-stone-800 font-serif border-b-2 border-stone-200/50 inline-block pb-1">Legal</h4>
+          <ul className="space-y-2 text-sm text-stone-500 font-sans">
+            <li><Link href="/terms" className="hover:text-primary transition-colors hover:underline">利用規約</Link></li>
+            <li><Link href="/privacy" className="hover:text-primary transition-colors hover:underline">プライバシーポリシー</Link></li>
+            <li><Link href="/cookie-policy" className="hover:text-primary transition-colors hover:underline">クッキーポリシー</Link></li>
+            <li><Link href="/ai-policy" className="hover:text-primary transition-colors hover:underline">AIポリシー</Link></li>
+            <li><Link href="/specified" className="hover:text-primary transition-colors hover:underline">特商法表記</Link></li>
           </ul>
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-200 border-dashed text-center text-xs text-stone-500">
+      <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-300 border-dashed text-center text-xs text-stone-400 font-mono relative z-10">
         <p>© 2025-2026 Tabidea. All rights reserved.</p>
       </div>
     </footer>
+  );
+}
+
+function FooterSection({ title, children }: { title: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-4">
+      <h4 className="font-bold text-stone-800 font-serif border-b-2 border-stone-200/50 inline-block pb-1">{title}</h4>
+      <ul className="space-y-2 text-sm text-stone-600 font-hand">
+        {children}
+      </ul>
+    </div>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <li>
+      <Link
+        href={href}
+        className="hover:text-primary transition-colors decoration-dashed hover:underline block hover:translate-x-1 duration-200"
+      >
+        {children}
+      </Link>
+    </li>
   );
 }
