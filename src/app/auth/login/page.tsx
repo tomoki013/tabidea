@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import LoginClient from './LoginClient';
 
 export const metadata: Metadata = {
-  title: 'ログイン | Tabidea',
+  title: 'ログイン',
   description: 'Tabideaにログインして、保存したプランにアクセスしたり、新しい旅を作成しましょう。',
 };
 

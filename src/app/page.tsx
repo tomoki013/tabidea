@@ -16,7 +16,9 @@ import { UserInput } from '@/types';
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tabidea - AI Travel Planner | 秒で叶う、理想の旅",
+  title: {
+    absolute: "Tabidea - AI Travel Planner",
+  },
   description:
     "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、しおり作成、持ち物リストも自動生成。",
 };

@@ -26,7 +26,7 @@ export const JournalSheet = React.forwardRef<HTMLDivElement, JournalSheetProps>(
         {/* Paper texture overlay (subtle noise) */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')]" />
 
-        <div className="relative z-10">
+        <div className="relative z-10 h-full w-full">
           {children}
         </div>
       </div>
