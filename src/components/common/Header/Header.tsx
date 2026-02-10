@@ -55,9 +55,17 @@ export default function Header({
     }
 
     const handleScroll = () => {
-      // Show header when scrolled past ~1100px (approximately after AboutSection)
-      const threshold = 1100;
-      setScrollPastThreshold(window.scrollY > threshold);
+      // Show header when the input form passes the center of the screen
+      const element = document.getElementById("planner-input-section");
+
+      if (element) {
+        const rect = element.getBoundingClientRect();
+        setScrollPastThreshold(rect.bottom < window.innerHeight / 2);
+      } else {
+        // Fallback if element not found
+        const threshold = 1100;
+        setScrollPastThreshold(window.scrollY > threshold);
+      }
     };
 
     // Initial check
