@@ -67,6 +67,7 @@ interface ResultViewProps {
   shareCode?: string;
   localId?: string;
   planId?: string;
+  enableEditing?: boolean;
 }
 
 export default function ResultView({
@@ -85,6 +86,7 @@ export default function ResultView({
   shareCode,
   localId,
   planId,
+  enableEditing = true,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -367,12 +369,14 @@ export default function ResultView({
               </button>
             </div>
           ) : (
-            <button
-              onClick={startEditing}
-              className={`flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20 ${activeTab === 'info' ? 'hidden' : ''}`}
-            >
-              <FaPen /> プラン内容を編集
-            </button>
+            enableEditing && (
+              <button
+                onClick={startEditing}
+                className={`flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20 ${activeTab === 'info' ? 'hidden' : ''}`}
+              >
+                <FaPen /> プラン内容を編集
+              </button>
+            )
           )}
         </div>
       </div>
@@ -517,7 +521,7 @@ export default function ResultView({
                           {day.activities.map((act, actIndex) => (
                              <div key={actIndex} className="bg-white p-4 rounded-sm border border-stone-200 shadow-sm">
                                 <div className="flex gap-2 mb-2">
-                                   <input value={act.time} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'time', e.target.value)} className="w-20 border-b border-stone-300 font-mono text-sm" />
+                                   <input type="time" value={act.time} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'time', e.target.value)} className="w-24 border-b border-stone-300 font-mono text-sm" />
                                    <input value={act.activity} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'activity', e.target.value)} className="flex-1 border-b border-stone-300 font-bold" />
                                 </div>
                                 <textarea value={act.description} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'description', e.target.value)} className="w-full h-20 border border-stone-200 text-sm p-2 bg-stone-50" />

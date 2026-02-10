@@ -614,7 +614,7 @@ export default function SimplifiedInputFlow({
               onClick={() => {
                 if (isOmakase) toggleOmakase();
               }}
-              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${!isOmakase ? "border-primary bg-white ring-2 ring-primary/10" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
+              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${!isOmakase ? "border-primary bg-white ring-2 ring-primary/10 text-primary" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
             >
               <div className="flex items-center justify-between w-full">
                 <span className={`text-3xl ${!isOmakase ? "opacity-100" : "opacity-50"}`}>📍</span>
@@ -632,7 +632,7 @@ export default function SimplifiedInputFlow({
               onClick={() => {
                 if (!isOmakase) toggleOmakase();
               }}
-              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${isOmakase ? "border-primary bg-white ring-2 ring-primary/10" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
+              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${isOmakase ? "border-primary bg-white ring-2 ring-primary/10 text-primary" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
             >
               <div className="flex items-center justify-between w-full">
                 <span className={`text-3xl ${isOmakase ? "opacity-100" : "opacity-50"}`}>🎲</span>
