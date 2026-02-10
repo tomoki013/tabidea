@@ -174,6 +174,7 @@ export default function PlanCodeClient({
           planId={plan.id}
           showChat={false}
           enableEditing={false}
+          showFeedback={false}
         />
 
         {/* Request Editing Modal */}

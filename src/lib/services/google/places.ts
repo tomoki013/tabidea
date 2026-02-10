@@ -191,6 +191,8 @@ export class GooglePlacesService {
       ...(options.type && { includedType: options.type }),
     };
 
+    console.log('Places API Request:', JSON.stringify(requestBody, null, 2));
+
     const response = await this.fetchWithTimeout(
       `${PLACES_API_BASE_URL}/places:searchText`,
       {
@@ -206,10 +208,12 @@ export class GooglePlacesService {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
+      console.error('Places API Error:', response.status, errorData);
       throw this.handleApiError(response.status, errorData);
     }
 
     const data: PlacesTextSearchResponse = await response.json();
+    console.log('Places API Response:', JSON.stringify(data, null, 2));
 
     if (!data.places || data.places.length === 0) {
       return { found: false };

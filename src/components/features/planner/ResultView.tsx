@@ -63,6 +63,7 @@ interface ResultViewProps {
   showChat?: boolean;
   showShareButtons?: boolean;
   showReferences?: boolean;
+  showFeedback?: boolean;
   initialChatHistory?: { role: string; text: string }[];
   shareCode?: string;
   localId?: string;
@@ -81,7 +82,8 @@ export default function ResultView({
   showRequestSummary = true,
   showChat = true,
   showShareButtons = true,
-  showReferences = true,
+  showReferences = true, // Keeping prop for backward compat, but usage removed per request
+  showFeedback = true,
   initialChatHistory,
   shareCode,
   localId,
@@ -571,9 +573,11 @@ export default function ResultView({
                                     state={getCardState(`activity-${day.day}-${actIdx}`)}
                                     onStateChange={(state) => handleCardStateChange(`activity-${day.day}-${actIdx}`, state)}
                                   />
-                                  <div className="absolute top-2 right-2 z-10">
-                                    <ActivityFeedbackButton day={day.day} activityIndex={actIdx} destination={result.destination} />
-                                  </div>
+                                  {showFeedback && (
+                                    <div className="absolute top-2 right-2 z-10">
+                                      <ActivityFeedbackButton day={day.day} activityIndex={actIdx} destination={result.destination} />
+                                    </div>
+                                  )}
                                 </div>
                               </div>
                             );
@@ -625,7 +629,9 @@ export default function ResultView({
                 {!isEditing && (
                    <>
                      <CostEstimate input={input} itinerary={displayResult} className="mt-4" />
-                     <div className="mt-4"><PlanFeedbackBar destination={result.destination} /></div>
+                     {showFeedback && (
+                       <div className="mt-4"><PlanFeedbackBar destination={result.destination} /></div>
+                     )}
                    </>
                 )}
 
@@ -673,30 +679,6 @@ export default function ResultView({
               </div>
 
               {/* Sidebar */}
-              {showReferences && (
-                <div className="lg:sticky lg:top-24 lg:self-start space-y-8">
-                  <div className="bg-white p-6 rounded-sm border border-stone-200 shadow-sm relative">
-                    <Tape color="green" position="top-center" className="w-24 opacity-80 -top-3" />
-                    <HandwrittenText tag="h3" className="text-lg font-bold border-b border-stone-200 pb-2 mb-4">
-                      参考記事
-                    </HandwrittenText>
-                    <div className="space-y-4">
-                      {result.references && result.references.length > 0 ? (
-                        result.references.map((ref, i) => (
-                          <a key={i} href={ref.url} target="_blank" rel="noopener noreferrer" className="block group">
-                            <div className="aspect-video relative rounded-sm overflow-hidden bg-stone-100 border border-stone-200">
-                              {ref.image ? <Image src={ref.image} alt={ref.title} fill className="object-cover" /> : null}
-                            </div>
-                            <p className="mt-2 text-sm font-bold text-stone-700 group-hover:text-primary leading-tight hover:underline">{ref.title}</p>
-                          </a>
-                        ))
-                      ) : (
-                        <p className="text-sm text-stone-400 italic">No references.</p>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </motion.div>
         </div>
