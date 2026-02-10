@@ -569,6 +569,7 @@ export default function SimplifiedInputFlow({
 
   return (
     <div
+      id="planner-input-section"
       ref={containerRef}
       className="w-full max-w-3xl mx-auto px-2 sm:px-4 py-6 scroll-mt-24"
     >
