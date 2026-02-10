@@ -5,7 +5,6 @@ import {
   APIProvider,
   Map as GoogleMap,
   AdvancedMarker,
-  Pin,
   InfoWindow,
   useMap,
 } from "@vis.gl/react-google-maps";
@@ -84,35 +83,50 @@ function RouteLines({
       mapWithLines.__routeLines.forEach((line) => line.setMap(null));
     }
 
-    // Group markers by day
-    const dayGroups = new Map<number, DayMarker[]>();
-    for (const marker of markers) {
-      const group = dayGroups.get(marker.dayNumber) || [];
-      group.push(marker);
-      dayGroups.set(marker.dayNumber, group);
-    }
-
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const lines: any[] = [];
 
-    dayGroups.forEach((dayMarkers, dayNum) => {
-      if (selectedDay !== null && selectedDay !== dayNum) return;
-      if (dayMarkers.length < 2) return;
-
-      const color = getDayColor(dayNum - 1);
-      const path = dayMarkers.map((m) => m.position);
-
-      const polyline = new gMaps.Polyline({
-        path,
-        geodesic: true,
-        strokeColor: color.bg,
-        strokeOpacity: 0.7,
-        strokeWeight: 3,
-        map,
+    if (selectedDay === null) {
+      // Connect all markers sequentially for the whole trip
+      const sortedMarkers = [...markers].sort((a, b) => {
+        if (a.dayNumber !== b.dayNumber) return a.dayNumber - b.dayNumber;
+        return a.spotIndex - b.spotIndex;
       });
 
-      lines.push(polyline);
-    });
+      if (sortedMarkers.length >= 2) {
+        const path = sortedMarkers.map((m) => m.position);
+
+        // Use a neutral color or gradient-like style for the full route
+        const polyline = new gMaps.Polyline({
+          path,
+          geodesic: true,
+          strokeColor: "#3b82f6", // Blue
+          strokeOpacity: 0.8,
+          strokeWeight: 4,
+          map,
+        });
+        lines.push(polyline);
+      }
+    } else {
+      // Connect markers within the selected day
+      const dayMarkers = markers.filter(m => m.dayNumber === selectedDay)
+        .sort((a, b) => a.spotIndex - b.spotIndex);
+
+      if (dayMarkers.length >= 2) {
+        const color = getDayColor(selectedDay - 1);
+        const path = dayMarkers.map((m) => m.position);
+
+        const polyline = new gMaps.Polyline({
+          path,
+          geodesic: true,
+          strokeColor: color.bg,
+          strokeOpacity: 0.8,
+          strokeWeight: 4,
+          map,
+        });
+        lines.push(polyline);
+      }
+    }
 
     mapWithLines.__routeLines = lines;
 
@@ -211,6 +225,32 @@ export default function MapRouteView({
     setSelectedMarker(null);
   }, []);
 
+  const getGoogleMapsUrl = useCallback(() => {
+    const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
+    if (markers.length < 2) {
+      return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
+    }
+
+    const sorted = [...markers].sort((a, b) => {
+      if (a.dayNumber !== b.dayNumber) return a.dayNumber - b.dayNumber;
+      return a.spotIndex - b.spotIndex;
+    });
+
+    const origin = `${sorted[0].position.lat},${sorted[0].position.lng}`;
+    const dest = `${sorted[sorted.length - 1].position.lat},${sorted[sorted.length - 1].position.lng}`;
+
+    // Waypoints (limit to prevent URL length issues)
+    const intermediates = sorted.slice(1, -1);
+    const limitedWaypoints = intermediates.slice(0, 20);
+    const waypointsStr = limitedWaypoints.map(m => `${m.position.lat},${m.position.lng}`).join('|');
+
+    let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}`;
+    if (waypointsStr) {
+      url += `&waypoints=${waypointsStr}`;
+    }
+    return url;
+  }, [filteredMarkers, allMarkers, destination]);
+
   // Don't render if no markers or no API key
   if (!apiKey || allMarkers.length === 0) {
     return null;
@@ -300,12 +340,21 @@ export default function MapRouteView({
                       position={marker.position}
                       onClick={() => setSelectedMarker(marker)}
                     >
-                      <Pin
-                        background={color.bg}
-                        borderColor={color.border}
-                        glyphColor="#fff"
-                        glyphText={marker.label}
-                      />
+                      <div className="relative group cursor-pointer transform transition-transform hover:scale-110">
+                        <div
+                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 shadow-md relative z-10"
+                          style={{
+                            backgroundColor: color.bg,
+                            borderColor: color.border,
+                          }}
+                        >
+                          {marker.label}
+                        </div>
+                        <div
+                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px]"
+                          style={{ borderTopColor: color.border }}
+                        />
+                      </div>
                     </AdvancedMarker>
                   );
                 })}
@@ -343,11 +392,11 @@ export default function MapRouteView({
 
               {/* External Link Button (Overall) */}
                <a
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`}
+                  href={getGoogleMapsUrl()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute top-2 right-12 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-10 hover:z-50"
-                  title="Google Mapsで開く"
+                  title="Google Mapsでルートを開く"
                   >
                   <FaExternalLinkAlt />
                   <span className="hidden sm:inline">Google Maps</span>
