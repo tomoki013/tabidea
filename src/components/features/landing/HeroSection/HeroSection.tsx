@@ -1,10 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaBookOpen, FaMapMarkedAlt } from "react-icons/fa";
-import { JournalSheet, Tape, HandwrittenText, Stamp } from "@/components/ui/journal";
 
 interface HeroSectionProps {
   children: ReactNode;
@@ -12,26 +9,21 @@ interface HeroSectionProps {
 
 export default function HeroSection({ children }: HeroSectionProps) {
   return (
-    <section className="relative w-full flex flex-col items-center pt-28 sm:pt-36 pb-20 overflow-hidden bg-[#fcfbf9]">
-      {/* Background Elements - Paper Texture */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-60 mix-blend-multiply pointer-events-none -z-10" />
+    <section className="relative w-full flex flex-col items-center pt-28 sm:pt-36 pb-20 overflow-hidden bg-gradient-to-b from-stone-50 via-white to-white">
+      {/* Subtle Background Accent */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-stone-200 to-transparent opacity-50" />
 
-      {/* Dotted Grid Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] bg-[size:20px_20px] opacity-50 -z-20" />
-
-      <div className="max-w-5xl mx-auto px-4 w-full flex flex-col gap-8 items-center text-center relative z-10">
+      <div className="max-w-5xl mx-auto px-4 w-full flex flex-col gap-10 items-center text-center relative z-10">
         <div className="space-y-6 max-w-3xl flex flex-col items-center">
-          {/* Badge - Paper scrap style */}
+          {/* Badge */}
           <motion.div
-             initial={{ opacity: 0, y: -10, rotate: -2 }}
-             animate={{ opacity: 1, y: 0, rotate: -2 }}
+             initial={{ opacity: 0, y: -10 }}
+             animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8 }}
-             className="relative"
           >
-             <Tape color="yellow" position="top-center" className="w-32 -top-3 opacity-90" />
-             <div className="inline-flex items-center gap-2 text-stone-600 font-hand font-bold tracking-wider text-sm sm:text-base bg-white px-6 py-2 shadow-sm border border-stone-200 border-dashed transform -rotate-1">
-               <FaBookOpen className="text-primary text-sm" />
-               <span>Story of your journey starts here</span>
+             <div className="inline-flex items-center gap-2 text-stone-600 font-medium tracking-wide text-sm bg-white px-4 py-1.5 rounded-full shadow-sm border border-stone-200/50 backdrop-blur-sm">
+               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+               <span>AI Travel Planner</span>
              </div>
           </motion.div>
 
@@ -40,83 +32,48 @@ export default function HeroSection({ children }: HeroSectionProps) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-stone-800 leading-tight tracking-tight relative"
+            className="text-4xl sm:text-6xl md:text-7xl font-bold text-stone-900 leading-tight tracking-tight"
           >
-            心の奥にある
-            <span className="relative inline-block mx-2">
-              <span className="relative z-10">『行きたい』</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-0 -rotate-1 rounded-sm mix-blend-multiply"></span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-stone-900 via-stone-700 to-stone-900 pb-2">
+              行きたい場所を、
             </span>
-            を、
-            <br className="sm:hidden" />
-            かたちに。
-
-            {/* Decorative Stamp */}
-            <div className="absolute -right-8 -top-8 hidden md:block opacity-80 transform rotate-12">
-               <Stamp color="red" size="md">
-                  TABI<br/>DEA
-               </Stamp>
-            </div>
+            <span className="block text-primary">
+              最高の体験に。
+            </span>
           </motion.h1>
 
           {/* Subtext */}
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-            className="relative inline-block mt-2"
+            className="text-lg sm:text-xl text-stone-500 leading-relaxed max-w-2xl mx-auto font-medium"
           >
-             <HandwrittenText className="text-lg sm:text-2xl text-stone-600 leading-relaxed max-w-2xl mx-auto">
-              まだ言葉にならない旅の種を、
-              <br className="sm:hidden" />
-              AIと一緒に育ててみませんか？
-            </HandwrittenText>
-
-            {/* Hand-drawn arrow decoration */}
-            <svg className="absolute -right-8 -bottom-8 w-16 h-16 text-stone-400 hidden sm:block rotate-12 opacity-60" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M20 20 Q 60 40 40 80 M 30 70 L 40 80 L 55 70" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </motion.div>
+             AIが数秒であなただけの旅行プランを作成。<br className="hidden sm:block" />
+             直感的な操作で、理想の旅を見つけましょう。
+          </motion.p>
         </div>
 
-        {/* Planner Container - Journal/Scrapbook Style */}
+        {/* Input Container - Modern Glassmorphism Style */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          className="w-full relative z-10 mt-6"
+          className="w-full relative z-10 mt-4"
         >
-          {/* Notebook Binding Effect */}
-          <div className="absolute -left-3 top-4 bottom-4 w-6 flex flex-col justify-between z-20 pointer-events-none hidden md:flex">
-             {[...Array(6)].map((_, i) => (
-                <div key={i} className="w-4 h-4 rounded-full bg-stone-200 border border-stone-300 shadow-inner mb-8 relative">
-                   <div className="absolute left-full top-1/2 -translate-y-1/2 w-4 h-2 bg-stone-300 transform -rotate-12 origin-left" />
-                </div>
-             ))}
-          </div>
-
-          <JournalSheet variant="notebook" className="relative transform rotate-1 min-h-[450px] shadow-2xl border-l-8 border-l-stone-300/50">
-             {/* Decorative Tape */}
-             <Tape color="green" position="top-right" rotation="right" className="opacity-80" />
-             <Tape color="blue" position="bottom-left" rotation="left" className="opacity-80" />
-
-             {/* Content */}
-             <div className="relative z-10 pl-2 md:pl-8">
+          {/* Main Content Container (No more Journal/Notebook styles) */}
+          <div className="relative bg-white/50 backdrop-blur-xl rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-white/20 p-1 sm:p-2 ring-1 ring-stone-900/5">
+             <div className="bg-white/40 rounded-2xl w-full">
                 {children}
              </div>
-          </JournalSheet>
-
-          <div className="mt-12 text-center">
-             <Link
-              href="/usage"
-              className="group inline-flex items-center gap-2 text-stone-500 hover:text-primary transition-colors font-hand text-lg relative"
-            >
-              <FaMapMarkedAlt className="group-hover:rotate-12 transition-transform" />
-              <span className="border-b-2 border-dashed border-stone-300 group-hover:border-primary pb-0.5 transition-colors">初めての方はこちら（使い方）</span>
-            </Link>
           </div>
         </motion.div>
       </div>
+
+      {/* Decorative Blur Backgrounds */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10 mix-blend-multiply animate-blob" />
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-100/30 rounded-full blur-3xl -z-10 mix-blend-multiply animate-blob animation-delay-2000" />
+      <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-96 h-96 bg-stone-100/50 rounded-full blur-3xl -z-10 mix-blend-multiply animate-blob animation-delay-4000" />
     </section>
   );
 }
