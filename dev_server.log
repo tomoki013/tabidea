@@ -1,0 +1,16 @@
+
+> tabidea@0.3.1 dev /app
+> next dev
+
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+   ▲ Next.js 16.0.10 (Turbopack)
+   - Local:         http://localhost:3000
+   - Network:       http://192.168.0.2:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.2s
+ ○ Compiling / ...
+ GET / 200 in 19.1s (compile: 15.4s, proxy.ts: 265ms, render: 3.5s)
+ GET / 200 in 347ms (compile: 15ms, proxy.ts: 18ms, render: 314ms)
+ ✓ Compiled in 783ms
+ ✓ Compiled in 4.9s

@@ -33,9 +33,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/favicon.ico",
-        width: 32,
-        height: 32,
+        url: "/api/og",
+        width: 1200,
+        height: 630,
         alt: "Tabidea - AI Travel Planner",
       },
     ],
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     title: "Tabidea - AI Travel Planner",
     description:
       "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
-    images: ["/favicon.ico"],
+    images: ["/api/og"],
   },
   metadataBase: new URL("https://tabide.ai"),
   // manifest: "/manifest.json",

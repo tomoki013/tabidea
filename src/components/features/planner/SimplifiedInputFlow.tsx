@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, KeyboardEvent, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserInput, FixedScheduleItem } from "@/types";
-import { ChevronDown, Check, X, Plus, Minus, Calendar, Users, MapPin, DollarSign } from "lucide-react";
+import { ChevronDown, Check, X, Plus, Minus } from "lucide-react";
 import {
   FaUtensils,
   FaLandmark,
@@ -17,6 +17,8 @@ import {
   FaCamera,
   FaCompass,
   FaQuestion,
+  FaPlus,
+  FaTrash,
   FaPlane,
   FaTrain,
   FaBus,
@@ -24,7 +26,18 @@ import {
   FaShip,
   FaHotel,
   FaTicketAlt,
+  FaCalendarAlt,
+  FaClock,
+  FaStickyNote,
 } from "react-icons/fa";
+import {
+  JournalSheet,
+  JournalInput,
+  JournalButton,
+  HandwrittenText,
+  Tape,
+  Stamp
+} from "@/components/ui/journal";
 
 // ============================================================================
 // Constants
@@ -185,56 +198,74 @@ function encodeBudgetRange(min: number, max: number): string {
 }
 
 // ============================================================================
-// UI Components (Clean Style)
+// Sub-Components
 // ============================================================================
 
-const SectionTitle = ({ icon: Icon, title, required = false }: { icon: any, title: string, required?: boolean }) => (
-  <div className="flex items-center gap-3 mb-4">
-    <div className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center text-stone-600">
-      <Icon className="w-5 h-5" />
-    </div>
-    <div className="flex flex-col">
-      <div className="flex items-center gap-2">
-        <h2 className="text-xl font-bold text-stone-900">{title}</h2>
-        {required && (
-          <span className="text-xs font-bold text-white bg-red-500 px-2 py-0.5 rounded-full">必須</span>
-        )}
-      </div>
-    </div>
-  </div>
-);
+interface AccordionSectionProps {
+  title: string;
+  subtitle?: string;
+  isOpen: boolean;
+  onToggle: () => void;
+  isComplete: boolean;
+  children: React.ReactNode;
+  icon?: React.ReactNode;
+}
 
-const CardButton = ({
-  selected,
-  onClick,
+function AccordionSection({
+  title,
+  subtitle,
+  isOpen,
+  onToggle,
+  isComplete,
   children,
-  className = ""
-}: {
-  selected: boolean,
-  onClick: () => void,
-  children: React.ReactNode,
-  className?: string
-}) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`
-      relative w-full p-4 rounded-xl border-2 text-left transition-all duration-200
-      ${selected
-        ? "border-primary bg-primary/5 ring-2 ring-primary/20 shadow-sm"
-        : "border-stone-200 bg-white hover:border-stone-300 hover:bg-stone-50"
-      }
-      ${className}
-    `}
-  >
-    {children}
-    {selected && (
-      <div className="absolute top-3 right-3 w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-        <Check className="w-4 h-4 text-white" />
-      </div>
-    )}
-  </button>
-);
+  icon,
+}: AccordionSectionProps) {
+  return (
+    <div className="border-b-2 border-stone-200 border-dashed pb-2 mb-6">
+      <button
+        type="button"
+        onClick={onToggle}
+        className={`w-full px-4 py-4 flex items-center justify-between transition-colors rounded-lg border-2 border-transparent ${isOpen ? 'bg-stone-50 border-stone-100' : 'hover:bg-stone-50'}`}
+      >
+        <div className="flex items-center gap-4">
+          {isComplete ? (
+            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center border border-primary/20 shadow-sm flex-shrink-0">
+              <Check className="w-4 h-4" />
+            </div>
+          ) : (
+            <div className="w-8 h-8 rounded-full border-2 border-stone-300 text-stone-400 flex items-center justify-center font-bold font-sans text-sm bg-white flex-shrink-0">
+              {icon}
+            </div>
+          )}
+          <div className="text-left flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+            <span className="font-bold text-lg text-stone-800 font-sans">{title}</span>
+            {subtitle && (
+              <span className="text-xs text-stone-500 font-sans">{subtitle}</span>
+            )}
+          </div>
+        </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <ChevronDown className="w-6 h-6 text-stone-500" />
+        </motion.div>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="p-4 bg-white/50 rounded-b-lg mt-1">{children}</div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 // ============================================================================
 // Main Component
@@ -250,7 +281,8 @@ export default function SimplifiedInputFlow({
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Accordion state
-  const [showDetailed, setShowDetailed] = useState(false);
+  const [phase2Open, setPhase2Open] = useState(false);
+  const [phase3Open, setPhase3Open] = useState(false);
 
   // Local state for destination input
   const [destinationInput, setDestinationInput] = useState("");
@@ -339,10 +371,28 @@ export default function SimplifiedInputFlow({
 
   const hasCompanion = !!input.companions;
   const hasValidDates = useCalendar
-    ? true // Simplification: assume if calendar mode is on, user will pick dates eventually or it's fine
+    ? true
     : (input.dates === "未定" || !!input.dates);
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
+
+  const hasPhase3Input = (input.mustVisitPlaces?.length ?? 0) > 0 ||
+                         !!input.freeText ||
+                         (input.preferredTransport?.length ?? 0) > 0 ||
+                         (input.fixedSchedule?.length ?? 0) > 0;
+
+  const hasDetailedInput = input.theme.length > 0 ||
+                         !!input.budget ||
+                         !!input.pace ||
+                         hasPhase3Input;
+
+  const isPhase2Complete =
+    input.theme.length > 0 && !!input.budget && !!input.pace;
+
+  const isPhase3Complete =
+    input.hasMustVisitPlaces !== undefined ||
+    (input.preferredTransport?.length ?? 0) > 0 ||
+    (input.fixedSchedule?.length ?? 0) > 0;
 
   // Handlers
   const handleDestinationKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -498,6 +548,7 @@ export default function SimplifiedInputFlow({
     const current = input.fixedSchedule || [];
     onChange({ fixedSchedule: [...current, newItem] });
 
+    // Reset form
     setResName('');
     setResDate('');
     setResTime('');
@@ -520,521 +571,766 @@ export default function SimplifiedInputFlow({
     <div
       id="planner-input-section"
       ref={containerRef}
-      className="w-full max-w-4xl mx-auto px-4 py-8 space-y-10 pb-32"
+      className="w-full max-w-3xl mx-auto px-2 sm:px-4 py-6 scroll-mt-24"
     >
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-3xl font-bold text-stone-900 mb-2 tracking-tight">
-          旅行プラン作成
+        <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2 font-sans">
+          <span className="border-b-2 border-primary/30 pb-1">旅行プランを作成</span>
         </h1>
-        <p className="text-stone-500 font-medium">
-          あなたの理想をAIが形にします
+        <p className="text-stone-500 font-bold font-sans text-sm sm:text-base">
+          必要な情報を入力して、AIがあなただけのプランを作成します
         </p>
       </div>
 
-      {/* STEP 1: Destination */}
-      <section className="bg-white rounded-2xl p-6 shadow-sm border border-stone-200">
-        <SectionTitle icon={MapPin} title="どこに行きますか？" required />
+      <JournalSheet variant="default" className="shadow-xl relative overflow-visible bg-[#fcfbf9] px-4 py-6 sm:p-8 border-l-8 border-l-stone-300/50">
+         {/* Decorative Tape */}
+         <Tape color="pink" position="top-right" className="opacity-80" />
+         <Tape color="blue" position="bottom-left" className="opacity-80 -bottom-6 -left-2" />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          <CardButton
-            selected={!isOmakase}
-            onClick={() => { if (isOmakase) toggleOmakase(); }}
-          >
-            <div className="flex flex-col items-center gap-2 py-2">
-              <span className="text-3xl">📍</span>
-              <span className="font-bold text-lg text-stone-900">目的地を指定</span>
-              <span className="text-sm text-stone-500">行きたい場所が決まっている</span>
-            </div>
-          </CardButton>
-
-          <CardButton
-            selected={isOmakase}
-            onClick={() => { if (!isOmakase) toggleOmakase(); }}
-          >
-            <div className="flex flex-col items-center gap-2 py-2">
-              <span className="text-3xl">🎲</span>
-              <span className="font-bold text-lg text-stone-900">おまかせで決める</span>
-              <span className="text-sm text-stone-500">AIに提案してほしい</span>
-            </div>
-          </CardButton>
+      {/* ================================================================== */}
+      {/* Phase 1: Essential (Always Visible) */}
+      {/* ================================================================== */}
+      <div className="space-y-10">
+        <div className="flex items-center gap-3 mb-4 border-b-2 border-stone-200 border-dashed pb-2">
+          <Stamp color="red" size="sm" className="w-12 h-12 text-sm border-2">step 1</Stamp>
+          <div className="flex flex-col">
+             <span className="font-bold text-xl text-stone-800 font-sans">基本情報</span>
+             <span className="text-xs text-primary font-bold font-sans">
+               ※ここは必ず書いてね
+             </span>
+          </div>
         </div>
 
-        <div className="mt-4">
+        {/* Destination Mode Selector */}
+        <div className="space-y-4">
+          <label className="block text-base font-bold text-stone-700 font-sans ml-1">
+            ① 目的地はどうしますか？
+          </label>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Specific Destination Tile */}
+            <JournalButton
+              variant={!isOmakase ? "primary" : "outline"}
+              onClick={() => {
+                if (isOmakase) toggleOmakase();
+              }}
+              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${!isOmakase ? "border-primary bg-white ring-2 ring-primary/10 text-primary" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
+            >
+              <div className="flex items-center justify-between w-full">
+                <span className={`text-3xl ${!isOmakase ? "opacity-100" : "opacity-50"}`}>📍</span>
+                {!isOmakase && <Check className="w-6 h-6 text-primary" />}
+              </div>
+              <div className="font-bold text-lg font-sans">目的地を入力</div>
+              <div className="text-sm opacity-70 font-sans text-left">
+                京都、ハワイなど<br/>行きたい場所が決まっている
+              </div>
+            </JournalButton>
+
+            {/* Omakase Tile */}
+            <JournalButton
+              variant={isOmakase ? "primary" : "outline"}
+              onClick={() => {
+                if (!isOmakase) toggleOmakase();
+              }}
+              className={`h-auto p-5 flex flex-col items-start gap-3 border-2 shadow-sm transition-all ${isOmakase ? "border-primary bg-white ring-2 ring-primary/10 text-primary" : "border-stone-300 border-dashed bg-white text-stone-500"}`}
+            >
+              <div className="flex items-center justify-between w-full">
+                <span className={`text-3xl ${isOmakase ? "opacity-100" : "opacity-50"}`}>🎲</span>
+                {isOmakase && <Check className="w-6 h-6 text-primary" />}
+              </div>
+              <div className="font-bold text-lg font-sans">おまかせで決める</div>
+              <div className="text-sm opacity-70 font-sans text-left">
+                まだ未定！<br/>AIに提案してほしい
+              </div>
+            </JournalButton>
+          </div>
+
+          {/* Input Fields (Omakase or Direct) */}
           <AnimatePresence mode="wait">
             {isOmakase ? (
               <motion.div
-                key="omakase"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                key="omakase-input"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="pt-2"
               >
-                <label className="block text-sm font-bold text-stone-700 mb-2">どんな旅にしたい？</label>
-                <textarea
-                  value={input.travelVibe || ""}
-                  onChange={(e) => onChange({ travelVibe: e.target.value })}
-                  placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
-                  className="w-full h-32 p-4 bg-stone-50 border-2 border-stone-200 rounded-xl focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10 transition-all resize-none text-stone-900 placeholder:text-stone-400 font-medium"
-                />
+                <div className="bg-white border-2 border-stone-200 rounded-lg p-4 space-y-3 relative shadow-sm">
+                  <Tape color="green" position="top-right" className="w-16 h-4 opacity-70" />
+                  <label className="block text-sm font-bold text-stone-600 font-sans">
+                    どんな旅にしたい？
+                  </label>
+                  <textarea
+                    value={input.travelVibe || ""}
+                    onChange={(e) => onChange({ travelVibe: e.target.value })}
+                    placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
+                    className="w-full h-28 bg-stone-50 border border-stone-200 rounded-md p-3 text-base font-sans placeholder:text-stone-400 focus:outline-none focus:border-primary transition-colors resize-none leading-relaxed text-stone-800"
+                  />
+                </div>
               </motion.div>
             ) : (
               <motion.div
-                key="direct"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                key="direct-input"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="space-y-4 pt-2"
               >
+                {/* Tags */}
                 {input.destinations.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-3">
+                  <div className="flex flex-wrap gap-2 mb-2">
                     {input.destinations.map((dest, index) => (
-                      <span key={dest} className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 text-primary font-bold rounded-full text-sm">
+                      <span
+                        key={dest}
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-stone-300 rounded-full text-stone-800 font-sans shadow-sm text-sm"
+                      >
                         {dest}
-                        <button onClick={() => removeDestination(index)} className="hover:text-primary/70">
-                          <X className="w-4 h-4" />
+                        <button
+                          type="button"
+                          onClick={() => removeDestination(index)}
+                          className="hover:text-red-500 transition-colors p-1"
+                        >
+                          <X className="w-3 h-3" />
                         </button>
                       </span>
                     ))}
                   </div>
                 )}
-                <div className="flex gap-2">
-                  <input
-                    value={destinationInput}
-                    onChange={(e) => setDestinationInput(e.target.value)}
-                    onKeyDown={handleDestinationKeyDown}
-                    placeholder="場所を入力（例：京都、パリ...）"
-                    className="flex-1 h-12 px-4 bg-stone-50 border-2 border-stone-200 rounded-xl focus:border-primary focus:bg-white focus:ring-4 focus:ring-primary/10 transition-all text-stone-900 font-medium"
-                  />
-                  <button
+
+                {/* Input Field - HIGH VISIBILITY FIX */}
+                <div className="flex gap-2 items-stretch">
+                  <div className="flex-1 relative group">
+                    <input
+                      value={destinationInput}
+                      onChange={(e) => setDestinationInput(e.target.value)}
+                      onKeyDown={handleDestinationKeyDown}
+                      placeholder={input.destinations.length === 0 ? "例：京都、パリ、ハワイ..." : "次の行き先を追加..."}
+                      className="w-full h-12 px-4 text-lg bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+                  <JournalButton
+                    variant="secondary"
                     onClick={addDestination}
                     disabled={!destinationInput.trim()}
-                    className="h-12 px-6 bg-stone-900 text-white font-bold rounded-xl hover:bg-stone-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2"
+                    className="h-12 w-12 p-0 rounded-lg shadow-sm border-2 border-stone-200 hover:border-primary/50"
                   >
-                    <Plus className="w-5 h-5" />
-                    追加
-                  </button>
+                    <Plus className="w-6 h-6" />
+                  </JournalButton>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-      </section>
 
-      {/* STEP 2: Dates */}
-      <section className="bg-white rounded-2xl p-6 shadow-sm border border-stone-200">
-        <SectionTitle icon={Calendar} title="いつ行きますか？" required />
+        {/* Duration Selector */}
+        <div className="space-y-4">
+          <div className="flex items-center justify-between mb-2">
+            <label className="block text-base font-bold text-stone-700 font-sans ml-1">
+              ② 日程
+            </label>
 
-        <div className="flex bg-stone-100 p-1 rounded-lg mb-6 max-w-sm mx-auto">
-          <button
-            onClick={() => {
-              setUseCalendar(false);
-              onChange({ dates: formatDuration(duration || 3) });
-            }}
-            className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${
-              !useCalendar ? "bg-white text-stone-900 shadow-sm" : "text-stone-500 hover:text-stone-700"
-            }`}
-          >
-            日数のみ
-          </button>
-          <button
-            onClick={() => setUseCalendar(true)}
-            className={`flex-1 py-2 rounded-md text-sm font-bold transition-all ${
-              useCalendar ? "bg-white text-stone-900 shadow-sm" : "text-stone-500 hover:text-stone-700"
-            }`}
-          >
-            カレンダー
-          </button>
-        </div>
-
-        {useCalendar ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-600">出発日</label>
-              <input
-                type="date"
-                value={startDate}
-                min={new Date().toISOString().split('T')[0]}
-                onChange={(e) => {
-                    const newStart = e.target.value;
-                    if (newStart && duration) {
-                        const d = new Date(newStart);
-                        d.setDate(d.getDate() + (duration - 1));
-                        const newEnd = d.toISOString().split('T')[0];
-                        handleDateRangeChange(newStart, newEnd);
-                    } else {
-                        handleDateRangeChange(newStart, endDate);
-                    }
-                }}
-                className="w-full h-12 px-4 bg-stone-50 border-2 border-stone-200 rounded-xl focus:border-primary focus:bg-white text-stone-900 font-medium"
-              />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-stone-600">帰着日</label>
-              <input
-                type="date"
-                value={endDate}
-                min={startDate || new Date().toISOString().split('T')[0]}
-                onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
-                className="w-full h-12 px-4 bg-stone-50 border-2 border-stone-200 rounded-xl focus:border-primary focus:bg-white text-stone-900 font-medium"
-              />
-            </div>
-            <div className="sm:col-span-2 text-center pt-2">
-              {startDate && endDate ? (
-                  <p className="text-base font-bold text-primary">
-                      {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
-                  </p>
-              ) : (
-                  <p className="text-sm text-stone-400">日付を選択してください</p>
-              )}
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="flex items-center justify-center gap-8">
-              <button
-                onClick={() => handleDurationChange(Math.max(1, duration - 1))}
-                className="w-14 h-14 rounded-full border-2 border-stone-200 hover:border-primary hover:text-primary flex items-center justify-center transition-colors bg-white text-stone-400"
-              >
-                <Minus className="w-6 h-6" />
-              </button>
-              <div className="text-center w-32">
-                <span className="block text-4xl font-bold text-stone-900">{formatDuration(duration)}</span>
-              </div>
-              <button
-                onClick={() => handleDurationChange(Math.min(30, duration + 1))}
-                className="w-14 h-14 rounded-full bg-stone-900 text-white hover:bg-stone-700 flex items-center justify-center transition-colors shadow-md"
-              >
-                <Plus className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-2">
-              {DURATION_OPTIONS.map((opt) => (
+            {/* Toggle Switch */}
+            <div className="flex text-sm font-bold font-sans gap-2">
                 <button
-                  key={opt.value}
-                  onClick={() => handleDurationChange(opt.value)}
-                  className={`px-4 py-2 rounded-full text-sm font-bold transition-all border ${
-                    duration === opt.value
-                      ? "bg-stone-900 text-white border-stone-900"
-                      : "bg-white text-stone-600 border-stone-200 hover:border-stone-400"
-                  }`}
+                    type="button"
+                    onClick={() => {
+                        setUseCalendar(false);
+                        onChange({ dates: formatDuration(duration || 3) });
+                        setStartDate("");
+                        setEndDate("");
+                    }}
+                    className={`px-4 py-2 rounded-full border transition-all ${
+                        !useCalendar
+                            ? "bg-primary text-white border-primary shadow-sm"
+                            : "bg-white text-stone-500 border-stone-200 hover:bg-stone-50"
+                    }`}
                 >
-                  {opt.label}
+                    日数のみ
                 </button>
-              ))}
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* STEP 3: Companions */}
-      <section className="bg-white rounded-2xl p-6 shadow-sm border border-stone-200">
-        <SectionTitle icon={Users} title="誰と行きますか？" required />
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-          {COMPANION_OPTIONS.map((opt) => (
-            <CardButton
-              key={opt.id}
-              selected={input.companions === opt.id}
-              onClick={() => onChange({ companions: opt.id })}
-              className="flex flex-col items-center justify-center gap-2 py-4 h-24"
-            >
-              <span className="text-2xl">{opt.icon}</span>
-              <span className="font-bold text-stone-800 text-sm">{opt.label}</span>
-            </CardButton>
-          ))}
-        </div>
-      </section>
-
-      {/* STEP 4: Style */}
-      <section className="bg-white rounded-2xl p-6 shadow-sm border border-stone-200">
-        <SectionTitle icon={DollarSign} title="旅のスタイル（任意）" />
-
-        <div className="space-y-8">
-          {/* Theme */}
-          <div className="space-y-3">
-            <label className="text-sm font-bold text-stone-700 block">テーマ（複数選択可）</label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {THEME_OPTIONS.map((theme) => {
-                const Icon = theme.icon;
-                return (
-                  <CardButton
-                    key={theme.id}
-                    selected={input.theme.includes(theme.id)}
-                    onClick={() => toggleTheme(theme.id)}
-                    className="flex flex-col items-center justify-center gap-2 h-20"
-                  >
-                    <Icon className="w-5 h-5" />
-                    <span className="font-bold text-xs">{theme.label}</span>
-                  </CardButton>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Budget */}
-          <div className="space-y-3">
-            <label className="text-sm font-bold text-stone-700 block">予算感</label>
-            {!useBudgetSlider ? (
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {BUDGET_PRESETS.map((opt) => (
-                  <CardButton
-                    key={opt.id}
-                    selected={input.budget === opt.id}
-                    onClick={() => onChange({ budget: opt.id })}
-                    className="flex flex-col items-center justify-center gap-1 h-24"
-                  >
-                    <span className="text-xl">{opt.icon}</span>
-                    <span className="font-bold text-sm">{opt.label}</span>
-                    <span className="text-xs text-stone-400">{opt.desc}</span>
-                  </CardButton>
-                ))}
-              </div>
-            ) : (
-              <div className="p-4 bg-stone-50 rounded-xl border border-stone-200">
-                <div className="text-center mb-4">
-                  <span className="text-2xl font-bold text-primary">
-                    {formatBudget(budgetMinAmount)} 〜 {formatBudget(budgetMaxAmount)}
-                  </span>
-                </div>
-                {/* Simplified Slider UI for Clean Style */}
-                <div className="relative pt-6 pb-2 px-2">
-                   <div className="h-2 bg-stone-200 rounded-full relative">
-                      <div
-                          className="absolute h-full bg-primary rounded-full"
-                          style={{
-                          left: `${minPercent}%`,
-                          width: `${maxPercent - minPercent}%`,
-                          }}
-                      />
-                   </div>
-                   <input
-                      type="range"
-                      min={0}
-                      max={SLIDER_MAX}
-                      step={1}
-                      value={minIndex}
-                      onChange={(e) => handleBudgetMinIndexChange(Number(e.target.value))}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                   />
-                   <input
-                      type="range"
-                      min={0}
-                      max={SLIDER_MAX}
-                      step={1}
-                      value={maxIndex}
-                      onChange={(e) => handleBudgetMaxIndexChange(Number(e.target.value))}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                   />
-                </div>
-              </div>
-            )}
-            <button
-              onClick={() => toggleBudgetSlider(!useBudgetSlider)}
-              className="text-xs font-bold text-primary hover:underline ml-1"
-            >
-              {useBudgetSlider ? "選択式に戻す" : "具体的な金額で指定する"}
-            </button>
-          </div>
-
-          {/* Pace */}
-          <div className="space-y-3">
-            <label className="text-sm font-bold text-stone-700 block">旅のペース</label>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-              {PACE_OPTIONS.map((opt) => (
-                <CardButton
-                  key={opt.id}
-                  selected={input.pace === opt.id}
-                  onClick={() => onChange({ pace: opt.id })}
-                  className="flex flex-col items-center justify-center gap-1 h-24"
+                <button
+                    type="button"
+                    onClick={() => setUseCalendar(true)}
+                    className={`px-4 py-2 rounded-full border transition-all ${
+                        useCalendar
+                            ? "bg-primary text-white border-primary shadow-sm"
+                            : "bg-white text-stone-500 border-stone-200 hover:bg-stone-50"
+                    }`}
                 >
-                  <span className="text-xl">{opt.icon}</span>
-                  <span className="font-bold text-sm">{opt.label}</span>
-                  <span className="text-xs text-stone-400">{opt.desc}</span>
-                </CardButton>
-              ))}
+                    カレンダー
+                </button>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* STEP 5: Detailed Options (Toggle) */}
-      <section className="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden">
-        <button
-          onClick={() => setShowDetailed(!showDetailed)}
-          className="w-full flex items-center justify-between p-6 hover:bg-stone-50 transition-colors"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center text-stone-600">
-               <Plus className="w-5 h-5" />
-            </div>
-            <div className="text-left">
-               <h2 className="text-xl font-bold text-stone-900">詳細設定（任意）</h2>
-               <p className="text-sm text-stone-500">行きたい場所、交通手段、予約など</p>
-            </div>
-          </div>
-          <ChevronDown className={`w-6 h-6 text-stone-400 transition-transform ${showDetailed ? "rotate-180" : ""}`} />
-        </button>
-
-        <AnimatePresence>
-          {showDetailed && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="border-t border-stone-100"
-            >
-              <div className="p-6 space-y-8">
-                {/* Must Visit */}
-                <div className="space-y-3">
-                   <label className="text-sm font-bold text-stone-700 block">絶対行きたい場所</label>
-                   {input.mustVisitPlaces && input.mustVisitPlaces.length > 0 && (
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        {input.mustVisitPlaces.map((place, index) => (
-                          <span key={index} className="inline-flex items-center gap-2 px-3 py-1 bg-stone-100 rounded-lg text-sm font-bold text-stone-700">
-                             📍 {place}
-                             <button onClick={() => removePlace(index)} className="hover:text-red-500"><X className="w-3 h-3" /></button>
-                          </span>
-                        ))}
-                      </div>
-                   )}
-                   <div className="flex gap-2">
-                      <input
-                        value={placeInput}
-                        onChange={(e) => setPlaceInput(e.target.value)}
-                        onKeyDown={(e) => e.key === "Enter" && addPlace()}
-                        placeholder="場所名を入力（例：清水寺）"
-                        className="flex-1 h-10 px-4 bg-stone-50 border border-stone-200 rounded-lg focus:border-primary focus:bg-white transition-all text-sm"
-                      />
-                      <button onClick={addPlace} disabled={!placeInput.trim()} className="h-10 px-4 bg-stone-200 hover:bg-stone-300 rounded-lg text-stone-700 font-bold text-sm disabled:opacity-50">
-                        追加
-                      </button>
-                   </div>
-                </div>
-
-                {/* Transport */}
-                <div className="space-y-3">
-                   <label className="text-sm font-bold text-stone-700 block">希望する移動手段</label>
-                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {TRANSPORT_OPTIONS.map((opt) => {
-                         const Icon = opt.icon;
-                         return (
-                            <CardButton
-                               key={opt.id}
-                               selected={input.preferredTransport?.includes(opt.id) || false}
-                               onClick={() => toggleTransport(opt.id)}
-                               className="flex items-center gap-3 py-3 px-4 h-auto justify-start"
-                            >
-                               <Icon className="w-4 h-4" />
-                               <span className="font-bold text-xs">{opt.label}</span>
-                            </CardButton>
-                         )
-                      })}
-                   </div>
-                </div>
-
-                {/* Reservations */}
-                <div className="space-y-3">
-                  <label className="text-sm font-bold text-stone-700 block">予約済みの予定</label>
-
-                  {input.fixedSchedule && input.fixedSchedule.length > 0 && (
-                     <div className="grid gap-2 mb-3">
-                        {input.fixedSchedule.map((item, index) => (
-                           <div key={index} className="bg-stone-50 border border-stone-200 rounded-lg p-3 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                 <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center">
-                                    {item.type === 'flight' ? <FaPlane /> : <FaTicketAlt />}
-                                 </div>
-                                 <div>
-                                    <div className="font-bold text-sm text-stone-800">{item.name}</div>
-                                    <div className="text-xs text-stone-500">{item.date} {item.time}</div>
-                                 </div>
-                              </div>
-                              <button onClick={() => removeReservation(index)} className="text-stone-400 hover:text-red-500">
-                                 <X className="w-4 h-4" />
-                              </button>
-                           </div>
-                        ))}
-                     </div>
-                  )}
-
-                  {isAddingReservation ? (
-                     <div className="bg-stone-50 border border-stone-200 rounded-lg p-4 space-y-3">
-                        <div className="grid grid-cols-3 gap-2">
-                           {RESERVATION_TYPES.map(type => (
-                              <button
-                                 key={type.id}
-                                 onClick={() => setResType(type.id as any)}
-                                 className={`p-2 text-xs font-bold rounded-md border ${
-                                    resType === type.id ? 'bg-white border-primary text-primary shadow-sm' : 'bg-transparent border-transparent text-stone-500'
-                                 }`}
-                              >
-                                 {type.label}
-                              </button>
-                           ))}
-                        </div>
+          {useCalendar ? (
+            <div className="bg-white p-5 rounded-lg border-2 border-dashed border-stone-200 space-y-4 relative shadow-sm">
+                <Tape color="white" position="top-center" className="w-16 h-4 opacity-50" />
+                <div className="grid grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <span className="text-sm font-bold text-stone-500 font-sans">出発日</span>
                         <input
-                           placeholder="名前（例：JL123便）"
-                           value={resName}
-                           onChange={e => setResName(e.target.value)}
-                           className="w-full p-2 text-sm border border-stone-300 rounded-md"
+                            type="date"
+                            value={startDate}
+                            min={new Date().toISOString().split('T')[0]}
+                            onChange={(e) => {
+                                const newStart = e.target.value;
+                                if (newStart && duration) {
+                                    const d = new Date(newStart);
+                                    d.setDate(d.getDate() + (duration - 1));
+                                    const newEnd = d.toISOString().split('T')[0];
+                                    handleDateRangeChange(newStart, newEnd);
+                                } else {
+                                    handleDateRangeChange(newStart, endDate);
+                                }
+                            }}
+                            className="w-full p-3 bg-stone-50 border border-stone-300 font-sans text-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-stone-800 rounded-md"
                         />
-                        <div className="grid grid-cols-2 gap-2">
-                           <input type="date" value={resDate} onChange={e => setResDate(e.target.value)} className="p-2 text-sm border border-stone-300 rounded-md" />
-                           <input type="time" value={resTime} onChange={e => setResTime(e.target.value)} className="p-2 text-sm border border-stone-300 rounded-md" />
-                        </div>
-                        <div className="flex justify-end gap-2">
-                           <button onClick={() => setIsAddingReservation(false)} className="text-xs font-bold text-stone-500 px-3 py-2">キャンセル</button>
-                           <button onClick={addReservation} disabled={!resName} className="text-xs font-bold bg-primary text-white px-4 py-2 rounded-md disabled:opacity-50">追加</button>
-                        </div>
-                     </div>
-                  ) : (
-                     <button
-                        onClick={() => setIsAddingReservation(true)}
-                        className="w-full py-3 border border-dashed border-stone-300 rounded-lg text-stone-500 font-bold text-sm hover:border-primary hover:text-primary hover:bg-stone-50 transition-colors flex items-center justify-center gap-2"
-                     >
-                        <Plus className="w-4 h-4" /> 予定を追加
-                     </button>
-                  )}
+                    </div>
+                    <div className="space-y-2">
+                        <span className="text-sm font-bold text-stone-500 font-sans">帰着日</span>
+                        <input
+                            type="date"
+                            value={endDate}
+                            min={startDate || new Date().toISOString().split('T')[0]}
+                            onChange={(e) => handleDateRangeChange(startDate, e.target.value)}
+                            className="w-full p-3 bg-stone-50 border border-stone-300 font-sans text-lg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 text-stone-800 rounded-md"
+                        />
+                    </div>
+                </div>
+                <div className="text-center font-sans pt-2">
+                    {startDate && endDate ? (
+                        <p className="text-base font-bold text-primary inline-block border-b-2 border-primary/20 pb-1">
+                           🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
+                        </p>
+                    ) : (
+                        <p className="text-sm text-stone-400">日付を選択してください</p>
+                    )}
+                </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-4">
+                {/* Custom Duration (Top) */}
+                <div className="flex items-center justify-center gap-8 py-6 bg-white border-y-2 border-stone-200 border-dashed shadow-sm rounded-lg mx-1">
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.max(1, duration - 1))}
+                        className="w-12 h-12 rounded-full border-2 border-stone-300 text-stone-500 hover:border-primary hover:text-primary flex items-center justify-center transition-all bg-stone-50"
+                    >
+                        <Minus className="w-5 h-5" />
+                    </button>
+                    <span className="text-3xl font-bold text-stone-800 min-w-[140px] text-center font-sans">
+                        {formatDuration(duration)}
+                    </span>
+                    <button
+                        type="button"
+                        onClick={() => handleDurationChange(Math.min(30, duration + 1))}
+                        className="w-12 h-12 rounded-full bg-primary text-white hover:bg-primary/90 flex items-center justify-center transition-all shadow-sm"
+                    >
+                        <Plus className="w-5 h-5" />
+                    </button>
                 </div>
 
-                 {/* Free Text */}
-                <div className="space-y-3">
-                   <label className="text-sm font-bold text-stone-700 block">その他のリクエスト</label>
-                   <textarea
-                      value={input.freeText || ""}
-                      onChange={(e) => onChange({ freeText: e.target.value })}
-                      placeholder="自由に入力してください..."
-                      className="w-full h-24 p-3 bg-stone-50 border border-stone-200 rounded-lg focus:border-primary focus:bg-white text-sm"
-                   />
+                {/* Preset Buttons (Bottom) */}
+                <div className="flex flex-wrap justify-center gap-2">
+                    {DURATION_OPTIONS.map((opt) => (
+                    <button
+                        key={opt.value}
+                        type="button"
+                        onClick={() => handleDurationChange(opt.value)}
+                        className={`py-2 px-4 text-sm font-sans font-bold rounded-full border transition-all transform hover:-translate-y-0.5 ${
+                        duration === opt.value
+                            ? "border-primary bg-primary/10 text-primary shadow-sm"
+                            : "border-stone-200 bg-white hover:border-primary/50 text-stone-600 shadow-sm"
+                        }`}
+                    >
+                        {opt.label}
+                    </button>
+                    ))}
                 </div>
-              </div>
-            </motion.div>
+            </div>
           )}
-        </AnimatePresence>
-      </section>
+        </div>
 
-      {/* Floating Action Button / Sticky Footer */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/80 backdrop-blur-md border-t border-stone-200 z-50 sm:static sm:bg-transparent sm:border-0 sm:p-0">
-        <div className="max-w-4xl mx-auto">
-            <button
-                onClick={handleGenerateClick}
-                disabled={isGenerating || !canGenerate}
-                className="w-full h-14 bg-primary text-white font-bold text-lg rounded-xl shadow-lg hover:bg-primary/90 disabled:bg-stone-300 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-3 transform active:scale-95"
-            >
-                {isGenerating ? (
-                    <>
-                        <span className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full" />
-                        プランを作成中...
-                    </>
-                ) : !canGenerate ? (
-                    "必須項目を入力してください"
-                ) : (
-                    <>
-                        <span>✨</span>
-                        プランを作成する
-                    </>
-                )}
-            </button>
+        {/* Companion Selector */}
+        <div className="space-y-4">
+          <label className="block text-base font-bold text-stone-700 font-sans ml-1">
+            ③ 誰と行く？
+          </label>
+          <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
+            {COMPANION_OPTIONS.map((opt) => (
+              <button
+                key={opt.id}
+                type="button"
+                onClick={() => onChange({ companions: opt.id })}
+                className={`py-4 px-2 text-sm font-sans font-bold rounded-lg border-2 transition-all flex flex-col items-center justify-center gap-2 shadow-sm ${
+                  input.companions === opt.id
+                    ? "border-primary bg-white text-stone-800 shadow-md ring-2 ring-primary/20"
+                    : "border-stone-200 bg-white hover:bg-stone-50 text-stone-500 hover:text-stone-800"
+                }`}
+              >
+                <span className="text-2xl">{opt.icon}</span>
+                <span>{opt.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* ================================================================== */}
+      {/* Phase 2: Recommended (Accordion) */}
+      {/* ================================================================== */}
+      <div className="mt-10">
+        <AccordionSection
+            title="詳細を設定"
+            subtitle={isPhase2Complete ? "OK!" : "推奨"}
+            isOpen={phase2Open}
+            onToggle={() => setPhase2Open(!phase2Open)}
+            isComplete={isPhase2Complete}
+            icon={<span className="text-sm">2</span>}
+        >
+            <div className="space-y-8 py-2">
+            {/* Theme Selection */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                テーマ（複数選択可）
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {THEME_OPTIONS.map((theme) => {
+                    const Icon = theme.icon;
+                    const isSelected = input.theme.includes(theme.id);
+                    return (
+                    <button
+                        key={theme.id}
+                        type="button"
+                        onClick={() => toggleTheme(theme.id)}
+                        className={`py-3 px-3 text-sm font-bold rounded-lg border transition-all flex flex-col items-center gap-2 font-sans shadow-sm min-h-[5rem] justify-center ${
+                        isSelected
+                            ? "border-primary bg-white text-primary shadow-md border-2"
+                            : "border-stone-200 bg-white hover:bg-stone-50 text-stone-500 hover:text-primary"
+                        }`}
+                    >
+                        <Icon size={20} />
+                        <span>{theme.label}</span>
+                    </button>
+                    );
+                })}
+                </div>
+            </div>
+
+            {/* Budget Selection */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                予算感
+                </label>
+
+                {/* Mode Switch (Slider vs Presets) */}
+                {!useBudgetSlider ? (
+                <div className="space-y-3">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    {BUDGET_PRESETS.map((opt) => (
+                        <button
+                        key={opt.id}
+                        type="button"
+                        onClick={() => onChange({ budget: opt.id })}
+                        className={`py-3 px-3 text-sm font-bold rounded-lg border transition-all flex flex-col items-center justify-center gap-2 h-28 font-sans shadow-sm ${
+                            input.budget === opt.id
+                            ? "border-primary bg-white text-primary shadow-md border-2"
+                            : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
+                        }`}
+                        >
+                        <span className="text-2xl">{opt.icon}</span>
+                        <span className="font-bold">{opt.label}</span>
+                        <span className="text-xs text-stone-400 font-sans font-normal text-center leading-tight">{opt.desc}</span>
+                        </button>
+                    ))}
+                    </div>
+                    <button
+                    type="button"
+                    onClick={() => toggleBudgetSlider(true)}
+                    className="w-full py-4 px-4 rounded-lg bg-stone-50 hover:bg-stone-100 text-stone-700 text-sm font-bold transition-colors flex items-center justify-center gap-2 border border-stone-200 shadow-sm"
+                    >
+                    <span>🎚️</span>
+                    <span>具体的な金額で指定する</span>
+                    </button>
+                </div>
+                ) : (
+                <div className="bg-white border border-stone-200 rounded-lg p-5 space-y-4 relative shadow-sm">
+                    <Tape color="white" position="top-right" className="opacity-50 w-12 h-4" />
+                    <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-stone-500 font-sans">金額範囲を指定</span>
+                    <button
+                        type="button"
+                        onClick={() => toggleBudgetSlider(false)}
+                        className="text-xs text-stone-400 hover:text-stone-600 underline font-sans"
+                    >
+                        選択式に戻す
+                    </button>
+                    </div>
+
+                    <div className="text-center">
+                    <span className="text-2xl font-bold text-primary font-mono">
+                        {formatBudget(budgetMinAmount)} 〜 {formatBudget(budgetMaxAmount)}
+                    </span>
+                    </div>
+
+                    {/* Slider UI */}
+                    <div className="relative pt-2 pb-6 px-2">
+                    <div className="relative h-2 bg-stone-200 rounded-full">
+                        <div
+                            className="absolute h-full bg-gradient-to-r from-primary/50 to-primary rounded-full"
+                            style={{
+                            left: `${minPercent}%`,
+                            width: `${maxPercent - minPercent}%`,
+                            }}
+                        />
+                    </div>
+                    {/* Inputs using mapped values */}
+                    <input
+                        type="range"
+                        min={0}
+                        max={SLIDER_MAX}
+                        step={1}
+                        value={minIndex}
+                        onChange={(e) => handleBudgetMinIndexChange(Number(e.target.value))}
+                        className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
+                    />
+                    <input
+                        type="range"
+                        min={0}
+                        max={SLIDER_MAX}
+                        step={1}
+                        value={maxIndex}
+                        onChange={(e) => handleBudgetMaxIndexChange(Number(e.target.value))}
+                        className="absolute inset-0 w-full h-2 opacity-0 cursor-pointer z-20 pointer-events-auto top-2"
+                    />
+                    {/* Thumb Indicators */}
+                    <div
+                        className="absolute w-6 h-6 bg-white border-2 border-primary rounded-full shadow-md -translate-x-1/2 z-10 top-0 pointer-events-none"
+                        style={{ left: `${minPercent}%` }}
+                    />
+                    <div
+                        className="absolute w-6 h-6 bg-white border-2 border-primary rounded-full shadow-md -translate-x-1/2 z-10 top-0 pointer-events-none"
+                        style={{ left: `${maxPercent}%` }}
+                    />
+                    </div>
+                </div>
+                )}
+            </div>
+
+            {/* Pace Selection */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                旅のペース
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                {PACE_OPTIONS.map((opt) => (
+                    <button
+                    key={opt.id}
+                    type="button"
+                    onClick={() => onChange({ pace: opt.id })}
+                    className={`py-4 px-3 text-sm font-bold rounded-lg border transition-all flex flex-col items-center justify-center gap-2 font-sans shadow-sm min-h-[7rem] ${
+                        input.pace === opt.id
+                        ? "border-primary bg-white text-stone-800 shadow-md border-2"
+                        : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
+                    }`}
+                    >
+                    <span className="text-2xl">{opt.icon}</span>
+                    <span>{opt.label}</span>
+                    <span className="text-xs text-stone-500 font-medium text-center leading-tight">{opt.desc}</span>
+                    </button>
+                ))}
+                </div>
+            </div>
+            </div>
+        </AccordionSection>
+      </div>
+
+      {/* ================================================================== */}
+      {/* Phase 3: Optional (Accordion) */}
+      {/* ================================================================== */}
+      <div>
+        <AccordionSection
+            title="さらに詳しく"
+            subtitle="任意"
+            isOpen={phase3Open}
+            onToggle={() => setPhase3Open(!phase3Open)}
+            isComplete={isPhase3Complete}
+            icon={<span className="text-sm">3</span>}
+        >
+            <div className="space-y-8 py-2">
+
+            {/* Reservations (Fixed Schedule) */}
+            <div className="space-y-3">
+              <label className="block text-sm font-bold text-stone-700 font-sans">
+                予約済みの予定（飛行機・ホテル等）
+              </label>
+
+              {/* List of added reservations */}
+              {input.fixedSchedule && input.fixedSchedule.length > 0 && (
+                <div className="grid gap-3 mb-3">
+                  {input.fixedSchedule.map((item, index) => (
+                    <div key={index} className="bg-white border border-stone-200 rounded-lg p-4 flex items-start gap-4 shadow-sm relative">
+                       <button
+                          onClick={() => removeReservation(index)}
+                          className="absolute top-3 right-3 text-stone-400 hover:text-red-500 transition-colors p-1"
+                        >
+                          <X size={16} />
+                        </button>
+                      <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+                         {item.type === 'flight' && <FaPlane size={18} />}
+                         {item.type === 'train' && <FaTrain size={18} />}
+                         {item.type === 'bus' && <FaBus size={18} />}
+                         {item.type === 'hotel' && <FaHotel size={18} />}
+                         {item.type === 'activity' && <FaTicketAlt size={18} />}
+                         {item.type === 'other' && <FaQuestion size={18} />}
+                      </div>
+                      <div>
+                        <div className="font-bold text-stone-800 font-sans text-base">{item.name}</div>
+                        <div className="text-sm text-stone-500 font-mono flex items-center gap-3 mt-1">
+                          {item.date && (
+                            <span className="flex items-center gap-1"><FaCalendarAlt size={12} /> {item.date}</span>
+                          )}
+                          {item.time && (
+                             <span className="flex items-center gap-1"><FaClock size={12} /> {item.time}</span>
+                          )}
+                        </div>
+                        {item.notes && (
+                           <div className="text-xs text-stone-400 mt-2 font-sans border-t border-dashed border-stone-100 pt-1">{item.notes}</div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* Add New Reservation Form */}
+              {isAddingReservation ? (
+                <div className="bg-white border border-stone-300 rounded-lg p-5 space-y-4 shadow-md relative animate-in fade-in zoom-in-95 duration-200">
+                  <div className="font-bold text-base text-stone-700 font-sans mb-1">予定を追加</div>
+
+                  {/* Type Selector */}
+                  <div className="grid grid-cols-3 gap-2">
+                     {RESERVATION_TYPES.map(type => (
+                       <button
+                         key={type.id}
+                         onClick={() => setResType(type.id as any)}
+                         className={`p-3 text-xs font-bold rounded-lg border transition-all flex flex-col items-center gap-2 ${
+                            resType === type.id
+                            ? 'bg-primary/10 border-primary text-primary border-2'
+                            : 'bg-stone-50 border-stone-200 text-stone-500 hover:bg-stone-100'
+                         }`}
+                       >
+                          <type.icon size={16} />
+                          {type.label}
+                       </button>
+                     ))}
+                  </div>
+
+                  {/* Name */}
+                  <input
+                    type="text"
+                    value={resName}
+                    onChange={e => setResName(e.target.value)}
+                    placeholder="名前（例：JL123便、ヒルトン東京）"
+                    className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
+                  />
+
+                  {/* Date & Time */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <input
+                      type="date"
+                      value={resDate}
+                      onChange={e => setResDate(e.target.value)}
+                      className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
+                    />
+                    <input
+                      type="time"
+                      value={resTime}
+                      onChange={e => setResTime(e.target.value)}
+                      className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
+                    />
+                  </div>
+
+                  {/* Notes */}
+                  <textarea
+                    value={resNotes}
+                    onChange={e => setResNotes(e.target.value)}
+                    placeholder="メモ（任意）"
+                    className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary h-20 resize-none text-stone-800"
+                  />
+
+                  {/* Actions */}
+                  <div className="flex gap-3 justify-end pt-2">
+                    <button
+                      onClick={() => setIsAddingReservation(false)}
+                      className="px-4 py-2 text-sm font-bold text-stone-500 hover:bg-stone-100 rounded-lg transition-colors"
+                    >
+                      キャンセル
+                    </button>
+                    <button
+                      onClick={addReservation}
+                      disabled={!resName.trim()}
+                      className="px-6 py-2 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
+                    >
+                      追加
+                    </button>
+                  </div>
+                </div>
+              ) : (
+                <button
+                  onClick={() => setIsAddingReservation(true)}
+                  className="w-full py-3 border-2 border-dashed border-stone-300 rounded-lg text-stone-500 font-bold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2 bg-white"
+                >
+                  <Plus size={18} /> 予約済みの予定を追加
+                </button>
+              )}
+            </div>
+
+            {/* Preferred Transport */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                    希望する移動手段
+                </label>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {TRANSPORT_OPTIONS.map((opt) => {
+                    const isSelected = input.preferredTransport?.includes(opt.id) || false;
+                    const Icon = opt.icon;
+                    return (
+                        <button
+                            key={opt.id}
+                            type="button"
+                            onClick={() => toggleTransport(opt.id)}
+                            className={`py-3 px-4 text-xs font-bold rounded-lg border transition-all flex items-center gap-3 font-sans shadow-sm ${
+                                isSelected
+                                ? "border-primary bg-white text-primary shadow-md border-2"
+                                : "border-stone-200 bg-white hover:bg-stone-50 text-stone-600"
+                            }`}
+                        >
+                            <Icon size={16} />
+                            <span>{opt.label}</span>
+                            {isSelected && <Check className="w-4 h-4 ml-auto" />}
+                        </button>
+                    );
+                    })}
+                </div>
+            </div>
+
+            {/* Must-Visit Places */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                絶対行きたい場所
+                </label>
+
+                {/* Added Places */}
+                {(input.mustVisitPlaces?.length ?? 0) > 0 && (
+                <div className="flex flex-wrap gap-2 mb-2">
+                    {input.mustVisitPlaces?.map((place, index) => (
+                    <span
+                        key={index}
+                        className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-stone-200 rounded-lg text-sm font-sans font-bold shadow-sm"
+                    >
+                        📍 {place}
+                        <button
+                        type="button"
+                        onClick={() => removePlace(index)}
+                        className="hover:text-red-500 transition-colors p-0.5"
+                        >
+                        <X className="w-3.5 h-3.5" />
+                        </button>
+                    </span>
+                    ))}
+                </div>
+                )}
+
+                <div className="flex gap-2 w-full items-stretch">
+                  <div className="flex-1">
+                    <input
+                        value={placeInput}
+                        onChange={(e) => setPlaceInput(e.target.value)}
+                        onKeyDown={(e) => {
+                        if (e.key === "Enter") {
+                            e.preventDefault();
+                            addPlace();
+                        }
+                        }}
+                        placeholder="場所名を入力（例：清水寺）"
+                        className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
+                    />
+                  </div>
+
+                <JournalButton
+                    variant="secondary"
+                    onClick={addPlace}
+                    disabled={!placeInput.trim()}
+                    className="h-12 w-12 p-0 rounded-lg shadow-sm border-2 border-stone-200 hover:border-primary/50"
+                    >
+                    <FaPlus className="w-5 h-5" />
+                </JournalButton>
+                </div>
+            </div>
+
+            {/* Free Text */}
+            <div className="space-y-3">
+                <label className="block text-sm font-bold text-stone-700 font-sans">
+                その他のリクエスト
+                </label>
+                <div className="bg-white border-2 border-stone-200 rounded-lg p-3 relative shadow-sm">
+                    <textarea
+                        value={input.freeText || ""}
+                        onChange={(e) => onChange({ freeText: e.target.value })}
+                        placeholder="美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
+                        className="w-full h-24 bg-transparent border-none p-1 text-sm font-sans placeholder:text-stone-300 focus:outline-none resize-none leading-relaxed text-stone-800"
+                    />
+                </div>
+            </div>
+
+            </div>
+        </AccordionSection>
+      </div>
+
+      </JournalSheet>
+
+      {/* Unified Generate Button (Always visible at bottom) */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="pt-8 px-2 pb-24 sm:pb-12"
+      >
+        <JournalButton
+          variant="primary"
+          size="lg"
+          onClick={handleGenerateClick}
+          disabled={isGenerating || !canGenerate}
+          className="w-full h-16 text-xl font-bold shadow-xl hover:scale-[1.01] transition-transform font-sans rounded-xl"
+        >
+          {isGenerating ? (
+            <>
+              <span className="animate-spin mr-3">⏳</span>
+              プランを作成中...
+            </>
+          ) : !canGenerate ? (
+            <>
+              <span className="mr-3">⚠️</span>
+              必須項目を入力してください
+            </>
+          ) : hasDetailedInput ? (
+            <>
+              <span className="mr-3">✨</span>
+              詳細条件でプランを作成
+            </>
+          ) : (
+            <>
+              <span className="mr-3">✨</span>
+              とりあえず生成する
+            </>
+          )}
+        </JournalButton>
+        {canGenerate && !hasDetailedInput && (
+          <p className="text-center text-sm mt-4 text-stone-500 font-sans font-medium">
+            詳細設定を追加すると、より精度の高いプランが作成されます✨
+          </p>
+        )}
+      </motion.div>
     </div>
   );
 }
