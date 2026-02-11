@@ -71,7 +71,8 @@ describe("SimplifiedInputFlow - Date Logic", () => {
     // So if dates are valid (even if empty in calendar mode), button should be visible.
 
     // Check for button visibility (Phase 1 button: "とりあえず生成する")
-    const generateBtn = screen.getByText("とりあえず生成する");
+    // In new UI, button text is "プランを作成する" when valid
+    const generateBtn = screen.getByText("プランを作成する");
     expect(generateBtn).toBeDefined();
     expect(generateBtn.hasAttribute("disabled")).toBe(false);
   });
@@ -100,7 +101,8 @@ describe("SimplifiedInputFlow - Date Logic", () => {
 
     // Now in Calendar mode, start/end dates are empty.
     // Click Generate
-    const generateBtn = screen.getByText("とりあえず生成する");
+    // In new UI, button text is "プランを作成する" when valid
+    const generateBtn = screen.getByText("プランを作成する");
     fireEvent.click(generateBtn);
 
     // onGenerate should be called with input that has dates: "未定"
