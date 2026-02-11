@@ -23,13 +23,13 @@ export default function HeroSection({ children }: HeroSectionProps) {
         <div className="space-y-6 max-w-3xl flex flex-col items-center">
           {/* Badge - Paper scrap style */}
           <motion.div
-             initial={{ opacity: 0, y: -10, rotate: -2 }}
-             animate={{ opacity: 1, y: 0, rotate: -2 }}
+             initial={{ opacity: 0, y: -10 }}
+             animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8 }}
              className="relative"
           >
              <Tape color="yellow" position="top-center" className="w-32 -top-3 opacity-90" />
-             <div className="inline-flex items-center gap-2 text-stone-600 font-hand font-bold tracking-wider text-sm sm:text-base bg-white px-6 py-2 shadow-sm border border-stone-200 border-dashed transform -rotate-1">
+             <div className="inline-flex items-center gap-2 text-stone-600 font-hand font-bold tracking-wider text-sm sm:text-base bg-white px-6 py-2 shadow-sm border border-stone-200 border-dashed">
                <FaBookOpen className="text-primary text-sm" />
                <span>Story of your journey starts here</span>
              </div>
@@ -45,14 +45,14 @@ export default function HeroSection({ children }: HeroSectionProps) {
             心の奥にある
             <span className="relative inline-block mx-2">
               <span className="relative z-10">『行きたい』</span>
-              <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-0 -rotate-1 rounded-sm mix-blend-multiply"></span>
+              <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-0 rounded-sm mix-blend-multiply"></span>
             </span>
             を、
             <br className="sm:hidden" />
             かたちに。
 
             {/* Decorative Stamp */}
-            <div className="absolute -right-8 -top-8 hidden md:block opacity-80 transform rotate-12">
+            <div className="absolute -right-8 -top-8 hidden md:block opacity-80">
                <Stamp color="red" size="md">
                   TABI<br/>DEA
                </Stamp>
@@ -90,15 +90,15 @@ export default function HeroSection({ children }: HeroSectionProps) {
           <div className="absolute -left-3 top-4 bottom-4 w-6 flex flex-col justify-between z-20 pointer-events-none hidden md:flex">
              {[...Array(6)].map((_, i) => (
                 <div key={i} className="w-4 h-4 rounded-full bg-stone-200 border border-stone-300 shadow-inner mb-8 relative">
-                   <div className="absolute left-full top-1/2 -translate-y-1/2 w-4 h-2 bg-stone-300 transform -rotate-12 origin-left" />
+                   <div className="absolute left-full top-1/2 -translate-y-1/2 w-4 h-2 bg-stone-300 origin-left" />
                 </div>
              ))}
           </div>
 
-          <JournalSheet variant="notebook" className="relative transform rotate-1 min-h-[450px] shadow-2xl border-l-8 border-l-stone-300/50">
+          <JournalSheet variant="notebook" className="relative min-h-[450px] shadow-2xl border-l-8 border-l-stone-300/50">
              {/* Decorative Tape */}
-             <Tape color="green" position="top-right" rotation="right" className="opacity-80" />
-             <Tape color="blue" position="bottom-left" rotation="left" className="opacity-80" />
+             <Tape color="green" position="top-right" className="opacity-80" />
+             <Tape color="blue" position="bottom-left" className="opacity-80" />
 
              {/* Content */}
              <div className="relative z-10 pl-2 md:pl-8">

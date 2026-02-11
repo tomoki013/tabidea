@@ -583,10 +583,10 @@ export default function SimplifiedInputFlow({
         </p>
       </div>
 
-      <JournalSheet variant="notebook" className="shadow-xl relative overflow-visible bg-[#fcfbf9] px-4 py-6 sm:p-8">
+      <JournalSheet variant="default" className="shadow-xl relative overflow-visible bg-[#fcfbf9] px-4 py-6 sm:p-8 border-l-8 border-l-stone-300/50">
          {/* Decorative Tape */}
-         <Tape color="pink" position="top-right" rotation="right" className="opacity-80" />
-         <Tape color="blue" position="bottom-left" rotation="left" className="opacity-80 -bottom-6 -left-2" />
+         <Tape color="pink" position="top-right" className="opacity-80" />
+         <Tape color="blue" position="bottom-left" className="opacity-80 -bottom-6 -left-2" />
 
       {/* ================================================================== */}
       {/* Phase 1: Essential (Always Visible) */}
@@ -683,7 +683,7 @@ export default function SimplifiedInputFlow({
                     {input.destinations.map((dest, index) => (
                       <span
                         key={dest}
-                        className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-stone-300 rounded-full text-stone-800 font-sans shadow-sm transform rotate-1 text-sm"
+                        className="inline-flex items-center gap-1 px-3 py-1 bg-white border border-stone-300 rounded-full text-stone-800 font-sans shadow-sm text-sm"
                       >
                         {dest}
                         <button
