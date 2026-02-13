@@ -36,10 +36,12 @@ export interface UsePlaceDetailsReturn {
  *
  * @param spotName - スポット名
  * @param location - 検索対象の近辺地域（目的地）
+ * @param locationEn - 英語の場所名（国際スポット検索のフォールバック用）
  */
 export function usePlaceDetails(
   spotName: string,
-  location?: string
+  location?: string,
+  locationEn?: string
 ): UsePlaceDetailsReturn {
   const [details, setDetails] = useState<PlaceValidationResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,6 +60,9 @@ export function usePlaceDetails(
       if (location) {
         params.append('near', location);
       }
+      if (locationEn) {
+        params.append('locationEn', locationEn);
+      }
 
       const response = await fetch(`/api/places/search?${params.toString()}`);
       const data = await response.json();
@@ -75,7 +80,7 @@ export function usePlaceDetails(
     } finally {
       setIsLoading(false);
     }
-  }, [spotName, location, details, isLoading]);
+  }, [spotName, location, locationEn, details, isLoading]);
 
   const reset = useCallback(() => {
     setDetails(null);

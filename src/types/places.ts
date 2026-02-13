@@ -86,6 +86,8 @@ export interface PlaceSearchQuery {
   query: string;
   /** 検索対象の近辺地域（目的地） */
   near?: string;
+  /** 英語の場所名（国際スポット検索のフォールバック用、例: "Marrakech, Morocco"） */
+  locationEn?: string;
   /** 検索タイプ */
   type?: PlaceSearchType;
   /** 言語 */

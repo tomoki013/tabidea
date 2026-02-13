@@ -83,12 +83,18 @@ async function setCachedPlace(
 /**
  * クエリキーを正規化
  */
-function normalizeQueryKey(query: string, near?: string): string {
+function normalizeQueryKey(query: string, near?: string, locationEn?: string): string {
   const normalized = query.toLowerCase().trim().replace(/\s+/g, '_');
   const nearNormalized = near
     ? near.toLowerCase().trim().replace(/\s+/g, '_')
     : '';
-  return nearNormalized ? `${normalized}__${nearNormalized}` : normalized;
+  const locationEnNormalized = locationEn
+    ? locationEn.toLowerCase().trim().replace(/\s+/g, '_')
+    : '';
+  const parts = [normalized];
+  if (nearNormalized) parts.push(nearNormalized);
+  if (locationEnNormalized) parts.push(locationEnNormalized);
+  return parts.join('__');
 }
 
 // ============================================
@@ -100,6 +106,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     const searchParams = request.nextUrl.searchParams;
     const query = searchParams.get('q');
     const near = searchParams.get('near') || undefined;
+    const locationEn = searchParams.get('locationEn') || undefined;
 
     // バリデーション
     if (!query) {
@@ -124,7 +131,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     }
 
     // キャッシュをチェック
-    const queryKey = normalizeQueryKey(query, near);
+    const queryKey = normalizeQueryKey(query, near, locationEn);
     const cached = await getCachedPlace(queryKey);
 
     if (cached) {
@@ -137,7 +144,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
 
     // Places API で検索
     const placesService = new GooglePlacesService();
-    const validation = await placesService.validateSpot(query, near);
+    const validation = await placesService.validateSpot(query, near, locationEn);
 
     // キャッシュに保存
     if (validation.placeId) {

@@ -130,13 +130,13 @@ export default function SpotCard({
   const classification = classifyActivity(name, description, activityType);
   const skipPlacesSearch = classification.decision === 'skip';
 
-  // Lazy loading hook
+  // Lazy loading hook (pass locationEn for better international spot search)
   const {
     details: fetchedDetails,
     isLoading,
     error,
     fetchDetails,
-  } = usePlaceDetails(name, destination);
+  } = usePlaceDetails(name, destination, activity.locationEn);
 
   // Merge validation data with fetched details
   const mergedValidation: ActivityValidation | undefined = fetchedDetails

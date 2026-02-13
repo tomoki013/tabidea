@@ -189,6 +189,7 @@ export class GeminiService implements AIService {
   private google: ReturnType<typeof createGoogleGenerativeAI>;
   private defaultModelName: string;
   private options: GeminiServiceOptions;
+  private _lastModelInfo: { modelName: string; tier: 'flash' | 'pro' } | null = null;
 
   constructor(apiKey: string, options: GeminiServiceOptions = {}) {
     this.google = createGoogleGenerativeAI({ apiKey });
@@ -212,6 +213,7 @@ export class GeminiService implements AIService {
     };
 
     const selection = selectModel(input);
+    this._lastModelInfo = { modelName: selection.modelName, tier: selection.tier as 'flash' | 'pro' };
 
     return {
       model: this.google(selection.modelName, { structuredOutputs: true }),
@@ -219,6 +221,11 @@ export class GeminiService implements AIService {
       modelName: selection.modelName,
       tier: selection.tier,
     };
+  }
+
+  /** 最後に使用されたモデルの情報を取得 */
+  get lastModelInfo(): { modelName: string; tier: 'flash' | 'pro' } | null {
+    return this._lastModelInfo;
   }
 
   // Legacy method - can be kept for fallback or specific uses

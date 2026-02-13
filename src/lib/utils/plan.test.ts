@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { extractDuration, splitDaysIntoChunks, extractStartDate, getDayCheckInOutDates, buildTimeline, getTimelineItemTime } from "./plan";
-import type { DayPlan, TransitInfo, Activity } from "@/types";
+import { extractDuration, splitDaysIntoChunks, extractStartDate, getDayCheckInOutDates, buildTimeline, getTimelineItemTime, parseTimeForSort } from "./plan";
+import type { DayPlan, TransitInfo, Activity, TimelineItem } from "@/types";
 
 describe("extractDuration", () => {
   it("extracts duration from X日間 format", () => {
@@ -91,6 +91,21 @@ describe("getDayCheckInOutDates", () => {
   });
 });
 
+describe("parseTimeForSort", () => {
+  it("parses HH:MM format correctly", () => {
+    expect(parseTimeForSort("09:00")).toBe(900);
+    expect(parseTimeForSort("14:30")).toBe(1430);
+    expect(parseTimeForSort("0:00")).toBe(0);
+    expect(parseTimeForSort("23:59")).toBe(2359);
+  });
+
+  it("returns Infinity for undefined or invalid input", () => {
+    expect(parseTimeForSort(undefined)).toBe(Infinity);
+    expect(parseTimeForSort("")).toBe(Infinity);
+    expect(parseTimeForSort("invalid")).toBe(Infinity);
+  });
+});
+
 describe("buildTimeline", () => {
   const mockTransit: TransitInfo = {
     type: "flight",
@@ -144,6 +159,110 @@ describe("buildTimeline", () => {
     const timeline = buildTimeline(day);
     expect(timeline).toHaveLength(1);
     expect(timeline[0].itemType).toBe("activity");
+  });
+
+  it("places transit at correct chronological position based on departure time", () => {
+    const afternoonTransit: TransitInfo = {
+      type: "train",
+      departure: { place: "City A", time: "14:00" },
+      arrival: { place: "City B", time: "16:00" },
+    };
+
+    const day: DayPlan = {
+      day: 3,
+      title: "Day 3",
+      transit: afternoonTransit,
+      activities: [
+        { time: "09:00", activity: "Morning spot", description: "..." },
+        { time: "12:00", activity: "Lunch", description: "..." },
+        { time: "17:00", activity: "Evening spot", description: "..." },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline).toHaveLength(4);
+    expect(timeline[0].itemType).toBe("activity"); // 09:00
+    expect(timeline[1].itemType).toBe("activity"); // 12:00
+    expect(timeline[2].itemType).toBe("transit");  // 14:00
+    expect(timeline[3].itemType).toBe("activity"); // 17:00
+  });
+
+  it("places early morning transit before activities", () => {
+    const earlyTransit: TransitInfo = {
+      type: "flight",
+      departure: { place: "Airport", time: "06:00" },
+      arrival: { place: "Destination", time: "08:30" },
+    };
+
+    const day: DayPlan = {
+      day: 1,
+      title: "Day 1",
+      transit: earlyTransit,
+      activities: [
+        { time: "09:00", activity: "First spot", description: "..." },
+        { time: "12:00", activity: "Lunch", description: "..." },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline[0].itemType).toBe("transit");  // 06:00
+    expect(timeline[1].itemType).toBe("activity"); // 09:00
+    expect(timeline[2].itemType).toBe("activity"); // 12:00
+  });
+
+  it("sorts AI-generated timelineItems chronologically as safety net", () => {
+    const day: DayPlan = {
+      day: 1,
+      title: "Day 1",
+      activities: [],
+      timelineItems: [
+        { itemType: "transit", data: { type: "train", departure: { place: "A", time: "14:00" }, arrival: { place: "B", time: "15:00" } }, time: "14:00" },
+        { itemType: "activity", data: { time: "09:00", activity: "Morning", description: "..." } },
+        { itemType: "activity", data: { time: "12:00", activity: "Lunch", description: "..." } },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline[0].itemType).toBe("activity"); // 09:00
+    expect(timeline[1].itemType).toBe("activity"); // 12:00
+    expect(timeline[2].itemType).toBe("transit");  // 14:00
+  });
+
+  it("sorts items without time to the end", () => {
+    const day: DayPlan = {
+      day: 1,
+      title: "Day 1",
+      activities: [
+        { time: "10:00", activity: "Morning spot", description: "..." },
+        { time: "", activity: "Free time", description: "..." },
+        { time: "14:00", activity: "Afternoon spot", description: "..." },
+      ],
+    };
+
+    const timeline = buildTimeline(day);
+    expect(timeline[0].itemType).toBe("activity"); // 10:00
+    expect(timeline[1].itemType).toBe("activity"); // 14:00
+    expect(timeline[2].itemType).toBe("activity"); // no time → end
+    expect((timeline[2].data as Activity).activity).toBe("Free time");
+  });
+
+  it("does not mutate original timelineItems array", () => {
+    const originalItems: TimelineItem[] = [
+      { itemType: "activity", data: { time: "14:00", activity: "Late", description: "..." } },
+      { itemType: "activity", data: { time: "09:00", activity: "Early", description: "..." } },
+    ];
+
+    const day: DayPlan = {
+      day: 1,
+      title: "Day 1",
+      activities: [],
+      timelineItems: originalItems,
+    };
+
+    buildTimeline(day);
+    // Original array should remain unchanged
+    expect((originalItems[0].data as Activity).time).toBe("14:00");
+    expect((originalItems[1].data as Activity).time).toBe("09:00");
   });
 });
 

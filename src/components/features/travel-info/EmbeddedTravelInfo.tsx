@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCw, X, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import ModelBadge from "@/components/ui/ModelBadge";
 import type {
   TravelInfoCategory,
   CategoryDataEntry,
@@ -296,6 +297,7 @@ export default function EmbeddedTravelInfo({
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2c2c2c]">
               渡航情報・安全ガイド
             </h2>
+            <ModelBadge modelName={process.env.NEXT_PUBLIC_CHAT_MODEL_NAME || "gemini-2.5-flash"} />
           </div>
           <button
             onClick={onClose}

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2 } from "lucide-react";
+import ModelBadge from "@/components/ui/ModelBadge";
 
 // ============================================================================
 // Types
@@ -29,6 +30,8 @@ export interface GeneratingOverlayProps {
   onHide: () => void;
   /** Callback to retry a failed day */
   onRetry?: (day: number) => void;
+  /** AI model name being used */
+  modelName?: string;
 }
 
 // ============================================================================
@@ -42,6 +45,7 @@ export default function GeneratingOverlay({
   isVisible,
   onHide,
   onRetry,
+  modelName,
 }: GeneratingOverlayProps) {
   // Calculate progress
   const completedCount = dayStates.filter((d) => d.status === "completed").length;
@@ -94,8 +98,9 @@ export default function GeneratingOverlay({
                     {getStatusMessage()}
                   </div>
                   {!isComplete && (
-                    <div className="text-xs text-stone-500">
-                      スクロールしてプランを確認できます
+                    <div className="flex items-center gap-2 text-xs text-stone-500">
+                      <span>スクロールしてプランを確認できます</span>
+                      {modelName && <ModelBadge modelName={modelName} />}
                     </div>
                   )}
                 </div>

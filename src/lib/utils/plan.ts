@@ -83,12 +83,34 @@ export function getDayCheckInOutDates(
 }
 
 /**
+ * 時刻文字列をソート用の数値に変換
+ * "09:00" → 900, "14:30" → 1430, undefined → Infinity (末尾に配置)
+ */
+export function parseTimeForSort(time?: string): number {
+  if (!time) return Infinity;
+  const match = time.match(/(\d{1,2}):(\d{2})/);
+  if (!match) return Infinity;
+  return parseInt(match[1], 10) * 100 + parseInt(match[2], 10);
+}
+
+/**
+ * タイムラインアイテムを時系列でソート
+ */
+function sortTimelineItems(items: TimelineItem[]): TimelineItem[] {
+  return items.sort((a, b) => {
+    return parseTimeForSort(getTimelineItemTime(a)) - parseTimeForSort(getTimelineItemTime(b));
+  });
+}
+
+/**
  * DayPlanからタイムラインアイテムの配列を構築
  * AIが生成したtimelineItemsがあればそれを使い、なければtransit + activitiesから構築
+ * いずれの場合も時系列順にソートして返す
  */
 export function buildTimeline(day: DayPlan): TimelineItem[] {
   if (day.timelineItems && day.timelineItems.length > 0) {
-    return day.timelineItems;
+    // AI生成のtimelineItemsを時系列ソート（安全策）
+    return sortTimelineItems([...day.timelineItems]);
   }
 
   const items: TimelineItem[] = [];
@@ -105,7 +127,8 @@ export function buildTimeline(day: DayPlan): TimelineItem[] {
     items.push({ itemType: 'activity', data: activity });
   }
 
-  return items;
+  // 時系列順にソート（transitを先頭固定ではなく、時刻ベースで配置）
+  return sortTimelineItems(items);
 }
 
 /**

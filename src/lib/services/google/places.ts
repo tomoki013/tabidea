@@ -140,6 +140,19 @@ export class GooglePlacesService {
         searchResult = await this.performSearch(originalQuery, query);
       }
 
+      // 5. Fallback: cleaned query with English location name (for international spots)
+      if (!searchResult.found && query.locationEn) {
+        searchResult = await this.performSearch(
+          `${cleanedQuery} ${query.locationEn}`,
+          query
+        );
+      }
+
+      // 6. Fallback: English location name alone (e.g., "Marrakech, Morocco")
+      if (!searchResult.found && query.locationEn) {
+        searchResult = await this.performSearch(query.locationEn, query);
+      }
+
       if (!searchResult.found || !searchResult.place) {
         return {
           found: false,
@@ -227,11 +240,13 @@ export class GooglePlacesService {
    */
   async validateSpot(
     spotName: string,
-    location?: string
+    location?: string,
+    locationEn?: string
   ): Promise<PlaceValidationResult> {
     const result = await this.searchPlace({
       query: spotName,
       near: location,
+      locationEn,
     });
 
     if (!result.found || !result.place) {
@@ -319,9 +334,18 @@ export class GooglePlacesService {
     // 括弧内の補足情報を除去（例: "金閣寺 (Kinkaku-ji)" → "金閣寺"）
     cleaned = cleaned.replace(/\s*[（(][^）)]*[）)]\s*/g, '');
 
+    // 「XのY」パターンで Y が一般的な場所記述子の場合、X を抽出
+    // 例: "メディナのスーク" → "メディナ", "フナ広場の屋台" → "フナ広場"
+    const genericDescriptors = '旧市街|市場|スーク|バザール|広場|寺院|宮殿|遺跡|城壁|モスク|ビーチ|港|空港|屋台|露店|商店街|通り|路地|庭園|公園|湖|滝|洞窟|渓谷|峡谷';
+    const noGenericPattern = new RegExp(`^(.{2,})の(${genericDescriptors}).*$`);
+    const noGenericMatch = cleaned.match(noGenericPattern);
+    if (noGenericMatch) {
+      cleaned = noGenericMatch[1];
+    }
+
     // 「〜で〜する」パターン: 「で」以降のアクション部分を除去
     // 「で」の後にオプショナルな修飾語 + アクション動詞/名詞
-    const actionWords = '散策|食べ歩き|体験|見学|観光|参拝|ショッピング|買い物|食事|昼食|夕食|朝食|ランチ|ディナー|休憩|鑑賞|堪能|満喫|探索|巡り|めぐり|探訪|訪問|立ち寄り|寄り道|楽しむ|過ごす|味わう|堪能する|楽しみ|ひと休み';
+    const actionWords = '散策|食べ歩き|体験|見学|観光|参拝|ショッピング|買い物|食事|昼食|夕食|朝食|ランチ|ディナー|休憩|鑑賞|堪能|満喫|探索|巡り|めぐり|探訪|訪問|立ち寄り|寄り道|楽しむ|過ごす|味わう|堪能する|楽しみ|ひと休み|迷宮探索';
     const dePattern = new RegExp(`^(.{2,})で.{0,10}(${actionWords}).*$`);
     const deMatch = cleaned.match(dePattern);
     if (deMatch) {

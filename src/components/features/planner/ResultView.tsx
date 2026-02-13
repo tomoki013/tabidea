@@ -46,6 +46,7 @@ import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from "@/components/ui/journal";
+import ModelBadge from "@/components/ui/ModelBadge";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -435,6 +436,12 @@ export default function ResultView({
                   <span className="flex items-center gap-1"><FaCalendarAlt /> {travelDates}</span>
                   <span>|</span>
                   <span>{durationString}</span>
+                  {result.modelInfo && (
+                    <>
+                      <span>|</span>
+                      <ModelBadge modelName={result.modelInfo.modelName} />
+                    </>
+                  )}
                </div>
 
                <HandwrittenText className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
