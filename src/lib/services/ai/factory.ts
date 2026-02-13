@@ -20,7 +20,7 @@ export interface AIServiceConfig {
  * AIサービスインスタンスを生成
  * 環境変数またはconfig引数に基づいてプロバイダを選択
  */
-export function createAIService(config?: Partial<AIServiceConfig>): AIService & { modifyItinerary: InstanceType<typeof GeminiService>['modifyItinerary']; generateOutline: InstanceType<typeof GeminiService>['generateOutline']; generateDayDetails: InstanceType<typeof GeminiService>['generateDayDetails'] } {
+export function createAIService(config?: Partial<AIServiceConfig>): AIService & { modifyItinerary: InstanceType<typeof GeminiService>['modifyItinerary']; generateOutline: InstanceType<typeof GeminiService>['generateOutline']; generateDayDetails: InstanceType<typeof GeminiService>['generateDayDetails']; lastModelInfo: InstanceType<typeof GeminiService>['lastModelInfo'] } {
   const provider = config?.provider || (process.env.AI_PROVIDER as AIProvider) || 'gemini';
 
   switch (provider) {

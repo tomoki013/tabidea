@@ -3,7 +3,7 @@
  * Streaming Generation Types for AI Travel Planner
  */
 
-import type { PlanOutline, DayPlan } from './itinerary';
+import type { PlanOutline, DayPlan, ModelInfo } from './itinerary';
 import type { UserInput } from './user-input';
 import type { Article } from './api';
 
@@ -66,6 +66,8 @@ export interface GenerationState {
   error?: string;
   /** エラーの種類 */
   errorType?: 'outline' | 'chunk' | 'save' | 'limit_exceeded' | 'network';
+  /** 使用されたAIモデルの情報 */
+  modelInfo?: ModelInfo;
 }
 
 /**

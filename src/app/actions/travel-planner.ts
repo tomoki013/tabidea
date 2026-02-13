@@ -36,6 +36,7 @@ export type OutlineActionState = {
     context: Article[];
     input: UserInput;
     heroImage?: { url: string; photographer: string; photographerUrl: string } | null;
+    modelInfo?: { modelName: string; tier: 'flash' | 'pro' };
   };
   // 利用制限関連
   limitExceeded?: boolean;
@@ -48,6 +49,7 @@ export type ChunkActionState = {
   success: boolean;
   message?: string;
   data?: DayPlan[];
+  modelInfo?: { modelName: string; tier: 'flash' | 'pro' };
 };
 
 /**
@@ -351,7 +353,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         outline,
         context: contextArticles,
         input: updatedInput,
-        heroImage: heroImageData
+        heroImage: heroImageData,
+        modelInfo: ai.lastModelInfo || undefined,
       }
     };
 
@@ -422,7 +425,7 @@ export async function generatePlanChunk(
     );
 
     console.log(`[action] Chunk ${startDay}-${endDay} generated in ${Date.now() - startTime}ms`);
-    return { success: true, data: days };
+    return { success: true, data: days, modelInfo: ai.lastModelInfo || undefined };
 
   } catch (error) {
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);

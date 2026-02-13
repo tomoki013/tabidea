@@ -47,6 +47,7 @@ export interface PackingListResult {
   success: boolean;
   data?: PackingList;
   error?: string;
+  modelName?: string;
 }
 
 // ============================================
@@ -74,7 +75,8 @@ export async function generatePackingList(
 
   try {
     const google = createGoogleGenerativeAI({ apiKey });
-    const model = google(process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash", {
+    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+    const model = google(modelName, {
       structuredOutputs: true,
     });
 
@@ -128,6 +130,7 @@ export async function generatePackingList(
           themes: params.themes,
         },
       },
+      modelName,
     };
   } catch (error) {
     console.error("[packing-list] Generation failed:", error);

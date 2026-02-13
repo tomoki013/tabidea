@@ -158,6 +158,16 @@ export interface Reference {
 }
 
 /**
+ * AI生成モデル情報
+ */
+export interface ModelInfo {
+  /** モデル名 (e.g., "gemini-3-flash-preview") */
+  modelName: string;
+  /** モデルティア */
+  tier: 'flash' | 'pro';
+}
+
+/**
  * 旅程
  */
 export interface Itinerary {
@@ -183,6 +193,8 @@ export interface Itinerary {
   reference_indices?: number[];
   /** 予算概算 */
   estimatedBudget?: BudgetEstimate;
+  /** 使用されたAIモデルの情報 */
+  modelInfo?: ModelInfo;
 }
 
 /**

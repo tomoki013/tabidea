@@ -20,6 +20,7 @@ export type {
   TransitInfo,
   TimelineItem,
   TimelineItemType,
+  ModelInfo,
 } from './itinerary';
 
 // ユーザー入力型

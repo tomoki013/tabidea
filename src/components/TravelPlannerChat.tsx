@@ -1,9 +1,10 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useChat } from "ai/react";
 import type { Message } from "ai";
 import { Itinerary } from '@/types';
+import ModelBadge from "@/components/ui/ModelBadge";
 
 const SUGGESTION_CHIPS = [
   "地元の料理をもっと食べたい！ 🍜",
@@ -101,9 +102,12 @@ export default function TravelPlannerChat({
 
   return (
     <div className="mt-8 pt-8 animate-in fade-in duration-700 w-full min-w-0 overflow-hidden">
-      <h3 className="text-xl font-serif text-stone-800 mb-4 px-2">
-        Chat with your Planner
-      </h3>
+      <div className="flex items-center gap-2 mb-4 px-2">
+        <h3 className="text-xl font-serif text-stone-800">
+          Chat with your Planner
+        </h3>
+        <ModelBadge modelName={process.env.NEXT_PUBLIC_CHAT_MODEL_NAME || "gemini-2.5-flash"} />
+      </div>
       <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-3 sm:p-6 border border-stone-200 shadow-sm space-y-4 w-full min-w-0 overflow-hidden">
         <div ref={chatContainerRef} className="max-h-[300px] overflow-y-auto space-y-4 pr-1 sm:pr-2 custom-scrollbar w-full min-w-0">
           {messages.length === 0 && (

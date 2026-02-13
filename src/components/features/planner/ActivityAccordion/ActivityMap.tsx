@@ -8,6 +8,7 @@ import {
   Pin,
 } from "@vis.gl/react-google-maps";
 import { MapPin, ExternalLink } from "lucide-react";
+import MapErrorBoundary from "@/components/ui/MapErrorBoundary";
 
 // ============================================================================
 // Types
@@ -102,26 +103,28 @@ export default function ActivityMap({
       {/* Map Container */}
       <div className="h-48 rounded-lg overflow-hidden border border-stone-200">
         {isVisible ? (
-          <APIProvider apiKey={apiKey}>
-            <Map
-              defaultCenter={{ lat: latitude, lng: longitude }}
-              defaultZoom={DEFAULT_ZOOM}
-              mapId="activity-map"
-              gestureHandling="cooperative"
-              disableDefaultUI={true}
-              zoomControl={true}
-              className="w-full h-full"
-              style={{ width: "100%", height: "100%" }}
-            >
-              <AdvancedMarker position={{ lat: latitude, lng: longitude }}>
-                <Pin
-                  background="#EA580C"
-                  borderColor="#ffffff"
-                  glyphColor="#ffffff"
-                />
-              </AdvancedMarker>
-            </Map>
-          </APIProvider>
+          <MapErrorBoundary className="w-full h-full">
+            <APIProvider apiKey={apiKey}>
+              <Map
+                defaultCenter={{ lat: latitude, lng: longitude }}
+                defaultZoom={DEFAULT_ZOOM}
+                mapId="activity-map"
+                gestureHandling="cooperative"
+                disableDefaultUI={true}
+                zoomControl={true}
+                className="w-full h-full"
+                style={{ width: "100%", height: "100%" }}
+              >
+                <AdvancedMarker position={{ lat: latitude, lng: longitude }}>
+                  <Pin
+                    background="#EA580C"
+                    borderColor="#ffffff"
+                    glyphColor="#ffffff"
+                  />
+                </AdvancedMarker>
+              </Map>
+            </APIProvider>
+          </MapErrorBoundary>
         ) : (
           <div className="w-full h-full bg-stone-100 animate-pulse flex items-center justify-center">
             <MapPin className="w-8 h-8 text-stone-300" />

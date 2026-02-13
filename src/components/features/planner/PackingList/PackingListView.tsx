@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { Loader2, CheckCircle2, Circle, ChevronDown, Sparkles } from "lucide-react";
+import ModelBadge from "@/components/ui/ModelBadge";
 import { motion, AnimatePresence } from "framer-motion";
 import { generatePackingList } from "@/app/actions/packing-list";
 import type {
@@ -188,6 +189,7 @@ export default function PackingListView({
   });
   const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [modelName, setModelName] = useState<string | null>(null);
 
   // Save checked state
   const saveChecked = useCallback(
@@ -234,6 +236,7 @@ export default function PackingListView({
     });
 
     if (result.success && result.data) {
+      if (result.modelName) setModelName(result.modelName);
       if (onPackingListChange) {
         onPackingListChange(result.data);
       } else {
@@ -412,9 +415,12 @@ export default function PackingListView({
       </div>
 
       {/* Disclaimer */}
-      <p className="text-[11px] text-stone-400 text-center leading-relaxed">
-        ※ AIによる提案です。個人の必要に応じてアイテムを追加・削除してください。
-      </p>
+      <div className="flex flex-col items-center gap-1">
+        {modelName && <ModelBadge modelName={modelName} />}
+        <p className="text-[11px] text-stone-400 text-center leading-relaxed">
+          ※ AIによる提案です。個人の必要に応じてアイテムを追加・削除してください。
+        </p>
+      </div>
     </div>
   );
 }

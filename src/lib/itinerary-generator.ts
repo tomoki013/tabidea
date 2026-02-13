@@ -327,6 +327,7 @@ export async function generateItinerary(
         image: c.imageUrl,
         snippet: c.snippet,
       })),
+      modelInfo: ai.lastModelInfo || undefined,
     };
 
     log(`[generateItinerary] ✅ Itinerary generated successfully!`);

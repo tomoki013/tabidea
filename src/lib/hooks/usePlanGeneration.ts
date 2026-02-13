@@ -202,7 +202,7 @@ export function usePlanGeneration(
   // Save completed plan
   // ========================================
   const saveCompletedPlan = useCallback(async () => {
-    const { outline, heroImage, completedDays, context, updatedInput } =
+    const { outline, heroImage, completedDays, context, updatedInput, modelInfo } =
       generationState;
 
     if (!outline || !updatedInput || completedDays.length === 0) {
@@ -226,6 +226,7 @@ export function usePlanGeneration(
         image: c.imageUrl,
         snippet: c.snippet,
       })),
+      modelInfo,
     };
 
     try {
@@ -350,6 +351,7 @@ export function usePlanGeneration(
           context,
           input: updatedInput,
           heroImage,
+          modelInfo,
         } = outlineResponse.data;
 
         // Store context for chunk generation
@@ -387,6 +389,7 @@ export function usePlanGeneration(
             completedDays: [],
             totalDays,
             currentChunks: chunks,
+            modelInfo,
           });
 
           // Immediately start detail generation in streaming mode
@@ -418,6 +421,7 @@ export function usePlanGeneration(
             completedDays: [],
             totalDays,
             currentChunks: chunks,
+            modelInfo,
           });
         }
       } catch (e: unknown) {
