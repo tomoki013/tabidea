@@ -11,6 +11,7 @@ import {
 import type { Activity } from "@/types";
 import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
 import { MapSkeleton } from "@/components/ui/MapSkeleton";
+import MapErrorBoundary from "@/components/ui/MapErrorBoundary";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 // ============================================================================
@@ -103,6 +104,7 @@ export default function DayMap({
 
   return (
     <div className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm ${className}`}>
+      <MapErrorBoundary className="w-full h-48 sm:h-56 md:h-64">
       <APIProvider apiKey={apiKey}>
         <div className="relative w-full h-48 sm:h-56 md:h-64 bg-stone-100">
            {!isMapLoaded && (
@@ -177,6 +179,7 @@ export default function DayMap({
           </div>
         </div>
       </APIProvider>
+      </MapErrorBoundary>
     </div>
   );
 }

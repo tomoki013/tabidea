@@ -12,6 +12,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import { DayPlan } from "@/types";
 import { MapPin, Maximize2, Minimize2, Navigation } from "lucide-react";
+import MapErrorBoundary from "@/components/ui/MapErrorBoundary";
 
 // ============================================================================
 // Types
@@ -411,28 +412,30 @@ export default function ItineraryMap({
       style={{ minHeight: isExpanded ? "100vh" : "300px" }}
     >
       {isVisible && (
-        <APIProvider apiKey={apiKey}>
-          <Map
-            defaultCenter={center}
-            defaultZoom={DEFAULT_ZOOM}
-            mapId="itinerary-map"
-            gestureHandling="greedy"
-            disableDefaultUI={false}
-            zoomControl={true}
-            mapTypeControl={false}
-            streetViewControl={false}
-            fullscreenControl={false}
-            className="w-full h-full"
-            style={{ width: "100%", height: "100%" }}
-          >
-            <MapContent
-              spots={spots}
-              selectedDay={selectedDay}
-              destination={destination}
-              onSpotSelect={onSpotSelect}
-            />
-          </Map>
-        </APIProvider>
+        <MapErrorBoundary className="w-full h-full">
+          <APIProvider apiKey={apiKey}>
+            <Map
+              defaultCenter={center}
+              defaultZoom={DEFAULT_ZOOM}
+              mapId="itinerary-map"
+              gestureHandling="greedy"
+              disableDefaultUI={false}
+              zoomControl={true}
+              mapTypeControl={false}
+              streetViewControl={false}
+              fullscreenControl={false}
+              className="w-full h-full"
+              style={{ width: "100%", height: "100%" }}
+            >
+              <MapContent
+                spots={spots}
+                selectedDay={selectedDay}
+                destination={destination}
+                onSpotSelect={onSpotSelect}
+              />
+            </Map>
+          </APIProvider>
+        </MapErrorBoundary>
       )}
 
       {/* Map Controls */}

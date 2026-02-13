@@ -12,6 +12,7 @@ import type { DayPlan } from "@/types";
 import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
 import { FaMapMarkedAlt, FaChevronDown, FaChevronUp, FaExternalLinkAlt } from "react-icons/fa";
 import { MapSkeleton } from "@/components/ui/MapSkeleton";
+import MapErrorBoundary from "@/components/ui/MapErrorBoundary";
 
 // ============================================================================
 // Types
@@ -72,10 +73,13 @@ function RouteLines({
 
   useEffect(() => {
     if (!map) return;
-    // Wait for google.maps to be available
-    if (typeof window === 'undefined' || !('google' in window)) return;
+    // Wait for google.maps to be fully available
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const g = window as any;
+    if (typeof window === 'undefined' || !g.google?.maps?.Polyline) return;
 
-    const gMaps = (window as unknown as { google: { maps: { Polyline: new (opts: unknown) => { setMap: (m: unknown) => void } } } }).google.maps;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const gMaps = g.google.maps as { Polyline: new (opts: unknown) => { setMap: (m: unknown) => void } };
 
     // Clear existing polylines
     const mapWithLines = map as unknown as MapWithRouteLines;
@@ -313,105 +317,107 @@ export default function MapRouteView({
           </div>
 
           {/* Map */}
-          <APIProvider apiKey={apiKey}>
-            <div className="relative w-full h-64 sm:h-80 md:h-96 bg-stone-100">
+          <MapErrorBoundary className="w-full h-64 sm:h-80 md:h-96">
+            <APIProvider apiKey={apiKey}>
+              <div className="relative w-full h-64 sm:h-80 md:h-96 bg-stone-100">
 
-              {!isMapLoaded && (
-                <div className="absolute inset-0 z-10">
-                    <MapSkeleton />
-                </div>
-              )}
-
-              <GoogleMap
-                defaultCenter={center}
-                defaultZoom={zoom}
-                gestureHandling="cooperative"
-                disableDefaultUI={true}
-                zoomControl={true}
-                mapId="route-map"
-                style={{ width: "100%", height: "100%" }}
-                onTilesLoaded={() => setIsMapLoaded(true)}
-              >
-                {filteredMarkers.map((marker) => {
-                  const color = getDayColor(marker.dayNumber - 1);
-                  return (
-                    <AdvancedMarker
-                      key={`route-${marker.dayNumber}-${marker.spotIndex}`}
-                      position={marker.position}
-                      onClick={() => setSelectedMarker(marker)}
-                    >
-                      <div className="relative group cursor-pointer transform transition-transform hover:scale-110">
-                        <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 shadow-md relative z-10"
-                          style={{
-                            backgroundColor: color.bg,
-                            borderColor: color.border,
-                          }}
-                        >
-                          {marker.label}
-                        </div>
-                        <div
-                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px]"
-                          style={{ borderTopColor: color.border }}
-                        />
-                      </div>
-                    </AdvancedMarker>
-                  );
-                })}
-                <RouteLines markers={filteredMarkers} selectedDay={selectedDay} />
-
-                {/* Info Window */}
-                {selectedMarker && (
-                    <InfoWindow
-                        position={selectedMarker.position}
-                        onCloseClick={() => setSelectedMarker(null)}
-                        pixelOffset={[0, -30]}
-                    >
-                        <div className="min-w-[200px] p-1">
-                            <h3 className="font-bold text-sm text-stone-800 mb-1">{selectedMarker.name}</h3>
-                            <div className="flex items-center gap-2 mb-2">
-                                <span
-                                    className="text-[10px] px-1.5 py-0.5 rounded text-white font-bold"
-                                    style={{ backgroundColor: getDayColor(selectedMarker.dayNumber - 1).bg }}
-                                >
-                                    Day {selectedMarker.dayNumber}
-                                </span>
-                            </div>
-                            <a
-                                href={`https://www.google.com/maps/search/?api=1&query=${selectedMarker.position.lat},${selectedMarker.position.lng}`}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-xs text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-2"
-                            >
-                                <FaExternalLinkAlt size={10} /> Google Mapsで見る
-                            </a>
-                        </div>
-                    </InfoWindow>
+                {!isMapLoaded && (
+                  <div className="absolute inset-0 z-10">
+                      <MapSkeleton />
+                  </div>
                 )}
-              </GoogleMap>
 
-              {/* External Link Button (Overall) */}
-               <a
-                  href={getGoogleMapsUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="absolute top-2 right-12 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-10 hover:z-50"
-                  title="Google Mapsでルートを開く"
-                  >
-                  <FaExternalLinkAlt />
-                  <span className="hidden sm:inline">Google Maps</span>
-              </a>
+                <GoogleMap
+                  defaultCenter={center}
+                  defaultZoom={zoom}
+                  gestureHandling="cooperative"
+                  disableDefaultUI={true}
+                  zoomControl={true}
+                  mapId="route-map"
+                  style={{ width: "100%", height: "100%" }}
+                  onTilesLoaded={() => setIsMapLoaded(true)}
+                >
+                  {filteredMarkers.map((marker) => {
+                    const color = getDayColor(marker.dayNumber - 1);
+                    return (
+                      <AdvancedMarker
+                        key={`route-${marker.dayNumber}-${marker.spotIndex}`}
+                        position={marker.position}
+                        onClick={() => setSelectedMarker(marker)}
+                      >
+                        <div className="relative group cursor-pointer transform transition-transform hover:scale-110">
+                          <div
+                            className="w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-bold border-2 shadow-md relative z-10"
+                            style={{
+                              backgroundColor: color.bg,
+                              borderColor: color.border,
+                            }}
+                          >
+                            {marker.label}
+                          </div>
+                          <div
+                            className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px]"
+                            style={{ borderTopColor: color.border }}
+                          />
+                        </div>
+                      </AdvancedMarker>
+                    );
+                  })}
+                  <RouteLines markers={filteredMarkers} selectedDay={selectedDay} />
 
-              {/* Legend (Only show if map is loaded) */}
-              <div className={`absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50 transition-opacity duration-300 ${isMapLoaded ? 'opacity-100' : 'opacity-0'}`}>
-                <span className="font-medium">{destination}</span>
-                <span className="mx-1.5 text-stone-300">|</span>
-                <span>
-                  {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
-                </span>
+                  {/* Info Window */}
+                  {selectedMarker && (
+                      <InfoWindow
+                          position={selectedMarker.position}
+                          onCloseClick={() => setSelectedMarker(null)}
+                          pixelOffset={[0, -30]}
+                      >
+                          <div className="min-w-[200px] p-1">
+                              <h3 className="font-bold text-sm text-stone-800 mb-1">{selectedMarker.name}</h3>
+                              <div className="flex items-center gap-2 mb-2">
+                                  <span
+                                      className="text-[10px] px-1.5 py-0.5 rounded text-white font-bold"
+                                      style={{ backgroundColor: getDayColor(selectedMarker.dayNumber - 1).bg }}
+                                  >
+                                      Day {selectedMarker.dayNumber}
+                                  </span>
+                              </div>
+                              <a
+                                  href={`https://www.google.com/maps/search/?api=1&query=${selectedMarker.position.lat},${selectedMarker.position.lng}`}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="text-xs text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-2"
+                              >
+                                  <FaExternalLinkAlt size={10} /> Google Mapsで見る
+                              </a>
+                          </div>
+                      </InfoWindow>
+                  )}
+                </GoogleMap>
+
+                {/* External Link Button (Overall) */}
+                 <a
+                    href={getGoogleMapsUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute top-2 right-12 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-10 hover:z-50"
+                    title="Google Mapsでルートを開く"
+                    >
+                    <FaExternalLinkAlt />
+                    <span className="hidden sm:inline">Google Maps</span>
+                </a>
+
+                {/* Legend (Only show if map is loaded) */}
+                <div className={`absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50 transition-opacity duration-300 ${isMapLoaded ? 'opacity-100' : 'opacity-0'}`}>
+                  <span className="font-medium">{destination}</span>
+                  <span className="mx-1.5 text-stone-300">|</span>
+                  <span>
+                    {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
+                  </span>
+                </div>
               </div>
-            </div>
-          </APIProvider>
+            </APIProvider>
+          </MapErrorBoundary>
         </>
       )}
     </div>
