@@ -1,12 +1,14 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   APIProvider,
   Map,
   AdvancedMarker,
   Pin,
   InfoWindow,
+  useMap,
+  useMapsLibrary,
 } from "@vis.gl/react-google-maps";
 import type { Activity } from "@/types";
 import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
@@ -29,6 +31,34 @@ interface MarkerData {
   label: string;
   name: string;
   index: number;
+  placeId?: string;
+}
+
+// ============================================================================
+// FitBounds Controller
+// ============================================================================
+
+function FitBoundsController({ markers }: { markers: MarkerData[] }) {
+  const map = useMap();
+  const coreLibrary = useMapsLibrary("core");
+
+  useEffect(() => {
+    if (!map || !coreLibrary || markers.length === 0) return;
+
+    if (markers.length === 1) {
+      map.setCenter(markers[0].position);
+      map.setZoom(15);
+      return;
+    }
+
+    const bounds = new coreLibrary.LatLngBounds();
+    markers.forEach((m) => {
+      bounds.extend(m.position);
+    });
+    map.fitBounds(bounds, { padding: 40 });
+  }, [map, coreLibrary, markers]);
+
+  return null;
 }
 
 // ============================================================================
@@ -63,6 +93,7 @@ export default function DayMap({
           label: String(spotIndex),
           name: act.activity,
           index: spotIndex,
+          placeId: act.validation?.placeId,
         });
         spotIndex++;
       }
@@ -71,7 +102,7 @@ export default function DayMap({
     return result;
   }, [activities]);
 
-  // Calculate center and bounds (must be before early return)
+  // Calculate center (used as defaultCenter before fitBounds runs)
   const center = useMemo(() => {
     if (markers.length === 0) return { lat: 0, lng: 0 };
     const avgLat = markers.reduce((sum, m) => sum + m.position.lat, 0) / markers.length;
@@ -79,22 +110,20 @@ export default function DayMap({
     return { lat: avgLat, lng: avgLng };
   }, [markers]);
 
-  // Calculate zoom level based on spread of markers
-  const zoom = useMemo(() => {
-    if (markers.length <= 1) return 14;
+  // Google Maps URL with all spots as route stops
+  const googleMapsUrl = useMemo(() => {
+    if (markers.length === 0) return '#';
+    if (markers.length === 1) {
+      const m = markers[0];
+      return m.placeId
+        ? `https://www.google.com/maps/place/?q=place_id:${m.placeId}`
+        : `https://www.google.com/maps/search/?api=1&query=${m.position.lat},${m.position.lng}`;
+    }
 
-    const lats = markers.map(m => m.position.lat);
-    const lngs = markers.map(m => m.position.lng);
-    const latSpread = Math.max(...lats) - Math.min(...lats);
-    const lngSpread = Math.max(...lngs) - Math.min(...lngs);
-    const maxSpread = Math.max(latSpread, lngSpread);
-
-    if (maxSpread > 5) return 6;
-    if (maxSpread > 2) return 8;
-    if (maxSpread > 1) return 10;
-    if (maxSpread > 0.5) return 11;
-    if (maxSpread > 0.1) return 13;
-    return 14;
+    // Use /maps/dir/ format to route through all spots
+    const sorted = [...markers].sort((a, b) => a.index - b.index);
+    const stops = sorted.map(m => `${m.position.lat},${m.position.lng}`).join('/');
+    return `https://www.google.com/maps/dir/${stops}`;
   }, [markers]);
 
   // Don't render if no valid markers or no API key
@@ -115,7 +144,7 @@ export default function DayMap({
 
           <Map
             defaultCenter={center}
-            defaultZoom={zoom}
+            defaultZoom={12}
             gestureHandling="cooperative"
             disableDefaultUI={true}
             zoomControl={true}
@@ -147,7 +176,11 @@ export default function DayMap({
                   <div className="min-w-[180px] p-1">
                      <h3 className="font-bold text-xs text-stone-800 mb-1 line-clamp-2">{selectedMarker.name}</h3>
                      <a
-                        href={`https://www.google.com/maps/search/?api=1&query=${selectedMarker.position.lat},${selectedMarker.position.lng}`}
+                        href={
+                          selectedMarker.placeId
+                            ? `https://www.google.com/maps/place/?q=place_id:${selectedMarker.placeId}`
+                            : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedMarker.name)}`
+                        }
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-[10px] text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-1 mt-1"
@@ -157,15 +190,17 @@ export default function DayMap({
                   </div>
                 </InfoWindow>
              )}
+
+            <FitBoundsController markers={markers} />
           </Map>
 
           {/* External Link Button (Day) */}
           <a
-             href={`https://www.google.com/maps/search/?api=1&query=${center.lat},${center.lng}`}
+             href={googleMapsUrl}
              target="_blank"
              rel="noopener noreferrer"
              className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-2 py-1.5 rounded-md shadow-sm text-[10px] font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-1 z-10 hover:z-50"
-             title="Google Mapsでエリアを見る"
+             title="Google Mapsでルートを見る"
           >
              <FaExternalLinkAlt size={10} />
              <span className="hidden sm:inline">Map</span>

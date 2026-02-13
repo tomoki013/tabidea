@@ -334,6 +334,19 @@ export class GooglePlacesService {
     // 括弧内の補足情報を除去（例: "金閣寺 (Kinkaku-ji)" → "金閣寺"）
     cleaned = cleaned.replace(/\s*[（(][^）)]*[）)]\s*/g, '');
 
+    // 先頭の時間参照を除去（例: "午前中の浅草寺" → "浅草寺"）
+    cleaned = cleaned.replace(/^(午前中?|午後|朝|昼|夕方|夜|早朝|深夜)の?/, '');
+
+    // 先頭の順序・序数表現を除去（例: "最後の清水寺" → "清水寺"）
+    cleaned = cleaned.replace(/^(最後|最初|[0-9０-９]+つ目|次|まず)の?/, '');
+
+    // 末尾のエリア・方向表現を除去（例: "渋谷エリア散策" → "渋谷"）
+    // ただし場所名自体がエリア名の場合は保持
+    const areaResult = cleaned.replace(/(方面|エリア|周辺|付近|近く|界隈)(.*)$/, '');
+    if (areaResult.trim().length >= 2) {
+      cleaned = areaResult;
+    }
+
     // 「XのY」パターンで Y が一般的な場所記述子の場合、X を抽出
     // 例: "メディナのスーク" → "メディナ", "フナ広場の屋台" → "フナ広場"
     const genericDescriptors = '旧市街|市場|スーク|バザール|広場|寺院|宮殿|遺跡|城壁|モスク|ビーチ|港|空港|屋台|露店|商店街|通り|路地|庭園|公園|湖|滝|洞窟|渓谷|峡谷';
@@ -345,7 +358,7 @@ export class GooglePlacesService {
 
     // 「〜で〜する」パターン: 「で」以降のアクション部分を除去
     // 「で」の後にオプショナルな修飾語 + アクション動詞/名詞
-    const actionWords = '散策|食べ歩き|体験|見学|観光|参拝|ショッピング|買い物|食事|昼食|夕食|朝食|ランチ|ディナー|休憩|鑑賞|堪能|満喫|探索|巡り|めぐり|探訪|訪問|立ち寄り|寄り道|楽しむ|過ごす|味わう|堪能する|楽しみ|ひと休み|迷宮探索';
+    const actionWords = '散策|食べ歩き|体験|見学|観光|参拝|ショッピング|買い物|食事|昼食|夕食|朝食|ランチ|ディナー|休憩|鑑賞|堪能|満喫|探索|巡り|めぐり|探訪|訪問|立ち寄り|寄り道|楽しむ|過ごす|味わう|堪能する|楽しみ|ひと休み|迷宮探索|食べる|見る|買う|遊ぶ|泊まる|歩く|乗る|撮る|学ぶ|触れる';
     const dePattern = new RegExp(`^(.{2,})で.{0,10}(${actionWords}).*$`);
     const deMatch = cleaned.match(dePattern);
     if (deMatch) {
@@ -353,17 +366,24 @@ export class GooglePlacesService {
     }
 
     // 「〜を〜する」パターン
-    const woPattern = /^(.{2,})を(散策|見学|観光|参拝|探索|巡る|訪れる|訪問|堪能|満喫|楽しむ|味わう|鑑賞).*$/;
+    const woPattern = /^(.{2,})を(散策|見学|観光|参拝|探索|巡る|訪れる|訪問|堪能|満喫|楽しむ|味わう|鑑賞|食べる|見る|眺める|撮影する).*$/;
     const woMatch = cleaned.match(woPattern);
     if (woMatch) {
       cleaned = woMatch[1];
     }
 
     // 「〜に〜する」パターン（例: "〜に立ち寄る"）
-    const niPattern = /^(.{2,})に(立ち寄る|訪れる|向かう|行く|寄る).*$/;
+    const niPattern = /^(.{2,})に(立ち寄る|訪れる|向かう|行く|寄る|泊まる|入る|登る).*$/;
     const niMatch = cleaned.match(niPattern);
     if (niMatch) {
       cleaned = niMatch[1];
+    }
+
+    // 「〜から〜」パターン（例: "東京タワーからの夜景" → "東京タワー"）
+    const karaPattern = /^(.{2,})からの?.+$/;
+    const karaMatch = cleaned.match(karaPattern);
+    if (karaMatch && karaMatch[1].length >= 2) {
+      cleaned = karaMatch[1];
     }
 
     // 末尾のアクション動詞・名詞を除去
@@ -372,6 +392,8 @@ export class GooglePlacesService {
       '探訪', '訪問', 'ショッピング', '買い物', '食べ歩き',
       'でランチ', 'でディナー', 'で昼食', 'で夕食', 'で朝食',
       'で食事', 'で休憩', 'でひと休み',
+      '鑑賞', '堪能', '満喫', '散歩', 'ウォーキング', 'ハイキング',
+      'サイクリング', 'ドライブ', 'クルーズ', 'ツアー',
     ];
     for (const suffix of suffixes) {
       if (cleaned.endsWith(suffix) && cleaned.length > suffix.length) {

@@ -382,6 +382,9 @@ export async function regenerateItinerary(
       newPlan.heroImagePhotographerUrl = currentPlan.heroImagePhotographerUrl;
     }
 
+    // Preserve model info from the AI service or fall back to the current plan's
+    newPlan.modelInfo = ai.lastModelInfo || currentPlan.modelInfo || undefined;
+
     return { success: true, itinerary: newPlan };
   } catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error);
