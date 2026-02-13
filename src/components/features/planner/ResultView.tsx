@@ -460,8 +460,8 @@ export default function ResultView({
       </JournalSheet>
 
       {/* Tabs */}
-      <div ref={tabBarRef} className="sticky top-[100px] md:top-[110px] z-40 mb-10 w-full flex justify-center px-2 sm:px-0 pointer-events-none">
-        <div className="bg-white/80 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
+      <div ref={tabBarRef} className="sticky top-[100px] md:top-[110px] z-40 mb-10 w-full flex justify-center px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
+        <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto">
           {[
             { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
             { id: 'info', icon: FaGlobe, label: '渡航情報' },
@@ -503,8 +503,8 @@ export default function ResultView({
                 {displayResult.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
                     {/* Day Header */}
-                    <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none">
-                      <div className="inline-flex items-center gap-4 bg-white py-2 px-4 rounded-sm shadow-sm border border-stone-200 pointer-events-auto transform -rotate-1">
+                    <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none will-change-transform [transform:translateZ(0)]">
+                      <div className="inline-flex items-center gap-4 bg-white py-2 px-4 rounded-sm shadow-sm border border-stone-200 pointer-events-auto">
                         <Stamp color="red" size="sm" className="w-10 h-10 text-xs border-2">Day {day.day}</Stamp>
                         <div className="flex flex-col">
                           <HandwrittenText className="text-lg font-bold text-stone-700 leading-none">

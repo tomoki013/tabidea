@@ -7,6 +7,7 @@ import {
   AdvancedMarker,
   InfoWindow,
   useMap,
+  useMapsLibrary,
 } from "@vis.gl/react-google-maps";
 import type { DayPlan } from "@/types";
 import { shouldSkipPlacesSearch } from "@/lib/utils/activity-classifier";
@@ -33,6 +34,7 @@ interface DayMarker {
   name: string;
   dayNumber: number;
   spotIndex: number;
+  placeId?: string;
 }
 
 // ============================================================================
@@ -53,6 +55,33 @@ const DAY_COLORS = [
 
 function getDayColor(dayIndex: number) {
   return DAY_COLORS[dayIndex % DAY_COLORS.length];
+}
+
+// ============================================================================
+// FitBounds Controller
+// ============================================================================
+
+function FitBoundsController({ markers }: { markers: DayMarker[] }) {
+  const map = useMap();
+  const coreLibrary = useMapsLibrary("core");
+
+  useEffect(() => {
+    if (!map || !coreLibrary || markers.length === 0) return;
+
+    if (markers.length === 1) {
+      map.setCenter(markers[0].position);
+      map.setZoom(14);
+      return;
+    }
+
+    const bounds = new coreLibrary.LatLngBounds();
+    markers.forEach((m) => {
+      bounds.extend(m.position);
+    });
+    map.fitBounds(bounds, { padding: 50 });
+  }, [map, coreLibrary, markers]);
+
+  return null;
 }
 
 // ============================================================================
@@ -178,6 +207,7 @@ export default function MapRouteView({
             name: act.activity,
             dayNumber: day.day,
             spotIndex,
+            placeId: act.validation?.placeId,
           });
           spotIndex++;
         }
@@ -193,7 +223,7 @@ export default function MapRouteView({
     return allMarkers.filter((m) => m.dayNumber === selectedDay);
   }, [allMarkers, selectedDay]);
 
-  // Calculate center
+  // Calculate center (used as defaultCenter before fitBounds runs)
   const center = useMemo(() => {
     const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
     if (markers.length === 0) return { lat: 35.6762, lng: 139.6503 }; // Default Tokyo
@@ -202,57 +232,33 @@ export default function MapRouteView({
     return { lat: avgLat, lng: avgLng };
   }, [filteredMarkers, allMarkers]);
 
-  // Calculate zoom
-  const zoom = useMemo(() => {
-    const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
-    if (markers.length <= 1) return 13;
-
-    const lats = markers.map((m) => m.position.lat);
-    const lngs = markers.map((m) => m.position.lng);
-    const latSpread = Math.max(...lats) - Math.min(...lats);
-    const lngSpread = Math.max(...lngs) - Math.min(...lngs);
-    const maxSpread = Math.max(latSpread, lngSpread);
-
-    if (maxSpread > 10) return 4;
-    if (maxSpread > 5) return 6;
-    if (maxSpread > 2) return 8;
-    if (maxSpread > 1) return 10;
-    if (maxSpread > 0.5) return 11;
-    if (maxSpread > 0.1) return 13;
-    return 14;
-  }, [filteredMarkers, allMarkers]);
-
   const handleDayFilter = useCallback((dayNum: number | null) => {
     setSelectedDay((prev) => (prev === dayNum ? null : dayNum));
-    // Also reset selected marker if filtering out its day, though logic keeps it valid if we don't clear it.
-    // Better to clear it to avoid confusion.
     setSelectedMarker(null);
   }, []);
 
   const getGoogleMapsUrl = useCallback(() => {
     const markers = filteredMarkers.length > 0 ? filteredMarkers : allMarkers;
-    if (markers.length < 2) {
+    if (markers.length === 0) {
       return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
     }
+    if (markers.length === 1) {
+      const m = markers[0];
+      return m.placeId
+        ? `https://www.google.com/maps/place/?q=place_id:${m.placeId}`
+        : `https://www.google.com/maps/search/?api=1&query=${m.position.lat},${m.position.lng}`;
+    }
 
+    // Use /maps/dir/ format for reliable multi-stop routing with all pins
     const sorted = [...markers].sort((a, b) => {
       if (a.dayNumber !== b.dayNumber) return a.dayNumber - b.dayNumber;
       return a.spotIndex - b.spotIndex;
     });
 
-    const origin = `${sorted[0].position.lat},${sorted[0].position.lng}`;
-    const dest = `${sorted[sorted.length - 1].position.lat},${sorted[sorted.length - 1].position.lng}`;
-
-    // Waypoints (limit to prevent URL length issues)
-    const intermediates = sorted.slice(1, -1);
-    const limitedWaypoints = intermediates.slice(0, 20);
-    const waypointsStr = limitedWaypoints.map(m => `${m.position.lat},${m.position.lng}`).join('|');
-
-    let url = `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${dest}`;
-    if (waypointsStr) {
-      url += `&waypoints=${waypointsStr}`;
-    }
-    return url;
+    // Limit to 25 stops (Google Maps URL limit)
+    const limited = sorted.slice(0, 25);
+    const stops = limited.map(m => `${m.position.lat},${m.position.lng}`).join('/');
+    return `https://www.google.com/maps/dir/${stops}`;
   }, [filteredMarkers, allMarkers, destination]);
 
   // Don't render if no markers or no API key
@@ -329,7 +335,7 @@ export default function MapRouteView({
 
                 <GoogleMap
                   defaultCenter={center}
-                  defaultZoom={zoom}
+                  defaultZoom={12}
                   gestureHandling="cooperative"
                   disableDefaultUI={true}
                   zoomControl={true}
@@ -364,6 +370,7 @@ export default function MapRouteView({
                     );
                   })}
                   <RouteLines markers={filteredMarkers} selectedDay={selectedDay} />
+                  <FitBoundsController markers={filteredMarkers} />
 
                   {/* Info Window */}
                   {selectedMarker && (
@@ -383,7 +390,11 @@ export default function MapRouteView({
                                   </span>
                               </div>
                               <a
-                                  href={`https://www.google.com/maps/search/?api=1&query=${selectedMarker.position.lat},${selectedMarker.position.lng}`}
+                                  href={
+                                    selectedMarker.placeId
+                                      ? `https://www.google.com/maps/place/?q=place_id:${selectedMarker.placeId}`
+                                      : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(selectedMarker.name)}`
+                                  }
                                   target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-xs text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-2"
