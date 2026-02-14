@@ -136,7 +136,7 @@ export default function SpotCard({
     isLoading,
     error,
     fetchDetails,
-  } = usePlaceDetails(name, destination, activity.locationEn);
+  } = usePlaceDetails(name, destination, activity.locationEn, activity.searchQuery);
 
   // Merge validation data with fetched details
   const mergedValidation: ActivityValidation | undefined = fetchedDetails

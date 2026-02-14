@@ -104,7 +104,12 @@ ${knowledgeHierarchy}`;
 - description: 詳細説明（1-2文）
 - activityType: "spot" | "transit" | "accommodation" | "meal" | "other"
 - locationEn: 英語での場所名（例: "Kyoto, Japan"）
-- source: { type, title?, url?, confidence } — 情報源（CITATION RULEに従う）`;
+- source: { type, title?, url?, confidence } — 情報源（CITATION RULEに従う）
+- searchQuery: Places API検索用のスポット正式名称（activityが装飾的な名前の場合に必須）
+  例: activity="金閣寺で抹茶体験" → searchQuery="金閣寺"
+  例: activity="錦市場で食べ歩き" → searchQuery="錦市場"
+  例: activity="Jemaa el-Fnaa Square Night Market" → searchQuery="Jemaa el-Fnaa"
+  activityがそのまま検索に使えるシンプルな名前の場合は省略可`;
   }
 
   // modify
@@ -113,7 +118,12 @@ ${knowledgeHierarchy}`;
 [CURRENT TASK: ITINERARY MODIFICATION]
 既存の旅程をユーザーのフィードバックに基づいて修正してください。
 変更が求められていない部分は一切変更しないこと。
-出力は日本語で行うこと。`;
+出力は日本語で行うこと。
+
+[searchQuery RULE]
+アクティビティのactivityフィールドが装飾的な名前の場合、searchQueryにスポットの正式名称を設定すること。
+例: activity="金閣寺で抹茶体験" → searchQuery="金閣寺"
+activityがそのまま検索に使えるシンプルな名前の場合は省略可。`;
 }
 
 // ============================================

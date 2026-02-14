@@ -77,7 +77,8 @@ describe('GooglePlacesService', () => {
     });
 
     it('should return found=false when no places found', async () => {
-      mockFetch.mockResolvedValueOnce({
+      // Mock all fallback attempts to return empty
+      mockFetch.mockResolvedValue({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });
@@ -90,7 +91,7 @@ describe('GooglePlacesService', () => {
     });
 
     it('should handle API errors', async () => {
-      mockFetch.mockResolvedValueOnce({
+      mockFetch.mockResolvedValue({
         ok: false,
         status: 401,
         json: () => Promise.resolve({ error: { message: 'Invalid API key' } }),
@@ -104,13 +105,8 @@ describe('GooglePlacesService', () => {
     });
 
     it('should include location in search query', async () => {
-      // First call (with location) - returns empty
-      mockFetch.mockResolvedValueOnce({
-        ok: true,
-        json: () => Promise.resolve({ places: [] }),
-      });
-      // Second call (fallback without location) - returns empty
-      mockFetch.mockResolvedValueOnce({
+      // Mock all fallback attempts to return empty
+      mockFetch.mockResolvedValue({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });
@@ -125,25 +121,27 @@ describe('GooglePlacesService', () => {
     });
 
     it('should retry without location if the first search fails', async () => {
+      const placeResult = {
+        places: [
+          {
+            id: 'ChIJ123',
+            displayName: { text: 'Target Place', languageCode: 'ja' },
+            formattedAddress: 'Address',
+            location: { latitude: 35.0, longitude: 139.0 },
+          },
+        ],
+      };
+
       // First call: Returns empty (with location)
       mockFetch.mockResolvedValueOnce({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });
 
-      // Second call: Returns result (without location)
+      // Second call: Returns result (without location - Step 2 fallback)
       mockFetch.mockResolvedValueOnce({
         ok: true,
-        json: () => Promise.resolve({
-          places: [
-            {
-              id: 'ChIJ123',
-              displayName: { text: 'Target Place', languageCode: 'ja' },
-              formattedAddress: 'Address',
-              location: { latitude: 35.0, longitude: 139.0 },
-            },
-          ],
-        }),
+        json: () => Promise.resolve(placeResult),
       });
 
       const service = new GooglePlacesService();
@@ -153,14 +151,14 @@ describe('GooglePlacesService', () => {
       expect(result.found).toBe(true);
       expect(result.place?.name).toBe('Target Place');
 
-      // Verify fetch was called twice
+      // Verify fetch was called twice (Step 1 + Step 2)
       expect(mockFetch).toHaveBeenCalledTimes(2);
 
       // First call with location appended
       const firstCallBody = JSON.parse(mockFetch.mock.calls[0][1].body);
       expect(firstCallBody.textQuery).toContain('Strict Location');
 
-      // Second call without location (just the cleaned query)
+      // Second call without location (just the query)
       const secondCallBody = JSON.parse(mockFetch.mock.calls[1][1].body);
       expect(secondCallBody.textQuery).toBe('Target Place');
     });
@@ -239,7 +237,7 @@ describe('GooglePlacesService', () => {
     });
 
     it('should return unverified when place not found', async () => {
-      mockFetch.mockResolvedValueOnce({
+      mockFetch.mockResolvedValue({
         ok: true,
         json: () => Promise.resolve({ places: [] }),
       });

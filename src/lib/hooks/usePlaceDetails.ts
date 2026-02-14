@@ -92,11 +92,13 @@ function cleanSpotName(name: string): string {
  * @param spotName - スポット名
  * @param location - 検索対象の近辺地域（目的地）
  * @param locationEn - 英語の場所名（国際スポット検索のフォールバック用）
+ * @param searchQuery - AI生成の検索用クエリ（優先使用）
  */
 export function usePlaceDetails(
   spotName: string,
   location?: string,
-  locationEn?: string
+  locationEn?: string,
+  searchQuery?: string
 ): UsePlaceDetailsReturn {
   const [details, setDetails] = useState<PlaceValidationResult | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -111,13 +113,16 @@ export function usePlaceDetails(
     setError(null);
 
     try {
-      const cleanedName = cleanSpotName(spotName);
+      const cleanedName = searchQuery || cleanSpotName(spotName);
       const params = new URLSearchParams({ q: cleanedName });
       if (location) {
         params.append('near', location);
       }
       if (locationEn) {
         params.append('locationEn', locationEn);
+      }
+      if (searchQuery) {
+        params.append('searchQuery', searchQuery);
       }
 
       const response = await fetch(`/api/places/search?${params.toString()}`);
@@ -136,7 +141,7 @@ export function usePlaceDetails(
     } finally {
       setIsLoading(false);
     }
-  }, [spotName, location, locationEn, details, isLoading]);
+  }, [spotName, location, locationEn, searchQuery, details, isLoading]);
 
   const reset = useCallback(() => {
     setDetails(null);

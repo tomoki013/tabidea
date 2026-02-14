@@ -55,12 +55,12 @@ export default function Header({
     }
 
     const handleScroll = () => {
-      // Show header when the input form passes the center of the screen
+      // Show header when the input form reaches the top 1/3 of the screen
       const element = document.getElementById("planner-input-section");
 
       if (element) {
         const rect = element.getBoundingClientRect();
-        setScrollPastThreshold(rect.bottom < window.innerHeight / 2);
+        setScrollPastThreshold(rect.bottom < window.innerHeight / 3);
       } else {
         // Fallback if element not found
         const threshold = 1100;

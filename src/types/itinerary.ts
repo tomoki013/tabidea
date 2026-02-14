@@ -109,6 +109,8 @@ export interface Activity {
   validation?: ActivityValidation;
   /** 情報源（Citation） */
   source?: ActivitySource;
+  /** Places API検索用のクエリ（スポットの正式名称。例: "金閣寺"） */
+  searchQuery?: string;
 }
 
 /**
