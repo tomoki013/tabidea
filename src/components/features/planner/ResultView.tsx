@@ -45,6 +45,7 @@ import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
+import { usePlanModal } from "@/context/PlanModalContext";
 import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from "@/components/ui/journal";
 import ModelBadge from "@/components/ui/ModelBadge";
 
@@ -155,6 +156,9 @@ export default function ResultView({
     },
     [expandedCards]
   );
+
+  // Plan Modal
+  const { openModal } = usePlanModal();
 
   // Flags
   const { isAuthenticated } = useAuth();
@@ -680,6 +684,25 @@ export default function ResultView({
                                onChatChange={onChatChange}
                             />
                          </div>
+                      )}
+
+                      {/* User Input Summary + New Plan Button */}
+                      {showRequestSummary && (
+                        <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative">
+                          <Tape color="pink" position="top-right" className="w-24 opacity-80 rotate-6" />
+                          <HandwrittenText tag="h3" className="font-bold text-xl mb-4 flex items-center gap-2">
+                            あなたのリクエスト
+                          </HandwrittenText>
+                          <RequestSummary input={input} className="mb-6" />
+                          <JournalButton
+                            variant="primary"
+                            onClick={() => openModal({ initialInput: input })}
+                            className="w-full font-bold"
+                          >
+                            <FaPen className="mr-2" />
+                            この条件で新しいプランを作成
+                          </JournalButton>
+                        </div>
                       )}
                    </div>
                 )}

@@ -107,6 +107,11 @@ export class GooglePlacesService {
 
   /**
    * テキスト検索でスポットを検索
+   * searchQuery優先の多段フォールバック戦略:
+   * Phase 1: そのまま試す (searchQuery or original)
+   * Phase 2: クリーニングして試す
+   * Phase 3: 英語フォールバック
+   * Phase 4: 最終手段
    */
   async searchPlace(query: PlaceSearchQuery): Promise<PlaceSearchResult> {
     const startTime = Date.now();
@@ -114,66 +119,65 @@ export class GooglePlacesService {
     try {
       const originalQuery = query.query;
       const cleanedQuery = this.cleanSearchQuery(originalQuery);
+      const hasSearchQuery = !!query.searchQuery;
+      const primaryQuery = query.searchQuery || originalQuery;
 
-      // 1. Initial Search: cleaned query with location context
-      let searchQuery = query.near
-        ? `${cleanedQuery} ${query.near}`
-        : cleanedQuery;
+      let searchResult: { found: boolean; place?: NonNullable<PlacesTextSearchResponse['places']>[0] };
 
-      let searchResult = await this.performSearch(searchQuery, query);
+      // === Phase 1: そのまま試す (searchQuery or original) ===
 
-      // 2. Fallback: cleaned query without location
-      if (!searchResult.found && query.near) {
-        searchResult = await this.performSearch(cleanedQuery, query);
+      // Step 1: searchQuery (or original) + near
+      if (query.near) {
+        searchResult = await this.performSearchWithRetry(`${primaryQuery} ${query.near}`, query);
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 
-      // 3. Fallback: original query with location (in case cleaning removed important info)
-      if (!searchResult.found && cleanedQuery !== originalQuery) {
-        searchQuery = query.near
-          ? `${originalQuery} ${query.near}`
-          : originalQuery;
-        searchResult = await this.performSearch(searchQuery, query);
+      // Step 2: searchQuery (or original) のみ
+      searchResult = await this.performSearchWithRetry(primaryQuery, query);
+      if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
+
+      // Step 3-4: searchQueryがある場合、original queryも試す
+      if (hasSearchQuery) {
+        if (query.near) {
+          searchResult = await this.performSearchWithRetry(`${originalQuery} ${query.near}`, query);
+          if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
+        }
+        searchResult = await this.performSearchWithRetry(originalQuery, query);
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 
-      // 4. Fallback: original query without location
-      if (!searchResult.found && query.near && cleanedQuery !== originalQuery) {
-        searchResult = await this.performSearch(originalQuery, query);
+      // === Phase 2: クリーニングして試す ===
+      if (cleanedQuery !== primaryQuery && cleanedQuery !== originalQuery) {
+        if (query.near) {
+          searchResult = await this.performSearchWithRetry(`${cleanedQuery} ${query.near}`, query);
+          if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
+        }
+        searchResult = await this.performSearchWithRetry(cleanedQuery, query);
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 
-      // 5. Fallback: cleaned query with English location name (for international spots)
-      if (!searchResult.found && query.locationEn) {
-        searchResult = await this.performSearch(
-          `${cleanedQuery} ${query.locationEn}`,
-          query
+      // === Phase 3: 英語フォールバック ===
+      if (query.locationEn) {
+        const englishQuery = query.searchQuery || cleanedQuery;
+        searchResult = await this.performSearchWithRetry(
+          `${englishQuery} ${query.locationEn}`, query, 'en'
         );
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
+
+        searchResult = await this.performSearchWithRetry(query.locationEn, query, 'en');
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
 
-      // 6. Fallback: English location name alone (e.g., "Marrakech, Morocco")
-      if (!searchResult.found && query.locationEn) {
-        searchResult = await this.performSearch(query.locationEn, query);
+      // === Phase 4: 最終手段 ===
+      if (query.near) {
+        searchResult = await this.performSearchWithRetry(query.near, query);
+        if (searchResult.found) return this.buildResult(searchResult, originalQuery, startTime);
       }
-
-      if (!searchResult.found || !searchResult.place) {
-        return {
-          found: false,
-          searchTime: Date.now() - startTime,
-          error: 'スポットが見つかりませんでした',
-        };
-      }
-
-      const placeDetails = await this.mapToPlaceDetails(searchResult.place);
-
-      // マッチスコアの計算（名前の類似度）
-      const matchScore = this.calculateMatchScore(
-        originalQuery,
-        placeDetails.name
-      );
 
       return {
-        found: true,
-        place: placeDetails,
-        matchScore,
+        found: false,
         searchTime: Date.now() - startTime,
+        error: 'スポットが見つかりませんでした',
       };
     } catch (error) {
       if (error instanceof PlacesApiError) {
@@ -188,18 +192,74 @@ export class GooglePlacesService {
   }
 
   /**
+   * 検索結果からPlaceSearchResultを構築
+   */
+  private async buildResult(
+    searchResult: { found: boolean; place?: NonNullable<PlacesTextSearchResponse['places']>[0] },
+    originalQuery: string,
+    startTime: number
+  ): Promise<PlaceSearchResult> {
+    if (!searchResult.found || !searchResult.place) {
+      return { found: false, searchTime: Date.now() - startTime };
+    }
+
+    const placeDetails = await this.mapToPlaceDetails(searchResult.place);
+    const matchScore = this.calculateMatchScore(originalQuery, placeDetails.name);
+
+    return {
+      found: true,
+      place: placeDetails,
+      matchScore,
+      searchTime: Date.now() - startTime,
+    };
+  }
+
+  /**
+   * リトライ付き検索（OVER_QUERY_LIMIT, TIMEOUT に対して指数バックオフ）
+   */
+  private async performSearchWithRetry(
+    textQuery: string,
+    options: PlaceSearchQuery,
+    languageOverride?: string
+  ): Promise<{
+    found: boolean;
+    place?: NonNullable<PlacesTextSearchResponse['places']>[0];
+  }> {
+    const MAX_RETRIES = 2;
+    const BASE_DELAY = 500;
+
+    for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+      try {
+        return await this.performSearch(textQuery, options, languageOverride);
+      } catch (error) {
+        if (
+          error instanceof PlacesApiError &&
+          (error.code === 'OVER_QUERY_LIMIT' || error.code === 'TIMEOUT') &&
+          attempt < MAX_RETRIES
+        ) {
+          await this.delay(BASE_DELAY * Math.pow(2, attempt));
+          continue;
+        }
+        throw error;
+      }
+    }
+    return { found: false };
+  }
+
+  /**
    * 内部検索処理
    */
   private async performSearch(
     textQuery: string,
-    options: PlaceSearchQuery
+    options: PlaceSearchQuery,
+    languageOverride?: string
   ): Promise<{
     found: boolean;
     place?: NonNullable<PlacesTextSearchResponse['places']>[0];
   }> {
     const requestBody = {
       textQuery,
-      languageCode: options.language || 'ja',
+      languageCode: languageOverride || options.language || 'ja',
       maxResultCount: 1,
       ...(options.type && { includedType: options.type }),
     };
@@ -241,12 +301,14 @@ export class GooglePlacesService {
   async validateSpot(
     spotName: string,
     location?: string,
-    locationEn?: string
+    locationEn?: string,
+    searchQuery?: string
   ): Promise<PlaceValidationResult> {
     const result = await this.searchPlace({
       query: spotName,
       near: location,
       locationEn,
+      searchQuery,
     });
 
     if (!result.found || !result.place) {
