@@ -32,7 +32,7 @@ describe("BaseCard", () => {
   });
 
   it("expands on click when expandable", () => {
-    const { container } = render(
+    render(
       <BaseCard {...defaultProps}>
         <div data-testid="expanded-content">詳細コンテンツ</div>
       </BaseCard>
@@ -41,9 +41,8 @@ describe("BaseCard", () => {
     // Initially collapsed - content should not be visible
     expect(screen.queryByTestId("expanded-content")).not.toBeInTheDocument();
 
-    // Click on the card container to expand
-    const cardContainer = container.firstChild as HTMLElement;
-    fireEvent.click(cardContainer);
+    // Click on the title text to expand (bubbles up to the motion.div with onClick)
+    fireEvent.click(screen.getByText("清水寺"));
 
     // Content should now be visible
     expect(screen.getByTestId("expanded-content")).toBeInTheDocument();
@@ -66,7 +65,7 @@ describe("BaseCard", () => {
   it("calls onStateChange when toggled", () => {
     const onStateChange = vi.fn();
 
-    const { container } = render(
+    render(
       <BaseCard
         {...defaultProps}
         state="collapsed"
@@ -76,8 +75,8 @@ describe("BaseCard", () => {
       </BaseCard>
     );
 
-    const cardContainer = container.firstChild as HTMLElement;
-    fireEvent.click(cardContainer);
+    // Click on the title text (inside the motion.div with onClick handler)
+    fireEvent.click(screen.getByText("清水寺"));
 
     expect(onStateChange).toHaveBeenCalledWith("expanded");
   });

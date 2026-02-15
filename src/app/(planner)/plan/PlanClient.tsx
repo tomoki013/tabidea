@@ -4,7 +4,7 @@ import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
-import type { DayGenerationStatus, ChunkInfo } from '@/types';
+import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { getSamplePlanById } from "@/lib/sample-plans";
@@ -58,10 +58,10 @@ function PlanContent() {
   // Generate a single chunk
   const generateChunk = useCallback(async (
     chunkInput: UserInput,
-    context: any[],
-    outlineDays: any[],
+    context: Article[],
+    outlineDays: PlanOutlineDay[],
     chunk: ChunkInfo,
-    allOutlineDays: any[],
+    allOutlineDays: PlanOutlineDay[],
     destination?: string
   ) => {
     // Mark days as generating
@@ -73,7 +73,7 @@ function PlanContent() {
     // or use the destination for the first chunk so the AI knows where the traveler starts
     let previousOvernightLocation: string | undefined = undefined;
     if (chunk.start > 1) {
-      const prevDay = allOutlineDays.find((d: any) => d.day === chunk.start - 1);
+      const prevDay = allOutlineDays.find((d: PlanOutlineDay) => d.day === chunk.start - 1);
       if (prevDay) {
         previousOvernightLocation = prevDay.overnight_location;
       }
@@ -113,9 +113,9 @@ function PlanContent() {
 
   // Start Detail Generation (Loop through chunks)
   const startDetailGeneration = useCallback(async (
-    outline: any,
+    outline: PlanOutline,
     updatedInput: UserInput,
-    context: any[]
+    context: Article[]
   ) => {
     // Calculate total days
     let totalDays = extractDuration(updatedInput.dates);

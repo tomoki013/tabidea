@@ -123,7 +123,7 @@ export default function BaseCard({
     <div className={`relative group ${className}`}>
       {/* Tape Decoration (Visual only, on top) */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20 group-hover:-translate-y-1 transition-transform duration-300">
-         <Tape color={theme.tapeColor as any} className="w-20 h-6 opacity-90 shadow-sm" />
+         <Tape color={theme.tapeColor as "yellow" | "pink" | "blue" | "green" | "white" | "red"} className="w-20 h-6 opacity-90 shadow-sm" />
       </div>
 
       <motion.div

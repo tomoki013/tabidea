@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
-import type { DayGenerationStatus, ChunkInfo } from '@/types';
+import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
@@ -319,10 +319,10 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
   // Generate a single chunk and update state
   const generateChunk = useCallback(async (
     chunkInput: UserInput,
-    context: any[],
-    outlineDays: any[],
+    context: Article[],
+    outlineDays: PlanOutlineDay[],
     chunk: ChunkInfo,
-    allOutlineDays: any[]
+    allOutlineDays: PlanOutlineDay[]
   ) => {
     // Mark days as generating
     for (let d = chunk.start; d <= chunk.end; d++) {
@@ -332,7 +332,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
     // Determine start location from previous day
     let previousOvernightLocation: string | undefined = undefined;
     if (chunk.start > 1) {
-      const prevDay = allOutlineDays.find((d: any) => d.day === chunk.start - 1);
+      const prevDay = allOutlineDays.find((d) => d.day === chunk.start - 1);
       if (prevDay) {
         previousOvernightLocation = prevDay.overnight_location;
       }
@@ -532,9 +532,9 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       // Wait for all chunks (they update state as they complete)
       await Promise.all(chunkPromises);
 
-    } catch (e: any) {
+    } catch (e: unknown) {
       console.error(e);
-      const msg = e.message || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+      const msg = (e instanceof Error ? e.message : null) || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
 
       if (msg.includes("Server Action") && msg.includes("not found")) {
         setGenerationState(prev => ({

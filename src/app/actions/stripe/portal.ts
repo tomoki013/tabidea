@@ -27,6 +27,7 @@ export async function createPortalSession(): Promise<PortalSessionResult> {
   }
 
   const stripe = new Stripe(stripeSecretKey, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     apiVersion: '2026-01-28.clover' as any, // Type assertion for newer API version
   });
 

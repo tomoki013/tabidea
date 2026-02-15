@@ -95,7 +95,7 @@ async function fetchMofaData(destination: string, feedType: string = 'A'): Promi
 
 async function fetchRestCountriesData(destination: string): Promise<RawDataResult> {
   // First, try to resolve the destination directly to an English name
-  let englishName = JAPANESE_TO_ENGLISH_COUNTRY[destination];
+  const englishName = JAPANESE_TO_ENGLISH_COUNTRY[destination];
 
   // If not found, it might be a city or variation not in the map.
   // We can try to guess the country using MOFA's country code if available,

@@ -53,6 +53,7 @@ export default function PDFDownloadButton({
       const ItineraryPDF = ItineraryPDFModule.default;
 
       const pdfElement = React.createElement(ItineraryPDF, { itinerary });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const blob = await pdf(pdfElement as any).toBlob();
       console.log("PDF blob generated successfully", blob.size, "bytes");
 

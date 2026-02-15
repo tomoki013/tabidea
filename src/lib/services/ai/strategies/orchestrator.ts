@@ -11,7 +11,7 @@ import { isBothProvidersAvailable, getAlternateProvider, type ProviderName } fro
 import { raceOutline, type RaceResult } from './race';
 import { crossReviewOutline, crossReviewDayDetails } from './cross-review';
 import { getPipelineProvider } from './pipeline';
-import type { PlanOutline, DayPlan, Article } from '@/types';
+import type { PlanOutline, PlanOutlineDay, DayPlan, Article, Itinerary, Activity } from '@/types';
 import type { GeminiServiceOptions } from '../gemini';
 import type { RequestComplexity, GenerationPhase } from '../model-selector';
 
@@ -136,7 +136,7 @@ export async function executeOutlineStrategy(
             overnight_location: d.overnight_location,
             travel_method_to_next: d.travel_method_to_next,
           })),
-        } as any;
+        } as Itinerary;
 
         const corrected = await modifyFn(minimalItinerary, correctionHistory, raceResult.winnerProvider);
         // Extract the corrected outline from the result
@@ -144,10 +144,10 @@ export async function executeOutlineStrategy(
           finalOutline = {
             destination: corrected.destination,
             description: corrected.description || finalOutline.description,
-            days: corrected.days.map((d: any, index: number) => ({
+            days: corrected.days.map((d: DayPlan & Partial<PlanOutlineDay>, index: number) => ({
               day: d.day || index + 1,
               title: d.title || finalOutline.days[index]?.title || '',
-              highlight_areas: d.highlight_areas || d.activities?.map((a: any) => a.activity) || finalOutline.days[index]?.highlight_areas || [],
+              highlight_areas: d.highlight_areas || d.activities?.map((a: Activity) => a.activity) || finalOutline.days[index]?.highlight_areas || [],
               overnight_location: d.overnight_location || finalOutline.days[index]?.overnight_location || '',
               travel_method_to_next: d.travel_method_to_next,
             })),
@@ -232,7 +232,7 @@ export async function executeDetailsStrategy(
           destination,
           description: '',
           days: finalDays,
-        } as any;
+        } as Itinerary;
 
         const corrected = await modifyFn(minimalItinerary, correctionHistory, detailsProvider);
         if (corrected.days && corrected.days.length > 0) {

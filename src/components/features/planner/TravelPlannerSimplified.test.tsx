@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import TravelPlannerSimplified from "./TravelPlannerSimplified";
@@ -102,7 +103,7 @@ describe("TravelPlannerSimplified", () => {
     // So if isOmakase is false, the direct input IS rendered.
     // So "Destination Input" mode is default.
 
-    const destInput = screen.getByPlaceholderText("京都、パリ、ハワイ...");
+    const destInput = screen.getByPlaceholderText("例：京都、パリ、ハワイ...");
     fireEvent.change(destInput, { target: { value: "北海道" } });
     fireEvent.keyDown(destInput, { key: "Enter", code: "Enter" });
 

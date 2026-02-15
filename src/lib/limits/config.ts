@@ -96,7 +96,7 @@ export function canAccessCategory(
   if (userType === 'admin' || userType === 'premium') {
     return true;
   }
-  return FREE_TRAVEL_INFO_CATEGORIES.includes(category as any);
+  return (FREE_TRAVEL_INFO_CATEGORIES as readonly string[]).includes(category);
 }
 
 export function getAccessibleCategories(userType: UserType): string[] {

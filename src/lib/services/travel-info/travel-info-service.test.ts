@@ -13,6 +13,7 @@ import {
 import {
   ICategoryMapper,
   ITravelInfoSource,
+  SourceOptions,
   SourceResult,
 } from './interfaces';
 import { TravelInfoCategory, SafetyInfo, ClimateInfo, AnyCategoryData } from '@/types';
@@ -380,7 +381,7 @@ describe('TravelInfoService', () => {
 
   describe('Options', () => {
     it('passes country option to source', async () => {
-      let capturedOptions: any = null;
+      let capturedOptions: SourceOptions | null = null;
       const mockSource = createMockSource({
         sourceName: 'MockSource',
         sourceType: 'official_api',

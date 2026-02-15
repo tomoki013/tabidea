@@ -592,7 +592,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   // フィルタリング条件が変わったら表示件数をリセット
   useEffect(() => {
-    setDisplayLimit(20);
+    queueMicrotask(() => setDisplayLimit(20));
   }, [filteredPlans]);
 
   const visiblePlans = useMemo(() => {

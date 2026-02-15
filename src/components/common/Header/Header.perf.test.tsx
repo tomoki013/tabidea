@@ -38,6 +38,11 @@ vi.mock("@/app/actions/travel-planner", () => ({
   getUserPlansList: () => Promise.resolve({ success: true, plans: [] }),
 }));
 
+// Mock FlagsContext
+vi.mock("@/context/FlagsContext", () => ({
+  useFlags: () => ({ isFlagged: () => false, toggleFlag: vi.fn() }),
+}));
+
 // Mock local storage plans hook
 vi.mock("@/lib/local-storage/plans", () => ({
   useLocalPlans: () => ({

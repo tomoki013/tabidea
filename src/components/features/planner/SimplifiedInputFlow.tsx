@@ -354,13 +354,15 @@ export default function SimplifiedInputFlow({
   useEffect(() => {
     const match = input.dates?.match(/(\d{4}-\d{2}-\d{2})/);
     if (match) {
-        setStartDate(match[1]);
-        const dur = parseDuration(input.dates);
-        if (dur > 0) {
-            const d = new Date(match[1]);
-            d.setDate(d.getDate() + (dur - 1));
-            setEndDate(d.toISOString().split('T')[0]);
-        }
+        queueMicrotask(() => {
+          setStartDate(match[1]);
+          const dur = parseDuration(input.dates);
+          if (dur > 0) {
+              const d = new Date(match[1]);
+              d.setDate(d.getDate() + (dur - 1));
+              setEndDate(d.toISOString().split('T')[0]);
+          }
+        });
     }
   }, [input.dates]);
 
@@ -420,7 +422,7 @@ export default function SimplifiedInputFlow({
       containerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    let finalInput = { ...input };
+    const finalInput = { ...input };
     if (useCalendar && (!startDate || !endDate)) {
         finalInput.dates = "未定";
         onChange({ dates: "未定" });
@@ -1113,7 +1115,7 @@ export default function SimplifiedInputFlow({
                      {RESERVATION_TYPES.map(type => (
                        <button
                          key={type.id}
-                         onClick={() => setResType(type.id as any)}
+                         onClick={() => setResType(type.id as FixedScheduleItem['type'])}
                          className={`p-3 text-xs font-bold rounded-lg border transition-all flex flex-col items-center gap-2 ${
                             resType === type.id
                             ? 'bg-primary/10 border-primary text-primary border-2'

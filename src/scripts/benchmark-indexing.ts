@@ -28,7 +28,7 @@ async function benchmark() {
   // Sequential
   console.log('Starting Sequential Processing...');
   const startSeq = performance.now();
-  const allDocsSeq: any[] = [];
+  const allDocsSeq: { pageContent: string; metadata: Record<string, unknown> }[] = [];
   for (const file of mdxFiles) {
     const filePath = path.join(postsDir, file);
     const content = await fs.readFile(filePath, 'utf-8');
@@ -62,7 +62,7 @@ async function benchmark() {
   // Parallel
   console.log('Starting Parallel Processing...');
   const startPar = performance.now();
-  const allDocsPar: any[] = [];
+  const allDocsPar: { pageContent: string; metadata: Record<string, unknown> }[] = [];
 
   const promises = mdxFiles.map(async (file) => {
     const filePath = path.join(postsDir, file);

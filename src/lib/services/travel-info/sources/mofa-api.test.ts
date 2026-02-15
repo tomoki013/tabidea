@@ -8,7 +8,7 @@ global.fetch = fetchMock;
 // Mock AI
 const generateObjectMock = vi.fn();
 vi.mock('ai', () => ({
-  generateObject: (...args: any[]) => generateObjectMock(...args),
+  generateObject: (...args: unknown[]) => generateObjectMock(...args),
 }));
 
 vi.mock('@ai-sdk/google', () => ({
