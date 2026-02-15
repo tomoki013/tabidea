@@ -1,5 +1,8 @@
 "use server";
 
+// Server Action timeout: AI generation can take 60+ seconds with retries
+export const maxDuration = 120;
+
 import { GeminiService } from "@/lib/services/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/services/rag/scraper';
 import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";

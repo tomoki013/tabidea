@@ -1,5 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { existsSync, readFileSync } = require("fs");
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { join } = require("path");
 
 const siteUrl = "https://tabide.ai";

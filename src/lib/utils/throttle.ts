@@ -6,7 +6,7 @@
  * @param limit The time limit in milliseconds
  * @returns A throttled version of the function
  */
-export function throttle<T extends (...args: any[]) => any>(
+export function throttle<T extends (...args: unknown[]) => unknown>(
   func: T,
   limit: number
 ): (...args: Parameters<T>) => void {
@@ -14,10 +14,9 @@ export function throttle<T extends (...args: any[]) => any>(
   let lastFunc: ReturnType<typeof setTimeout>;
   let lastRan: number;
 
-  return function (this: any, ...args: Parameters<T>) {
-    const context = this;
+  return function (this: unknown, ...args: Parameters<T>) {
     if (!inThrottle) {
-      func.apply(context, args);
+      func.apply(this, args);
       lastRan = Date.now();
       inThrottle = true;
       setTimeout(() => {
@@ -25,9 +24,9 @@ export function throttle<T extends (...args: any[]) => any>(
       }, limit);
     } else {
       clearTimeout(lastFunc);
-      lastFunc = setTimeout(function () {
+      lastFunc = setTimeout(() => {
         if (Date.now() - lastRan >= limit) {
-          func.apply(context, args);
+          func.apply(this, args);
           lastRan = Date.now();
         }
       }, Math.max(limit - (Date.now() - lastRan), 0));

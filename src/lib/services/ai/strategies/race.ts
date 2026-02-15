@@ -100,6 +100,7 @@ export async function raceOutline(
       schema: PlanOutlineSchema,
       prompt,
       temperature,
+      abortSignal: AbortSignal.timeout(90_000),
     });
 
     // Normalize

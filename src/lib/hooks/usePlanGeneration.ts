@@ -426,10 +426,17 @@ export function usePlanGeneration(
         }
       } catch (e: unknown) {
         console.error(e);
-        const msg =
-          (e instanceof Error ? e.message : null) || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+        const rawMsg = e instanceof Error ? e.message : null;
 
-        if (msg.includes("Server Action") && msg.includes("not found")) {
+        // Detect timeout/network errors from Server Actions
+        let msg: string;
+        if (rawMsg && (rawMsg.includes("unexpected response") || rawMsg.includes("Failed to fetch") || rawMsg.includes("AbortError") || rawMsg.includes("NEXT_SERVER_ACTION"))) {
+          msg = "サーバーとの通信がタイムアウトしました。もう一度お試しください。";
+        } else {
+          msg = rawMsg || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+        }
+
+        if (rawMsg && rawMsg.includes("Server Action") && rawMsg.includes("not found")) {
           setGenerationState((prev) => ({
             ...prev,
             phase: "error",

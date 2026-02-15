@@ -34,7 +34,7 @@ async function main() {
     chunkOverlap: 200,
   });
 
-  const allDocs: any[] = [];
+  const allDocs: { pageContent: string; metadata: Record<string, unknown> }[] = [];
 
   const promises = mdxFiles.map(async (file) => {
     const filePath = path.join(postsDir, file);

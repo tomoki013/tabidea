@@ -1,4 +1,9 @@
 
+interface SplitDocument {
+    pageContent: string;
+    metadata: Record<string, unknown>;
+}
+
 export class SimpleRecursiveCharacterTextSplitter {
     chunkSize: number;
     chunkOverlap: number;
@@ -56,8 +61,8 @@ export class SimpleRecursiveCharacterTextSplitter {
     }
 
     // Compatible signature
-    async splitDocuments(docs: { pageContent: string; metadata: any }[]): Promise<{ pageContent: string; metadata: any }[]> {
-        const output: { pageContent: string; metadata: any }[] = [];
+    async splitDocuments(docs: SplitDocument[]): Promise<SplitDocument[]> {
+        const output: SplitDocument[] = [];
         for (const doc of docs) {
             const chunks = await this.splitText(doc.pageContent);
             for (const chunk of chunks) {
@@ -75,15 +80,15 @@ export class SimpleMarkdownHeaderTextSplitter {
         this.headersToSplitOn = options.headersToSplitOn;
     }
 
-    async splitText(text: string): Promise<{ pageContent: string; metadata: any }[]> {
+    async splitText(text: string): Promise<SplitDocument[]> {
         return this._split(text, this.headersToSplitOn, {});
     }
 
     private _split(
         text: string,
         separators: [string, string][],
-        currentMetadata: any
-    ): { pageContent: string; metadata: any }[] {
+        currentMetadata: Record<string, unknown>
+    ): SplitDocument[] {
         // Base case: no more separators to check
         if (separators.length === 0) {
             const trimmed = text.trim();
@@ -144,7 +149,7 @@ export class SimpleMarkdownHeaderTextSplitter {
         }
 
         // Otherwise, process each section
-        const results: { pageContent: string; metadata: any }[] = [];
+        const results: SplitDocument[] = [];
 
         for (const section of sections) {
             const sectionText = section.contentLines.join('\n');

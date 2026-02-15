@@ -38,6 +38,13 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
 
+  const cleanupUrl = () => {
+    const url = new URL(window.location.href);
+    url.searchParams.delete('restore');
+    url.searchParams.delete('autoSave');
+    window.history.replaceState({}, '', url.toString());
+  };
+
   // 自動保存処理
   const handleAutoSave = useCallback(async (restoredInput: UserInput, restoredItinerary: Itinerary) => {
     setStatus('syncing');
@@ -62,13 +69,6 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
       cleanupUrl();
     }
   }, [localId, router]);
-
-  const cleanupUrl = () => {
-    const url = new URL(window.location.href);
-    url.searchParams.delete('restore');
-    url.searchParams.delete('autoSave');
-    window.history.replaceState({}, '', url.toString());
-  };
 
   // Load plan from local storage & 復元＆自動保存処理
   useEffect(() => {

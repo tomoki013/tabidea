@@ -85,7 +85,7 @@ function getRandomSubset<T>(arr: T[], min: number, max: number): T[] {
 }
 
 function generateSamplePlans() {
-  const plans: any[] = [];
+  const plans: Record<string, unknown>[] = [];
   const existingIds = new Set<string>();
 
   // 1. Generate 100 Fan Plans

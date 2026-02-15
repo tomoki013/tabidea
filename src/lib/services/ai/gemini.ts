@@ -11,6 +11,7 @@ import {
   ActivityParsed,
   ActivityInput,
   DayPlanInput,
+  PlanOutlineDayParsed,
 } from './schemas/itinerary-schemas';
 import {
   selectModel,
@@ -49,6 +50,8 @@ export interface GeminiServiceOptions {
 
 const MAX_RETRIES = 2;
 const RETRY_DELAY_MS = 1000;
+/** Per-attempt timeout for generateObject calls (90 seconds) */
+const GENERATION_TIMEOUT_MS = 90_000;
 
 // ============================================
 // Helper Functions
@@ -91,7 +94,7 @@ async function withRetry<T>(
  * Normalize TransitInfo departure/arrival if they are simple strings
  */
 function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
-  if (!transit) return transit as any;
+  if (!transit) return transit as unknown as TransitInfoParsed;
 
   const normalizeLocation = (loc: string | { place: string; time?: string }) => {
     if (typeof loc === 'string') {
@@ -111,8 +114,8 @@ function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
  * Normalize Activity source if it is a simple string or null
  */
 function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
-  // Base activity object with strict type cast
-  const baseActivity = { ...activity } as any;
+  // Base activity object with strict type cast (omit source/searchQuery since they differ between Input and Parsed)
+  const baseActivity = { ...activity } as Omit<ActivityInput, 'source' | 'searchQuery'> & { searchQuery?: string };
 
   // Handle null explicitly: convert to undefined
   if (activity.source === null || activity.source === undefined) {
@@ -178,7 +181,7 @@ function normalizeDayPlan(day: DayPlanInput): DayPlan {
     ...day,
     transit: normalizedTransit,
     activities: normalizedActivities,
-    timelineItems: normalizedTimelineItems as any, // Cast to any to satisfy the complex union type match
+    timelineItems: normalizedTimelineItems as DayPlan['timelineItems'],
   };
 }
 
@@ -289,6 +292,7 @@ ${prompt}`;
           schema: LegacyItineraryResponseSchema,
           prompt: fullPrompt,
           temperature,
+          abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
         });
         return object;
       });
@@ -369,6 +373,7 @@ ${prompt}`;
         schema: ItinerarySchema,
         prompt,
         temperature,
+        abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;
     });
@@ -471,11 +476,12 @@ ${prompt}`;
         schema: PlanOutlineSchema,
         prompt: fullPrompt,
         temperature,
+        abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;
     });
 
-    const normalizedDays = result.days.map((day: any, index: number) => ({
+    const normalizedDays = result.days.map((day: PlanOutlineDayParsed, index: number) => ({
       ...day,
       travel_method_to_next:
         index === result.days.length - 1 ? undefined :
@@ -511,7 +517,7 @@ ${prompt}`;
         },
         // Modify callback for cross-review corrections
         async (currentPlan, chatHistory, providerOverride) => {
-          return this._modifyItinerarySingle(currentPlan as any, chatHistory, providerOverride);
+          return this._modifyItinerarySingle(currentPlan as Itinerary, chatHistory, providerOverride);
         },
       );
 
@@ -670,6 +676,7 @@ ${prompt}`;
         schema: DayPlanArrayResponseInputSchema,
         prompt: fullPrompt,
         temperature,
+        abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;
     });
@@ -715,7 +722,7 @@ ${prompt}`;
         },
         // Modify callback for cross-review corrections
         async (currentPlan, chatHistory, providerOverride) => {
-          return this._modifyItinerarySingle(currentPlan as any, chatHistory, providerOverride);
+          return this._modifyItinerarySingle(currentPlan as Itinerary, chatHistory, providerOverride);
         },
       );
 

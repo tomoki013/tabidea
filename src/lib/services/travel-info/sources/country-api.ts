@@ -464,7 +464,7 @@ export class CountryApiSource implements ITravelInfoSource<BasicCountryInfo> {
 
     try {
       let offsetHours = 0;
-      let offsetMinutes = 0;
+      const offsetMinutes = 0;
 
       if (timezoneStr === 'UTC') {
         offsetHours = 0;

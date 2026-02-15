@@ -33,14 +33,13 @@ export async function generateTravelPlanPdf(
   const ItineraryPDF = ItineraryPDFModule.default;
 
   // Create React element and generate PDF blob
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const pdfElement = React.createElement(ItineraryPDF, {
     itinerary,
     includeTravelInfo: options?.includeTravelInfo,
     travelInfoData: options?.travelInfoData,
     includePackingList: options?.includePackingList,
     packingList: options?.packingList,
-  }) as any;
+  }) as React.ReactElement;
   const pdfBlob = await pdf(pdfElement).toBlob();
 
   return pdfBlob;
