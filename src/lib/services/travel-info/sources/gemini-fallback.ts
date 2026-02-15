@@ -5,8 +5,8 @@
  * 注意: AI生成情報は信頼性が低いためフォールバックとしてのみ使用
  */
 
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateObject } from 'ai';
+import { resolveModel } from '@/lib/services/ai/model-provider';
 import {
   TravelInfoCategory,
   SourceType,
@@ -98,7 +98,6 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
   ];
 
   private readonly config: GeminiFallbackConfig;
-  private google: ReturnType<typeof createGoogleGenerativeAI> | null = null;
 
   constructor(config: GeminiFallbackConfig = {}) {
     this.config = {
@@ -106,20 +105,6 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
       timeout: 30000,
       ...config,
     };
-  }
-
-  /**
-   * Google AIクライアントを取得（遅延初期化）
-   */
-  private getGoogleAI(): ReturnType<typeof createGoogleGenerativeAI> {
-    if (!this.google) {
-      const apiKey = this.config.apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-      if (!apiKey) {
-        throw new Error('Google AI API key not configured');
-      }
-      this.google = createGoogleGenerativeAI({ apiKey });
-    }
-    return this.google;
   }
 
   /**
@@ -183,8 +168,7 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
    * ソースが利用可能かチェック
    */
   async isAvailable(): Promise<boolean> {
-    const apiKey = this.config.apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-    return !!apiKey;
+    return !!(this.config.apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY);
   }
 
   /**
@@ -198,8 +182,11 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
     console.log(`[gemini-fallback] Generating ${category} for ${destination}`);
 
     try {
-      const google = this.getGoogleAI();
-      const modelName = this.config.modelName || 'gemini-2.5-flash';
+      const { model, modelName } = resolveModel('travel-info-fallback', {
+        modelName: this.config.modelName,
+        apiKey: this.config.apiKey,
+        structuredOutputs: true,
+      });
       const prompt = this.buildPromptForCategory(destination, category);
       const schema = CATEGORY_CONTENT_SCHEMAS[category];
 
@@ -207,7 +194,7 @@ export class GeminiFallbackSource implements ITravelInfoSource<AnyCategoryData> 
       const timeoutId = setTimeout(() => controller.abort(), this.config.timeout || 30000);
 
       const { object } = await generateObject({
-        model: google(modelName, { structuredOutputs: true }),
+        model,
         schema,
         prompt,
         abortSignal: controller.signal,

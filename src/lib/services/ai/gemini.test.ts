@@ -18,12 +18,29 @@ vi.mock("@ai-sdk/google", () => {
   };
 });
 
+vi.mock("./model-provider", () => {
+  return {
+    resolveModel: () => ({ model: "mock-model", modelName: "mock", provider: "gemini" }),
+    resolveModelForProvider: () => ({ model: "mock-model", modelName: "mock", provider: "gemini" }),
+    resolveProvider: () => "gemini",
+    isBothProvidersAvailable: () => false,
+    getAlternateProvider: () => "openai",
+  };
+});
+
+vi.mock("./model-selector", () => {
+  return {
+    selectModel: () => ({ modelName: "mock-model", tier: "flash", temperature: 0.3 }),
+    evaluateComplexity: () => "simple",
+  };
+});
+
 describe("GeminiService", () => {
   let service: GeminiService;
 
   beforeEach(() => {
     vi.clearAllMocks();
-    service = new GeminiService("fake-api-key");
+    service = new GeminiService();
   });
 
   it("generates a valid itinerary from generateObject response", async () => {

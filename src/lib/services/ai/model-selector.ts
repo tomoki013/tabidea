@@ -4,6 +4,7 @@
  */
 
 import type { EntitlementStatus } from '@/types';
+import type { ProviderName } from './model-provider';
 
 // ============================================
 // Types
@@ -21,6 +22,8 @@ export interface ModelSelectionInput {
   complexity?: RequestComplexity;
   /** 生成フェーズ */
   phase?: GenerationPhase;
+  /** プロバイダ（返却するモデル名を切り替える） */
+  provider?: ProviderName;
 }
 
 export interface RequestComplexity {
@@ -49,10 +52,15 @@ export interface ModelSelection {
 // Constants
 // ============================================
 
-/** Flash モデル（デフォルト） */
-const MODEL_FLASH = process.env.GOOGLE_MODEL_FLASH || 'gemini-3-flash-preview'; // Fallback: gemini-2.0-flash-exp
-/** Pro モデル（プレミアムユーザー向け） */
-const MODEL_PRO = process.env.GOOGLE_MODEL_PRO || 'gemini-3-pro-preview'; // Fallback: gemini-2.5-pro
+/** Gemini Flash モデル（デフォルト） */
+const MODEL_FLASH = process.env.GOOGLE_MODEL_FLASH || 'gemini-3-flash-preview';
+/** Gemini Pro モデル（プレミアムユーザー向け） */
+const MODEL_PRO = process.env.GOOGLE_MODEL_PRO || 'gemini-3-pro-preview';
+
+/** OpenAI Standard モデル（Flash相当） */
+const OPENAI_MODEL_STANDARD = process.env.OPENAI_MODEL_ITINERARY || process.env.OPENAI_MODEL_NAME || 'gpt-4o-mini';
+/** OpenAI Pro モデル（Pro相当） */
+const OPENAI_MODEL_PRO = process.env.OPENAI_MODEL_ITINERARY_PRO || 'gpt-4o';
 
 /** フェーズ別温度設定 */
 const TEMPERATURE_CONFIG: Record<GenerationPhase, number> = {
@@ -141,6 +149,19 @@ export function shouldUsePro(input: ModelSelectionInput): boolean {
 export function selectModel(input: ModelSelectionInput): ModelSelection {
   const phase = input.phase || 'details';
   const usePro = shouldUsePro(input);
+  const provider = input.provider || (process.env.AI_PROVIDER_ITINERARY as ProviderName) || 'gemini';
+
+  if (provider === 'openai') {
+    const modelName = usePro ? OPENAI_MODEL_PRO : OPENAI_MODEL_STANDARD;
+    const reason = usePro ? 'Premium OpenAI model' : 'Standard OpenAI model';
+    console.log(`[model-selector] Selected OpenAI model: ${modelName} (${reason})`);
+    return {
+      modelName,
+      tier: usePro ? 'pro' : 'flash',
+      reason,
+      temperature: TEMPERATURE_CONFIG[phase],
+    };
+  }
 
   if (usePro) {
     const reason = input.userPrefersPro

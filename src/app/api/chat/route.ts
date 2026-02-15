@@ -1,5 +1,5 @@
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { streamText, type Message } from "ai";
+import { resolveModel } from '@/lib/services/ai/model-provider';
 import { Itinerary } from '@/types';
 
 // Allow streaming responses up to 30 seconds
@@ -9,18 +9,8 @@ export async function POST(req: Request) {
   try {
     const { messages, itinerary }: { messages: Message[]; itinerary: Itinerary } = await req.json();
 
-    const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-    if (!apiKey) {
-      return new Response(JSON.stringify({ error: "API key not configured" }), {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      });
-    }
-
-    // Create Google provider with the correct API key
-    const google = createGoogleGenerativeAI({
-      apiKey,
-    });
+    const { model, modelName } = resolveModel('chat');
+    console.log(`[chat] Using model: ${modelName}`);
 
     const destination = itinerary.destination || '不明';
     const dayCount = itinerary.days?.length || 0;
@@ -47,7 +37,7 @@ CRITICAL CONSTRAINTS - YOU MUST FOLLOW THESE:
 - Never suggest or agree to changes that would fundamentally alter the trip's destination or region.`;
 
     const result = await streamText({
-      model: google(process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash"),
+      model,
       system: systemMessage,
       messages,
     });

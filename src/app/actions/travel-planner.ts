@@ -156,8 +156,8 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     };
   }
 
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) {
+  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
+  if (!hasAIKey) {
     return { success: false, message: "API Key missing" };
   }
 
@@ -201,7 +201,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
 
   try {
     const scraper = new PineconeRetriever();
-    const ai = new GeminiService(apiKey, {
+    const ai = new GeminiService({
       goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
     });
 
@@ -378,11 +378,11 @@ export async function generatePlanChunk(
   const startTime = Date.now();
   console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
 
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) return { success: false, message: "API Key missing" };
+  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
+  if (!hasAIKey) return { success: false, message: "API Key missing" };
 
   try {
-    const ai = new GeminiService(apiKey, {
+    const ai = new GeminiService({
       goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
     });
     const budgetPrompt = getBudgetContext(input.budget);
@@ -474,9 +474,9 @@ export async function autoVerifyItinerary(
 
     if (failedSpots.length > 0 && failedSpots.length / totalSpots < 0.3) {
       console.warn(`[action] ${failedSpots.length} spots failed validation, attempting self-correction`);
-      const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-      if (apiKey) {
-        const ai = new GeminiService(apiKey);
+      const hasKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
+      if (hasKey) {
+        const ai = new GeminiService();
         const corrected = await selfCorrectItinerary(ai, itinerary, failedSpots, context);
         return {
           itinerary: corrected,
@@ -511,11 +511,11 @@ export async function regeneratePlan(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]
 ): Promise<ActionState> {
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) return { success: false, message: "API Key missing" };
+  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
+  if (!hasAIKey) return { success: false, message: "API Key missing" };
 
   try {
-    const ai = new GeminiService(apiKey);
+    const ai = new GeminiService();
 
     // Inject user constraint prompt into chat history context if possible,
     // or we might need to modify modifyItinerary signature.
