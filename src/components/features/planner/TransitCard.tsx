@@ -11,7 +11,7 @@ interface TransitCardProps {
   onLockToggle?: () => void;
 }
 
-const ICONS: Record<TransitType, any> = {
+const ICONS: Record<TransitType, React.ComponentType<{ className?: string }>> = {
   flight: FaPlane,
   train: FaTrain,
   bus: FaBus,

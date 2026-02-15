@@ -89,9 +89,11 @@ export default function PDFExportModal({
   // Reset state when modal opens
   useEffect(() => {
     if (isOpen) {
-      setFetchingStatus("idle");
-      setFetchedData(new Map());
-      setFetchProgress({ current: 0, total: 0 });
+      queueMicrotask(() => {
+        setFetchingStatus("idle");
+        setFetchedData(new Map());
+        setFetchProgress({ current: 0, total: 0 });
+      });
     }
   }, [isOpen]);
 

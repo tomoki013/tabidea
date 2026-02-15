@@ -76,22 +76,28 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     const foundPlan = plans.find(p => p.id === localId);
 
     if (!foundPlan) {
-      setError('プランが見つかりませんでした。');
-      setStatus('error');
+      queueMicrotask(() => {
+        setError('プランが見つかりませんでした。');
+        setStatus('error');
+      });
       return;
     }
 
-    setPlan(foundPlan);
-    setInput(foundPlan.input);
-    setResult(foundPlan.itinerary);
-    setStatus('idle');
+    queueMicrotask(() => {
+      setPlan(foundPlan);
+      setInput(foundPlan.input);
+      setResult(foundPlan.itinerary);
+      setStatus('idle');
+    });
 
     // 復元フラグがある場合
     if (shouldRestore) {
       const restoreResult = restorePendingState();
 
       if (restoreResult.expired) {
-        setAutoSaveError('保存から24時間以上経過したため、自動保存できませんでした。');
+        queueMicrotask(() => {
+          setAutoSaveError('保存から24時間以上経過したため、自動保存できませんでした。');
+        });
         clearPendingState();
         cleanupUrl();
         return;
@@ -99,7 +105,8 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
       // 自動保存
       if (shouldAutoSave && restoreResult.success && restoreResult.data?.itinerary) {
-        handleAutoSave(restoreResult.data.userInput, restoreResult.data.itinerary);
+        const { userInput: restoredInput, itinerary: restoredItinerary } = restoreResult.data;
+        queueMicrotask(() => handleAutoSave(restoredInput, restoredItinerary));
       } else {
         cleanupUrl();
       }
@@ -135,7 +142,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   // When user becomes authenticated, sync to database
   useEffect(() => {
     if (!authLoading && isAuthenticated && plan && status === 'idle') {
-      syncToDatabase();
+      queueMicrotask(() => syncToDatabase());
     }
   }, [authLoading, isAuthenticated, plan, status, syncToDatabase]);
 

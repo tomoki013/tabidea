@@ -64,7 +64,7 @@ const transitTypeMap: Record<string, string> = {
   other: "その他",
 };
 
-const transitIconMap: Record<string, any> = {
+const transitIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   flight: FaPlane,
   train: FaTrain,
   bus: FaBus,

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
@@ -41,6 +42,11 @@ vi.mock("@vis.gl/react-google-maps", () => ({
   Map: () => <div>Map</div>,
   AdvancedMarker: () => <div>Marker</div>,
   useMap: () => ({}),
+}));
+
+// Mock PlanModalContext
+vi.mock("@/context/PlanModalContext", () => ({
+  usePlanModal: () => ({ openModal: vi.fn() }),
 }));
 
 const mockOnChange = vi.fn();

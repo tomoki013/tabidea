@@ -1,5 +1,6 @@
 // import { SamplePlan } from "./sample-plans";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const additionalSamplePlans: any[] = [
   {
     "id": "fan-classicalmusic-prague-400uyk",

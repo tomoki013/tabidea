@@ -13,7 +13,7 @@ interface TransitFormProps {
   onCancel: () => void;
 }
 
-const TRANSIT_TYPES: { id: TransitType; label: string; icon: any }[] = [
+const TRANSIT_TYPES: { id: TransitType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
   { id: "flight", label: "飛行機", icon: FaPlane },
   { id: "train", label: "電車", icon: FaTrain },
   { id: "bus", label: "バス", icon: FaBus },

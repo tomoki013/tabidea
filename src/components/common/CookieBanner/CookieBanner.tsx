@@ -17,7 +17,7 @@ export default function CookieBanner() {
   useEffect(() => {
     const consent = localStorage.getItem("cookie_consent_accepted");
     if (!consent) {
-      setIsVisible(true);
+      queueMicrotask(() => setIsVisible(true));
     }
   }, []);
 

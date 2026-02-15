@@ -111,7 +111,8 @@ export default function ResultView({
       try {
         const stored = localStorage.getItem(key);
         if (stored) {
-          setPackingList(JSON.parse(stored));
+          const parsed = JSON.parse(stored);
+          queueMicrotask(() => setPackingList(parsed));
         }
       } catch (e) {
         console.error("Failed to load packing list", e);
@@ -287,14 +288,14 @@ export default function ResultView({
     if (!editingResult || dayIndex === 0) return;
     const newResult = JSON.parse(JSON.stringify(editingResult));
     [newResult.days[dayIndex - 1], newResult.days[dayIndex]] = [newResult.days[dayIndex], newResult.days[dayIndex - 1]];
-    newResult.days.forEach((day: any, index: number) => { day.day = index + 1; });
+    newResult.days.forEach((day: { day: number }, index: number) => { day.day = index + 1; });
     setEditingResult(newResult);
   };
   const handleMoveDayDown = (dayIndex: number) => {
     if (!editingResult || dayIndex >= editingResult.days.length - 1) return;
     const newResult = JSON.parse(JSON.stringify(editingResult));
     [newResult.days[dayIndex], newResult.days[dayIndex + 1]] = [newResult.days[dayIndex + 1], newResult.days[dayIndex]];
-    newResult.days.forEach((day: any, index: number) => { day.day = index + 1; });
+    newResult.days.forEach((day: { day: number }, index: number) => { day.day = index + 1; });
     setEditingResult(newResult);
   };
   const handleToggleLockActivity = (dayIndex: number, actIndex: number) => {
@@ -473,7 +474,7 @@ export default function ResultView({
           ].map((tab) => (
             <button
               key={tab.id}
-              onClick={() => handleTabSwitch(tab.id as any)}
+              onClick={() => handleTabSwitch(tab.id as 'plan' | 'info' | 'packing')}
               className={`
                 relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand
                 ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}

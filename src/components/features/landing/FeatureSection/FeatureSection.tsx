@@ -50,7 +50,7 @@ export default function FeatureSection() {
               className={`flex flex-col h-full ${feature.rotation} hover:rotate-0 transition-transform duration-300`}
             >
               <JournalSheet className="h-full flex flex-col items-center gap-4 pt-10 pb-8 px-6 text-center relative hover:shadow-lg transition-shadow bg-white">
-                <Tape color={feature.tape as any} position="top-center" className="w-24 -top-4 opacity-90" />
+                <Tape color={feature.tape as "yellow" | "pink" | "blue" | "green" | "white" | "red"} position="top-center" className="w-24 -top-4 opacity-90" />
 
                 <div className="p-4 bg-stone-100 rounded-full text-stone-600 border-2 border-stone-200 border-dashed mb-2 group-hover:scale-110 transition-transform">
                   <feature.icon size={28} />

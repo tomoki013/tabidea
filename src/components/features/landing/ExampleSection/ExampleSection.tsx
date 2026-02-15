@@ -55,7 +55,7 @@ export default function ExampleSection() {
               className={`h-full ${ex.rotate} hover:rotate-0 transition-transform duration-300`}
             >
               <JournalSheet className="h-full relative pt-10 pb-6 px-6 bg-white hover:shadow-xl transition-all border-l-0">
-                 <Tape color={ex.tapeColor as any} position="top-center" className="opacity-90 w-24" />
+                 <Tape color={ex.tapeColor as "yellow" | "pink" | "blue" | "green" | "white" | "red"} position="top-center" className="opacity-90 w-24" />
 
                 <div className="flex justify-between items-baseline mb-4 border-b-2 border-stone-100 border-dashed pb-2">
                   <h3 className="text-2xl font-serif font-bold text-stone-800">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useCallback, useEffect } from "react";
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
 import {
   APIProvider,
   Map as GoogleMap,
@@ -88,8 +88,7 @@ function FitBoundsController({ markers }: { markers: DayMarker[] }) {
 // Route Line Component
 // ============================================================================
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type MapWithRouteLines = { __routeLines?: any[] };
+type PolylineInstance = { setMap: (m: unknown) => void };
 
 function RouteLines({
   markers,
@@ -99,6 +98,7 @@ function RouteLines({
   selectedDay: number | null;
 }) {
   const map = useMap();
+  const linesRef = useRef<PolylineInstance[]>([]);
 
   useEffect(() => {
     if (!map) return;
@@ -108,16 +108,12 @@ function RouteLines({
     if (typeof window === 'undefined' || !g.google?.maps?.Polyline) return;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const gMaps = g.google.maps as { Polyline: new (opts: unknown) => { setMap: (m: unknown) => void } };
+    const gMaps = g.google.maps as { Polyline: new (opts: unknown) => PolylineInstance };
 
     // Clear existing polylines
-    const mapWithLines = map as unknown as MapWithRouteLines;
-    if (mapWithLines.__routeLines) {
-      mapWithLines.__routeLines.forEach((line) => line.setMap(null));
-    }
+    linesRef.current.forEach((line) => line.setMap(null));
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const lines: any[] = [];
+    const lines: PolylineInstance[] = [];
 
     if (selectedDay === null) {
       // Connect all markers sequentially for the whole trip
@@ -161,7 +157,7 @@ function RouteLines({
       }
     }
 
-    mapWithLines.__routeLines = lines;
+    linesRef.current = lines;
 
     return () => {
       lines.forEach((line) => line.setMap(null));

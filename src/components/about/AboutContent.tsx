@@ -325,7 +325,7 @@ export default function AboutContent() {
                     <FaUsers />
                   </div>
                   <h4 className="font-bold text-lg text-stone-800">
-                    User in the Driver's Seat
+                    User in the Driver&apos;s Seat
                     <span className="block text-xs font-normal text-stone-500 mt-1">主役は常に旅人</span>
                   </h4>
                   <p className="text-sm text-stone-600">

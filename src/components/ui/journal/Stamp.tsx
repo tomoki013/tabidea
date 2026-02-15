@@ -23,11 +23,11 @@ export const Stamp = ({ children, color = "red", rotation = "random", size = "md
     lg: "w-32 h-32 text-base border-4",
   };
 
-  // Determine rotation style
+  // Determine rotation style (use deterministic rotation based on children content)
   let rotateClass = "";
   if (rotation === "left") rotateClass = "-rotate-12";
   else if (rotation === "right") rotateClass = "rotate-12";
-  else rotateClass = Math.random() > 0.5 ? "rotate-6" : "-rotate-6"; // Simple random for initial render, usually better to be deterministic or controlled prop
+  else rotateClass = String(children).length % 2 === 0 ? "rotate-6" : "-rotate-6";
 
   return (
     <div

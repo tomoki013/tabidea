@@ -40,7 +40,8 @@ export async function generateTravelPlanPdf(
     includePackingList: options?.includePackingList,
     packingList: options?.packingList,
   }) as React.ReactElement;
-  const pdfBlob = await pdf(pdfElement).toBlob();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const pdfBlob = await pdf(pdfElement as any).toBlob();
 
   return pdfBlob;
 }
