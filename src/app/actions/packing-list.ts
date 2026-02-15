@@ -1,8 +1,8 @@
 "use server";
 
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateObject } from "ai";
 import { z } from "zod";
+import { resolveModel } from '@/lib/services/ai/model-provider';
 import type { PackingList } from "@/types/packing-list";
 
 // ============================================
@@ -68,17 +68,8 @@ export async function generatePackingList(
     // If billing check fails, allow generation (graceful degradation)
   }
 
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) {
-    return { success: false, error: "API Key missing" };
-  }
-
   try {
-    const google = createGoogleGenerativeAI({ apiKey });
-    const modelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
-    const model = google(modelName, {
-      structuredOutputs: true,
-    });
+    const { model, modelName } = resolveModel('packing', { structuredOutputs: true });
 
     const isOverseas = params.region !== "domestic";
     const prompt = `

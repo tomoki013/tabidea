@@ -1,4 +1,3 @@
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateObject } from "ai";
 import { AIService, Article } from "./types";
 import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus } from '@/types';
@@ -21,6 +20,8 @@ import {
   type RequestComplexity,
   type GenerationPhase,
 } from './model-selector';
+import { resolveModelForProvider, resolveProvider, type ProviderName } from './model-provider';
+import { executeOutlineStrategy, executeDetailsStrategy, getModifyProvider } from './strategies/orchestrator';
 import { buildContextSandwich, type PromptBuilderOptions } from './prompt-builder';
 import type { GoldenPlanExample } from '@/data/golden-plans/types';
 import type { TravelInfoSnapshot } from './adapters/travel-info-adapter';
@@ -186,40 +187,45 @@ function normalizeDayPlan(day: DayPlanInput): DayPlan {
 // ============================================
 
 export class GeminiService implements AIService {
-  private google: ReturnType<typeof createGoogleGenerativeAI>;
-  private defaultModelName: string;
   private options: GeminiServiceOptions;
   private _lastModelInfo: { modelName: string; tier: 'flash' | 'pro' } | null = null;
 
-  constructor(apiKey: string, options: GeminiServiceOptions = {}) {
-    this.google = createGoogleGenerativeAI({ apiKey });
-    this.defaultModelName = process.env.GOOGLE_MODEL_NAME || "gemini-2.5-flash";
+  constructor(options: GeminiServiceOptions = {}) {
     this.options = options;
-    console.log(`[gemini] Service initialized. Default model: ${this.defaultModelName}`);
+    console.log(`[ai-service] Service initialized`);
     if (options.premiumAiStatus?.hasAccess) {
-      console.log(`[gemini] Premium AI access enabled`);
+      console.log(`[ai-service] Premium AI access enabled`);
     }
   }
 
   /**
    * 指定されたフェーズに適したモデルを選択
    */
-  private getModel(phase: GenerationPhase, complexity?: RequestComplexity) {
+  private getModel(phase: GenerationPhase, complexity?: RequestComplexity, providerOverride?: ProviderName) {
+    const provider = providerOverride || resolveProvider('itinerary');
+
     const input: ModelSelectionInput = {
       premiumAiStatus: this.options.premiumAiStatus,
       userPrefersPro: this.options.userPrefersPro,
       complexity: complexity || this.options.complexity,
       phase,
+      provider,
     };
 
     const selection = selectModel(input);
     this._lastModelInfo = { modelName: selection.modelName, tier: selection.tier as 'flash' | 'pro' };
 
-    return {
-      model: this.google(selection.modelName, { structuredOutputs: true }),
-      temperature: selection.temperature,
+    const resolved = resolveModelForProvider(provider, 'itinerary', {
       modelName: selection.modelName,
+      structuredOutputs: true,
+    });
+
+    return {
+      model: resolved.model,
+      temperature: selection.temperature,
+      modelName: resolved.modelName,
       tier: selection.tier,
+      provider: resolved.provider,
     };
   }
 
@@ -318,17 +324,18 @@ ${prompt}`;
     }
   }
 
-  async modifyItinerary(
+  /**
+   * Internal: Modify itinerary with a specific provider
+   */
+  private async _modifyItinerarySingle(
     currentPlan: Itinerary,
-    chatHistory: { role: string; text: string }[]
+    chatHistory: { role: string; text: string }[],
+    providerOverride?: ProviderName,
   ): Promise<Itinerary> {
-    console.log(`[gemini] Modifying itinerary based on chat history...`);
-
     const conversationHistory = chatHistory
       .map((m) => `${m.role === "user" ? "USER" : "AI (Assistant)"}: ${m.text}`)
       .join("\n\n");
 
-    // Use Context Sandwich for modify (lighter version - no golden plans needed)
     const { systemInstruction: sandwichSystem } = buildContextSandwich({
       context: [],
       travelInfo: this.options.travelInfo,
@@ -353,30 +360,40 @@ ${prompt}`;
         5. Preserve the id, heroImage, and other metadata.
      `;
 
-    try {
-      const { model, temperature, modelName } = this.getModel('modify');
-      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+    const { model, temperature, modelName } = this.getModel('modify', undefined, providerOverride);
+    console.log(`[ai-service] Modify using model: ${modelName}, temperature: ${temperature}`);
 
-      const result = await withRetry(async () => {
-        const { object } = await generateObject({
-          model,
-          schema: ItinerarySchema,
-          prompt,
-          temperature,
-        });
-        return object;
+    const result = await withRetry(async () => {
+      const { object } = await generateObject({
+        model,
+        schema: ItinerarySchema,
+        prompt,
+        temperature,
       });
+      return object;
+    });
 
-      // Preserve original references if not present in new data
-      const references = result.references || currentPlan.references;
+    const references = result.references || currentPlan.references;
 
-      return {
-        ...result,
-        heroImage: result.heroImage ?? currentPlan.heroImage,
-        heroImagePhotographer: result.heroImagePhotographer ?? currentPlan.heroImagePhotographer,
-        heroImagePhotographerUrl: result.heroImagePhotographerUrl ?? currentPlan.heroImagePhotographerUrl,
-        references,
-      } as Itinerary;
+    return {
+      ...result,
+      heroImage: result.heroImage ?? currentPlan.heroImage,
+      heroImagePhotographer: result.heroImagePhotographer ?? currentPlan.heroImagePhotographer,
+      heroImagePhotographerUrl: result.heroImagePhotographerUrl ?? currentPlan.heroImagePhotographerUrl,
+      references,
+    } as Itinerary;
+  }
+
+  async modifyItinerary(
+    currentPlan: Itinerary,
+    chatHistory: { role: string; text: string }[]
+  ): Promise<Itinerary> {
+    console.log(`[ai-service] Modifying itinerary based on chat history...`);
+
+    try {
+      // Pipeline: use modify provider if full strategy
+      const modifyProvider = getModifyProvider();
+      return await this._modifyItinerarySingle(currentPlan, chatHistory, modifyProvider);
     } catch (error) {
       console.error("Failed to modify itinerary", error);
       throw new Error(
@@ -386,19 +403,9 @@ ${prompt}`;
   }
 
   /**
-   * Step 1: Generate Master Outline (No detailed activities yet)
-   * Focus on selecting destination (if needed) and high-level routing.
-   * IMPORTANT: This now includes overnight_location and travel_method_to_next
-   * to ensure continuity between days and prevent "teleportation" bugs.
+   * Build the full outline prompt (shared by single and race strategies)
    */
-  async generateOutline(
-    prompt: string,
-    context: Article[],
-    complexity?: RequestComplexity
-  ): Promise<PlanOutline> {
-    console.log(`[gemini] Generating Plan Outline...`);
-
-    // Build Context Sandwich prompt
+  private buildOutlinePrompt(prompt: string, context: Article[]): string {
     const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
       context,
       goldenPlanExamples: this.options.goldenPlanExamples,
@@ -441,38 +448,76 @@ ${prompt}`;
       - For the last day, "travel_method_to_next" should be null.
     `;
 
-    const systemInstruction = `${sandwichSystem}\n\n${outlineInstructions}`;
-    const fullPrompt = `${systemInstruction}\n\nUSER REQUEST:\n${sandwichUser}`;
+    return `${sandwichSystem}\n\n${outlineInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
+  }
+
+  /**
+   * Internal: Generate outline with a specific provider (single call)
+   */
+  private async _generateOutlineSingle(
+    prompt: string,
+    context: Article[],
+    complexity?: RequestComplexity,
+    providerOverride?: ProviderName,
+  ): Promise<PlanOutline> {
+    const fullPrompt = this.buildOutlinePrompt(prompt, context);
+
+    const { model, temperature, modelName } = this.getModel('outline', complexity, providerOverride);
+    console.log(`[ai-service] Outline using model: ${modelName}, temperature: ${temperature}`);
+
+    const result = await withRetry(async () => {
+      const { object } = await generateObject({
+        model,
+        schema: PlanOutlineSchema,
+        prompt: fullPrompt,
+        temperature,
+      });
+      return object;
+    });
+
+    const normalizedDays = result.days.map((day: any, index: number) => ({
+      ...day,
+      travel_method_to_next:
+        index === result.days.length - 1 ? undefined :
+        day.travel_method_to_next ?? undefined,
+    }));
+
+    return {
+      destination: result.destination,
+      description: result.description,
+      days: normalizedDays as PlanOutlineDay[],
+    };
+  }
+
+  /**
+   * Step 1: Generate Master Outline
+   * Uses orchestrator to apply the configured strategy (full or single).
+   */
+  async generateOutline(
+    prompt: string,
+    context: Article[],
+    complexity?: RequestComplexity
+  ): Promise<PlanOutline> {
+    console.log(`[ai-service] Generating Plan Outline...`);
 
     try {
-      const { model, temperature, modelName } = this.getModel('outline', complexity);
-      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+      const result = await executeOutlineStrategy(
+        this.buildOutlinePrompt(prompt, context),
+        context,
+        complexity,
+        // Single generation callback
+        async (_prompt, _context, _complexity, providerOverride) => {
+          return this._generateOutlineSingle(prompt, context, _complexity, providerOverride);
+        },
+        // Modify callback for cross-review corrections
+        async (currentPlan, chatHistory, providerOverride) => {
+          return this._modifyItinerarySingle(currentPlan as any, chatHistory, providerOverride);
+        },
+      );
 
-      const result = await withRetry(async () => {
-        const { object } = await generateObject({
-          model,
-          schema: PlanOutlineSchema,
-          prompt: fullPrompt,
-          temperature,
-        });
-        return object;
-      });
-
-      // Normalize travel_method_to_next: convert null strings to undefined
-      const normalizedDays = result.days.map((day, index) => ({
-        ...day,
-        travel_method_to_next:
-          index === result.days.length - 1 ? undefined :
-          day.travel_method_to_next ?? undefined,
-      }));
-
-      return {
-        destination: result.destination,
-        description: result.description,
-        days: normalizedDays as PlanOutlineDay[],
-      };
+      return result.outline;
     } catch (error) {
-      console.error("[gemini] Outline generation failed:", error);
+      console.error("[ai-service] Outline generation failed:", error);
       throw new Error(
         `旅程アウトラインの生成に失敗しました。しばらくしてから再度お試しください。`
       );
@@ -480,27 +525,18 @@ ${prompt}`;
   }
 
   /**
-   * Step 2: Generate Detailed Activities for specific days based on Outline
-   * IMPORTANT: Now accepts startingLocation to ensure continuity from previous chunk.
+   * Internal: Build the day details prompt
    */
-  async generateDayDetails(
+  private buildDayDetailsPrompt(
     prompt: string,
     context: Article[],
     startDay: number,
     endDay: number,
     outlineDays: PlanOutlineDay[],
     startingLocation?: string,
-    complexity?: RequestComplexity
-  ): Promise<DayPlan[]> {
-    console.log(`[gemini] Generating details for days ${startDay}-${endDay}...`);
-    if (startingLocation) {
-      console.log(`[gemini] Starting location context: ${startingLocation}`);
-    }
-
-    // Provide ONLY relevant outline info to keep context small
+  ): string {
     const outlineInfo = JSON.stringify(outlineDays);
 
-    // Build Context Sandwich prompt
     const { systemInstruction: sandwichSystem, userPrompt: sandwichUser } = buildContextSandwich({
       context,
       goldenPlanExamples: this.options.goldenPlanExamples,
@@ -509,7 +545,6 @@ ${prompt}`;
       generationType: 'dayDetails',
     });
 
-    // Build starting location constraint if provided
     const startingLocationConstraint = startingLocation
       ? startDay === 1
         ? `
@@ -608,30 +643,85 @@ ${prompt}`;
       - "source" field in Activity MUST be an object { type: "ai_knowledge", confidence: "medium" } if not from context.
     `;
 
-    const systemInstruction = `${sandwichSystem}\n\n${detailInstructions}`;
-    const fullPrompt = `${systemInstruction}\n\nUSER REQUEST:\n${sandwichUser}`;
+    return `${sandwichSystem}\n\n${detailInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
+  }
+
+  /**
+   * Internal: Generate day details with a specific provider (single call)
+   */
+  private async _generateDayDetailsSingle(
+    prompt: string,
+    context: Article[],
+    startDay: number,
+    endDay: number,
+    outlineDays: PlanOutlineDay[],
+    startingLocation?: string,
+    complexity?: RequestComplexity,
+    providerOverride?: ProviderName,
+  ): Promise<DayPlan[]> {
+    const fullPrompt = this.buildDayDetailsPrompt(prompt, context, startDay, endDay, outlineDays, startingLocation);
+
+    const { model, temperature, modelName } = this.getModel('details', complexity, providerOverride);
+    console.log(`[ai-service] Details using model: ${modelName}, temperature: ${temperature}`);
+
+    const result = await withRetry(async () => {
+      const { object } = await generateObject({
+        model,
+        schema: DayPlanArrayResponseInputSchema,
+        prompt: fullPrompt,
+        temperature,
+      });
+      return object;
+    });
+
+    const normalizedDays = result.days.map(normalizeDayPlan);
+    return normalizedDays as DayPlan[];
+  }
+
+  /**
+   * Step 2: Generate Detailed Activities for specific days based on Outline.
+   * Uses orchestrator to apply the configured strategy (full or single).
+   */
+  async generateDayDetails(
+    prompt: string,
+    context: Article[],
+    startDay: number,
+    endDay: number,
+    outlineDays: PlanOutlineDay[],
+    startingLocation?: string,
+    complexity?: RequestComplexity
+  ): Promise<DayPlan[]> {
+    console.log(`[ai-service] Generating details for days ${startDay}-${endDay}...`);
+    if (startingLocation) {
+      console.log(`[ai-service] Starting location context: ${startingLocation}`);
+    }
 
     try {
-      const { model, temperature, modelName } = this.getModel('details', complexity);
-      console.log(`[gemini] Using model: ${modelName}, temperature: ${temperature}`);
+      // Extract destination from outline for cross-review
+      const destination = outlineDays[0]?.overnight_location || 'unknown';
 
-      const result = await withRetry(async () => {
-        const { object } = await generateObject({
-          model,
-          schema: DayPlanArrayResponseInputSchema,
-          prompt: fullPrompt,
-          temperature,
-        });
-        return object;
-      });
+      const result = await executeDetailsStrategy(
+        prompt,
+        context,
+        startDay,
+        endDay,
+        outlineDays,
+        startingLocation,
+        destination,
+        complexity,
+        // Single generation callback
+        async (_prompt, _context, _startDay, _endDay, _outlineDays, _startingLocation, _complexity, providerOverride) => {
+          return this._generateDayDetailsSingle(prompt, context, _startDay, _endDay, _outlineDays, _startingLocation, _complexity, providerOverride);
+        },
+        // Modify callback for cross-review corrections
+        async (currentPlan, chatHistory, providerOverride) => {
+          return this._modifyItinerarySingle(currentPlan as any, chatHistory, providerOverride);
+        },
+      );
 
-      // Post-process to normalize any string fields that should be objects
-      const normalizedDays = result.days.map(normalizeDayPlan);
-
-      // Ensure we just return the days array
-      return normalizedDays as DayPlan[];
+      return result.days;
     } catch (error) {
-      console.error(`[gemini] Detail generation failed for days ${startDay}-${endDay}:`, error);
+      console.error(`[ai-service] Detail generation failed for days ${startDay}-${endDay}:`, error);
       throw new Error(
         `日程詳細の生成に失敗しました（Day ${startDay}-${endDay}）。しばらくしてから再度お試しください。`
       );

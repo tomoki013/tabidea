@@ -21,8 +21,10 @@ export const APP_CONFIG = {
  * AI設定
  */
 export const AI_CONFIG = {
-  /** デフォルトモデル名 */
+  /** デフォルトGeminiモデル名 */
   DEFAULT_MODEL_NAME: 'gemini-2.5-flash',
+  /** デフォルトOpenAIモデル名 */
+  DEFAULT_OPENAI_MODEL_NAME: 'gpt-4o-mini',
   /** 温度パラメータ（創造性） */
   TEMPERATURE: 0.35,
   /** 最大リトライ回数 */
@@ -74,6 +76,12 @@ export const ENV_KEYS = {
   GOOGLE_MAPS_API_KEY: 'GOOGLE_MAPS_API_KEY',
   /** クライアントサイドで使用するMaps API キー */
   GOOGLE_MAPS_API_KEY_PUBLIC: 'NEXT_PUBLIC_GOOGLE_MAPS_API_KEY',
+  /** OpenAI APIキー */
+  OPENAI_API_KEY: 'OPENAI_API_KEY',
+  /** OpenAIデフォルトモデル名 */
+  OPENAI_MODEL_NAME: 'OPENAI_MODEL_NAME',
+  /** 協調戦略設定 */
+  AI_STRATEGY_ITINERARY: 'AI_STRATEGY_ITINERARY',
   PINECONE_API_KEY: 'PINECONE_API_KEY',
   PINECONE_INDEX: 'PINECONE_INDEX',
   WEATHER_API_KEY: 'WEATHER_API_KEY',

@@ -104,8 +104,7 @@ export async function generateItinerary(
 ): Promise<ItineraryGenerationResult> {
   const { topK = 1, fetchHeroImage = true, verbose = false } = options;
 
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) {
+  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
     return { success: false, error: "GOOGLE_GENERATIVE_AI_API_KEY is not set" };
   }
 
@@ -114,7 +113,6 @@ export async function generateItinerary(
   try {
     const scraper = new PineconeRetriever();
     const ai = createAIService({
-      apiKey,
       geminiOptions: { goldenPlanExamples: GOLDEN_PLAN_EXAMPLES },
     });
 
@@ -358,13 +356,12 @@ export async function regenerateItinerary(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]
 ): Promise<ItineraryGenerationResult> {
-  const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  if (!apiKey) {
+  if (!process.env.GOOGLE_GENERATIVE_AI_API_KEY) {
     return { success: false, error: "GOOGLE_GENERATIVE_AI_API_KEY is not set" };
   }
 
   try {
-    const ai = createAIService({ apiKey });
+    const ai = createAIService();
     const newPlan = await ai.modifyItinerary(currentPlan, chatHistory);
 
     // If the destination changed, fetch a new image

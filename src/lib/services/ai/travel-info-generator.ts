@@ -3,8 +3,8 @@
  * generateObjectを使用してJSON形式のレスポンスを確実に取得
  */
 
-import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateObject } from 'ai';
+import { resolveModel } from './model-provider';
 import type { TravelInfoCategory } from '@/types';
 import {
   getCategorySchema,
@@ -173,17 +173,11 @@ ${new Date().toISOString()}`;
 // ============================================
 
 export class TravelInfoGenerator {
-  private google: ReturnType<typeof createGoogleGenerativeAI>;
-  private modelName: string;
+  private config: TravelInfoGeneratorConfig;
   private timeout: number;
 
   constructor(config: TravelInfoGeneratorConfig = {}) {
-    const apiKey = config.apiKey || process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-    if (!apiKey) {
-      throw new Error('Google AI API key is required');
-    }
-    this.google = createGoogleGenerativeAI({ apiKey });
-    this.modelName = config.modelName || process.env.GOOGLE_MODEL_NAME || 'gemini-2.5-flash';
+    this.config = config;
     this.timeout = config.timeout || 30000;
   }
 
@@ -206,8 +200,14 @@ export class TravelInfoGenerator {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), this.timeout);
 
+      const { model } = resolveModel('travel-info', {
+        modelName: this.config.modelName,
+        apiKey: this.config.apiKey,
+        structuredOutputs: true,
+      });
+
       const { object } = await generateObject({
-        model: this.google(this.modelName, { structuredOutputs: true }),
+        model,
         schema,
         prompt,
         abortSignal: controller.signal,
@@ -241,8 +241,14 @@ export class TravelInfoGenerator {
     console.log(`[travel-info-generator] Extracting country from: ${destination}`);
 
     try {
+      const { model } = resolveModel('travel-info', {
+        modelName: this.config.modelName,
+        apiKey: this.config.apiKey,
+        structuredOutputs: true,
+      });
+
       const { object } = await generateObject({
-        model: this.google(this.modelName, { structuredOutputs: true }),
+        model,
         schema: CountryExtractionSchema,
         prompt: `以下の地名が属する国名を日本語で答えてください。
 地名: ${destination}
