@@ -3,8 +3,9 @@
  * AI生成品質のKPIを収集し、Supabaseに非同期保存
  */
 
-import type { GenerationMetrics } from './types';
+import type { GenerationMetrics, StepTimingRecord } from './types';
 import { PROMPT_VERSION } from '../prompt-builder';
+import type { PerformanceReport } from '@/lib/utils/performance-timer';
 
 export class MetricsCollector {
   private metrics: Partial<GenerationMetrics> = {};
@@ -62,6 +63,16 @@ export class MetricsCollector {
   }
 
   /**
+   * PerformanceTimerのレポートからステップタイミングを記録
+   */
+  recordStepTimings(report: PerformanceReport): void {
+    this.metrics.stepTimings = report.steps.map((s) => ({
+      name: s.name,
+      duration: s.duration,
+    }));
+  }
+
+  /**
    * 合計時間を計算して最終化
    */
   finalize(): GenerationMetrics | null {
@@ -90,6 +101,7 @@ export class MetricsCollector {
         outline_time_ms: finalMetrics.outlineGenerationTime,
         detail_time_ms: finalMetrics.detailGenerationTime,
         total_time_ms: finalMetrics.totalGenerationTime,
+        step_timings: finalMetrics.stepTimings ?? null,
         validation_pass_rate: finalMetrics.validationPassRate,
         self_correction_count: finalMetrics.selfCorrectionCount,
         citation_rate: finalMetrics.citationRate,
