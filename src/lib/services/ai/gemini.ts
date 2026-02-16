@@ -49,9 +49,9 @@ export interface GeminiServiceOptions {
 // ============================================
 
 const MAX_RETRIES = 2;
-const RETRY_DELAY_MS = 1000;
-/** Per-attempt timeout for generateObject calls (90 seconds) */
-const GENERATION_TIMEOUT_MS = 90_000;
+const RETRY_DELAY_MS = 500;
+/** Per-attempt timeout for generateObject calls (60 seconds) */
+const GENERATION_TIMEOUT_MS = 60_000;
 
 // ============================================
 // Helper Functions
@@ -292,6 +292,7 @@ ${prompt}`;
           schema: LegacyItineraryResponseSchema,
           prompt: fullPrompt,
           temperature,
+          maxTokens: 4096,
           abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
         });
         return object;
@@ -373,6 +374,7 @@ ${prompt}`;
         schema: ItinerarySchema,
         prompt,
         temperature,
+        maxTokens: 8192,
         abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;
@@ -476,6 +478,7 @@ ${prompt}`;
         schema: PlanOutlineSchema,
         prompt: fullPrompt,
         temperature,
+        maxTokens: 2048,
         abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;
@@ -576,77 +579,27 @@ ${prompt}`;
       ${outlineInfo}
       ${startingLocationConstraint}
 
-      Rules:
-      1. Strictly follow the "highlight_areas" and "overnight_location" defined in the Master Plan Outline for each day.
-      2. Create detailed activities (3 meals + spots) fitting the user's pace.
-      3. Return the days array following the schema.
-      4. CRITICAL: Each day MUST start from the previous day's overnight_location (or startingLocation if specified).
-      5. CRITICAL - TRANSIT CARD GENERATION:
-         - If travel_method_to_next is specified in the outline for the PREVIOUS day, you MUST generate a "transit" object for this day.
-         - The transit object should include:
-           * type: Choose from "flight", "train", "bus", "ship", "car", "other" based on the travel_method_to_next description
-           * departure: Include the previous day's overnight_location and an appropriate departure time. Try to use an object { place: "...", time: "..." } but a string is acceptable if time is unknown.
-           * arrival: Include this day's starting location and an appropriate arrival time. Try to use an object { place: "...", time: "..." } but a string is acceptable if time is unknown.
-           * duration: Calculate realistic travel duration
-           * memo: Optional details like flight numbers, train names, etc.
-         - Transit should appear at the BEGINNING of the day, before other activities.
-         - If there is no travel between locations, do NOT include a transit object.
-      6. GENERATIVE UI SELECTION:
-         - Select the best \`ui_type\` for each day based on its content:
-           * "compact": For days with MANY short activities, heavy transit, or business-like schedules.
-           * "narrative": For relaxed days, nature exploration, cultural immersion, or when the "vibe" is more important than the schedule.
-           * "default": For standard sightseeing days with a balanced mix of spots and meals.
+      CORE RULES:
+      1. Follow "highlight_areas" and "overnight_location" from the outline for each day.
+      2. Create activities (3 meals + sightseeing spots) fitting the user's pace.
+      3. Each day MUST start from previous day's overnight_location (or startingLocation if specified).
+      4. TRANSIT: If travel_method_to_next is set for the PREVIOUS day, generate a "transit" object with type/departure/arrival/duration/memo. Transit goes at the BEGINNING of the day.
+      5. For international trips: include departure/return flights as "transit" objects (not activities).
+      6. ui_type: "compact" (heavy transit/many activities), "narrative" (relaxed/cultural), "default" (standard sightseeing).
 
-      QUALITY & TONE INSTRUCTIONS (IMPORTANT):
-      - WRITE LIKE A HUMAN TRAVEL WRITER, not a robot.
-      - Descriptions should be engaging, atmospheric, and practical.
-      - Avoid repetitive sentence structures (e.g. don't start every line with "Go to...").
-      - ONE-SHOT FEEL: Even though you are generating a part of the trip, write as if it flows naturally from the previous days.
-      - Morning Transition: Explicitly mention the context of waking up in the starting location (e.g., "Waking up to the sounds of [Location]...").
+      ACTIVITY FIELDS:
+      - activityType: "spot" (sightseeing), "meal" (restaurants), "transit" (movement), "accommodation" (hotel), "other" (free time)
+      - locationEn: "City, Country" format (e.g., "Kyoto, Japan")
+      - source: { type: "ai_knowledge", confidence: "medium" } if not from context
 
-      MULTI-CITY TRIP HANDLING:
-      - If this is a multi-city trip, ensure smooth transitions between cities.
-      - For travel days, include:
-        - Check-out and departure activities in the morning
-        - Transportation details (Shinkansen, flight, etc.) with approximate times
-        - Arrival and check-in at the new destination
-      - Balance the activities appropriately for travel days (fewer sightseeing spots).
-      - Always mention which city each activity is in when it might be ambiguous.
+      QUALITY:
+      - Write like a human travel writer. Engaging, atmospheric, practical descriptions.
+      - Geographic continuity: no teleporting. Include realistic travel between cities.
+      - For multi-city trips: smooth transitions with check-out, transport details, and check-in.
 
-      GEOGRAPHIC CONTINUITY (VERY IMPORTANT):
-      - The traveler cannot teleport. If Day N ends in City A, Day N+1 MUST start in City A.
-      - If moving to City B, include the actual travel (flight, train, etc.) as activities.
-      - Travel time should be realistic (e.g., international flights take several hours).
-
-      ACTIVITY TYPE CLASSIFICATION (IMPORTANT):
-      - For EACH activity, set the "activityType" field to help the UI display correctly:
-        * "spot" - Sightseeing, museums, temples, parks, landmarks (will show Google Places info)
-        * "meal" - Restaurants, cafes, food markets (will show Google Places info)
-        * "transit" - Any travel/movement between places (will NOT show Google Places info)
-        * "accommodation" - Hotel check-in/check-out (will NOT show Google Places info)
-        * "other" - Free time, rest, packing, etc. (will NOT show Google Places info)
-      - This is CRITICAL for transit activities like "アスワン出発、砂漠を越えてアブシンベルへ" - these MUST be "transit", not "spot"
-
-      LOCATION ENGLISH NAME (IMPORTANT):
-      - For EACH activity, set the "locationEn" field to the English name of the city/area where the activity takes place.
-      - Format: "City, Country" (e.g., "Aswan, Egypt", "Ubud, Bali", "Kyoto, Japan")
-      - This is used for generating correct booking links. Use specific city names, not broad regions.
-      - For transit activities, use the destination city name.
-
-      FLIGHT & BUDGET INFORMATION:
-      - If the trip is international/overseas, include departure and return flights as "transit" objects (NOT as activities).
-      - On Day 1, generate a transit object with type "flight" for the departure from Japan to the destination.
-      - On the last day, generate a transit object with type "flight" for the return to Japan.
-      - These MUST use the "transit" field of DayPlan, not the "activities" array.
-
-      TIMELINE ITEMS (時系列タイムライン):
-      - Generate a "timelineItems" array for each day that interleaves transit and activities in chronological order.
-      - Each item has "itemType" ("activity" or "transit") and "data" (matching Activity or TransitInfo schema).
-      - Include ALL movements within the day as transit items (not just the main transit).
-      - For example, if a train ride happens between two sightseeing spots, include it as a transit item.
-      - Transit items should also have a "time" field for display.
-      - This array allows the UI to render a unified chronological timeline.
-      - "source" field in Activity MUST be an object { type: "ai_knowledge", confidence: "medium" } if not from context.
+      TIMELINE ITEMS:
+      - Generate "timelineItems" array interleaving transit and activities chronologically.
+      - Each item: { itemType: "activity"|"transit", data: Activity|TransitInfo, time: string }.
     `;
 
     return `${sandwichSystem}\n\n${detailInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
@@ -676,6 +629,7 @@ ${prompt}`;
         schema: DayPlanArrayResponseInputSchema,
         prompt: fullPrompt,
         temperature,
+        maxTokens: 4096,
         abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;

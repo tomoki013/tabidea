@@ -2,6 +2,13 @@
  * AI生成品質のKPI型定義
  */
 
+export interface StepTimingRecord {
+  /** ステップ名 */
+  name: string;
+  /** 所要時間 (ms) */
+  duration: number;
+}
+
 export interface GenerationMetrics {
   /** 生成ID（ユニーク） */
   generationId: string;
@@ -15,6 +22,8 @@ export interface GenerationMetrics {
   detailGenerationTime?: number;
   /** 合計生成時間 (ms) */
   totalGenerationTime?: number;
+  /** 個別ステップの所要時間 */
+  stepTimings?: StepTimingRecord[];
 
   // 品質指標
   /** 検証通過率（0-1） */

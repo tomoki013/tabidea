@@ -130,7 +130,7 @@ activityがそのまま検索に使えるシンプルな名前の場合は省略
 // Layer 2: Tomokichi Voice (RAG articles)
 // ============================================
 
-const MAX_ARTICLE_CONTENT_LENGTH = 500;
+const MAX_ARTICLE_CONTENT_LENGTH = 300;
 
 function buildTomokichiVoice(context: Article[]): string {
   if (context.length === 0) return '';

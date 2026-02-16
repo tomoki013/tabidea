@@ -21,6 +21,7 @@ import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
+import { createOutlineTimer, createChunkTimer, OUTLINE_TARGETS_PRO, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
 
 export type ActionState = {
   success: boolean;
@@ -136,14 +137,16 @@ export async function getUserConstraintPrompt(): Promise<string> {
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
 export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
-  const startTime = Date.now();
+  const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
-  // 利用制限チェック（最初に実行）
-  const limitResult = await checkAndRecordUsage('plan_generation', {
-    destination: input.destinations.join(', ') || input.region,
-    isDestinationDecided: input.isDestinationDecided,
-  });
+  // 利用制限チェック
+  const limitResult = await timer.measure('usage_check', () =>
+    checkAndRecordUsage('plan_generation', {
+      destination: input.destinations.join(', ') || input.region,
+      isDestinationDecided: input.isDestinationDecided,
+    })
+  );
 
   if (!limitResult.allowed) {
     return {
@@ -175,9 +178,10 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       travelVibe: input.travelVibe,
     };
 
-    const cached = await getOutlineCache(cacheParams);
+    const cached = await timer.measure('cache_check', () => getOutlineCache(cacheParams));
     if (cached) {
-      console.log(`[action] Outline served from cache in ${Date.now() - startTime}ms`);
+      timer.log();
+      console.log(`[action] Outline served from cache`);
 
       const updatedInput = { ...input };
       if (!updatedInput.isDestinationDecided) {
@@ -205,101 +209,104 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
     });
 
-    // 1. RAG Search
+    // 1. RAG検索とプロンプト構築を並列実行
     const destinationsStr = input.destinations.join("、");
     const query = input.isDestinationDecided
       ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
       : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
 
-    let contextArticles: Article[] = [];
-    try {
-        contextArticles = await scraper.search(query, { topK: 1 });
-    } catch (searchError) {
-        console.warn("[action] Vector search failed:", searchError);
-    }
+    // RAG検索とユーザー制約取得を並列実行
+    const [contextArticles, userConstraintPrompt] = await timer.measure('rag_search', async () => {
+      const [articles, constraints] = await Promise.all([
+        scraper.search(query, { topK: 1 }).catch((err) => {
+          console.warn("[action] Vector search failed:", err);
+          return [] as Article[];
+        }),
+        getUserConstraintPrompt(),
+      ]);
+      return [articles, constraints] as const;
+    });
 
-    // 2. Prepare Prompt
-    const totalDays = extractDuration(input.dates);
-    const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
-    const budgetPrompt = getBudgetContext(input.budget);
-    const userConstraintPrompt = await getUserConstraintPrompt();
+    // 2. プロンプト構築
+    const prompt = timer.measure('prompt_build', async () => {
+      const totalDays = extractDuration(input.dates);
+      const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
+      const budgetPrompt = getBudgetContext(input.budget);
+      const transitConstraints = buildConstraintsPrompt(input.transits);
+      const transitSchedule = buildTransitSchedulePrompt(input.transits);
+      const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
 
-    // Enhanced Transit Constraints
-    const transitConstraints = buildConstraintsPrompt(input.transits);
-    const transitSchedule = buildTransitSchedulePrompt(input.transits);
-    const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
+      if (input.isDestinationDecided) {
+        const isMultiCity = input.destinations.length > 1;
+        return `
+          Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip - please create an efficient route visiting all locations)" : ""}
+          Dates: ${input.dates}
+          Total Days: ${durationPrompt}
+          Companions: ${input.companions}
+          Themes: ${input.theme.join(", ")}
+          ${budgetPrompt}
+          Pace: ${input.pace}
+          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+          Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
+          Note: ${input.freeText || "None"}
 
-    let prompt = "";
-    if (input.isDestinationDecided) {
-      const isMultiCity = input.destinations.length > 1;
-      prompt = `
-        Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip - please create an efficient route visiting all locations)" : ""}
-        Dates: ${input.dates}
-        Total Days: ${durationPrompt}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        ${budgetPrompt}
-        Pace: ${input.pace}
-        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-        Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
-        Note: ${input.freeText || "None"}
+          ${transitSchedule}
 
-        ${transitSchedule}
+          ${fixedSchedulePrompt}
 
-        ${fixedSchedulePrompt}
+          ${userConstraintPrompt}
 
-        ${fixedSchedulePrompt}
+          ${transitConstraints}
 
-        ${userConstraintPrompt}
+          === ROUTE OPTIMIZATION INSTRUCTIONS ===
+          1. You are NOT bound by the order in which destinations were entered by the user, UNLESS fixed by transit anchors above.
+          2. Freely rearrange the visiting order to optimize for:
+             - Geographic efficiency (minimize backtracking)
+             - Travel convenience (logical flow between locations)
+             - Time of day considerations (e.g., morning activities vs evening activities)
+          3. **RESPECT ANCHORS**: If the user has a booked flight to a city, you MUST start the relevant day there.
 
-        ${transitConstraints}
+          === MANDATORY VISITS ===
+          1. ALL destinations listed above (${destinationsStr}) MUST be included in the itinerary. No destination may be omitted.
+          2. ALL "Must-Visit Places" listed above MUST be incorporated into the plan. Omitting any specified place is NOT acceptable.
+          3. If time constraints make it difficult to visit everything, compress visit durations rather than removing locations.
+          ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a geographically optimized order, considering travel time between locations.` : ""}
+        `;
+      } else {
+        return `
+          Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International - NOT Japan)" : "Anywhere"}
+          Vibe: ${input.travelVibe || "None"}
+          Dates: ${input.dates}
+          Total Days: ${durationPrompt}
+          Companions: ${input.companions}
+          Themes: ${input.theme.join(", ")}
+          ${budgetPrompt}
+          Pace: ${input.pace}
+          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
+          Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
+          Note: ${input.freeText || "None"}
 
-        === ROUTE OPTIMIZATION INSTRUCTIONS ===
-        1. You are NOT bound by the order in which destinations were entered by the user, UNLESS fixed by transit anchors above.
-        2. Freely rearrange the visiting order to optimize for:
-           - Geographic efficiency (minimize backtracking)
-           - Travel convenience (logical flow between locations)
-           - Time of day considerations (e.g., morning activities vs evening activities)
-        3. **RESPECT ANCHORS**: If the user has a booked flight to a city, you MUST start the relevant day there.
+          ${transitSchedule}
 
-        === MANDATORY VISITS ===
-        1. ALL destinations listed above (${destinationsStr}) MUST be included in the itinerary. No destination may be omitted.
-        2. ALL "Must-Visit Places" listed above MUST be incorporated into the plan. Omitting any specified place is NOT acceptable.
-        3. If time constraints make it difficult to visit everything, compress visit durations rather than removing locations.
-        ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a geographically optimized order, considering travel time between locations.` : ""}
-      `;
-    } else {
-      prompt = `
-        Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International - NOT Japan)" : "Anywhere"}
-        Vibe: ${input.travelVibe || "None"}
-        Dates: ${input.dates}
-        Total Days: ${durationPrompt}
-        Companions: ${input.companions}
-        Themes: ${input.theme.join(", ")}
-        ${budgetPrompt}
-        Pace: ${input.pace}
-        Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-        Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
-        Note: ${input.freeText || "None"}
+          ${fixedSchedulePrompt}
 
-        ${transitSchedule}
+          ${userConstraintPrompt}
 
-        ${fixedSchedulePrompt}
+          ${transitConstraints}
 
-        ${userConstraintPrompt}
+          === MANDATORY VISITS ===
+          1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
+          2. Omitting any specified place is NOT acceptable.
+          3. These places should influence destination selection - choose a destination that allows visiting all specified places.
 
-        ${transitConstraints}
+          TASK: Select best destination and outline plan.
+        `;
+      }
+    });
 
-        === MANDATORY VISITS ===
-        1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
-        2. Omitting any specified place is NOT acceptable.
-        3. These places should influence destination selection - choose a destination that allows visiting all specified places.
+    const resolvedPrompt = await prompt;
 
-        TASK: Select best destination and outline plan.
-      `;
-    }
-
-    // 3. Generate Outline (with metrics)
+    // 3. AI生成（メトリクス付き）
     const metricsCollector = new MetricsCollector();
     metricsCollector.startGeneration(
       input.destinations.join('、') || 'unknown',
@@ -307,27 +314,37 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     );
     metricsCollector.recordRagArticles(contextArticles.length);
 
-    const outlineStartTime = Date.now();
-    const outline = await ai.generateOutline(prompt, contextArticles);
-    metricsCollector.recordOutlineTime(Date.now() - outlineStartTime);
+    const outline = await timer.measure('ai_generation', async () => {
+      const result = await ai.generateOutline(resolvedPrompt, contextArticles);
+      return result;
+    });
 
-    // Flush metrics asynchronously (non-blocking)
+    // Pro モデル使用時は目標時間を切り替え
+    if (ai.lastModelInfo?.tier === 'pro') {
+      timer.setTargets(OUTLINE_TARGETS_PRO);
+    }
+
+    metricsCollector.recordOutlineTime(
+      timer.getReport().steps.find(s => s.name === 'ai_generation')?.duration ?? 0
+    );
+
+    // メトリクス非同期フラッシュ
     metricsCollector.flush().catch(() => {});
 
-    // 4. Update Input if destination was chosen
+    // 4. 目的地更新
     const updatedInput = { ...input };
     if (!updatedInput.isDestinationDecided) {
-      // When AI decides the destination, store it in destinations array
       updatedInput.destinations = [outline.destination];
       updatedInput.isDestinationDecided = true;
     }
 
-    // 5. Fetch Hero Image early
-    const heroImageData = await getUnsplashImage(outline.destination);
+    // 5. ヒーロー画像取得
+    const heroImageData = await timer.measure('hero_image', () =>
+      getUnsplashImage(outline.destination)
+    );
 
-    console.log(`[action] Outline generated in ${Date.now() - startTime}ms`);
-
-    // キャッシュに保存（非同期、失敗しても問題なし）
+    // 6. キャッシュ保存（非同期）
+    timer.start('cache_save');
     setOutlineCache(
       {
         destinations: input.destinations,
@@ -345,7 +362,13 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
         context: contextArticles,
         heroImage: heroImageData,
       }
-    ).catch((e) => console.warn("[action] Cache save failed:", e));
+    ).then(() => timer.end('cache_save')).catch((e) => {
+      timer.end('cache_save');
+      console.warn("[action] Cache save failed:", e);
+    });
+
+    // パフォーマンスログ出力
+    timer.log();
 
     return {
       success: true,
@@ -359,6 +382,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     };
 
   } catch (error) {
+    timer.log();
     console.error("[action] Outline generation failed:", error);
     return { success: false, message: "プラン概要の作成に失敗しました。" };
   }
@@ -375,7 +399,7 @@ export async function generatePlanChunk(
   endDay: number,
   previousOvernightLocation?: string
 ): Promise<ChunkActionState> {
-  const startTime = Date.now();
+  const timer = createChunkTimer(startDay, endDay);
   console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
 
   const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
@@ -385,49 +409,60 @@ export async function generatePlanChunk(
     const ai = new GeminiService({
       goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
     });
-    const budgetPrompt = getBudgetContext(input.budget);
-    const destinationsStr = input.destinations.join("、");
-    const isMultiCity = input.destinations.length > 1;
-    const userConstraintPrompt = await getUserConstraintPrompt();
 
-    // Enhanced Transit Constraints for Chunk
-    const transitConstraints = buildConstraintsPrompt(input.transits);
-    const transitSchedule = buildTransitSchedulePrompt(input.transits);
-    const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
+    // プロンプト構築（ユーザー制約取得含む）
+    const prompt = await timer.measure('prompt_build', async () => {
+      const budgetPrompt = getBudgetContext(input.budget);
+      const destinationsStr = input.destinations.join("、");
+      const isMultiCity = input.destinations.length > 1;
+      const userConstraintPrompt = await getUserConstraintPrompt();
+      const transitConstraints = buildConstraintsPrompt(input.transits);
+      const transitSchedule = buildTransitSchedulePrompt(input.transits);
+      const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
 
-    const prompt = `
-      Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
-      Dates: ${input.dates}
-      Companions: ${input.companions}
-      Themes: ${input.theme.join(", ")}
-      ${budgetPrompt}
-      Pace: ${input.pace}
-      Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
-      Request: ${input.freeText || "None"}
-      ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
+      return `
+        Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip)" : ""}
+        Dates: ${input.dates}
+        Companions: ${input.companions}
+        Themes: ${input.theme.join(", ")}
+        ${budgetPrompt}
+        Pace: ${input.pace}
+        Must-Visit: ${input.mustVisitPlaces?.join(", ") || "None"}
+        Request: ${input.freeText || "None"}
+        ${isMultiCity ? `Note: This is a multi-city trip visiting: ${destinationsStr}. Ensure the itinerary covers all locations.` : ""}
 
-      ${transitSchedule}
+        ${transitSchedule}
 
-      ${fixedSchedulePrompt}
+        ${fixedSchedulePrompt}
 
-      ${userConstraintPrompt}
+        ${userConstraintPrompt}
 
-      ${transitConstraints}
-    `;
+        ${transitConstraints}
+      `;
+    });
 
-    const days = await ai.generateDayDetails(
-      prompt,
-      context,
-      startDay,
-      endDay,
-      outlineDays,
-      previousOvernightLocation
+    // AI生成
+    const days = await timer.measure('ai_generation', () =>
+      ai.generateDayDetails(
+        prompt,
+        context,
+        startDay,
+        endDay,
+        outlineDays,
+        previousOvernightLocation
+      )
     );
 
-    console.log(`[action] Chunk ${startDay}-${endDay} generated in ${Date.now() - startTime}ms`);
+    // Pro モデル使用時は目標時間を切り替え
+    if (ai.lastModelInfo?.tier === 'pro') {
+      timer.setTargets(CHUNK_TARGETS_PRO);
+    }
+
+    timer.log();
     return { success: true, data: days, modelInfo: ai.lastModelInfo || undefined };
 
   } catch (error) {
+    timer.log();
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
     return { success: false, message: "詳細プランの生成に失敗しました。" };
   }
