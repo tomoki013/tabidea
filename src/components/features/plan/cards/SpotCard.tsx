@@ -31,6 +31,8 @@ export interface SpotCardProps {
   onUpdate?: (updates: Partial<Activity>) => void;
   /** Callback when activity is deleted */
   onDelete?: () => void;
+  /** Whether the card is expandable */
+  expandable?: boolean;
 }
 
 // ============================================================================
@@ -133,6 +135,7 @@ export default function SpotCard({
   isEditable = false,
   onUpdate,
   onDelete,
+  expandable = true,
 }: SpotCardProps) {
   const { time, activity: name, description, validation, activityType } = activity;
 
@@ -245,6 +248,7 @@ export default function SpotCard({
       onStateChange={onStateChange}
       colorTheme="orange"
       className={className}
+      expandable={expandable}
       badge={skipPlacesSearch ? undefined : <TrustBadge level={getTrustLevel()} size="sm" showLabel={getTrustLevel() === "unverified"} />}
       actions={
         isEditable && onDelete && (

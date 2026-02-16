@@ -55,10 +55,10 @@ export default function TravelShioriHeroSection() {
 
                <div className="pt-4">
                   <Link
-                     href="/samples"
+                     href="/shiori"
                      className="inline-flex items-center gap-2 bg-stone-800 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-stone-700 hover:-translate-y-1 transition-all"
                   >
-                     サンプルプランを見る
+                     みんなの旅のしおりを見る
                      <FaArrowRight />
                   </Link>
                </div>

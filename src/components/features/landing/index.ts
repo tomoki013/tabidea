@@ -13,3 +13,4 @@ export { default as UsageGuideHero } from './UsageGuideHero';
 
 export { default as PublishingSection } from './PublishingSection';
 export { default as TravelShioriHeroSection } from './TravelShioriHeroSection';
+export { default as BlogPromotionSection } from './BlogPromotionSection';

@@ -50,6 +50,8 @@ export interface TransitCardProps {
   onDelete?: () => void;
   /** Custom class name */
   className?: string;
+  /** Whether the card is expandable */
+  expandable?: boolean;
 }
 
 // ============================================================================
@@ -112,6 +114,7 @@ export default function TransitCard({
   onUpdate,
   onDelete,
   className = "",
+  expandable = true,
 }: TransitCardProps) {
   const config = TRANSIT_CONFIG[transit.type];
   const Icon = config.icon;
@@ -220,6 +223,7 @@ export default function TransitCard({
       onStateChange={onStateChange}
       colorTheme={config.colorTheme}
       className={className}
+      expandable={expandable}
       badge={
         transit.isBooked ? (
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">

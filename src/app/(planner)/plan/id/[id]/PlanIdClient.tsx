@@ -158,6 +158,7 @@ export default function PlanIdClient({
           initialChatHistory={chatHistoryToKeep}
           shareCode={plan.shareCode}
           planId={planId}
+          initialIsPublic={plan.isPublic}
         />
 
         {/* Request Editing Modal */}
