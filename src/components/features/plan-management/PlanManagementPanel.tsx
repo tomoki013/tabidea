@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState, useTransition } from 'react';
+import { FaCheckCircle, FaCopy, FaGlobeAsia, FaLink, FaLock, FaSave, FaUserFriends } from 'react-icons/fa';
 
 import type { NormalizedPlanDay, PlanPublication } from '@/types/normalized-plan';
 import {
@@ -79,65 +80,134 @@ export default function PlanManagementPanel({ planId, destination, days, publica
         </div>
       </div>
 
-      <div className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
-        <h2 className="font-semibold text-stone-800">旅のしおり公開</h2>
-        <p className="text-sm text-stone-600">現在のステータス: <span className="font-semibold text-stone-800">{visibilityLabel[publishState.visibility]}</span></p>
-
-        <div className="grid gap-2 sm:grid-cols-3">
-          {(['private', 'unlisted', 'public'] as const).map((visibility) => (
-            <button
-              key={visibility}
-              type="button"
-              className={`rounded-lg border px-3 py-2 text-left text-sm transition ${publishState.visibility === visibility ? 'border-primary bg-primary/10 text-primary' : 'border-stone-200 bg-white text-stone-700'}`}
-              onClick={() => setPublishState((prev) => ({ ...prev, visibility }))}
-            >
-              <p className="font-semibold">{visibilityLabel[visibility]}</p>
-              <p className="mt-1 text-xs text-stone-500">
-                {visibility === 'private' && '公開しません。編集中の状態です。'}
-                {visibility === 'unlisted' && 'URLを知る人だけに共有できます。'}
-                {visibility === 'public' && 'みんなが見つけられる状態で公開します。'}
-              </p>
-            </button>
-          ))}
+      <div className="rounded-2xl border border-stone-200 bg-gradient-to-br from-white via-amber-50/40 to-sky-50/40 p-5 shadow-sm space-y-4">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div>
+            <h2 className="font-semibold text-stone-800 text-lg">旅のしおり公開</h2>
+            <p className="text-sm text-stone-600">共有範囲と表示内容をまとめて設定できます</p>
+          </div>
+          <div className="rounded-full border border-stone-300 bg-white px-3 py-1 text-xs font-semibold text-stone-700">
+            現在: {visibilityLabel[publishState.visibility]}
+          </div>
         </div>
 
-        {publishState.visibility !== 'private' && (
-          <div className="rounded-lg border border-stone-200 bg-stone-50 p-3 text-sm text-stone-700">
-            しおりを公開すると、他の人が閲覧できるようになります。公開範囲に合わせて表示内容を調整してください。
-          </div>
-        )}
-
-        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={publishState.publish_budget} onChange={(e) => setPublishState((p) => ({ ...p, publish_budget: e.target.checked }))} />予算情報を含める</label>
-        <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={publishState.publish_journal} onChange={(e) => setPublishState((p) => ({ ...p, publish_journal: e.target.checked }))} />日記を含める</label>
-        <button
-          type="button"
-          className="px-4 py-2 rounded-md bg-primary text-white text-sm"
-          onClick={() => startTransition(async () => {
-            const result = await upsertPlanPublication({
-              planId,
-              destination,
-              visibility: publishState.visibility,
-              publishBudget: publishState.publish_budget,
-              publishJournal: publishState.publish_journal,
-            });
-            if (result.success) {
-              setPublishState((prev) => ({
-                ...prev,
-                slug: result.slug ?? prev.slug,
-                unlisted_token: result.unlistedToken ?? prev.unlisted_token,
-              }));
-            }
+        <div className="grid gap-3 sm:grid-cols-3">
+          {([
+            {
+              key: 'private' as const,
+              title: '非公開',
+              desc: '自分だけが閲覧できます。下書き・編集中におすすめ。',
+              Icon: FaLock,
+              ring: 'from-stone-700/10 to-stone-400/5',
+            },
+            {
+              key: 'unlisted' as const,
+              title: '限定公開',
+              desc: 'URLを知る相手だけに共有。家族・同行者向け。',
+              Icon: FaUserFriends,
+              ring: 'from-amber-600/15 to-amber-300/5',
+            },
+            {
+              key: 'public' as const,
+              title: '一般公開',
+              desc: '検索・共有で見つけてもらえる公開しおり。',
+              Icon: FaGlobeAsia,
+              ring: 'from-sky-600/15 to-sky-300/5',
+            },
+          ]).map(({ key, title, desc, Icon, ring }) => {
+            const active = publishState.visibility === key;
+            return (
+              <button
+                key={key}
+                type="button"
+                className={`rounded-xl border p-4 text-left transition-all ${active
+                  ? `border-primary bg-gradient-to-br ${ring} shadow-md`
+                  : 'border-stone-200 bg-white hover:border-stone-300 hover:shadow-sm'}`}
+                onClick={() => setPublishState((prev) => ({ ...prev, visibility: key }))}
+              >
+                <div className="flex items-center gap-2">
+                  <Icon className={`text-sm ${active ? 'text-primary' : 'text-stone-400'}`} />
+                  <p className="font-semibold text-sm text-stone-800">{title}</p>
+                  {active && <FaCheckCircle className="ml-auto text-primary text-sm" />}
+                </div>
+                <p className="mt-2 text-xs text-stone-600 leading-relaxed">{desc}</p>
+              </button>
+            );
           })}
-        >{publishState.visibility === 'private' ? '非公開設定を保存' : '公開設定を保存'}</button>
+        </div>
+
+        <div className="grid gap-2 sm:grid-cols-2">
+          <label className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm">
+            <input
+              type="checkbox"
+              checked={publishState.publish_budget}
+              onChange={(e) => setPublishState((p) => ({ ...p, publish_budget: e.target.checked }))}
+            />
+            予算情報を含める
+          </label>
+          <label className="flex items-center gap-2 rounded-lg border border-stone-200 bg-white px-3 py-2 text-sm">
+            <input
+              type="checkbox"
+              checked={publishState.publish_journal}
+              onChange={(e) => setPublishState((p) => ({ ...p, publish_journal: e.target.checked }))}
+            />
+            日記を含める
+          </label>
+        </div>
+
+        <div className="flex flex-wrap items-center gap-3">
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-primary text-white text-sm"
+            onClick={() => startTransition(async () => {
+              const result = await upsertPlanPublication({
+                planId,
+                destination,
+                visibility: publishState.visibility,
+                publishBudget: publishState.publish_budget,
+                publishJournal: publishState.publish_journal,
+              });
+              if (result.success) {
+                setPublishState((prev) => ({
+                  ...prev,
+                  slug: result.slug ?? prev.slug,
+                  unlisted_token: result.unlistedToken ?? prev.unlisted_token,
+                }));
+              }
+            })}
+          >
+            <FaSave className="text-xs" />
+            {publishState.visibility === 'private' ? '非公開設定を保存' : '公開設定を保存'}
+          </button>
+
+          {publishUrl && publishState.visibility !== 'private' && (
+            <>
+              <a
+                href={publishUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-md border border-primary/30 bg-white px-3 py-2 text-xs text-primary hover:bg-primary/5"
+              >
+                <FaLink /> 公開ページを開く
+              </a>
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 rounded-md border border-stone-300 bg-white px-3 py-2 text-xs text-stone-700 hover:bg-stone-50"
+                onClick={() => navigator.clipboard.writeText(publishUrl)}
+              >
+                <FaCopy /> URLをコピー
+              </button>
+            </>
+          )}
+        </div>
 
         {publishUrl && publishState.visibility !== 'private' && (
           <p className="text-xs text-stone-600 break-all">公開URL: {publishUrl}</p>
         )}
 
-        <div className="flex flex-wrap gap-3 text-xs">
-          <a href="https://shiori.tabide.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">他の公開しおりを探す</a>
-          <a href={publishUrl ?? 'https://shiori.tabide.ai'} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">自分の公開ページを開く</a>
-        </div>
+        <a href="https://shiori.tabide.ai" target="_blank" rel="noopener noreferrer" className="inline-flex text-xs text-primary hover:underline">
+          他の公開しおりを探す
+        </a>
       </div>
 
       {localDays.map((day) => (
