@@ -36,6 +36,8 @@ export interface BaseCardProps {
   expandable?: boolean;
   /** Badge or status indicator */
   badge?: ReactNode;
+  /** Header actions (e.g. delete button) */
+  actions?: ReactNode;
 }
 
 // ============================================================================
@@ -92,6 +94,7 @@ export default function BaseCard({
   colorTheme = "orange",
   expandable = true,
   badge,
+  actions,
 }: BaseCardProps) {
   const [internalState, setInternalState] = useState<CardState>(state);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -163,6 +166,16 @@ export default function BaseCard({
           {time && (
             <div className="font-mono text-xs text-stone-400 shrink-0 bg-stone-50 px-2 py-1 rounded-sm border border-stone-100">
               {time}
+            </div>
+          )}
+
+          {/* Actions (Delete, etc) */}
+          {actions && (
+            <div
+              className="shrink-0 flex items-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {actions}
             </div>
           )}
 

@@ -8,14 +8,10 @@ import PDFExportButton from "./PDFExportButton";
 import CalendarExportButton from "./CalendarExportButton";
 import CostEstimate from "./CostEstimate";
 import BookingLinkButton from "./BookingLinkButton";
-import DayMap from "./DayMap";
-import MapRouteView from "./MapRouteView";
 import { PackingListView } from "./PackingList";
 import { getStorageKey } from "./PackingList/PackingListView";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
-import JournalTimeline from "./JournalTimeline";
 import PlanFeedbackBar from "./PlanFeedbackBar";
-import ActivityFeedbackButton from "./ActivityFeedbackButton";
 import type { PackingList } from "@/types/packing-list";
 import {
   FaCalendarAlt,
@@ -24,16 +20,17 @@ import {
   FaFlag,
   FaRegFlag,
   FaPlus,
-  FaTrash,
 } from "react-icons/fa";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
-import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
-import { usePlanModal } from "@/context/PlanModalContext";
 import { JournalSheet, Tape, Stamp, HandwrittenText } from "@/components/ui/journal";
 import ModelBadge from "@/components/ui/ModelBadge";
+import { EditableText } from "@/components/ui/editable/EditableText";
+import { CardState } from "@/components/features/plan/cards/BaseCard";
+import SpotCard from "@/components/features/plan/cards/SpotCard";
+import TransitCard from "@/components/features/plan/cards/TransitCard";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -47,7 +44,7 @@ interface ResultViewProps {
   onChatChange?: (messages: { role: string; text: string }[]) => void;
   isUpdating?: boolean;
   onEditRequest?: (stepIndex: number) => void;
-  showRequestSummary?: boolean; // Deprecated but kept for signature compatibility
+  showRequestSummary?: boolean;
   showChat?: boolean;
   showShareButtons?: boolean;
   showReferences?: boolean;
@@ -66,8 +63,6 @@ export default function ResultView({
   onResultChange,
   onChatChange,
   isUpdating = false,
-  onEditRequest,
-  showRequestSummary = true,
   showChat = true,
   showShareButtons = true,
   showReferences = true,
@@ -83,6 +78,9 @@ export default function ResultView({
 
   const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
   const tabBarRef = useRef<HTMLDivElement>(null);
+
+  // Card expansion state
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
 
   // Packing List State
   const [packingList, setPackingList] = useState<PackingList | null>(null);
@@ -189,9 +187,8 @@ export default function ResultView({
     if (day.transit === originalTransit) {
        day.transit = { ...day.transit, ...updates };
     }
-    // 2. Update timelineItems if present (less common for manual edits but possible if AI generated them)
+    // 2. Update timelineItems if present
     else if (day.timelineItems) {
-       // Find the item in timelineItems that contains this transit data
        const itemIndex = day.timelineItems.findIndex(item => item.itemType === 'transit' && item.data === originalTransit);
        if (itemIndex >= 0) {
           const newItem = { ...day.timelineItems[itemIndex] };
@@ -221,7 +218,6 @@ export default function ResultView({
   }, [result, onResultChange]);
 
   const handleDeleteActivity = useCallback((dayIndex: number, actIndex: number) => {
-    if (!confirm('この予定を削除しますか？')) return;
     const newResult = { ...result };
     const day = newResult.days[dayIndex];
     if (!day) return;
@@ -232,6 +228,35 @@ export default function ResultView({
 
     onResultChange?.(newResult);
   }, [result, onResultChange]);
+
+  const handleDeleteTransit = useCallback((dayIndex: number) => {
+    const newResult = { ...result };
+    const day = newResult.days[dayIndex];
+    if (!day) return;
+
+    day.transit = undefined;
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
+
+  // Card State Management
+  const handleCardStateChange = useCallback((cardId: string, state: CardState) => {
+    setExpandedCards((prev) => {
+      const next = new Set(prev);
+      if (state === "expanded") {
+        next.add(cardId);
+      } else {
+        next.delete(cardId);
+      }
+      return next;
+    });
+  }, []);
+
+  const getCardState = useCallback(
+    (cardId: string): CardState => {
+      return expandedCards.has(cardId) ? "expanded" : "collapsed";
+    },
+    [expandedCards]
+  );
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
@@ -368,20 +393,91 @@ export default function ResultView({
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
             <div className={showReferences ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12" : "max-w-4xl mx-auto space-y-16"}>
-              {/* Timeline */}
+              {/* Timeline (Cards List) */}
               <div className="space-y-16 pl-4 md:pl-0" data-itinerary-section>
 
-                {/* Replaced loop with JournalTimeline */}
-                <JournalTimeline
-                   days={result.days}
-                   destination={result.destination}
-                   enableEditing={enableEditing}
-                   onUpdateDay={handleDayUpdate}
-                   onUpdateActivity={handleActivityUpdate}
-                   onUpdateTransit={handleTransitUpdate}
-                   onAddActivity={handleAddActivity}
-                   onDeleteActivity={handleDeleteActivity}
-                />
+                {result.days.map((day, dayIndex) => (
+                  <div key={day.day} className="relative">
+                    {/* Day Header */}
+                    <div className="sticky top-24 md:top-28 z-30 mb-8 flex items-center gap-4 pointer-events-none">
+                      <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary pointer-events-auto">
+                        <span className="text-4xl font-serif text-primary">
+                          {day.day}
+                        </span>
+                        <div className="flex flex-col">
+                          <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                            Day
+                          </span>
+                          <span className="text-stone-600 font-serif italic text-lg leading-none min-w-[150px]">
+                            {enableEditing ? (
+                              <EditableText
+                                value={day.title}
+                                onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
+                                isEditable={true}
+                                className="bg-transparent border-none focus:ring-0 w-full font-serif italic text-lg leading-none"
+                              />
+                            ) : (
+                              day.title
+                            )}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Day Content */}
+                    <div className="space-y-4 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
+                      {/* Transit Card */}
+                      {day.transit && (
+                        <TransitCard
+                          transit={day.transit}
+                          state={getCardState(`transit-${day.day}`)}
+                          onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
+                          className="mb-6"
+                          isEditable={enableEditing}
+                          onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
+                          onDelete={() => handleDeleteTransit(dayIndex)}
+                        />
+                      )}
+
+                      {/* Activity Cards */}
+                      {day.activities.map((activity, actIndex) => {
+                        const cardId = `activity-${day.day}-${actIndex}`;
+
+                        // If type is accommodation, render AccommodationCard (if we had data conversion, for now use SpotCard as generic fallback or specialized if type matches)
+                        // Currently SpotCard handles generic activities nicely.
+                        // If we wanted to use AccommodationCard, we'd need to map Activity to AccommodationData.
+
+                        return (
+                          <SpotCard
+                            key={cardId}
+                            activity={activity}
+                            destination={result.destination}
+                            state={getCardState(cardId)}
+                            onStateChange={(state) => handleCardStateChange(cardId, state)}
+                            isEditable={enableEditing}
+                            onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
+                            onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
+                          />
+                        );
+                      })}
+
+                      {/* Add Activity Button */}
+                      {enableEditing && (
+                        <div className="pt-4">
+                          <button
+                            onClick={() => handleAddActivity(dayIndex)}
+                            className="flex items-center justify-center gap-2 w-full py-3 text-stone-400 hover:text-primary font-hand text-sm border-2 border-dashed border-stone-200 hover:border-primary rounded-xl transition-all group bg-stone-50/50 hover:bg-primary/5"
+                          >
+                            <div className="w-6 h-6 rounded-full border-2 border-stone-300 group-hover:border-primary flex items-center justify-center">
+                              <FaPlus className="w-3 h-3" />
+                            </div>
+                            予定を書き足す
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
 
                 {/* Cost & Feedback */}
                 <>

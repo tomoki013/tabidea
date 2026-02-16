@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin, Clock, Star, ExternalLink, Camera, AlertCircle, Loader2 } from "lucide-react";
+import { MapPin, Clock, Star, ExternalLink, Camera, AlertCircle, Loader2, Trash2 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { Activity, ActivityValidation, PlacePhoto } from "@/types";
 import TrustBadge from "./TrustBadge";
@@ -29,6 +29,8 @@ export interface SpotCardProps {
   isEditable?: boolean;
   /** Callback when activity is updated */
   onUpdate?: (updates: Partial<Activity>) => void;
+  /** Callback when activity is deleted */
+  onDelete?: () => void;
 }
 
 // ============================================================================
@@ -130,6 +132,7 @@ export default function SpotCard({
   className = "",
   isEditable = false,
   onUpdate,
+  onDelete,
 }: SpotCardProps) {
   const { time, activity: name, description, validation, activityType } = activity;
 
@@ -243,6 +246,22 @@ export default function SpotCard({
       colorTheme="orange"
       className={className}
       badge={skipPlacesSearch ? undefined : <TrustBadge level={getTrustLevel()} size="sm" showLabel={getTrustLevel() === "unverified"} />}
+      actions={
+        isEditable && onDelete && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (confirm('この予定を削除しますか？')) {
+                onDelete();
+              }
+            }}
+            className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
+            title="削除"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        )
+      }
     >
       {/* Expanded Content */}
       <div className="space-y-4 pt-2">
