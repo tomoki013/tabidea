@@ -121,7 +121,7 @@ export default function BlogEditor({ initial, profile }: Props) {
         <textarea className="w-full border rounded px-2 py-1 text-sm" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="excerpt" />
 
         <div className="text-xs text-stone-600">
-          しおり埋め込み: <code>[[tabidea:shiori:slug]]</code> または <code>[[tabidea:shiori:slug?t=token]]</code>
+          旅のしおり埋め込み: <code>[[tabidea:shiori:slug]]</code> または <code>[[tabidea:shiori:slug?t=token]]</code>
         </div>
         <textarea
           className="w-full border rounded px-2 py-2 text-sm min-h-[260px]"

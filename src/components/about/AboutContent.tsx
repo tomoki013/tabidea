@@ -355,7 +355,7 @@ export default function AboutContent() {
                     <span className="block text-xs font-normal text-stone-500 mt-1">物語を紡ぐ</span>
                   </h4>
                   <p className="text-sm text-stone-600">
-                    旅は行って終わりではない。「しおり」や「ブログ」のように形に残し、体験が次の誰かへとつながる仕組みを作る。
+                    旅は行って終わりではない。「旅のしおり」や「ブログ」のように形に残し、体験が次の誰かへとつながる仕組みを作る。
                   </p>
                 </motion.div>
               </div>

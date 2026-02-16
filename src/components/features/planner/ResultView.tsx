@@ -1,11 +1,10 @@
 "use client";
 
-import { Itinerary, UserInput } from '@/types';
+import { Itinerary, UserInput, Activity, TransitInfo, DayPlan } from '@/types';
 import Image from "next/image";
 import TravelPlannerChat from "@/components/TravelPlannerChat";
 import ShareButtons from "@/components/ShareButtons";
 import PDFExportButton from "./PDFExportButton";
-import RequestSummary from "./RequestSummary";
 import CalendarExportButton from "./CalendarExportButton";
 import CostEstimate from "./CostEstimate";
 import BookingLinkButton from "./BookingLinkButton";
@@ -23,22 +22,13 @@ import PlanFeedbackBar from "./PlanFeedbackBar";
 import ActivityFeedbackButton from "./ActivityFeedbackButton";
 import type { PackingList } from "@/types/packing-list";
 import {
-  FaMapMarkerAlt,
-  FaClock,
   FaCalendarAlt,
-  FaPen,
-  FaTrash,
-  FaPlus,
-  FaSave,
-  FaTimes,
-  FaArrowUp,
-  FaArrowDown,
   FaGlobe,
   FaSuitcase,
   FaFlag,
   FaRegFlag,
-  FaLock,
-  FaUnlock,
+  FaPlus,
+  FaTrash,
 } from "react-icons/fa";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
@@ -46,8 +36,9 @@ import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { usePlanModal } from "@/context/PlanModalContext";
-import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from "@/components/ui/journal";
+import { JournalSheet, Tape, Stamp, HandwrittenText } from "@/components/ui/journal";
 import ModelBadge from "@/components/ui/ModelBadge";
+import { EditableText } from "@/components/ui/editable/EditableText";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -61,7 +52,7 @@ interface ResultViewProps {
   onChatChange?: (messages: { role: string; text: string }[]) => void;
   isUpdating?: boolean;
   onEditRequest?: (stepIndex: number) => void;
-  showRequestSummary?: boolean;
+  showRequestSummary?: boolean; // Deprecated but kept for signature compatibility
   showChat?: boolean;
   showShareButtons?: boolean;
   showReferences?: boolean;
@@ -84,7 +75,7 @@ export default function ResultView({
   showRequestSummary = true,
   showChat = true,
   showShareButtons = true,
-  showReferences = true, // Keeping prop for backward compat, but usage removed per request
+  showReferences = true,
   showFeedback = true,
   initialChatHistory,
   shareCode,
@@ -95,17 +86,14 @@ export default function ResultView({
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
 
-  const [isEditing, setIsEditing] = useState(false);
-  const [editingResult, setEditingResult] = useState<Itinerary | null>(null);
   const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
   const tabBarRef = useRef<HTMLDivElement>(null);
 
-  // Packing List State (Lifted for PDF Export)
+  // Packing List State
   const [packingList, setPackingList] = useState<PackingList | null>(null);
 
   // Load packing list on mount
   useEffect(() => {
-    // Only load if browser side
     if (typeof window !== 'undefined') {
       const key = getStorageKey(planId, result.destination);
       try {
@@ -158,9 +146,6 @@ export default function ResultView({
     [expandedCards]
   );
 
-  // Plan Modal
-  const { openModal } = usePlanModal();
-
   // Flags
   const { isAuthenticated } = useAuth();
   const { isFlagged, toggleFlag } = useFlags();
@@ -176,147 +161,7 @@ export default function ResultView({
 
   const isThisPlanFlagged = planId ? isFlagged(planId) : false;
 
-  // Guard against navigation when editing
-  useEffect(() => {
-    if (!isEditing) return;
-
-    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
-      e.preventDefault();
-      e.returnValue = '';
-      return '';
-    };
-
-    window.addEventListener('beforeunload', handleBeforeUnload);
-
-    const handleLinkClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      const link = target.closest('a');
-
-      if (link && link.href && !link.href.startsWith('javascript:') && !link.target) {
-        const url = new URL(link.href, window.location.href);
-        if (url.pathname === window.location.pathname && url.search === window.location.search && url.hash) {
-          return;
-        }
-
-        e.preventDefault();
-        if (window.confirm('編集中の内容が破棄されますが、移動しますか？')) {
-          window.removeEventListener('beforeunload', handleBeforeUnload);
-          window.location.href = link.href;
-        }
-      }
-    };
-
-    window.addEventListener('click', handleLinkClick, { capture: true });
-
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-      window.removeEventListener('click', handleLinkClick, { capture: true });
-    };
-  }, [isEditing]);
-
-  const startEditing = () => {
-    setEditingResult(JSON.parse(JSON.stringify(result)));
-    setIsEditing(true);
-  };
-
-  const cancelEditing = () => {
-    if (confirm('編集中の内容は破棄されます。よろしいですか？')) {
-      setIsEditing(false);
-      setEditingResult(null);
-    }
-  };
-
-  const saveChanges = () => {
-    if (!editingResult) return;
-    if (onResultChange) {
-      onResultChange(editingResult);
-    }
-    setIsEditing(false);
-  };
-
-  // ... (Editing handlers omitted for brevity, keeping existing logic) ...
-  const handleActivityChange = (dayIndex: number, actIndex: number, field: string, value: string) => {
-    if (!editingResult) return;
-    const newResult = { ...editingResult };
-    newResult.days[dayIndex].activities[actIndex] = {
-      ...newResult.days[dayIndex].activities[actIndex],
-      [field]: value,
-    };
-    setEditingResult(newResult);
-  };
-  const handleDeleteActivity = (dayIndex: number, actIndex: number) => {
-    if (!editingResult) return;
-    const newResult = { ...editingResult };
-    newResult.days[dayIndex].activities.splice(actIndex, 1);
-    setEditingResult(newResult);
-  };
-  const handleAddActivity = (dayIndex: number) => {
-    if (!editingResult) return;
-    const newResult = { ...editingResult };
-    newResult.days[dayIndex].activities.push({
-      time: "12:00",
-      activity: "新しいアクティビティ",
-      description: "詳細を入力してください",
-    });
-    setEditingResult(newResult);
-  };
-  const handleMoveActivityUp = (dayIndex: number, actIndex: number) => {
-    if (!editingResult || actIndex === 0) return;
-    const newResult = JSON.parse(JSON.stringify(editingResult));
-    const activities = newResult.days[dayIndex].activities;
-    const upperTime = activities[actIndex - 1].time;
-    const lowerTime = activities[actIndex].time;
-    [activities[actIndex - 1], activities[actIndex]] = [activities[actIndex], activities[actIndex - 1]];
-    activities[actIndex - 1].time = upperTime;
-    activities[actIndex].time = lowerTime;
-    setEditingResult(newResult);
-  };
-  const handleMoveActivityDown = (dayIndex: number, actIndex: number) => {
-    if (!editingResult) return;
-    const activities = editingResult.days[dayIndex].activities;
-    if (actIndex >= activities.length - 1) return;
-    const newResult = JSON.parse(JSON.stringify(editingResult));
-    const newActivities = newResult.days[dayIndex].activities;
-    const upperTime = newActivities[actIndex].time;
-    const lowerTime = newActivities[actIndex + 1].time;
-    [newActivities[actIndex], newActivities[actIndex + 1]] = [newActivities[actIndex + 1], newActivities[actIndex]];
-    newActivities[actIndex].time = upperTime;
-    newActivities[actIndex + 1].time = lowerTime;
-    setEditingResult(newResult);
-  };
-  const handleMoveDayUp = (dayIndex: number) => {
-    if (!editingResult || dayIndex === 0) return;
-    const newResult = JSON.parse(JSON.stringify(editingResult));
-    [newResult.days[dayIndex - 1], newResult.days[dayIndex]] = [newResult.days[dayIndex], newResult.days[dayIndex - 1]];
-    newResult.days.forEach((day: { day: number }, index: number) => { day.day = index + 1; });
-    setEditingResult(newResult);
-  };
-  const handleMoveDayDown = (dayIndex: number) => {
-    if (!editingResult || dayIndex >= editingResult.days.length - 1) return;
-    const newResult = JSON.parse(JSON.stringify(editingResult));
-    [newResult.days[dayIndex], newResult.days[dayIndex + 1]] = [newResult.days[dayIndex + 1], newResult.days[dayIndex]];
-    newResult.days.forEach((day: { day: number }, index: number) => { day.day = index + 1; });
-    setEditingResult(newResult);
-  };
-  const handleToggleLockActivity = (dayIndex: number, actIndex: number) => {
-    if (!editingResult) return;
-    const newResult = { ...editingResult };
-    newResult.days[dayIndex].activities[actIndex] = {
-      ...newResult.days[dayIndex].activities[actIndex],
-      isLocked: !newResult.days[dayIndex].activities[actIndex].isLocked,
-    };
-    setEditingResult(newResult);
-  };
-  const handleToggleLockTransit = (dayIndex: number) => {
-    if (!editingResult || !editingResult.days[dayIndex].transit) return;
-    const newResult = { ...editingResult };
-    newResult.days[dayIndex].transit = {
-      ...newResult.days[dayIndex].transit!,
-      isLocked: !newResult.days[dayIndex].transit!.isLocked,
-    };
-    setEditingResult(newResult);
-  };
-
+  // Formatting helpers
   const formatTravelDates = (dateStr: string) => {
     const match = dateStr.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
     if (match) {
@@ -338,8 +183,83 @@ export default function ResultView({
   const numberOfDays = result.days.length;
   const numberOfNights = Math.max(0, numberOfDays - 1);
   const durationString = `${numberOfNights}泊${numberOfDays}日`;
-  const displayResult = isEditing && editingResult ? editingResult : result;
-  const { enrichedDays } = useSpotCoordinates(displayResult.days, result.destination);
+  const { enrichedDays } = useSpotCoordinates(result.days, result.destination);
+
+  // --------------------------------------------------------------------------
+  // Update Handlers (Direct Editing)
+  // --------------------------------------------------------------------------
+
+  const handleDayUpdate = useCallback((dayIndex: number, updates: Partial<DayPlan>) => {
+    const newResult = { ...result };
+    newResult.days[dayIndex] = { ...newResult.days[dayIndex], ...updates };
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
+
+  const handleActivityUpdate = useCallback((dayIndex: number, actIndex: number, updates: Partial<Activity>) => {
+    const newResult = { ...result };
+    const day = newResult.days[dayIndex];
+    if (!day) return;
+
+    // Create a new array to avoid mutation
+    const newActivities = [...day.activities];
+    newActivities[actIndex] = { ...newActivities[actIndex], ...updates };
+    day.activities = newActivities;
+
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
+
+  const handleTransitUpdate = useCallback((dayIndex: number, originalTransit: TransitInfo, updates: Partial<TransitInfo>) => {
+    const newResult = { ...result };
+    const day = newResult.days[dayIndex];
+    if (!day) return;
+
+    // 1. Update day.transit if it matches
+    if (day.transit === originalTransit) {
+       day.transit = { ...day.transit, ...updates };
+    }
+    // 2. Update timelineItems if present (less common for manual edits but possible if AI generated them)
+    else if (day.timelineItems) {
+       // Find the item in timelineItems that contains this transit data
+       const itemIndex = day.timelineItems.findIndex(item => item.itemType === 'transit' && item.data === originalTransit);
+       if (itemIndex >= 0) {
+          const newItem = { ...day.timelineItems[itemIndex] };
+          if (newItem.itemType === 'transit') {
+             newItem.data = { ...newItem.data, ...updates };
+             day.timelineItems[itemIndex] = newItem;
+          }
+       }
+    }
+
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
+
+  const handleAddActivity = useCallback((dayIndex: number) => {
+    const newResult = { ...result };
+    const day = newResult.days[dayIndex];
+    if (!day) return;
+
+    const newActivity: Activity = {
+      time: "12:00",
+      activity: "新しい予定",
+      description: "詳細を入力してください",
+    };
+
+    day.activities = [...day.activities, newActivity];
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
+
+  const handleDeleteActivity = useCallback((dayIndex: number, actIndex: number) => {
+    if (!confirm('この予定を削除しますか？')) return;
+    const newResult = { ...result };
+    const day = newResult.days[dayIndex];
+    if (!day) return;
+
+    const newActivities = [...day.activities];
+    newActivities.splice(actIndex, 1);
+    day.activities = newActivities;
+
+    onResultChange?.(newResult);
+  }, [result, onResultChange]);
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
@@ -364,31 +284,6 @@ export default function ResultView({
         </div>
       )}
 
-      {/* Fixed Action Bar (Edit / Save / Cancel) */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in slide-in-from-bottom-4 w-full max-w-sm px-4 pointer-events-none">
-        <div className="pointer-events-auto flex justify-center">
-          {isEditing ? (
-            <div className="flex items-center gap-3 p-2 bg-white/90 backdrop-blur-md rounded-full shadow-xl border border-stone-200/50">
-              <button onClick={cancelEditing} className="flex items-center gap-2 bg-white text-stone-600 px-6 py-3 rounded-full shadow-sm border border-stone-200 hover:bg-stone-50 font-bold transition-all">
-                <FaTimes /> キャンセル
-              </button>
-              <button onClick={saveChanges} className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full shadow-md hover:bg-primary/90 font-bold transition-all">
-                <FaSave /> 保存
-              </button>
-            </div>
-          ) : (
-            enableEditing && (
-              <button
-                onClick={startEditing}
-                className={`flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-full shadow-xl hover:bg-primary/90 hover:-translate-y-1 font-bold transition-all border-4 border-white/20 ${activeTab === 'info' ? 'hidden' : ''}`}
-              >
-                <FaPen /> プラン内容を編集
-              </button>
-            )
-          )}
-        </div>
-      </div>
-
       {/* Journal Header Section */}
       <JournalSheet variant="notebook" className="relative mb-8 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
         <Tape color="blue" position="top-right" rotation="right" className="opacity-90 z-20" />
@@ -396,9 +291,7 @@ export default function ResultView({
         {heroImg ? (
           <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-md border-4 border-white bg-white rotate-1 transform mx-auto max-w-4xl">
             <Image src={heroImg} alt={result.destination} fill className="object-cover" priority />
-            {/* Tape on photo */}
             <Tape color="white" position="top-center" className="w-24 opacity-60 -top-3" />
-
             {result.heroImagePhotographer && (
               <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded">
                 Photo by {result.heroImagePhotographer}
@@ -409,7 +302,6 @@ export default function ResultView({
 
         <div className="mt-10 text-center relative z-10">
           <div className="inline-block relative">
-            {/* Flag Button */}
             {planId && isAuthenticated && (
               <motion.button
                 onClick={handleToggleFlag}
@@ -449,6 +341,7 @@ export default function ResultView({
                   )}
                </div>
 
+               {/* Description is now editable if needed, but keeping it simple here as main focus is itinerary */}
                <HandwrittenText className="mt-4 text-lg text-stone-600 max-w-2xl mx-auto leading-relaxed">
                   {result.description}
                </HandwrittenText>
@@ -505,7 +398,7 @@ export default function ResultView({
             <div className={showReferences ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12" : "max-w-4xl mx-auto space-y-16"}>
               {/* Timeline */}
               <div className="space-y-16 pl-4 md:pl-0" data-itinerary-section>
-                {displayResult.days.map((day, dayIndex) => (
+                {result.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
                     {/* Day Header */}
                     <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none will-change-transform [transform:translateZ(0)]">
@@ -513,43 +406,24 @@ export default function ResultView({
                         <Stamp color="red" size="sm" className="w-10 h-10 text-xs border-2">Day {day.day}</Stamp>
                         <div className="flex flex-col">
                           <HandwrittenText className="text-lg font-bold text-stone-700 leading-none">
-                            {day.title}
+                            {enableEditing ? (
+                                <EditableText
+                                    value={day.title}
+                                    onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
+                                    isEditable={true}
+                                    className="font-bold text-lg min-w-[200px]"
+                                    placeholder="タイトルを入力"
+                                />
+                            ) : day.title}
                           </HandwrittenText>
                         </div>
                       </div>
-
-                      {isEditing && (
-                        <div className="flex items-center gap-1 bg-white rounded-full shadow-md border border-stone-200 p-1 pointer-events-auto">
-                          <button onClick={() => handleMoveDayUp(dayIndex)} disabled={dayIndex === 0} className="p-2 rounded-full hover:bg-stone-100 disabled:opacity-30"><FaArrowUp size={12} /></button>
-                          <button onClick={() => handleMoveDayDown(dayIndex)} disabled={dayIndex >= displayResult.days.length - 1} className="p-2 rounded-full hover:bg-stone-100 disabled:opacity-30"><FaArrowDown size={12} /></button>
-                        </div>
-                      )}
                     </div>
 
                     {/* Day Content */}
                     <div className="relative ml-8 sm:ml-10 border-l-2 border-stone-300 border-dashed pl-6 sm:pl-8 pb-8 space-y-6">
 
-                      {isEditing ? (
-                        <>
-                          {/* Edit Mode Content (Simplified for brevity - keeps existing structure but styled) */}
-                          {day.activities.map((act, actIndex) => (
-                             <div key={actIndex} className="bg-white p-4 rounded-sm border border-stone-200 shadow-sm">
-                                <div className="flex gap-2 mb-2">
-                                   <input type="time" value={act.time} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'time', e.target.value)} className="w-24 border-b border-stone-300 font-mono text-sm" />
-                                   <input value={act.activity} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'activity', e.target.value)} className="flex-1 border-b border-stone-300 font-bold" />
-                                </div>
-                                <textarea value={act.description} onChange={(e) => handleActivityChange(dayIndex, actIndex, 'description', e.target.value)} className="w-full h-20 border border-stone-200 text-sm p-2 bg-stone-50" />
-                                <div className="flex justify-end gap-2 mt-2">
-                                   <button onClick={() => handleMoveActivityUp(dayIndex, actIndex)}><FaArrowUp/></button>
-                                   <button onClick={() => handleMoveActivityDown(dayIndex, actIndex)}><FaArrowDown/></button>
-                                   <button onClick={() => handleDeleteActivity(dayIndex, actIndex)} className="text-red-500"><FaTrash/></button>
-                                </div>
-                             </div>
-                          ))}
-                          <button onClick={() => handleAddActivity(dayIndex)} className="w-full py-3 border-2 border-dashed border-stone-300 text-stone-400 hover:text-primary hover:border-primary rounded-sm font-bold font-hand">+ Add Activity</button>
-                        </>
-                      ) : (
-                        <>
+                          {/* Map is only shown in view mode or always? User said "Discard existing UIUX... make it optimized". Keeping map is good. */}
                           <DayMap activities={enrichedDays.find(d => d.day === day.day)?.activities || day.activities} dayNumber={day.day} className="mb-6 rounded-sm shadow-sm border border-stone-200" />
 
                           {buildTimeline(day).map((item, itemIndex) => {
@@ -563,6 +437,8 @@ export default function ResultView({
                                     state={getCardState(`transit-${day.day}-${itemIndex}`)}
                                     onStateChange={(state) => handleCardStateChange(`transit-${day.day}-${itemIndex}`, state)}
                                     className="mb-4"
+                                    isEditable={enableEditing}
+                                    onUpdate={(updates) => handleTransitUpdate(dayIndex, item.data, updates)}
                                   />
                                 </div>
                               );
@@ -573,7 +449,7 @@ export default function ResultView({
                             const iconInfo = getActivityIcon(act.activity);
 
                             return (
-                              <div key={`timeline-activity-${day.day}-${actIdx}`} className="relative">
+                              <div key={`timeline-activity-${day.day}-${actIdx}`} className="relative group">
                                 {/* Timeline Dot */}
                                 <div className="absolute -left-[45px] sm:-left-[53px] top-6 w-6 h-6 rounded-full bg-white border-2 border-primary flex items-center justify-center text-[10px] z-10 shadow-sm">
                                    {iconInfo.icon}
@@ -584,7 +460,18 @@ export default function ResultView({
                                     destination={result.destination}
                                     state={getCardState(`activity-${day.day}-${actIdx}`)}
                                     onStateChange={(state) => handleCardStateChange(`activity-${day.day}-${actIdx}`, state)}
+                                    isEditable={enableEditing}
+                                    onUpdate={(updates) => handleActivityUpdate(dayIndex, actIdx, updates)}
                                   />
+                                  {enableEditing && (
+                                     <button
+                                        onClick={() => handleDeleteActivity(dayIndex, actIdx)}
+                                        className="absolute -right-10 top-2 p-2 text-stone-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all z-20"
+                                        title="削除"
+                                     >
+                                        <FaTrash />
+                                     </button>
+                                  )}
                                   {showFeedback && (
                                     <div className="absolute top-2 right-2 z-10">
                                       <ActivityFeedbackButton day={day.day} activityIndex={actIdx} destination={result.destination} />
@@ -595,7 +482,16 @@ export default function ResultView({
                             );
                           })}
 
-                          {dayIndex < displayResult.days.length - 1 && (
+                          {enableEditing && (
+                             <button
+                                onClick={() => handleAddActivity(dayIndex)}
+                                className="w-full py-3 border-2 border-dashed border-stone-200 text-stone-400 hover:text-primary hover:border-primary/50 hover:bg-primary/5 rounded-lg font-bold font-hand transition-all flex items-center justify-center gap-2"
+                             >
+                                <FaPlus /> 予定を追加
+                             </button>
+                          )}
+
+                          {dayIndex < result.days.length - 1 && (
                              <div className="relative">
                                 <div className="absolute -left-[45px] sm:-left-[53px] top-6 w-6 h-6 rounded-full bg-purple-100 border-2 border-purple-300 flex items-center justify-center text-xs z-10">🏨</div>
                                 <AccommodationCard
@@ -623,14 +519,12 @@ export default function ResultView({
                                 />
                              </div>
                           )}
-                        </>
-                      )}
                     </div>
                   </div>
                 ))}
 
                 {/* Map Route View */}
-                {!isEditing && enrichedDays.length >= 1 && (
+                {enrichedDays.length >= 1 && (
                   <JournalSheet className="p-2 bg-white transform rotate-1">
                      <Tape color="green" position="top-center" className="w-32 opacity-80 -top-4" />
                      <MapRouteView days={enrichedDays} destination={result.destination} className="h-[400px] w-full" />
@@ -638,75 +532,50 @@ export default function ResultView({
                 )}
 
                 {/* Cost & Feedback */}
-                {!isEditing && (
-                   <>
-                     <CostEstimate input={input} itinerary={displayResult} className="mt-4" />
-                     {showFeedback && (
-                       <div className="mt-4"><PlanFeedbackBar destination={result.destination} /></div>
-                     )}
-                   </>
-                )}
+                <>
+                   <CostEstimate input={input} itinerary={result} className="mt-4" />
+                   {showFeedback && (
+                     <div className="mt-4"><PlanFeedbackBar destination={result.destination} /></div>
+                   )}
+                </>
 
                 {/* Booking Links */}
-                {!isEditing && (
-                  <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-8">
-                    <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
-                    <HandwrittenText tag="h3" className="font-bold text-xl mb-4 flex items-center gap-2">
-                      <span className="text-2xl">🧳</span> この旅を予約する
-                    </HandwrittenText>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                      <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
-                      <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
-                      <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
-                    </div>
+                <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-8">
+                  <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
+                  <HandwrittenText tag="h3" className="font-bold text-xl mb-4 flex items-center gap-2">
+                    <span className="text-2xl">🧳</span> この旅を予約する
+                  </HandwrittenText>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
+                    <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
+                    <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
                   </div>
-                )}
+                </div>
 
                 {/* Disclaimer & Chat */}
-                {!isEditing && (
-                   <div className="mt-8 space-y-6">
-                      <div className="bg-stone-50 p-4 rounded-sm border border-stone-200 text-xs text-stone-500 font-mono">
-                         <p>※このプランはAIによって生成されています。情報の正確性は保証されません。</p>
-                         <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
-                      </div>
-
-                      {showChat && (
-                         <div className="bg-white border-2 border-stone-200 rounded-lg p-6 shadow-md">
-                            <div className="flex items-center gap-2 mb-4">
-                               <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">🤖</div>
-                               <HandwrittenText className="font-bold text-lg">AIと相談して調整</HandwrittenText>
-                            </div>
-                            <TravelPlannerChat
-                               key={result.id}
-                               itinerary={result}
-                               onRegenerate={onRegenerate}
-                               isRegenerating={isUpdating}
-                               initialChatHistory={initialChatHistory}
-                               onChatChange={onChatChange}
-                            />
-                         </div>
-                      )}
-
-                      {/* User Input Summary + New Plan Button */}
-                      {showRequestSummary && (
-                        <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative">
-                          <Tape color="pink" position="top-right" className="w-24 opacity-80 rotate-6" />
-                          <HandwrittenText tag="h3" className="font-bold text-xl mb-4 flex items-center gap-2">
-                            あなたのリクエスト
-                          </HandwrittenText>
-                          <RequestSummary input={input} className="mb-6" />
-                          <JournalButton
-                            variant="primary"
-                            onClick={() => openModal({ initialInput: input })}
-                            className="w-full font-bold"
-                          >
-                            <FaPen className="mr-2" />
-                            この条件で新しいプランを作成
-                          </JournalButton>
-                        </div>
-                      )}
+                <div className="mt-8 space-y-6">
+                   <div className="bg-stone-50 p-4 rounded-sm border border-stone-200 text-xs text-stone-500 font-mono">
+                      <p>※このプランはAIによって生成されています。情報の正確性は保証されません。</p>
+                      <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
                    </div>
-                )}
+
+                   {showChat && (
+                      <div className="bg-white border-2 border-stone-200 rounded-lg p-6 shadow-md">
+                         <div className="flex items-center gap-2 mb-4">
+                            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">🤖</div>
+                            <HandwrittenText className="font-bold text-lg">AIと相談して調整</HandwrittenText>
+                         </div>
+                         <TravelPlannerChat
+                            key={result.id}
+                            itinerary={result}
+                            onRegenerate={onRegenerate}
+                            isRegenerating={isUpdating}
+                            initialChatHistory={initialChatHistory}
+                            onChatChange={onChatChange}
+                         />
+                      </div>
+                   )}
+                </div>
               </div>
 
               {/* Sidebar */}

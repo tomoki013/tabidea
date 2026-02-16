@@ -3,17 +3,17 @@ import { FaArrowRight, FaBookOpen, FaFeatherAlt, FaMapMarkedAlt } from 'react-ic
 
 const cards = [
   {
-    title: 'しおり（Shiori）',
+    title: '旅のしおり',
     description:
       '旅程・費用・メモをまとめて公開。同行者や家族に、URLひとつで旅の全体像を共有できます。',
     href: '/shiori',
-    cta: 'しおりの使い方を見る',
+    cta: '旅のしおりの使い方を見る',
     icon: FaMapMarkedAlt,
   },
   {
     title: 'ブログ（blog.tabide.ai）',
     description:
-      '旅の背景や気づき、現地で役立った情報を記事化。しおりの埋め込みで、実用性の高い旅行記事を作れます。',
+      '旅の背景や気づき、現地で役立った情報を記事化。旅のしおりの埋め込みで、実用性の高い旅行記事を作れます。',
     href: '/blog/guide',
     cta: 'ブログ機能を詳しく見る',
     icon: FaFeatherAlt,
@@ -35,7 +35,7 @@ export default function PublishingSection() {
             旅の価値を「伝わる形」に。
           </h2>
           <p className="mt-5 text-stone-600">
-            Tabideaでは、作ったプランを「しおり」として公開したり、ブログ記事として発信したりできます。
+            Tabideaでは、作ったプランを「旅のしおり」として公開したり、ブログ記事として発信したりできます。
             旅行前の共有にも、旅行後の記録にも使える導線を用意しました。
           </p>
         </div>

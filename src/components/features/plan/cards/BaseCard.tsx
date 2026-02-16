@@ -17,11 +17,11 @@ export interface BaseCardProps {
   /** Icon to display */
   icon: ReactNode;
   /** Main title/name */
-  title: string;
+  title: string | ReactNode;
   /** Subtitle or summary line */
-  subtitle?: string;
+  subtitle?: string | ReactNode;
   /** Time or duration display */
-  time?: string;
+  time?: string | ReactNode;
   /** Children rendered when expanded */
   children?: ReactNode;
   /** Current card state */

@@ -12,3 +12,4 @@ export { default as TrinityCircle } from './TrinityCircle';
 export { default as UsageGuideHero } from './UsageGuideHero';
 
 export { default as PublishingSection } from './PublishingSection';
+export { default as TravelShioriHeroSection } from './TravelShioriHeroSection';

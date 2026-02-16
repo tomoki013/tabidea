@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Tabidea Blog ガイド',
-  description: 'blog.tabide.ai で旅行記事を公開するための使い方と、しおり連携の活用方法を紹介します。',
+  description: 'blog.tabide.ai で旅行記事を公開するための使い方と、旅のしおり連携の活用方法を紹介します。',
 };
 
 export default function BlogGuidePage() {
@@ -14,7 +14,7 @@ export default function BlogGuidePage() {
         <h1 className="mt-2 text-3xl font-bold text-stone-900">旅の知見を、記事として残す。</h1>
         <p className="mt-4 text-stone-600">
           Tabideaのブログ機能では、旅程の背景や体験談、現地Tipsを読み物として公開できます。
-          公開したしおりを記事内に埋め込めるため、読み手はそのまま行程も確認できます。
+          公開した旅のしおりを記事内に埋め込めるため、読み手はそのまま行程も確認できます。
         </p>
       </header>
 
@@ -23,7 +23,7 @@ export default function BlogGuidePage() {
         <ul className="mt-4 list-disc space-y-2 pl-6 text-stone-700">
           <li>ブログ記事の下書き・公開管理</li>
           <li>プロフィール（@username）付きの公開URL生成</li>
-          <li>しおり埋め込みによる、実用的な旅行記事の作成</li>
+          <li>旅のしおり埋め込みによる、実用的な旅行記事の作成</li>
         </ul>
       </section>
 
@@ -32,7 +32,7 @@ export default function BlogGuidePage() {
         <ol className="mt-4 list-decimal space-y-2 pl-6 text-stone-700">
           <li>Tabideaにログイン</li>
           <li>Blog Studioで新規記事を作成</li>
-          <li>必要に応じてしおりURLを埋め込み、公開</li>
+          <li>必要に応じて旅のしおりURLを埋め込み、公開</li>
         </ol>
 
         <div className="mt-6 flex flex-wrap gap-3">
@@ -40,7 +40,7 @@ export default function BlogGuidePage() {
             Blog Studioを開く
           </Link>
           <Link href="/shiori" className="rounded border border-stone-300 px-4 py-2 text-sm font-semibold text-stone-700">
-            しおり機能を見る
+            旅のしおり機能を見る
           </Link>
         </div>
       </section>

@@ -491,7 +491,7 @@ export default function MyPlansClient({
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                 >
                                   {plan.isPublic ? <FaLock /> : <FaGlobe />}
-                                  {plan.isPublic ? 'しおりを非公開にする' : 'しおりを公開する'}
+                                  {plan.isPublic ? '旅のしおりを非公開にする' : '旅のしおりを公開する'}
                                 </button>
                                 <div className="border-t border-stone-100 border-dashed my-1" />
                                 <button

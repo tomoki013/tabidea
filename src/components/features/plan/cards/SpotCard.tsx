@@ -8,6 +8,7 @@ import TrustBadge from "./TrustBadge";
 import CitationBadge from "@/components/features/planner/CitationBadge";
 import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
 import { shouldSkipPlacesSearch, classifyActivity } from "@/lib/utils/activity-classifier";
+import { EditableText } from "@/components/ui/editable/EditableText";
 
 // ============================================================================
 // Types
@@ -24,6 +25,10 @@ export interface SpotCardProps {
   onStateChange?: (state: CardState) => void;
   /** Custom class name */
   className?: string;
+  /** Whether the card is editable */
+  isEditable?: boolean;
+  /** Callback when activity is updated */
+  onUpdate?: (updates: Partial<Activity>) => void;
 }
 
 // ============================================================================
@@ -123,6 +128,8 @@ export default function SpotCard({
   state = "collapsed",
   onStateChange,
   className = "",
+  isEditable = false,
+  onUpdate,
 }: SpotCardProps) {
   const { time, activity: name, description, validation, activityType } = activity;
 
@@ -200,9 +207,37 @@ export default function SpotCard({
     <BaseCard
       cardType="spot"
       icon={getCardIcon()}
-      title={name}
-      subtitle={description.length > 50 ? description.substring(0, 50) + "..." : description}
-      time={time}
+      title={
+        isEditable ? (
+          <EditableText
+            value={name}
+            onChange={(val) => onUpdate?.({ activity: val })}
+            isEditable={true}
+            className="font-bold text-lg font-hand"
+          />
+        ) : name
+      }
+      subtitle={
+        isEditable ? (
+          <EditableText
+            value={description}
+            onChange={(val) => onUpdate?.({ description: val })}
+            isEditable={true}
+            className="text-sm text-stone-500 font-hand block w-full truncate"
+          />
+        ) : (description.length > 50 ? description.substring(0, 50) + "..." : description)
+      }
+      time={
+        isEditable ? (
+          <EditableText
+            value={time}
+            onChange={(val) => onUpdate?.({ time: val })}
+            isEditable={true}
+            type="time"
+            className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200"
+          />
+        ) : time
+      }
       state={state}
       onStateChange={onStateChange}
       colorTheme="orange"
@@ -217,7 +252,17 @@ export default function SpotCard({
             <h4 className="text-sm font-bold text-stone-700">詳細</h4>
             {activity.source && <CitationBadge source={activity.source} />}
           </div>
-          <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
+          {isEditable ? (
+            <EditableText
+              value={description}
+              onChange={(val) => onUpdate?.({ description: val })}
+              isEditable={true}
+              multiline
+              className="text-sm text-stone-600 leading-relaxed w-full min-h-[100px] p-2 bg-stone-50 rounded border border-stone-200"
+            />
+          ) : (
+            <p className="text-sm text-stone-600 leading-relaxed">{description}</p>
+          )}
         </div>
 
         {/* Unverified spot alert */}
