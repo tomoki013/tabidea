@@ -12,6 +12,7 @@ import { PackingListView } from "./PackingList";
 import { getStorageKey } from "./PackingList/PackingListView";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import PlanFeedbackBar from "./PlanFeedbackBar";
+import PublicToggle from "./PublicToggle";
 import type { PackingList } from "@/types/packing-list";
 import {
   FaCalendarAlt,
@@ -56,6 +57,7 @@ interface ResultViewProps {
   localId?: string;
   planId?: string;
   enableEditing?: boolean;
+  initialIsPublic?: boolean;
 }
 
 export default function ResultView({
@@ -74,6 +76,7 @@ export default function ResultView({
   localId,
   planId,
   enableEditing = true,
+  initialIsPublic,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -113,7 +116,7 @@ export default function ResultView({
   const handleTabSwitch = useCallback((tab: 'plan' | 'info' | 'packing') => {
     setActiveTab(tab);
     if (tabBarRef.current) {
-      const stickyOffset = 112;
+      const stickyOffset = 120;
       const rect = tabBarRef.current.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const elementTop = rect.top + scrollTop;
@@ -287,7 +290,7 @@ export default function ResultView({
       )}
 
       {/* Journal Header Section */}
-      <JournalSheet variant="notebook" className="relative mb-8 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
+      <JournalSheet variant="notebook" className="relative mb-16 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
         <Tape color="blue" position="top-right" rotation="right" className="opacity-90 z-20" />
 
         {heroImg ? (
@@ -351,17 +354,22 @@ export default function ResultView({
           </div>
         </div>
 
-        {/* Share Buttons */}
-        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-4 sm:gap-6 mt-8 flex-wrap">
+        {/* Action Buttons & Public Toggle */}
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:items-start gap-8 mt-12 flex-wrap">
+          {enableEditing && planId && typeof initialIsPublic !== 'undefined' && (
+             <PublicToggle planId={planId} initialIsPublic={initialIsPublic} />
+          )}
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
-          <PDFExportButton itinerary={result} packingList={packingList} />
-          <CalendarExportButton itinerary={result} dates={input.dates} />
+          <div className="flex gap-4">
+             <PDFExportButton itinerary={result} packingList={packingList} />
+             <CalendarExportButton itinerary={result} dates={input.dates} />
+          </div>
         </div>
       </JournalSheet>
 
       {/* Tabs */}
-      <div ref={tabBarRef} className="sticky top-[100px] md:top-[110px] z-40 mb-10 w-full flex justify-center px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
-        <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto">
+      <div ref={tabBarRef} className="sticky top-[100px] md:top-[120px] z-40 mb-16 w-full flex justify-center px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
+        <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
           {[
             { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
             { id: 'info', icon: FaGlobe, label: '渡航情報' },
@@ -397,27 +405,27 @@ export default function ResultView({
         <div className={activeTab === 'plan' ? 'block' : 'hidden'}>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Left Column: Map (Sticky) */}
               <div className="hidden lg:block relative">
-                 <div className="sticky top-[140px] h-[calc(100vh-160px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                 <div className="sticky top-[170px] h-[calc(100vh-190px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
                      <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
                  </div>
               </div>
 
               {/* Right Column: Timeline */}
-              <div className="space-y-16 pl-4 md:pl-0" data-itinerary-section>
+              <div className="space-y-24 pl-0 md:pl-2" data-itinerary-section>
 
                 {/* Mobile Map (Top) */}
-                <div className="lg:hidden mb-8 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
+                <div className="lg:hidden mb-12 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
                     <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
                 </div>
 
                 {result.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
                     {/* Day Header */}
-                    <div className="sticky top-24 md:top-28 z-30 mb-8 flex items-center gap-4 pointer-events-none">
-                      <div className="inline-flex items-center gap-4 bg-white py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary pointer-events-auto">
+                    <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none">
+                      <div className="inline-flex items-center gap-4 bg-white/95 backdrop-blur-sm py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary pointer-events-auto">
                         <span className="text-4xl font-serif text-primary">
                           {day.day}
                         </span>
@@ -442,14 +450,14 @@ export default function ResultView({
                     </div>
 
                     {/* Day Content */}
-                    <div className="space-y-4 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
+                    <div className="space-y-6 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
                       {/* Transit Card */}
                       {day.transit && (
                         <TransitCard
                           transit={day.transit}
                           state={getCardState(`transit-${day.day}`)}
                           onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
-                          className="mb-6"
+                          className="mb-8"
                           isEditable={enableEditing}
                           onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
                           onDelete={() => handleDeleteTransit(dayIndex)}
@@ -461,16 +469,17 @@ export default function ResultView({
                         const cardId = `activity-${day.day}-${actIndex}`;
 
                         return (
-                          <SpotCard
-                            key={cardId}
-                            activity={activity}
-                            destination={result.destination}
-                            state={getCardState(cardId)}
-                            onStateChange={(state) => handleCardStateChange(cardId, state)}
-                            isEditable={enableEditing}
-                            onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
-                            onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
-                          />
+                          <div key={cardId} className="mb-4">
+                            <SpotCard
+                                activity={activity}
+                                destination={result.destination}
+                                state={getCardState(cardId)}
+                                onStateChange={(state) => handleCardStateChange(cardId, state)}
+                                isEditable={enableEditing}
+                                onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
+                                onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
+                            />
+                          </div>
                         );
                       })}
 
@@ -479,7 +488,7 @@ export default function ResultView({
                         <div className="pt-4">
                           <button
                             onClick={() => handleAddActivity(dayIndex)}
-                            className="flex items-center justify-center gap-2 w-full py-3 text-stone-400 hover:text-primary font-hand text-sm border-2 border-dashed border-stone-200 hover:border-primary rounded-xl transition-all group bg-stone-50/50 hover:bg-primary/5"
+                            className="flex items-center justify-center gap-2 w-full py-4 text-stone-400 hover:text-primary font-hand text-sm border-2 border-dashed border-stone-200 hover:border-primary rounded-xl transition-all group bg-stone-50/50 hover:bg-primary/5"
                           >
                             <div className="w-6 h-6 rounded-full border-2 border-stone-300 group-hover:border-primary flex items-center justify-center">
                               <FaPlus className="w-3 h-3" />
@@ -493,20 +502,20 @@ export default function ResultView({
                 ))}
 
                 {/* Cost & Feedback */}
-                <>
-                   <CostEstimate input={input} itinerary={result} className="mt-4" />
+                <div className="space-y-8">
+                   <CostEstimate input={input} itinerary={result} />
                    {showFeedback && (
-                     <div className="mt-4"><PlanFeedbackBar destination={result.destination} /></div>
+                     <PlanFeedbackBar destination={result.destination} />
                    )}
-                </>
+                </div>
 
                 {/* Booking Links */}
-                <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-8">
+                <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-12">
                   <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
-                  <HandwrittenText tag="h3" className="font-bold text-xl mb-4 flex items-center gap-2">
+                  <HandwrittenText tag="h3" className="font-bold text-xl mb-6 flex items-center gap-2">
                     <span className="text-2xl">🧳</span> この旅を予約する
                   </HandwrittenText>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                     <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
                     <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
                     <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
@@ -514,8 +523,8 @@ export default function ResultView({
                 </div>
 
                 {/* Disclaimer & Chat */}
-                <div className="mt-8 space-y-6">
-                   <div className="bg-stone-50 p-4 rounded-sm border border-stone-200 text-xs text-stone-500 font-mono">
+                <div className="mt-12 space-y-8">
+                   <div className="bg-stone-50 p-4 rounded-sm border border-stone-200 text-xs text-stone-500 font-mono leading-relaxed">
                       <p>※このプランはAIによって生成されています。情報の正確性は保証されません。</p>
                       <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
                    </div>
