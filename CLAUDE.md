@@ -103,19 +103,19 @@ const days = await timer.measure('ai_generation', () => ai.generateDayDetails(..
 timer.log();
 ```
 
-### 目標時間
+### 目標時間 (モデル別)
 
-| ステップ | 目標 (ms) | 備考 |
-|----------|-----------|------|
-| usage_check | 500 | 利用制限チェック |
-| cache_check | 300 | Redisキャッシュ |
-| rag_search | 2,000 | Pinecone検索 + ユーザー制約取得 |
-| prompt_build | 100 | プロンプト構築 |
-| ai_generation (outline) | 15,000 | Gemini概要生成 |
-| ai_generation (chunk) | 20,000 | Geminiチャンク生成 |
-| hero_image | 2,000 | Unsplash画像取得 |
-| outline total | 20,000 | 概要生成全体 |
-| chunk total | 22,000 | チャンク生成全体 |
+| ステップ | Flash 目標 (ms) | Pro 目標 (ms) | 備考 |
+|----------|----------------|---------------|------|
+| usage_check | 500 | 500 | 利用制限チェック |
+| cache_check | 300 | 300 | Redisキャッシュ |
+| rag_search | 2,000 | 2,000 | Pinecone検索 + ユーザー制約取得 |
+| prompt_build | 100 | 100 | プロンプト構築 |
+| ai_generation (outline) | 15,000 | 30,000 | Gemini概要生成 |
+| ai_generation (chunk) | 20,000 | 35,000 | Geminiチャンク生成 |
+| hero_image | 2,000 | 2,000 | Unsplash画像取得 |
+| outline total | 20,000 | 35,000 | 概要生成全体 |
+| chunk total | 22,000 | 37,000 | チャンク生成全体 |
 
 詳細は [docs/performance.md](docs/performance.md) を参照。
 

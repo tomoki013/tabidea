@@ -5,7 +5,11 @@ import {
   createChunkTimer,
   createPerformanceTimer,
   OUTLINE_TARGETS,
+  OUTLINE_TARGETS_FLASH,
+  OUTLINE_TARGETS_PRO,
   CHUNK_TARGETS,
+  CHUNK_TARGETS_FLASH,
+  CHUNK_TARGETS_PRO,
 } from './performance-timer';
 
 describe('PerformanceTimer', () => {
@@ -141,8 +145,20 @@ describe('Factory functions', () => {
     expect(report.operation).toBe('generatePlanOutline');
   });
 
+  it('createOutlineTimer with pro tier should use PRO targets', () => {
+    const timer = createOutlineTimer('pro');
+    const report = timer.getReport();
+    expect(report.operation).toBe('generatePlanOutline');
+  });
+
   it('createChunkTimer should use CHUNK_TARGETS with day range in name', () => {
     const timer = createChunkTimer(1, 3);
+    const report = timer.getReport();
+    expect(report.operation).toBe('generatePlanChunk(1-3)');
+  });
+
+  it('createChunkTimer with pro tier should use PRO targets', () => {
+    const timer = createChunkTimer(1, 3, 'pro');
     const report = timer.getReport();
     expect(report.operation).toBe('generatePlanChunk(1-3)');
   });
@@ -154,20 +170,61 @@ describe('Factory functions', () => {
   });
 });
 
+describe('setTargets', () => {
+  it('should update targets after creation', async () => {
+    const timer = new PerformanceTimer('test-op', { fast_step: 100 });
+
+    await timer.measure('fast_step', async () => {
+      await new Promise((r) => setTimeout(r, 20));
+    });
+
+    // Before setTargets: target is 100ms, should be met
+    let report = timer.getReport();
+    const fastTarget = report.targets.find((t) => t.step === 'fast_step');
+    expect(fastTarget).toBeDefined();
+    expect(fastTarget!.met).toBe(true);
+
+    // After setTargets: change target to 5ms, should now fail
+    timer.setTargets({ fast_step: 5 });
+    report = timer.getReport();
+    const updatedTarget = report.targets.find((t) => t.step === 'fast_step');
+    expect(updatedTarget).toBeDefined();
+    expect(updatedTarget!.met).toBe(false);
+  });
+});
+
 describe('Target constants', () => {
-  it('OUTLINE_TARGETS should have expected keys', () => {
-    expect(OUTLINE_TARGETS).toHaveProperty('usage_check');
-    expect(OUTLINE_TARGETS).toHaveProperty('cache_check');
-    expect(OUTLINE_TARGETS).toHaveProperty('rag_search');
-    expect(OUTLINE_TARGETS).toHaveProperty('prompt_build');
-    expect(OUTLINE_TARGETS).toHaveProperty('ai_generation');
-    expect(OUTLINE_TARGETS).toHaveProperty('hero_image');
-    expect(OUTLINE_TARGETS).toHaveProperty('total');
+  it('OUTLINE_TARGETS should be an alias for OUTLINE_TARGETS_FLASH', () => {
+    expect(OUTLINE_TARGETS).toBe(OUTLINE_TARGETS_FLASH);
   });
 
-  it('CHUNK_TARGETS should have expected keys', () => {
-    expect(CHUNK_TARGETS).toHaveProperty('prompt_build');
-    expect(CHUNK_TARGETS).toHaveProperty('ai_generation');
-    expect(CHUNK_TARGETS).toHaveProperty('total');
+  it('CHUNK_TARGETS should be an alias for CHUNK_TARGETS_FLASH', () => {
+    expect(CHUNK_TARGETS).toBe(CHUNK_TARGETS_FLASH);
+  });
+
+  it('OUTLINE_TARGETS_FLASH should have expected keys', () => {
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('usage_check');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('cache_check');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('rag_search');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('prompt_build');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('ai_generation');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('hero_image');
+    expect(OUTLINE_TARGETS_FLASH).toHaveProperty('total');
+  });
+
+  it('OUTLINE_TARGETS_PRO should have higher ai_generation target', () => {
+    expect(OUTLINE_TARGETS_PRO.ai_generation).toBeGreaterThan(OUTLINE_TARGETS_FLASH.ai_generation);
+    expect(OUTLINE_TARGETS_PRO.total).toBeGreaterThan(OUTLINE_TARGETS_FLASH.total);
+  });
+
+  it('CHUNK_TARGETS_FLASH should have expected keys', () => {
+    expect(CHUNK_TARGETS_FLASH).toHaveProperty('prompt_build');
+    expect(CHUNK_TARGETS_FLASH).toHaveProperty('ai_generation');
+    expect(CHUNK_TARGETS_FLASH).toHaveProperty('total');
+  });
+
+  it('CHUNK_TARGETS_PRO should have higher ai_generation target', () => {
+    expect(CHUNK_TARGETS_PRO.ai_generation).toBeGreaterThan(CHUNK_TARGETS_FLASH.ai_generation);
+    expect(CHUNK_TARGETS_PRO.total).toBeGreaterThan(CHUNK_TARGETS_FLASH.total);
   });
 });

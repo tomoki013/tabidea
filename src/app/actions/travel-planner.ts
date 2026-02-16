@@ -21,7 +21,7 @@ import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
-import { createOutlineTimer, createChunkTimer } from "@/lib/utils/performance-timer";
+import { createOutlineTimer, createChunkTimer, OUTLINE_TARGETS_PRO, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
 
 export type ActionState = {
   success: boolean;
@@ -254,8 +254,6 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
 
           ${fixedSchedulePrompt}
 
-          ${fixedSchedulePrompt}
-
           ${userConstraintPrompt}
 
           ${transitConstraints}
@@ -320,6 +318,12 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       const result = await ai.generateOutline(resolvedPrompt, contextArticles);
       return result;
     });
+
+    // Pro モデル使用時は目標時間を切り替え
+    if (ai.lastModelInfo?.tier === 'pro') {
+      timer.setTargets(OUTLINE_TARGETS_PRO);
+    }
+
     metricsCollector.recordOutlineTime(
       timer.getReport().steps.find(s => s.name === 'ai_generation')?.duration ?? 0
     );
@@ -448,6 +452,11 @@ export async function generatePlanChunk(
         previousOvernightLocation
       )
     );
+
+    // Pro モデル使用時は目標時間を切り替え
+    if (ai.lastModelInfo?.tier === 'pro') {
+      timer.setTargets(CHUNK_TARGETS_PRO);
+    }
 
     timer.log();
     return { success: true, data: days, modelInfo: ai.lastModelInfo || undefined };

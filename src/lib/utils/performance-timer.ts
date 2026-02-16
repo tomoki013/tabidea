@@ -70,9 +70,9 @@ export interface PerformanceTargets {
 // ============================================
 
 /**
- * プラン概要生成の目標時間
+ * プラン概要生成の目標時間 (Flash モデル)
  */
-export const OUTLINE_TARGETS: PerformanceTargets = {
+export const OUTLINE_TARGETS_FLASH: PerformanceTargets = {
   usage_check: 500,
   cache_check: 300,
   rag_search: 2_000,
@@ -84,13 +84,42 @@ export const OUTLINE_TARGETS: PerformanceTargets = {
 };
 
 /**
- * プラン詳細チャンク生成の目標時間
+ * プラン概要生成の目標時間 (Pro モデル)
  */
-export const CHUNK_TARGETS: PerformanceTargets = {
+export const OUTLINE_TARGETS_PRO: PerformanceTargets = {
+  usage_check: 500,
+  cache_check: 300,
+  rag_search: 2_000,
+  prompt_build: 100,
+  ai_generation: 30_000,
+  hero_image: 2_000,
+  cache_save: 500,
+  total: 35_000,
+};
+
+/** @deprecated Use OUTLINE_TARGETS_FLASH instead */
+export const OUTLINE_TARGETS: PerformanceTargets = OUTLINE_TARGETS_FLASH;
+
+/**
+ * プラン詳細チャンク生成の目標時間 (Flash モデル)
+ */
+export const CHUNK_TARGETS_FLASH: PerformanceTargets = {
   prompt_build: 100,
   ai_generation: 20_000,
   total: 22_000,
 };
+
+/**
+ * プラン詳細チャンク生成の目標時間 (Pro モデル)
+ */
+export const CHUNK_TARGETS_PRO: PerformanceTargets = {
+  prompt_build: 100,
+  ai_generation: 35_000,
+  total: 37_000,
+};
+
+/** @deprecated Use CHUNK_TARGETS_FLASH instead */
+export const CHUNK_TARGETS: PerformanceTargets = CHUNK_TARGETS_FLASH;
 
 // ============================================
 // PerformanceTimer class
@@ -106,6 +135,13 @@ export class PerformanceTimer {
   constructor(operation: string, targets: PerformanceTargets = {}) {
     this.operation = operation;
     this.globalStart = Date.now();
+    this.targets = targets;
+  }
+
+  /**
+   * 目標時間を差し替える（モデル確定後に呼び出す）
+   */
+  setTargets(targets: PerformanceTargets): void {
     this.targets = targets;
   }
 
@@ -251,18 +287,22 @@ export class PerformanceTimer {
 // Factory functions
 // ============================================
 
+export type ModelTier = 'flash' | 'pro';
+
 /**
  * アウトライン生成用タイマーを作成
  */
-export function createOutlineTimer(): PerformanceTimer {
-  return new PerformanceTimer('generatePlanOutline', OUTLINE_TARGETS);
+export function createOutlineTimer(modelTier?: ModelTier): PerformanceTimer {
+  const targets = modelTier === 'pro' ? OUTLINE_TARGETS_PRO : OUTLINE_TARGETS_FLASH;
+  return new PerformanceTimer('generatePlanOutline', targets);
 }
 
 /**
  * チャンク生成用タイマーを作成
  */
-export function createChunkTimer(startDay: number, endDay: number): PerformanceTimer {
-  return new PerformanceTimer(`generatePlanChunk(${startDay}-${endDay})`, CHUNK_TARGETS);
+export function createChunkTimer(startDay: number, endDay: number, modelTier?: ModelTier): PerformanceTimer {
+  const targets = modelTier === 'pro' ? CHUNK_TARGETS_PRO : CHUNK_TARGETS_FLASH;
+  return new PerformanceTimer(`generatePlanChunk(${startDay}-${endDay})`, targets);
 }
 
 /**
