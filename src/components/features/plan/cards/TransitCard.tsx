@@ -13,6 +13,7 @@ import {
   Lock,
   Unlock,
   ExternalLink,
+  Trash2,
 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { TransitInfo, TransitType } from "@/types";
@@ -45,6 +46,8 @@ export interface TransitCardProps {
   onLockToggle?: () => void;
   /** Callback when transit info is updated */
   onUpdate?: (updates: Partial<TransitInfo>) => void;
+  /** Callback when transit info is deleted */
+  onDelete?: () => void;
   /** Custom class name */
   className?: string;
 }
@@ -107,6 +110,7 @@ export default function TransitCard({
   isEditable = false,
   onLockToggle,
   onUpdate,
+  onDelete,
   className = "",
 }: TransitCardProps) {
   const config = TRANSIT_CONFIG[transit.type];
@@ -222,6 +226,22 @@ export default function TransitCard({
             予約済み
           </span>
         ) : undefined
+      }
+      actions={
+        isEditable && onDelete && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (confirm('この移動を削除しますか？')) {
+                onDelete();
+              }
+            }}
+            className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
+            title="削除"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        )
       }
     >
       {/* Expanded Content */}

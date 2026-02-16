@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Building2, MapPin, ExternalLink, Star, ChevronDown, Moon, Sun } from "lucide-react";
+import { Building2, MapPin, ExternalLink, Star, ChevronDown, Moon, Sun, Trash2 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import TrustBadge from "./TrustBadge";
 import {
@@ -10,6 +10,7 @@ import {
   type TravelRegion,
   type AffiliateLink,
 } from "@/lib/utils/affiliate-links";
+import { EditableText } from "@/components/ui/editable/EditableText";
 
 // ============================================================================
 // Types
@@ -55,6 +56,12 @@ export interface AccommodationCardProps {
   state?: CardState;
   /** Callback when state changes */
   onStateChange?: (state: CardState) => void;
+  /** Whether the card is editable */
+  isEditable?: boolean;
+  /** Callback when accommodation info is updated */
+  onUpdate?: (updates: Partial<AccommodationData>) => void;
+  /** Callback when accommodation is deleted */
+  onDelete?: () => void;
   /** Custom class name */
   className?: string;
 }
@@ -137,6 +144,9 @@ export default function AccommodationCard({
   dayNumber,
   state = "collapsed",
   onStateChange,
+  isEditable = false,
+  onUpdate,
+  onDelete,
   className = "",
 }: AccommodationCardProps) {
   const {
@@ -172,13 +182,54 @@ export default function AccommodationCard({
   const timeRange =
     checkIn && checkOut ? `${checkIn} - ${checkOut}` : checkIn || checkOut;
 
+  // Render Time Component
+  const timeComponent = isEditable ? (
+    <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>
+      <EditableText
+        value={checkIn || ''}
+        onChange={(val) => onUpdate?.({ checkIn: val })}
+        isEditable={true}
+        type="time"
+        placeholder="IN"
+        className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200 w-16"
+      />
+      <span className="text-xs text-stone-400">-</span>
+      <EditableText
+        value={checkOut || ''}
+        onChange={(val) => onUpdate?.({ checkOut: val })}
+        isEditable={true}
+        type="time"
+        placeholder="OUT"
+        className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200 w-16"
+      />
+    </div>
+  ) : timeRange;
+
   return (
     <BaseCard
       cardType="accommodation"
       icon={<Building2 className="w-5 h-5" />}
-      title={name}
-      subtitle={description || (dayNumber ? `${dayNumber}日目の宿泊` : "宿泊")}
-      time={timeRange}
+      title={
+        isEditable ? (
+          <EditableText
+            value={name}
+            onChange={(val) => onUpdate?.({ name: val })}
+            isEditable={true}
+            className="font-bold text-lg font-hand"
+          />
+        ) : name
+      }
+      subtitle={
+        isEditable ? (
+          <EditableText
+            value={description || ''}
+            onChange={(val) => onUpdate?.({ description: val })}
+            isEditable={true}
+            className="text-sm text-stone-500 font-hand block w-full truncate"
+          />
+        ) : (description || (dayNumber ? `${dayNumber}日目の宿泊` : "宿泊"))
+      }
+      time={timeComponent}
       state={state}
       onStateChange={onStateChange}
       colorTheme="purple"
@@ -189,14 +240,43 @@ export default function AccommodationCard({
           size="sm"
         />
       }
+      actions={
+        isEditable && onDelete && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              if (confirm('この宿泊情報を削除しますか？')) {
+                onDelete();
+              }
+            }}
+            className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
+            title="削除"
+          >
+            <Trash2 className="w-4 h-4" />
+          </button>
+        )
+      }
     >
       {/* Expanded Content */}
       <div className="space-y-4 pt-2">
         {/* Description */}
-        {description && (
-          <p className="text-sm text-stone-600 leading-relaxed">
-            {description}
-          </p>
+        {(description || isEditable) && (
+          <div>
+            {isEditable ? (
+               <EditableText
+                  value={description || ''}
+                  onChange={(val) => onUpdate?.({ description: val })}
+                  isEditable={true}
+                  multiline
+                  placeholder="宿泊メモ..."
+                  className="text-sm text-stone-600 leading-relaxed w-full min-h-[60px] p-2 bg-stone-50 border border-stone-200 rounded"
+               />
+            ) : (
+               <p className="text-sm text-stone-600 leading-relaxed">
+                  {description}
+               </p>
+            )}
+          </div>
         )}
 
         {/* Rating & Address row */}

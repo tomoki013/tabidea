@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent } from 'react';
 import { cn } from '@/lib/utils/cn';
 
 interface EditableTextProps {
@@ -47,19 +47,35 @@ export function EditableText({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === 'Enter' && !multiline) {
       handleBlur();
     }
   };
 
   if (isEditing) {
-    const Component = multiline ? 'textarea' : 'input';
+    if (multiline) {
+      return (
+        <textarea
+          ref={inputRef as React.RefObject<HTMLTextAreaElement>}
+          value={localValue}
+          onChange={(e: ChangeEvent<HTMLTextAreaElement>) => setLocalValue(e.target.value)}
+          onBlur={handleBlur}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          className={cn(
+            "bg-white/80 border-b-2 border-primary/50 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary",
+            className
+          )}
+          rows={3}
+        />
+      );
+    }
     return (
-      <Component
-        ref={inputRef as any}
+      <input
+        ref={inputRef as React.RefObject<HTMLInputElement>}
         value={localValue}
-        onChange={(e: any) => setLocalValue(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => setLocalValue(e.target.value)}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
         placeholder={placeholder}
@@ -68,7 +84,6 @@ export function EditableText({
           "bg-white/80 border-b-2 border-primary/50 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary",
           className
         )}
-        rows={multiline ? 3 : undefined}
       />
     );
   }
