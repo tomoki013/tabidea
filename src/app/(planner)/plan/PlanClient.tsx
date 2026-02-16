@@ -197,21 +197,19 @@ function PlanContent() {
     try {
       if (isAuth) {
         const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
+        if (saveResult.success && saveResult.plan) {
           // Add plan to sidebar immediately
-          if (saveResult.plan) {
-            addPlan({
-              id: saveResult.plan.id,
-              destination: saveResult.plan.destination || finalPlan.destination || '',
-              thumbnailUrl: saveResult.plan.thumbnailUrl || null,
-              durationDays: saveResult.plan.durationDays || null,
-              isPublic: saveResult.plan.isPublic,
-              createdAt: new Date(saveResult.plan.createdAt),
-              updatedAt: new Date(saveResult.plan.updatedAt),
-              shareCode: saveResult.plan.shareCode,
-            });
-          }
-          router.replace(`/plan/${saveResult.shareCode}`);
+          addPlan({
+            id: saveResult.plan.id,
+            destination: saveResult.plan.destination || finalPlan.destination || '',
+            thumbnailUrl: saveResult.plan.thumbnailUrl || null,
+            durationDays: saveResult.plan.durationDays || null,
+            isPublic: saveResult.plan.isPublic,
+            createdAt: new Date(saveResult.plan.createdAt),
+            updatedAt: new Date(saveResult.plan.updatedAt),
+            shareCode: saveResult.plan.shareCode,
+          });
+          router.replace(`/plan/id/${saveResult.plan.id}`);
         } else {
           console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
           const localPlan = await saveLocalPlan(updatedInput, finalPlan);

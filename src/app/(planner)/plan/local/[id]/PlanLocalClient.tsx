@@ -52,12 +52,12 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     try {
       const saveResult = await savePlan(restoredInput, restoredItinerary, false);
 
-      if (saveResult.success && saveResult.shareCode) {
+      if (saveResult.success && saveResult.plan) {
         // ローカルプランを削除
         await deleteLocalPlan(localId);
 
-        // 保存成功 → /plan/[shareCode] へリダイレクト
-        router.replace(`/plan/${saveResult.shareCode}`);
+        // 保存成功 → /plan/id/[id] へリダイレクト
+        router.replace(`/plan/id/${saveResult.plan.id}`);
       } else {
         setAutoSaveError(saveResult.error || '保存に失敗しました');
         setStatus('idle');
@@ -124,11 +124,11 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     try {
       const saveResult = await savePlan(input, result, false);
 
-      if (saveResult.success && saveResult.shareCode) {
+      if (saveResult.success && saveResult.plan) {
         // Delete from local storage after successful sync
         deleteLocalPlan(plan.id);
-        // Redirect to the new share code URL
-        router.replace(`/plan/${saveResult.shareCode}`);
+        // Redirect to the new plan id URL
+        router.replace(`/plan/id/${saveResult.plan.id}`);
       } else {
         console.error('Failed to sync to database:', saveResult.error);
         setStatus('idle');
