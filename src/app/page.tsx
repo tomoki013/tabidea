@@ -12,6 +12,7 @@ import {
   PublishingSection,
   FAQSection,
   TravelShioriHeroSection,
+  BlogPromotionSection,
 } from "@/components/features/landing";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from '@/types';
@@ -75,6 +76,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <UsageGuideHero />
         <FeatureSection />
         <TravelShioriHeroSection />
+        <BlogPromotionSection />
         <ExampleSection />
         <TravelInfoSection />
         <PublishingSection />

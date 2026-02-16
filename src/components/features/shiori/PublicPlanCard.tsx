@@ -16,7 +16,7 @@ export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
   const duration = days > 0 ? `${nights}泊${days}日` : '期間未定';
 
   return (
-    <Link href={`/plan/${plan.shareCode}`} className="block group h-full">
+    <Link href={`/public/view/${plan.shareCode}`} className="block group h-full">
       <div className="relative bg-white h-full flex flex-col shadow-sm border border-stone-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 rounded-sm overflow-hidden">
 
         {/* Thumbnail */}

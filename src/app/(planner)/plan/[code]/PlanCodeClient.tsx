@@ -18,6 +18,7 @@ interface PlanCodeClientProps {
   isOwner: boolean;
   isAuthenticated: boolean;
   initialChatMessages?: ChatMessage[];
+  isSimplifiedView?: boolean;
 }
 
 export default function PlanCodeClient({
@@ -28,6 +29,7 @@ export default function PlanCodeClient({
   isOwner,
   isAuthenticated,
   initialChatMessages,
+  isSimplifiedView = false,
 }: PlanCodeClientProps) {
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
@@ -175,7 +177,7 @@ export default function PlanCodeClient({
           showChat={false}
           enableEditing={false}
           showFeedback={false}
-          isSimplifiedView={true}
+          isSimplifiedView={isSimplifiedView}
         />
 
         {/* Request Editing Modal */}
