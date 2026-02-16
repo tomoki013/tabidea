@@ -232,9 +232,9 @@ export function usePlanGeneration(
     try {
       if (isAuthenticated) {
         const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.shareCode) {
+        if (saveResult.success && saveResult.plan) {
           await refreshPlans();
-          router.push(`/plan/${saveResult.shareCode}`);
+          router.push(`/plan/id/${saveResult.plan.id}`);
         } else {
           console.error(
             "Failed to save to DB, falling back to local storage:",
