@@ -175,6 +175,7 @@ export default function PlanCodeClient({
           showChat={false}
           enableEditing={false}
           showFeedback={false}
+          isSimplifiedView={true}
         />
 
         {/* Request Editing Modal */}

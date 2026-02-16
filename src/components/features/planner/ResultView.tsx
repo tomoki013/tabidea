@@ -58,6 +58,7 @@ interface ResultViewProps {
   planId?: string;
   enableEditing?: boolean;
   initialIsPublic?: boolean;
+  isSimplifiedView?: boolean;
 }
 
 export default function ResultView({
@@ -77,6 +78,7 @@ export default function ResultView({
   planId,
   enableEditing = true,
   initialIsPublic,
+  isSimplifiedView = false,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
@@ -455,12 +457,13 @@ export default function ResultView({
                       {day.transit && (
                         <TransitCard
                           transit={day.transit}
-                          state={getCardState(`transit-${day.day}`)}
+                          state={isSimplifiedView ? "collapsed" : getCardState(`transit-${day.day}`)}
                           onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
                           className="mb-8"
                           isEditable={enableEditing}
                           onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
                           onDelete={() => handleDeleteTransit(dayIndex)}
+                          expandable={!isSimplifiedView}
                         />
                       )}
 
@@ -473,11 +476,12 @@ export default function ResultView({
                             <SpotCard
                                 activity={activity}
                                 destination={result.destination}
-                                state={getCardState(cardId)}
+                                state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
                                 onStateChange={(state) => handleCardStateChange(cardId, state)}
                                 isEditable={enableEditing}
                                 onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
                                 onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
+                                expandable={!isSimplifiedView}
                             />
                           </div>
                         );
