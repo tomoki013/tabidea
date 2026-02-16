@@ -9,6 +9,7 @@ import {
   UsageGuideHero,
   ExampleSection,
   TravelInfoSection,
+  PublishingSection,
   FAQSection,
 } from "@/components/features/landing";
 import { getSamplePlanById } from "@/lib/sample-plans";
@@ -74,6 +75,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <FeatureSection />
         <ExampleSection />
         <TravelInfoSection />
+        <PublishingSection />
         <FAQSection limit={5} />
       </main>
     </div>

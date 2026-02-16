@@ -10,3 +10,5 @@ export { default as HowToUseSection } from './HowToUseSection';
 export { default as TravelInfoSection } from './TravelInfoSection';
 export { default as TrinityCircle } from './TrinityCircle';
 export { default as UsageGuideHero } from './UsageGuideHero';
+
+export { default as PublishingSection } from './PublishingSection';
