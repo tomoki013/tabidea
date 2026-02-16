@@ -518,6 +518,46 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "生成されたプランのルートをGoogle Map上で表示できるようになりました。",
   },
+  {
+    status: "done",
+    date: "2026.02.10",
+    updateType: "patch",
+    title: "UI/UXの大幅改善とマップ機能強化",
+    description:
+      "プラン作成画面をカードベースのモダンなデザインに刷新し、手書き風デザインを整理して視認性を向上させました。また、マップのルート表示を改善しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.11",
+    updateType: "patch",
+    title: "不具合修正と国際対応",
+    description:
+      "Google Maps API連携の安定性を向上させ、海外スポットの検索精度を改善しました。タイムラインの表示順序も修正されました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.13",
+    updateType: "patch",
+    title: "モバイル体験の向上と検索精度改善",
+    description:
+      "モバイルでのスクロール動作を滑らかにし、スポット検索（Places API）の精度をさらに強化しました。AIモデルのバッジ表示も改善されました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.14",
+    updateType: "patch",
+    title: "AI生成エンジンの進化",
+    description:
+      "AIモデルの抽象化レイヤーを導入し、複数のAIプロバイダーを柔軟に切り替えられるマルチプロバイダー戦略を実装しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.15",
+    updateType: "patch",
+    title: "パフォーマンスと安定性の向上",
+    description:
+      "プラン生成時のタイムアウトエラーを削減し、システム全体のパフォーマンス監視を強化しました。ビルドやテストの安定性も向上しました。",
+  },
 ];
 
 // Helper to calculate versions

@@ -76,7 +76,7 @@ export const ActivityStrictSchema = z.object({
   activityType: z.enum(['spot', 'transit', 'accommodation', 'meal', 'other']).optional().describe('アクティビティの種類: spot=観光地, transit=移動, accommodation=宿泊, meal=食事, other=その他'),
   locationEn: z.string().optional().describe('英語での場所名（例: "Aswan, Egypt"）。予約リンク生成に使用'),
   source: ActivitySourceSchema.optional().describe('情報源（Citation）'),
-  searchQuery: z.string().optional().describe('Places API検索用のスポット正式名称（例: "金閣寺"）。activityが装飾的な名前の場合に設定'),
+  searchQuery: z.string().optional().describe('Places API検索用のスポット正式名称（英語）。例: "Kinkaku-ji"。Google Mapsでの検索精度向上のため、可能な限り英語の正式名称を設定してください。'),
 });
 
 // 緩和されたスキーマ（入力用）

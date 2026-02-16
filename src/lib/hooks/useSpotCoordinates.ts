@@ -74,7 +74,7 @@ export function useSpotCoordinates(
   // 座標取得
   useEffect(() => {
     // 取得が必要なスポットを計算
-    const spots: Array<{ name: string }> = [];
+    const spots: Array<{ name: string; locationEn?: string; searchQuery?: string }> = [];
     for (const day of days) {
       for (const act of day.activities) {
         if (shouldSkipPlacesSearch(act.activity, act.description, act.activityType)) continue;
@@ -82,7 +82,11 @@ export function useSpotCoordinates(
         if (act.validation?.details?.latitude && act.validation?.details?.longitude) continue;
         // 既に取得済み or 取得中のスポットはスキップ
         if (fetchedRef.current.has(act.activity)) continue;
-        spots.push({ name: act.activity });
+        spots.push({
+          name: act.activity,
+          locationEn: act.locationEn,
+          searchQuery: act.searchQuery,
+        });
       }
     }
 
@@ -114,6 +118,12 @@ export function useSpotCoordinates(
             const params = new URLSearchParams({ q: spot.name });
             if (destination) {
               params.append('near', destination);
+            }
+            if (spot.locationEn) {
+              params.append('locationEn', spot.locationEn);
+            }
+            if (spot.searchQuery) {
+              params.append('searchQuery', spot.searchQuery);
             }
 
             const response = await fetch(`/api/places/search?${params.toString()}`, {
