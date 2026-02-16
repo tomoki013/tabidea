@@ -3,6 +3,7 @@ import { redirect, notFound } from 'next/navigation';
 
 import { planService } from '@/lib/plans/service';
 import { getUser, createClient } from '@/lib/supabase/server';
+import { ensureNormalizedPlanData, getNormalizedPlanData } from '@/lib/plans/normalized';
 import PlanIdClient from './PlanIdClient';
 import type { ChatMessage } from '@/app/actions/travel-planner';
 
@@ -92,6 +93,9 @@ export default async function PlanIdPage({ params }: PageProps) {
     notFound();
   }
 
+  await ensureNormalizedPlanData(plan.id, user.id, plan.itinerary);
+  const normalized = await getNormalizedPlanData(plan.id, user.id);
+
   // Load chat messages
   let initialChatMessages: ChatMessage[] = [];
   try {
@@ -119,6 +123,8 @@ export default async function PlanIdPage({ params }: PageProps) {
       itinerary={plan.itinerary}
       planId={id}
       initialChatMessages={initialChatMessages}
+      normalizedDays={normalized.days}
+      publication={normalized.publication}
     />
   );
 }
