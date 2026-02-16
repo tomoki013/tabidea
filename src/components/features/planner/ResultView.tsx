@@ -13,11 +13,7 @@ import MapRouteView from "./MapRouteView";
 import { PackingListView } from "./PackingList";
 import { getStorageKey } from "./PackingList/PackingListView";
 import { EmbeddedTravelInfo } from "@/components/features/travel-info";
-import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
-import type { CardState } from "@/components/features/plan/cards";
-import { getActivityIcon } from "@/lib/utils/activity-icon";
-import { extractStartDate, getDayCheckInOutDates, buildTimeline } from "@/lib/utils/plan";
-import { isDomesticDestination, type TravelRegion } from "@/lib/utils/affiliate-links";
+import JournalTimeline from "./JournalTimeline";
 import PlanFeedbackBar from "./PlanFeedbackBar";
 import ActivityFeedbackButton from "./ActivityFeedbackButton";
 import type { PackingList } from "@/types/packing-list";
@@ -38,7 +34,6 @@ import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { usePlanModal } from "@/context/PlanModalContext";
 import { JournalSheet, Tape, Stamp, HandwrittenText } from "@/components/ui/journal";
 import ModelBadge from "@/components/ui/ModelBadge";
-import { EditableText } from "@/components/ui/editable/EditableText";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -124,28 +119,6 @@ export default function ResultView({
     }
   }, []);
 
-  // Card expansion state
-  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-
-  const handleCardStateChange = useCallback((cardId: string, state: CardState) => {
-    setExpandedCards((prev) => {
-      const next = new Set(prev);
-      if (state === "expanded") {
-        next.add(cardId);
-      } else {
-        next.delete(cardId);
-      }
-      return next;
-    });
-  }, []);
-
-  const getCardState = useCallback(
-    (cardId: string): CardState => {
-      return expandedCards.has(cardId) ? "expanded" : "collapsed";
-    },
-    [expandedCards]
-  );
-
   // Flags
   const { isAuthenticated } = useAuth();
   const { isFlagged, toggleFlag } = useFlags();
@@ -183,7 +156,6 @@ export default function ResultView({
   const numberOfDays = result.days.length;
   const numberOfNights = Math.max(0, numberOfDays - 1);
   const durationString = `${numberOfNights}泊${numberOfDays}日`;
-  const { enrichedDays } = useSpotCoordinates(result.days, result.destination);
 
   // --------------------------------------------------------------------------
   // Update Handlers (Direct Editing)
@@ -398,138 +370,18 @@ export default function ResultView({
             <div className={showReferences ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12" : "max-w-4xl mx-auto space-y-16"}>
               {/* Timeline */}
               <div className="space-y-16 pl-4 md:pl-0" data-itinerary-section>
-                {result.days.map((day, dayIndex) => (
-                  <div key={day.day} className="relative">
-                    {/* Day Header */}
-                    <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none will-change-transform [transform:translateZ(0)]">
-                      <div className="inline-flex items-center gap-4 bg-white py-2 px-4 rounded-sm shadow-sm border border-stone-200 pointer-events-auto">
-                        <Stamp color="red" size="sm" className="w-10 h-10 text-xs border-2">Day {day.day}</Stamp>
-                        <div className="flex flex-col">
-                          <HandwrittenText className="text-lg font-bold text-stone-700 leading-none">
-                            {enableEditing ? (
-                                <EditableText
-                                    value={day.title}
-                                    onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
-                                    isEditable={true}
-                                    className="font-bold text-lg min-w-[200px]"
-                                    placeholder="タイトルを入力"
-                                />
-                            ) : day.title}
-                          </HandwrittenText>
-                        </div>
-                      </div>
-                    </div>
 
-                    {/* Day Content */}
-                    <div className="relative ml-8 sm:ml-10 border-l-2 border-stone-300 border-dashed pl-6 sm:pl-8 pb-8 space-y-6">
-
-                          {/* Map is only shown in view mode or always? User said "Discard existing UIUX... make it optimized". Keeping map is good. */}
-                          <DayMap activities={enrichedDays.find(d => d.day === day.day)?.activities || day.activities} dayNumber={day.day} className="mb-6 rounded-sm shadow-sm border border-stone-200" />
-
-                          {buildTimeline(day).map((item, itemIndex) => {
-                            if (item.itemType === 'transit') {
-                              return (
-                                <div key={`timeline-transit-${day.day}-${itemIndex}`} className="relative">
-                                  {/* Timeline Dot */}
-                                  <div className="absolute -left-[41px] sm:-left-[49px] top-6 w-4 h-4 rounded-full bg-stone-300 border-2 border-white shadow-sm z-10" />
-                                  <CardTransitCard
-                                    transit={item.data}
-                                    state={getCardState(`transit-${day.day}-${itemIndex}`)}
-                                    onStateChange={(state) => handleCardStateChange(`transit-${day.day}-${itemIndex}`, state)}
-                                    className="mb-4"
-                                    isEditable={enableEditing}
-                                    onUpdate={(updates) => handleTransitUpdate(dayIndex, item.data, updates)}
-                                  />
-                                </div>
-                              );
-                            }
-                            const act = item.data;
-                            const globalIndex = day.activities.indexOf(act);
-                            const actIdx = globalIndex >= 0 ? globalIndex : itemIndex;
-                            const iconInfo = getActivityIcon(act.activity);
-
-                            return (
-                              <div key={`timeline-activity-${day.day}-${actIdx}`} className="relative group">
-                                {/* Timeline Dot */}
-                                <div className="absolute -left-[45px] sm:-left-[53px] top-6 w-6 h-6 rounded-full bg-white border-2 border-primary flex items-center justify-center text-[10px] z-10 shadow-sm">
-                                   {iconInfo.icon}
-                                </div>
-                                <div className="relative">
-                                  <SpotCard
-                                    activity={act}
-                                    destination={result.destination}
-                                    state={getCardState(`activity-${day.day}-${actIdx}`)}
-                                    onStateChange={(state) => handleCardStateChange(`activity-${day.day}-${actIdx}`, state)}
-                                    isEditable={enableEditing}
-                                    onUpdate={(updates) => handleActivityUpdate(dayIndex, actIdx, updates)}
-                                  />
-                                  {enableEditing && (
-                                     <button
-                                        onClick={() => handleDeleteActivity(dayIndex, actIdx)}
-                                        className="absolute -right-10 top-2 p-2 text-stone-300 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all z-20"
-                                        title="削除"
-                                     >
-                                        <FaTrash />
-                                     </button>
-                                  )}
-                                  {showFeedback && (
-                                    <div className="absolute top-2 right-2 z-10">
-                                      <ActivityFeedbackButton day={day.day} activityIndex={actIdx} destination={result.destination} />
-                                    </div>
-                                  )}
-                                </div>
-                              </div>
-                            );
-                          })}
-
-                          {enableEditing && (
-                             <button
-                                onClick={() => handleAddActivity(dayIndex)}
-                                className="w-full py-3 border-2 border-dashed border-stone-200 text-stone-400 hover:text-primary hover:border-primary/50 hover:bg-primary/5 rounded-lg font-bold font-hand transition-all flex items-center justify-center gap-2"
-                             >
-                                <FaPlus /> 予定を追加
-                             </button>
-                          )}
-
-                          {dayIndex < result.days.length - 1 && (
-                             <div className="relative">
-                                <div className="absolute -left-[45px] sm:-left-[53px] top-6 w-6 h-6 rounded-full bg-purple-100 border-2 border-purple-300 flex items-center justify-center text-xs z-10">🏨</div>
-                                <AccommodationCard
-                                  accommodation={(() => {
-                                    const startDate = extractStartDate(input.dates);
-                                    const dates = startDate ? getDayCheckInOutDates(startDate, day.day) : undefined;
-                                    const lastActivity = day.activities[day.activities.length - 1];
-                                    const overnightArea = lastActivity?.locationEn || result.destination;
-                                    return {
-                                      name: overnightArea,
-                                      description: `${day.day}日目の宿泊エリア`,
-                                      checkInDate: dates?.checkIn,
-                                      checkOutDate: dates?.checkOut,
-                                    };
-                                  })()}
-                                  destination={(() => {
-                                    const lastActivity = day.activities[day.activities.length - 1];
-                                    return lastActivity?.locationEn || result.destination;
-                                  })()}
-                                  region={isDomesticDestination(result.destination) ? 'domestic' as TravelRegion : 'overseas' as TravelRegion}
-                                  dayNumber={day.day}
-                                  state={getCardState(`accommodation-${day.day}`)}
-                                  onStateChange={(state) => handleCardStateChange(`accommodation-${day.day}`, state)}
-                                  className="mt-6"
-                                />
-                             </div>
-                          )}
-                    </div>
-                  </div>
-                ))}
-
-                {/* Map Route View */}
-                {enrichedDays.length >= 1 && (
-                  <JournalSheet className="p-2 bg-white transform rotate-1">
-                     <Tape color="green" position="top-center" className="w-32 opacity-80 -top-4" />
-                     <MapRouteView days={enrichedDays} destination={result.destination} className="h-[400px] w-full" />
-                  </JournalSheet>
-                )}
+                {/* Replaced loop with JournalTimeline */}
+                <JournalTimeline
+                   days={result.days}
+                   destination={result.destination}
+                   enableEditing={enableEditing}
+                   onUpdateDay={handleDayUpdate}
+                   onUpdateActivity={handleActivityUpdate}
+                   onUpdateTransit={handleTransitUpdate}
+                   onAddActivity={handleAddActivity}
+                   onDeleteActivity={handleDeleteActivity}
+                />
 
                 {/* Cost & Feedback */}
                 <>

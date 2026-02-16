@@ -65,7 +65,7 @@ export function EditableText({
         placeholder={placeholder}
         type={type}
         className={cn(
-          "bg-white border border-primary/50 rounded px-1 outline-none w-full shadow-sm ring-2 ring-primary/20 font-sans",
+          "bg-white/80 border-b-2 border-primary/50 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary",
           className
         )}
         rows={multiline ? 3 : undefined}
