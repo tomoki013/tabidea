@@ -590,6 +590,7 @@ ${prompt}`;
       ACTIVITY FIELDS:
       - activityType: "spot" (sightseeing), "meal" (restaurants), "transit" (movement), "accommodation" (hotel), "other" (free time)
       - locationEn: "City, Country" format (e.g., "Kyoto, Japan")
+      - searchQuery: OFFICIAL ENGLISH NAME of the spot for Google Maps search (e.g., "Kinkaku-ji" instead of "金閣寺"). This is CRITICAL for map accuracy.
       - source: { type: "ai_knowledge", confidence: "medium" } if not from context
 
       QUALITY:
