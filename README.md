@@ -10,6 +10,7 @@ AIと一緒に、あなただけの旅の計画を。
 - [Setup Guide](docs/setup.md) - How to install and run the project.
 - [Architecture](docs/architecture.md) - System overview and directory structure.
 - [Testing Strategy](docs/testing.md) - How to run and write tests.
+- [Supabase Migration Guide](supabase/README.md) - How to apply SQL migrations safely.
 
 ## 概要
 
@@ -30,3 +31,21 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 *   **Database (Vector)**: [Pinecone](https://www.pinecone.io/) (RAG用)
 *   **Testing**: [Vitest](https://vitest.dev/), [Playwright](https://playwright.dev/)
 *   **Deployment**: [Netlify](https://www.netlify.com/)
+
+## Phase 0-3 実装メモ（旅程正規化 / 予算 / Journal / Shiori公開）
+
+### 追加した主な機能
+- 正規化テーブル: `plan_days`, `plan_items`, `item_bookings`, `journal_entries`, `plan_publications`
+- RLS: 各テーブルで owner(`auth.uid() = user_id`) のCRUDのみ許可
+- 公開Read model: `get_public_shiori(slug, token)` を `SECURITY DEFINER` で提供
+- 予算管理UI: 概算合計 vs 実費合計、カテゴリ別集計
+- 予約情報入力: itemごとの予約URL/予約メモ
+- Journal: ローカル下書き（localStorage）→ blur時同期
+- Shiori公開: private / unlisted / public と公開URL生成
+- サブドメイン: `shiori.tabide.ai` から `/shiori/*` へ proxy rewrite
+
+### 運用メモ
+- migration を適用してから動作確認してください（Supabase SQL Editor / CLI）
+- 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
+- テスト実行
+  - Unit: `pnpm test`
