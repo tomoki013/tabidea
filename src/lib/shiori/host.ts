@@ -12,7 +12,7 @@ export const shouldBypassShioriRewrite = shouldBypassHostRewrite;
 export function resolveHostRewrite(host: string | null, pathname: string): string | null {
   if (!host || shouldBypassHostRewrite(pathname)) return null;
 
-  const hostname = host.split(':')[0].toLowerCase();
+  const hostname = host.split(',')[0].trim().split(':')[0].toLowerCase().replace(/\.$/, '');
 
   const isShioriHost = hostname === 'shiori.tabide.ai' || hostname.startsWith('shiori.');
   if (isShioriHost) {
@@ -32,7 +32,7 @@ export function resolveHostRewrite(host: string | null, pathname: string): strin
 export function resolveExternalSubdomainRedirect(host: string | null, pathname: string, search = ''): string | null {
   if (!host) return null;
 
-  const hostname = host.split(':')[0].toLowerCase();
+  const hostname = host.split(',')[0].trim().split(':')[0].toLowerCase().replace(/\.$/, '');
   const normalizedPath = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
   const normalizedSearch = search.startsWith('?') ? search : search ? `?${search}` : '';
 

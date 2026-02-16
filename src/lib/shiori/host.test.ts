@@ -27,6 +27,12 @@ describe('subdomain host rewrite', () => {
     expect(resolveShioriRewrite('tabide.ai', '/kyoto-trip')).toBeNull();
     expect(resolveHostRewrite('tabide.ai', '/@alice/kyoto-guide')).toBeNull();
   });
+
+  it('normalizes forwarded host formats with port, trailing dot, and comma-separated values', () => {
+    expect(resolveHostRewrite('shiori.tabide.ai:443', '/kyoto-trip')).toBe('/shiori/kyoto-trip');
+    expect(resolveHostRewrite('blog.tabide.ai., tabide.ai', '/entry')).toBe('/blog/entry');
+    expect(resolveExternalSubdomainRedirect('www.tabide.ai:443', '/blog')).toBe('https://blog.tabide.ai/');
+  });
   it('redirects first-party shiori and blog paths to dedicated subdomains', () => {
     expect(resolveExternalSubdomainRedirect('tabide.ai', '/shiori')).toBe('https://shiori.tabide.ai/');
     expect(resolveExternalSubdomainRedirect('www.tabide.ai', '/blog', '?page=2')).toBe('https://blog.tabide.ai/?page=2');

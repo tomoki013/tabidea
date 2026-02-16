@@ -8,24 +8,20 @@ import {
   FaMapMarkerAlt,
   FaCalendarAlt,
   FaTrash,
-  FaEye,
-  FaEyeSlash,
   FaPlus,
-  FaExternalLinkAlt,
-  FaSuitcase,
   FaPlane,
   FaSync,
   FaEdit,
   FaEllipsisV,
   FaGlobe,
   FaLock,
-  FaTimes,
   FaFlag,
 } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, updatePlanVisibility, savePlan, updatePlanName, getFlaggedPlans } from '@/app/actions/travel-planner';
+import { deletePlan, savePlan, updatePlanName, getFlaggedPlans } from '@/app/actions/travel-planner';
+import { upsertPlanPublication } from '@/app/actions/plan-itinerary';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
@@ -45,7 +41,7 @@ export default function MyPlansClient({
   const { openModal } = usePlanModal();
   const { isAuthenticated, isLoading } = useAuth();
   const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
-  const { flaggedPlanIds, isFlagged, toggleFlag } = useFlags();
+  const { isFlagged, toggleFlag } = useFlags();
   const router = useRouter();
 
   useEffect(() => {
@@ -196,14 +192,26 @@ export default function MyPlansClient({
     setPlanToDelete(null);
   };
 
-  const handleToggleVisibility = async (planId: string, currentPublic: boolean) => {
+  const handleToggleVisibility = async (
+    planId: string,
+    currentPublic: boolean,
+    destination?: string | null,
+  ) => {
     setIsUpdating(planId);
-    const result = await updatePlanVisibility(planId, !currentPublic);
+    const nextVisibility = currentPublic ? 'private' : 'public';
+
+    const result = await upsertPlanPublication({
+      planId,
+      destination,
+      visibility: nextVisibility,
+      publishBudget: true,
+      publishJournal: true,
+    });
 
     if (result.success) {
-      updatePlan(planId, { isPublic: !currentPublic });
+      updatePlan(planId, { isPublic: nextVisibility === 'public' });
     } else {
-      alert(result.error || '更新に失敗しました');
+      alert(result.error || '公開設定の更新に失敗しました');
     }
     setIsUpdating(null);
   };
@@ -398,7 +406,7 @@ export default function MyPlansClient({
                           ? 'border-green-600 text-green-700 bg-white/90'
                           : 'border-stone-500 text-stone-600 bg-white/90'
                       }`}>
-                        {plan.isPublic ? 'PUBLIC' : 'PRIVATE'}
+                        {plan.isPublic ? '公開中' : '非公開'}
                       </div>
                     </div>
 
@@ -477,13 +485,13 @@ export default function MyPlansClient({
                                 </button>
                                 <button
                                   onClick={() => {
-                                    handleToggleVisibility(plan.id, plan.isPublic);
+                                    handleToggleVisibility(plan.id, plan.isPublic, plan.destination);
                                     setOpenMenuId(null);
                                   }}
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                 >
                                   {plan.isPublic ? <FaLock /> : <FaGlobe />}
-                                  {plan.isPublic ? '非公開にする' : '公開する'}
+                                  {plan.isPublic ? 'しおりを非公開にする' : 'しおりを公開する'}
                                 </button>
                                 <div className="border-t border-stone-100 border-dashed my-1" />
                                 <button
