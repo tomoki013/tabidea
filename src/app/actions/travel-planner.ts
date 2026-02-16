@@ -14,7 +14,7 @@ import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
-import { checkAndRecordUsage } from "@/lib/limits/check";
+import { checkAndRecordUsage, getUsageStatus } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
@@ -140,21 +140,18 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
-  // 利用制限チェック
-  const limitResult = await timer.measure('usage_check', () =>
-    checkAndRecordUsage('plan_generation', {
-      destination: input.destinations.join(', ') || input.region,
-      isDestinationDecided: input.isDestinationDecided,
-    })
+  // 利用制限チェック（失敗時の再試行は消費しない）
+  const usageStatus = await timer.measure('usage_check', () =>
+    getUsageStatus('plan_generation')
   );
 
-  if (!limitResult.allowed) {
+  if (usageStatus.remaining <= 0 && usageStatus.limit !== -1) {
     return {
       success: false,
       limitExceeded: true,
-      userType: limitResult.userType,
-      resetAt: limitResult.resetAt?.toISOString() ?? null,
-      remaining: limitResult.remaining,
+      userType: usageStatus.userType,
+      resetAt: usageStatus.resetAt?.toISOString() ?? null,
+      remaining: usageStatus.remaining,
       message: '利用制限に達しました',
     };
   }
@@ -365,6 +362,13 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     ).then(() => timer.end('cache_save')).catch((e) => {
       timer.end('cache_save');
       console.warn("[action] Cache save failed:", e);
+    });
+
+    // 成功時のみ利用回数を消費（失敗時リトライをレート制限対象外にする）
+    await checkAndRecordUsage('plan_generation', {
+      destination: input.destinations.join(', ') || input.region,
+      isDestinationDecided: input.isDestinationDecided,
+      outcome: 'success',
     });
 
     // パフォーマンスログ出力

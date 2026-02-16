@@ -9,6 +9,7 @@ import {
   syncJournalEntry,
   upsertPlanPublication,
 } from '@/app/actions/plan-itinerary';
+import ExternalSearchPanel from '@/components/features/plan-management/external/ExternalSearchPanel';
 
 interface Props {
   planId: string;
@@ -160,6 +161,10 @@ export default function PlanManagementPanel({ planId, destination, days, publica
                     localStorage.removeItem(`${DRAFT_KEY}:${item.id}`);
                   })}
                 />
+
+                {(item.item_type === 'hotel' || item.item_type === 'transit') && (
+                  <ExternalSearchPanel planId={planId} item={item} />
+                )}
               </div>
             );
           })}

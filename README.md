@@ -49,3 +49,23 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
 - テスト実行
   - Unit: `pnpm test`
+
+## Phase 4-5 実装メモ（外部API提案 / Blog）
+
+### Phase 4: 外部API連動提案
+- API: `POST /api/external/conditions`（AIで検索条件JSONのみ生成）
+- API: `POST /api/external/hotels/search`, `POST /api/external/flights/search`
+- Provider抽象化: `src/lib/external/providers.ts`
+- キャッシュ: `external_search_requests` + `external_search_results`（request hash + TTL）
+- 採用フロー: `plan_item_external_selections` へ保存し、`item_bookings` へ予約URLを反映
+- 失敗時: 「条件を調整して再実行」を返却
+
+### Phase 5: Blog
+- サブドメイン rewrite: `blog.tabide.ai` → `/blog/*`
+- 記事: 下書き/公開、一覧、編集、公開URL `/blog/@{username}/{slug}`
+- 画像: `blog-images` バケット（Supabase Storage）へアップロード
+- 埋め込み: `blog_post_embeds` で `shiori` 参照を保持し、記事内 iframe 表示
+- SEO: 記事ページ `generateMetadata` で title/description/og:image を設定
+
+### リトライ時レート制限について
+- 生成失敗時に再試行をしやすくするため、プラン概要生成の利用消費は「成功時のみ」実施。
