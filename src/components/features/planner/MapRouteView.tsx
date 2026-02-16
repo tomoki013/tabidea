@@ -319,9 +319,9 @@ export default function MapRouteView({
           </div>
 
           {/* Map */}
-          <MapErrorBoundary className="w-full h-64 sm:h-80 md:h-96">
+          <MapErrorBoundary className="w-full h-full min-h-[300px]">
             <APIProvider apiKey={apiKey}>
-              <div className="relative w-full h-64 sm:h-80 md:h-96 bg-stone-100">
+              <div className="relative w-full h-full min-h-[300px] bg-stone-100">
 
                 {!isMapLoaded && (
                   <div className="absolute inset-0 z-10">
