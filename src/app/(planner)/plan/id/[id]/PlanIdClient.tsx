@@ -9,8 +9,6 @@ import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMes
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
-import PlanManagementPanel from '@/components/features/plan-management/PlanManagementPanel';
-import type { NormalizedPlanDay, PlanPublication } from '@/types/normalized-plan';
 
 interface PlanIdClientProps {
   plan: Plan;
@@ -18,8 +16,6 @@ interface PlanIdClientProps {
   itinerary: Itinerary;
   planId: string;
   initialChatMessages?: ChatMessage[];
-  normalizedDays: NormalizedPlanDay[];
-  publication: PlanPublication | null;
 }
 
 export default function PlanIdClient({
@@ -28,8 +24,6 @@ export default function PlanIdClient({
   itinerary: initialItinerary,
   planId,
   initialChatMessages,
-  normalizedDays,
-  publication,
 }: PlanIdClientProps) {
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
@@ -164,13 +158,6 @@ export default function PlanIdClient({
           initialChatHistory={chatHistoryToKeep}
           shareCode={plan.shareCode}
           planId={planId}
-        />
-
-        <PlanManagementPanel
-          planId={planId}
-          destination={plan.destination}
-          days={normalizedDays}
-          publication={publication}
         />
 
         {/* Request Editing Modal */}

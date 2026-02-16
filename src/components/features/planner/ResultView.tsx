@@ -31,6 +31,8 @@ import { EditableText } from "@/components/ui/editable/EditableText";
 import { CardState } from "@/components/features/plan/cards/BaseCard";
 import SpotCard from "@/components/features/plan/cards/SpotCard";
 import TransitCard from "@/components/features/plan/cards/TransitCard";
+import MapRouteView from "@/components/features/planner/MapRouteView";
+import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -84,6 +86,9 @@ export default function ResultView({
 
   // Packing List State
   const [packingList, setPackingList] = useState<PackingList | null>(null);
+
+  // Map Data
+  const { enrichedDays } = useSpotCoordinates(result.days, result.destination);
 
   // Load packing list on mount
   useEffect(() => {
@@ -259,7 +264,7 @@ export default function ResultView({
   );
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
+    <div className="w-full max-w-7xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
       {/* Updating Overlay */}
       {isUpdating && (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-md animate-in fade-in duration-500 p-4">
@@ -392,9 +397,21 @@ export default function ResultView({
         <div className={activeTab === 'plan' ? 'block' : 'hidden'}>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-            <div className={showReferences ? "grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12" : "max-w-4xl mx-auto space-y-16"}>
-              {/* Timeline (Cards List) */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+              {/* Left Column: Map (Sticky) */}
+              <div className="hidden lg:block relative">
+                 <div className="sticky top-[140px] h-[calc(100vh-160px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                     <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                 </div>
+              </div>
+
+              {/* Right Column: Timeline */}
               <div className="space-y-16 pl-4 md:pl-0" data-itinerary-section>
+
+                {/* Mobile Map (Top) */}
+                <div className="lg:hidden mb-8 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
+                    <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                </div>
 
                 {result.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
@@ -442,10 +459,6 @@ export default function ResultView({
                       {/* Activity Cards */}
                       {day.activities.map((activity, actIndex) => {
                         const cardId = `activity-${day.day}-${actIndex}`;
-
-                        // If type is accommodation, render AccommodationCard (if we had data conversion, for now use SpotCard as generic fallback or specialized if type matches)
-                        // Currently SpotCard handles generic activities nicely.
-                        // If we wanted to use AccommodationCard, we'd need to map Activity to AccommodationData.
 
                         return (
                           <SpotCard
@@ -525,8 +538,6 @@ export default function ResultView({
                    )}
                 </div>
               </div>
-
-              {/* Sidebar */}
             </div>
           </motion.div>
         </div>
