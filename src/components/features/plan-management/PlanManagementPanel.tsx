@@ -110,7 +110,7 @@ export default function PlanManagementPanel({ planId, destination, days, publica
             {
               key: 'public' as const,
               title: '一般公開',
-              desc: '検索・共有で見つけてもらえる公開しおり。',
+              desc: '検索・共有で見つけてもらえる公開旅のしおり。',
               Icon: FaGlobeAsia,
               ring: 'from-sky-600/15 to-sky-300/5',
             },
@@ -206,7 +206,7 @@ export default function PlanManagementPanel({ planId, destination, days, publica
         )}
 
         <a href="https://shiori.tabide.ai" target="_blank" rel="noopener noreferrer" className="inline-flex text-xs text-primary hover:underline">
-          他の公開しおりを探す
+          他の公開旅のしおりを探す
         </a>
       </div>
 

@@ -56,9 +56,9 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
   const { t } = await searchParams;
   const data = await loadShiori(slug, t);
 
-  if (!data?.plan) return { title: 'しおりが見つかりません' };
+  if (!data?.plan) return { title: '旅のしおりが見つかりません' };
 
-  const title = `${data.plan.destination ?? '旅'}のしおり`;
+  const title = data.plan.destination ? `${data.plan.destination}の旅のしおり` : '旅のしおり';
   const description = `${data.plan.duration_days ?? ''}日間の旅程を公開中`;
   const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://shiori.tabide.ai').replace(/\/$/, '');
   const ogImageUrl = `${baseUrl}/api/og?destination=${encodeURIComponent(data.plan.destination ?? '旅')}&days=${data.plan.duration_days ?? ''}`;
@@ -77,11 +77,11 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
     <main className="min-h-screen bg-[#fcfbf9] px-4 py-12">
       <div className="mx-auto max-w-4xl space-y-6">
         <header className="rounded-xl border border-stone-200 bg-white p-6">
-          <p className="text-xs uppercase tracking-wide text-stone-500">Tabidea Shiori</p>
+          <p className="text-xs uppercase tracking-wide text-stone-500">Tabidea Travel Shiori</p>
           <h1 className="text-2xl font-bold text-stone-800">{data.plan.destination ?? '旅のしおり'}</h1>
           <p className="text-sm text-stone-600">{data.plan.duration_days ?? '-'}日間 / {data.plan.visibility}</p>
           <Link href="/shiori" className="mt-3 inline-block text-xs font-semibold text-primary hover:underline">
-            しおり機能の紹介ページを見る
+            旅のしおり機能の紹介ページを見る
           </Link>
         </header>
 

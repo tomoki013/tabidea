@@ -370,7 +370,7 @@ const rawRoadmapData: RoadmapItem[] = [
     updateType: "patch",
     title: "旅程カードのUI更新",
     description:
-      "プランページの旅程カードを、旅程・しおりらしいデザインを目指し、何をするのかがわかりやすいUIに変更しました。",
+      "プランページの旅程カードを、旅程・旅のしおりらしいデザインを目指し、何をするのかがわかりやすいUIに変更しました。",
   },
   {
     status: "done",

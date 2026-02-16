@@ -20,6 +20,7 @@ import {
   generateFlightLinks,
   trackAffiliateClick,
 } from "@/lib/utils/affiliate-links";
+import { EditableText } from "@/components/ui/editable/EditableText";
 
 // ============================================================================
 // Types
@@ -38,10 +39,12 @@ export interface TransitCardProps {
   state?: CardState;
   /** Callback when state changes */
   onStateChange?: (state: CardState) => void;
-  /** Whether in edit mode */
-  isEditing?: boolean;
+  /** Whether the card is editable */
+  isEditable?: boolean;
   /** Callback when lock status changes */
   onLockToggle?: () => void;
+  /** Callback when transit info is updated */
+  onUpdate?: (updates: Partial<TransitInfo>) => void;
   /** Custom class name */
   className?: string;
 }
@@ -101,8 +104,9 @@ export default function TransitCard({
   adults = 1,
   state = "collapsed",
   onStateChange,
-  isEditing = false,
+  isEditable = false,
   onLockToggle,
+  onUpdate,
   className = "",
 }: TransitCardProps) {
   const config = TRANSIT_CONFIG[transit.type];
@@ -122,10 +126,53 @@ export default function TransitCard({
   }, [transit.type, transit.departure.place, transit.arrival.place, departureDate, returnDate, adults]);
 
   // Build route string
-  const route = `${transit.departure.place} → ${transit.arrival.place}`;
+  const route = isEditable ? (
+    <div className="flex items-center gap-2 flex-wrap" onClick={(e) => e.stopPropagation()}>
+      <EditableText
+        value={transit.departure.place}
+        onChange={(val) => onUpdate?.({ departure: { ...transit.departure, place: val } })}
+        isEditable={true}
+        className="font-bold border-b border-stone-300"
+      />
+      <ArrowRight className="w-4 h-4 text-stone-400" />
+      <EditableText
+        value={transit.arrival.place}
+        onChange={(val) => onUpdate?.({ arrival: { ...transit.arrival, place: val } })}
+        isEditable={true}
+        className="font-bold border-b border-stone-300"
+      />
+    </div>
+  ) : `${transit.departure.place} → ${transit.arrival.place}`;
 
   // Build subtitle with times if available
-  const buildSubtitle = (): string => {
+  const buildSubtitle = () => {
+    if (isEditable) {
+      return (
+        <div className="flex items-center gap-2 text-sm text-stone-500" onClick={(e) => e.stopPropagation()}>
+           <div className="flex items-center gap-1">
+              <span>発:</span>
+              <EditableText
+                 value={transit.departure.time || ''}
+                 onChange={(val) => onUpdate?.({ departure: { ...transit.departure, time: val } })}
+                 isEditable={true}
+                 type="time"
+                 className="w-20 bg-stone-50 border border-stone-200"
+              />
+           </div>
+           <span>-</span>
+           <div className="flex items-center gap-1">
+              <span>着:</span>
+              <EditableText
+                 value={transit.arrival.time || ''}
+                 onChange={(val) => onUpdate?.({ arrival: { ...transit.arrival, time: val } })}
+                 isEditable={true}
+                 type="time"
+                 className="w-20 bg-stone-50 border border-stone-200"
+              />
+           </div>
+        </div>
+      );
+    }
     const parts: string[] = [];
     if (transit.departure.time) {
       parts.push(`${transit.departure.time}発`);
@@ -156,7 +203,15 @@ export default function TransitCard({
       icon={<Icon className="w-5 h-5" />}
       title={route}
       subtitle={buildSubtitle()}
-      time={transit.duration}
+      time={isEditable ? (
+         <EditableText
+            value={transit.duration || ''}
+            onChange={(val) => onUpdate?.({ duration: val })}
+            isEditable={true}
+            placeholder="所要時間"
+            className="w-16 text-xs"
+         />
+      ) : transit.duration}
       state={state}
       onStateChange={onStateChange}
       colorTheme={config.colorTheme}
@@ -220,10 +275,21 @@ export default function TransitCard({
         </div>
 
         {/* Memo */}
-        {transit.memo && (
+        {(transit.memo || isEditable) && (
           <div>
             <h4 className="text-sm font-bold text-stone-700 mb-1">メモ</h4>
-            <p className="text-sm text-stone-600">{transit.memo}</p>
+            {isEditable ? (
+               <EditableText
+                  value={transit.memo || ''}
+                  onChange={(val) => onUpdate?.({ memo: val })}
+                  isEditable={true}
+                  multiline
+                  placeholder="メモを入力..."
+                  className="text-sm w-full min-h-[60px] p-2 bg-stone-50 border border-stone-200 rounded"
+               />
+            ) : (
+               <p className="text-sm text-stone-600">{transit.memo}</p>
+            )}
           </div>
         )}
 
@@ -254,7 +320,7 @@ export default function TransitCard({
         )}
 
         {/* Edit Mode Controls */}
-        {isEditing && onLockToggle && (
+        {isEditable && onLockToggle && (
           <div className="flex justify-end pt-2 border-t border-stone-100">
             <button
               onClick={(e) => {

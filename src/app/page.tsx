@@ -11,6 +11,7 @@ import {
   TravelInfoSection,
   PublishingSection,
   FAQSection,
+  TravelShioriHeroSection,
 } from "@/components/features/landing";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from '@/types';
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     absolute: "Tabidea - AI Travel Planner",
   },
   description:
-    "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、しおり作成、持ち物リストも自動生成。",
+    "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、旅のしおり作成、持ち物リストも自動生成。",
 };
 
 interface HomeProps {
@@ -73,6 +74,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <FeaturesHeroSection />
         <UsageGuideHero />
         <FeatureSection />
+        <TravelShioriHeroSection />
         <ExampleSection />
         <TravelInfoSection />
         <PublishingSection />
