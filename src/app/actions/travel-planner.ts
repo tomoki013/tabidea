@@ -14,7 +14,7 @@ import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
 import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
-import { checkAndRecordUsage } from "@/lib/limits/check";
+import { checkAndRecordUsage, getUsageStatus } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
@@ -140,21 +140,18 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
-  // 利用制限チェック
-  const limitResult = await timer.measure('usage_check', () =>
-    checkAndRecordUsage('plan_generation', {
-      destination: input.destinations.join(', ') || input.region,
-      isDestinationDecided: input.isDestinationDecided,
-    })
+  // 利用制限チェック（失敗時リトライはカウント対象外）
+  const limitStatus = await timer.measure('usage_check', () =>
+    getUsageStatus('plan_generation')
   );
 
-  if (!limitResult.allowed) {
+  if (limitStatus.limit !== -1 && limitStatus.remaining <= 0) {
     return {
       success: false,
       limitExceeded: true,
-      userType: limitResult.userType,
-      resetAt: limitResult.resetAt?.toISOString() ?? null,
-      remaining: limitResult.remaining,
+      userType: limitStatus.userType,
+      resetAt: limitStatus.resetAt?.toISOString() ?? null,
+      remaining: limitStatus.remaining,
       message: '利用制限に達しました',
     };
   }
@@ -366,6 +363,24 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
       timer.end('cache_save');
       console.warn("[action] Cache save failed:", e);
     });
+
+    // 成功時のみ利用実績を記録（失敗リトライはカウント対象外）
+    const consumeResult = await checkAndRecordUsage('plan_generation', {
+      destination: input.destinations.join(', ') || input.region,
+      isDestinationDecided: input.isDestinationDecided,
+      countedOn: 'outline_success',
+    });
+
+    if (!consumeResult.allowed) {
+      return {
+        success: false,
+        limitExceeded: true,
+        userType: consumeResult.userType,
+        resetAt: consumeResult.resetAt ? consumeResult.resetAt.toISOString() : null,
+        remaining: consumeResult.remaining,
+        message: '月間生成上限に達しました。',
+      };
+    }
 
     // パフォーマンスログ出力
     timer.log();

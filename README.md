@@ -49,3 +49,27 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
 - テスト実行
   - Unit: `pnpm test`
+
+## Phase 4-5 実装メモ（外部API提案 / Blog）
+
+### Phase 4: 外部APIハイブリッド提案
+- 外部検索テーブル: `external_search_requests`, `external_search_results`, `plan_item_external_selections`
+- API: `POST /api/external/hotels/search`, `POST /api/external/flights/search`
+- zodバリデーション: AI出力は検索条件JSONのみ受け取り、サーバー側で厳密検証
+- Provider抽象化: `src/lib/external/providers/*`（将来provider追加対応）
+- キャッシュ: リクエストJSONのhashでTTL再利用（ホテル20分 / フライト10分）
+- 採用フロー: 候補採用時に `plan_item_external_selections` + `item_bookings` へ保存
+
+### Phase 5: Blog（blog.tabide.ai）
+- テーブル: `blog_profiles`, `blog_posts`, `blog_post_embeds`
+- RLS: owner CRUD + published anon read
+- ルーティング: `blog.tabide.ai` → `/blog/*` rewrite
+- エディタ: `/blog/editor`（下書き/公開）
+- 画像アップロード: `/api/blog/upload-image`（Supabase Storage `blog-images`）
+- 埋め込み: 記事内に `shiori.tabide.ai/{slug}[?t=token]` を iframe 表示
+
+### 新規環境変数
+- `AMADEUS_CLIENT_ID`
+- `AMADEUS_CLIENT_SECRET`
+- `AMADEUS_BASE_URL`（任意。未指定時はテスト環境URL）
+

@@ -108,7 +108,8 @@ export async function getNormalizedPlanData(planId: string, userId: string): Pro
         id,day_id,item_type,category,sort_order,title,description,start_time,location,
         estimated_cost,estimated_currency,actual_cost,actual_currency,note,
         bookings:item_bookings(id,booking_url,booking_reference,provider,status,memo),
-        journal:journal_entries(id,content,updated_at)
+        journal:journal_entries(id,content,updated_at),
+        external_selections:plan_item_external_selections(id,provider,external_id,deeplink,price_snapshot,metadata_json,created_at)
       )
     `)
     .eq('plan_id', planId)
@@ -133,6 +134,7 @@ export async function getNormalizedPlanData(planId: string, userId: string): Pro
       day_number: day.day_number,
       bookings: item.bookings ?? [],
       journal: Array.isArray(item.journal) ? (item.journal[0] ?? null) : item.journal,
+      external_selections: item.external_selections ?? [],
     })),
   }));
 

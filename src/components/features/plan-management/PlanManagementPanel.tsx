@@ -9,6 +9,7 @@ import {
   syncJournalEntry,
   upsertPlanPublication,
 } from '@/app/actions/plan-itinerary';
+import { ExternalSuggestionsPanel } from '@/components/features/plan-management/ExternalSuggestionsPanel';
 
 interface Props {
   planId: string;
@@ -149,6 +150,10 @@ export default function PlanManagementPanel({ planId, destination, days, publica
                     }}
                   />
                 </div>
+                {(item.item_type === 'hotel' || item.item_type === 'transit') && (
+                  <ExternalSuggestionsPanel planId={planId} item={item} />
+                )}
+
                 <textarea
                   defaultValue={draft || item.journal?.content || ''}
                   placeholder="旅メモ（日記）"

@@ -13,6 +13,26 @@ const nextConfig: NextConfig = {
     return crypto.randomUUID();
   },
 
+
+
+  async headers() {
+    return [
+      {
+        source: '/shiori/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: "frame-ancestors 'self' https://blog.tabide.ai https://*.tabide.ai",
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'SAMEORIGIN',
+          },
+        ],
+      },
+    ];
+  },
+
   images: {
     remotePatterns: [
       {

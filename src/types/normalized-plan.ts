@@ -15,6 +15,16 @@ export interface NormalizedJournal {
   updated_at: string;
 }
 
+export interface NormalizedExternalSelection {
+  id: string;
+  provider: string;
+  external_id: string;
+  deeplink: string | null;
+  price_snapshot: Record<string, unknown> | null;
+  metadata_json: Record<string, unknown> | null;
+  created_at: string;
+}
+
 export interface NormalizedPlanItem {
   id: string;
   day_id: string;
@@ -33,6 +43,7 @@ export interface NormalizedPlanItem {
   note: string | null;
   bookings: NormalizedBooking[];
   journal: NormalizedJournal | null;
+  external_selections: NormalizedExternalSelection[];
 }
 
 export interface NormalizedPlanDay {

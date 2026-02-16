@@ -77,6 +77,60 @@ export async function upsertBooking(input: {
   return { success: true };
 }
 
+
+export async function adoptExternalSelection(input: {
+  itemId: string;
+  planId: string;
+  provider: string;
+  externalId: string;
+  deeplink: string | null;
+  priceSnapshot: Record<string, unknown> | null;
+  metadataJson: Record<string, unknown> | null;
+}) {
+  const user = await assertUser();
+  const supabase = await createClient();
+
+  const { error } = await supabase.from('plan_item_external_selections').insert({
+    item_id: input.itemId,
+    provider: input.provider,
+    external_id: input.externalId,
+    deeplink: input.deeplink,
+    price_snapshot: input.priceSnapshot,
+    metadata_json: input.metadataJson,
+  });
+
+  if (error) return { success: false, error: error.message };
+
+  const { data: existingBooking } = await supabase
+    .from('item_bookings')
+    .select('id')
+    .eq('item_id', input.itemId)
+    .eq('user_id', user.id)
+    .eq('is_primary', true)
+    .maybeSingle();
+
+  const bookingPayload = {
+    item_id: input.itemId,
+    plan_id: input.planId,
+    user_id: user.id,
+    booking_url: input.deeplink,
+    provider: input.provider,
+    memo: 'external_suggestion_adopted',
+    is_primary: true,
+    status: 'planned',
+    updated_at: new Date().toISOString(),
+  };
+
+  const bookingQuery = existingBooking
+    ? supabase.from('item_bookings').update(bookingPayload).eq('id', existingBooking.id)
+    : supabase.from('item_bookings').insert(bookingPayload);
+
+  const { error: bookingError } = await bookingQuery;
+  if (bookingError) return { success: false, error: bookingError.message };
+
+  return { success: true };
+}
+
 export async function syncJournalEntry(input: {
   itemId: string;
   planId: string;
