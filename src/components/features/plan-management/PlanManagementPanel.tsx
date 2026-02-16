@@ -57,6 +57,12 @@ export default function PlanManagementPanel({ planId, destination, days, publica
     ? `https://shiori.tabide.ai/${publishState.slug}${publishState.visibility === 'unlisted' && publishState.unlisted_token ? `?t=${publishState.unlisted_token}` : ''}`
     : null;
 
+  const visibilityLabel: Record<PlanPublication['visibility'], string> = {
+    private: '非公開（自分のみ）',
+    unlisted: '限定公開（URLを知っている人のみ）',
+    public: '一般公開（誰でも閲覧可）',
+  };
+
   return (
     <section className="w-full max-w-5xl px-4 py-8 space-y-6">
       <div className="rounded-xl border border-stone-200 bg-white p-4">
@@ -75,18 +81,32 @@ export default function PlanManagementPanel({ planId, destination, days, publica
 
       <div className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
         <h2 className="font-semibold text-stone-800">旅のしおり公開</h2>
-        <div className="flex flex-wrap gap-2">
+        <p className="text-sm text-stone-600">現在のステータス: <span className="font-semibold text-stone-800">{visibilityLabel[publishState.visibility]}</span></p>
+
+        <div className="grid gap-2 sm:grid-cols-3">
           {(['private', 'unlisted', 'public'] as const).map((visibility) => (
             <button
               key={visibility}
               type="button"
-              className={`px-3 py-1 rounded-full border text-sm ${publishState.visibility === visibility ? 'bg-primary text-white' : 'bg-white'}`}
+              className={`rounded-lg border px-3 py-2 text-left text-sm transition ${publishState.visibility === visibility ? 'border-primary bg-primary/10 text-primary' : 'border-stone-200 bg-white text-stone-700'}`}
               onClick={() => setPublishState((prev) => ({ ...prev, visibility }))}
             >
-              {visibility}
+              <p className="font-semibold">{visibilityLabel[visibility]}</p>
+              <p className="mt-1 text-xs text-stone-500">
+                {visibility === 'private' && '公開しません。編集中の状態です。'}
+                {visibility === 'unlisted' && 'URLを知る人だけに共有できます。'}
+                {visibility === 'public' && 'みんなが見つけられる状態で公開します。'}
+              </p>
             </button>
           ))}
         </div>
+
+        {publishState.visibility !== 'private' && (
+          <div className="rounded-lg border border-stone-200 bg-stone-50 p-3 text-sm text-stone-700">
+            しおりを公開すると、他の人が閲覧できるようになります。公開範囲に合わせて表示内容を調整してください。
+          </div>
+        )}
+
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={publishState.publish_budget} onChange={(e) => setPublishState((p) => ({ ...p, publish_budget: e.target.checked }))} />予算情報を含める</label>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={publishState.publish_journal} onChange={(e) => setPublishState((p) => ({ ...p, publish_journal: e.target.checked }))} />日記を含める</label>
         <button
@@ -108,8 +128,16 @@ export default function PlanManagementPanel({ planId, destination, days, publica
               }));
             }
           })}
-        >公開設定を保存</button>
-        {publishUrl && <p className="text-xs text-stone-600 break-all">公開URL: {publishUrl}</p>}
+        >{publishState.visibility === 'private' ? '非公開設定を保存' : '公開設定を保存'}</button>
+
+        {publishUrl && publishState.visibility !== 'private' && (
+          <p className="text-xs text-stone-600 break-all">公開URL: {publishUrl}</p>
+        )}
+
+        <div className="flex flex-wrap gap-3 text-xs">
+          <a href="https://shiori.tabide.ai" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">他の公開しおりを探す</a>
+          <a href={publishUrl ?? 'https://shiori.tabide.ai'} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">自分の公開ページを開く</a>
+        </div>
       </div>
 
       {localDays.map((day) => (
