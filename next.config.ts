@@ -25,7 +25,25 @@ const nextConfig: NextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "*.supabase.co",
+        port: "",
+        pathname: "/storage/v1/object/public/**",
+      },
     ],
+  },
+
+  async headers() {
+    return [
+      {
+        source: '/shiori/:path*',
+        headers: [
+          { key: 'X-Frame-Options', value: 'ALLOWALL' },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://blog.tabide.ai https://*.tabide.ai" },
+        ],
+      },
+    ];
   },
 };
 

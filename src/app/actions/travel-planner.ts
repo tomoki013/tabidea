@@ -136,7 +136,10 @@ export async function getUserConstraintPrompt(): Promise<string> {
 /**
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
-export async function generatePlanOutline(input: UserInput): Promise<OutlineActionState> {
+export async function generatePlanOutline(
+  input: UserInput,
+  options?: { isRetry?: boolean }
+): Promise<OutlineActionState> {
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
@@ -145,7 +148,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     checkAndRecordUsage('plan_generation', {
       destination: input.destinations.join(', ') || input.region,
       isDestinationDecided: input.isDestinationDecided,
-    })
+    }, { skipConsume: options?.isRetry === true })
   );
 
   if (!limitResult.allowed) {

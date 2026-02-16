@@ -1,10 +1,10 @@
 import { type NextRequest, NextResponse } from 'next/server';
 
 import { updateSession } from '@/lib/supabase/proxy';
-import { resolveShioriRewrite } from '@/lib/shiori/host';
+import { resolveHostRewrite } from '@/lib/shiori/host';
 
 export async function proxy(request: NextRequest) {
-  const rewritePath = resolveShioriRewrite(request.headers.get('host'), request.nextUrl.pathname);
+  const rewritePath = resolveHostRewrite(request.headers.get('host'), request.nextUrl.pathname);
   if (rewritePath) {
     const rewriteUrl = request.nextUrl.clone();
     rewriteUrl.pathname = rewritePath;

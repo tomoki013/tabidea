@@ -8,7 +8,9 @@ import {
   upsertBooking,
   syncJournalEntry,
   upsertPlanPublication,
+  adoptExternalSelection,
 } from '@/app/actions/plan-itinerary';
+import type { ExternalCandidate } from '@/lib/external-providers/types';
 
 interface Props {
   planId: string;
@@ -29,6 +31,9 @@ export default function PlanManagementPanel({ planId, destination, days, publica
     publish_journal: true,
   });
   const [isPending, startTransition] = useTransition();
+  const [searchConditions, setSearchConditions] = useState<Record<string, string>>({});
+  const [searchResults, setSearchResults] = useState<Record<string, ExternalCandidate[]>>({});
+  const [searchErrors, setSearchErrors] = useState<Record<string, string>>({});
 
   const totals = useMemo(() => {
     const allItems = localDays.flatMap((day) => day.items);
@@ -160,6 +165,95 @@ export default function PlanManagementPanel({ planId, destination, days, publica
                     localStorage.removeItem(`${DRAFT_KEY}:${item.id}`);
                   })}
                 />
+
+                {(item.item_type === 'hotel' || item.item_type === 'transit') && (
+                  <div className="rounded border border-stone-200 p-3 bg-stone-50 space-y-2">
+                    <p className="text-xs font-semibold text-stone-700">外部API候補検索（AI条件JSON）</p>
+                    <textarea
+                      value={searchConditions[item.id] ?? JSON.stringify(item.item_type === 'hotel' ? {
+                        provider: 'amadeus',
+                        cityCode: 'TYO',
+                        checkInDate: new Date().toISOString().slice(0, 10),
+                        checkOutDate: new Date(Date.now() + 86400000).toISOString().slice(0, 10),
+                        guests: 2,
+                        limit: 3,
+                        planId,
+                        itemId: item.id,
+                      } : {
+                        provider: 'amadeus',
+                        origin: 'HND',
+                        destination: 'ITM',
+                        departureDate: new Date().toISOString().slice(0, 10),
+                        adults: 1,
+                        limit: 3,
+                        planId,
+                        itemId: item.id,
+                      }, null, 2)}
+                      className="border rounded px-2 py-2 text-xs w-full min-h-28 font-mono"
+                      onChange={(e) => setSearchConditions((prev) => ({ ...prev, [item.id]: e.target.value }))}
+                    />
+                    <button
+                      type="button"
+                      className="px-3 py-1 rounded bg-stone-800 text-white text-xs"
+                      onClick={() => startTransition(async () => {
+                        try {
+                          const endpoint = item.item_type === 'hotel' ? '/api/external/hotels/search' : '/api/external/flights/search';
+                          const raw = searchConditions[item.id];
+                          const payload = raw ? JSON.parse(raw) : {};
+                          const res = await fetch(endpoint, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload),
+                          });
+                          const data = await res.json();
+                          if (!res.ok || !data.success) {
+                            setSearchErrors((prev) => ({ ...prev, [item.id]: data.error ?? '検索失敗' }));
+                            return;
+                          }
+                          setSearchErrors((prev) => ({ ...prev, [item.id]: '' }));
+                          setSearchResults((prev) => ({ ...prev, [item.id]: data.candidates ?? [] }));
+                        } catch {
+                          setSearchErrors((prev) => ({ ...prev, [item.id]: '条件JSONを調整して再試行してください' }));
+                        }
+                      })}
+                    >候補を検索</button>
+                    {searchErrors[item.id] && <p className="text-xs text-red-600">{searchErrors[item.id]}</p>}
+                    <div className="space-y-2">
+                      {(searchResults[item.id] ?? []).map((candidate) => (
+                        <div key={candidate.id} className="rounded border border-stone-200 bg-white p-2 text-xs space-y-1">
+                          <div className="font-semibold">{candidate.name}</div>
+                          <div>価格: {candidate.price ?? '-'} {candidate.currency ?? ''}</div>
+                          <div>評価: {candidate.rating ?? '-'}</div>
+                          <div className="break-all text-stone-500">{candidate.deeplink}</div>
+                          <button
+                            type="button"
+                            className="px-2 py-1 rounded bg-primary text-white"
+                            onClick={() => startTransition(async () => {
+                              const result = await adoptExternalSelection({
+                                itemId: item.id,
+                                planId,
+                                provider: candidate.provider,
+                                externalId: candidate.id,
+                                deeplink: candidate.deeplink ?? null,
+                                price: candidate.price ?? null,
+                                currency: candidate.currency ?? null,
+                                metadata: {
+                                  ...candidate.metadata,
+                                  name: candidate.name,
+                                  imageUrl: candidate.imageUrl ?? null,
+                                  locationLabel: candidate.locationLabel ?? null,
+                                },
+                              });
+                              if (!result.success) {
+                                setSearchErrors((prev) => ({ ...prev, [item.id]: result.error ?? '採用に失敗しました' }));
+                              }
+                            })}
+                          >この候補を採用</button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             );
           })}

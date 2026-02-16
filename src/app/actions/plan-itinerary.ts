@@ -99,6 +99,77 @@ export async function syncJournalEntry(input: {
   return { success: true };
 }
 
+export async function adoptExternalSelection(input: {
+  itemId: string;
+  planId: string;
+  provider: string;
+  externalId: string;
+  deeplink: string | null;
+  price: number | null;
+  currency: string | null;
+  metadata?: Record<string, unknown>;
+}) {
+  const user = await assertUser();
+  const supabase = await createClient();
+
+  const { error } = await supabase
+    .from('plan_item_external_selections')
+    .insert({
+      item_id: input.itemId,
+      user_id: user.id,
+      provider: input.provider,
+      external_id: input.externalId,
+      deeplink: input.deeplink,
+      price_snapshot: input.price == null ? null : {
+        amount: input.price,
+        currency: input.currency ?? 'JPY',
+      },
+      metadata_json: input.metadata ?? {},
+    });
+
+  if (error) return { success: false, error: error.message };
+
+  const { error: updateError } = await supabase
+    .from('plan_items')
+    .update({
+      note: input.metadata?.name ? `候補採用: ${String(input.metadata.name)}` : null,
+      updated_at: new Date().toISOString(),
+    })
+    .eq('id', input.itemId)
+    .eq('user_id', user.id);
+
+  if (updateError) return { success: false, error: updateError.message };
+
+  const { data: existing } = await supabase
+    .from('item_bookings')
+    .select('id')
+    .eq('item_id', input.itemId)
+    .eq('user_id', user.id)
+    .eq('is_primary', true)
+    .maybeSingle();
+
+  const bookingPayload = {
+    item_id: input.itemId,
+    plan_id: input.planId,
+    user_id: user.id,
+    booking_url: input.deeplink,
+    provider: input.provider,
+    status: 'planned' as const,
+    memo: input.metadata?.name ? `External候補: ${String(input.metadata.name)}` : null,
+    is_primary: true,
+    updated_at: new Date().toISOString(),
+  };
+
+  const bookingQuery = existing
+    ? supabase.from('item_bookings').update(bookingPayload).eq('id', existing.id)
+    : supabase.from('item_bookings').insert(bookingPayload);
+
+  const { error: bookingError } = await bookingQuery;
+  if (bookingError) return { success: false, error: bookingError.message };
+
+  return { success: true };
+}
+
 export async function upsertPlanPublication(input: {
   planId: string;
   destination?: string | null;

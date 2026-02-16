@@ -33,9 +33,12 @@ export type LimitCheckResult = LegacyLimitCheckResult;
  */
 export async function checkAndRecordUsage(
   action: ActionType,
-  metadata?: Record<string, unknown>
+  metadata?: Record<string, unknown>,
+  options?: { skipConsume?: boolean }
 ): Promise<LegacyLimitCheckResult> {
-  const result = await checkAndConsumeQuota(action, metadata);
+  const usageStatus = options?.skipConsume
+    ? await getUnifiedUsageStatus(action)
+    : await checkAndConsumeQuota(action, metadata);
 
   // We need userType and userId for full compatibility
   // Note: checkAndConsumeQuota already fetched user, but we need to fetch again or change its return type.
@@ -44,19 +47,19 @@ export async function checkAndRecordUsage(
 
   // Calculate current count approximation
   let currentCount = 0;
-  if (result.limit !== -1) {
-    currentCount = result.limit - result.remaining;
+  if (usageStatus.limit !== -1) {
+    currentCount = usageStatus.limit - usageStatus.remaining;
   }
 
   return {
-    allowed: result.allowed,
+    allowed: options?.skipConsume ? usageStatus.remaining !== 0 : (usageStatus as { allowed: boolean }).allowed,
     userType: billing.userType,
     userId: billing.userId,
     currentCount,
-    limit: result.limit,
-    remaining: result.remaining,
-    resetAt: result.resetAt,
-    error: result.error
+    limit: usageStatus.limit,
+    remaining: usageStatus.remaining,
+    resetAt: usageStatus.resetAt,
+    error: (usageStatus as { error?: string }).error
   };
 }
 
