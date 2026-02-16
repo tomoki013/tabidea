@@ -143,9 +143,9 @@ export default function PrivacyPolicy() {
                   5-1. AIサービスプロバイダー
                 </h3>
                 <p className="mt-1">
-                  旅行プランの生成には、Google
-                  LLCが提供する生成AIサービス（Gemini
-                  API）等を利用しています。ユーザーが入力した情報は、当該サービスのプライバシーポリシーに従って処理されるほか、AIの学習には利用されない設定（オプトアウト等）で利用することを原則としますが、提供元の方針により変更が生じる可能性があります。詳細は
+                  旅行プランの生成には、Google LLCが提供する生成AIサービス（Gemini
+                  API）およびOpenAI, L.L.C.が提供する生成AIサービス（OpenAI
+                  API）等を利用しています。ユーザーが入力した情報は、各サービスのプライバシーポリシーに従って処理されるほか、AIの学習には利用されない設定で利用することを原則とします。詳細は
                   <PolicyLink href="/ai-policy">AIポリシー</PolicyLink>
                   をご確認ください。
                 </p>
@@ -249,7 +249,7 @@ export default function PrivacyPolicy() {
           <div className="text-right text-sm text-muted-foreground mt-12">
             策定日：2025年12月23日
             <br />
-            最終更新日：2026年2月1日
+            最終更新日：2026年2月14日
           </div>
         </div>
       </main>
