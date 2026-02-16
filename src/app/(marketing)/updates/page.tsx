@@ -673,7 +673,7 @@ export default function UpdatesPage() {
                   className="relative pl-6 border-l-2 border-stone-200 pb-10 break-inside-avoid"
                 >
                   {/* Dot */}
-                  <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
+                  <div className="absolute -left-[7px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
 
                   {/* Content */}
                   <div>

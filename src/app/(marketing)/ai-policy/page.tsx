@@ -31,7 +31,7 @@ export default function AiPolicy() {
               2. 使用しているAI技術
             </h2>
             <p>
-              当サービスでは、Google LLC（以下「Google社」）が提供する生成AIモデル「Gemini API」を使用しています。
+              当サービスでは、Google LLC（以下「Google社」）が提供する生成AIモデル「Gemini API」およびOpenAI, L.L.C.（以下「OpenAI社」）が提供する生成AIモデル「OpenAI API」を使用しています。
               ユーザーが入力した条件（目的地、予算、テーマ等）は、このAIモデルによって処理され、旅行プランが生成されます。
             </p>
           </section>
@@ -45,16 +45,20 @@ export default function AiPolicy() {
             </p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <strong>AI学習への利用禁止：</strong>{" "}
+                <strong>AI学習への利用禁止（Google）：</strong>{" "}
                 当サービスに入力されたデータ（プロンプト）および生成されたコンテンツは、Google社の「Gemini API 追加利用規約（Paid Services）」に基づき、Google社のAIモデルの学習（トレーニング）には使用されません。
               </li>
               <li>
+                <strong>AI学習への利用禁止（OpenAI）：</strong>{" "}
+                当サービスに入力されたデータおよび生成されたコンテンツは、OpenAI社の「Business Terms」に基づき、OpenAI社のAIモデルの学習（トレーニング）には使用されません。
+              </li>
+              <li>
                 <strong>一時的なデータ保持：</strong>{" "}
-                不正利用の検知（abuse monitoring）および法令順守の目的において、Google社により一定期間、入力データおよび出力データがログとして保持される場合があります。これらのデータは、当該目的以外には使用されません。
+                不正利用の検知（abuse monitoring）および法令順守の目的において、各AIプロバイダー（Google社、OpenAI社）により一定期間、入力データおよび出力データがログとして保持される場合があります。これらのデータは、当該目的以外には使用されません。
               </li>
             </ul>
             <p className="mt-2">
-              詳細については、以下のGoogle社の規約をご確認ください。
+              詳細については、以下の各社の規約をご確認ください。
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
                <li>
@@ -65,6 +69,16 @@ export default function AiPolicy() {
                   className="text-blue-500 hover:underline"
                 >
                   Gemini API 追加利用規約
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://openai.com/policies/business-terms"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 hover:underline"
+                >
+                  OpenAI Business Terms
                 </a>
               </li>
             </ul>
@@ -130,7 +144,7 @@ export default function AiPolicy() {
               <li>法令に違反する内容の生成を試みること</li>
               <li>他者の権利を侵害する内容、暴力的・差別的・性的な内容の生成を試みること</li>
               <li>AIに対して、意図的に過度な負荷をかける行為</li>
-              <li>その他、Google社の生成AI禁止利用ポリシー（Prohibited Use Policy）に抵触する行為</li>
+              <li>その他、Google社の生成AI禁止利用ポリシー（Prohibited Use Policy）およびOpenAI社の利用規約（Usage Policies）に抵触する行為</li>
             </ul>
           </section>
 
@@ -147,7 +161,7 @@ export default function AiPolicy() {
           <div className="text-right text-sm text-muted-foreground mt-12">
             策定日：2026年1月8日
             <br />
-            最終更新日: 2026年1月8日
+            最終更新日: 2026年2月14日
           </div>
         </div>
       </main>
