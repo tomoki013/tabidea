@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
-import { resolveHostRewrite, resolveShioriRewrite, shouldBypassShioriRewrite } from './host';
+import {
+  resolveExternalSubdomainRedirect,
+  resolveHostRewrite,
+  resolveShioriRewrite,
+  shouldBypassShioriRewrite,
+} from './host';
 
 describe('subdomain host rewrite', () => {
   it('rewrites for shiori host', () => {
@@ -22,4 +27,14 @@ describe('subdomain host rewrite', () => {
     expect(resolveShioriRewrite('tabide.ai', '/kyoto-trip')).toBeNull();
     expect(resolveHostRewrite('tabide.ai', '/@alice/kyoto-guide')).toBeNull();
   });
+  it('redirects first-party shiori and blog paths to dedicated subdomains', () => {
+    expect(resolveExternalSubdomainRedirect('tabide.ai', '/shiori')).toBe('https://shiori.tabide.ai/');
+    expect(resolveExternalSubdomainRedirect('www.tabide.ai', '/blog', '?page=2')).toBe('https://blog.tabide.ai/?page=2');
+  });
+
+  it('does not redirect nested paths or other hosts', () => {
+    expect(resolveExternalSubdomainRedirect('tabide.ai', '/shiori/kyoto-trip')).toBeNull();
+    expect(resolveExternalSubdomainRedirect('staging.tabide.ai', '/blog')).toBeNull();
+  });
+
 });
