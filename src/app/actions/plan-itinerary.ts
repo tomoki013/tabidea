@@ -139,3 +139,44 @@ export async function upsertPlanPublication(input: {
 
   return { success: true, slug, unlistedToken };
 }
+
+export async function adoptExternalSelection(input: {
+  itemId: string;
+  provider: string;
+  externalId: string;
+  deeplink?: string | null;
+  priceSnapshot?: {
+    amount: number | null;
+    currency: string | null;
+  };
+  metadata?: Record<string, unknown>;
+}) {
+  const user = await assertUser();
+  const supabase = await createClient();
+
+  const { data: item, error: itemError } = await supabase
+    .from('plan_items')
+    .select('id, plan_id, user_id')
+    .eq('id', input.itemId)
+    .eq('user_id', user.id)
+    .single();
+
+  if (itemError || !item) return { success: false, error: '対象のプラン項目が見つかりません。' };
+
+  const { error } = await supabase
+    .from('plan_item_external_selections')
+    .upsert({
+      item_id: input.itemId,
+      provider: input.provider,
+      external_id: input.externalId,
+      deeplink: input.deeplink ?? null,
+      price_snapshot: input.priceSnapshot ?? null,
+      metadata_json: input.metadata ?? null,
+      created_at: new Date().toISOString(),
+    }, { onConflict: 'item_id,provider,external_id' });
+
+  if (error) return { success: false, error: error.message };
+
+  revalidatePath(`/plan/id/${item.plan_id}`);
+  return { success: true };
+}

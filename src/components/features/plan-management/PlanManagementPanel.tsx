@@ -4,6 +4,7 @@ import { useMemo, useState, useTransition } from 'react';
 
 import type { NormalizedPlanDay, PlanPublication } from '@/types/normalized-plan';
 import {
+  adoptExternalSelection,
   updatePlanItemDetails,
   upsertBooking,
   syncJournalEntry,
@@ -19,6 +20,19 @@ interface Props {
 
 const DRAFT_KEY = 'tabidea-journal-draft';
 
+interface Candidate {
+  id: string;
+  name?: string;
+  price?: number | null;
+  currency?: string | null;
+  rating?: number | null;
+  latitude?: number | null;
+  longitude?: number | null;
+  imageUrl?: string | null;
+  deeplink?: string | null;
+  provider: string;
+}
+
 export default function PlanManagementPanel({ planId, destination, days, publication }: Props) {
   const [localDays, setLocalDays] = useState(days);
   const [publishState, setPublishState] = useState<PlanPublication>(publication ?? {
@@ -29,6 +43,7 @@ export default function PlanManagementPanel({ planId, destination, days, publica
     publish_journal: true,
   });
   const [isPending, startTransition] = useTransition();
+  const [candidateState, setCandidateState] = useState<Record<string, { loading: boolean; error?: string; hotels: Candidate[]; flights: Candidate[] }>>({});
 
   const totals = useMemo(() => {
     const allItems = localDays.flatMap((day) => day.items);
@@ -51,6 +66,58 @@ export default function PlanManagementPanel({ planId, destination, days, publica
   const publishUrl = publishState.slug
     ? `https://shiori.tabide.ai/${publishState.slug}${publishState.visibility === 'unlisted' && publishState.unlisted_token ? `?t=${publishState.unlisted_token}` : ''}`
     : null;
+
+  const searchCandidates = async (itemId: string, itemType: string) => {
+    setCandidateState((prev) => ({ ...prev, [itemId]: { loading: true, hotels: prev[itemId]?.hotels ?? [], flights: prev[itemId]?.flights ?? [] } }));
+
+    try {
+      if (itemType === 'hotel') {
+        const response = await fetch('/api/external/hotels/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            provider: 'amadeus',
+            planId,
+            itemId,
+            criteria: {
+              cityCode: destination?.slice(0, 3).toUpperCase() || 'TYO',
+              checkInDate: new Date().toISOString().slice(0, 10),
+              checkOutDate: new Date(Date.now() + 24 * 3600 * 1000).toISOString().slice(0, 10),
+              guests: 2,
+              sort: 'price',
+              limit: 5,
+            },
+          }),
+        });
+        const json = await response.json();
+        if (!response.ok) throw new Error(json?.message ?? '検索失敗');
+        setCandidateState((prev) => ({ ...prev, [itemId]: { loading: false, hotels: json.results ?? [], flights: prev[itemId]?.flights ?? [] } }));
+      } else {
+        const response = await fetch('/api/external/flights/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            provider: 'amadeus',
+            planId,
+            itemId,
+            criteria: {
+              originLocationCode: 'TYO',
+              destinationLocationCode: 'OSA',
+              departureDate: new Date().toISOString().slice(0, 10),
+              adults: 1,
+              sort: 'price',
+              limit: 5,
+            },
+          }),
+        });
+        const json = await response.json();
+        if (!response.ok) throw new Error(json?.message ?? '検索失敗');
+        setCandidateState((prev) => ({ ...prev, [itemId]: { loading: false, flights: json.results ?? [], hotels: prev[itemId]?.hotels ?? [] } }));
+      }
+    } catch (error) {
+      setCandidateState((prev) => ({ ...prev, [itemId]: { loading: false, hotels: prev[itemId]?.hotels ?? [], flights: prev[itemId]?.flights ?? [], error: error instanceof Error ? error.message : '検索に失敗しました。条件を調整して再試行してください。' } }));
+    }
+  };
 
   return (
     <section className="w-full max-w-5xl px-4 py-8 space-y-6">
@@ -112,9 +179,52 @@ export default function PlanManagementPanel({ planId, destination, days, publica
           <h3 className="font-semibold">Day {day.day_number}: {day.title ?? ''}</h3>
           {day.items.map((item) => {
             const draft = typeof window !== 'undefined' ? localStorage.getItem(`${DRAFT_KEY}:${item.id}`) : '';
+            const candidates = candidateState[item.id];
             return (
               <div key={item.id} className="rounded-md border border-stone-100 p-3 space-y-2">
                 <div className="text-sm font-medium">{item.title}</div>
+                <div className="flex gap-2">
+                  <button className="px-3 py-1 text-xs rounded border" type="button" onClick={() => searchCandidates(item.id, item.item_type)}>
+                    {item.item_type === 'hotel' ? 'ホテル候補を検索' : '航空券候補を検索'}
+                  </button>
+                </div>
+                {candidates?.loading && <p className="text-xs text-stone-500">候補を検索中...</p>}
+                {candidates?.error && <p className="text-xs text-red-600">{candidates.error}</p>}
+                <div className="space-y-2">
+                  {(item.item_type === 'hotel' ? candidates?.hotels : candidates?.flights)?.map((candidate) => (
+                    <div key={candidate.id} className="rounded border p-2 text-xs bg-stone-50">
+                      <div className="font-medium">{candidate.name ?? candidate.id}</div>
+                      <div>価格: {candidate.price != null ? `${candidate.currency ?? ''} ${candidate.price}` : '未取得'} / 評価: {candidate.rating ?? '-'}</div>
+                      <div className="flex gap-2 mt-1">
+                        <button
+                          type="button"
+                          className="px-2 py-1 rounded bg-primary text-white"
+                          onClick={() => startTransition(async () => {
+                            const adopt = await adoptExternalSelection({
+                              itemId: item.id,
+                              provider: candidate.provider,
+                              externalId: candidate.id,
+                              deeplink: candidate.deeplink ?? null,
+                              priceSnapshot: { amount: candidate.price ?? null, currency: candidate.currency ?? null },
+                              metadata: candidate as unknown as Record<string, unknown>,
+                            });
+                            if (adopt.success && candidate.deeplink) {
+                              await upsertBooking({
+                                itemId: item.id,
+                                planId,
+                                bookingUrl: candidate.deeplink,
+                                bookingReference: null,
+                                provider: candidate.provider,
+                                memo: `external:${candidate.id}`,
+                              });
+                            }
+                          })}
+                        >採用</button>
+                        {candidate.deeplink && <a className="underline" target="_blank" rel="noreferrer" href={candidate.deeplink}>詳細</a>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
                 <div className="grid md:grid-cols-3 gap-2">
                   <input
                     defaultValue={item.actual_cost ?? ''}

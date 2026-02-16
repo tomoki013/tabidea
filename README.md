@@ -49,3 +49,19 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
 - テスト実行
   - Unit: `pnpm test`
+
+## Phase 4-5 (External Search / Blog)
+
+### External API Search (Hotels / Flights)
+- New API routes:
+  - `POST /api/external/hotels/search`
+  - `POST /api/external/flights/search`
+- AI must output only search-condition JSON; server validates with Zod and calls provider.
+- Provider abstraction is implemented under `src/lib/external/providers`.
+- Results are cached in Supabase tables (`external_search_requests`, `external_search_results`) with TTL.
+- Adopted candidate is stored in `plan_item_external_selections`.
+
+### Blog (blog.tabide.ai)
+- `blog.tabide.ai` is rewritten to `/blog` in `src/proxy.ts`.
+- Blog supports draft/publish, image upload (`blog-images` bucket), and shiori embed iframe.
+- Public article route: `/blog/@{username}/{slug}`.

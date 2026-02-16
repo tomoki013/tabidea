@@ -1,5 +1,7 @@
 "use server";
 
+import crypto from 'crypto';
+
 import { GeminiService } from "@/lib/services/ai/gemini";
 // import { WebScraperRetriever } from '@/lib/services/rag/scraper';
 import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
@@ -8,11 +10,10 @@ import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getOutlineCache, setOutlineCache } from "@/lib/cache";
-import { getUser, createAdminClient } from "@/lib/supabase/server";
+import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
-import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
 import { checkAndRecordUsage } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
@@ -22,6 +23,7 @@ import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
 import { createOutlineTimer, createChunkTimer, OUTLINE_TARGETS_PRO, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
+
 
 export type ActionState = {
   success: boolean;
@@ -133,6 +135,24 @@ export async function getUserConstraintPrompt(): Promise<string> {
   return prompt;
 }
 
+
+async function rollbackPlanGenerationUsage(attemptId: string) {
+  try {
+    const supabase = await createClient();
+    const user = await getUser();
+    if (!user) return;
+
+    await supabase
+      .from('usage_logs')
+      .delete()
+      .eq('user_id', user.id)
+      .eq('action_type', 'plan_generation')
+      .eq('metadata->>attempt_id', attemptId);
+  } catch (error) {
+    console.warn('[action] failed to rollback plan generation usage log', error);
+  }
+}
+
 /**
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
  */
@@ -140,11 +160,14 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
+  const attemptId = crypto.randomUUID();
+
   // 利用制限チェック
   const limitResult = await timer.measure('usage_check', () =>
     checkAndRecordUsage('plan_generation', {
       destination: input.destinations.join(', ') || input.region,
       isDestinationDecided: input.isDestinationDecided,
+      attempt_id: attemptId,
     })
   );
 
@@ -161,6 +184,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
 
   const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
   if (!hasAIKey) {
+    await rollbackPlanGenerationUsage(attemptId);
     return { success: false, message: "API Key missing" };
   }
 
@@ -382,6 +406,7 @@ export async function generatePlanOutline(input: UserInput): Promise<OutlineActi
     };
 
   } catch (error) {
+    await rollbackPlanGenerationUsage(attemptId);
     timer.log();
     console.error("[action] Outline generation failed:", error);
     return { success: false, message: "プラン概要の作成に失敗しました。" };
