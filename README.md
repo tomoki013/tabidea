@@ -49,3 +49,41 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
 - テスト実行
   - Unit: `pnpm test`
+
+## Phase 4-5 実装メモ（外部API提案 / Blog）
+
+### Phase 4: 外部API提案（ホテル・航空券）
+- 追加API:
+  - `POST /api/external/hotels/search`
+  - `POST /api/external/flights/search`
+- AIは検索条件JSONのみを扱い、外部検索はサーバー側（Amadeus provider）で実行
+- Zodで入力バリデーション（limit 1..5, date/価格/人数など）
+- キャッシュ:
+  - `external_search_requests` + `external_search_results` に request hash ベースで保存
+  - 30分TTLで再利用
+- プラン管理画面で候補カードを表示し、「採用」で `plan_item_external_selections` に保存
+- 採用時に予約URL（deeplink）・メモが `item_bookings` / `plan_items` に同期される
+
+### Phase 5: Blog（blog.tabide.ai）
+- 追加テーブル:
+  - `blog_profiles`, `blog_posts`, `blog_post_embeds`
+- 公開URL:
+  - `blog.tabide.ai/@{username}/{slug}`（内部 `/blog/@{username}/{slug}`）
+- 作成・編集:
+  - `/blog`, `/blog/new`, `/blog/edit/[id]`
+- 画像アップロード:
+  - Supabase Storage bucket `blog-images`
+- しおり埋め込み:
+  - 本文内記法 `[[tabidea:shiori:slug]]` / `[[tabidea:shiori:slug?t=token]]`
+  - iframe埋め込みで表示
+- Host rewrite:
+  - `blog.tabide.ai` は `/blog/*` に rewrite
+  - 既存 `shiori.tabide.ai` rewrite も共通処理へ統合
+
+### 追加環境変数（サーバー側のみ）
+- `AMADEUS_CLIENT_ID`
+- `AMADEUS_CLIENT_SECRET`
+- `AMADEUS_BASE_URL` (任意。未設定時: test API)
+
+### 追加要件（再チャレンジ時のレート制限）
+- プラン生成失敗後の再チャレンジは `skipConsume` で消費しない実装に変更

@@ -325,7 +325,9 @@ export function usePlanGeneration(
 
       try {
         // Generate outline
-        const outlineResponse = await generatePlanOutline(preparedInput);
+        const outlineResponse = await generatePlanOutline(preparedInput, {
+          isRetry: generationState.phase === 'error',
+        });
 
         // Handle limit exceeded
         if (!outlineResponse.success && outlineResponse.limitExceeded) {
@@ -455,7 +457,7 @@ export function usePlanGeneration(
         }
       }
     },
-    [streamingMode, generateChunk]
+    [streamingMode, generateChunk, generationState.phase]
   );
 
   // ========================================
