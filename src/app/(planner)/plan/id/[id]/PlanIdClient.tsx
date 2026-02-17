@@ -183,22 +183,7 @@ export default function PlanIdClient({
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
-      <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
-        {/* Title Section */}
-        <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
-            Result
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
-            旅行プラン結果
-          </h1>
-          <p className="text-stone-500 mt-3 font-hand text-lg">
-            {plan.destination
-              ? `${plan.destination}への旅のしおり`
-              : 'あなただけの特別な旅のしおりが完成しました'}
-          </p>
-        </div>
-
+      <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
         <ResultView
           result={result}
           input={input}

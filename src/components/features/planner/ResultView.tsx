@@ -105,6 +105,8 @@ export default function ResultView({
   // View Mode: 'split' (Map + Itinerary) or 'full' (Itinerary Only)
   // Default to 'split' unless isSimplifiedView, then 'full' (and map hidden)
   const [viewMode, setViewMode] = useState<'split' | 'full'>(isSimplifiedView ? 'full' : 'split');
+  // Mobile View Mode: 'list' | 'map'
+  const [mobileViewMode, setMobileViewMode] = useState<'list' | 'map'>('list');
 
   // Card expansion state
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -138,13 +140,12 @@ export default function ResultView({
 
   const handleTabSwitch = useCallback((tab: 'plan' | 'journal' | 'info' | 'packing') => {
     setActiveTab(tab);
+    // Sticky offset removed as sticky headers are removed
     if (tabBarRef.current) {
-      const stickyOffset = 120;
       const rect = tabBarRef.current.getBoundingClientRect();
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       const elementTop = rect.top + scrollTop;
-      const targetY = elementTop - stickyOffset;
-      window.scrollTo({ top: targetY, behavior: 'smooth' });
+      window.scrollTo({ top: elementTop - 20, behavior: 'smooth' });
     }
   }, []);
 
@@ -290,7 +291,7 @@ export default function ResultView({
   );
 
   return (
-    <div className="w-full max-w-7xl mx-auto mt-4 pt-20 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
+    <div className="w-full max-w-7xl mx-auto mt-4 pt-4 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
       {/* Updating Overlay */}
       {isUpdating && (
         <div className="fixed inset-0 z-60 flex flex-col items-center justify-center bg-white/60 backdrop-blur-md animate-in fade-in duration-500 p-4">
@@ -313,7 +314,7 @@ export default function ResultView({
       )}
 
       {/* Journal Header Section */}
-      <JournalSheet variant="notebook" className="relative mb-16 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
+      <JournalSheet variant="notebook" className="relative mb-8 md:mb-12 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
         <Tape color="blue" position="top-right" rotation="right" className="opacity-90 z-20" />
 
         {heroImg ? (
@@ -393,11 +394,11 @@ export default function ResultView({
       </JournalSheet>
 
       {/* Tabs / View Controls */}
-      <div ref={tabBarRef} className="sticky top-[100px] md:top-[120px] z-40 mb-16 w-full flex flex-col items-center gap-4 px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
+      <div ref={tabBarRef} className="relative z-40 mb-8 w-full flex flex-col items-center gap-4 px-2 sm:px-0">
 
          {/* Main Tabs (Hidden if simplified view) */}
         {!isSimplifiedView && (
-           <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
+           <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 backdrop-blur-sm">
              {[
                { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
                ...(hasJournalTab ? [{ id: 'journal', icon: FaRegFlag, label: 'しおり記録' }] as const : []),
@@ -408,7 +409,7 @@ export default function ResultView({
                  key={tab.id}
                  onClick={() => handleTabSwitch(tab.id as 'plan' | 'journal' | 'info' | 'packing')}
                  className={`
-                   relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand
+                   relative px-4 sm:px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand whitespace-nowrap
                    ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}
                  `}
                >
@@ -428,9 +429,9 @@ export default function ResultView({
            </div>
         )}
 
-        {/* View Toggle (Map vs List) - Only visible on PC/Tablet when in Plan tab and NOT SimplifiedView */}
+        {/* Desktop View Toggle (Map vs List) */}
         {!isSimplifiedView && activeTab === 'plan' && (
-           <div className="hidden lg:flex pointer-events-auto bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg p-1 shadow-sm mt-2">
+           <div className="hidden lg:flex bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg p-1 shadow-sm mt-2">
               <button
                  onClick={() => setViewMode('split')}
                  className={cn(
@@ -453,6 +454,32 @@ export default function ResultView({
               </button>
            </div>
         )}
+
+        {/* Mobile View Toggle (Map vs List) */}
+        {!isSimplifiedView && activeTab === 'plan' && (
+           <div className="lg:hidden flex w-full max-w-xs mx-auto bg-stone-100 p-1 rounded-xl shadow-inner mt-2">
+              <button
+                 onClick={() => setMobileViewMode('list')}
+                 className={cn(
+                    "flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold rounded-lg transition-all",
+                    mobileViewMode === 'list' ? "bg-white shadow-sm text-stone-800" : "text-stone-400 hover:text-stone-600"
+                 )}
+              >
+                 <FaList className="text-xs" />
+                 リスト
+              </button>
+              <button
+                 onClick={() => setMobileViewMode('map')}
+                 className={cn(
+                    "flex-1 flex items-center justify-center gap-2 py-2 text-sm font-bold rounded-lg transition-all",
+                    mobileViewMode === 'map' ? "bg-white shadow-sm text-stone-800" : "text-stone-400 hover:text-stone-600"
+                 )}
+              >
+                 <FaMap className="text-xs" />
+                 マップ
+              </button>
+           </div>
+        )}
       </div>
 
       {/* Main Content */}
@@ -472,7 +499,7 @@ export default function ResultView({
                     "hidden lg:block relative",
                     viewMode === 'split' ? "" : "hidden"
                  )}>
-                    <div className="sticky top-[170px] h-[calc(100vh-190px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                    <div className="sticky top-[110px] h-[calc(100vh-130px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
                         <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
                     </div>
                  </div>
@@ -484,44 +511,49 @@ export default function ResultView({
                  viewMode === 'split' ? "pl-0 md:pl-2" : "w-full"
               )} data-itinerary-section>
 
-                {/* Mobile Map (Top) - Only if not simplified */}
-                {!isSimplifiedView && (
-                   <div className="lg:hidden mb-12 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
+                {/* Mobile Map View - Fullscreen style container */}
+                {!isSimplifiedView && mobileViewMode === 'map' && (
+                   <div className="lg:hidden h-[65vh] rounded-xl overflow-hidden shadow-md border border-stone-200 mb-8 relative z-0">
                        <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
                    </div>
                 )}
 
-                {result.days.map((day, dayIndex) => (
-                  <div key={day.day} className="relative">
-                    {/* Day Header */}
-                    <div className="sticky top-[160px] md:top-[170px] z-30 mb-8 flex items-center gap-4 pointer-events-none">
-                      <div className="inline-flex items-center gap-4 bg-white/95 backdrop-blur-sm py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary pointer-events-auto">
-                        <span className="text-4xl font-serif text-primary">
-                          {day.day}
-                        </span>
-                        <div className="flex flex-col">
-                          <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                            Day
+                {/* Itinerary List - Hidden on Mobile Map Mode */}
+                <div className={cn(
+                  "space-y-24",
+                  (!isSimplifiedView && mobileViewMode === 'map') ? "hidden lg:block" : "block"
+                )}>
+                  {result.days.map((day, dayIndex) => (
+                    <div key={day.day} className="relative">
+                      {/* Day Header (Relative positioning now) */}
+                      <div className="relative z-30 mb-8 flex items-center gap-4">
+                        <div className="inline-flex items-center gap-4 bg-white/95 backdrop-blur-sm py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
+                          <span className="text-4xl font-serif text-primary">
+                            {day.day}
                           </span>
-                          <span className="text-stone-600 font-serif italic text-lg leading-none min-w-[150px]">
-                            {enableEditing ? (
-                              <EditableText
-                                value={day.title}
-                                onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
-                                isEditable={true}
-                                className="bg-transparent border-none focus:ring-0 w-full font-serif italic text-lg leading-none"
-                              />
-                            ) : (
-                              day.title
-                            )}
-                          </span>
+                          <div className="flex flex-col">
+                            <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
+                              Day
+                            </span>
+                            <span className="text-stone-600 font-serif italic text-lg leading-none min-w-[150px]">
+                              {enableEditing ? (
+                                <EditableText
+                                  value={day.title}
+                                  onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
+                                  isEditable={true}
+                                  className="bg-transparent border-none focus:ring-0 w-full font-serif italic text-lg leading-none"
+                                />
+                              ) : (
+                                day.title
+                              )}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Day Content */}
-                    <div className="space-y-6 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
-                      {/* Transit Card */}
+                      {/* Day Content */}
+                      <div className="space-y-6 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
+                        {/* Transit Card */}
                       {day.transit && (
                         <TransitCard
                           transit={day.transit}
@@ -572,6 +604,7 @@ export default function ResultView({
                     </div>
                   </div>
                 ))}
+                </div>
 
                 {/* Cost & Feedback - Hide feedback if simplified */}
                 <div className="space-y-8">
