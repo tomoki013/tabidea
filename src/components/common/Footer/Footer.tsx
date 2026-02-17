@@ -55,10 +55,9 @@ export default function Footer() {
         </FooterSection>
 
         <FooterSection title="Explore">
-          <FooterLink href="/samples">サンプルプラン集</FooterLink>
+          <FooterLink href="/shiori">サンプルプラン集</FooterLink>
           <FooterLink href="/travel-info">渡航情報・安全ガイド</FooterLink>
-          <FooterLink href="/shiori">旅のしおり</FooterLink>
-          <FooterLink href="/blog">ブログ</FooterLink>
+          {/* <FooterLink href="/blog">ブログ</FooterLink> */}
         </FooterSection>
 
         <FooterSection title="Help">
