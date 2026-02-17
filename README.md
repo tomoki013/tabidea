@@ -42,7 +42,7 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - 予約情報入力: itemごとの予約URL/予約メモ
 - Journal: ローカル下書き（localStorage）→ blur時同期
 - Shiori公開: private / unlisted / public と公開URL生成
-- サブドメイン: `shiori.tabide.ai` から `/shiori/*` へ proxy rewrite
+- 公開ルート: `/shiori/*` で旅のしおりを公開
 
 ### 運用メモ
 - migration を適用してから動作確認してください（Supabase SQL Editor / CLI）
@@ -64,11 +64,11 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - プラン管理画面で候補カードを表示し、「採用」で `plan_item_external_selections` に保存
 - 採用時に予約URL（deeplink）・メモが `item_bookings` / `plan_items` に同期される
 
-### Phase 5: Blog（blog.tabide.ai）
+### Phase 5: Blog
 - 追加テーブル:
   - `blog_profiles`, `blog_posts`, `blog_post_embeds`
 - 公開URL:
-  - `blog.tabide.ai/@{username}/{slug}`（内部 `/blog/@{username}/{slug}`）
+  - `/blog/@{username}/{slug}`
 - 作成・編集:
   - `/blog`, `/blog/new`, `/blog/edit/[id]`
 - 画像アップロード:
@@ -76,9 +76,6 @@ Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせた
 - しおり埋め込み:
   - 本文内記法 `[[tabidea:shiori:slug]]` / `[[tabidea:shiori:slug?t=token]]`
   - iframe埋め込みで表示
-- Host rewrite:
-  - `blog.tabide.ai` は `/blog/*` に rewrite
-  - 既存 `shiori.tabide.ai` rewrite も共通処理へ統合
 
 ### 追加環境変数（サーバー側のみ）
 - `AMADEUS_CLIENT_ID`

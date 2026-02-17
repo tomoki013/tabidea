@@ -149,7 +149,7 @@ export default function BlogEditor({ initial, profile }: Props) {
           {previewEmbeds.map((embed, index) => (
             <iframe
               key={`${embed.slug}-${index}`}
-              src={`https://shiori.tabide.ai/${embed.slug}${embed.token ? `?t=${embed.token}` : ''}`}
+              src={`/shiori/${embed.slug}${embed.token ? `?t=${embed.token}` : ''}`}
               className="w-full min-h-[320px] rounded border"
               loading="lazy"
             />

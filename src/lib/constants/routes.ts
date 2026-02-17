@@ -19,9 +19,19 @@ export const ROUTES = {
   // プランナー機能
   PLAN: '/plan',
   SAMPLES: '/samples',
+  MY_PLANS: '/my-plans',
+  SYNC_PLANS: '/sync-plans',
+
+  // 公開コンテンツ
+  SHIORI: '/shiori',
+  BLOG: '/blog',
 
   // 渡航情報
   TRAVEL_INFO: '/travel-info',
+
+  // 認証
+  AUTH_LOGIN: '/auth/login',
+  AUTH_LOGOUT: '/auth/logout',
 
   // ポリシー・規約
   TERMS: '/terms',

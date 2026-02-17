@@ -7,6 +7,13 @@
 4. **AI generation** (`src/lib/ai/gemini.ts`) creates structured JSON itineraries via Gemini API
 5. **Result display** with shareable URL encoding (`src/lib/urlUtils.ts`)
 
+## Routing Model
+- Single domain architecture (`https://tabide.ai`)
+- Public publishing routes:
+  - Shiori: `/shiori/*`
+  - Blog: `/blog/*`
+- No host-based rewrite/redirect for subdomains
+
 ## Key Interfaces
 
 - `UserInput` - User preferences from the wizard (destination, dates, themes, etc.)

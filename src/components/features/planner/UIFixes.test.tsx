@@ -4,6 +4,7 @@ import { describe, it, expect, vi } from "vitest";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
 import ResultView from "./ResultView";
 import PDFExportModal from "./PDFExportModal";
+import SpotCard from "@/components/features/plan/cards/SpotCard";
 import { UserInput, Itinerary } from "@/types";
 import React from "react";
 
@@ -116,7 +117,7 @@ describe("UI Fixes Regression Tests", () => {
     expect(modal.className).toContain("z-[9999]");
   });
 
-  it("ResultView: Edit button hidden when enableEditing=false", async () => {
+  it("ResultView: Add button hidden when enableEditing=false", async () => {
     await act(async () => {
       render(
         <ResultView
@@ -129,11 +130,11 @@ describe("UI Fixes Regression Tests", () => {
       );
     });
 
-    const editBtn = screen.queryByText("プラン内容を編集");
-    expect(editBtn).toBeNull();
+    const addBtn = screen.queryByText("予定を書き足す");
+    expect(addBtn).toBeNull();
   });
 
-  it("ResultView: Edit button visible when enableEditing=true", async () => {
+  it("ResultView: Add button visible when enableEditing=true", async () => {
     await act(async () => {
       render(
         <ResultView
@@ -146,32 +147,26 @@ describe("UI Fixes Regression Tests", () => {
       );
     });
 
-    const editBtn = screen.getByText("プラン内容を編集");
-    expect(editBtn).toBeDefined();
+    const addBtn = screen.getByText("予定を書き足す");
+    expect(addBtn).toBeDefined();
   });
 
-  it("ResultView: Time input uses type='time' in edit mode", async () => {
-    let container: HTMLElement;
-    await act(async () => {
-      const result = render(
-        <ResultView
-          result={mockItinerary}
-          input={defaultInput}
-          onRestart={vi.fn()}
-          onRegenerate={vi.fn()}
-          enableEditing={true}
-        />
-      );
-      container = result.container;
-    });
+  it("SpotCard: Time input uses type='time' in edit mode", async () => {
+    const { container } = render(
+      <SpotCard
+        activity={{
+          time: "10:00",
+          activity: "Airport",
+          description: "Land",
+        }}
+        destination="Tokyo"
+        isEditable={true}
+      />
+    );
 
-    const editBtn = screen.getByText("プラン内容を編集");
+    fireEvent.click(screen.getByRole("button", { name: "10:00" }));
 
-    await act(async () => {
-        fireEvent.click(editBtn);
-    });
-
-    const timeInput = container!.querySelector('input[value="10:00"]');
+    const timeInput = container.querySelector('input[type="time"]');
     expect(timeInput).toBeDefined();
     expect(timeInput?.getAttribute("type")).toBe("time");
   });
