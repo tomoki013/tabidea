@@ -23,38 +23,37 @@ export default function BlogPromotionSection() {
               <div>
                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/50 text-green-700 border border-green-200 text-xs font-bold uppercase tracking-wider mb-4">
                     <FaBookOpen className="text-xs" />
-                    From the Blog
+                    Everyone's Blog
                  </div>
                  <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight relative inline-block">
-                    旅のヒントと<br/>
+                    みんなの<br/>
                     <span className="relative z-10">
-                       最新情報
+                       旅行記
                        <span className="absolute -bottom-2 left-0 w-full h-4 bg-green-200/40 -z-10 rounded-sm transform -rotate-1"></span>
                     </span>
                  </h2>
                  <p className="text-lg text-stone-600 leading-relaxed font-hand">
-                    Tabideaの便利な使い方から、AIを活用した新しい旅行の計画方法、
-                    開発チームからのアップデート情報まで。<br/>
-                    あなたの旅をもっと豊かにする情報をお届けします。
+                    実際に訪れた場所、食べたもの、感じたこと。<br/>
+                    みんなのリアルな体験談から、新しい旅の発見があるかもしれません。
                  </p>
               </div>
 
               <div className="space-y-4">
                  <BlogHighlight
-                    title="初めての方へ：Tabideaの使い方ガイド"
-                    category="Guide"
-                    date="2026.02.15"
+                    title="3泊4日の京都旅行！穴場スポット巡り"
+                    category="Kyoto"
+                    date="2026.04.15"
                  />
                  <BlogHighlight
-                    title="【新機能】旅のしおり機能が大幅アップデート！"
-                    category="Update"
-                    date="2026.03.01"
+                    title="初めての台湾一人旅、食べ歩き記録"
+                    category="Taiwan"
+                    date="2026.05.01"
                     isNew
                  />
                  <BlogHighlight
-                    title="AIが提案する、春の京都おすすめモデルコース"
-                    category="Tips"
-                    date="2026.03.10"
+                    title="北海道で大自然を満喫する旅"
+                    category="Hokkaido"
+                    date="2026.05.10"
                  />
               </div>
 

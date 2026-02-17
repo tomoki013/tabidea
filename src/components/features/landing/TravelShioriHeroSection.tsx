@@ -87,12 +87,12 @@ export default function TravelShioriHeroSection() {
                <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/50 text-orange-600 border border-orange-200 text-xs font-bold uppercase tracking-wider mb-4">
                      <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                     New Feature
+                     Discover
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-stone-800 leading-[1.1]">
-                    旅のしおりを、<br/>
+                    みんなの<br/>
                     <span className="relative inline-block text-primary">
-                       もっと自由に。
+                       旅のしおりを探そう
                        <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                           <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" className="opacity-60" />
                        </svg>
@@ -101,27 +101,27 @@ export default function TravelShioriHeroSection() {
                </div>
 
                <p className="text-lg md:text-xl text-stone-600 font-hand leading-relaxed max-w-lg">
-                  AIが提案したプランに、あなたの想いやメモを直接書き込める。<br/>
-                  まるで手帳のような使い心地で、世界に一つだけの「旅のしおり」が完成します。
+                  他のユーザーが作成した実際の旅行プランを参考に、<br/>
+                  あなたの次の旅のインスピレーションを見つけましょう。
                </p>
 
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <FeatureCard
                      icon={<FaPen />}
-                     title="直感的な編集"
-                     desc="ドラッグ&ドロップで予定を入れ替え。メモも写真も自由に追加。"
+                     title="リアルな体験談"
+                     desc="実際に訪れた人の生の声や、写真付きの記録が見られます。"
                      color="blue"
                   />
                   <FeatureCard
                      icon={<FaShareAlt />}
-                     title="かんたん共有"
-                     desc="URLを送るだけで、家族や友人とリアルタイムに旅程をシェア。"
+                     title="プランを参考に"
+                     desc="気に入ったプランをコピーして、自分だけの旅にアレンジ。"
                      color="orange"
                   />
                   <FeatureCard
                      icon={<FaMapMarkedAlt />}
-                     title="スマートマップ"
-                     desc="旅程に合わせて地図が自動更新。移動ルートもひと目で確認。"
+                     title="地図で探す"
+                     desc="行きたいエリアから、みんなの旅のしおりを検索できます。"
                      color="green"
                   />
                </div>
