@@ -4,8 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { UserInput, Itinerary } from '@/types';
 import ResultView from "@/components/features/planner/ResultView";
-import RequestSummary from "@/components/features/planner/RequestSummary";
-import SamplePlanActions from "@/components/SamplePlanActions";
 import { PlanModal } from "@/components/common";
 import { regeneratePlan, savePlan } from "@/app/actions/travel-planner";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
@@ -31,6 +29,10 @@ export default function SampleDetailClient({
     chatHistory: { role: string; text: string }[],
     overridePlan?: Itinerary
   ) => {
+    // Regenerate logic can be kept or disabled for samples.
+    // Assuming we want to allow users to "Customize this plan" -> which usually means copying it.
+    // But existing code seems to support regen.
+
     const planToUse = overridePlan || result;
     setIsUpdating(true);
     try {
@@ -71,30 +73,25 @@ export default function SampleDetailClient({
 
   return (
     <>
-      <div className="mb-8">
-        <RequestSummary
-          input={sampleInput}
-          onEdit={handleEditRequest}
-          className="mb-8"
-        />
-        <SamplePlanActions sampleInput={sampleInput} />
+      <div className="w-full flex flex-col items-center">
+         {/* Simplified View enforced for Sample Plans as well */}
+         <ResultView
+            result={result}
+            input={sampleInput}
+            onRestart={() => router.push("/")}
+            onRegenerate={handleRegenerate}
+            onResultChange={handleResultChange}
+            isUpdating={isUpdating}
+            onEditRequest={handleEditRequest}
+            showRequestSummary={false}
+            showChat={false}
+            showShareButtons={false}
+            showReferences={false}
+            showFeedback={false}
+            isSimplifiedView={true} // Force Simplified View (No map, full width)
+            enableEditing={false}   // Disable direct editing for samples
+         />
       </div>
-
-      {result && (
-        <ResultView
-          result={result}
-          input={sampleInput}
-          onRestart={() => router.push("/")}
-          onRegenerate={handleRegenerate}
-          onResultChange={handleResultChange}
-          isUpdating={isUpdating}
-          onEditRequest={handleEditRequest}
-          showRequestSummary={false}
-          showChat={false}
-          showShareButtons={false}
-          showReferences={false}
-        />
-      )}
 
       <PlanModal
         isOpen={isEditingRequest}

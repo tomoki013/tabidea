@@ -21,6 +21,8 @@ import {
   FaFlag,
   FaRegFlag,
   FaPlus,
+  FaMap,
+  FaList,
 } from "react-icons/fa";
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
@@ -34,6 +36,7 @@ import SpotCard from "@/components/features/plan/cards/SpotCard";
 import TransitCard from "@/components/features/plan/cards/TransitCard";
 import MapRouteView from "@/components/features/planner/MapRouteView";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
+import { cn } from "@/lib/utils";
 
 interface ResultViewProps {
   result: Itinerary;
@@ -83,8 +86,13 @@ export default function ResultView({
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
 
+  // Tabs are simplified for Simplified View
   const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
   const tabBarRef = useRef<HTMLDivElement>(null);
+
+  // View Mode: 'split' (Map + Itinerary) or 'full' (Itinerary Only)
+  // Default to 'split' unless isSimplifiedView, then 'full' (and map hidden)
+  const [viewMode, setViewMode] = useState<'split' | 'full'>(isSimplifiedView ? 'full' : 'split');
 
   // Card expansion state
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
@@ -362,43 +370,75 @@ export default function ResultView({
              <PublicToggle planId={planId} initialIsPublic={initialIsPublic} />
           )}
           {showShareButtons && <ShareButtons input={input} result={result} shareCode={shareCode} localId={localId} />}
-          <div className="flex gap-4">
-             <PDFExportButton itinerary={result} packingList={packingList} />
-             <CalendarExportButton itinerary={result} dates={input.dates} />
-          </div>
+          {!isSimplifiedView && (
+             <div className="flex gap-4">
+                <PDFExportButton itinerary={result} packingList={packingList} />
+                <CalendarExportButton itinerary={result} dates={input.dates} />
+             </div>
+          )}
         </div>
       </JournalSheet>
 
-      {/* Tabs */}
-      <div ref={tabBarRef} className="sticky top-[100px] md:top-[120px] z-40 mb-16 w-full flex justify-center px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
-        <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
-          {[
-            { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
-            { id: 'info', icon: FaGlobe, label: '渡航情報' },
-            { id: 'packing', icon: FaSuitcase, label: '持ち物' }
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => handleTabSwitch(tab.id as 'plan' | 'info' | 'packing')}
-              className={`
-                relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand
-                ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}
-              `}
-            >
-              {activeTab === tab.id && (
-                <motion.div
-                  layoutId="activeTabBackground"
-                  className="absolute inset-0 bg-stone-100 rounded-full shadow-inner"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10 flex items-center gap-2">
-                <tab.icon size={14} />
-                {tab.label}
-              </span>
-            </button>
-          ))}
-        </div>
+      {/* Tabs / View Controls */}
+      <div ref={tabBarRef} className="sticky top-[100px] md:top-[120px] z-40 mb-16 w-full flex flex-col items-center gap-4 px-2 sm:px-0 pointer-events-none will-change-transform [transform:translateZ(0)]">
+
+         {/* Main Tabs (Hidden if simplified view) */}
+        {!isSimplifiedView && (
+           <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
+             {[
+               { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
+               { id: 'info', icon: FaGlobe, label: '渡航情報' },
+               { id: 'packing', icon: FaSuitcase, label: '持ち物' }
+             ].map((tab) => (
+               <button
+                 key={tab.id}
+                 onClick={() => handleTabSwitch(tab.id as 'plan' | 'info' | 'packing')}
+                 className={`
+                   relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand
+                   ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}
+                 `}
+               >
+                 {activeTab === tab.id && (
+                   <motion.div
+                     layoutId="activeTabBackground"
+                     className="absolute inset-0 bg-stone-100 rounded-full shadow-inner"
+                     transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                   />
+                 )}
+                 <span className="relative z-10 flex items-center gap-2">
+                   <tab.icon size={14} />
+                   {tab.label}
+                 </span>
+               </button>
+             ))}
+           </div>
+        )}
+
+        {/* View Toggle (Map vs List) - Only visible on PC/Tablet when in Plan tab and NOT SimplifiedView */}
+        {!isSimplifiedView && activeTab === 'plan' && (
+           <div className="hidden lg:flex pointer-events-auto bg-white/90 backdrop-blur-sm border border-stone-200 rounded-lg p-1 shadow-sm mt-2">
+              <button
+                 onClick={() => setViewMode('split')}
+                 className={cn(
+                    "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-bold transition-all",
+                    viewMode === 'split' ? "bg-stone-100 text-stone-800 shadow-inner" : "text-stone-500 hover:bg-stone-50"
+                 )}
+              >
+                 <FaMap className="text-[10px]" />
+                 マップ＋旅程
+              </button>
+              <button
+                 onClick={() => setViewMode('full')}
+                 className={cn(
+                    "flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-bold transition-all",
+                    viewMode === 'full' ? "bg-stone-100 text-stone-800 shadow-inner" : "text-stone-500 hover:bg-stone-50"
+                 )}
+              >
+                 <FaList className="text-[10px]" />
+                 旅程のみ
+              </button>
+           </div>
+        )}
       </div>
 
       {/* Main Content */}
@@ -407,21 +447,35 @@ export default function ResultView({
         <div className={activeTab === 'plan' ? 'block' : 'hidden'}>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-              {/* Left Column: Map (Sticky) */}
-              <div className="hidden lg:block relative">
-                 <div className="sticky top-[170px] h-[calc(100vh-190px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
-                     <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+             {/* Layout Container */}
+            <div className={cn(
+               "grid gap-12 lg:gap-16",
+               viewMode === 'split' ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1 max-w-3xl mx-auto"
+            )}>
+              {/* Left Column: Map (Sticky) - Only in Split Mode */}
+              {!isSimplifiedView && (
+                 <div className={cn(
+                    "hidden lg:block relative",
+                    viewMode === 'split' ? "" : "hidden"
+                 )}>
+                    <div className="sticky top-[170px] h-[calc(100vh-190px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
+                        <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                    </div>
                  </div>
-              </div>
+              )}
 
               {/* Right Column: Timeline */}
-              <div className="space-y-24 pl-0 md:pl-2" data-itinerary-section>
+              <div className={cn(
+                 "space-y-24",
+                 viewMode === 'split' ? "pl-0 md:pl-2" : "w-full"
+              )} data-itinerary-section>
 
-                {/* Mobile Map (Top) */}
-                <div className="lg:hidden mb-12 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
-                    <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
-                </div>
+                {/* Mobile Map (Top) - Only if not simplified */}
+                {!isSimplifiedView && (
+                   <div className="lg:hidden mb-12 h-80 rounded-xl overflow-hidden shadow-md border border-stone-200">
+                       <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                   </div>
+                )}
 
                 {result.days.map((day, dayIndex) => (
                   <div key={day.day} className="relative">
@@ -505,26 +559,28 @@ export default function ResultView({
                   </div>
                 ))}
 
-                {/* Cost & Feedback */}
+                {/* Cost & Feedback - Hide feedback if simplified */}
                 <div className="space-y-8">
                    <CostEstimate input={input} itinerary={result} />
-                   {showFeedback && (
+                   {showFeedback && !isSimplifiedView && (
                      <PlanFeedbackBar destination={result.destination} />
                    )}
                 </div>
 
                 {/* Booking Links */}
-                <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-12">
-                  <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
-                  <HandwrittenText tag="h3" className="font-bold text-xl mb-6 flex items-center gap-2">
-                    <span className="text-2xl">🧳</span> この旅を予約する
-                  </HandwrittenText>
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
-                    <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
-                    <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
-                  </div>
-                </div>
+                {!isSimplifiedView && (
+                   <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-12">
+                     <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
+                     <HandwrittenText tag="h3" className="font-bold text-xl mb-6 flex items-center gap-2">
+                       <span className="text-2xl">🧳</span> この旅を予約する
+                     </HandwrittenText>
+                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                       <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
+                       <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
+                       <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
+                     </div>
+                   </div>
+                )}
 
                 {/* Disclaimer & Chat */}
                 <div className="mt-12 space-y-8">
@@ -533,7 +589,7 @@ export default function ResultView({
                       <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
                    </div>
 
-                   {showChat && (
+                   {showChat && !isSimplifiedView && (
                       <div className="bg-white border-2 border-stone-200 rounded-lg p-6 shadow-md">
                          <div className="flex items-center gap-2 mb-4">
                             <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">🤖</div>
@@ -555,13 +611,17 @@ export default function ResultView({
           </motion.div>
         </div>
 
-        {/* Other Tabs */}
-        <div className={activeTab === 'info' ? 'block' : 'hidden'}>
-           <EmbeddedTravelInfo destinations={input.destinations.length > 0 ? input.destinations : [result.destination]} onClose={() => {}} inline={true} />
-        </div>
-        <div className={activeTab === 'packing' ? 'block' : 'hidden'}>
-           <PackingListView destination={result.destination} days={result.days.length} themes={input.theme} companions={input.companions} budget={input.budget} region={input.region} planId={planId} packingList={packingList} onPackingListChange={handlePackingListChange} />
-        </div>
+        {/* Other Tabs - Hidden if simplified view */}
+        {!isSimplifiedView && (
+           <>
+              <div className={activeTab === 'info' ? 'block' : 'hidden'}>
+                 <EmbeddedTravelInfo destinations={input.destinations.length > 0 ? input.destinations : [result.destination]} onClose={() => {}} inline={true} />
+              </div>
+              <div className={activeTab === 'packing' ? 'block' : 'hidden'}>
+                 <PackingListView destination={result.destination} days={result.days.length} themes={input.theme} companions={input.companions} budget={input.budget} region={input.region} planId={planId} packingList={packingList} onPackingListChange={handlePackingListChange} />
+              </div>
+           </>
+        )}
       </div>
     </div>
   );
