@@ -335,7 +335,6 @@ export default function MobileSidebar({
                 <SidebarLink href="/usage" icon={<FaMap />} label="使い方" onClick={onClose} />
                 <SidebarLink href="/pricing" icon={<FaCrown />} label="料金プラン" onClick={onClose} />
                 <SidebarLink href="/faq" icon={<FaQuestionCircle />} label="よくある質問" onClick={onClose} />
-                <SidebarLink href="/shiori" icon={<FaMapMarkerAlt />} label="旅のしおり" onClick={onClose} />
               </nav>
 
               {/* Divider */}
