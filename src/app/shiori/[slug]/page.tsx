@@ -2,7 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
-import { createClient } from '@/lib/supabase/server';
+import { createClient, getUser } from '@/lib/supabase/server';
+import ShioriLikeButton from '@/components/features/shiori/ShioriLikeButton';
 
 interface ShioriItem {
   id: string;
@@ -10,9 +11,15 @@ interface ShioriItem {
   description: string | null;
   start_time: string | null;
   location: string | null;
-  estimated_cost: number | null;
-  actual_cost: number | null;
-  journal: { content: string } | null;
+  journal: {
+    id: string;
+    content: string;
+    updated_at: string;
+    phase: 'before' | 'during' | 'after';
+    place_name: string | null;
+    photo_urls: string[];
+    visibility: 'private' | 'public';
+  } | null;
 }
 
 interface ShioriDay {
@@ -27,6 +34,8 @@ interface ShioriPayload {
     destination: string | null;
     duration_days: number | null;
     visibility: 'private' | 'unlisted' | 'public';
+    likes_count: number | null;
+    viewer_liked: boolean | null;
   };
   days: ShioriDay[];
 }
@@ -36,9 +45,10 @@ interface PageProps {
   searchParams: Promise<{ t?: string }>;
 }
 
-function formatYen(value: number | null) {
-  if (value == null) return null;
-  return `¥${Number(value).toLocaleString()}`;
+function formatPhaseLabel(phase: 'before' | 'during' | 'after') {
+  if (phase === 'before') return '行く前メモ';
+  if (phase === 'after') return '行った後メモ';
+  return '旅の最中メモ';
 }
 
 async function loadShiori(slug: string, token?: string): Promise<ShioriPayload | null> {
@@ -69,41 +79,96 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 export default async function ShioriPage({ params, searchParams }: PageProps) {
   const { slug } = await params;
   const { t } = await searchParams;
+  const user = await getUser();
   const data = await loadShiori(slug, t);
 
   if (!data?.plan) notFound();
 
+  const entriesCount = data.days.reduce((count, day) => (
+    count + day.items.filter((item) => Boolean(item.journal?.content)).length
+  ), 0);
+
   return (
     <main className="min-h-screen bg-[#fcfbf9] px-4 py-12">
-      <div className="mx-auto max-w-4xl space-y-6">
-        <header className="rounded-xl border border-stone-200 bg-white p-6">
-          <p className="text-xs uppercase tracking-wide text-stone-500">Tabidea Travel Shiori</p>
-          <h1 className="text-2xl font-bold text-stone-800">{data.plan.destination ?? '旅のしおり'}</h1>
-          <p className="text-sm text-stone-600">{data.plan.duration_days ?? '-'}日間 / {data.plan.visibility}</p>
-          <Link href="/shiori" className="mt-3 inline-block text-xs font-semibold text-primary hover:underline">
-            旅のしおり機能の紹介ページを見る
+      <div className="mx-auto max-w-5xl space-y-8">
+        <header className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="space-y-2">
+              <p className="text-xs uppercase tracking-wide text-stone-500">Tabidea Travel Shiori</p>
+              <h1 className="text-2xl font-bold text-stone-800 md:text-3xl">
+                {data.plan.destination ?? '旅のしおり'}
+              </h1>
+              <p className="text-sm text-stone-600">
+                {data.plan.duration_days ?? '-'}日間 / 記録 {entriesCount}件 / {data.plan.visibility}
+              </p>
+            </div>
+            <ShioriLikeButton
+              slug={slug}
+              initialLiked={Boolean(data.plan.viewer_liked)}
+              initialLikesCount={data.plan.likes_count ?? 0}
+              canLike={Boolean(user)}
+            />
+          </div>
+          <Link href="/shiori" className="mt-4 inline-block text-xs font-semibold text-primary hover:underline">
+            みんなの旅のしおり一覧に戻る
           </Link>
         </header>
 
         {data.days?.map((day) => (
-          <section key={day.id} className="rounded-xl border border-stone-200 bg-white p-6">
-            <h2 className="text-lg font-semibold">Day {day.day_number}: {day.title}</h2>
-            <div className="mt-4 space-y-3">
-              {day.items?.map((item) => {
-                const estimated = formatYen(item.estimated_cost);
-                const actual = formatYen(item.actual_cost);
+          <section key={day.id} className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
+            <div className="mb-6 flex items-baseline justify-between border-b border-dashed border-stone-200 pb-3">
+              <h2 className="text-lg font-semibold text-stone-800">Day {day.day_number}</h2>
+              <p className="text-sm text-stone-500">{day.title ?? '旅の記録'}</p>
+            </div>
 
-                return (
-                  <article key={item.id} className="rounded-md border border-stone-100 p-3">
-                    <div className="text-sm font-semibold text-stone-800">{item.title}</div>
-                    {item.description && <p className="text-sm text-stone-600">{item.description}</p>}
-                    <div className="mt-1 text-xs text-stone-500">{item.start_time} / {item.location}</div>
-                    {estimated && <div className="mt-1 text-xs text-stone-600">概算: {estimated}</div>}
-                    {actual && <div className="text-xs text-stone-600">実費: {actual}</div>}
-                    {item.journal?.content && <p className="mt-2 whitespace-pre-wrap text-sm text-stone-700">{item.journal.content}</p>}
-                  </article>
-                );
-              })}
+            <div className="space-y-6">
+              {day.items?.map((item) => (
+                <article key={item.id} className="relative rounded-xl border border-stone-100 bg-stone-50/50 p-4">
+                  <div className="mb-2 text-xs font-semibold text-stone-500">
+                    {item.start_time ?? '--:--'} / {item.location ?? '場所未設定'}
+                  </div>
+                  <h3 className="text-base font-bold text-stone-800">{item.title}</h3>
+                  {item.description && (
+                    <p className="mt-1 text-sm text-stone-600">{item.description}</p>
+                  )}
+
+                  {item.journal?.content && (
+                    <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
+                      <div className="mb-2 flex items-center gap-2">
+                        <span className="rounded-full bg-white px-2 py-1 text-xs font-semibold text-amber-700">
+                          {formatPhaseLabel(item.journal.phase)}
+                        </span>
+                        <span className="text-xs text-stone-500">
+                          {new Date(item.journal.updated_at).toLocaleDateString()}
+                        </span>
+                      </div>
+                      <p className="whitespace-pre-wrap text-sm leading-relaxed text-stone-700">
+                        {item.journal.content}
+                      </p>
+                      {item.journal.place_name && (
+                        <p className="mt-3 text-xs text-stone-600">
+                          訪問場所: {item.journal.place_name}
+                        </p>
+                      )}
+                      {item.journal.photo_urls.length > 0 && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                          {item.journal.photo_urls.map((url) => (
+                            <a
+                              key={`${item.id}-${url}`}
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="rounded-full border border-stone-200 bg-white px-2 py-1 text-xs text-stone-600 hover:bg-stone-100"
+                            >
+                              写真リンク
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </article>
+              ))}
             </div>
           </section>
         ))}

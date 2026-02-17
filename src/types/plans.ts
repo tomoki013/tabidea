@@ -49,6 +49,13 @@ export interface PlanListItem {
   updatedAt: Date;
 }
 
+export interface PublicShioriListItem extends PlanListItem {
+  slug: string;
+  likesCount: number;
+  entriesCount: number;
+  publishJournal: boolean;
+}
+
 // ============================================
 // Local Storage Types
 // ============================================

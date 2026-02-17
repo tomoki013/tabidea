@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 async function PublicPlansGrid() {
-  const { plans, error } = await planService.getPublicPlans({ limit: 50 });
+  const { plans, error } = await planService.getPublicShioriFeed({ limit: 50 });
 
   if (error) {
     return (
@@ -53,8 +53,8 @@ export default function ShioriPage() {
             <Tape color="blue" position="top-right" className="opacity-70 -right-8 -top-4 w-24" />
           </div>
           <p className="text-stone-500 font-hand text-lg max-w-2xl mx-auto">
-            誰かの旅の記録は、あなたの次の旅のヒントに。<br/>
-            Tabideaで作成された素敵な旅行プランを集めました。
+            旅程そのものよりも、旅の温度感を読むためのページです。<br/>
+            公開された旅のしおりを、ストーリーとしてたどれます。
           </p>
         </div>
 

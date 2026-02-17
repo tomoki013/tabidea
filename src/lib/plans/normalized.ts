@@ -108,7 +108,7 @@ export async function getNormalizedPlanData(planId: string, userId: string): Pro
         id,day_id,item_type,category,sort_order,title,description,start_time,location,
         estimated_cost,estimated_currency,actual_cost,actual_currency,note,
         bookings:item_bookings(id,booking_url,booking_reference,provider,status,memo),
-        journal:journal_entries(id,content,updated_at)
+        journal:journal_entries(id,content,phase,place_name,photo_urls,visibility,updated_at)
       )
     `)
     .eq('plan_id', planId)

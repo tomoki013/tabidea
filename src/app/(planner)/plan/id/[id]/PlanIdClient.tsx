@@ -6,9 +6,11 @@ import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
 import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
+import { syncJournalEntry } from '@/app/actions/plan-itinerary';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
+import type { NormalizedPlanDay } from '@/types/normalized-plan';
 
 interface PlanIdClientProps {
   plan: Plan;
@@ -16,6 +18,7 @@ interface PlanIdClientProps {
   itinerary: Itinerary;
   planId: string;
   initialChatMessages?: ChatMessage[];
+  initialNormalizedDays: NormalizedPlanDay[];
 }
 
 export default function PlanIdClient({
@@ -24,6 +27,7 @@ export default function PlanIdClient({
   itinerary: initialItinerary,
   planId,
   initialChatMessages,
+  initialNormalizedDays,
 }: PlanIdClientProps) {
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
@@ -35,6 +39,7 @@ export default function PlanIdClient({
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+  const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
 
   // Track if save is pending to debounce
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -128,6 +133,54 @@ export default function PlanIdClient({
     setIsEditingRequest(true);
   };
 
+  const handleSyncJournalEntry = useCallback(async (input: {
+    itemId: string;
+    content: string;
+    phase: 'before' | 'during' | 'after';
+    placeName: string | null;
+    photoUrls: string[];
+  }) => {
+    const editedAt = new Date().toISOString();
+    const result = await syncJournalEntry({
+      itemId: input.itemId,
+      planId,
+      content: input.content,
+      editedAt,
+      phase: input.phase,
+      placeName: input.placeName,
+      photoUrls: input.photoUrls,
+      visibility: 'public',
+    });
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    setNormalizedDays((prevDays) =>
+      prevDays.map((day) => ({
+        ...day,
+        items: day.items.map((item) => (
+          item.id === input.itemId
+            ? {
+              ...item,
+              journal: {
+                id: item.journal?.id ?? `draft-${item.id}`,
+                content: input.content,
+                phase: input.phase,
+                place_name: input.placeName,
+                photo_urls: input.photoUrls,
+                visibility: 'public',
+                updated_at: editedAt,
+              },
+            }
+            : item
+        )),
+      }))
+    );
+
+    return { success: true, updatedAt: editedAt };
+  }, [planId]);
+
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
@@ -159,6 +212,8 @@ export default function PlanIdClient({
           shareCode={plan.shareCode}
           planId={planId}
           initialIsPublic={plan.isPublic}
+          normalizedDays={normalizedDays}
+          onSyncJournalEntry={handleSyncJournalEntry}
         />
 
         {/* Request Editing Modal */}

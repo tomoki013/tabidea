@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
-import { PlanListItem } from '@/types';
+import { FaCalendarAlt, FaMapMarkerAlt, FaHeart, FaBookOpen } from 'react-icons/fa';
+import { PublicShioriListItem } from '@/types';
 import { Tape } from '@/components/ui/journal';
 
 interface PublicPlanCardProps {
-  plan: PlanListItem;
+  plan: PublicShioriListItem;
 }
 
 export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
@@ -16,7 +16,7 @@ export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
   const duration = days > 0 ? `${nights}泊${days}日` : '期間未定';
 
   return (
-    <Link href={`/public/view/${plan.shareCode}`} className="block group h-full">
+    <Link href={`/shiori/${plan.slug}`} className="block group h-full">
       <div className="relative bg-white h-full flex flex-col shadow-sm border border-stone-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 rounded-sm overflow-hidden">
 
         {/* Thumbnail */}
@@ -57,6 +57,16 @@ export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
             </span>
             <span>
               {new Date(plan.createdAt).toLocaleDateString()}
+            </span>
+          </div>
+          <div className="mt-3 flex items-center gap-2 text-xs text-stone-500">
+            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
+              <FaBookOpen className="text-stone-400" />
+              記録 {plan.entriesCount}
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
+              <FaHeart className="text-rose-400" />
+              いいね {plan.likesCount}
             </span>
           </div>
         </div>
