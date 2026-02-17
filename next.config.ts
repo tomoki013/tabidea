@@ -40,7 +40,7 @@ const nextConfig: NextConfig = {
         source: '/shiori/:path*',
         headers: [
           { key: 'X-Frame-Options', value: 'ALLOWALL' },
-          { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://blog.tabide.ai https://*.tabide.ai" },
+          { key: 'Content-Security-Policy', value: "frame-ancestors 'self' https://tabide.ai https://www.tabide.ai" },
         ],
       },
     ];

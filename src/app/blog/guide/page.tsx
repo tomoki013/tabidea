@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Tabidea Blog ガイド',
-  description: 'blog.tabide.ai で旅行記事を公開するための使い方と、旅のしおり連携の活用方法を紹介します。',
+  description: 'Tabideaで旅行記事を公開するための使い方と、旅のしおり連携の活用方法を紹介します。',
 };
 
 export default function BlogGuidePage() {

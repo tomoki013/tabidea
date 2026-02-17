@@ -23,7 +23,7 @@ export default async function BlogDashboardPage() {
     <main className="max-w-4xl mx-auto px-4 py-28 space-y-6">
       <div className="rounded-xl border border-stone-200 bg-white p-6 space-y-2">
         <h1 className="text-2xl font-bold text-stone-900">Blog Studio</h1>
-        <p className="text-sm text-stone-600">blog.tabide.ai 向けの記事を作成・公開します。</p>
+        <p className="text-sm text-stone-600">Tabideaのブログ記事を作成・公開します。</p>
         {profile?.username ? (
           <p className="text-sm">プロフィール: @{profile.username}</p>
         ) : (

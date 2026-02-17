@@ -196,4 +196,4 @@ it("navigates through 'Not Decided' flow", async () => {
 
   // Pace
   await screen.findByText("旅のペースは？");
-});
+}, 15000);

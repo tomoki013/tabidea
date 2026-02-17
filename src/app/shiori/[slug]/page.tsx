@@ -60,7 +60,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
   const title = data.plan.destination ? `${data.plan.destination}の旅のしおり` : '旅のしおり';
   const description = `${data.plan.duration_days ?? ''}日間の旅程を公開中`;
-  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://shiori.tabide.ai').replace(/\/$/, '');
+  const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://tabide.ai').replace(/\/$/, '');
   const ogImageUrl = `${baseUrl}/api/og?destination=${encodeURIComponent(data.plan.destination ?? '旅')}&days=${data.plan.duration_days ?? ''}`;
 
   return { title, description, openGraph: { title, description, images: [{ url: ogImageUrl, width: 1200, height: 630 }] } };

@@ -11,7 +11,7 @@ const cards = [
     icon: FaMapMarkedAlt,
   },
   {
-    title: 'ブログ（blog.tabide.ai）',
+    title: 'ブログ',
     description:
       '旅の背景や気づき、現地で役立った情報を記事化。旅のしおりの埋め込みで、実用性の高い旅行記事を作れます。',
     href: '/blog/guide',

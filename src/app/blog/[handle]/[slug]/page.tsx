@@ -40,7 +40,7 @@ function renderContentWithEmbeds(content: string) {
     nodes.push(
       <iframe
         key={`embed-${slug}-${match.index}`}
-        src={`https://shiori.tabide.ai/${slug}${token ? `?t=${token}` : ''}`}
+        src={`/shiori/${slug}${token ? `?t=${token}` : ''}`}
         className="w-full min-h-[360px] rounded-xl border border-stone-200"
         loading="lazy"
       />,
