@@ -82,6 +82,10 @@ export async function syncJournalEntry(input: {
   planId: string;
   content: string;
   editedAt: string;
+  phase?: 'before' | 'during' | 'after';
+  placeName?: string | null;
+  photoUrls?: string[];
+  visibility?: 'private' | 'public';
 }) {
   const user = await assertUser();
   const supabase = await createClient();
@@ -92,11 +96,15 @@ export async function syncJournalEntry(input: {
     user_id: user.id,
     content: input.content,
     last_edited_at: input.editedAt,
+    phase: input.phase ?? 'during',
+    place_name: input.placeName ?? null,
+    photo_urls: input.photoUrls ?? [],
+    visibility: input.visibility ?? 'public',
     updated_at: new Date().toISOString(),
   }, { onConflict: 'item_id,user_id' });
 
   if (error) return { success: false, error: error.message };
-  return { success: true };
+  return { success: true, updatedAt: input.editedAt };
 }
 
 export async function adoptExternalSelection(input: {

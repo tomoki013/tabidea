@@ -110,6 +110,7 @@ export type {
   CreatePlanParams,
   UpdatePlanParams,
   PlanListItem,
+  PublicShioriListItem,
   LocalPlan,
   LocalPlanStorage,
   EncryptedPlanData,

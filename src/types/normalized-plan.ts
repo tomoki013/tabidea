@@ -12,6 +12,10 @@ export interface NormalizedBooking {
 export interface NormalizedJournal {
   id: string;
   content: string;
+  phase: 'before' | 'during' | 'after';
+  place_name: string | null;
+  photo_urls: string[];
+  visibility: 'private' | 'public';
   updated_at: string;
 }
 

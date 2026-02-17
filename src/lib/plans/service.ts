@@ -9,7 +9,7 @@ import {
   type EncryptedPlanData,
 } from '@/lib/encryption';
 import { nanoid } from 'nanoid';
-import type { UserInput, Itinerary, Plan, PlanListItem } from '@/types';
+import type { UserInput, Itinerary, Plan, PlanListItem, PublicShioriListItem } from '@/types';
 
 // ============================================
 // Types
@@ -551,6 +551,142 @@ export class PlanService {
         createdAt: new Date(plan.created_at),
         updatedAt: new Date(plan.updated_at),
       })),
+      total: count || 0,
+    };
+  }
+
+  async getPublicShioriFeed(options?: {
+    limit?: number;
+    offset?: number;
+    destination?: string;
+  }): Promise<{
+    success: boolean;
+    plans?: PublicShioriListItem[];
+    total?: number;
+    error?: string;
+  }> {
+    const supabase = await createClient();
+    const limit = options?.limit || 20;
+    const offset = options?.offset || 0;
+
+    const { data, count, error } = await supabase
+      .from('plan_publications')
+      .select(`
+        id,
+        slug,
+        publish_journal,
+        plan:plans!inner(
+          id,
+          share_code,
+          destination,
+          duration_days,
+          thumbnail_url,
+          is_public,
+          created_at,
+          updated_at
+        )
+      `, { count: 'exact' })
+      .eq('visibility', 'public')
+      .order('updated_at', { ascending: false })
+      .range(offset, offset + limit - 1);
+
+    if (error) {
+      return { success: false, error: error.message };
+    }
+
+    type PlanRow = {
+      id: string;
+      share_code: string;
+      destination: string | null;
+      duration_days: number | null;
+      thumbnail_url: string | null;
+      is_public: boolean;
+      created_at: string;
+      updated_at: string;
+    };
+
+    type PublicationRow = {
+      id: string;
+      slug: string;
+      publish_journal: boolean;
+      plan: PlanRow | PlanRow[] | null;
+    };
+
+    const rows = ((data ?? []) as PublicationRow[])
+      .map((row) => {
+        const plan = Array.isArray(row.plan) ? row.plan[0] : row.plan;
+        if (!plan || !plan.is_public) return null;
+        return {
+          publicationId: row.id,
+          slug: row.slug,
+          publishJournal: row.publish_journal,
+          plan,
+        };
+      })
+      .filter((row): row is {
+        publicationId: string;
+        slug: string;
+        publishJournal: boolean;
+        plan: PlanRow;
+      } => row !== null);
+
+    const destinationFilter = options?.destination?.trim().toLowerCase();
+    const filteredRows = destinationFilter
+      ? rows.filter((row) => (row.plan.destination ?? '').toLowerCase().includes(destinationFilter))
+      : rows;
+
+    const publicationIds = filteredRows.map((row) => row.publicationId);
+    const planIds = filteredRows.map((row) => row.plan.id);
+
+    const likeCounts = new Map<string, number>();
+    if (publicationIds.length > 0) {
+      const { data: likes, error: likesError } = await supabase
+        .from('shiori_likes')
+        .select('publication_id')
+        .in('publication_id', publicationIds);
+
+      if (!likesError && likes) {
+        for (const like of likes) {
+          const publicationId = String(like.publication_id);
+          likeCounts.set(publicationId, (likeCounts.get(publicationId) ?? 0) + 1);
+        }
+      }
+    }
+
+    const entryCounts = new Map<string, number>();
+    if (planIds.length > 0) {
+      const { data: entries, error: entriesError } = await supabase
+        .from('journal_entries')
+        .select('plan_id')
+        .in('plan_id', planIds)
+        .eq('visibility', 'public');
+
+      if (!entriesError && entries) {
+        for (const entry of entries) {
+          const planId = String(entry.plan_id);
+          entryCounts.set(planId, (entryCounts.get(planId) ?? 0) + 1);
+        }
+      }
+    }
+
+    const plans: PublicShioriListItem[] = filteredRows.map((row) => ({
+      id: row.plan.id,
+      shareCode: row.plan.share_code,
+      destination: row.plan.destination,
+      durationDays: row.plan.duration_days,
+      thumbnailUrl: row.plan.thumbnail_url,
+      isPublic: row.plan.is_public,
+      createdAt: new Date(row.plan.created_at),
+      updatedAt: new Date(row.plan.updated_at),
+      slug: row.slug,
+      likesCount: likeCounts.get(row.publicationId) ?? 0,
+      entriesCount: row.publishJournal ? (entryCounts.get(row.plan.id) ?? 0) : 0,
+      publishJournal: row.publishJournal,
+    }));
+
+    return {
+      success: true,
+      plans,
       total: count || 0,
     };
   }

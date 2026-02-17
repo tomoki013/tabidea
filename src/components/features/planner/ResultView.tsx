@@ -37,6 +37,8 @@ import TransitCard from "@/components/features/plan/cards/TransitCard";
 import MapRouteView from "@/components/features/planner/MapRouteView";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { cn } from "@/lib/utils";
+import type { NormalizedPlanDay } from '@/types/normalized-plan';
+import ShioriJournalEditor from './ShioriJournalEditor';
 
 interface ResultViewProps {
   result: Itinerary;
@@ -62,6 +64,14 @@ interface ResultViewProps {
   enableEditing?: boolean;
   initialIsPublic?: boolean;
   isSimplifiedView?: boolean;
+  normalizedDays?: NormalizedPlanDay[];
+  onSyncJournalEntry?: (input: {
+    itemId: string;
+    content: string;
+    phase: 'before' | 'during' | 'after';
+    placeName: string | null;
+    photoUrls: string[];
+  }) => Promise<{ success: boolean; error?: string; updatedAt?: string }>;
 }
 
 export default function ResultView({
@@ -82,12 +92,14 @@ export default function ResultView({
   enableEditing = true,
   initialIsPublic,
   isSimplifiedView = false,
+  normalizedDays,
+  onSyncJournalEntry,
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
 
   // Tabs are simplified for Simplified View
-  const [activeTab, setActiveTab] = useState<'plan' | 'info' | 'packing'>('plan');
+  const [activeTab, setActiveTab] = useState<'plan' | 'journal' | 'info' | 'packing'>('plan');
   const tabBarRef = useRef<HTMLDivElement>(null);
 
   // View Mode: 'split' (Map + Itinerary) or 'full' (Itinerary Only)
@@ -99,6 +111,7 @@ export default function ResultView({
 
   // Packing List State
   const [packingList, setPackingList] = useState<PackingList | null>(null);
+  const hasJournalTab = enableEditing && Boolean(planId) && Boolean(onSyncJournalEntry) && (normalizedDays?.length ?? 0) > 0;
 
   // Map Data
   const { enrichedDays } = useSpotCoordinates(result.days, result.destination);
@@ -123,7 +136,7 @@ export default function ResultView({
     setPackingList(list);
   }, []);
 
-  const handleTabSwitch = useCallback((tab: 'plan' | 'info' | 'packing') => {
+  const handleTabSwitch = useCallback((tab: 'plan' | 'journal' | 'info' | 'packing') => {
     setActiveTab(tab);
     if (tabBarRef.current) {
       const stickyOffset = 120;
@@ -387,12 +400,13 @@ export default function ResultView({
            <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 pointer-events-auto backdrop-blur-sm">
              {[
                { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
+               ...(hasJournalTab ? [{ id: 'journal', icon: FaRegFlag, label: 'しおり記録' }] as const : []),
                { id: 'info', icon: FaGlobe, label: '渡航情報' },
                { id: 'packing', icon: FaSuitcase, label: '持ち物' }
              ].map((tab) => (
                <button
                  key={tab.id}
-                 onClick={() => handleTabSwitch(tab.id as 'plan' | 'info' | 'packing')}
+                 onClick={() => handleTabSwitch(tab.id as 'plan' | 'journal' | 'info' | 'packing')}
                  className={`
                    relative px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand
                    ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}
@@ -610,6 +624,16 @@ export default function ResultView({
             </div>
           </motion.div>
         </div>
+
+        {/* Journal Tab */}
+        {hasJournalTab && (
+          <div className={activeTab === 'journal' ? 'block' : 'hidden'}>
+            <ShioriJournalEditor
+              days={normalizedDays ?? []}
+              onSaveEntry={onSyncJournalEntry!}
+            />
+          </div>
+        )}
 
         {/* Other Tabs - Hidden if simplified view */}
         {!isSimplifiedView && (
