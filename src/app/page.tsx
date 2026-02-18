@@ -3,17 +3,14 @@ import TravelPlannerSimplified from "@/components/features/planner/TravelPlanner
 import { Header } from "@/components/common";
 import {
   HeroSection,
-  AboutSection,
-  FeaturesHeroSection,
-  FeatureSection,
-  UsageGuideHero,
-  ExampleSection,
-  TravelInfoSection,
-  PublishingSection,
   FAQSection,
-  TravelShioriHeroSection,
-  BlogPromotionSection,
 } from "@/components/features/landing";
+import {
+  ConceptSection,
+  HowItWorksSection,
+  FeaturesSection,
+  CommunitySection,
+} from "@/components/features/landing/v2";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from '@/types';
 import type { Metadata } from "next";
@@ -52,7 +49,7 @@ export default async function Home({ searchParams }: HomeProps) {
       {/* Fixed Header that appears on scroll */}
       <Header forceShow={true} className="z-50" />
 
-      <main className="flex-1 w-full flex flex-col items-center">
+      <main className="flex-1 w-full flex flex-col items-center bg-[#fcfbf9]">
         {/* Hero Section containing the main app functionality */}
         <HeroSection>
           <Suspense
@@ -70,16 +67,13 @@ export default async function Home({ searchParams }: HomeProps) {
           </Suspense>
         </HeroSection>
 
-        {/* Other Sections */}
-        <AboutSection />
-        <FeaturesHeroSection />
-        <UsageGuideHero />
-        <FeatureSection />
-        <TravelShioriHeroSection />
-        <BlogPromotionSection />
-        <ExampleSection />
-        <TravelInfoSection />
-        <PublishingSection />
+        {/* New Organized Layout */}
+        <ConceptSection />
+        <HowItWorksSection />
+        <FeaturesSection />
+        <CommunitySection />
+
+        {/* Standard FAQ */}
         <FAQSection limit={5} />
       </main>
     </div>
