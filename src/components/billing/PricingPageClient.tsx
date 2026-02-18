@@ -58,7 +58,12 @@ export function PricingPageClient({
         );
         // ページをリロードして最新状態を表示
         router.refresh();
+      } else if (result.error === "configuration_error") {
+        setError("決済設定が未完了です。時間をおいて再度お試しください。");
+      } else if (result.error === "invalid_plan") {
+        setError("選択したプラン情報が無効です。ページを再読み込みしてください。");
       } else {
+        console.error("Checkout failed with error code:", result.error);
         setError("決済処理に失敗しました。もう一度お試しください。");
       }
     } catch (err) {
