@@ -4,6 +4,7 @@ import { stripe } from "@/lib/stripe/client";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
 import { hasActiveSubscription } from "@/lib/billing/user-billing-status";
+import { headers } from "next/headers";
 
 type PlanType = "pro_monthly" | "ticket_1" | "ticket_5" | "ticket_10";
 
@@ -19,6 +20,113 @@ const TICKET_COUNTS: Record<string, number> = {
   ticket_5: 5,
   ticket_10: 10,
 };
+
+type SupabaseClient = Awaited<ReturnType<typeof createClient>>;
+
+function normalizeBaseUrl(url: string): string {
+  return url.replace(/\/$/, "");
+}
+
+async function resolveAppUrl(): Promise<string | null> {
+  const configuredAppUrl = process.env.NEXT_PUBLIC_APP_URL?.trim();
+  if (configuredAppUrl) {
+    return normalizeBaseUrl(configuredAppUrl);
+  }
+
+  const headersList = await headers();
+  const origin = headersList.get("origin");
+  if (origin) {
+    return normalizeBaseUrl(origin);
+  }
+
+  const host = headersList.get("x-forwarded-host") || headersList.get("host");
+  if (!host) return null;
+
+  const protocol = headersList.get("x-forwarded-proto") || "https";
+  return `${protocol}://${host}`;
+}
+
+function isResourceMissingError(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const err = error as { type?: string; code?: string };
+  return (
+    err.type === "StripeInvalidRequestError" &&
+    err.code === "resource_missing"
+  );
+}
+
+async function persistStripeCustomerId(
+  supabase: SupabaseClient,
+  userId: string,
+  customerId: string,
+) {
+  const { error } = await supabase
+    .from("users")
+    .update({ stripe_customer_id: customerId })
+    .eq("id", userId);
+
+  if (error) {
+    console.warn("[checkout] Failed to persist stripe_customer_id:", error);
+  }
+}
+
+async function createStripeCustomer(
+  userId: string,
+  email?: string | null,
+): Promise<string> {
+  const customer = await stripe.customers.create({
+    email: email || undefined,
+    metadata: { supabase_user_id: userId },
+  });
+  return customer.id;
+}
+
+async function resolveStripeCustomerId(
+  supabase: SupabaseClient,
+  userId: string,
+  email: string | null | undefined,
+): Promise<string> {
+  const { data: userData } = await supabase
+    .from("users")
+    .select("stripe_customer_id")
+    .eq("id", userId)
+    .single();
+
+  let customerId = userData?.stripe_customer_id ?? null;
+
+  if (customerId) {
+    try {
+      const customer = await stripe.customers.retrieve(customerId);
+      if (!("deleted" in customer && customer.deleted)) {
+        return customerId;
+      }
+      customerId = null;
+    } catch (error) {
+      if (!isResourceMissingError(error)) {
+        throw error;
+      }
+      customerId = null;
+    }
+  }
+
+  if (!customerId && email) {
+    const existingCustomers = await stripe.customers.list({
+      email,
+      limit: 1,
+    });
+
+    if (existingCustomers.data.length > 0) {
+      customerId = existingCustomers.data[0].id;
+    }
+  }
+
+  if (!customerId) {
+    customerId = await createStripeCustomer(userId, email);
+  }
+
+  await persistStripeCustomerId(supabase, userId, customerId);
+  return customerId;
+}
 
 export async function createCheckoutSession(planType: PlanType): Promise<{
   success: boolean;
@@ -54,37 +162,11 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
   }
 
   try {
-    // Stripe Customer取得または作成
-    const { data: userData } = await supabase
-      .from("users")
-      .select("stripe_customer_id")
-      .eq("id", user.id)
-      .single();
-
-    let customerId = userData?.stripe_customer_id;
-
-    if (!customerId) {
-      // 既存のStripe Customerをメールで検索
-      const existingCustomers = await stripe.customers.list({
-        email: user.email!,
-        limit: 1,
-      });
-
-      if (existingCustomers.data.length > 0) {
-        customerId = existingCustomers.data[0].id;
-      } else {
-        const customer = await stripe.customers.create({
-          email: user.email!,
-          metadata: { supabase_user_id: user.id },
-        });
-        customerId = customer.id;
-      }
-
-      await supabase
-        .from("users")
-        .update({ stripe_customer_id: customerId })
-        .eq("id", user.id);
-    }
+    const customerId = await resolveStripeCustomerId(
+      supabase,
+      user.id,
+      user.email,
+    );
 
     // 🔒 二重決済防止: Stripe側チェック
     if (isSubscription) {
@@ -102,43 +184,49 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
         // DBと同期 (Service Role Client を使用して RLS をバイパス)
         const stripeSub = existingSubscriptions.data[0];
         const item = stripeSub.items.data[0];
-        const adminClient = createServiceRoleClient();
 
-        const { error: syncError } = await adminClient
-          .from("subscriptions")
-          .upsert(
-            {
-              user_id: user.id,
-              external_subscription_id: stripeSub.id,
-              external_customer_id: customerId,
-              payment_provider: "stripe",
-              status: stripeSub.status,
-              plan_code: "pro_monthly",
-              current_period_start: item?.current_period_start
-                ? new Date(item.current_period_start * 1000).toISOString()
-                : null,
-              current_period_end: item?.current_period_end
-                ? new Date(item.current_period_end * 1000).toISOString()
-                : null,
-              cancel_at_period_end: stripeSub.cancel_at_period_end,
-            },
-            {
-              onConflict: "external_subscription_id",
-            },
-          );
+        try {
+          const adminClient = createServiceRoleClient();
+          const { error: syncError } = await adminClient
+            .from("subscriptions")
+            .upsert(
+              {
+                user_id: user.id,
+                external_subscription_id: stripeSub.id,
+                external_customer_id: customerId,
+                payment_provider: "stripe",
+                status: stripeSub.status,
+                plan_code: "pro_monthly",
+                current_period_start: item?.current_period_start
+                  ? new Date(item.current_period_start * 1000).toISOString()
+                  : null,
+                current_period_end: item?.current_period_end
+                  ? new Date(item.current_period_end * 1000).toISOString()
+                  : null,
+                cancel_at_period_end: stripeSub.cancel_at_period_end,
+              },
+              {
+                onConflict: "external_subscription_id",
+              },
+            );
 
-        if (syncError) {
-          console.error("[checkout] Failed to sync subscription:", syncError);
+          if (syncError) {
+            console.error("[checkout] Failed to sync subscription:", syncError);
+          }
+        } catch (syncError) {
+          console.error("[checkout] Failed to initialize sync client:", syncError);
         }
 
         return { success: false, error: "already_subscribed" };
       }
     }
 
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+    const appUrl = await resolveAppUrl();
 
     if (!appUrl) {
-      console.error("NEXT_PUBLIC_APP_URL is not set");
+      console.error(
+        "[checkout] Failed to resolve app URL (NEXT_PUBLIC_APP_URL/origin/host)",
+      );
       return { success: false, error: "configuration_error" };
     }
 
