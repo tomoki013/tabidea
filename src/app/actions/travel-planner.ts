@@ -8,20 +8,21 @@ import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getOutlineCache, setOutlineCache } from "@/lib/cache";
-import { getUser, createAdminClient } from "@/lib/supabase/server";
+import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
-import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
 import { checkAndRecordUsage } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
+import { revalidatePath } from "next/cache";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
 import { createOutlineTimer, createChunkTimer, OUTLINE_TARGETS_PRO, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
+import { buildDefaultPublicationSlug } from "@/lib/plans/normalized";
 
 export type ActionState = {
   success: boolean;
@@ -733,9 +734,71 @@ export async function updatePlanVisibility(
 
     const result = await planService.updatePlan(planId, user.id, { isPublic });
 
-    if (!result.success) {
+    if (!result.success || !result.plan) {
       return { success: false, error: result.error };
     }
+
+    // Sync with plan_publications table
+    // This is necessary because the public feed (Travel Shiori) reads from plan_publications
+    try {
+      const supabase = await createClient();
+
+      // Check for existing publication
+      const { data: existingPub } = await supabase
+        .from('plan_publications')
+        .select('slug, unlisted_token, publish_journal, publish_budget')
+        .eq('plan_id', planId)
+        .eq('user_id', user.id)
+        .maybeSingle();
+
+      if (isPublic) {
+        // Prepare data for publication
+        const slug = existingPub?.slug ?? buildDefaultPublicationSlug(result.plan.destination ?? 'trip');
+        const publishJournal = existingPub?.publish_journal ?? true;
+        const publishBudget = existingPub?.publish_budget ?? true;
+
+        // Upsert publication with 'public' visibility
+        const { error: pubError } = await supabase
+          .from('plan_publications')
+          .upsert({
+            plan_id: planId,
+            user_id: user.id,
+            slug,
+            visibility: 'public',
+            publish_journal: publishJournal,
+            publish_budget: publishBudget,
+            updated_at: new Date().toISOString(),
+          }, { onConflict: 'plan_id' });
+
+        if (pubError) {
+          console.error("Failed to sync plan_publications (public):", pubError);
+          // Non-blocking error, but worth logging
+        }
+      } else {
+        // If switching to private, update visibility if record exists
+        if (existingPub) {
+          const { error: pubError } = await supabase
+            .from('plan_publications')
+            .update({
+              visibility: 'private',
+              updated_at: new Date().toISOString(),
+            })
+            .eq('plan_id', planId);
+
+          if (pubError) {
+            console.error("Failed to sync plan_publications (private):", pubError);
+          }
+        }
+      }
+    } catch (syncError) {
+      console.error("Error syncing with plan_publications:", syncError);
+      // Don't fail the whole request if sync fails, as the plan update succeeded
+    }
+
+    // Revalidate paths to reflect changes immediately
+    revalidatePath('/shiori');
+    revalidatePath('/public');
+    revalidatePath(`/plan/id/${planId}`);
 
     return { success: true };
   } catch (error) {

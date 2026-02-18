@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { updatePlanVisibility } from "@/app/actions/travel-planner";
 import { motion } from "framer-motion";
 import { FaGlobe, FaLock } from "react-icons/fa";
@@ -17,21 +17,29 @@ export default function PublicToggle({
   className = "",
 }: PublicToggleProps) {
   const [isPublic, setIsPublic] = useState(initialIsPublic);
-  const [isPending, startTransition] = useTransition();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleToggle = () => {
+  const handleToggle = async () => {
+    if (isLoading) return;
+
     const newState = !isPublic;
     setIsPublic(newState); // Optimistic update
+    setIsLoading(true);
 
-    startTransition(async () => {
+    try {
       const result = await updatePlanVisibility(planId, newState);
       if (!result.success) {
         // Revert on failure
         setIsPublic(!newState);
         console.error("Failed to update visibility:", result.error);
-        // Minimal feedback, could be improved with a toast
+        // Could add toast here
       }
-    });
+    } catch (e) {
+      setIsPublic(!newState);
+      console.error("Error toggling visibility:", e);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -43,11 +51,11 @@ export default function PublicToggle({
       <div className="flex items-center gap-3">
         <button
           onClick={handleToggle}
-          disabled={isPending}
+          disabled={isLoading}
           className={`
             relative w-14 h-8 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
             ${isPublic ? "bg-primary" : "bg-stone-300"}
-            ${isPending ? "opacity-70 cursor-wait" : "cursor-pointer"}
+            ${isLoading ? "opacity-70 cursor-wait" : "cursor-pointer"}
           `}
           aria-label={isPublic ? "公開中" : "非公開"}
         >
@@ -57,7 +65,9 @@ export default function PublicToggle({
             animate={{ x: isPublic ? 24 : 0 }}
             transition={{ type: "spring", stiffness: 500, damping: 30 }}
           >
-            {isPublic ? (
+            {isLoading ? (
+               <div className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            ) : isPublic ? (
               <FaGlobe className="text-primary" size={12} />
             ) : (
               <FaLock className="text-stone-400" size={12} />
