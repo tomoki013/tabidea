@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect, useRef } from "react";
@@ -57,6 +56,7 @@ interface SimplifiedInputFlowProps {
   onChange: (update: Partial<UserInput>) => void;
   onGenerate: (inputOverride?: UserInput) => void;
   isGenerating?: boolean;
+  isInModal?: boolean;
 }
 
 const parseDuration = (str: string): number => {
@@ -80,6 +80,7 @@ export default function SimplifiedInputFlow({
   onChange,
   onGenerate,
   isGenerating = false,
+  isInModal = false,
 }: SimplifiedInputFlowProps) {
   const [step, setStep] = useState(1);
   const containerRef = useRef<HTMLDivElement>(null);
