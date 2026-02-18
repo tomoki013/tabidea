@@ -8,15 +8,15 @@ import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
 import { getOutlineCache, setOutlineCache } from "@/lib/cache";
-import { getUser, createAdminClient } from "@/lib/supabase/server";
+import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
-import { createClient } from "@/lib/supabase/server";
 import { getUserSettings } from "@/app/actions/user-settings";
 import { checkAndRecordUsage } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
 import type { UserType } from "@/lib/limits/config";
+import { revalidatePath } from "next/cache";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
@@ -794,6 +794,11 @@ export async function updatePlanVisibility(
       console.error("Error syncing with plan_publications:", syncError);
       // Don't fail the whole request if sync fails, as the plan update succeeded
     }
+
+    // Revalidate paths to reflect changes immediately
+    revalidatePath('/shiori');
+    revalidatePath('/public');
+    revalidatePath(`/plan/id/${planId}`);
 
     return { success: true };
   } catch (error) {
