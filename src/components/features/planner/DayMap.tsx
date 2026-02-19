@@ -55,7 +55,7 @@ function FitBoundsController({ markers }: { markers: MarkerData[] }) {
     markers.forEach((m) => {
       bounds.extend(m.position);
     });
-    map.fitBounds(bounds, { padding: 40 });
+    map.fitBounds(bounds, 40);
   }, [map, coreLibrary, markers]);
 
   return null;
@@ -162,8 +162,9 @@ export default function DayMap({
                   background="#e67e22"
                   borderColor="#d35400"
                   glyphColor="#fff"
-                  glyphText={marker.label}
-                />
+                >
+                  {marker.label}
+                </Pin>
               </AdvancedMarker>
             ))}
 
