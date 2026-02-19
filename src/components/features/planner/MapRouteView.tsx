@@ -78,7 +78,7 @@ function FitBoundsController({ markers }: { markers: DayMarker[] }) {
     markers.forEach((m) => {
       bounds.extend(m.position);
     });
-    map.fitBounds(bounds, { padding: 50 });
+    map.fitBounds(bounds, 50);
   }, [map, coreLibrary, markers]);
 
   return null;
