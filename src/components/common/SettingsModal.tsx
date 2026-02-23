@@ -205,7 +205,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   if (!isOpen || !mounted) return null;
 
-  const isPro = billingInfo?.isSubscribed;
+  const isPaidPlan = billingInfo?.isSubscribed;
   const isAdmin = billingInfo?.userType === 'admin';
 
   return createPortal(
@@ -410,7 +410,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                   <FaUserCog className="text-xs" />
                                   管理者
                                 </span>
-                              ) : isPro ? (
+                              ) : isPaidPlan ? (
                                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm font-bold rounded-sm transform -rotate-1 shadow-sm border border-primary/20">
                                   <FaCrown className="text-xs" />
                                   {PRO_PLAN_NAME}
@@ -421,7 +421,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                 </span>
                               )}
                             </div>
-                            {isPro && billingInfo?.subscriptionEndsAt && (
+                            {isPaidPlan && billingInfo?.subscriptionEndsAt && (
                               <p className="text-xs text-stone-500 mt-2 font-mono">
                                 次回更新: {new Date(billingInfo.subscriptionEndsAt).toLocaleDateString('ja-JP')}
                               </p>
@@ -440,7 +440,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                              <div className="w-full text-center text-sm text-stone-500 bg-stone-100 p-3 rounded-sm font-hand">
                                管理者アカウントです
                              </div>
-                          ) : isPro ? (
+                          ) : isPaidPlan ? (
                             <JournalButton
                               variant="outline"
                               onClick={handleManageSubscription}
@@ -505,7 +505,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
                     <HandwrittenText tag="h3" className="text-2xl font-bold text-stone-800 flex items-center gap-2">
                       AI設定
-                      {isPro && (
+                      {isPaidPlan && (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-sm border border-primary/20 transform -rotate-2">
                           <FaCrown className="text-[0.6rem]" />
                           {PRO_PLAN_NAME}
@@ -546,7 +546,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           <label className="block text-sm font-bold text-stone-700 font-hand">
                             旅のスタイル
                           </label>
-                          {!isPro && !isAdmin && (
+                          {!isPaidPlan && !isAdmin && (
                             <span className="text-xs font-bold text-primary bg-primary/5 px-2 py-1 rounded-sm border border-primary/20 flex items-center gap-1">
                               <FaLock size={10} /> {PRO_PLAN_NAME}限定
                             </span>
@@ -557,16 +557,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           <textarea
                             value={travelStyle}
                             onChange={(e) => setTravelStyle(e.target.value)}
-                            disabled={!isPro && !isAdmin}
+                            disabled={!isPaidPlan && !isAdmin}
                             className={`w-full h-32 p-3 bg-transparent border-b-2 focus:outline-none resize-none font-hand text-lg leading-relaxed transition-all
-                              ${!isPro && !isAdmin
+                              ${!isPaidPlan && !isAdmin
                                 ? "border-stone-200 text-stone-300 cursor-not-allowed"
                                 : "border-stone-300 focus:border-primary text-stone-800"
                               }`}
-                            placeholder={!isPro && !isAdmin ? "アップグレードして利用可能" : "歴史的な場所が好き、朝はゆっくり..."}
+                            placeholder={!isPaidPlan && !isAdmin ? "アップグレードして利用可能" : "歴史的な場所が好き、朝はゆっくり..."}
                           />
 
-                          {!isPro && !isAdmin && (
+                          {!isPaidPlan && !isAdmin && (
                             <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-[1px]">
                               <a href="/pricing" onClick={onClose}>
                                 <JournalButton variant="primary" size="sm">

@@ -5,7 +5,7 @@
  * 課金プラン追加時はここに追記するだけ
  */
 
-export type UserType = 'anonymous' | 'free' | 'premium' | 'admin';
+export type UserType = 'anonymous' | 'free' | 'pro' | 'premium' | 'admin';
 export type ActionType = 'plan_generation' | 'travel_info';
 export type PeriodType = 'month' | 'week' | 'day' | 'unlimited';
 
@@ -24,7 +24,8 @@ export interface StorageLimitConfig {
 export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 3, period: 'month' },
-  premium: { limit: 30, period: 'month' },
+  pro: { limit: 30, period: 'month' },
+  premium: { limit: 100, period: 'month' },
   admin: { limit: -1, period: 'unlimited' },
 };
 
@@ -33,8 +34,9 @@ export const PLAN_GENERATION_LIMITS: Record<UserType, LimitConfig> = {
 // ============================================
 export const PLAN_STORAGE_LIMITS: Record<UserType, StorageLimitConfig> = {
   anonymous: { limit: 1 },
-  free: { limit: -1 },    // 変更: 2件 -> 無制限
-  premium: { limit: -1 }, // 変更: 30件 -> 無制限
+  free: { limit: -1 },
+  pro: { limit: -1 },
+  premium: { limit: -1 },
   admin: { limit: -1 },
 };
 
@@ -53,6 +55,7 @@ export const TICKET_VALIDITY_DAYS = {
 export const TRAVEL_INFO_LIMITS: Record<UserType, LimitConfig> = {
   anonymous: { limit: 1, period: 'month' },
   free: { limit: 1, period: 'week' },
+  pro: { limit: 10, period: 'month' },
   premium: { limit: -1, period: 'unlimited' },
   admin: { limit: -1, period: 'unlimited' },
 };
@@ -105,6 +108,41 @@ export function getAccessibleCategories(userType: UserType): string[] {
   }
   return [...FREE_TRAVEL_INFO_CATEGORIES];
 }
+
+// ============================================
+// v3: Places 詳細取得制限 (プランあたり)
+// ============================================
+export const PLACES_DETAIL_LIMITS_PER_PLAN: Record<UserType, number> = {
+  anonymous: 0,
+  free: 0,
+  pro: 10,
+  premium: -1, // 無制限
+  admin: -1,
+};
+
+// ============================================
+// v3: マッププロバイダー
+// ============================================
+export type MapProviderType = 'static' | 'leaflet' | 'google_maps';
+
+export const MAP_PROVIDER: Record<UserType, MapProviderType> = {
+  anonymous: 'static',
+  free: 'static',
+  pro: 'leaflet',
+  premium: 'google_maps',
+  admin: 'google_maps',
+};
+
+// ============================================
+// v3: 航空券・ホテル候補数
+// ============================================
+export const FLIGHT_HOTEL_CANDIDATE_COUNT: Record<UserType, number> = {
+  anonymous: 0,
+  free: 0,
+  pro: 3,
+  premium: 7,
+  admin: 7,
+};
 
 export function isUnlimited(config: LimitConfig): boolean {
   return config.limit === -1 || config.period === 'unlimited';

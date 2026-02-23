@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { PRO_PLAN_NAME } from '@/lib/billing/constants';
+import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from '@/lib/billing/constants';
 
 import type { UserBillingStatus } from '@/types/billing';
 
@@ -10,22 +10,35 @@ interface UserPlanStatusProps {
   variant?: 'default' | 'compact';
 }
 
+function getPlanDisplay(planType: string, isSubscribed: boolean): { name: string; isPaid: boolean } {
+  if (!isSubscribed) return { name: 'Free', isPaid: false };
+  switch (planType) {
+    case 'premium_monthly':
+    case 'premium_yearly':
+      return { name: PREMIUM_PLAN_NAME, isPaid: true };
+    case 'pro_monthly':
+      return { name: PRO_PLAN_NAME, isPaid: true };
+    default:
+      return { name: 'Free', isPaid: false };
+  }
+}
+
 export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanStatusProps) {
   if (!billingStatus) {
     return null;
   }
 
-  const isPro = billingStatus.planType === 'pro_monthly';
+  const { name: planName, isPaid } = getPlanDisplay(billingStatus.planType, billingStatus.isSubscribed);
 
   if (variant === 'compact') {
     return (
       <div className="flex items-center gap-2 text-sm">
         <span
           className={`px-2 py-0.5 rounded-full text-xs font-medium ${
-            isPro ? 'bg-primary/10 text-primary' : 'bg-stone-100 text-stone-600'
+            isPaid ? 'bg-primary/10 text-primary' : 'bg-stone-100 text-stone-600'
           }`}
         >
-          {isPro ? PRO_PLAN_NAME : 'Free'}
+          {planName}
         </span>
         {billingStatus.ticketCount > 0 && (
           <span className="text-stone-500">
@@ -42,9 +55,9 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
         <div>
           <p className="text-xs text-stone-500 mb-0.5">現在のプラン</p>
           <p className="text-lg font-bold text-stone-800 flex items-center gap-2">
-            {isPro ? (
+            {isPaid ? (
               <>
-                {PRO_PLAN_NAME}
+                {planName}
                 <span className="px-1.5 py-0.5 bg-primary/10 text-primary text-xs rounded-full">
                   アクティブ
                 </span>
@@ -54,7 +67,7 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
             )}
           </p>
         </div>
-        {!isPro && (
+        {!isPaid && (
           <Link
             href="/pricing"
             className="px-3 py-1.5 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors"
@@ -62,7 +75,7 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
             アップグレード
           </Link>
         )}
-        {isPro && (
+        {isPaid && (
           <Link
             href="/pricing"
             className="px-3 py-1.5 border border-stone-200 text-stone-600 text-sm font-medium rounded-lg hover:bg-stone-50 transition-colors"
@@ -72,7 +85,7 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
         )}
       </div>
 
-      {isPro && billingStatus.subscriptionEndsAt && (
+      {isPaid && billingStatus.subscriptionEndsAt && (
         <p className="text-xs text-stone-500">
           次回更新日: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString('ja-JP')}
         </p>

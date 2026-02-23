@@ -9,7 +9,7 @@ import type { UserType } from '@/lib/limits/config';
 // ============================================
 
 /** サブスクリプションプランの種類 */
-export type PlanType = 'free' | 'pro_monthly' | 'admin';
+export type PlanType = 'free' | 'pro_monthly' | 'premium_monthly' | 'premium_yearly' | 'admin';
 
 /** 回数券の種類 */
 export type TicketType = 'ticket_1' | 'ticket_5' | 'ticket_10';
@@ -61,6 +61,7 @@ export interface BillingAccessInfo {
   ticketCount: number;
 
   // 便利なアクセスフラグ
+  isPro: boolean;
   isPremium: boolean;
   isAdmin: boolean;
   isFree: boolean;

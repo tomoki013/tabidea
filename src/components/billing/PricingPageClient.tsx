@@ -9,7 +9,7 @@ import { FAQSection } from "@/components/features/landing";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
-import { PRO_PLAN_NAME } from "@/lib/billing/constants";
+import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from "@/lib/billing/constants";
 
 import type { UserBillingStatus, PurchaseType } from "@/types/billing";
 
@@ -34,9 +34,10 @@ export function PricingPageClient({
   const handlePurchase = async (planType: PurchaseType) => {
     if (planType === "free") return;
 
-    // 既にProプランの場合、サブスク購入を防ぐ
-    if (planType === "pro_monthly" && billingStatus?.isSubscribed) {
-      setError(`既に${PRO_PLAN_NAME}プランに加入しています。プラン管理からご確認ください。`);
+    // 既にサブスク中の場合、同一プラン購入を防ぐ
+    if (billingStatus?.isSubscribed && (planType === billingStatus.planType)) {
+      const currentName = billingStatus.planType.includes('premium') ? PREMIUM_PLAN_NAME : PRO_PLAN_NAME;
+      setError(`既に${currentName}プランに加入しています。プラン管理からご確認ください。`);
       return;
     }
 
@@ -45,7 +46,7 @@ export function PricingPageClient({
 
     try {
       const result = await createCheckoutSession(
-        planType as "pro_monthly" | "ticket_1" | "ticket_5" | "ticket_10",
+        planType as "pro_monthly" | "premium_monthly" | "premium_yearly" | "ticket_1" | "ticket_5" | "ticket_10",
       );
 
       if (result.success && result.url) {
@@ -54,7 +55,7 @@ export function PricingPageClient({
         router.push("/auth/login?redirect=/pricing");
       } else if (result.error === "already_subscribed") {
         setError(
-          `既に${PRO_PLAN_NAME}プランに加入しています。プラン管理からご確認ください。`,
+          `既に${currentPlanName}プランに加入しています。プラン管理からご確認ください。`,
         );
         // ページをリロードして最新状態を表示
         router.refresh();
@@ -102,7 +103,11 @@ export function PricingPageClient({
     }
   };
 
-  const isPro = billingStatus?.isSubscribed === true;
+  const isSubscribed = billingStatus?.isSubscribed === true;
+  const currentPlanType = billingStatus?.planType;
+  const currentPlanName = currentPlanType?.includes('premium')
+    ? PREMIUM_PLAN_NAME
+    : currentPlanType === 'pro_monthly' ? PRO_PLAN_NAME : 'Free';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
@@ -141,9 +146,9 @@ export function PricingPageClient({
                     <span className="inline-flex items-center gap-1 px-3 py-1 bg-stone-800 text-white text-sm font-bold rounded-full">
                       管理者
                     </span>
-                  ) : isPro ? (
+                  ) : isSubscribed ? (
                     <span className="inline-flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-primary to-[#f39c12] text-white text-sm font-bold rounded-full">
-                      {PRO_PLAN_NAME}
+                      {currentPlanName}
                     </span>
                   ) : (
                     <span className="inline-flex items-center px-3 py-1 bg-stone-200 text-stone-600 text-sm font-medium rounded-full">
@@ -151,7 +156,7 @@ export function PricingPageClient({
                     </span>
                   )}
                 </div>
-                {isPro && billingStatus.subscriptionEndsAt && (
+                {isSubscribed && billingStatus.subscriptionEndsAt && (
                   <p className="text-xs text-stone-500 mt-2">
                     次回更新: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString("ja-JP")}
                   </p>
@@ -167,7 +172,7 @@ export function PricingPageClient({
               )}
             </div>
 
-            {isPro && (
+            {isSubscribed && (
               <button
                 onClick={handleManageSubscription}
                 disabled={isLoading === "manage"}
@@ -181,7 +186,7 @@ export function PricingPageClient({
               </button>
             )}
 
-            {!isPro && billingStatus.planType !== 'admin' && (
+            {!isSubscribed && billingStatus.planType !== 'admin' && (
               <p className="text-xs text-stone-400 text-center">
                 下記のプランからアップグレードできます
               </p>
@@ -200,8 +205,8 @@ export function PricingPageClient({
                 key={plan.id}
                 plan={plan}
                 isCurrentPlan={
-                  (plan.id === "free" && !isPro) ||
-                  (plan.id === "pro_monthly" && isPro)
+                  (plan.id === "free" && !isSubscribed) ||
+                  (plan.id === currentPlanType)
                 }
                 isLoggedIn={isLoggedIn}
                 isLoading={isLoading === plan.id}
