@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 import { PricingCard } from "./PricingCard";
 import { TicketCard } from "./TicketCard";
+import { TierComparisonTable } from "./TierComparisonTable";
 import { FAQSection } from "@/components/features/landing";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
@@ -199,7 +200,7 @@ export function PricingPageClient({
           <h2 className="text-xl font-bold text-stone-800 text-center mb-8">
             サブスクリプションプラン
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {PRICING_PLANS.map((plan) => (
               <PricingCard
                 key={plan.id}
@@ -241,75 +242,9 @@ export function PricingPageClient({
         </div>
         */}
 
-        {/* Feature Comparison */}
-        <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8 max-w-4xl mx-auto mb-16">
-          <h2 className="text-xl font-bold text-stone-800 text-center mb-6">
-            プラン比較
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-stone-200">
-                  <th className="text-left py-3 px-4 font-medium text-stone-600">
-                    機能
-                  </th>
-                  <th className="text-center py-3 px-4 font-medium text-stone-600">
-                    Free
-                  </th>
-                  <th className="text-center py-3 px-4 font-medium text-primary">
-                    {PRO_PLAN_NAME}
-                  </th>
-                  <th className="text-center py-3 px-4 font-medium text-stone-600 text-stone-400">
-                    回数券 (一時停止中)
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <FeatureRow
-                  feature="プラン生成"
-                  free="月3回"
-                  pro="月30回"
-                  ticket="購入分"
-                />
-                <FeatureRow
-                  feature="渡航情報カテゴリ"
-                  free="3カテゴリ"
-                  pro="全カテゴリ"
-                  ticket="3カテゴリ"
-                />
-                <FeatureRow
-                  feature="渡航情報取得"
-                  free="週1回"
-                  pro="無制限"
-                  ticket="週1回"
-                />
-                <FeatureRow
-                  feature="プラン内渡航情報表示"
-                  free={false}
-                  pro={true}
-                  ticket={false}
-                />
-                <FeatureRow
-                  feature="プラン保存"
-                  free="無制限"
-                  pro="無制限"
-                  ticket="無制限"
-                />
-                <FeatureRow
-                  feature="カスタム指示 (AI)"
-                  free={true}
-                  pro={true}
-                  ticket={true}
-                />
-                <FeatureRow
-                  feature="旅のスタイル (AI)"
-                  free={false}
-                  pro={true}
-                  ticket={false}
-                />
-              </tbody>
-            </table>
-          </div>
+        {/* Feature Comparison — 3-tier table */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <TierComparisonTable />
         </div>
 
         {/* FAQ - Using generic component */}
@@ -334,64 +269,3 @@ export function PricingPageClient({
   );
 }
 
-function FeatureRow({
-  feature,
-  free,
-  pro,
-  ticket,
-}: {
-  feature: string;
-  free: string | boolean;
-  pro: string | boolean;
-  ticket: string | boolean;
-}) {
-  const renderCell = (value: string | boolean, isTicket: boolean = false) => {
-    if (typeof value === "boolean") {
-      return value ? (
-        <svg
-          className={`w-5 h-5 mx-auto ${isTicket ? 'text-stone-300' : 'text-green-500'}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M5 13l4 4L19 7"
-          />
-        </svg>
-      ) : (
-        <svg
-          className="w-5 h-5 text-stone-300 mx-auto"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      );
-    }
-    return <span className={isTicket ? 'text-stone-400' : ''}>{value}</span>;
-  };
-
-  return (
-    <tr className="border-b border-stone-100">
-      <td className="py-3 px-4 text-stone-700">{feature}</td>
-      <td className="py-3 px-4 text-center text-stone-600">
-        {renderCell(free)}
-      </td>
-      <td className="py-3 px-4 text-center text-primary font-medium">
-        {renderCell(pro)}
-      </td>
-      <td className="py-3 px-4 text-center text-stone-600">
-        {renderCell(ticket, true)}
-      </td>
-    </tr>
-  );
-}
