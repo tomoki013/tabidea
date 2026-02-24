@@ -1,6 +1,14 @@
 import { redirect } from 'next/navigation';
 import { isCurrentUserAdmin } from '@/app/actions/travel-planner';
 import { createClient } from '@/lib/supabase/server';
+import {
+  getPlanToActionRate,
+  getReplanRate,
+  getRescueSuccessRate,
+  getReusageIntentRate,
+  getCompanionShareRate,
+} from '@/lib/services/analytics/kpi-queries';
+import type { KPIResult } from '@/lib/services/analytics/kpi-queries';
 
 interface MetricsSummary {
   totalGenerations: number;
@@ -55,13 +63,40 @@ async function getMetricsSummary(): Promise<MetricsSummary | null> {
   }
 }
 
+async function getKPIs(): Promise<KPIResult[]> {
+  try {
+    const supabase = await createClient();
+    const [planToAction, replan, rescue, reusage, share] = await Promise.all([
+      getPlanToActionRate(supabase, 30),
+      getReplanRate(supabase, 30),
+      getRescueSuccessRate(supabase, 30),
+      getReusageIntentRate(supabase, 30),
+      getCompanionShareRate(supabase, 30),
+    ]);
+    return [planToAction, replan, rescue, reusage, share];
+  } catch {
+    return [];
+  }
+}
+
+const KPI_LABELS: Record<string, string> = {
+  plan_to_action_rate: '提案→行動変換率',
+  replan_rate: 'リプラン利用率',
+  rescue_success_rate: 'リプラン成功率',
+  reusage_intent_rate: '再利用意向率',
+  companion_share_rate: '同行者シェア率',
+};
+
 export default async function MetricsPage() {
   const isAdmin = await isCurrentUserAdmin();
   if (!isAdmin) {
     redirect('/');
   }
 
-  const summary = await getMetricsSummary();
+  const [summary, kpis] = await Promise.all([
+    getMetricsSummary(),
+    getKPIs(),
+  ]);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -106,6 +141,23 @@ export default async function MetricsPage() {
             unit="件"
           />
         </div>
+      )}
+
+      {/* Replan KPIs */}
+      {kpis.length > 0 && (
+        <>
+          <h2 className="text-xl font-bold text-stone-800 mt-12 mb-4">リプラン KPI</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {kpis.map((kpi) => (
+              <MetricCard
+                key={kpi.name}
+                label={KPI_LABELS[kpi.name] ?? kpi.name}
+                value={(kpi.value * 100).toFixed(1)}
+                unit={`% (${kpi.numerator}/${kpi.denominator})`}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

@@ -17,6 +17,8 @@ import type {
   TripPlan,
 } from "@/types/replan";
 import { ReplanEngine, REPLAN_TOTAL_TIMEOUT_MS } from "@/lib/services/replan/replan-engine";
+import { EventLogger } from "@/lib/services/analytics/event-logger";
+import { createClient } from "@/lib/supabase/server";
 
 // ============================================================================
 // Request / Response Types
@@ -65,6 +67,17 @@ export async function POST(request: Request) {
       );
 
       clearTimeout(timeoutId);
+
+      // イベント記録 (fire-and-forget)
+      createClient().then((supabase) => {
+        const logger = new EventLogger(supabase);
+        logger.logReplan({
+          planId: body.planId,
+          triggerType: body.trigger.type,
+          humanResolutionScore: result.scoreBreakdown.total,
+          processingTimeMs: result.processingTimeMs,
+        });
+      }).catch(() => { /* fail-open */ });
 
       return NextResponse.json({
         primaryOption: result.primaryOption,

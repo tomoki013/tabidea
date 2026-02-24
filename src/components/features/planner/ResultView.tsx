@@ -35,8 +35,12 @@ import { CardState } from "@/components/features/plan/cards/BaseCard";
 import SpotCard from "@/components/features/plan/cards/SpotCard";
 import TransitCard from "@/components/features/plan/cards/TransitCard";
 import MapRouteView from "@/components/features/planner/MapRouteView";
+import { MapRenderer } from "@/components/features/plan/map";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { cn } from "@/lib/utils";
+import type { MapProviderType } from "@/lib/limits/config";
+import type { ReplanTrigger } from "@/types/replan";
+import { ReplanTriggerPanel } from "@/components/features/replan";
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
 import ShioriJournalEditor from './ShioriJournalEditor';
 
@@ -64,6 +68,14 @@ interface ResultViewProps {
   enableEditing?: boolean;
   initialIsPublic?: boolean;
   isSimplifiedView?: boolean;
+  /** マッププロバイダー（ティア別: static/leaflet/google_maps） */
+  mapProvider?: MapProviderType;
+  /** リプラントリガーを表示するか（旅行中モード） */
+  showReplanTriggers?: boolean;
+  /** リプラントリガー発火コールバック */
+  onReplanTrigger?: (trigger: ReplanTrigger) => void;
+  /** リプラン処理中か */
+  isReplanning?: boolean;
   normalizedDays?: NormalizedPlanDay[];
   onSyncJournalEntry?: (input: {
     itemId: string;
@@ -92,6 +104,10 @@ export default function ResultView({
   enableEditing = true,
   initialIsPublic,
   isSimplifiedView = false,
+  mapProvider = "google_maps",
+  showReplanTriggers = false,
+  onReplanTrigger,
+  isReplanning = false,
   normalizedDays,
   onSyncJournalEntry,
 }: ResultViewProps) {
@@ -500,7 +516,16 @@ export default function ResultView({
                     viewMode === 'split' ? "" : "hidden"
                  )}>
                     <div className="sticky top-[110px] h-[calc(100vh-130px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
-                        <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                        {mapProvider === "google_maps" ? (
+                          <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                        ) : (
+                          <MapRenderer
+                            mapProvider={mapProvider}
+                            activities={result.days.flatMap((d) => d.activities)}
+                            dayNumber={1}
+                            className="w-full h-full"
+                          />
+                        )}
                     </div>
                  </div>
               )}
@@ -514,7 +539,16 @@ export default function ResultView({
                 {/* Mobile Map View - Fullscreen style container */}
                 {!isSimplifiedView && mobileViewMode === 'map' && (
                    <div className="lg:hidden h-[65vh] rounded-xl overflow-hidden shadow-md border border-stone-200 mb-8 relative z-0">
-                       <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                       {mapProvider === "google_maps" ? (
+                         <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
+                       ) : (
+                         <MapRenderer
+                           mapProvider={mapProvider}
+                           activities={result.days.flatMap((d) => d.activities)}
+                           dayNumber={1}
+                           className="w-full h-full"
+                         />
+                       )}
                    </div>
                 )}
 
@@ -586,6 +620,17 @@ export default function ResultView({
                           </div>
                         );
                       })}
+
+                      {/* Replan Trigger Panel (PR-K: 旅中モード) */}
+                      {showReplanTriggers && onReplanTrigger && (
+                        <div className="pt-4 animate-in fade-in duration-300">
+                          <ReplanTriggerPanel
+                            slotId={`day-${day.day}-current`}
+                            onTrigger={onReplanTrigger}
+                            disabled={isReplanning}
+                          />
+                        </div>
+                      )}
 
                       {/* Add Activity Button */}
                       {enableEditing && (

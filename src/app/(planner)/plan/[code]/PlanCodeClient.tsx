@@ -10,6 +10,9 @@ import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
 import ShioriPromotionSection from '@/components/features/shiori/ShioriPromotionSection';
+import { PostTripReflection } from '@/components/features/feedback/PostTripReflection';
+import { usePostTripReminder } from '@/lib/hooks/usePostTripReminder';
+import { submitReflection } from '@/app/actions/reflection';
 
 interface PlanCodeClientProps {
   plan: Plan;
@@ -42,6 +45,30 @@ export default function PlanCodeClient({
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+
+  // ---- PR-N: Post-trip reflection ----
+  // 旅行終了日を input.dates から算出 ("2024-03-15から3日間" 形式)
+  const tripEndDate = (() => {
+    const match = initialInput.dates.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
+    if (match) {
+      const start = new Date(match[1]);
+      const days = parseInt(match[2], 10);
+      start.setDate(start.getDate() + days - 1);
+      return start.toISOString();
+    }
+    return undefined;
+  })();
+
+  const { shouldShow: shouldShowReflection, dismiss: dismissReflection } =
+    usePostTripReminder(plan.id, tripEndDate);
+
+  const handleReflectionSubmit = useCallback(
+    async (reflection: Parameters<typeof submitReflection>[0]) => {
+      await submitReflection(reflection);
+      dismissReflection();
+    },
+    [dismissReflection]
+  );
 
   // Track if save is pending to debounce
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -188,6 +215,17 @@ export default function PlanCodeClient({
           initialInput={input}
           initialStep={initialEditStep}
         />
+
+        {/* Post-Trip Reflection (PR-N) */}
+        {shouldShowReflection && (
+          <div className="w-full max-w-md mx-auto py-8 px-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <PostTripReflection
+              planId={plan.id}
+              onSubmit={handleReflectionSubmit}
+              onDismiss={dismissReflection}
+            />
+          </div>
+        )}
 
         {/* Call to Action - Create New Plan (Only shown if NOT simplified view, OR replace logic below) */}
         {!isSimplifiedView && (

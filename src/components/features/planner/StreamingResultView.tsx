@@ -8,12 +8,14 @@ import {
   FaCalendarAlt,
 } from "react-icons/fa";
 import type { GenerationState, UserInput, DayPlan, Itinerary } from "@/types";
+import type { ReplanTrigger } from "@/types/replan";
 import DayPlaceholder from "./DayPlaceholder";
 import GeneratingOverlay from "./GeneratingOverlay";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
+import { ReplanTriggerPanel } from "@/components/features/replan";
 
 // ============================================================================
 // Types
@@ -23,6 +25,12 @@ interface StreamingResultViewProps {
   generationState: GenerationState;
   input: UserInput;
   onRetryChunk?: (dayStart: number, dayEnd: number) => void;
+  /** リプラントリガーを表示するか（旅行中モード） */
+  showReplanTriggers?: boolean;
+  /** リプラントリガー発火コールバック */
+  onReplanTrigger?: (trigger: ReplanTrigger) => void;
+  /** リプラン処理中か */
+  isReplanning?: boolean;
 }
 
 // ============================================================================
@@ -33,6 +41,9 @@ export default function StreamingResultView({
   generationState,
   input,
   onRetryChunk,
+  showReplanTriggers = false,
+  onReplanTrigger,
+  isReplanning = false,
 }: StreamingResultViewProps) {
   const [showOverlay, setShowOverlay] = useState(true);
 
@@ -356,6 +367,17 @@ export default function StreamingResultView({
                           }
                         />
                       ))}
+
+                      {/* Replan Trigger Panel (PR-K: 旅中モード) */}
+                      {showReplanTriggers && onReplanTrigger && (
+                        <div className="pt-4 animate-in fade-in duration-300">
+                          <ReplanTriggerPanel
+                            slotId={`day-${completedDay.day}-current`}
+                            onTrigger={onReplanTrigger}
+                            disabled={isReplanning}
+                          />
+                        </div>
+                      )}
 
                       {/* Accommodation Card (for overnight stay - show on all days except last) */}
                       {completedDay.day < totalDays && outlineDay.overnight_location && (
