@@ -558,6 +558,117 @@ const rawRoadmapData: RoadmapItem[] = [
     description:
       "プラン生成時のタイムアウトエラーを削減し、システム全体のパフォーマンス監視を強化しました。ビルドやテストの安定性も向上しました。",
   },
+  {
+    status: "done",
+    date: "2026.02.16",
+    updateType: "patch",
+    title: "外部旅行サービスの検索連携",
+    description:
+      "外部の旅行プロバイダー情報を検索・参照できる機能を追加しました。より広範な旅行情報を確認できるようになります。",
+  },
+  {
+    status: "done",
+    date: "2026.02.16",
+    updateType: "patch",
+    title: "ブログ機能（β版）の追加",
+    description: "旅行の体験や情報を発信・閲覧できるブログ機能を追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.16",
+    updateType: "patch",
+    title: "プラン詳細画面のジャーナルスタイル化",
+    description:
+      "プラン詳細画面を、旅の記録を綴るノートのような「ジャーナルスタイル」に刷新しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.16",
+    updateType: "patch",
+    title: "サイト内ナビゲーションの改善",
+    description:
+      "ブログや新機能へスムーズにアクセスできるよう、サイト内の導線を整理・改善しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "「旅のしおり」公開機能のリリース",
+    description:
+      "作成した旅行プランを「旅のしおり」として公開し、他のユーザーに共有できる機能を追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "公開・非公開の切り替え設定",
+    description:
+      "プランごとに公開・非公開をワンクリックで切り替えられるスイッチを実装しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "公開プラン一覧ページ",
+    description:
+      "他のユーザーが作成・公開したプラン（旅のしおり）を探して閲覧できる一覧ページを公開しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "プラン詳細画面の地図追従レイアウト",
+    description:
+      "PC表示時に地図がスクロールに追従するようにし、プランと地図を対照しやすくしました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "コミュニティセクションの追加",
+    description:
+      "ユーザーコミュニティの活性化に向け、トップページおよびフッターにコミュニティセクションを追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.17",
+    updateType: "patch",
+    title: "モバイル版地図表示の切り替え機能",
+    description:
+      "スマートフォン表示時に、プラン詳細と地図をボタン一つで切り替えられる機能を追加しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.18",
+    updateType: "patch",
+    title: "トップページのデザインリニューアル",
+    description:
+      "「Tabi x Idea x Deai」をコンセプトに、スクラップブックをイメージした新しいトップページデザインを公開しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.18",
+    updateType: "patch",
+    title: "プラン作成ウィザードの刷新",
+    description:
+      "旅行の条件入力をよりスムーズに行えるよう、ステップ形式の入力フォーム（ウィザードUI）を刷新しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.18",
+    updateType: "patch",
+    title: "公開設定の同期修正",
+    description:
+      "プランの公開状態変更が即座に反映されない問題を修正し、同期精度を向上させました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.18",
+    updateType: "patch",
+    title: "決済システムの安定化",
+    description:
+      "決済処理時に発生していた一部のエラーを修正し、処理の安定性を向上させました。",
+  },
 ];
 
 // Helper to calculate versions

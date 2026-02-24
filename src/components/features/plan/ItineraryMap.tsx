@@ -279,7 +279,7 @@ function MapContent({ spots, selectedDay, destination, onSpotSelect }: MapConten
       bounds.extend({ lat: spot.lat, lng: spot.lng });
     });
 
-    map.fitBounds(bounds, { padding: 50 });
+    map.fitBounds(bounds, 50);
   }, [map, coreLibrary, spots, selectedDay]);
 
   const handleSpotClick = useCallback(
