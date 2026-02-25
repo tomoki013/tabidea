@@ -10,7 +10,8 @@ import { useSpotCoordinates } from '@/lib/hooks/useSpotCoordinates';
 import { buildTimeline } from '@/lib/utils/plan';
 import { getActivityIcon } from '@/lib/utils/activity-icon';
 import { cn } from '@/lib/utils';
-import MapRouteView from './MapRouteView';
+import { MapRouteViewRenderer } from './map-route';
+import type { MapProviderType } from '@/lib/limits/config';
 
 interface JournalTimelineProps {
   days: DayPlan[];
@@ -21,6 +22,8 @@ interface JournalTimelineProps {
   onUpdateTransit?: (dayIndex: number, originalTransit: TransitInfo, updates: Partial<TransitInfo>) => void;
   onAddActivity?: (dayIndex: number) => void;
   onDeleteActivity?: (dayIndex: number, actIndex: number) => void;
+  /** マッププロバイダー（ティア別: static/leaflet/google_maps） */
+  mapProvider?: MapProviderType;
 }
 
 export default function JournalTimeline({
@@ -32,6 +35,7 @@ export default function JournalTimeline({
   onUpdateTransit,
   onAddActivity,
   onDeleteActivity,
+  mapProvider = "google_maps",
 }: JournalTimelineProps) {
   const { enrichedDays } = useSpotCoordinates(days, destination);
 
@@ -79,7 +83,7 @@ export default function JournalTimeline({
                     <Tape color="yellow" position="top-center" className="-top-3 w-20 opacity-80" />
                     <div className="bg-white p-2 pb-8 shadow-md border border-stone-200">
                        <div className="h-32 w-full relative bg-stone-100 overflow-hidden">
-                          <MapRouteView days={[enrichedDay]} destination={destination} className="w-full h-full pointer-events-none" />
+                          <MapRouteViewRenderer mapProvider={mapProvider} days={[enrichedDay]} destination={destination} className="w-full h-full pointer-events-none" />
                        </div>
                        <p className="text-center font-hand text-xs text-stone-500 mt-2">Today's Route</p>
                     </div>

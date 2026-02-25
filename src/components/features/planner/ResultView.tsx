@@ -34,8 +34,7 @@ import { EditableText } from "@/components/ui/editable/EditableText";
 import { CardState } from "@/components/features/plan/cards/BaseCard";
 import SpotCard from "@/components/features/plan/cards/SpotCard";
 import TransitCard from "@/components/features/plan/cards/TransitCard";
-import MapRouteView from "@/components/features/planner/MapRouteView";
-import { MapRenderer } from "@/components/features/plan/map";
+import { MapRouteViewRenderer } from "@/components/features/planner/map-route";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { cn } from "@/lib/utils";
 import type { MapProviderType } from "@/lib/limits/config";
@@ -516,16 +515,12 @@ export default function ResultView({
                     viewMode === 'split' ? "" : "hidden"
                  )}>
                     <div className="sticky top-[110px] h-[calc(100vh-130px)] rounded-xl overflow-hidden shadow-lg border border-stone-200">
-                        {mapProvider === "google_maps" ? (
-                          <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
-                        ) : (
-                          <MapRenderer
-                            mapProvider={mapProvider}
-                            activities={result.days.flatMap((d) => d.activities)}
-                            dayNumber={1}
-                            className="w-full h-full"
-                          />
-                        )}
+                        <MapRouteViewRenderer
+                          mapProvider={mapProvider}
+                          days={enrichedDays}
+                          destination={result.destination}
+                          className="w-full h-full"
+                        />
                     </div>
                  </div>
               )}
@@ -539,16 +534,12 @@ export default function ResultView({
                 {/* Mobile Map View - Fullscreen style container */}
                 {!isSimplifiedView && mobileViewMode === 'map' && (
                    <div className="lg:hidden h-[65vh] rounded-xl overflow-hidden shadow-md border border-stone-200 mb-8 relative z-0">
-                       {mapProvider === "google_maps" ? (
-                         <MapRouteView days={enrichedDays} destination={result.destination} className="w-full h-full" />
-                       ) : (
-                         <MapRenderer
-                           mapProvider={mapProvider}
-                           activities={result.days.flatMap((d) => d.activities)}
-                           dayNumber={1}
-                           className="w-full h-full"
-                         />
-                       )}
+                       <MapRouteViewRenderer
+                         mapProvider={mapProvider}
+                         days={enrichedDays}
+                         destination={result.destination}
+                         className="w-full h-full"
+                       />
                    </div>
                 )}
 

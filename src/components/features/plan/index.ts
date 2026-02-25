@@ -19,3 +19,14 @@ export type { DayPlaceholderProps } from "./DayPlaceholder";
 
 // Re-export card components
 export * from "./cards";
+
+// Re-export map components
+export { MapRenderer, StaticMapView } from "./map";
+export type { MapRendererProps, MapViewProps, MapMarker } from "./map";
+
+// Re-export itinerary map components
+export { ItineraryMapRenderer, StaticItineraryMap } from "./itinerary-map";
+export type {
+  ItineraryMapRendererProps,
+  ItineraryMapBaseProps,
+} from "./itinerary-map";

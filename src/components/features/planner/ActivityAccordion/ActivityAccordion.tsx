@@ -15,7 +15,8 @@ import {
 } from "lucide-react";
 import { Activity, PlacePhoto } from "@/types";
 import { usePlaceDetails } from "@/lib/hooks/usePlaceDetails";
-import ActivityMap from "./ActivityMap";
+import { ActivityMapRenderer } from "./activity-map";
+import type { MapProviderType } from "@/lib/limits/config";
 
 // ============================================================================
 // Types
@@ -34,6 +35,8 @@ export interface ActivityAccordionProps {
   className?: string;
   /** UI タイプ */
   uiType?: "default" | "compact" | "narrative";
+  /** マッププロバイダー（ティア別: static/leaflet/google_maps） */
+  mapProvider?: MapProviderType;
 }
 
 // ============================================================================
@@ -131,6 +134,7 @@ export default function ActivityAccordion({
   activityIndex,
   className = "",
   uiType = "default",
+  mapProvider = "google_maps",
 }: ActivityAccordionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { time, activity: name, description, validation, isLocked } = activity;
@@ -300,7 +304,8 @@ export default function ActivityAccordion({
 
         {/* Map */}
         {mergedDetails?.latitude && mergedDetails?.longitude && !isLoading && (
-          <ActivityMap
+          <ActivityMapRenderer
+            mapProvider={mapProvider}
             name={name}
             latitude={mergedDetails.latitude}
             longitude={mergedDetails.longitude}
