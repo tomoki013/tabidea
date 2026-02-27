@@ -1,14 +1,18 @@
 'use client';
 
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
+import type { ReplanTrigger, RecoveryOption } from '@/types/replan';
 import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import { syncJournalEntry } from '@/app/actions/plan-itinerary';
+import { buildTripPlan, buildDefaultTravelerState, buildTripContext } from '@/lib/utils/replan-adapter';
+import { useReplan } from '@/lib/hooks/useReplan';
 import ResultView from '@/components/features/planner/ResultView';
+import { ReplanSuggestionCard, ReplanSheet } from '@/components/features/replan';
 import { PlanModal } from '@/components/common';
 import { FAQSection, ExampleSection } from '@/components/features/landing';
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
@@ -43,6 +47,25 @@ export default function PlanIdClient({
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
   const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
+  const [showAlternatives, setShowAlternatives] = useState(false);
+
+  // Replan integration
+  const tripPlan = useMemo(() => buildTripPlan(result, input), [result, input]);
+  const tripContext = useMemo(() => buildTripContext(result, input), [result, input]);
+  const [travelerState, setTravelerState] = useState(() => buildDefaultTravelerState('rain'));
+
+  const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion, dismissSuggestion } =
+    useReplan(tripPlan, travelerState, tripContext);
+
+  const handleReplanTrigger = useCallback((trigger: ReplanTrigger) => {
+    setTravelerState(buildDefaultTravelerState(trigger.type));
+    triggerReplan(trigger);
+  }, [triggerReplan]);
+
+  const handleAcceptSuggestion = useCallback((option: RecoveryOption) => {
+    acceptSuggestion(option);
+    setShowAlternatives(false);
+  }, [acceptSuggestion]);
 
   // Track if save is pending to debounce
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -203,6 +226,27 @@ export default function PlanIdClient({
           normalizedDays={normalizedDays}
           onSyncJournalEntry={handleSyncJournalEntry}
           mapProvider={mapProvider}
+          showReplanTriggers={true}
+          onReplanTrigger={handleReplanTrigger}
+          isReplanning={isReplanning}
+        />
+
+        {/* Replan Suggestion */}
+        {replanResult && (
+          <div className="fixed bottom-4 left-4 right-4 z-30 max-w-lg mx-auto">
+            <ReplanSuggestionCard
+              option={replanResult.primaryOption}
+              onAccept={handleAcceptSuggestion}
+              onShowAlternatives={() => setShowAlternatives(true)}
+              hasAlternatives={replanResult.alternatives.length > 0}
+            />
+          </div>
+        )}
+        <ReplanSheet
+          isOpen={showAlternatives}
+          alternatives={replanResult?.alternatives ?? []}
+          onSelect={(option) => { handleAcceptSuggestion(option); setShowAlternatives(false); }}
+          onClose={() => setShowAlternatives(false)}
         />
 
         {/* Request Editing Modal */}

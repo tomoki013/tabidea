@@ -6,11 +6,12 @@ import Link from "next/link";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
 import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
-import { generatePlanOutline, generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
+import { generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
+import { useGenerationProgress } from "@/lib/hooks/useGenerationProgress";
 import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
 import OutlineReview from "@/components/features/planner/OutlineReview";
 import StreamingResultView from "@/components/features/planner/StreamingResultView";
@@ -24,6 +25,7 @@ function PlanContent() {
   const router = useRouter();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { addPlan } = useUserPlans();
+  const { steps: progressSteps, currentStep: progressCurrentStep, generateOutlineStream, resetProgress } = useGenerationProgress();
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
   const mode = searchParams.get("mode");
@@ -257,8 +259,9 @@ function PlanContent() {
     });
 
     try {
-      // Step 1: Generate Master Outline
-      const outlineResponse = await generatePlanOutline(sampleInput);
+      // Step 1: Generate Master Outline (with real-time SSE progress)
+      resetProgress();
+      const outlineResponse = await generateOutlineStream(sampleInput);
 
       if (!outlineResponse.success || !outlineResponse.data) {
         throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
@@ -293,7 +296,7 @@ function PlanContent() {
       }));
       setError(e instanceof Error ? e.message : "ネットワークエラーまたはサーバータイムアウトが発生しました。");
     }
-  }, [startDetailGeneration]);
+  }, [startDetailGeneration, generateOutlineStream, resetProgress]);
 
   // Handler to retry a failed chunk
   const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
@@ -391,9 +394,9 @@ function PlanContent() {
     );
   }
 
-  // Show outline loading animation during outline generation
+  // Show outline loading animation during outline generation (with real progress)
   if (generationState.phase === 'generating_outline') {
-    return <OutlineLoadingAnimation />;
+    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
   }
 
   // Show Outline Review

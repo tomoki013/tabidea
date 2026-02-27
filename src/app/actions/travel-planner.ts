@@ -1,50 +1,35 @@
 "use server";
 
 import { GeminiService } from "@/lib/services/ai/gemini";
-// import { WebScraperRetriever } from '@/lib/services/rag/scraper';
-import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
-import { Itinerary, UserInput, PlanOutline, PlanOutlineDay, DayPlan, Article, FixedScheduleItem } from '@/types';
+import { Itinerary, UserInput, PlanOutlineDay, DayPlan, Article } from '@/types';
 import { getUnsplashImage } from "@/lib/unsplash";
 import { extractDuration, splitDaysIntoChunks } from "@/lib/utils";
 import { buildConstraintsPrompt, buildTransitSchedulePrompt } from "@/lib/prompts";
-import { getOutlineCache, setOutlineCache } from "@/lib/cache";
+import { getBudgetContext, getFixedSchedulePrompt } from "@/lib/utils/plan-prompt-helpers";
 import { getUser, createAdminClient, createClient } from "@/lib/supabase/server";
 import { planService } from "@/lib/plans/service";
 import { isAdminEmail } from "@/lib/billing/billing-checker";
 import { EntitlementService } from "@/lib/entitlements";
-import { getUserSettings } from "@/app/actions/user-settings";
-import { checkAndRecordUsage } from "@/lib/limits/check";
 import { checkPlanCreationRate, checkPlanUpdateRate } from "@/lib/security/rate-limit";
-import type { UserType } from "@/lib/limits/config";
 import { revalidatePath } from "next/cache";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { getSpotValidator } from "@/lib/services/validation/spot-validator";
 import { selfCorrectItinerary } from "@/lib/services/ai/self-correction";
-import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
-import { createOutlineTimer, createChunkTimer, OUTLINE_TARGETS_PRO, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
+import { createChunkTimer, CHUNK_TARGETS_PRO } from "@/lib/utils/performance-timer";
 import { buildDefaultPublicationSlug } from "@/lib/plans/normalized";
+import {
+  executeOutlineGeneration,
+  getUserConstraintPrompt,
+  type OutlineActionState,
+} from "@/lib/services/plan-generation/generate-outline";
+
+// Re-export for backward compatibility
+export { getUserConstraintPrompt, type OutlineActionState };
 
 export type ActionState = {
   success: boolean;
   message?: string;
   data?: Itinerary;
-};
-
-export type OutlineActionState = {
-  success: boolean;
-  message?: string;
-  data?: {
-    outline: PlanOutline;
-    context: Article[];
-    input: UserInput;
-    heroImage?: { url: string; photographer: string; photographerUrl: string } | null;
-    modelInfo?: { modelName: string; tier: 'flash' | 'pro' };
-  };
-  // 利用制限関連
-  limitExceeded?: boolean;
-  userType?: UserType;
-  resetAt?: string | null; // ISO string
-  remaining?: number;
 };
 
 export type ChunkActionState = {
@@ -55,341 +40,14 @@ export type ChunkActionState = {
 };
 
 /**
- * Helper to generate budget context string
- */
-/**
- * Helper to generate fixed schedule prompt
- */
-function getFixedSchedulePrompt(schedule?: FixedScheduleItem[]): string {
-  if (!schedule || schedule.length === 0) return "";
-
-  return `
-    === FIXED SCHEDULE (USER BOOKINGS) ===
-    The user has the following fixed reservations. You MUST incorporate these into the itinerary at the specified times.
-    ${schedule.map(item => `- [${item.type}] ${item.name} ${item.date ? `(Date: ${item.date})` : ''} ${item.time ? `(Time: ${item.time})` : ''} ${item.notes ? `Note: ${item.notes}` : ''}`).join('\n')}
-    ======================================
-  `;
-}
-
-function getBudgetContext(budget: string): string {
-  if (!budget) return "Budget: Not specified";
-
-  // Handle range format: "range:50000:100000"
-  if (budget.startsWith("range:")) {
-    const parts = budget.split(":");
-    if (parts.length >= 3) {
-      const min = parseInt(parts[1], 10);
-      const max = parseInt(parts[2], 10);
-      const minStr = (min / 10000).toFixed(0);
-      const maxStr = (max / 10000).toFixed(0);
-      return `
-    Budget: ${minStr}万円 〜 ${maxStr}万円 (${min.toLocaleString()} JPY - ${max.toLocaleString()} JPY)
-    (Please suggest hotels, restaurants, and activities that fit within this specific budget range per person for the entire trip.)
-      `;
-    }
-  }
-
-  return `
-    Budget Level: ${budget}
-    (Budget Guidance for AI:
-     - If Destination is Domestic (Japan):
-       - Saving: ~30,000 JPY total (Hostels, cheap eats)
-       - Standard: ~50,000 JPY total (Business hotels, standard meals)
-       - High: ~100,000 JPY total (Ryokan/Nice hotels, good dining)
-       - Luxury: ~200,000+ JPY total
-     - If Destination is Overseas:
-       - Adjust scale accordingly. Standard usually implies 150,000-300,000 JPY depending on region (Asia vs Europe).
-     - Please suggest hotels, restaurants, and activities that fit this financial scale.)
-  `;
-}
-
-/**
- * Helper to fetch and format user custom instructions
- */
-export async function getUserConstraintPrompt(): Promise<string> {
-  const { settings } = await getUserSettings();
-  let prompt = "";
-
-  // Travel Style (Preferences)
-  if (settings?.travelStyle && settings.travelStyle.trim().length > 0) {
-    prompt += `
-    === USER TRAVEL STYLE / PREFERENCES ===
-    The user describes their travel style as:
-    "${settings.travelStyle}"
-    Please consider this tone and style when generating the plan.
-    =======================================
-    \n`;
-  }
-
-  // Custom Instructions (Constraints)
-  if (settings?.customInstructions && settings.customInstructions.trim().length > 0) {
-    prompt += `
-    === CRITICAL USER INSTRUCTIONS (MUST FOLLOW) ===
-    The user has set the following global preferences/constraints.
-    You MUST strictly adhere to these instructions. Priority: HIGHEST.
-    ${settings.customInstructions}
-    ================================================
-    `;
-  }
-  return prompt;
-}
-
-/**
  * Step 1: Generate Master Outline (Client-Side Orchestration Flow)
+ * Delegates to shared core logic in plan-generation/generate-outline.ts
  */
 export async function generatePlanOutline(
   input: UserInput,
   options?: { isRetry?: boolean }
 ): Promise<OutlineActionState> {
-  const timer = createOutlineTimer();
-  console.log(`[action] generatePlanOutline started`);
-
-  // 利用制限チェック
-  const limitResult = await timer.measure('usage_check', () =>
-    checkAndRecordUsage('plan_generation', {
-      destination: input.destinations.join(', ') || input.region,
-      isDestinationDecided: input.isDestinationDecided,
-    }, { skipConsume: options?.isRetry === true })
-  );
-
-  if (!limitResult.allowed) {
-    return {
-      success: false,
-      limitExceeded: true,
-      userType: limitResult.userType,
-      resetAt: limitResult.resetAt?.toISOString() ?? null,
-      remaining: limitResult.remaining,
-      message: '利用制限に達しました',
-    };
-  }
-
-  const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-  if (!hasAIKey) {
-    return { success: false, message: "API Key missing" };
-  }
-
-  // キャッシュチェック
-  try {
-    const cacheParams = {
-      destinations: input.destinations,
-      days: input.dates,
-      companions: input.companions,
-      theme: input.theme,
-      budget: input.budget,
-      pace: input.pace,
-      isDestinationDecided: input.isDestinationDecided,
-      region: input.region,
-      travelVibe: input.travelVibe,
-    };
-
-    const cached = await timer.measure('cache_check', () => getOutlineCache(cacheParams));
-    if (cached) {
-      timer.log();
-      console.log(`[action] Outline served from cache`);
-
-      const updatedInput = { ...input };
-      if (!updatedInput.isDestinationDecided) {
-        updatedInput.destinations = [cached.outline.destination];
-        updatedInput.isDestinationDecided = true;
-      }
-
-      return {
-        success: true,
-        data: {
-          outline: cached.outline,
-          context: cached.context,
-          input: updatedInput,
-          heroImage: cached.heroImage,
-        },
-      };
-    }
-  } catch (cacheError) {
-    console.warn("[action] Cache check failed:", cacheError);
-  }
-
-  try {
-    const scraper = new PineconeRetriever();
-    const ai = new GeminiService({
-      goldenPlanExamples: GOLDEN_PLAN_EXAMPLES,
-    });
-
-    // 1. RAG検索とプロンプト構築を並列実行
-    const destinationsStr = input.destinations.join("、");
-    const query = input.isDestinationDecided
-      ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
-      : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
-
-    // RAG検索とユーザー制約取得を並列実行
-    const [contextArticles, userConstraintPrompt] = await timer.measure('rag_search', async () => {
-      const [articles, constraints] = await Promise.all([
-        scraper.search(query, { topK: 1 }).catch((err) => {
-          console.warn("[action] Vector search failed:", err);
-          return [] as Article[];
-        }),
-        getUserConstraintPrompt(),
-      ]);
-      return [articles, constraints] as const;
-    });
-
-    // 2. プロンプト構築
-    const prompt = timer.measure('prompt_build', async () => {
-      const totalDays = extractDuration(input.dates);
-      const durationPrompt = totalDays > 0 ? `${totalDays}` : "Flexible (Suggest suitable duration, e.g. 2-5 days)";
-      const budgetPrompt = getBudgetContext(input.budget);
-      const transitConstraints = buildConstraintsPrompt(input.transits);
-      const transitSchedule = buildTransitSchedulePrompt(input.transits);
-      const fixedSchedulePrompt = getFixedSchedulePrompt(input.fixedSchedule);
-
-      if (input.isDestinationDecided) {
-        const isMultiCity = input.destinations.length > 1;
-        return `
-          Destinations: ${destinationsStr}${isMultiCity ? " (Multi-city trip - please create an efficient route visiting all locations)" : ""}
-          Dates: ${input.dates}
-          Total Days: ${durationPrompt}
-          Companions: ${input.companions}
-          Themes: ${input.theme.join(", ")}
-          ${budgetPrompt}
-          Pace: ${input.pace}
-          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-          Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
-          Note: ${input.freeText || "None"}
-
-          ${transitSchedule}
-
-          ${fixedSchedulePrompt}
-
-          ${userConstraintPrompt}
-
-          ${transitConstraints}
-
-          === ROUTE OPTIMIZATION INSTRUCTIONS ===
-          1. You are NOT bound by the order in which destinations were entered by the user, UNLESS fixed by transit anchors above.
-          2. Freely rearrange the visiting order to optimize for:
-             - Geographic efficiency (minimize backtracking)
-             - Travel convenience (logical flow between locations)
-             - Time of day considerations (e.g., morning activities vs evening activities)
-          3. **RESPECT ANCHORS**: If the user has a booked flight to a city, you MUST start the relevant day there.
-
-          === MANDATORY VISITS ===
-          1. ALL destinations listed above (${destinationsStr}) MUST be included in the itinerary. No destination may be omitted.
-          2. ALL "Must-Visit Places" listed above MUST be incorporated into the plan. Omitting any specified place is NOT acceptable.
-          3. If time constraints make it difficult to visit everything, compress visit durations rather than removing locations.
-          ${isMultiCity ? `\nIMPORTANT: This is a multi-city trip. Please plan the itinerary to visit ALL specified destinations (${destinationsStr}) in a geographically optimized order, considering travel time between locations.` : ""}
-        `;
-      } else {
-        return `
-          Region: ${input.region === "domestic" ? "Japan (Domestic)" : input.region === "overseas" ? "Overseas (International - NOT Japan)" : "Anywhere"}
-          Vibe: ${input.travelVibe || "None"}
-          Dates: ${input.dates}
-          Total Days: ${durationPrompt}
-          Companions: ${input.companions}
-          Themes: ${input.theme.join(", ")}
-          ${budgetPrompt}
-          Pace: ${input.pace}
-          Must-Visit Places: ${input.mustVisitPlaces?.join(", ") || "None"}
-          Preferred Transport: ${input.preferredTransport?.join(", ") || "None"}
-          Note: ${input.freeText || "None"}
-
-          ${transitSchedule}
-
-          ${fixedSchedulePrompt}
-
-          ${userConstraintPrompt}
-
-          ${transitConstraints}
-
-          === MANDATORY VISITS ===
-          1. If "Must-Visit Places" are specified above, ALL of them MUST be incorporated into the plan.
-          2. Omitting any specified place is NOT acceptable.
-          3. These places should influence destination selection - choose a destination that allows visiting all specified places.
-
-          TASK: Select best destination and outline plan.
-        `;
-      }
-    });
-
-    const resolvedPrompt = await prompt;
-
-    // 3. AI生成（メトリクス付き）
-    const metricsCollector = new MetricsCollector();
-    metricsCollector.startGeneration(
-      input.destinations.join('、') || 'unknown',
-      extractDuration(input.dates) || 1
-    );
-    metricsCollector.recordRagArticles(contextArticles.length);
-
-    const outline = await timer.measure('ai_generation', async () => {
-      const result = await ai.generateOutline(resolvedPrompt, contextArticles);
-      return result;
-    });
-
-    // Pro モデル使用時は目標時間を切り替え
-    if (ai.lastModelInfo?.tier === 'pro') {
-      timer.setTargets(OUTLINE_TARGETS_PRO);
-    }
-
-    metricsCollector.recordOutlineTime(
-      timer.getReport().steps.find(s => s.name === 'ai_generation')?.duration ?? 0
-    );
-
-    // メトリクス非同期フラッシュ
-    metricsCollector.flush().catch(() => {});
-
-    // 4. 目的地更新
-    const updatedInput = { ...input };
-    if (!updatedInput.isDestinationDecided) {
-      updatedInput.destinations = [outline.destination];
-      updatedInput.isDestinationDecided = true;
-    }
-
-    // 5. ヒーロー画像取得
-    const heroImageData = await timer.measure('hero_image', () =>
-      getUnsplashImage(outline.destination)
-    );
-
-    // 6. キャッシュ保存（非同期）
-    timer.start('cache_save');
-    setOutlineCache(
-      {
-        destinations: input.destinations,
-        days: input.dates,
-        companions: input.companions,
-        theme: input.theme,
-        budget: input.budget,
-        pace: input.pace,
-        isDestinationDecided: input.isDestinationDecided,
-        region: input.region,
-        travelVibe: input.travelVibe,
-      },
-      {
-        outline,
-        context: contextArticles,
-        heroImage: heroImageData,
-      }
-    ).then(() => timer.end('cache_save')).catch((e) => {
-      timer.end('cache_save');
-      console.warn("[action] Cache save failed:", e);
-    });
-
-    // パフォーマンスログ出力
-    timer.log();
-
-    return {
-      success: true,
-      data: {
-        outline,
-        context: contextArticles,
-        input: updatedInput,
-        heroImage: heroImageData,
-        modelInfo: ai.lastModelInfo || undefined,
-      }
-    };
-
-  } catch (error) {
-    timer.log();
-    console.error("[action] Outline generation failed:", error);
-    return { success: false, message: "プラン概要の作成に失敗しました。" };
-  }
+  return executeOutlineGeneration(input, options);
 }
 
 /**
@@ -1186,113 +844,43 @@ export async function loadPlanChatMessages(
 // ============================================
 
 /**
- * Check if current user is admin
+ * Check if current user is admin.
+ * Admin status is determined solely by ADMIN_EMAILS environment variable.
  */
 export async function isCurrentUserAdmin(): Promise<boolean> {
   try {
     const user = await getUser();
-
-    if (!user) {
-      return false;
-    }
-
-    // Check environment variable first (supports multiple emails)
-    if (isAdminEmail(user.email)) {
-      return true;
-    }
-
-    const supabase = await createClient();
-    const { data, error } = await supabase
-      .from('users')
-      .select('is_admin')
-      .eq('id', user.id)
-      .single();
-
-    if (error || !data) {
-      return false;
-    }
-
-    return data.is_admin === true;
-  } catch (error) {
-    console.error("Failed to check admin status:", error);
+    if (!user) return false;
+    return isAdminEmail(user.email);
+  } catch {
     return false;
   }
 }
 
 /**
- * Grant admin role to a user (admin only)
+ * Grant admin role to a user.
+ * Admin management is now via ADMIN_EMAILS env var — this is a no-op placeholder.
  */
 export async function grantAdminRole(
-  targetUserId: string
+  _targetUserId: string
 ): Promise<{ success: boolean; error?: string }> {
-  try {
-    const user = await getUser();
-
-    if (!user) {
-      return { success: false, error: "認証が必要です" };
-    }
-
-    // Check if current user is admin
-    const isAdmin = await isCurrentUserAdmin();
-    if (!isAdmin) {
-      return { success: false, error: "管理者権限が必要です" };
-    }
-
-    const adminClient = await createAdminClient();
-    const { error } = await adminClient
-      .from('users')
-      .update({ is_admin: true })
-      .eq('id', targetUserId);
-
-    if (error) {
-      console.error("Failed to grant admin role:", error);
-      return { success: false, error: "管理者権限の付与に失敗しました" };
-    }
-
-    return { success: true };
-  } catch (error) {
-    console.error("Failed to grant admin role:", error);
-    return { success: false, error: "管理者権限の付与に失敗しました" };
-  }
+  return {
+    success: false,
+    error: "管理者権限は環境変数 ADMIN_EMAILS で管理されています",
+  };
 }
 
 /**
- * Set initial admin user (via service role - for setup)
- * This should only be used once during initial setup
+ * Set initial admin user.
+ * Admin management is now via ADMIN_EMAILS env var — this is a no-op placeholder.
  */
 export async function setInitialAdmin(
-  userEmail: string
+  _userEmail: string
 ): Promise<{ success: boolean; error?: string }> {
-  try {
-    // This requires the admin client (service role)
-    const adminClient = await createAdminClient();
-
-    // Find user by email
-    const { data: users, error: findError } = await adminClient
-      .from('users')
-      .select('id, email')
-      .eq('email', userEmail);
-
-    if (findError || !users || users.length === 0) {
-      return { success: false, error: "ユーザーが見つかりません" };
-    }
-
-    // Set as admin
-    const { error } = await adminClient
-      .from('users')
-      .update({ is_admin: true })
-      .eq('id', users[0].id);
-
-    if (error) {
-      console.error("Failed to set initial admin:", error);
-      return { success: false, error: "管理者の設定に失敗しました" };
-    }
-
-    return { success: true };
-  } catch (error) {
-    console.error("Failed to set initial admin:", error);
-    return { success: false, error: "管理者の設定に失敗しました" };
-  }
+  return {
+    success: false,
+    error: "管理者権限は環境変数 ADMIN_EMAILS で管理されています",
+  };
 }
 
 // ============================================
