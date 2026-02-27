@@ -103,7 +103,7 @@ export default function ResultView({
   enableEditing = true,
   initialIsPublic,
   isSimplifiedView = false,
-  mapProvider = "google_maps",
+  mapProvider = "static",
   showReplanTriggers = false,
   onReplanTrigger,
   isReplanning = false,

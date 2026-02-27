@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 
 import { planService } from '@/lib/plans/service';
 import { getUser, createClient } from '@/lib/supabase/server';
+import { checkBillingAccess } from '@/lib/billing/billing-checker';
+import { MAP_PROVIDER } from '@/lib/limits/config';
 import PlanCodeClient from './PlanCodeClient';
 import type { ChatMessage } from '@/app/actions/travel-planner';
 
@@ -83,6 +85,10 @@ export default async function PlanCodePage({ params }: PageProps) {
 
   const isOwner = user?.id === plan.userId;
 
+  // Resolve map provider from billing tier
+  const billing = await checkBillingAccess();
+  const mapProvider = MAP_PROVIDER[billing.userType];
+
   // Load chat messages if user is owner
   let initialChatMessages: ChatMessage[] = [];
   if (isOwner && user) {
@@ -114,6 +120,7 @@ export default async function PlanCodePage({ params }: PageProps) {
       isOwner={isOwner}
       isAuthenticated={!!user}
       initialChatMessages={initialChatMessages}
+      mapProvider={mapProvider}
     />
   );
 }

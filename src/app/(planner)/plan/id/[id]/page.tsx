@@ -3,6 +3,8 @@ import { redirect, notFound } from 'next/navigation';
 
 import { planService } from '@/lib/plans/service';
 import { getUser, createClient } from '@/lib/supabase/server';
+import { checkBillingAccess } from '@/lib/billing/billing-checker';
+import { MAP_PROVIDER } from '@/lib/limits/config';
 import { ensureNormalizedPlanData, getNormalizedPlanData } from '@/lib/plans/normalized';
 import PlanIdClient from './PlanIdClient';
 import type { ChatMessage } from '@/app/actions/travel-planner';
@@ -93,6 +95,10 @@ export default async function PlanIdPage({ params }: PageProps) {
     notFound();
   }
 
+  // Resolve map provider from billing tier
+  const billing = await checkBillingAccess();
+  const mapProvider = MAP_PROVIDER[billing.userType];
+
   // Ensure normalized data exists for future use, even if not displayed currently
   await ensureNormalizedPlanData(plan.id, user.id, plan.itinerary);
   const { days: normalizedDays } = await getNormalizedPlanData(plan.id, user.id);
@@ -125,6 +131,7 @@ export default async function PlanIdPage({ params }: PageProps) {
       planId={id}
       initialChatMessages={initialChatMessages}
       initialNormalizedDays={normalizedDays}
+      mapProvider={mapProvider}
     />
   );
 }

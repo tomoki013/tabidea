@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
+import type { MapProviderType } from '@/lib/limits/config';
 import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import ResultView from '@/components/features/planner/ResultView';
 import { PlanModal } from '@/components/common';
@@ -23,6 +24,7 @@ interface PlanCodeClientProps {
   isAuthenticated: boolean;
   initialChatMessages?: ChatMessage[];
   isSimplifiedView?: boolean;
+  mapProvider?: MapProviderType;
 }
 
 export default function PlanCodeClient({
@@ -34,6 +36,7 @@ export default function PlanCodeClient({
   isAuthenticated,
   initialChatMessages,
   isSimplifiedView = false,
+  mapProvider = "static",
 }: PlanCodeClientProps) {
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
@@ -206,6 +209,7 @@ export default function PlanCodeClient({
           enableEditing={false}
           showFeedback={false}
           isSimplifiedView={isSimplifiedView}
+          mapProvider={mapProvider}
         />
 
         {/* Request Editing Modal */}

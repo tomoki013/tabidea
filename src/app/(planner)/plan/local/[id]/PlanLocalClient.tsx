@@ -318,6 +318,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
           onEditRequest={handleEditRequest}
           initialChatHistory={chatHistoryToKeep}
           localId={localId}
+          mapProvider="static"
         />
 
         {/* Request Editing Modal */}

@@ -134,7 +134,7 @@ export default function ActivityAccordion({
   activityIndex,
   className = "",
   uiType = "default",
-  mapProvider = "google_maps",
+  mapProvider = "static",
 }: ActivityAccordionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { time, activity: name, description, validation, isLocked } = activity;

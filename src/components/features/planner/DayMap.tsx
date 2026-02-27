@@ -36,7 +36,7 @@ export default function DayMap({
   activities,
   dayNumber,
   className = "",
-  mapProvider = "google_maps",
+  mapProvider = "static",
 }: DayMapProps) {
   return (
     <MapRenderer

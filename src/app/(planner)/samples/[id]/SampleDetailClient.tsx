@@ -90,6 +90,7 @@ export default function SampleDetailClient({
             showFeedback={false}
             isSimplifiedView={true} // Force Simplified View (No map, full width)
             enableEditing={false}   // Disable direct editing for samples
+            mapProvider="static"
          />
       </div>
 

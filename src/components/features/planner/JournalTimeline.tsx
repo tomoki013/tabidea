@@ -35,7 +35,7 @@ export default function JournalTimeline({
   onUpdateTransit,
   onAddActivity,
   onDeleteActivity,
-  mapProvider = "google_maps",
+  mapProvider = "static",
 }: JournalTimelineProps) {
   const { enrichedDays } = useSpotCoordinates(days, destination);
 

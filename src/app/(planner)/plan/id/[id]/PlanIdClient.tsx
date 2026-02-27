@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
+import type { MapProviderType } from '@/lib/limits/config';
 import { regeneratePlan, updatePlanItinerary, savePlanChatMessages, type ChatMessage } from '@/app/actions/travel-planner';
 import { syncJournalEntry } from '@/app/actions/plan-itinerary';
 import ResultView from '@/components/features/planner/ResultView';
@@ -19,6 +20,7 @@ interface PlanIdClientProps {
   planId: string;
   initialChatMessages?: ChatMessage[];
   initialNormalizedDays: NormalizedPlanDay[];
+  mapProvider?: MapProviderType;
 }
 
 export default function PlanIdClient({
@@ -28,6 +30,7 @@ export default function PlanIdClient({
   planId,
   initialChatMessages,
   initialNormalizedDays,
+  mapProvider = "static",
 }: PlanIdClientProps) {
   const router = useRouter();
   const [result, setResult] = useState<Itinerary>(initialItinerary);
@@ -199,6 +202,7 @@ export default function PlanIdClient({
           initialIsPublic={plan.isPublic}
           normalizedDays={normalizedDays}
           onSyncJournalEntry={handleSyncJournalEntry}
+          mapProvider={mapProvider}
         />
 
         {/* Request Editing Modal */}
