@@ -92,6 +92,8 @@ export default function TravelPlannerSimplified({
     clearLimitExceeded,
     isGenerating,
     isReviewingOutline,
+    progressSteps,
+    progressCurrentStep,
   } = usePlanGeneration({
     onComplete: onClose,
     streamingMode: !showOutlineReview,
@@ -235,7 +237,7 @@ export default function TravelPlannerSimplified({
   // Render: Outline Loading
   // ========================================
   if (generationState.phase === "generating_outline") {
-    return <OutlineLoadingAnimation />;
+    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
   }
 
   // ========================================
@@ -243,7 +245,7 @@ export default function TravelPlannerSimplified({
   // ========================================
   if (isReviewingOutline && generationState.outline) {
     // Should redirecting, but show loading state just in case
-    return <OutlineLoadingAnimation />;
+    return <OutlineLoadingAnimation steps={progressSteps} currentStep={progressCurrentStep} />;
   }
 
   // ========================================

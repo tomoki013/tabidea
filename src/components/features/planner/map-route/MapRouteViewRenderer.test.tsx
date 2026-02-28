@@ -12,8 +12,9 @@ import type { DayPlan } from "@/types";
 
 // dynamic import をモック
 vi.mock("next/dynamic", () => ({
-  default: (loader: () => Promise<any>) => {
-    const MockComponent = (props: any) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: (_loader: () => Promise<unknown>) => {
+    const MockComponent = (props: Record<string, unknown>) => (
       <div data-testid="dynamic-route-map" data-props={JSON.stringify(props)}>
         Dynamic Route Map
       </div>
@@ -25,8 +26,8 @@ vi.mock("next/dynamic", () => ({
 
 // StaticRouteView のモック
 vi.mock("./StaticRouteView", () => ({
-  default: (props: any) => (
-    <div data-testid="static-route-view" data-destination={props.destination}>
+  default: (props: Record<string, unknown>) => (
+    <div data-testid="static-route-view" data-destination={props.destination as string}>
       Static Route View
     </div>
   ),
@@ -148,7 +149,8 @@ describe("MapRouteViewRenderer", () => {
     it("不明なプロバイダーで StaticRouteView にフォールバック", () => {
       render(
         <MapRouteViewRenderer
-          mapProvider={"unknown" as any}
+          // @ts-expect-error testing unknown provider fallback
+          mapProvider={"unknown"}
           days={createDays(1)}
           destination="東京"
         />,

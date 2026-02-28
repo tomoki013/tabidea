@@ -10,8 +10,9 @@ import { render, screen } from "@testing-library/react";
 // ============================================
 
 vi.mock("next/dynamic", () => ({
-  default: (loader: () => Promise<any>) => {
-    const MockComponent = (props: any) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  default: (_loader: () => Promise<unknown>) => {
+    const MockComponent = (props: Record<string, unknown>) => (
       <div data-testid="dynamic-activity-map" data-props={JSON.stringify(props)}>
         Dynamic Activity Map
       </div>
@@ -22,8 +23,8 @@ vi.mock("next/dynamic", () => ({
 }));
 
 vi.mock("./StaticActivityMap", () => ({
-  default: (props: any) => (
-    <div data-testid="static-activity-map" data-name={props.name}>
+  default: (props: Record<string, unknown>) => (
+    <div data-testid="static-activity-map" data-name={props.name as string}>
       Static Activity Map
     </div>
   ),
@@ -103,7 +104,8 @@ describe("ActivityMapRenderer", () => {
     it("不明なプロバイダーで StaticActivityMap にフォールバック", () => {
       render(
         <ActivityMapRenderer
-          mapProvider={"unknown" as any}
+          // @ts-expect-error testing unknown provider fallback
+          mapProvider={"unknown"}
           {...baseProps}
         />,
       );

@@ -3,12 +3,14 @@
  *
  * 旅行中のリプラン操作（トリガー発火、提案受諾/却下）を管理する。
  * POST /api/replan を呼び出し、結果を状態として保持。
+ * 提案受諾時に replacementSlots を既存 Itinerary にマージして返す。
  */
 
 "use client";
 
 import { useCallback, useState } from "react";
 
+import type { Itinerary } from "@/types";
 import type {
   RecoveryOption,
   ReplanResult,
@@ -21,6 +23,11 @@ import type {
 // ============================================================================
 // Types
 // ============================================================================
+
+export interface UseReplanOptions {
+  /** 提案を適用した新しい Itinerary を受け取るコールバック */
+  onApply?: (itinerary: Itinerary) => void;
+}
 
 export interface UseReplanReturn {
   /** リプラン処理中か */
@@ -38,13 +45,49 @@ export interface UseReplanReturn {
 }
 
 // ============================================================================
+// Merge Logic
+// ============================================================================
+
+/**
+ * RecoveryOption の replacementSlots を Itinerary にマージして新しい Itinerary を返す。
+ * replacementSlot.dayNumber → 対応する day を探す
+ * replacementSlot.slotIndex → 対応する activity を置換 or 追加
+ */
+function applyRecoveryOption(
+  itinerary: Itinerary,
+  option: RecoveryOption
+): Itinerary {
+  const newDays = itinerary.days.map((day) => ({
+    ...day,
+    activities: [...day.activities],
+  }));
+
+  for (const slot of option.replacementSlots) {
+    const dayIdx = newDays.findIndex((d) => d.day === slot.dayNumber);
+    if (dayIdx === -1) continue;
+
+    const day = newDays[dayIdx];
+    if (slot.slotIndex < day.activities.length) {
+      // Replace existing activity at that index
+      day.activities[slot.slotIndex] = { ...slot.activity };
+    } else {
+      // Append as new activity
+      day.activities.push({ ...slot.activity });
+    }
+  }
+
+  return { ...itinerary, days: newDays };
+}
+
+// ============================================================================
 // Hook
 // ============================================================================
 
 export function useReplan(
   tripPlan: TripPlan,
   travelerState: TravelerState,
-  tripContext: TripContext
+  tripContext: TripContext,
+  options?: UseReplanOptions
 ): UseReplanReturn {
   const [isReplanning, setIsReplanning] = useState(false);
   const [result, setResult] = useState<ReplanResult | null>(null);
@@ -89,10 +132,14 @@ export function useReplan(
     [tripPlan, travelerState, tripContext]
   );
 
-  const acceptSuggestion = useCallback((_option: RecoveryOption) => {
-    // TODO: tripPlan にオプションを適用する（状態管理の実装は将来PR）
-    setResult(null);
-  }, []);
+  const acceptSuggestion = useCallback(
+    (option: RecoveryOption) => {
+      const newItinerary = applyRecoveryOption(tripPlan.itinerary, option);
+      options?.onApply?.(newItinerary);
+      setResult(null);
+    },
+    [tripPlan.itinerary, options]
+  );
 
   const dismissSuggestion = useCallback(() => {
     setResult(null);

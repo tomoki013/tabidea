@@ -14,13 +14,14 @@ import {
 import type { DayGenerationStatus, ChunkInfo } from "@/types";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import {
-  generatePlanOutline,
   generatePlanChunk,
   savePlan,
 } from "@/app/actions/travel-planner";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
+import { useGenerationProgress } from "@/lib/hooks/useGenerationProgress";
+import type { GenerationStep } from "@/lib/hooks/useGenerationProgress";
 import type { UserType } from "@/lib/limits/config";
 
 // ============================================================================
@@ -63,6 +64,10 @@ export interface UsePlanGenerationReturn {
   isReviewingOutline: boolean;
   /** Whether generation is completed */
   isCompleted: boolean;
+  /** Real-time SSE progress steps for outline generation */
+  progressSteps: GenerationStep[];
+  /** Currently active SSE progress step ID */
+  progressCurrentStep: string | null;
 }
 
 // ============================================================================
@@ -87,6 +92,14 @@ export function usePlanGeneration(
   const router = useRouter();
   const { isAuthenticated } = useAuth();
   const { refreshPlans } = useUserPlans();
+
+  // SSE progress tracking for outline generation
+  const {
+    steps: progressSteps,
+    currentStep: progressCurrentStep,
+    generateOutlineStream,
+    resetProgress,
+  } = useGenerationProgress();
 
   // Generation state
   const [generationState, setGenerationState] = useState<GenerationState>(
@@ -324,8 +337,9 @@ export function usePlanGeneration(
       setLimitExceeded(null);
 
       try {
-        // Generate outline
-        const outlineResponse = await generatePlanOutline(preparedInput, {
+        // Generate outline via SSE for real-time progress
+        resetProgress();
+        const outlineResponse = await generateOutlineStream(preparedInput, {
           isRetry: generationState.phase === 'error',
         });
 
@@ -457,7 +471,7 @@ export function usePlanGeneration(
         }
       }
     },
-    [streamingMode, generateChunk, generationState.phase]
+    [streamingMode, generateChunk, generationState.phase, generateOutlineStream, resetProgress]
   );
 
   // ========================================
@@ -583,6 +597,8 @@ export function usePlanGeneration(
     isGenerating,
     isReviewingOutline,
     isCompleted,
+    progressSteps,
+    progressCurrentStep,
   };
 }
 

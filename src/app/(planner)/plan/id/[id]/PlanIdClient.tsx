@@ -54,19 +54,6 @@ export default function PlanIdClient({
   const tripContext = useMemo(() => buildTripContext(result, input), [result, input]);
   const [travelerState, setTravelerState] = useState(() => buildDefaultTravelerState('rain'));
 
-  const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion, dismissSuggestion } =
-    useReplan(tripPlan, travelerState, tripContext);
-
-  const handleReplanTrigger = useCallback((trigger: ReplanTrigger) => {
-    setTravelerState(buildDefaultTravelerState(trigger.type));
-    triggerReplan(trigger);
-  }, [triggerReplan]);
-
-  const handleAcceptSuggestion = useCallback((option: RecoveryOption) => {
-    acceptSuggestion(option);
-    setShowAlternatives(false);
-  }, [acceptSuggestion]);
-
   // Track if save is pending to debounce
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -81,6 +68,28 @@ export default function PlanIdClient({
       console.error('Failed to save plan:', e);
     }
   }, [planId, input]);
+
+  // Replan apply: merge recovery option into itinerary and save
+  const handleReplanApply = useCallback((newItinerary: Itinerary) => {
+    setResult(newItinerary);
+    if (saveTimeoutRef.current) clearTimeout(saveTimeoutRef.current);
+    saveTimeoutRef.current = setTimeout(() => {
+      savePlanToDb(newItinerary);
+    }, 1000);
+  }, [savePlanToDb]);
+
+  const { isReplanning, result: replanResult, triggerReplan, acceptSuggestion, dismissSuggestion } =
+    useReplan(tripPlan, travelerState, tripContext, { onApply: handleReplanApply });
+
+  const handleReplanTrigger = useCallback((trigger: ReplanTrigger) => {
+    setTravelerState(buildDefaultTravelerState(trigger.type));
+    triggerReplan(trigger);
+  }, [triggerReplan]);
+
+  const handleAcceptSuggestion = useCallback((option: RecoveryOption) => {
+    acceptSuggestion(option);
+    setShowAlternatives(false);
+  }, [acceptSuggestion]);
 
   // Save chat messages to DB
   const saveChatToDb = useCallback(async (messages: { role: string; text: string }[]) => {

@@ -1,4 +1,6 @@
 import { executeOutlineGeneration } from "@/lib/services/plan-generation/generate-outline";
+import { EventLogger } from "@/lib/services/analytics/event-logger";
+import { createClient } from "@supabase/supabase-js";
 import type { UserInput } from "@/types";
 
 export const runtime = "nodejs";
@@ -6,6 +8,7 @@ export const maxDuration = 60;
 
 export async function POST(req: Request) {
   const encoder = new TextEncoder();
+  const startTime = Date.now();
 
   let body: { input: UserInput; options?: { isRetry?: boolean } };
   try {
@@ -40,6 +43,22 @@ export async function POST(req: Request) {
 
         if (result.success) {
           emit("complete", { result });
+
+          // Log generation event (fire-and-forget)
+          const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+          if (supabaseUrl && supabaseKey) {
+            const supabase = createClient(supabaseUrl, supabaseKey);
+            const logger = new EventLogger(supabase);
+            logger.logGeneration({
+              eventType: "plan_generated",
+              destination: result.data?.outline.destination,
+              durationDays: result.data?.outline.days.length,
+              modelName: result.data?.modelInfo?.modelName,
+              modelTier: result.data?.modelInfo?.tier,
+              processingTimeMs: Date.now() - startTime,
+            }).catch(() => {});
+          }
         } else {
           emit("error", {
             message: result.message || "生成に失敗しました",
