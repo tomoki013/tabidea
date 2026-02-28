@@ -69,6 +69,7 @@ export async function POST(req: Request) {
           });
         }
       } catch (err) {
+        console.error("[SSE /api/generate/outline] Uncaught error:", err);
         emit("error", {
           message:
             err instanceof Error ? err.message : "予期しないエラーが発生しました",

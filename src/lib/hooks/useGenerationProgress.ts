@@ -69,6 +69,7 @@ export function useGenerationProgress() {
       const response = await fetch("/api/generate/outline", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "include",
         body: JSON.stringify({ input, options }),
         signal: controller.signal,
       });

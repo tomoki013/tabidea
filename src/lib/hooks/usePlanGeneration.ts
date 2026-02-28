@@ -14,6 +14,7 @@ import {
 import type { DayGenerationStatus, ChunkInfo } from "@/types";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import {
+  generatePlanOutline,
   generatePlanChunk,
   savePlan,
 } from "@/app/actions/travel-planner";
@@ -337,11 +338,17 @@ export function usePlanGeneration(
       setLimitExceeded(null);
 
       try {
-        // Generate outline via SSE for real-time progress
+        // Generate outline: try SSE for real-time progress, fall back to server action
         resetProgress();
-        const outlineResponse = await generateOutlineStream(preparedInput, {
-          isRetry: generationState.phase === 'error',
-        });
+        const sseOptions = { isRetry: generationState.phase === 'error' };
+        let outlineResponse = await generateOutlineStream(preparedInput, sseOptions);
+
+        // If SSE failed with a non-business error, fall back to server action
+        if (!outlineResponse.success && !outlineResponse.limitExceeded) {
+          console.warn("[usePlanGeneration] SSE failed, falling back to server action:", outlineResponse.message);
+          resetProgress(); // Reset progress so OutlineLoadingAnimation shows fallback
+          outlineResponse = await generatePlanOutline(preparedInput, sseOptions);
+        }
 
         // Handle limit exceeded
         if (!outlineResponse.success && outlineResponse.limitExceeded) {
