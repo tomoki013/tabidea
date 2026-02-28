@@ -7,6 +7,7 @@ import type Stripe from "stripe";
 
 import { stripe } from "@/lib/stripe/client";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
+import { TICKET_VALIDITY_DAYS } from "@/lib/limits/config";
 
 // ============================================
 // Types
@@ -317,12 +318,14 @@ async function handleCheckoutCompleted(
     }
   }
 
-  if (planType === "pro_monthly") {
+  const isSubscriptionPlan = ["pro_monthly", "premium_monthly", "premium_yearly"].includes(planType);
+
+  if (isSubscriptionPlan) {
     // Handle subscription
     const subscriptionId = session.subscription as string;
 
     if (!subscriptionId) {
-      console.error("[webhook] No subscription ID for pro_monthly plan");
+      console.error(`[webhook] No subscription ID for ${planType} plan`);
       return {
         success: false,
         message: "No subscription ID for subscription plan",
@@ -337,6 +340,7 @@ async function handleCheckoutCompleted(
       subscriptionId,
       status: subscription.status,
       customerId: subscription.customer,
+      planCode: planType,
       periodStart: item?.current_period_start,
       periodEnd: item?.current_period_end,
     });
@@ -351,7 +355,7 @@ async function handleCheckoutCompleted(
           external_customer_id: customerId,
           payment_provider: "stripe",
           status: subscription.status,
-          plan_code: "pro_monthly",
+          plan_code: planType,
           current_period_start: item?.current_period_start
             ? new Date(item.current_period_start * 1000).toISOString()
             : new Date().toISOString(),
@@ -397,8 +401,8 @@ async function handleCheckoutCompleted(
         remaining_count: ticketCount,
         valid_from: new Date().toISOString(),
         valid_until: new Date(
-          Date.now() + 180 * 24 * 60 * 60 * 1000,
-        ).toISOString(), // 180 days
+          Date.now() + (TICKET_VALIDITY_DAYS[planType as keyof typeof TICKET_VALIDITY_DAYS] ?? 180) * 24 * 60 * 60 * 1000,
+        ).toISOString(),
         source_type: "stripe",
         source_id: session.id,
         status: "active",
@@ -428,10 +432,9 @@ async function handleCheckoutCompleted(
     .upsert(
       {
         user_id: userId,
-        transaction_type:
-          planType === "pro_monthly" ? "subscription" : "ticket_purchase",
+        transaction_type: isSubscriptionPlan ? "subscription" : "ticket_purchase",
         amount: session.amount_total || 0,
-        currency: session.currency || "jpy",
+        currency: session.currency || "usd",
         payment_provider: "stripe",
         external_transaction_id: externalTransactionId,
         status: "succeeded",
@@ -462,7 +465,7 @@ async function handleCheckoutCompleted(
     details: {
       userId,
       planType,
-      ticketCount: planType !== "pro_monthly" ? ticketCount : undefined,
+      ticketCount: !isSubscriptionPlan ? ticketCount : undefined,
     },
   };
 }
@@ -627,7 +630,7 @@ async function handlePaymentFailed(
         user_id: user.id,
         transaction_type: "payment_failed",
         amount: invoice.amount_due || 0,
-        currency: invoice.currency || "jpy",
+        currency: invoice.currency || "usd",
         payment_provider: "stripe",
         external_transaction_id: invoiceId,
         status: "failed",

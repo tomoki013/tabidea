@@ -61,7 +61,7 @@ export async function generatePackingList(
   try {
     const { checkBillingAccess } = await import("@/lib/billing/billing-checker");
     const billing = await checkBillingAccess();
-    if (!billing.isPremium) {
+    if (!billing.isPro && !billing.isPremium && !billing.isAdmin) {
       return { success: false, error: "pro_required" };
     }
   } catch {

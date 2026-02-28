@@ -1,18 +1,11 @@
 -- ============================================
--- Migration: Add Chat Messages and Admin Role
+-- Migration: Add Chat Messages
 -- Date: 2026-01-26
+-- Admin management is handled via ADMIN_EMAILS environment variable.
 -- ============================================
 
 -- ============================================
--- 1. Add is_admin column to users table
--- ============================================
-ALTER TABLE users ADD COLUMN IF NOT EXISTS is_admin BOOLEAN DEFAULT FALSE;
-
--- Create index for admin lookup
-CREATE INDEX IF NOT EXISTS idx_users_is_admin ON users(is_admin) WHERE is_admin = TRUE;
-
--- ============================================
--- 2. PLAN_CHAT_MESSAGES TABLE
+-- 1. PLAN_CHAT_MESSAGES TABLE
 -- Stores chat conversation history for each plan
 -- ============================================
 CREATE TABLE IF NOT EXISTS plan_chat_messages (
@@ -140,79 +133,5 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
--- ============================================
--- 5. Admin check function
--- ============================================
-CREATE OR REPLACE FUNCTION is_user_admin(p_user_id UUID DEFAULT NULL)
-RETURNS BOOLEAN AS $$
-DECLARE
-  v_check_user_id UUID;
-  v_is_admin BOOLEAN;
-BEGIN
-  -- Use provided user_id or current auth user
-  v_check_user_id := COALESCE(p_user_id, auth.uid());
-
-  IF v_check_user_id IS NULL THEN
-    RETURN FALSE;
-  END IF;
-
-  SELECT is_admin INTO v_is_admin
-  FROM users
-  WHERE id = v_check_user_id;
-
-  RETURN COALESCE(v_is_admin, FALSE);
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- ============================================
--- 6. Grant admin role to a user (admin only)
--- ============================================
-CREATE OR REPLACE FUNCTION grant_admin_role(p_target_user_id UUID)
-RETURNS BOOLEAN AS $$
-DECLARE
-  v_is_admin BOOLEAN;
-BEGIN
-  -- Check if current user is admin
-  SELECT is_admin INTO v_is_admin
-  FROM users
-  WHERE id = auth.uid();
-
-  IF NOT COALESCE(v_is_admin, FALSE) THEN
-    RAISE EXCEPTION 'Access denied: only admins can grant admin role';
-  END IF;
-
-  -- Grant admin to target user
-  UPDATE users SET is_admin = TRUE WHERE id = p_target_user_id;
-
-  RETURN TRUE;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
-
--- ============================================
--- 7. Revoke admin role from a user (admin only)
--- ============================================
-CREATE OR REPLACE FUNCTION revoke_admin_role(p_target_user_id UUID)
-RETURNS BOOLEAN AS $$
-DECLARE
-  v_is_admin BOOLEAN;
-BEGIN
-  -- Check if current user is admin
-  SELECT is_admin INTO v_is_admin
-  FROM users
-  WHERE id = auth.uid();
-
-  IF NOT COALESCE(v_is_admin, FALSE) THEN
-    RAISE EXCEPTION 'Access denied: only admins can revoke admin role';
-  END IF;
-
-  -- Prevent self-revocation
-  IF p_target_user_id = auth.uid() THEN
-    RAISE EXCEPTION 'Cannot revoke own admin role';
-  END IF;
-
-  -- Revoke admin from target user
-  UPDATE users SET is_admin = FALSE WHERE id = p_target_user_id;
-
-  RETURN TRUE;
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+-- Admin management is handled via ADMIN_EMAILS environment variable.
+-- No database-level admin column or functions needed.

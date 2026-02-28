@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /**
- * Tests for BillingChecker service
- *
- * These tests verify the unified billing check functionality and consumption priority
+ * Tests for BillingChecker service — 5-tier billing
  */
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+// Mock next/headers
+vi.mock('next/headers', () => ({
+  headers: vi.fn(() => ({
+    get: vi.fn(() => '127.0.0.1'),
+  })),
+}));
 
 // Mock Supabase client
 const mockSupabase = {
@@ -21,30 +26,47 @@ vi.mock('@/lib/supabase/server', () => ({
 }));
 
 import {
-  checkAndConsumeQuota,
   checkBillingAccess,
+  isAdminEmail,
+  resolveUserTypeFromPlanCode,
 } from './billing-checker';
 
-describe('BillingChecker', () => {
+describe('BillingChecker — 5-tier', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     delete process.env.ADMIN_EMAILS;
   });
 
-  describe('checkAndConsumeQuota Priority Logic', () => {
-    const userId = 'user-123';
-    const now = new Date();
+  // =========================================
+  // isAdminEmail
+  // =========================================
+  describe('isAdminEmail', () => {
+    it('returns false when ADMIN_EMAILS is not set', () => {
+      expect(isAdminEmail('admin@example.com')).toBe(false);
+    });
 
-    // Helpers to mock DB state
-    const mockUser = () => {
-      mockSupabase.auth.getUser.mockResolvedValue({
-        data: { user: { id: userId, email: 'user@example.com' } },
-        error: null,
-      });
-    };
+    it('returns true when email matches', () => {
+      process.env.ADMIN_EMAILS = 'admin@example.com,boss@example.com';
+      expect(isAdminEmail('admin@example.com')).toBe(true);
+      expect(isAdminEmail('Admin@Example.COM')).toBe(true);
+    });
 
-    const mockSubscription = (active: boolean, periodEnd?: Date) => {
-      // Chain for subscription query
+    it('returns false for non-matching email', () => {
+      process.env.ADMIN_EMAILS = 'admin@example.com';
+      expect(isAdminEmail('user@example.com')).toBe(false);
+    });
+
+    it('returns false for null/undefined', () => {
+      expect(isAdminEmail(null)).toBe(false);
+      expect(isAdminEmail(undefined)).toBe(false);
+    });
+  });
+
+  // =========================================
+  // checkBillingAccess
+  // =========================================
+  describe('checkBillingAccess', () => {
+    const mockSubscriptionChain = (subscription: any) => {
       const chain = {
         select: vi.fn().mockReturnThis(),
         eq: vi.fn().mockReturnThis(),
@@ -52,25 +74,14 @@ describe('BillingChecker', () => {
         order: vi.fn().mockReturnThis(),
         limit: vi.fn().mockReturnThis(),
         single: vi.fn().mockResolvedValue({
-          data: active ? {
-            id: 'sub-1',
-            status: 'active',
-            current_period_end: periodEnd?.toISOString(),
-            plan_code: 'pro_monthly'
-          } : null,
-          error: active ? null : { code: 'PGRST116' }
-        })
+          data: subscription,
+          error: subscription ? null : { code: 'PGRST116' },
+        }),
       };
-      // Manually bind 'this' for mockReturnThis to work if needed,
-      // but simpler to just return chain explicitly if we construct it carefully.
-      // Actually, mockReturnThis() expects the function to be called on the object.
-      // So chain.select.mockReturnThis() works if we call chain.select().
       return chain;
     };
 
-    const mockTickets = (tickets: any[]) => {
-      // Chain for tickets query
-      // Needs to support multiple .eq, .gt calls
+    const mockTicketsChain = (tickets: any[]) => {
       const chain: any = {};
       chain.select = vi.fn().mockReturnValue(chain);
       chain.eq = vi.fn().mockReturnValue(chain);
@@ -79,159 +90,243 @@ describe('BillingChecker', () => {
       return chain;
     };
 
-    const mockUsage = (count: number) => {
-      // Chain for usage query
-      const chain: any = {};
-      chain.select = vi.fn().mockReturnValue(chain);
-      chain.eq = vi.fn().mockReturnValue(chain);
-      chain.gte = vi.fn().mockReturnValue(chain);
-      chain.or = vi.fn().mockReturnValue(chain); // .or() is called, then we await
-      // Wait, .or() returns the builder.
-      // The await happens on the result of .or().
-      chain.then = (resolve: any) => resolve({ count, error: null });
+    it('anonymous: no auth → anonymous userType', async () => {
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: null },
+        error: { message: 'not authenticated' },
+      });
 
-      // Also need insert for consumption
-      chain.insert = vi.fn().mockResolvedValue({ error: null });
+      const result = await checkBillingAccess();
 
-      return chain;
-    };
+      expect(result.userType).toBe('anonymous');
+      expect(result.isAnonymous).toBe(true);
+      expect(result.isPro).toBe(false);
+      expect(result.isPremium).toBe(false);
+      expect(result.isAdmin).toBe(false);
+      expect(result.isFree).toBe(false);
+      expect(result.planType).toBe('free');
+    });
 
-    it('should prioritize Ticket when it expires sooner than Subscription', async () => {
-      mockUser();
+    it('admin: admin email → admin userType', async () => {
+      process.env.ADMIN_EMAILS = 'admin@test.com';
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'admin-1', email: 'admin@test.com' } },
+        error: null,
+      });
 
-      const subExpires = new Date(now);
-      subExpires.setDate(now.getDate() + 20);
+      const result = await checkBillingAccess();
 
-      const ticketExpires = new Date(now);
-      ticketExpires.setDate(now.getDate() + 5);
+      expect(result.userType).toBe('admin');
+      expect(result.isAdmin).toBe(true);
+      expect(result.isPremium).toBe(true); // admin has premium access
+      expect(result.isPro).toBe(false);
+      expect(result.planType).toBe('admin');
+    });
 
-      // Setup mocks
-      mockSupabase.from.mockImplementation((table) => {
-        if (table === 'subscriptions') return mockSubscription(true, subExpires);
-        if (table === 'entitlement_grants') {
-           return mockTickets([{
-             id: 'ticket-1',
-             remaining_count: 5,
-             valid_until: ticketExpires.toISOString()
-           }]);
+    it('free: authenticated, no subscription → free userType', async () => {
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-1', email: 'user@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') return mockSubscriptionChain(null);
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(result.userType).toBe('free');
+      expect(result.isFree).toBe(true);
+      expect(result.isPro).toBe(false);
+      expect(result.isPremium).toBe(false);
+      expect(result.isSubscribed).toBe(false);
+      expect(result.planType).toBe('free');
+    });
+
+    it('pro: pro_monthly subscription → pro userType', async () => {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 30);
+
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-2', email: 'pro@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') {
+          return mockSubscriptionChain({
+            id: 'sub-1',
+            external_subscription_id: 'stripe-sub-1',
+            status: 'active',
+            current_period_end: futureDate.toISOString(),
+            plan_code: 'pro_monthly',
+          });
         }
-        if (table === 'usage_logs') {
-           return mockUsage(10); // Used 10/30
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(result.userType).toBe('pro');
+      expect(result.isPro).toBe(true);
+      expect(result.isPremium).toBe(false);
+      expect(result.isSubscribed).toBe(true);
+      expect(result.planType).toBe('pro_monthly');
+    });
+
+    it('premium: premium_monthly subscription → premium userType', async () => {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 30);
+
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-3', email: 'premium@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') {
+          return mockSubscriptionChain({
+            id: 'sub-2',
+            external_subscription_id: 'stripe-sub-2',
+            status: 'active',
+            current_period_end: futureDate.toISOString(),
+            plan_code: 'premium_monthly',
+          });
+        }
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(result.userType).toBe('premium');
+      expect(result.isPremium).toBe(true);
+      expect(result.isPro).toBe(false);
+      expect(result.isSubscribed).toBe(true);
+      expect(result.planType).toBe('premium_monthly');
+    });
+
+    it('premium: premium_yearly subscription → premium userType', async () => {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 365);
+
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-4', email: 'yearly@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') {
+          return mockSubscriptionChain({
+            id: 'sub-3',
+            external_subscription_id: 'stripe-sub-3',
+            status: 'active',
+            current_period_end: futureDate.toISOString(),
+            plan_code: 'premium_yearly',
+          });
+        }
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(result.userType).toBe('premium');
+      expect(result.isPremium).toBe(true);
+      expect(result.planType).toBe('premium_yearly');
+    });
+
+    it('expired subscription → free userType', async () => {
+      const pastDate = new Date();
+      pastDate.setDate(pastDate.getDate() - 1);
+
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-5', email: 'expired@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') {
+          return mockSubscriptionChain({
+            id: 'sub-4',
+            external_subscription_id: 'stripe-sub-4',
+            status: 'active',
+            current_period_end: pastDate.toISOString(),
+            plan_code: 'pro_monthly',
+          });
+        }
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(result.userType).toBe('free');
+      expect(result.isFree).toBe(true);
+      expect(result.isPro).toBe(false);
+      expect(result.isSubscribed).toBe(false);
+    });
+
+    it('ticket count is returned for users with valid tickets', async () => {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 60);
+
+      mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-6', email: 'ticket@test.com' } },
+        error: null,
+      });
+
+      mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') return mockSubscriptionChain(null);
+        if (table === 'entitlement_grants') {
+          return mockTicketsChain([
+            { id: 't-1', remaining_count: 3, valid_until: futureDate.toISOString() },
+            { id: 't-2', remaining_count: 2, valid_until: futureDate.toISOString() },
+          ]);
         }
         return { select: vi.fn() };
       });
 
-      // Mock RPC
-      mockSupabase.rpc.mockResolvedValue({ error: null });
+      const result = await checkBillingAccess();
 
-      // Note: Since premium is now unlimited, it will ALWAYS be prioritized if ticket expires sooner?
-      // Wait, unlimited subscription has expiry date set to far future in billing-checker.ts
-      // So ticket (5 days) will expire sooner than Unlimited Sub (100 years).
-      // Thus, ticket should be used first.
+      expect(result.userType).toBe('free');
+      expect(result.ticketCount).toBe(5);
+    });
+  });
 
-      const result = await checkAndConsumeQuota('plan_generation');
-
-      expect(result.allowed).toBe(true);
-      expect(result.source).toBe('ticket');
-      expect(mockSupabase.rpc).toHaveBeenCalledWith('decrement_ticket', { p_grant_id: 'ticket-1' });
+  // =========================================
+  // resolveUserTypeFromPlanCode
+  // =========================================
+  describe('resolveUserTypeFromPlanCode', () => {
+    it('pro_monthly → pro', () => {
+      expect(resolveUserTypeFromPlanCode('pro_monthly')).toBe('pro');
     });
 
-    it('should prioritize Subscription when it expires sooner than Ticket', async () => {
-      mockUser();
-
-      const subExpires = new Date(now);
-      subExpires.setDate(now.getDate() + 30); // Approx valid for month
-
-      const ticketExpires = new Date(now);
-      ticketExpires.setDate(now.getDate() + 90);
-
-      mockSupabase.from.mockImplementation((table) => {
-        if (table === 'subscriptions') return mockSubscription(true, subExpires);
-        if (table === 'entitlement_grants') {
-           return mockTickets([{
-             id: 'ticket-1',
-             remaining_count: 5,
-             valid_until: ticketExpires.toISOString()
-           }]);
-        }
-        if (table === 'usage_logs') {
-           return mockUsage(5); // Used 5/30
-        }
-      });
-
-      // Since premium is now unlimited, it has far future expiry (100 years).
-      // So ticket (90 days) will ALWAYS expire sooner than Unlimited Sub.
-      // Therefore, this test case expectation ('subscription') is now WRONG for Unlimited Plans.
-      // Unlimited plans are effectively "infinite duration" in the sorter.
-      // IF we want to use Unlimited FIRST, we need to change logic.
-      // BUT, logic is "expires soonest". Ticket expires soonest.
-      // So with Unlimited Plan, tickets will be consumed first if they exist.
-      // This is actually good behavior (use perishable tickets before imperishable unlimited).
-
-      // However, to make this test pass and verify the "subscription priority" logic for NON-unlimited scenarios
-      // (like Free tier if it wasn't unlimited, or if we change logic back),
-      // we need to force subscription to NOT be unlimited here.
-      // But PLAN_GENERATION_LIMITS.premium IS -1.
-
-      // Let's update expectation: With Unlimited Premium, Ticket IS prioritized because it expires sooner.
-      // OR, we mock the config? No, config is imported.
-
-      // Actually, if I have Unlimited Plan, why would I care if Ticket is used?
-      // Ticket is "Plan Generation Ticket".
-      // If I have unlimited, I shouldn't need tickets.
-      // But if I bought them, they are wasting away.
-
-      // The issue is that the test expects 'subscription', but since Subscription is now Unlimited (100 years expiry),
-      // Ticket (90 days) wins the "expires soonest" sort.
-      // So result.source will be 'ticket'.
-
-      const result = await checkAndConsumeQuota('plan_generation');
-
-      // expect(result.allowed).toBe(true);
-      // expect(result.source).toBe('ticket'); // Updated expectation for Unlimited
-
-      // Wait, if I want to test the sorting logic itself, I should use a Free plan (limit 3) which expires at month end.
-      // But mockSubscription returns 'pro_monthly'.
-      // If I change plan_code to 'free' (via mock), does it help?
-      // checkBillingAccess logic determines userType.
-
-      // If I want to test the sorting, I accept that Ticket is prioritized over Unlimited.
-      expect(result.allowed).toBe(true);
-      // With limited premium (30/month), subscription expires at end of month (approx 30 days).
-      // Ticket expires in 90 days.
-      // So Subscription comes first (expires sooner).
-      expect(result.source).toBe('subscription');
+    it('premium_monthly → premium', () => {
+      expect(resolveUserTypeFromPlanCode('premium_monthly')).toBe('premium');
     });
 
-    it('should fall back to Ticket if Subscription is exhausted', async () => {
-      // With Unlimited, Subscription is never exhausted.
-      // So this test case is moot for Premium.
-      // It only applies to Free users (who have limit 3).
+    it('premium_yearly → premium', () => {
+      expect(resolveUserTypeFromPlanCode('premium_yearly')).toBe('premium');
+    });
 
-      mockUser();
-      const subExpires = new Date(now);
-      subExpires.setDate(now.getDate() + 10);
+    it('undefined → free (with warning)', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      expect(resolveUserTypeFromPlanCode(undefined)).toBe('free');
+      expect(warnSpy).toHaveBeenCalledWith(
+        expect.stringContaining('Unknown plan code')
+      );
+      warnSpy.mockRestore();
+    });
 
-      mockSupabase.from.mockImplementation((table) => {
-        if (table === 'subscriptions') return mockSubscription(false); // No active sub -> Free
-        if (table === 'entitlement_grants') {
-           return mockTickets([{
-             id: 'ticket-1',
-             remaining_count: 5,
-             valid_until: subExpires.toISOString()
-           }]);
-        }
-        if (table === 'usage_logs') {
-           return mockUsage(30); // Exhausted (30/3 vs 3/3)
-        }
-      });
-
-      mockSupabase.rpc.mockResolvedValue({ error: null });
-
-      const result = await checkAndConsumeQuota('plan_generation');
-
-      expect(result.allowed).toBe(true);
-      expect(result.source).toBe('ticket');
+    it('unknown plan code → free (with warning)', () => {
+      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+      expect(resolveUserTypeFromPlanCode('some_future_plan' as any)).toBe('free');
+      expect(warnSpy).toHaveBeenCalled();
+      warnSpy.mockRestore();
     });
   });
 });

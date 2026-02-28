@@ -30,6 +30,7 @@ export interface BillingAccessInfo {
   planType: PlanType;
   subscriptionEndsAt: string | null;
   ticketCount: number;
+  isPro: boolean;
   isPremium: boolean;
   isAdmin: boolean;
   isFree: boolean;
@@ -71,6 +72,23 @@ export function isAdminEmail(email: string | null | undefined): boolean {
 }
 
 // ============================================
+// Plan Code → UserType Resolution
+// ============================================
+
+export function resolveUserTypeFromPlanCode(planCode: PlanType | undefined): UserType {
+  switch (planCode) {
+    case 'premium_monthly':
+    case 'premium_yearly':
+      return 'premium';
+    case 'pro_monthly':
+      return 'pro';
+    default:
+      console.warn(`[billing] Unknown plan code: ${planCode}, defaulting to 'free'`);
+      return 'free';
+  }
+}
+
+// ============================================
 // Core Billing Check Functions
 // ============================================
 
@@ -97,19 +115,21 @@ export async function checkBillingAccess(
   const hasValidSubscription =
     subscriptionResult.hasActive && isSubscriptionPeriodValid(subscriptionResult.subscription?.currentPeriodEnd);
 
-  const userType: UserType = hasValidSubscription ? 'premium' : 'free';
+  const planCode = subscriptionResult.subscription?.planCode as PlanType | undefined;
+  const userType: UserType = hasValidSubscription
+    ? resolveUserTypeFromPlanCode(planCode)
+    : 'free';
 
   return {
     userId: user.id,
     email: user.email ?? null,
     userType,
     isSubscribed: hasValidSubscription,
-    planType: hasValidSubscription
-      ? (subscriptionResult.subscription?.planCode as PlanType) ?? 'pro_monthly'
-      : 'free',
+    planType: hasValidSubscription ? (planCode ?? 'pro_monthly') : 'free',
     subscriptionEndsAt: subscriptionResult.subscription?.currentPeriodEnd ?? null,
     ticketCount: ticketsResult,
-    isPremium: hasValidSubscription,
+    isPro: userType === 'pro',
+    isPremium: userType === 'premium',
     isAdmin: false,
     isFree: !hasValidSubscription,
     isAnonymous: false,
@@ -158,8 +178,11 @@ export async function checkAndConsumeQuota(
   const candidates: QuotaSource[] = [];
 
   // Source A: Subscription / Free Plan
-  const isPremium = subscriptionData.hasActive && isSubscriptionPeriodValid(subscriptionData.subscription?.currentPeriodEnd);
-  const userType: UserType = isPremium ? 'premium' : 'free';
+  const hasActiveSub = subscriptionData.hasActive && isSubscriptionPeriodValid(subscriptionData.subscription?.currentPeriodEnd);
+  const subPlanCode = subscriptionData.subscription?.planCode as PlanType | undefined;
+  const userType: UserType = hasActiveSub
+    ? resolveUserTypeFromPlanCode(subPlanCode)
+    : 'free';
 
   const config = action === 'plan_generation'
     ? PLAN_GENERATION_LIMITS[userType]
@@ -184,7 +207,7 @@ export async function checkAndConsumeQuota(
 
     if (remaining > 0) {
       candidates.push({
-        type: isPremium ? 'subscription' : 'free',
+        type: hasActiveSub ? 'subscription' : 'free',
         remaining,
         expiresAt: nextMonth,
         priorityDate: nextMonth
@@ -304,12 +327,6 @@ export async function checkAndConsumeQuota(
  * Handle Anonymous Usage (Delegate to existing RPC or simplified logic)
  */
 async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise<LimitCheckResult> {
-  // Use the legacy check logic which handles IP hashing
-  // Importing dynamically to avoid circular deps if any, or just replicate logic
-  // For now, let's assume we can reuse the existing RPC via a helper
-  // But wait, check.ts imports billing-checker.ts. Circular dependency risk!
-  // I should move the IP logic here or keep it in a separate utils file.
-  // The RPC `check_and_record_usage` is perfect for anonymous users.
   const supabase = await createClient();
   const headersList = await headers();
   const ip = headersList.get('x-forwarded-for')?.split(',')[0].trim() || '0.0.0.0';
@@ -317,8 +334,6 @@ async function handleAnonymousUsage(action: ActionType, metadata?: any): Promise
   const { data: hashData } = await supabase.rpc('get_ip_hash', { p_ip: ip });
   const ipHash = hashData;
 
-  const limitConfig = PLAN_GENERATION_LIMITS['anonymous']; // Default to plan gen limits for anon
-  // Note: if action is travel_info, use that.
   const config = action === 'plan_generation'
     ? PLAN_GENERATION_LIMITS['anonymous']
     : TRAVEL_INFO_LIMITS['anonymous'];
@@ -435,6 +450,7 @@ function createAnonymousBillingInfo(): BillingAccessInfo {
     planType: 'free',
     subscriptionEndsAt: null,
     ticketCount: 0,
+    isPro: false,
     isPremium: false,
     isAdmin: false,
     isFree: false,
@@ -451,6 +467,7 @@ function createAdminBillingInfo(userId: string, email: string | null): BillingAc
     planType: 'admin',
     subscriptionEndsAt: null,
     ticketCount: 0,
+    isPro: false,
     isPremium: true,
     isAdmin: true,
     isFree: false,
@@ -470,6 +487,11 @@ export async function hasActiveSubscription(userId: string) {
 export async function isPremiumUser(): Promise<boolean> {
   const billing = await checkBillingAccess();
   return billing.isPremium || billing.isAdmin;
+}
+
+export async function isProOrAbove(): Promise<boolean> {
+  const billing = await checkBillingAccess();
+  return billing.isPro || billing.isPremium || billing.isAdmin;
 }
 
 export async function getUserType(): Promise<UserType> {

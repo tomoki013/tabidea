@@ -21,6 +21,8 @@ import {
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
+import { useGenerationProgress } from "@/lib/hooks/useGenerationProgress";
+import type { GenerationStep } from "@/lib/hooks/useGenerationProgress";
 import type { UserType } from "@/lib/limits/config";
 
 // ============================================================================
@@ -63,6 +65,10 @@ export interface UsePlanGenerationReturn {
   isReviewingOutline: boolean;
   /** Whether generation is completed */
   isCompleted: boolean;
+  /** Real-time SSE progress steps for outline generation */
+  progressSteps: GenerationStep[];
+  /** Currently active SSE progress step ID */
+  progressCurrentStep: string | null;
 }
 
 // ============================================================================
@@ -87,6 +93,14 @@ export function usePlanGeneration(
   const router = useRouter();
   const { isAuthenticated } = useAuth();
   const { refreshPlans } = useUserPlans();
+
+  // SSE progress tracking for outline generation
+  const {
+    steps: progressSteps,
+    currentStep: progressCurrentStep,
+    generateOutlineStream,
+    resetProgress,
+  } = useGenerationProgress();
 
   // Generation state
   const [generationState, setGenerationState] = useState<GenerationState>(
@@ -324,10 +338,17 @@ export function usePlanGeneration(
       setLimitExceeded(null);
 
       try {
-        // Generate outline
-        const outlineResponse = await generatePlanOutline(preparedInput, {
-          isRetry: generationState.phase === 'error',
-        });
+        // Generate outline: try SSE for real-time progress, fall back to server action
+        resetProgress();
+        const sseOptions = { isRetry: generationState.phase === 'error' };
+        let outlineResponse = await generateOutlineStream(preparedInput, sseOptions);
+
+        // If SSE failed with a non-business error, fall back to server action
+        if (!outlineResponse.success && !outlineResponse.limitExceeded) {
+          console.warn("[usePlanGeneration] SSE failed, falling back to server action:", outlineResponse.message);
+          resetProgress(); // Reset progress so OutlineLoadingAnimation shows fallback
+          outlineResponse = await generatePlanOutline(preparedInput, sseOptions);
+        }
 
         // Handle limit exceeded
         if (!outlineResponse.success && outlineResponse.limitExceeded) {
@@ -457,7 +478,7 @@ export function usePlanGeneration(
         }
       }
     },
-    [streamingMode, generateChunk, generationState.phase]
+    [streamingMode, generateChunk, generationState.phase, generateOutlineStream, resetProgress]
   );
 
   // ========================================
@@ -583,6 +604,8 @@ export function usePlanGeneration(
     isGenerating,
     isReviewingOutline,
     isCompleted,
+    progressSteps,
+    progressCurrentStep,
   };
 }
 

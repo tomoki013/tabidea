@@ -6,10 +6,12 @@ import { createClient } from "@/lib/supabase/server";
 import { hasActiveSubscription } from "@/lib/billing/user-billing-status";
 import { headers } from "next/headers";
 
-type PlanType = "pro_monthly" | "ticket_1" | "ticket_5" | "ticket_10";
+type PlanType = "pro_monthly" | "premium_monthly" | "premium_yearly" | "ticket_1" | "ticket_5" | "ticket_10";
 
 const PRICE_IDS: Record<PlanType, string> = {
   pro_monthly: process.env.STRIPE_PRICE_PRO_MONTHLY!,
+  premium_monthly: process.env.STRIPE_PRICE_PREMIUM_MONTHLY!,
+  premium_yearly: process.env.STRIPE_PRICE_PREMIUM_YEARLY!,
   ticket_1: process.env.STRIPE_PRICE_TICKET_1!,
   ticket_5: process.env.STRIPE_PRICE_TICKET_5!,
   ticket_10: process.env.STRIPE_PRICE_TICKET_10!,
@@ -147,7 +149,7 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
     return { success: false, error: "invalid_plan" };
   }
 
-  const isSubscription = planType === "pro_monthly";
+  const isSubscription = planType === "pro_monthly" || planType === "premium_monthly" || planType === "premium_yearly";
 
   // 🔒 二重決済防止: DBチェック
   if (isSubscription) {
@@ -196,7 +198,7 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
                 external_customer_id: customerId,
                 payment_provider: "stripe",
                 status: stripeSub.status,
-                plan_code: "pro_monthly",
+                plan_code: planType,
                 current_period_start: item?.current_period_start
                   ? new Date(item.current_period_start * 1000).toISOString()
                   : null,

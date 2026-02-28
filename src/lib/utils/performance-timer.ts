@@ -121,6 +121,16 @@ export const CHUNK_TARGETS_PRO: PerformanceTargets = {
 /** @deprecated Use CHUNK_TARGETS_FLASH instead */
 export const CHUNK_TARGETS: PerformanceTargets = CHUNK_TARGETS_FLASH;
 
+/**
+ * リプラン処理の目標時間 (3秒以内完了必須)
+ */
+export const REPLAN_TARGETS: PerformanceTargets = {
+  find_slots: 100,
+  ai_generation: 2_000,
+  scoring: 500,
+  total: 3_000,
+};
+
 // ============================================
 // PerformanceTimer class
 // ============================================
@@ -303,6 +313,13 @@ export function createOutlineTimer(modelTier?: ModelTier): PerformanceTimer {
 export function createChunkTimer(startDay: number, endDay: number, modelTier?: ModelTier): PerformanceTimer {
   const targets = modelTier === 'pro' ? CHUNK_TARGETS_PRO : CHUNK_TARGETS_FLASH;
   return new PerformanceTimer(`generatePlanChunk(${startDay}-${endDay})`, targets);
+}
+
+/**
+ * リプラン用タイマーを作成
+ */
+export function createReplanTimer(): PerformanceTimer {
+  return new PerformanceTimer('replan', REPLAN_TARGETS);
 }
 
 /**

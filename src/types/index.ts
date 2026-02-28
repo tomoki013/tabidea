@@ -180,3 +180,25 @@ export {
   PACKING_CATEGORY_ICONS,
   PACKING_PRIORITY_LABELS,
 } from './packing-list';
+
+// リプラン関連型
+export type {
+  ConstraintType,
+  Constraint,
+  SlotPriority,
+  PlanSlot,
+  TripMetadata,
+  TripPlan,
+  ReplanTriggerType,
+  ReplanTrigger,
+  WeatherInfo,
+  BookedItem,
+  TravelerState,
+  TripContext,
+  RecoveryCategory,
+  RecoveryOption,
+  ScoreBreakdown,
+  ReplanResult,
+  SatisfactionLevel,
+  Reflection,
+} from './replan';
