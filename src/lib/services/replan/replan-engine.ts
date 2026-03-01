@@ -57,24 +57,44 @@ const MAX_ALTERNATIVES = 3;
 // ============================================================================
 
 /**
+ * フォールバック用のアクティビティ名テンプレート
+ */
+const FALLBACK_ACTIVITIES: Record<RecoveryCategory, string[]> = {
+  indoor: ["屋内スポット散策", "博物館・美術館見学", "ショッピング"],
+  food: ["地元グルメ探訪", "カフェでひと休み", "名物料理ランチ"],
+  rest: ["カフェで休憩", "ホテルで休憩", "公園でリラックス"],
+  outdoor: ["街歩き散策", "公園散歩", "展望スポット"],
+  culture: ["文化体験", "歴史スポット見学", "伝統工芸体験"],
+};
+
+/**
  * AI がタイムアウトした場合のフォールバック代替案。
  * カテゴリを変えて3つの汎用オプションを返す。
+ * 各スロットに個別のアクティビティ名を割り当てる。
  */
 function buildFallbackOptions(
   trigger: ReplanTrigger,
   affectedSlots: PlanSlot[]
 ): RecoveryOption[] {
   const categories: RecoveryCategory[] = ["indoor", "food", "rest"];
-  return categories.map((category, i) => ({
-    id: `fallback-${i}`,
-    replacementSlots: affectedSlots.map((slot) => ({
-      ...slot,
-      id: `fallback-slot-${i}-${slot.id}`,
-    })),
-    explanation: generateExplanation(trigger.type, category),
-    estimatedDuration: "1時間",
-    category,
-  }));
+  return categories.map((category, i) => {
+    const activityNames = FALLBACK_ACTIVITIES[category];
+    return {
+      id: `fallback-${i}`,
+      replacementSlots: affectedSlots.map((slot, j) => ({
+        ...slot,
+        id: `fallback-slot-${i}-${slot.id}`,
+        activity: {
+          ...slot.activity,
+          activity: activityNames[j % activityNames.length],
+          description: generateExplanation(trigger.type, category),
+        },
+      })),
+      explanation: generateExplanation(trigger.type, category),
+      estimatedDuration: `${affectedSlots.length}時間`,
+      category,
+    };
+  });
 }
 
 // ============================================================================

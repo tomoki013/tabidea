@@ -50,8 +50,11 @@ export interface UseReplanReturn {
 
 /**
  * RecoveryOption の replacementSlots を Itinerary にマージして新しい Itinerary を返す。
- * replacementSlot.dayNumber → 対応する day を探す
- * replacementSlot.slotIndex → 対応する activity を置換 or 追加
+ *
+ * 同一日の影響範囲をまとめて置換する:
+ * 1. replacementSlots から対象日を特定
+ * 2. その日の元アクティビティのうち、時間帯が重なる範囲を特定
+ * 3. 該当範囲を新しいアクティビティ群で置換（数が変わってもOK）
  */
 function applyRecoveryOption(
   itinerary: Itinerary,
@@ -62,18 +65,46 @@ function applyRecoveryOption(
     activities: [...day.activities],
   }));
 
+  // Group replacement slots by day
+  const slotsByDay = new Map<number, typeof option.replacementSlots>();
   for (const slot of option.replacementSlots) {
-    const dayIdx = newDays.findIndex((d) => d.day === slot.dayNumber);
+    const existing = slotsByDay.get(slot.dayNumber) ?? [];
+    existing.push(slot);
+    slotsByDay.set(slot.dayNumber, existing);
+  }
+
+  for (const [dayNumber, slots] of slotsByDay) {
+    const dayIdx = newDays.findIndex((d) => d.day === dayNumber);
     if (dayIdx === -1) continue;
 
     const day = newDays[dayIdx];
-    if (slot.slotIndex < day.activities.length) {
-      // Replace existing activity at that index
-      day.activities[slot.slotIndex] = { ...slot.activity };
-    } else {
-      // Append as new activity
-      day.activities.push({ ...slot.activity });
+
+    // Find the range of original activities to replace.
+    // Use the first replacement slot's time to find where replacement starts.
+    const firstReplacementTime = slots[0]?.activity.time ?? slots[0]?.startTime;
+    let startIdx = -1;
+
+    if (firstReplacementTime) {
+      // Find the first activity at or after the replacement start time
+      startIdx = day.activities.findIndex(
+        (a) => a.time && a.time >= firstReplacementTime
+      );
     }
+
+    // Fallback: use slotIndex from the first slot
+    if (startIdx === -1) {
+      startIdx = Math.min(slots[0]?.slotIndex ?? 0, day.activities.length);
+    }
+
+    // Calculate how many original activities to remove
+    // (from startIdx to end of day, since replan covers the rest of the day)
+    const removeCount = day.activities.length - startIdx;
+
+    // Build new activities from replacement slots
+    const newActivities = slots.map((slot) => ({ ...slot.activity }));
+
+    // Splice: remove affected range, insert new activities
+    day.activities.splice(startIdx, removeCount, ...newActivities);
   }
 
   return { ...itinerary, days: newDays };

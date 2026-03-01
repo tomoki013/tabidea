@@ -137,7 +137,7 @@ export default function SpotCard({
   onDelete,
   expandable = true,
 }: SpotCardProps) {
-  const { time, activity: name, description, validation, activityType } = activity;
+  const { activity: name, description, validation, activityType } = activity;
 
   // Determine if this activity should trigger Places API search
   const classification = classifyActivity(name, description, activityType);
@@ -231,18 +231,7 @@ export default function SpotCard({
             isEditable={true}
             className="text-sm text-stone-500 font-hand block w-full truncate"
           />
-        ) : (description.length > 80 ? description.substring(0, 80) + "..." : description)
-      }
-      time={
-        isEditable ? (
-          <EditableText
-            value={time}
-            onChange={(val) => onUpdate?.({ time: val })}
-            isEditable={true}
-            type="time"
-            className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200"
-          />
-        ) : time
+        ) : (description.length > 60 ? description.substring(0, 60) + "..." : description)
       }
       state={state}
       onStateChange={onStateChange}

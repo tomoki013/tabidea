@@ -505,7 +505,7 @@ export default function ResultView({
 
              {/* Layout Container */}
             <div className={cn(
-               "grid gap-12 lg:gap-16",
+               "grid gap-8 lg:gap-12",
                viewMode === 'split' ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1 max-w-3xl mx-auto"
             )}>
               {/* Left Column: Map (Sticky) - Only in Split Mode */}
@@ -527,7 +527,7 @@ export default function ResultView({
 
               {/* Right Column: Timeline */}
               <div className={cn(
-                 "space-y-24",
+                 "space-y-16",
                  viewMode === 'split' ? "pl-0 md:pl-2" : "w-full"
               )} data-itinerary-section>
 
@@ -545,51 +545,51 @@ export default function ResultView({
 
                 {/* Itinerary List - Hidden on Mobile Map Mode */}
                 <div className={cn(
-                  "space-y-24",
+                  "space-y-12",
                   (!isSimplifiedView && mobileViewMode === 'map') ? "hidden lg:block" : "block"
                 )}>
                   {result.days.map((day, dayIndex) => (
                     <div key={day.day} className="relative">
-                      {/* Day Header (Relative positioning now) */}
-                      <div className="relative z-30 mb-8 flex items-center gap-4">
-                        <div className="inline-flex items-center gap-4 bg-white/95 backdrop-blur-sm py-3 px-6 rounded-r-full shadow-md border border-stone-200 border-l-4 border-l-primary">
-                          <span className="text-4xl font-serif text-primary">
-                            {day.day}
-                          </span>
-                          <div className="flex flex-col">
-                            <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                              Day
-                            </span>
-                            <span className="text-stone-600 font-serif italic text-lg leading-none min-w-[150px]">
-                              {enableEditing ? (
-                                <EditableText
-                                  value={day.title}
-                                  onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
-                                  isEditable={true}
-                                  className="bg-transparent border-none focus:ring-0 w-full font-serif italic text-lg leading-none"
-                                />
-                              ) : (
-                                day.title
-                              )}
+                      {/* Day Header */}
+                      <div className="relative z-30 mb-6 flex items-center gap-3">
+                        <div className="flex items-center gap-3 bg-white py-2.5 px-5 rounded-xl shadow-sm border border-stone-200">
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-xs text-stone-400 font-bold uppercase tracking-wider">Day</span>
+                            <span className="text-2xl font-bold text-primary tabular-nums">
+                              {day.day}
                             </span>
                           </div>
+                          <div className="w-px h-6 bg-stone-200" />
+                          <span className="text-stone-600 text-sm font-medium min-w-[120px]">
+                            {enableEditing ? (
+                              <EditableText
+                                value={day.title}
+                                onChange={(val) => handleDayUpdate(dayIndex, { title: val })}
+                                isEditable={true}
+                                className="bg-transparent border-none focus:ring-0 w-full text-sm font-medium"
+                              />
+                            ) : (
+                              day.title
+                            )}
+                          </span>
                         </div>
                       </div>
 
                       {/* Day Content */}
-                      <div className="space-y-6 ml-4 sm:ml-8 border-l-2 border-dashed border-stone-200 pl-8 pb-12">
+                      <div className="ml-2 sm:ml-4 border-l-2 border-stone-200 pl-4 sm:pl-6 pb-8 space-y-1">
                         {/* Transit Card */}
                       {day.transit && (
-                        <TransitCard
-                          transit={day.transit}
-                          state={isSimplifiedView ? "collapsed" : getCardState(`transit-${day.day}`)}
-                          onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
-                          className="mb-8"
-                          isEditable={enableEditing}
-                          onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
-                          onDelete={() => handleDeleteTransit(dayIndex)}
-                          expandable={!isSimplifiedView}
-                        />
+                        <div className="py-2">
+                          <TransitCard
+                            transit={day.transit}
+                            state={isSimplifiedView ? "collapsed" : getCardState(`transit-${day.day}`)}
+                            onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
+                            isEditable={enableEditing}
+                            onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
+                            onDelete={() => handleDeleteTransit(dayIndex)}
+                            expandable={!isSimplifiedView}
+                          />
+                        </div>
                       )}
 
                       {/* Activity Cards */}
@@ -597,24 +597,43 @@ export default function ResultView({
                         const cardId = `activity-${day.day}-${actIndex}`;
 
                         return (
-                          <div key={cardId} className="mb-4">
-                            <SpotCard
-                                activity={activity}
-                                destination={result.destination}
-                                state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
-                                onStateChange={(state) => handleCardStateChange(cardId, state)}
-                                isEditable={enableEditing}
-                                onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
-                                onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
-                                expandable={!isSimplifiedView}
-                            />
+                          <div key={cardId} className="relative flex items-start gap-3 py-2">
+                            {/* Time indicator on the timeline */}
+                            <div className="shrink-0 w-12 sm:w-14 pt-3 text-right">
+                              {enableEditing ? (
+                                <EditableText
+                                  value={activity.time}
+                                  onChange={(val) => handleActivityUpdate(dayIndex, actIndex, { time: val })}
+                                  isEditable={true}
+                                  type="time"
+                                  className="font-mono text-xs sm:text-sm font-semibold text-stone-500 bg-transparent text-right w-full"
+                                />
+                              ) : (
+                                <span className="font-mono text-xs sm:text-sm font-semibold text-stone-500">{activity.time}</span>
+                              )}
+                            </div>
+                            {/* Timeline dot */}
+                            <div className="absolute left-[-1.375rem] sm:left-[-1.625rem] top-5 w-2.5 h-2.5 rounded-full bg-primary/60 border-2 border-white shadow-sm" />
+                            {/* Card */}
+                            <div className="flex-1 min-w-0">
+                              <SpotCard
+                                  activity={activity}
+                                  destination={result.destination}
+                                  state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
+                                  onStateChange={(state) => handleCardStateChange(cardId, state)}
+                                  isEditable={enableEditing}
+                                  onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
+                                  onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
+                                  expandable={!isSimplifiedView}
+                              />
+                            </div>
                           </div>
                         );
                       })}
 
                       {/* Replan Trigger Panel (PR-K: 旅中モード) */}
                       {showReplanTriggers && onReplanTrigger && (
-                        <div className="pt-4 animate-in fade-in duration-300">
+                        <div className="pt-3 pl-15 sm:pl-17 animate-in fade-in duration-300">
                           <ReplanTriggerPanel
                             slotId={`day-${day.day}-current`}
                             onTrigger={onReplanTrigger}
@@ -625,15 +644,13 @@ export default function ResultView({
 
                       {/* Add Activity Button */}
                       {enableEditing && (
-                        <div className="pt-4">
+                        <div className="pt-3 pl-15 sm:pl-17">
                           <button
                             onClick={() => handleAddActivity(dayIndex)}
-                            className="flex items-center justify-center gap-2 w-full py-4 text-stone-400 hover:text-primary font-hand text-sm border-2 border-dashed border-stone-200 hover:border-primary rounded-xl transition-all group bg-stone-50/50 hover:bg-primary/5"
+                            className="flex items-center justify-center gap-2 w-full py-3 text-stone-400 hover:text-primary font-hand text-sm border border-dashed border-stone-200 hover:border-primary rounded-lg transition-all group hover:bg-primary/5"
                           >
-                            <div className="w-6 h-6 rounded-full border-2 border-stone-300 group-hover:border-primary flex items-center justify-center">
-                              <FaPlus className="w-3 h-3" />
-                            </div>
-                            予定を書き足す
+                            <FaPlus className="w-2.5 h-2.5" />
+                            予定を追加
                           </button>
                         </div>
                       )}

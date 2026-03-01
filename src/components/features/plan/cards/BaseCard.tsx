@@ -3,7 +3,6 @@
 import { useState, ReactNode, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { Tape } from "@/components/ui/journal";
 
 // ============================================================================
 // Types
@@ -82,11 +81,8 @@ const COLOR_THEMES = {
 // ============================================================================
 
 export default function BaseCard({
-  cardType,
   icon,
   title,
-  subtitle,
-  time,
   children,
   state = "collapsed",
   onStateChange,
@@ -124,27 +120,21 @@ export default function BaseCard({
 
   return (
     <div className={`relative group ${className}`}>
-      {/* Tape Decoration (Visual only, on top) */}
-      <div className="absolute -top-2 left-1/2 -translate-x-1/2 z-20">
-         <Tape color={theme.tapeColor as "yellow" | "pink" | "blue" | "green" | "white" | "red"} className="w-14 h-4 opacity-60 shadow-sm" />
-      </div>
-
       <motion.div
         layout
         className={`
-          relative bg-white rounded-lg border shadow-sm transition-all duration-300
-          ${isExpanded ? "shadow-md z-10" : "hover:shadow-md z-0"}
-          ${theme.borderColor}
+          relative bg-white rounded-xl border transition-all duration-300
+          ${isExpanded ? "shadow-md z-10 border-stone-300" : "shadow-sm hover:shadow-md z-0 border-stone-200"}
           ${expandable ? "cursor-pointer" : ""}
         `}
         onClick={handleToggle}
       >
         {/* Collapsed Header */}
-        <div className="flex items-center gap-3 p-4 pt-5">
+        <div className="flex items-center gap-3 p-3 sm:p-4">
           {/* Icon */}
           <div
             className={`
-              w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border border-stone-200
+              w-8 h-8 rounded-lg flex items-center justify-center shrink-0
               ${theme.iconBg} ${theme.iconColor}
             `}
           >
@@ -153,26 +143,18 @@ export default function BaseCard({
 
           {/* Content */}
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-stone-800 text-base leading-tight">{title}</h3>
-              {badge}
-            </div>
-            {subtitle && (
-              <p className="text-sm text-stone-500 truncate">{subtitle}</p>
-            )}
+            <h3 className="font-bold text-stone-800 text-sm sm:text-base leading-tight truncate">{title}</h3>
           </div>
 
-          {/* Time Display */}
-          {time && (
-            <div className="font-mono text-xs text-stone-400 shrink-0 bg-stone-50 px-2 py-1 rounded-sm border border-stone-100">
-              {time}
-            </div>
+          {/* Badge (only when expanded) */}
+          {isExpanded && badge && (
+            <div className="shrink-0">{badge}</div>
           )}
 
           {/* Actions (Delete, etc) */}
           {actions && (
             <div
-              className="shrink-0 flex items-center"
+              className="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
               onClick={(e) => e.stopPropagation()}
             >
               {actions}
@@ -184,9 +166,9 @@ export default function BaseCard({
             <motion.div
               animate={{ rotate: isExpanded ? 180 : 0 }}
               transition={{ duration: 0.2 }}
-              className="shrink-0 text-stone-400"
+              className="shrink-0 text-stone-300"
             >
-              <ChevronDown className="w-5 h-5" />
+              <ChevronDown className="w-4 h-4" />
             </motion.div>
           )}
         </div>
@@ -214,7 +196,7 @@ export default function BaseCard({
               onAnimationComplete={handleAnimationComplete}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="px-4 pb-6 pt-3 border-t border-stone-100 overflow-visible">
+              <div className="px-3 sm:px-4 pb-5 pt-3 border-t border-stone-100 overflow-visible">
                 {children}
               </div>
             </motion.div>
