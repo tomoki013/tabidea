@@ -154,7 +154,9 @@ export default function BaseCard({
           {/* Actions (Delete, etc) */}
           {actions && (
             <div
-              className="shrink-0 flex items-center opacity-0 group-hover:opacity-100 transition-opacity"
+              className={`shrink-0 flex items-center transition-opacity ${
+                isExpanded ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              }`}
               onClick={(e) => e.stopPropagation()}
             >
               {actions}
