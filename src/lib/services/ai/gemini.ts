@@ -1,6 +1,7 @@
 import { generateObject } from "ai";
 import { AIService, Article } from "./types";
-import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus } from '@/types';
+import { Itinerary, PlanOutline, DayPlan, PlanOutlineDay, EntitlementStatus, type ActivityType } from '@/types';
+import { classifyActivity } from '@/lib/utils/activity-classifier';
 import {
   PlanOutlineSchema,
   DayPlanArrayResponseInputSchema,
@@ -48,10 +49,10 @@ export interface GeminiServiceOptions {
 // Constants
 // ============================================
 
-const MAX_RETRIES = 2;
+const MAX_RETRIES = 1;
 const RETRY_DELAY_MS = 500;
-/** Per-attempt timeout for generateObject calls (60 seconds) */
-const GENERATION_TIMEOUT_MS = 60_000;
+/** Per-attempt timeout for generateObject calls (25 seconds) */
+const GENERATION_TIMEOUT_MS = 25_000;
 
 // ============================================
 // Helper Functions
@@ -111,40 +112,49 @@ function normalizeTransitInfo(transit: TransitInfoInput): TransitInfoParsed {
 }
 
 /**
- * Normalize Activity source if it is a simple string or null
+ * Map classifier category to ActivityType
+ */
+function categoryToActivityType(category: string): ActivityType {
+  switch (category) {
+    case 'sightseeing': return 'spot';
+    case 'restaurant': return 'meal';
+    case 'transport': return 'transit';
+    case 'hotel': return 'accommodation';
+    case 'free_time': return 'other';
+    default: return 'spot';
+  }
+}
+
+/**
+ * Normalize Activity: convert flexible source, add default source & activityType
  */
 function normalizeActivitySource(activity: ActivityInput): ActivityParsed {
   // Base activity object with strict type cast (omit source/searchQuery since they differ between Input and Parsed)
   const baseActivity = { ...activity } as Omit<ActivityInput, 'source' | 'searchQuery'> & { searchQuery?: string };
 
-  // Handle null explicitly: convert to undefined
+  // Derive activityType via classifier if not set by AI
+  if (!baseActivity.activityType) {
+    const classification = classifyActivity(activity.activity, activity.description);
+    baseActivity.activityType = categoryToActivityType(classification.category);
+  }
+
+  // Resolve source — always set a default instead of leaving undefined
+  let resolvedSource;
   if (activity.source === null || activity.source === undefined) {
-    return {
-      ...baseActivity,
-      source: undefined,
-    };
-  }
-
-  // Handle string
-  if (typeof activity.source === 'string') {
-    // If "ai_knowledge" or any other string, convert to object
+    resolvedSource = { type: 'ai_knowledge' as const, confidence: 'medium' as const };
+  } else if (typeof activity.source === 'string') {
     if (activity.source === 'ai_knowledge') {
-      return {
-        ...baseActivity,
-        source: { type: 'ai_knowledge', confidence: 'medium' }
-      };
+      resolvedSource = { type: 'ai_knowledge' as const, confidence: 'medium' as const };
+    } else {
+      resolvedSource = { type: 'ai_knowledge' as const, confidence: 'medium' as const, title: activity.source };
     }
-    // Default fallback
-    return {
-      ...baseActivity,
-      source: { type: 'ai_knowledge', confidence: 'medium', title: activity.source }
-    };
+  } else {
+    resolvedSource = activity.source;
   }
 
-  // Already an object (ActivitySource)
   return {
     ...baseActivity,
-    source: activity.source,
+    source: resolvedSource,
   };
 }
 
@@ -158,30 +168,14 @@ function normalizeDayPlan(day: DayPlanInput): DayPlan {
     normalizedTransit = normalizeTransitInfo(day.transit);
   }
 
-  // Normalize activities source
+  // Normalize activities: add default source & activityType
   const normalizedActivities = day.activities.map(normalizeActivitySource);
-
-  // Normalize timeline items
-  const normalizedTimelineItems = day.timelineItems?.map(item => {
-    if (item.itemType === 'transit') {
-      return {
-        ...item,
-        data: normalizeTransitInfo(item.data),
-      };
-    } else if (item.itemType === 'activity') {
-      return {
-        ...item,
-        data: normalizeActivitySource(item.data),
-      };
-    }
-    return item;
-  });
 
   return {
     ...day,
     transit: normalizedTransit,
     activities: normalizedActivities,
-    timelineItems: normalizedTimelineItems as DayPlan['timelineItems'],
+    // timelineItems is constructed by buildTimeline() from transit + activities
   };
 }
 
@@ -585,22 +579,18 @@ ${prompt}`;
       3. Each day MUST start from previous day's overnight_location (or startingLocation if specified).
       4. TRANSIT: If travel_method_to_next is set for the PREVIOUS day, generate a "transit" object with type/departure/arrival/duration/memo. Transit goes at the BEGINNING of the day.
       5. For international trips: include departure/return flights as "transit" objects (not activities).
-      6. ui_type: "compact" (heavy transit/many activities), "narrative" (relaxed/cultural), "default" (standard sightseeing).
 
-      ACTIVITY FIELDS:
-      - activityType: "spot" (sightseeing), "meal" (restaurants), "transit" (movement), "accommodation" (hotel), "other" (free time)
-      - locationEn: "City, Country" format (e.g., "Kyoto, Japan")
-      - searchQuery: OFFICIAL ENGLISH NAME of the spot for Google Maps search (e.g., "Kinkaku-ji" instead of "金閣寺"). This is CRITICAL for map accuracy.
-      - source: { type: "ai_knowledge", confidence: "medium" } if not from context
+      PLACES API SEARCH FIELDS (CRITICAL for map accuracy):
+      - searchQuery: MUST be the OFFICIAL ENGLISH name optimized for Google Places API.
+        Examples: "Kinkaku-ji Temple" (not "金閣寺"), "Ichiran Ramen Shibuya" (include branch/area for chains), "Tokyo Station", "Fushimi Inari Taisha".
+        For restaurants: include area name (e.g., "Tsukiji Sushisay Honten").
+        For hotels: use full official name (e.g., "Hotel Gracery Shinjuku").
+        This field is CRITICAL — incorrect names cause Places API search failures.
+      - locationEn: "City, Country" format (e.g., "Kyoto, Japan") for Places API region filtering.
 
       QUALITY:
-      - Write like a human travel writer. Engaging, atmospheric, practical descriptions.
+      - Write engaging, practical descriptions in Japanese.
       - Geographic continuity: no teleporting. Include realistic travel between cities.
-      - For multi-city trips: smooth transitions with check-out, transport details, and check-in.
-
-      TIMELINE ITEMS:
-      - Generate "timelineItems" array interleaving transit and activities chronologically.
-      - Each item: { itemType: "activity"|"transit", data: Activity|TransitInfo, time: string }.
     `;
 
     return `${sandwichSystem}\n\n${detailInstructions}\n\nUSER REQUEST:\n${sandwichUser}`;
@@ -630,7 +620,7 @@ ${prompt}`;
         schema: DayPlanArrayResponseInputSchema,
         prompt: fullPrompt,
         temperature,
-        maxTokens: 4096,
+        maxTokens: 8192,
         abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;

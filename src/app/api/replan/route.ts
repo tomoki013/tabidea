@@ -17,6 +17,7 @@ import type {
   TripPlan,
 } from "@/types/replan";
 import { ReplanEngine, REPLAN_TOTAL_TIMEOUT_MS } from "@/lib/services/replan/replan-engine";
+import { GeminiReplanProvider } from "@/lib/services/replan/gemini-replan-provider";
 import { EventLogger } from "@/lib/services/analytics/event-logger";
 import { createClient } from "@/lib/supabase/server";
 
@@ -58,7 +59,9 @@ export async function POST(request: Request) {
     );
 
     try {
-      const engine = new ReplanEngine();
+      const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
+      const aiProvider = hasAIKey ? new GeminiReplanProvider() : undefined;
+      const engine = new ReplanEngine(aiProvider);
       const result = await engine.replan(
         body.trigger,
         body.tripPlan,

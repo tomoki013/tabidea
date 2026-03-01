@@ -2,25 +2,24 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Stamp } from "@/components/ui/journal";
 import type { GenerationStep } from "@/lib/hooks/useGenerationProgress";
 
 // Fallback steps for when no real progress is provided
 const fallbackSteps = [
-  { icon: "🗺️", text: "目的地を分析中...", subText: "Analyzing destinations" },
-  { icon: "📝", text: "旅のコンセプトを考え中...", subText: "Crafting your concept" },
-  { icon: "🎯", text: "ベストなルートを探索中...", subText: "Finding optimal routes" },
-  { icon: "✨", text: "もうすぐ完成！", subText: "Almost ready!" },
+  { icon: "\u{1F5FA}\uFE0F", text: "目的地を分析中...", subText: "Analyzing destinations" },
+  { icon: "\u{1F4DD}", text: "旅のコンセプトを考え中...", subText: "Crafting your concept" },
+  { icon: "\u{1F3AF}", text: "ベストなルートを探索中...", subText: "Finding optimal routes" },
+  { icon: "\u2728", text: "もうすぐ完成！", subText: "Almost ready!" },
 ];
 
 // Icons for each real step
 const stepIcons: Record<string, string> = {
-  usage_check: "🔑",
-  cache_check: "📦",
-  rag_search: "🔍",
-  prompt_build: "📝",
-  ai_generation: "🤖",
-  hero_image: "📸",
+  usage_check: "\u{1F511}",
+  cache_check: "\u{1F4E6}",
+  rag_search: "\u{1F50D}",
+  prompt_build: "\u{1F4DD}",
+  ai_generation: "\u{1F916}",
+  hero_image: "\u{1F4F8}",
 };
 
 interface OutlineLoadingAnimationProps {
@@ -34,7 +33,6 @@ export default function OutlineLoadingAnimation({
   steps,
   currentStep,
 }: OutlineLoadingAnimationProps) {
-  // Use real progress if steps are provided
   const hasRealProgress = steps && steps.length > 0;
 
   if (hasRealProgress) {
@@ -45,7 +43,7 @@ export default function OutlineLoadingAnimation({
 }
 
 // ============================================================================
-// Real Progress View
+// Real Progress View — Clean timeline design
 // ============================================================================
 
 function RealProgressView({
@@ -58,60 +56,36 @@ function RealProgressView({
   currentStep?: string | null;
 }) {
   const activeStep = steps.find((s) => s.id === currentStep) || steps.find((s) => s.status === "active");
-  const activeIcon = activeStep ? stepIcons[activeStep.id] || "⏳" : "✈️";
+  const activeIcon = activeStep ? stepIcons[activeStep.id] || "\u23F3" : "\u2708\uFE0F";
   const completedCount = steps.filter((s) => s.status === "completed").length;
   const progressPercent = Math.round((completedCount / steps.length) * 100);
 
   return (
     <div
-      className={`w-full max-w-4xl mx-auto mt-8 min-h-[600px] relative rounded-sm overflow-hidden shadow-2xl bg-[#fcfbf9] border border-stone-200 flex flex-col items-center justify-center ${className}`}
+      className={`w-full max-w-2xl mx-auto mt-8 min-h-[400px] relative rounded-2xl overflow-hidden shadow-lg bg-white border border-stone-200 flex flex-col items-center justify-center ${className}`}
     >
-      {/* Paper Overlay Texture */}
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      {/* Dotted line background pattern */}
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:20px_20px]" />
-
-      <div className="relative z-10 flex flex-col items-center gap-8 p-8 text-center w-full max-w-md">
-        {/* Animated Stamp */}
-        <div className="relative">
-          <motion.div
-            className="absolute inset-0 w-32 h-32 border-4 border-dashed border-primary/30 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          />
-
-          <Stamp color="red" size="lg" className="w-32 h-32 border-4 animate-pulse">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeStep?.id || "default"}
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.5, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="text-5xl"
-              >
-                {activeIcon}
-              </motion.div>
-            </AnimatePresence>
-          </Stamp>
-
-          {/* Floating icons */}
-          <motion.span
-            className="absolute -top-3 -right-3 text-2xl transform rotate-12"
-            animate={{ y: [0, -8, 0], rotate: [12, 24, 12] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          >
-            ✈️
-          </motion.span>
-          <motion.span
-            className="absolute -bottom-3 -left-3 text-2xl transform -rotate-12"
-            animate={{ y: [0, 8, 0], rotate: [-12, -24, -12] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-          >
-            🧳
-          </motion.span>
-        </div>
+      <div className="relative z-10 flex flex-col items-center gap-6 p-8 text-center w-full max-w-md">
+        {/* Animated Icon */}
+        <motion.div
+          className="w-24 h-24 rounded-2xl bg-primary/10 flex items-center justify-center border-2 border-primary/20"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeStep?.id || "default"}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="text-4xl"
+            >
+              {activeIcon}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
 
         {/* Current Step Message */}
         <AnimatePresence mode="wait">
@@ -122,162 +96,136 @@ function RealProgressView({
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
           >
-            <p className="text-xl font-hand font-bold text-stone-800 leading-tight min-h-12">
+            <p className="text-xl font-bold text-stone-800 leading-tight min-h-8">
               {activeStep?.message || "準備中..."}
             </p>
           </motion.div>
         </AnimatePresence>
 
-        {/* Step Progress List */}
-        <div className="w-full space-y-2 text-left">
-          {steps.map((step) => (
-            <motion.div
-              key={step.id}
-              className="flex items-center gap-3 text-sm"
-              initial={{ opacity: 0.5 }}
-              animate={{
-                opacity: step.status === "pending" ? 0.4 : 1,
-              }}
-              transition={{ duration: 0.3 }}
-            >
-              {/* Status indicator */}
-              <div className="flex-shrink-0 w-5 h-5 flex items-center justify-center">
-                {step.status === "completed" && (
-                  <motion.span
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    className="text-green-600 text-sm font-bold"
-                  >
-                    ✓
-                  </motion.span>
-                )}
-                {step.status === "active" && (
-                  <div className="w-4 h-4 rounded-full border-2 border-primary border-t-transparent animate-spin" />
-                )}
-                {step.status === "pending" && (
-                  <div className="w-3 h-3 rounded-full border-2 border-stone-300" />
+        {/* Timeline Step List */}
+        <div className="w-full space-y-0 text-left">
+          {steps.map((step, index) => (
+            <div key={step.id} className="flex items-stretch gap-3">
+              {/* Timeline line + dot */}
+              <div className="flex flex-col items-center w-6 shrink-0">
+                <div className="flex items-center justify-center w-6 h-6 shrink-0">
+                  {step.status === "completed" && (
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center"
+                    >
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </motion.div>
+                  )}
+                  {step.status === "active" && (
+                    <div className="w-5 h-5 relative">
+                      <motion.div
+                        className="w-5 h-5 rounded-full border-2 border-primary border-t-transparent"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                    </div>
+                  )}
+                  {step.status === "pending" && (
+                    <div className="w-3 h-3 rounded-full bg-stone-200" />
+                  )}
+                </div>
+                {index < steps.length - 1 && (
+                  <div className={`w-0.5 flex-1 min-h-4 ${
+                    step.status === "completed" ? "bg-green-300" : "bg-stone-200"
+                  }`} />
                 )}
               </div>
 
-              {/* Step icon + message */}
-              <span className="text-base">
-                {stepIcons[step.id] || "⏳"}
-              </span>
-              <span
-                className={`font-hand ${
-                  step.status === "completed"
-                    ? "text-stone-500 line-through"
-                    : step.status === "active"
-                      ? "text-stone-800 font-bold"
-                      : "text-stone-400"
-                }`}
-              >
-                {step.message}
-              </span>
-            </motion.div>
+              {/* Step content */}
+              <div className="flex items-center gap-2 pb-3 min-h-10">
+                <span className="text-base shrink-0">
+                  {stepIcons[step.id] || "⏳"}
+                </span>
+                <span
+                  className={`text-sm ${
+                    step.status === "completed"
+                      ? "text-stone-400 line-through"
+                      : step.status === "active"
+                        ? "text-stone-800 font-bold"
+                        : "text-stone-400"
+                  }`}
+                >
+                  {step.message}
+                </span>
+              </div>
+            </div>
           ))}
         </div>
 
         {/* Progress Bar */}
         <div className="w-full">
-          <div className="w-full h-2 border-2 border-stone-300 rounded-full overflow-hidden bg-white transform -rotate-0.5">
+          <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-primary/70 rounded-full"
+              className="h-full bg-primary rounded-full"
               animate={{ width: `${progressPercent}%` }}
               transition={{ duration: 0.5, ease: "easeOut" }}
             />
           </div>
-          <p className="text-xs text-stone-400 mt-1 font-mono">
+          <p className="text-xs text-stone-400 mt-2 font-mono text-center">
             {completedCount}/{steps.length} steps
           </p>
         </div>
 
-        {/* Footer */}
-        <motion.p
-          className="text-sm font-hand text-stone-500"
-          animate={{ rotate: [-1, 1, -1] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
+        <p className="text-sm text-stone-400 font-hand">
           旅の計画を練っています...
-        </motion.p>
+        </p>
       </div>
     </div>
   );
 }
 
 // ============================================================================
-// Fallback Animation (original)
+// Fallback Animation
 // ============================================================================
 
 function FallbackAnimation({ className }: { className: string }) {
   const [step, setStep] = useState(0);
-  const [showDots, setShowDots] = useState(0);
 
   useEffect(() => {
     const stepInterval = setInterval(() => {
       setStep((prev) => (prev + 1) % fallbackSteps.length);
     }, 3000);
-
-    const dotInterval = setInterval(() => {
-      setShowDots((prev) => (prev + 1) % 4);
-    }, 400);
-
-    return () => {
-      clearInterval(stepInterval);
-      clearInterval(dotInterval);
-    };
+    return () => clearInterval(stepInterval);
   }, []);
 
   const currentStep = fallbackSteps[step];
-  const dots = ".".repeat(showDots);
+  const progressPercent = ((step + 1) / fallbackSteps.length) * 100;
 
   return (
     <div
-      className={`w-full max-w-4xl mx-auto mt-8 h-[600px] relative rounded-sm overflow-hidden shadow-2xl bg-[#fcfbf9] border border-stone-200 flex items-center justify-center ${className}`}
+      className={`w-full max-w-2xl mx-auto mt-8 min-h-[400px] relative rounded-2xl overflow-hidden shadow-lg bg-white border border-stone-200 flex items-center justify-center ${className}`}
     >
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-50 mix-blend-multiply pointer-events-none" />
-      <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:20px_20px]" />
+      <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#44403c_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="relative z-10 flex flex-col items-center gap-10 p-10 text-center max-w-md">
-        <div className="relative">
-          <motion.div
-            className="absolute inset-0 w-40 h-40 border-4 border-dashed border-primary/30 rounded-full"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          />
+      <div className="relative z-10 flex flex-col items-center gap-8 p-10 text-center max-w-md">
+        {/* Animated Icon */}
+        <motion.div
+          className="w-28 h-28 rounded-2xl bg-primary/10 flex items-center justify-center border-2 border-primary/20"
+          animate={{ scale: [1, 1.05, 1] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              initial={{ scale: 0.5, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.5, opacity: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-5xl"
+            >
+              {currentStep.icon}
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
 
-          <Stamp color="red" size="lg" className="w-40 h-40 border-4 animate-pulse">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={step}
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.5, opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-6xl"
-              >
-                {currentStep.icon}
-              </motion.div>
-            </AnimatePresence>
-          </Stamp>
-
-          <motion.span
-            className="absolute -top-4 -right-4 text-3xl transform rotate-12"
-            animate={{ y: [0, -10, 0], rotate: [12, 24, 12] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-          >
-            ✈️
-          </motion.span>
-          <motion.span
-            className="absolute -bottom-4 -left-4 text-3xl transform -rotate-12"
-            animate={{ y: [0, 10, 0], rotate: [-12, -24, -12] }}
-            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-          >
-            🧳
-          </motion.span>
-        </div>
-
-        <div className="space-y-4">
+        <div className="space-y-3">
           <AnimatePresence mode="wait">
             <motion.div
               key={step}
@@ -286,8 +234,8 @@ function FallbackAnimation({ className }: { className: string }) {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
             >
-              <p className="text-2xl font-hand font-bold text-stone-800 leading-tight min-h-16">
-                {currentStep.text.replace("...", dots.padEnd(3, " "))}
+              <p className="text-2xl font-bold text-stone-800 leading-tight min-h-10">
+                {currentStep.text}
               </p>
               <p className="text-xs text-stone-400 font-mono uppercase tracking-widest mt-2">
                 {currentStep.subText}
@@ -295,27 +243,20 @@ function FallbackAnimation({ className }: { className: string }) {
             </motion.div>
           </AnimatePresence>
 
-          <div className="w-48 h-2 border-2 border-stone-300 rounded-full overflow-hidden bg-white mx-auto transform -rotate-1">
-            <motion.div
-              className="h-full bg-primary/70 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{ width: "100%" }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+          <div className="w-48 mx-auto">
+            <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden">
+              <motion.div
+                className="h-full bg-primary rounded-full"
+                animate={{ width: `${progressPercent}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
           </div>
         </div>
 
-        <motion.p
-          className="text-sm font-hand text-stone-500"
-          animate={{ rotate: [-2, 2, -2] }}
-          transition={{ duration: 4, repeat: Infinity }}
-        >
+        <p className="text-sm text-stone-400 font-hand">
           旅の計画を練っています...
-        </motion.p>
+        </p>
       </div>
     </div>
   );

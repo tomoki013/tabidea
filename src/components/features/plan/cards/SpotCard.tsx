@@ -231,7 +231,7 @@ export default function SpotCard({
             isEditable={true}
             className="text-sm text-stone-500 font-hand block w-full truncate"
           />
-        ) : (description.length > 50 ? description.substring(0, 50) + "..." : description)
+        ) : (description.length > 80 ? description.substring(0, 80) + "..." : description)
       }
       time={
         isEditable ? (

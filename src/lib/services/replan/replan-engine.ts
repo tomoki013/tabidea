@@ -44,10 +44,10 @@ export interface ReplanAIProvider {
 // ============================================================================
 
 /** AI 生成のタイムアウト (ms) */
-const AI_GENERATION_TIMEOUT_MS = 2000;
+const AI_GENERATION_TIMEOUT_MS = 5000;
 
 /** 全体処理のタイムアウト (ms) */
-export const REPLAN_TOTAL_TIMEOUT_MS = 3000;
+export const REPLAN_TOTAL_TIMEOUT_MS = 8000;
 
 /** 返却する alternatives の最大数 */
 const MAX_ALTERNATIVES = 3;
@@ -174,6 +174,19 @@ export class ReplanEngine {
     trigger: ReplanTrigger,
     tripPlan: TripPlan
   ): PlanSlot[] {
+    // Handle "day-N-current" format from UI (e.g., "day-1-current")
+    const currentMatch = trigger.slotId.match(/^day-(\d+)-current$/);
+    if (currentMatch) {
+      const dayNumber = parseInt(currentMatch[1], 10);
+      const daySlots = tripPlan.slots.filter(
+        (s) => s.dayNumber === dayNumber && s.isSkippable
+      );
+      // Return all skippable slots for that day
+      return daySlots.length > 0 ? daySlots : tripPlan.slots.filter(
+        (s) => s.dayNumber === dayNumber
+      );
+    }
+
     const triggerSlot = tripPlan.slots.find((s) => s.id === trigger.slotId);
     if (!triggerSlot) return [];
 
