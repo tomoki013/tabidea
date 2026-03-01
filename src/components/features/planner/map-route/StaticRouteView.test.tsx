@@ -73,17 +73,20 @@ describe("StaticRouteView", () => {
     });
   });
 
-  it("マーカーがない場合は null を返す", () => {
+  it("マーカーがない場合はローディング状態を表示する", () => {
     mockUseRouteMarkers.mockReturnValue({
       markers: [],
       center: { lat: 35.68, lng: 139.77 },
     });
 
-    const { container } = render(
+    render(
       <StaticRouteView days={createDays(1)} destination="東京" />,
     );
 
-    expect(container.innerHTML).toBe("");
+    // ヘッダーは表示される
+    expect(screen.getByText("全日程マップ")).toBeDefined();
+    // ローディングメッセージが表示される
+    expect(screen.getByText("位置情報を読み込み中...")).toBeDefined();
   });
 
   it("ヘッダーにスポット数が表示される", () => {

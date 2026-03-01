@@ -21,6 +21,7 @@ import type {
   TripPlan,
 } from "@/types/replan";
 
+import { classifyActivity } from "@/lib/utils/activity-classifier";
 import { generateExplanation } from "./explanation-generator";
 import { scoreHumanResolution } from "./scoring/score-human-resolution";
 import type { HumanResolutionInput } from "./scoring/types";
@@ -201,22 +202,139 @@ export class ReplanEngine {
       const daySlots = tripPlan.slots.filter(
         (s) => s.dayNumber === dayNumber && s.isSkippable
       );
-      // Return all skippable slots for that day
-      return daySlots.length > 0 ? daySlots : tripPlan.slots.filter(
+      const candidates = daySlots.length > 0 ? daySlots : tripPlan.slots.filter(
         (s) => s.dayNumber === dayNumber
       );
+      // トリガー種別に基づいて影響範囲を絞り込む
+      return this.filterByTriggerType(trigger.type, candidates);
     }
 
     const triggerSlot = tripPlan.slots.find((s) => s.id === trigger.slotId);
     if (!triggerSlot) return [];
 
-    // トリガースロット以降の同日スロットを影響範囲とする
-    return tripPlan.slots.filter(
+    // トリガースロット以降の同日スロットを対象とする
+    const candidates = tripPlan.slots.filter(
       (s) =>
         s.dayNumber === triggerSlot.dayNumber &&
         s.slotIndex >= triggerSlot.slotIndex &&
         s.isSkippable
     );
+
+    return this.filterByTriggerType(trigger.type, candidates);
+  }
+
+  /**
+   * トリガー種別に基づいてスロットをフィルタリング。
+   * 全てフィルタされた場合はフォールバックとして全候補を返す。
+   */
+  private filterByTriggerType(
+    triggerType: string,
+    candidates: PlanSlot[]
+  ): PlanSlot[] {
+    const filtered = candidates.filter((slot) => {
+      const classification = classifyActivity(
+        slot.activity.activity,
+        slot.activity.description,
+        slot.activity.activityType
+      );
+
+      switch (triggerType) {
+        case "rain":
+          // 雨: 屋外系のスポットのみ影響。レストラン・屋内施設はそのまま
+          return this.isOutdoorActivity(slot.activity, classification.category);
+        case "fatigue":
+          // 疲労: 体力を使うアクティビティのみ影響。食事・休憩はそのまま
+          return this.isPhysicalActivity(slot.activity, classification.category);
+        case "delay":
+          // 遅延: 必須でないアクティビティのみ影響。予約済みはそのまま
+          return slot.priority !== "must" && !slot.activity.isLocked;
+        default:
+          return true;
+      }
+    });
+
+    // フィルタ結果が空の場合、全候補を返す（フォールバック）
+    return filtered.length > 0 ? filtered : candidates;
+  }
+
+  /** 屋外アクティビティかどうかを判定 */
+  private isOutdoorActivity(
+    activity: PlanSlot["activity"],
+    category: string
+  ): boolean {
+    const name = activity.activity.toLowerCase();
+    const desc = (activity.description || "").toLowerCase();
+    const combined = `${name} ${desc}`;
+
+    // 明確に屋内のキーワード → 影響なし
+    const indoorKeywords = [
+      "レストラン", "カフェ", "ランチ", "ディナー", "朝食", "食事",
+      "博物館", "美術館", "水族館", "ミュージアム", "ギャラリー",
+      "ショッピング", "モール", "デパート", "百貨店", "お土産",
+      "ホテル", "旅館", "温泉", "スパ", "マッサージ",
+      "映画", "シアター", "劇場", "コンサート",
+      "室内", "屋内", "indoor",
+    ];
+    if (indoorKeywords.some((kw) => combined.includes(kw))) {
+      return false;
+    }
+
+    // 食事カテゴリ → 影響なし
+    if (category === "restaurant") return false;
+
+    // 明確に屋外のキーワード → 影響あり
+    const outdoorKeywords = [
+      "散歩", "散策", "街歩き", "ウォーキング", "ハイキング", "トレッキング",
+      "公園", "庭園", "ガーデン", "ビーチ", "海岸", "海水浴",
+      "展望台", "展望", "眺望", "サイクリング", "自転車",
+      "アウトドア", "outdoor", "屋外",
+      "市場", "マーケット", "朝市",
+      "遺跡", "城跡", "神社", "寺",
+    ];
+    if (outdoorKeywords.some((kw) => combined.includes(kw))) {
+      return true;
+    }
+
+    // 観光スポットはデフォルトで屋外とみなす
+    if (category === "sightseeing") return true;
+
+    return true;
+  }
+
+  /** 体力を使うアクティビティかどうかを判定 */
+  private isPhysicalActivity(
+    activity: PlanSlot["activity"],
+    category: string
+  ): boolean {
+    const name = activity.activity.toLowerCase();
+    const desc = (activity.description || "").toLowerCase();
+    const combined = `${name} ${desc}`;
+
+    // 食事・休憩系 → 影響なし
+    const restKeywords = [
+      "レストラン", "カフェ", "ランチ", "ディナー", "朝食", "食事",
+      "休憩", "リラックス", "スパ", "マッサージ", "温泉",
+    ];
+    if (restKeywords.some((kw) => combined.includes(kw))) {
+      return false;
+    }
+    if (category === "restaurant") return false;
+
+    // 体力を使うキーワード → 影響あり
+    const physicalKeywords = [
+      "散歩", "散策", "街歩き", "ウォーキング", "ハイキング", "トレッキング",
+      "サイクリング", "自転車", "登山", "クライミング",
+      "アクティビティ", "アドベンチャー", "シュノーケリング", "ダイビング",
+      "サーフィン", "カヤック", "ラフティング",
+    ];
+    if (physicalKeywords.some((kw) => combined.includes(kw))) {
+      return true;
+    }
+
+    // 観光スポットは中程度の体力を使う
+    if (category === "sightseeing") return true;
+
+    return false;
   }
 
   private async generateWithTimeout(

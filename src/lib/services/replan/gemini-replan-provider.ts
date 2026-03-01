@@ -68,7 +68,7 @@ export class GeminiReplanProvider implements ReplanAIProvider {
 
     const slotCount = affectedSlots.length;
 
-    const prompt = `あなたは旅行プランナーです。以下の状況に対して、代替スケジュールを3パターン提案してください。
+    const prompt = `あなたは旅行プランナーです。以下の状況に対して、変更が必要なアクティビティの代替案を3パターン提案してください。
 
 ## 状況
 - 場所: ${context.city}
@@ -79,11 +79,12 @@ export class GeminiReplanProvider implements ReplanAIProvider {
 ${context.weather ? `- 天気: ${context.weather.condition}${context.weather.temperatureCelsius ? ` (${context.weather.temperatureCelsius}°C)` : ""}` : ""}
 
 ## 変更対象のアクティビティ（${slotCount}件）
+以下のアクティビティのみ変更が必要です。それ以外の予定（食事・屋内施設など）はそのまま維持されます。
 ${affectedActivities || "（指定なし）"}
 
 ## ルール
-1. 各代替案には上記の時間帯をカバーする具体的なスケジュールを含めてください
-2. アクティビティ数は元と同じでなくて構いません（状況に応じて増減OK）
+1. 変更対象のアクティビティに対する代替案のみ提案してください（変更不要な予定は含めないこと）
+2. アクティビティ数は元の変更対象数（${slotCount}件）と同じか、状況に応じて増減してください
 3. ${context.city}で実際に存在する具体的なスポット・施設名を含めてください
 4. 時刻は元の予定の時間帯に合わせてください（最初のアクティビティは${affectedSlots[0]?.activity.time ?? context.currentTime}頃から）
 5. 体験志向の魅力的な説明を日本語で書いてください
