@@ -75,25 +75,25 @@ export default function StaticRouteView({
     return map;
   }, [filteredMarkers]);
 
-  if (markers.length === 0) return null;
-
   return (
     <div
-      className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white ${className}`}
+      className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white flex flex-col ${className}`}
     >
       {/* Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-stone-50 hover:bg-stone-100 transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 bg-stone-50 hover:bg-stone-100 transition-colors shrink-0"
       >
         <div className="flex items-center gap-2">
           <FaMapMarkedAlt className="text-primary" />
           <span className="font-bold text-sm text-stone-700">
             全日程マップ
           </span>
-          <span className="text-xs text-stone-500">
-            ({markers.length} spots)
-          </span>
+          {markers.length > 0 && (
+            <span className="text-xs text-stone-500">
+              ({markers.length} spots)
+            </span>
+          )}
         </div>
         {isExpanded ? (
           <FaChevronUp className="text-stone-400 w-3 h-3" />
@@ -104,98 +104,108 @@ export default function StaticRouteView({
 
       {isExpanded && (
         <>
-          {/* Day Filter Buttons */}
-          <div className="flex flex-wrap gap-2 px-4 py-2 border-t border-stone-100">
-            <button
-              onClick={() => handleDayFilter(null)}
-              className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
-                selectedDay === null
-                  ? "bg-stone-800 text-white"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
-              }`}
-            >
-              全日程
-            </button>
-            {days.map((day) => {
-              const color = getDayColor(day.day - 1);
-              const isActive = selectedDay === day.day;
-              return (
+          {markers.length > 0 ? (
+            <>
+              {/* Day Filter Buttons */}
+              <div className="flex flex-wrap gap-2 px-4 py-2 border-t border-stone-100 shrink-0">
                 <button
-                  key={day.day}
-                  onClick={() => handleDayFilter(day.day)}
-                  className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
-                  style={{
-                    backgroundColor: isActive ? color.bg : `${color.bg}20`,
-                    color: isActive ? "#fff" : color.bg,
-                  }}
+                  onClick={() => handleDayFilter(null)}
+                  className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                    selectedDay === null
+                      ? "bg-stone-800 text-white"
+                      : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                  }`}
                 >
-                  Day {day.day}
+                  全日程
                 </button>
-              );
-            })}
-          </div>
-
-          {/* Spot List */}
-          <div className="px-4 py-3 space-y-3 max-h-[400px] overflow-y-auto">
-            {Array.from(markersByDay.entries())
-              .sort(([a], [b]) => a - b)
-              .map(([dayNum, dayMarkers]) => {
-                const color = getDayColor(dayNum - 1);
-                return (
-                  <div key={dayNum}>
-                    <div
-                      className="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
+                {days.map((day) => {
+                  const color = getDayColor(day.day - 1);
+                  const isActive = selectedDay === day.day;
+                  return (
+                    <button
+                      key={day.day}
+                      onClick={() => handleDayFilter(day.day)}
+                      className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
                       style={{
-                        backgroundColor: `${color.bg}15`,
-                        color: color.bg,
+                        backgroundColor: isActive ? color.bg : `${color.bg}20`,
+                        color: isActive ? "#fff" : color.bg,
                       }}
                     >
-                      Day {dayNum}
-                    </div>
-                    <div className="space-y-1.5 ml-1">
-                      {dayMarkers
-                        .sort((a, b) => a.spotIndex - b.spotIndex)
-                        .map((marker) => (
-                          <div
-                            key={`${marker.dayNumber}-${marker.spotIndex}`}
-                            className="flex items-center gap-2.5 bg-stone-50 rounded-lg px-3 py-2"
-                          >
-                            <div
-                              className="w-6 h-6 rounded-full text-white text-xs font-bold flex items-center justify-center shrink-0"
-                              style={{ backgroundColor: color.bg }}
-                            >
-                              {marker.label}
-                            </div>
-                            <span className="text-sm text-stone-700 truncate flex-1">
-                              {marker.name}
-                            </span>
-                            <FaMapMarkerAlt
-                              className="text-stone-300 shrink-0"
-                              size={10}
-                            />
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                );
-              })}
-          </div>
+                      Day {day.day}
+                    </button>
+                  );
+                })}
+              </div>
 
-          {/* Footer */}
-          <div className="px-4 py-3 border-t border-stone-100 flex items-center justify-between">
-            <p className="text-[10px] text-stone-400">
-              Proプランで対話型マップが利用可能になります
-            </p>
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
-            >
-              <FaExternalLinkAlt size={10} />
-              Google Mapsで見る
-            </a>
-          </div>
+              {/* Spot List */}
+              <div className="px-4 py-3 space-y-3 flex-1 overflow-y-auto">
+                {Array.from(markersByDay.entries())
+                  .sort(([a], [b]) => a - b)
+                  .map(([dayNum, dayMarkers]) => {
+                    const color = getDayColor(dayNum - 1);
+                    return (
+                      <div key={dayNum}>
+                        <div
+                          className="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
+                          style={{
+                            backgroundColor: `${color.bg}15`,
+                            color: color.bg,
+                          }}
+                        >
+                          Day {dayNum}
+                        </div>
+                        <div className="space-y-1.5 ml-1">
+                          {dayMarkers
+                            .sort((a, b) => a.spotIndex - b.spotIndex)
+                            .map((marker) => (
+                              <div
+                                key={`${marker.dayNumber}-${marker.spotIndex}`}
+                                className="flex items-center gap-2.5 bg-stone-50 rounded-lg px-3 py-2"
+                              >
+                                <div
+                                  className="w-6 h-6 rounded-full text-white text-xs font-bold flex items-center justify-center shrink-0"
+                                  style={{ backgroundColor: color.bg }}
+                                >
+                                  {marker.label}
+                                </div>
+                                <span className="text-sm text-stone-700 truncate flex-1">
+                                  {marker.name}
+                                </span>
+                                <FaMapMarkerAlt
+                                  className="text-stone-300 shrink-0"
+                                  size={10}
+                                />
+                              </div>
+                            ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              {/* Footer */}
+              <div className="px-4 py-3 border-t border-stone-100 flex items-center justify-between shrink-0">
+                <p className="text-[10px] text-stone-400">
+                  Proプランで対話型マップが利用可能になります
+                </p>
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
+                >
+                  <FaExternalLinkAlt size={10} />
+                  Google Mapsで見る
+                </a>
+              </div>
+            </>
+          ) : (
+            <div className="flex-1 min-h-[200px] flex flex-col items-center justify-center bg-stone-50 text-stone-400 gap-3 p-6">
+              <FaMapMarkedAlt className="text-3xl text-stone-300" />
+              <p className="text-sm font-medium">位置情報を読み込み中...</p>
+              <p className="text-xs text-stone-400">スポットの座標を取得しています</p>
+            </div>
+          )}
         </>
       )}
     </div>

@@ -185,25 +185,25 @@ export default function LeafletRouteView({
     setSelectedDay((prev) => (prev === dayNum ? null : dayNum));
   }, []);
 
-  if (markers.length === 0) return null;
-
   return (
     <div
-      className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white ${className}`}
+      className={`w-full rounded-xl overflow-hidden border border-stone-200 shadow-sm bg-white flex flex-col ${className}`}
     >
       {/* Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-between px-4 py-3 bg-stone-50 hover:bg-stone-100 transition-colors"
+        className="w-full flex items-center justify-between px-4 py-3 bg-stone-50 hover:bg-stone-100 transition-colors shrink-0"
       >
         <div className="flex items-center gap-2">
           <FaMapMarkedAlt className="text-primary" />
           <span className="font-bold text-sm text-stone-700">
             全日程マップ
           </span>
-          <span className="text-xs text-stone-500">
-            ({markers.length} spots)
-          </span>
+          {markers.length > 0 && (
+            <span className="text-xs text-stone-500">
+              ({markers.length} spots)
+            </span>
+          )}
         </div>
         {isExpanded ? (
           <FaChevronUp className="text-stone-400 w-3 h-3" />
@@ -215,125 +215,135 @@ export default function LeafletRouteView({
       {isExpanded && (
         <>
           {/* Day Filter Buttons */}
-          <div className="flex flex-wrap gap-2 px-4 py-2 border-t border-stone-100">
-            <button
-              onClick={() => handleDayFilter(null)}
-              className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
-                selectedDay === null
-                  ? "bg-stone-800 text-white"
-                  : "bg-stone-100 text-stone-600 hover:bg-stone-200"
-              }`}
-            >
-              全日程
-            </button>
-            {days.map((day) => {
-              const color = getDayColor(day.day - 1);
-              const isActive = selectedDay === day.day;
-              return (
-                <button
-                  key={day.day}
-                  onClick={() => handleDayFilter(day.day)}
-                  className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
-                  style={{
-                    backgroundColor: isActive ? color.bg : `${color.bg}20`,
-                    color: isActive ? "#fff" : color.bg,
-                  }}
-                >
-                  Day {day.day}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Map */}
-          <div className="relative w-full min-h-[300px] h-full bg-stone-100">
-            <MapContainer
-              center={[center.lat, center.lng]}
-              zoom={12}
-              scrollWheelZoom={false}
-              style={{ width: "100%", height: "100%", minHeight: "300px" }}
-              attributionControl={true}
-            >
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-
-              {/* Route Lines */}
-              {routeLines.map((line, idx) => (
-                <Polyline
-                  key={`route-${idx}`}
-                  positions={line.path}
-                  pathOptions={{
-                    color: line.color,
-                    weight: 4,
-                    opacity: 0.8,
-                  }}
-                />
-              ))}
-
-              {/* Markers */}
-              {filteredMarkers.map((marker) => {
-                const color = getDayColor(marker.dayNumber - 1);
+          {markers.length > 0 && (
+            <div className="flex flex-wrap gap-2 px-4 py-2 border-t border-stone-100 shrink-0">
+              <button
+                onClick={() => handleDayFilter(null)}
+                className={`px-3 py-1 rounded-full text-xs font-bold transition-colors ${
+                  selectedDay === null
+                    ? "bg-stone-800 text-white"
+                    : "bg-stone-100 text-stone-600 hover:bg-stone-200"
+                }`}
+              >
+                全日程
+              </button>
+              {days.map((day) => {
+                const color = getDayColor(day.day - 1);
+                const isActive = selectedDay === day.day;
                 return (
-                  <Marker
-                    key={`route-${marker.dayNumber}-${marker.spotIndex}`}
-                    position={[marker.position.lat, marker.position.lng]}
-                    icon={createDayMarkerIcon(marker.label, color.bg)}
+                  <button
+                    key={day.day}
+                    onClick={() => handleDayFilter(day.day)}
+                    className="px-3 py-1 rounded-full text-xs font-bold transition-colors"
+                    style={{
+                      backgroundColor: isActive ? color.bg : `${color.bg}20`,
+                      color: isActive ? "#fff" : color.bg,
+                    }}
                   >
-                    <Popup>
-                      <div className="min-w-[180px]">
-                        <div
-                          className="text-[10px] font-bold px-1.5 py-0.5 rounded-full inline-block text-white mb-1"
-                          style={{ backgroundColor: color.bg }}
-                        >
-                          Day {marker.dayNumber}
-                        </div>
-                        <h3 className="font-bold text-xs text-stone-800 mb-1">
-                          {marker.name}
-                        </h3>
-                        <a
-                          href={
-                            marker.placeId
-                              ? `https://www.google.com/maps/place/?q=place_id:${marker.placeId}`
-                              : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(marker.name)}`
-                          }
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[10px] text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-1 mt-1"
-                        >
-                          <FaExternalLinkAlt size={8} /> Google Mapsで見る
-                        </a>
-                      </div>
-                    </Popup>
-                  </Marker>
+                    Day {day.day}
+                  </button>
                 );
               })}
-
-              <FitBoundsController markers={filteredMarkers} />
-            </MapContainer>
-
-            {/* External Link Button */}
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-[1000]"
-              title="Google Mapsでルートを開く"
-            >
-              <FaExternalLinkAlt />
-              <span className="hidden sm:inline">Google Maps</span>
-            </a>
-
-            {/* Legend */}
-            <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50 z-[1000]">
-              <span className="font-medium">{destination}</span>
-              <span className="mx-1.5 text-stone-300">|</span>
-              <span>
-                {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
-              </span>
             </div>
-          </div>
+          )}
+
+          {/* Map */}
+          {markers.length > 0 ? (
+            <div className="relative w-full flex-1 min-h-[300px] bg-stone-100">
+              <MapContainer
+                center={[center.lat, center.lng]}
+                zoom={12}
+                scrollWheelZoom={false}
+                style={{ width: "100%", height: "100%", minHeight: "300px" }}
+                attributionControl={true}
+              >
+                <TileLayer
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+
+                {/* Route Lines */}
+                {routeLines.map((line, idx) => (
+                  <Polyline
+                    key={`route-${idx}`}
+                    positions={line.path}
+                    pathOptions={{
+                      color: line.color,
+                      weight: 4,
+                      opacity: 0.8,
+                    }}
+                  />
+                ))}
+
+                {/* Markers */}
+                {filteredMarkers.map((marker) => {
+                  const color = getDayColor(marker.dayNumber - 1);
+                  return (
+                    <Marker
+                      key={`route-${marker.dayNumber}-${marker.spotIndex}`}
+                      position={[marker.position.lat, marker.position.lng]}
+                      icon={createDayMarkerIcon(marker.label, color.bg)}
+                    >
+                      <Popup>
+                        <div className="min-w-[180px]">
+                          <div
+                            className="text-[10px] font-bold px-1.5 py-0.5 rounded-full inline-block text-white mb-1"
+                            style={{ backgroundColor: color.bg }}
+                          >
+                            Day {marker.dayNumber}
+                          </div>
+                          <h3 className="font-bold text-xs text-stone-800 mb-1">
+                            {marker.name}
+                          </h3>
+                          <a
+                            href={
+                              marker.placeId
+                                ? `https://www.google.com/maps/place/?q=place_id:${marker.placeId}`
+                                : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(marker.name)}`
+                            }
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[10px] text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-1 mt-1"
+                          >
+                            <FaExternalLinkAlt size={8} /> Google Mapsで見る
+                          </a>
+                        </div>
+                      </Popup>
+                    </Marker>
+                  );
+                })}
+
+                <FitBoundsController markers={filteredMarkers} />
+              </MapContainer>
+
+              {/* External Link Button */}
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-[1000]"
+                title="Google Mapsでルートを開く"
+              >
+                <FaExternalLinkAlt />
+                <span className="hidden sm:inline">Google Maps</span>
+              </a>
+
+              {/* Legend */}
+              <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-xs text-stone-600 shadow-sm border border-stone-200/50 z-[1000]">
+                <span className="font-medium">{destination}</span>
+                <span className="mx-1.5 text-stone-300">|</span>
+                <span>
+                  {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
+                </span>
+              </div>
+            </div>
+          ) : (
+            <div className="flex-1 min-h-[200px] flex flex-col items-center justify-center bg-stone-50 text-stone-400 gap-3 p-6">
+              <FaMapMarkedAlt className="text-3xl text-stone-300" />
+              <p className="text-sm font-medium">位置情報を読み込み中...</p>
+              <p className="text-xs text-stone-400">スポットの座標を取得しています</p>
+            </div>
+          )}
         </>
       )}
     </div>

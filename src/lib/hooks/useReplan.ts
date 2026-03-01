@@ -51,10 +51,10 @@ export interface UseReplanReturn {
 /**
  * RecoveryOption の replacementSlots を Itinerary にマージして新しい Itinerary を返す。
  *
- * 同一日の影響範囲をまとめて置換する:
- * 1. replacementSlots から対象日を特定
- * 2. その日の元アクティビティのうち、時間帯が重なる範囲を特定
- * 3. 該当範囲を新しいアクティビティ群で置換（数が変わってもOK）
+ * 影響を受けたアクティビティのみを置換し、それ以外はそのまま維持する:
+ * 1. replacementSlots から対象日と影響スロットを特定
+ * 2. 影響を受けた元アクティビティの位置を時刻マッチングで特定
+ * 3. 影響を受けたアクティビティのみを代替アクティビティで置換
  */
 function applyRecoveryOption(
   itinerary: Itinerary,
@@ -79,35 +79,78 @@ function applyRecoveryOption(
 
     const day = newDays[dayIdx];
 
-    // Find the range of original activities to replace.
-    // Use the first replacement slot's time to find where replacement starts.
-    const firstReplacementTime = slots[0]?.activity.time ?? slots[0]?.startTime;
-    let startIdx = -1;
-
-    if (firstReplacementTime) {
-      // Find the first activity at or after the replacement start time
-      startIdx = day.activities.findIndex(
-        (a) => a.time && a.time >= firstReplacementTime
-      );
+    // 元のアクティビティの時刻セットを作成し、影響を受けた位置を特定
+    // replacementSlots の startTime（元スロットの時刻）で元の位置を特定
+    const affectedOriginalTimes = new Set<string>();
+    for (const slot of slots) {
+      if (slot.startTime) {
+        affectedOriginalTimes.add(slot.startTime);
+      }
     }
 
-    // Fallback: use slotIndex from the first slot
-    if (startIdx === -1) {
-      startIdx = Math.min(slots[0]?.slotIndex ?? 0, day.activities.length);
+    if (affectedOriginalTimes.size > 0) {
+      // 時刻ベースのマッチング: 影響を受けた時刻のアクティビティのみ置換
+      // 影響を受けたインデックスを収集（降順でspliceするため後ろから）
+      const affectedIndices: number[] = [];
+      for (let i = 0; i < day.activities.length; i++) {
+        const actTime = day.activities[i].time;
+        if (actTime && affectedOriginalTimes.has(actTime)) {
+          affectedIndices.push(i);
+        }
+      }
+
+      if (affectedIndices.length > 0) {
+        // 影響を受けた最初のインデックス位置に全代替アクティビティを挿入し、
+        // 影響を受けた元アクティビティを削除
+        const newActivities = slots.map((slot) => ({ ...slot.activity }));
+
+        // 降順で元アクティビティを削除
+        for (let i = affectedIndices.length - 1; i >= 0; i--) {
+          day.activities.splice(affectedIndices[i], 1);
+        }
+
+        // 最初の影響位置に代替アクティビティを挿入
+        const insertIdx = Math.min(affectedIndices[0], day.activities.length);
+        day.activities.splice(insertIdx, 0, ...newActivities);
+      } else {
+        // 時刻マッチが見つからない場合、slotIndex ベースのフォールバック
+        applyBySlotIndex(day, slots);
+      }
+    } else {
+      // startTime が無い場合、slotIndex ベースのフォールバック
+      applyBySlotIndex(day, slots);
     }
-
-    // Calculate how many original activities to remove
-    // (from startIdx to end of day, since replan covers the rest of the day)
-    const removeCount = day.activities.length - startIdx;
-
-    // Build new activities from replacement slots
-    const newActivities = slots.map((slot) => ({ ...slot.activity }));
-
-    // Splice: remove affected range, insert new activities
-    day.activities.splice(startIdx, removeCount, ...newActivities);
   }
 
   return { ...itinerary, days: newDays };
+}
+
+/**
+ * slotIndex ベースのフォールバック置換。
+ * 影響スロットの slotIndex に対応する元アクティビティのみ置換する。
+ */
+function applyBySlotIndex(
+  day: { activities: Itinerary["days"][number]["activities"] },
+  slots: RecoveryOption["replacementSlots"]
+): void {
+  const newActivities = slots.map((slot) => ({ ...slot.activity }));
+  const affectedIndices = slots
+    .map((slot) => slot.slotIndex)
+    .filter((idx) => idx < day.activities.length)
+    .sort((a, b) => a - b);
+
+  if (affectedIndices.length > 0) {
+    // 降順で元アクティビティを削除
+    for (let i = affectedIndices.length - 1; i >= 0; i--) {
+      day.activities.splice(affectedIndices[i], 1);
+    }
+    // 最初の影響位置に代替アクティビティを挿入
+    const insertIdx = Math.min(affectedIndices[0], day.activities.length);
+    day.activities.splice(insertIdx, 0, ...newActivities);
+  } else {
+    // 完全なフォールバック: 末尾に追加
+    day.activities.push(...newActivities);
+  }
 }
 
 // ============================================================================
