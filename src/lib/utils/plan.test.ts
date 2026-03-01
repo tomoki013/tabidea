@@ -31,13 +31,11 @@ describe("splitDaysIntoChunks", () => {
     expect(chunks).toEqual([{ start: 1, end: 1 }]);
   });
 
-  it("splits longer trip into 1-day chunks", () => {
+  it("splits longer trip into 2-day chunks", () => {
     const chunks = splitDaysIntoChunks(5);
     expect(chunks).toEqual([
-      { start: 1, end: 1 },
-      { start: 2, end: 2 },
-      { start: 3, end: 3 },
-      { start: 4, end: 4 },
+      { start: 1, end: 2 },
+      { start: 3, end: 4 },
       { start: 5, end: 5 },
     ]);
   });
@@ -45,8 +43,7 @@ describe("splitDaysIntoChunks", () => {
   it("splits trip correctly", () => {
     const chunks = splitDaysIntoChunks(3);
     expect(chunks).toEqual([
-        { start: 1, end: 1 },
-        { start: 2, end: 2 },
+        { start: 1, end: 2 },
         { start: 3, end: 3 }
     ]);
   });

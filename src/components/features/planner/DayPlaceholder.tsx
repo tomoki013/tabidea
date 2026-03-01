@@ -119,7 +119,7 @@ export default function DayPlaceholder({
 
         {/* Skeleton Activities */}
         <div className="border-l-2 border-primary/30 ml-8 space-y-6 pb-4">
-          {[0, 1, 2, 3].map((i) => (
+          {[0, 1, 2].map((i) => (
             <div key={i} className="relative pl-10">
               {/* Dot on timeline */}
               <motion.div

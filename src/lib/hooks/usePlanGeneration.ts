@@ -15,9 +15,9 @@ import type { DayGenerationStatus, ChunkInfo } from "@/types";
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
 import {
   generatePlanOutline,
-  generatePlanChunk,
   savePlan,
 } from "@/app/actions/travel-planner";
+import type { ChunkActionState } from "@/app/actions/travel-planner";
 import { saveLocalPlan, notifyPlanChange } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
 import { useUserPlans } from "@/context/UserPlansContext";
@@ -80,6 +80,38 @@ const DEFAULT_INPUT_VALUES = {
   pace: "balanced",
   theme: ["グルメ"],
 };
+
+// ============================================================================
+// API Route helper for chunk generation (replaces Server Action)
+// ============================================================================
+
+async function fetchChunkFromAPI(
+  input: UserInput,
+  context: Article[],
+  outlineDays: PlanOutline["days"],
+  startDay: number,
+  endDay: number,
+  previousOvernightLocation?: string
+): Promise<ChunkActionState> {
+  const res = await fetch("/api/generate/chunk", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      input,
+      context,
+      outlineDays,
+      startDay,
+      endDay,
+      previousOvernightLocation,
+    }),
+  });
+
+  if (!res.ok) {
+    return { success: false, message: `サーバーエラー (${res.status})` };
+  }
+
+  return res.json();
+}
 
 // ============================================================================
 // Hook Implementation
@@ -181,7 +213,7 @@ export function usePlanGeneration(
         const chunkOutlineDays = outlineDays.filter(
           (d) => d.day >= chunk.start && d.day <= chunk.end
         );
-        const result = await generatePlanChunk(
+        const result = await fetchChunkFromAPI(
           chunkInput,
           context,
           chunkOutlineDays,
@@ -418,20 +450,16 @@ export function usePlanGeneration(
           // Immediately start detail generation in streaming mode
           setGenerationState((prev) => ({ ...prev, phase: "generating_details" }));
 
-          // Generate first chunk sequentially with destination context,
-          // then generate remaining chunks in parallel
-          const [firstChunk, ...remainingChunks] = chunks;
-
-          await generateChunk(
-            updatedInput, context, outline.days, firstChunk, outline.days, outline.destination
-          );
-
-          if (remainingChunks.length > 0) {
-            const remainingPromises = remainingChunks.map((chunk) =>
-              generateChunk(updatedInput, context, outline.days, chunk, outline.days)
+          // Generate all chunks in parallel
+          const allChunkPromises = chunks.map((chunk) => {
+            const prevLocation = chunk.start === 1
+              ? outline.destination
+              : outline.days.find((d) => d.day === chunk.start - 1)?.overnight_location;
+            return generateChunk(
+              updatedInput, context, outline.days, chunk, outline.days, prevLocation
             );
-            await Promise.all(remainingPromises);
-          }
+          });
+          await Promise.all(allChunkPromises);
         } else {
           // Non-streaming mode: Generate all, then show review
           setGenerationState({
@@ -508,23 +536,17 @@ export function usePlanGeneration(
 
         const chunks = splitDaysIntoChunks(totalDays);
 
-        // Generate first chunk sequentially with destination context,
-        // then generate remaining chunks in parallel
-        const [firstChunk, ...remainingChunks] = chunks;
-
-        await generateChunk(
-          input, context, confirmedOutline.days, firstChunk,
-          confirmedOutline.days, confirmedOutline.destination
-        );
-
-        if (remainingChunks.length > 0) {
-          const remainingPromises = remainingChunks.map((chunk) =>
-            generateChunk(
-              input, context, confirmedOutline.days, chunk, confirmedOutline.days
-            )
+        // Generate all chunks in parallel
+        const allChunkPromises = chunks.map((chunk) => {
+          const prevLocation = chunk.start === 1
+            ? confirmedOutline.destination
+            : confirmedOutline.days.find((d) => d.day === chunk.start - 1)?.overnight_location;
+          return generateChunk(
+            input, context, confirmedOutline.days, chunk,
+            confirmedOutline.days, prevLocation
           );
-          await Promise.all(remainingPromises);
-        }
+        });
+        await Promise.all(allChunkPromises);
       } catch (e: unknown) {
         console.error(e);
         const errMsg = (e instanceof Error ? e.message : null) || "詳細プランの生成に失敗しました。";

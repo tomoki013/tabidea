@@ -48,10 +48,10 @@ export interface GeminiServiceOptions {
 // Constants
 // ============================================
 
-const MAX_RETRIES = 2;
+const MAX_RETRIES = 1;
 const RETRY_DELAY_MS = 500;
-/** Per-attempt timeout for generateObject calls (60 seconds) */
-const GENERATION_TIMEOUT_MS = 60_000;
+/** Per-attempt timeout for generateObject calls (25 seconds) */
+const GENERATION_TIMEOUT_MS = 25_000;
 
 // ============================================
 // Helper Functions
@@ -630,7 +630,7 @@ ${prompt}`;
         schema: DayPlanArrayResponseInputSchema,
         prompt: fullPrompt,
         temperature,
-        maxTokens: 4096,
+        maxTokens: 8192,
         abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
       });
       return object;

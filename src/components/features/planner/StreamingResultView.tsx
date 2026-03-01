@@ -10,7 +10,6 @@ import {
 import type { GenerationState, UserInput, DayPlan, Itinerary } from "@/types";
 import type { ReplanTrigger } from "@/types/replan";
 import DayPlaceholder from "./DayPlaceholder";
-import GeneratingOverlay from "./GeneratingOverlay";
 import ShareButtons from "@/components/ShareButtons";
 import PDFDownloadButton from "./PDFDownloadButton";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
@@ -45,8 +44,6 @@ export default function StreamingResultView({
   onReplanTrigger,
   isReplanning = false,
 }: StreamingResultViewProps) {
-  const [showOverlay, setShowOverlay] = useState(true);
-
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
 
@@ -65,18 +62,8 @@ export default function StreamingResultView({
     return map;
   }, [completedDays]);
 
-  // Calculate completed count for overlay
+  // Calculate completed count
   const completedCount = completedDays.length;
-
-  // Get the current generating day
-  const currentGeneratingDay = useMemo(() => {
-    for (const [day, status] of dayStatuses.entries()) {
-      if (status === "generating") {
-        return day;
-      }
-    }
-    return undefined;
-  }, [dayStatuses]);
 
   // Helper to parse date string
   const formatTravelDates = (dateStr: string) => {
@@ -157,31 +144,10 @@ export default function StreamingResultView({
 
   return (
     <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
-      {/* Generating Overlay */}
-      {isGenerating && showOverlay && (
-        <GeneratingOverlay
-          totalDays={totalDays}
-          completedDays={completedCount}
-          currentGeneratingDay={currentGeneratingDay}
-          onDismiss={() => setShowOverlay(false)}
-          isCompleted={isCompleted}
-        />
-      )}
-
-      {/* Completion notification */}
-      {isCompleted && showOverlay && (
-        <GeneratingOverlay
-          totalDays={totalDays}
-          completedDays={completedCount}
-          onDismiss={() => setShowOverlay(false)}
-          isCompleted={true}
-        />
-      )}
-
       {/* Journal Header Section */}
       <div className="relative mb-8 overflow-x-hidden">
         {heroImage?.url ? (
-          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-xl border-8 border-white bg-white rotate-1">
+          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-xl overflow-hidden shadow-xl border-4 border-white bg-white">
             <Image
               src={heroImage.url}
               alt={outline.destination}
@@ -212,11 +178,9 @@ export default function StreamingResultView({
                 </a>
               </div>
             )}
-            {/* Tape Effect */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-100/80 -rotate-2 shadow-sm backdrop-blur-sm"></div>
           </div>
         ) : (
-          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-xl border-8 border-white bg-stone-100 rotate-1 flex items-center justify-center">
+          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-xl overflow-hidden shadow-xl border-4 border-white bg-stone-100 flex items-center justify-center">
             <div className="text-stone-400 text-center">
               <FaMapMarkerAlt className="text-4xl mx-auto mb-2" />
               <p className="text-sm">画像を読み込み中...</p>
@@ -225,7 +189,7 @@ export default function StreamingResultView({
         )}
 
         <div className="mt-8 text-center relative z-10">
-          <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-sm shadow-sm border border-stone-100 -rotate-1 relative group max-w-full">
+          <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-xl shadow-sm border border-stone-100 relative group max-w-full">
             {/* Date Stamp */}
             <div className="absolute -top-6 -right-4 sm:-right-8 bg-white border-2 border-primary/30 text-stone-600 font-mono text-xs font-bold px-3 py-1.5 shadow-sm rotate-12 rounded-sm z-20">
               <div className="flex flex-col items-center gap-0.5 whitespace-nowrap">
@@ -250,21 +214,6 @@ export default function StreamingResultView({
               {outline.description}
             </p>
 
-            {/* Generation Status Indicator */}
-            {isGenerating && (
-              <motion.div
-                className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
-                animate={{ opacity: [1, 0.7, 1] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <motion.div
-                  className="w-3 h-3 border-2 border-primary border-t-transparent rounded-full"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                />
-                詳細プランを生成中...
-              </motion.div>
-            )}
           </div>
         </div>
 
@@ -282,6 +231,51 @@ export default function StreamingResultView({
           )}
         </div>
       </div>
+
+      {/* Inline Generation Progress */}
+      {(isGenerating || isCompleted) && totalDays > 0 && (
+        <div className="w-full max-w-4xl mx-auto mb-6 px-4">
+          <div className="bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-sm font-medium text-stone-700">
+                {isCompleted ? "生成完了" : "詳細プランを生成中..."}
+              </span>
+              <span className="text-sm text-stone-500 font-mono">
+                {completedCount}/{totalDays} 日
+              </span>
+            </div>
+            {/* Progress Bar */}
+            <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden mb-3">
+              <motion.div
+                className="h-full bg-primary rounded-full"
+                initial={{ width: "0%" }}
+                animate={{ width: `${totalDays > 0 ? (completedCount / totalDays) * 100 : 0}%` }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
+              />
+            </div>
+            {/* Day Pills */}
+            <div className="flex flex-wrap gap-2">
+              {outline.days.map((outlineDay) => {
+                const status = dayStatuses.get(outlineDay.day) || "pending";
+                return (
+                  <div
+                    key={outlineDay.day}
+                    className={`
+                      px-3 py-1 rounded-full text-xs font-medium transition-all
+                      ${status === "completed" ? "bg-primary/15 text-primary border border-primary/30" : ""}
+                      ${status === "generating" ? "bg-primary/10 text-primary border border-primary/20 animate-pulse" : ""}
+                      ${status === "pending" ? "bg-stone-100 text-stone-400 border border-stone-200" : ""}
+                      ${status === "error" ? "bg-red-50 text-red-500 border border-red-200" : ""}
+                    `}
+                  >
+                    Day {outlineDay.day}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* AI Disclaimer Notice */}
       <div className="w-full max-w-4xl mx-auto mt-0 mb-8 px-4">

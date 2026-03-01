@@ -190,7 +190,8 @@ export async function executeDetailsStrategy(
   generateDetailsFn: GenerateDayDetailsCallback,
   modifyFn: ModifyItineraryCallback | null,
 ): Promise<DetailsStrategyResult> {
-  const strategy = getStrategy();
+  // Force single strategy for chunk generation to avoid cross-review timeout
+  const strategy: AIStrategy = 'single';
   console.log(`[orchestrator] Details strategy: ${strategy} (days ${startDay}-${endDay})`);
 
   if (strategy === 'single') {
