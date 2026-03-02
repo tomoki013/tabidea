@@ -20,6 +20,7 @@ Create a `.env.local` file in the root directory:
 ```env
 # AI & External Services
 GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key
+# GEMINI_EMBEDDING_MODEL=gemini-embedding-001 (Optional, default: gemini-embedding-001)
 UNSPLASH_ACCESS_KEY=your_unsplash_access_key
 # PINECONE_API_KEY=your_pinecone_api_key (Required for RAG)
 # PINECONE_INDEX=your_pinecone_index (Required for RAG)

@@ -16,6 +16,10 @@ export class PineconeRetriever implements ContentRetriever {
     const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
     const pineconeApiKey = process.env.PINECONE_API_KEY;
     const pineconeIndex = process.env.PINECONE_INDEX;
+    const rawEmbeddingModel = process.env.GEMINI_EMBEDDING_MODEL || "gemini-embedding-001";
+    const embeddingModel = rawEmbeddingModel.startsWith("models/")
+      ? rawEmbeddingModel
+      : `models/${rawEmbeddingModel}`;
 
     if (!apiKey || !pineconeApiKey || !pineconeIndex) {
         console.error("Missing RAG environment variables");
@@ -23,7 +27,7 @@ export class PineconeRetriever implements ContentRetriever {
     }
 
     const embeddings = new GoogleGenerativeAIEmbeddings({
-        model: "models/text-embedding-004",
+        model: embeddingModel,
         apiKey: apiKey
     });
 

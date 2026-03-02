@@ -79,7 +79,10 @@ async function main() {
 
   // 3. Initialize Embeddings & Pinecone
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
-  const modelName = "models/text-embedding-004";
+  const rawEmbeddingModel = process.env.GEMINI_EMBEDDING_MODEL || "gemini-embedding-001";
+  const modelName = rawEmbeddingModel.startsWith("models/")
+    ? rawEmbeddingModel
+    : `models/${rawEmbeddingModel}`;
   
   if (!apiKey) throw new Error("GOOGLE_GENERATIVE_AI_API_KEY missing");
   
