@@ -34,9 +34,11 @@ import { EditableText } from "@/components/ui/editable/EditableText";
 import { CardState } from "@/components/features/plan/cards/BaseCard";
 import SpotCard from "@/components/features/plan/cards/SpotCard";
 import TransitCard from "@/components/features/plan/cards/TransitCard";
+import AccommodationCard from "@/components/features/plan/cards/AccommodationCard";
 import { MapRouteViewRenderer } from "@/components/features/planner/map-route";
 import { useSpotCoordinates } from "@/lib/hooks/useSpotCoordinates";
 import { cn } from "@/lib/utils";
+import { buildTimeline } from "@/lib/utils/plan";
 import type { MapProviderType } from "@/lib/limits/config";
 import type { ReplanTrigger } from "@/types/replan";
 import { ReplanTriggerPanel } from "@/components/features/replan";
@@ -276,12 +278,22 @@ export default function ResultView({
     onResultChange?.(newResult);
   }, [result, onResultChange]);
 
-  const handleDeleteTransit = useCallback((dayIndex: number) => {
+  const handleDeleteTransit = useCallback((dayIndex: number, targetTransit?: TransitInfo) => {
     const newResult = { ...result };
     const day = newResult.days[dayIndex];
     if (!day) return;
 
-    day.transit = undefined;
+    if (day.timelineItems && day.timelineItems.length > 0) {
+      const transitIndex = day.timelineItems.findIndex(
+        (item) => item.itemType === 'transit' && (!targetTransit || item.data === targetTransit)
+      );
+      if (transitIndex >= 0) {
+        day.timelineItems = day.timelineItems.filter((_, index) => index !== transitIndex);
+      }
+    } else {
+      day.transit = undefined;
+    }
+
     onResultChange?.(newResult);
   }, [result, onResultChange]);
 
@@ -543,6 +555,27 @@ export default function ResultView({
                    </div>
                 )}
 
+                {/* AI Chat CTA */}
+                {showChat && !isSimplifiedView && (
+                  <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-white border-2 border-primary/30 rounded-2xl p-5 shadow-sm">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="w-9 h-9 bg-primary/15 rounded-full flex items-center justify-center">✨</div>
+                      <div>
+                        <HandwrittenText className="font-bold text-lg">AIと相談しながら調整する</HandwrittenText>
+                        <p className="text-xs text-stone-600">「移動少なめにしたい」「この日にカフェを追加したい」など、気軽に相談できます。</p>
+                      </div>
+                    </div>
+                    <TravelPlannerChat
+                      key={result.id}
+                      itinerary={result}
+                      onRegenerate={onRegenerate}
+                      isRegenerating={isUpdating}
+                      initialChatHistory={initialChatHistory}
+                      onChatChange={onChatChange}
+                    />
+                  </div>
+                )}
+
                 {/* Itinerary List - Hidden on Mobile Map Mode */}
                 <div className={cn(
                   "space-y-12",
@@ -577,24 +610,29 @@ export default function ResultView({
 
                       {/* Day Content */}
                       <div className="ml-2 sm:ml-4 border-l-2 border-stone-200 pl-4 sm:pl-6 pb-8 space-y-1">
-                        {/* Transit Card */}
-                      {day.transit && (
-                        <div className="py-2">
-                          <TransitCard
-                            transit={day.transit}
-                            state={isSimplifiedView ? "collapsed" : getCardState(`transit-${day.day}`)}
-                            onStateChange={(state) => handleCardStateChange(`transit-${day.day}`, state)}
-                            isEditable={enableEditing}
-                            onUpdate={(updates) => day.transit && handleTransitUpdate(dayIndex, day.transit, updates)}
-                            onDelete={() => handleDeleteTransit(dayIndex)}
-                            expandable={!isSimplifiedView}
-                          />
-                        </div>
-                      )}
+                      {/* Timeline Cards */}
+                      {buildTimeline(day).map((item, itemIndex) => {
+                        const cardId = `${item.itemType}-${day.day}-${itemIndex}`;
 
-                      {/* Activity Cards */}
-                      {day.activities.map((activity, actIndex) => {
-                        const cardId = `activity-${day.day}-${actIndex}`;
+                        if (item.itemType === 'transit') {
+                          return (
+                            <div key={cardId} className="py-2">
+                              <TransitCard
+                                transit={item.data}
+                                state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
+                                onStateChange={(state) => handleCardStateChange(cardId, state)}
+                                isEditable={enableEditing}
+                                onUpdate={(updates) => handleTransitUpdate(dayIndex, item.data, updates)}
+                                onDelete={() => handleDeleteTransit(dayIndex, item.data)}
+                                expandable={!isSimplifiedView}
+                              />
+                            </div>
+                          );
+                        }
+
+                        const activity = item.data;
+                        const actIndex = day.activities.findIndex((a) => a === activity);
+                        const isAccommodation = activity.activityType === 'accommodation';
 
                         return (
                           <div key={cardId} className="relative flex items-start gap-3 py-2">
@@ -616,16 +654,49 @@ export default function ResultView({
                             <div className="absolute left-[-1.375rem] sm:left-[-1.625rem] top-5 w-2.5 h-2.5 rounded-full bg-primary/60 border-2 border-white shadow-sm" />
                             {/* Card */}
                             <div className="flex-1 min-w-0">
-                              <SpotCard
+                              {isAccommodation ? (
+                                <AccommodationCard
+                                  accommodation={{
+                                    name: activity.activity,
+                                    description: activity.description,
+                                    checkIn: activity.time,
+                                  }}
+                                  destination={result.destination}
+                                  dayNumber={day.day}
+                                  state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
+                                  onStateChange={(state) => handleCardStateChange(cardId, state)}
+                                  isEditable={enableEditing}
+                                  onUpdate={(updates) => {
+                                    if (actIndex < 0) return;
+                                    handleActivityUpdate(dayIndex, actIndex, {
+                                      activity: updates.name ?? activity.activity,
+                                      description: updates.description ?? activity.description,
+                                      time: updates.checkIn ?? activity.time,
+                                    });
+                                  }}
+                                  onDelete={() => {
+                                    if (actIndex < 0) return;
+                                    handleDeleteActivity(dayIndex, actIndex);
+                                  }}
+                                />
+                              ) : (
+                                <SpotCard
                                   activity={activity}
                                   destination={result.destination}
                                   state={isSimplifiedView ? "collapsed" : getCardState(cardId)}
                                   onStateChange={(state) => handleCardStateChange(cardId, state)}
                                   isEditable={enableEditing}
-                                  onUpdate={(updates) => handleActivityUpdate(dayIndex, actIndex, updates)}
-                                  onDelete={() => handleDeleteActivity(dayIndex, actIndex)}
+                                  onUpdate={(updates) => {
+                                    if (actIndex < 0) return;
+                                    handleActivityUpdate(dayIndex, actIndex, updates);
+                                  }}
+                                  onDelete={() => {
+                                    if (actIndex < 0) return;
+                                    handleDeleteActivity(dayIndex, actIndex);
+                                  }}
                                   expandable={!isSimplifiedView}
-                              />
+                                />
+                              )}
                             </div>
                           </div>
                         );
@@ -689,22 +760,7 @@ export default function ResultView({
                       <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
                    </div>
 
-                   {showChat && !isSimplifiedView && (
-                      <div className="bg-white border-2 border-stone-200 rounded-lg p-6 shadow-md">
-                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">🤖</div>
-                            <HandwrittenText className="font-bold text-lg">AIと相談して調整</HandwrittenText>
-                         </div>
-                         <TravelPlannerChat
-                            key={result.id}
-                            itinerary={result}
-                            onRegenerate={onRegenerate}
-                            isRegenerating={isUpdating}
-                            initialChatHistory={initialChatHistory}
-                            onChatChange={onChatChange}
-                         />
-                      </div>
-                   )}
+                   {showChat && !isSimplifiedView && null}
                 </div>
               </div>
             </div>

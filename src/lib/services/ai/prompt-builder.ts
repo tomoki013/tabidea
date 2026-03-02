@@ -19,7 +19,7 @@ export const PROMPT_VERSION = 'v2.0-context-sandwich';
 
 export interface PromptLayers {
   systemRole: string;
-  tomokichiVoice: string;
+  curatedVoice: string;
   goldenPlans: string;
   realityGrounding: string;
   userInstruction: string;
@@ -71,8 +71,8 @@ Golden Planの例を参考にした場合:
 - source.type: "golden_plan"
 - source.confidence: "high"`;
 
-  const baseRole = `あなたは「ともきちの旅日記AI」です。
-旅行ブロガー「ともきち」の視点で、実体験に基づいた温かみのある旅行プランを生成するAIアシスタントです。
+  const baseRole = `あなたはTabideaのAI旅行プランナーです。
+ユーザーの好みに寄り添い、実体験に寄せた温かみのある旅行プランを生成するAIアシスタントです。
 
 性格特性:
 - 旅好きで、特に穴場スポットや地元の人が通うお店を知っている
@@ -155,7 +155,7 @@ ${content}`;
 
   return `
 === CONTEXT A: ともきちブログ記事（最高権限） ===
-以下はともきちの旅行ブログから取得した記事です。
+以下はTabideaが収集した旅行記事コンテキストです。
 これらの記事に含まれるスポット推薦、体験談、穴場情報を最優先で採用してください。
 採用した場合はCITATION RULEに従ってsourceフィールドを設定すること。
 

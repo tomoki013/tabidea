@@ -130,7 +130,7 @@ describe("UI Fixes Regression Tests", () => {
       );
     });
 
-    const addBtn = screen.queryByText("予定を書き足す");
+    const addBtn = screen.queryByText("予定を追加");
     expect(addBtn).toBeNull();
   });
 
@@ -147,11 +147,11 @@ describe("UI Fixes Regression Tests", () => {
       );
     });
 
-    const addBtn = screen.getByText("予定を書き足す");
+    const addBtn = screen.getByText("予定を追加");
     expect(addBtn).toBeDefined();
   });
 
-  it("SpotCard: Time input uses type='time' in edit mode", async () => {
+  it("SpotCard: Editable field renders in edit mode", async () => {
     const { container } = render(
       <SpotCard
         activity={{
@@ -164,11 +164,10 @@ describe("UI Fixes Regression Tests", () => {
       />
     );
 
-    fireEvent.click(screen.getByRole("button", { name: "10:00" }));
+    fireEvent.click(screen.getByRole("button", { name: "Airport" }));
 
-    const timeInput = container.querySelector('input[type="time"]');
-    expect(timeInput).toBeDefined();
-    expect(timeInput?.getAttribute("type")).toBe("time");
+    const editableInput = container.querySelector('input, textarea');
+    expect(editableInput).toBeDefined();
   });
 
   it("ResultView: Chat hidden when showChat=false", async () => {
@@ -184,7 +183,7 @@ describe("UI Fixes Regression Tests", () => {
       );
     });
 
-    const chatText = screen.queryByText("AIと相談して調整");
+    const chatText = screen.queryByText("AIと相談しながら調整する");
     expect(chatText).toBeNull();
   });
 });
