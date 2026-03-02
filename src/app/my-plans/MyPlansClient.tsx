@@ -268,7 +268,7 @@ export default function MyPlansClient({
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
-      <main className="flex-1 w-full max-w-4xl mx-auto px-4 py-8">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8">
         {/* Header */}
         <div className="pt-24 pb-8 relative">
           <div className="flex items-center justify-between">
@@ -372,7 +372,7 @@ export default function MyPlansClient({
             </p>
           </div>
         ) : (
-          <div className="grid gap-8">
+          <div className="grid gap-5 lg:grid-cols-2">
             {displayedPlans.map((plan, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -380,13 +380,13 @@ export default function MyPlansClient({
                 transition={{ delay: index * 0.05 }}
                 key={plan.id}
               >
-                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group ${openMenuId === plan.id ? 'z-50' : 'z-0'}`}>
+                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group overflow-hidden ${openMenuId === plan.id ? 'z-50' : 'z-0'}`}>
                   {/* Tape Decorations */}
                   <Tape color="white" position="top-right" rotation="right" className="opacity-70 w-24 -top-3" />
 
-                  <div className="flex flex-col sm:flex-row">
+                  <div className="flex flex-col md:flex-row h-full">
                     {/* Thumbnail */}
-                    <div className="sm:w-56 h-48 sm:h-auto relative bg-stone-100 overflow-hidden border-r border-stone-200 border-dashed">
+                    <div className="md:w-44 h-40 md:h-auto relative bg-stone-100 overflow-hidden border-b md:border-b-0 md:border-r border-stone-200 border-dashed shrink-0">
                       {plan.thumbnailUrl ? (
                         <Image
                           src={plan.thumbnailUrl}
@@ -411,7 +411,7 @@ export default function MyPlansClient({
                     </div>
 
                     {/* Content */}
-                    <div className="flex-1 p-6 relative">
+                    <div className="flex-1 p-4 sm:p-5 relative">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex-1">
                           {isRenaming === plan.id ? (
@@ -429,26 +429,26 @@ export default function MyPlansClient({
                                 }
                               }}
                               onBlur={() => handleRename(plan.id)}
-                              className="w-full font-hand text-2xl font-bold bg-transparent border-b-2 border-primary focus:outline-none"
+                              className="w-full font-hand text-xl font-bold bg-transparent border-b-2 border-primary focus:outline-none"
                               placeholder="タイトルを入力"
                             />
                           ) : (
                             <Link href={`/plan/id/${plan.id}`} className="group/link block">
-                              <h3 className="font-hand text-2xl font-bold text-stone-800 group-hover/link:text-primary transition-colors mb-2">
+                              <h3 className="font-hand text-xl sm:text-2xl font-bold text-stone-800 group-hover/link:text-primary transition-colors mb-2 line-clamp-2">
                                 {plan.destination || 'Untitled Trip'}
                               </h3>
                             </Link>
                           )}
 
-                          <div className="flex items-center gap-4 text-sm text-stone-500 font-hand mt-2">
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-500 font-hand mt-2">
                             {plan.durationDays && (
                               <span className="flex items-center gap-1">
                                 <FaCalendarAlt className="text-stone-400" />
                                 {plan.durationDays} Days
                               </span>
                             )}
-                            <span className="text-stone-300">|</span>
-                            <span>Created: {formatDate(plan.createdAt)}</span>
+                            <span className="text-stone-300 hidden sm:inline">|</span>
+                            <span>作成: {formatDate(plan.createdAt)}</span>
                           </div>
                         </div>
 
