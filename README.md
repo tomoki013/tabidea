@@ -1,86 +1,120 @@
-[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/tomoki013/ai-travel-planner)
+# Tabidea
 
-# Tabidea (Powered by ともきちの旅行日記)
+AIと一緒に、旅行先の検討から旅程作成、再調整、共有までを一気通貫で行う旅行プランニングアプリです。  
+Next.js 16 + TypeScript + Supabase を中心に構成されています。
 
-AIと一緒に、あなただけの旅の計画を。
-「ともきちの旅行日記」が提供する、AIを活用した旅行プラン作成サービスです。
+## 主な機能
 
-## Documentation
+- AI旅行プラン生成（アウトライン生成 -> 日別詳細生成）
+- チャットベースの再調整（Replan）
+- 渡航情報の集約表示（安全・気候・基本情報など）
+- しおり公開（private / unlisted / public）
+- Blog連携、外部候補（ホテル・航空券）反映
 
-- [Setup Guide](docs/setup.md) - How to install and run the project.
-- [Architecture](docs/architecture.md) - System overview and directory structure.
-- [Testing Strategy](docs/testing.md) - How to run and write tests.
-- [Supabase Migration Guide](supabase/README.md) - How to apply SQL migrations safely.
+## Tech Stack
 
-## 概要
+- Frontend/Backend: Next.js 16 (App Router), React 19, TypeScript (strict)
+- Styling: Tailwind CSS v4
+- Data/Auth/Storage: Supabase
+- AI: Gemini / OpenAI, LangChain
+- Retrieval: Pinecone
+- Billing: Stripe
+- Testing: Vitest, Playwright
 
-Tabideaは、Google Gemini AIを活用して、あなたの希望に合わせたパーソナライズされた旅行プランを提案するWebアプリケーションです。
+## Quick Start
 
-## 特徴
+### 1. Prerequisites
 
-*   **AIによるプラン提案**
-*   **柔軟な計画フロー**
-*   **共有機能**
-*   **直感的なUI**
+- Node.js `20.11.0+`（`.node-version`）
+- `pnpm`
+- Supabaseプロジェクト
+- AI APIキー（`GOOGLE_GENERATIVE_AI_API_KEY` または `OPENAI_API_KEY`）
 
-## 技術スタック
+### 2. Install
 
-*   **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-*   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-*   **AI**: [Google Gemini API](https://ai.google.dev/)
-*   **Database (Vector)**: [Pinecone](https://www.pinecone.io/) (RAG用)
-*   **Testing**: [Vitest](https://vitest.dev/), [Playwright](https://playwright.dev/)
-*   **Deployment**: [Netlify](https://www.netlify.com/)
+```bash
+pnpm install
+```
 
-## Phase 0-3 実装メモ（旅程正規化 / 予算 / Journal / Shiori公開）
+### 3. Environment Variables
 
-### 追加した主な機能
-- 正規化テーブル: `plan_days`, `plan_items`, `item_bookings`, `journal_entries`, `plan_publications`
-- RLS: 各テーブルで owner(`auth.uid() = user_id`) のCRUDのみ許可
-- 公開Read model: `get_public_shiori(slug, token)` を `SECURITY DEFINER` で提供
-- 予算管理UI: 概算合計 vs 実費合計、カテゴリ別集計
-- 予約情報入力: itemごとの予約URL/予約メモ
-- Journal: ローカル下書き（localStorage）→ blur時同期
-- Shiori公開: private / unlisted / public と公開URL生成
-- 公開ルート: `/shiori/*` で旅のしおりを公開
+`.env.local` に最低限以下を設定してください。
 
-### 運用メモ
-- migration を適用してから動作確認してください（Supabase SQL Editor / CLI）
-- 公開URLは `visibility=unlisted` の場合 `?t=<token>` が必須です
-- テスト実行
-  - Unit: `pnpm test`
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `GOOGLE_GENERATIVE_AI_API_KEY` or `OPENAI_API_KEY`
 
-## Phase 4-5 実装メモ（外部API提案 / Blog）
+環境変数の全一覧は `docs/development/env-vars.md` を参照してください。
 
-### Phase 4: 外部API提案（ホテル・航空券）
-- 追加API:
-  - `POST /api/external/hotels/search`
-  - `POST /api/external/flights/search`
-- AIは検索条件JSONのみを扱い、外部検索はサーバー側（Amadeus provider）で実行
-- Zodで入力バリデーション（limit 1..5, date/価格/人数など）
-- キャッシュ:
-  - `external_search_requests` + `external_search_results` に request hash ベースで保存
-  - 30分TTLで再利用
-- プラン管理画面で候補カードを表示し、「採用」で `plan_item_external_selections` に保存
-- 採用時に予約URL（deeplink）・メモが `item_bookings` / `plan_items` に同期される
+### 4. Run
 
-### Phase 5: Blog
-- 追加テーブル:
-  - `blog_profiles`, `blog_posts`, `blog_post_embeds`
-- 公開URL:
-  - `/blog/@{username}/{slug}`
-- 作成・編集:
-  - `/blog`, `/blog/new`, `/blog/edit/[id]`
-- 画像アップロード:
-  - Supabase Storage bucket `blog-images`
-- しおり埋め込み:
-  - 本文内記法 `[[tabidea:shiori:slug]]` / `[[tabidea:shiori:slug?t=token]]`
-  - iframe埋め込みで表示
+```bash
+pnpm dev
+```
 
-### 追加環境変数（サーバー側のみ）
-- `AMADEUS_CLIENT_ID`
-- `AMADEUS_CLIENT_SECRET`
-- `AMADEUS_BASE_URL` (任意。未設定時: test API)
+Open: `http://localhost:3000`
 
-### 追加要件（再チャレンジ時のレート制限）
-- プラン生成失敗後の再チャレンジは `skipConsume` で消費しない実装に変更
+## Development Commands
+
+```bash
+pnpm dev                    # 開発サーバー
+pnpm build                  # 本番ビルド
+pnpm start                  # ビルド済みアプリ起動
+pnpm lint                   # ESLint
+pnpm test                   # Vitest（ユニット/コンポーネント）
+pnpm exec playwright test   # Playwright E2E
+pnpm docs:catalog           # docs/reference/file-catalog.md再生成
+```
+
+## Project Structure
+
+```text
+src/
+  app/                # ページ・API Route・Server Action
+  components/
+    ui/               # 汎用UI（ビジネスロジックなし）
+    common/           # アプリ横断コンポーネント
+    features/         # 機能別UI
+  lib/
+    services/         # ドメインロジック（AI/RAG/Replan等）
+    utils/ hooks/     # 共通処理・カスタムフック
+  context/ types/
+tests/                # E2E (*.spec.ts)
+docs/                 # 公式ドキュメント
+supabase/             # schema / migrations
+```
+
+## Testing Policy
+
+- Unit testはcolocation: 対象ファイルと同じディレクトリに `*.test.ts` / `*.test.tsx`
+- E2Eは `tests/*.spec.ts`
+- 新規で `__tests__` ディレクトリは作成しない（既存レガシー除く）
+
+## Database & Migrations
+
+- Migrationは `supabase/migrations/*.sql` で追記管理
+- 推奨適用手順:
+
+```bash
+supabase db push
+```
+
+## Documentation Policy (重要)
+
+`docs/` は一次情報です。  
+機能、設計、DB、テスト方針を変更するPRでは、同一PRで関連ドキュメントを更新してください。
+
+特に以下を参照:
+
+- `docs/development/setup-and-operations.md`
+- `docs/development/architecture.md`
+- `docs/development/testing.md`
+- `docs/development/performance.md`
+- `docs/reference/routes-actions-and-services.md`
+
+## Operational Notes
+
+- package managerは `pnpm` を使用
+- サーバーアクション/AI生成処理は `PerformanceTimer` による計測を必須化
+- 外部データ利用時は `docs/development/data-and-compliance.md` の遵守事項（robots、規約、出典表示）を確認
