@@ -60,8 +60,9 @@ export async function generatePackingList(
   // Pro entitlement check
   try {
     const { checkBillingAccess } = await import("@/lib/billing/billing-checker");
+    const { canAccess } = await import("@/lib/billing/plan-catalog");
     const billing = await checkBillingAccess();
-    if (!billing.isPro && !billing.isPremium && !billing.isAdmin) {
+    if (!canAccess(billing.userType, "packing_list")) {
       return { success: false, error: "pro_required" };
     }
   } catch {

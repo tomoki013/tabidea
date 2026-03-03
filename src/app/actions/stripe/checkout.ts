@@ -3,21 +3,24 @@
 import { stripe } from "@/lib/stripe/client";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
 import { createClient } from "@/lib/supabase/server";
-import { hasActiveSubscription } from "@/lib/billing/user-billing-status";
+import { hasActiveSubscription } from "@/lib/billing/billing-checker";
+import {
+  type CheckoutPlanType,
+  isSubscriptionPlanType,
+  resolveSubscriptionPlanByPriceId,
+} from "@/lib/billing/plan-catalog";
+import type { TicketType } from "@/types/billing";
 import { headers } from "next/headers";
 
-type PlanType = "pro_monthly" | "premium_monthly" | "premium_yearly" | "ticket_1" | "ticket_5" | "ticket_10";
-
-const PRICE_IDS: Record<PlanType, string> = {
+const PRICE_IDS: Record<CheckoutPlanType, string> = {
   pro_monthly: process.env.STRIPE_PRICE_PRO_MONTHLY!,
   premium_monthly: process.env.STRIPE_PRICE_PREMIUM_MONTHLY!,
-  premium_yearly: process.env.STRIPE_PRICE_PREMIUM_YEARLY!,
   ticket_1: process.env.STRIPE_PRICE_TICKET_1!,
   ticket_5: process.env.STRIPE_PRICE_TICKET_5!,
   ticket_10: process.env.STRIPE_PRICE_TICKET_10!,
 };
 
-const TICKET_COUNTS: Record<string, number> = {
+const TICKET_COUNTS: Record<TicketType, number> = {
   ticket_1: 1,
   ticket_5: 5,
   ticket_10: 10,
@@ -130,7 +133,7 @@ async function resolveStripeCustomerId(
   return customerId;
 }
 
-export async function createCheckoutSession(planType: PlanType): Promise<{
+export async function createCheckoutSession(planType: CheckoutPlanType): Promise<{
   success: boolean;
   url?: string;
   error?: string;
@@ -149,7 +152,7 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
     return { success: false, error: "invalid_plan" };
   }
 
-  const isSubscription = planType === "pro_monthly" || planType === "premium_monthly" || planType === "premium_yearly";
+  const isSubscription = isSubscriptionPlanType(planType);
 
   // 🔒 二重決済防止: DBチェック
   if (isSubscription) {
@@ -186,8 +189,16 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
         // DBと同期 (Service Role Client を使用して RLS をバイパス)
         const stripeSub = existingSubscriptions.data[0];
         const item = stripeSub.items.data[0];
+        const resolvedPlanCode = resolveSubscriptionPlanByPriceId(item?.price?.id);
 
         try {
+          if (!resolvedPlanCode) {
+            console.error(
+              `[checkout] Unknown active subscription price_id=${item?.price?.id} for customer=${customerId}`,
+            );
+            return { success: false, error: "already_subscribed" };
+          }
+
           const adminClient = createServiceRoleClient();
           const { error: syncError } = await adminClient
             .from("subscriptions")
@@ -198,7 +209,7 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
                 external_customer_id: customerId,
                 payment_provider: "stripe",
                 status: stripeSub.status,
-                plan_code: planType,
+                plan_code: resolvedPlanCode,
                 current_period_start: item?.current_period_start
                   ? new Date(item.current_period_start * 1000).toISOString()
                   : null,
@@ -242,7 +253,7 @@ export async function createCheckoutSession(planType: PlanType): Promise<{
       metadata: {
         user_id: user.id,
         plan_type: planType,
-        ticket_count: TICKET_COUNTS[planType]?.toString() || "0",
+        ticket_count: isSubscription ? "0" : TICKET_COUNTS[planType].toString(),
       },
     });
 

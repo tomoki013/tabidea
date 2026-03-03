@@ -9,7 +9,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { headers } from 'next/headers';
-import type { PlanType } from '@/types/billing';
+import type { BillingAccessInfo, PlanType } from '@/types/billing';
 import {
   type UserType,
   type ActionType,
@@ -17,28 +17,6 @@ import {
   TRAVEL_INFO_LIMITS,
   isUnlimited
 } from '@/lib/limits/config';
-
-// ============================================
-// Types
-// ============================================
-
-export interface BillingAccessInfo {
-  userId: string | null;
-  email: string | null;
-  userType: UserType;
-  isSubscribed: boolean;
-  planType: PlanType;
-  subscriptionEndsAt: string | null;
-  ticketCount: number;
-  isPro: boolean;
-  isPremium: boolean;
-  isAdmin: boolean;
-  isFree: boolean;
-  isAnonymous: boolean;
-  subscriptionId?: string;
-  externalSubscriptionId?: string;
-  subscriptionStatus?: string;
-}
 
 export interface LimitCheckResult {
   allowed: boolean;
@@ -78,7 +56,6 @@ export function isAdminEmail(email: string | null | undefined): boolean {
 export function resolveUserTypeFromPlanCode(planCode: PlanType | undefined): UserType {
   switch (planCode) {
     case 'premium_monthly':
-    case 'premium_yearly':
       return 'premium';
     case 'pro_monthly':
       return 'pro';

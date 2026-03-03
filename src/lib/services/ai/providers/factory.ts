@@ -7,6 +7,7 @@
  */
 
 import type { UserType } from "@/lib/limits/config";
+import { canAccess } from "@/lib/billing/plan-catalog";
 import type { AIServiceProvider, AIProviderName, AIPhase, ResolvedProviderModel } from "./types";
 import { GeminiProvider } from "./gemini-provider";
 import { OpenAIProvider } from "./openai-provider";
@@ -63,7 +64,7 @@ export function getDefaultProviderName(): AIProviderName {
 /**
  * ユーザータイプに基づいてプロバイダーを選択
  *
- * - premium/admin: マルチプロバイダー可（指定可能）
+ * - multi_ai_provider capability: マルチプロバイダー可（指定可能）
  * - その他: デフォルトプロバイダーのみ
  */
 export function selectProvider(
@@ -72,11 +73,8 @@ export function selectProvider(
 ): AIServiceProvider {
   const defaultName = getDefaultProviderName();
 
-  // Premium/Admin はプロバイダー指定可能
-  if (
-    (userType === "premium" || userType === "admin") &&
-    preferredProvider
-  ) {
+  // Capability がある場合のみプロバイダー指定可能
+  if (canAccess(userType, "multi_ai_provider") && preferredProvider) {
     const preferred = getProvider(preferredProvider);
     if (preferred.isAvailable()) {
       return preferred;

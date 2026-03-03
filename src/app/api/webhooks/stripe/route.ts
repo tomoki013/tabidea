@@ -8,6 +8,11 @@ import type Stripe from "stripe";
 import { stripe } from "@/lib/stripe/client";
 import { createServiceRoleClient } from "@/lib/supabase/admin";
 import { TICKET_VALIDITY_DAYS } from "@/lib/limits/config";
+import {
+  isSubscriptionPlanType,
+  isTicketPlanType,
+  resolveSubscriptionPlanByPriceId,
+} from "@/lib/billing/plan-catalog";
 
 // ============================================
 // Types
@@ -140,6 +145,13 @@ function getSubscriptionPeriod(subscription: Stripe.Subscription): {
   };
 }
 
+function resolvePlanCodeFromSubscription(
+  subscription: Stripe.Subscription
+): "pro_monthly" | "premium_monthly" | null {
+  const priceId = subscription.items.data[0]?.price?.id;
+  return resolveSubscriptionPlanByPriceId(priceId);
+}
+
 /**
  * Check if a transaction has already been processed (idempotency check)
  */
@@ -254,7 +266,7 @@ async function handleCheckoutCompleted(
   eventId: string,
 ): Promise<WebhookResult> {
   const userId = session.metadata?.user_id;
-  const planType = session.metadata?.plan_type;
+  const checkoutPlanType = session.metadata?.plan_type;
   const ticketCount = parseInt(session.metadata?.ticket_count || "0", 10);
   const customerId = session.customer as string;
 
@@ -262,21 +274,35 @@ async function handleCheckoutCompleted(
     eventId,
     sessionId: session.id,
     userId,
-    planType,
+    planType: checkoutPlanType,
     customerId,
     ticketCount,
   });
 
   // Validate required metadata
-  if (!userId || !planType) {
+  if (!userId || !checkoutPlanType) {
     console.error("[webhook] Missing required metadata:", {
       userId,
-      planType,
+      planType: checkoutPlanType,
       sessionMetadata: session.metadata,
     });
     return {
       success: false,
       message: "Missing required metadata (user_id or plan_type)",
+    };
+  }
+
+  if (
+    !isSubscriptionPlanType(checkoutPlanType) &&
+    !isTicketPlanType(checkoutPlanType)
+  ) {
+    console.error("[webhook] Invalid plan_type in metadata:", {
+      planType: checkoutPlanType,
+      sessionMetadata: session.metadata,
+    });
+    return {
+      success: false,
+      message: `Invalid plan_type: ${checkoutPlanType}`,
     };
   }
 
@@ -318,14 +344,15 @@ async function handleCheckoutCompleted(
     }
   }
 
-  const isSubscriptionPlan = ["pro_monthly", "premium_monthly", "premium_yearly"].includes(planType);
+  const isSubscriptionPlan = isSubscriptionPlanType(checkoutPlanType);
+  let finalizedPlanType: string = checkoutPlanType;
 
   if (isSubscriptionPlan) {
     // Handle subscription
     const subscriptionId = session.subscription as string;
 
     if (!subscriptionId) {
-      console.error(`[webhook] No subscription ID for ${planType} plan`);
+      console.error(`[webhook] No subscription ID for ${checkoutPlanType} plan`);
       return {
         success: false,
         message: "No subscription ID for subscription plan",
@@ -335,12 +362,26 @@ async function handleCheckoutCompleted(
     // Retrieve full subscription details from Stripe
     const subscription = await stripe.subscriptions.retrieve(subscriptionId);
     const item = subscription.items.data[0];
+    const resolvedPlanCode = resolvePlanCodeFromSubscription(subscription);
+
+    if (!resolvedPlanCode) {
+      console.error("[webhook] Unknown subscription price ID:", {
+        subscriptionId,
+        priceId: item?.price?.id,
+        customerId: subscription.customer,
+      });
+      return {
+        success: false,
+        message: "Unknown subscription price ID",
+      };
+    }
+    finalizedPlanType = resolvedPlanCode;
 
     console.log("[webhook] Subscription details:", {
       subscriptionId,
       status: subscription.status,
       customerId: subscription.customer,
-      planCode: planType,
+      planCode: resolvedPlanCode,
       periodStart: item?.current_period_start,
       periodEnd: item?.current_period_end,
     });
@@ -355,7 +396,7 @@ async function handleCheckoutCompleted(
           external_customer_id: customerId,
           payment_provider: "stripe",
           status: subscription.status,
-          plan_code: planType,
+          plan_code: resolvedPlanCode,
           current_period_start: item?.current_period_start
             ? new Date(item.current_period_start * 1000).toISOString()
             : new Date().toISOString(),
@@ -383,6 +424,14 @@ async function handleCheckoutCompleted(
     console.log("[webhook] Subscription upserted:", subscriptionData?.id);
   } else {
     // Handle ticket pack purchase
+    if (!isTicketPlanType(checkoutPlanType)) {
+      console.error("[webhook] Invalid ticket plan type:", checkoutPlanType);
+      return {
+        success: false,
+        message: "Invalid ticket plan type",
+      };
+    }
+
     if (ticketCount <= 0) {
       console.error("[webhook] Invalid ticket count:", ticketCount);
       return {
@@ -401,14 +450,14 @@ async function handleCheckoutCompleted(
         remaining_count: ticketCount,
         valid_from: new Date().toISOString(),
         valid_until: new Date(
-          Date.now() + (TICKET_VALIDITY_DAYS[planType as keyof typeof TICKET_VALIDITY_DAYS] ?? 180) * 24 * 60 * 60 * 1000,
+          Date.now() + (TICKET_VALIDITY_DAYS[checkoutPlanType] ?? 180) * 24 * 60 * 60 * 1000,
         ).toISOString(),
         source_type: "stripe",
         source_id: session.id,
         status: "active",
         metadata: {
           checkout_session_id: session.id,
-          plan_type: planType,
+          plan_type: checkoutPlanType,
           event_id: eventId,
         },
       })
@@ -439,7 +488,7 @@ async function handleCheckoutCompleted(
         external_transaction_id: externalTransactionId,
         status: "succeeded",
         metadata: {
-          plan_type: planType,
+          plan_type: finalizedPlanType,
           ticket_count: ticketCount,
           checkout_session_id: session.id,
           event_id: eventId,
@@ -461,10 +510,10 @@ async function handleCheckoutCompleted(
 
   return {
     success: true,
-    message: `Checkout completed for ${planType}`,
+    message: `Checkout completed for ${finalizedPlanType}`,
     details: {
       userId,
-      planType,
+      planType: finalizedPlanType,
       ticketCount: !isSubscriptionPlan ? ticketCount : undefined,
     },
   };
@@ -482,6 +531,21 @@ async function handleSubscriptionChange(
   const customerId = subscription.customer as string;
   const subscriptionId = subscription.id;
   const { periodStart, periodEnd } = getSubscriptionPeriod(subscription);
+  const resolvedPlanCode = resolvePlanCodeFromSubscription(subscription);
+
+  if (!resolvedPlanCode) {
+    const priceId = subscription.items.data[0]?.price?.id;
+    console.error("[webhook] Unknown subscription price ID during update:", {
+      subscriptionId,
+      customerId,
+      priceId,
+      eventType,
+    });
+    return {
+      success: false,
+      message: "Unknown subscription price ID",
+    };
+  }
 
   console.log("[webhook] handleSubscriptionChange:", {
     eventId,
@@ -521,6 +585,7 @@ async function handleSubscriptionChange(
       .from("subscriptions")
       .update({
         status: subscription.status,
+        plan_code: resolvedPlanCode,
         current_period_start: periodStart.toISOString(),
         current_period_end: periodEnd.toISOString(),
         cancel_at_period_end: subscription.cancel_at_period_end,
@@ -549,6 +614,7 @@ async function handleSubscriptionChange(
     .from("subscriptions")
     .update({
       status: subscription.status,
+      plan_code: resolvedPlanCode,
       current_period_start: periodStart.toISOString(),
       current_period_end: periodEnd.toISOString(),
       cancel_at_period_end: subscription.cancel_at_period_end,
@@ -571,6 +637,7 @@ async function handleSubscriptionChange(
   console.log("[webhook] Subscription updated:", {
     userId: user.id,
     subscriptionId,
+    planCode: resolvedPlanCode,
     newStatus: subscription.status,
   });
 
@@ -579,6 +646,7 @@ async function handleSubscriptionChange(
     message: `Subscription ${eventType} processed`,
     details: {
       userId: user.id,
+      planCode: resolvedPlanCode,
       status: subscription.status,
     },
   };
