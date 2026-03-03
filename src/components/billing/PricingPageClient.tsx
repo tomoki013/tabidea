@@ -31,6 +31,16 @@ export function PricingPageClient({
       : null,
   );
 
+  const isSubscribed = billingStatus?.isSubscribed === true;
+  const currentPlanType = billingStatus?.planType;
+  const currentPlanName = billingStatus
+    ? resolvePlanDisplayName({
+        planType: billingStatus.planType,
+        isSubscribed: billingStatus.isSubscribed,
+        isAdmin: billingStatus.isAdmin,
+      })
+    : "Free";
+
   const handlePurchase = async (planType: PurchaseType) => {
     if (planType === "free") return;
     if (billingStatus?.isAdmin) {
@@ -62,8 +72,20 @@ export function PricingPageClient({
       } else if (result.error === "not_authenticated") {
         router.push("/auth/login?redirect=/pricing");
       } else if (result.error === "already_subscribed") {
+        const resolvedPlanName =
+          result.resolvedPlanName ||
+          (result.resolvedPlanType
+            ? resolvePlanDisplayName({
+                planType: result.resolvedPlanType,
+                isSubscribed: true,
+                isAdmin: false,
+              })
+            : currentPlanName !== "Free"
+              ? currentPlanName
+              : "有料");
+
         setError(
-          `既に${currentPlanName}プランに加入しています。プラン管理からご確認ください。`,
+          `既に${resolvedPlanName}プランに加入しています。プラン管理からご確認ください。`,
         );
         // ページをリロードして最新状態を表示
         router.refresh();
@@ -110,16 +132,6 @@ export function PricingPageClient({
       setIsLoading(null);
     }
   };
-
-  const isSubscribed = billingStatus?.isSubscribed === true;
-  const currentPlanType = billingStatus?.planType;
-  const currentPlanName = billingStatus
-    ? resolvePlanDisplayName({
-        planType: billingStatus.planType,
-        isSubscribed: billingStatus.isSubscribed,
-        isAdmin: billingStatus.isAdmin,
-      })
-    : "Free";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">

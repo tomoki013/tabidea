@@ -108,6 +108,8 @@ export interface CheckoutSessionResult {
   success: boolean;
   url?: string;
   error?: string;
+  resolvedPlanType?: 'pro_monthly' | 'premium_monthly';
+  resolvedPlanName?: string;
 }
 
 /** ポータルセッション作成のレスポンス */

@@ -6,10 +6,12 @@ import { createClient } from "@/lib/supabase/server";
 import { hasActiveSubscription } from "@/lib/billing/billing-checker";
 import {
   type CheckoutPlanType,
+  type SubscriptionPlanType,
   isSubscriptionPlanType,
+  resolvePlanDisplayName,
   resolveSubscriptionPlanByPriceId,
 } from "@/lib/billing/plan-catalog";
-import type { TicketType } from "@/types/billing";
+import type { CheckoutSessionResult, TicketType } from "@/types/billing";
 import { headers } from "next/headers";
 
 const PRICE_IDS: Record<CheckoutPlanType, string> = {
@@ -27,6 +29,33 @@ const TICKET_COUNTS: Record<TicketType, number> = {
 };
 
 type SupabaseClient = Awaited<ReturnType<typeof createClient>>;
+
+function resolveSubscribedPlanType(
+  planCode: string | null | undefined,
+): SubscriptionPlanType | null {
+  if (!planCode) return null;
+  return isSubscriptionPlanType(planCode) ? planCode : null;
+}
+
+function buildAlreadySubscribedResult(
+  planCode: string | null | undefined,
+): CheckoutSessionResult {
+  const resolvedPlanType = resolveSubscribedPlanType(planCode);
+  const resolvedPlanName = resolvedPlanType
+    ? resolvePlanDisplayName({
+        planType: resolvedPlanType,
+        isSubscribed: true,
+        isAdmin: false,
+      })
+    : "有料";
+
+  return {
+    success: false,
+    error: "already_subscribed",
+    resolvedPlanType: resolvedPlanType ?? undefined,
+    resolvedPlanName,
+  };
+}
 
 function normalizeBaseUrl(url: string): string {
   return url.replace(/\/$/, "");
@@ -117,11 +146,19 @@ async function resolveStripeCustomerId(
   if (!customerId && email) {
     const existingCustomers = await stripe.customers.list({
       email,
-      limit: 1,
+      limit: 10,
     });
 
-    if (existingCustomers.data.length > 0) {
-      customerId = existingCustomers.data[0].id;
+    const matchedCustomer = existingCustomers.data.find((customer) => {
+      if ("deleted" in customer && customer.deleted) {
+        return false;
+      }
+
+      return customer.metadata?.supabase_user_id === userId;
+    });
+
+    if (matchedCustomer) {
+      customerId = matchedCustomer.id;
     }
   }
 
@@ -133,11 +170,9 @@ async function resolveStripeCustomerId(
   return customerId;
 }
 
-export async function createCheckoutSession(planType: CheckoutPlanType): Promise<{
-  success: boolean;
-  url?: string;
-  error?: string;
-}> {
+export async function createCheckoutSession(
+  planType: CheckoutPlanType,
+): Promise<CheckoutSessionResult> {
   const supabase = await createClient();
   const {
     data: { user },
@@ -162,7 +197,7 @@ export async function createCheckoutSession(planType: CheckoutPlanType): Promise
       console.warn(
         `[checkout] User ${user.id} already has active subscription: ${subscription?.externalSubscriptionId}`,
       );
-      return { success: false, error: "already_subscribed" };
+      return buildAlreadySubscribedResult(subscription?.planCode);
     }
   }
 
@@ -196,7 +231,7 @@ export async function createCheckoutSession(planType: CheckoutPlanType): Promise
             console.error(
               `[checkout] Unknown active subscription price_id=${item?.price?.id} for customer=${customerId}`,
             );
-            return { success: false, error: "already_subscribed" };
+            return buildAlreadySubscribedResult(null);
           }
 
           const adminClient = createServiceRoleClient();
@@ -230,7 +265,7 @@ export async function createCheckoutSession(planType: CheckoutPlanType): Promise
           console.error("[checkout] Failed to initialize sync client:", syncError);
         }
 
-        return { success: false, error: "already_subscribed" };
+        return buildAlreadySubscribedResult(resolvedPlanCode);
       }
     }
 

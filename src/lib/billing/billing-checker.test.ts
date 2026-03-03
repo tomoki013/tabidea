@@ -12,17 +12,23 @@ vi.mock('next/headers', () => ({
   })),
 }));
 
-// Mock Supabase client
-const mockSupabase = {
-  auth: {
-    getUser: vi.fn(),
+const mocks = vi.hoisted(() => ({
+  mockSupabase: {
+    auth: {
+      getUser: vi.fn(),
+    },
+    from: vi.fn(),
+    rpc: vi.fn(),
   },
-  from: vi.fn(),
-  rpc: vi.fn(),
-};
+  mockReconcileUserSubscriptionFromStripe: vi.fn(),
+}));
 
 vi.mock('@/lib/supabase/server', () => ({
-  createClient: vi.fn(() => mockSupabase),
+  createClient: vi.fn(() => mocks.mockSupabase),
+}));
+
+vi.mock('@/lib/billing/stripe-reconcile', () => ({
+  reconcileUserSubscriptionFromStripe: mocks.mockReconcileUserSubscriptionFromStripe,
 }));
 
 import {
@@ -35,6 +41,10 @@ describe('BillingChecker — 5-tier', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     delete process.env.ADMIN_EMAILS;
+    mocks.mockReconcileUserSubscriptionFromStripe.mockResolvedValue({
+      synced: false,
+      reason: 'no_active_subscription',
+    });
   });
 
   // =========================================
@@ -90,8 +100,20 @@ describe('BillingChecker — 5-tier', () => {
       return chain;
     };
 
+    const mockUserChain = (stripeCustomerId: string | null) => {
+      const chain = {
+        select: vi.fn().mockReturnThis(),
+        eq: vi.fn().mockReturnThis(),
+        maybeSingle: vi.fn().mockResolvedValue({
+          data: { stripe_customer_id: stripeCustomerId },
+          error: null,
+        }),
+      };
+      return chain;
+    };
+
     it('anonymous: no auth → anonymous userType', async () => {
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: null },
         error: { message: 'not authenticated' },
       });
@@ -109,7 +131,7 @@ describe('BillingChecker — 5-tier', () => {
 
     it('admin: admin email → admin userType', async () => {
       process.env.ADMIN_EMAILS = 'admin@test.com';
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'admin-1', email: 'admin@test.com' } },
         error: null,
       });
@@ -124,14 +146,15 @@ describe('BillingChecker — 5-tier', () => {
     });
 
     it('free: authenticated, no subscription → free userType', async () => {
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'user-1', email: 'user@test.com' } },
         error: null,
       });
 
-      mockSupabase.from.mockImplementation((table: string) => {
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
         if (table === 'subscriptions') return mockSubscriptionChain(null);
         if (table === 'entitlement_grants') return mockTicketsChain([]);
+        if (table === 'users') return mockUserChain(null);
         return { select: vi.fn() };
       });
 
@@ -149,12 +172,12 @@ describe('BillingChecker — 5-tier', () => {
       const futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 30);
 
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'user-2', email: 'pro@test.com' } },
         error: null,
       });
 
-      mockSupabase.from.mockImplementation((table: string) => {
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
         if (table === 'subscriptions') {
           return mockSubscriptionChain({
             id: 'sub-1',
@@ -165,6 +188,7 @@ describe('BillingChecker — 5-tier', () => {
           });
         }
         if (table === 'entitlement_grants') return mockTicketsChain([]);
+        if (table === 'users') return mockUserChain(null);
         return { select: vi.fn() };
       });
 
@@ -181,12 +205,12 @@ describe('BillingChecker — 5-tier', () => {
       const futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 30);
 
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'user-3', email: 'premium@test.com' } },
         error: null,
       });
 
-      mockSupabase.from.mockImplementation((table: string) => {
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
         if (table === 'subscriptions') {
           return mockSubscriptionChain({
             id: 'sub-2',
@@ -197,6 +221,7 @@ describe('BillingChecker — 5-tier', () => {
           });
         }
         if (table === 'entitlement_grants') return mockTicketsChain([]);
+        if (table === 'users') return mockUserChain(null);
         return { select: vi.fn() };
       });
 
@@ -213,12 +238,12 @@ describe('BillingChecker — 5-tier', () => {
       const pastDate = new Date();
       pastDate.setDate(pastDate.getDate() - 1);
 
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'user-5', email: 'expired@test.com' } },
         error: null,
       });
 
-      mockSupabase.from.mockImplementation((table: string) => {
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
         if (table === 'subscriptions') {
           return mockSubscriptionChain({
             id: 'sub-4',
@@ -229,6 +254,7 @@ describe('BillingChecker — 5-tier', () => {
           });
         }
         if (table === 'entitlement_grants') return mockTicketsChain([]);
+        if (table === 'users') return mockUserChain(null);
         return { select: vi.fn() };
       });
 
@@ -244,12 +270,12 @@ describe('BillingChecker — 5-tier', () => {
       const futureDate = new Date();
       futureDate.setDate(futureDate.getDate() + 60);
 
-      mockSupabase.auth.getUser.mockResolvedValue({
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
         data: { user: { id: 'user-6', email: 'ticket@test.com' } },
         error: null,
       });
 
-      mockSupabase.from.mockImplementation((table: string) => {
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
         if (table === 'subscriptions') return mockSubscriptionChain(null);
         if (table === 'entitlement_grants') {
           return mockTicketsChain([
@@ -257,6 +283,7 @@ describe('BillingChecker — 5-tier', () => {
             { id: 't-2', remaining_count: 2, valid_until: futureDate.toISOString() },
           ]);
         }
+        if (table === 'users') return mockUserChain(null);
         return { select: vi.fn() };
       });
 
@@ -264,6 +291,49 @@ describe('BillingChecker — 5-tier', () => {
 
       expect(result.userType).toBe('free');
       expect(result.ticketCount).toBe(5);
+    });
+
+    it('reconciles from Stripe when DB has no active subscription', async () => {
+      const futureDate = new Date();
+      futureDate.setDate(futureDate.getDate() + 30);
+      let subscriptionCallCount = 0;
+
+      mocks.mockSupabase.auth.getUser.mockResolvedValue({
+        data: { user: { id: 'user-7', email: 'reconcile@test.com' } },
+        error: null,
+      });
+
+      mocks.mockReconcileUserSubscriptionFromStripe.mockResolvedValue({
+        synced: true,
+        planCode: 'pro_monthly',
+      });
+
+      mocks.mockSupabase.from.mockImplementation((table: string) => {
+        if (table === 'subscriptions') {
+          subscriptionCallCount += 1;
+          if (subscriptionCallCount === 1) return mockSubscriptionChain(null);
+          return mockSubscriptionChain({
+            id: 'sub-reconciled',
+            external_subscription_id: 'stripe-sub-reconciled',
+            status: 'active',
+            current_period_end: futureDate.toISOString(),
+            plan_code: 'pro_monthly',
+          });
+        }
+        if (table === 'entitlement_grants') return mockTicketsChain([]);
+        if (table === 'users') return mockUserChain('cus_reconcile_123');
+        return { select: vi.fn() };
+      });
+
+      const result = await checkBillingAccess();
+
+      expect(mocks.mockReconcileUserSubscriptionFromStripe).toHaveBeenCalledWith({
+        userId: 'user-7',
+        stripeCustomerId: 'cus_reconcile_123',
+      });
+      expect(result.isSubscribed).toBe(true);
+      expect(result.planType).toBe('pro_monthly');
+      expect(result.userType).toBe('pro');
     });
   });
 

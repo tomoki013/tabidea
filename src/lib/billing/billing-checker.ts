@@ -17,6 +17,7 @@ import {
   TRAVEL_INFO_LIMITS,
   isUnlimited
 } from '@/lib/limits/config';
+import { reconcileUserSubscriptionFromStripe } from '@/lib/billing/stripe-reconcile';
 
 export interface LimitCheckResult {
   allowed: boolean;
@@ -84,13 +85,31 @@ export async function checkBillingAccess(
     return createAdminBillingInfo(user.id, user.email ?? null);
   }
 
-  const [subscriptionResult, ticketsResult] = await Promise.all([
+  const [initialSubscriptionResult, ticketsResult, stripeCustomerId] = await Promise.all([
     fetchActiveSubscription(supabase, user.id),
     fetchTicketCount(supabase, user.id),
+    fetchStripeCustomerId(supabase, user.id),
   ]);
 
+  let subscriptionResult = initialSubscriptionResult;
+  const initialHasValidSubscription =
+    initialSubscriptionResult.hasActive &&
+    isSubscriptionPeriodValid(initialSubscriptionResult.subscription?.currentPeriodEnd);
+
+  if (!initialHasValidSubscription && stripeCustomerId) {
+    const reconcileResult = await reconcileUserSubscriptionFromStripe({
+      userId: user.id,
+      stripeCustomerId,
+    });
+
+    if (reconcileResult.synced) {
+      subscriptionResult = await fetchActiveSubscription(supabase, user.id);
+    }
+  }
+
   const hasValidSubscription =
-    subscriptionResult.hasActive && isSubscriptionPeriodValid(subscriptionResult.subscription?.currentPeriodEnd);
+    subscriptionResult.hasActive &&
+    isSubscriptionPeriodValid(subscriptionResult.subscription?.currentPeriodEnd);
 
   const planCode = subscriptionResult.subscription?.planCode as PlanType | undefined;
   const userType: UserType = hasValidSubscription
@@ -387,6 +406,16 @@ async function fetchValidTickets(supabase: any, userId: string) {
     .gt('valid_until', new Date().toISOString());
 
   return tickets || [];
+}
+
+async function fetchStripeCustomerId(supabase: any, userId: string): Promise<string | null> {
+  const { data } = await supabase
+    .from('users')
+    .select('stripe_customer_id')
+    .eq('id', userId)
+    .maybeSingle();
+
+  return data?.stripe_customer_id ?? null;
 }
 
 async function fetchTicketCount(supabase: any, userId: string): Promise<number> {

@@ -27,6 +27,9 @@ CREATE TABLE users (
 );
 
 CREATE INDEX idx_users_stripe_customer_id ON users(stripe_customer_id);
+CREATE UNIQUE INDEX idx_users_stripe_customer_id_unique
+  ON users(stripe_customer_id)
+  WHERE stripe_customer_id IS NOT NULL;
 
 -- RLS (Row Level Security)
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
