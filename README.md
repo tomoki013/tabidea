@@ -7,9 +7,11 @@ AIと一緒に、あなただけの旅の計画を。
 
 ## Documentation
 
-- [Setup Guide](docs/setup.md) - How to install and run the project.
-- [Architecture](docs/architecture.md) - System overview and directory structure.
-- [Testing Strategy](docs/testing.md) - How to run and write tests.
+- [Documentation Index](docs/README.md) - Entry point for all product and development docs.
+- [What Is Tabidea](docs/project/what-is-tabidea.md) - Detailed user-facing service guide.
+- [Setup and Operations](docs/development/setup-and-operations.md) - Local setup and day-to-day commands.
+- [Architecture](docs/development/architecture.md) - System structure and core flows.
+- [Testing Guide](docs/development/testing.md) - Unit/E2E strategy and commands.
 - [Supabase Migration Guide](supabase/README.md) - How to apply SQL migrations safely.
 
 ## 概要

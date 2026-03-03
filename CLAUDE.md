@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 AI Travel Planner is a Japanese-language travel planning web app powered by Google's Gemini AI. It generates personalized travel itineraries based on user preferences.
 
-See [docs/architecture.md](docs/architecture.md) for detailed architecture.
+See [docs/development/architecture.md](docs/development/architecture.md) for detailed architecture.
 
 ## Commands
 
@@ -17,7 +17,7 @@ pnpm lint         # Run ESLint
 pnpm test         # Run Vitest unit tests
 ```
 
-See [docs/testing.md](docs/testing.md) for more testing details.
+See [docs/development/testing.md](docs/development/testing.md) for more testing details.
 
 ## Coding Guidelines
 
@@ -27,7 +27,18 @@ We follow a **colocation** strategy for unit tests.
 - Create `*.test.ts` (or `.tsx`) files next to the source file.
 - Run tests with `pnpm test`.
 
-See [docs/testing.md](docs/testing.md) for the full strategy.
+See [docs/development/testing.md](docs/development/testing.md) for the full strategy.
+
+### Documentation Maintenance (Required)
+
+Any PR that changes behavior, architecture, database schema, or testing policy must update `/docs` in the same PR.
+
+- Feature/UX behavior changes: update project/development docs.
+- API/Action/Service contract changes: update reference docs.
+- Schema/migration changes: update database docs.
+- File structure changes: regenerate `docs/reference/file-catalog.md` with `pnpm docs:catalog`.
+
+If code and docs disagree, treat code as source of truth and fix docs immediately.
 
 ## Tech Stack
 
@@ -40,7 +51,7 @@ See [docs/testing.md](docs/testing.md) for the full strategy.
 
 ## Directory Structure
 
-See [docs/coding-standards.md](docs/coding-standards.md) for full coding guidelines.
+See [docs/development/coding-rules.md](docs/development/coding-rules.md) for full coding guidelines.
 
 ### Quick Reference
 
@@ -117,7 +128,7 @@ timer.log();
 | outline total | 20,000 | 35,000 | 概要生成全体 |
 | chunk total | 22,000 | 37,000 | チャンク生成全体 |
 
-詳細は [docs/performance.md](docs/performance.md) を参照。
+詳細は [docs/development/performance.md](docs/development/performance.md) を参照。
 
 ## Notes
 

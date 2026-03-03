@@ -1,5 +1,5 @@
 import { execSync } from "node:child_process";
-import { writeFileSync, mkdirSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import path from "node:path";
 
 type FileEntry = {
@@ -19,6 +19,7 @@ function runGitList(): string[] {
     .split(/\r?\n/)
     .map((line) => line.trim())
     .filter(Boolean)
+    .filter((line) => existsSync(line))
     .filter((line) => !line.startsWith(".next/"))
     .filter((line) => !line.startsWith("node_modules/"));
 }
@@ -41,7 +42,7 @@ function classifyArea(filePath: string): string {
   if (filePath.startsWith("archive/unused/")) return "Archived/Unused";
   if (filePath.startsWith("archive/")) return "Archive";
   if (filePath.startsWith("public/")) return "Static Assets";
-  if (filePath.startsWith("posts/")) return "Posts Submodule";
+  if (filePath === "posts" || filePath.startsWith("posts/")) return "Posts Submodule";
   if (filePath.startsWith(".vscode/")) return "Editor Config";
   return "Project Root";
 }
@@ -59,6 +60,8 @@ function classifyType(filePath: string): string {
   if (filePath.endsWith(".ts")) return "TypeScript Module";
   if (filePath.endsWith(".sql")) return "SQL Migration";
   if (filePath.endsWith(".json")) return "JSON";
+  if (filePath.endsWith(".yaml") || filePath.endsWith(".yml")) return "YAML";
+  if (filePath.endsWith(".toml")) return "TOML";
   if (filePath.endsWith(".md")) return "Markdown";
   if (filePath.endsWith(".pdf")) return "PDF";
   if (filePath.endsWith(".css")) return "Stylesheet";
@@ -67,6 +70,7 @@ function classifyType(filePath: string): string {
   if (filePath.endsWith(".py")) return "Python Script";
   if (filePath.endsWith(".ttf")) return "Font Asset";
   if (/\.(jpg|jpeg|png|gif|webp|ico)$/.test(filePath)) return "Image Asset";
+  if (filePath === "posts") return "Git Submodule";
   if (filePath.endsWith(".gitignore") || filePath.endsWith(".gitmodules")) return "Git Config";
   if (filePath.startsWith(".")) return "Project Config";
   return "Other";
@@ -162,6 +166,9 @@ function summarize(filePath: string, fileType: string): string {
   }
   if (filePath.startsWith("public/")) {
     return `Static public asset used by client rendering.`;
+  }
+  if (filePath === "posts") {
+    return "Git submodule pointer for externally managed article repository.";
   }
   if (filePath.startsWith("posts/")) {
     return "Git submodule content reference for blog source materials.";
