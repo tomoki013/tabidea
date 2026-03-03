@@ -152,6 +152,19 @@ function resolvePlanCodeFromSubscription(
   return resolveSubscriptionPlanByPriceId(priceId);
 }
 
+function isMultipleRowsError(
+  error: { code?: string | null; details?: string | null } | null | undefined,
+): boolean {
+  if (!error || error.code !== "PGRST116" || !error.details) {
+    return false;
+  }
+
+  const match = error.details.match(/contains\s+(\d+)\s+rows?/i);
+  if (!match) return false;
+
+  return Number(match[1]) > 1;
+}
+
 /**
  * Check if a transaction has already been processed (idempotency check)
  */
@@ -216,6 +229,14 @@ async function findUserByCustomerId(
     .maybeSingle();
 
   if (customerError) {
+    if (isMultipleRowsError(customerError)) {
+      console.error("[webhook] Multiple users found for stripe_customer_id", {
+        customerId,
+        details: customerError.details,
+      });
+      return null;
+    }
+
     console.warn(
       `[webhook] Error finding user by customer_id: ${customerError.message}`,
     );
@@ -235,6 +256,14 @@ async function findUserByCustomerId(
     .maybeSingle();
 
   if (subError) {
+    if (isMultipleRowsError(subError)) {
+      console.error("[webhook] Multiple subscriptions found for external_customer_id", {
+        customerId,
+        details: subError.details,
+      });
+      return null;
+    }
+
     console.warn(
       `[webhook] Error finding user by subscription: ${subError.message}`,
     );

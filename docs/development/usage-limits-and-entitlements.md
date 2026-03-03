@@ -77,3 +77,10 @@
 2. 必要なDB変更をmigration化
 3. UI表示と文言を更新
 4. 本ドキュメントと関連docsを更新
+
+## 10. Billing Consistency (Stripe ↔ Supabase)
+
+- 判定の正本は `checkBillingAccess`（`src/lib/billing/billing-checker.ts`）。
+- `subscriptions` に有効サブスクが無いが `users.stripe_customer_id` がある場合は、`src/lib/billing/stripe-reconcile.ts` が Stripe から自己修復同期を行う。
+- Checkout 側で `already_subscribed` を返す場合は、`resolvedPlanType` / `resolvedPlanName` を返して UI 文言と実プラン名を一致させる。
+- `users.stripe_customer_id` は重複禁止（`supabase/migrations/20260304090000_enforce_unique_stripe_customer_id.sql`）。
