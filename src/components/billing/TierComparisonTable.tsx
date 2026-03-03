@@ -40,7 +40,7 @@ const COMPARISON_FEATURES: ComparisonFeature[] = [
   { label: "渡航情報カテゴリ", free: "3カテゴリ", pro: "3カテゴリ", premium: "全カテゴリ" },
   { label: "プラン内渡航情報表示", free: false, pro: true, premium: true },
   // マップ & 検索
-  { label: "マップ表示", free: "静的リスト", pro: "Leaflet対話型", premium: "Google Maps フル機能", category: "マップ & 検索" },
+  { label: "マップ表示", free: "静的マップ", pro: "Leaflet対話型", premium: "Google Maps フル機能", category: "マップ & 検索" },
   { label: "Places 詳細取得", free: "なし", pro: "10件/プラン", premium: "無制限" },
   { label: "航空券・ホテル候補", free: "なし", pro: "3件", premium: "7件" },
   // AI & カスタマイズ
@@ -55,7 +55,13 @@ const COMPARISON_FEATURES: ComparisonFeature[] = [
 // ============================================================================
 
 export function TierComparisonTable() {
-  let lastCategory: string | undefined;
+  const rows = COMPARISON_FEATURES.map((feature, index, features) => ({
+    feature,
+    showCategory: Boolean(
+      feature.category &&
+        (index === 0 || feature.category !== features[index - 1]?.category),
+    ),
+  }));
 
   return (
     <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8">
@@ -81,20 +87,13 @@ export function TierComparisonTable() {
             </tr>
           </thead>
           <tbody>
-            {COMPARISON_FEATURES.map((feature) => {
-              const showCategory = Boolean(
-                feature.category && feature.category !== lastCategory
-              );
-              if (feature.category) lastCategory = feature.category;
-
-              return (
-                <ComparisonRow
-                  key={feature.label}
-                  feature={feature}
-                  showCategory={showCategory}
-                />
-              );
-            })}
+            {rows.map(({ feature, showCategory }) => (
+              <ComparisonRow
+                key={feature.label}
+                feature={feature}
+                showCategory={showCategory}
+              />
+            ))}
           </tbody>
         </table>
       </div>

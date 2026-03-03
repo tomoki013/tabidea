@@ -27,6 +27,19 @@ export default function ContactPage() {
           {/* Contact Form Section */}
           <ContactForm />
 
+          <section className="text-center text-sm text-stone-500 space-y-2">
+            <p>お問い合わせ前に、以下のポリシーもご確認ください。</p>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <Link href="/terms" className="underline hover:text-[#e67e22]">利用規約</Link>
+              <span>|</span>
+              <Link href="/privacy" className="underline hover:text-[#e67e22]">プライバシーポリシー</Link>
+              <span>|</span>
+              <Link href="/ai-policy" className="underline hover:text-[#e67e22]">AIポリシー</Link>
+              <span>|</span>
+              <Link href="/cookie-policy" className="underline hover:text-[#e67e22]">クッキーポリシー</Link>
+            </div>
+          </section>
+
           {/* Other Links Section */}
           <section>
             <h3 className="text-lg font-bold text-stone-700 mb-4 font-serif text-center">

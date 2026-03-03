@@ -95,8 +95,8 @@ export default function PrivacyPolicy() {
                 不正アクセス、スパム行為、利用規約違反の防止および対応のため。
               </li>
               <li>
-                <strong>マーケティング：</strong>
-                当サービスまたは第三者の広告配信、キャンペーン情報の提供、利用状況に基づく最適な情報の提案のため。
+                <strong>サービス案内・通知：</strong>
+                重要なお知らせ、規約改定、機能更新情報の案内のため。
               </li>
               <li>
                 <strong>その他：</strong>
@@ -144,8 +144,7 @@ export default function PrivacyPolicy() {
                 </h3>
                 <p className="mt-1">
                   旅行プランの生成には、Google LLCが提供する生成AIサービス（Gemini
-                  API）およびOpenAI, L.L.C.が提供する生成AIサービス（OpenAI
-                  API）等を利用しています。ユーザーが入力した情報は、各サービスのプライバシーポリシーに従って処理されるほか、AIの学習には利用されない設定で利用することを原則とします。詳細は
+                  API）を主に利用し、一部プラン・機能ではOpenAI, L.L.C.が提供する生成AIサービス（OpenAI API）を利用します。ユーザーが入力した情報は、各サービスのプライバシーポリシーに従って処理されるほか、AIの学習には利用されない契約条件で利用することを原則とします。詳細は
                   <PolicyLink href="/ai-policy">AIポリシー</PolicyLink>
                   をご確認ください。
                 </p>
@@ -172,7 +171,7 @@ export default function PrivacyPolicy() {
                   5-4. アフィリエイトプログラム
                 </h3>
                 <p className="mt-1">
-                  当サービスは、Amazonアソシエイト・プログラム、楽天アフィリエイトなどのアフィリエイトプログラムに参加しています。これらのリンクを通じて購入等が行われた場合、第三者がCookie等を使用して情報を収集する可能性があります。
+                  当サービスでは、提携プログラムを利用した紹介リンクを表示する場合があります。これらのリンクを通じて購入等が行われた場合、第三者がCookie等を使用して情報を収集する可能性があります。
                 </p>
               </div>
             </div>
@@ -249,7 +248,7 @@ export default function PrivacyPolicy() {
           <div className="text-right text-sm text-muted-foreground mt-12">
             策定日：2025年12月23日
             <br />
-            最終更新日：2026年2月14日
+            最終更新日：2026年3月3日
           </div>
         </div>
       </main>

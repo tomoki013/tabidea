@@ -182,6 +182,50 @@ export default function AboutContent() {
             </motion.div>
           </section>
 
+          {/* Service Overview */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={fadeInUp}
+            className="bg-white rounded-3xl border border-stone-200 p-8 sm:p-12"
+          >
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2c2c2c] mb-6">
+              いま提供している主な機能
+            </h2>
+            <div className="grid md:grid-cols-2 gap-6 text-stone-700">
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">プラン作成と調整</h3>
+                <p className="text-sm leading-relaxed">
+                  条件入力からプランを生成し、生成後は再生成やチャット調整で内容を見直せます。
+                </p>
+              </div>
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">保存・共有・出力</h3>
+                <p className="text-sm leading-relaxed">
+                  ログインユーザーはプランを保存し、旅のしおりとして共有できます。PDF出力やカレンダー連携にも対応しています。
+                </p>
+              </div>
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">渡航情報の確認</h3>
+                <p className="text-sm leading-relaxed">
+                  安全情報、気候、ビザ、マナーなどをカテゴリ別に確認できます。利用可能回数とカテゴリはプラン種別で異なります。
+                </p>
+              </div>
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">料金プラン</h3>
+                <p className="text-sm leading-relaxed">
+                  無料、Pro、Premium、回数券を提供しています。最新の制限や料金は
+                  <a href="/pricing" className="ml-1 underline text-[#e67e22] hover:text-[#d35400]">料金ページ</a>
+                  でご確認ください。
+                </p>
+              </div>
+            </div>
+            <p className="text-xs text-stone-500 mt-6">
+              AIが生成する提案には誤りが含まれる可能性があります。営業時間・料金・規制などの重要事項は必ず公式の一次情報をご確認ください。
+            </p>
+          </motion.section>
+
           {/* Domain Meaning */}
           <motion.section
             initial="hidden"

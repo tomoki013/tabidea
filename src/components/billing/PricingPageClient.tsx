@@ -250,6 +250,12 @@ export function PricingPageClient({
         {/* FAQ - Using generic component */}
         <FAQSection categoryId="billing" />
 
+        <div className="mt-10 text-center text-xs text-stone-500 max-w-2xl mx-auto leading-relaxed">
+          サブスクリプションは月次自動更新です。解約後も請求期間終了まではご利用いただけます。
+          <br />
+          返金ポリシーは <a href="/specified" className="underline hover:text-[#e67e22]">特定商取引法に基づく表記</a> をご確認ください。
+        </div>
+
         {/* Legal Links */}
         <div className="mt-12 text-center text-sm text-stone-500">
           <a href="/specified" className="hover:text-[#e67e22] underline">
@@ -262,6 +268,14 @@ export function PricingPageClient({
           <span className="mx-2">|</span>
           <a href="/privacy" className="hover:text-[#e67e22] underline">
             プライバシーポリシー
+          </a>
+          <span className="mx-2">|</span>
+          <a href="/ai-policy" className="hover:text-[#e67e22] underline">
+            AIポリシー
+          </a>
+          <span className="mx-2">|</span>
+          <a href="/cookie-policy" className="hover:text-[#e67e22] underline">
+            クッキーポリシー
           </a>
         </div>
       </div>

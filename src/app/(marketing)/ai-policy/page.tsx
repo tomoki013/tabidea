@@ -31,8 +31,8 @@ export default function AiPolicy() {
               2. 使用しているAI技術
             </h2>
             <p>
-              当サービスでは、Google LLC（以下「Google社」）が提供する生成AIモデル「Gemini API」およびOpenAI, L.L.C.（以下「OpenAI社」）が提供する生成AIモデル「OpenAI API」を使用しています。
-              ユーザーが入力した条件（目的地、予算、テーマ等）は、このAIモデルによって処理され、旅行プランが生成されます。
+              当サービスでは、Google LLC（以下「Google社」）が提供する生成AIモデル「Gemini API」を主に使用しています。加えて、一部のプラン・機能ではOpenAI, L.L.C.（以下「OpenAI社」）が提供する生成AIモデル「OpenAI API」を利用できます。
+              ユーザーが入力した条件（目的地、予算、テーマ等）は、選択されたAIモデルによって処理され、旅行プランが生成されます。
             </p>
           </section>
 
@@ -46,11 +46,11 @@ export default function AiPolicy() {
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
                 <strong>AI学習への利用禁止（Google）：</strong>{" "}
-                当サービスに入力されたデータ（プロンプト）および生成されたコンテンツは、Google社の「Gemini API 追加利用規約（Paid Services）」に基づき、Google社のAIモデルの学習（トレーニング）には使用されません。
+                当サービスに入力されたデータ（プロンプト）および生成されたコンテンツは、Google社の「Gemini API 追加利用規約（Paid Services）」に基づき、Google社のAIモデルの学習（トレーニング）には使用されない条件で取り扱われます。
               </li>
               <li>
                 <strong>AI学習への利用禁止（OpenAI）：</strong>{" "}
-                当サービスに入力されたデータおよび生成されたコンテンツは、OpenAI社の「Business Terms」に基づき、OpenAI社のAIモデルの学習（トレーニング）には使用されません。
+                当サービスに入力されたデータおよび生成されたコンテンツは、OpenAI社の「Business Terms」に基づき、OpenAI社のAIモデルの学習（トレーニング）には使用されない条件で取り扱われます。
               </li>
               <li>
                 <strong>一時的なデータ保持：</strong>{" "}
@@ -161,7 +161,7 @@ export default function AiPolicy() {
           <div className="text-right text-sm text-muted-foreground mt-12">
             策定日：2026年1月8日
             <br />
-            最終更新日: 2026年2月14日
+            最終更新日: 2026年3月3日
           </div>
         </div>
       </main>

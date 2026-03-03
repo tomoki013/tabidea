@@ -37,6 +37,7 @@ Any PR that changes behavior, architecture, database schema, or testing policy m
 - API/Action/Service contract changes: update reference docs.
 - Schema/migration changes: update database docs.
 - File structure changes: regenerate `docs/reference/file-catalog.md` with `pnpm docs:catalog`.
+- If user-facing copy on FAQ, pricing, about, usage, or legal pages changes, evaluate whether `src/app/(marketing)/updates/page.tsx` needs a new history item and add it when needed.
 
 If code and docs disagree, treat code as source of truth and fix docs immediately.
 

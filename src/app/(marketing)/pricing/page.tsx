@@ -7,7 +7,7 @@ import { getUser } from '@/lib/supabase/server';
 export const metadata: Metadata = {
   title: '料金プラン',
   description:
-    'Tabideaの料金プランをご覧ください。無料プランから始めて、Pro/Premiumへアップグレードできます。',
+    'Tabideaの料金プランをご覧ください。無料プラン、Pro/Premium、回数券の違いや機能制限を確認できます。',
 };
 
 export default async function PricingPage() {

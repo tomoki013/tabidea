@@ -40,6 +40,8 @@ Use Vitest + Testing Library for unit/component tests and Playwright for E2E. Ke
 ## Documentation & Performance Requirements
 If a PR changes behavior, architecture, API/service contracts, DB schema, or testing policy, update relevant `docs/` files in the same PR.
 
+If a PR updates user-facing copy on FAQ, pricing, about, usage, or legal pages, check whether an entry should be added to `src/app/(marketing)/updates/page.tsx` and add it in the same PR when needed.
+
 For server actions and AI generation flows, performance instrumentation is required via `PerformanceTimer` (`src/lib/utils/performance-timer.ts`): measure key steps with `timer.measure(...)` and call `timer.log()` on completion.
 
 ## Commit & Pull Request Guidelines
