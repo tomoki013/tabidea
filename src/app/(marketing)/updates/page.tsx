@@ -436,9 +436,9 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "planned",
-    title: "回数券の導入",
+    title: "回数券の機能拡張",
     description:
-      "サブスクリプションなしで、必要な分だけ機能を利用できる回数券の導入を計画しています。",
+      "回数券の残数管理や購入導線をより分かりやすくする改善を計画しています。",
   },
   {
     status: "planned",
@@ -668,6 +668,14 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "決済システムの安定化",
     description:
       "決済処理時に発生していた一部のエラーを修正し、処理の安定性を向上させました。",
+  },
+  {
+    status: "done",
+    date: "2026.03.03",
+    updateType: "patch",
+    title: "FAQ・料金・法務ページの情報整合を更新",
+    description:
+      "FAQ、料金、使い方、Tabideaについて、利用規約・プライバシーポリシー等の記載を最新仕様に合わせて見直しました。",
   },
 ];
 

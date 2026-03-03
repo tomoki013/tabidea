@@ -39,10 +39,13 @@ export default function CookiePolicy() {
                 Google Analyticsなどの分析ツールを使用し、サイトの訪問数や閲覧ページなどの利用状況を把握し、サービスの改善に役立てるため。
               </li>
               <li>
-                <strong className="text-stone-700">広告配信：</strong>{" "}
-                お客様の興味・関心に合わせた適切な広告を配信するため（第三者配信事業者による広告配信を含む場合があります）。
+                <strong className="text-stone-700">セキュリティ・不正利用対策：</strong>{" "}
+                不正アクセスや不正利用の検知・防止のため。
               </li>
             </ul>
+            <p className="mt-3">
+              なお、行動ターゲティング広告を目的としたCookieを新たに導入する場合は、本ポリシーで事前に告知します。
+            </p>
           </section>
 
           <section>
@@ -134,7 +137,7 @@ export default function CookiePolicy() {
           <div className="text-right text-sm text-stone-500 mt-12">
             策定日：2026年1月8日
             <br />
-            最終更新日: 2026年1月8日
+            最終更新日: 2026年3月3日
           </div>
         </div>
       </main>
