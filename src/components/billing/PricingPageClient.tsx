@@ -230,29 +230,6 @@ export function PricingPageClient({
           </div>
         </div>
 
-        {/* Ticket Plans - Commented out as requested
-        <div className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-xl font-bold text-stone-800 mb-2">回数券</h2>
-            <p className="text-sm text-stone-600">
-              サブスクリプションなしで、必要な分だけ購入できます
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {TICKET_PLANS.map((plan) => (
-              <TicketCard
-                key={plan.id}
-                plan={plan}
-                isLoggedIn={isLoggedIn}
-                isLoading={isLoading === plan.id}
-                onPurchase={handlePurchase}
-                onLoginRequired={handleLoginRequired}
-              />
-            ))}
-          </div>
-        </div>
-        */}
-
         {/* Feature Comparison — 3-tier table */}
         <div className="max-w-4xl mx-auto mb-16">
           <TierComparisonTable />

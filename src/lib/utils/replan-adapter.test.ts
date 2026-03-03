@@ -9,39 +9,28 @@ const mockItinerary: Itinerary = {
   days: [
     {
       day: 1,
-      date: "2026-03-01",
       title: "東山エリア",
       activities: [
         {
           activity: "清水寺",
           description: "世界遺産の清水寺を訪問",
           time: "09:00",
-          duration: "2時間",
-          category: "観光",
-          location: { name: "清水寺", address: "京都市東山区" },
         },
         {
           activity: "祇園散策",
           description: "花見小路を散策",
           time: "12:00",
-          duration: "1時間30分",
-          category: "散策",
-          location: { name: "祇園", address: "京都市東山区" },
         },
       ],
     },
     {
       day: 2,
-      date: "2026-03-02",
       title: "嵐山エリア",
       activities: [
         {
           activity: "竹林の道",
           description: "嵐山竹林を歩く",
           time: "10:00",
-          duration: "1時間",
-          category: "自然",
-          location: { name: "竹林の道", address: "京都市右京区" },
         },
       ],
     },

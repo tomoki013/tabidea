@@ -8,21 +8,25 @@ describe("BaseCard", () => {
     cardType: "spot" as const,
     icon: <MapPin data-testid="icon" />,
     title: "清水寺",
-    subtitle: "京都の有名な寺院",
-    time: "10:00",
   };
 
-  it("renders title and subtitle", () => {
+  it("renders title", () => {
     render(<BaseCard {...defaultProps} />);
 
     expect(screen.getByText("清水寺")).toBeInTheDocument();
-    expect(screen.getByText("京都の有名な寺院")).toBeInTheDocument();
   });
 
-  it("renders time display", () => {
-    render(<BaseCard {...defaultProps} />);
+  it("does not render subtitle or time in collapsed header", () => {
+    render(
+      <BaseCard
+        {...defaultProps}
+        subtitle="京都の有名な寺院"
+        time="10:00"
+      />
+    );
 
-    expect(screen.getByText("10:00")).toBeInTheDocument();
+    expect(screen.queryByText("京都の有名な寺院")).not.toBeInTheDocument();
+    expect(screen.queryByText("10:00")).not.toBeInTheDocument();
   });
 
   it("renders icon", () => {
@@ -86,9 +90,12 @@ describe("BaseCard", () => {
       <BaseCard
         {...defaultProps}
         badge={<span data-testid="badge">検証済み</span>}
-      />
+      >
+        <div>Content</div>
+      </BaseCard>
     );
 
+    fireEvent.click(screen.getByText("清水寺"));
     expect(screen.getByTestId("badge")).toBeInTheDocument();
   });
 
@@ -97,7 +104,7 @@ describe("BaseCard", () => {
       <BaseCard {...defaultProps} colorTheme="blue" />
     );
 
-    // Check that blue theme classes are applied
-    expect(container.querySelector(".border-blue-200")).toBeInTheDocument();
+    // Check that blue theme classes are applied to icon wrapper
+    expect(container.querySelector(".bg-blue-100")).toBeInTheDocument();
   });
 });

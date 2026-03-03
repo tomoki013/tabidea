@@ -71,6 +71,7 @@ const defaultInput: UserInput = {
 const mockItinerary: Itinerary = {
   id: "1",
   destination: "Tokyo",
+  description: "Tokyo trip",
   days: [
     {
       day: 1,

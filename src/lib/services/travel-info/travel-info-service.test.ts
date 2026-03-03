@@ -381,7 +381,7 @@ describe('TravelInfoService', () => {
 
   describe('Options', () => {
     it('passes country option to source', async () => {
-      let capturedOptions: SourceOptions | null = null;
+      let capturedOptions: SourceOptions | undefined;
       const mockSource = createMockSource({
         sourceName: 'MockSource',
         sourceType: 'official_api',
@@ -400,7 +400,7 @@ describe('TravelInfoService', () => {
 
       await service.getInfo('Paris', ['safety'], { country: 'France' });
       expect(capturedOptions).toBeDefined();
-      expect(capturedOptions.country).toBe('France');
+      expect(capturedOptions?.country).toBe('France');
     });
   });
 });

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { EventLogger } from "./event-logger";
 
@@ -11,7 +12,7 @@ function createMockSupabase() {
   const fromFn = vi.fn().mockReturnValue({ insert: insertFn });
 
   return {
-    client: { from: fromFn } as unknown as Parameters<typeof EventLogger extends new (s: infer S) => unknown ? S : never>[0],
+    client: { from: fromFn } as unknown as SupabaseClient,
     fromFn,
     insertFn,
   };

@@ -2,7 +2,7 @@
  * StaticRouteView テスト — 静的ルート表示テスト
  */
 
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import type { DayPlan } from "@/types";
 
