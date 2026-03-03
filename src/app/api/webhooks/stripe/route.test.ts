@@ -40,6 +40,8 @@ import type Stripe from "stripe";
 describe("Stripe Webhook", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    process.env.STRIPE_PRICE_PRO_MONTHLY = "price_pro_monthly";
+    process.env.STRIPE_PRICE_PREMIUM_MONTHLY = "price_premium_monthly";
 
     // Setup default mock chain
     mockSupabaseFrom.mockReturnValue({
@@ -131,6 +133,7 @@ describe("Stripe Webhook", () => {
             {
               current_period_start: Math.floor(Date.now() / 1000),
               current_period_end: Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+              price: { id: "price_pro_monthly" },
             } as any,
           ],
         } as any,
@@ -312,6 +315,7 @@ describe("Stripe Webhook", () => {
               current_period_start: Math.floor(Date.now() / 1000),
               current_period_end:
                 Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+              price: { id: "price_pro_monthly" },
             } as any,
           ],
         } as any,
@@ -367,6 +371,7 @@ describe("Stripe Webhook", () => {
               current_period_start: Math.floor(Date.now() / 1000),
               current_period_end:
                 Math.floor(Date.now() / 1000) + 30 * 24 * 60 * 60,
+              price: { id: "price_pro_monthly" },
             } as any,
           ],
         } as any,

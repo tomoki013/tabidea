@@ -37,8 +37,8 @@ export function PricingCard({
       return;
     }
 
-    // 現在のProプランユーザーの場合はポータルへ
-    if (isCurrentPlan && plan.id === "pro_monthly" && onManageSubscription) {
+    // 現在の有料プランは管理ポータルへ
+    if (isCurrentPlan && onManageSubscription) {
       startTransition(() => {
         onManageSubscription();
       });
@@ -62,7 +62,7 @@ export function PricingCard({
       if (!isLoggedIn) return "ログインして始める";
       return isCurrentPlan ? "現在のプラン" : "無料で始める";
     }
-    if (isCurrentPlan && plan.id === "pro_monthly") {
+    if (isCurrentPlan) {
       return "プランを管理";
     }
     if (!isLoggedIn) {
@@ -144,7 +144,7 @@ export function PricingCard({
             ? "bg-stone-100 text-stone-400 cursor-default" // ログイン済みFreeプラン（無効）
             : plan.id === "free" && !isLoggedIn
               ? "bg-stone-800 text-white hover:bg-stone-700" // 未ログインFreeプラン（有効・ログインへ）
-              : isCurrentPlan && plan.id === "pro_monthly"
+              : isCurrentPlan && plan.id !== "free"
                 ? "bg-stone-200 text-stone-700 hover:bg-stone-300"
                 : plan.isRecommended
                   ? "bg-primary text-white hover:bg-primary/90"

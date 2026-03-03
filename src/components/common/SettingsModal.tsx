@@ -10,7 +10,7 @@ import { getBillingAccessInfo, getUserUsageStats } from "@/app/actions/billing";
 import type { UsageStats } from "@/app/actions/billing";
 import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
-import { PRO_PLAN_NAME } from "@/lib/billing/constants";
+import { canAccess, resolvePlanDisplayName } from "@/lib/billing/plan-catalog";
 import type { BillingAccessInfo } from "@/types";
 import {
   FaSpinner,
@@ -205,8 +205,17 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
   if (!isOpen || !mounted) return null;
 
-  const isPaidPlan = billingInfo?.isSubscribed;
+  const isPaidPlan = billingInfo?.isSubscribed ?? false;
   const isAdmin = billingInfo?.userType === 'admin';
+  const isPaidOrAdmin = isPaidPlan || isAdmin;
+  const currentPlanName = billingInfo
+    ? resolvePlanDisplayName({
+        planType: billingInfo.planType,
+        isSubscribed: billingInfo.isSubscribed,
+        isAdmin: billingInfo.isAdmin,
+      })
+    : "Free";
+  const canUseTravelStyle = billingInfo ? canAccess(billingInfo.userType, "travel_style") : false;
 
   return createPortal(
     <div
@@ -410,10 +419,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                   <FaUserCog className="text-xs" />
                                   管理者
                                 </span>
-                              ) : isPaidPlan ? (
+                              ) : isPaidOrAdmin ? (
                                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm font-bold rounded-sm transform -rotate-1 shadow-sm border border-primary/20">
                                   <FaCrown className="text-xs" />
-                                  {PRO_PLAN_NAME}
+                                  {currentPlanName}
                                 </span>
                               ) : (
                                 <span className="inline-flex items-center px-3 py-1 bg-stone-200 text-stone-600 text-sm font-bold rounded-sm transform rotate-1">
@@ -440,7 +449,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                              <div className="w-full text-center text-sm text-stone-500 bg-stone-100 p-3 rounded-sm font-hand">
                                管理者アカウントです
                              </div>
-                          ) : isPaidPlan ? (
+                          ) : isPaidOrAdmin ? (
                             <JournalButton
                               variant="outline"
                               onClick={handleManageSubscription}
@@ -505,10 +514,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
                     <HandwrittenText tag="h3" className="text-2xl font-bold text-stone-800 flex items-center gap-2">
                       AI設定
-                      {isPaidPlan && (
+                      {isPaidOrAdmin && (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-sm border border-primary/20 transform -rotate-2">
                           <FaCrown className="text-[0.6rem]" />
-                          {PRO_PLAN_NAME}
+                          {currentPlanName}
                         </span>
                       )}
                     </HandwrittenText>
@@ -546,9 +555,9 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           <label className="block text-sm font-bold text-stone-700 font-hand">
                             旅のスタイル
                           </label>
-                          {!isPaidPlan && !isAdmin && (
+                          {!canUseTravelStyle && (
                             <span className="text-xs font-bold text-primary bg-primary/5 px-2 py-1 rounded-sm border border-primary/20 flex items-center gap-1">
-                              <FaLock size={10} /> {PRO_PLAN_NAME}限定
+                              <FaLock size={10} /> Tabidea Pro以上限定
                             </span>
                           )}
                         </div>
@@ -557,16 +566,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           <textarea
                             value={travelStyle}
                             onChange={(e) => setTravelStyle(e.target.value)}
-                            disabled={!isPaidPlan && !isAdmin}
+                            disabled={!canUseTravelStyle}
                             className={`w-full h-32 p-3 bg-transparent border-b-2 focus:outline-none resize-none font-hand text-lg leading-relaxed transition-all
-                              ${!isPaidPlan && !isAdmin
+                              ${!canUseTravelStyle
                                 ? "border-stone-200 text-stone-300 cursor-not-allowed"
                                 : "border-stone-300 focus:border-primary text-stone-800"
                               }`}
-                            placeholder={!isPaidPlan && !isAdmin ? "アップグレードして利用可能" : "歴史的な場所が好き、朝はゆっくり..."}
+                            placeholder={!canUseTravelStyle ? "アップグレードして利用可能" : "歴史的な場所が好き、朝はゆっくり..."}
                           />
 
-                          {!isPaidPlan && !isAdmin && (
+                          {!canUseTravelStyle && (
                             <div className="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-[1px]">
                               <a href="/pricing" onClick={onClose}>
                                 <JournalButton variant="primary" size="sm">

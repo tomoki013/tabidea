@@ -3,18 +3,38 @@
 import Link from "next/link";
 import { usePlanModal } from "@/context/PlanModalContext";
 import { FaCheck, FaRocket } from "react-icons/fa";
-import { PRO_PLAN_NAME } from "@/lib/billing/constants";
+import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from "@/lib/billing/constants";
+import type { SubscriptionPlanType } from "@/lib/billing/plan-catalog";
 
 interface SuccessPageClientProps {
   sessionId?: string;
   isSubscription?: boolean;
+  planType?: SubscriptionPlanType | null;
 }
 
 export default function SuccessPageClient({
   sessionId,
   isSubscription = true,
+  planType = null,
 }: SuccessPageClientProps) {
   const { openModal } = usePlanModal();
+  const resolvedPlanType = planType ?? "pro_monthly";
+  const currentPlanName =
+    resolvedPlanType === "premium_monthly" ? PREMIUM_PLAN_NAME : PRO_PLAN_NAME;
+  const featureHighlights =
+    resolvedPlanType === "premium_monthly"
+      ? [
+          "月100回プラン生成",
+          "渡航情報無制限・全カテゴリ",
+          "Google Maps フル機能",
+          "AIプロバイダー選択",
+        ]
+      : [
+          "月30回プラン生成",
+          "渡航情報 月10回",
+          "Leafletインタラクティブマップ",
+          "持ち物リスト生成",
+        ];
 
   const handleCreatePlan = () => {
     openModal();
@@ -36,7 +56,7 @@ export default function SuccessPageClient({
         </h1>
         <p className="text-stone-600 mb-2">
           {isSubscription
-            ? `${PRO_PLAN_NAME}プランへのアップグレードが完了しました。`
+            ? `${currentPlanName}プランへのアップグレードが完了しました。`
             : "回数券の購入が完了しました。"}
         </p>
         <p className="text-stone-500 text-sm mb-8">
@@ -101,25 +121,15 @@ export default function SuccessPageClient({
         {isSubscription && (
           <div className="mt-6 p-4 bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 rounded-xl border border-[#e67e22]/20">
             <h4 className="font-bold text-[#e67e22] mb-3 text-sm">
-              {PRO_PLAN_NAME}プランで利用可能な機能
+              {currentPlanName}プランで利用可能な機能
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-stone-600">
-              <div className="flex items-center gap-1.5">
-                <FaCheck className="text-green-500" />
-                <span>無制限プラン生成</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <FaCheck className="text-green-500" />
-                <span>全渡航情報カテゴリ</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <FaCheck className="text-green-500" />
-                <span>プラン内渡航情報</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <FaCheck className="text-green-500" />
-                <span>無制限プラン保存</span>
-              </div>
+              {featureHighlights.map((feature) => (
+                <div key={feature} className="flex items-center gap-1.5">
+                  <FaCheck className="text-green-500" />
+                  <span>{feature}</span>
+                </div>
+              ))}
             </div>
           </div>
         )}

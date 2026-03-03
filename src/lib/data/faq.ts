@@ -1,4 +1,4 @@
-import { PRO_PLAN_NAME } from "@/lib/billing/constants";
+import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from "@/lib/billing/constants";
 
 export type FAQItem = {
   q: string;
@@ -143,7 +143,7 @@ export const faqCategories: FAQCategory[] = [
     items: [
       {
         q: "料金プランにはどのような種類がありますか？",
-        a: `無料プラン、${PRO_PLAN_NAME}プラン（月額サブスクリプション）、回数券の3種類があります。無料プランは月3回のプラン生成が可能で、${PRO_PLAN_NAME}プランなら月30回のプラン生成と、全機能へアクセスできます。保存数はどちらも無制限です。`,
+        a: `無料プラン、${PRO_PLAN_NAME}、${PREMIUM_PLAN_NAME}、回数券があります。無料プランは月3回まで、${PRO_PLAN_NAME}は月30回まで、${PREMIUM_PLAN_NAME}は月100回までプラン生成できます。保存数はいずれも無制限です。`,
       },
       {
         q: "無料プランとProプランの違いは何ですか？",
@@ -187,7 +187,7 @@ export const faqCategories: FAQCategory[] = [
       },
       {
         q: "プラン変更はできますか？",
-        a: `現在は月額${PRO_PLAN_NAME}プランのみの提供となっております。無料プランから${PRO_PLAN_NAME}プランへのアップグレード、${PRO_PLAN_NAME}プランから無料プランへのダウングレード（解約）が可能です。`,
+        a: `はい。無料プランから${PRO_PLAN_NAME}または${PREMIUM_PLAN_NAME}へアップグレードできます。解約すると請求期間終了後に無料プランへ戻ります。`,
       },
     ],
   },

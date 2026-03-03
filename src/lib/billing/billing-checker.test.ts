@@ -209,36 +209,6 @@ describe('BillingChecker — 5-tier', () => {
       expect(result.planType).toBe('premium_monthly');
     });
 
-    it('premium: premium_yearly subscription → premium userType', async () => {
-      const futureDate = new Date();
-      futureDate.setDate(futureDate.getDate() + 365);
-
-      mockSupabase.auth.getUser.mockResolvedValue({
-        data: { user: { id: 'user-4', email: 'yearly@test.com' } },
-        error: null,
-      });
-
-      mockSupabase.from.mockImplementation((table: string) => {
-        if (table === 'subscriptions') {
-          return mockSubscriptionChain({
-            id: 'sub-3',
-            external_subscription_id: 'stripe-sub-3',
-            status: 'active',
-            current_period_end: futureDate.toISOString(),
-            plan_code: 'premium_yearly',
-          });
-        }
-        if (table === 'entitlement_grants') return mockTicketsChain([]);
-        return { select: vi.fn() };
-      });
-
-      const result = await checkBillingAccess();
-
-      expect(result.userType).toBe('premium');
-      expect(result.isPremium).toBe(true);
-      expect(result.planType).toBe('premium_yearly');
-    });
-
     it('expired subscription → free userType', async () => {
       const pastDate = new Date();
       pastDate.setDate(pastDate.getDate() - 1);
@@ -307,10 +277,6 @@ describe('BillingChecker — 5-tier', () => {
 
     it('premium_monthly → premium', () => {
       expect(resolveUserTypeFromPlanCode('premium_monthly')).toBe('premium');
-    });
-
-    it('premium_yearly → premium', () => {
-      expect(resolveUserTypeFromPlanCode('premium_yearly')).toBe('premium');
     });
 
     it('undefined → free (with warning)', () => {

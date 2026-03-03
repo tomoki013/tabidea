@@ -1,26 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from '@/lib/billing/constants';
+import { resolvePlanDisplayName } from '@/lib/billing/plan-catalog';
 
-import type { UserBillingStatus } from '@/types/billing';
+import type { BillingAccessInfo } from '@/types/billing';
 
 interface UserPlanStatusProps {
-  billingStatus: UserBillingStatus | null;
+  billingStatus: BillingAccessInfo | null;
   variant?: 'default' | 'compact';
-}
-
-function getPlanDisplay(planType: string, isSubscribed: boolean): { name: string; isPaid: boolean } {
-  if (!isSubscribed) return { name: 'Free', isPaid: false };
-  switch (planType) {
-    case 'premium_monthly':
-    case 'premium_yearly':
-      return { name: PREMIUM_PLAN_NAME, isPaid: true };
-    case 'pro_monthly':
-      return { name: PRO_PLAN_NAME, isPaid: true };
-    default:
-      return { name: 'Free', isPaid: false };
-  }
 }
 
 export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanStatusProps) {
@@ -28,7 +15,12 @@ export function UserPlanStatus({ billingStatus, variant = 'default' }: UserPlanS
     return null;
   }
 
-  const { name: planName, isPaid } = getPlanDisplay(billingStatus.planType, billingStatus.isSubscribed);
+  const planName = resolvePlanDisplayName({
+    planType: billingStatus.planType,
+    isSubscribed: billingStatus.isSubscribed,
+    isAdmin: billingStatus.isAdmin,
+  });
+  const isPaid = billingStatus.isSubscribed || billingStatus.isAdmin;
 
   if (variant === 'compact') {
     return (

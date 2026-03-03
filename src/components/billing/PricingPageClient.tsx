@@ -4,19 +4,18 @@ import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import { PricingCard } from "./PricingCard";
-import { TicketCard } from "./TicketCard";
 import { TierComparisonTable } from "./TierComparisonTable";
 import { FAQSection } from "@/components/features/landing";
 import { createCheckoutSession } from "@/app/actions/stripe/checkout";
 import { createPortalSession } from "@/app/actions/stripe/portal";
-import { PRICING_PLANS, TICKET_PLANS } from "@/lib/billing/pricing-plans";
-import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from "@/lib/billing/constants";
+import { PRICING_PLANS } from "@/lib/billing/pricing-plans";
+import { resolvePlanDisplayName, type CheckoutPlanType } from "@/lib/billing/plan-catalog";
 
-import type { UserBillingStatus, PurchaseType } from "@/types/billing";
+import type { BillingAccessInfo, PurchaseType } from "@/types/billing";
 
 interface PricingPageClientProps {
   isLoggedIn: boolean;
-  billingStatus: UserBillingStatus | null;
+  billingStatus: BillingAccessInfo | null;
 }
 
 export function PricingPageClient({
@@ -34,10 +33,18 @@ export function PricingPageClient({
 
   const handlePurchase = async (planType: PurchaseType) => {
     if (planType === "free") return;
+    if (billingStatus?.isAdmin) {
+      setError("管理者アカウントでは購入できません。");
+      return;
+    }
 
     // 既にサブスク中の場合、同一プラン購入を防ぐ
     if (billingStatus?.isSubscribed && (planType === billingStatus.planType)) {
-      const currentName = billingStatus.planType.includes('premium') ? PREMIUM_PLAN_NAME : PRO_PLAN_NAME;
+      const currentName = resolvePlanDisplayName({
+        planType: billingStatus.planType,
+        isSubscribed: billingStatus.isSubscribed,
+        isAdmin: billingStatus.isAdmin,
+      });
       setError(`既に${currentName}プランに加入しています。プラン管理からご確認ください。`);
       return;
     }
@@ -47,7 +54,7 @@ export function PricingPageClient({
 
     try {
       const result = await createCheckoutSession(
-        planType as "pro_monthly" | "premium_monthly" | "premium_yearly" | "ticket_1" | "ticket_5" | "ticket_10",
+        planType as CheckoutPlanType,
       );
 
       if (result.success && result.url) {
@@ -106,9 +113,13 @@ export function PricingPageClient({
 
   const isSubscribed = billingStatus?.isSubscribed === true;
   const currentPlanType = billingStatus?.planType;
-  const currentPlanName = currentPlanType?.includes('premium')
-    ? PREMIUM_PLAN_NAME
-    : currentPlanType === 'pro_monthly' ? PRO_PLAN_NAME : 'Free';
+  const currentPlanName = billingStatus
+    ? resolvePlanDisplayName({
+        planType: billingStatus.planType,
+        isSubscribed: billingStatus.isSubscribed,
+        isAdmin: billingStatus.isAdmin,
+      })
+    : "Free";
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">

@@ -28,10 +28,10 @@ import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
-import { getBillingStatus } from '@/app/actions/billing';
-import { PRO_PLAN_NAME } from '@/lib/billing/constants';
+import { getBillingAccessInfo } from '@/app/actions/billing';
+import { resolvePlanDisplayName } from '@/lib/billing/plan-catalog';
 import type { PlanListItem } from '@/types';
-import type { UserBillingStatus } from '@/types/billing';
+import type { BillingAccessInfo } from '@/types/billing';
 import { JournalSheet, Tape, HandwrittenText, Stamp, JournalButton } from '@/components/ui/journal';
 
 interface MobileSidebarProps {
@@ -67,12 +67,12 @@ export default function MobileSidebar({
   const [isLocalDelete, setIsLocalDelete] = useState(false);
 
   // Billing status state
-  const [billingStatus, setBillingStatus] = useState<UserBillingStatus | null>(null);
+  const [billingStatus, setBillingStatus] = useState<BillingAccessInfo | null>(null);
 
   // Fetch billing status when authenticated
   useEffect(() => {
     if (isAuthenticated && isOpen) {
-      getBillingStatus().then(setBillingStatus);
+      getBillingAccessInfo().then(setBillingStatus);
     }
   }, [isAuthenticated, isOpen]);
 
@@ -300,10 +300,18 @@ export default function MobileSidebar({
                           {user.displayName || 'ユーザー'}
                         </HandwrittenText>
                         <div className="flex items-center gap-1.5 mt-1">
-                          {billingStatus?.isSubscribed ? (
+                          {billingStatus?.isAdmin ? (
+                            <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-800 text-white text-xs font-bold rounded-sm">
+                              管理者
+                            </span>
+                          ) : billingStatus?.isSubscribed ? (
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-sm border border-primary/20">
                               <FaCrown className="text-[0.6rem]" />
-                              {PRO_PLAN_NAME}
+                              {resolvePlanDisplayName({
+                                planType: billingStatus.planType,
+                                isSubscribed: billingStatus.isSubscribed,
+                                isAdmin: billingStatus.isAdmin,
+                              })}
                             </span>
                           ) : (
                             <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-sm">
