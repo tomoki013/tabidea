@@ -426,11 +426,6 @@ const rawRoadmapData: RoadmapItem[] = [
   },
   {
     status: "planned",
-    title: "ダークモード対応",
-    description: "目に優しいダークモードへの対応を計画しています。",
-  },
-  {
-    status: "planned",
     title: "多言語対応",
     description:
       "日本語以外の言語でもサービスを利用できるよう、多言語対応を計画しています。",
@@ -741,6 +736,14 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "FAQ・料金・法務ページの情報整合を更新",
     description:
       "FAQ、料金、使い方、Tabideaについて、利用規約・プライバシーポリシー等の記載を最新仕様に合わせて見直しました。",
+  },
+  {
+    status: "done",
+    date: "2026.03.04",
+    updateType: "patch",
+    title: "ダークモードの実装",
+    description:
+      "全ページでライト・ダーク・システム連動の表示切替に対応し、設定画面からテーマを選択できるようになりました。",
   },
 ];
 

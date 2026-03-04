@@ -5,10 +5,19 @@ import SettingsModal from './SettingsModal';
 import * as AuthContext from '@/context/AuthContext';
 import * as userSettingsActions from '@/app/actions/user-settings';
 
+const mockSetTheme = vi.fn();
+
 // Mock server actions
 vi.mock('@/app/actions/user-settings', () => ({
   getUserSettings: vi.fn(),
   updateUserSettings: vi.fn(),
+}));
+
+vi.mock('next-themes', () => ({
+  useTheme: vi.fn(() => ({
+    theme: 'system',
+    setTheme: mockSetTheme,
+  })),
 }));
 
 vi.mock('@/app/actions/travel-planner', () => ({
@@ -61,6 +70,7 @@ const mockSignOut = vi.fn();
 describe('SettingsModal', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    mockSetTheme.mockClear();
 
     // Mock useAuth return value
     (AuthContext.useAuth as any).mockReturnValue({
@@ -102,6 +112,15 @@ describe('SettingsModal', () => {
     const travelStyleInput = screen.getByPlaceholderText(/歴史的な場所が好き、朝はゆっくり/);
     expect(travelStyleInput).toBeDefined();
     expect(travelStyleInput.hasAttribute('disabled')).toBe(false);
+  });
+
+  it('switches display theme from account settings', async () => {
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    const darkButton = await screen.findByRole('button', { name: 'ダーク' });
+    fireEvent.click(darkButton);
+
+    expect(mockSetTheme).toHaveBeenCalledWith('dark');
   });
 
   it('loads existing travel style', async () => {

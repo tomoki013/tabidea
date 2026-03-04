@@ -41,6 +41,13 @@ Any PR that changes behavior, architecture, database schema, or testing policy m
 
 If code and docs disagree, treat code as source of truth and fix docs immediately.
 
+### Dark Mode Requirement (Required)
+
+For any UI change (new page/component or style update), dark mode support is mandatory in the same PR/commit.
+
+- Do not ship light-only UI.
+- Verify both light and dark themes before merge.
+
 ## Tech Stack
 
 - **Framework**: Next.js 16 with App Router
