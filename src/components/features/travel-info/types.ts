@@ -122,6 +122,86 @@ export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryDisplayInfo> = {
   },
 };
 
+export const CATEGORY_INFO_EN: Record<TravelInfoCategory, CategoryDisplayInfo> = {
+  basic: {
+    label: "Basics",
+    description: "Currency, language, timezone",
+    icon: "Globe",
+  },
+  safety: {
+    label: "Safety & Health",
+    description: "Risk level and emergency contacts",
+    icon: "Shield",
+  },
+  climate: {
+    label: "Climate & Clothing",
+    description: "Weather and clothing tips",
+    icon: "Cloud",
+  },
+  visa: {
+    label: "Visa & Entry",
+    description: "Requirements and documents",
+    icon: "FileText",
+  },
+  manner: {
+    label: "Etiquette & Tips",
+    description: "Local customs and taboos",
+    icon: "Heart",
+  },
+  transport: {
+    label: "Transportation",
+    description: "Public transit and rideshare",
+    icon: "Car",
+  },
+  local_food: {
+    label: "Food",
+    description: "Popular dishes and dining etiquette",
+    icon: "Utensils",
+  },
+  souvenir: {
+    label: "Souvenirs & Shopping",
+    description: "Popular items and tax-free info",
+    icon: "ShoppingBag",
+  },
+  events: {
+    label: "Events & Festivals",
+    description: "Major events and seasonal festivals",
+    icon: "Calendar",
+  },
+  technology: {
+    label: "Power & Connectivity",
+    description: "Plugs, Wi-Fi, SIM",
+    icon: "Zap",
+  },
+  healthcare: {
+    label: "Healthcare & Hygiene",
+    description: "Water, vaccines, medical access",
+    icon: "Stethoscope",
+  },
+  restrooms: {
+    label: "Restrooms",
+    description: "Availability and usage tips",
+    icon: "Bath",
+  },
+  smoking: {
+    label: "Smoking Rules",
+    description: "Smoking areas and fines",
+    icon: "Cigarette",
+  },
+  alcohol: {
+    label: "Alcohol Rules",
+    description: "Age limits and regulations",
+    icon: "Wine",
+  },
+};
+
+export function getCategoryInfo(
+  category: TravelInfoCategory,
+  language: "ja" | "en" = "ja"
+): CategoryDisplayInfo {
+  return language === "ja" ? CATEGORY_INFO[category] : CATEGORY_INFO_EN[category];
+}
+
 // ============================================
 // CategorySelector Props
 // ============================================

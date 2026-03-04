@@ -2,21 +2,26 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaCalendarAlt, FaMapMarkerAlt, FaHeart, FaBookOpen } from 'react-icons/fa';
 import { PublicShioriListItem } from '@/types';
+import { localizePath } from '@/lib/i18n/locales';
 import { Tape } from '@/components/ui/journal';
 
 interface PublicPlanCardProps {
   plan: PublicShioriListItem;
+  language: 'ja' | 'en';
 }
 
-export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
-  const destination = plan.destination || '未定の目的地';
+export default function PublicPlanCard({ plan, language }: PublicPlanCardProps) {
+  const destination = plan.destination || (language === 'ja' ? '未定の目的地' : 'Destination TBD');
 
   const days = plan.durationDays || 0;
   const nights = Math.max(0, days - 1);
-  const duration = days > 0 ? `${nights}泊${days}日` : '期間未定';
+  const duration =
+    days > 0
+      ? (language === 'ja' ? `${nights}泊${days}日` : `${days} day(s)`)
+      : (language === 'ja' ? '期間未定' : 'Duration TBD');
 
   return (
-    <Link href={`/shiori/${plan.slug}`} className="block group h-full">
+    <Link href={localizePath(`/shiori/${plan.slug}`, language)} className="block group h-full">
       <div className="relative bg-white h-full flex flex-col shadow-sm border border-stone-200 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl hover:rotate-1 rounded-sm overflow-hidden">
 
         {/* Thumbnail */}
@@ -56,17 +61,17 @@ export default function PublicPlanCard({ plan }: PublicPlanCardProps) {
               {duration}
             </span>
             <span>
-              {new Date(plan.createdAt).toLocaleDateString()}
+              {new Date(plan.createdAt).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US')}
             </span>
           </div>
           <div className="mt-3 flex items-center gap-2 text-xs text-stone-500">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaBookOpen className="text-stone-400" />
-              記録 {plan.entriesCount}
+              {language === 'ja' ? '記録' : 'Entries'} {plan.entriesCount}
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaHeart className="text-rose-400" />
-              いいね {plan.likesCount}
+              {language === 'ja' ? 'いいね' : 'Likes'} {plan.likesCount}
             </span>
           </div>
         </div>

@@ -84,6 +84,8 @@ describe('SettingsModal', () => {
       settings: {
         customInstructions: 'Original instructions',
         travelStyle: 'Original style',
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
       },
     });
     (userSettingsActions.updateUserSettings as any).mockResolvedValue({ success: true });
@@ -159,6 +161,8 @@ describe('SettingsModal', () => {
       expect(userSettingsActions.updateUserSettings).toHaveBeenCalledWith({
         customInstructions: 'Original instructions',
         travelStyle: 'New style',
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
       });
     });
   });

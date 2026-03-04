@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 import {
   Globe,
   Shield,
@@ -18,7 +19,8 @@ import {
   Cigarette,
   Wine,
 } from 'lucide-react';
-import { CATEGORY_INFO, type CategoryCardProps, type CategoryIcon } from './types';
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from '@/lib/i18n/locales';
+import { getCategoryInfo, type CategoryCardProps, type CategoryIcon } from './types';
 
 /**
  * アイコンコンポーネントのマッピング
@@ -52,7 +54,9 @@ export default function CategoryCard({
   onToggle,
   disabled = false,
 }: CategoryCardProps) {
-  const info = CATEGORY_INFO[category];
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const info = getCategoryInfo(category, language);
   const IconComponent = IconComponents[info.icon];
 
   return (
@@ -77,7 +81,11 @@ export default function CategoryCard({
         }
       `}
       aria-pressed={selected}
-      aria-label={`${info.label}を${selected ? '選択解除' : '選択'}`}
+      aria-label={
+        language === "ja"
+          ? `${info.label}を${selected ? '選択解除' : '選択'}`
+          : `${selected ? 'Unselect' : 'Select'} ${info.label}`
+      }
     >
       {/* 実際に表示するチェックマーク（右上） */}
       <motion.div

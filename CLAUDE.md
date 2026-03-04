@@ -37,7 +37,7 @@ Any PR that changes behavior, architecture, database schema, or testing policy m
 - API/Action/Service contract changes: update reference docs.
 - Schema/migration changes: update database docs.
 - File structure changes: regenerate `docs/reference/file-catalog.md` with `pnpm docs:catalog`.
-- For every PR/commit that changes behavior or user-facing content, always update `CHANGELOG.md` in the same PR/commit. `CHANGELOG.md` is the single source of truth for update history, and `src/app/(marketing)/updates/page.tsx` is a user-facing summary view derived from that history.
+- For every PR/commit that changes behavior or user-facing content, always update `CHANGELOG.md` in the same PR/commit. `CHANGELOG.md` is the single source of truth for update history, and `src/app/[locale]/(marketing)/updates/page.tsx` is a user-facing summary view derived from that history.
 
 If code and docs disagree, treat code as source of truth and fix docs immediately.
 
@@ -47,6 +47,14 @@ For any UI change (new page/component or style update), dark mode support is man
 
 - Do not ship light-only UI.
 - Verify both light and dark themes before merge.
+
+### Multilingual Requirement (Required)
+
+For any UI change (new page/component/content update), multilingual support is mandatory in the same PR/commit.
+
+- Do not ship Japanese-only UI.
+- All user-facing UI (pages, modals, toasts, OG/PDF text) must use i18n keys.
+- At minimum, support `ja` and `en`.
 
 ## Tech Stack
 
@@ -140,5 +148,5 @@ timer.log();
 
 ## Notes
 
-- All user-facing content is in Japanese
+- User-facing content must support at least Japanese and English (`ja`/`en`)
 - Path alias `@/*` maps to `./src/*`

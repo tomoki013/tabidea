@@ -1,9 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { usePlanModal } from "@/context/PlanModalContext";
 import { FaCheck, FaRocket } from "react-icons/fa";
 import { PRO_PLAN_NAME, PREMIUM_PLAN_NAME } from "@/lib/billing/constants";
+import {
+  DEFAULT_LANGUAGE,
+  getLanguageFromPathname,
+  localizePath,
+} from "@/lib/i18n/locales";
 import type { SubscriptionPlanType } from "@/lib/billing/plan-catalog";
 
 interface SuccessPageClientProps {
@@ -17,12 +23,15 @@ export default function SuccessPageClient({
   isSubscription = true,
   planType = null,
 }: SuccessPageClientProps) {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const { openModal } = usePlanModal();
   const resolvedPlanType = planType ?? "pro_monthly";
   const currentPlanName =
     resolvedPlanType === "premium_monthly" ? PREMIUM_PLAN_NAME : PRO_PLAN_NAME;
   const featureHighlights =
-    resolvedPlanType === "premium_monthly"
+    language === "ja"
+      ? (resolvedPlanType === "premium_monthly"
       ? [
           "月100回プラン生成",
           "渡航情報無制限・全カテゴリ",
@@ -34,7 +43,20 @@ export default function SuccessPageClient({
           "渡航情報 月10回",
           "Leafletインタラクティブマップ",
           "持ち物リスト生成",
-        ];
+        ])
+      : (resolvedPlanType === "premium_monthly"
+        ? [
+            "100 plan generations / month",
+            "Unlimited travel info (all categories)",
+            "Full Google Maps features",
+            "AI provider selection",
+          ]
+        : [
+            "30 plan generations / month",
+            "Travel info: 10 times / month",
+            "Interactive Leaflet map",
+            "Packing list generation",
+          ]);
 
   const handleCreatePlan = () => {
     openModal();
@@ -52,15 +74,19 @@ export default function SuccessPageClient({
 
         {/* Message */}
         <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-4">
-          ご購入ありがとうございます！
+          {language === "ja" ? "ご購入ありがとうございます！" : "Thank you for your purchase!"}
         </h1>
         <p className="text-stone-600 mb-2">
           {isSubscription
-            ? `${currentPlanName}プランへのアップグレードが完了しました。`
-            : "回数券の購入が完了しました。"}
+            ? language === "ja"
+              ? `${currentPlanName}プランへのアップグレードが完了しました。`
+              : `Your upgrade to ${currentPlanName} is complete.`
+            : language === "ja"
+              ? "回数券の購入が完了しました。"
+              : "Your ticket-pack purchase is complete."}
         </p>
         <p className="text-stone-500 text-sm mb-8">
-          すべての機能をお楽しみください。
+          {language === "ja" ? "すべての機能をお楽しみください。" : "Enjoy all available features."}
         </p>
 
         {/* Session ID (for debugging) */}
@@ -77,13 +103,13 @@ export default function SuccessPageClient({
             className="w-full px-6 py-4 bg-[#e67e22] text-white font-bold rounded-xl hover:bg-[#d35400] transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
           >
             <FaRocket />
-            <span>さっそくプランを作成する</span>
+            <span>{language === "ja" ? "さっそくプランを作成する" : "Create your first plan now"}</span>
           </button>
           <Link
-            href="/pricing"
+            href={localizePath("/pricing", language)}
             className="w-full px-6 py-3 border border-stone-300 text-stone-700 font-medium rounded-xl hover:bg-stone-50 transition-colors"
           >
-            料金プランに戻る
+            {language === "ja" ? "料金プランに戻る" : "Back to pricing"}
           </Link>
         </div>
 
@@ -93,26 +119,26 @@ export default function SuccessPageClient({
             <span className="w-6 h-6 bg-[#e67e22]/10 rounded-full flex items-center justify-center">
               <FaRocket className="text-[#e67e22] text-xs" />
             </span>
-            次のステップ
+            {language === "ja" ? "次のステップ" : "Next steps"}
           </h3>
           <ul className="text-sm text-stone-600 text-left space-y-3">
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 bg-[#e67e22]/10 text-[#e67e22] rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold">
                 1
               </span>
-              <span>行きたい場所や日程を入力</span>
+              <span>{language === "ja" ? "行きたい場所や日程を入力" : "Enter destination and dates"}</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 bg-[#e67e22]/10 text-[#e67e22] rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold">
                 2
               </span>
-              <span>AIが最適な旅行プランを生成</span>
+              <span>{language === "ja" ? "AIが最適な旅行プランを生成" : "AI generates an optimized itinerary"}</span>
             </li>
             <li className="flex items-start gap-3">
               <span className="w-6 h-6 bg-[#e67e22]/10 text-[#e67e22] rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold">
                 3
               </span>
-              <span>プランを保存・共有</span>
+              <span>{language === "ja" ? "プランを保存・共有" : "Save and share your plan"}</span>
             </li>
           </ul>
         </div>
@@ -121,7 +147,9 @@ export default function SuccessPageClient({
         {isSubscription && (
           <div className="mt-6 p-4 bg-gradient-to-r from-[#e67e22]/5 to-[#f39c12]/5 rounded-xl border border-[#e67e22]/20">
             <h4 className="font-bold text-[#e67e22] mb-3 text-sm">
-              {currentPlanName}プランで利用可能な機能
+              {language === "ja"
+                ? `${currentPlanName}プランで利用可能な機能`
+                : `Features available in ${currentPlanName}`}
             </h4>
             <div className="grid grid-cols-2 gap-2 text-xs text-stone-600">
               {featureHighlights.map((feature) => (

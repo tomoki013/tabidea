@@ -1,0 +1,208 @@
+'use client';
+
+import { useEffect, useState, Suspense } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { SyncSelectionModal } from '@/components/ui/SyncSelectionModal';
+import {
+  DEFAULT_LANGUAGE,
+  getLanguageFromPathname,
+  localizePath,
+} from '@/lib/i18n/locales';
+import {
+  getLocalPlans,
+  syncLocalPlansSelectively,
+} from '@/lib/local-storage/plans';
+import { checkPlanStorageLimit } from '@/app/actions/limits';
+import { savePlan } from '@/app/actions/travel-planner';
+import { createClient } from '@/lib/supabase/client';
+
+function SyncPlansContent() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const searchParams = useSearchParams();
+  const [localPlans, setLocalPlans] = useState<
+    Array<{ id: string; destination: string; createdAt: string }>
+  >([]);
+  const [availableSlots, setAvailableSlots] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const text = language === 'ja'
+    ? {
+        loading: '読み込み中...',
+        syncPreparationError: '同期の準備中にエラーが発生しました',
+        syncError: '同期中にエラーが発生しました',
+        errorTitle: 'エラーが発生しました',
+        toDashboard: 'ダッシュボードへ',
+        syncing: '同期中...',
+        unsetDestination: '未設定',
+      }
+    : {
+        loading: 'Loading...',
+        syncPreparationError: 'An error occurred while preparing sync.',
+        syncError: 'An error occurred during sync.',
+        errorTitle: 'Something went wrong',
+        toDashboard: 'Go to dashboard',
+        syncing: 'Syncing...',
+        unsetDestination: 'Unspecified',
+      };
+
+  useEffect(() => {
+    async function init() {
+      try {
+        const plans = getLocalPlans();
+
+        if (plans.length === 0) {
+          // No plans to sync, redirect to home
+          router.replace(localizePath('/', language));
+          return;
+        }
+
+        // Get user's plan count and storage limit
+        const supabase = createClient();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        if (!user) {
+          // Not logged in, redirect to login
+          router.replace(localizePath('/auth/login', language));
+          return;
+        }
+
+        const { data: dbCount } = await supabase.rpc('count_user_plans', {
+          p_user_id: user.id,
+        });
+
+        const storageStatus = await checkPlanStorageLimit();
+
+        const available =
+          storageStatus.limit === -1
+            ? plans.length
+            : Math.max(0, storageStatus.limit - (dbCount || 0));
+
+        setLocalPlans(
+          plans.map((p) => ({
+            id: p.id,
+            destination: p.itinerary.destination || text.unsetDestination,
+            createdAt: p.createdAt,
+          }))
+        );
+        setAvailableSlots(available);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Failed to initialize sync page:', err);
+        setError(text.syncPreparationError);
+        setIsLoading(false);
+      }
+    }
+    init();
+  }, [language, router, text.syncPreparationError, text.unsetDestination]);
+
+  const handleConfirm = async (
+    selectedIds: string[],
+    deleteUnselected: boolean
+  ) => {
+    setIsSyncing(true);
+    setError(null);
+
+    try {
+      const result = await syncLocalPlansSelectively(
+        async (input, itinerary) => {
+          const saveResult = await savePlan(input, itinerary, false);
+          return saveResult;
+        },
+        {
+          planIdsToSync: selectedIds,
+          unsyncedAction: deleteUnselected ? 'delete' : 'keep_local',
+        }
+      );
+
+        if (result.success) {
+          // Sync successful, redirect to dashboard
+          router.push(`${localizePath('/dashboard', language)}?sync=success`);
+        } else {
+          setError(
+            result.errors.length > 0
+              ? result.errors[0]
+              : text.syncError
+          );
+          setIsSyncing(false);
+        }
+      } catch (err) {
+        console.error('Sync error:', err);
+        setError(text.syncError);
+        setIsSyncing(false);
+      }
+  };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-stone-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+          <p className="text-stone-600">{text.loading}</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-stone-50 p-4">
+        <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6">
+          <div className="text-center">
+            <div className="text-5xl mb-4">😢</div>
+            <h2 className="text-xl font-bold text-stone-800 mb-2">
+              {text.errorTitle}
+            </h2>
+            <p className="text-stone-600 mb-4">{error}</p>
+            <button
+              onClick={() => router.push(localizePath('/dashboard', language))}
+              className="px-6 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors"
+            >
+              {text.toDashboard}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-stone-50">
+      <SyncSelectionModal
+        isOpen={!isSyncing}
+        onClose={() => router.push(localizePath('/dashboard', language))}
+        localPlans={localPlans}
+        availableSlots={availableSlots}
+        onConfirm={handleConfirm}
+      />
+
+      {isSyncing && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-4">
+            <div className="w-12 h-12 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+            <p className="text-stone-800 font-medium">{text.syncing}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function SyncPlansPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex items-center justify-center bg-stone-50">
+          <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+        </div>
+      }
+    >
+      <SyncPlansContent />
+    </Suspense>
+  );
+}

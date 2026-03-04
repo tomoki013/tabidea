@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
 import crypto from "crypto";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   // 開発時のServer Actions許可オリジン（403エラー対策）
@@ -47,4 +50,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

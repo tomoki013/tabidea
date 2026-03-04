@@ -1,0 +1,616 @@
+'use client';
+
+import { useState, useEffect, useCallback, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
+import {
+  FaMapMarkerAlt,
+  FaCalendarAlt,
+  FaTrash,
+  FaPlus,
+  FaPlane,
+  FaSync,
+  FaEdit,
+  FaEllipsisV,
+  FaGlobe,
+  FaLock,
+  FaFlag,
+} from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
+
+import type { PlanListItem } from '@/types';
+import { deletePlan, savePlan, updatePlanName, getFlaggedPlans, updatePlanVisibility } from '@/app/actions/travel-planner';
+import { usePlanModal } from '@/context/PlanModalContext';
+import { useAuth } from '@/context/AuthContext';
+import { useUserPlans } from '@/context/UserPlansContext';
+import { useFlags } from '@/context/FlagsContext';
+import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
+import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
+import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from '@/components/ui/journal';
+
+interface MyPlansClientProps {
+  initialPlans: PlanListItem[];
+  totalPlans: number;
+}
+
+export default function MyPlansClient({
+  initialPlans,
+  totalPlans,
+}: MyPlansClientProps) {
+  const { openModal } = usePlanModal();
+  const { isAuthenticated, isLoading } = useAuth();
+  const { plans, addPlan, removePlan, updatePlan, setPlans } = useUserPlans();
+  const { isFlagged, toggleFlag } = useFlags();
+  const router = useRouter();
+  const pathname = usePathname();
+  const language = resolveLanguageFromPathname(pathname);
+  const dateLocale = language === "ja" ? "ja-JP" : "en-US";
+  const ui =
+    language === "ja"
+      ? {
+          authRedirect: "ログインが必要です",
+          syncing: "件のローカルプランを同期中...",
+          synced: "件のプランを同期しました",
+          deleteFailed: "削除に失敗しました",
+          visibilityFailed: "公開設定の更新に失敗しました",
+          renameFailed: "名前の変更に失敗しました",
+          title: "マイプラン",
+          subtitleSuffix: "件",
+          syncLocal: "ローカル同期",
+          create: "新規作成",
+          tabAll: "すべて",
+          tabFlagged: "フラグ付き",
+          loading: "ページをめくっています...",
+          loadingFlagged: "お気に入りのページを探しています...",
+          emptyTitle: "まだ記録がありません",
+          emptyDesc: "新しい旅の計画を立てて、ここに思い出を残しましょう",
+          public: "公開中",
+          private: "非公開",
+          placeholder: "タイトルを入力",
+          createdAt: "作成",
+          rename: "名前を変更",
+          makePrivate: "旅のしおりを非公開にする",
+          makePublic: "旅のしおりを公開する",
+          delete: "削除",
+          confirmDelete: "本当に削除しますか？",
+          confirmDeleteSub: "この操作は取り消せません。",
+          cancel: "キャンセル",
+          confirmDeleteBtn: "削除する",
+          untitled: "無題の旅",
+          days: "日間",
+        }
+      : {
+          authRedirect: "Login required",
+          syncing: " local plans are syncing...",
+          synced: " plans synced",
+          deleteFailed: "Failed to delete.",
+          visibilityFailed: "Failed to update visibility.",
+          renameFailed: "Failed to rename.",
+          title: "My Plans",
+          subtitleSuffix: " plans",
+          syncLocal: "Sync local",
+          create: "Create",
+          tabAll: "All",
+          tabFlagged: "Flagged",
+          loading: "Turning pages...",
+          loadingFlagged: "Looking for your favorites...",
+          emptyTitle: "No records yet",
+          emptyDesc: "Start a new journey and save your memories here",
+          public: "Public",
+          private: "Private",
+          placeholder: "Enter title",
+          createdAt: "Created",
+          rename: "Rename",
+          makePrivate: "Make private",
+          makePublic: "Make public",
+          delete: "Delete",
+          confirmDelete: "Delete this plan?",
+          confirmDeleteSub: "This action cannot be undone.",
+          cancel: "Cancel",
+          confirmDeleteBtn: "Delete",
+          untitled: "Untitled trip",
+          days: "days",
+        };
+
+  useEffect(() => {
+    if (!isLoading && !isAuthenticated) {
+      router.push(`${localizeHref('/auth/login', language)}?redirect=${encodeURIComponent(localizeHref('/my-plans', language))}`);
+    }
+  }, [isLoading, isAuthenticated, router, language]);
+
+  const [isDeleting, setIsDeleting] = useState<string | null>(null);
+  const [isUpdating, setIsUpdating] = useState<string | null>(null);
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncMessage, setSyncMessage] = useState<string | null>(null);
+  const [hasLocalPlans, setHasLocalPlans] = useState(false);
+
+  // Filter state
+  const [filter, setFilter] = useState<'all' | 'flagged'>('all');
+  const [flaggedPlans, setFlaggedPlans] = useState<PlanListItem[]>([]);
+  const [isLoadingFlags, setIsLoadingFlags] = useState(false);
+
+  const [isRenaming, setIsRenaming] = useState<string | null>(null);
+  const [renameValue, setRenameValue] = useState('');
+  const renameInputRef = useRef<HTMLInputElement>(null);
+
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [planToDelete, setPlanToDelete] = useState<string | null>(null);
+
+  const [isInitializing, setIsInitializing] = useState(true);
+
+  useEffect(() => {
+    if (initialPlans && initialPlans.length > 0) {
+      setPlans(initialPlans);
+    }
+    setIsInitializing(false);
+  }, [initialPlans, setPlans]);
+
+  useEffect(() => {
+    if (isRenaming && renameInputRef.current) {
+      renameInputRef.current.focus();
+      renameInputRef.current.select();
+    }
+  }, [isRenaming]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setOpenMenuId(null);
+      }
+    };
+
+    if (openMenuId) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [openMenuId]);
+
+  useEffect(() => {
+    const localPlans = getLocalPlans();
+    setHasLocalPlans(localPlans.length > 0);
+  }, []);
+
+  useEffect(() => {
+    if (filter === 'flagged') {
+      loadFlaggedPlans();
+    }
+  }, [filter]);
+
+  const loadFlaggedPlans = useCallback(async () => {
+    setIsLoadingFlags(true);
+    try {
+      const result = await getFlaggedPlans();
+      if (result.success && result.plans) {
+        setFlaggedPlans(result.plans);
+      }
+    } catch (error) {
+      console.error('Failed to load flagged plans:', error);
+    } finally {
+      setIsLoadingFlags(false);
+    }
+  }, []);
+
+  const syncLocalPlans = useCallback(async () => {
+    const localPlans = getLocalPlans();
+    if (localPlans.length === 0) return;
+
+    setIsSyncing(true);
+    setSyncMessage(`${localPlans.length}${ui.syncing}`);
+
+    let syncedCount = 0;
+
+    for (const localPlan of localPlans) {
+      try {
+        const result = await savePlan(localPlan.input, localPlan.itinerary, false);
+        if (result.success && result.shareCode && result.plan) {
+          syncedCount++;
+          deleteLocalPlan(localPlan.id);
+
+          addPlan({
+            id: result.plan.id,
+            shareCode: result.plan.shareCode,
+            destination: result.plan.destination,
+            durationDays: result.plan.durationDays,
+            thumbnailUrl: result.plan.thumbnailUrl,
+            isPublic: result.plan.isPublic,
+            createdAt: new Date(result.plan.createdAt),
+            updatedAt: new Date(result.plan.updatedAt),
+          });
+        }
+      } catch (error) {
+        console.error('Failed to sync local plan:', error);
+      }
+    }
+
+    if (syncedCount > 0) {
+      setSyncMessage(`${syncedCount}${ui.synced}`);
+    } else {
+      setSyncMessage(null);
+    }
+
+    setHasLocalPlans(getLocalPlans().length > 0);
+    setIsSyncing(false);
+
+    setTimeout(() => setSyncMessage(null), 3000);
+  }, []);
+
+  const confirmDelete = (planId: string) => {
+    setPlanToDelete(planId);
+    setShowDeleteModal(true);
+    setOpenMenuId(null);
+  };
+
+  const handleDelete = async () => {
+    if (!planToDelete) return;
+
+    setIsDeleting(planToDelete);
+    setShowDeleteModal(false);
+
+    const result = await deletePlan(planToDelete);
+
+    if (result.success) {
+      removePlan(planToDelete);
+    } else {
+      alert(result.error || ui.deleteFailed);
+    }
+    setIsDeleting(null);
+    setPlanToDelete(null);
+  };
+
+  const handleToggleVisibility = async (
+    planId: string,
+    currentPublic: boolean,
+  ) => {
+    setIsUpdating(planId);
+    const nextIsPublic = !currentPublic;
+
+    const result = await updatePlanVisibility(planId, nextIsPublic);
+
+    if (result.success) {
+      updatePlan(planId, { isPublic: nextIsPublic });
+    } else {
+      alert(result.error || ui.visibilityFailed);
+    }
+    setIsUpdating(null);
+  };
+
+  const handleStartRename = (planId: string, currentName: string) => {
+    setIsRenaming(planId);
+    setRenameValue(currentName || '');
+    setOpenMenuId(null);
+  };
+
+  const handleRename = async (planId: string) => {
+    if (!renameValue.trim()) {
+      setIsRenaming(null);
+      return;
+    }
+
+    setIsUpdating(planId);
+    const result = await updatePlanName(planId, renameValue.trim());
+
+    if (result.success) {
+      updatePlan(planId, { destination: renameValue.trim() });
+    } else {
+      alert(result.error || ui.renameFailed);
+    }
+
+    setIsRenaming(null);
+    setIsUpdating(null);
+  };
+
+  const formatDate = (date: Date) => {
+    return new Intl.DateTimeFormat(dateLocale, {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+    }).format(new Date(date));
+  };
+
+  const handleToggleFlag = async (planId: string) => {
+    await toggleFlag(planId);
+    if (filter === 'flagged') {
+      loadFlaggedPlans();
+    }
+  };
+
+  const displayedPlans = filter === 'flagged'
+    ? flaggedPlans
+    : [...plans].sort((a, b) => {
+        const aIsFlagged = isFlagged(a.id);
+        const bIsFlagged = isFlagged(b.id);
+        if (aIsFlagged && !bIsFlagged) return -1;
+        if (!aIsFlagged && bIsFlagged) return 1;
+        return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
+      });
+
+  return (
+    <div className="flex flex-col min-h-screen bg-[#fcfbf9]">
+      <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-8">
+        {/* Header */}
+        <div className="pt-24 pb-8 relative">
+          <div className="flex items-center justify-between">
+            <div className="flex flex-col">
+              <div className="flex items-center gap-3 mb-2">
+                <Stamp color="black" size="sm" className="w-12 h-12 text-[0.6rem] border-2 rotate-6">
+                   MY<br/>PLANS
+                </Stamp>
+                <HandwrittenText tag="h1" className="text-4xl font-bold text-stone-800">
+                  {ui.title}
+                </HandwrittenText>
+              </div>
+              <p className="text-stone-500 font-hand ml-2">
+                {language === "ja" ? `旅の記録 (${totalPlans}${ui.subtitleSuffix})` : `${totalPlans}${ui.subtitleSuffix}`}
+              </p>
+            </div>
+            <div className="flex items-center gap-3">
+              {hasLocalPlans && (
+                <JournalButton
+                  variant="outline"
+                  onClick={syncLocalPlans}
+                  disabled={isSyncing}
+                  className="hidden sm:flex"
+                >
+                  {isSyncing ? <FaSync className="animate-spin mr-2" /> : <FaSync className="mr-2" />}
+                  {ui.syncLocal}
+                </JournalButton>
+              )}
+              <JournalButton
+                variant="primary"
+                onClick={() => openModal()}
+                className="font-bold shadow-md hover:rotate-1"
+              >
+                <FaPlus className="mr-2" />
+                {ui.create}
+              </JournalButton>
+            </div>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="flex items-center gap-2 mt-8">
+            <button
+              onClick={() => setFilter('all')}
+              className={`
+                flex items-center gap-2 px-6 py-2 rounded-sm font-bold transition-all font-hand border-b-2
+                ${filter === 'all'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-stone-400 hover:text-stone-600'
+                }
+              `}
+            >
+              {ui.tabAll}
+            </button>
+            <button
+              onClick={() => setFilter('flagged')}
+              className={`
+                flex items-center gap-2 px-6 py-2 rounded-sm font-bold transition-all font-hand border-b-2
+                ${filter === 'flagged'
+                  ? 'border-amber-500 text-amber-600'
+                  : 'border-transparent text-stone-400 hover:text-stone-600'
+                }
+              `}
+            >
+              <FaFlag className="text-sm" />
+              {ui.tabFlagged}
+            </button>
+          </div>
+        </div>
+
+        {/* Sync Status */}
+        {(isSyncing || syncMessage) && (
+          <div className={`mb-6 p-4 rounded-sm flex items-center gap-3 border border-dashed ${
+            isSyncing ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-green-50 text-green-700 border-green-200'
+          }`}>
+            {isSyncing ? <FaSync className="animate-spin" /> : <FaSync />}
+            <span className="font-hand">{syncMessage}</span>
+          </div>
+        )}
+
+        {/* Plans List */}
+        {isInitializing ? (
+          <div className="text-center py-16">
+            <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
+            <p className="text-stone-600 font-hand">{ui.loading}</p>
+          </div>
+        ) : isLoadingFlags && filter === 'flagged' ? (
+          <div className="text-center py-16">
+            <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
+            <p className="text-stone-600 font-hand">{ui.loadingFlagged}</p>
+          </div>
+        ) : displayedPlans.length === 0 ? (
+          <div className="text-center py-16 opacity-70">
+            <div className="w-32 h-32 mx-auto mb-6 bg-stone-100 rounded-full border-4 border-stone-200 border-dashed flex items-center justify-center">
+               <FaPlane className="text-4xl text-stone-300" />
+            </div>
+            <h2 className="font-hand text-xl font-bold text-stone-500 mb-2">
+              {ui.emptyTitle}
+            </h2>
+            <p className="text-stone-400 mb-8 font-hand text-sm">
+              {ui.emptyDesc}
+            </p>
+          </div>
+        ) : (
+          <div className="grid gap-5 lg:grid-cols-2">
+            {displayedPlans.map((plan, index) => (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                key={plan.id}
+              >
+                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group ${openMenuId === plan.id ? 'overflow-visible z-50' : 'overflow-hidden z-0'}`}>
+                  {/* Tape Decorations */}
+                  <Tape color="white" position="top-right" rotation="right" className="opacity-70 w-24 -top-3" />
+
+                  <div className="flex flex-col md:flex-row h-full">
+                    {/* Thumbnail */}
+                    <div className="md:w-44 h-40 md:h-auto relative bg-stone-100 overflow-hidden border-b md:border-b-0 md:border-r border-stone-200 border-dashed shrink-0">
+                      {plan.thumbnailUrl ? (
+                        <Image
+                          src={plan.thumbnailUrl}
+                          alt={plan.destination || ui.untitled}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center bg-[#fcfbf9]">
+                          <FaMapMarkerAlt className="text-4xl text-stone-200" />
+                        </div>
+                      )}
+
+                      {/* Visibility Badge (Stamp style) */}
+                      <div className={`absolute bottom-3 left-3 px-3 py-1 border-2 font-bold text-xs transform -rotate-2 ${
+                        plan.isPublic
+                          ? 'border-green-600 text-green-700 bg-white/90'
+                          : 'border-stone-500 text-stone-600 bg-white/90'
+                      }`}>
+                        {plan.isPublic ? ui.public : ui.private}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 p-4 sm:p-5 relative">
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex-1">
+                          {isRenaming === plan.id ? (
+                            <input
+                              ref={renameInputRef}
+                              type="text"
+                              value={renameValue}
+                              onChange={(e) => setRenameValue(e.target.value)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter') {
+                                  e.preventDefault();
+                                  handleRename(plan.id);
+                                } else if (e.key === 'Escape') {
+                                  setIsRenaming(null);
+                                }
+                              }}
+                              onBlur={() => handleRename(plan.id)}
+                              className="w-full font-hand text-xl font-bold bg-transparent border-b-2 border-primary focus:outline-none"
+                              placeholder={ui.placeholder}
+                            />
+                          ) : (
+                            <Link href={localizeHref(`/plan/id/${plan.id}`, language)} className="group/link block">
+                              <h3 className="font-hand text-xl sm:text-2xl font-bold text-stone-800 group-hover/link:text-primary transition-colors mb-2 line-clamp-2">
+                                {plan.destination || ui.untitled}
+                              </h3>
+                            </Link>
+                          )}
+
+                          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-500 font-hand mt-2">
+                            {plan.durationDays && (
+                              <span className="flex items-center gap-1">
+                                <FaCalendarAlt className="text-stone-400" />
+                                {plan.durationDays} {ui.days}
+                              </span>
+                            )}
+                            <span className="text-stone-300 hidden sm:inline">|</span>
+                            <span>{ui.createdAt}: {formatDate(plan.createdAt)}</span>
+                          </div>
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex items-center gap-1">
+                          {/* Flag */}
+                          <button
+                            onClick={() => handleToggleFlag(plan.id)}
+                            className={`p-2 rounded-full transition-all ${
+                              isFlagged(plan.id)
+                                ? 'text-amber-500'
+                                : 'text-stone-300 hover:text-amber-400'
+                            }`}
+                          >
+                            <FaFlag className="text-lg" />
+                          </button>
+
+                          {/* Menu */}
+                          <div className="relative" ref={openMenuId === plan.id ? menuRef : null}>
+                            <button
+                              onClick={() => setOpenMenuId(openMenuId === plan.id ? null : plan.id)}
+                              className="p-2 text-stone-400 hover:text-stone-600 transition-all"
+                            >
+                              <FaEllipsisV />
+                            </button>
+
+                            {openMenuId === plan.id && (
+                              <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-sm shadow-xl border border-stone-200 z-50 font-hand">
+                                <button
+                                  onClick={() => handleStartRename(plan.id, plan.destination || '')}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                >
+                                  <FaEdit /> {ui.rename}
+                                </button>
+                                <button
+                                  onClick={() => {
+                                    handleToggleVisibility(plan.id, plan.isPublic);
+                                    setOpenMenuId(null);
+                                  }}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                >
+                                  {plan.isPublic ? <FaLock /> : <FaGlobe />}
+                                  {plan.isPublic ? ui.makePrivate : ui.makePublic}
+                                </button>
+                                <div className="border-t border-stone-100 border-dashed my-1" />
+                                <button
+                                  onClick={() => confirmDelete(plan.id)}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                                >
+                                  <FaTrash /> {ui.delete}
+                                </button>
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </JournalSheet>
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </main>
+
+      {/* Delete Modal */}
+      <AnimatePresence>
+        {showDeleteModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[100] p-4"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            <div onClick={(e) => e.stopPropagation()} className="max-w-sm w-full transform rotate-1">
+               <JournalSheet className="relative text-center p-8">
+                  <Tape color="red" position="top-center" className="w-32 -top-4 opacity-80" />
+                  <div className="mb-4">
+                     <FaTrash className="text-4xl text-red-400 mx-auto" />
+                  </div>
+                  <HandwrittenText className="text-xl font-bold text-stone-800 mb-2">
+                     {ui.confirmDelete}
+                  </HandwrittenText>
+                  <p className="text-sm text-stone-500 mb-6 font-hand">
+                     {ui.confirmDeleteSub}
+                  </p>
+                  <div className="flex gap-3">
+                     <JournalButton variant="ghost" onClick={() => setShowDeleteModal(false)} className="flex-1">
+                        {ui.cancel}
+                     </JournalButton>
+                     <JournalButton variant="primary" onClick={handleDelete} className="flex-1 bg-red-600 border-red-800 text-white hover:bg-red-700">
+                        {ui.confirmDeleteBtn}
+                     </JournalButton>
+                  </div>
+               </JournalSheet>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}

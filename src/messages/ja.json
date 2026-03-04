@@ -1,0 +1,61 @@
+{
+  "header": {
+    "openMenu": "メニューを開く",
+    "usage": "使い方",
+    "pricing": "料金",
+    "faq": "FAQ",
+    "planTrip": "旅を計画する",
+    "userFallback": "ユーザー",
+    "login": "ログイン"
+  },
+  "footer": {
+    "taglineLine1": "あなたの旅の物語を、",
+    "taglineLine2": "AIと一緒に紡ぎ出す。",
+    "supportedBy": "Supported by ともきちの旅行日記",
+    "about": "About",
+    "explore": "Explore",
+    "help": "Help",
+    "legal": "Legal",
+    "aboutTabidea": "Tabideaについて",
+    "features": "機能紹介・使い方",
+    "updates": "アップデート情報",
+    "pricingPlan": "料金プラン",
+    "shiori": "旅のしおり",
+    "samples": "サンプルプラン集",
+    "blog": "ブログ",
+    "travelInfo": "渡航情報・安全ガイド",
+    "faq": "よくある質問",
+    "contact": "お問い合わせ",
+    "terms": "利用規約",
+    "privacy": "プライバシーポリシー",
+    "cookiePolicy": "クッキーポリシー",
+    "aiPolicy": "AIポリシー",
+    "specified": "特商法表記",
+    "copyright": "© 2025-2026 Tabidea. All rights reserved."
+  },
+  "mobileSidebar": {
+    "closeMenu": "メニューを閉じる",
+    "home": "ホーム",
+    "usage": "使い方",
+    "pricing": "料金プラン",
+    "faq": "よくある質問",
+    "savedPlans": "保存したプラン",
+    "localPlans": "ローカルプラン",
+    "viewAll": "すべて見る",
+    "noPlans": "プランがありません",
+    "createPlan": "プランを作成する",
+    "openMenu": "メニューを開く",
+    "login": "ログイン"
+  },
+  "languageSwitcher": {
+    "label": "表示言語",
+    "ja": "日本語",
+    "en": "English"
+  },
+  "settings": {
+    "languageAndRegion": "言語と地域",
+    "languageDescription": "言語を切り替えると、その言語の推奨地域が初期値として設定されます。",
+    "displayLanguage": "表示言語",
+    "region": "地域"
+  }
+}

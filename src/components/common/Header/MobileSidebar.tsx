@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaTimes,
@@ -27,11 +28,14 @@ import { usePlanModal } from '@/context/PlanModalContext';
 import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
+import { stripLanguagePrefix } from '@/lib/i18n/locales';
+import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
 import { getBillingAccessInfo } from '@/app/actions/billing';
 import { resolvePlanDisplayName } from '@/lib/billing/plan-catalog';
 import type { PlanListItem } from '@/types';
 import type { BillingAccessInfo } from '@/types/billing';
+import LanguageSwitcher from '../LanguageSwitcher';
 import { JournalSheet, Tape, HandwrittenText, Stamp, JournalButton } from '@/components/ui/journal';
 
 interface MobileSidebarProps {
@@ -51,6 +55,10 @@ export default function MobileSidebar({
   const { plans: serverPlans, isLoading: isServerPlansLoading, removePlan, updatePlan } = useUserPlans();
   const { isFlagged, toggleFlag } = useFlags();
   const pathname = usePathname();
+  const t = useTranslations('mobileSidebar');
+  const language = resolveLanguageFromPathname(pathname);
+  const normalizedPathname = stripLanguagePrefix(pathname);
+  const dateLocale = language === 'ja' ? 'ja-JP' : 'en-US';
 
   // Menu state
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -192,7 +200,7 @@ export default function MobileSidebar({
 
   const formatDate = (date: Date | string) => {
     const d = typeof date === 'string' ? new Date(date) : date;
-    return new Intl.DateTimeFormat('ja-JP', {
+    return new Intl.DateTimeFormat(dateLocale, {
       month: 'short',
       day: 'numeric',
     }).format(d);
@@ -216,9 +224,9 @@ export default function MobileSidebar({
   // Check if a plan is currently active based on URL
   const isActivePlan = (planId: string, isLocalPlan: boolean) => {
     if (isLocalPlan) {
-      return pathname === `/plan/local/${planId}`;
+      return normalizedPathname === `/plan/local/${planId}`;
     }
-    return pathname === `/plan/id/${planId}`;
+    return normalizedPathname === `/plan/id/${planId}`;
   };
 
   return (
@@ -254,7 +262,7 @@ export default function MobileSidebar({
 
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b-2 border-dashed border-stone-200 bg-white/50 sticky top-0 z-10 backdrop-blur-sm">
-                <Link href="/" onClick={onClose} className="group flex items-center gap-2">
+                <Link href={localizeHref('/', language)} onClick={onClose} className="group flex items-center gap-2">
                   <Stamp color="black" size="sm" className="w-10 h-10 text-[0.6rem] border-2 bg-white">
                      <div className="flex flex-col items-center leading-none">
                         <span>TABI</span>
@@ -266,7 +274,7 @@ export default function MobileSidebar({
                 <button
                   onClick={onClose}
                   className="p-2 text-stone-500 hover:text-stone-700 hover:bg-stone-100 rounded-sm transition-colors border border-transparent hover:border-stone-300 hover:border-dashed"
-                  aria-label="メニューを閉じる"
+                  aria-label={t('closeMenu')}
                 >
                   <FaTimes size={18} />
                 </button>
@@ -339,10 +347,13 @@ export default function MobileSidebar({
 
               {/* Navigation Links */}
               <nav className="p-4 space-y-1">
-                <SidebarLink href="/" icon={<FaHome />} label="ホーム" onClick={onClose} />
-                <SidebarLink href="/usage" icon={<FaMap />} label="使い方" onClick={onClose} />
-                <SidebarLink href="/pricing" icon={<FaCrown />} label="料金プラン" onClick={onClose} />
-                <SidebarLink href="/faq" icon={<FaQuestionCircle />} label="よくある質問" onClick={onClose} />
+                <SidebarLink href={localizeHref('/', language)} icon={<FaHome />} label={t('home')} onClick={onClose} />
+                <SidebarLink href={localizeHref('/usage', language)} icon={<FaMap />} label={t('usage')} onClick={onClose} />
+                <SidebarLink href={localizeHref('/pricing', language)} icon={<FaCrown />} label={t('pricing')} onClick={onClose} />
+                <SidebarLink href={localizeHref('/faq', language)} icon={<FaQuestionCircle />} label={t('faq')} onClick={onClose} />
+                <div className="px-3 pt-2">
+                  <LanguageSwitcher />
+                </div>
               </nav>
 
               {/* Divider */}
@@ -354,16 +365,16 @@ export default function MobileSidebar({
                   <div className="flex items-center gap-2">
                     <FaSuitcase className="text-stone-400" />
                     <HandwrittenText className="font-bold text-sm">
-                      {isAuthenticated ? '保存したプラン' : 'ローカルプラン'}
+                      {isAuthenticated ? t('savedPlans') : t('localPlans')}
                     </HandwrittenText>
                   </div>
                   {isAuthenticated && (
                     <Link
-                      href="/my-plans"
+                      href={localizeHref('/my-plans', language)}
                       onClick={onClose}
                       className="text-xs text-stone-500 hover:text-primary transition-colors font-hand decoration-dashed underline"
                     >
-                      すべて見る
+                      {t('viewAll')}
                     </Link>
                   )}
                 </div>
@@ -387,8 +398,8 @@ export default function MobileSidebar({
                             // Determine link and plan info based on type
                             const isLocalPlan = 'itinerary' in plan;
                             const href = isLocalPlan
-                              ? `/plan/local/${plan.id}`
-                              : `/plan/id/${plan.id}`;
+                              ? localizeHref(`/plan/local/${plan.id}`, language)
+                              : localizeHref(`/plan/id/${plan.id}`, language);
                             const destination = isLocalPlan
                               ? (plan as { itinerary: { destination?: string } }).itinerary?.destination
                               : (plan as PlanListItem).destination;
@@ -482,7 +493,7 @@ export default function MobileSidebar({
                                     <button
                                       onClick={(e) => handleMenuToggle(plan.id, e)}
                                       className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
-                                      aria-label="メニューを開く"
+                                      aria-label={t('openMenu')}
                                     >
                                       <FaEllipsisV className="text-sm" />
                                     </button>
@@ -534,7 +545,7 @@ export default function MobileSidebar({
 
                           {displayPlans.length > 5 && (
                             <Link
-                              href={isAuthenticated ? '/my-plans' : '#'}
+                              href={isAuthenticated ? localizeHref('/my-plans', language) : '#'}
                               onClick={onClose}
                               className="block text-center text-xs text-stone-500 hover:text-primary py-2 transition-colors font-hand decoration-dashed underline"
                             >
@@ -548,7 +559,7 @@ export default function MobileSidebar({
                             <FaPlane className="text-stone-300 text-xl" />
                           </div>
                           <p className="text-sm text-stone-500 mb-1 font-hand">
-                            プランがありません
+                            {t('noPlans')}
                           </p>
                           <p className="text-xs text-stone-400 font-hand">
                             新しい旅を計画しましょう
@@ -570,11 +581,11 @@ export default function MobileSidebar({
                               ログインして、保存したすべての<br/>プランにアクセスしましょう
                             </p>
                             <Link
-                              href="/auth/login"
+                              href={localizeHref('/auth/login', language)}
                               onClick={onClose}
                               className="inline-flex items-center justify-center w-full px-4 py-2 bg-white border border-primary text-primary rounded-sm text-sm font-bold hover:bg-primary hover:text-white transition-all shadow-sm font-hand"
                             >
-                              ログインする
+                              {t('login')}
                             </Link>
                           </div>
                         </div>
@@ -592,7 +603,7 @@ export default function MobileSidebar({
                   onClick={handleCreatePlan}
                 >
                   <FaPen className="text-sm mr-2" />
-                  プランを作成する
+                  {t('createPlan')}
                 </JournalButton>
               </div>
             </JournalSheet>

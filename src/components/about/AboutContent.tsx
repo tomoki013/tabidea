@@ -1,8 +1,14 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { TrinityCircle } from "@/components/features/landing";
 import StartPlanningButton from "@/components/common/StartPlanningButton";
+import {
+  DEFAULT_LANGUAGE,
+  getLanguageFromPathname,
+  localizePath,
+} from "@/lib/i18n/locales";
 import {
   FaRobot,
   FaLightbulb,
@@ -42,6 +48,96 @@ const cardVariant: Variants = {
 };
 
 export default function AboutContent() {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+
+  if (language === "en") {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32">
+        <main className="max-w-5xl mx-auto px-4 pb-16 sm:pb-24 space-y-12">
+          <section className="text-center space-y-4">
+            <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#2c2c2c]">
+              About Tabidea
+            </h1>
+            <p className="text-lg text-stone-600 font-hand leading-relaxed max-w-3xl mx-auto">
+              Tabidea is an AI-powered travel planning partner that turns vague
+              inspiration into practical, memorable trips.
+            </p>
+          </section>
+
+          <section className="bg-white rounded-3xl border border-stone-200 p-8 sm:p-12 space-y-6">
+            <h2 className="text-3xl font-serif font-bold text-[#e67e22]">
+              Mission
+            </h2>
+            <p className="text-stone-700 leading-relaxed">
+              We reduce planning friction and maximize the joy of travel by
+              combining AI assistance with user control. Tabidea supports you
+              from inspiration to execution while keeping final decisions in
+              your hands.
+            </p>
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">What we offer</h3>
+                <p className="text-sm text-stone-600 leading-relaxed">
+                  AI itinerary generation, editing and chat refinement, plan
+                  save/share, PDF export, and travel info support.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-stone-200 bg-stone-50 p-5">
+                <h3 className="font-bold text-[#2c2c2c] mb-2">Core values</h3>
+                <p className="text-sm text-stone-600 leading-relaxed">
+                  User-first control, safety-oriented planning, and storytelling
+                  through travel notes and blog content.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="bg-white rounded-3xl border border-stone-200 p-8 sm:p-12 overflow-hidden relative">
+            <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#2c2c2c] mb-4">
+              Tabi × Idea × Deai
+            </h2>
+            <p className="text-stone-600 leading-relaxed mb-8">
+              The name Tabidea combines travel (Tabi), ideas (Idea), and
+              encounters (Deai). We design not only itineraries, but also
+              meaningful moments you remember.
+            </p>
+            <div className="max-w-sm mx-auto">
+              <TrinityCircle />
+            </div>
+          </section>
+
+          <section className="bg-orange-50 border-2 border-orange-200 border-dashed rounded-3xl p-8 sm:p-12 space-y-4">
+            <h2 className="text-2xl font-serif font-bold text-orange-800">
+              Important notice
+            </h2>
+            <p className="text-orange-900 leading-relaxed">
+              AI outputs may include mistakes. Please verify critical details
+              such as business hours, pricing, regulations, and transportation
+              with official primary sources.
+            </p>
+            <a
+              href={localizePath("/ai-policy", language)}
+              className="inline-block underline font-bold text-orange-800 hover:text-orange-700"
+            >
+              Read AI Policy
+            </a>
+          </section>
+
+          <section className="text-center space-y-6 py-8">
+            <h2 className="text-3xl font-serif font-bold text-[#2c2c2c]">
+              Start planning your journey
+            </h2>
+            <p className="text-stone-600 font-hand text-lg">
+              Build your next trip with AI and make it your own.
+            </p>
+            <StartPlanningButton />
+          </section>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32">
       {/* Hero Section */}

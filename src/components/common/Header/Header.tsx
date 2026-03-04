@@ -1,22 +1,22 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   FaBars,
-  FaMap,
-  FaQuestionCircle,
   FaPen,
-  FaMapMarkerAlt,
   FaUser,
-  FaCrown,
 } from "react-icons/fa";
 import { throttle } from "@/lib/utils";
+import { stripLanguagePrefix } from "@/lib/i18n/locales";
+import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 import { usePlanModal } from "@/context/PlanModalContext";
 import { useAuth } from "@/context/AuthContext";
 import { AuthButton } from "../AuthButton";
+import LanguageSwitcher from "../LanguageSwitcher";
 import MobileSidebar from "./MobileSidebar";
 import SettingsModal from "../SettingsModal";
 import { JournalButton, Stamp, Tape, HandwrittenText } from "@/components/ui/journal";
@@ -33,11 +33,13 @@ export default function Header({
   isSticky = false,
 }: HeaderProps) {
   const pathname = usePathname();
+  const t = useTranslations("header");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobileSettingsOpen, setIsMobileSettingsOpen] = useState(false);
   const { openModal } = usePlanModal();
   const { user, isAuthenticated, isLoading: isAuthLoading } = useAuth();
-  const isHome = pathname === "/";
+  const language = resolveLanguageFromPathname(pathname);
+  const isHome = stripLanguagePrefix(pathname) === "/";
 
   // Scroll-based visibility for homepage
   const [scrollPastThreshold, setScrollPastThreshold] = useState(false);
@@ -115,13 +117,13 @@ export default function Header({
             <button
               onClick={() => setIsSidebarOpen(true)}
               className="p-2 text-stone-600 dark:text-[#d6e2f5] hover:text-stone-800 dark:hover:text-[#f7f8fc] hover:bg-stone-100 dark:hover:bg-[#314760] rounded-sm transition-all border border-transparent hover:border-stone-300 dark:hover:border-[#6a84aa] hover:border-dashed mr-2"
-              aria-label="メニューを開く"
+              aria-label={t("openMenu")}
             >
               <FaBars size={20} />
             </button>
 
             {/* Logo */}
-            <Link href="/" className="group flex items-center gap-2 relative z-10">
+            <Link href={localizeHref("/", language)} className="group flex items-center gap-2 relative z-10">
               <Stamp color="black" size="sm" className="w-10 h-10 md:w-12 md:h-12 border-2 text-[0.6rem] md:text-xs rotate-[-12deg] group-hover:rotate-0 transition-transform duration-300 bg-white">
                 <div className="flex flex-col items-center leading-none">
                   <span>TABI</span>
@@ -137,9 +139,11 @@ export default function Header({
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-6">
-              <NavLink href="/usage" label="使い方" />
-              <NavLink href="/pricing" label="料金" />
-              <NavLink href="/faq" label="FAQ" />
+              <NavLink href={localizeHref("/usage", language)} label={t("usage")} />
+              <NavLink href={localizeHref("/pricing", language)} label={t("pricing")} />
+              <NavLink href={localizeHref("/faq", language)} label={t("faq")} />
+
+              <LanguageSwitcher />
 
               <JournalButton
                 variant="primary"
@@ -148,7 +152,7 @@ export default function Header({
                 className="font-bold shadow-sm"
               >
                 <FaPen className="mr-2 text-xs" />
-                旅を計画する
+                {t("planTrip")}
               </JournalButton>
 
               <AuthButton />
@@ -166,7 +170,7 @@ export default function Header({
                   {user?.avatarUrl ? (
                     <Image
                       src={user.avatarUrl}
-                      alt={user.displayName || "ユーザー"}
+                      alt={user.displayName || t("userFallback")}
                       width={32}
                       height={32}
                       className="rounded-full ring-2 ring-white shadow-sm"
@@ -181,7 +185,7 @@ export default function Header({
                 </button>
               ) : (
                 <Link
-                  href="/auth/login"
+                  href={localizeHref("/auth/login", language)}
                   className="flex items-center justify-center w-8 h-8 rounded-sm border border-stone-300 dark:border-[#6782a9] border-dashed text-stone-500 dark:text-[#d6e2f5] hover:bg-stone-50 dark:hover:bg-[#314760] hover:text-stone-800 dark:hover:text-[#f7f8fc] transition-all font-hand"
                 >
                   <FaUser size={14} />

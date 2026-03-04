@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, KeyboardEvent, useRef } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { UserInput, FixedScheduleItem } from "@/types";
 import { ChevronDown, Check, X, Plus, Minus } from "lucide-react";
@@ -38,6 +39,7 @@ import {
   Tape,
   Stamp
 } from "@/components/ui/journal";
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 
 // ============================================================================
 // Constants
@@ -278,6 +280,8 @@ export default function SimplifiedInputFlow({
   isGenerating = false,
   isInModal = false,
 }: SimplifiedInputFlowProps) {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Accordion state
@@ -568,6 +572,182 @@ export default function SimplifiedInputFlow({
   const maxIndex = getBudgetIndex(budgetMaxAmount);
   const minPercent = (minIndex / SLIDER_MAX) * 100;
   const maxPercent = (maxIndex / SLIDER_MAX) * 100;
+
+  if (language === "en") {
+    const companionLabelById: Record<string, string> = {
+      solo: "Solo",
+      couple: "Couple",
+      family: "Family",
+      friends: "Friends",
+      male_trip: "Boys trip",
+      female_trip: "Girls trip",
+      backpacker: "Backpacker",
+      business: "Business",
+      pet: "With pet",
+    };
+
+    const durationOptionsEn = [
+      { value: 0, label: "Flexible" },
+      { value: 1, label: "Day trip" },
+      { value: 2, label: "2 days" },
+      { value: 3, label: "3 days" },
+      { value: 4, label: "4 days" },
+      { value: 5, label: "5 days" },
+      { value: 6, label: "6 days" },
+      { value: 7, label: "7 days" },
+    ];
+
+    const englishCanGenerate = input.destinations.length > 0 && Boolean(input.companions);
+
+    const addDestinationEn = () => {
+      const trimmed = destinationInput.trim();
+      if (!trimmed || input.destinations.includes(trimmed)) {
+        return;
+      }
+      onChange({
+        destinations: [...input.destinations, trimmed],
+        isDestinationDecided: true,
+      });
+      setDestinationInput("");
+    };
+
+    const removeDestinationEn = (index: number) => {
+      const next = input.destinations.filter((_, i) => i !== index);
+      onChange({
+        destinations: next,
+        isDestinationDecided: next.length > 0 ? true : undefined,
+      });
+    };
+
+    const handleGenerateEn = () => {
+      if (destinationInput.trim()) {
+        addDestinationEn();
+      }
+      parentOnGenerate({
+        ...input,
+        freeText: input.freeText ?? "",
+      });
+    };
+
+    return (
+      <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 py-6 scroll-mt-24">
+        <JournalSheet variant="default" className="p-6 sm:p-8 space-y-8">
+          <div className="space-y-2 text-center">
+            <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 font-sans">
+              Create Your Travel Plan
+            </h1>
+            <p className="text-sm text-stone-500 font-sans">
+              English wizard is currently simplified. You can still generate and edit plans after creation.
+            </p>
+          </div>
+
+          <div className="space-y-3">
+            <label className="block text-sm font-bold text-stone-700 font-sans">
+              Destinations
+            </label>
+            <div className="flex flex-wrap gap-2">
+              {input.destinations.map((dest, index) => (
+                <span
+                  key={`${dest}-${index}`}
+                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-stone-200 rounded-lg text-sm font-sans font-bold shadow-sm"
+                >
+                  📍 {dest}
+                  <button
+                    type="button"
+                    onClick={() => removeDestinationEn(index)}
+                    className="hover:text-red-500 transition-colors p-0.5"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </span>
+              ))}
+            </div>
+            <div className="flex gap-2">
+              <input
+                value={destinationInput}
+                onChange={(e) => setDestinationInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    addDestinationEn();
+                  }
+                }}
+                placeholder="e.g. Paris, Bangkok, Kyoto"
+                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
+              />
+              <JournalButton
+                variant="secondary"
+                onClick={addDestinationEn}
+                disabled={!destinationInput.trim()}
+                className="h-12 w-12 p-0 rounded-lg shadow-sm border-2 border-stone-200 hover:border-primary/50"
+              >
+                <FaPlus className="w-5 h-5" />
+              </JournalButton>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-stone-700 font-sans">
+                Duration
+              </label>
+              <select
+                value={parseDuration(input.dates)}
+                onChange={(e) => onChange({ dates: formatDuration(Number(e.target.value)) })}
+                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white transition-all text-stone-800 font-sans"
+              >
+                {durationOptionsEn.map((opt) => (
+                  <option key={opt.value} value={opt.value}>
+                    {opt.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="space-y-2">
+              <label className="block text-sm font-bold text-stone-700 font-sans">
+                Companions
+              </label>
+              <select
+                value={input.companions}
+                onChange={(e) => onChange({ companions: e.target.value })}
+                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white transition-all text-stone-800 font-sans"
+              >
+                <option value="">Select companions</option>
+                {COMPANION_OPTIONS.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {companionLabelById[option.id] ?? option.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-bold text-stone-700 font-sans">
+              Additional requests (optional)
+            </label>
+            <textarea
+              value={input.freeText || ""}
+              onChange={(e) => onChange({ freeText: e.target.value })}
+              placeholder="Any preferences? e.g. museums, local food, slow mornings..."
+              className="w-full h-24 bg-stone-50 border-2 border-stone-300 rounded-lg p-3 text-sm font-sans placeholder:text-stone-400 focus:border-primary focus:bg-white focus:outline-none resize-none leading-relaxed text-stone-800"
+            />
+          </div>
+
+          <JournalButton
+            variant="primary"
+            size="lg"
+            onClick={handleGenerateEn}
+            disabled={isGenerating || !englishCanGenerate}
+            className="w-full h-14 text-lg font-bold shadow-xl hover:scale-[1.01] transition-transform font-sans rounded-xl"
+          >
+            {isGenerating ? "Generating plan..." : "Generate plan"}
+          </JournalButton>
+        </JournalSheet>
+      </div>
+    );
+  }
 
   return (
     <div
