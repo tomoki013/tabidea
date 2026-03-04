@@ -204,6 +204,43 @@ export async function fetchHeroImage(
   }
 }
 
+const REGENERATE_RETRY_INSTRUCTION =
+  "前回の出力は元プランと同一でした。会話で合意した変更点を必ず最低1箇所以上反映して、更新後の完全な旅程JSONを返してください。";
+
+function getComparablePlanPayload(plan: Itinerary) {
+  return {
+    destination: plan.destination,
+    description: plan.description,
+    days: plan.days,
+  };
+}
+
+function isPlanEffectivelyUnchanged(basePlan: Itinerary, candidatePlan: Itinerary): boolean {
+  return JSON.stringify(getComparablePlanPayload(basePlan)) === JSON.stringify(getComparablePlanPayload(candidatePlan));
+}
+
+async function applyRegeneratedHeroImage(
+  currentPlan: Itinerary,
+  regeneratedPlan: Itinerary
+): Promise<Itinerary> {
+  const updatedPlan = { ...regeneratedPlan };
+
+  if (updatedPlan.destination !== currentPlan.destination) {
+    const heroImageData = await getUnsplashImage(updatedPlan.destination);
+    if (heroImageData) {
+      updatedPlan.heroImage = heroImageData.url;
+      updatedPlan.heroImagePhotographer = heroImageData.photographer;
+      updatedPlan.heroImagePhotographerUrl = heroImageData.photographerUrl;
+    }
+  } else {
+    updatedPlan.heroImage = currentPlan.heroImage;
+    updatedPlan.heroImagePhotographer = currentPlan.heroImagePhotographer;
+    updatedPlan.heroImagePhotographerUrl = currentPlan.heroImagePhotographerUrl;
+  }
+
+  return updatedPlan;
+}
+
 export async function regeneratePlan(
   currentPlan: Itinerary,
   chatHistory: { role: string; text: string }[]
@@ -231,21 +268,24 @@ export async function regeneratePlan(
         ];
     }
 
-    const newPlan = await ai.modifyItinerary(currentPlan, effectiveHistory);
+    let newPlan = await ai.modifyItinerary(currentPlan, effectiveHistory);
+    newPlan = await applyRegeneratedHeroImage(currentPlan, newPlan);
 
-    // If the destination changed, fetch a new image
-    if (newPlan.destination !== currentPlan.destination) {
-      const heroImageData = await getUnsplashImage(newPlan.destination);
-      if (heroImageData) {
-        newPlan.heroImage = heroImageData.url;
-        newPlan.heroImagePhotographer = heroImageData.photographer;
-        newPlan.heroImagePhotographerUrl = heroImageData.photographerUrl;
+    if (isPlanEffectivelyUnchanged(currentPlan, newPlan)) {
+      const retryHistory = [
+        ...effectiveHistory,
+        { role: "user", text: REGENERATE_RETRY_INSTRUCTION },
+      ];
+      let retriedPlan = await ai.modifyItinerary(currentPlan, retryHistory);
+      retriedPlan = await applyRegeneratedHeroImage(currentPlan, retriedPlan);
+
+      if (isPlanEffectivelyUnchanged(currentPlan, retriedPlan)) {
+        return {
+          success: false,
+          message: "会話内容を反映した変更を作成できませんでした。条件をもう少し具体的にして再試行してください。",
+        };
       }
-    } else {
-        // Keep the old image if destination is the same
-        newPlan.heroImage = currentPlan.heroImage;
-        newPlan.heroImagePhotographer = currentPlan.heroImagePhotographer;
-        newPlan.heroImagePhotographerUrl = currentPlan.heroImagePhotographerUrl;
+      newPlan = retriedPlan;
     }
 
     return { success: true, data: newPlan };
