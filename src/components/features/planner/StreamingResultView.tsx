@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   FaMapMarkerAlt,
   FaCalendarAlt,
+  FaSpinner,
 } from "react-icons/fa";
 import type { GenerationState, UserInput, DayPlan, Itinerary } from "@/types";
 import type { ReplanTrigger } from "@/types/replan";
@@ -15,6 +16,7 @@ import PDFDownloadButton from "./PDFDownloadButton";
 import { SpotCard, TransitCard as CardTransitCard, AccommodationCard } from "@/components/features/plan/cards";
 import type { CardState } from "@/components/features/plan/cards";
 import { ReplanTriggerPanel } from "@/components/features/replan";
+import { JournalSheet, Tape, HandwrittenText } from "@/components/ui/journal";
 
 // ============================================================================
 // Types
@@ -24,6 +26,8 @@ interface StreamingResultViewProps {
   generationState: GenerationState;
   input: UserInput;
   onRetryChunk?: (dayStart: number, dayEnd: number) => void;
+  isTransitioningToDetail?: boolean;
+  transitionMessage?: string;
   /** リプラントリガーを表示するか（旅行中モード） */
   showReplanTriggers?: boolean;
   /** リプラントリガー発火コールバック */
@@ -40,6 +44,8 @@ export default function StreamingResultView({
   generationState,
   input,
   onRetryChunk,
+  isTransitioningToDetail = false,
+  transitionMessage,
   showReplanTriggers = false,
   onReplanTrigger,
   isReplanning = false,
@@ -143,11 +149,31 @@ export default function StreamingResultView({
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto mt-4 px-4 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
+    <div className="w-full max-w-7xl mx-auto mt-4 pt-4 px-2 sm:px-6 lg:px-8 text-left animate-in fade-in duration-700 pb-20 relative overflow-x-clip">
+      {isTransitioningToDetail && (
+        <div
+          className="fixed top-4 right-4 z-50 bg-primary/95 text-white border border-primary/80 rounded-xl p-4 shadow-lg max-w-md animate-in slide-in-from-top-4"
+          role="status"
+          aria-live="polite"
+        >
+          <div className="flex items-start gap-3">
+            <FaSpinner className="w-5 h-5 flex-shrink-0 mt-0.5 animate-spin" />
+            <div className="flex-1">
+              <p className="text-sm font-bold">詳細ページへ自動移動します</p>
+              <p className="text-xs text-white/90 mt-1">
+                {transitionMessage || "詳細が完成しました。数秒以内に自動で詳細ページへ切り替わります。"}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Journal Header Section */}
-      <div className="relative mb-8 overflow-x-hidden">
+      <JournalSheet variant="notebook" className="relative mb-8 md:mb-12 overflow-hidden pt-8 pb-12 px-4 sm:px-8 border-l-8 border-l-stone-300">
+        <Tape color="blue" position="top-right" rotation="right" className="opacity-90 z-20" />
+        <div className="relative mb-8 overflow-x-hidden">
         {heroImage?.url ? (
-          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-xl overflow-hidden shadow-xl border-4 border-white bg-white">
+          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-md border-4 border-white bg-white rotate-1 transform mx-auto max-w-4xl">
             <Image
               src={heroImage.url}
               alt={outline.destination}
@@ -180,7 +206,7 @@ export default function StreamingResultView({
             )}
           </div>
         ) : (
-          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-xl overflow-hidden shadow-xl border-4 border-white bg-stone-100 flex items-center justify-center">
+          <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-md border-4 border-white bg-stone-100 flex items-center justify-center mx-auto max-w-4xl">
             <div className="text-stone-400 text-center">
               <FaMapMarkerAlt className="text-4xl mx-auto mb-2" />
               <p className="text-sm">画像を読み込み中...</p>
@@ -188,7 +214,7 @@ export default function StreamingResultView({
           </div>
         )}
 
-        <div className="mt-8 text-center relative z-10">
+        <div className="mt-10 text-center relative z-10">
           <div className="inline-block bg-white/80 backdrop-blur-sm px-8 py-6 rounded-xl shadow-sm border border-stone-100 relative group max-w-full">
             {/* Date Stamp */}
             <div className="absolute -top-6 -right-4 sm:-right-8 bg-white border-2 border-primary/30 text-stone-600 font-mono text-xs font-bold px-3 py-1.5 shadow-sm rotate-12 rounded-sm z-20">
@@ -205,7 +231,9 @@ export default function StreamingResultView({
 
             <p className="text-sm font-hand text-stone-500 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
               <FaMapMarkerAlt className="text-primary" />
-              Your Destination
+              <HandwrittenText tag="span" className="text-sm font-hand text-stone-500 uppercase tracking-widest">
+                Your Destination
+              </HandwrittenText>
             </p>
             <h1 className="text-4xl sm:text-6xl font-serif text-stone-800 mb-4 tracking-tight">
               {outline.destination}
@@ -230,7 +258,8 @@ export default function StreamingResultView({
             </div>
           )}
         </div>
-      </div>
+        </div>
+      </JournalSheet>
 
       {/* Inline Generation Progress */}
       {(isGenerating || isCompleted) && totalDays > 0 && (
@@ -238,12 +267,21 @@ export default function StreamingResultView({
           <div className="bg-white border border-stone-200 rounded-xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-medium text-stone-700">
-                {isCompleted ? "生成完了" : "詳細プランを生成中..."}
+                {isTransitioningToDetail
+                  ? "詳細ページへ移動中..."
+                  : isCompleted
+                    ? "生成完了"
+                    : "詳細プランを生成中..."}
               </span>
               <span className="text-sm text-stone-500 font-mono">
                 {completedCount}/{totalDays} 日
               </span>
             </div>
+            {isTransitioningToDetail && (
+              <div className="mb-3 px-3 py-2 rounded-lg border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
+                詳細が完成しました。このまましばらくお待ちください。自動で詳細ページへ移動します。
+              </div>
+            )}
             {/* Progress Bar */}
             <div className="w-full h-2 bg-stone-100 rounded-full overflow-hidden mb-3">
               <motion.div

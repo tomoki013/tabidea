@@ -17,6 +17,7 @@ type RoadmapItem = {
 };
 
 // Chronological order (Oldest -> Newest)
+// Source of truth is CHANGELOG.md; this array is a user-facing summary.
 // This enables dynamic version calculation from a base of 0.0.0
 const rawRoadmapData: RoadmapItem[] = [
   {
@@ -668,6 +669,70 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "決済システムの安定化",
     description:
       "決済処理時に発生していた一部のエラーを修正し、処理の安定性を向上させました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.23",
+    updateType: "minor",
+    title: "料金プランを5ティア構成に拡張",
+    description:
+      "匿名・Free・Pro・Premium・Adminの5ティア構成に対応し、利用シーンに合わせた提供内容を整理しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "patch",
+    title: "料金ページの比較表を3カラム化",
+    description:
+      "料金ページの比較表を3カラムで見比べやすくし、プラン差分を把握しやすく改善しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "minor",
+    title: "旅行中のリプラン体験を強化",
+    description:
+      "旅行中にワンタップで再提案を受けられるリプラン体験を追加し、提案の妥当性評価と制約判定を強化しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "patch",
+    title: "分析基盤とKPI計測を追加",
+    description:
+      "主要イベントの計測基盤とKPIクエリを整備し、プロダクト改善のための分析精度を向上しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "patch",
+    title: "旅行後の振り返りアンケートを追加",
+    description:
+      "旅行後の体験を振り返って送信できるサーベイ機能を追加し、継続的な品質改善につなげられるようになりました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "patch",
+    title: "マルチAIプロバイダー運用を導入",
+    description:
+      "フェーズとティアに応じてAIモデルを切り替える仕組みを導入し、生成品質と運用柔軟性を向上しました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.24",
+    updateType: "patch",
+    title: "地図表示基盤を3方式に分離",
+    description:
+      "地図機能をstatic/leaflet/google_mapsの3方式で扱える構成に分離し、表示要件に応じた最適化を進めました。",
+  },
+  {
+    status: "done",
+    date: "2026.02.25",
+    updateType: "patch",
+    title: "新規地図モジュールを既存画面へ統合",
+    description:
+      "分離した地図モジュールを既存画面群へ接続し、主要画面での3方式マップ運用を安定化しました。",
   },
   {
     status: "done",

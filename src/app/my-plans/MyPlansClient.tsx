@@ -20,8 +20,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 
 import type { PlanListItem } from '@/types';
-import { deletePlan, savePlan, updatePlanName, getFlaggedPlans } from '@/app/actions/travel-planner';
-import { upsertPlanPublication } from '@/app/actions/plan-itinerary';
+import { deletePlan, savePlan, updatePlanName, getFlaggedPlans, updatePlanVisibility } from '@/app/actions/travel-planner';
 import { usePlanModal } from '@/context/PlanModalContext';
 import { useAuth } from '@/context/AuthContext';
 import { useUserPlans } from '@/context/UserPlansContext';
@@ -195,21 +194,14 @@ export default function MyPlansClient({
   const handleToggleVisibility = async (
     planId: string,
     currentPublic: boolean,
-    destination?: string | null,
   ) => {
     setIsUpdating(planId);
-    const nextVisibility = currentPublic ? 'private' : 'public';
+    const nextIsPublic = !currentPublic;
 
-    const result = await upsertPlanPublication({
-      planId,
-      destination,
-      visibility: nextVisibility,
-      publishBudget: true,
-      publishJournal: true,
-    });
+    const result = await updatePlanVisibility(planId, nextIsPublic);
 
     if (result.success) {
-      updatePlan(planId, { isPublic: nextVisibility === 'public' });
+      updatePlan(planId, { isPublic: nextIsPublic });
     } else {
       alert(result.error || '公開設定の更新に失敗しました');
     }
@@ -380,7 +372,7 @@ export default function MyPlansClient({
                 transition={{ delay: index * 0.05 }}
                 key={plan.id}
               >
-                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group overflow-hidden ${openMenuId === plan.id ? 'z-50' : 'z-0'}`}>
+                <JournalSheet className={`relative p-0 hover:shadow-lg transition-all group ${openMenuId === plan.id ? 'overflow-visible z-50' : 'overflow-hidden z-0'}`}>
                   {/* Tape Decorations */}
                   <Tape color="white" position="top-right" rotation="right" className="opacity-70 w-24 -top-3" />
 
@@ -485,7 +477,7 @@ export default function MyPlansClient({
                                 </button>
                                 <button
                                   onClick={() => {
-                                    handleToggleVisibility(plan.id, plan.isPublic, plan.destination);
+                                    handleToggleVisibility(plan.id, plan.isPublic);
                                     setOpenMenuId(null);
                                   }}
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"

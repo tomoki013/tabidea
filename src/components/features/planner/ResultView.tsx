@@ -14,6 +14,7 @@ import { EmbeddedTravelInfo } from "@/components/features/travel-info";
 import PlanFeedbackBar from "./PlanFeedbackBar";
 import PublicToggle from "./PublicToggle";
 import type { PackingList } from "@/types/packing-list";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   FaCalendarAlt,
   FaGlobe,
@@ -44,6 +45,32 @@ import type { ReplanTrigger } from "@/types/replan";
 import { ReplanTriggerPanel } from "@/components/features/replan";
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
 import ShioriJournalEditor from './ShioriJournalEditor';
+
+type ResultTab = "plan" | "journal" | "info" | "packing";
+
+const isResultTab = (tab: string | null): tab is ResultTab => {
+  return tab === "plan" || tab === "journal" || tab === "info" || tab === "packing";
+};
+
+const resolveTabFromQuery = (
+  tab: string | null,
+  hasJournalTab: boolean,
+  isSimplifiedView: boolean
+): ResultTab => {
+  if (!isResultTab(tab)) {
+    return "plan";
+  }
+
+  if (isSimplifiedView && tab !== "plan") {
+    return "plan";
+  }
+
+  if (tab === "journal" && !hasJournalTab) {
+    return "plan";
+  }
+
+  return tab;
+};
 
 interface ResultViewProps {
   result: Itinerary;
@@ -114,9 +141,13 @@ export default function ResultView({
 }: ResultViewProps) {
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const hasJournalTab = enableEditing && Boolean(planId) && Boolean(onSyncJournalEntry) && (normalizedDays?.length ?? 0) > 0;
 
-  // Tabs are simplified for Simplified View
-  const [activeTab, setActiveTab] = useState<'plan' | 'journal' | 'info' | 'packing'>('plan');
+  // Tabs are driven by URL query (`?tab=`) with safe fallbacks.
+  const activeTab = resolveTabFromQuery(searchParams.get("tab"), hasJournalTab, isSimplifiedView);
   const tabBarRef = useRef<HTMLDivElement>(null);
 
   // View Mode: 'split' (Map + Itinerary) or 'full' (Itinerary Only)
@@ -130,7 +161,6 @@ export default function ResultView({
 
   // Packing List State
   const [packingList, setPackingList] = useState<PackingList | null>(null);
-  const hasJournalTab = enableEditing && Boolean(planId) && Boolean(onSyncJournalEntry) && (normalizedDays?.length ?? 0) > 0;
 
   // Map Data
   const { enrichedDays } = useSpotCoordinates(result.days, result.destination);
@@ -155,8 +185,19 @@ export default function ResultView({
     setPackingList(list);
   }, []);
 
-  const handleTabSwitch = useCallback((tab: 'plan' | 'journal' | 'info' | 'packing') => {
-    setActiveTab(tab);
+  const updateTabQuery = useCallback((tab: ResultTab) => {
+    if (searchParams.get("tab") === tab) {
+      return;
+    }
+
+    const nextSearchParams = new URLSearchParams(searchParams.toString());
+    nextSearchParams.set("tab", tab);
+    const query = nextSearchParams.toString();
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  }, [pathname, router, searchParams]);
+
+  const handleTabSwitch = useCallback((tab: ResultTab) => {
+    updateTabQuery(tab);
     // Sticky offset removed as sticky headers are removed
     if (tabBarRef.current) {
       const rect = tabBarRef.current.getBoundingClientRect();
@@ -164,7 +205,7 @@ export default function ResultView({
       const elementTop = rect.top + scrollTop;
       window.scrollTo({ top: elementTop - 20, behavior: 'smooth' });
     }
-  }, []);
+  }, [updateTabQuery]);
 
   // Flags
   const { isAuthenticated } = useAuth();
@@ -434,7 +475,7 @@ export default function ResultView({
              ].map((tab) => (
                <button
                  key={tab.id}
-                 onClick={() => handleTabSwitch(tab.id as 'plan' | 'journal' | 'info' | 'packing')}
+                 onClick={() => handleTabSwitch(tab.id as ResultTab)}
                  className={`
                    relative px-4 sm:px-6 py-2 rounded-full text-sm font-bold transition-colors duration-300 flex items-center gap-2 z-10 font-hand whitespace-nowrap
                    ${activeTab === tab.id ? 'text-stone-800' : 'text-stone-400 hover:text-stone-600'}

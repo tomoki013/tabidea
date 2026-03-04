@@ -37,7 +37,7 @@ Any PR that changes behavior, architecture, database schema, or testing policy m
 - API/Action/Service contract changes: update reference docs.
 - Schema/migration changes: update database docs.
 - File structure changes: regenerate `docs/reference/file-catalog.md` with `pnpm docs:catalog`.
-- If user-facing copy on FAQ, pricing, about, usage, or legal pages changes, evaluate whether `src/app/(marketing)/updates/page.tsx` needs a new history item and add it when needed.
+- For every PR/commit that changes behavior or user-facing content, always update `CHANGELOG.md` in the same PR/commit. `CHANGELOG.md` is the single source of truth for update history, and `src/app/(marketing)/updates/page.tsx` is a user-facing summary view derived from that history.
 
 If code and docs disagree, treat code as source of truth and fix docs immediately.
 

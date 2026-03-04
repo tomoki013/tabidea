@@ -496,6 +496,7 @@ export async function updatePlanVisibility(
     // Revalidate paths to reflect changes immediately
     revalidatePath('/shiori');
     revalidatePath('/public');
+    revalidatePath('/my-plans');
     revalidatePath(`/plan/id/${planId}`);
 
     return { success: true };

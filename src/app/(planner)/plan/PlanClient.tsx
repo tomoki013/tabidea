@@ -10,7 +10,6 @@ import { generatePlanChunk, savePlan } from "@/app/actions/travel-planner";
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { saveLocalPlan } from "@/lib/local-storage/plans";
 import { useAuth } from "@/context/AuthContext";
-import { useUserPlans } from "@/context/UserPlansContext";
 import { useGenerationProgress } from "@/lib/hooks/useGenerationProgress";
 import OutlineLoadingAnimation from "@/components/features/planner/OutlineLoadingAnimation";
 import OutlineReview from "@/components/features/planner/OutlineReview";
@@ -24,7 +23,6 @@ function PlanContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { isAuthenticated, isLoading: authLoading } = useAuth();
-  const { addPlan } = useUserPlans();
   const { steps: progressSteps, currentStep: progressCurrentStep, generateOutlineStream, resetProgress } = useGenerationProgress();
   const sampleId = searchParams.get("sample");
   const legacyQ = searchParams.get("q");
@@ -34,10 +32,12 @@ function PlanContent() {
   const [status, setStatus] = useState<
     "loading" | "generating" | "saving" | "error"
   >("loading");
+  const [transitionMessage, setTransitionMessage] = useState<string>("");
   const [currentInput, setCurrentInput] = useState<UserInput | null>(null);
   const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
 
   const hasStartedGeneration = useRef(false);
+  const hasStartedTransition = useRef(false);
 
   // Helper to update day status
   const updateDayStatus = useCallback((dayNumber: number, dayStatus: DayGenerationStatus) => {
@@ -167,15 +167,22 @@ function PlanContent() {
     }
   }, [generateChunk]);
 
-  // Save completed plan
-  const saveCompletedPlan = useCallback(async (isAuth: boolean) => {
+  // Save completed plan and transition to detail page quickly.
+  // Always persist to local storage first, then let PlanLocalClient auto-sync for signed-in users.
+  const saveCompletedPlan = useCallback(async () => {
+    if (hasStartedTransition.current) {
+      return;
+    }
+
     const { outline, heroImage, completedDays, context, updatedInput } = generationState;
 
     if (!outline || !updatedInput || completedDays.length === 0) {
       return;
     }
 
+    hasStartedTransition.current = true;
     setStatus("saving");
+    setTransitionMessage("詳細プランの保存が完了し次第、すぐに詳細ページへ自動で移動します。");
 
     const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
     const simpleId = Math.random().toString(36).substring(2, 15);
@@ -197,36 +204,30 @@ function PlanContent() {
     };
 
     try {
-      if (isAuth) {
-        const saveResult = await savePlan(updatedInput, finalPlan, false);
-        if (saveResult.success && saveResult.plan) {
-          // Add plan to sidebar immediately
-          addPlan({
-            id: saveResult.plan.id,
-            destination: saveResult.plan.destination || finalPlan.destination || '',
-            thumbnailUrl: saveResult.plan.thumbnailUrl || null,
-            durationDays: saveResult.plan.durationDays || null,
-            isPublic: saveResult.plan.isPublic,
-            createdAt: new Date(saveResult.plan.createdAt),
-            updatedAt: new Date(saveResult.plan.updatedAt),
-            shareCode: saveResult.plan.shareCode,
-          });
-          router.replace(`/plan/id/${saveResult.plan.id}`);
-        } else {
-          console.error("Failed to save to DB, falling back to local storage:", saveResult.error);
-          const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-          router.replace(`/plan/local/${localPlan.id}`);
+      const localPlan = await saveLocalPlan(updatedInput, finalPlan);
+      router.replace(`/plan/local/${localPlan.id}`);
+    } catch (localSaveErr) {
+      console.error("Failed to save to local storage:", localSaveErr);
+
+      // Fallback: for authenticated users, try direct DB save.
+      if (isAuthenticated) {
+        try {
+          const saveResult = await savePlan(updatedInput, finalPlan, false);
+          if (saveResult.success && saveResult.plan) {
+            router.replace(`/plan/id/${saveResult.plan.id}`);
+            return;
+          }
+        } catch (dbSaveErr) {
+          console.error("Failed to save to DB fallback:", dbSaveErr);
         }
-      } else {
-        const localPlan = await saveLocalPlan(updatedInput, finalPlan);
-        router.replace(`/plan/local/${localPlan.id}`);
       }
-    } catch (err) {
-      console.error("Failed to save plan:", err);
+
+      hasStartedTransition.current = false;
+      setTransitionMessage("");
       setStatus("error");
       setError("プランの保存に失敗しました。");
     }
-  }, [generationState, router]);
+  }, [generationState, isAuthenticated, router]);
 
   // Watch for completion
   useEffect(() => {
@@ -234,20 +235,16 @@ function PlanContent() {
 
     if (phase === 'generating_details' && totalDays > 0 && completedDays.length === totalDays) {
       setGenerationState(prev => ({ ...prev, phase: 'completed' }));
+      void saveCompletedPlan();
     }
-  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase]);
-
-  // Auto-save when completed
-  useEffect(() => {
-    if (generationState.phase === 'completed') {
-      saveCompletedPlan(isAuthenticated);
-    }
-  }, [generationState.phase, saveCompletedPlan, isAuthenticated]);
+  }, [generationState.completedDays.length, generationState.totalDays, generationState.phase, saveCompletedPlan]);
 
   // Generate plan from sample with streaming
-  const generateFromSample = useCallback(async (sampleInput: UserInput, isAuth: boolean) => {
+  const generateFromSample = useCallback(async (sampleInput: UserInput) => {
+    hasStartedTransition.current = false;
     setStatus("generating");
     setError("");
+    setTransitionMessage("");
     setCurrentInput(sampleInput);
 
     // Start outline generation
@@ -314,6 +311,7 @@ function PlanContent() {
     const { updatedInput, context } = generationState;
     if (!updatedInput || !context) return;
 
+    hasStartedTransition.current = false;
     setGenerationState(prev => ({ ...prev, outline: confirmedOutline }));
     await startDetailGeneration(confirmedOutline, updatedInput, context);
   }, [generationState, startDetailGeneration]);
@@ -339,6 +337,8 @@ function PlanContent() {
           });
           setCurrentInput(input);
           setStatus('generating'); // Use generating status to show UI
+          setTransitionMessage("");
+          hasStartedTransition.current = false;
           hasStartedGeneration.current = true;
 
           // Trigger detail generation immediately
@@ -375,7 +375,7 @@ function PlanContent() {
           hasMustVisitPlaces: samplePlan.input.hasMustVisitPlaces ?? false,
           mustVisitPlaces: samplePlan.input.mustVisitPlaces ?? [],
         };
-        generateFromSample(sampleInput, isAuthenticated);
+        generateFromSample(sampleInput);
       } else {
         setError("指定されたサンプルプランが見つかりませんでした。");
         setStatus("error");
@@ -384,7 +384,7 @@ function PlanContent() {
       // No parameters - redirect to home
       router.replace("/");
     }
-  }, [authLoading, sampleId, legacyQ, mode, isAuthenticated, router, generateFromSample]);
+  }, [authLoading, sampleId, legacyQ, mode, router, generateFromSample]);
 
   if (status === "loading" || authLoading) {
     return (
@@ -416,9 +416,9 @@ function PlanContent() {
     generationState.phase === 'completed'
   ) {
     return (
-      <StreamingResultView
-        generationState={generationState}
-        input={generationState.updatedInput || currentInput || {
+        <StreamingResultView
+          generationState={generationState}
+          input={generationState.updatedInput || currentInput || {
           destinations: [],
           region: "",
           dates: "",
@@ -427,10 +427,12 @@ function PlanContent() {
           budget: "",
           pace: "",
           freeText: "",
-        }}
-        onRetryChunk={handleRetryChunk}
-      />
-    );
+          }}
+          onRetryChunk={handleRetryChunk}
+          isTransitioningToDetail={status === "saving"}
+          transitionMessage={transitionMessage}
+        />
+      );
   }
 
   if (status === "saving") {
@@ -494,19 +496,7 @@ export default function PlanClient() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
-      <main className="flex-1 w-full flex flex-col items-center overflow-x-clip">
-        {/* Title Section - Matches the aesthetic of the app */}
-        <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
-          <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
-            Generating
-          </div>
-          <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
-            旅行プラン作成中
-          </h1>
-          <p className="text-stone-500 mt-3 font-hand text-lg">
-            あなただけの特別な旅のしおりを作成しています
-          </p>
-        </div>
+      <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
 
         <Suspense
           fallback={

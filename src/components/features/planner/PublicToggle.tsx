@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updatePlanVisibility } from "@/app/actions/travel-planner";
 import { motion } from "framer-motion";
 import { FaGlobe, FaLock } from "react-icons/fa";
@@ -18,6 +18,10 @@ export default function PublicToggle({
 }: PublicToggleProps) {
   const [isPublic, setIsPublic] = useState(initialIsPublic);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsPublic(initialIsPublic);
+  }, [initialIsPublic]);
 
   const handleToggle = async () => {
     if (isLoading) return;

@@ -1,12 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from "@testing-library/react";
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
 import ResultView from "./ResultView";
 import PDFExportModal from "./PDFExportModal";
 import SpotCard from "@/components/features/plan/cards/SpotCard";
 import { UserInput, Itinerary } from "@/types";
 import React from "react";
+
+const navigationMock = vi.hoisted(() => {
+  let currentParams = new URLSearchParams();
+
+  const setSearchParams = (query: string) => {
+    currentParams = new URLSearchParams(query);
+  };
+
+  const replace = vi.fn((url: string) => {
+    const query = url.includes("?") ? (url.split("?")[1] ?? "") : "";
+    setSearchParams(query);
+  });
+
+  return {
+    useSearchParams: () => currentParams,
+    setSearchParams,
+    replace,
+  };
+});
 
 // Mocks
 vi.mock("framer-motion", () => ({
@@ -15,6 +34,16 @@ vi.mock("framer-motion", () => ({
     button: ({ children, ...props }: any) => <button {...props}>{children}</button>,
   },
   AnimatePresence: ({ children }: any) => <>{children}</>,
+}));
+
+vi.mock("next/navigation", () => ({
+  useSearchParams: () => navigationMock.useSearchParams(),
+  usePathname: () => "/plan/id/test-plan",
+  useRouter: () => ({
+    replace: navigationMock.replace,
+    push: vi.fn(),
+    prefetch: vi.fn(),
+  }),
 }));
 
 // Mock ResizeObserver for ResultView
@@ -84,6 +113,11 @@ const mockItinerary: Itinerary = {
 };
 
 describe("UI Fixes Regression Tests", () => {
+  beforeEach(() => {
+    navigationMock.setSearchParams("");
+    navigationMock.replace.mockClear();
+  });
+
   it("SimplifiedInputFlow: Selected destination button has text-primary class", () => {
     // Case 1: isDestinationDecided = true (Specific Destination Selected)
     const inputSpecific = { ...defaultInput, isDestinationDecided: true };
@@ -186,5 +220,60 @@ describe("UI Fixes Regression Tests", () => {
 
     const chatText = screen.queryByText("AIと相談しながら調整する");
     expect(chatText).toBeNull();
+  });
+
+  it("ResultView: URL tab param activates matching tab", async () => {
+    navigationMock.setSearchParams("tab=packing");
+
+    await act(async () => {
+      render(
+        <ResultView
+          result={mockItinerary}
+          input={defaultInput}
+          onRestart={vi.fn()}
+          onRegenerate={vi.fn()}
+        />
+      );
+    });
+
+    const packingButton = screen.getByRole("button", { name: "持ち物" });
+    expect(packingButton.className).toContain("text-stone-800");
+  });
+
+  it("ResultView: Tab click updates tab query param", async () => {
+    await act(async () => {
+      render(
+        <ResultView
+          result={mockItinerary}
+          input={defaultInput}
+          onRestart={vi.fn()}
+          onRegenerate={vi.fn()}
+        />
+      );
+    });
+
+    fireEvent.click(screen.getByRole("button", { name: "渡航情報" }));
+
+    expect(navigationMock.replace).toHaveBeenCalled();
+    const latestUrl = navigationMock.replace.mock.lastCall?.[0] as string;
+    expect(latestUrl).toContain("tab=info");
+  });
+
+  it("ResultView: Invalid URL tab param falls back to plan", async () => {
+    navigationMock.setSearchParams("tab=unknown");
+
+    await act(async () => {
+      render(
+        <ResultView
+          result={mockItinerary}
+          input={defaultInput}
+          onRestart={vi.fn()}
+          onRegenerate={vi.fn()}
+        />
+      );
+    });
+
+    const planButton = screen.getByRole("button", { name: "旅程表" });
+    expect(planButton.className).toContain("text-stone-800");
   });
 });
