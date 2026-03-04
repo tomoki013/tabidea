@@ -27,6 +27,9 @@ interface PlanIdClientProps {
   mapProvider?: MapProviderType;
 }
 
+const REGENERATE_INSTRUCTION_TEXT =
+  "この会話で合意した変更内容を現在のプランに反映して再生成してください。";
+
 export default function PlanIdClient({
   plan,
   input: initialInput,
@@ -48,6 +51,7 @@ export default function PlanIdClient({
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
   const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
   const [showAlternatives, setShowAlternatives] = useState(false);
+  const [regenerateError, setRegenerateError] = useState<string | null>(null);
 
   // Replan integration
   const tripPlan = useMemo(() => buildTripPlan(result, input), [result, input]);
@@ -113,8 +117,15 @@ export default function PlanIdClient({
   ) => {
     const planToUse = overridePlan || result;
     if (!planToUse || !input) return;
+    const persistedHistory =
+      chatHistory.length > 0 &&
+      chatHistory[chatHistory.length - 1]?.role === "user" &&
+      chatHistory[chatHistory.length - 1]?.text === REGENERATE_INSTRUCTION_TEXT
+        ? chatHistory.slice(0, -1)
+        : chatHistory;
 
-    setChatHistoryToKeep(chatHistory);
+    setRegenerateError(null);
+    setChatHistoryToKeep(persistedHistory);
     setStatus('regenerating');
 
     try {
@@ -125,7 +136,7 @@ export default function PlanIdClient({
 
         // Save to DB
         await savePlanToDb(response.data);
-        await saveChatToDb(chatHistory);
+        await saveChatToDb(persistedHistory);
 
         // Scroll to top
         setTimeout(() => {
@@ -133,10 +144,12 @@ export default function PlanIdClient({
         }, 100);
       } else {
         console.error(response.message);
+        setRegenerateError(response.message || '再生成に失敗しました。時間をおいて再試行してください。');
         setStatus('idle');
       }
     } catch (e) {
       console.error(e);
+      setRegenerateError('再生成中にエラーが発生しました。時間をおいて再試行してください。');
       setStatus('idle');
     }
   };
@@ -219,6 +232,47 @@ export default function PlanIdClient({
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
       <main className="flex-1 w-full flex flex-col items-center overflow-x-clip pt-24 md:pt-28">
+        {regenerateError && (
+          <div className="fixed top-4 right-4 z-50 bg-red-50 border border-red-200 rounded-lg p-4 shadow-lg max-w-md animate-in slide-in-from-top-4">
+            <div className="flex items-start gap-3">
+              <svg
+                className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <div className="flex-1">
+                <p className="text-red-800 text-sm font-medium">{regenerateError}</p>
+              </div>
+              <button
+                onClick={() => setRegenerateError(null)}
+                className="text-red-500 hover:text-red-700"
+              >
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
         <ResultView
           result={result}
           input={input}

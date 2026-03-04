@@ -1,10 +1,14 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { useChat } from "ai/react";
 import type { Message } from "ai";
 import { Itinerary } from '@/types';
 import ModelBadge from "@/components/ui/ModelBadge";
+
+const REGEN_READY_TAG = "[[REGEN_READY]]";
+const REGEN_TRIGGER_MESSAGE =
+  "この会話で合意した変更内容を現在のプランに反映して再生成してください。";
 
 const SUGGESTION_CHIPS = [
   "地元の料理をもっと食べたい！ 🍜",
@@ -13,6 +17,11 @@ const SUGGESTION_CHIPS = [
   "もっとゆったりしたい 🐢",
   "写真映えスポットに行きたい 📸",
 ];
+
+const stripRegenReadyTag = (text: string) =>
+  text.replace(/\s*\[\[REGEN_READY\]\]\s*/g, " ").trim();
+
+const hasRegenReadyTag = (text: string) => text.includes(REGEN_READY_TAG);
 
 export default function TravelPlannerChat({
   itinerary,
@@ -35,7 +44,7 @@ export default function TravelPlannerChat({
       ? initialChatHistory.map((h, i) => ({
           id: `hist-${i}`,
           role: h.role === "model" ? "assistant" : "user" as const,
-          content: h.text,
+          content: stripRegenReadyTag(h.text),
         }))
       : [
           {
@@ -54,8 +63,9 @@ export default function TravelPlannerChat({
     initialMessages,
   });
 
-  // Track if user has interacted (sent at least one message)
-  const hasInteracted = messages.some((m) => m.role === "user");
+  const latestAssistantMessageIdWithReadyTag = [...messages]
+    .reverse()
+    .find((m) => m.role === "assistant" && hasRegenReadyTag(m.content))?.id;
 
   // Auto-scroll to bottom within chat container when messages change
   useEffect(() => {
@@ -82,9 +92,12 @@ export default function TravelPlannerChat({
   const handleRegenerate = () => {
     const formattedHistory = messages.map((m) => ({
       role: m.role === "assistant" ? "model" : "user",
-      text: m.content,
+      text: stripRegenReadyTag(m.content),
     }));
-    onRegenerate(formattedHistory);
+    onRegenerate([
+      ...formattedHistory,
+      { role: "user", text: REGEN_TRIGGER_MESSAGE },
+    ]);
   };
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -116,24 +129,54 @@ export default function TravelPlannerChat({
               more about a spot.
             </p>
           )}
-          {messages.map((m) => (
-            <div
-              key={m.id}
-              className={`flex ${
-                m.role === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
+          {messages.map((m) => {
+            const showRegenerateButton =
+              m.role === "assistant" &&
+              m.id === latestAssistantMessageIdWithReadyTag &&
+              !isLoading;
+
+            return (
               <div
-                className={`max-w-[85%] rounded-2xl px-4 sm:px-5 py-3 text-sm leading-relaxed shadow-xs break-words overflow-wrap-anywhere ${
-                  m.role === "user"
-                    ? "bg-primary text-white rounded-br-none"
-                    : "bg-white border border-stone-100 text-stone-700 rounded-bl-none"
+                key={m.id}
+                className={`flex flex-col gap-2 ${
+                  m.role === "user" ? "items-end" : "items-start"
                 }`}
               >
-                {m.content}
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 sm:px-5 py-3 text-sm leading-relaxed shadow-xs break-words overflow-wrap-anywhere ${
+                    m.role === "user"
+                      ? "bg-primary text-white rounded-br-none"
+                      : "bg-white border border-stone-100 text-stone-700 rounded-bl-none"
+                  }`}
+                >
+                  {stripRegenReadyTag(m.content)}
+                </div>
+                {showRegenerateButton && (
+                  <button
+                    onClick={handleRegenerate}
+                    disabled={isRegenerating}
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-stone-100 border border-stone-200 text-stone-700 hover:bg-stone-200 transition-all font-bold text-sm shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
+                      />
+                    </svg>
+                    会話の内容でプランを再生成
+                  </button>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
           {isLoading && messages[messages.length - 1]?.role === "user" && (
             <div className="flex justify-start">
               <div className="bg-stone-100 text-stone-500 rounded-2xl rounded-bl-none px-5 py-3 text-sm animate-pulse">
@@ -205,32 +248,6 @@ export default function TravelPlannerChat({
           </button>
         </form>
       </div>
-
-      {hasInteracted && !isLoading && (
-        <div className="mt-4 flex justify-end animate-in fade-in slide-in-from-bottom-2">
-          <button
-            onClick={handleRegenerate}
-            disabled={isRegenerating}
-            className="flex items-center gap-2 px-6 py-3 rounded-full bg-stone-100 border border-stone-200 text-stone-700 hover:bg-stone-200 transition-all font-bold text-sm shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-4 h-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-              />
-            </svg>
-            会話の内容でプランを再生成
-          </button>
-        </div>
-      )}
     </div>
   );
 }
