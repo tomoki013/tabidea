@@ -7,6 +7,7 @@ import {
   FloatingPlanButton,
   GlobalAuthUI,
 } from "@/components/common";
+import ThemeProvider from "@/components/common/ThemeProvider";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
@@ -67,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
         {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-8687520805381056" />
@@ -87,20 +88,22 @@ export default function RootLayout({
         ></Script>
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
-        <AuthProvider>
-          <FlagsProvider>
-            <UserPlansProvider>
-              <PlanModalProvider>
-                <Header />
-                {children}
-                <FloatingPlanButton />
-                <CookieBanner />
-                <GlobalAuthUI />
-                <Footer />
-              </PlanModalProvider>
-            </UserPlansProvider>
-          </FlagsProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <FlagsProvider>
+              <UserPlansProvider>
+                <PlanModalProvider>
+                  <Header />
+                  {children}
+                  <FloatingPlanButton />
+                  <CookieBanner />
+                  <GlobalAuthUI />
+                  <Footer />
+                </PlanModalProvider>
+              </UserPlansProvider>
+            </FlagsProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

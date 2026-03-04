@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* Fontsource - Self-hosted fonts (avoids Turbopack Google Fonts issues) */
 @import "@fontsource-variable/noto-sans-jp";
@@ -42,6 +43,80 @@
   --ring: #e67e22;
 
   --radius: 0.5rem;
+
+  --dot-grid-color: #d6d3d1;
+  --paper-texture: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+  --paper-blend-mode: multiply;
+
+  --scrollbar-thumb: #d6d3d1;
+  --scrollbar-thumb-hover: #a8a29e;
+
+  --legacy-paper: #fcfbf9;
+  --legacy-paper-alt: #fffdfa;
+  --legacy-paper-soft: #fffaf5;
+  --legacy-paper-elevated: #fffdf5;
+  --legacy-paper-muted: #f7f5f0;
+  --legacy-paper-highlight: #fdf2e9;
+  --legacy-ink: #2c2c2c;
+  --legacy-ink-muted: #6b7280;
+  --legacy-primary: #e67e22;
+  --legacy-primary-strong: #d35400;
+  --legacy-accent: #27ae60;
+  --legacy-danger: #dc2626;
+
+  color-scheme: light;
+}
+
+.dark {
+  --background: #141413;
+  --foreground: #f5f5f4;
+
+  --card: #1f1f1d;
+  --card-foreground: #f5f5f4;
+
+  --popover: #1f1f1d;
+  --popover-foreground: #f5f5f4;
+
+  --primary: #f59e0b;
+  --primary-foreground: #1c1917;
+
+  --secondary: #a8a29e;
+  --secondary-foreground: #1c1917;
+
+  --muted: #292524;
+  --muted-foreground: #d6d3d1;
+
+  --accent: #34d399;
+  --accent-foreground: #052e16;
+
+  --destructive: #f87171;
+  --destructive-foreground: #450a0a;
+
+  --border: #44403c;
+  --input: #44403c;
+  --ring: #f59e0b;
+
+  --dot-grid-color: #57534e;
+  --paper-texture: url("https://www.transparenttextures.com/patterns/dark-matter.png");
+  --paper-blend-mode: soft-light;
+
+  --scrollbar-thumb: #57534e;
+  --scrollbar-thumb-hover: #78716c;
+
+  --legacy-paper: #171614;
+  --legacy-paper-alt: #1d1b19;
+  --legacy-paper-soft: #23201d;
+  --legacy-paper-elevated: #2a2622;
+  --legacy-paper-muted: #201e1b;
+  --legacy-paper-highlight: #322416;
+  --legacy-ink: #f5f5f4;
+  --legacy-ink-muted: #d6d3d1;
+  --legacy-primary: #f59e0b;
+  --legacy-primary-strong: #fb923c;
+  --legacy-accent: #34d399;
+  --legacy-danger: #f87171;
+
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -95,10 +170,10 @@ body {
   overflow-x: hidden;
   /* Combine dot grid with subtle paper noise texture */
   background-image:
-    radial-gradient(#d6d3d1 1px, transparent 1px),
-    url("https://www.transparenttextures.com/patterns/cream-paper.png");
+    radial-gradient(var(--dot-grid-color) 1px, transparent 1px),
+    var(--paper-texture);
   background-size: 24px 24px, auto;
-  background-blend-mode: multiply;
+  background-blend-mode: var(--paper-blend-mode);
 }
 
 /* Custom Scrollbar */
@@ -109,12 +184,93 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d3d1; /* Slightly darker for visibility against paper */
+  background: var(--scrollbar-thumb);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a29e;
+  background: var(--scrollbar-thumb-hover);
 }
+
+/* Broad dark palette remap for legacy stone-based utility usage */
+.dark :where(.bg-white) { background-color: #1f1f1d; }
+.dark :where(.bg-white\/50) { background-color: rgb(31 31 29 / 0.5); }
+.dark :where(.bg-stone-50) { background-color: #292524; }
+.dark :where(.bg-stone-100) { background-color: #1c1917; }
+.dark :where(.bg-stone-200) { background-color: #292524; }
+.dark :where(.text-stone-900, .text-stone-800, .text-stone-700, .text-stone-300, .text-stone-200) { color: #f5f5f4; }
+.dark :where(.text-stone-600, .text-stone-500, .text-stone-400, .text-stone-100) { color: #d6d3d1; }
+.dark :where(.border-stone-100, .border-stone-200, .border-stone-300, .border-stone-400) { border-color: #44403c; }
+
+/* Dark compatibility layer for legacy hard-coded arbitrary hex classes */
+.dark :where([class*="bg-[#fcfbf9]/90"]) { background-color: color-mix(in srgb, var(--legacy-paper) 90%, transparent) !important; }
+.dark :where([class*="bg-[#fcfbf9]"]) { background-color: var(--legacy-paper) !important; }
+.dark :where([class*="bg-[#fffdfa]"]) { background-color: var(--legacy-paper-alt) !important; }
+.dark :where([class*="bg-[#fffaf5]"]) { background-color: var(--legacy-paper-soft) !important; }
+.dark :where([class*="bg-[#fffdf5]"]) { background-color: var(--legacy-paper-elevated) !important; }
+.dark :where([class*="bg-[#f7f5f0]"]) { background-color: var(--legacy-paper-muted) !important; }
+.dark :where([class*="bg-[#fdf2e9]"]) { background-color: var(--legacy-paper-highlight) !important; }
+.dark :where([class*="bg-[#2c2c2c]"]) { background-color: #10100f !important; }
+
+.dark :where([class*="bg-[#e67e22]/5"]) { background-color: color-mix(in srgb, var(--legacy-primary) 5%, transparent) !important; }
+.dark :where([class*="bg-[#e67e22]/10"]) { background-color: color-mix(in srgb, var(--legacy-primary) 10%, transparent) !important; }
+.dark :where([class*="bg-[#e67e22]/20"]) { background-color: color-mix(in srgb, var(--legacy-primary) 20%, transparent) !important; }
+.dark :where([class*="bg-[#e67e22]"]) { background-color: var(--legacy-primary) !important; }
+.dark :where([class*="bg-[#d35400]/5"]) { background-color: color-mix(in srgb, var(--legacy-primary-strong) 5%, transparent) !important; }
+.dark :where([class*="bg-[#d35400]"]) { background-color: var(--legacy-primary-strong) !important; }
+.dark :where([class*="bg-[#27ae60]/5"]) { background-color: color-mix(in srgb, var(--legacy-accent) 5%, transparent) !important; }
+.dark :where([class*="bg-[#27ae60]/10"]) { background-color: color-mix(in srgb, var(--legacy-accent) 10%, transparent) !important; }
+.dark :where([class*="bg-[#27ae60]/20"]) { background-color: color-mix(in srgb, var(--legacy-accent) 20%, transparent) !important; }
+.dark :where([class*="bg-[#DC2626]"], [class*="bg-[#dc2626]"]) { background-color: var(--legacy-danger) !important; }
+.dark :where([class*="bg-[#B91C1C]"], [class*="bg-[#b91c1c]"]) { background-color: #ef4444 !important; }
+.dark :where([class*="bg-[#1877F2]"], [class*="bg-[#166fe5]"]) { background-color: #3b82f6 !important; }
+.dark :where([class*="bg-[#06C755]"], [class*="bg-[#05b34c]"]) { background-color: #22c55e !important; }
+.dark :where([class*="bg-[#1a3c6e]"]) { background-color: #1e3a8a !important; }
+
+.dark :where([class*="text-[#2c2c2c]"]) { color: var(--legacy-ink) !important; }
+.dark :where([class*="text-[#d35400]/80"]) { color: color-mix(in srgb, #fdba74 80%, transparent) !important; }
+.dark :where([class*="text-[#d35400]"]) { color: #fdba74 !important; }
+.dark :where([class*="text-[#e67e22]/10"]) { color: color-mix(in srgb, #fcd34d 35%, transparent) !important; }
+.dark :where([class*="text-[#e67e22]/60"]) { color: color-mix(in srgb, #fcd34d 60%, transparent) !important; }
+.dark :where([class*="text-[#e67e22]/80"]) { color: color-mix(in srgb, #fcd34d 80%, transparent) !important; }
+.dark :where([class*="text-[#e67e22]"]) { color: #fcd34d !important; }
+.dark :where([class*="text-[#27ae60]/10"]) { color: color-mix(in srgb, #6ee7b7 35%, transparent) !important; }
+.dark :where([class*="text-[#27ae60]/80"]) { color: color-mix(in srgb, #6ee7b7 80%, transparent) !important; }
+.dark :where([class*="text-[#27ae60]"]) { color: #6ee7b7 !important; }
+.dark :where([class*="text-[#1DA1F2]"]) { color: #60a5fa !important; }
+.dark :where([class*="text-[#00B900]"]) { color: #4ade80 !important; }
+
+.dark :where([class*="border-[#e67e22]/20"]) { border-color: color-mix(in srgb, var(--legacy-primary) 20%, transparent) !important; }
+.dark :where([class*="border-[#e67e22]/30"]) { border-color: color-mix(in srgb, var(--legacy-primary) 30%, transparent) !important; }
+.dark :where([class*="border-[#e67e22]/50"]) { border-color: color-mix(in srgb, var(--legacy-primary) 50%, transparent) !important; }
+.dark :where([class*="border-[#e67e22]"]) { border-color: var(--legacy-primary) !important; }
+.dark :where([class*="border-[#d35400]"]) { border-color: #f97316 !important; }
+.dark :where([class*="border-[#27ae60]/40"]) { border-color: color-mix(in srgb, var(--legacy-accent) 40%, transparent) !important; }
+.dark :where([class*="border-[#27ae60]"]) { border-color: var(--legacy-accent) !important; }
+.dark :where([class*="border-[#2c2c2c]"]) { border-color: #57534e !important; }
+.dark :where([class*="border-[#122a4d]"]) { border-color: #3b82f6 !important; }
+
+.dark :where([class*="focus:ring-[#e67e22]/10"]) { --tw-ring-color: color-mix(in srgb, var(--legacy-primary) 10%, transparent) !important; }
+.dark :where([class*="focus:ring-[#e67e22]/50"]) { --tw-ring-color: color-mix(in srgb, var(--legacy-primary) 50%, transparent) !important; }
+.dark :where([class*="focus:ring-[#e67e22]"], [class*="ring-[#e67e22]"]) { --tw-ring-color: var(--legacy-primary) !important; }
+
+.dark :where([class*="from-[#fcfbf9]"]) {
+  --tw-gradient-from: var(--legacy-paper) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: color-mix(in srgb, var(--legacy-paper) 0%, transparent) var(--tw-gradient-to-position) !important;
+}
+.dark :where([class*="to-[#fcfbf9]"]) { --tw-gradient-to: var(--legacy-paper) var(--tw-gradient-to-position) !important; }
+.dark :where([class*="via-[#fcfbf9]/80"]) { --tw-gradient-stops: var(--tw-gradient-from), color-mix(in srgb, var(--legacy-paper) 80%, transparent) var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
+.dark :where([class*="from-[#e67e22]/5"]) {
+  --tw-gradient-from: color-mix(in srgb, var(--legacy-primary) 5%, transparent) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: color-mix(in srgb, var(--legacy-primary) 0%, transparent) var(--tw-gradient-to-position) !important;
+}
+.dark :where([class*="from-[#e67e22]"]) {
+  --tw-gradient-from: var(--legacy-primary) var(--tw-gradient-from-position) !important;
+  --tw-gradient-to: color-mix(in srgb, var(--legacy-primary) 0%, transparent) var(--tw-gradient-to-position) !important;
+}
+.dark :where([class*="to-[#f39c12]/5"]) { --tw-gradient-to: color-mix(in srgb, #fbbf24 5%, transparent) var(--tw-gradient-to-position) !important; }
+.dark :where([class*="to-[#f39c12]"]) { --tw-gradient-to: #fbbf24 var(--tw-gradient-to-position) !important; }
+.dark :where([class*="to-[#d35400]"]) { --tw-gradient-to: #fdba74 var(--tw-gradient-to-position) !important; }
+.dark :where([class*="via-[#27ae60]"]) { --tw-gradient-stops: var(--tw-gradient-from), var(--legacy-accent) var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
 
 /* Hide scrollbar utility */
 .no-scrollbar::-webkit-scrollbar {

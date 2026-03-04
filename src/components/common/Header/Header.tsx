@@ -107,14 +107,14 @@ export default function Header({
       >
         <div className={`max-w-5xl w-full px-4 pointer-events-auto`}>
           {/* Paper Strip Header */}
-          <div className="relative bg-[#fcfbf9] shadow-md border border-stone-200/60 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between mx-auto max-w-4xl transform -rotate-1 rounded-sm">
+          <div className="relative bg-[#fcfbf9] dark:bg-stone-900 shadow-md border border-stone-200/60 dark:border-stone-700/60 px-4 md:px-8 py-2 md:py-3 flex items-center justify-between mx-auto max-w-4xl transform -rotate-1 rounded-sm">
              {/* Tape Effect */}
             <Tape color="white" position="top-center" className="opacity-80" />
 
             {/* Hamburger menu - always visible for sidebar access */}
             <button
               onClick={() => setIsSidebarOpen(true)}
-              className="p-2 text-stone-600 hover:text-stone-800 hover:bg-stone-100 rounded-sm transition-all border border-transparent hover:border-stone-300 hover:border-dashed mr-2"
+              className="p-2 text-stone-600 dark:text-stone-300 hover:text-stone-800 dark:hover:text-stone-100 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-sm transition-all border border-transparent hover:border-stone-300 dark:hover:border-stone-600 hover:border-dashed mr-2"
               aria-label="メニューを開く"
             >
               <FaBars size={20} />
@@ -129,7 +129,7 @@ export default function Header({
                 </div>
               </Stamp>
               <div className="hidden sm:block">
-                <HandwrittenText tag="span" className="text-xl md:text-2xl font-bold text-stone-800 tracking-tight group-hover:opacity-80 transition-opacity">
+                <HandwrittenText tag="span" className="text-xl md:text-2xl font-bold text-stone-800 dark:text-stone-100 tracking-tight group-hover:opacity-80 transition-opacity">
                   Tabidea
                 </HandwrittenText>
               </div>
@@ -157,7 +157,7 @@ export default function Header({
             {/* Mobile: User icon on right */}
             <div className="md:hidden">
               {isAuthLoading ? (
-                <div className="w-8 h-8 rounded-full bg-stone-200 animate-pulse" />
+                <div className="w-8 h-8 rounded-full bg-stone-200 dark:bg-stone-700 animate-pulse" />
               ) : isAuthenticated ? (
                 <button
                   onClick={() => setIsMobileSettingsOpen(true)}
@@ -172,8 +172,8 @@ export default function Header({
                       className="rounded-full ring-2 ring-white shadow-sm"
                     />
                   ) : (
-                    <div className="w-8 h-8 rounded-full bg-stone-100 border border-stone-300 border-dashed flex items-center justify-center">
-                      <span className="text-stone-600 font-hand font-bold">
+                    <div className="w-8 h-8 rounded-full bg-stone-100 dark:bg-stone-800 border border-stone-300 dark:border-stone-600 border-dashed flex items-center justify-center">
+                      <span className="text-stone-600 dark:text-stone-200 font-hand font-bold">
                         {user?.displayName?.[0] || user?.email?.[0] || "U"}
                       </span>
                     </div>
@@ -182,7 +182,7 @@ export default function Header({
               ) : (
                 <Link
                   href="/auth/login"
-                  className="flex items-center justify-center w-8 h-8 rounded-sm border border-stone-300 border-dashed text-stone-500 hover:bg-stone-50 hover:text-stone-800 transition-all font-hand"
+                  className="flex items-center justify-center w-8 h-8 rounded-sm border border-stone-300 dark:border-stone-600 border-dashed text-stone-500 dark:text-stone-300 hover:bg-stone-50 dark:hover:bg-stone-800 hover:text-stone-800 dark:hover:text-stone-100 transition-all font-hand"
                 >
                   <FaUser size={14} />
                 </Link>
@@ -222,10 +222,10 @@ function NavLink({
   return (
     <Link
       href={href}
-      className="group flex items-center gap-1.5 font-hand font-bold text-stone-600 hover:text-stone-900 transition-colors relative"
+      className="group flex items-center gap-1.5 font-hand font-bold text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-stone-100 transition-colors relative"
     >
       {icon && (
-        <span className="text-stone-400 group-hover:text-primary transition-colors">
+        <span className="text-stone-400 dark:text-stone-500 group-hover:text-primary transition-colors">
           {icon}
         </span>
       )}

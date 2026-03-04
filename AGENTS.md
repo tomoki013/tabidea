@@ -44,6 +44,8 @@ For every PR/commit that changes behavior or user-facing content, always update 
 
 For server actions and AI generation flows, performance instrumentation is required via `PerformanceTimer` (`src/lib/utils/performance-timer.ts`): measure key steps with `timer.measure(...)` and call `timer.log()` on completion.
 
+For any UI change (new page/component or style update), dark mode support is mandatory in the same PR/commit. Do not ship light-only UI. Ensure both light and dark themes are visually verified before merge.
+
 ## Commit & Pull Request Guidelines
 Prefer Conventional Commit-style subjects (`feat:`, `fix:`, `refactor:`, `chore:`, `perf:`). Keep commits focused and imperative.
 

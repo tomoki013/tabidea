@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
+import { useTheme } from "next-themes";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
 import { deleteAccount } from "@/app/actions/travel-planner";
 import { getBillingAccessInfo, getUserUsageStats } from "@/app/actions/billing";
@@ -28,8 +29,11 @@ import {
   FaChartPie,
   FaCheckCircle,
   FaInfinity,
+  FaSun,
+  FaMoon,
+  FaDesktop,
 } from "react-icons/fa";
-import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton, JournalInput } from "@/components/ui/journal";
+import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from "@/components/ui/journal";
 
 interface SettingsModalProps {
   isOpen: boolean;
@@ -37,10 +41,22 @@ interface SettingsModalProps {
 }
 
 type Tab = 'account' | 'plan' | 'ai';
+type ThemeOption = "light" | "dark" | "system";
+
+const THEME_OPTIONS: Array<{
+  value: ThemeOption;
+  label: string;
+  icon: React.ComponentType<{ className?: string }>;
+}> = [
+  { value: "light", label: "ライト", icon: FaSun },
+  { value: "dark", label: "ダーク", icon: FaMoon },
+  { value: "system", label: "システム", icon: FaDesktop },
+];
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
   const { user, signOut } = useAuth();
   const [activeTab, setActiveTab] = useState<Tab>('account');
   const [mounted, setMounted] = useState(false);
@@ -216,6 +232,8 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       })
     : "Free";
   const canUseTravelStyle = billingInfo ? canAccess(billingInfo.userType, "travel_style") : false;
+  const selectedTheme: ThemeOption =
+    theme === "light" || theme === "dark" || theme === "system" ? theme : "system";
 
   return createPortal(
     <div
@@ -317,6 +335,40 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         {user?.displayName || 'ユーザー'}
                       </HandwrittenText>
                       <p className="text-stone-500 truncate font-mono text-sm">{user?.email}</p>
+                    </div>
+                  </div>
+
+                  {/* Theme Settings */}
+                  <div className="bg-white rounded-sm border border-stone-200 p-6 shadow-sm">
+                    <h4 className="font-bold text-stone-800 mb-2 font-hand text-lg">
+                      表示テーマ
+                    </h4>
+                    <p className="text-sm text-stone-500 mb-4 font-hand">
+                      画面の見た目をライト・ダーク・システム連動から選択できます。
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {THEME_OPTIONS.map((option) => {
+                        const Icon = option.icon;
+                        const isActive = selectedTheme === option.value;
+
+                        return (
+                          <button
+                            key={option.value}
+                            type="button"
+                            onClick={() => setTheme(option.value)}
+                            aria-pressed={isActive}
+                            className={`flex items-center justify-center gap-2 px-4 py-3 rounded-sm border transition-all font-hand text-base
+                              ${isActive
+                                ? "bg-primary/10 border-primary/40 text-stone-900 shadow-sm"
+                                : "bg-stone-50 border-stone-200 text-stone-600 hover:bg-stone-100"
+                              }`}
+                          >
+                            <Icon className={isActive ? "text-primary" : "text-stone-400"} />
+                            <span>{option.label}</span>
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
