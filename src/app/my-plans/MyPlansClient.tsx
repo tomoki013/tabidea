@@ -195,14 +195,16 @@ export default function MyPlansClient({
     planId: string,
     currentPublic: boolean,
   ) => {
+    if (isUpdating === planId) return;
+
     setIsUpdating(planId);
     const nextIsPublic = !currentPublic;
+    updatePlan(planId, { isPublic: nextIsPublic });
 
     const result = await updatePlanVisibility(planId, nextIsPublic);
 
-    if (result.success) {
-      updatePlan(planId, { isPublic: nextIsPublic });
-    } else {
+    if (!result.success) {
+      updatePlan(planId, { isPublic: currentPublic });
       alert(result.error || '公開設定の更新に失敗しました');
     }
     setIsUpdating(null);
@@ -480,7 +482,8 @@ export default function MyPlansClient({
                                     handleToggleVisibility(plan.id, plan.isPublic);
                                     setOpenMenuId(null);
                                   }}
-                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
+                                  disabled={isUpdating === plan.id}
+                                  className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
                                 >
                                   {plan.isPublic ? <FaLock /> : <FaGlobe />}
                                   {plan.isPublic ? '旅のしおりを非公開にする' : '旅のしおりを公開する'}

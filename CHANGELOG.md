@@ -14,6 +14,8 @@
 - `local` fix(ui): プランページのタブ状態をURLクエリ（`tab`）で保持し、`/my-plans` の三点メニューがカード外にはみ出しても表示されるよう修正
 - `local` fix(shiori): マイページの公開切替を `updatePlanVisibility` 経由に統一し、`plans.is_public` と `plan_publications` の同期ずれで旅のしおり公開が反映されない問題を修正（`/my-plans` 再検証と公開トグル同期改善を含む）
 - `local` perf(ui): プラン概要表示中のUIを詳細ページ寄りに統一し、詳細生成完了後はローカル詳細ページへ即時遷移することで体感待ち時間を短縮。遷移中トースト表示で「まもなく詳細ページへ移動」を明示
+- `local` feat(streaming): 概要生成SSE完了後は `?mode=outline` に即遷移し、詳細日程も `SSE (/api/generate/details/stream)` でチャンク進捗を逐次配信する方式に変更。1日目順次生成を廃止して全チャンク並列生成に統一
+- `local` fix(updates,my-plans): `/updates` の「料金プラン」文言を4ティア（ゲスト/Free/Pro/Premium）へ修正し、関連2項目の種別を `minor` から `patch` に統一。`/my-plans` は公開切替時に画像上バッジを楽観更新で即時反映し、失敗時のみロールバック
 
 ### 2026-02-25
 
