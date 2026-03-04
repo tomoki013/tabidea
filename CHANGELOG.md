@@ -36,7 +36,7 @@
 
 ### 2026-02-23
 
-- `f133073` feat: implement 5-tier billing system (anonymous|free|pro|premium|admin)
+- `f133073` feat: implement 4-tier billing system (guest|free|pro|premium)
 
 ### 2026-02-19
 

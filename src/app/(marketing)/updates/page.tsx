@@ -673,10 +673,10 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.02.23",
-    updateType: "minor",
-    title: "料金プランを5ティア構成に拡張",
+    updateType: "patch",
+    title: "料金プランを4ティア構成に調整",
     description:
-      "匿名・Free・Pro・Premium・Adminの5ティア構成に対応し、利用シーンに合わせた提供内容を整理しました。",
+      "ゲスト・Free・Pro・Premiumの4ティア構成に調整し、利用シーンに合わせた提供内容を整理しました。",
   },
   {
     status: "done",
@@ -689,7 +689,7 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.02.24",
-    updateType: "minor",
+    updateType: "patch",
     title: "旅行中のリプラン体験を強化",
     description:
       "旅行中にワンタップで再提案を受けられるリプラン体験を追加し、提案の妥当性評価と制約判定を強化しました。",
