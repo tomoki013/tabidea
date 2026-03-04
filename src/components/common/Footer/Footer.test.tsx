@@ -1,10 +1,29 @@
 import { render, screen } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { NextIntlClientProvider } from 'next-intl';
+import { describe, it, expect, vi } from 'vitest';
 import Footer from './Footer';
+import jaMessages from '@/messages/ja.json';
+
+vi.mock('next/navigation', () => ({
+  usePathname: () => '/ja',
+  useRouter: () => ({
+    push: vi.fn(),
+    refresh: vi.fn(),
+  }),
+  useSearchParams: () => new URLSearchParams(),
+}));
+
+vi.mock('@/components/common/LanguageSwitcher', () => ({
+  default: () => null,
+}));
 
 describe('Footer Component', () => {
   it('renders "特商法表記" instead of "特定商取引法に基づく表記"', () => {
-    render(<Footer />);
+    render(
+      <NextIntlClientProvider locale="ja-JP" messages={jaMessages}>
+        <Footer />
+      </NextIntlClientProvider>
+    );
 
     // Check that "特商法表記" exists
     // getByText throws error if not found, so if it returns, it exists.
@@ -15,13 +34,17 @@ describe('Footer Component', () => {
   });
 
   it('renders a link to the pricing page', () => {
-    render(<Footer />);
+    render(
+      <NextIntlClientProvider locale="ja-JP" messages={jaMessages}>
+        <Footer />
+      </NextIntlClientProvider>
+    );
 
     // Check that "料金プラン" exists
     const pricingLink = screen.getByRole('link', { name: '料金プラン' });
     expect(pricingLink).toBeDefined();
 
     // Check correct href
-    expect(pricingLink.getAttribute('href')).toBe('/pricing');
+    expect(pricingLink.getAttribute('href')).toBe('/ja/pricing');
   });
 });

@@ -1,0 +1,61 @@
+{
+  "header": {
+    "openMenu": "Open menu",
+    "usage": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "planTrip": "Plan a trip",
+    "userFallback": "User",
+    "login": "Log in"
+  },
+  "footer": {
+    "taglineLine1": "Craft your travel story",
+    "taglineLine2": "together with AI.",
+    "supportedBy": "Supported by Tomokichi Travel Journal",
+    "about": "About",
+    "explore": "Explore",
+    "help": "Help",
+    "legal": "Legal",
+    "aboutTabidea": "About Tabidea",
+    "features": "Features & How to use",
+    "updates": "Product updates",
+    "pricingPlan": "Pricing plans",
+    "shiori": "Travel notebook",
+    "samples": "Sample plans",
+    "blog": "Blog",
+    "travelInfo": "Travel info & safety guide",
+    "faq": "FAQ",
+    "contact": "Contact us",
+    "terms": "Terms of service",
+    "privacy": "Privacy policy",
+    "cookiePolicy": "Cookie policy",
+    "aiPolicy": "AI policy",
+    "specified": "Legal disclosure",
+    "copyright": "© 2025-2026 Tabidea. All rights reserved."
+  },
+  "mobileSidebar": {
+    "closeMenu": "Close menu",
+    "home": "Home",
+    "usage": "How it works",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "savedPlans": "Saved plans",
+    "localPlans": "Local plans",
+    "viewAll": "View all",
+    "noPlans": "No plans yet",
+    "createPlan": "Create a plan",
+    "openMenu": "Open menu",
+    "login": "Log in"
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "ja": "Japanese",
+    "en": "English"
+  },
+  "settings": {
+    "languageAndRegion": "Language & region",
+    "languageDescription": "When you switch language, the recommended region for that language is set as default.",
+    "displayLanguage": "Display language",
+    "region": "Region"
+  }
+}

@@ -27,6 +27,10 @@ interface ComparisonFeature {
   category?: string;
 }
 
+interface TierComparisonTableProps {
+  language: "ja" | "en";
+}
+
 // ============================================================================
 // Data
 // ============================================================================
@@ -50,12 +54,28 @@ const COMPARISON_FEATURES: ComparisonFeature[] = [
   { label: "持ち物リスト閲覧", free: false, pro: true, premium: true },
 ];
 
+const COMPARISON_FEATURES_EN: ComparisonFeature[] = [
+  { label: "Plan generation", free: "3/month", pro: "30/month", premium: "100/month", category: "Core" },
+  { label: "Saved plans", free: "Unlimited", pro: "Unlimited", premium: "Unlimited" },
+  { label: "Travel info fetch", free: "1/week", pro: "10/month", premium: "Unlimited", category: "Travel Info" },
+  { label: "Travel info categories", free: "3 categories", pro: "3 categories", premium: "All categories" },
+  { label: "Travel info in plan view", free: false, pro: true, premium: true },
+  { label: "Map mode", free: "Static map", pro: "Interactive Leaflet", premium: "Full Google Maps", category: "Map & Search" },
+  { label: "Places detail fetch", free: "None", pro: "10/plan", premium: "Unlimited" },
+  { label: "Flight/Hotel candidates", free: "None", pro: "3", premium: "7" },
+  { label: "AI provider selection", free: false, pro: false, premium: true, category: "AI & Personalization" },
+  { label: "Travel style settings", free: false, pro: true, premium: true },
+  { label: "Custom AI instructions", free: true, pro: true, premium: true },
+  { label: "Packing list access", free: false, pro: true, premium: true },
+];
+
 // ============================================================================
 // Component
 // ============================================================================
 
-export function TierComparisonTable() {
-  const rows = COMPARISON_FEATURES.map((feature, index, features) => ({
+export function TierComparisonTable({ language }: TierComparisonTableProps) {
+  const currentFeatures = language === "ja" ? COMPARISON_FEATURES : COMPARISON_FEATURES_EN;
+  const rows = currentFeatures.map((feature, index, features) => ({
     feature,
     showCategory: Boolean(
       feature.category &&
@@ -66,14 +86,14 @@ export function TierComparisonTable() {
   return (
     <div className="bg-white rounded-2xl border border-stone-200 shadow-lg p-6 sm:p-8">
       <h2 className="text-xl font-bold text-stone-800 text-center mb-6">
-        プラン比較
+        {language === "ja" ? "プラン比較" : "Plan Comparison"}
       </h2>
       <div className="overflow-x-auto">
         <table className="w-full text-sm" role="table">
           <thead>
             <tr className="border-b-2 border-stone-200">
               <th className="text-left py-3 px-4 font-medium text-stone-600 w-1/4">
-                機能
+                {language === "ja" ? "機能" : "Feature"}
               </th>
               <th className="text-center py-3 px-4 font-medium text-stone-600 w-1/4">
                 Free
@@ -92,6 +112,7 @@ export function TierComparisonTable() {
                 key={feature.label}
                 feature={feature}
                 showCategory={showCategory}
+                language={language}
               />
             ))}
           </tbody>
@@ -108,9 +129,11 @@ export function TierComparisonTable() {
 function ComparisonRow({
   feature,
   showCategory,
+  language,
 }: {
   feature: ComparisonFeature;
   showCategory: boolean;
+  language: "ja" | "en";
 }) {
   return (
     <>
@@ -127,13 +150,13 @@ function ComparisonRow({
       <tr className="border-b border-stone-100 hover:bg-stone-50/50 transition-colors">
         <td className="py-3 px-4 text-stone-700">{feature.label}</td>
         <td className="py-3 px-4 text-center text-stone-600">
-          <CellValue value={feature.free} />
+          <CellValue value={feature.free} language={language} />
         </td>
         <td className="py-3 px-4 text-center text-primary font-medium">
-          <CellValue value={feature.pro} highlight />
+          <CellValue value={feature.pro} highlight language={language} />
         </td>
         <td className="py-3 px-4 text-center text-amber-700 font-medium">
-          <CellValue value={feature.premium} highlight />
+          <CellValue value={feature.premium} highlight language={language} />
         </td>
       </tr>
     </>
@@ -147,18 +170,23 @@ function ComparisonRow({
 function CellValue({
   value,
   highlight = false,
+  language,
 }: {
   value: string | boolean;
   highlight?: boolean;
+  language: "ja" | "en";
 }) {
   if (typeof value === "boolean") {
     return value ? (
       <FaCheck
         className={`w-4 h-4 mx-auto ${highlight ? "text-green-500" : "text-green-400"}`}
-        aria-label="あり"
+        aria-label={language === "ja" ? "あり" : "available"}
       />
     ) : (
-      <FaTimes className="w-4 h-4 mx-auto text-stone-300" aria-label="なし" />
+      <FaTimes
+        className="w-4 h-4 mx-auto text-stone-300"
+        aria-label={language === "ja" ? "なし" : "not available"}
+      />
     );
   }
   return <span>{value}</span>;

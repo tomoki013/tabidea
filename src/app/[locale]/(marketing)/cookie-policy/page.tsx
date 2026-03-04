@@ -1,0 +1,156 @@
+import type { Metadata } from "next";
+import { getRequestLanguage } from "@/lib/i18n/server";
+import PolicyLink from "@/components/ui/PolicyLink";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const language = await getRequestLanguage();
+  return language === "ja"
+    ? { title: "クッキーポリシー" }
+    : { title: "Cookie Policy" };
+}
+
+export default async function CookiePolicy() {
+  const language = await getRequestLanguage();
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
+      <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
+          {language === "ja" ? "クッキーポリシー" : "Cookie Policy"}
+        </h1>
+        {language === "en" && (
+          <p className="text-sm text-stone-500 mb-8 text-center">
+            This page currently contains the official Japanese legal text.
+          </p>
+        )}
+
+        <div className="space-y-8 text-stone-600 leading-relaxed">
+          <section>
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
+              1. クッキー（Cookie）とは
+            </h2>
+            <p>
+              クッキー（Cookie）とは、ウェブサイトを閲覧した際に、お客様のコンピュータやスマートフォンなどの端末に保存される小さなテキストファイルのことです。
+              これを利用することで、お客様が再度ウェブサイトを訪れた際に、より便利に利用していただいたり、ウェブサイトの利用状況を分析してサービスの改善に役立てたりすることができます。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
+              2. クッキーの利用目的
+            </h2>
+            <p>当サービスでは、以下の目的でクッキーを使用しています。</p>
+            <ul className="list-disc pl-6 mt-3 space-y-2">
+              <li>
+                <strong className="text-stone-700">サービスの利便性向上：</strong>{" "}
+                お客様の設定内容（言語設定や入力内容の一時保存など）を記憶し、再度入力する手間を省くため。
+              </li>
+              <li>
+                <strong className="text-stone-700">アクセス解析：</strong>{" "}
+                Google Analyticsなどの分析ツールを使用し、サイトの訪問数や閲覧ページなどの利用状況を把握し、サービスの改善に役立てるため。
+              </li>
+              <li>
+                <strong className="text-stone-700">セキュリティ・不正利用対策：</strong>{" "}
+                不正アクセスや不正利用の検知・防止のため。
+              </li>
+            </ul>
+            <p className="mt-3">
+              なお、行動ターゲティング広告を目的としたCookieを新たに導入する場合は、本ポリシーで事前に告知します。
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
+              3. Google Analyticsの利用について
+            </h2>
+            <p>
+              当サービスでは、Googleによるアクセス解析ツール「Google Analytics」を使用しています。
+              このGoogle Analyticsはデータの収集のためにクッキーを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
+            </p>
+            <p className="mt-2">
+              Google Analyticsにより収集されたデータは、Google社のプライバシーポリシーに基づいて管理されます。
+              詳細は以下のページをご覧ください。
+            </p>
+            <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                <a
+                  href="https://policies.google.com/technologies/partner-sites?hl=ja"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#e67e22] hover:underline"
+                >
+                  Googleのサービスを使用するサイトやアプリから収集した情報のGoogleによる使用
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://policies.google.com/privacy?hl=ja"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#e67e22] hover:underline"
+                >
+                  Google プライバシーポリシー
+                </a>
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
+              4. クッキーの無効化（オプトアウト）について
+            </h2>
+            <p>
+              お客様は、ブラウザの設定を変更することにより、クッキーの受け入れを拒否（無効化）することができます。
+              ただし、クッキーを無効にした場合、当サービスの一部機能が正常に動作しなくなる可能性がありますので、あらかじめご了承ください。
+            </p>
+
+            <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
+              ブラウザの設定変更方法
+            </h3>
+            <p>主要なブラウザの設定方法は以下の各社サポートページをご確認ください。</p>
+            <ul className="list-disc pl-6 mt-3 space-y-2">
+              <li>
+                <a href="https://support.google.com/chrome/answer/95647?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Chrome</a>
+              </li>
+              <li>
+                <a href="https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Apple Safari (Mac)</a> / <a href="https://support.apple.com/ja-jp/HT201265" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">iPhone・iPad</a>
+              </li>
+              <li>
+                <a href="https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Mozilla Firefox</a>
+              </li>
+              <li>
+                <a href="https://support.microsoft.com/ja-jp/microsoft-edge/microsoft-edge-%E3%81%A7-cookie-%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B-63947406-40ac-c2b9-25b4-935471955f0e" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Microsoft Edge</a>
+              </li>
+            </ul>
+
+             <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
+              Google Analyticsのオプトアウト
+            </h3>
+            <p>
+              Google Analyticsによるデータ収集のみを無効にしたい場合は、Google社が提供する「Google Analyticsオプトアウトアドオン」をご利用ください。
+            </p>
+             <ul className="list-disc pl-6 mt-2 space-y-1">
+              <li>
+                <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Analytics オプトアウト アドオン</a>
+              </li>
+             </ul>
+          </section>
+
+          <section>
+            <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
+              5. お問い合わせ
+            </h2>
+            <p>
+              本クッキーポリシーに関するお問い合わせは、<PolicyLink href="/contact">お問い合わせフォーム</PolicyLink>よりお願いいたします。
+            </p>
+          </section>
+
+          <div className="text-right text-sm text-stone-500 mt-12">
+            策定日：2026年1月8日
+            <br />
+            最終更新日: 2026年3月3日
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}

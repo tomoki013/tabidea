@@ -1,5 +1,11 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FaGithub } from "react-icons/fa";
+import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher";
 import { Stamp, HandwrittenText, Tape } from "@/components/ui/journal";
 
 /**
@@ -7,6 +13,10 @@ import { Stamp, HandwrittenText, Tape } from "@/components/ui/journal";
  * サイト全体で使用される共通フッター
  */
 export default function Footer() {
+  const pathname = usePathname();
+  const language = resolveLanguageFromPathname(pathname);
+  const t = useTranslations("footer");
+
   return (
     <footer className="w-full relative pt-20 pb-16 px-4 overflow-hidden">
       {/* Background with texture */}
@@ -19,7 +29,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-10 relative z-10">
         {/* Brand */}
         <div className="space-y-6 col-span-2 md:col-span-1 flex flex-col items-start">
-          <Link href="/" className="group">
+          <Link href={localizeHref("/", language)} className="group">
              <div className="relative inline-block transform -rotate-2 group-hover:rotate-0 transition-transform duration-300">
                <Stamp color="black" size="md" className="w-20 h-20 text-xs border-4 bg-white/50 backdrop-blur-sm">
                   <div className="flex flex-col items-center leading-none">
@@ -30,10 +40,11 @@ export default function Footer() {
              </div>
           </Link>
           <HandwrittenText className="text-stone-600 text-sm leading-relaxed max-w-xs">
-            あなたの旅の物語を、<br/>AIと一緒に紡ぎ出す。
+            {t("taglineLine1")}<br/>{t("taglineLine2")}
             <br />
-            <span className="text-xs opacity-60 block mt-2">Supported by ともきちの旅行日記</span>
+            <span className="text-xs opacity-60 block mt-2">{t("supportedBy")}</span>
           </HandwrittenText>
+          <LanguageSwitcher />
           <div className="flex gap-4 pt-2">
             <a
               href="https://github.com/tomoki013/ai-travel-planner"
@@ -47,40 +58,40 @@ export default function Footer() {
         </div>
 
         {/* Links Sections */}
-        <FooterSection title="About">
-          <FooterLink href="/about">Tabideaについて</FooterLink>
-          <FooterLink href="/features">機能紹介・使い方</FooterLink>
-          <FooterLink href="/updates">アップデート情報</FooterLink>
-          <FooterLink href="/pricing">料金プラン</FooterLink>
+        <FooterSection title={t("about")}>
+          <FooterLink href={localizeHref("/about", language)}>{t("aboutTabidea")}</FooterLink>
+          <FooterLink href={localizeHref("/features", language)}>{t("features")}</FooterLink>
+          <FooterLink href={localizeHref("/updates", language)}>{t("updates")}</FooterLink>
+          <FooterLink href={localizeHref("/pricing", language)}>{t("pricingPlan")}</FooterLink>
         </FooterSection>
 
-        <FooterSection title="Explore">
-          <FooterLink href="/shiori">旅のしおり</FooterLink>
-          <FooterLink href="/samples">サンプルプラン集</FooterLink>
-          <FooterLink href="/blog">ブログ</FooterLink>
-          <FooterLink href="/travel-info">渡航情報・安全ガイド</FooterLink>
+        <FooterSection title={t("explore")}>
+          <FooterLink href={localizeHref("/shiori", language)}>{t("shiori")}</FooterLink>
+          <FooterLink href={localizeHref("/samples", language)}>{t("samples")}</FooterLink>
+          <FooterLink href={localizeHref("/blog", language)}>{t("blog")}</FooterLink>
+          <FooterLink href={localizeHref("/travel-info", language)}>{t("travelInfo")}</FooterLink>
         </FooterSection>
 
-        <FooterSection title="Help">
-          <FooterLink href="/faq">よくある質問</FooterLink>
-          <FooterLink href="/contact">お問い合わせ</FooterLink>
+        <FooterSection title={t("help")}>
+          <FooterLink href={localizeHref("/faq", language)}>{t("faq")}</FooterLink>
+          <FooterLink href={localizeHref("/contact", language)}>{t("contact")}</FooterLink>
         </FooterSection>
 
         {/* Legal - Keep clean but integrated */}
         <div className="space-y-4">
-          <h4 className="font-bold text-stone-800 font-serif border-b-2 border-stone-200/50 inline-block pb-1">Legal</h4>
+          <h4 className="font-bold text-stone-800 font-serif border-b-2 border-stone-200/50 inline-block pb-1">{t("legal")}</h4>
           <ul className="space-y-2 text-sm text-stone-500 font-sans">
-            <li><Link href="/terms" className="hover:text-primary transition-colors hover:underline">利用規約</Link></li>
-            <li><Link href="/privacy" className="hover:text-primary transition-colors hover:underline">プライバシーポリシー</Link></li>
-            <li><Link href="/cookie-policy" className="hover:text-primary transition-colors hover:underline">クッキーポリシー</Link></li>
-            <li><Link href="/ai-policy" className="hover:text-primary transition-colors hover:underline">AIポリシー</Link></li>
-            <li><Link href="/specified" className="hover:text-primary transition-colors hover:underline">特商法表記</Link></li>
+            <li><Link href={localizeHref("/terms", language)} className="hover:text-primary transition-colors hover:underline">{t("terms")}</Link></li>
+            <li><Link href={localizeHref("/privacy", language)} className="hover:text-primary transition-colors hover:underline">{t("privacy")}</Link></li>
+            <li><Link href={localizeHref("/cookie-policy", language)} className="hover:text-primary transition-colors hover:underline">{t("cookiePolicy")}</Link></li>
+            <li><Link href={localizeHref("/ai-policy", language)} className="hover:text-primary transition-colors hover:underline">{t("aiPolicy")}</Link></li>
+            <li><Link href={localizeHref("/specified", language)} className="hover:text-primary transition-colors hover:underline">{t("specified")}</Link></li>
           </ul>
         </div>
       </div>
 
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-stone-300 border-dashed text-center text-xs text-stone-400 font-mono relative z-10">
-        <p>© 2025-2026 Tabidea. All rights reserved.</p>
+        <p>{t("copyright")}</p>
       </div>
     </footer>
   );

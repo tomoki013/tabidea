@@ -40,11 +40,13 @@ Use Vitest + Testing Library for unit/component tests and Playwright for E2E. Ke
 ## Documentation & Performance Requirements
 If a PR changes behavior, architecture, API/service contracts, DB schema, or testing policy, update relevant `docs/` files in the same PR.
 
-For every PR/commit that changes behavior or user-facing content, always update `CHANGELOG.md` in the same PR/commit. `CHANGELOG.md` is the single source of truth for update history, and `src/app/(marketing)/updates/page.tsx` is a user-facing summary view derived from that history.
+For every PR/commit that changes behavior or user-facing content, always update `CHANGELOG.md` in the same PR/commit. `CHANGELOG.md` is the single source of truth for update history, and `src/app/[locale]/(marketing)/updates/page.tsx` is a user-facing summary view derived from that history.
 
 For server actions and AI generation flows, performance instrumentation is required via `PerformanceTimer` (`src/lib/utils/performance-timer.ts`): measure key steps with `timer.measure(...)` and call `timer.log()` on completion.
 
 For any UI change (new page/component or style update), dark mode support is mandatory in the same PR/commit. Do not ship light-only UI. Ensure both light and dark themes are visually verified before merge.
+
+For any UI change (new page/component/content update), multilingual support is mandatory in the same PR/commit. Do not ship Japanese-only UI. All user-facing UI (pages, modals, toasts, OG/PDF text) must be implemented with i18n keys and support at least `ja` and `en`.
 
 ## Commit & Pull Request Guidelines
 Prefer Conventional Commit-style subjects (`feat:`, `fix:`, `refactor:`, `chore:`, `perf:`). Keep commits focused and imperative.

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   RefreshCw,
@@ -27,7 +28,6 @@ import type {
   SmokingInfo,
   AlcoholInfo,
 } from '@/types';
-import { CATEGORY_LABELS } from '@/types';
 import InfoSection from "./InfoSection";
 import LoadingState from "./LoadingState";
 import {
@@ -47,7 +47,8 @@ import {
   AlcoholSection,
 } from "./sections";
 import type { TravelInfoDisplayProps, CategoryState } from "./types";
-import { CATEGORY_INFO } from "./types";
+import { getCategoryInfo } from "./types";
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 import PDFExportButton from "./PDFExportButton";
 import ShareButton from "./ShareButton";
 
@@ -66,6 +67,43 @@ export default function TravelInfoDisplay({
   dates,
   onRetryCategory,
 }: TravelInfoDisplayProps) {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const text = language === "ja"
+    ? {
+        headerSuffix: "の渡航情報",
+        expandAll: "すべて展開",
+        collapseAll: "すべて折りたたみ",
+        fetchFailedTitle: "情報の取得に失敗しました",
+        fetchFailedBody:
+          "申し訳ありません。渡航情報の取得中にエラーが発生しました。\nしばらく経ってから再度お試しください。",
+        refetchAll: "すべて再取得",
+        guidePromptTitle: "情報を取得するには",
+        guidePromptBody: "目的地を入力し、カテゴリを選択して検索してください",
+        disclaimer: "免責事項",
+        disclaimerBody:
+          "この情報はAIによって生成されたものであり、正確性を保証するものではありません。渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。",
+        disclaimerOfficialPrefix: "渡航前には必ず",
+        disclaimerOfficialSuffix: "等の公式情報をご確認ください。",
+        mofa: "外務省海外安全ホームページ",
+      }
+    : {
+        headerSuffix: " Travel Info",
+        expandAll: "Expand all",
+        collapseAll: "Collapse all",
+        fetchFailedTitle: "Failed to fetch travel information",
+        fetchFailedBody:
+          "Sorry, an error occurred while fetching travel information.\nPlease try again in a moment.",
+        refetchAll: "Retry all",
+        guidePromptTitle: "How to fetch information",
+        guidePromptBody: "Enter a destination, choose categories, and search.",
+        disclaimer: "Disclaimer",
+        disclaimerBody:
+          "This information is AI-generated and is not guaranteed to be fully accurate. For any travel decision, always verify official primary sources and decide at your own responsibility.",
+        disclaimerOfficialPrefix: "Before traveling, always check official sources such as",
+        disclaimerOfficialSuffix: ".",
+        mofa: "MOFA Overseas Safety Website",
+      };
   // 展開状態を管理（デフォルトは最初のカテゴリを展開）
   const [expandedCategories, setExpandedCategories] = useState<
     Set<TravelInfoCategory>
@@ -152,7 +190,7 @@ export default function TravelInfoDisplay({
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2c2c2c]">
               {destination}
             </h2>
-            <p className="text-sm text-stone-500">{country}の渡航情報</p>
+            <p className="text-sm text-stone-500">{country}{text.headerSuffix}</p>
           </div>
         </div>
 
@@ -163,7 +201,7 @@ export default function TravelInfoDisplay({
             onClick={expandAll}
             className="px-3 py-1.5 text-sm text-primary hover:bg-primary/10 rounded-lg transition-colors"
           >
-            すべて展開
+            {text.expandAll}
           </button>
           <span className="text-stone-300">|</span>
           <button
@@ -171,7 +209,7 @@ export default function TravelInfoDisplay({
             onClick={collapseAll}
             className="px-3 py-1.5 text-sm text-stone-600 hover:bg-stone-100 rounded-lg transition-colors"
           >
-            すべて折りたたみ
+            {text.collapseAll}
           </button>
         </div>
       </div>
@@ -192,12 +230,12 @@ export default function TravelInfoDisplay({
             >
               <AlertCircle className="w-12 h-12 text-red-400 mx-auto mb-4" />
               <h3 className="text-lg font-bold text-red-800 mb-2">
-                情報の取得に失敗しました
+                {text.fetchFailedTitle}
               </h3>
               <p className="text-red-600 mb-4">
-                申し訳ありません。渡航情報の取得中にエラーが発生しました。
+                {text.fetchFailedBody.split("\n")[0]}
                 <br />
-                しばらく経ってから再度お試しください。
+                {text.fetchFailedBody.split("\n")[1]}
               </p>
               {onRetryCategory && (
                 <button
@@ -208,7 +246,7 @@ export default function TravelInfoDisplay({
                   className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors"
                 >
                   <RefreshCw className="w-5 h-5" />
-                  すべて再取得
+                  {text.refetchAll}
                 </button>
               )}
             </motion.div>
@@ -221,10 +259,10 @@ export default function TravelInfoDisplay({
             <div className="p-8 bg-stone-50 border border-stone-200 rounded-3xl text-center">
               <Info className="w-12 h-12 text-stone-400 mx-auto mb-4" />
               <h3 className="text-lg font-bold text-stone-600 mb-2">
-                情報を取得するには
+                {text.guidePromptTitle}
               </h3>
               <p className="text-stone-500">
-                目的地を入力し、カテゴリを選択して検索してください
+                {text.guidePromptBody}
               </p>
             </div>
           );
@@ -255,6 +293,7 @@ export default function TravelInfoDisplay({
                       key={category}
                       category={category}
                       state={state}
+                      language={language}
                       isExpanded={expandedCategories.has(category)}
                       onToggle={() => toggleCategory(category)}
                       onRetry={
@@ -273,23 +312,22 @@ export default function TravelInfoDisplay({
               <div className="p-5 sm:p-6 bg-white border border-stone-200 rounded-2xl shadow-sm">
                 <h4 className="flex items-center gap-2 font-bold text-stone-800 mb-2">
                   <AlertCircle className="w-5 h-5 text-stone-500" />
-                  免責事項
+                  {text.disclaimer}
                 </h4>
                 <p className="text-sm text-stone-600 leading-relaxed">
-                  この情報はAIによって生成されたものであり、正確性を保証するものではありません。
-                  渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。
+                  {text.disclaimerBody}
                 </p>
                 <p className="text-sm text-stone-500 mt-3">
-                  渡航前には必ず{" "}
+                  {text.disclaimerOfficialPrefix}{" "}
                   <a
                     href="https://www.anzen.mofa.go.jp/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-primary hover:underline font-medium"
                   >
-                    外務省海外安全ホームページ
+                    {text.mofa}
                   </a>{" "}
-                  等の公式情報をご確認ください。
+                  {text.disclaimerOfficialSuffix}
                 </p>
               </div>
             )}
@@ -306,17 +344,19 @@ export default function TravelInfoDisplay({
 function CategorySection({
   category,
   state,
+  language,
   isExpanded,
   onToggle,
   onRetry,
 }: {
   category: TravelInfoCategory;
   state: CategoryState;
+  language: "ja" | "en";
   isExpanded: boolean;
   onToggle: () => void;
   onRetry?: () => void;
 }) {
-  const info = CATEGORY_INFO[category];
+  const info = getCategoryInfo(category, language);
   const categoryLabel = info?.label || category;
 
   // If category info is undefined, use fallbacks
@@ -337,10 +377,12 @@ function CategorySection({
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-orange-800 mb-1">
-                {categoryLabel}の取得に失敗しました
+                {language === "ja"
+                  ? `${categoryLabel}の取得に失敗しました`
+                  : `Failed to fetch ${categoryLabel}`}
               </h3>
               <p className="text-orange-700 text-sm mb-4">
-                不明なカテゴリです。
+                {language === "ja" ? "不明なカテゴリです。" : "Unknown category."}
               </p>
             </div>
           </div>
@@ -395,16 +437,22 @@ function CategorySection({
           </div>
           <div className="flex-1">
             <h3 className="font-bold text-orange-800 mb-1">
-              {categoryLabel}の取得に失敗しました
+              {language === "ja"
+                ? `${categoryLabel}の取得に失敗しました`
+                : `Failed to fetch ${categoryLabel}`}
             </h3>
             <p className="text-orange-700 text-sm mb-4">
-              申し訳ありません。{categoryLabel}の情報を取得できませんでした。
+              {language === "ja"
+                ? `申し訳ありません。${categoryLabel}の情報を取得できませんでした。`
+                : `Sorry, we could not retrieve ${categoryLabel} information.`}
               <br />
-              しばらく経ってから再度お試しください。
+              {language === "ja"
+                ? "しばらく経ってから再度お試しください。"
+                : "Please try again in a moment."}
             </p>
             {state.error && (
               <p className="text-orange-600 text-xs mb-4 bg-orange-100 p-2 rounded">
-                エラー詳細: {state.error}
+                {language === "ja" ? "エラー詳細" : "Error details"}: {state.error}
               </p>
             )}
             {onRetry && (
@@ -414,7 +462,7 @@ function CategorySection({
                 className="inline-flex items-center gap-2 px-4 py-2 bg-orange-600 text-white text-sm font-bold rounded-lg hover:bg-orange-700 transition-colors"
               >
                 <RefreshCw className="w-4 h-4" />
-                再取得
+                {language === "ja" ? "再取得" : "Retry"}
               </button>
             )}
           </div>

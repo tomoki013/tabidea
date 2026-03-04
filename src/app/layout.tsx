@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { NextIntlClientProvider } from "next-intl";
 import {
   Header,
   Footer,
@@ -12,6 +13,11 @@ import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
 import { FlagsProvider } from "@/context/FlagsContext";
+import { getRequestLanguage } from "@/lib/i18n/server";
+import { getMessages } from "@/lib/i18n/messages";
+import {
+  resolveRegionalLocale,
+} from "@/lib/i18n/locales";
 import "./globals.css";
 
 // Fonts are now loaded via fontsource CSS imports in globals.css
@@ -62,13 +68,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const language = await getRequestLanguage();
+  const regionalLocale = resolveRegionalLocale(language);
+  const messages = getMessages(language);
+
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang={regionalLocale} suppressHydrationWarning>
       <head>
         {/* Google Adsense */}
         <meta name="google-adsense-account" content="ca-pub-8687520805381056" />
@@ -88,22 +98,24 @@ export default function RootLayout({
         ></Script>
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
-        <ThemeProvider>
-          <AuthProvider>
-            <FlagsProvider>
-              <UserPlansProvider>
-                <PlanModalProvider>
-                  <Header />
-                  {children}
-                  <FloatingPlanButton />
-                  <CookieBanner />
-                  <GlobalAuthUI />
-                  <Footer />
-                </PlanModalProvider>
-              </UserPlansProvider>
-            </FlagsProvider>
-          </AuthProvider>
-        </ThemeProvider>
+        <NextIntlClientProvider locale={language} messages={messages}>
+          <ThemeProvider>
+            <AuthProvider>
+              <FlagsProvider>
+                <UserPlansProvider>
+                  <PlanModalProvider>
+                    <Header />
+                    {children}
+                    <FloatingPlanButton />
+                    <CookieBanner />
+                    <GlobalAuthUI />
+                    <Footer />
+                  </PlanModalProvider>
+                </UserPlansProvider>
+              </FlagsProvider>
+            </AuthProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

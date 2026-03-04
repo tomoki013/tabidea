@@ -1,10 +1,23 @@
 "use server";
 
 import { getUser, createClient } from "@/lib/supabase/server";
+import {
+  DEFAULT_LANGUAGE,
+  getDefaultRegionForLanguage,
+  isLanguageCode,
+  isRegionCode,
+  resolveRegionalLocale,
+  type LanguageCode,
+  type RegionCode,
+  type RegionalLocale,
+} from "@/lib/i18n/locales";
 
 export interface UserSettings {
   customInstructions?: string;
   travelStyle?: string;
+  preferredLanguage?: LanguageCode;
+  preferredRegion?: RegionCode;
+  preferredLocale?: RegionalLocale;
 }
 
 /**
@@ -33,12 +46,22 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
 
     // Default to empty object if metadata is null
     const metadata = data?.metadata || {};
+    const preferredLanguage = isLanguageCode(metadata.preferredLanguage)
+      ? metadata.preferredLanguage
+      : DEFAULT_LANGUAGE;
+    const preferredRegion = isRegionCode(metadata.preferredRegion)
+      ? metadata.preferredRegion
+      : getDefaultRegionForLanguage(preferredLanguage);
+    const preferredLocale = resolveRegionalLocale(preferredLanguage, preferredRegion);
 
     return {
       success: true,
       settings: {
         customInstructions: metadata.customInstructions || "",
         travelStyle: metadata.travelStyle || "",
+        preferredLanguage,
+        preferredRegion,
+        preferredLocale,
       }
     };
   } catch (error) {
@@ -73,11 +96,37 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
     }
 
     const currentMetadata = currentData?.metadata || {};
+    const currentLanguage = isLanguageCode(currentMetadata.preferredLanguage)
+      ? currentMetadata.preferredLanguage
+      : DEFAULT_LANGUAGE;
+    const currentRegion = isRegionCode(currentMetadata.preferredRegion)
+      ? currentMetadata.preferredRegion
+      : getDefaultRegionForLanguage(currentLanguage);
+
+    let preferredLanguage = settings.preferredLanguage ?? currentLanguage;
+    let preferredRegion = settings.preferredRegion ?? currentRegion;
+
+    if (settings.preferredLanguage && !settings.preferredRegion) {
+      preferredRegion = getDefaultRegionForLanguage(settings.preferredLanguage);
+    }
+
+    if (!isLanguageCode(preferredLanguage)) {
+      preferredLanguage = DEFAULT_LANGUAGE;
+    }
+
+    if (!isRegionCode(preferredRegion)) {
+      preferredRegion = getDefaultRegionForLanguage(preferredLanguage);
+    }
+
+    const preferredLocale = resolveRegionalLocale(preferredLanguage, preferredRegion);
 
     // Merge new settings
     const newMetadata = {
       ...currentMetadata,
       ...settings,
+      preferredLanguage,
+      preferredRegion,
+      preferredLocale,
     };
 
     const { error: updateError } = await supabase

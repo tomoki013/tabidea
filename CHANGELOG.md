@@ -4,13 +4,21 @@
 
 - 更新履歴の唯一の正（Single Source of Truth）はこの `CHANGELOG.md` です。
 - 変更があるすべてのPR/コミットで、必ず `CHANGELOG.md` を更新してください。
-- `src/app/(marketing)/updates/page.tsx` は一般ユーザー向けの要約表示であり、正本ではありません。
+- `src/app/[locale]/(marketing)/updates/page.tsx` は一般ユーザー向けの要約表示であり、正本ではありません。
 - `AGENTS.md` と `CLAUDE.md` の更新履歴運用はこのルールに従います。
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-05
+
+- `local` fix(i18n): `next-intl` の設定解決を公式構成へ統一。`next.config.ts` に `next-intl/plugin` を追加し、`src/i18n/request.ts` / `src/i18n/routing.ts` を導入して、開発サーバーの `Couldn't find next-intl config file` エラーを解消
+- `local` fix(i18n): `proxy` を `next-intl` ミドルウェア連携に更新し、言語プレフィックスURL（`/ja` `/en`）のリダイレクトと `LANGUAGE_COOKIE` / `LANGUAGE_HEADER` の同期を安定化
+- `local` fix(route): App Router のUIルートを `src/app/[locale]/*` へ移行し、`/ja` アクセスが 404 になる問題を解消。`/` や `/pricing` は `localePrefix: "always"` に従って `/ja` / `/ja/pricing` へリダイレクト
+
 ### 2026-03-04
 
+- `local` feat(i18n): 多言語対応の基盤を実装。言語プレフィックスURL（`/ja`, `/en`）の導入、`next-intl` による辞書配信、共通ナビ（Header/Footer/Sidebar）のロケール対応、設定画面での言語・地域（`ja-JP`/`en-US`）保存を追加
+- `local` feat(i18n): 主要ページと主要UIの多言語対応を拡張。`/updates`・`/blog/guide`・`/public/view`・`/shiori/[slug]`・`/travel-info`・料金関連UIを `ja`/`en` で表示切替し、メタデータ・リンク・エラーメッセージ・地域ロケール整合（`ja-JP`/`en-US`）を強化
 - `local` feat(ui): 全ページでダークモード（ライト/ダーク/システム）を実装。設定モーダルからテーマ切替可能にし、固定16進色クラスを含む既存UI全体をダーク配色へ自動変換する互換レイヤーを追加
 - `local` fix(ui): プランページのタブ状態をURLクエリ（`tab`）で保持し、`/my-plans` の三点メニューがカード外にはみ出しても表示されるよう修正
 - `local` fix(shiori): マイページの公開切替を `updatePlanVisibility` 経由に統一し、`plans.is_public` と `plan_publications` の同期ずれで旅のしおり公開が反映されない問題を修正（`/my-plans` 再検証と公開トグル同期改善を含む）

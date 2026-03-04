@@ -1,18 +1,22 @@
 import { render, act } from "@testing-library/react";
 import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
+import { NextIntlClientProvider } from "next-intl";
 import Header from "./Header";
 import React from "react";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
+import enMessages from "@/messages/en.json";
 
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
-  usePathname: () => "/",
+  usePathname: () => "/en",
+  useSearchParams: () => new URLSearchParams(),
   useRouter: () => ({
     push: vi.fn(),
     replace: vi.fn(),
     prefetch: vi.fn(),
+    refresh: vi.fn(),
   }),
 }));
 
@@ -74,13 +78,15 @@ describe("Header Performance Benchmark", () => {
 
   it("measures window.scrollY accesses during scroll events", () => {
     render(
-      <AuthProvider>
-        <UserPlansProvider>
-          <PlanModalProvider>
-            <Header forceShow={true} />
-          </PlanModalProvider>
-        </UserPlansProvider>
-      </AuthProvider>
+      <NextIntlClientProvider locale="en-US" messages={enMessages}>
+        <AuthProvider>
+          <UserPlansProvider>
+            <PlanModalProvider>
+              <Header forceShow={true} />
+            </PlanModalProvider>
+          </UserPlansProvider>
+        </AuthProvider>
+      </NextIntlClientProvider>
     );
 
     // Initial check consumes 1 access

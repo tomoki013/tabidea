@@ -1,6 +1,18 @@
+"use client";
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
+import { resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 
 export default function Loading() {
+  const pathname = usePathname();
+  const language = resolveLanguageFromPathname(pathname);
+  const loadingLabel = language === "ja" ? "Loading..." : "Loading...";
+  const note =
+    language === "ja"
+      ? "旅の準備をしています..."
+      : "Preparing your trip...";
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background">
       {/* Paper Texture Overlay */}
@@ -18,13 +30,13 @@ export default function Loading() {
         {/* Loading Text */}
         <div className="flex flex-col items-center gap-4 text-center">
           <p className="text-xl font-serif text-foreground tracking-widest">
-            Loading...
+            {loadingLabel}
           </p>
           <div className="w-16 h-1 bg-primary/20 rounded-full overflow-hidden">
             <div className="h-full bg-primary animate-progress-indeterminate" />
           </div>
           <p className="text-sm font-hand text-muted-foreground -rotate-2 mt-2">
-             旅の準備をしています...
+             {note}
           </p>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 import {
   FaRobot,
   FaMapMarkedAlt,
@@ -12,6 +13,7 @@ import {
   FaCompass,
   FaCloud,
 } from "react-icons/fa";
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 
 const features = [
   {
@@ -114,7 +116,111 @@ const features = [
   },
 ];
 
+const featuresEn = [
+  {
+    icon: FaRobot,
+    title: "AI auto-generates your itinerary",
+    description:
+      "Answer a few questions and AI drafts an itinerary based on your destination, duration, and budget.",
+    details: [
+      "Generate day-by-day plans from your inputs",
+      "Reflects destination, budget, themes, and companions",
+      "Easy to revise after generation",
+    ],
+  },
+  {
+    icon: FaMapMarkedAlt,
+    title: "Detailed spot information",
+    description:
+      "Each spot includes practical context and suggested references so you can concretize your plan.",
+    details: [
+      "Check highlights for each spot",
+      "Open maps when needed",
+    ],
+  },
+  {
+    icon: FaEdit,
+    title: "Flexible customization",
+    description:
+      "Generated plans are a starting point. Regenerate or adjust via chat to fit your style.",
+    details: [
+      "Add conditions and regenerate quickly",
+      "Remove or revise unnecessary activities",
+      "Fine-tune for your travel style",
+    ],
+  },
+  {
+    icon: FaGlobeAsia,
+    title: "Worldwide destinations",
+    description:
+      "From domestic trips to overseas travel, Tabidea supports a wide range of destinations.",
+    details: [
+      "Coverage for major domestic and global cities",
+      "Plans adapted to local characteristics",
+    ],
+  },
+  {
+    icon: FaCalendarAlt,
+    title: "Schedule optimization and exports",
+    description:
+      "Create plans from day trips to long stays and export to your calendar after generation.",
+    details: [
+      "Flexible support from one-day to long trips",
+      "Export to Google Calendar / iCal",
+      "Schedules consider transfer time",
+    ],
+  },
+  {
+    icon: FaUsers,
+    title: "Companion-aware planning",
+    description:
+      "Adjust plans for solo trips, couples, families, and groups with suitable experiences.",
+    details: [
+      "Considers age and interests",
+      "Activities adjusted by group size",
+      "Family-friendly options included",
+    ],
+  },
+  {
+    icon: FaWallet,
+    title: "Budget and cost estimates",
+    description:
+      "AI estimates transport, accommodation, meals, and activity costs from your generated plan.",
+    details: [
+      "Displays rough total cost",
+      "Suggests cost-effective choices",
+      "Supports budget-conscious optimization",
+    ],
+  },
+  {
+    icon: FaCompass,
+    title: "Theme-based travel ideas",
+    description:
+      "Plan by themes such as food, history, nature, art, or shopping for deeper experiences.",
+    details: [
+      "Combine multiple themes",
+      "Includes niche, specialized spots",
+      "Prioritizes local-only experiences",
+    ],
+  },
+  {
+    icon: FaCloud,
+    title: "More with an account",
+    description:
+      "With an account, you can save plans without limits and sync across devices.",
+    details: [
+      "Unlimited plan saves",
+      "Sync across PC, smartphone, and tablet",
+      "Quick reuse of saved plans",
+    ],
+  },
+];
+
 export default function FeaturesDetailSection() {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const currentFeatures = language === "ja" ? features : featuresEn;
+
   return (
     <section className="w-full py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -125,15 +231,17 @@ export default function FeaturesDetailSection() {
           className="text-center space-y-4 mb-16"
         >
           <h2 className="text-3xl sm:text-5xl font-serif font-bold text-foreground">
-            充実の機能
+            {language === "ja" ? "充実の機能" : "Powerful Features"}
           </h2>
           <p className="text-muted-foreground font-hand text-lg">
-            あなたの旅行計画を強力にサポートします
+            {language === "ja"
+              ? "あなたの旅行計画を強力にサポートします"
+              : "Everything you need to plan better trips"}
           </p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {features.map((feature, index) => (
+          {currentFeatures.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}

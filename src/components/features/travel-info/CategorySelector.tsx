@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion';
 import { CheckCircle, XCircle, Lock } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import { ALL_TRAVEL_INFO_CATEGORIES, type TravelInfoCategory } from '@/types';
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from '@/lib/i18n/locales';
 import CategoryCard from './CategoryCard';
 import type { CategorySelectorProps } from './types';
 
@@ -23,6 +25,8 @@ export default function CategorySelector({
   disabled = false,
   maxSelections = ALL_TRAVEL_INFO_CATEGORIES.length,
 }: CategorySelectorProps) {
+  const pathname = usePathname();
+  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
 
   // 選択可能なカテゴリのみ抽出
   const selectableCats = ALL_TRAVEL_INFO_CATEGORIES.filter(
@@ -83,7 +87,7 @@ export default function CategorySelector({
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="flex items-center gap-2">
           <span className="text-sm text-stone-600">
-            選択中:{' '}
+            {language === "ja" ? "選択中:" : "Selected:"}{' '}
             <span className="font-bold text-primary">
               {selectedCategories.length}
             </span>
@@ -104,10 +108,10 @@ export default function CategorySelector({
                 : 'text-primary hover:bg-primary/10 active:scale-95'
               }
             `}
-            aria-label="すべて選択"
+            aria-label={language === "ja" ? "すべて選択" : "Select all"}
           >
             <CheckCircle className="w-4 h-4" />
-            <span>すべて選択</span>
+            <span>{language === "ja" ? "すべて選択" : "Select all"}</span>
           </button>
 
           <span className="text-stone-300">|</span>
@@ -124,10 +128,10 @@ export default function CategorySelector({
                 : 'text-stone-600 hover:bg-stone-100 active:scale-95'
               }
             `}
-            aria-label="選択解除"
+            aria-label={language === "ja" ? "選択解除" : "Clear selection"}
           >
             <XCircle className="w-4 h-4" />
-            <span>選択解除</span>
+            <span>{language === "ja" ? "選択解除" : "Clear"}</span>
           </button>
         </div>
       </div>
@@ -136,7 +140,7 @@ export default function CategorySelector({
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 text-sm font-bold text-stone-500 uppercase tracking-wider">
           <Lock className="w-4 h-4" />
-          <span>基本ガイド（常に含まれます）</span>
+          <span>{language === "ja" ? "基本ガイド（常に含まれます）" : "Core guide (always included)"}</span>
         </h4>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
           {MANDATORY_CATEGORIES.map((category) => (
@@ -154,7 +158,7 @@ export default function CategorySelector({
       {/* 選択可能カテゴリセクション */}
       <div className="space-y-3">
         <h4 className="text-sm font-bold text-stone-500 uppercase tracking-wider">
-          追加情報（自由に選択）
+          {language === "ja" ? "追加情報（自由に選択）" : "Additional info (optional)"}
         </h4>
         <motion.div
           className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4"
@@ -201,7 +205,9 @@ export default function CategorySelector({
           animate={{ opacity: 1, y: 0 }}
           className="text-sm text-stone-500 text-center"
         >
-          最大{maxSelections}つまで選択できます
+          {language === "ja"
+            ? `最大${maxSelections}つまで選択できます`
+            : `You can select up to ${maxSelections} categories`}
         </motion.p>
       )}
     </div>
