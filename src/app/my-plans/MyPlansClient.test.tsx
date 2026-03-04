@@ -138,31 +138,21 @@ describe("MyPlansClient visibility actions", () => {
     vi.stubGlobal("alert", vi.fn());
   });
 
-  it("optimistically updates local state immediately when publishing", async () => {
-    let resolveVisibility: ((value: { success: boolean; error?: string }) => void) | undefined;
-    mocks.updatePlanVisibility.mockReturnValue(
-      new Promise<{ success: boolean; error?: string }>((resolve) => {
-        resolveVisibility = resolve;
-      }),
-    );
-
+  it("uses updatePlanVisibility and updates local state when publishing", async () => {
     render(<MyPlansClient initialPlans={[planFixture]} totalPlans={1} />);
 
     await screen.findByText("東京");
     openActionMenu();
     fireEvent.click(screen.getByText("旅のしおりを公開する"));
 
-    expect(mocks.updatePlan).toHaveBeenCalledWith("plan-1", { isPublic: true });
-    expect(mocks.updatePlanVisibility).toHaveBeenCalledWith("plan-1", true);
-
-    resolveVisibility?.({ success: true });
-
     await waitFor(() => {
-      expect(mocks.updatePlan).toHaveBeenCalledTimes(1);
+      expect(mocks.updatePlanVisibility).toHaveBeenCalledWith("plan-1", true);
     });
+
+    expect(mocks.updatePlan).toHaveBeenCalledWith("plan-1", { isPublic: true });
   });
 
-  it("rolls back optimistic update on visibility update failure", async () => {
+  it("shows error and does not update local state on visibility update failure", async () => {
     mocks.updatePlanVisibility.mockResolvedValue({ success: false, error: "更新失敗" });
     const alertSpy = vi.spyOn(window, "alert");
 
@@ -176,12 +166,7 @@ describe("MyPlansClient visibility actions", () => {
       expect(mocks.updatePlanVisibility).toHaveBeenCalledWith("plan-1", true);
     });
 
-    expect(mocks.updatePlan).toHaveBeenCalledWith("plan-1", { isPublic: true });
-
-    await waitFor(() => {
-      expect(mocks.updatePlan).toHaveBeenLastCalledWith("plan-1", { isPublic: false });
-    });
-
+    expect(mocks.updatePlan).not.toHaveBeenCalled();
     expect(alertSpy).toHaveBeenCalledWith("更新失敗");
   });
 });

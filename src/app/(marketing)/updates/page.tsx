@@ -673,10 +673,10 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.02.23",
-    updateType: "patch",
-    title: "料金プランを4ティア構成に拡張",
+    updateType: "minor",
+    title: "料金プランを5ティア構成に拡張",
     description:
-      "ゲスト・Free・Pro・Premiumの4ティア構成に対応し、利用シーンに合わせた提供内容を整理しました。",
+      "匿名・Free・Pro・Premium・Adminの5ティア構成に対応し、利用シーンに合わせた提供内容を整理しました。",
   },
   {
     status: "done",
@@ -689,7 +689,7 @@ const rawRoadmapData: RoadmapItem[] = [
   {
     status: "done",
     date: "2026.02.24",
-    updateType: "patch",
+    updateType: "minor",
     title: "旅行中のリプラン体験を強化",
     description:
       "旅行中にワンタップで再提案を受けられるリプラン体験を追加し、提案の妥当性評価と制約判定を強化しました。",
@@ -741,14 +741,6 @@ const rawRoadmapData: RoadmapItem[] = [
     title: "FAQ・料金・法務ページの情報整合を更新",
     description:
       "FAQ、料金、使い方、Tabideaについて、利用規約・プライバシーポリシー等の記載を最新仕様に合わせて見直しました。",
-  },
-  {
-    status: "done",
-    date: "2026.03.04",
-    updateType: "patch",
-    title: "概要→詳細の生成をシームレス化",
-    description:
-      "概要生成完了後に /plan?mode=outline へ即遷移し、詳細日程もSSEで進捗を受け取りながら表示するよう改善しました。詳細生成は全チャンク並列で実行されます。",
   },
 ];
 
