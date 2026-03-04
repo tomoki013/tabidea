@@ -68,53 +68,53 @@
 }
 
 .dark {
-  --background: #141413;
-  --foreground: #f5f5f4;
+  --background: #1c2738;
+  --foreground: #f7f8fc;
 
-  --card: #1f1f1d;
-  --card-foreground: #f5f5f4;
+  --card: #28364c;
+  --card-foreground: #f7f8fc;
 
-  --popover: #1f1f1d;
-  --popover-foreground: #f5f5f4;
+  --popover: #2b3a52;
+  --popover-foreground: #f7f8fc;
 
-  --primary: #f59e0b;
-  --primary-foreground: #1c1917;
+  --primary: #ffb24c;
+  --primary-foreground: #2a1b06;
 
-  --secondary: #a8a29e;
-  --secondary-foreground: #1c1917;
+  --secondary: #8bd2ff;
+  --secondary-foreground: #0f253b;
 
-  --muted: #292524;
-  --muted-foreground: #d6d3d1;
+  --muted: #33445f;
+  --muted-foreground: #cfdbed;
 
-  --accent: #34d399;
-  --accent-foreground: #052e16;
+  --accent: #3ed4b3;
+  --accent-foreground: #052b22;
 
-  --destructive: #f87171;
-  --destructive-foreground: #450a0a;
+  --destructive: #ff7f7f;
+  --destructive-foreground: #3a0909;
 
-  --border: #44403c;
-  --input: #44403c;
-  --ring: #f59e0b;
+  --border: #4f6280;
+  --input: #4f6280;
+  --ring: #ffb24c;
 
-  --dot-grid-color: #57534e;
-  --paper-texture: url("https://www.transparenttextures.com/patterns/dark-matter.png");
-  --paper-blend-mode: soft-light;
+  --dot-grid-color: #5f7598;
+  --paper-texture: linear-gradient(145deg, #1b2434 0%, #1f2f46 45%, #254061 100%);
+  --paper-blend-mode: normal;
 
-  --scrollbar-thumb: #57534e;
-  --scrollbar-thumb-hover: #78716c;
+  --scrollbar-thumb: #5a7092;
+  --scrollbar-thumb-hover: #6c84aa;
 
-  --legacy-paper: #171614;
-  --legacy-paper-alt: #1d1b19;
-  --legacy-paper-soft: #23201d;
-  --legacy-paper-elevated: #2a2622;
-  --legacy-paper-muted: #201e1b;
-  --legacy-paper-highlight: #322416;
-  --legacy-ink: #f5f5f4;
-  --legacy-ink-muted: #d6d3d1;
-  --legacy-primary: #f59e0b;
-  --legacy-primary-strong: #fb923c;
-  --legacy-accent: #34d399;
-  --legacy-danger: #f87171;
+  --legacy-paper: #28364c;
+  --legacy-paper-alt: #2e3d54;
+  --legacy-paper-soft: #34445d;
+  --legacy-paper-elevated: #3a4c66;
+  --legacy-paper-muted: #2a3951;
+  --legacy-paper-highlight: #4d4232;
+  --legacy-ink: #f7f8fc;
+  --legacy-ink-muted: #cfdbed;
+  --legacy-primary: #ffb24c;
+  --legacy-primary-strong: #ff9440;
+  --legacy-accent: #3ed4b3;
+  --legacy-danger: #ff7f7f;
 
   color-scheme: dark;
 }
@@ -192,14 +192,29 @@ body {
 }
 
 /* Broad dark palette remap for legacy stone-based utility usage */
-.dark :where(.bg-white) { background-color: #1f1f1d; }
-.dark :where(.bg-white\/50) { background-color: rgb(31 31 29 / 0.5); }
-.dark :where(.bg-stone-50) { background-color: #292524; }
-.dark :where(.bg-stone-100) { background-color: #1c1917; }
-.dark :where(.bg-stone-200) { background-color: #292524; }
-.dark :where(.text-stone-900, .text-stone-800, .text-stone-700, .text-stone-300, .text-stone-200) { color: #f5f5f4; }
-.dark :where(.text-stone-600, .text-stone-500, .text-stone-400, .text-stone-100) { color: #d6d3d1; }
-.dark :where(.border-stone-100, .border-stone-200, .border-stone-300, .border-stone-400) { border-color: #44403c; }
+.dark :where(.bg-white) { background-color: #28364c; }
+.dark :where(.bg-white\/50) { background-color: rgb(40 54 76 / 0.62); }
+.dark :where(.bg-stone-50) { background-color: #30415a; }
+.dark :where(.bg-stone-100) { background-color: #2a3951; }
+.dark :where(.bg-stone-200) { background-color: #364963; }
+.dark :where(.bg-stone-700) { background-color: #30425f; }
+.dark :where(.bg-stone-800) { background-color: #25354d; }
+.dark :where(.bg-stone-900) { background-color: #1d2b41; }
+.dark :where(.bg-stone-900\/60) { background-color: rgb(9 16 31 / 0.72); }
+.dark :where(.text-stone-900, .text-stone-800, .text-stone-700, .text-stone-300, .text-stone-200) { color: #f7f8fc; }
+.dark :where(.text-stone-600, .text-stone-500, .text-stone-400, .text-stone-100) { color: #cfdbed; }
+.dark :where(.border-stone-100, .border-stone-200, .border-stone-300, .border-stone-400, .border-stone-500) { border-color: #4f6280; }
+
+/* Improve contrast for gray/slate/zinc/neutral utility classes used in legacy screens */
+.dark :where(.bg-gray-50, .bg-gray-100, .bg-zinc-50, .bg-zinc-100, .bg-neutral-50, .bg-neutral-100, .bg-slate-50, .bg-slate-100) { background-color: #2d3d56; }
+.dark :where(.bg-gray-200, .bg-zinc-200, .bg-neutral-200, .bg-slate-200) { background-color: #394c67; }
+.dark :where(.bg-gray-700, .bg-zinc-700, .bg-neutral-700, .bg-slate-700) { background-color: #30425f; }
+.dark :where(.bg-gray-800, .bg-zinc-800, .bg-neutral-800, .bg-slate-800) { background-color: #25354d; }
+.dark :where(.bg-gray-900, .bg-zinc-900, .bg-neutral-900, .bg-slate-900) { background-color: #1d2b41; }
+.dark :where(.text-gray-900, .text-gray-800, .text-gray-700, .text-zinc-900, .text-zinc-800, .text-zinc-700, .text-neutral-900, .text-neutral-800, .text-neutral-700, .text-slate-900, .text-slate-800, .text-slate-700) { color: #f7f8fc; }
+.dark :where(.text-gray-600, .text-gray-500, .text-gray-400, .text-zinc-600, .text-zinc-500, .text-zinc-400, .text-neutral-600, .text-neutral-500, .text-neutral-400, .text-slate-600, .text-slate-500, .text-slate-400) { color: #cfdbed; }
+.dark :where(.border-gray-100, .border-gray-200, .border-gray-300, .border-gray-400, .border-zinc-100, .border-zinc-200, .border-zinc-300, .border-zinc-400, .border-neutral-100, .border-neutral-200, .border-neutral-300, .border-neutral-400, .border-slate-100, .border-slate-200, .border-slate-300, .border-slate-400) { border-color: #4f6280; }
+.dark :where(.text-black) { color: #f7f8fc; }
 
 /* Dark compatibility layer for legacy hard-coded arbitrary hex classes */
 .dark :where([class*="bg-[#fcfbf9]/90"]) { background-color: color-mix(in srgb, var(--legacy-paper) 90%, transparent) !important; }
@@ -209,7 +224,7 @@ body {
 .dark :where([class*="bg-[#fffdf5]"]) { background-color: var(--legacy-paper-elevated) !important; }
 .dark :where([class*="bg-[#f7f5f0]"]) { background-color: var(--legacy-paper-muted) !important; }
 .dark :where([class*="bg-[#fdf2e9]"]) { background-color: var(--legacy-paper-highlight) !important; }
-.dark :where([class*="bg-[#2c2c2c]"]) { background-color: #10100f !important; }
+.dark :where([class*="bg-[#2c2c2c]"]) { background-color: #1f2f46 !important; }
 
 .dark :where([class*="bg-[#e67e22]/5"]) { background-color: color-mix(in srgb, var(--legacy-primary) 5%, transparent) !important; }
 .dark :where([class*="bg-[#e67e22]/10"]) { background-color: color-mix(in srgb, var(--legacy-primary) 10%, transparent) !important; }
@@ -246,7 +261,7 @@ body {
 .dark :where([class*="border-[#d35400]"]) { border-color: #f97316 !important; }
 .dark :where([class*="border-[#27ae60]/40"]) { border-color: color-mix(in srgb, var(--legacy-accent) 40%, transparent) !important; }
 .dark :where([class*="border-[#27ae60]"]) { border-color: var(--legacy-accent) !important; }
-.dark :where([class*="border-[#2c2c2c]"]) { border-color: #57534e !important; }
+.dark :where([class*="border-[#2c2c2c]"]) { border-color: #607493 !important; }
 .dark :where([class*="border-[#122a4d]"]) { border-color: #3b82f6 !important; }
 
 .dark :where([class*="focus:ring-[#e67e22]/10"]) { --tw-ring-color: color-mix(in srgb, var(--legacy-primary) 10%, transparent) !important; }
