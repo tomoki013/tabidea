@@ -58,7 +58,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
     const homeBaseCity =
       typeof metadata.homeBaseCity === "string" && metadata.homeBaseCity.trim().length > 0
         ? metadata.homeBaseCity.trim()
-        : getDefaultHomeBaseCityForRegion(preferredRegion);
+        : getDefaultHomeBaseCityForRegion(preferredRegion, preferredLanguage);
 
     return {
       success: true,
@@ -125,7 +125,10 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
       preferredRegion = getDefaultRegionForLanguage(preferredLanguage);
     }
 
-    const fallbackHomeBaseCity = getDefaultHomeBaseCityForRegion(preferredRegion);
+    const fallbackHomeBaseCity = getDefaultHomeBaseCityForRegion(
+      preferredRegion,
+      preferredLanguage
+    );
     const homeBaseCity =
       typeof settings.homeBaseCity === "string" && settings.homeBaseCity.trim().length > 0
         ? settings.homeBaseCity.trim()

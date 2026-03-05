@@ -30,6 +30,7 @@ describe("i18n locales utilities", () => {
   it("resolves regional locale with language fallback", () => {
     expect(resolveRegionalLocale("en", "US")).toBe("en-US");
     expect(resolveRegionalLocale("ja", "JP")).toBe("ja-JP");
+    expect(resolveRegionalLocale("en", "0033")).toBe("en-US");
     expect(resolveRegionalLocale(DEFAULT_LANGUAGE, "JP")).toBe("ja-JP");
   });
 });

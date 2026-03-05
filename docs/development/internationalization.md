@@ -24,16 +24,18 @@ Implementation: [`src/proxy.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/
 ## Locale model
 
 Implementation: [`src/lib/i18n/locales.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/lib/i18n/locales.ts)
+Region dataset: [`src/lib/i18n/regions.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/lib/i18n/regions.ts)
 
 - `LanguageCode`: `ja | en`
-- `RegionCode`: `JP | US`
+- `RegionCode`: `JP` + MOFA country/region codes (settings options: total 208 entries)
 - `RegionalLocale`: `ja-JP | en-US`
 
 Resolution rules:
 
 1. Language changes auto-assign default region.
-2. Region can be edited independently in settings.
-3. Unsupported language-region combinations fall back to that language's default regional locale.
+2. Region can be edited independently in settings (region list is generated from `regions.ts`).
+3. `homeBaseCity` is auto-filled on region change, preferring configured capital overrides and falling back to region name.
+4. Unsupported language-region combinations fall back to that language's default regional locale.
 
 ## Messages
 
@@ -70,5 +72,5 @@ UI entry point:
 ## Future expansion
 
 - Add regional locales (e.g. `en-GB`) by extending locale mappings.
-- Expand region candidate lists per language in settings.
+- Improve English labels and capital overrides for all region entries.
 - Gradually migrate page-level strings and metadata to dictionary keys.

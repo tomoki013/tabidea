@@ -11,6 +11,7 @@
 
 ### 2026-03-05
 
+- `local` fix(i18n,ui): 言語切り替えドロップダウンのモバイル表示で、左端にはみ出すケースをビューポート内クランプで修正。`src/lib/i18n/regions.ts` を新設し、外務省オープンデータ国コード準拠の国・地域リスト（設定画面向け208件: `JP` + MOFA 207）を導入。設定画面の地域選択は新マスタ参照に切り替え、地域変更時の `homeBaseCity` 自動入力を全地域対応（首都オーバーライド + フォールバック）へ拡張
 - `local` feat(ui,ai): ダークモード配色をブラウン基調へ再設計（グローバルトークン+互換レイヤー更新）。言語スイッチをドロップダウンUIへ刷新し、設定に出発/帰着都市（`homeBaseCity`）を追加。AIプラン生成は設定言語で出力し、指定都市を起点に往復する制約をプロンプトへ適用
 - `local` feat(i18n): 翻訳メッセージ管理を `src/messages/{ja,en}/**.json` の分割構成へ移行し、`src/lib/i18n/load-messages.ts` による再帰マージ読み込みを導入。`pnpm i18n:check`（`scripts/i18n/check-messages.ts`）を追加して ja/en キー不整合をCIで失敗させる運用へ変更
 - `local` feat(i18n): 主要ページ（ルートエラー系、ホーム、FAQ、Contact、Blog Guide、Samples、Shiori、Travel Info、Pricing関連、ログイン/マイプラン等）の文言とメタデータを `next-intl` の `t()` / `getTranslations()` ベースへ段階移行し、`language === "ja"` 直書き分岐の削減を開始

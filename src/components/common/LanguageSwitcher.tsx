@@ -24,19 +24,23 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
   const t = useTranslations("languageSwitcher");
   const currentLanguage = resolveLanguageFromPathname(pathname);
   const [isOpen, setIsOpen] = useState(false);
+  const [menuOffsetX, setMenuOffsetX] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
 
   useEffect(() => {
     const handlePointerDown = (event: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setMenuOffsetX(0);
       }
     };
 
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setIsOpen(false);
+        setMenuOffsetX(0);
       }
     };
 
@@ -49,9 +53,47 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     };
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const adjustMenuPosition = () => {
+      const menuElement = menuRef.current;
+      if (!menuElement) {
+        return;
+      }
+
+      const viewportPadding = 8;
+      const rect = menuElement.getBoundingClientRect();
+      let delta = 0;
+
+      if (rect.left < viewportPadding) {
+        delta = viewportPadding - rect.left;
+      }
+
+      const rightEdge = rect.right + delta;
+      const maxRight = window.innerWidth - viewportPadding;
+      if (rightEdge > maxRight) {
+        delta += maxRight - rightEdge;
+      }
+
+      setMenuOffsetX(delta);
+    };
+
+    const animationFrameId = window.requestAnimationFrame(adjustMenuPosition);
+    window.addEventListener("resize", adjustMenuPosition);
+
+    return () => {
+      window.cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", adjustMenuPosition);
+    };
+  }, [isOpen]);
+
   const handleLanguageChange = (language: LanguageCode) => {
     if (language === currentLanguage) {
       setIsOpen(false);
+      setMenuOffsetX(0);
       return;
     }
 
@@ -62,13 +104,22 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
     router.push(href);
     router.refresh();
     setIsOpen(false);
+    setMenuOffsetX(0);
   };
 
   return (
     <div ref={containerRef} className={`relative inline-flex ${className}`}>
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
+        onClick={() =>
+          setIsOpen((prev) => {
+            const next = !prev;
+            if (!next) {
+              setMenuOffsetX(0);
+            }
+            return next;
+          })
+        }
         aria-haspopup="menu"
         aria-expanded={isOpen}
         aria-controls={menuId}
@@ -82,9 +133,13 @@ export default function LanguageSwitcher({ className = "" }: LanguageSwitcherPro
 
       {isOpen && (
         <div
+          ref={menuRef}
           id={menuId}
           role="menu"
-          className="absolute right-0 top-[calc(100%+0.35rem)] z-50 min-w-[9rem] rounded-sm border border-stone-300 bg-white p-1 shadow-lg dark:border-stone-600 dark:bg-stone-800"
+          style={{
+            transform: menuOffsetX !== 0 ? `translateX(${menuOffsetX}px)` : undefined,
+          }}
+          className="absolute right-0 top-[calc(100%+0.35rem)] z-50 min-w-[9rem] max-w-[calc(100vw-1rem)] rounded-sm border border-stone-300 bg-white p-1 shadow-lg dark:border-stone-600 dark:bg-stone-800"
         >
           {SUPPORTED_LANGUAGES.map((language) => {
             const active = language === currentLanguage;
