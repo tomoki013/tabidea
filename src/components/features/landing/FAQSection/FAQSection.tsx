@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FaChevronRight } from "react-icons/fa";
 import { faqs, faqCategories } from "@/lib/data/faq";
 import {
@@ -20,6 +21,7 @@ interface FAQSectionProps {
 export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const t = useTranslations("components.features.landing.faqSection");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   let sourceFaqs = faqs;
@@ -35,16 +37,12 @@ export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
         <div className="text-center space-y-6">
           <h2 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c]">
             {limit || categoryId
-              ? (language === "ja" ? "よくある質問" : "FAQ")
-              : (language === "ja" ? "よくある質問（すべて）" : "FAQ (All)")}
+              ? t("title")
+              : t("titleAll")}
           </h2>
           <p className="text-stone-600 leading-relaxed font-hand text-lg max-w-2xl mx-auto">
-            {language === "ja"
-              ? "Tabideaは、AIを活用して、あなたの理想の旅行プランを提案するサービスです。"
-              : "Tabidea uses AI to suggest travel plans tailored to you."}<br />
-            {language === "ja"
-              ? "旅のワクワク感を大切にし、手書きの旅行日記のような温かみのあるデザインを目指しました。"
-              : "We designed it to keep the excitement of travel planning with a warm journal-like feel."}
+            {t("leadLine1")}<br />
+            {t("leadLine2")}
           </p>
         </div>
 
@@ -60,7 +58,7 @@ export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
           ))}
           {displayFaqs.length === 0 && (
             <p className="text-center text-stone-500">
-              {language === "ja" ? "該当する質問がありません。" : "No matching questions."}
+              {t("empty")}
             </p>
           )}
         </div>
@@ -71,7 +69,7 @@ export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
               href={localizePath("/faq", language)}
               className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-[#e67e22] text-white font-bold rounded-full hover:bg-[#d35400] transition-all hover:scale-105 shadow-md group"
             >
-              <span>{language === "ja" ? "よくある質問一覧を見る" : "View all FAQs"}</span>
+              <span>{t("viewAll")}</span>
               <FaChevronRight className="text-sm group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

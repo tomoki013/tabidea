@@ -195,11 +195,16 @@ export const CATEGORY_INFO_EN: Record<TravelInfoCategory, CategoryDisplayInfo> =
   },
 };
 
+const CATEGORY_INFO_BY_LANGUAGE: Record<"ja" | "en", Record<TravelInfoCategory, CategoryDisplayInfo>> = {
+  ja: CATEGORY_INFO,
+  en: CATEGORY_INFO_EN,
+};
+
 export function getCategoryInfo(
   category: TravelInfoCategory,
   language: "ja" | "en" = "ja"
 ): CategoryDisplayInfo {
-  return language === "ja" ? CATEGORY_INFO[category] : CATEGORY_INFO_EN[category];
+  return CATEGORY_INFO_BY_LANGUAGE[language][category];
 }
 
 // ============================================

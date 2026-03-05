@@ -1,0 +1,14 @@
+{
+  "app": {
+    "rootLayout": {
+      "meta": {
+        "defaultTitle": "Tabidea - AI Travel Planner",
+        "titleTemplate": "%s - Tabidea",
+        "description": "Tabidea is a travel planning service combining AI with real travel experience.",
+        "openGraphDescription": "Discover new journeys through beautiful scenery, culture, and food from Japan and around the world.",
+        "ogImageAlt": "Tabidea - AI Travel Planner",
+        "twitterDescription": "Tabidea is a travel planning service combining AI with real travel experience."
+      }
+    }
+  }
+}

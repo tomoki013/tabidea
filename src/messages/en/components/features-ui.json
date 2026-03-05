@@ -1,0 +1,269 @@
+{
+  "components": {
+    "faq": {
+      "content": {
+        "searchPlaceholder": "Search questions...",
+        "searchResults": "Results for \"{term}\" ({count})",
+        "notFound": "No matching questions found."
+      },
+      "categoryList": {
+        "categoryTitles": {
+          "service": "General service",
+          "planning": "Planning and features",
+          "trouble": "Troubleshooting",
+          "security": "Security and privacy",
+          "others": "Other",
+          "account": "Account and login",
+          "billing": "Pricing and subscription"
+        }
+      }
+    },
+    "features": {
+      "landing": {
+        "faqSection": {
+          "title": "Frequently Asked Questions",
+          "titleAll": "All Frequently Asked Questions",
+          "leadLine1": "Here are answers to questions we often receive.",
+          "leadLine2": "Pick the topic you need.",
+          "empty": "No questions found.",
+          "viewAll": "View all FAQ"
+        },
+        "featuresHero": {
+          "badge": "FEATURES & GUIDE",
+          "titleLine1": "Travel planning can be",
+          "titleLine2": "more open and personal.",
+          "leadLine1": "Tabidea helps you plan while talking with AI",
+          "leadLine2": "to create an itinerary tailored to you.",
+          "leadLine3": "Here are the key features and how to use them."
+        },
+        "featuresDetail": {
+          "title": "Powerful Features",
+          "lead": "Everything you need to plan better trips",
+          "items": [
+            {
+              "icon": "FaRobot",
+              "title": "AI auto-generates your itinerary",
+              "description": "Answer a few questions and AI drafts an itinerary based on your destination, duration, and budget.",
+              "details": [
+                "Generate day-by-day plans from your inputs",
+                "Reflects destination, budget, themes, and companions",
+                "Easy to revise after generation"
+              ]
+            },
+            {
+              "icon": "FaMapMarkedAlt",
+              "title": "Detailed spot information",
+              "description": "Each spot includes practical context and suggested references so you can concretize your plan.",
+              "details": [
+                "Check highlights for each spot",
+                "Open maps when needed"
+              ]
+            },
+            {
+              "icon": "FaEdit",
+              "title": "Flexible customization",
+              "description": "Generated plans are a starting point. Regenerate or adjust via chat to fit your style.",
+              "details": [
+                "Add conditions and regenerate quickly",
+                "Remove or revise unnecessary activities",
+                "Fine-tune for your travel style"
+              ]
+            },
+            {
+              "icon": "FaGlobeAsia",
+              "title": "Worldwide destinations",
+              "description": "From domestic trips to overseas travel, Tabidea supports a wide range of destinations.",
+              "details": [
+                "Coverage for major domestic and global cities",
+                "Plans adapted to local characteristics"
+              ]
+            },
+            {
+              "icon": "FaCalendarAlt",
+              "title": "Schedule optimization and exports",
+              "description": "Create plans from day trips to long stays and export to your calendar after generation.",
+              "details": [
+                "Flexible support from one-day to long trips",
+                "Export to Google Calendar / iCal",
+                "Schedules consider transfer time"
+              ]
+            },
+            {
+              "icon": "FaUsers",
+              "title": "Companion-aware planning",
+              "description": "Adjust plans for solo trips, couples, families, and groups with suitable experiences.",
+              "details": [
+                "Considers age and interests",
+                "Activities adjusted by group size",
+                "Family-friendly options included"
+              ]
+            },
+            {
+              "icon": "FaWallet",
+              "title": "Budget and cost estimates",
+              "description": "AI estimates transport, accommodation, meals, and activity costs from your generated plan.",
+              "details": [
+                "Displays rough total cost",
+                "Suggests cost-effective choices",
+                "Supports budget-conscious optimization"
+              ]
+            },
+            {
+              "icon": "FaCompass",
+              "title": "Theme-based travel ideas",
+              "description": "Plan by themes such as food, history, nature, art, or shopping for deeper experiences.",
+              "details": [
+                "Combine multiple themes",
+                "Includes niche, specialized spots",
+                "Prioritizes local-only experiences"
+              ]
+            },
+            {
+              "icon": "FaCloud",
+              "title": "More with an account",
+              "description": "With an account, you can save plans without limits and sync across devices.",
+              "details": [
+                "Unlimited plan saves",
+                "Sync across PC, smartphone, and tablet",
+                "Quick reuse of saved plans"
+              ]
+            }
+          ]
+        },
+        "howToUse": {
+          "guideTitle": "How To Use",
+          "guideLead": "Build your ideal travel plan in five steps",
+          "tipLabel": "💡 Tip",
+          "tipsTitle": "Tips for Better Results",
+          "tipsLead": "Hints to generate better itineraries",
+          "ctaTitle": "Start planning your trip",
+          "ctaLead": "Start now for free",
+          "ctaButton": "Create a travel plan",
+          "steps": [
+            {
+              "number": "1",
+              "title": "Choose destinations",
+              "description": "Enter where you want to go. You can add multiple candidates for a multi-city plan.",
+              "tips": [
+                "You can add multiple destination candidates",
+                "Country or region level input also works",
+                "You can adjust details later"
+              ]
+            },
+            {
+              "number": "2",
+              "title": "Set travel details",
+              "description": "Provide schedule, budget, companions, and themes. These are reflected in generation.",
+              "tips": [
+                "Approximate duration is fine",
+                "Select themes like history or food"
+              ]
+            },
+            {
+              "number": "3",
+              "title": "AI generates a plan",
+              "description": "Based on your input, AI creates an itinerary including spots and movement flow.",
+              "tips": [
+                "Generation usually takes 10-60 seconds",
+                "Rough cost estimation is included"
+              ]
+            },
+            {
+              "number": "4",
+              "title": "Customize your plan",
+              "description": "Refine with regeneration and chat adjustments to match your preferred travel style.",
+              "tips": [
+                "Open spots to check details",
+                "Regenerate and compare when needed",
+                "Try multiple condition sets"
+              ]
+            },
+            {
+              "number": "5",
+              "title": "Save and share",
+              "description": "Save completed plans anytime. With a free account you can sync devices, export PDF, and connect calendars.",
+              "tips": [
+                "Export to Google Calendar and more",
+                "Sync across PC and mobile when logged in",
+                "Use PDF for offline access"
+              ]
+            }
+          ],
+          "usageTips": [
+            {
+              "title": "Be specific about preferences",
+              "description": "The more specific your request is, the better AI can tailor the itinerary."
+            },
+            {
+              "title": "Regenerate as many times as you want",
+              "description": "If you do not like the first output, regenerate with small tweaks and compare."
+            },
+            {
+              "title": "Fine-tune with chat",
+              "description": "After generation, adjust details interactively through chat requests."
+            },
+            {
+              "title": "Use free-text requests",
+              "description": "You can provide nuanced needs like slower mornings or kid-friendly pacing."
+            },
+            {
+              "title": "Verify critical facts",
+              "description": "Always verify opening hours, prices, and regulations with official sources."
+            }
+          ]
+        }
+      },
+      "samples": {
+        "collectionPromotion": {
+          "title": "Explore public travel notes",
+          "leadLine1": "See trips shared by other travelers",
+          "leadLine2": "and get ideas for your next journey.",
+          "cta": "Browse travel notes"
+        }
+      },
+      "travelInfo": {
+        "categorySelector": {
+          "selectedLabel": "Selected",
+          "selectAllAria": "Select all optional categories",
+          "selectAll": "Select all",
+          "clearAria": "Clear all optional categories",
+          "clear": "Clear",
+          "mandatoryTitle": "Mandatory",
+          "optionalTitle": "Optional",
+          "maxSelections": "You can select up to {count} categories"
+        },
+        "categoryCard": {
+          "ariaLabel": "{action} {label}",
+          "action": {
+            "select": "select",
+            "unselect": "unselect"
+          }
+        },
+        "display": {
+          "headerSuffix": " Travel Info",
+          "expandAll": "Expand all",
+          "collapseAll": "Collapse all",
+          "fetchFailedTitle": "Failed to fetch travel information",
+          "fetchFailedLine1": "Sorry, an error occurred while fetching travel information.",
+          "fetchFailedLine2": "Please try again in a moment.",
+          "refetchAll": "Retry all",
+          "guidePromptTitle": "How to fetch information",
+          "guidePromptBody": "Enter a destination, choose categories, and search.",
+          "disclaimerTitle": "Disclaimer",
+          "disclaimerBody": "This information is AI-generated and is not guaranteed to be fully accurate. For any travel decision, always verify official primary sources and decide at your own responsibility.",
+          "disclaimerOfficialPrefix": "Before traveling, always check official sources such as",
+          "disclaimerOfficialSuffix": ".",
+          "mofa": "MOFA Overseas Safety Website",
+          "section": {
+            "fetchFailed": "Failed to fetch {category}",
+            "unknownCategory": "Unknown category.",
+            "errorLine1": "Sorry, we could not retrieve {category} information.",
+            "errorLine2": "Please try again in a moment.",
+            "errorDetails": "Error details",
+            "retry": "Retry"
+          }
+        }
+      }
+    }
+  }
+}

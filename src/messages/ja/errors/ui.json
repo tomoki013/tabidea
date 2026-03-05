@@ -1,0 +1,30 @@
+{
+  "errors": {
+    "ui": {
+      "auth": {
+        "login": {
+          "signinFailed": "ログインに失敗しました。もう一度お試しください。"
+        }
+      },
+      "myPlans": {
+        "deleteFailed": "削除に失敗しました",
+        "visibilityFailed": "公開設定の更新に失敗しました",
+        "renameFailed": "名前の変更に失敗しました"
+      },
+      "plan": {
+        "detailGenerationFailed": "詳細プランの生成中にエラーが発生しました。",
+        "saveFailed": "プランの保存に失敗しました。",
+        "outlineFailed": "プラン概要の作成に失敗しました。",
+        "generic": "エラーが発生しました",
+        "timeout": "ネットワークエラーまたはサーバータイムアウトが発生しました。",
+        "sampleNotFound": "指定されたサンプルプランが見つかりませんでした。"
+      },
+      "travelInfoDestination": {
+        "title": "エラーが発生しました",
+        "description": "渡航情報の読み込み中に問題が発生しました。",
+        "retry": "再試行",
+        "backToTop": "トップに戻る"
+      }
+    }
+  }
+}

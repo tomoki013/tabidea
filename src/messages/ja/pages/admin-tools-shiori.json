@@ -106,6 +106,7 @@
         "headerDestinationFallback": "旅のしおり",
         "headerSummary": "{days}日間 / 記録 {entries}件 / {visibility}",
         "backToList": "みんなの旅のしおり一覧に戻る",
+        "dayLabel": "{day}日目",
         "dayTitleFallback": "旅の記録",
         "locationFallback": "場所未設定",
         "visitedPlaceLabel": "訪問場所",

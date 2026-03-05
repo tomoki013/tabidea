@@ -1,0 +1,14 @@
+{
+  "app": {
+    "rootLayout": {
+      "meta": {
+        "defaultTitle": "Tabidea - AI Travel Planner",
+        "titleTemplate": "%s - Tabidea",
+        "description": "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
+        "openGraphDescription": "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。",
+        "ogImageAlt": "Tabidea - AI Travel Planner",
+        "twitterDescription": "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。"
+      }
+    }
+  }
+}

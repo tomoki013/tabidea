@@ -1,0 +1,16 @@
+{
+  "app": {
+    "planner": {
+      "plan": {
+        "savingTransition": "You will be redirected to the detail page as soon as saving is complete.",
+        "saving": "Saving your plan...",
+        "retry": "Try again",
+        "backHome": "Back to home",
+        "contactPrefix": "If the problem persists, please visit the ",
+        "contact": "contact page",
+        "contactSuffix": ".",
+        "createNewPlan": "Create a new plan"
+      }
+    }
+  }
+}

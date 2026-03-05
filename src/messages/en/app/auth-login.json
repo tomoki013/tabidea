@@ -1,0 +1,24 @@
+{
+  "app": {
+    "auth": {
+      "login": {
+        "title": "Log in",
+        "subtitle1": "Keep your travel memories",
+        "subtitle2": "saved in one place",
+        "restore": "Your input will be restored after login.",
+        "loginWithGoogle": "Continue with Google",
+        "benefitsTitle": "With an account you can",
+        "savePlans": "Save plans",
+        "sharePlans": "Share plans",
+        "viewAnytime": "View anytime",
+        "multiDevice": "Use across devices",
+        "termsPrefix": "By logging in, you agree to the ",
+        "terms": "Terms of Service",
+        "and": " and ",
+        "privacy": "Privacy Policy",
+        "agreeSuffix": ".",
+        "back": "Back"
+      }
+    }
+  }
+}

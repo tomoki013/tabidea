@@ -1,0 +1,24 @@
+{
+  "app": {
+    "auth": {
+      "login": {
+        "title": "ログイン",
+        "subtitle1": "あなたの旅の思い出を",
+        "subtitle2": "大切に保存しましょう",
+        "restore": "ログイン後、入力内容が復元されます。",
+        "loginWithGoogle": "Googleでログイン",
+        "benefitsTitle": "ログインするとできること",
+        "savePlans": "プランの保存",
+        "sharePlans": "プランの共有",
+        "viewAnytime": "いつでも閲覧",
+        "multiDevice": "複数デバイス対応",
+        "termsPrefix": "ログインすることで、",
+        "terms": "利用規約",
+        "and": "と",
+        "privacy": "プライバシーポリシー",
+        "agreeSuffix": "に同意したものとみなされます。",
+        "back": "戻る"
+      }
+    }
+  }
+}

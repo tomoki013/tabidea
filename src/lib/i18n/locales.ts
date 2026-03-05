@@ -32,6 +32,11 @@ const REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION: Record<
   },
 };
 
+const OPEN_GRAPH_LOCALE_BY_LANGUAGE: Record<LanguageCode, string> = {
+  en: "en_US",
+  ja: "ja_JP",
+};
+
 export function isLanguageCode(value: string): value is LanguageCode {
   return SUPPORTED_LANGUAGES.includes(value as LanguageCode);
 }
@@ -64,6 +69,10 @@ export function resolveRegionalLocale(
     ] ??
     DEFAULT_REGIONAL_LOCALE
   );
+}
+
+export function resolveOpenGraphLocale(language: LanguageCode): string {
+  return OPEN_GRAPH_LOCALE_BY_LANGUAGE[language];
 }
 
 export function getLanguageFromPathname(pathname: string): LanguageCode | null {

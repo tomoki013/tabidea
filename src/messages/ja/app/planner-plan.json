@@ -1,0 +1,16 @@
+{
+  "app": {
+    "planner": {
+      "plan": {
+        "savingTransition": "詳細プランの保存が完了し次第、すぐに詳細ページへ自動で移動します。",
+        "saving": "プランを保存しています...",
+        "retry": "もう一度試す",
+        "backHome": "トップに戻る",
+        "contactPrefix": "問題が解決しない場合は、",
+        "contact": "お問い合わせページ",
+        "contactSuffix": "からご連絡ください。",
+        "createNewPlan": "新しいプランを作る"
+      }
+    }
+  }
+}

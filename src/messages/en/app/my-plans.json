@@ -1,0 +1,32 @@
+{
+  "app": {
+    "myPlans": {
+      "title": "My Plans",
+      "summary": "{count} plans",
+      "syncing": "{count} local plans are syncing...",
+      "synced": "{count} plans synced",
+      "syncLocal": "Sync local",
+      "create": "Create",
+      "tabAll": "All",
+      "tabFlagged": "Flagged",
+      "loading": "Turning pages...",
+      "loadingFlagged": "Looking for your favorites...",
+      "emptyTitle": "No records yet",
+      "emptyDesc": "Start a new journey and save your memories here",
+      "public": "Public",
+      "private": "Private",
+      "placeholder": "Enter title",
+      "createdAt": "Created",
+      "rename": "Rename",
+      "makePrivate": "Make private",
+      "makePublic": "Make public",
+      "delete": "Delete",
+      "confirmDelete": "Delete this plan?",
+      "confirmDeleteSub": "This action cannot be undone.",
+      "cancel": "Cancel",
+      "confirmDeleteBtn": "Delete",
+      "untitled": "Untitled trip",
+      "days": "days"
+    }
+  }
+}

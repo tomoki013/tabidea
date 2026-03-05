@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
-import { localizePath } from '@/lib/i18n/locales';
+import { localizePath, resolveOpenGraphLocale, resolveRegionalLocale } from '@/lib/i18n/locales';
 import { getRequestLanguage } from '@/lib/i18n/server';
 import { createClient, getUser } from '@/lib/supabase/server';
 import ShioriLikeButton from '@/components/features/shiori/ShioriLikeButton';
@@ -100,7 +100,7 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
     openGraph: {
       title,
       description,
-      locale: language === 'ja' ? 'ja_JP' : 'en_US',
+      locale: resolveOpenGraphLocale(language),
       images: [{ url: ogImageUrl, width: 1200, height: 630 }],
     },
   };
@@ -156,7 +156,9 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
         {data.days?.map((day) => (
           <section key={day.id} className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <div className="mb-6 flex items-baseline justify-between border-b border-dashed border-stone-200 pb-3">
-              <h2 className="text-lg font-semibold text-stone-800">Day {day.day_number}</h2>
+              <h2 className="text-lg font-semibold text-stone-800">
+                {t("dayLabel", { day: day.day_number })}
+              </h2>
               <p className="text-sm text-stone-500">{day.title ?? t('dayTitleFallback')}</p>
             </div>
 
@@ -179,7 +181,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
                         </span>
                         <span className="text-xs text-stone-500">
                           {new Date(item.journal.updated_at).toLocaleDateString(
-                            language === 'ja' ? 'ja-JP' : 'en-US'
+                            resolveRegionalLocale(language)
                           )}
                         </span>
                       </div>

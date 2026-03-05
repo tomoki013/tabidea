@@ -1,0 +1,179 @@
+{
+  "components": {
+    "billing": {
+      "pricingCard": {
+        "plans": {
+          "free": {
+            "description": "無料で始める",
+            "button": "現在のプラン",
+            "features": {
+              "1": "月3回までプラン生成",
+              "2": "渡航情報は週1回・3カテゴリのみ",
+              "3": "プランの保存数：無制限",
+              "4": "静的マップ表示"
+            }
+          },
+          "pro_monthly": {
+            "description": "旅行計画をもっと便利に",
+            "button": "このプランを選ぶ",
+            "features": {
+              "1": "月30回までプラン生成",
+              "2": "プラン保存数：無制限",
+              "3": "渡航情報 月10回・3カテゴリ",
+              "4": "Places詳細 10件/プラン",
+              "5": "航空券・ホテル候補 3件",
+              "6": "Leafletインタラクティブマップ"
+            }
+          },
+          "premium_monthly": {
+            "description": "すべての機能を最大限に活用",
+            "button": "このプランを選ぶ",
+            "features": {
+              "1": "月100回までプラン生成",
+              "2": "プラン保存数：無制限",
+              "3": "渡航情報無制限・全カテゴリ",
+              "4": "Places詳細 無制限",
+              "5": "航空券・ホテル候補 7件",
+              "6": "Google Mapsフル機能",
+              "7": "AIプロバイダー選択 (Gemini/OpenAI)",
+              "8": "プラン内で渡航情報・持ち物リスト閲覧",
+              "9": "AI設定（旅のスタイル・カスタム指示）"
+            }
+          }
+        },
+        "buttons": {
+          "loginToStart": "ログインして始める",
+          "currentPlan": "現在のプラン",
+          "startFree": "無料で始める",
+          "managePlan": "プランを管理",
+          "loginToPurchase": "ログインして購入"
+        },
+        "badges": {
+          "recommended": "おすすめ",
+          "currentPlan": "現在のプラン"
+        },
+        "price": {
+          "monthSuffix": "/ 月"
+        },
+        "processing": "処理中..."
+      },
+      "tierComparison": {
+        "title": "プラン比較",
+        "featureHeader": "機能",
+        "availableAria": "あり",
+        "unavailableAria": "なし",
+        "rows": [
+          {
+            "label": "プラン生成",
+            "free": "月3回",
+            "pro": "月30回",
+            "premium": "月100回",
+            "category": "基本"
+          },
+          {
+            "label": "プラン保存数",
+            "free": "無制限",
+            "pro": "無制限",
+            "premium": "無制限"
+          },
+          {
+            "label": "渡航情報取得",
+            "free": "週1回",
+            "pro": "月10回",
+            "premium": "無制限",
+            "category": "渡航情報"
+          },
+          {
+            "label": "渡航情報カテゴリ",
+            "free": "3カテゴリ",
+            "pro": "3カテゴリ",
+            "premium": "全カテゴリ"
+          },
+          {
+            "label": "プラン内渡航情報表示",
+            "free": false,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "マップ表示",
+            "free": "静的マップ",
+            "pro": "Leaflet対話型",
+            "premium": "Google Maps フル機能",
+            "category": "マップ & 検索"
+          },
+          {
+            "label": "Places 詳細取得",
+            "free": "なし",
+            "pro": "10件/プラン",
+            "premium": "無制限"
+          },
+          {
+            "label": "航空券・ホテル候補",
+            "free": "なし",
+            "pro": "3件",
+            "premium": "7件"
+          },
+          {
+            "label": "AIプロバイダー選択",
+            "free": false,
+            "pro": false,
+            "premium": true,
+            "category": "AI & カスタマイズ"
+          },
+          {
+            "label": "旅のスタイル設定",
+            "free": false,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "カスタム指示 (AI)",
+            "free": true,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "持ち物リスト閲覧",
+            "free": false,
+            "pro": true,
+            "premium": true
+          }
+        ]
+      },
+      "successPage": {
+        "title": "ご購入ありがとうございます！",
+        "messages": {
+          "upgradeComplete": "{planName}プランへのアップグレードが完了しました。",
+          "ticketPackComplete": "回数券の購入が完了しました。",
+          "enjoy": "すべての機能をお楽しみください。"
+        },
+        "actions": {
+          "createPlan": "さっそくプランを作成する",
+          "backToPricing": "料金プランに戻る"
+        },
+        "nextSteps": {
+          "title": "次のステップ",
+          "step1": "行きたい場所や日程を入力",
+          "step2": "AIが最適な旅行プランを生成",
+          "step3": "プランを保存・共有"
+        },
+        "features": {
+          "title": "{planName}プランで利用可能な機能",
+          "pro": {
+            "1": "月30回プラン生成",
+            "2": "渡航情報 月10回",
+            "3": "Leafletインタラクティブマップ",
+            "4": "持ち物リスト生成"
+          },
+          "premium": {
+            "1": "月100回プラン生成",
+            "2": "渡航情報無制限・全カテゴリ",
+            "3": "Google Maps フル機能",
+            "4": "AIプロバイダー選択"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
 "use client";
 
 import { useTransition } from "react";
+import { useTranslations } from "next-intl";
 
 import type { PricingPlanInfo, PurchaseType } from "@/types/billing";
 
 interface PricingCardProps {
   plan: PricingPlanInfo;
-  language: "ja" | "en";
   isCurrentPlan?: boolean;
   isLoggedIn: boolean;
   isLoading?: boolean;
@@ -17,61 +17,34 @@ interface PricingCardProps {
 
 export function PricingCard({
   plan,
-  language,
   isCurrentPlan = false,
   isLoggedIn,
-  isLoading,
+  isLoading = false,
   onPurchase,
   onLoginRequired,
   onManageSubscription,
 }: PricingCardProps) {
+  const t = useTranslations("components.billing.pricingCard");
   const [isPending, startTransition] = useTransition();
-  const planText =
-    language === "ja"
-      ? null
-      : {
-          free: {
-            description: "Start for free",
-            features: [
-              "Up to 3 plan generations per month",
-              "Travel info: once per week, 3 categories",
-              "Unlimited plan saves",
-              "Static map display",
-            ],
-            button: "Current plan",
-          },
-          pro_monthly: {
-            description: "More convenience for trip planning",
-            features: [
-              "Up to 30 plan generations per month",
-              "Unlimited plan saves",
-              "Travel info: 10 times/month, 3 categories",
-              "Places details: 10 spots/plan",
-              "Flight/hotel suggestions: 3",
-              "Interactive Leaflet map",
-            ],
-            button: "Choose this plan",
-          },
-          premium_monthly: {
-            description: "Unlock all features",
-            features: [
-              "Up to 100 plan generations per month",
-              "Unlimited plan saves",
-              "Unlimited travel info, all categories",
-              "Unlimited Places details",
-              "Flight/hotel suggestions: 7",
-              "Full Google Maps features",
-              "AI provider switch (Gemini/OpenAI)",
-              "View travel info and packing list in plan",
-              "AI settings (style + custom instructions)",
-            ],
-            button: "Choose this plan",
-          },
-        };
-  const localizedPlan = planText?.[plan.id as "free" | "pro_monthly" | "premium_monthly"];
-  const description = localizedPlan?.description ?? plan.description;
-  const features = localizedPlan?.features ?? plan.features;
-  const planButtonLabel = localizedPlan?.button ?? plan.buttonLabel;
+
+  const featureCounts: Partial<Record<PricingPlanInfo["id"], number>> = {
+    free: 4,
+    pro_monthly: 6,
+    premium_monthly: 9,
+  };
+  const featureCount = featureCounts[plan.id];
+  const features =
+    typeof featureCount === "number"
+      ? Array.from({ length: featureCount }, (_, index) =>
+          t(`plans.${plan.id}.features.${index + 1}`)
+        )
+      : plan.features;
+  const description = t.has(`plans.${plan.id}.description`)
+    ? t(`plans.${plan.id}.description`)
+    : plan.description;
+  const planButtonLabel = t.has(`plans.${plan.id}.button`)
+    ? t(`plans.${plan.id}.button`)
+    : plan.buttonLabel;
 
   const handleClick = () => {
     // Freeプランの場合は何もしない（ログイン済の場合）
@@ -108,23 +81,23 @@ export function PricingCard({
   const getButtonLabel = () => {
     if (plan.id === "free") {
       if (!isLoggedIn) {
-        return language === "ja" ? "ログインして始める" : "Log in to start";
+        return t("buttons.loginToStart");
       }
       return isCurrentPlan
-        ? (language === "ja" ? "現在のプラン" : "Current plan")
-        : (language === "ja" ? "無料で始める" : "Start free");
+        ? t("buttons.currentPlan")
+        : t("buttons.startFree");
     }
     if (isCurrentPlan) {
-      return language === "ja" ? "プランを管理" : "Manage plan";
+      return t("buttons.managePlan");
     }
     if (!isLoggedIn) {
-      return language === "ja" ? "ログインして購入" : "Log in to purchase";
+      return t("buttons.loginToPurchase");
     }
     return planButtonLabel;
   };
 
   // ログインしていない場合はFreeプランも押せるようにする
-  const isDisabled = (plan.id === "free" && isLoggedIn) || isPending;
+  const isDisabled = (plan.id === "free" && isLoggedIn) || isPending || isLoading;
 
   return (
     <div
@@ -137,7 +110,7 @@ export function PricingCard({
       {plan.isRecommended && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <span className="px-3 py-1 bg-primary text-white text-xs font-bold rounded-full">
-            {language === "ja" ? "おすすめ" : "Recommended"}
+            {t("badges.recommended")}
           </span>
         </div>
       )}
@@ -145,7 +118,7 @@ export function PricingCard({
       {isCurrentPlan && plan.id !== "free" && (
         <div className="absolute -top-3 right-4">
           <span className="px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">
-            {language === "ja" ? "現在のプラン" : "Current plan"}
+            {t("badges.currentPlan")}
           </span>
         </div>
       )}
@@ -161,7 +134,7 @@ export function PricingCard({
         </span>
         {plan.id === "pro_monthly" && (
           <span className="text-sm text-stone-500 ml-1">
-            {language === "ja" ? "/ 月" : "/ mo"}
+            {t("price.monthSuffix")}
           </span>
         )}
       </div>
@@ -223,7 +196,7 @@ export function PricingCard({
                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
               />
             </svg>
-            {language === "ja" ? "処理中..." : "Processing..."}
+            {t("processing")}
           </span>
         ) : (
           getButtonLabel()

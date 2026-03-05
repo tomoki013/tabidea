@@ -51,6 +51,18 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({
     push: mocks.push,
   }),
+  usePathname: () => "/ja/my-plans",
+}));
+
+vi.mock("next-intl", () => ({
+  useTranslations: (namespace: string) => {
+    const dictionary: Record<string, string> = {
+      "app.myPlans.makePublic": "旅のしおりを公開する",
+      "app.myPlans.makePrivate": "旅のしおりを非公開にする",
+    };
+
+    return (key: string) => dictionary[`${namespace}.${key}`] ?? key;
+  },
 }));
 
 vi.mock("@/app/actions/travel-planner", () => ({

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   FaMapMarkerAlt,
   FaRegLightbulb,
@@ -12,7 +12,6 @@ import {
   FaCreditCard,
 } from "react-icons/fa";
 import { faqCategories } from "@/lib/data/faq";
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 import FAQCard from "./FAQCard";
 
 // Map category IDs to icons for a richer UI
@@ -26,19 +25,9 @@ const iconMap: Record<string, React.ElementType> = {
   billing: FaCreditCard,
 };
 
-const categoryTitleEn: Record<string, string> = {
-  service: "General Service",
-  planning: "Planning & Features",
-  trouble: "Troubleshooting",
-  security: "Security & Privacy",
-  others: "Others",
-  account: "Account & Login",
-  billing: "Pricing & Subscription",
-};
-
 export default function FAQCategoryList() {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const t = useTranslations("components.faq.categoryList");
+  const categoryTitles = t.raw("categoryTitles") as Record<string, string>;
 
   // Track open state per question uniquely across all categories
   // Format: `${categoryId}-${itemIndex}`
@@ -61,9 +50,7 @@ export default function FAQCategoryList() {
                 <Icon className="text-xl" />
               </div>
               <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#2c2c2c]">
-                {language === "ja"
-                  ? category.title
-                  : (categoryTitleEn[category.id] ?? category.title)}
+                {categoryTitles[category.id] ?? category.title}
               </h2>
             </div>
 

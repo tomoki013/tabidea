@@ -2,7 +2,10 @@
 
 import { useEffect } from 'react';
 import { AlertCircle, RefreshCw, ArrowLeft } from 'lucide-react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 
 interface ErrorProps {
   error: Error & { digest?: string };
@@ -13,6 +16,10 @@ interface ErrorProps {
  * 目的地ページのエラー表示
  */
 export default function Error({ error, reset }: ErrorProps) {
+  const t = useTranslations("errors.ui.travelInfoDestination");
+  const pathname = usePathname();
+  const language = resolveLanguageFromPathname(pathname);
+
   useEffect(() => {
     console.error('Travel info page error:', error);
   }, [error]);
@@ -23,10 +30,10 @@ export default function Error({ error, reset }: ErrorProps) {
         <div className="bg-white rounded-3xl border-2 border-red-200 p-8 shadow-sm">
           <AlertCircle className="w-16 h-16 text-red-400 mx-auto mb-4" />
           <h1 className="text-2xl font-serif font-bold text-red-800 mb-2">
-            エラーが発生しました
+            {t("title")}
           </h1>
           <p className="text-red-600 mb-6">
-            渡航情報の読み込み中に問題が発生しました。
+            {t("description")}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
@@ -34,14 +41,14 @@ export default function Error({ error, reset }: ErrorProps) {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transition-colors"
             >
               <RefreshCw className="w-5 h-5" />
-              再試行
+              {t("retry")}
             </button>
             <Link
-              href="/travel-info"
+              href={localizeHref("/travel-info", language)}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-stone-100 text-stone-700 font-bold rounded-xl hover:bg-stone-200 transition-colors"
             >
               <ArrowLeft className="w-5 h-5" />
-              トップに戻る
+              {t("backToTop")}
             </Link>
           </div>
         </div>

@@ -1,0 +1,179 @@
+{
+  "components": {
+    "billing": {
+      "pricingCard": {
+        "plans": {
+          "free": {
+            "description": "Start for free",
+            "button": "Current plan",
+            "features": {
+              "1": "Up to 3 plan generations per month",
+              "2": "Travel info: once per week, 3 categories",
+              "3": "Unlimited plan saves",
+              "4": "Static map display"
+            }
+          },
+          "pro_monthly": {
+            "description": "More convenience for trip planning",
+            "button": "Choose this plan",
+            "features": {
+              "1": "Up to 30 plan generations per month",
+              "2": "Unlimited plan saves",
+              "3": "Travel info: 10 times/month, 3 categories",
+              "4": "Places details: 10 spots/plan",
+              "5": "Flight/hotel suggestions: 3",
+              "6": "Interactive Leaflet map"
+            }
+          },
+          "premium_monthly": {
+            "description": "Unlock all features",
+            "button": "Choose this plan",
+            "features": {
+              "1": "Up to 100 plan generations / month",
+              "2": "Unlimited plan saves",
+              "3": "Unlimited travel info, all categories",
+              "4": "Unlimited Places details",
+              "5": "Flight/hotel suggestions: 7",
+              "6": "Full Google Maps features",
+              "7": "AI provider switch (Gemini/OpenAI)",
+              "8": "View travel info and packing list in plan",
+              "9": "AI settings (style + custom instructions)"
+            }
+          }
+        },
+        "buttons": {
+          "loginToStart": "Log in to start",
+          "currentPlan": "Current plan",
+          "startFree": "Start free",
+          "managePlan": "Manage plan",
+          "loginToPurchase": "Log in to purchase"
+        },
+        "badges": {
+          "recommended": "Recommended",
+          "currentPlan": "Current plan"
+        },
+        "price": {
+          "monthSuffix": "/ mo"
+        },
+        "processing": "Processing..."
+      },
+      "tierComparison": {
+        "title": "Plan Comparison",
+        "featureHeader": "Feature",
+        "availableAria": "available",
+        "unavailableAria": "not available",
+        "rows": [
+          {
+            "label": "Plan generation",
+            "free": "3/month",
+            "pro": "30/month",
+            "premium": "100/month",
+            "category": "Core"
+          },
+          {
+            "label": "Saved plans",
+            "free": "Unlimited",
+            "pro": "Unlimited",
+            "premium": "Unlimited"
+          },
+          {
+            "label": "Travel info fetch",
+            "free": "1/week",
+            "pro": "10/month",
+            "premium": "Unlimited",
+            "category": "Travel Info"
+          },
+          {
+            "label": "Travel info categories",
+            "free": "3 categories",
+            "pro": "3 categories",
+            "premium": "All categories"
+          },
+          {
+            "label": "Travel info in plan view",
+            "free": false,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "Map mode",
+            "free": "Static map",
+            "pro": "Interactive Leaflet",
+            "premium": "Full Google Maps",
+            "category": "Map & Search"
+          },
+          {
+            "label": "Places detail fetch",
+            "free": "None",
+            "pro": "10/plan",
+            "premium": "Unlimited"
+          },
+          {
+            "label": "Flight/Hotel candidates",
+            "free": "None",
+            "pro": "3",
+            "premium": "7"
+          },
+          {
+            "label": "AI provider selection",
+            "free": false,
+            "pro": false,
+            "premium": true,
+            "category": "AI & Personalization"
+          },
+          {
+            "label": "Travel style settings",
+            "free": false,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "Custom AI instructions",
+            "free": true,
+            "pro": true,
+            "premium": true
+          },
+          {
+            "label": "Packing list access",
+            "free": false,
+            "pro": true,
+            "premium": true
+          }
+        ]
+      },
+      "successPage": {
+        "title": "Thank you for your purchase!",
+        "messages": {
+          "upgradeComplete": "Your upgrade to {planName} is complete.",
+          "ticketPackComplete": "Your ticket-pack purchase is complete.",
+          "enjoy": "Enjoy all available features."
+        },
+        "actions": {
+          "createPlan": "Create your first plan now",
+          "backToPricing": "Back to pricing"
+        },
+        "nextSteps": {
+          "title": "Next steps",
+          "step1": "Enter destination and dates",
+          "step2": "AI generates an optimized itinerary",
+          "step3": "Save and share your plan"
+        },
+        "features": {
+          "title": "Features available in {planName}",
+          "pro": {
+            "1": "30 plan generations / month",
+            "2": "Travel info: 10 times / month",
+            "3": "Interactive Leaflet map",
+            "4": "Packing list generation"
+          },
+          "premium": {
+            "1": "100 plan generations / month",
+            "2": "Unlimited travel info (all categories)",
+            "3": "Full Google Maps features",
+            "4": "AI provider selection"
+          }
+        }
+      }
+    }
+  }
+}

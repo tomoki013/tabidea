@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from "next-intl/server";
 import { parseCategoriesParam, parseDatesParam } from '@/lib/utils';
 import { getRequestLanguage } from '@/lib/i18n/server';
+import { resolveOpenGraphLocale } from '@/lib/i18n/locales';
 import DestinationClient from './DestinationClient';
 
 interface PageProps {
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: t("ogTitle", { destination }),
       description: t("ogDescription", { destination }),
       type: 'website',
-      locale: language === "ja" ? "ja_JP" : "en_US",
+      locale: resolveOpenGraphLocale(language),
     },
   };
 }

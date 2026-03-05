@@ -19,6 +19,8 @@
 - `local` fix(i18n): `next-intl` の設定解決を公式構成へ統一。`next.config.ts` に `next-intl/plugin` を追加し、`src/i18n/request.ts` / `src/i18n/routing.ts` を導入して、開発サーバーの `Couldn't find next-intl config file` エラーを解消
 - `local` fix(i18n): `proxy` を `next-intl` ミドルウェア連携に更新し、言語プレフィックスURL（`/ja` `/en`）のリダイレクトと `LANGUAGE_COOKIE` / `LANGUAGE_HEADER` の同期を安定化
 - `local` fix(route): App Router のUIルートを `src/app/[locale]/*` へ移行し、`/ja` アクセスが 404 になる問題を解消。`/` や `/pricing` は `localePrefix: "always"` に従って `/ja` / `/ja/pricing` へリダイレクト
+- `local` feat(i18n): `app/components/errors` 名前空間を追加し、`LoginClient`・`MyPlansClient`・`PlanClient`・`PricingCard`・`SuccessPageClient`・`travel-info/[destination]` loading/error・`app/layout` metadata を `next-intl` 参照へ移行。`src/messages/{ja,en}/{app,components,errors}` に新規辞書を追加
+- `local` feat(i18n): 追加コンポーネント群（`TierComparisonTable`、`FeaturesHeroSection`、`FeaturesDetailSection`、`HowToUseSection`、`FAQSection`、`SampleCollectionPromotionSection`、`TravelInfoDisplay`、`CategorySelector`、`CategoryCard`、`MobileSidebar`、`PublicPlanCard`）と動的ページメタ（`/blog/[handle]/[slug]`、`/shiori/[slug]`）を翻訳キー/ロケールヘルパーへ移行し、`language === "ja"` 分岐をさらに削減。`src/messages/{ja,en}/components/features-ui.json` を追加
 
 ### 2026-03-04
 

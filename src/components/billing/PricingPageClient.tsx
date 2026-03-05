@@ -15,6 +15,7 @@ import {
   DEFAULT_LANGUAGE,
   getLanguageFromPathname,
   localizePath,
+  resolveRegionalLocale,
 } from "@/lib/i18n/locales";
 
 import type { BillingAccessInfo, PurchaseType } from "@/types/billing";
@@ -190,7 +191,7 @@ export function PricingPageClient({
                 {isSubscribed && billingStatus.subscriptionEndsAt && (
                   <p className="text-xs text-stone-500 mt-2">
                     {t("nextBilling")}: {new Date(billingStatus.subscriptionEndsAt).toLocaleDateString(
-                      language === "ja" ? "ja-JP" : "en-US"
+                      resolveRegionalLocale(language)
                     )}
                   </p>
                 )}
@@ -237,7 +238,6 @@ export function PricingPageClient({
               <PricingCard
                 key={plan.id}
                 plan={plan}
-                language={language}
                 isCurrentPlan={
                   (plan.id === "free" && !isSubscribed) ||
                   (plan.id === currentPlanType)
@@ -254,7 +254,7 @@ export function PricingPageClient({
 
         {/* Feature Comparison — 3-tier table */}
         <div className="max-w-4xl mx-auto mb-16">
-          <TierComparisonTable language={language} />
+          <TierComparisonTable />
         </div>
 
         {/* FAQ - Using generic component */}

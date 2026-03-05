@@ -1,0 +1,11 @@
+{
+  "app": {
+    "info": {
+      "travelInfoDestination": {
+        "loading": {
+          "message": "渡航情報を読み込み中..."
+        }
+      }
+    }
+  }
+}
