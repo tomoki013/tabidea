@@ -15,7 +15,10 @@ describe('getUserConstraintPrompt', () => {
     });
 
     const prompt = await getUserConstraintPrompt();
-    expect(prompt).toBe('');
+    expect(prompt).toContain('=== OUTPUT LANGUAGE (MUST FOLLOW) ===');
+    expect(prompt).toContain('Japanese');
+    expect(prompt).toContain('=== HOME BASE ROUND-TRIP REQUIREMENT (MUST FOLLOW) ===');
+    expect(prompt).toContain('Home City: 東京');
   });
 
   it('includes travel style when provided', async () => {
@@ -60,5 +63,24 @@ describe('getUserConstraintPrompt', () => {
     expect(prompt).toContain('Relaxed.');
     expect(prompt).toContain('=== CRITICAL USER INSTRUCTIONS (MUST FOLLOW) ===');
     expect(prompt).toContain('No hiking.');
+  });
+
+  it('uses preferred language and home base city constraints when provided', async () => {
+    vi.spyOn(userSettingsActions, 'getUserSettings').mockResolvedValue({
+      success: true,
+      settings: {
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
+        homeBaseCity: 'Seattle',
+      }
+    });
+
+    const prompt = await getUserConstraintPrompt();
+    expect(prompt).toContain('=== OUTPUT LANGUAGE (MUST FOLLOW) ===');
+    expect(prompt).toContain('English');
+    expect(prompt).toContain('Home Region: US');
+    expect(prompt).toContain('Home City: Seattle');
+    expect(prompt).toContain('MUST start from Seattle');
+    expect(prompt).toContain('MUST return to Seattle');
   });
 });

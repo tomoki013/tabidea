@@ -5,7 +5,7 @@
 - URL strategy: language-only prefix (`/ja`, `/en`)
 - Internal locale: regional locale (`ja-JP`, `en-US`)
 - Default language/locale: `ja` / `ja-JP`
-- User preference persistence: `public.users.metadata` (`preferredLanguage`, `preferredRegion`, `preferredLocale`)
+- User preference persistence: `public.users.metadata` (`preferredLanguage`, `preferredRegion`, `preferredLocale`, `homeBaseCity`)
 
 ## Routing design
 
@@ -56,6 +56,12 @@ Saved metadata keys:
 - `preferredLanguage`
 - `preferredRegion`
 - `preferredLocale`
+- `homeBaseCity`
+
+AI generation behavior linked to settings:
+
+- Plan output language follows `preferredLanguage` (ja/en).
+- The itinerary is instructed to start from `homeBaseCity` and return to the same city on the final day.
 
 UI entry point:
 

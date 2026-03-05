@@ -3,6 +3,7 @@
 import { getUser, createClient } from "@/lib/supabase/server";
 import {
   DEFAULT_LANGUAGE,
+  getDefaultHomeBaseCityForRegion,
   getDefaultRegionForLanguage,
   isLanguageCode,
   isRegionCode,
@@ -18,6 +19,7 @@ export interface UserSettings {
   preferredLanguage?: LanguageCode;
   preferredRegion?: RegionCode;
   preferredLocale?: RegionalLocale;
+  homeBaseCity?: string;
 }
 
 /**
@@ -53,6 +55,10 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
       ? metadata.preferredRegion
       : getDefaultRegionForLanguage(preferredLanguage);
     const preferredLocale = resolveRegionalLocale(preferredLanguage, preferredRegion);
+    const homeBaseCity =
+      typeof metadata.homeBaseCity === "string" && metadata.homeBaseCity.trim().length > 0
+        ? metadata.homeBaseCity.trim()
+        : getDefaultHomeBaseCityForRegion(preferredRegion);
 
     return {
       success: true,
@@ -62,6 +68,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
         preferredLanguage,
         preferredRegion,
         preferredLocale,
+        homeBaseCity,
       }
     };
   } catch (error) {
@@ -118,6 +125,14 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
       preferredRegion = getDefaultRegionForLanguage(preferredLanguage);
     }
 
+    const fallbackHomeBaseCity = getDefaultHomeBaseCityForRegion(preferredRegion);
+    const homeBaseCity =
+      typeof settings.homeBaseCity === "string" && settings.homeBaseCity.trim().length > 0
+        ? settings.homeBaseCity.trim()
+        : typeof currentMetadata.homeBaseCity === "string" && currentMetadata.homeBaseCity.trim().length > 0
+          ? currentMetadata.homeBaseCity.trim()
+          : fallbackHomeBaseCity;
+
     const preferredLocale = resolveRegionalLocale(preferredLanguage, preferredRegion);
 
     // Merge new settings
@@ -127,6 +142,7 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
       preferredLanguage,
       preferredRegion,
       preferredLocale,
+      homeBaseCity,
     };
 
     const { error: updateError } = await supabase
