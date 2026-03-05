@@ -3,6 +3,7 @@
 import { Suspense, useEffect, useState, useRef, useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
 import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
@@ -25,38 +26,8 @@ function PlanContent() {
   const router = useRouter();
   const pathname = usePathname();
   const language = resolveLanguageFromPathname(pathname);
-  const ui =
-    language === "ja"
-      ? {
-          detailError: "詳細プランの生成中にエラーが発生しました。",
-          savingTransition: "詳細プランの保存が完了し次第、すぐに詳細ページへ自動で移動します。",
-          saveError: "プランの保存に失敗しました。",
-          outlineError: "プラン概要の作成に失敗しました。",
-          genericError: "エラーが発生しました",
-          timeoutError: "ネットワークエラーまたはサーバータイムアウトが発生しました。",
-          sampleNotFound: "指定されたサンプルプランが見つかりませんでした。",
-          saving: "プランを保存しています...",
-          retry: "もう一度試す",
-          backHome: "トップに戻る",
-          contactPrefix: "問題が解決しない場合は、",
-          contact: "お問い合わせページ",
-          contactSuffix: "からご連絡ください。",
-        }
-      : {
-          detailError: "An error occurred while generating detailed plans.",
-          savingTransition: "You will be redirected to the detail page as soon as saving is complete.",
-          saveError: "Failed to save the plan.",
-          outlineError: "Failed to generate the plan outline.",
-          genericError: "An error occurred.",
-          timeoutError: "A network error or server timeout occurred.",
-          sampleNotFound: "The specified sample plan was not found.",
-          saving: "Saving your plan...",
-          retry: "Try again",
-          backHome: "Back to home",
-          contactPrefix: "If the problem persists, please visit the ",
-          contact: "contact page",
-          contactSuffix: ".",
-        };
+  const t = useTranslations("app.planner.plan");
+  const tError = useTranslations("errors.ui.plan");
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const { steps: progressSteps, currentStep: progressCurrentStep, generateOutlineStream, resetProgress } = useGenerationProgress();
   const sampleId = searchParams.get("sample");
@@ -198,9 +169,9 @@ function PlanContent() {
     } catch (e) {
       console.error("Detail generation error:", e);
       setStatus("error");
-      setError(ui.detailError);
+      setError(tError("detailGenerationFailed"));
     }
-  }, [generateChunk, ui.detailError]);
+  }, [generateChunk, tError]);
 
   // Save completed plan and transition to detail page quickly.
   // Always persist to local storage first, then let PlanLocalClient auto-sync for signed-in users.
@@ -217,7 +188,7 @@ function PlanContent() {
 
     hasStartedTransition.current = true;
     setStatus("saving");
-    setTransitionMessage(ui.savingTransition);
+    setTransitionMessage(t("savingTransition"));
 
     const sortedDays = [...completedDays].sort((a, b) => a.day - b.day);
     const simpleId = Math.random().toString(36).substring(2, 15);
@@ -260,9 +231,9 @@ function PlanContent() {
       hasStartedTransition.current = false;
       setTransitionMessage("");
       setStatus("error");
-      setError(ui.saveError);
+      setError(tError("saveFailed"));
     }
-  }, [generationState, isAuthenticated, language, router, ui.saveError, ui.savingTransition]);
+  }, [generationState, isAuthenticated, language, router, t, tError]);
 
   // Watch for completion
   useEffect(() => {
@@ -296,7 +267,7 @@ function PlanContent() {
       const outlineResponse = await generateOutlineStream(sampleInput);
 
       if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(outlineResponse.message || ui.outlineError);
+        throw new Error(outlineResponse.message || tError("outlineFailed"));
       }
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
@@ -324,11 +295,11 @@ function PlanContent() {
       setGenerationState(prev => ({
         ...prev,
         phase: 'error',
-        error: e instanceof Error ? e.message : ui.genericError,
+        error: e instanceof Error ? e.message : tError("generic"),
       }));
-      setError(e instanceof Error ? e.message : ui.timeoutError);
+      setError(e instanceof Error ? e.message : tError("timeout"));
     }
-  }, [startDetailGeneration, generateOutlineStream, resetProgress, ui.genericError, ui.outlineError, ui.timeoutError]);
+  }, [startDetailGeneration, generateOutlineStream, resetProgress, tError]);
 
   // Handler to retry a failed chunk
   const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {
@@ -412,14 +383,14 @@ function PlanContent() {
         };
         generateFromSample(sampleInput);
       } else {
-        setError(ui.sampleNotFound);
+        setError(tError("sampleNotFound"));
         setStatus("error");
       }
     } else if (!sampleId && !legacyQ && !mode) {
       // No parameters - redirect to home
       router.replace(localizeHref("/", language));
     }
-  }, [authLoading, sampleId, legacyQ, mode, router, generateFromSample, language, ui.sampleNotFound]);
+  }, [authLoading, sampleId, legacyQ, mode, router, generateFromSample, language, tError]);
 
   if (status === "loading" || authLoading) {
     return (
@@ -474,7 +445,7 @@ function PlanContent() {
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4">
         <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-        <p className="text-stone-600">{ui.saving}</p>
+        <p className="text-stone-600">{t("saving")}</p>
       </div>
     );
   }
@@ -484,7 +455,7 @@ function PlanContent() {
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
         <div className="text-6xl mb-4">😢</div>
         <p className="text-destructive font-medium text-lg">
-          {error || generationState.error || ui.genericError}
+          {error || generationState.error || tError("generic")}
         </p>
         {sampleId && (
           <button
@@ -495,24 +466,24 @@ function PlanContent() {
             }}
             className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
           >
-            {ui.retry}
+            {t("retry")}
           </button>
         )}
         <Link
           href={localizeHref("/", language)}
           className="px-4 py-2 text-stone-600 hover:text-primary transition-colors"
         >
-          {ui.backHome}
+          {t("backHome")}
         </Link>
         <p className="text-stone-600 text-sm mt-2">
-          {ui.contactPrefix}
+          {t("contactPrefix")}
           <a
             href={localizeHref("/contact", language)}
             className="text-primary hover:underline font-medium ml-1"
           >
-            {ui.contact}
+            {t("contact")}
           </a>
-          {ui.contactSuffix}
+          {t("contactSuffix")}
         </p>
       </div>
     );
@@ -528,8 +499,7 @@ function PlanContent() {
 
 export default function PlanClient() {
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
-  const pathname = usePathname();
-  const language = resolveLanguageFromPathname(pathname);
+  const t = useTranslations("app.planner.plan");
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
@@ -555,7 +525,7 @@ export default function PlanClient() {
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             <FaPlus className="mr-2 relative z-10" />
             <span className="relative z-10">
-              {language === "ja" ? "新しいプランを作る" : "Create a new plan"}
+              {t("createNewPlan")}
             </span>
           </button>
         </div>

@@ -23,45 +23,72 @@ import "./globals.css";
 // Fonts are now loaded via fontsource CSS imports in globals.css
 // This avoids Turbopack's issues with fetching Google Fonts during development
 
-export const metadata: Metadata = {
-  title: {
-    default: "Tabidea - AI Travel Planner",
-    template: "%s - Tabidea",
-  },
-  description:
-    "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
-  authors: [{ name: "ともきち" }],
-  openGraph: {
-    title: "Tabidea - AI Travel Planner",
-    description:
-      "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。",
-    url: "https://tabide.ai",
-    siteName: "Tabidea",
-    type: "website",
-    images: [
-      {
-        url: "/favicon.ico",
-        width: 1200,
-        height: 630,
-        alt: "Tabidea - AI Travel Planner",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    title: "Tabidea - AI Travel Planner",
-    description:
-      "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。",
-    images: ["/favicon.ico"],
-  },
-  metadataBase: new URL("https://tabide.ai"),
-  // manifest: "/manifest.json",
-  // appleWebApp: {
-  //   capable: true,
-  //   statusBarStyle: "default",
-  //   title: "Tabidea",
-  // },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const language = await getRequestLanguage();
+  const messages = getMessages(language) as {
+    app?: {
+      rootLayout?: {
+        meta?: {
+          defaultTitle?: string;
+          titleTemplate?: string;
+          description?: string;
+          openGraphDescription?: string;
+          ogImageAlt?: string;
+          twitterDescription?: string;
+        };
+      };
+    };
+  };
+
+  const meta = messages.app?.rootLayout?.meta;
+  const defaultTitle = meta?.defaultTitle ?? "Tabidea - AI Travel Planner";
+  const titleTemplate = meta?.titleTemplate ?? "%s - Tabidea";
+  const description =
+    meta?.description ??
+    "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。";
+  const openGraphDescription =
+    meta?.openGraphDescription ??
+    "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。";
+  const ogImageAlt = meta?.ogImageAlt ?? "Tabidea - AI Travel Planner";
+  const twitterDescription = meta?.twitterDescription ?? description;
+
+  return {
+    title: {
+      default: defaultTitle,
+      template: titleTemplate,
+    },
+    description,
+    authors: [{ name: "ともきち" }],
+    openGraph: {
+      title: defaultTitle,
+      description: openGraphDescription,
+      url: "https://tabide.ai",
+      siteName: "Tabidea",
+      type: "website",
+      images: [
+        {
+          url: "/favicon.ico",
+          width: 1200,
+          height: 630,
+          alt: ogImageAlt,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: defaultTitle,
+      description: twitterDescription,
+      images: ["/favicon.ico"],
+    },
+    metadataBase: new URL("https://tabide.ai"),
+    // manifest: "/manifest.json",
+    // appleWebApp: {
+    //   capable: true,
+    //   statusBarStyle: "default",
+    //   title: "Tabidea",
+    // },
+  };
+}
 
 export const viewport: Viewport = {
   width: "device-width",

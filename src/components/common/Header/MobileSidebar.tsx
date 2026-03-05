@@ -28,7 +28,7 @@ import { usePlanModal } from '@/context/PlanModalContext';
 import { useLocalPlans } from '@/lib/local-storage/plans';
 import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
-import { stripLanguagePrefix } from '@/lib/i18n/locales';
+import { resolveRegionalLocale, stripLanguagePrefix } from '@/lib/i18n/locales';
 import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 import { deletePlan, updatePlanName } from '@/app/actions/travel-planner';
 import { getBillingAccessInfo } from '@/app/actions/billing';
@@ -58,7 +58,7 @@ export default function MobileSidebar({
   const t = useTranslations('mobileSidebar');
   const language = resolveLanguageFromPathname(pathname);
   const normalizedPathname = stripLanguagePrefix(pathname);
-  const dateLocale = language === 'ja' ? 'ja-JP' : 'en-US';
+  const dateLocale = resolveRegionalLocale(language);
 
   // Menu state
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -136,7 +136,7 @@ export default function MobileSidebar({
     if (result.success) {
       updatePlan(planId, { destination: renameValue.trim() });
     } else {
-      alert(result.error || '名前の変更に失敗しました');
+      alert(result.error || t('renameFailed'));
     }
 
     setIsRenaming(null);
@@ -173,7 +173,7 @@ export default function MobileSidebar({
       if (result.success) {
         removePlan(planToDelete);
       } else {
-        alert(result.error || '削除に失敗しました');
+        alert(result.error || t('deleteFailed'));
       }
     }
 
@@ -291,7 +291,7 @@ export default function MobileSidebar({
                       {user.avatarUrl ? (
                         <Image
                           src={user.avatarUrl}
-                          alt={user.displayName || 'ユーザー'}
+                          alt={user.displayName || t('userFallback')}
                           width={40}
                           height={40}
                           className="rounded-full ring-2 ring-white shadow-sm"
@@ -305,12 +305,12 @@ export default function MobileSidebar({
                       )}
                       <div className="flex-1 min-w-0">
                         <HandwrittenText className="font-bold truncate text-sm">
-                          {user.displayName || 'ユーザー'}
+                          {user.displayName || t('userFallback')}
                         </HandwrittenText>
                         <div className="flex items-center gap-1.5 mt-1">
                           {billingStatus?.isAdmin ? (
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-stone-800 text-white text-xs font-bold rounded-sm">
-                              管理者
+                              {t('admin')}
                             </span>
                           ) : billingStatus?.isSubscribed ? (
                             <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-sm border border-primary/20">
@@ -323,12 +323,12 @@ export default function MobileSidebar({
                             </span>
                           ) : (
                             <span className="inline-flex items-center px-2 py-0.5 bg-stone-200 text-stone-600 text-xs font-medium rounded-sm">
-                              Free
+                              {t('freePlan')}
                             </span>
                           )}
                           {billingStatus && billingStatus.ticketCount > 0 && (
                             <span className="text-xs text-stone-500 font-hand">
-                              チケット: {billingStatus.ticketCount}枚
+                              {t('ticketCount', { count: billingStatus.ticketCount })}
                             </span>
                           )}
                         </div>
@@ -337,7 +337,7 @@ export default function MobileSidebar({
                     <button
                       onClick={onOpenSettings}
                       className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-sm transition-colors border border-transparent hover:border-stone-200 hover:border-dashed"
-                      aria-label="設定"
+                      aria-label={t('settingsAria')}
                     >
                       <FaCog size={16} />
                     </button>
@@ -435,7 +435,7 @@ export default function MobileSidebar({
                                     {thumbnailUrl ? (
                                       <Image
                                         src={thumbnailUrl}
-                                        alt={destination || '旅行プラン'}
+                                        alt={destination || t('planThumbnailAlt')}
                                         width={48}
                                         height={48}
                                         className="w-full h-full object-cover"
@@ -478,7 +478,7 @@ export default function MobileSidebar({
                                       <p className={`text-sm font-hand font-bold truncate transition-colors ${
                                         isActive ? 'text-primary' : 'text-stone-700 group-hover:text-primary'
                                       }`}>
-                                        {destination || '目的地未設定'}
+                                        {destination || t('destinationUnset')}
                                       </p>
                                     )}
                                     <p className="text-xs text-stone-400 font-mono">
@@ -515,7 +515,7 @@ export default function MobileSidebar({
                                               className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                             >
                                               <FaFlag className={planIsFlagged ? 'text-amber-500' : 'text-stone-400'} />
-                                              {planIsFlagged ? 'ピン解除' : 'ピン留め'}
+                                              {planIsFlagged ? t('unpin') : t('pin')}
                                             </button>
                                           )}
                                           {isAuthenticated && !isLocalPlan && (
@@ -524,7 +524,7 @@ export default function MobileSidebar({
                                               className="w-full flex items-center gap-2 px-3 py-2 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                             >
                                               <FaEdit className="text-stone-400" />
-                                              名前を変更
+                                              {t('rename')}
                                             </button>
                                           )}
                                           <button
@@ -532,7 +532,7 @@ export default function MobileSidebar({
                                             className="w-full flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                                           >
                                             <FaTrash className="text-red-400" />
-                                            削除
+                                            {t('delete')}
                                           </button>
                                         </motion.div>
                                       )}
@@ -549,7 +549,7 @@ export default function MobileSidebar({
                               onClick={onClose}
                               className="block text-center text-xs text-stone-500 hover:text-primary py-2 transition-colors font-hand decoration-dashed underline"
                             >
-                              他 {displayPlans.length - 5} 件のプラン
+                              {t('morePlans', { count: displayPlans.length - 5 })}
                             </Link>
                           )}
                         </div>
@@ -562,7 +562,7 @@ export default function MobileSidebar({
                             {t('noPlans')}
                           </p>
                           <p className="text-xs text-stone-400 font-hand">
-                            新しい旅を計画しましょう
+                            {t('noPlansHint')}
                           </p>
                         </div>
                       )}
@@ -575,10 +575,10 @@ export default function MobileSidebar({
                             <Tape color="white" position="top-center" className="w-12 h-4" />
 
                             <p className="text-sm font-bold text-stone-700 mb-1 font-hand">
-                              保存したプランを表示
+                              {t('guestCtaTitle')}
                             </p>
                             <p className="text-xs text-stone-500 mb-3 font-hand">
-                              ログインして、保存したすべての<br/>プランにアクセスしましょう
+                              {t('guestCtaLine1')}<br/>{t('guestCtaLine2')}
                             </p>
                             <Link
                               href={localizeHref('/auth/login', language)}
@@ -642,12 +642,12 @@ export default function MobileSidebar({
                     </div>
 
                     <HandwrittenText tag="h3" className="text-xl font-bold text-stone-800 mb-2">
-                      プランを削除しますか？
+                      {t('deleteConfirmTitle')}
                     </HandwrittenText>
 
                     <p className="text-sm text-stone-600 mb-6 font-hand">
-                      この操作は取り消すことができません。<br/>
-                      本当にこのプランを削除しますか？
+                      {t('deleteConfirmLine1')}<br/>
+                      {t('deleteConfirmLine2')}
                     </p>
 
                     <div className="flex gap-3 w-full">
@@ -656,14 +656,14 @@ export default function MobileSidebar({
                         onClick={() => setShowDeleteModal(false)}
                         className="flex-1"
                       >
-                        キャンセル
+                        {t('cancel')}
                       </JournalButton>
                       <JournalButton
                          variant="primary"
                          onClick={executeDelete}
                          className="flex-1 bg-red-600 hover:bg-red-700 border-red-800 text-white"
                       >
-                        削除する
+                        {t('deleteAction')}
                       </JournalButton>
                     </div>
                   </div>

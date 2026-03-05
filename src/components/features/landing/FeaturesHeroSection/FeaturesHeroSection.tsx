@@ -1,13 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FaBookOpen, FaMagic, FaPlaneDeparture } from "react-icons/fa";
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 
 export default function FeaturesHeroSection() {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const t = useTranslations("components.features.landing.featuresHero");
 
   return (
     <section className="relative w-full pt-32 pb-24 sm:pb-32 overflow-hidden">
@@ -27,7 +25,7 @@ export default function FeaturesHeroSection() {
           className="inline-flex items-center gap-2 mb-8 px-5 py-2 rounded-full bg-white/80 backdrop-blur-sm border-2 border-dashed border-primary/30 text-primary font-bold text-sm tracking-widest shadow-sm"
         >
           <FaBookOpen className="text-sm" />
-          <span>FEATURES & GUIDE</span>
+          <span>{t("badge")}</span>
         </motion.div>
 
         {/* Main Heading */}
@@ -38,9 +36,9 @@ export default function FeaturesHeroSection() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="text-4xl sm:text-6xl font-serif font-bold text-foreground mb-8 leading-tight"
         >
-          {language === "ja" ? "旅の計画は、" : "Travel planning can be"}
+          {t("titleLine1")}
           <span className="block sm:inline mt-2 sm:mt-0 relative">
-            {language === "ja" ? "もっと自由でいい。" : "more open and personal."}
+            {t("titleLine2")}
             <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/20 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
               <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
             </svg>
@@ -55,17 +53,11 @@ export default function FeaturesHeroSection() {
           transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
           className="text-lg sm:text-xl text-stone-600 font-hand max-w-2xl mx-auto leading-relaxed"
         >
-          {language === "ja"
-            ? "Tabidea（タビデア）は、AIと対話しながら"
-            : "Tabidea helps you plan while talking with AI"}
+          {t("leadLine1")}
           <br className="hidden sm:block" />
-          {language === "ja"
-            ? "あなただけの旅行プランを作成するサービスです。"
-            : "to create an itinerary tailored to you."}
+          {t("leadLine2")}
           <br />
-          {language === "ja"
-            ? "便利な機能と、かんたんな使い方をご紹介します。"
-            : "Here are the key features and how to use them."}
+          {t("leadLine3")}
         </motion.p>
 
         {/* Floating Icons decoration */}

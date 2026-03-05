@@ -1,0 +1,32 @@
+{
+  "app": {
+    "myPlans": {
+      "title": "マイプラン",
+      "summary": "旅の記録 ({count}件)",
+      "syncing": "{count}件のローカルプランを同期中...",
+      "synced": "{count}件のプランを同期しました",
+      "syncLocal": "ローカル同期",
+      "create": "新規作成",
+      "tabAll": "すべて",
+      "tabFlagged": "フラグ付き",
+      "loading": "ページをめくっています...",
+      "loadingFlagged": "お気に入りのページを探しています...",
+      "emptyTitle": "まだ記録がありません",
+      "emptyDesc": "新しい旅の計画を立てて、ここに思い出を残しましょう",
+      "public": "公開中",
+      "private": "非公開",
+      "placeholder": "タイトルを入力",
+      "createdAt": "作成",
+      "rename": "名前を変更",
+      "makePrivate": "旅のしおりを非公開にする",
+      "makePublic": "旅のしおりを公開する",
+      "delete": "削除",
+      "confirmDelete": "本当に削除しますか？",
+      "confirmDeleteSub": "この操作は取り消せません。",
+      "cancel": "キャンセル",
+      "confirmDeleteBtn": "削除する",
+      "untitled": "無題の旅",
+      "days": "日間"
+    }
+  }
+}

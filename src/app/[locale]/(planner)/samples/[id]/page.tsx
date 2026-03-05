@@ -5,6 +5,7 @@ import { getSamplePlanByIdDynamic, loadAllSamplePlans } from "@/lib/sample-plans
 import { getSampleItinerary } from "@/lib/sample-itineraries";
 import { UserInput } from '@/types';
 import { getRequestLanguage } from "@/lib/i18n/server";
+import { resolveOpenGraphLocale, resolveRegionalLocale } from "@/lib/i18n/locales";
 import SampleDetailClient from "./SampleDetailClient";
 import SampleCollectionPromotionSection from "@/components/features/samples/SampleCollectionPromotionSection";
 
@@ -35,9 +36,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteUrl = "https://tabide.ai";
   const pageUrl = `${siteUrl}/${language}/samples/${id}`;
   const ogImage = itinerary?.heroImage || `${siteUrl}/og-default.png`;
+  const listFormatter = new Intl.ListFormat(resolveRegionalLocale(language), {
+    style: "long",
+    type: "conjunction",
+  });
 
-  const destinationsStr = plan.input.destinations.join(language === "ja" ? "、" : ", ");
-  const themesStr = plan.input.theme.join(language === "ja" ? "・" : ", ");
+  const destinationsStr = listFormatter.format(plan.input.destinations);
+  const themesStr = listFormatter.format(plan.input.theme);
   const keywordSeeds = t.raw("meta.keywordSeeds") as string[];
   const keywords = [
     ...plan.input.destinations,
@@ -74,7 +79,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       ],
       type: "article",
-      locale: language === "ja" ? "ja_JP" : "en_US",
+      locale: resolveOpenGraphLocale(language),
     },
     twitter: {
       card: "summary_large_image",

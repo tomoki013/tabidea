@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations } from "next-intl/server";
 import type React from 'react';
 
-import { localizePath } from '@/lib/i18n/locales';
+import { localizePath, resolveOpenGraphLocale } from '@/lib/i18n/locales';
 import { getRequestLanguage } from '@/lib/i18n/server';
 import { createClient } from '@/lib/supabase/server';
 
@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       type: 'article',
-      locale: language === 'ja' ? 'ja_JP' : 'en_US',
+      locale: resolveOpenGraphLocale(language),
       images: [{ url: image }],
     },
   };

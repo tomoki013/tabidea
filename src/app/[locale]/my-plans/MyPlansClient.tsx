@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import {
   FaMapMarkerAlt,
   FaCalendarAlt,
@@ -27,6 +28,7 @@ import { useUserPlans } from '@/context/UserPlansContext';
 import { useFlags } from '@/context/FlagsContext';
 import { getLocalPlans, deleteLocalPlan } from '@/lib/local-storage/plans';
 import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
+import { resolveRegionalLocale } from '@/lib/i18n/locales';
 import { JournalSheet, Tape, Stamp, HandwrittenText, JournalButton } from '@/components/ui/journal';
 
 interface MyPlansClientProps {
@@ -45,73 +47,9 @@ export default function MyPlansClient({
   const router = useRouter();
   const pathname = usePathname();
   const language = resolveLanguageFromPathname(pathname);
-  const dateLocale = language === "ja" ? "ja-JP" : "en-US";
-  const ui =
-    language === "ja"
-      ? {
-          authRedirect: "ログインが必要です",
-          syncing: "件のローカルプランを同期中...",
-          synced: "件のプランを同期しました",
-          deleteFailed: "削除に失敗しました",
-          visibilityFailed: "公開設定の更新に失敗しました",
-          renameFailed: "名前の変更に失敗しました",
-          title: "マイプラン",
-          subtitleSuffix: "件",
-          syncLocal: "ローカル同期",
-          create: "新規作成",
-          tabAll: "すべて",
-          tabFlagged: "フラグ付き",
-          loading: "ページをめくっています...",
-          loadingFlagged: "お気に入りのページを探しています...",
-          emptyTitle: "まだ記録がありません",
-          emptyDesc: "新しい旅の計画を立てて、ここに思い出を残しましょう",
-          public: "公開中",
-          private: "非公開",
-          placeholder: "タイトルを入力",
-          createdAt: "作成",
-          rename: "名前を変更",
-          makePrivate: "旅のしおりを非公開にする",
-          makePublic: "旅のしおりを公開する",
-          delete: "削除",
-          confirmDelete: "本当に削除しますか？",
-          confirmDeleteSub: "この操作は取り消せません。",
-          cancel: "キャンセル",
-          confirmDeleteBtn: "削除する",
-          untitled: "無題の旅",
-          days: "日間",
-        }
-      : {
-          authRedirect: "Login required",
-          syncing: " local plans are syncing...",
-          synced: " plans synced",
-          deleteFailed: "Failed to delete.",
-          visibilityFailed: "Failed to update visibility.",
-          renameFailed: "Failed to rename.",
-          title: "My Plans",
-          subtitleSuffix: " plans",
-          syncLocal: "Sync local",
-          create: "Create",
-          tabAll: "All",
-          tabFlagged: "Flagged",
-          loading: "Turning pages...",
-          loadingFlagged: "Looking for your favorites...",
-          emptyTitle: "No records yet",
-          emptyDesc: "Start a new journey and save your memories here",
-          public: "Public",
-          private: "Private",
-          placeholder: "Enter title",
-          createdAt: "Created",
-          rename: "Rename",
-          makePrivate: "Make private",
-          makePublic: "Make public",
-          delete: "Delete",
-          confirmDelete: "Delete this plan?",
-          confirmDeleteSub: "This action cannot be undone.",
-          cancel: "Cancel",
-          confirmDeleteBtn: "Delete",
-          untitled: "Untitled trip",
-          days: "days",
-        };
+  const t = useTranslations("app.myPlans");
+  const tError = useTranslations("errors.ui.myPlans");
+  const dateLocale = resolveRegionalLocale(language);
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -199,7 +137,7 @@ export default function MyPlansClient({
     if (localPlans.length === 0) return;
 
     setIsSyncing(true);
-    setSyncMessage(`${localPlans.length}${ui.syncing}`);
+    setSyncMessage(t("syncing", { count: localPlans.length }));
 
     let syncedCount = 0;
 
@@ -227,7 +165,7 @@ export default function MyPlansClient({
     }
 
     if (syncedCount > 0) {
-      setSyncMessage(`${syncedCount}${ui.synced}`);
+      setSyncMessage(t("synced", { count: syncedCount }));
     } else {
       setSyncMessage(null);
     }
@@ -236,7 +174,7 @@ export default function MyPlansClient({
     setIsSyncing(false);
 
     setTimeout(() => setSyncMessage(null), 3000);
-  }, []);
+  }, [addPlan, t]);
 
   const confirmDelete = (planId: string) => {
     setPlanToDelete(planId);
@@ -255,7 +193,7 @@ export default function MyPlansClient({
     if (result.success) {
       removePlan(planToDelete);
     } else {
-      alert(result.error || ui.deleteFailed);
+      alert(result.error || tError("deleteFailed"));
     }
     setIsDeleting(null);
     setPlanToDelete(null);
@@ -273,7 +211,7 @@ export default function MyPlansClient({
     if (result.success) {
       updatePlan(planId, { isPublic: nextIsPublic });
     } else {
-      alert(result.error || ui.visibilityFailed);
+      alert(result.error || tError("visibilityFailed"));
     }
     setIsUpdating(null);
   };
@@ -296,7 +234,7 @@ export default function MyPlansClient({
     if (result.success) {
       updatePlan(planId, { destination: renameValue.trim() });
     } else {
-      alert(result.error || ui.renameFailed);
+      alert(result.error || tError("renameFailed"));
     }
 
     setIsRenaming(null);
@@ -340,11 +278,11 @@ export default function MyPlansClient({
                    MY<br/>PLANS
                 </Stamp>
                 <HandwrittenText tag="h1" className="text-4xl font-bold text-stone-800">
-                  {ui.title}
+                  {t("title")}
                 </HandwrittenText>
               </div>
               <p className="text-stone-500 font-hand ml-2">
-                {language === "ja" ? `旅の記録 (${totalPlans}${ui.subtitleSuffix})` : `${totalPlans}${ui.subtitleSuffix}`}
+                {t("summary", { count: totalPlans })}
               </p>
             </div>
             <div className="flex items-center gap-3">
@@ -356,7 +294,7 @@ export default function MyPlansClient({
                   className="hidden sm:flex"
                 >
                   {isSyncing ? <FaSync className="animate-spin mr-2" /> : <FaSync className="mr-2" />}
-                  {ui.syncLocal}
+                  {t("syncLocal")}
                 </JournalButton>
               )}
               <JournalButton
@@ -365,7 +303,7 @@ export default function MyPlansClient({
                 className="font-bold shadow-md hover:rotate-1"
               >
                 <FaPlus className="mr-2" />
-                {ui.create}
+                {t("create")}
               </JournalButton>
             </div>
           </div>
@@ -382,7 +320,7 @@ export default function MyPlansClient({
                 }
               `}
             >
-              {ui.tabAll}
+              {t("tabAll")}
             </button>
             <button
               onClick={() => setFilter('flagged')}
@@ -395,7 +333,7 @@ export default function MyPlansClient({
               `}
             >
               <FaFlag className="text-sm" />
-              {ui.tabFlagged}
+              {t("tabFlagged")}
             </button>
           </div>
         </div>
@@ -414,12 +352,12 @@ export default function MyPlansClient({
         {isInitializing ? (
           <div className="text-center py-16">
             <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
-            <p className="text-stone-600 font-hand">{ui.loading}</p>
+            <p className="text-stone-600 font-hand">{t("loading")}</p>
           </div>
         ) : isLoadingFlags && filter === 'flagged' ? (
           <div className="text-center py-16">
             <FaSync className="animate-spin text-4xl text-primary mx-auto mb-4" />
-            <p className="text-stone-600 font-hand">{ui.loadingFlagged}</p>
+            <p className="text-stone-600 font-hand">{t("loadingFlagged")}</p>
           </div>
         ) : displayedPlans.length === 0 ? (
           <div className="text-center py-16 opacity-70">
@@ -427,10 +365,10 @@ export default function MyPlansClient({
                <FaPlane className="text-4xl text-stone-300" />
             </div>
             <h2 className="font-hand text-xl font-bold text-stone-500 mb-2">
-              {ui.emptyTitle}
+              {t("emptyTitle")}
             </h2>
             <p className="text-stone-400 mb-8 font-hand text-sm">
-              {ui.emptyDesc}
+              {t("emptyDesc")}
             </p>
           </div>
         ) : (
@@ -452,7 +390,7 @@ export default function MyPlansClient({
                       {plan.thumbnailUrl ? (
                         <Image
                           src={plan.thumbnailUrl}
-                          alt={plan.destination || ui.untitled}
+                          alt={plan.destination || t("untitled")}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0"
                         />
@@ -468,7 +406,7 @@ export default function MyPlansClient({
                           ? 'border-green-600 text-green-700 bg-white/90'
                           : 'border-stone-500 text-stone-600 bg-white/90'
                       }`}>
-                        {plan.isPublic ? ui.public : ui.private}
+                        {plan.isPublic ? t("public") : t("private")}
                       </div>
                     </div>
 
@@ -492,12 +430,12 @@ export default function MyPlansClient({
                               }}
                               onBlur={() => handleRename(plan.id)}
                               className="w-full font-hand text-xl font-bold bg-transparent border-b-2 border-primary focus:outline-none"
-                              placeholder={ui.placeholder}
+                              placeholder={t("placeholder")}
                             />
                           ) : (
                             <Link href={localizeHref(`/plan/id/${plan.id}`, language)} className="group/link block">
                               <h3 className="font-hand text-xl sm:text-2xl font-bold text-stone-800 group-hover/link:text-primary transition-colors mb-2 line-clamp-2">
-                                {plan.destination || ui.untitled}
+                                {plan.destination || t("untitled")}
                               </h3>
                             </Link>
                           )}
@@ -506,11 +444,11 @@ export default function MyPlansClient({
                             {plan.durationDays && (
                               <span className="flex items-center gap-1">
                                 <FaCalendarAlt className="text-stone-400" />
-                                {plan.durationDays} {ui.days}
+                                {plan.durationDays} {t("days")}
                               </span>
                             )}
                             <span className="text-stone-300 hidden sm:inline">|</span>
-                            <span>{ui.createdAt}: {formatDate(plan.createdAt)}</span>
+                            <span>{t("createdAt")}: {formatDate(plan.createdAt)}</span>
                           </div>
                         </div>
 
@@ -543,7 +481,7 @@ export default function MyPlansClient({
                                   onClick={() => handleStartRename(plan.id, plan.destination || '')}
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                 >
-                                  <FaEdit /> {ui.rename}
+                                  <FaEdit /> {t("rename")}
                                 </button>
                                 <button
                                   onClick={() => {
@@ -553,14 +491,14 @@ export default function MyPlansClient({
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-stone-700 hover:bg-stone-50 transition-colors"
                                 >
                                   {plan.isPublic ? <FaLock /> : <FaGlobe />}
-                                  {plan.isPublic ? ui.makePrivate : ui.makePublic}
+                                  {plan.isPublic ? t("makePrivate") : t("makePublic")}
                                 </button>
                                 <div className="border-t border-stone-100 border-dashed my-1" />
                                 <button
                                   onClick={() => confirmDelete(plan.id)}
                                   className="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
                                 >
-                                  <FaTrash /> {ui.delete}
+                                  <FaTrash /> {t("delete")}
                                 </button>
                               </div>
                             )}
@@ -593,17 +531,17 @@ export default function MyPlansClient({
                      <FaTrash className="text-4xl text-red-400 mx-auto" />
                   </div>
                   <HandwrittenText className="text-xl font-bold text-stone-800 mb-2">
-                     {ui.confirmDelete}
+                     {t("confirmDelete")}
                   </HandwrittenText>
                   <p className="text-sm text-stone-500 mb-6 font-hand">
-                     {ui.confirmDeleteSub}
+                     {t("confirmDeleteSub")}
                   </p>
                   <div className="flex gap-3">
                      <JournalButton variant="ghost" onClick={() => setShowDeleteModal(false)} className="flex-1">
-                        {ui.cancel}
+                        {t("cancel")}
                      </JournalButton>
                      <JournalButton variant="primary" onClick={handleDelete} className="flex-1 bg-red-600 border-red-800 text-white hover:bg-red-700">
-                        {ui.confirmDeleteBtn}
+                        {t("confirmDeleteBtn")}
                      </JournalButton>
                   </div>
                </JournalSheet>

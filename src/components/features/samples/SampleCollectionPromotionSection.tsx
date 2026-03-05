@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { FaBookOpen, FaArrowRight } from 'react-icons/fa';
 import { DEFAULT_LANGUAGE, getLanguageFromPathname, localizePath } from '@/lib/i18n/locales';
 import { JournalSheet, Tape, HandwrittenText } from '@/components/ui/journal';
@@ -9,6 +10,7 @@ import { JournalSheet, Tape, HandwrittenText } from '@/components/ui/journal';
 export default function SampleCollectionPromotionSection() {
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const t = useTranslations("components.features.samples.collectionPromotion");
 
   return (
     <div className="w-full max-w-3xl mx-auto mt-16 mb-20 px-4">
@@ -23,17 +25,13 @@ export default function SampleCollectionPromotionSection() {
           <div className="space-y-2">
             <p className="text-xs font-bold tracking-widest text-stone-400 uppercase">EXPLORE MORE PLANS</p>
             <HandwrittenText tag="h2" className="text-2xl md:text-3xl font-bold text-stone-800">
-              {language === "ja" ? "他のプランも見てみませんか？" : "Want to explore more plans?"}
+              {t("title")}
             </HandwrittenText>
           </div>
 
           <p className="text-stone-600 font-hand leading-relaxed max-w-md">
-            {language === "ja"
-              ? "Tabideaには他にもたくさんの素敵な旅行プランがあります。"
-              : "Tabidea has many more inspiring itineraries."}<br />
-            {language === "ja"
-              ? "次の旅行のインスピレーションを見つけましょう。"
-              : "Find ideas for your next adventure."}
+            {t("leadLine1")}<br />
+            {t("leadLine2")}
           </p>
 
           <Link
@@ -41,7 +39,7 @@ export default function SampleCollectionPromotionSection() {
             className="group relative inline-flex items-center gap-3 px-8 py-4 bg-stone-800 text-white rounded-full font-bold shadow-md hover:bg-stone-700 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
             <span className="font-serif">
-              {language === "ja" ? "サンプルプラン集を見る" : "View sample plans"}
+              {t("cta")}
             </span>
             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
           </Link>

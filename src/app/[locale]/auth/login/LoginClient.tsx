@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaMapMarkerAlt, FaPlane, FaPassport, FaArrowLeft } from 'react-icons/fa';
+import { useTranslations } from 'next-intl';
 
 import { localizeHref, resolveLanguageFromPathname } from '@/lib/i18n/navigation';
 import { useAuth } from '@/context/AuthContext';
@@ -14,46 +15,8 @@ export default function LoginClient() {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const language = resolveLanguageFromPathname(pathname);
-  const ui =
-    language === "ja"
-      ? {
-          title: "ログイン",
-          subtitle1: "あなたの旅の思い出を",
-          subtitle2: "大切に保存しましょう",
-          signinError: "ログインに失敗しました。もう一度お試しください。",
-          restore: "ログイン後、入力内容が復元されます。",
-          loginWithGoogle: "Googleでログイン",
-          benefitsTitle: "ログインするとできること",
-          savePlans: "プランの保存",
-          sharePlans: "プランの共有",
-          viewAnytime: "いつでも閲覧",
-          multiDevice: "複数デバイス対応",
-          termsPrefix: "ログインすることで、",
-          terms: "利用規約",
-          and: "と",
-          privacy: "プライバシーポリシー",
-          agreeSuffix: "に同意したものとみなされます。",
-          back: "戻る",
-        }
-      : {
-          title: "Log in",
-          subtitle1: "Keep your travel memories",
-          subtitle2: "saved in one place",
-          signinError: "Failed to log in. Please try again.",
-          restore: "Your input will be restored after login.",
-          loginWithGoogle: "Continue with Google",
-          benefitsTitle: "With an account you can",
-          savePlans: "Save plans",
-          sharePlans: "Share plans",
-          viewAnytime: "View anytime",
-          multiDevice: "Use across devices",
-          termsPrefix: "By logging in, you agree to the ",
-          terms: "Terms of Service",
-          and: " and ",
-          privacy: "Privacy Policy",
-          agreeSuffix: ".",
-          back: "Back",
-        };
+  const t = useTranslations("app.auth.login");
+  const tError = useTranslations("errors.ui.auth.login");
   const { signIn, isLoading, isAuthenticated } = useAuth();
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -85,7 +48,7 @@ export default function LoginClient() {
       await signIn(provider, { queryParams });
     } catch (err) {
       console.error('Sign in error:', err);
-      setError(ui.signinError);
+      setError(tError("signinFailed"));
       setIsSigningIn(false);
     }
   };
@@ -113,12 +76,12 @@ export default function LoginClient() {
               <FaMapMarkerAlt className="text-2xl text-[#e67e22]" />
             </div>
             <h1 className="font-serif text-3xl font-bold text-stone-800 mb-2">
-              {ui.title}
+              {t("title")}
             </h1>
             <p className="text-stone-500 text-sm font-hand">
-              {ui.subtitle1}
+              {t("subtitle1")}
               <br />
-              {ui.subtitle2}
+              {t("subtitle2")}
             </p>
           </div>
 
@@ -146,7 +109,7 @@ export default function LoginClient() {
                   />
                 </svg>
                 <p className="text-sm text-blue-700">
-                  {ui.restore}
+                  {t("restore")}
                 </p>
               </div>
             </div>
@@ -178,7 +141,7 @@ export default function LoginClient() {
                 />
               </svg>
               <span className="text-stone-700 font-bold group-hover:text-[#e67e22] transition-colors">
-                {ui.loginWithGoogle}
+                {t("loginWithGoogle")}
               </span>
             </button>
 
@@ -198,24 +161,24 @@ export default function LoginClient() {
           {/* Benefits section */}
           <div className="mt-8 pt-6 border-t border-dashed border-stone-200">
             <p className="text-xs text-stone-400 text-center mb-4">
-              {ui.benefitsTitle}
+              {t("benefitsTitle")}
             </p>
             <div className="grid grid-cols-2 gap-3 text-xs text-stone-600">
               <div className="flex items-center gap-2 bg-[#e67e22]/5 p-2 rounded-lg">
                 <span className="text-[#e67e22]">✓</span>
-                {ui.savePlans}
+                {t("savePlans")}
               </div>
               <div className="flex items-center gap-2 bg-[#27ae60]/5 p-2 rounded-lg">
                 <span className="text-[#27ae60]">✓</span>
-                {ui.sharePlans}
+                {t("sharePlans")}
               </div>
               <div className="flex items-center gap-2 bg-[#e67e22]/5 p-2 rounded-lg">
                 <span className="text-[#e67e22]">✓</span>
-                {ui.viewAnytime}
+                {t("viewAnytime")}
               </div>
               <div className="flex items-center gap-2 bg-[#27ae60]/5 p-2 rounded-lg">
                 <span className="text-[#27ae60]">✓</span>
-                {ui.multiDevice}
+                {t("multiDevice")}
               </div>
             </div>
           </div>
@@ -223,15 +186,15 @@ export default function LoginClient() {
           {/* Terms */}
           <div className="mt-6 pt-4 border-t border-dashed border-stone-200">
             <p className="text-xs text-stone-400 text-center">
-              {ui.termsPrefix}
+              {t("termsPrefix")}
               <Link href={localizeHref("/terms", language)} className="text-[#e67e22] hover:underline">
-                {ui.terms}
+                {t("terms")}
               </Link>
-              {ui.and}
+              {t("and")}
               <Link href={localizeHref("/privacy", language)} className="text-[#e67e22] hover:underline">
-                {ui.privacy}
+                {t("privacy")}
               </Link>
-              {ui.agreeSuffix}
+              {t("agreeSuffix")}
             </p>
           </div>
         </div>
@@ -243,7 +206,7 @@ export default function LoginClient() {
             className="inline-flex items-center gap-2 text-stone-500 hover:text-[#e67e22] text-sm transition-colors"
           >
             <FaArrowLeft className="text-xs" />
-            {ui.back}
+            {t("back")}
           </button>
         </div>
       </div>

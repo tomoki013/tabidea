@@ -1,0 +1,11 @@
+{
+  "app": {
+    "info": {
+      "travelInfoDestination": {
+        "loading": {
+          "message": "Loading travel information..."
+        }
+      }
+    }
+  }
+}

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import {
   Globe,
   Shield,
@@ -56,6 +57,7 @@ export default function CategoryCard({
 }: CategoryCardProps) {
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const t = useTranslations("components.features.travelInfo.categoryCard");
   const info = getCategoryInfo(category, language);
   const IconComponent = IconComponents[info.icon];
 
@@ -81,11 +83,10 @@ export default function CategoryCard({
         }
       `}
       aria-pressed={selected}
-      aria-label={
-        language === "ja"
-          ? `${info.label}を${selected ? '選択解除' : '選択'}`
-          : `${selected ? 'Unselect' : 'Select'} ${info.label}`
-      }
+      aria-label={t("ariaLabel", {
+        label: info.label,
+        action: selected ? t("action.unselect") : t("action.select"),
+      })}
     >
       {/* 実際に表示するチェックマーク（右上） */}
       <motion.div

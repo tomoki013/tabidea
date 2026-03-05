@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaCalendarAlt, FaMapMarkerAlt, FaHeart, FaBookOpen } from 'react-icons/fa';
 import { PublicShioriListItem } from '@/types';
-import { localizePath } from '@/lib/i18n/locales';
+import { localizePath, resolveRegionalLocale } from '@/lib/i18n/locales';
 import { Tape } from '@/components/ui/journal';
 
 interface PublicPlanCardProps {
@@ -10,15 +10,34 @@ interface PublicPlanCardProps {
   language: 'ja' | 'en';
 }
 
+const COPY_BY_LANGUAGE = {
+  ja: {
+    destinationTbd: '未定の目的地',
+    durationTbd: '期間未定',
+    entries: '記録',
+    likes: 'いいね',
+  },
+  en: {
+    destinationTbd: 'Destination TBD',
+    durationTbd: 'Duration TBD',
+    entries: 'Entries',
+    likes: 'Likes',
+  },
+} as const;
+
+const formatDurationByLanguage: Record<'ja' | 'en', (days: number) => string> = {
+  ja: (days) => `${Math.max(0, days - 1)}泊${days}日`,
+  en: (days) => `${days} day(s)`,
+};
+
 export default function PublicPlanCard({ plan, language }: PublicPlanCardProps) {
-  const destination = plan.destination || (language === 'ja' ? '未定の目的地' : 'Destination TBD');
+  const copy = COPY_BY_LANGUAGE[language];
+  const destination = plan.destination || copy.destinationTbd;
 
   const days = plan.durationDays || 0;
-  const nights = Math.max(0, days - 1);
-  const duration =
-    days > 0
-      ? (language === 'ja' ? `${nights}泊${days}日` : `${days} day(s)`)
-      : (language === 'ja' ? '期間未定' : 'Duration TBD');
+  const duration = days > 0
+    ? formatDurationByLanguage[language](days)
+    : copy.durationTbd;
 
   return (
     <Link href={localizePath(`/shiori/${plan.slug}`, language)} className="block group h-full">
@@ -61,17 +80,17 @@ export default function PublicPlanCard({ plan, language }: PublicPlanCardProps) 
               {duration}
             </span>
             <span>
-              {new Date(plan.createdAt).toLocaleDateString(language === 'ja' ? 'ja-JP' : 'en-US')}
+              {new Date(plan.createdAt).toLocaleDateString(resolveRegionalLocale(language))}
             </span>
           </div>
           <div className="mt-3 flex items-center gap-2 text-xs text-stone-500">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaBookOpen className="text-stone-400" />
-              {language === 'ja' ? '記録' : 'Entries'} {plan.entriesCount}
+              {copy.entries} {plan.entriesCount}
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaHeart className="text-rose-400" />
-              {language === 'ja' ? 'いいね' : 'Likes'} {plan.likesCount}
+              {copy.likes} {plan.likesCount}
             </span>
           </div>
         </div>

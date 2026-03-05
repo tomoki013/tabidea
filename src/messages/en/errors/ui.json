@@ -1,0 +1,30 @@
+{
+  "errors": {
+    "ui": {
+      "auth": {
+        "login": {
+          "signinFailed": "Failed to log in. Please try again."
+        }
+      },
+      "myPlans": {
+        "deleteFailed": "Failed to delete.",
+        "visibilityFailed": "Failed to update visibility.",
+        "renameFailed": "Failed to rename."
+      },
+      "plan": {
+        "detailGenerationFailed": "An error occurred while generating detailed plans.",
+        "saveFailed": "Failed to save the plan.",
+        "outlineFailed": "Failed to generate the plan outline.",
+        "generic": "An error occurred.",
+        "timeout": "A network error or server timeout occurred.",
+        "sampleNotFound": "The specified sample plan was not found."
+      },
+      "travelInfoDestination": {
+        "title": "Something went wrong",
+        "description": "A problem occurred while loading travel information.",
+        "retry": "Retry",
+        "backToTop": "Back to top"
+      }
+    }
+  }
+}

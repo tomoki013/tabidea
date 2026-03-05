@@ -106,6 +106,7 @@
         "headerDestinationFallback": "Travel Note",
         "headerSummary": "{days} day(s) / {entries} entries / {visibility}",
         "backToList": "Back to community travel notes",
+        "dayLabel": "Day {day}",
         "dayTitleFallback": "Trip record",
         "locationFallback": "No location set",
         "visitedPlaceLabel": "Visited place",
