@@ -1,5 +1,8 @@
 import {
-  DEFAULT_REGION_BY_LANGUAGE,
+  DEFAULT_LANGUAGE as GENERATED_DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES as GENERATED_SUPPORTED_LANGUAGES,
+} from "@/lib/i18n/generated-locales";
+import {
   SUPPORTED_REGIONS,
   getDefaultHomeBaseCityForRegion,
   getDefaultRegionForLanguage,
@@ -7,18 +10,16 @@ import {
   type RegionCode,
 } from "@/lib/i18n/regions";
 
-export const SUPPORTED_LANGUAGES = ["ja", "en"] as const;
-export const SUPPORTED_REGIONAL_LOCALES = ["ja-JP", "en-US"] as const;
+export const SUPPORTED_LANGUAGES = GENERATED_SUPPORTED_LANGUAGES;
+export type LanguageCode = (typeof GENERATED_SUPPORTED_LANGUAGES)[number];
+export type RegionalLocale = string;
 
-export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number];
-export type RegionalLocale = (typeof SUPPORTED_REGIONAL_LOCALES)[number];
-
-export const DEFAULT_LANGUAGE: LanguageCode = "ja";
-export const DEFAULT_REGION: RegionCode = DEFAULT_REGION_BY_LANGUAGE[DEFAULT_LANGUAGE];
+export const DEFAULT_LANGUAGE: LanguageCode = GENERATED_DEFAULT_LANGUAGE as LanguageCode;
+export const DEFAULT_REGION: RegionCode = getDefaultRegionForLanguage(DEFAULT_LANGUAGE);
 export const DEFAULT_REGIONAL_LOCALE: RegionalLocale = "ja-JP";
 
 const REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION: Record<
-  LanguageCode,
+  string,
   Partial<Record<RegionCode, RegionalLocale>>
 > = {
   en: {
@@ -29,17 +30,71 @@ const REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION: Record<
   },
 };
 
-const OPEN_GRAPH_LOCALE_BY_LANGUAGE: Record<LanguageCode, string> = {
+const OPEN_GRAPH_LOCALE_BY_LANGUAGE: Record<string, string> = {
   en: "en_US",
   ja: "ja_JP",
 };
+
+export const SUPPORTED_REGIONAL_LOCALES = Object.freeze(
+  Array.from(
+    new Set(
+      Object.values(REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION).flatMap((regionMap) =>
+        Object.values(regionMap)
+      )
+    )
+  )
+) as readonly string[];
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function resolveSupportedLanguage(value: string): LanguageCode | null {
+  const normalized = value.trim().toLowerCase();
+  for (const supportedLanguage of SUPPORTED_LANGUAGES) {
+    if (supportedLanguage.toLowerCase() === normalized) {
+      return supportedLanguage;
+    }
+  }
+  return null;
+}
+
+function resolveFromLanguageTag(tag: string): LanguageCode | null {
+  const normalizedTag = tag.trim().toLowerCase();
+  const exact = resolveSupportedLanguage(normalizedTag);
+  if (exact) {
+    return exact;
+  }
+
+  const baseLanguage = normalizedTag.split("-")[0];
+  if (!baseLanguage) {
+    return null;
+  }
+
+  const baseMatch = resolveSupportedLanguage(baseLanguage);
+  if (baseMatch) {
+    return baseMatch;
+  }
+
+  for (const supportedLanguage of SUPPORTED_LANGUAGES) {
+    if (supportedLanguage.toLowerCase().startsWith(`${baseLanguage}-`)) {
+      return supportedLanguage;
+    }
+  }
+
+  return null;
+}
+
+function isIsoRegion(value: string): boolean {
+  return /^[A-Z]{2}$/.test(value);
+}
 
 export function isLanguageCode(value: string): value is LanguageCode {
   return SUPPORTED_LANGUAGES.includes(value as LanguageCode);
 }
 
 export function isRegionalLocale(value: string): value is RegionalLocale {
-  return SUPPORTED_REGIONAL_LOCALES.includes(value as RegionalLocale);
+  return /^[a-z]{2,3}(?:-[A-Z]{2})?$/.test(value);
 }
 
 export function resolveRegionalLocale(
@@ -47,17 +102,76 @@ export function resolveRegionalLocale(
   region?: RegionCode
 ): RegionalLocale {
   const resolvedRegion = region ?? getDefaultRegionForLanguage(language);
-  return (
-    REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION[language][resolvedRegion] ??
-    REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION[language][
-      getDefaultRegionForLanguage(language)
-    ] ??
-    DEFAULT_REGIONAL_LOCALE
-  );
+  const languageMap = REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION[language];
+
+  const mapped =
+    languageMap?.[resolvedRegion] ??
+    languageMap?.[getDefaultRegionForLanguage(language)];
+  if (mapped) {
+    return mapped;
+  }
+
+  if (/^[a-z]{2,3}-[A-Z]{2}$/.test(language)) {
+    return language;
+  }
+
+  const regionForLocale = isIsoRegion(resolvedRegion) ? resolvedRegion : "US";
+  return `${language}-${regionForLocale}`;
 }
 
 export function resolveOpenGraphLocale(language: LanguageCode): string {
-  return OPEN_GRAPH_LOCALE_BY_LANGUAGE[language];
+  const mapped = OPEN_GRAPH_LOCALE_BY_LANGUAGE[language];
+  if (mapped) {
+    return mapped;
+  }
+
+  const regionalLocale = resolveRegionalLocale(language);
+  const [lang, region] = regionalLocale.split("-");
+  if (lang && region) {
+    return `${lang}_${region}`;
+  }
+
+  return "en_US";
+}
+
+export function resolveLanguageFromAcceptLanguage(
+  acceptLanguage: string | null | undefined
+): LanguageCode {
+  if (!acceptLanguage) {
+    return DEFAULT_LANGUAGE;
+  }
+
+  const languageTags = acceptLanguage
+    .split(",")
+    .map((item) => item.split(";")[0]?.trim())
+    .filter((item): item is string => Boolean(item));
+
+  for (const languageTag of languageTags) {
+    const matched = resolveFromLanguageTag(languageTag);
+    if (matched) {
+      return matched;
+    }
+  }
+
+  return DEFAULT_LANGUAGE;
+}
+
+export function resolveRegionFromGeoHeaders(params: {
+  vercelCountry?: string | null;
+  cloudflareCountry?: string | null;
+  fallbackLanguage?: LanguageCode;
+}): RegionCode {
+  const fallbackLanguage = params.fallbackLanguage ?? DEFAULT_LANGUAGE;
+  const candidates = [params.vercelCountry, params.cloudflareCountry];
+
+  for (const candidate of candidates) {
+    const normalized = candidate?.trim().toUpperCase();
+    if (normalized && isRegionCode(normalized)) {
+      return normalized;
+    }
+  }
+
+  return getDefaultRegionForLanguage(fallbackLanguage);
 }
 
 export function getLanguageFromPathname(pathname: string): LanguageCode | null {
@@ -68,7 +182,7 @@ export function getLanguageFromPathname(pathname: string): LanguageCode | null {
     return null;
   }
 
-  return isLanguageCode(candidate) ? candidate : null;
+  return resolveSupportedLanguage(candidate);
 }
 
 export function stripLanguagePrefix(pathname: string): string {
@@ -77,7 +191,10 @@ export function stripLanguagePrefix(pathname: string): string {
     return pathname || "/";
   }
 
-  const withoutPrefix = pathname.replace(new RegExp(`^/${language}`), "");
+  const withoutPrefix = pathname.replace(
+    new RegExp(`^/${escapeRegExp(language)}`),
+    ""
+  );
   return withoutPrefix.length > 0 ? withoutPrefix : "/";
 }
 

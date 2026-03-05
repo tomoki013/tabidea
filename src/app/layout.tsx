@@ -13,7 +13,7 @@ import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
 import { FlagsProvider } from "@/context/FlagsContext";
-import { getRequestLanguage } from "@/lib/i18n/server";
+import { getRequestLanguage, getRequestRegion } from "@/lib/i18n/server";
 import { getMessages } from "@/lib/i18n/messages";
 import {
   resolveRegionalLocale,
@@ -101,7 +101,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const language = await getRequestLanguage();
-  const regionalLocale = resolveRegionalLocale(language);
+  const region = await getRequestRegion(language);
+  const regionalLocale = resolveRegionalLocale(language, region);
   const messages = getMessages(language);
 
   return (

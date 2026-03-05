@@ -76,13 +76,97 @@
     "en": "English"
   },
   "settings": {
+    "stampLine1": "SET",
+    "stampLine2": "TINGS",
+    "close": "閉じる",
+    "save": "設定を保存",
+    "saving": "保存中...",
+    "languageJa": "日本語",
+    "languageEn": "English",
+    "tabs": {
+      "account": "アカウント",
+      "plan": "プラン管理",
+      "ai": "AI設定"
+    },
+    "account": {
+      "title": "アカウント設定",
+      "logout": "ログアウト",
+      "userFallback": "ユーザー",
+      "userInitialFallback": "U"
+    },
+    "theme": {
+      "title": "表示テーマ",
+      "description": "画面の見た目をライト・ダーク・システム連動から選択できます。",
+      "light": "ライト",
+      "dark": "ダーク",
+      "system": "システム"
+    },
     "languageAndRegion": "言語と地域",
     "languageDescription": "言語を切り替えると、その言語の推奨地域が初期値として設定されます。",
     "displayLanguage": "表示言語",
     "region": "地域",
+    "regionSearchPlaceholder": "地域を検索（国名・コード）",
+    "regionSearchNoResults": "一致する地域が見つかりません",
+    "regionSearchResultsCount": "{count}件表示中",
     "homeBaseCity": "出発・帰着都市",
     "homeBaseCityPlaceholder": "例: 東京 / New York",
+    "homeBaseCitySearchPlaceholder": "都市を検索",
+    "homeBaseCitySearchNoResults": "一致する都市が見つかりません",
+    "homeBaseCitySearchResultsCount": "{count}件表示中",
+    "homeBaseCityRequestPrefix": "候補にない都市は",
+    "homeBaseCityRequestLink": "お問い合わせフォーム",
+    "homeBaseCityRequestSuffix": "から追加リクエストしてください。",
     "languageAndRouteUsage": "AIは指定言語でプランを出力し、指定した地域・都市を出発地と帰着地として利用します。",
-    "aiOutputAndRoutePolicy": "AIプラン生成では、設定した言語で出力し、ホーム都市を起点に往復する旅程になるよう優先して生成します。"
+    "aiOutputAndRoutePolicy": "AIプラン生成では、設定した言語で出力し、ホーム都市を起点に往復する旅程になるよう優先して生成します。",
+    "dangerZone": {
+      "title": "危険なエリア",
+      "openDeleteButton": "アカウントを削除する",
+      "deleteConfirmTitle": "本当に削除しますか？",
+      "deleteConfirmLine1": "復元することはできません。",
+      "deleteConfirmLine2": "確認のため「{keyword}」と入力してください。",
+      "deleteConfirmKeyword": "削除する",
+      "cancel": "キャンセル",
+      "deleteAction": "削除実行"
+    },
+    "plan": {
+      "title": "プラン管理",
+      "currentPlanTitle": "現在のプラン",
+      "adminBadge": "管理者",
+      "freeLabel": "Free",
+      "nextRenewal": "次回更新:",
+      "ticketRemaining": "チケット残数",
+      "ticketCountValue": "{count}枚",
+      "adminAccount": "管理者アカウントです",
+      "loading": "読み込み中...",
+      "manageSubscription": "プランを管理・解約",
+      "upgrade": "アップグレードする",
+      "usageTitle": "利用状況",
+      "planGeneration": "プラン生成数",
+      "travelInfo": "渡航情報取得",
+      "limitReset": "Limit",
+      "unlimited": "無制限"
+    },
+    "ai": {
+      "title": "AI設定",
+      "customInstructionsLabel": "カスタム指示（制約事項）",
+      "customInstructionsHintTitle": "ヒント",
+      "customInstructionsHintBody": "「美術館は含めないで」「移動少なめで」など、AIに守らせたい条件を書いてください。",
+      "customInstructionsPlaceholder": "ここに指示を入力...",
+      "travelStyleLabel": "旅のスタイル",
+      "travelStyleLocked": "Tabidea Pro以上限定",
+      "travelStyleLockedPlaceholder": "アップグレードして利用可能",
+      "travelStylePlaceholder": "歴史的な場所が好き、朝はゆっくり..."
+    },
+    "errors": {
+      "generic": "エラーが発生しました",
+      "saveFailed": "保存に失敗しました",
+      "deleteAccountFailed": "アカウントの削除に失敗しました",
+      "noSubscription": "サブスクリプション情報が見つかりません。まずプランにご加入ください。",
+      "portalNotConfigured": "カスタマーポータルの設定が完了していません。管理者にお問い合わせください。",
+      "portalLoadFailed": "ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。"
+    },
+    "themeLight": "ライト",
+    "themeDark": "ダーク",
+    "themeSystem": "システム"
   }
 }

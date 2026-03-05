@@ -3,12 +3,17 @@
   "version": "0.4.66",
   "private": true,
   "scripts": {
+    "predev": "pnpm i18n:sync-locales",
     "dev": "next dev",
+    "prebuild": "pnpm i18n:sync-locales",
     "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint",
+    "i18n:sync-locales": "pnpm exec tsx scripts/i18n/generate-locales.ts",
+    "prei18n:check": "pnpm i18n:sync-locales",
     "i18n:check": "pnpm exec tsx scripts/i18n/check-messages.ts",
+    "pretest": "pnpm i18n:sync-locales",
     "test": "pnpm i18n:check && vitest",
     "docs:catalog": "pnpm exec tsx src/scripts/generate-doc-file-catalog.ts"
   },

@@ -23,14 +23,34 @@ vi.mock('next-themes', () => ({
 vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => {
     const dictionary: Record<string, string> = {
+      'tabs.account': 'アカウント',
+      'tabs.plan': 'プラン管理',
+      'tabs.ai': 'AI設定',
+      'account.title': 'アカウント設定',
+      'account.logout': 'ログアウト',
+      'themeLight': 'ライト',
+      'themeDark': 'ダーク',
+      'themeSystem': 'システム',
       languageAndRegion: '言語と地域',
       languageDescription: '言語を切り替えると、その言語の推奨地域が初期値として設定されます。',
       displayLanguage: '表示言語',
       region: '地域',
       homeBaseCity: '出発・帰着都市',
       homeBaseCityPlaceholder: '例: 東京 / New York',
+      homeBaseCitySearchPlaceholder: 'Search city',
+      homeBaseCitySearchNoResults: 'No cities found',
+      homeBaseCitySearchResultsCount: '{count} results',
+      homeBaseCityRequestPrefix: 'If your city is not listed,',
+      homeBaseCityRequestLink: 'Contact form',
+      homeBaseCityRequestSuffix: 'request an addition.',
       languageAndRouteUsage: 'AIは指定言語で出力し、指定した地域・都市を出発地と帰着地に利用します。',
       aiOutputAndRoutePolicy: 'AIプラン生成は表示言語で出力され、ホーム都市を起点に往復する旅程を優先します。',
+      'ai.travelStyleLabel': '旅のスタイル',
+      'ai.travelStylePlaceholder': '歴史的な場所が好き、朝はゆっくり...',
+      save: '設定を保存',
+      regionSearchPlaceholder: 'Search region by name or code',
+      regionSearchNoResults: 'No regions found',
+      regionSearchResultsCount: '{count} results',
     };
     return dictionary[key] ?? key;
   },
@@ -183,5 +203,71 @@ describe('SettingsModal', () => {
         homeBaseCity: 'New York',
       });
     });
+  });
+
+  it('updates region by search selection and saves matching home base city', async () => {
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    const regionTrigger = await screen.findByRole('button', { name: /United States \(US\)/ });
+    fireEvent.click(regionTrigger);
+
+    const searchInput = await screen.findByPlaceholderText('Search region by name or code');
+    fireEvent.change(searchInput, { target: { value: 'France' } });
+
+    const franceOption = await screen.findByRole('option', { name: 'France (0033)' });
+    fireEvent.click(franceOption);
+
+    fireEvent.click(screen.getByText('AI設定'));
+
+    const saveButton = screen.getByText('設定を保存');
+    fireEvent.click(saveButton);
+
+    await waitFor(() => {
+      expect(userSettingsActions.updateUserSettings).toHaveBeenCalledWith({
+        customInstructions: 'Original instructions',
+        travelStyle: 'Original style',
+        preferredLanguage: 'en',
+        preferredRegion: '0033',
+        homeBaseCity: 'Paris',
+      });
+    });
+  });
+
+  it('shows no-result message when region search has no match', async () => {
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    const regionTrigger = await screen.findByRole('button', { name: /United States \(US\)/ });
+    fireEvent.click(regionTrigger);
+
+    const searchInput = await screen.findByPlaceholderText('Search region by name or code');
+    fireEvent.change(searchInput, { target: { value: 'zzzzzzzz' } });
+
+    await waitFor(() => {
+      expect(screen.getByText('No regions found')).toBeDefined();
+    });
+  });
+
+  it('shows no-result message and contact link when city search has no match', async () => {
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    const homeBaseLabel = await screen.findByText('出発・帰着都市');
+    const homeBaseField = homeBaseLabel.closest('label');
+    expect(homeBaseField).toBeTruthy();
+    const cityTrigger = homeBaseField?.querySelector('button');
+    expect(cityTrigger).toBeTruthy();
+    if (!cityTrigger) {
+      throw new Error('city trigger not found');
+    }
+    fireEvent.click(cityTrigger);
+
+    const searchInput = await screen.findByPlaceholderText('Search city');
+    fireEvent.change(searchInput, { target: { value: 'zzzzzzzz' } });
+
+    await waitFor(() => {
+      expect(screen.getByText('No cities found')).toBeDefined();
+    });
+
+    const contactLink = screen.getByRole('link', { name: 'Contact form' });
+    expect(contactLink.getAttribute('href')).toBe('/ja/contact');
   });
 });

@@ -11,6 +11,10 @@
 
 ### 2026-03-05
 
+- `local` feat(i18n): ロケール定義を翻訳ディレクトリ連動に自動化。`scripts/i18n/generate-locales.ts` を追加し、`src/messages/*` から `src/lib/i18n/generated-locales.ts` を生成する運用へ変更。`predev` / `prebuild` / `pretest` / `prei18n:check` で自動同期し、`src/lib/i18n/locales.ts`・`src/lib/i18n/messages.ts` の言語固定定義を解消
+- `local` feat(i18n,locale): 言語・地域の自動判定を強化。`proxy` で `Accept-Language` と geo ヘッダー（`x-vercel-ip-country` / `cf-ipcountry`）を初回判定に使用し、`tabidea-language` / `tabidea-region` cookie と `x-tabidea-language` / `x-tabidea-region` ヘッダーを同期。ログイン時は `public.users.metadata` の `preferredLanguage` / `preferredRegion` を優先し、未設定時のみ自動保存してクロスデバイスでも設定を維持。併せて `scripts/i18n/check-messages.ts` をロケール自動検出化し、`SettingsModal` の主要固定文言を `settings` 辞書キーへ移行
+- `local` feat(ui,i18n): 設定モーダルの「出発・帰着都市」を自由入力から国地域連動の検索付きプルダウンへ変更。選択中の国地域に属する都市のみ表示し、日本は47都道府県相当、米国は50州+DC相当で1都市ずつ収録。その他地域は初期は1都市（首都ベース/暫定値）を表示し、候補にない都市はお問い合わせフォームへ追加依頼できる導線（常設+検索0件時）を追加。`src/lib/i18n/home-base-cities.ts` / `src/lib/i18n/home-base-city-search.ts` / `src/components/common/HomeBaseCitySearchSelect.tsx` を新設し、`SettingsModal` と関連テスト・ja/en辞書を更新
+- `local` perf(ui,i18n): 設定モーダルの「地域」選択を検索可能な軽量コンボボックスへ刷新。`src/lib/i18n/region-search.ts` を追加し、前方一致優先 + 部分一致のスコアリング、言語別インデックスキャッシュ、初期20件/検索40件の表示上限で描画負荷を抑制。`ja/en` の settings 辞書に検索UI文言を追加し、`SettingsModal` テストと地域検索ユーティリティテストを拡充
 - `local` fix(i18n,ui): 言語切り替えドロップダウンのモバイル表示で、左端にはみ出すケースをビューポート内クランプで修正。`src/lib/i18n/regions.ts` を新設し、外務省オープンデータ国コード準拠の国・地域リスト（設定画面向け208件: `JP` + MOFA 207）を導入。設定画面の地域選択は新マスタ参照に切り替え、地域変更時の `homeBaseCity` 自動入力を全地域対応（首都オーバーライド + フォールバック）へ拡張
 - `local` feat(ui,ai): ダークモード配色をブラウン基調へ再設計（グローバルトークン+互換レイヤー更新）。言語スイッチをドロップダウンUIへ刷新し、設定に出発/帰着都市（`homeBaseCity`）を追加。AIプラン生成は設定言語で出力し、指定都市を起点に往復する制約をプロンプトへ適用
 - `local` feat(i18n): 翻訳メッセージ管理を `src/messages/{ja,en}/**.json` の分割構成へ移行し、`src/lib/i18n/load-messages.ts` による再帰マージ読み込みを導入。`pnpm i18n:check`（`scripts/i18n/check-messages.ts`）を追加して ja/en キー不整合をCIで失敗させる運用へ変更

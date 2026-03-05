@@ -76,13 +76,97 @@
     "en": "English"
   },
   "settings": {
+    "stampLine1": "SET",
+    "stampLine2": "TINGS",
+    "close": "Close",
+    "save": "Save settings",
+    "saving": "Saving...",
+    "languageJa": "Japanese",
+    "languageEn": "English",
+    "tabs": {
+      "account": "Account",
+      "plan": "Plan",
+      "ai": "AI"
+    },
+    "account": {
+      "title": "Account settings",
+      "logout": "Log out",
+      "userFallback": "User",
+      "userInitialFallback": "U"
+    },
+    "theme": {
+      "title": "Display theme",
+      "description": "Choose your appearance from light, dark, or system.",
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    },
     "languageAndRegion": "Language & region",
     "languageDescription": "When you switch language, the recommended region for that language is set as default.",
     "displayLanguage": "Display language",
     "region": "Region",
+    "regionSearchPlaceholder": "Search region by name or code",
+    "regionSearchNoResults": "No matching regions found",
+    "regionSearchResultsCount": "{count} results shown",
     "homeBaseCity": "Home departure/return city",
     "homeBaseCityPlaceholder": "Example: Tokyo / New York",
+    "homeBaseCitySearchPlaceholder": "Search city",
+    "homeBaseCitySearchNoResults": "No matching cities found",
+    "homeBaseCitySearchResultsCount": "{count} results shown",
+    "homeBaseCityRequestPrefix": "If your city is not listed,",
+    "homeBaseCityRequestLink": "contact us",
+    "homeBaseCityRequestSuffix": "to request an addition.",
     "languageAndRouteUsage": "AI outputs plans in your selected language and uses the selected region/city as both departure and return points.",
-    "aiOutputAndRoutePolicy": "AI plan generation prioritizes your selected output language and builds round-trip itineraries from your home city."
+    "aiOutputAndRoutePolicy": "AI plan generation prioritizes your selected output language and builds round-trip itineraries from your home city.",
+    "dangerZone": {
+      "title": "Danger zone",
+      "openDeleteButton": "Delete account",
+      "deleteConfirmTitle": "Are you sure you want to delete your account?",
+      "deleteConfirmLine1": "This action cannot be undone.",
+      "deleteConfirmLine2": "Type \"{keyword}\" to confirm.",
+      "deleteConfirmKeyword": "DELETE",
+      "cancel": "Cancel",
+      "deleteAction": "Delete account"
+    },
+    "plan": {
+      "title": "Plan management",
+      "currentPlanTitle": "Current plan",
+      "adminBadge": "Admin",
+      "freeLabel": "Free",
+      "nextRenewal": "Next renewal:",
+      "ticketRemaining": "Tickets left",
+      "ticketCountValue": "{count}",
+      "adminAccount": "This is an admin account.",
+      "loading": "Loading...",
+      "manageSubscription": "Manage subscription",
+      "upgrade": "Upgrade",
+      "usageTitle": "Usage",
+      "planGeneration": "Plan generations",
+      "travelInfo": "Travel info fetches",
+      "limitReset": "Limit",
+      "unlimited": "Unlimited"
+    },
+    "ai": {
+      "title": "AI settings",
+      "customInstructionsLabel": "Custom instructions",
+      "customInstructionsHintTitle": "Hint",
+      "customInstructionsHintBody": "Add constraints you want AI to always follow, such as \"avoid museums\" or \"minimize transfers.\"",
+      "customInstructionsPlaceholder": "Enter your instructions...",
+      "travelStyleLabel": "Travel style",
+      "travelStyleLocked": "Tabidea Pro or higher",
+      "travelStyleLockedPlaceholder": "Available after upgrade",
+      "travelStylePlaceholder": "I like historical spots and slow mornings..."
+    },
+    "errors": {
+      "generic": "An error occurred.",
+      "saveFailed": "Failed to save settings.",
+      "deleteAccountFailed": "Failed to delete account.",
+      "noSubscription": "No subscription information found. Please subscribe first.",
+      "portalNotConfigured": "Customer portal is not configured. Please contact support.",
+      "portalLoadFailed": "Failed to load the portal. Please try again later."
+    },
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System"
   }
 }

@@ -1,4 +1,4 @@
-export type UiLanguage = "ja" | "en";
+export type UiLanguage = string;
 
 export type RegionOption = {
   code: string;
@@ -225,10 +225,14 @@ const REGION_OPTION_BY_CODE: Record<RegionCode, (typeof REGION_OPTIONS)[number]>
   REGION_OPTIONS.map((option) => [option.code, option])
 ) as Record<RegionCode, (typeof REGION_OPTIONS)[number]>;
 
-const DEFAULT_REGION_BY_LANGUAGE: Record<UiLanguage, RegionCode> = {
+const DEFAULT_REGION_BY_LANGUAGE: Record<string, RegionCode> = {
   en: "US",
   ja: "JP",
 };
+
+function resolveRegionUiLanguage(language: UiLanguage): "ja" | "en" {
+  return language === "ja" ? "ja" : "en";
+}
 
 const DEFAULT_HOME_BASE_CITY_BY_REGION: Partial<Record<RegionCode, { ja: string; en: string }>> = {
   '0007': { ja: 'アスタナ', en: 'Astana' },
@@ -327,36 +331,43 @@ export function isRegionCode(value: string): value is RegionCode {
 }
 
 export function getDefaultRegionForLanguage(language: UiLanguage): RegionCode {
-  return DEFAULT_REGION_BY_LANGUAGE[language];
+  return (
+    DEFAULT_REGION_BY_LANGUAGE[language] ??
+    DEFAULT_REGION_BY_LANGUAGE.en ??
+    "US"
+  );
 }
 
 export function getRegionOptions(language: UiLanguage): Array<{ value: RegionCode; label: string }> {
+  const uiLanguage = resolveRegionUiLanguage(language);
   return REGION_OPTIONS.map((option) => ({
     value: option.code,
-    label: language === "en" ? `${option.nameEn} (${option.code})` : `${option.nameJa} (${option.code})`,
+    label: uiLanguage === "en" ? `${option.nameEn} (${option.code})` : `${option.nameJa} (${option.code})`,
   }));
 }
 
 export function getRegionLabel(region: RegionCode, language: UiLanguage): string {
+  const uiLanguage = resolveRegionUiLanguage(language);
   const option = REGION_OPTION_BY_CODE[region];
   if (!option) {
     return region;
   }
-  return language === "en" ? option.nameEn : option.nameJa;
+  return uiLanguage === "en" ? option.nameEn : option.nameJa;
 }
 
 export function getDefaultHomeBaseCityForRegion(region: RegionCode, language: UiLanguage = "ja"): string {
+  const uiLanguage = resolveRegionUiLanguage(language);
   const override = DEFAULT_HOME_BASE_CITY_BY_REGION[region];
   if (override) {
-    return language === "en" ? override.en : override.ja;
+    return uiLanguage === "en" ? override.en : override.ja;
   }
 
   const option = REGION_OPTION_BY_CODE[region];
   if (!option) {
-    return language === "en" ? "Tokyo" : "東京";
+    return uiLanguage === "en" ? "Tokyo" : "東京";
   }
 
-  return language === "en" ? option.nameEn : option.nameJa;
+  return uiLanguage === "en" ? option.nameEn : option.nameJa;
 }
 
 export { DEFAULT_REGION_BY_LANGUAGE };
