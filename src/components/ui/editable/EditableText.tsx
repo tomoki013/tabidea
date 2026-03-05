@@ -64,7 +64,7 @@ export function EditableText({
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           className={cn(
-            "bg-white/80 border-b-2 border-primary/50 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary",
+            "bg-white/80 dark:bg-black/10 border-b-2 border-primary/50 dark:border-primary/30 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary dark:focus:border-primary/60",
             className
           )}
           rows={3}
@@ -81,7 +81,7 @@ export function EditableText({
         placeholder={placeholder}
         type={type}
         className={cn(
-          "bg-white/80 border-b-2 border-primary/50 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary",
+          "bg-white/80 dark:bg-black/10 border-b-2 border-primary/50 dark:border-primary/30 rounded-none px-1 outline-none w-full ring-0 font-hand focus:border-primary dark:focus:border-primary/60",
           className
         )}
       />
@@ -92,8 +92,8 @@ export function EditableText({
     <div
       onClick={() => setIsEditing(true)}
       className={cn(
-        "cursor-pointer hover:bg-black/5 rounded px-1 -mx-1 transition-colors border border-transparent hover:border-black/10 min-w-[2rem] inline-block whitespace-pre-wrap",
-        !value && "text-stone-400 italic",
+        "cursor-pointer hover:bg-black/5 dark:hover:bg-white/5 rounded px-1 -mx-1 transition-colors border border-transparent hover:border-black/10 dark:hover:border-white/10 min-w-[2rem] inline-block whitespace-pre-wrap",
+        !value && "text-stone-400 dark:text-stone-500 italic",
         className
       )}
       role="button"

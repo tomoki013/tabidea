@@ -15,8 +15,8 @@ export const JournalButton = React.forwardRef<HTMLButtonElement, JournalButtonPr
     const variants = {
       primary: "bg-primary text-primary-foreground shadow-md hover:bg-primary/90 rounded-sm border-2 border-primary-foreground/20 hover:-rotate-1",
       secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 rounded-sm border-2 border-white/20 hover:rotate-1",
-      outline: "border-2 border-stone-300 bg-transparent hover:bg-stone-100 text-stone-600 rounded-sm hover:-rotate-1 border-dashed",
-      ghost: "hover:bg-stone-100 text-stone-600 hover:text-stone-900",
+      outline: "border-2 border-stone-300 dark:border-stone-700 bg-transparent hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-300 rounded-sm hover:-rotate-1 border-dashed",
+      ghost: "hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100",
     };
 
     const sizes = {
