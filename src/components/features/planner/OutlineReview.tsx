@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { PlanOutline } from "@/types";
 import { motion } from "framer-motion";
 import { MapPin, Bed, ArrowRight, Check } from "lucide-react";
@@ -16,6 +17,7 @@ export default function OutlineReview({
   onConfirm,
   isGenerating,
 }: OutlineReviewProps) {
+  const t = useTranslations("components.features.planner.outlineReview");
   const [localOutline, setLocalOutline] = useState<PlanOutline>(outline);
 
   const handleDayChange = (
@@ -36,12 +38,12 @@ export default function OutlineReview({
           <Check className="w-6 h-6" />
         </div>
         <h1 className="text-2xl font-serif font-bold text-stone-800">
-          旅の概要ができました
+          {t("title")}
         </h1>
         <p className="text-stone-500 text-sm">
-          詳細プランを作成する前に、宿泊地や大まかな流れを調整できます。
+          {t("leadLine1")}
           <br />
-          特に宿泊地を変更したい場合はここで修正してください。
+          {t("leadLine2")}
         </p>
       </div>
 
@@ -75,7 +77,7 @@ export default function OutlineReview({
                   {/* Title Input */}
                   <div>
                     <label className="block text-xs font-bold text-stone-400 mb-1">
-                      テーマ・タイトル
+                      {t("fields.title")}
                     </label>
                     <input
                       type="text"
@@ -92,7 +94,7 @@ export default function OutlineReview({
                     <div className="flex items-center gap-2 mb-1">
                       <Bed className="w-4 h-4 text-amber-500" />
                       <label className="text-xs font-bold text-amber-700">
-                        宿泊エリア
+                        {t("fields.overnightLocation")}
                       </label>
                     </div>
                     <input
@@ -102,10 +104,10 @@ export default function OutlineReview({
                         handleDayChange(index, "overnight_location", e.target.value)
                       }
                       className="w-full bg-white border border-stone-200 rounded px-2 py-1.5 text-sm focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/20"
-                      placeholder="例：京都市内、大阪・梅田周辺..."
+                      placeholder={t("overnightPlaceholder")}
                     />
                     <p className="text-[10px] text-stone-400 mt-1">
-                      ※この場所を基準に翌日の行程が生成されます
+                      {t("overnightHint")}
                     </p>
                   </div>
                 </div>
@@ -125,11 +127,11 @@ export default function OutlineReview({
           {isGenerating ? (
             <>
               <span className="animate-spin">⏳</span>
-              詳細プランを作成中...
+              {t("generating")}
             </>
           ) : (
             <>
-              <span>旅のしおりを作成する</span>
+              <span>{t("confirm")}</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </>
           )}

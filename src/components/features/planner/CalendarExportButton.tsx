@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Calendar, ChevronDown, Download, ExternalLink } from "lucide-react";
+import { useTranslations } from "next-intl";
 import {
   parseTripDates,
   downloadICS,
@@ -31,14 +32,15 @@ function DatePickerDialog({
   onConfirm: (date: Date) => void;
   onCancel: () => void;
 }) {
+  const t = useTranslations("components.features.planner.calendarExportButton");
   const [dateStr, setDateStr] = useState("");
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
       <div className="bg-white rounded-2xl shadow-xl p-6 max-w-sm w-full mx-4 space-y-4">
-        <h3 className="font-bold text-stone-800 text-lg">開始日を選択</h3>
+        <h3 className="font-bold text-stone-800 text-lg">{t("datePicker.title")}</h3>
         <p className="text-sm text-stone-500">
-          旅行の開始日を入力してください。カレンダーにイベントを追加します。
+          {t("datePicker.description")}
         </p>
         <input
           type="date"
@@ -51,7 +53,7 @@ function DatePickerDialog({
             onClick={onCancel}
             className="px-4 py-2 text-stone-600 hover:bg-stone-100 rounded-lg transition-colors text-sm font-medium"
           >
-            キャンセル
+            {t("datePicker.cancel")}
           </button>
           <button
             onClick={() => {
@@ -63,7 +65,7 @@ function DatePickerDialog({
             disabled={!dateStr}
             className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            追加
+            {t("datePicker.confirm")}
           </button>
         </div>
       </div>
@@ -80,6 +82,7 @@ export default function CalendarExportButton({
   dates,
   className = "",
 }: CalendarExportButtonProps) {
+  const t = useTranslations("components.features.planner.calendarExportButton");
   const [isOpen, setIsOpen] = useState(false);
   const [showDatePicker, setShowDatePicker] = useState(false);
   const [pendingAction, setPendingAction] = useState<"ics" | "google" | null>(
@@ -163,7 +166,7 @@ export default function CalendarExportButton({
           className="inline-flex items-center gap-2 px-4 py-2.5 bg-white text-stone-700 rounded-xl hover:bg-stone-50 transition-all text-sm font-bold border border-stone-200 shadow-sm hover:shadow-md"
         >
           <Calendar className="w-4 h-4 text-primary" />
-          <span>カレンダーに追加</span>
+          <span>{t("buttonLabel")}</span>
           <ChevronDown
             className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
           />
@@ -197,9 +200,9 @@ export default function CalendarExportButton({
                     <Download className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
                   </div>
                   <div className="text-left">
-                    <div className="font-medium group-hover:text-primary transition-colors">.ics ファイル</div>
+                    <div className="font-medium group-hover:text-primary transition-colors">{t("options.ics.title")}</div>
                     <div className="text-[11px] text-stone-400">
-                      Apple / Outlook カレンダー
+                      {t("options.ics.description")}
                     </div>
                   </div>
                 </button>
@@ -214,9 +217,9 @@ export default function CalendarExportButton({
                     <ExternalLink className="w-4 h-4 text-stone-500 group-hover:text-primary transition-colors" />
                   </div>
                   <div className="text-left">
-                    <div className="font-medium group-hover:text-primary transition-colors">Google カレンダー</div>
+                    <div className="font-medium group-hover:text-primary transition-colors">{t("options.google.title")}</div>
                     <div className="text-[11px] text-stone-400">
-                      ブラウザで追加
+                      {t("options.google.description")}
                     </div>
                   </div>
                 </button>

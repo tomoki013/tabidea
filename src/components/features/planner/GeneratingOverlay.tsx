@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaTimes, FaCheck } from "react-icons/fa";
 
 interface GeneratingOverlayProps {
@@ -19,6 +20,7 @@ export default function GeneratingOverlay({
   onDismiss,
   isCompleted = false,
 }: GeneratingOverlayProps) {
+  const t = useTranslations("components.features.plan.generatingOverlay");
   const [isVisible, setIsVisible] = useState(true);
   const wasCompletedRef = useRef(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
@@ -118,10 +120,10 @@ export default function GeneratingOverlay({
                       exit={{ opacity: 0, y: -5 }}
                     >
                       <p className="font-bold text-green-700">
-                        プラン完成！
+                        {t("status.complete")}
                       </p>
                       <p className="text-sm text-green-600">
-                        すべての詳細が生成されました
+                        {t("status.detailsGenerated")}
                       </p>
                     </motion.div>
                   ) : (
@@ -133,11 +135,14 @@ export default function GeneratingOverlay({
                     >
                       <p className="font-bold text-stone-700">
                         {currentGeneratingDay
-                          ? `Day ${currentGeneratingDay} の詳細を生成中...`
-                          : `詳細を生成中...`}
+                          ? t("status.generatingDay", {
+                              generatingDay: currentGeneratingDay,
+                              totalDays,
+                            })
+                          : t("status.generating")}
                       </p>
                       <p className="text-sm text-stone-500">
-                        {completedDays}/{totalDays} 日完了 • スクロールして閲覧できます
+                        {t("progress", { completedDays, totalDays })}
                       </p>
                     </motion.div>
                   )}
@@ -174,7 +179,7 @@ export default function GeneratingOverlay({
               <button
                 onClick={handleDismiss}
                 className="p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors shrink-0"
-                title="閉じる"
+                title={t("close")}
               >
                 <FaTimes />
               </button>

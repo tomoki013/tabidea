@@ -1,8 +1,11 @@
 import Link from 'next/link';
+import { useTranslations } from "next-intl";
 import { FaPen, FaArrowRight } from 'react-icons/fa';
 import { JournalSheet, Tape, HandwrittenText } from '@/components/ui/journal';
 
 export default function ShioriPromotionSection() {
+  const t = useTranslations("components.extraUi.shioriPromotionSection");
+
   return (
     <div className="w-full max-w-3xl mx-auto mt-16 mb-20 px-4">
       <JournalSheet variant="default" className="relative p-8 overflow-hidden transform rotate-1 transition-transform hover:rotate-0 duration-500">
@@ -14,22 +17,22 @@ export default function ShioriPromotionSection() {
           </div>
 
           <div className="space-y-2">
-            <p className="text-xs font-bold tracking-widest text-stone-400 uppercase">CREATE YOUR OWN</p>
+            <p className="text-xs font-bold tracking-widest text-stone-400 uppercase">{t("badge")}</p>
             <HandwrittenText tag="h2" className="text-2xl md:text-3xl font-bold text-stone-800">
-              あなただけの旅のしおりを作りませんか？
+              {t("title")}
             </HandwrittenText>
           </div>
 
           <p className="text-stone-600 font-hand leading-relaxed max-w-md">
-            Tabideaなら、行き先と日程を入れるだけで<br />
-            AIがあなたの理想の旅行プランを数秒で提案します。
+            {t("descriptionLine1")}<br />
+            {t("descriptionLine2")}
           </p>
 
           <Link
             href="/"
             className="group relative inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-full font-bold shadow-md hover:bg-primary/90 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
           >
-            <span className="font-serif">無料でプランを作成する</span>
+            <span className="font-serif">{t("cta")}</span>
             <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

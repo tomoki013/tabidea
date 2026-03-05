@@ -42,6 +42,27 @@ function PlanContent() {
   const [currentInput, setCurrentInput] = useState<UserInput | null>(null);
   const [generationState, setGenerationState] = useState<GenerationState>(initialGenerationState);
 
+  const mapPlanError = useCallback((code?: string | null) => {
+    switch (code) {
+      case "api_key_missing":
+        return tError("apiKeyMissing");
+      case "outline_generation_failed":
+        return tError("outlineFailed");
+      case "detail_generation_failed":
+      case "chunk_generation_failed":
+        return tError("detailGenerationFailed");
+      case "regenerate_failed":
+        return tError("regenerateFailed");
+      case "regenerate_no_effect":
+        return tError("regenerateNoEffect");
+      case "timeout":
+      case "replan_timeout":
+        return tError("timeout");
+      default:
+        return tError("generic");
+    }
+  }, [tError]);
+
   const hasStartedGeneration = useRef(false);
   const hasStartedTransition = useRef(false);
 
@@ -267,7 +288,7 @@ function PlanContent() {
       const outlineResponse = await generateOutlineStream(sampleInput);
 
       if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(outlineResponse.message || tError("outlineFailed"));
+        throw new Error(outlineResponse.message || "outline_generation_failed");
       }
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
@@ -292,14 +313,16 @@ function PlanContent() {
     } catch (e: unknown) {
       console.error(e);
       setStatus("error");
+      const errorCode = e instanceof Error ? e.message : "generic";
+      const mappedMessage = mapPlanError(errorCode);
       setGenerationState(prev => ({
         ...prev,
         phase: 'error',
-        error: e instanceof Error ? e.message : tError("generic"),
+        error: mappedMessage,
       }));
-      setError(e instanceof Error ? e.message : tError("timeout"));
+      setError(mappedMessage);
     }
-  }, [startDetailGeneration, generateOutlineStream, resetProgress, tError]);
+  }, [generateOutlineStream, mapPlanError, resetProgress, startDetailGeneration]);
 
   // Handler to retry a failed chunk
   const handleRetryChunk = useCallback(async (dayStart: number, dayEnd: number) => {

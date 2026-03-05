@@ -1,37 +1,39 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaCompass, FaMapMarkedAlt, FaPencilAlt } from "react-icons/fa";
 import { JournalSheet, Tape, HandwrittenText, Stamp } from "@/components/ui/journal";
 
-const features = [
-  {
-    icon: FaCompass,
-    title: "あなただけのガイド",
-    description: "AIがあなたの好みを理解し、世界に一つだけのプランを提案します。",
-    delay: 0.1,
-    tape: "pink",
-    rotation: "-rotate-1"
-  },
-  {
-    icon: FaMapMarkedAlt,
-    title: "未知の場所へ",
-    description: "ガイドブックには載っていない、隠れた名所を見つけましょう。",
-    delay: 0.2,
-    tape: "blue",
-    rotation: "rotate-2"
-  },
-  {
-    icon: FaPencilAlt,
-    title: "物語を編集する",
-    description: "提案されたプランは自由自在。あなたの旅の物語を完成させてください。",
-    delay: 0.3,
-    tape: "green",
-    rotation: "-rotate-2"
-  },
-];
-
 export default function FeatureSection() {
+  const t = useTranslations("components.features.landing.featureSection");
+  const features = [
+    {
+      icon: FaCompass,
+      title: t("items.guide.title"),
+      description: t("items.guide.description"),
+      delay: 0.1,
+      tape: "pink",
+      rotation: "-rotate-1"
+    },
+    {
+      icon: FaMapMarkedAlt,
+      title: t("items.discovery.title"),
+      description: t("items.discovery.description"),
+      delay: 0.2,
+      tape: "blue",
+      rotation: "rotate-2"
+    },
+    {
+      icon: FaPencilAlt,
+      title: t("items.edit.title"),
+      description: t("items.edit.description"),
+      delay: 0.3,
+      tape: "green",
+      rotation: "-rotate-2"
+    },
+  ];
+
   return (
     <section className="w-full py-20 px-4 border-t border-dashed border-stone-200 relative overflow-hidden">
        {/* Background */}

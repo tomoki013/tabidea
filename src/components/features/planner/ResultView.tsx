@@ -15,6 +15,7 @@ import PlanFeedbackBar from "./PlanFeedbackBar";
 import PublicToggle from "./PublicToggle";
 import type { PackingList } from "@/types/packing-list";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   FaCalendarAlt,
   FaGlobe,
@@ -96,13 +97,13 @@ interface ResultViewProps {
   enableEditing?: boolean;
   initialIsPublic?: boolean;
   isSimplifiedView?: boolean;
-  /** マッププロバイダー（ティア別: static/leaflet/google_maps） */
+  /** Map provider (tier-based: static/leaflet/google_maps) */
   mapProvider?: MapProviderType;
-  /** リプラントリガーを表示するか（旅行中モード） */
+  /** Whether replan triggers are visible (traveling mode). */
   showReplanTriggers?: boolean;
-  /** リプラントリガー発火コールバック */
+  /** Callback when a replan trigger is fired. */
   onReplanTrigger?: (trigger: ReplanTrigger) => void;
-  /** リプラン処理中か */
+  /** Whether replanning is currently running. */
   isReplanning?: boolean;
   normalizedDays?: NormalizedPlanDay[];
   onSyncJournalEntry?: (input: {
@@ -139,6 +140,7 @@ export default function ResultView({
   normalizedDays,
   onSyncJournalEntry,
 }: ResultViewProps) {
+  const t = useTranslations("components.features.planner.resultView");
   // Use heroImage if available, else a fallback
   const heroImg = result.heroImage;
   const router = useRouter();
@@ -223,27 +225,10 @@ export default function ResultView({
   const isThisPlanFlagged = planId ? isFlagged(planId) : false;
 
   // Formatting helpers
-  const formatTravelDates = (dateStr: string) => {
-    const match = dateStr.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
-    if (match) {
-      const startDate = new Date(match[1]);
-      const duration = parseInt(match[2], 10);
-      const endDate = new Date(startDate);
-      endDate.setDate(startDate.getDate() + duration - 1);
-      const formatDate = (d: Date) => `${d.getMonth() + 1}/${d.getDate()}`;
-      return `${formatDate(startDate)} - ${formatDate(endDate)}`;
-    }
-    const durationMatch = dateStr.match(/(\d+)日間/);
-    if (durationMatch) {
-      return `${durationMatch[1]} Days Trip`;
-    }
-    return dateStr;
-  };
-
-  const travelDates = formatTravelDates(input.dates);
+  const travelDates = input.dates;
   const numberOfDays = result.days.length;
   const numberOfNights = Math.max(0, numberOfDays - 1);
-  const durationString = `${numberOfNights}泊${numberOfDays}日`;
+  const durationString = t("durationString", { nights: numberOfNights, days: numberOfDays });
 
   // --------------------------------------------------------------------------
   // Update Handlers (Direct Editing)
@@ -299,8 +284,8 @@ export default function ResultView({
 
     const newActivity: Activity = {
       time: "12:00",
-      activity: "新しい予定",
-      description: "詳細を入力してください",
+      activity: t("newActivity.title"),
+      description: t("newActivity.description"),
     };
 
     day.activities = [...day.activities, newActivity];
@@ -371,7 +356,7 @@ export default function ResultView({
                 <div className="absolute inset-0 flex items-center justify-center text-3xl animate-bounce">✏️</div>
               </div>
               <div className="space-y-2">
-                <h2 className="text-2xl font-serif font-bold text-stone-800 tracking-wide">プランを書き直しています...</h2>
+                <h2 className="text-2xl font-serif font-bold text-stone-800 tracking-wide">{t("updatingTitle")}</h2>
               </div>
               <div className="w-24 h-1 bg-stone-100 rounded-full overflow-hidden">
                 <div className="h-full bg-primary animate-progress-indeterminate" />
@@ -468,10 +453,10 @@ export default function ResultView({
         {!isSimplifiedView && (
            <div className="bg-white/95 p-1 rounded-full inline-flex relative shadow-sm border border-stone-200 backdrop-blur-sm">
              {[
-               { id: 'plan', icon: FaCalendarAlt, label: '旅程表' },
-               ...(hasJournalTab ? [{ id: 'journal', icon: FaRegFlag, label: 'しおり記録' }] as const : []),
-               { id: 'info', icon: FaGlobe, label: '渡航情報' },
-               { id: 'packing', icon: FaSuitcase, label: '持ち物' }
+               { id: 'plan', icon: FaCalendarAlt, label: t("tabs.plan") },
+               ...(hasJournalTab ? [{ id: 'journal', icon: FaRegFlag, label: t("tabs.journal") }] as const : []),
+               { id: 'info', icon: FaGlobe, label: t("tabs.info") },
+               { id: 'packing', icon: FaSuitcase, label: t("tabs.packing") }
              ].map((tab) => (
                <button
                  key={tab.id}
@@ -508,7 +493,7 @@ export default function ResultView({
                  )}
               >
                  <FaMap className="text-[10px]" />
-                 マップ＋旅程
+                 {t("viewMode.mapAndList")}
               </button>
               <button
                  onClick={() => setViewMode('full')}
@@ -518,7 +503,7 @@ export default function ResultView({
                  )}
               >
                  <FaList className="text-[10px]" />
-                 旅程のみ
+                 {t("viewMode.listOnly")}
               </button>
            </div>
         )}
@@ -534,7 +519,7 @@ export default function ResultView({
                  )}
               >
                  <FaList className="text-xs" />
-                 リスト
+                 {t("mobileView.list")}
               </button>
               <button
                  onClick={() => setMobileViewMode('map')}
@@ -544,7 +529,7 @@ export default function ResultView({
                  )}
               >
                  <FaMap className="text-xs" />
-                 マップ
+                 {t("mobileView.map")}
               </button>
            </div>
         )}
@@ -602,8 +587,8 @@ export default function ResultView({
                     <div className="flex items-center gap-2 mb-4">
                       <div className="w-9 h-9 bg-primary/15 rounded-full flex items-center justify-center">✨</div>
                       <div>
-                        <HandwrittenText className="font-bold text-lg">AIと相談しながら調整する</HandwrittenText>
-                        <p className="text-xs text-stone-600">「移動少なめにしたい」「この日にカフェを追加したい」など、気軽に相談できます。</p>
+                        <HandwrittenText className="font-bold text-lg">{t("chatCta.title")}</HandwrittenText>
+                        <p className="text-xs text-stone-600">{t("chatCta.description")}</p>
                       </div>
                     </div>
                     <TravelPlannerChat
@@ -743,7 +728,7 @@ export default function ResultView({
                         );
                       })}
 
-                      {/* Replan Trigger Panel (PR-K: 旅中モード) */}
+                      {/* Replan Trigger Panel (traveling mode) */}
                       {showReplanTriggers && onReplanTrigger && (
                         <div className="pt-3 pl-15 sm:pl-17 animate-in fade-in duration-300">
                           <ReplanTriggerPanel
@@ -762,7 +747,7 @@ export default function ResultView({
                             className="flex items-center justify-center gap-2 w-full py-3 text-stone-400 hover:text-primary font-hand text-sm border border-dashed border-stone-200 hover:border-primary rounded-lg transition-all group hover:bg-primary/5"
                           >
                             <FaPlus className="w-2.5 h-2.5" />
-                            予定を追加
+                            {t("addSchedule")}
                           </button>
                         </div>
                       )}
@@ -784,12 +769,12 @@ export default function ResultView({
                    <div className="bg-white border-2 border-stone-200 border-dashed rounded-sm p-6 relative mt-12">
                      <Tape color="yellow" position="top-left" className="w-24 opacity-80 -rotate-12" />
                      <HandwrittenText tag="h3" className="font-bold text-xl mb-6 flex items-center gap-2">
-                       <span className="text-2xl">🧳</span> この旅を予約する
+                       <span className="text-2xl">🧳</span> {t("booking.title")}
                      </HandwrittenText>
                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                       <BookingLinkButton type="hotel" destination={result.destination} label="ホテルを予約" />
-                       <BookingLinkButton type="flight" destination={result.destination} label="航空券を探す" />
-                       <BookingLinkButton type="activity" destination={result.destination} label="体験を予約" />
+                       <BookingLinkButton type="hotel" destination={result.destination} label={t("booking.hotel")} />
+                       <BookingLinkButton type="flight" destination={result.destination} label={t("booking.flight")} />
+                       <BookingLinkButton type="activity" destination={result.destination} label={t("booking.activity")} />
                      </div>
                    </div>
                 )}
@@ -797,8 +782,8 @@ export default function ResultView({
                 {/* Disclaimer & Chat */}
                 <div className="mt-12 space-y-8">
                    <div className="bg-stone-50 p-4 rounded-sm border border-stone-200 text-xs text-stone-500 font-mono leading-relaxed">
-                      <p>※このプランはAIによって生成されています。情報の正確性は保証されません。</p>
-                      <p>※このページには広告・アフィリエイトリンクが含まれる場合があります。</p>
+                      <p>{t("disclaimer.line1")}</p>
+                      <p>{t("disclaimer.line2")}</p>
                    </div>
 
                    {showChat && !isSimplifiedView && null}

@@ -1,8 +1,3 @@
-/**
- * TravelInfo Component Types
- * UIコンポーネント用の型定義
- */
-
 import type {
   TravelInfoCategory,
   CategoryDataEntry,
@@ -11,25 +6,6 @@ import type {
 
 export type { TravelInfoCategory, CategoryDataEntry };
 
-// ============================================
-// カテゴリ情報定義
-// ============================================
-
-/**
- * カテゴリの表示情報
- */
-export interface CategoryDisplayInfo {
-  /** カテゴリラベル */
-  label: string;
-  /** 説明文 */
-  description: string;
-  /** アイコン名（Lucide React） */
-  icon: CategoryIcon;
-}
-
-/**
- * 使用可能なアイコン名
- */
 export type CategoryIcon =
   | "Globe"
   | "Shield"
@@ -46,318 +22,170 @@ export type CategoryIcon =
   | "Cigarette"
   | "Wine";
 
-/**
- * カテゴリ情報マッピング
- */
-export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryDisplayInfo> = {
+export type CategoryInfoTranslationKey =
+  | `${TravelInfoCategory}.label`
+  | `${TravelInfoCategory}.description`;
+
+export type CategoryInfoTranslator = (key: CategoryInfoTranslationKey) => string;
+
+export interface CategoryInfoDefinition {
+  label: CategoryInfoTranslationKey;
+  description: CategoryInfoTranslationKey;
+  icon: CategoryIcon;
+}
+
+export interface CategoryDisplayInfo {
+  label: string;
+  description: string;
+  icon: CategoryIcon;
+}
+
+export const CATEGORY_INFO: Record<TravelInfoCategory, CategoryInfoDefinition> = {
   basic: {
-    label: "基本情報",
-    description: "通貨・言語・時差",
+    label: "basic.label",
+    description: "basic.description",
     icon: "Globe",
   },
   safety: {
-    label: "安全・医療",
-    description: "危険度・緊急連絡先",
+    label: "safety.label",
+    description: "safety.description",
     icon: "Shield",
   },
   climate: {
-    label: "気候・服装",
-    description: "天気予報・服装アドバイス",
+    label: "climate.label",
+    description: "climate.description",
     icon: "Cloud",
   },
   visa: {
-    label: "ビザ・手続き",
-    description: "入国要件・必要書類",
+    label: "visa.label",
+    description: "visa.description",
     icon: "FileText",
   },
   manner: {
-    label: "マナー・チップ",
-    description: "現地の習慣・タブー",
+    label: "manner.label",
+    description: "manner.description",
     icon: "Heart",
   },
   transport: {
-    label: "交通事情",
-    description: "公共交通・配車サービス",
+    label: "transport.label",
+    description: "transport.description",
     icon: "Car",
   },
   local_food: {
-    label: "グルメ",
-    description: "代表的な料理・食事マナー",
+    label: "local_food.label",
+    description: "local_food.description",
     icon: "Utensils",
   },
   souvenir: {
-    label: "お土産・買い物",
-    description: "人気のお土産・免税情報",
+    label: "souvenir.label",
+    description: "souvenir.description",
     icon: "ShoppingBag",
   },
   events: {
-    label: "イベント・祭り",
-    description: "主要イベント・季節の祭り",
+    label: "events.label",
+    description: "events.description",
     icon: "Calendar",
   },
   technology: {
-    label: "電源・通信",
-    description: "コンセント・Wi-Fi・SIM",
+    label: "technology.label",
+    description: "technology.description",
     icon: "Zap",
   },
   healthcare: {
-    label: "医療・衛生",
-    description: "水・ワクチン・医療事情",
+    label: "healthcare.label",
+    description: "healthcare.description",
     icon: "Stethoscope",
   },
   restrooms: {
-    label: "トイレ事情",
-    description: "清潔度・利用時の注意",
+    label: "restrooms.label",
+    description: "restrooms.description",
     icon: "Bath",
   },
   smoking: {
-    label: "喫煙ルール",
-    description: "喫煙場所・罰金",
+    label: "smoking.label",
+    description: "smoking.description",
     icon: "Cigarette",
   },
   alcohol: {
-    label: "飲酒ルール",
-    description: "年齢制限・販売規制",
+    label: "alcohol.label",
+    description: "alcohol.description",
     icon: "Wine",
   },
 };
 
-export const CATEGORY_INFO_EN: Record<TravelInfoCategory, CategoryDisplayInfo> = {
-  basic: {
-    label: "Basics",
-    description: "Currency, language, timezone",
-    icon: "Globe",
-  },
-  safety: {
-    label: "Safety & Health",
-    description: "Risk level and emergency contacts",
-    icon: "Shield",
-  },
-  climate: {
-    label: "Climate & Clothing",
-    description: "Weather and clothing tips",
-    icon: "Cloud",
-  },
-  visa: {
-    label: "Visa & Entry",
-    description: "Requirements and documents",
-    icon: "FileText",
-  },
-  manner: {
-    label: "Etiquette & Tips",
-    description: "Local customs and taboos",
-    icon: "Heart",
-  },
-  transport: {
-    label: "Transportation",
-    description: "Public transit and rideshare",
-    icon: "Car",
-  },
-  local_food: {
-    label: "Food",
-    description: "Popular dishes and dining etiquette",
-    icon: "Utensils",
-  },
-  souvenir: {
-    label: "Souvenirs & Shopping",
-    description: "Popular items and tax-free info",
-    icon: "ShoppingBag",
-  },
-  events: {
-    label: "Events & Festivals",
-    description: "Major events and seasonal festivals",
-    icon: "Calendar",
-  },
-  technology: {
-    label: "Power & Connectivity",
-    description: "Plugs, Wi-Fi, SIM",
-    icon: "Zap",
-  },
-  healthcare: {
-    label: "Healthcare & Hygiene",
-    description: "Water, vaccines, medical access",
-    icon: "Stethoscope",
-  },
-  restrooms: {
-    label: "Restrooms",
-    description: "Availability and usage tips",
-    icon: "Bath",
-  },
-  smoking: {
-    label: "Smoking Rules",
-    description: "Smoking areas and fines",
-    icon: "Cigarette",
-  },
-  alcohol: {
-    label: "Alcohol Rules",
-    description: "Age limits and regulations",
-    icon: "Wine",
-  },
-};
-
-const CATEGORY_INFO_BY_LANGUAGE: Record<"ja" | "en", Record<TravelInfoCategory, CategoryDisplayInfo>> = {
-  ja: CATEGORY_INFO,
-  en: CATEGORY_INFO_EN,
-};
+export const TRAVEL_INFO_CATEGORIES = Object.keys(CATEGORY_INFO) as TravelInfoCategory[];
 
 export function getCategoryInfo(
   category: TravelInfoCategory,
-  language: "ja" | "en" = "ja"
+  t: CategoryInfoTranslator
 ): CategoryDisplayInfo {
-  return CATEGORY_INFO_BY_LANGUAGE[language][category];
+  const info = CATEGORY_INFO[category];
+  return {
+    label: t(info.label),
+    description: t(info.description),
+    icon: info.icon,
+  };
 }
 
-// ============================================
-// CategorySelector Props
-// ============================================
-
-/**
- * CategorySelector コンポーネントのProps
- */
 export interface CategorySelectorProps {
-  /** 選択中のカテゴリ一覧 */
   selectedCategories: TravelInfoCategory[];
-  /** 選択変更時のコールバック */
   onSelectionChange: (categories: TravelInfoCategory[]) => void;
-  /** 無効化フラグ */
   disabled?: boolean;
-  /** 最大選択数（デフォルト: 6） */
   maxSelections?: number;
 }
 
-// ============================================
-// CategoryCard Props
-// ============================================
-
-/**
- * CategoryCard コンポーネントのProps
- */
 export interface CategoryCardProps {
-  /** カテゴリ */
   category: TravelInfoCategory;
-  /** 選択状態 */
   selected: boolean;
-  /** トグル時のコールバック */
   onToggle: () => void;
-  /** 無効化フラグ */
   disabled?: boolean;
 }
 
-// ============================================
-// TravelInfoDisplay Props
-// ============================================
-
-/**
- * カテゴリ別の状態（プログレッシブローディング用）
- */
 export interface CategoryState {
   status: "loading" | "success" | "error";
   data?: CategoryDataEntry;
   error?: string;
 }
 
-/**
- * TravelInfoDisplay コンポーネントのProps（プログレッシブローディング対応）
- */
 export interface TravelInfoDisplayProps {
-  /** 目的地 */
   destination: string;
-  /** 国名 */
   country: string;
-  /** カテゴリ別の状態 */
   categoryStates: Map<TravelInfoCategory, CategoryState>;
-  /** 選択されたカテゴリ */
   selectedCategories: TravelInfoCategory[];
-  /** ソース情報 */
   sources: CategoryDataEntry["source"][];
-  /** 渡航日程（オプション） */
   dates?: { start: string; end: string };
-  /** カテゴリ再取得コールバック */
   onRetryCategory?: (category: TravelInfoCategory) => void;
 }
 
-// ============================================
-// InfoSection Props
-// ============================================
-
-/**
- * InfoSection コンポーネントのProps
- */
 export interface InfoSectionProps {
-  /** カテゴリ */
   category: TravelInfoCategory;
-  /** 展開状態 */
   isExpanded: boolean;
-  /** 展開トグル時のコールバック */
   onToggle: () => void;
-  /** セクションの内容 */
   children: React.ReactNode;
-  /** ソース情報 */
   source?: CategoryDataEntry["source"];
 }
 
-// ============================================
-// SourceBadge Props
-// ============================================
-
-/**
- * SourceBadge コンポーネントのProps
- */
 export interface SourceBadgeProps {
-  /** ソースタイプ */
   sourceType: "official_api" | "web_search" | "ai_generated" | "blog";
-  /** ソース名 */
   sourceName: string;
-  /** ソースURL（オプション） */
   sourceUrl?: string;
-  /** 信頼性スコア（0-100） */
   reliabilityScore: number;
-  /** 取得日時 */
   retrievedAt: Date;
-  /** コンパクト表示 */
   compact?: boolean;
 }
 
-// ============================================
-// LoadingState Props
-// ============================================
-
-/**
- * LoadingState コンポーネントのProps
- */
 export interface LoadingStateProps {
-  /** ローディングメッセージ */
   message?: string;
-  /** カテゴリ数（スケルトン表示用） */
   categoryCount?: number;
 }
 
-// ============================================
-// ShareButton Props
-// ============================================
-
-/**
- * ShareButton コンポーネントのProps
- */
 export interface ShareButtonProps {
-  /** 目的地 */
   destination: string;
-  /** 選択されたカテゴリ */
   categories: TravelInfoCategory[];
-  /** 渡航日程（オプション） */
   dates?: { start: string; end: string };
 }
 
-// ============================================
-// セクションコンポーネント共通Props
-// ============================================
-
-/**
- * 各セクションコンポーネントの共通Props
- */
 export interface SectionBaseProps<T> {
-  /** セクションのデータ */
   data: T;
-  /** ソース情報 */
   source?: TravelInfoSource;
 }

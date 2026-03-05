@@ -6,11 +6,14 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { createTranslator, type AbstractIntlMessages } from "next-intl";
 import { Itinerary, TravelInfoCategory, SafetyInfo, BasicCountryInfo, VisaInfo, HealthcareInfo, MannerInfo, ClimateInfo } from '@/types';
 import type { PackingList, PackingCategory } from '@/types/packing-list';
-import { PACKING_CATEGORY_LABELS } from '@/types/packing-list';
-import type { CategoryState } from "@/components/features/travel-info/types";
-import { CATEGORY_INFO } from "@/components/features/travel-info/types";
+import {
+  getCategoryInfo,
+  type CategoryInfoTranslator,
+  type CategoryState,
+} from "@/components/features/travel-info/types";
 
 const theme = {
   primary: "#e67e22", // Orange
@@ -319,20 +322,37 @@ const styles = StyleSheet.create({
 
 interface ItineraryPDFProps {
   itinerary: Itinerary;
+  locale: string;
+  messages: AbstractIntlMessages;
   includeTravelInfo?: boolean;
   travelInfoData?: Map<TravelInfoCategory, CategoryState>;
   includePackingList?: boolean;
   packingList?: PackingList | null;
 }
 
+type ItineraryPdfTranslator = ReturnType<typeof createTranslator>;
+type ItineraryPdfTranslate = (key: string, values?: Record<string, unknown>) => string;
+
+const PACKING_CATEGORY_TRANSLATION_KEYS: Record<PackingCategory, string> = {
+  documents: "components.extraUi.itineraryPdf.packingCategories.documents",
+  clothing: "components.extraUi.itineraryPdf.packingCategories.clothing",
+  electronics: "components.extraUi.itineraryPdf.packingCategories.electronics",
+  toiletries: "components.extraUi.itineraryPdf.packingCategories.toiletries",
+  medicine: "components.extraUi.itineraryPdf.packingCategories.medicine",
+  theme: "components.extraUi.itineraryPdf.packingCategories.theme",
+  other: "components.extraUi.itineraryPdf.packingCategories.other",
+};
+
 // Helper component for rendering travel info categories
 const TravelInfoSection: React.FC<{
   category: TravelInfoCategory;
   state: CategoryState;
-}> = ({ category, state }) => {
+  translateCategoryInfo: CategoryInfoTranslator;
+  t: ItineraryPdfTranslate;
+}> = ({ category, state, translateCategoryInfo, t }) => {
   if (state.status !== "success" || !state.data) return null;
 
-  const info = CATEGORY_INFO[category];
+  const info = getCategoryInfo(category, translateCategoryInfo);
   if (!info) return null;
 
   const data = state.data.data;
@@ -343,12 +363,12 @@ const TravelInfoSection: React.FC<{
         <Text style={styles.categoryTitle}>{info.label}</Text>
       </View>
       <View style={styles.categoryContent}>
-        {category === "basic" && <BasicInfoContent data={data as BasicCountryInfo} />}
-        {category === "safety" && <SafetyInfoContent data={data as SafetyInfo} />}
-        {category === "visa" && <VisaInfoContent data={data as VisaInfo} />}
-        {category === "healthcare" && <HealthcareInfoContent data={data as HealthcareInfo} />}
-        {category === "manner" && <MannerInfoContent data={data as MannerInfo} />}
-        {category === "climate" && <ClimateInfoContent data={data as ClimateInfo} />}
+        {category === "basic" && <BasicInfoContent data={data as BasicCountryInfo} t={t} />}
+        {category === "safety" && <SafetyInfoContent data={data as SafetyInfo} t={t} />}
+        {category === "visa" && <VisaInfoContent data={data as VisaInfo} t={t} />}
+        {category === "healthcare" && <HealthcareInfoContent data={data as HealthcareInfo} t={t} />}
+        {category === "manner" && <MannerInfoContent data={data as MannerInfo} t={t} />}
+        {category === "climate" && <ClimateInfoContent data={data as ClimateInfo} t={t} />}
         {/* Add more categories as needed */}
       </View>
     </View>
@@ -356,23 +376,23 @@ const TravelInfoSection: React.FC<{
 };
 
 // Content components for each category
-const BasicInfoContent: React.FC<{ data: BasicCountryInfo }> = ({ data }) => (
+const BasicInfoContent: React.FC<{ data: BasicCountryInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.languages && data.languages.length > 0 && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>公用語</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.languages")}</Text>
         <Text style={styles.infoValue}>{data.languages.join(", ")}</Text>
       </View>
     )}
     {data.timezone && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>タイムゾーン</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.timezone")}</Text>
         <Text style={styles.infoValue}>{data.timezone}</Text>
       </View>
     )}
     {data.currency && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>通貨</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.currency")}</Text>
         <Text style={styles.infoValue}>
           {data.currency.name} ({data.currency.code})
         </Text>
@@ -381,11 +401,11 @@ const BasicInfoContent: React.FC<{ data: BasicCountryInfo }> = ({ data }) => (
   </>
 );
 
-const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
+const SafetyInfoContent: React.FC<{ data: SafetyInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.dangerLevel !== undefined && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>危険度</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.dangerLevel")}</Text>
         <Text style={styles.infoValue}>{data.dangerLevel}</Text>
       </View>
     )}
@@ -396,7 +416,7 @@ const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
     )}
     {data.warnings && data.warnings.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>安全警告</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.safetyWarnings")}</Text>
         {data.warnings.slice(0, 5).map((warning, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -408,23 +428,29 @@ const SafetyInfoContent: React.FC<{ data: SafetyInfo }> = ({ data }) => (
   </>
 );
 
-const VisaInfoContent: React.FC<{ data: VisaInfo }> = ({ data }) => (
+const VisaInfoContent: React.FC<{ data: VisaInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.required !== undefined && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>ビザ要否</Text>
-        <Text style={styles.infoValue}>{data.required ? "必要" : "不要"}</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.visaRequired")}</Text>
+        <Text style={styles.infoValue}>
+          {data.required
+            ? t("components.extraUi.itineraryPdf.values.required")
+            : t("components.extraUi.itineraryPdf.values.notRequired")}
+        </Text>
       </View>
     )}
     {data.visaFreeStayDays !== undefined && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>ビザなし滞在</Text>
-        <Text style={styles.infoValue}>{data.visaFreeStayDays}日</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.visaFreeStay")}</Text>
+        <Text style={styles.infoValue}>
+          {t("components.extraUi.itineraryPdf.values.daysCount", { count: data.visaFreeStayDays })}
+        </Text>
       </View>
     )}
     {data.requirements && data.requirements.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>必要書類</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.requiredDocuments")}</Text>
         {data.requirements.slice(0, 5).map((req, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -436,17 +462,17 @@ const VisaInfoContent: React.FC<{ data: VisaInfo }> = ({ data }) => (
   </>
 );
 
-const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => (
+const HealthcareInfoContent: React.FC<{ data: HealthcareInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.medicalLevel && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>医療水準</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.medicalLevel")}</Text>
         <Text style={styles.infoValue}>{data.medicalLevel}</Text>
       </View>
     )}
     {data.vaccines && data.vaccines.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>推奨予防接種</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.vaccines")}</Text>
         {data.vaccines.slice(0, 5).map((vac, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -457,18 +483,18 @@ const HealthcareInfoContent: React.FC<{ data: HealthcareInfo }> = ({ data }) => 
     )}
     {data.water && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>飲料水</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.drinkingWater")}</Text>
         <Text style={styles.infoValue}>{data.water}</Text>
       </View>
     )}
   </>
 );
 
-const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
+const MannerInfoContent: React.FC<{ data: MannerInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.customs && data.customs.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>現地の習慣</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.localCustoms")}</Text>
         {data.customs.slice(0, 5).map((custom, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -479,7 +505,7 @@ const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
     )}
     {data.taboos && data.taboos.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>タブー・注意事項</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.taboos")}</Text>
         {data.taboos.slice(0, 5).map((taboo, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -490,24 +516,24 @@ const MannerInfoContent: React.FC<{ data: MannerInfo }> = ({ data }) => (
     )}
     {data.tipping && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>チップ</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.tipping")}</Text>
         <Text style={styles.infoValue}>{data.tipping.guideline}</Text>
       </View>
     )}
   </>
 );
 
-const ClimateInfoContent: React.FC<{ data: ClimateInfo }> = ({ data }) => (
+const ClimateInfoContent: React.FC<{ data: ClimateInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.seasonDescription && (
       <View style={styles.infoRow}>
-        <Text style={styles.infoLabel}>季節</Text>
+        <Text style={styles.infoLabel}>{t("components.extraUi.itineraryPdf.labels.season")}</Text>
         <Text style={styles.infoValue}>{data.seasonDescription}</Text>
       </View>
     )}
     {data.recommendedClothing && data.recommendedClothing.length > 0 && (
       <View style={{ marginTop: 8 }}>
-        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>おすすめの服装</Text>
+        <Text style={[styles.infoLabel, { marginBottom: 4 }]}>{t("components.extraUi.itineraryPdf.labels.recommendedClothing")}</Text>
         {data.recommendedClothing.slice(0, 5).map((tip, i) => (
           <View key={i} style={styles.listItem}>
             <Text style={styles.bulletPoint}>•</Text>
@@ -521,11 +547,27 @@ const ClimateInfoContent: React.FC<{ data: ClimateInfo }> = ({ data }) => (
 
 const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
   itinerary,
+  locale,
+  messages,
   includeTravelInfo,
   travelInfoData,
   includePackingList,
   packingList,
 }) => {
+  const rawT: ItineraryPdfTranslator = createTranslator({ locale, messages });
+  const t: ItineraryPdfTranslate = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+  const translateCategoryInfo: CategoryInfoTranslator = (key) =>
+    t(`components.features.travelInfo.categoryInfo.${key}`);
+  const getPackingCategoryLabel = (category: string): string => {
+    const translationKey = PACKING_CATEGORY_TRANSLATION_KEYS[category as PackingCategory];
+    return translationKey ? t(translationKey) : category;
+  };
+
   // Get categories that have successful data
   const successfulCategories = travelInfoData
     ? Array.from(travelInfoData.entries())
@@ -546,10 +588,10 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
           <View style={styles.headerRight}>
              <View style={styles.dateBox}>
                 <Text style={styles.dateText}>
-                   作成日: {new Date().toLocaleDateString('ja-JP')}
+                   {t("components.extraUi.itineraryPdf.labels.createdAt")}: {new Intl.DateTimeFormat(locale).format(new Date())}
                 </Text>
                 <Text style={[styles.dateText, { marginTop: 2 }]}>
-                   {itinerary.days.length} Days Trip
+                  {t("components.extraUi.itineraryPdf.values.daysTrip", { count: itinerary.days.length })}
                 </Text>
              </View>
           </View>
@@ -597,7 +639,7 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
 
         {/* Memo Section */}
         <View style={styles.memoSection}>
-           <Text style={styles.memoTitle}>MEMO</Text>
+           <Text style={styles.memoTitle}>{t("components.extraUi.itineraryPdf.labels.memo")}</Text>
         </View>
 
         {/* Footer */}
@@ -614,9 +656,9 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
         <Page size="A4" style={styles.page} wrap>
           {/* Travel Info Header */}
           <View style={styles.travelInfoHeader}>
-            <Text style={styles.travelInfoTitle}>渡航情報・安全ガイド</Text>
+            <Text style={styles.travelInfoTitle}>{t("components.extraUi.itineraryPdf.labels.travelInfoGuide")}</Text>
             <Text style={styles.travelInfoSubtitle}>
-              {itinerary.destination} - Travel Information & Safety Guide
+              {t("components.extraUi.itineraryPdf.labels.travelInfoSubtitle", { destination: itinerary.destination })}
             </Text>
           </View>
 
@@ -625,15 +667,20 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
             const state = travelInfoData.get(category);
             if (!state) return null;
             return (
-              <TravelInfoSection key={category} category={category} state={state} />
+              <TravelInfoSection
+                key={category}
+                category={category}
+                state={state}
+                translateCategoryInfo={translateCategoryInfo}
+                t={t}
+              />
             );
           })}
 
           {/* Disclaimer */}
           <View style={[styles.descriptionBox, { marginTop: 20 }]}>
             <Text style={[styles.descriptionText, { fontSize: 8, color: theme.textLight }]}>
-              ※ この情報はAIによって生成されたものであり、正確性を保証するものではありません。
-              渡航前には必ず外務省海外安全ホームページ等の公式情報をご確認ください。
+              {t("components.extraUi.itineraryPdf.labels.aiDisclaimer")}
             </Text>
           </View>
 
@@ -651,9 +698,9 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
       {includePackingList && packingList && packingList.items.length > 0 && (
         <Page size="A4" style={styles.page} wrap>
           <View style={styles.travelInfoHeader}>
-            <Text style={styles.travelInfoTitle}>持ち物リスト</Text>
+            <Text style={styles.travelInfoTitle}>{t("components.extraUi.itineraryPdf.labels.packingList")}</Text>
             <Text style={styles.travelInfoSubtitle}>
-              {itinerary.destination} への旅行に必要なもの
+              {t("components.extraUi.itineraryPdf.labels.packingSubtitle", { destination: itinerary.destination })}
             </Text>
           </View>
 
@@ -676,10 +723,10 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
                 borderBottomColor: theme.border,
               }}>
                 <Text style={{ fontSize: 11, fontWeight: 'bold', color: theme.primary }}>
-                  {PACKING_CATEGORY_LABELS[category as PackingCategory] || category}
+                  {getPackingCategoryLabel(category)}
                 </Text>
                 <Text style={{ fontSize: 8, color: theme.textLight, marginLeft: 8 }}>
-                  {items.length}アイテム
+                  {t("components.extraUi.itineraryPdf.labels.itemsCount", { count: items.length })}
                 </Text>
               </View>
               {items.map((item, idx) => (

@@ -1,0 +1,49 @@
+{
+  "actions": {
+    "packingList": {
+      "schema": {
+        "idDescription": "ユニークID（例: doc-1, cloth-2）",
+        "nameDescription": "アイテム名（日本語）",
+        "categoryDescription": "カテゴリ",
+        "quantityDescription": "数量",
+        "noteDescription": "補足メモ（変換プラグの型など）",
+        "priorityDescription": "優先度",
+        "itemsDescription": "持ち物アイテム一覧"
+      },
+      "prompt": {
+        "role": "あなたは旅行準備のエキスパートです。以下の旅行条件に基づいて、カテゴリ分けされた持ち物リストを生成してください。",
+        "travelConditionsTitle": "旅行条件:",
+        "destination": "- 目的地: {destination}",
+        "days": "- 日数: {days}日間",
+        "themes": "- テーマ: {themes}",
+        "companions": "- 同行者: {companions}",
+        "budget": "- 予算: {budget}",
+        "tripType": {
+          "overseas": "- 海外旅行",
+          "domestic": "- 国内旅行"
+        },
+        "passportRequired": "（必須）",
+        "passportNotRequired": "（不要）",
+        "adapterNote": "、変換プラグ（目的地に合った型をnoteに記載）",
+        "rulesTitle": "ルール:",
+        "rules": {
+          "rule1": "1. カテゴリごとにアイテムを分類してください",
+          "rule2": "2. documents（書類・貴重品）: パスポート{passportRequirement}、航空券、財布、クレジットカード、海外旅行保険証、現地通貨 等",
+          "rule3": "3. clothing（衣類）: {days}日分の服を提案。気候に応じて。",
+          "rule4": "4. electronics（電子機器）: 充電器、モバイルバッテリー{overseasAdapterNote} 等",
+          "rule5": "5. toiletries（衛生用品）: 歯ブラシ、日焼け止め 等",
+          "rule6": "6. medicine（医薬品）: 常備薬、酔い止め 等",
+          "rule7": "7. theme（テーマ別）: テーマに合わせたアイテム（ビーチ→水着・サングラス、寒冷地→防寒具 等）",
+          "rule8": "8. other（その他）: 折りたたみ傘、エコバッグ 等",
+          "rule9Title": "9. 各アイテムにpriorityを設定:",
+          "rule9Essential": "   - essential: なくては困るもの",
+          "rule9Recommended": "   - recommended: あったほうが良いもの",
+          "rule9Optional": "   - optional: あると便利なもの",
+          "rule10": "10. idは \"カテゴリ名の先頭3文字-連番\" の形式で（例: doc-1, clo-2, ele-3）",
+          "rule11": "11. 同行者が子連れなら子供用アイテムも追加",
+          "rule12": "12. 全体で25〜40アイテム程度"
+        }
+      }
+    }
+  }
+}

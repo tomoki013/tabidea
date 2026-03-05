@@ -9,7 +9,24 @@
         "contactPrefix": "If the problem persists, please visit the ",
         "contact": "contact page",
         "contactSuffix": ".",
-        "createNewPlan": "Create a new plan"
+        "resultBadge": "Result",
+        "createNewPlan": "Create a new plan",
+        "resultTitle": "Trip Plan Result",
+        "resultSubtitleWithDestination": "Your travel journal for {destination}",
+        "resultSubtitleFallback": "Your special travel journal is ready",
+        "loginSaveHint": "Log in to automatically save this plan to your account",
+        "syncingToAccount": "Saving this plan to your account...",
+        "localPlanNotFound": "Plan not found.",
+        "localPlanMissingDescription": "The locally saved plan could not be found or may have been deleted.",
+        "autoSaveUnexpected": "An error occurred while saving",
+        "autoSaveExpired": "Auto-save is unavailable because more than 24 hours have passed.",
+        "regenerateInstruction": "Please regenerate the current plan by applying the agreed changes from this conversation.",
+        "dateParser": {
+          "jaFrom": "から",
+          "jaDays": "日間",
+          "enFor": "for",
+          "enDaysRegex": "days?"
+        }
       }
     }
   }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Loader2 } from "lucide-react";
 import ModelBadge from "@/components/ui/ModelBadge";
@@ -47,6 +48,7 @@ export default function GeneratingOverlay({
   onRetry,
   modelName,
 }: GeneratingOverlayProps) {
+  const t = useTranslations("components.features.plan.generatingOverlay");
   // Calculate progress
   const completedCount = dayStates.filter((d) => d.status === "completed").length;
   const generatingDay = dayStates.find((d) => d.status === "generating")?.day;
@@ -55,16 +57,16 @@ export default function GeneratingOverlay({
   // Current status message
   const getStatusMessage = () => {
     if (isComplete) {
-      return "プラン完成！";
+      return t("status.complete");
     }
     if (generatingDay) {
-      return `Day ${generatingDay}/${totalDays} の詳細を生成中...`;
+      return t("status.generatingDay", { generatingDay, totalDays });
     }
     const pendingCount = dayStates.filter((d) => d.status === "pending").length;
     if (pendingCount === totalDays) {
-      return "生成を準備中...";
+      return t("status.preparing");
     }
-    return "詳細を生成中...";
+    return t("status.generating");
   };
 
   return (
@@ -99,7 +101,7 @@ export default function GeneratingOverlay({
                   </div>
                   {!isComplete && (
                     <div className="flex items-center gap-2 text-xs text-stone-500">
-                      <span>スクロールしてプランを確認できます</span>
+                      <span>{t("scrollHint")}</span>
                       {modelName && <ModelBadge modelName={modelName} />}
                     </div>
                   )}
@@ -125,7 +127,7 @@ export default function GeneratingOverlay({
               <button
                 onClick={onHide}
                 className="p-2 rounded-full hover:bg-stone-100 transition-colors shrink-0"
-                aria-label="閉じる"
+                aria-label={t("close")}
               >
                 <X className="w-4 h-4 text-stone-500" />
               </button>
@@ -150,7 +152,7 @@ export default function GeneratingOverlay({
             {/* Error State with Retry */}
             {dayStates.some((d) => d.status === "error") && onRetry && (
               <div className="mt-2 flex items-center gap-2 text-sm">
-                <span className="text-red-600">一部の日程で生成に失敗しました</span>
+                <span className="text-red-600">{t("partialFailure")}</span>
                 {dayStates
                   .filter((d) => d.status === "error")
                   .map((d) => (
@@ -159,7 +161,7 @@ export default function GeneratingOverlay({
                       onClick={() => onRetry(d.day)}
                       className="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200 transition-colors"
                     >
-                      Day {d.day} を再試行
+                      {t("retryDay", { day: d.day })}
                     </button>
                   ))}
               </div>

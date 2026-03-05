@@ -1,0 +1,10 @@
+{
+  "lib": {
+    "security": {
+      "rateLimit": {
+        "planCreationTooFrequent": "プラン作成の頻度が高すぎます。しばらく待ってから再試行してください。",
+        "planUpdateTooFrequent": "更新頻度が高すぎます。少し時間を置いてください。"
+      }
+    }
+  }
+}

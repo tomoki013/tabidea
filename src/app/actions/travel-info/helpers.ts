@@ -2,32 +2,71 @@
  * travel-info用ヘルパー関数
  */
 
+import { createTranslator } from "next-intl";
 import type {
   TravelInfoCategory,
   TravelInfoSource,
   SourceType,
 } from '@/types';
 import type { ParsedSource } from '@/lib/services/ai/schemas/travel-info-schemas';
+import type { LanguageCode } from "@/lib/i18n/locales";
+import enMessages from "@/messages/en/actions/travel-info.json";
+import jaMessages from "@/messages/ja/actions/travel-info.json";
+
+const TRAVEL_INFO_HELPER_MESSAGES = {
+  en: enMessages,
+  ja: jaMessages,
+} as const;
+
+type TravelInfoLocale = keyof typeof TRAVEL_INFO_HELPER_MESSAGES;
+type TravelInfoTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
+
+function resolveTravelInfoLocale(locale?: string): TravelInfoLocale {
+  return locale === "en" ? "en" : "ja";
+}
+
+function createTravelInfoTranslator(locale?: string) {
+  const resolvedLocale = resolveTravelInfoLocale(locale);
+  const rawT = createTranslator({
+    locale: resolvedLocale as LanguageCode,
+    messages: TRAVEL_INFO_HELPER_MESSAGES[resolvedLocale],
+    namespace: "actions.travelInfo",
+  });
+
+  const t: TravelInfoTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
+}
 
 // ============================================
 // ソース関連
 // ============================================
 
 /**
- * ソースタイプの日本語名を取得
+ * Get source display label by locale
  */
-export function getSourceName(type: SourceType): string {
+export function getSourceName(type: SourceType, locale?: string): string {
+  const t = createTravelInfoTranslator(locale);
+
   switch (type) {
     case 'official_api':
-      return '公式情報';
+      return t("sourceNames.official_api");
     case 'web_search':
-      return 'Web検索';
+      return t("sourceNames.web_search");
     case 'ai_generated':
-      return 'AI生成';
+      return t("sourceNames.ai_generated");
     case 'blog':
-      return 'ブログ記事';
+      return t("sourceNames.blog");
     default:
-      return '不明';
+      return t("sourceNames.unknown");
   }
 }
 
@@ -141,31 +180,28 @@ export function calculateOverallReliability(
  */
 export function generateDisclaimer(
   reliability: number,
-  categories: TravelInfoCategory[]
+  categories: TravelInfoCategory[],
+  locale?: string
 ): string {
+  const t = createTravelInfoTranslator(locale);
   const hasSafetyInfo = categories.includes('safety');
   const hasVisaInfo = categories.includes('visa');
 
-  let disclaimer =
-    'この情報はAIによって生成されたものであり、正確性を保証するものではありません。';
+  let disclaimer = t("disclaimer.base");
 
   if (reliability < 50) {
-    disclaimer +=
-      '情報の信頼性が低い可能性があります。必ず公式情報をご確認ください。';
+    disclaimer += t("disclaimer.lowReliability");
   }
 
   if (hasSafetyInfo) {
-    disclaimer +=
-      '安全情報については、外務省海外安全ホームページで最新情報をご確認ください。';
+    disclaimer += t("disclaimer.safety");
   }
 
   if (hasVisaInfo) {
-    disclaimer +=
-      'ビザ・入国条件は変更される場合があります。渡航前に大使館・領事館にご確認ください。';
+    disclaimer += t("disclaimer.visa");
   }
 
-  disclaimer +=
-    '渡航に関する最終的な判断は、必ず公式情報に基づいてご自身の責任で行ってください。';
+  disclaimer += t("disclaimer.final");
 
   return disclaimer;
 }

@@ -30,7 +30,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const supabase = await createClient();
@@ -43,7 +43,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
 
     if (error) {
       console.error("Failed to fetch user settings:", error);
-      return { success: false, error: "設定の取得に失敗しました" };
+      return { success: false, error: "settings_fetch_failed" };
     }
 
     // Default to empty object if metadata is null
@@ -73,7 +73,7 @@ export async function getUserSettings(): Promise<{ success: boolean; settings?: 
     };
   } catch (error) {
     console.error("Failed to get user settings:", error);
-    return { success: false, error: "設定の取得に失敗しました" };
+    return { success: false, error: "settings_fetch_failed" };
   }
 }
 
@@ -85,7 +85,7 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const supabase = await createClient();
@@ -99,7 +99,7 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
 
     if (fetchError) {
       console.error("Failed to fetch current metadata for update:", fetchError);
-      return { success: false, error: "設定の更新に失敗しました" };
+      return { success: false, error: "settings_update_failed" };
     }
 
     const currentMetadata = currentData?.metadata || {};
@@ -155,12 +155,12 @@ export async function updateUserSettings(settings: UserSettings): Promise<{ succ
 
     if (updateError) {
       console.error("Failed to update user settings:", updateError);
-      return { success: false, error: "設定の更新に失敗しました" };
+      return { success: false, error: "settings_update_failed" };
     }
 
     return { success: true };
   } catch (error) {
     console.error("Failed to update user settings:", error);
-    return { success: false, error: "設定の更新に失敗しました" };
+    return { success: false, error: "settings_update_failed" };
   }
 }

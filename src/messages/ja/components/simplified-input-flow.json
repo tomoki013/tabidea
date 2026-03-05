@@ -1,0 +1,124 @@
+{
+  "components": {
+    "features": {
+      "planner": {
+        "simplifiedInputFlow": {
+          "header": {
+            "title": "旅行プランを作成",
+            "lead": "必要な情報を入力して、AIがあなただけのプランを作成します"
+          },
+          "budget": {
+            "units": {
+              "tenThousandYen": "万円",
+              "yen": "円"
+            }
+          },
+          "step1": {
+            "title": "基本情報",
+            "requiredHint": "※ここは必ず書いてね",
+            "destinationModeLabel": "① 目的地はどうしますか？",
+            "specific": {
+              "title": "目的地を入力",
+              "bodyLine1": "京都、ハワイなど",
+              "bodyLine2": "行きたい場所が決まっている"
+            },
+            "omakase": {
+              "title": "おまかせで決める",
+              "bodyLine1": "まだ未定！",
+              "bodyLine2": "AIに提案してほしい"
+            },
+            "vibe": {
+              "label": "どんな旅にしたい？",
+              "placeholder": "例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
+            },
+            "destinationInput": {
+              "placeholderFirst": "例：京都、パリ、ハワイ...",
+              "placeholderNext": "次の行き先を追加..."
+            },
+            "dates": {
+              "label": "② 日程",
+              "mode": {
+                "durationOnly": "日数のみ",
+                "calendar": "カレンダー"
+              },
+              "departureLabel": "出発日",
+              "returnLabel": "帰着日",
+              "selectDatePrompt": "日付を選択してください"
+            },
+            "companions": {
+              "label": "③ 誰と行く？"
+            }
+          },
+          "phase2": {
+            "title": "詳細を設定",
+            "subtitleCompleted": "OK!",
+            "subtitleRecommended": "推奨",
+            "theme": {
+              "label": "テーマ（複数選択可）"
+            },
+            "budget": {
+              "label": "予算感",
+              "useSlider": "具体的な金額で指定する",
+              "sliderTitle": "金額範囲を指定",
+              "backToPresets": "選択式に戻す"
+            },
+            "pace": {
+              "label": "旅のペース"
+            }
+          },
+          "phase3": {
+            "title": "さらに詳しく",
+            "subtitle": "任意",
+            "reservations": {
+              "label": "予約済みの予定（飛行機・ホテル等）",
+              "addTitle": "予定を追加",
+              "namePlaceholder": "名前（例：JL123便、ヒルトン東京）",
+              "memoPlaceholder": "メモ（任意）",
+              "cancel": "キャンセル",
+              "add": "追加",
+              "addButton": "予約済みの予定を追加"
+            },
+            "transport": {
+              "label": "希望する移動手段"
+            },
+            "mustVisit": {
+              "label": "絶対行きたい場所",
+              "placeholder": "場所名を入力（例：清水寺）"
+            },
+            "freeText": {
+              "label": "その他のリクエスト",
+              "placeholder": "美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
+            }
+          },
+          "transport": {
+            "options": {
+              "flight": "飛行機",
+              "shinkansen": "新幹線",
+              "train": "電車",
+              "bus": "バス",
+              "car": "車・レンタカー",
+              "ferry": "フェリー"
+            }
+          },
+          "reservation": {
+            "types": {
+              "flight": "飛行機",
+              "train": "電車・新幹線",
+              "bus": "バス",
+              "hotel": "宿泊・ホテル",
+              "activity": "アクティビティ",
+              "other": "その他"
+            }
+          },
+          "generate": {
+            "generating": "プランを作成中...",
+            "missingRequired": "必須項目を入力してください",
+            "withDetails": "詳細条件でプランを作成",
+            "quick": "とりあえず生成する",
+            "hint": "詳細設定を追加すると、より精度の高いプランが作成されます✨"
+          }
+        }
+      }
+    }
+  }
+}

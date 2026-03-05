@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 
 interface LocalPlanPreview {
   id: string;
@@ -23,6 +24,9 @@ export function SyncSelectionModal({
   availableSlots,
   onConfirm,
 }: SyncSelectionModalProps) {
+  const t = useTranslations('components.common.syncSelectionModal');
+  const locale = useLocale();
+
   // Default: select oldest plans up to limit
   const [selectedIds, setSelectedIds] = useState<string[]>(() => {
     const sorted = [...localPlans].sort(
@@ -53,9 +57,10 @@ export function SyncSelectionModal({
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    return `${month}月${day}日`;
+    return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
+      month: 'short',
+      day: 'numeric',
+    }).format(date);
   };
 
   if (!isOpen) return null;
@@ -86,18 +91,17 @@ export function SyncSelectionModal({
               />
             </svg>
             <h2 className="text-xl font-bold text-stone-800">
-              同期するプランを選択
+              {t('title')}
             </h2>
           </div>
 
           <p className="text-stone-600 mb-4">
-            このデバイスに{' '}
-            <strong className="text-primary">{localPlans.length}個</strong>{' '}
-            のプランがありますが、保存できるのは{' '}
-            <strong className="text-primary">あと{availableSlots}個</strong>{' '}
-            です。
-            <br />
-            同期するプランを選択してください。
+            {t.rich('description', {
+              localCount: localPlans.length,
+              availableCount: availableSlots,
+              strong: (chunks) => <strong className="text-primary">{chunks}</strong>,
+              br: () => <br />,
+            })}
           </p>
 
           {/* Plan list */}
@@ -128,7 +132,7 @@ export function SyncSelectionModal({
 
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-stone-800 truncate">
-                      {plan.destination || '目的地未設定'}
+                      {plan.destination || t('destinationFallback')}
                     </p>
                     <p className="text-sm text-stone-500">
                       {formatDate(plan.createdAt)}
@@ -163,13 +167,13 @@ export function SyncSelectionModal({
                 className="w-4 h-4 rounded border-stone-300 text-primary focus:ring-primary focus:ring-offset-0"
               />
               <span className="text-sm text-stone-700">
-                選択しなかったプランをこのデバイスから削除する
+                {t('deleteUnselected')}
               </span>
             </label>
           </div>
 
           <p className="text-xs text-stone-500 mb-6">
-            選択: {selectedIds.length} / {availableSlots}
+            {t('selectedCount', { selected: selectedIds.length, max: availableSlots })}
           </p>
 
           {/* Actions */}
@@ -179,7 +183,7 @@ export function SyncSelectionModal({
               onClick={onClose}
               className="flex-1 px-4 py-2.5 border border-stone-300 text-stone-700 font-medium rounded-xl hover:bg-stone-50 transition-colors"
             >
-              キャンセル
+              {t('cancel')}
             </button>
             <button
               type="button"
@@ -200,7 +204,7 @@ export function SyncSelectionModal({
                   d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
                 />
               </svg>
-              {selectedIds.length}個を同期
+              {t('confirmSync', { count: selectedIds.length })}
             </button>
           </div>
         </div>

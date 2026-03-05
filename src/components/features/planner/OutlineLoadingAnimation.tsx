@@ -2,15 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import type { GenerationStep } from "@/lib/hooks/useGenerationProgress";
-
-// Fallback steps for when no real progress is provided
-const fallbackSteps = [
-  { icon: "\u{1F5FA}\uFE0F", text: "目的地を分析中...", subText: "Analyzing destinations" },
-  { icon: "\u{1F4DD}", text: "旅のコンセプトを考え中...", subText: "Crafting your concept" },
-  { icon: "\u{1F3AF}", text: "ベストなルートを探索中...", subText: "Finding optimal routes" },
-  { icon: "\u2728", text: "もうすぐ完成！", subText: "Almost ready!" },
-];
 
 // Icons for each real step
 const stepIcons: Record<string, string> = {
@@ -33,13 +26,20 @@ export default function OutlineLoadingAnimation({
   steps,
   currentStep,
 }: OutlineLoadingAnimationProps) {
+  const t = useTranslations("components.features.planner.outlineLoadingAnimation");
   const hasRealProgress = steps && steps.length > 0;
+  const fallbackSteps = [
+    { icon: "\u{1F5FA}\uFE0F", text: t("fallback.destination.text"), subText: t("fallback.destination.subText") },
+    { icon: "\u{1F4DD}", text: t("fallback.concept.text"), subText: t("fallback.concept.subText") },
+    { icon: "\u{1F3AF}", text: t("fallback.route.text"), subText: t("fallback.route.subText") },
+    { icon: "\u2728", text: t("fallback.almostDone.text"), subText: t("fallback.almostDone.subText") },
+  ];
 
   if (hasRealProgress) {
     return <RealProgressView className={className} steps={steps} currentStep={currentStep} />;
   }
 
-  return <FallbackAnimation className={className} />;
+  return <FallbackAnimation className={className} fallbackSteps={fallbackSteps} />;
 }
 
 // ============================================================================
@@ -55,6 +55,7 @@ function RealProgressView({
   steps: GenerationStep[];
   currentStep?: string | null;
 }) {
+  const t = useTranslations("components.features.planner.outlineLoadingAnimation");
   const activeStep = steps.find((s) => s.id === currentStep) || steps.find((s) => s.status === "active");
   const activeIcon = activeStep ? stepIcons[activeStep.id] || "\u23F3" : "\u2708\uFE0F";
   const completedCount = steps.filter((s) => s.status === "completed").length;
@@ -97,7 +98,7 @@ function RealProgressView({
             transition={{ duration: 0.3 }}
           >
             <p className="text-xl font-bold text-stone-800 leading-tight min-h-8">
-              {activeStep?.message || "準備中..."}
+              {activeStep?.message || t("waiting")}
             </p>
           </motion.div>
         </AnimatePresence>
@@ -169,12 +170,12 @@ function RealProgressView({
             />
           </div>
           <p className="text-xs text-stone-400 mt-2 font-mono text-center">
-            {completedCount}/{steps.length} steps
+            {t("stepsProgress", { completed: completedCount, total: steps.length })}
           </p>
         </div>
 
         <p className="text-sm text-stone-400 font-hand">
-          旅の計画を練っています...
+          {t("footer")}
         </p>
       </div>
     </div>
@@ -185,7 +186,14 @@ function RealProgressView({
 // Fallback Animation
 // ============================================================================
 
-function FallbackAnimation({ className }: { className: string }) {
+function FallbackAnimation({
+  className,
+  fallbackSteps,
+}: {
+  className: string;
+  fallbackSteps: Array<{ icon: string; text: string; subText: string }>;
+}) {
+  const t = useTranslations("components.features.planner.outlineLoadingAnimation");
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -255,7 +263,7 @@ function FallbackAnimation({ className }: { className: string }) {
         </div>
 
         <p className="text-sm text-stone-400 font-hand">
-          旅の計画を練っています...
+          {t("footer")}
         </p>
       </div>
     </div>

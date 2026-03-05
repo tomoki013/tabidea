@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { RefreshCw, X, Globe, ChevronLeft, ChevronRight } from "lucide-react";
 import ModelBadge from "@/components/ui/ModelBadge";
@@ -57,6 +58,7 @@ export default function EmbeddedTravelInfo({
   initialCategories = DEFAULT_CATEGORIES,
   inline = false,
 }: EmbeddedTravelInfoProps) {
+  const t = useTranslations("components.features.travelInfo.embeddedTravelInfo");
   // 現在選択中の目的地（タブ）
   const [activeDestinationIndex, setActiveDestinationIndex] = useState(0);
   const activeDestination = destinations[activeDestinationIndex];
@@ -165,7 +167,7 @@ export default function EmbeddedTravelInfo({
         }
       } catch (err) {
         const errorMessage =
-          err instanceof Error ? err.message : "エラーが発生しました";
+          err instanceof Error ? err.message : t("defaultError");
         setCategoryStatesByDestination((prev) => {
           const next = new Map(prev);
           const destStates = new Map(next.get(destination) || new Map());
@@ -175,7 +177,7 @@ export default function EmbeddedTravelInfo({
         });
       }
     },
-    [dates, countryByDestination]
+    [dates, countryByDestination, t]
   );
 
   /**
@@ -295,14 +297,14 @@ export default function EmbeddedTravelInfo({
           <div className="flex items-center gap-3">
             <Globe className="w-6 h-6 text-primary" />
             <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#2c2c2c]">
-              渡航情報・安全ガイド
+              {t("title")}
             </h2>
             <ModelBadge modelName={process.env.NEXT_PUBLIC_CHAT_MODEL_NAME || "gemini-2.5-flash"} />
           </div>
           <button
             onClick={onClose}
             className="p-2 hover:bg-stone-100 rounded-full transition-colors"
-            aria-label="閉じる"
+            aria-label={t("close")}
           >
             <X className="w-6 h-6 text-stone-500" />
           </button>
@@ -324,7 +326,7 @@ export default function EmbeddedTravelInfo({
                 <button
                   onClick={() => scroll("left")}
                   className="p-2 rounded-full bg-white shadow-md border border-stone-100 text-stone-600 hover:text-primary hover:scale-110 transition-all opacity-0 group-hover:opacity-100"
-                  aria-label="スクロール左"
+                  aria-label={t("scrollLeft")}
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
@@ -360,7 +362,7 @@ export default function EmbeddedTravelInfo({
                 <button
                   onClick={() => scroll("right")}
                   className="p-2 rounded-full bg-white shadow-md border border-stone-100 text-stone-600 hover:text-primary hover:scale-110 transition-all opacity-0 group-hover:opacity-100"
-                  aria-label="スクロール右"
+                  aria-label={t("scrollRight")}
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
@@ -379,7 +381,7 @@ export default function EmbeddedTravelInfo({
           )}
           {dates && (
             <p className="text-sm text-stone-500 mt-1">
-              渡航予定: {dates.start} 〜 {dates.end}
+              {t("travelDates", { start: dates.start, end: dates.end })}
             </p>
           )}
         </div>
@@ -387,9 +389,9 @@ export default function EmbeddedTravelInfo({
         {/* Category selector (collapsible) */}
         <details className="bg-white rounded-xl border border-stone-200 overflow-hidden">
           <summary className="p-4 cursor-pointer hover:bg-stone-50 transition-colors">
-            <span className="font-bold text-[#2c2c2c]">カテゴリを変更</span>
+            <span className="font-bold text-[#2c2c2c]">{t("changeCategories")}</span>
             <span className="text-stone-500 ml-2">
-              （現在 {selectedCategories.length} 件選択中）
+              {t("currentSelection", { count: selectedCategories.length })}
             </span>
           </summary>
           <div className="p-4 border-t border-stone-100 space-y-4">
@@ -408,7 +410,7 @@ export default function EmbeddedTravelInfo({
                 <RefreshCw
                   className={`w-4 h-4 ${isLoading ? "animate-spin" : ""}`}
                 />
-                {isLoading ? "取得中..." : "再検索"}
+                {isLoading ? t("loading") : t("research")}
               </button>
             </div>
           </div>
@@ -439,7 +441,7 @@ export default function EmbeddedTravelInfo({
       {/* Footer hint */}
       <div className="p-4 border-t border-stone-200 bg-white text-center shrink-0">
         <p className="text-xs text-stone-500">
-          情報は参考用です。必ず公式サイトで最新情報を確認してください。
+          {t("footerHint")}
         </p>
       </div>
     </Container>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaRedo, FaExclamationTriangle } from "react-icons/fa";
 import type { DayGenerationStatus } from "@/types";
 
@@ -19,6 +20,8 @@ export default function DayPlaceholder({
   status,
   onRetry,
 }: DayPlaceholderProps) {
+  const t = useTranslations("components.features.planner.dayPlaceholder");
+
   // Pending state - Dim placeholder
   if (status === "pending") {
     return (
@@ -29,7 +32,7 @@ export default function DayPlaceholder({
             <span className="text-4xl font-serif text-stone-400">{day}</span>
             <div className="flex flex-col">
               <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                Day
+                {t("dayLabel")}
               </span>
               {title && (
                 <span className="text-stone-500 font-serif italic text-lg leading-none">
@@ -57,7 +60,7 @@ export default function DayPlaceholder({
         {/* Placeholder Content */}
         <div className="border-l-2 border-stone-200 ml-8 space-y-6 pb-4">
           <div className="pl-10 text-stone-400 text-sm italic py-4">
-            詳細を待機中...
+            {t("pendingDetails")}
           </div>
         </div>
       </div>
@@ -78,7 +81,7 @@ export default function DayPlaceholder({
             <span className="text-4xl font-serif text-primary">{day}</span>
             <div className="flex flex-col">
               <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                Day
+                {t("dayLabel")}
               </span>
               {title && (
                 <span className="text-stone-600 font-serif italic text-lg leading-none">
@@ -99,7 +102,7 @@ export default function DayPlaceholder({
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
             />
-            <span>生成中...</span>
+            <span>{t("generating")}</span>
           </motion.div>
         </div>
 
@@ -166,7 +169,7 @@ export default function DayPlaceholder({
             <span className="text-4xl font-serif text-red-400">{day}</span>
             <div className="flex flex-col">
               <span className="text-xs text-red-400 uppercase tracking-widest font-bold">
-                Day
+                {t("dayLabel")}
               </span>
               {title && (
                 <span className="text-red-500 font-serif italic text-lg leading-none">
@@ -183,10 +186,10 @@ export default function DayPlaceholder({
             <div className="bg-red-50 border border-red-200 rounded-xl p-6 text-center">
               <FaExclamationTriangle className="text-red-500 text-3xl mx-auto mb-3" />
               <p className="text-red-700 font-medium mb-2">
-                詳細の生成に失敗しました
+                {t("errorTitle")}
               </p>
               <p className="text-red-500 text-sm mb-4">
-                もう一度お試しください
+                {t("errorMessage")}
               </p>
               {onRetry && (
                 <button
@@ -194,7 +197,7 @@ export default function DayPlaceholder({
                   className="inline-flex items-center gap-2 px-4 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors font-medium text-sm"
                 >
                   <FaRedo className="text-xs" />
-                  再試行
+                  {t("retry")}
                 </button>
               )}
             </div>

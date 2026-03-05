@@ -105,11 +105,7 @@ function SyncPlansContent() {
           // Sync successful, redirect to dashboard
           router.push(`${localizePath('/dashboard', language)}?sync=success`);
         } else {
-          setError(
-            result.errors.length > 0
-              ? result.errors[0]
-              : t('syncError')
-          );
+          setError(t('syncError'));
           setIsSyncing(false);
         }
       } catch (err) {

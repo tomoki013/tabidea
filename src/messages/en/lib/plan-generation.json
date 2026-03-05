@@ -1,0 +1,58 @@
+{
+  "lib": {
+    "planGeneration": {
+      "progress": {
+        "steps": {
+          "usage_check": "Checking usage limits...",
+          "cache_check": "Checking cache...",
+          "rag_search": "Searching related articles...",
+          "prompt_build": "Building prompt...",
+          "ai_generation": "Generating plan with AI...",
+          "hero_image": "Fetching hero image..."
+        },
+        "errors": {
+          "requestFailed": "HTTP {status}: Request failed",
+          "generic": "An error occurred",
+          "streamUnexpectedEnd": "The stream ended unexpectedly",
+          "cancelled": "Generation was cancelled"
+        }
+      },
+      "hook": {
+        "defaults": {
+          "theme": [
+            "Gourmet"
+          ]
+        },
+        "errors": {
+          "chunkServerError": "Server error ({status})",
+          "saveFailed": "Failed to save plan.",
+          "outlineFailed": "Failed to create plan outline.",
+          "timeout": "Connection to the server timed out. Please try again.",
+          "networkTimeout": "A network error or server timeout occurred.",
+          "detailsFailed": "Failed to generate detailed itinerary."
+        }
+      },
+      "server": {
+        "errors": {
+          "limitExceeded": "You have reached your usage limit",
+          "apiKeyMissing": "API key is missing",
+          "outlineCreationFailed": "Failed to create plan outline."
+        },
+        "query": {
+          "join": {
+            "destination": ", ",
+            "theme": " and "
+          },
+          "region": {
+            "domestic": "Domestic Japan",
+            "overseas": "Overseas",
+            "anywhere": "recommended destinations"
+          },
+          "decided": "A trip to enjoy {themes} in {destinations} with {companions}",
+          "undecidedWithVibe": "A {vibe} {themes} trip in {region} with {companions}",
+          "undecidedWithoutVibe": "A {themes} trip in {region} with {companions}"
+        }
+      }
+    }
+  }
+}

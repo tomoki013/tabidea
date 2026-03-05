@@ -15,6 +15,7 @@
         "detailGenerationFailed": "詳細プランの生成中にエラーが発生しました。",
         "saveFailed": "プランの保存に失敗しました。",
         "outlineFailed": "プラン概要の作成に失敗しました。",
+        "regenerateFailed": "再生成に失敗しました。時間をおいて再試行してください。",
         "generic": "エラーが発生しました",
         "timeout": "ネットワークエラーまたはサーバータイムアウトが発生しました。",
         "sampleNotFound": "指定されたサンプルプランが見つかりませんでした。"

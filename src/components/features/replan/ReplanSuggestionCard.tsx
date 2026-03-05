@@ -7,6 +7,7 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import { FaCheck, FaChevronDown } from "react-icons/fa";
 
 import type { RecoveryOption } from "@/types/replan";
@@ -48,13 +49,14 @@ export function ReplanSuggestionCard({
   onShowAlternatives,
   hasAlternatives = false,
 }: ReplanSuggestionCardProps) {
+  const t = useTranslations("components.features.replan.suggestionCard");
   const icon = CATEGORY_ICONS[option.category] ?? "✨";
 
   return (
     <div
       className="bg-white rounded-2xl border border-stone-200 shadow-lg p-5 animate-in slide-in-from-bottom-4 duration-300"
       role="region"
-      aria-label="提案カード"
+      aria-label={t("regionAriaLabel")}
     >
       {/* ヘッダー */}
       <div className="flex items-start gap-3 mb-3">
@@ -66,7 +68,7 @@ export function ReplanSuggestionCard({
             {option.explanation}
           </p>
           <p className="text-xs text-stone-400 mt-1">
-            約{option.estimatedDuration}
+            {t("estimatedDuration", { duration: option.estimatedDuration })}
           </p>
         </div>
       </div>
@@ -82,10 +84,10 @@ export function ReplanSuggestionCard({
             bg-primary text-white font-medium text-sm
             hover:bg-primary/90 transition-colors
           "
-          aria-label="この提案を採用する"
+          aria-label={t("acceptAriaLabel")}
         >
           <FaCheck className="w-3.5 h-3.5" />
-          <span>採用する</span>
+          <span>{t("accept")}</span>
         </button>
 
         {hasAlternatives && onShowAlternatives && (
@@ -98,10 +100,10 @@ export function ReplanSuggestionCard({
               bg-stone-100 text-stone-600 font-medium text-sm
               hover:bg-stone-200 transition-colors
             "
-            aria-label="別の提案を見る"
+            aria-label={t("viewAlternativesAriaLabel")}
           >
             <FaChevronDown className="w-3 h-3" />
-            <span>他の案</span>
+            <span>{t("otherOptions")}</span>
           </button>
         )}
       </div>

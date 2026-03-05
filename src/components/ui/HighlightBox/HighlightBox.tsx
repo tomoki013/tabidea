@@ -83,11 +83,11 @@ const variantStyles: Record<
 };
 
 /**
- * ハイライトボックスコンポーネント
- * @param props.variant - 表示スタイル（info, warning, danger）
- * @param props.title - タイトル（オプション）
- * @param props.children - コンテンツ
- * @param props.className - 追加のCSSクラス
+ * Highlight box component.
+ * @param props.variant Display style (`info`, `warning`, `danger`).
+ * @param props.title Optional title.
+ * @param props.children Body content.
+ * @param props.className Additional CSS classes.
  */
 export default function HighlightBox({
   variant,

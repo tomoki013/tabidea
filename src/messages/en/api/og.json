@@ -1,0 +1,12 @@
+{
+  "api": {
+    "og": {
+      "defaultDestination": "Travel Plan",
+      "durationOneDay": "1 Day Trip",
+      "durationTemplate": "{nights} Nights / {days} Days",
+      "destinationTitleTemplate": "{destination} Trip",
+      "tagline": "AI-crafted itinerary for you",
+      "fallbackSubtitle": "Tabidea - AI Travel Planner"
+    }
+  }
+}

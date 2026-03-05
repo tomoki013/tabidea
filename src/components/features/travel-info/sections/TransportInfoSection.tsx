@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from "next-intl";
 import {
   Train,
   Bus,
@@ -19,6 +20,8 @@ import type { SectionBaseProps } from '../types';
  * 公共交通、ライドシェア、運転に関する情報を表示
  */
 export default function TransportInfoSection({ data }: SectionBaseProps<TransportInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.transport");
+
   return (
     <div className="space-y-8">
       {/* 公共交通機関 */}
@@ -26,7 +29,7 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
         <div className="space-y-4">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Train className="w-6 h-6 text-primary" />
-            公共交通機関
+            {t("publicTransportTitle")}
           </h4>
           <ul className="grid gap-4">
             {data.publicTransport.map((transport, index) => (
@@ -57,7 +60,7 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
       <div className="space-y-4">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
           <Smartphone className="w-6 h-6 text-primary" />
-          配車サービス
+          {t("rideshareTitle")}
         </h4>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
@@ -73,14 +76,14 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
               <>
                 <CheckCircle className="w-6 h-6 text-green-500" />
                 <span className="font-bold text-green-800 text-lg font-serif">
-                  配車サービス利用可能
+                  {t("rideshareAvailable")}
                 </span>
               </>
             ) : (
               <>
                 <XCircle className="w-6 h-6 text-stone-400" />
                 <span className="font-bold text-stone-600 text-lg font-serif">
-                  配車サービス利用不可または限定的
+                  {t("rideshareUnavailable")}
                 </span>
               </>
             )}
@@ -107,7 +110,7 @@ export default function TransportInfoSection({ data }: SectionBaseProps<Transpor
         <div className="space-y-4">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Car className="w-6 h-6 text-primary" />
-            運転に関する注意事項
+            {t("drivingNotesTitle")}
           </h4>
           <ul className="space-y-3">
             {data.drivingNotes.map((note, index) => (

@@ -23,24 +23,6 @@ import {
 import { CategorySelector } from "@/components/features/travel-info";
 
 /**
- * 人気の目的地リスト
- */
-const POPULAR_DESTINATIONS = [
-  { name: "パリ", country: "フランス" },
-  { name: "ソウル", country: "韓国" },
-  { name: "バンコク", country: "タイ" },
-  { name: "ニューヨーク", country: "アメリカ" },
-  { name: "台北", country: "台湾" },
-  { name: "シンガポール", country: "シンガポール" },
-  { name: "ロンドン", country: "イギリス" },
-  { name: "ホノルル", country: "アメリカ" },
-  { name: "ローマ", country: "イタリア" },
-  { name: "シドニー", country: "オーストラリア" },
-  { name: "ロサンゼルス", country: "アメリカ" },
-  { name: "バリ島", country: "インドネシア" },
-];
-
-/**
  * TravelInfoClient - 渡航情報ページのメインクライアントコンポーネント
  *
  * カテゴリ選択と検索フォームを提供
@@ -51,6 +33,20 @@ export default function TravelInfoClient() {
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const t = useTranslations("pages.info.travelInfoClient");
+  const popularDestinationsRaw = t.raw("popularDestinationItems");
+  const popularDestinations = Array.isArray(popularDestinationsRaw)
+    ? popularDestinationsRaw.filter(
+        (
+          destination
+        ): destination is { name: string; country: string } =>
+          typeof destination === "object" &&
+          destination !== null &&
+          "name" in destination &&
+          "country" in destination &&
+          typeof destination.name === "string" &&
+          typeof destination.country === "string"
+      )
+    : [];
   const [destination, setDestination] = useState("");
   // Initial categories match MANDATORY_CATEGORIES in CategorySelector
   // basic: 基本情報, safety: 治安, manner: マナー
@@ -70,14 +66,12 @@ export default function TravelInfoClient() {
 
       // バリデーション
       if (!trimmedDestination) {
-        console.warn("[TravelInfoClient] 検索失敗: 目的地が入力されていません");
+        console.warn("[TravelInfoClient] destination_required");
         return;
       }
 
       if (selectedCategories.length === 0) {
-        console.warn(
-          "[TravelInfoClient] 検索失敗: カテゴリが選択されていません"
-        );
+        console.warn("[TravelInfoClient] category_required");
         return;
       }
 
@@ -170,7 +164,7 @@ export default function TravelInfoClient() {
                     {t("popularDestinations")}
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-3">
-                    {POPULAR_DESTINATIONS.map((dest) => (
+                    {popularDestinations.map((dest) => (
                       <button
                         key={dest.name}
                         type="button"

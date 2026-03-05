@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
@@ -27,9 +28,6 @@ interface PlanIdClientProps {
   mapProvider?: MapProviderType;
 }
 
-const REGENERATE_INSTRUCTION_TEXT =
-  "この会話で合意した変更内容を現在のプランに反映して再生成してください。";
-
 export default function PlanIdClient({
   plan,
   input: initialInput,
@@ -40,6 +38,9 @@ export default function PlanIdClient({
   mapProvider = "static",
 }: PlanIdClientProps) {
   const router = useRouter();
+  const tPlan = useTranslations("app.planner.plan");
+  const tError = useTranslations("errors.ui.plan");
+  const regenerateInstruction = tPlan("regenerateInstruction");
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
   const [status, setStatus] = useState<'idle' | 'regenerating' | 'saving'>('idle');
@@ -52,6 +53,21 @@ export default function PlanIdClient({
   const [normalizedDays, setNormalizedDays] = useState<NormalizedPlanDay[]>(initialNormalizedDays);
   const [showAlternatives, setShowAlternatives] = useState(false);
   const [regenerateError, setRegenerateError] = useState<string | null>(null);
+
+  const mapPlanError = useCallback((code?: string | null) => {
+    switch (code) {
+      case "api_key_missing":
+        return tError("apiKeyMissing");
+      case "regenerate_no_effect":
+        return tError("regenerateNoEffect");
+      case "regenerate_failed":
+      case "detail_generation_failed":
+      case "chunk_generation_failed":
+        return tError("regenerateFailed");
+      default:
+        return tError("regenerateFailed");
+    }
+  }, [tError]);
 
   // Replan integration
   const tripPlan = useMemo(() => buildTripPlan(result, input), [result, input]);
@@ -120,7 +136,7 @@ export default function PlanIdClient({
     const persistedHistory =
       chatHistory.length > 0 &&
       chatHistory[chatHistory.length - 1]?.role === "user" &&
-      chatHistory[chatHistory.length - 1]?.text === REGENERATE_INSTRUCTION_TEXT
+      chatHistory[chatHistory.length - 1]?.text === regenerateInstruction
         ? chatHistory.slice(0, -1)
         : chatHistory;
 
@@ -144,12 +160,12 @@ export default function PlanIdClient({
         }, 100);
       } else {
         console.error(response.message);
-        setRegenerateError(response.message || '再生成に失敗しました。時間をおいて再試行してください。');
+        setRegenerateError(mapPlanError(response.message));
         setStatus('idle');
       }
     } catch (e) {
       console.error(e);
-      setRegenerateError('再生成中にエラーが発生しました。時間をおいて再試行してください。');
+      setRegenerateError(mapPlanError("regenerate_failed"));
       setStatus('idle');
     }
   };
@@ -328,7 +344,7 @@ export default function PlanIdClient({
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             <FaPlus className="mr-2 relative z-10" />
-            <span className="relative z-10">新しいプランを作る</span>
+            <span className="relative z-10">{tPlan("createNewPlan")}</span>
           </button>
         </div>
 

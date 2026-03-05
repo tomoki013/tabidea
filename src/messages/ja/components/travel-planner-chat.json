@@ -1,0 +1,20 @@
+{
+  "components": {
+    "travelPlannerChat": {
+      "title": "プランナーに相談",
+      "initialAssistantMessage": "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
+      "emptyState": "日程の調整、レストラン提案、スポット解説などを相談できます。",
+      "regenerateButton": "会話の内容でプランを再生成",
+      "thinking": "考え中...",
+      "errorWithContact": "エラーが発生しました。もう一度お試しください。問題が解決しない場合は、<contact>お問い合わせページ</contact>からご連絡ください。",
+      "inputPlaceholder": "例: もっと安いランチの選択肢は？",
+      "suggestionChips": [
+        "地元の料理をもっと食べたい！ 🍜",
+        "カフェ巡りを入れたい ☕️",
+        "予算を少し抑えたい 💰",
+        "もっとゆったりしたい 🐢",
+        "写真映えスポットに行きたい 📸"
+      ]
+    }
+  }
+}

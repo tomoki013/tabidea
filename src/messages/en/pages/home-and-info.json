@@ -21,6 +21,20 @@
           "destinationLabel": "Choose your destination",
           "destinationPlaceholder": "Where are you going? (e.g. Paris, Bangkok)",
           "popularDestinations": "Popular Destinations",
+          "popularDestinationItems": [
+            { "name": "Paris", "country": "France" },
+            { "name": "Seoul", "country": "South Korea" },
+            { "name": "Bangkok", "country": "Thailand" },
+            { "name": "New York", "country": "United States" },
+            { "name": "Taipei", "country": "Taiwan" },
+            { "name": "Singapore", "country": "Singapore" },
+            { "name": "London", "country": "United Kingdom" },
+            { "name": "Honolulu", "country": "United States" },
+            { "name": "Rome", "country": "Italy" },
+            { "name": "Sydney", "country": "Australia" },
+            { "name": "Los Angeles", "country": "United States" },
+            { "name": "Bali", "country": "Indonesia" }
+          ],
           "categoriesLabel": "Select what you want to know",
           "searching": "Searching...",
           "createGuide": "Create guide",
@@ -46,7 +60,17 @@
         "changeCategories": "Change categories",
         "selectedCount": "({count} selected)",
         "fetching": "Fetching...",
-        "research": "Refetch with selected categories"
+        "research": "Refetch with selected categories",
+        "errors": {
+          "destinationRequired": "Please enter a destination.",
+          "categoryRequired": "Please select at least one category.",
+          "usageLimitReached": "Usage limit reached. Please try again later.",
+          "noAccessibleCategories": "The selected categories are not accessible right now.",
+          "systemConfigurationError": "System configuration error. Please try again later.",
+          "categoryFetchFailed": "Failed to fetch category information.",
+          "unexpected": "An unexpected error occurred.",
+          "generic": "Failed to fetch travel information."
+        }
       }
     }
   }

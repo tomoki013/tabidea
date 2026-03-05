@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState, useCallback, useEffect, useRef } from "react";
+import { useTranslations } from "next-intl";
 import {
   APIProvider,
   Map as GoogleMap,
@@ -176,6 +177,7 @@ export default function MapRouteView({
   destination,
   className = "",
 }: MapRouteViewProps) {
+  const t = useTranslations("components.features.planner.mapRoute");
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
   const [isExpanded, setIsExpanded] = useState(true);
@@ -272,11 +274,11 @@ export default function MapRouteView({
         <div className="flex items-center gap-2">
           <FaMapMarkedAlt className="text-primary" />
           <span className="font-bold text-sm text-stone-700">
-            全日程マップ
+            {t("headerTitle")}
           </span>
           {allMarkers.length > 0 && (
             <span className="text-xs text-stone-500">
-              ({allMarkers.length} spots)
+              {t("spotsCount", { count: allMarkers.length })}
             </span>
           )}
         </div>
@@ -301,7 +303,7 @@ export default function MapRouteView({
                       : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                   }`}
                 >
-                  全日程
+                  {t("allDays")}
                 </button>
                 {days.map((day) => {
                   const color = getDayColor(day.day - 1);
@@ -316,7 +318,7 @@ export default function MapRouteView({
                         color: isActive ? "#fff" : color.bg,
                       }}
                     >
-                      Day {day.day}
+                      {t("dayLabel", { day: day.day })}
                     </button>
                   );
                 })}
@@ -386,7 +388,7 @@ export default function MapRouteView({
                                           className="text-[10px] px-1.5 py-0.5 rounded text-white font-bold"
                                           style={{ backgroundColor: getDayColor(selectedMarker.dayNumber - 1).bg }}
                                       >
-                                          Day {selectedMarker.dayNumber}
+                                          {t("dayLabel", { day: selectedMarker.dayNumber })}
                                       </span>
                                   </div>
                                   <a
@@ -399,7 +401,7 @@ export default function MapRouteView({
                                       rel="noopener noreferrer"
                                       className="text-xs text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-2"
                                   >
-                                      <FaExternalLinkAlt size={10} /> Google Mapsで見る
+                                      <FaExternalLinkAlt size={10} /> {t("openInGoogleMaps")}
                                   </a>
                               </div>
                           </InfoWindow>
@@ -412,10 +414,10 @@ export default function MapRouteView({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="absolute top-2 right-12 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-10 hover:z-50"
-                        title="Google Mapsでルートを開く"
+                        title={t("openRouteTitle")}
                         >
                         <FaExternalLinkAlt />
-                        <span className="hidden sm:inline">Google Maps</span>
+                        <span className="hidden sm:inline">{t("googleMapsLabel")}</span>
                     </a>
 
                     {/* Legend (Only show if map is loaded) */}
@@ -423,7 +425,7 @@ export default function MapRouteView({
                       <span className="font-medium">{destination}</span>
                       <span className="mx-1.5 text-stone-300">|</span>
                       <span>
-                        {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
+                        {selectedDay ? t("dayLabel", { day: selectedDay }) : t("tripDays", { days: days.length })}
                       </span>
                     </div>
                   </div>
@@ -433,8 +435,8 @@ export default function MapRouteView({
           ) : (
             <div className="flex-1 min-h-[200px] flex flex-col items-center justify-center bg-stone-50 text-stone-400 gap-3 p-6">
               <FaMapMarkedAlt className="text-3xl text-stone-300" />
-              <p className="text-sm font-medium">位置情報を読み込み中...</p>
-              <p className="text-xs text-stone-400">スポットの座標を取得しています</p>
+              <p className="text-sm font-medium">{t("loadingLocation")}</p>
+              <p className="text-xs text-stone-400">{t("loadingCoordinates")}</p>
             </div>
           )}
         </>

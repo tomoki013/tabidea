@@ -10,6 +10,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
+import { useTranslations } from "next-intl";
 
 import type { Reflection, SatisfactionLevel } from "@/types/replan";
 
@@ -32,32 +33,6 @@ interface PostTripReflectionProps {
 // Satisfaction Config
 // ============================================================================
 
-const SATISFACTION_OPTIONS: {
-  value: SatisfactionLevel;
-  label: string;
-  icon: string;
-  className: string;
-}[] = [
-  {
-    value: "helped",
-    label: "助かった",
-    icon: "😊",
-    className: "border-green-200 bg-green-50 hover:bg-green-100 text-green-700",
-  },
-  {
-    value: "neutral",
-    label: "ふつう",
-    icon: "😐",
-    className: "border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700",
-  },
-  {
-    value: "struggled",
-    label: "苦労した",
-    icon: "😓",
-    className: "border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-700",
-  },
-];
-
 // ============================================================================
 // Component
 // ============================================================================
@@ -68,6 +43,33 @@ export function PostTripReflection({
   onSubmit,
   onDismiss,
 }: PostTripReflectionProps) {
+  const t = useTranslations("components.features.feedback.postTripReflection");
+  const SATISFACTION_OPTIONS: {
+    value: SatisfactionLevel;
+    label: string;
+    icon: string;
+    className: string;
+  }[] = [
+    {
+      value: "helped",
+      label: t("satisfaction.helped"),
+      icon: "😊",
+      className: "border-green-200 bg-green-50 hover:bg-green-100 text-green-700",
+    },
+    {
+      value: "neutral",
+      label: t("satisfaction.neutral"),
+      icon: "😐",
+      className: "border-stone-200 bg-stone-50 hover:bg-stone-100 text-stone-700",
+    },
+    {
+      value: "struggled",
+      label: t("satisfaction.struggled"),
+      icon: "😓",
+      className: "border-amber-200 bg-amber-50 hover:bg-amber-100 text-amber-700",
+    },
+  ];
+
   const [satisfaction, setSatisfaction] = useState<SatisfactionLevel | null>(null);
   const [replanUseful, setReplanUseful] = useState<boolean | undefined>(undefined);
   const [freeText, setFreeText] = useState("");
@@ -96,15 +98,15 @@ export function PostTripReflection({
       {/* ヘッダー */}
       <div className="text-center mb-6">
         <h2 className="text-lg font-bold text-stone-800">
-          旅行はいかがでしたか？
+          {t("title")}
         </h2>
         <p className="text-sm text-stone-500 mt-1">
-          簡単なフィードバックで、サービスの改善に役立てます
+          {t("lead")}
         </p>
       </div>
 
       {/* 満足度選択 */}
-      <div className="space-y-2 mb-6" role="radiogroup" aria-label="満足度">
+      <div className="space-y-2 mb-6" role="radiogroup" aria-label={t("satisfactionAriaLabel")}>
         {SATISFACTION_OPTIONS.map((option) => (
           <button
             key={option.value}
@@ -135,7 +137,7 @@ export function PostTripReflection({
       {usedReplan && satisfaction && (
         <div className="mb-6 animate-in fade-in slide-in-from-top-2 duration-200">
           <p className="text-sm font-medium text-stone-700 mb-2">
-            プラン変更の提案は役に立ちましたか？
+            {t("replanQuestion")}
           </p>
           <div className="flex gap-2">
             <button
@@ -150,7 +152,7 @@ export function PostTripReflection({
                 }
               `}
             >
-              はい
+              {t("yes")}
             </button>
             <button
               type="button"
@@ -164,7 +166,7 @@ export function PostTripReflection({
                 }
               `}
             >
-              いいえ
+              {t("no")}
             </button>
           </div>
         </div>
@@ -177,13 +179,13 @@ export function PostTripReflection({
             htmlFor="reflection-freetext"
             className="text-sm font-medium text-stone-700 block mb-2"
           >
-            ご感想（任意）
+            {t("commentLabel")}
           </label>
           <textarea
             id="reflection-freetext"
             value={freeText}
             onChange={(e) => setFreeText(e.target.value)}
-            placeholder="旅行中に感じたことを教えてください..."
+            placeholder={t("commentPlaceholder")}
             className="
               w-full px-3 py-2 rounded-lg border border-stone-200
               text-sm text-stone-700 placeholder:text-stone-400
@@ -208,7 +210,7 @@ export function PostTripReflection({
               transition-colors
             "
           >
-            あとで
+            {t("later")}
           </button>
         )}
         <button
@@ -222,7 +224,7 @@ export function PostTripReflection({
             disabled:opacity-50 disabled:cursor-not-allowed
           "
         >
-          {isSubmitting ? "送信中..." : "送信する"}
+          {isSubmitting ? t("submitting") : t("submit")}
         </button>
       </div>
     </div>

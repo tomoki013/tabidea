@@ -15,7 +15,7 @@ export async function getShioriLikeState(slug: string) {
     .maybeSingle();
 
   if (!publication || publication.visibility !== 'public') {
-    return { success: false, error: '旅のしおりが見つかりません。' };
+    return { success: false, error: 'shiori_not_found' };
   }
 
   const { count } = await supabase
@@ -50,7 +50,7 @@ export async function getShioriLikeState(slug: string) {
 export async function toggleShioriLike(slug: string) {
   const user = await getUser();
   if (!user) {
-    return { success: false, error: 'いいねするにはログインが必要です。', requiresAuth: true };
+    return { success: false, error: 'authentication_required', requiresAuth: true };
   }
 
   const supabase = await createClient();
@@ -61,7 +61,7 @@ export async function toggleShioriLike(slug: string) {
     .maybeSingle();
 
   if (!publication || publication.visibility !== 'public') {
-    return { success: false, error: '旅のしおりが見つかりません。' };
+    return { success: false, error: 'shiori_not_found' };
   }
 
   const { data: existingLike, error: existingError } = await supabase

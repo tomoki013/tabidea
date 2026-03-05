@@ -2,57 +2,52 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaArrowRight, FaHeart, FaUserCircle } from "react-icons/fa";
 
-const SAMPLE_PLANS = [
+const SAMPLE_PLAN_META = [
   {
     id: 1,
-    title: "京都の紅葉を満喫する旅",
-    days: "2泊3日",
-    budget: "5万円",
+    key: "kyoto",
     image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=500&q=80",
-    tags: ["#紅葉", "#歴史", "#グルメ"],
     likes: 124
   },
   {
     id: 2,
-    title: "ハワイでリフレッシュ",
-    days: "4泊6日",
-    budget: "20万円",
+    key: "hawaii",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80",
-    tags: ["#ビーチ", "#ショッピング", "#女子旅"],
     likes: 89
   },
   {
     id: 3,
-    title: "パリの美術館巡り",
-    days: "5泊7日",
-    budget: "30万円",
+    key: "paris",
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80",
-    tags: ["#アート", "#カフェ", "#一人旅"],
     likes: 256
   },
   {
     id: 4,
-    title: "ニューヨークのクリスマス",
-    days: "3泊5日",
-    budget: "25万円",
+    key: "newYork",
     image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=500&q=80",
-    tags: ["#イルミネーション", "#ショッピング"],
     likes: 180
   },
   {
     id: 5,
-    title: "サントリーニ島の絶景",
-    days: "4泊6日",
-    budget: "40万円",
+    key: "santorini",
     image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=500&q=80",
-    tags: ["#絶景", "#ハネムーン"],
     likes: 312
   }
-];
+] as const;
 
 export default function CommunitySection() {
+  const t = useTranslations("components.features.landing.v2.communitySection");
+  const plans = SAMPLE_PLAN_META.map((meta) => ({
+    ...meta,
+    title: t(`samplePlans.${meta.key}.title`),
+    days: t(`samplePlans.${meta.key}.days`),
+    budget: t(`samplePlans.${meta.key}.budget`),
+    tags: t.raw(`samplePlans.${meta.key}.tags`) as string[],
+  }));
+
   return (
     <section className="w-full py-24 px-4 bg-stone-900 text-stone-100 relative overflow-hidden">
       {/* Background Texture */}
@@ -67,14 +62,14 @@ export default function CommunitySection() {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <span className="text-primary font-bold tracking-widest text-sm uppercase">Community</span>
+            <span className="text-primary font-bold tracking-widest text-sm uppercase">{t("badge")}</span>
             <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight">
-              みんなの旅を、<br/>
-              次の旅のヒントに。
+              {t("titleLine1")}<br/>
+              {t("titleLine2")}
             </h2>
             <p className="text-stone-400 max-w-lg">
-              Tabideaで作成された実際のプランを見てみましょう。<br/>
-              気に入ったプランはコピーして、自分好みにカスタマイズできます。
+              {t("leadLine1")}<br/>
+              {t("leadLine2")}
             </p>
           </motion.div>
 
@@ -87,7 +82,7 @@ export default function CommunitySection() {
               href="/shiori"
               className="inline-flex items-center gap-2 text-white border-b border-primary pb-1 hover:text-primary transition-colors group"
             >
-              <span>もっと見る</span>
+              <span>{t("viewMore")}</span>
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </motion.div>
@@ -96,7 +91,7 @@ export default function CommunitySection() {
         {/* Horizontal Scroll Container */}
         <div className="relative">
           <div className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory px-4 scrollbar-hide -mx-4 md:mx-0 mask-image-linear-gradient-to-r">
-            {SAMPLE_PLANS.map((plan, index) => (
+            {plans.map((plan, index) => (
               <motion.div
                 key={plan.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -147,7 +142,7 @@ export default function CommunitySection() {
                   <div className="w-12 h-12 rounded-full bg-stone-800 flex items-center justify-center group-hover:bg-primary transition-colors">
                      <FaArrowRight className="text-xl" />
                   </div>
-                  <span className="font-bold">全てのプランを見る</span>
+                  <span className="font-bold">{t("viewAllPlans")}</span>
                </Link>
             </div>
           </div>

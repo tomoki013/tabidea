@@ -23,7 +23,7 @@ export async function submitPlanFeedback(
   try {
     // Validate rating
     if (params.overallRating < 1 || params.overallRating > 5) {
-      return { success: false, message: "評価は1〜5の範囲で入力してください" };
+      return { success: false, message: "rating_out_of_range" };
     }
 
     const user = await getUser();
@@ -44,7 +44,7 @@ export async function submitPlanFeedback(
 
       const { data: existing } = await query;
       if (existing && existing.length > 0) {
-        return { success: false, message: "このプランへの評価は24時間以内に送信済みです" };
+        return { success: false, message: "feedback_already_submitted_recently" };
       }
     }
 
@@ -59,13 +59,13 @@ export async function submitPlanFeedback(
 
     if (error) {
       console.error("[feedback] Insert failed:", error);
-      return { success: false, message: "フィードバックの送信に失敗しました" };
+      return { success: false, message: "feedback_submit_failed" };
     }
 
     return { success: true };
   } catch (error) {
     console.error("[feedback] Unexpected error:", error);
-    return { success: false, message: "フィードバックの送信に失敗しました" };
+    return { success: false, message: "feedback_submit_failed" };
   }
 }
 
@@ -98,12 +98,12 @@ export async function submitActivityIssue(params: {
 
     if (error) {
       console.error("[feedback] Activity issue insert failed:", error);
-      return { success: false, message: "報告の送信に失敗しました" };
+      return { success: false, message: "issue_report_submit_failed" };
     }
 
     return { success: true };
   } catch (error) {
     console.error("[feedback] Unexpected error:", error);
-    return { success: false, message: "報告の送信に失敗しました" };
+    return { success: false, message: "issue_report_submit_failed" };
   }
 }

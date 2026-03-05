@@ -1,8 +1,11 @@
 import type { Itinerary, TravelInfoCategory } from '@/types';
 import type { PackingList } from '@/types/packing-list';
 import type { CategoryState } from '@/components/features/travel-info/types';
+import type { AbstractIntlMessages } from "next-intl";
 
 export interface PDFGenerationOptions {
+  locale: string;
+  messages: AbstractIntlMessages;
   includeTravelInfo?: boolean;
   travelInfoData?: Map<TravelInfoCategory, CategoryState>;
   includePackingList?: boolean;
@@ -15,7 +18,7 @@ export interface PDFGenerationOptions {
  */
 export async function generateTravelPlanPdf(
   itinerary: Itinerary,
-  options?: PDFGenerationOptions
+  options: PDFGenerationOptions
 ): Promise<Blob> {
   const { pdf, Font } = await import("@react-pdf/renderer");
   const React = await import("react");
@@ -35,6 +38,8 @@ export async function generateTravelPlanPdf(
   // Create React element and generate PDF blob
   const pdfElement = React.createElement(ItineraryPDF, {
     itinerary,
+    locale: options.locale,
+    messages: options.messages,
     includeTravelInfo: options?.includeTravelInfo,
     travelInfoData: options?.travelInfoData,
     includePackingList: options?.includePackingList,

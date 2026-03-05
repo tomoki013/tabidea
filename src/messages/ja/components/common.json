@@ -3,6 +3,86 @@
     "common": {
       "startPlanningButton": {
         "label": "プランを作成する"
+      },
+      "authButton": {
+        "login": "ログイン",
+        "userMenuAriaLabel": "ユーザーメニュー",
+        "userFallback": "ユーザー"
+      },
+      "syncPrompt": {
+        "syncError": "同期中にエラーが発生しました",
+        "successTitle": "同期完了",
+        "successBody": "{count}件のプランを保存しました",
+        "close": "閉じる",
+        "title": "プランを同期しますか？",
+        "descriptionLine1": "お使いのブラウザに保存されている",
+        "countLabel": "{count}件のプラン",
+        "descriptionLine2": "をアカウントに保存します。",
+        "partialFailure": "一部のプランの同期に失敗しました",
+        "syncing": "同期中...",
+        "syncNow": "同期する",
+        "later": "後で"
+      },
+      "shareButtons": {
+        "shareText": "AIに旅行プランを作ってもらいました！\n目的地: {destination}\nテーマ: {themes}\n\n#Tabidea #ともきち日記",
+        "nativeShareTitle": "{destination}の旅行プラン",
+        "heading": "Share this plan",
+        "copied": "Copied!",
+        "aria": {
+          "share": "Share",
+          "shareOnX": "Share on X",
+          "shareOnLine": "Share on LINE",
+          "shareOnFacebook": "Share on Facebook",
+          "copyLink": "Copy link"
+        }
+      },
+      "floatingPlanButton": {
+        "createNewPlan": "新しいプランを作成"
+      },
+      "cookieBanner": {
+        "aria": {
+          "closeTemporarily": "一時的に閉じる"
+        },
+        "descriptionLine1": "当サイトでは、サービスの向上とお客様により適したサービスを提供するためにクッキー（Cookie）を使用しています。",
+        "descriptionLine2": "サイトの利用を継続することで、クッキーの使用に同意したものとみなされます。",
+        "details": "詳細へ",
+        "agree": "同意する",
+        "thankYouTitle": "ご同意いただきありがとうございます！",
+        "thankYouBody": "設定を保存しました。引き続き旅の計画をお楽しみください。"
+      },
+      "planModal": {
+        "closeAriaLabel": "閉じる"
+      },
+      "limitExceededModal": {
+        "actionType": {
+          "plan_generation": "プラン生成",
+          "travel_info": "渡航情報取得",
+          "chat": "チャット",
+          "regenerate": "再生成"
+        },
+        "title": "{actionLabel}の利用制限に達しました",
+        "description": "今月の無料枠を使い切りました。",
+        "nextReset": "次回リセット",
+        "timeUntilReset": {
+          "days": "あと{days}日",
+          "hours": "あと{hours}時間",
+          "soon": "もうすぐ"
+        },
+        "upgradeMessage": "プレミアムプランなら<strong>無制限</strong>で利用できます。回数券も購入可能です。",
+        "viewPlans": "プランを見る",
+        "close": "閉じる"
+      },
+      "editableText": {
+        "empty": "（未入力）"
+      },
+      "syncSelectionModal": {
+        "title": "同期するプランを選択",
+        "description": "このデバイスに<strong>{localCount}個</strong>のプランがありますが、保存できるのは<strong>あと{availableCount}個</strong>です。<br></br>同期するプランを選択してください。",
+        "destinationFallback": "目的地未設定",
+        "deleteUnselected": "選択しなかったプランをこのデバイスから削除する",
+        "selectedCount": "選択: {selected} / {max}",
+        "cancel": "キャンセル",
+        "confirmSync": "{count}個を同期"
       }
     }
   }

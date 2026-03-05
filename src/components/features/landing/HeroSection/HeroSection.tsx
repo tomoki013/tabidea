@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { FaBookOpen, FaMapMarkedAlt } from "react-icons/fa";
 import { JournalSheet, Tape, HandwrittenText, Stamp } from "@/components/ui/journal";
@@ -11,6 +12,8 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ children }: HeroSectionProps) {
+  const t = useTranslations("components.extraUi.landingHeroSection");
+
   return (
     <section className="relative w-full flex flex-col items-center pt-28 sm:pt-36 pb-20 overflow-hidden bg-[#fcfbf9]">
       {/* Background Elements - Paper Texture */}
@@ -31,7 +34,7 @@ export default function HeroSection({ children }: HeroSectionProps) {
              <Tape color="yellow" position="top-center" className="w-32 -top-3 opacity-90" />
              <div className="inline-flex items-center gap-2 text-stone-600 font-hand font-bold tracking-wider text-sm sm:text-base bg-white px-6 py-2 shadow-sm border border-stone-200 border-dashed">
                <FaBookOpen className="text-primary text-sm" />
-               <span>Story of your journey starts here</span>
+               <span>{t("badge")}</span>
              </div>
           </motion.div>
 
@@ -42,14 +45,14 @@ export default function HeroSection({ children }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             className="text-4xl sm:text-6xl md:text-7xl font-serif font-bold text-stone-800 leading-tight tracking-tight relative"
           >
-            心の奥にある
+            {t("headlinePrefix")}
             <span className="relative inline-block mx-2">
-              <span className="relative z-10">『行きたい』</span>
+              <span className="relative z-10">{t("headlineHighlight")}</span>
               <span className="absolute bottom-2 left-0 w-full h-4 bg-primary/20 -z-0 rounded-sm mix-blend-multiply"></span>
             </span>
-            を、
+            {t("headlineMiddle")}
             <br className="sm:hidden" />
-            かたちに。
+            {t("headlineSuffix")}
 
             {/* Decorative Stamp */}
             <div className="absolute -right-8 -top-8 hidden md:block opacity-80">
@@ -67,9 +70,9 @@ export default function HeroSection({ children }: HeroSectionProps) {
             className="relative inline-block mt-2"
           >
              <HandwrittenText className="text-lg sm:text-2xl text-stone-600 leading-relaxed max-w-2xl mx-auto">
-              まだ言葉にならない旅の種を、
+              {t("subLine1")}
               <br className="sm:hidden" />
-              AIと一緒に育ててみませんか？
+              {t("subLine2")}
             </HandwrittenText>
 
             {/* Hand-drawn arrow decoration */}
@@ -112,7 +115,7 @@ export default function HeroSection({ children }: HeroSectionProps) {
               className="group inline-flex items-center gap-2 text-stone-500 hover:text-primary transition-colors font-hand text-lg relative"
             >
               <FaMapMarkedAlt className="group-hover:rotate-12 transition-transform" />
-              <span className="border-b-2 border-dashed border-stone-300 group-hover:border-primary pb-0.5 transition-colors">初めての方はこちら（使い方）</span>
+              <span className="border-b-2 border-dashed border-stone-300 group-hover:border-primary pb-0.5 transition-colors">{t("usageLink")}</span>
             </Link>
           </div>
         </motion.div>

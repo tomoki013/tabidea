@@ -1,4 +1,5 @@
 import { UserInput } from '@/types';
+import { useTranslations } from "next-intl";
 import {
   FaMapLocationDot,
   FaCalendarDays,
@@ -29,39 +30,53 @@ const steps = {
 };
 
 const budgetMap: Record<string, string> = {
-  saving: "なるべく安く",
-  standard: "普通",
-  high: "少し贅沢に",
-  luxury: "リッチに",
+  saving: "saving",
+  standard: "standard",
+  high: "high",
+  luxury: "luxury",
 };
 
-function formatBudgetDisplay(budget: string): string {
+function formatBudgetDisplay(
+  budget: string,
+  t: ReturnType<typeof useTranslations>,
+  tBudgetOptions: ReturnType<typeof useTranslations>
+): string {
   if (budget.startsWith("range:")) {
     const parts = budget.split(":");
     if (parts.length >= 3) {
-      const min = parseInt(parts[1], 10);
-      const max = parseInt(parts[2], 10);
-      const fmtMin = min >= 10000 ? `${(min / 10000).toFixed(min % 10000 === 0 ? 0 : 1)}万円` : `${min.toLocaleString()}円`;
-      const fmtMax = max >= 10000 ? `${(max / 10000).toFixed(max % 10000 === 0 ? 0 : 1)}万円` : `${max.toLocaleString()}円`;
-      return `${fmtMin} 〜 ${fmtMax}`;
+      const min = Number.parseInt(parts[1], 10);
+      const max = Number.parseInt(parts[2], 10);
+      const formatAmount = (value: number) => {
+        if (value >= 10000) {
+          return t("budget.tenThousandAmount", {
+            value: (value / 10000).toFixed(value % 10000 === 0 ? 0 : 1),
+          });
+        }
+        return t("budget.yenAmount", { value: value.toLocaleString() });
+      };
+      return t("budget.range", {
+        min: formatAmount(min),
+        max: formatAmount(max),
+      });
     }
   }
-  return budgetMap[budget] || budget;
+  const budgetKey = budgetMap[budget];
+  return budgetKey ? tBudgetOptions(`${budgetKey}.label`) : budget;
 }
 
-const regionMap: Record<string, string> = {
-  domestic: "国内",
-  overseas: "海外",
-  anywhere: "どこでも",
+const regionMap: Record<string, "domestic" | "overseas" | "anywhere"> = {
+  domestic: "domestic",
+  overseas: "overseas",
+  anywhere: "anywhere",
 };
 
-const transitTypeMap: Record<string, string> = {
-  flight: "飛行機",
-  train: "電車",
-  bus: "バス",
-  ship: "船",
-  car: "車",
-  other: "その他",
+const transitTypeMap: Record<string, "flight" | "train" | "bus" | "ship" | "car" | "other"> = {
+  flight: "flight",
+  train: "train",
+  bus: "bus",
+  ship: "ship",
+  car: "car",
+  other: "other",
 };
 
 const transitIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -76,17 +91,19 @@ const transitIconMap: Record<string, React.ComponentType<{ className?: string }>
 const EditButton = ({
   stepIndex,
   onEdit,
+  t,
 }: {
   stepIndex: number;
   onEdit?: (stepIndex: number) => void;
+  t: ReturnType<typeof useTranslations>;
 }) => {
   if (!onEdit) return null;
   return (
     <button
       onClick={() => onEdit(stepIndex)}
       className="ml-2 text-stone-400 hover:text-primary transition-colors p-1"
-      aria-label="Edit"
-      title="修正する"
+      aria-label={t("editAria")}
+      title={t("editTitle")}
     >
       <FaPen className="text-sm" />
     </button>
@@ -98,6 +115,37 @@ export default function RequestSummary({
   className = "",
   onEdit,
 }: RequestSummaryProps) {
+  const t = useTranslations("components.features.planner.requestSummary");
+  const tCompanionOptions = useTranslations("components.features.planner.steps.stepCompanions.options");
+  const tPaceOptions = useTranslations("components.features.planner.steps.stepPace.options");
+  const tRegionOptions = useTranslations("components.features.planner.steps.stepRegion.regions");
+  const tTransitTypes = useTranslations("components.features.planner.steps.transitForm.types");
+  const tBudgetOptions = useTranslations("components.features.planner.steps.stepBudget.options");
+
+  const companionLabelMap: Record<string, "solo" | "couple" | "friends" | "family"> = {
+    solo: "solo",
+    couple: "couple",
+    friends: "friends",
+    family: "family",
+  };
+
+  const paceLabelMap: Record<string, "relaxed" | "balanced" | "active" | "packed"> = {
+    relaxed: "relaxed",
+    balanced: "balanced",
+    active: "active",
+    packed: "packed",
+  };
+
+  const formatPace = (pace: string) => {
+    if (pace === "normal") return t("pace.normal");
+    const key = paceLabelMap[pace];
+    if (!key) return pace;
+    return t("pace.value", {
+      label: tPaceOptions(`${key}.label`),
+      desc: tPaceOptions(`${key}.desc`),
+    });
+  };
+
   // Helper to render destination content
   const renderDestinationContent = () => {
     // 1. Multiple Destinations
@@ -122,7 +170,7 @@ export default function RequestSummary({
     if (input.region) {
       return (
          <p className="text-stone-600 font-medium">
-             {regionMap[input.region] || input.region}
+             {regionMap[input.region] ? tRegionOptions(`${regionMap[input.region]}.label`) : input.region}
          </p>
       );
     }
@@ -131,16 +179,16 @@ export default function RequestSummary({
     if (input.travelVibe) {
        return (
          <>
-           <p className="text-stone-600 font-medium">エリア未定 (雰囲気重視)</p>
+           <p className="text-stone-600 font-medium">{t("destinationAreaUndecided")}</p>
            <p className="text-xs text-stone-500 mt-1">
-                雰囲気: {input.travelVibe}
+                {t("vibePrefix")} {input.travelVibe}
            </p>
          </>
        );
     }
 
     // 4. Fallback
-    return <p className="text-stone-600 font-medium">未設定</p>;
+    return <p className="text-stone-600 font-medium">{t("unset")}</p>;
   };
 
   return (
@@ -156,9 +204,9 @@ export default function RequestSummary({
           <div className="flex-1">
             <div className="flex items-center">
               <h3 className="font-bold text-stone-700 text-sm">
-                目的地・エリア
+                {t("sections.destination")}
               </h3>
-              <EditButton stepIndex={steps.destination} onEdit={onEdit} />
+              <EditButton stepIndex={steps.destination} onEdit={onEdit} t={t} />
             </div>
             {renderDestinationContent()}
           </div>
@@ -176,9 +224,9 @@ export default function RequestSummary({
             <div className="flex-1">
               <div className="flex items-center">
                 <h3 className="font-bold text-stone-700 text-sm">
-                  絶対に行きたい場所
+                  {t("sections.mustVisit")}
                 </h3>
-                <EditButton stepIndex={steps.mustVisit} onEdit={onEdit} />
+                <EditButton stepIndex={steps.mustVisit} onEdit={onEdit} t={t} />
               </div>
               <ul className="text-stone-600 font-medium list-disc list-inside">
                 {input.mustVisitPlaces.map((place, i) => (
@@ -197,17 +245,13 @@ export default function RequestSummary({
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">誰と行く？</h3>
-              <EditButton stepIndex={steps.companions} onEdit={onEdit} />
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.companions")}</h3>
+              <EditButton stepIndex={steps.companions} onEdit={onEdit} t={t} />
             </div>
             <p className="text-stone-600 font-medium">
-              {input.companions === "solo" && "一人旅"}
-              {input.companions === "couple" && "パートナー・夫婦"}
-              {input.companions === "friends" && "友人グループ"}
-              {input.companions === "family" && "家族（子供連れ）"}
-              {!["solo", "couple", "friends", "family"].includes(
-                input.companions
-              ) && input.companions}
+              {companionLabelMap[input.companions]
+                ? tCompanionOptions(`${companionLabelMap[input.companions]}.label`)
+                : input.companions}
             </p>
           </div>
         </div>
@@ -221,8 +265,8 @@ export default function RequestSummary({
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">旅のテーマ</h3>
-              <EditButton stepIndex={steps.themes} onEdit={onEdit} />
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.themes")}</h3>
+              <EditButton stepIndex={steps.themes} onEdit={onEdit} t={t} />
             </div>
             <div className="flex flex-wrap gap-1 mt-1">
               {input.theme.map((t) => (
@@ -246,11 +290,11 @@ export default function RequestSummary({
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">予算感</h3>
-              <EditButton stepIndex={steps.budget} onEdit={onEdit} />
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.budget")}</h3>
+              <EditButton stepIndex={steps.budget} onEdit={onEdit} t={t} />
             </div>
             <p className="text-stone-600 font-medium">
-              {formatBudgetDisplay(input.budget)}
+              {formatBudgetDisplay(input.budget, t, tBudgetOptions)}
             </p>
           </div>
         </div>
@@ -264,8 +308,8 @@ export default function RequestSummary({
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">日程・時期</h3>
-              <EditButton stepIndex={steps.dates} onEdit={onEdit} />
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.dates")}</h3>
+              <EditButton stepIndex={steps.dates} onEdit={onEdit} t={t} />
             </div>
             <p className="text-stone-600 font-medium">{input.dates}</p>
           </div>
@@ -280,18 +324,11 @@ export default function RequestSummary({
           </div>
           <div className="flex-1">
             <div className="flex items-center">
-              <h3 className="font-bold text-stone-700 text-sm">旅行のペース</h3>
-              <EditButton stepIndex={steps.pace} onEdit={onEdit} />
+              <h3 className="font-bold text-stone-700 text-sm">{t("sections.pace")}</h3>
+              <EditButton stepIndex={steps.pace} onEdit={onEdit} t={t} />
             </div>
             <p className="text-stone-600 font-medium">
-              {input.pace === "relaxed" && "ゆったり (1日1-2箇所)"}
-              {input.pace === "balanced" && "バランスよく (観光と休息を程よく)"}
-              {input.pace === "active" && "アクティブ (主要スポットを網羅)"}
-              {input.pace === "packed" && "詰め込み (朝から晩まで全力で)"}
-              {input.pace === "normal" && "普通 (1日3-4箇所)"}
-              {!["relaxed", "balanced", "active", "packed", "normal"].includes(
-                input.pace
-              ) && input.pace}
+              {formatPace(input.pace)}
             </p>
           </div>
         </div>
@@ -304,7 +341,7 @@ export default function RequestSummary({
             <FaPlane />
           </div>
           <div className="flex-1">
-            <h3 className="font-bold text-stone-700 text-sm">移動手段</h3>
+            <h3 className="font-bold text-stone-700 text-sm">{t("sections.transits")}</h3>
             <div className="mt-2 space-y-2">
               {Object.entries(input.transits).map(([dayIndex, transit]) => {
                 const Icon = transitIconMap[transit.type] || FaQuestion;
@@ -313,7 +350,9 @@ export default function RequestSummary({
                     <div className="flex items-center gap-1.5 mt-0.5 px-2 py-1 bg-stone-100 rounded-full">
                       <Icon className="text-primary text-xs" />
                       <span className="font-medium text-stone-700">
-                        {transitTypeMap[transit.type] || transit.type}
+                        {transitTypeMap[transit.type]
+                          ? tTransitTypes(transitTypeMap[transit.type])
+                          : transit.type}
                       </span>
                     </div>
                     <div className="flex-1 text-stone-600">
@@ -340,10 +379,10 @@ export default function RequestSummary({
       {input.freeText && (
         <div className="mt-4 p-4 bg-stone-50 rounded-lg border border-dashed border-stone-300 relative group">
           <div className="absolute top-2 right-2">
-            <EditButton stepIndex={steps.freeText} onEdit={onEdit} />
+            <EditButton stepIndex={steps.freeText} onEdit={onEdit} t={t} />
           </div>
           <h3 className="text-xs font-bold text-stone-500 mb-1">
-            その他の要望
+            {t("sections.freeText")}
           </h3>
           <p className="text-stone-700 text-sm whitespace-pre-wrap">
             {input.freeText}

@@ -5,13 +5,13 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FaChevronRight } from "react-icons/fa";
-import { faqs, faqCategories } from "@/lib/data/faq";
 import {
   DEFAULT_LANGUAGE,
   getLanguageFromPathname,
   localizePath,
 } from "@/lib/i18n/locales";
 import FAQCard from "@/components/faq/FAQCard";
+import { useLocalizedFaqData } from "@/components/faq/useLocalizedFaq";
 
 interface FAQSectionProps {
   limit?: number;
@@ -22,11 +22,12 @@ export default function FAQSection({ limit, categoryId }: FAQSectionProps) {
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const t = useTranslations("components.features.landing.faqSection");
+  const { categories, faqs } = useLocalizedFaqData();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   let sourceFaqs = faqs;
   if (categoryId) {
-    sourceFaqs = faqCategories.find((c) => c.id === categoryId)?.items || [];
+    sourceFaqs = categories.find((c) => c.id === categoryId)?.items || [];
   }
 
   const displayFaqs = limit ? sourceFaqs.slice(0, limit) : sourceFaqs;

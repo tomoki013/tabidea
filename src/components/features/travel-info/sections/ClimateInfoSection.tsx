@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import {
   Sun,
@@ -18,16 +19,24 @@ import type { SectionBaseProps } from '../types';
  * 天気アイコンコンポーネント
  * 天気条件に応じたアイコンを表示
  */
-function WeatherIconDisplay({ condition, className }: { condition: string; className?: string }) {
+function WeatherIconDisplay({
+  condition,
+  className,
+  weatherKeywords,
+}: {
+  condition: string;
+  className?: string;
+  weatherKeywords: { sunny: string[]; rain: string[]; snow: string[] };
+}) {
   const lowerCondition = condition.toLowerCase();
 
-  if (lowerCondition.includes('晴') || lowerCondition.includes('sunny') || lowerCondition.includes('clear')) {
+  if (weatherKeywords.sunny.some((keyword) => lowerCondition.includes(keyword.toLowerCase()))) {
     return <Sun className={className} />;
   }
-  if (lowerCondition.includes('雨') || lowerCondition.includes('rain')) {
+  if (weatherKeywords.rain.some((keyword) => lowerCondition.includes(keyword.toLowerCase()))) {
     return <CloudRain className={className} />;
   }
-  if (lowerCondition.includes('雪') || lowerCondition.includes('snow')) {
+  if (weatherKeywords.snow.some((keyword) => lowerCondition.includes(keyword.toLowerCase()))) {
     return <Snowflake className={className} />;
   }
   return <Cloud className={className} />;
@@ -39,6 +48,14 @@ function WeatherIconDisplay({ condition, className }: { condition: string; class
  * 現在の天気、予報、服装アドバイスを表示
  */
 export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInfo>) {
+  const t = useTranslations('components.features.travelInfo.sections.climateInfoSection');
+  const locale = useLocale();
+  const weatherKeywords = t.raw('weatherKeywords') as {
+    sunny: string[];
+    rain: string[];
+    snow: string[];
+  };
+
   return (
     <div className="space-y-6">
       {/* 現在の天気 */}
@@ -50,10 +67,10 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
         >
           <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full -mr-12 -mt-12" />
 
-          <h4 className="text-sm text-stone-500 mb-4 font-bold font-serif uppercase tracking-wider">Current Weather</h4>
+          <h4 className="text-sm text-stone-500 mb-4 font-bold font-serif uppercase tracking-wider">{t('currentWeather')}</h4>
           <div className="flex items-center gap-8 relative z-10">
             <div className="text-primary/80">
-              <WeatherIconDisplay condition={data.currentWeather.condition} className="w-20 h-20" />
+              <WeatherIconDisplay condition={data.currentWeather.condition} className="w-20 h-20" weatherKeywords={weatherKeywords} />
             </div>
             <div>
               <div className="flex items-baseline gap-2">
@@ -81,12 +98,12 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
         <div className="space-y-4">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Thermometer className="w-5 h-5 text-primary" />
-            天気予報
+            {t('forecast')}
           </h4>
           <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0 pb-4">
             <div className="flex gap-4 min-w-max">
               {data.forecast.map((forecast, index) => (
-                <ForecastCard key={forecast.date} forecast={forecast} index={index} />
+                <ForecastCard key={forecast.date} forecast={forecast} index={index} locale={locale} weatherKeywords={weatherKeywords} />
               ))}
             </div>
           </div>
@@ -97,7 +114,7 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
       <div className="space-y-4">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
           <Wind className="w-5 h-5 text-primary" />
-          季節の特徴
+          {t('seasonFeatures')}
         </h4>
         <div className="p-6 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm relative">
            <div className="absolute top-4 left-4 w-8 h-1 bg-primary/20" />
@@ -110,10 +127,10 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
       {/* 服装アドバイス */}
       {data.recommendedClothing.length > 0 && (
         <div className="space-y-4">
-          <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
-            <Shirt className="w-5 h-5 text-primary" />
-            服装アドバイス
-          </h4>
+        <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
+          <Shirt className="w-5 h-5 text-primary" />
+          {t('clothingAdvice')}
+        </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.recommendedClothing.map((item, index) => (
               <motion.div
@@ -142,12 +159,16 @@ export default function ClimateInfoSection({ data }: SectionBaseProps<ClimateInf
 function ForecastCard({
   forecast,
   index,
+  locale,
+  weatherKeywords,
 }: {
   forecast: WeatherForecast;
   index: number;
+  locale: string;
+  weatherKeywords: { sunny: string[]; rain: string[]; snow: string[] };
 }) {
   const date = new Date(forecast.date);
-  const dayOfWeek = ['日', '月', '火', '水', '木', '金', '土'][date.getDay()];
+  const dayOfWeek = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', { weekday: 'short' }).format(date);
   const isWeekend = date.getDay() === 0 || date.getDay() === 6;
 
   return (
@@ -176,7 +197,7 @@ function ForecastCard({
       </div>
 
       {/* 天気アイコン */}
-      <WeatherIconDisplay condition={forecast.condition} className="w-10 h-10 text-blue-400" />
+      <WeatherIconDisplay condition={forecast.condition} className="w-10 h-10 text-blue-400" weatherKeywords={weatherKeywords} />
 
       {/* 気温 */}
       <div className="text-center">

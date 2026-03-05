@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Building2,
@@ -25,21 +26,18 @@ const SOURCE_ICONS: Record<SourceBadgeProps['sourceType'], LucideIcon> = {
   blog: PenLine,
 };
 
-/**
- * ソースタイプの日本語ラベル
- */
-function getSourceLabel(sourceType: SourceBadgeProps['sourceType']): string {
+function getSourceLabelKey(sourceType: SourceBadgeProps['sourceType']): string {
   switch (sourceType) {
     case 'official_api':
-      return '公式情報';
+      return 'labels.official_api';
     case 'web_search':
-      return 'Web検索';
+      return 'labels.web_search';
     case 'ai_generated':
-      return 'AI生成';
+      return 'labels.ai_generated';
     case 'blog':
-      return 'ブログ';
+      return 'labels.blog';
     default:
-      return '情報源';
+      return 'labels.default';
   }
 }
 
@@ -63,8 +61,8 @@ function scoreToStars(score: number): number {
 /**
  * 日時をフォーマット
  */
-function formatDate(date: Date): string {
-  return new Intl.DateTimeFormat('ja-JP', {
+function formatDate(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -87,9 +85,11 @@ export default function SourceBadge({
   retrievedAt,
   compact = false,
 }: SourceBadgeProps) {
+  const locale = useLocale();
+  const t = useTranslations('components.features.travelInfo.sourceBadge');
   const [showTooltip, setShowTooltip] = useState(false);
   const IconComponent = SOURCE_ICONS[sourceType] || Info;
-  const label = getSourceLabel(sourceType);
+  const label = t(getSourceLabelKey(sourceType));
   const reliabilityColorClass = getReliabilityColor(reliabilityScore);
   const stars = scoreToStars(reliabilityScore);
 
@@ -110,7 +110,7 @@ export default function SourceBadge({
             ${reliabilityColorClass}
             transition-colors duration-200 hover:opacity-80
           `}
-          aria-label={`${sourceName}の詳細を表示`}
+          aria-label={t('aria.showDetails', { sourceName })}
         >
           <IconComponent className="w-3 h-3" />
           <span>{label}</span>
@@ -124,6 +124,7 @@ export default function SourceBadge({
               reliabilityScore={reliabilityScore}
               stars={stars}
               retrievedAt={retrievedAt}
+              locale={locale}
             />
           )}
         </AnimatePresence>
@@ -171,7 +172,7 @@ export default function SourceBadge({
       {/* 更新日時 */}
       <div className="flex items-center gap-1.5 text-stone-500 text-sm">
         <Clock className="w-4 h-4" />
-        <span>{formatDate(retrievedAt)}</span>
+        <span>{formatDate(retrievedAt, locale)}</span>
       </div>
 
       {/* ソースリンク */}
@@ -183,10 +184,10 @@ export default function SourceBadge({
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
-            aria-label={`${sourceName}を開く（新しいタブ）`}
+            aria-label={t('aria.openSource', { sourceName })}
           >
             <ExternalLink className="w-4 h-4" />
-            <span>ソースを確認</span>
+            <span>{t('checkSource')}</span>
           </a>
         </>
       )}
@@ -203,13 +204,17 @@ function Tooltip({
   reliabilityScore,
   stars,
   retrievedAt,
+  locale,
 }: {
   sourceName: string;
   sourceUrl?: string;
   reliabilityScore: number;
   stars: number;
   retrievedAt: Date;
+  locale: string;
 }) {
+  const t = useTranslations('components.features.travelInfo.sourceBadge');
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 5, scale: 0.95 }}
@@ -233,13 +238,13 @@ function Tooltip({
             ))}
           </div>
           <span className="text-xs text-stone-600">
-            信頼性 {reliabilityScore}%
+            {t('reliability', { score: reliabilityScore })}
           </span>
         </div>
 
         <div className="flex items-center gap-1.5 text-xs text-stone-500">
           <Clock className="w-3 h-3" />
-          <span>{formatDate(retrievedAt)}</span>
+          <span>{formatDate(retrievedAt, locale)}</span>
         </div>
 
         {sourceUrl && (
@@ -250,7 +255,7 @@ function Tooltip({
             className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
           >
             <ExternalLink className="w-3 h-3" />
-            <span>ソースを確認</span>
+            <span>{t('checkSource')}</span>
           </a>
         )}
       </div>

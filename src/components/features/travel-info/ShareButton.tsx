@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Share2, Link2, Check, Twitter, MessageCircle } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import {
   copyShareUrlToClipboard,
   generateTwitterShareUrl,
@@ -20,6 +21,7 @@ export default function ShareButton({
   categories,
   dates,
 }: ShareButtonProps) {
+  const t = useTranslations("components.extraUi.travelInfoShareButton");
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -61,7 +63,7 @@ export default function ShareButton({
         aria-haspopup="menu"
       >
         <Share2 className="w-5 h-5" />
-        <span>共有</span>
+        <span>{t("trigger")}</span>
       </button>
 
       {/* ドロップダウンメニュー */}
@@ -96,12 +98,12 @@ export default function ShareButton({
                 {copied ? (
                   <>
                     <Check className="w-5 h-5 text-green-500" />
-                    <span className="text-green-600 font-medium">コピーしました!</span>
+                    <span className="text-green-600 font-medium">{t("copied")}</span>
                   </>
                 ) : (
                   <>
                     <Link2 className="w-5 h-5 text-stone-600" />
-                    <span className="text-stone-700">URLをコピー</span>
+                    <span className="text-stone-700">{t("copyUrl")}</span>
                   </>
                 )}
               </button>
@@ -116,7 +118,7 @@ export default function ShareButton({
                 role="menuitem"
               >
                 <Twitter className="w-5 h-5 text-[#1DA1F2]" />
-                <span className="text-stone-700">Twitterで共有</span>
+                <span className="text-stone-700">{t("shareOnTwitter")}</span>
               </button>
 
               {/* LINE */}
@@ -127,7 +129,7 @@ export default function ShareButton({
                 role="menuitem"
               >
                 <MessageCircle className="w-5 h-5 text-[#00B900]" />
-                <span className="text-stone-700">LINEで共有</span>
+                <span className="text-stone-700">{t("shareOnLine")}</span>
               </button>
             </motion.div>
           </>

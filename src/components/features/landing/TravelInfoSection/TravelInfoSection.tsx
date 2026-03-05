@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
   FaGlobeAsia,
   FaClock,
@@ -12,6 +13,8 @@ import {
 } from "react-icons/fa";
 
 export default function TravelInfoSection() {
+  const t = useTranslations("components.extraUi.landingTravelInfoSection");
+
   return (
     <section className="relative w-full py-24 bg-[#fcfbf9] overflow-hidden border-t border-stone-100">
       {/* Background texture if needed, matching other sections */}
@@ -28,32 +31,31 @@ export default function TravelInfoSection() {
           >
             <div className="inline-flex items-center gap-2 mb-6 text-orange-600 font-bold tracking-widest text-sm uppercase">
               <FaShieldAlt />
-              <span>Travel Support</span>
+              <span>{t("badge")}</span>
             </div>
 
             <h2 className="text-3xl sm:text-5xl font-serif font-bold text-stone-800 leading-tight mb-6">
-              安心も、
+              {t("headlineLine1")}
               <br />
-              旅の一部です。
+              {t("headlineLine2")}
             </h2>
 
             <div className="space-y-6 text-stone-600 font-hand text-lg leading-relaxed mb-8">
               <p>
-                知らない土地へ行くときは、誰でも少し不安になるもの。
-                Tabideaなら、旅の計画と一緒に、現地に必要な情報もまとめてチェックできます。
+                {t("leadLine1")} {t("leadLine2")}
               </p>
               <ul className="space-y-3 mt-4">
                 <li className="flex items-center gap-3">
                   <FaClock className="text-orange-400" />
-                  <span>主要都市の現地時間を表示</span>
+                  <span>{t("featureLocalTime")}</span>
                 </li>
-                {/* <li className="flex items-center gap-3">
+                <li className="flex items-center gap-3">
                   <FaMoneyBillWave className="text-orange-400" />
-                  <span>最新の為替レートをかんたん計算</span>
-                </li> */}
+                  <span>{t("featureExchangeRate")}</span>
+                </li>
                 <li className="flex items-center gap-3">
                   <FaShieldAlt className="text-orange-400" />
-                  <span>外務省の安全情報へのダイレクトリンク</span>
+                  <span>{t("featureSafetyLink")}</span>
                 </li>
               </ul>
             </div>
@@ -62,7 +64,7 @@ export default function TravelInfoSection() {
               href="/travel-info"
               className="inline-flex items-center gap-3 bg-[#e67e22] text-white px-8 py-4 rounded-full font-serif font-bold text-lg shadow-lg hover:bg-[#d35400] hover:shadow-xl transition-all transform hover:-translate-y-1"
             >
-              <span>渡航情報・ツールを見る</span>
+              <span>{t("cta")}</span>
               <FaArrowRight />
             </Link>
           </motion.div>
@@ -85,10 +87,10 @@ export default function TravelInfoSection() {
               className="absolute top-10 left-0 sm:left-10 bg-white p-6 rounded-xl shadow-lg border border-stone-100 rotate-[-3deg] w-48 z-20"
             >
               <div className="flex items-center gap-3 mb-2 text-stone-400 text-xs font-bold uppercase">
-                <FaClock /> Local Time
+                <FaClock /> {t("mockLocalTimeLabel")}
               </div>
               <div className="text-3xl font-mono text-stone-800">10:42</div>
-              <div className="text-xs text-stone-500 mt-1">in Paris</div>
+              <div className="text-xs text-stone-500 mt-1">{t("mockLocalTimeLocation")}</div>
             </motion.div>
 
             {/* Card 2: Currency */}
@@ -97,12 +99,12 @@ export default function TravelInfoSection() {
               className="absolute bottom-20 right-0 sm:right-10 bg-white p-6 rounded-xl shadow-lg border border-stone-100 rotate-[3deg] w-52 z-30"
             >
               <div className="flex items-center gap-3 mb-2 text-stone-400 text-xs font-bold uppercase">
-                <FaMoneyBillWave /> Currency
+                <FaMoneyBillWave /> {t("mockCurrencyLabel")}
               </div>
               <div className="text-2xl font-mono text-stone-800">€ 125.00</div>
               <div className="text-xs text-stone-500 mt-1 border-t border-stone-100 pt-1 flex justify-between">
-                <span>JPY</span>
-                <span className="font-bold">¥20,350</span>
+                <span>{t("mockCurrencyBase")}</span>
+                <span className="font-bold">{t("mockCurrencyConverted")}</span>
               </div>
             </motion.div>
 
@@ -115,7 +117,7 @@ export default function TravelInfoSection() {
               <div className="w-40 h-52 bg-[#1a3c6e] rounded-lg shadow-xl flex flex-col items-center justify-center border-l-4 border-[#122a4d]">
                 <FaPassport className="text-white/20 text-6xl mb-4" />
                 <div className="text-white/40 font-serif tracking-widest text-xs">
-                  PASSPORT
+                  {t("mockPassportLabel")}
                 </div>
               </div>
             </motion.div>

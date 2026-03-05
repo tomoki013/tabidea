@@ -62,7 +62,7 @@ export default function BookingLinkButton({
 
   if (bookingResult.links.length === 0) return null;
 
-  // 1つしかリンクがない場合はドロップダウンなしで直接リンク
+  // If only one link is available, render a direct link without dropdown.
   if (bookingResult.links.length === 1) {
     const link = bookingResult.links[0];
     return (

@@ -45,7 +45,7 @@ export async function submitReflection(
 
     if (error) {
       console.error("[reflection] Failed to save:", error.message);
-      return { success: false, error: "保存に失敗しました" };
+      return { success: false, error: "save_failed" };
     }
 
     // イベントログも記録
@@ -62,6 +62,6 @@ export async function submitReflection(
     return { success: true };
   } catch (err) {
     console.error("[reflection] Unexpected error:", err);
-    return { success: false, error: "予期せぬエラーが発生しました" };
+    return { success: false, error: "unexpected_error" };
   }
 }

@@ -3,22 +3,38 @@
     "contactForm": {
       "contact": "Contact",
       "contactJa": "お問い合わせ",
+      "brand": "Tabidea",
       "sent": "送信完了",
       "newInquiry": "新しいお問い合わせを送る",
       "name": "お名前",
       "namePlaceholder": "たびであ",
       "email": "メールアドレス",
+      "emailPlaceholder": "tabidea@example.com",
       "subject": "件名",
       "subjectPlaceholder": "機能追加のリクエストについて",
       "message": "お問い合わせ内容",
       "messagePlaceholder": "具体的な内容をご記入ください",
-      "agree": "に同意します",
+      "agreementText": "<privacy></privacy>、<terms></terms>、及び<aiPolicy></aiPolicy>に同意します",
       "privacy": "プライバシーポリシー",
       "terms": "利用規約",
       "aiPolicy": "AIポリシー",
+      "postService": "Post Service",
       "sending": "送信中...",
       "submit": "送信する",
-      "note": "※ 個人開発のため、返信にお時間をいただく場合がございます。"
+      "note": "※ 個人開発のため、返信にお時間をいただく場合がございます。",
+      "messages": {
+        "submitted": "お問い合わせを受け付けました。確認メールは送信されませんが、担当者が確認次第ご連絡いたします。",
+        "submittedDev": "送信しました（開発モード: 実際には送信されていません）"
+      },
+      "errors": {
+        "validationFailed": "入力内容に誤りがあります。",
+        "sendFailed": "送信に失敗しました。時間をおいて再度お試しください。",
+        "nameRequired": "お名前を入力してください",
+        "emailRequired": "メールアドレスを入力してください",
+        "emailInvalid": "有効なメールアドレスを入力してください",
+        "subjectRequired": "件名を入力してください",
+        "messageRequired": "お問い合わせ内容を入力してください"
+      }
     }
   }
 }

@@ -46,7 +46,7 @@ export async function POST(request: Request) {
     // バリデーション
     if (!body.trigger || !body.travelerState || !body.tripContext || !body.tripPlan) {
       return NextResponse.json(
-        { error: "必須フィールドが不足しています" },
+        { error: "missing_required_fields" },
         { status: 400 }
       );
     }
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
       if (error instanceof DOMException && error.name === "AbortError") {
         const elapsed = Math.round(performance.now() - startTime);
         return NextResponse.json(
-          { error: "リプラン処理がタイムアウトしました", processingTimeMs: elapsed },
+          { error: "replan_timeout", processingTimeMs: elapsed },
           { status: 504 }
         );
       }
@@ -106,7 +106,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("[replan] Error:", error);
     return NextResponse.json(
-      { error: "リプラン処理中にエラーが発生しました" },
+      { error: "replan_failed" },
       { status: 500 }
     );
   }

@@ -9,7 +9,24 @@
         "contactPrefix": "問題が解決しない場合は、",
         "contact": "お問い合わせページ",
         "contactSuffix": "からご連絡ください。",
-        "createNewPlan": "新しいプランを作る"
+        "resultBadge": "Result",
+        "createNewPlan": "新しいプランを作る",
+        "resultTitle": "旅行プラン結果",
+        "resultSubtitleWithDestination": "{destination}への旅のしおり",
+        "resultSubtitleFallback": "あなただけの特別な旅のしおりが完成しました",
+        "loginSaveHint": "ログインするとプランが自動的にアカウントに保存されます",
+        "syncingToAccount": "プランをアカウントに保存しています...",
+        "localPlanNotFound": "プランが見つかりませんでした。",
+        "localPlanMissingDescription": "ローカルに保存されたプランが見つからないか、削除された可能性があります。",
+        "autoSaveUnexpected": "保存中にエラーが発生しました",
+        "autoSaveExpired": "保存から24時間以上経過したため、自動保存できませんでした。",
+        "regenerateInstruction": "この会話で合意した変更内容を現在のプランに反映して再生成してください。",
+        "dateParser": {
+          "jaFrom": "から",
+          "jaDays": "日間",
+          "enFor": "for",
+          "enDaysRegex": "days?"
+        }
       }
     }
   }

@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { useDebounce } from "@/lib/hooks";
 import {
   FaFilter,
@@ -31,14 +32,6 @@ import {
 interface SamplePlanListProps {
   plans: SamplePlan[];
 }
-
-const dayOptions = [
-  { value: null, label: "すべて" },
-  { value: 2, label: "1泊2日" },
-  { value: 3, label: "2泊3日" },
-  { value: 4, label: "3泊4日" },
-  { value: 5, label: "4泊5日以上" },
-];
 
 // タグカテゴリ定義
 type TagCategory = "companion" | "season" | "theme" | "oshikatsu";
@@ -517,6 +510,7 @@ const regionIconMap: Record<string, string> = {
 };
 
 export default function SamplePlanList({ plans }: SamplePlanListProps) {
+  const t = useTranslations("components.extraUi.samplePlanList");
   const [selectedTab, setSelectedTab] = useState<"all" | "domestic" | "overseas">("all");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
@@ -529,6 +523,16 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
 
   // Tag Filter Tabs
   const [activeTagTab, setActiveTagTab] = useState<TagCategory>("theme");
+  const dayOptions = useMemo(
+    () => [
+      { value: null, label: t("dayOptions.all") },
+      { value: 2, label: t("dayOptions.2days") },
+      { value: 3, label: t("dayOptions.3days") },
+      { value: 4, label: t("dayOptions.4days") },
+      { value: 5, label: t("dayOptions.5daysOrMore") },
+    ],
+    [t]
+  );
 
   // モーダル表示中のスクロール制御
   useEffect(() => {
@@ -763,10 +767,10 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
   };
 
   const tabItems: { id: TagCategory; label: string; icon: React.ReactNode }[] = [
-    { id: "theme", label: "テーマ", icon: <FaUmbrellaBeach /> },
-    { id: "oshikatsu", label: "推し活", icon: <FaHeart /> },
-    { id: "companion", label: "同行者", icon: <FaUserFriends /> },
-    { id: "season", label: "季節", icon: <FaSun /> },
+    { id: "theme", label: t("tabs.theme"), icon: <FaUmbrellaBeach /> },
+    { id: "oshikatsu", label: t("tabs.oshikatsu"), icon: <FaHeart /> },
+    { id: "companion", label: t("tabs.companion"), icon: <FaUserFriends /> },
+    { id: "season", label: t("tabs.season"), icon: <FaSun /> },
   ];
 
   return (
@@ -785,7 +789,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="キーワード、目的地、気分で検索..."
+              placeholder={t("searchPlaceholder")}
               className="w-full pl-11 pr-4 py-3 bg-stone-50 border border-transparent rounded-xl focus:bg-white focus:border-[#e67e22]/50 focus:ring-4 focus:ring-[#e67e22]/10 outline-none transition-all placeholder:text-stone-400 font-medium"
             />
           </div>
@@ -820,10 +824,10 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                     {tab === "overseas" && <FaPlane />}
                     <span>
                       {tab === "all"
-                        ? "すべて"
+                        ? t("tabAll")
                         : tab === "domestic"
-                        ? "国内"
-                        : "海外"}
+                        ? t("tabDomestic")
+                        : t("tabOverseas")}
                     </span>
                   </button>
                 ))}
@@ -844,7 +848,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               `}
             >
               <FaFilter />
-              <span className="hidden sm:inline">絞り込み</span>
+              <span className="hidden sm:inline">{t("filter")}</span>
               {hasActiveFilters && (
                 <span className="ml-1 px-1.5 py-0.5 bg-white/20 text-white rounded-full text-xs">
                   {activeFilterCount}
@@ -877,7 +881,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               <div className="sticky top-0 bg-white/95 backdrop-blur-sm p-6 border-b border-stone-100 flex items-center justify-between z-10">
                 <h3 className="text-xl font-bold text-[#2c2c2c] flex items-center gap-2">
                   <FaFilter className="text-[#e67e22]" />
-                  条件検索
+                  {t("filterSearchTitle")}
                 </h3>
                 <button
                   onClick={() => setIsFilterOpen(false)}
@@ -897,7 +901,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                       className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-stone-500 hover:text-white hover:bg-red-500 rounded-lg transition-all border border-stone-200 hover:border-red-500"
                     >
                       <FaTimes />
-                      <span className="font-medium">すべてクリア</span>
+                      <span className="font-medium">{t("clearAll")}</span>
                     </motion.button>
                   )}
                 </div>
@@ -906,7 +910,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 <div className="space-y-3">
                   <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
                     <FaCalendarAlt className="text-[#e67e22]" />
-                    日数
+                    {t("days")}
                   </h4>
                   <div className="flex flex-wrap gap-2">
                     {dayOptions.map((option) => (
@@ -931,7 +935,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 <div className="space-y-4">
                    <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
                     <FaTag className="text-[#e67e22]" />
-                    タグ（カテゴリ）
+                    {t("tags")}
                   </h4>
 
                   {/* Category Tabs */}
@@ -964,7 +968,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                         )
                       ) : (
                          <div className="w-full text-center py-8 text-stone-400 text-sm">
-                           該当するタグがありません
+                           {t("noMatchingTags")}
                          </div>
                       )}
                     </div>
@@ -975,7 +979,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                 <div className="space-y-4 pt-4 border-t border-stone-100">
                   <h4 className="text-sm font-bold text-stone-700 flex items-center gap-2">
                     <FaMapMarkerAlt className="text-[#e67e22]" />
-                    エリア
+                    {t("area")}
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {Object.entries(groupedRegions).map(([area, regions]) => (
@@ -999,7 +1003,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
                   onClick={() => setIsFilterOpen(false)}
                   className="w-full py-3 bg-[#e67e22] text-white font-bold rounded-xl shadow-md hover:bg-[#d35400] transition-colors"
                 >
-                  条件を適用して閉じる
+                  {t("applyAndClose")}
                 </button>
               </div>
             </motion.div>
@@ -1015,7 +1019,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
           className="flex flex-wrap items-center gap-2 bg-white/50 p-4 rounded-xl border border-stone-200/50 backdrop-blur-sm"
         >
           <span className="text-sm text-stone-500 font-bold mr-2">
-            選択中:
+            {t("selected")}
           </span>
           {selectedRegions.map((region) => (
             <motion.button
@@ -1062,7 +1066,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
             <span className="text-3xl font-bold text-[#e67e22]">
               {filteredPlans.length}
             </span>
-            <span className="text-sm font-medium text-stone-500">件のプラン</span>
+            <span className="text-sm font-medium text-stone-500">{t("plansCount")}</span>
           </div>
           {/* Optional: Sort order could go here */}
         </div>
@@ -1094,7 +1098,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
               onClick={handleShowMore}
               className="px-8 py-3 bg-white text-stone-600 border border-stone-300 rounded-full font-bold hover:bg-stone-50 hover:border-stone-400 transition-all shadow-sm"
             >
-              もっと見る ({filteredPlans.length - displayLimit}件)
+              {t("showMore", { count: filteredPlans.length - displayLimit })}
             </button>
           </div>
         )}
@@ -1110,13 +1114,13 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
           <div className="text-7xl mb-6 opacity-80">🗺️</div>
           <h3 className="text-xl font-bold text-stone-700 mb-2">
             {debouncedSearchQuery
-              ? `「${debouncedSearchQuery}」のプランは見つかりませんでした`
-              : "プランが見つかりませんでした"}
+              ? t("emptySearchNotFound", { query: debouncedSearchQuery })
+              : t("emptyNotFound")}
           </h3>
           <p className="text-stone-500 mb-8 max-w-md mx-auto">
             {debouncedSearchQuery
-              ? "キーワードを変えて、もう一度探してみてください。"
-              : "選択した条件に一致する旅のプランがありませんでした。\n条件を少し緩めて、もう一度探してみてください。"}
+              ? t("emptySearchTip")
+              : t("emptyFilterTip")}
           </p>
           <motion.button
             onClick={() => {
@@ -1130,7 +1134,7 @@ export default function SamplePlanList({ plans }: SamplePlanListProps) {
             className="px-8 py-3 bg-[#e67e22] text-white rounded-xl font-bold hover:bg-[#d35400] transition-colors shadow-lg flex items-center gap-2 mx-auto"
           >
             <FaTimes />
-            すべてのフィルタを解除
+            {t("clearAllFilters")}
           </motion.button>
         </motion.div>
       )}

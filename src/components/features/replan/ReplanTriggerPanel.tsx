@@ -7,6 +7,7 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { ReplanTrigger, ReplanTriggerType } from "@/types/replan";
 
 import { ReplanTriggerButton } from "./ReplanTriggerButton";
@@ -35,11 +36,13 @@ export function ReplanTriggerPanel({
   onTrigger,
   disabled = false,
 }: ReplanTriggerPanelProps) {
+  const t = useTranslations("components.features.replan.triggerPanel");
+
   return (
     <div
       className="flex flex-wrap gap-2"
       role="group"
-      aria-label="プラン変更トリガー"
+      aria-label={t("ariaLabel")}
     >
       {TRIGGER_TYPES.map((type) => (
         <ReplanTriggerButton

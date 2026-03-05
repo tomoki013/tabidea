@@ -50,6 +50,22 @@ export default function MyPlansClient({
   const t = useTranslations("app.myPlans");
   const tError = useTranslations("errors.ui.myPlans");
   const dateLocale = resolveRegionalLocale(language);
+  const mapMyPlansError = useCallback(
+    (code?: string | null, fallbackKey: "deleteFailed" | "visibilityFailed" | "renameFailed" = "deleteFailed") => {
+      switch (code) {
+        case "plan_delete_failed":
+          return tError("deleteFailed");
+        case "plan_update_failed":
+          return tError("visibilityFailed");
+        case "plan_name_required":
+        case "plan_name_update_failed":
+          return tError("renameFailed");
+        default:
+          return tError(fallbackKey);
+      }
+    },
+    [tError]
+  );
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -193,7 +209,7 @@ export default function MyPlansClient({
     if (result.success) {
       removePlan(planToDelete);
     } else {
-      alert(result.error || tError("deleteFailed"));
+      alert(mapMyPlansError(result.error, "deleteFailed"));
     }
     setIsDeleting(null);
     setPlanToDelete(null);
@@ -211,7 +227,7 @@ export default function MyPlansClient({
     if (result.success) {
       updatePlan(planId, { isPublic: nextIsPublic });
     } else {
-      alert(result.error || tError("visibilityFailed"));
+      alert(mapMyPlansError(result.error, "visibilityFailed"));
     }
     setIsUpdating(null);
   };
@@ -234,7 +250,7 @@ export default function MyPlansClient({
     if (result.success) {
       updatePlan(planId, { destination: renameValue.trim() });
     } else {
-      alert(result.error || tError("renameFailed"));
+      alert(mapMyPlansError(result.error, "renameFailed"));
     }
 
     setIsRenaming(null);

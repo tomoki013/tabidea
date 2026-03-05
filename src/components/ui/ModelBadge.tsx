@@ -1,30 +1,30 @@
 'use client';
 
 /**
- * AIモデル名を表示するバッジコンポーネント
- * 全てのAI生成コンテンツの近くに配置して使用モデルを明示する
+ * Badge component that displays the model used for AI output.
  */
 
 interface ModelBadgeProps {
-  /** モデル名 (e.g., "gemini-3-flash-preview", "gemini-2.5-flash") */
+  /** Model ID (e.g., "gemini-3-flash-preview", "gemini-2.5-flash"). */
   modelName: string;
   className?: string;
 }
 
 /**
- * モデルIDからユーザー向け表示名を生成
- * 例: "gemini-3-flash-preview" → "Gemini 3 Flash"
- *     "gemini-2.5-flash" → "Gemini 2.5 Flash"
- *     "gemini-3-pro-preview" → "Gemini 3 Pro"
+ * Convert model ID to a user-facing display name.
+ * Examples:
+ * - "gemini-3-flash-preview" -> "Gemini 3 Flash"
+ * - "gemini-2.5-flash" -> "Gemini 2.5 Flash"
+ * - "gemini-3-pro-preview" -> "Gemini 3 Pro"
  */
 function formatModelName(modelId: string): string {
   const lower = modelId.toLowerCase();
 
-  // バージョン番号を抽出 (例: "3", "2.5", "2.0")
+  // Extract version number (e.g. "3", "2.5", "2.0")
   const versionMatch = lower.match(/gemini[- ]?([\d.]+)/);
   const version = versionMatch ? versionMatch[1] : '';
 
-  // ティアを判定
+  // Determine tier
   let tier = '';
   if (lower.includes('pro')) {
     tier = 'Pro';
@@ -41,7 +41,7 @@ function formatModelName(modelId: string): string {
     return `Gemini ${version}`;
   }
 
-  // フォールバック: そのまま返す
+  // Fallback: return as-is
   return modelId;
 }
 

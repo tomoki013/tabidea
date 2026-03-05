@@ -1,4 +1,5 @@
 import { GeminiService } from "@/lib/services/ai/gemini";
+import { createTranslator } from "next-intl";
 import { PineconeRetriever } from "@/lib/services/rag/pinecone-retriever";
 import type { UserInput, PlanOutline, Article } from "@/types";
 import type { UserType } from "@/lib/limits/config";
@@ -13,7 +14,10 @@ import {
   DEFAULT_LANGUAGE,
   getDefaultHomeBaseCityForRegion,
   getDefaultRegionForLanguage,
+  isLanguageCode,
+  type LanguageCode,
 } from "@/lib/i18n/locales";
+import { getMessages } from "@/lib/i18n/messages";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
 import {
@@ -43,16 +47,40 @@ export type OutlineActionState = {
   remaining?: number;
 };
 
-// ============================================================================
-// Helpers
-// ============================================================================
+type PlanGenerationTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
 
-/**
- * Fetch and format user custom instructions (travel style + constraints).
- */
-export async function getUserConstraintPrompt(): Promise<string> {
-  const { settings } = await getUserSettings();
-  const preferredLanguage = settings?.preferredLanguage ?? DEFAULT_LANGUAGE;
+function createPlanGenerationTranslator(language: LanguageCode) {
+  const rawT = createTranslator({
+    locale: language,
+    messages: getMessages(language),
+    namespace: "lib.planGeneration",
+  });
+
+  const t: PlanGenerationTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
+}
+
+function getResolvedLanguage(preferredLanguage?: string): LanguageCode {
+  return preferredLanguage && isLanguageCode(preferredLanguage)
+    ? preferredLanguage
+    : DEFAULT_LANGUAGE;
+}
+
+type UserSettings = Awaited<ReturnType<typeof getUserSettings>>["settings"];
+
+function buildUserConstraintPromptFromSettings(
+  settings: UserSettings,
+  preferredLanguage: LanguageCode
+): string {
   const preferredRegion =
     settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
   const homeBaseCity =
@@ -97,7 +125,21 @@ export async function getUserConstraintPrompt(): Promise<string> {
     ================================================
     `;
   }
+
   return prompt;
+}
+
+// ============================================================================
+// Helpers
+// ============================================================================
+
+/**
+ * Fetch and format user custom instructions (travel style + constraints).
+ */
+export async function getUserConstraintPrompt(): Promise<string> {
+  const { settings } = await getUserSettings();
+  const preferredLanguage = getResolvedLanguage(settings?.preferredLanguage);
+  return buildUserConstraintPromptFromSettings(settings, preferredLanguage);
 }
 
 // ============================================================================
@@ -113,11 +155,15 @@ export async function executeOutlineGeneration(
   options?: { isRetry?: boolean },
   onProgress?: ProgressCallback
 ): Promise<OutlineActionState> {
+  const { settings } = await getUserSettings();
+  const preferredLanguage = getResolvedLanguage(settings?.preferredLanguage);
+  const t = createPlanGenerationTranslator(preferredLanguage);
+
   const timer = createOutlineTimer();
   console.log(`[action] generatePlanOutline started`);
 
   // 利用制限チェック
-  onProgress?.("usage_check", "利用制限を確認中...");
+  onProgress?.("usage_check", t("progress.steps.usage_check"));
   const limitResult = await timer.measure("usage_check", () =>
     checkAndRecordUsage(
       "plan_generation",
@@ -136,18 +182,18 @@ export async function executeOutlineGeneration(
       userType: limitResult.userType,
       resetAt: limitResult.resetAt?.toISOString() ?? null,
       remaining: limitResult.remaining,
-      message: "利用制限に達しました",
+      message: t("server.errors.limitExceeded"),
     };
   }
 
   const hasAIKey =
     process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
   if (!hasAIKey) {
-    return { success: false, message: "API Key missing" };
+    return { success: false, message: t("server.errors.apiKeyMissing") };
   }
 
   // キャッシュチェック
-  onProgress?.("cache_check", "キャッシュを確認中...");
+  onProgress?.("cache_check", t("progress.steps.cache_check"));
   try {
     const cacheParams = {
       destinations: input.destinations,
@@ -195,11 +241,35 @@ export async function executeOutlineGeneration(
     });
 
     // 1. RAG検索とプロンプト構築を並列実行
-    onProgress?.("rag_search", "関連記事を検索中...");
-    const destinationsStr = input.destinations.join("、");
+    onProgress?.("rag_search", t("progress.steps.rag_search"));
+    const destinationsStr = input.destinations.join(
+      t("server.query.join.destination")
+    );
+    const themeStr = input.theme.join(t("server.query.join.theme"));
+    const regionLabel =
+      input.region === "domestic"
+        ? t("server.query.region.domestic")
+        : input.region === "overseas"
+          ? t("server.query.region.overseas")
+          : t("server.query.region.anywhere");
     const query = input.isDestinationDecided
-      ? `${destinationsStr}で${input.companions}と${input.theme.join("や")}を楽しむ旅行`
-      : `${input.region === "domestic" ? "日本国内" : input.region === "overseas" ? "海外" : "おすすめの場所"}で${input.travelVibe ? input.travelVibe + "な" : ""}${input.theme.join("や")}を楽しむ${input.companions}旅行`;
+      ? t("server.query.decided", {
+          destinations: destinationsStr,
+          companions: input.companions,
+          themes: themeStr,
+        })
+      : input.travelVibe
+        ? t("server.query.undecidedWithVibe", {
+            region: regionLabel,
+            vibe: input.travelVibe,
+            themes: themeStr,
+            companions: input.companions,
+          })
+        : t("server.query.undecidedWithoutVibe", {
+            region: regionLabel,
+            themes: themeStr,
+            companions: input.companions,
+          });
 
     const [contextArticles, userConstraintPrompt] = await timer.measure(
       "rag_search",
@@ -209,14 +279,16 @@ export async function executeOutlineGeneration(
             console.warn("[action] Vector search failed:", err);
             return [] as Article[];
           }),
-          getUserConstraintPrompt(),
+          Promise.resolve(
+            buildUserConstraintPromptFromSettings(settings, preferredLanguage)
+          ),
         ]);
         return [articles, constraints] as const;
       }
     );
 
     // 2. プロンプト構築
-    onProgress?.("prompt_build", "プロンプトを構築中...");
+    onProgress?.("prompt_build", t("progress.steps.prompt_build"));
     const prompt = timer.measure("prompt_build", async () => {
       const totalDays = extractDuration(input.dates);
       const durationPrompt =
@@ -299,10 +371,10 @@ export async function executeOutlineGeneration(
     const resolvedPrompt = await prompt;
 
     // 3. AI生成（メトリクス付き）
-    onProgress?.("ai_generation", "AIがプランを生成中...");
+    onProgress?.("ai_generation", t("progress.steps.ai_generation"));
     const metricsCollector = new MetricsCollector();
     metricsCollector.startGeneration(
-      input.destinations.join("、") || "unknown",
+      input.destinations.join(t("server.query.join.destination")) || "unknown",
       extractDuration(input.dates) || 1
     );
     metricsCollector.recordRagArticles(contextArticles.length);
@@ -331,7 +403,7 @@ export async function executeOutlineGeneration(
     }
 
     // 5. ヒーロー画像取得
-    onProgress?.("hero_image", "メイン画像を取得中...");
+    onProgress?.("hero_image", t("progress.steps.hero_image"));
     const heroImageData = await timer.measure("hero_image", () =>
       getUnsplashImage(outline.destination)
     );
@@ -377,6 +449,6 @@ export async function executeOutlineGeneration(
   } catch (error) {
     timer.log();
     console.error("[action] Outline generation failed:", error);
-    return { success: false, message: "プラン概要の作成に失敗しました。" };
+    return { success: false, message: t("server.errors.outlineCreationFailed") };
   }
 }

@@ -1,10 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { FaArrowRight, FaMapMarkedAlt, FaMagic, FaPencilAlt } from "react-icons/fa";
 
 export default function UsageGuideHero() {
+  const t = useTranslations("components.features.landing.usageGuideHero");
+  const steps = [
+    { icon: FaMapMarkedAlt, text: t("steps.destinationAndDates") },
+    { icon: FaMagic, text: t("steps.autoGenerate") },
+    { icon: FaPencilAlt, text: t("steps.customize") },
+  ];
+
   return (
     <section className="w-full py-24 px-4 bg-[#fcfbf9] relative overflow-hidden">
       {/* Background decoration */}
@@ -27,24 +35,20 @@ export default function UsageGuideHero() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 text-orange-600 text-sm font-bold tracking-wide border border-orange-100">
                 <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                HOW TO USE
+                {t("badge")}
               </div>
               <h2 className="text-3xl sm:text-5xl font-serif font-bold text-foreground leading-tight">
-                使い方は、<br />
-                とてもシンプル。
+                {t("titleLine1")}<br />
+                {t("titleLine2")}
               </h2>
               <p className="text-lg text-muted-foreground font-hand leading-relaxed">
-                行き先を決めて、AIと話すだけ。<br />
-                あなたのわがままを、素敵な旅のプランに変えましょう。
+                {t("leadLine1")}<br />
+                {t("leadLine2")}
               </p>
             </div>
 
             <div className="space-y-6">
-              {[
-                { icon: FaMapMarkedAlt, text: "行き先と日程を入力" },
-                { icon: FaMagic, text: "AIがプランを自動生成" },
-                { icon: FaPencilAlt, text: "自由にカスタマイズ" },
-              ].map((item, i) => (
+              {steps.map((item, i) => (
                 <div key={i} className="flex items-center gap-4 group">
                   <div className="w-12 h-12 rounded-2xl bg-white border-2 border-dashed border-stone-200 flex items-center justify-center text-primary group-hover:scale-110 group-hover:border-primary/50 transition-all duration-300 shadow-sm">
                     <item.icon size={20} />
@@ -59,14 +63,14 @@ export default function UsageGuideHero() {
                 href="/usage"
                 className="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-primary/30 hover:border-primary transition-colors pb-0.5 group"
               >
-                <span>詳しい使い方を見る</span>
+                <span>{t("viewDetailedGuide")}</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/travel-info"
                 className="inline-flex items-center gap-2 text-primary font-bold border-b-2 border-primary/30 hover:border-primary transition-colors pb-0.5 group"
               >
-                <span>渡航情報・安全ガイドはこちら</span>
+                <span>{t("viewTravelInfoGuide")}</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -88,7 +92,7 @@ export default function UsageGuideHero() {
                 <div className="h-4 w-2/3 bg-stone-50 rounded-lg" />
                 <div className="flex-1 bg-orange-50/30 rounded-2xl border-2 border-dashed border-orange-100 p-6 flex flex-col gap-4 justify-center items-center">
                    <FaMagic className="text-4xl text-orange-200" />
-                   <p className="font-hand text-stone-400 text-center">AI is writing your plan...</p>
+                   <p className="font-hand text-stone-400 text-center">{t("visualWriting")}</p>
                 </div>
                 <div className="h-12 w-full bg-primary/10 rounded-xl" />
               </div>

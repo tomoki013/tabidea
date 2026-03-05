@@ -1,0 +1,148 @@
+{
+  "components": {
+    "about": {
+      "content": {
+        "hero": {
+          "title": "About Tabidea",
+          "catchLine1": "Turn your quiet \"I want to go\" feeling",
+          "catchLine2": "into a once-in-a-lifetime experience.",
+          "descriptionLine1": "Tabidea is a travel partner that gently captures the wish behind \"I just want to go somewhere,\"",
+          "descriptionLine2": "and shapes it into a journey that truly fits you."
+        },
+        "mission": {
+          "title": "Our Mission",
+          "quote": "\"Unspoken impulses and sudden discomfort are all signs that your next trip is about to begin.\"",
+          "paragraphs": [
+            "\"I want to go far away.\" \"I want to change my routine.\"",
+            "Behind these vague wishes, there is often a deeper desire you have not yet recognized yourself.",
+            "Tabidea carefully listens to those feelings and helps fulfill them through travel experiences."
+          ]
+        },
+        "trinity": {
+          "title": "The 3 Pieces Behind the Name \"Tabidea\"",
+          "subtitle": "Tabidea = Tabi × Idea × Deai",
+          "tabi": {
+            "title": "1. Tabi (Travel)",
+            "bodyLine1": "An adventure to cross everyday boundaries and meet new scenery and a new self.",
+            "bodyLine2": "Every story begins here."
+          },
+          "idea": {
+            "title": "2. Idea",
+            "bodyLine1": "Through dialogue, we uncover your \"travel seeds\" that may not yet be fully verbalized.",
+            "bodyLine2": "AI does not force one-sided answers. It helps translate your intuition into the best plan."
+          },
+          "deai": {
+            "title": "3. Deai (Encounter)",
+            "bodyLine1": "Vivid serendipity born on top of a carefully designed plan.",
+            "bodyLine2": "A view that catches your eye or an unexpected conversation can become unforgettable encounters."
+          },
+          "valueStatement": "Tabidea's value is not only designing the trip itself, but also designing the encounters along the way."
+        },
+        "features": {
+          "title": "What We Provide Today",
+          "cards": {
+            "plan": {
+              "title": "Plan creation and adjustment",
+              "body": "Generate plans from your conditions, then refine them with regeneration and chat-based adjustments."
+            },
+            "save": {
+              "title": "Save, share, and export",
+              "body": "Logged-in users can save plans and share them as travel journals. PDF export and calendar integration are supported."
+            },
+            "info": {
+              "title": "Travel information",
+              "body": "Check safety, climate, visa, etiquette, and more by category. Available quotas and categories differ by plan."
+            },
+            "pricing": {
+              "title": "Pricing plans",
+              "bodyPrefix": "We offer Free, Pro, Premium, and ticket packs. For the latest limits and prices, see the",
+              "linkLabel": "pricing page",
+              "bodySuffix": "."
+            }
+          },
+          "disclaimer": "AI-generated suggestions may include errors. Always verify critical details such as business hours, prices, and regulations with official primary sources."
+        },
+        "domain": {
+          "title": "Meaning Behind the Domain \"tabide.ai\"",
+          "name": "tabide.ai",
+          "nameKana": "(ta-bi-de-ai)",
+          "meaningPart1": "\"tabide\" (while traveling)",
+          "meaningConnector": " and ",
+          "meaningPart2": "\"ai\" (love)",
+          "meaningSuffix": "are layered together in one name.",
+          "bullets": [
+            "That you can find something that supports your true self while traveling.",
+            "That you can encounter places you truly come to love while traveling."
+          ],
+          "closing": "AI is not the main character. We want it to be a mirror that reflects and gently supports your heart."
+        },
+        "vision": {
+          "title": "Vision for the Future",
+          "bodyLine1": "The protagonist of every trip is always you.",
+          "bodyLine2": "Tabidea aims to be a partner that understands your subtle feelings and keeps drawing moments of serendipity and encounters with you.",
+          "quoteLine1": "\"What kind of scenery is sleeping in your heart?\"",
+          "quoteLine2": "\"Let's begin your best trip from that feeling you cannot yet put into words.\"",
+          "signature": "Tabidea Team"
+        },
+        "mvvc": {
+          "title": "MVVC (Mission, Vision, Values, Culture)",
+          "subtitle": "What we care about",
+          "missionCard": {
+            "title": "Mission (Daily role)",
+            "catch": "Reduce travel friction and maximize the color of imagination.",
+            "body": "We use technology to solve tedious work and expand the essential joy of planning and travel."
+          },
+          "visionCard": {
+            "title": "Vision (World we want)",
+            "catch": "A world where every traveler finds their own right answer.",
+            "body": "Not one-size-fits-all plans, but journeys users can choose, edit, and truly feel satisfied with."
+          },
+          "values": {
+            "title": "Values",
+            "user": {
+              "title": "User in the Driver's Seat",
+              "subtitle": "The traveler is always the lead",
+              "body": "Technology suggests, users decide. We support creative planning without taking away the fun."
+            },
+            "safety": {
+              "title": "Safety as a Baseline",
+              "subtitle": "Safety is the foundation of adventure",
+              "body": "We connect reliable information seamlessly. Only when safety is secured can people truly enjoy travel."
+            },
+            "story": {
+              "title": "Share the Story",
+              "subtitle": "Weaving stories",
+              "body": "Travel does not end when you return. We create ways for experiences to remain and connect to others."
+            }
+          },
+          "culture": {
+            "title": "Culture",
+            "catch": "Be a Traveler & Builder",
+            "bodyLine1": "We keep being our own strongest heavy users.",
+            "bodyLine2": "We pursue UX deeply while balancing playfulness and reliability."
+          }
+        },
+        "notice": {
+          "title": "⚠️ Important Notice",
+          "lead": "Tabidea suggestions are AI-generated drafts. Please note the following in real travel:",
+          "bullets": [
+            "Always confirm latest opening hours, prices, and transit details on official websites",
+            "AI may sometimes generate inaccurate information (hallucination)",
+            "Use suggestions as references and make final decisions by yourself"
+          ],
+          "policyPrefix": "For details, please read our",
+          "policyLink": "AI Policy",
+          "policySuffix": "."
+        },
+        "support": {
+          "prefix": "Supported by",
+          "linkLabel": "Tomokichi's Travel Diary"
+        },
+        "cta": {
+          "title": "Start Planning Your Journey",
+          "lead": "Build your own travel story together with AI."
+        }
+      }
+    }
+  }
+}

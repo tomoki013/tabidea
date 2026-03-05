@@ -65,7 +65,7 @@ export async function generatePlanChunk(
   console.log(`[action] generatePlanChunk days ${startDay}-${endDay}`);
 
   const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-  if (!hasAIKey) return { success: false, message: "API Key missing" };
+  if (!hasAIKey) return { success: false, message: "api_key_missing" };
 
   try {
     const ai = new GeminiService({
@@ -126,7 +126,7 @@ export async function generatePlanChunk(
   } catch (error) {
     timer.log();
     console.error(`[action] Chunk generation failed (${startDay}-${endDay}):`, error);
-    return { success: false, message: "詳細プランの生成に失敗しました。" };
+    return { success: false, message: "detail_generation_failed" };
   }
 }
 
@@ -205,7 +205,7 @@ export async function fetchHeroImage(
 }
 
 const REGENERATE_RETRY_INSTRUCTION =
-  "前回の出力は元プランと同一でした。会話で合意した変更点を必ず最低1箇所以上反映して、更新後の完全な旅程JSONを返してください。";
+  "The previous output was identical to the original plan. Reflect at least one agreed change from this chat and return the full updated itinerary JSON.";
 
 function getComparablePlanPayload(plan: Itinerary) {
   return {
@@ -246,7 +246,7 @@ export async function regeneratePlan(
   chatHistory: { role: string; text: string }[]
 ): Promise<ActionState> {
   const hasAIKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY || process.env.OPENAI_API_KEY;
-  if (!hasAIKey) return { success: false, message: "API Key missing" };
+  if (!hasAIKey) return { success: false, message: "api_key_missing" };
 
   try {
     const ai = new GeminiService();
@@ -282,7 +282,7 @@ export async function regeneratePlan(
       if (isPlanEffectivelyUnchanged(currentPlan, retriedPlan)) {
         return {
           success: false,
-          message: "会話内容を反映した変更を作成できませんでした。条件をもう少し具体的にして再試行してください。",
+          message: "regenerate_no_effect",
         };
       }
       newPlan = retriedPlan;
@@ -291,7 +291,7 @@ export async function regeneratePlan(
     return { success: true, data: newPlan };
   } catch (e) {
     console.error("Regeneration failed", e);
-    return { success: false, message: "プランの再生成に失敗しました。" };
+    return { success: false, message: "regenerate_failed" };
   }
 }
 
@@ -327,7 +327,7 @@ export async function savePlan(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     // Rate Limit Check (Spam Protection)
@@ -363,7 +363,7 @@ export async function savePlan(
     };
   } catch (error) {
     console.error("Failed to save plan:", error);
-    return { success: false, error: "プランの保存に失敗しました" };
+    return { success: false, error: "plan_save_failed" };
   }
 }
 
@@ -399,14 +399,14 @@ export async function deletePlan(planId: string): Promise<{ success: boolean; er
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const result = await planService.deletePlan(planId, user.id);
     return result;
   } catch (error) {
     console.error("Failed to delete plan:", error);
-    return { success: false, error: "プランの削除に失敗しました" };
+    return { success: false, error: "plan_delete_failed" };
   }
 }
 
@@ -421,7 +421,7 @@ export async function updatePlanVisibility(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     // Rate Limit
@@ -502,7 +502,7 @@ export async function updatePlanVisibility(
     return { success: true };
   } catch (error) {
     console.error("Failed to update plan visibility:", error);
-    return { success: false, error: "プランの更新に失敗しました" };
+    return { success: false, error: "plan_update_failed" };
   }
 }
 
@@ -517,7 +517,7 @@ export async function updatePlanName(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     // Rate Limit
@@ -527,7 +527,7 @@ export async function updatePlanName(
     }
 
     if (!newName || newName.trim().length === 0) {
-      return { success: false, error: "プラン名を入力してください" };
+      return { success: false, error: "plan_name_required" };
     }
 
     const result = await planService.updatePlan(planId, user.id, {
@@ -541,7 +541,7 @@ export async function updatePlanName(
     return { success: true };
   } catch (error) {
     console.error("Failed to update plan name:", error);
-    return { success: false, error: "プラン名の更新に失敗しました" };
+    return { success: false, error: "plan_name_update_failed" };
   }
 }
 
@@ -598,7 +598,7 @@ export async function getUserPlansList(limit: number = 5): Promise<{
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const result = await planService.getUserPlansList(user.id, { limit });
@@ -622,7 +622,7 @@ export async function getUserPlansList(limit: number = 5): Promise<{
     };
   } catch (error) {
     console.error("Failed to get user plans:", error);
-    return { success: false, error: "プランの取得に失敗しました" };
+    return { success: false, error: "plans_fetch_failed" };
   }
 }
 
@@ -634,7 +634,7 @@ export async function deleteAccount(): Promise<{ success: boolean; error?: strin
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const supabase = await createClient();
@@ -657,13 +657,13 @@ export async function deleteAccount(): Promise<{ success: boolean; error?: strin
 
     if (deleteError) {
       console.error('Failed to delete user:', deleteError);
-      return { success: false, error: "アカウントの削除に失敗しました" };
+      return { success: false, error: "account_delete_failed" };
     }
 
     return { success: true };
   } catch (error) {
     console.error("Failed to delete account:", error);
-    return { success: false, error: "アカウントの削除に失敗しました" };
+    return { success: false, error: "account_delete_failed" };
   }
 }
 
@@ -679,7 +679,7 @@ export async function updatePlanItinerary(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     // Rate Limit
@@ -700,7 +700,7 @@ export async function updatePlanItinerary(
     return { success: true };
   } catch (error) {
     console.error("Failed to update plan itinerary:", error);
-    return { success: false, error: "プランの更新に失敗しました" };
+    return { success: false, error: "plan_update_failed" };
   }
 }
 
@@ -725,13 +725,13 @@ export async function getPlanById(planId: string): Promise<{
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const result = await planService.getPlanById(planId, user.id);
 
     if (!result.success || !result.plan) {
-      return { success: false, error: result.error || "プランが見つかりません" };
+      return { success: false, error: result.error || "plan_not_found" };
     }
 
     const { plan } = result;
@@ -751,7 +751,7 @@ export async function getPlanById(planId: string): Promise<{
     };
   } catch (error) {
     console.error("Failed to get plan:", error);
-    return { success: false, error: "プランの取得に失敗しました" };
+    return { success: false, error: "plan_fetch_failed" };
   }
 }
 
@@ -775,7 +775,7 @@ export async function savePlanChatMessages(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const supabase = await createClient();
@@ -789,7 +789,7 @@ export async function savePlanChatMessages(
       .single();
 
     if (planError || !plan) {
-      return { success: false, error: "プランが見つからないか、アクセス権がありません" };
+      return { success: false, error: "plan_not_found_or_access_denied" };
     }
 
     // Delete existing messages
@@ -813,14 +813,14 @@ export async function savePlanChatMessages(
 
       if (insertError) {
         console.error("Failed to insert chat messages:", insertError);
-        return { success: false, error: "チャット履歴の保存に失敗しました" };
+        return { success: false, error: "chat_history_save_failed" };
       }
     }
 
     return { success: true };
   } catch (error) {
     console.error("Failed to save chat messages:", error);
-    return { success: false, error: "チャット履歴の保存に失敗しました" };
+    return { success: false, error: "chat_history_save_failed" };
   }
 }
 
@@ -838,7 +838,7 @@ export async function loadPlanChatMessages(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const supabase = await createClient();
@@ -852,7 +852,7 @@ export async function loadPlanChatMessages(
       .single();
 
     if (planError || !plan) {
-      return { success: false, error: "プランが見つからないか、アクセス権がありません" };
+      return { success: false, error: "plan_not_found_or_access_denied" };
     }
 
     // Get chat messages
@@ -864,7 +864,7 @@ export async function loadPlanChatMessages(
 
     if (messagesError) {
       console.error("Failed to load chat messages:", messagesError);
-      return { success: false, error: "チャット履歴の取得に失敗しました" };
+      return { success: false, error: "chat_history_load_failed" };
     }
 
     return {
@@ -876,7 +876,7 @@ export async function loadPlanChatMessages(
     };
   } catch (error) {
     console.error("Failed to load chat messages:", error);
-    return { success: false, error: "チャット履歴の取得に失敗しました" };
+    return { success: false, error: "chat_history_load_failed" };
   }
 }
 
@@ -907,7 +907,7 @@ export async function grantAdminRole(
 ): Promise<{ success: boolean; error?: string }> {
   return {
     success: false,
-    error: "管理者権限は環境変数 ADMIN_EMAILS で管理されています",
+    error: "admin_managed_by_env",
   };
 }
 
@@ -920,7 +920,7 @@ export async function setInitialAdmin(
 ): Promise<{ success: boolean; error?: string }> {
   return {
     success: false,
-    error: "管理者権限は環境変数 ADMIN_EMAILS で管理されています",
+    error: "admin_managed_by_env",
   };
 }
 
@@ -938,14 +938,14 @@ export async function addPlanToFlags(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.addFavorite(user.id, planId);
   } catch (error) {
     console.error("Failed to add plan to flags:", error);
-    return { success: false, error: "フラグへの追加に失敗しました" };
+    return { success: false, error: "flag_add_failed" };
   }
 }
 
@@ -959,14 +959,14 @@ export async function removePlanFromFlags(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.removeFavorite(user.id, planId);
   } catch (error) {
     console.error("Failed to remove plan from flags:", error);
-    return { success: false, error: "フラグからの削除に失敗しました" };
+    return { success: false, error: "flag_remove_failed" };
   }
 }
 
@@ -980,7 +980,7 @@ export async function isPlanFlagged(
     const user = await getUser();
 
     if (!user) {
-      return { success: false, isFlagged: false, error: "認証が必要です" };
+      return { success: false, isFlagged: false, error: "authentication_required" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
@@ -992,7 +992,7 @@ export async function isPlanFlagged(
     };
   } catch (error) {
     console.error("Failed to check flag status:", error);
-    return { success: false, isFlagged: false, error: "フラグ状態の確認に失敗しました" };
+    return { success: false, isFlagged: false, error: "flag_status_check_failed" };
   }
 }
 
@@ -1008,14 +1008,14 @@ export async function getFlaggedPlanIds(): Promise<{
     const user = await getUser();
 
     if (!user) {
-      return { success: false, planIds: [], error: "認証が必要です" };
+      return { success: false, planIds: [], error: "authentication_required" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.getFavoritePlanIds(user.id);
   } catch (error) {
     console.error("Failed to get flagged plan IDs:", error);
-    return { success: false, planIds: [], error: "フラグプランIDの取得に失敗しました" };
+    return { success: false, planIds: [], error: "flag_plan_ids_fetch_failed" };
   }
 }
 
@@ -1035,14 +1035,14 @@ export async function getFlaggedPlans(options?: {
     const user = await getUser();
 
     if (!user) {
-      return { success: false, error: "認証が必要です" };
+      return { success: false, error: "authentication_required" };
     }
 
     const { favoritesService } = await import("@/lib/favorites/service");
     return await favoritesService.getFavoritePlans(user.id, options);
   } catch (error) {
     console.error("Failed to get flagged plans:", error);
-    return { success: false, error: "フラグプランの取得に失敗しました" };
+    return { success: false, error: "flagged_plans_fetch_failed" };
   }
 }
 

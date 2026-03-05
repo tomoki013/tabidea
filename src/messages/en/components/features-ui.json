@@ -28,6 +28,283 @@
           "empty": "No questions found.",
           "viewAll": "View all FAQ"
         },
+        "publishingSection": {
+          "badge": "Share your travel story",
+          "titleLine1": "Do not stop at planning,",
+          "titleLine2": "turn your trip into something shareable.",
+          "leadLine1": "With Tabidea, you can publish your plan as a travel note or share it as a blog post.",
+          "leadLine2": "Use it for pre-trip sharing and post-trip memories.",
+          "cards": {
+            "shiori": {
+              "title": "Travel note",
+              "description": "Publish itinerary, costs, and notes in one place. Share the full trip picture with companions and family using a single URL.",
+              "cta": "See how to use travel notes"
+            },
+            "blog": {
+              "title": "Blog",
+              "description": "Write about the context, insights, and practical tips from your trip. Embed travel notes to create highly practical travel posts.",
+              "cta": "Learn more about the blog feature"
+            }
+          }
+        },
+        "featureSection": {
+          "items": {
+            "guide": {
+              "title": "Your personal guide",
+              "description": "AI understands your preferences and suggests a one-of-a-kind plan."
+            },
+            "discovery": {
+              "title": "Discover hidden places",
+              "description": "Find hidden gems beyond what guidebooks usually cover."
+            },
+            "edit": {
+              "title": "Edit your story",
+              "description": "Plans are fully flexible. Shape the journey story you truly want."
+            }
+          }
+        },
+        "howItWorksSection": {
+          "title": "How to build your trip",
+          "lead": "Very simple, like writing in a journal.",
+          "steps": [
+            {
+              "title": "Choose destinations and dates",
+              "description": "Enter where you want to go and your timeframe. Rough ideas are fine."
+            },
+            {
+              "title": "AI creates a draft",
+              "description": "In seconds, you get a first draft of your travel plan."
+            },
+            {
+              "title": "Customize freely",
+              "description": "Swap spots you do not like and add fresh ideas."
+            }
+          ]
+        },
+        "usageGuideHero": {
+          "badge": "HOW TO USE",
+          "titleLine1": "Using it is",
+          "titleLine2": "very simple.",
+          "leadLine1": "Choose destinations and chat with AI.",
+          "leadLine2": "Turn your wishes into a great travel plan.",
+          "steps": {
+            "destinationAndDates": "Enter destinations and dates",
+            "autoGenerate": "AI auto-generates your plan",
+            "customize": "Customize freely"
+          },
+          "viewDetailedGuide": "View detailed guide",
+          "viewTravelInfoGuide": "Travel info and safety guide",
+          "visualWriting": "AI is writing your plan..."
+        },
+        "blogPromotionSection": {
+          "badge": "Everyone's Blog",
+          "titleLine1": "Traveler",
+          "titleLine2": "stories",
+          "leadLine1": "Places they visited, food they tried, and what they felt.",
+          "leadLine2": "Real travel stories may inspire your next journey.",
+          "highlights": [
+            {
+              "title": "4 days in Kyoto: hidden spot tour"
+            },
+            {
+              "title": "My first solo Taiwan food trip"
+            },
+            {
+              "title": "Hokkaido journey through great nature"
+            }
+          ],
+          "readBlog": "Read blogs",
+          "mock": {
+            "tipLabel": "Tips",
+            "tipTitle": "How to Plan Your Next Trip with AI"
+          }
+        },
+        "exampleSection": {
+          "title": "Travel records from the community",
+          "lead": "Plans like these.",
+          "examples": [
+            {
+              "location": "Kyoto",
+              "theme": "Quiet and historic",
+              "note": "Start early at Kiyomizu Temple, breathe in Arashiyama bamboo forest, and enjoy Kyoto cuisine in Pontocho at night."
+            },
+            {
+              "location": "Okinawa",
+              "theme": "Blue and white contrast",
+              "note": "Drive to Kouri Island, visit Churaumi Aquarium, and listen to the waves at sunset beach."
+            },
+            {
+              "location": "Kanazawa",
+              "theme": "Art and seafood",
+              "note": "Experience contemporary art at the 21st Century Museum and enjoy fresh seafood bowls at Omicho Market."
+            }
+          ],
+          "ctaPrompt": "Want to explore more plans?",
+          "ctaButton": "See more sample plans"
+        },
+        "trinityCircle": {
+          "deaiLine1": "Unexpected encounters",
+          "deaiLine2": "Best moments",
+          "tabiLabel": "Go on the trip",
+          "ideaLine1": "For each traveler,",
+          "ideaLine2": "the best plan",
+          "brandLabel": "Tabidea",
+          "brandKana": "Tabidea",
+          "descriptionPrefix": " is an AI planner that turns your ",
+          "tabiLabelLong": "journey (Tabi)",
+          "descriptionMiddle": " into",
+          "descriptionLine2": "once-in-a-lifetime experiences."
+        },
+        "travelShioriHeroSection": {
+          "badge": "Discover",
+          "titleLine1": "Explore",
+          "titleLine2": "travel journals from everyone",
+          "leadLine1": "Browse real plans created by other travelers,",
+          "leadLine2": "and find inspiration for your next trip.",
+          "featureCards": [
+            {
+              "title": "Real travel stories",
+              "desc": "See firsthand experiences and photo-rich records from people who actually visited."
+            },
+            {
+              "title": "Use plans as references",
+              "desc": "Copy plans you like and adapt them into your own journey."
+            },
+            {
+              "title": "Search by map",
+              "desc": "Find travel journals by area and discover where you want to go."
+            }
+          ],
+          "mock": {
+            "location": "Paris, France",
+            "title": "Paris Art Trip",
+            "date": "2026.04.10 - 04.15",
+            "items": [
+              {
+                "title": "Louvre Museum",
+                "time": "9:00 - booked"
+              },
+              {
+                "title": "Bakery tour",
+                "time": "Around Le Marais"
+              }
+            ]
+          },
+          "viewShiori": "View community travel journals"
+        },
+        "v2": {
+          "featuresSection": {
+            "badge": "Why Tabidea?",
+            "title": "Make travel more like you.",
+            "leadLine1": "This is more than a schedule management tool.",
+            "leadLine2": "Three promises to shape your travel intentions.",
+            "values": {
+              "freedom": {
+                "title": "You are the main character.",
+                "subtitle": "AI is only a suggester.",
+                "desc": "Destinations, food, and budget are fully customizable. Start from an AI draft and rewrite it to match your style.",
+                "stamp": "My Way"
+              },
+              "story": {
+                "title": "Keep your story.",
+                "subtitle": "Plans become your journal.",
+                "desc": "Carry your plan as a travel journal. Record memories and photos to complete a story that is uniquely yours.",
+                "stamp": "Memory"
+              },
+              "serendipity": {
+                "title": "Unexpected encounters.",
+                "subtitle": "Travel beyond pure efficiency.",
+                "desc": "Fast routes matter, but detours can be great too. Tabidea helps you meet places you truly wanted to visit.",
+                "stamp": "Serendipity"
+              }
+            },
+            "stepLabel": "Step {step}",
+            "quoteLine1": "\"The hero of every trip is always you.\"",
+            "quoteLine2": "Tabidea aims to be the partner that understands your feelings most deeply.",
+            "quoteAuthor": "- Tabidea Team"
+          },
+          "howItWorksSection": {
+            "badge": "How It Works",
+            "title": "Using it is very simple.",
+            "lead": "Start your trip in three steps.",
+            "steps": [
+              {
+                "title": "Input",
+                "subtitle": "Start with rough ideas",
+                "desc": "Ideas like \"I want to see autumn leaves in Kyoto\" are enough. You can set budget and days freely."
+              },
+              {
+                "title": "Proposal",
+                "subtitle": "AI suggests a plan in seconds",
+                "desc": "AI proposes practical routes and spots based on your preferences, considering travel time and crowding."
+              },
+              {
+                "title": "Go",
+                "subtitle": "Carry your personal journal",
+                "desc": "Add or remove spots, save the plan, and carry your travel journal on your phone. Share via URL too."
+              }
+            ]
+          },
+          "communitySection": {
+            "badge": "Community",
+            "titleLine1": "Use community trips",
+            "titleLine2": "as hints for your next one.",
+            "leadLine1": "Explore real plans created in Tabidea.",
+            "leadLine2": "Copy plans you like and customize them for yourself.",
+            "viewMore": "View more",
+            "viewAllPlans": "View all plans",
+            "samplePlans": {
+              "kyoto": {
+                "title": "Kyoto autumn foliage highlights",
+                "days": "2 nights, 3 days",
+                "budget": "JPY 50,000",
+                "tags": [
+                  "#autumnLeaves",
+                  "#history",
+                  "#food"
+                ]
+              },
+              "hawaii": {
+                "title": "Refreshing trip to Hawaii",
+                "days": "4 nights, 6 days",
+                "budget": "JPY 200,000",
+                "tags": [
+                  "#beach",
+                  "#shopping",
+                  "#girlsTrip"
+                ]
+              },
+              "paris": {
+                "title": "Paris museum tour",
+                "days": "5 nights, 7 days",
+                "budget": "JPY 300,000",
+                "tags": [
+                  "#art",
+                  "#cafe",
+                  "#soloTrip"
+                ]
+              },
+              "newYork": {
+                "title": "Christmas in New York",
+                "days": "3 nights, 5 days",
+                "budget": "JPY 250,000",
+                "tags": [
+                  "#illumination",
+                  "#shopping"
+                ]
+              },
+              "santorini": {
+                "title": "Scenic Santorini island trip",
+                "days": "4 nights, 6 days",
+                "budget": "JPY 400,000",
+                "tags": [
+                  "#scenery",
+                  "#honeymoon"
+                ]
+              }
+            }
+          }
+        },
         "featuresHero": {
           "badge": "FEATURES & GUIDE",
           "titleLine1": "Travel planning can be",
@@ -213,6 +490,170 @@
           ]
         }
       },
+      "feedback": {
+        "postTripReflection": {
+          "title": "How was your trip?",
+          "lead": "A quick feedback helps us improve the service.",
+          "satisfactionAriaLabel": "Satisfaction level",
+          "satisfaction": {
+            "helped": "Helpful",
+            "neutral": "Neutral",
+            "struggled": "Struggled"
+          },
+          "replanQuestion": "Was the replanning suggestion helpful?",
+          "yes": "Yes",
+          "no": "No",
+          "commentLabel": "Comment (optional)",
+          "commentPlaceholder": "Tell us what you felt during your trip...",
+          "later": "Later",
+          "submitting": "Submitting...",
+          "submit": "Submit"
+        }
+      },
+      "plan": {
+        "generatingOverlay": {
+          "status": {
+            "complete": "Plan complete!",
+            "detailsGenerated": "All details have been generated",
+            "generatingDay": "Generating details for Day {generatingDay}/{totalDays}...",
+            "preparing": "Preparing generation...",
+            "generating": "Generating details..."
+          },
+          "progress": "{completedDays}/{totalDays} days complete - scroll to browse",
+          "scrollHint": "Scroll to review your plan",
+          "close": "Close",
+          "partialFailure": "Generation failed for some days",
+          "retryDay": "Retry Day {day}"
+        },
+        "cards": {
+          "trustBadge": {
+            "levels": {
+              "verified": {
+                "label": "Verified",
+                "tooltip": "Existence confirmed via Google Places and related sources"
+              },
+              "ai_generated": {
+                "label": "AI generated",
+                "tooltip": "AI-generated information (not verified)"
+              },
+              "needs_check": {
+                "label": "Needs check",
+                "tooltip": "This location may be uncertain"
+              },
+              "unverified": {
+                "label": "Location unverified",
+                "tooltip": "No matching spot found on Google Places"
+              }
+            }
+          },
+          "accommodationCard": {
+            "searchHotels": "Search hotels",
+            "time": {
+              "in": "IN",
+              "out": "OUT"
+            },
+            "subtitle": {
+              "day": "Accommodation for day {dayNumber}",
+              "default": "Accommodation"
+            },
+            "confirmDelete": "Delete this accommodation info?",
+            "delete": "Delete",
+            "memoPlaceholder": "Accommodation note...",
+            "checkIn": "Check-in",
+            "checkOut": "Check-out",
+            "viewBookingSite": "View booking site",
+            "viewOnMap": "View on map"
+          },
+          "spotCard": {
+            "photoAlt": "Photo {index}",
+            "confirmDelete": "Delete this activity?",
+            "delete": "Delete",
+            "details": "Details",
+            "unverifiedAlert": "Location unverified: No matching spot found on Google Places. This AI-generated information may not correspond to a real place.",
+            "reviewCount": "({count} reviews)",
+            "viewAllHours": "View all opening hours",
+            "fetchDetails": "Fetch detailed information",
+            "viewOnGoogleMaps": "View on Google Maps"
+          },
+          "transitCard": {
+            "departureShort": "Dep:",
+            "arrivalShort": "Arr:",
+            "departureTime": "{time} dep",
+            "arrivalTime": "{time} arr",
+            "durationPlaceholder": "Duration",
+            "booked": "Booked",
+            "confirmDelete": "Delete this transit item?",
+            "delete": "Delete",
+            "departure": "Departure",
+            "arrival": "Arrival",
+            "memo": "Memo",
+            "memoPlaceholder": "Enter a memo...",
+            "bookedHint": "Already booked, but you can search other flight options",
+            "searchFlights": "Search flights",
+            "searchWithProvider": "Search flights on {provider}",
+            "locked": "Locked",
+            "lock": "Lock",
+            "unlock": "Unlock",
+            "types": {
+              "flight": "Flight",
+              "train": "Train",
+              "bus": "Bus",
+              "ship": "Ship",
+              "car": "Car",
+              "other": "Transit"
+            }
+          }
+        }
+      },
+      "replan": {
+        "triggerPanel": {
+          "ariaLabel": "Replan triggers"
+        },
+        "triggerButton": {
+          "labels": {
+            "rain": "Bad weather",
+            "fatigue": "Tired",
+            "delay": "Running late"
+          },
+          "ariaLabel": "Change plan due to: {label}"
+        },
+        "suggestionCard": {
+          "regionAriaLabel": "Suggestion card",
+          "estimatedDuration": "Approx. {duration}",
+          "acceptAriaLabel": "Accept this suggestion",
+          "accept": "Accept",
+          "viewAlternativesAriaLabel": "View another suggestion",
+          "otherOptions": "Other options"
+        },
+        "sheet": {
+          "dialogAriaLabel": "Alternative suggestions",
+          "title": "Other suggestions",
+          "closeAriaLabel": "Close",
+          "noAlternatives": "No other suggestions",
+          "estimatedDuration": "Approx. {duration}",
+          "category": {
+            "indoor": "Indoor",
+            "outdoor": "Outdoor",
+            "rest": "Rest",
+            "food": "Food",
+            "culture": "Culture",
+            "other": "Other"
+          }
+        }
+      },
+      "shiori": {
+        "likeButton": {
+          "loginRequired": "Log in to like this plan.",
+          "updateFailed": "Failed to update like status."
+        },
+        "publicPlanCard": {
+          "destinationTbd": "Destination TBD",
+          "durationTbd": "Duration TBD",
+          "duration": "{days} day(s)",
+          "entries": "Entries",
+          "likes": "Likes"
+        }
+      },
       "samples": {
         "collectionPromotion": {
           "title": "Explore public travel notes",
@@ -239,6 +680,82 @@
             "unselect": "unselect"
           }
         },
+        "categoryInfo": {
+          "basic": {
+            "label": "Basics",
+            "description": "Currency, language, timezone"
+          },
+          "safety": {
+            "label": "Safety & Health",
+            "description": "Risk level and emergency contacts"
+          },
+          "climate": {
+            "label": "Climate & Clothing",
+            "description": "Weather and clothing tips"
+          },
+          "visa": {
+            "label": "Visa & Entry",
+            "description": "Requirements and documents"
+          },
+          "manner": {
+            "label": "Etiquette & Tips",
+            "description": "Local customs and taboos"
+          },
+          "transport": {
+            "label": "Transportation",
+            "description": "Public transit and rideshare"
+          },
+          "local_food": {
+            "label": "Food",
+            "description": "Popular dishes and dining etiquette"
+          },
+          "souvenir": {
+            "label": "Souvenirs & Shopping",
+            "description": "Popular items and tax-free info"
+          },
+          "events": {
+            "label": "Events & Festivals",
+            "description": "Major events and seasonal festivals"
+          },
+          "technology": {
+            "label": "Power & Connectivity",
+            "description": "Plugs, Wi-Fi, SIM"
+          },
+          "healthcare": {
+            "label": "Healthcare & Hygiene",
+            "description": "Water, vaccines, medical access"
+          },
+          "restrooms": {
+            "label": "Restrooms",
+            "description": "Availability and usage tips"
+          },
+          "smoking": {
+            "label": "Smoking Rules",
+            "description": "Smoking areas and fines"
+          },
+          "alcohol": {
+            "label": "Alcohol Rules",
+            "description": "Age limits and regulations"
+          }
+        },
+        "sourceBadge": {
+          "labels": {
+            "official_api": "Official source",
+            "web_search": "Web search",
+            "ai_generated": "AI generated",
+            "blog": "Blog",
+            "default": "Source"
+          },
+          "aria": {
+            "showDetails": "Show details for {sourceName}",
+            "openSource": "Open {sourceName} in a new tab"
+          },
+          "checkSource": "Check source",
+          "reliability": "Reliability {score}%"
+        },
+        "loadingState": {
+          "defaultMessage": "Fetching travel info..."
+        },
         "display": {
           "headerSuffix": " Travel Info",
           "expandAll": "Expand all",
@@ -261,6 +778,807 @@
             "errorLine2": "Please try again in a moment.",
             "errorDetails": "Error details",
             "retry": "Retry"
+          }
+        },
+        "embeddedTravelInfo": {
+          "defaultError": "An error occurred.",
+          "title": "Travel Info and Safety Guide",
+          "close": "Close",
+          "scrollLeft": "Scroll left",
+          "scrollRight": "Scroll right",
+          "travelDates": "Travel schedule: {start} to {end}",
+          "changeCategories": "Change categories",
+          "currentSelection": "(Currently selected: {count})",
+          "loading": "Loading...",
+          "research": "Search again",
+          "footerHint": "Information is for reference. Always verify the latest details on official websites."
+        },
+        "pdfExportButton": {
+          "generateFailed": "Failed to generate PDF.",
+          "ariaLabel": "Export as PDF",
+          "label": "Export PDF"
+        },
+        "pdfDocument": {
+          "createdDate": "Created: {date}",
+          "travelSchedule": "Travel schedule: {start} - {end}",
+          "dangerDescriptions": {
+            "0": "No danger information",
+            "1": "Exercise caution",
+            "2": "Avoid non-essential travel",
+            "3": "Do not travel",
+            "4": "Evacuate"
+          },
+          "labels": {
+            "currency": "Currency",
+            "language": "Language",
+            "timeDifference": "Time difference",
+            "timezone": "Time zone",
+            "visaRequirement": "Visa requirement",
+            "voltage": "Voltage",
+            "plugType": "Plug type",
+            "tapWater": "Tap water",
+            "medicalLevel": "Medical level",
+            "restroomAvailability": "Availability",
+            "fine": "Fine",
+            "ageLimit": "Age limit"
+          },
+          "subHeaders": {
+            "emergencyContacts": "Emergency contacts",
+            "clothingAdvice": "Clothing advice",
+            "requirements": "Requirements",
+            "tipping": "Tipping",
+            "customs": "Customs and etiquette",
+            "publicTransport": "Public transport",
+            "rideshare": "Rideshare",
+            "popularDishes": "Popular dishes",
+            "diningEtiquette": "Dining etiquette",
+            "popularSouvenirs": "Popular souvenirs",
+            "recommendedAreas": "Recommended areas",
+            "majorEvents": "Major events",
+            "seasonalFestivals": "Seasonal festivals",
+            "internet": "Internet",
+            "recommendedVaccines": "Recommended vaccines",
+            "restroomNotes": "Usage notes",
+            "smokingRules": "Smoking rules",
+            "smokingAreas": "Smoking areas",
+            "alcoholRules": "Alcohol rules"
+          },
+          "visa": {
+            "required": "Required",
+            "notRequired": "Not required",
+            "withinDays": " (up to {days} days)"
+          },
+          "tipping": {
+            "required": "Required",
+            "customary": "Customary",
+            "notRequired": "Not required"
+          },
+          "rideshare": {
+            "available": "Available ({services})",
+            "unavailable": "Unavailable"
+          }
+        },
+        "sections": {
+          "basicInfoSection": {
+            "currencyInfo": "Currency information",
+            "labels": {
+              "currency": "Currency",
+              "exchangeRate": "Exchange rate",
+              "timezone": "Time zone",
+              "timeDifferenceFromJapan": "Time difference from Japan"
+            },
+            "updatedAt": "Updated: {date}",
+            "language": "Languages",
+            "timeDifference": "Time difference"
+          },
+          "technologySection": {
+            "powerAndPlug": "Power and plugs",
+            "labels": {
+              "plugType": "Plug type",
+              "voltage": "Voltage"
+            },
+            "internetWifi": "Internet and Wi-Fi",
+            "simCard": "SIM card"
+          },
+          "climateInfoSection": {
+            "currentWeather": "Current weather",
+            "forecast": "Forecast",
+            "seasonFeatures": "Seasonal features",
+            "clothingAdvice": "Clothing advice",
+            "weatherKeywords": {
+              "sunny": [
+                "sunny",
+                "clear"
+              ],
+              "rain": [
+                "rain"
+              ],
+              "snow": [
+                "snow"
+              ]
+            }
+          },
+          "safetyInfoSection": {
+            "aiFallback": {
+              "title": "This information is AI-generated",
+              "bodyLine1": "Official data could not be retrieved, so AI-generated general guidance is shown.",
+              "bodyLine2": "Please verify accurate information on the MOFA overseas safety website."
+            },
+            "securityLevelBadge": "Security Level",
+            "dangerLevels": {
+              "0": "No danger information",
+              "1": "Exercise caution",
+              "2": "Avoid non-essential travel",
+              "3": "Do not travel",
+              "4": "Evacuate"
+            },
+            "dangerDescriptions": {
+              "0": "No danger information",
+              "1": "Exercise caution",
+              "2": "Avoid non-essential travel",
+              "3": "Do not travel (travel advisory)",
+              "4": "Evacuate and do not travel"
+            },
+            "partialCountryRisk": "Some regions have level {level} alerts",
+            "regionalRiskTitle": "Regional risk information",
+            "regionalRiskLead": "Take extra care when traveling to the regions below",
+            "summary": "Summary",
+            "detailedSafetyInfo": "Detailed safety information",
+            "mainWarnings": "Key warnings",
+            "emergencyContacts": "Emergency Contacts",
+            "japaneseEmbassy": "Japanese Embassy",
+            "sourceOfficialPrefix": "Source: MOFA Overseas Safety Open Data",
+            "sourceOfficialSuffix": "(processed for display)",
+            "sourceFallbackPrefix": "Information provider: MOFA Overseas Safety Open Data",
+            "officialSite": "Official site",
+            "warningPriority": {
+              "critical": "Critical",
+              "high": "High",
+              "medium": "Medium",
+              "low": "Low"
+            },
+            "warningType": {
+              "danger": "Danger information",
+              "spot": "Spot information",
+              "mail": "Safety bulletin",
+              "general": "General information"
+            }
+          },
+          "visaInfoSection": {
+            "visaRequired": "Visa is required",
+            "visaNotRequired": "No visa required",
+            "visaFreeStay": "You can stay visa-free for up to <strong>{days} days</strong>",
+            "entryRequirements": "Entry requirements",
+            "notes": "Notes",
+            "cautionLabel": "Caution:",
+            "cautionText": "Visa requirements may change. Always verify official embassy or consulate information before travel."
+          }
+        }
+      },
+      "planner": {
+        "steps": {
+          "stepCompanions": {
+            "title": "Who are you traveling with?",
+            "lead": "Choose your travel companion",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "options": {
+              "solo": { "label": "Solo", "desc": "At your own pace" },
+              "couple": { "label": "Couple", "desc": "Romantic style" },
+              "family": { "label": "Family", "desc": "Fun for everyone" },
+              "friends": { "label": "Friends", "desc": "Lively and social" },
+              "male_trip": { "label": "Guys trip", "desc": "All in" },
+              "female_trip": { "label": "Girls trip", "desc": "Stylish and fun" },
+              "backpacker": { "label": "Backpacker", "desc": "For adventure" },
+              "business": { "label": "Business", "desc": "Efficient and focused" },
+              "pet": { "label": "With pet", "desc": "Together always" }
+            }
+          },
+          "stepPace": {
+            "title": "What pace do you prefer?",
+            "lead": "Tailor it to your travel style",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "options": {
+              "relaxed": { "label": "Relaxed", "desc": "1-2 spots per day, take it slow" },
+              "balanced": { "label": "Balanced", "desc": "A good mix of sightseeing and rest" },
+              "active": { "label": "Active", "desc": "Cover major highlights" },
+              "packed": { "label": "Packed", "desc": "Full-on from morning to night" }
+            }
+          },
+          "stepBudget": {
+            "title": "What's your budget range?",
+            "lead": "Plan within a comfortable budget",
+            "or": "or",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "units": {
+              "yen": " JPY",
+              "tenThousandYen": "x10k JPY"
+            },
+            "slider": {
+              "title": "Set by amount",
+              "lead": "Adjust your budget range with the slider"
+            },
+            "options": {
+              "saving": { "label": "Budget", "desc": "Smart and cost-friendly travel" },
+              "standard": { "label": "Standard", "desc": "Enjoy with a typical budget" },
+              "high": { "label": "Comfort+", "desc": "Better hotels and meals" },
+              "luxury": { "label": "Luxury", "desc": "Premium experiences all the way" }
+            }
+          },
+          "stepRegion": {
+            "title": "What kind of trip are you looking for?",
+            "lead": "Share a rough image or what you want to do",
+            "vibePlaceholder": "e.g. tropical island, relaxing resort, somewhere with hot springs...",
+            "filterLabel": "Filter by area (optional)",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "regions": {
+              "domestic": { "label": "Domestic", "sub": "Domestic" },
+              "overseas": { "label": "Overseas", "sub": "Overseas" },
+              "anywhere": { "label": "No preference", "sub": "Anywhere" }
+            }
+          },
+          "stepFreeText": {
+            "titleLine1": "Finally,",
+            "titleLine2": "any special requests?",
+            "leadLine1": "For example, \"I want to visit museums\" or \"I want quiet cafes\".",
+            "leadLine2": "Feel free to add anything. (Optional)",
+            "placeholder": "e.g. I want to explore vintage shops and visit a restaurant with a great night view...",
+            "charCount": "{count} chars",
+            "complete": "Create plan ->"
+          },
+          "stepPlaces": {
+            "titleLine1": "Do you have any",
+            "titleLine2": "must-visit spots?",
+            "lead": "If yes, we'll prioritize them in your plan",
+            "yes": "Yes",
+            "no": "No",
+            "placePlaceholder": "Enter a place name (e.g. Kiyomizu-dera)",
+            "nextWithCount": "Continue with {count} places ->",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan"
+          },
+          "stepDestination": {
+            "badge": "Step 1: The Destinations",
+            "titleLine1": "First, tell us",
+            "titleLine2": "where you want to go.",
+            "leadLine1": "You can include multiple places in one trip.",
+            "leadLine2": "Enter a city name or idea, then press Enter to add.",
+            "removeAria": "Remove {destination}",
+            "placeholderFirst": "Paris, Kyoto...",
+            "placeholderNext": "Add another destination...",
+            "inputHintEnter": "Press Enter to add ↵",
+            "inputHintContinue": "Add more or continue",
+            "addButton": "Add \"{destination}\"",
+            "nextWithCount": "Continue with {count} destinations ->",
+            "skipAndCreate": "Skip optional items and create plan"
+          },
+          "stepInitialChoice": {
+            "badge": "Free Travel Planner",
+            "titleLine1": "Have you already",
+            "titleLine2": "decided your destination?",
+            "lead": "AI will suggest a trip that fits you perfectly",
+            "decided": "Yes, decided",
+            "notDecided": "Not yet",
+            "privacyLine1": "Your input is not used for AI training",
+            "privacyLine2Prefix": "See the",
+            "policy": "AI Policy",
+            "privacyLine2Suffix": "for details"
+          },
+          "stepThemes": {
+            "title": "What kind of trip do you want?",
+            "lead": "Tap themes you're interested in",
+            "nextWithCount": "Continue with {count} themes ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "themes": {
+              "gourmet": "Food",
+              "historyCulture": "History & Culture",
+              "natureScenery": "Nature & Scenery",
+              "relax": "Relaxation",
+              "hiddenSpots": "Hidden Gems",
+              "shopping": "Shopping",
+              "art": "Art",
+              "experienceActivity": "Experiences & Activities",
+              "onsenSauna": "Onsen & Sauna",
+              "photogenic": "Photogenic",
+              "adventure": "Adventure",
+              "other": "Other"
+            },
+            "themeValues": {
+              "gourmet": "Food",
+              "historyCulture": "History & Culture",
+              "natureScenery": "Nature & Scenery",
+              "relax": "Relaxation",
+              "hiddenSpots": "Hidden Gems",
+              "shopping": "Shopping",
+              "art": "Art",
+              "experienceActivity": "Experiences & Activities",
+              "onsenSauna": "Onsen & Sauna",
+              "photogenic": "Photogenic",
+              "adventure": "Adventure",
+              "other": "Other"
+            }
+          },
+          "stepDates": {
+            "title": "When and for how long?",
+            "lead": "Check the box if it's undecided",
+            "next": "Continue ->",
+            "skipAndCreate": "Skip optional items and create plan",
+            "date": {
+              "label": "Departure date",
+              "undecided": "Undecided"
+            },
+            "duration": {
+              "label": "Trip duration",
+              "undecided": "Undecided",
+              "toggleDays": "X days",
+              "toggleNights": "X nights / X days",
+              "daysUnitDisplay": "days",
+              "decreaseAria": "Decrease trip duration",
+              "increaseAria": "Increase trip duration"
+            },
+            "formats": {
+              "dayTrip": "Day trip",
+              "daysUnit": "days",
+              "nightsUnit": "nights",
+              "dayUnit": "days",
+              "days": "{days} days",
+              "nightsDays": "{nights} nights {days} days",
+              "dateUndecidedValue": "Timing undecided",
+              "dateWithUndecidedDuration": "Depart {date} (duration undecided)",
+              "dateFromWithDuration": "{date} for {duration}"
+            }
+          },
+          "stepTransit": {
+            "title": "Have you decided your transit?",
+            "lead": "Tell us if anything is already booked, like flights or trains",
+            "durationUndecidedMessage": "Travel duration is undecided, so transit input is skipped.",
+            "registeredTransit": {
+              "label": "Registered transit",
+              "subLabel": "Included in your schedule"
+            },
+            "add": "Add",
+            "empty": "No transit added yet",
+            "daySelector": {
+              "label": "Which day is this transit for?"
+            },
+            "dayLabel": "Day {day}",
+            "next": "Continue ->",
+            "nextWithoutTransit": "No specific transit (continue) ->",
+            "skipAndCreate": "Skip optional items and create plan"
+          },
+          "transitListItem": {
+            "dayLabel": "Day {day}"
+          },
+          "transitForm": {
+            "title": "Edit transit",
+            "typeLabel": "Transit type",
+            "types": {
+              "flight": "Flight",
+              "train": "Train",
+              "bus": "Bus",
+              "ship": "Ship",
+              "car": "Car",
+              "other": "Other"
+            },
+            "bookingStatus": {
+              "label": "Booking status",
+              "bookedDescription": "This transit will be treated as fixed in the plan",
+              "unbookedDescription": "This is treated as a preference and may change",
+              "booked": "Booked",
+              "unbooked": "Unbooked"
+            },
+            "departure": {
+              "label": "Departure",
+              "placeholder": "Departure (e.g. Tokyo Station)"
+            },
+            "arrival": {
+              "label": "Arrival",
+              "placeholder": "Arrival (e.g. Osaka Station)"
+            },
+            "memo": {
+              "label": "Memo",
+              "placeholder": "Flight number, seat, reservation code, etc. (e.g. JL123 15A)"
+            },
+            "actions": {
+              "cancel": "Cancel",
+              "save": "Save"
+            }
+          }
+        },
+        "requestSummary": {
+          "editAria": "Edit",
+          "editTitle": "Modify",
+          "destinationAreaUndecided": "Area undecided (vibe-focused)",
+          "vibePrefix": "Vibe:",
+          "unset": "Not set",
+          "sections": {
+            "destination": "Destination / Area",
+            "mustVisit": "Must-visit places",
+            "companions": "Who are you traveling with?",
+            "themes": "Travel themes",
+            "budget": "Budget",
+            "dates": "Dates / Timing",
+            "pace": "Travel pace",
+            "transits": "Transit",
+            "freeText": "Additional requests"
+          },
+          "pace": {
+            "value": "{label} ({desc})",
+            "normal": "Normal (3-4 spots/day)"
+          },
+          "budget": {
+            "range": "{min} - {max}",
+            "tenThousandAmount": "{value} x10k JPY",
+            "yenAmount": "JPY {value}"
+          }
+        },
+        "stepContainer": {
+          "backTitle": "Back",
+          "stepLabel": "STEP",
+          "showSummaryTitle": "Review current selection",
+          "closeTitle": "Close",
+          "summaryTitle": "Current request",
+          "close": "Close"
+        },
+        "dayPlaceholder": {
+          "dayLabel": "Day",
+          "pendingDetails": "Waiting for details...",
+          "generating": "Generating...",
+          "errorTitle": "Failed to generate details",
+          "errorMessage": "Please try again.",
+          "retry": "Retry"
+        },
+        "costEstimate": {
+          "title": "Estimated trip cost",
+          "tripSummary": "{nights} nights {days} days - {tripType} trip",
+          "tripType": {
+            "domestic": "Domestic",
+            "overseas": "Overseas"
+          },
+          "breakdownTitle": "Breakdown",
+          "breakdown": {
+            "accommodation": "Accommodation ({nights} nights)",
+            "meals": "Meals ({days} days)",
+            "transport": "Transport ({days} days)",
+            "activities": "Activities ({days} days)"
+          },
+          "perDay": "Estimated per day",
+          "savingTips": "Saving tips",
+          "searchPrompt": "Search in this price range",
+          "actions": {
+            "searchHotels": "Search hotels",
+            "searchFlights": "Search flights"
+          },
+          "disclaimer": "* This estimate is for reference only. Actual costs vary by season, booking timing, and exchange rates."
+        },
+        "calendarExportButton": {
+          "buttonLabel": "Add to calendar",
+          "datePicker": {
+            "title": "Select a start date",
+            "description": "Enter your trip start date to add events to your calendar.",
+            "cancel": "Cancel",
+            "confirm": "Add"
+          },
+          "options": {
+            "ics": {
+              "title": ".ics file",
+              "description": "Apple / Outlook Calendar"
+            },
+            "google": {
+              "title": "Google Calendar",
+              "description": "Add in browser"
+            }
+          }
+        },
+        "loadingView": {
+          "messages": {
+            "guidebook": "Opening guidebooks...",
+            "weather": "Checking local weather...",
+            "hiddenSpots": "Finding hidden gems...",
+            "journal": "Creating your travel journal...",
+            "story": "Writing your unique story..."
+          },
+          "footer": "Almost ready to depart."
+        },
+        "planFeedbackBar": {
+          "title": "How was this plan?",
+          "starAria": "{star} stars",
+          "commentPlaceholder": "Comment (optional)",
+          "submitting": "Submitting...",
+          "submit": "Submit",
+          "submittedTitle": "Thank you!",
+          "submittedDescription": "Your feedback has been submitted."
+        },
+        "publicToggle": {
+          "label": "Visibility",
+          "states": {
+            "public": "Public",
+            "private": "Private"
+          }
+        },
+        "pdfDownloadButton": {
+          "heading": "Download",
+          "ariaLabel": "PDF preview and download",
+          "generating": "Generating...",
+          "label": "Export PDF",
+          "generateFailed": "Failed to generate PDF. Please try again.",
+          "generateFailedWithMessage": "Failed to generate PDF: {message}"
+        },
+        "pdfExportButton": {
+          "heading": "Download",
+          "ariaLabel": "Export as PDF",
+          "generating": "Generating...",
+          "label": "Export PDF",
+          "generateFailed": "Failed to generate PDF. Please try again.",
+          "generateFailedWithMessage": "Failed to generate PDF: {message}",
+          "shareTitle": "{destination} Itinerary"
+        },
+        "pdfPreviewModal": {
+          "generatedTitle": "PDF generated",
+          "iframeTitle": "PDF preview",
+          "loading": "Loading PDF...",
+          "readyTitle": "Your PDF is ready",
+          "readyDescription": "Your itinerary PDF was generated successfully. Share or save it using the buttons below.",
+          "documentLabel": "PDF document",
+          "close": "Close",
+          "save": "Save",
+          "share": "Share"
+        },
+        "outlineLoadingAnimation": {
+          "waiting": "Preparing...",
+          "stepsProgress": "{completed}/{total} steps",
+          "footer": "Building your travel plan...",
+          "fallback": {
+            "destination": {
+              "text": "Analyzing destinations...",
+              "subText": "Analyzing destinations"
+            },
+            "concept": {
+              "text": "Crafting your travel concept...",
+              "subText": "Crafting your concept"
+            },
+            "route": {
+              "text": "Finding the best route...",
+              "subText": "Finding optimal routes"
+            },
+            "almostDone": {
+              "text": "Almost ready!",
+              "subText": "Almost ready!"
+            }
+          }
+        },
+        "outlineReview": {
+          "title": "Your trip outline is ready",
+          "leadLine1": "Before generating details, you can adjust overnight locations and the overall flow.",
+          "leadLine2": "If you want to change where to stay, update it here.",
+          "fields": {
+            "title": "Theme / Title",
+            "overnightLocation": "Overnight area"
+          },
+          "overnightPlaceholder": "e.g. Central Kyoto, Osaka Umeda area...",
+          "overnightHint": "The next day's route will be generated based on this location.",
+          "generating": "Generating detailed plan...",
+          "confirm": "Create travel journal"
+        },
+        "mapRoute": {
+          "headerTitle": "Full itinerary map",
+          "spotsCount": "({count} spots)",
+          "allDays": "All days",
+          "dayLabel": "Day {day}",
+          "openInGoogleMaps": "View in Google Maps",
+          "openRouteTitle": "Open route in Google Maps",
+          "googleMapsLabel": "Google Maps",
+          "tripDays": "{days} days",
+          "loadingLocation": "Loading location data...",
+          "loadingCoordinates": "Fetching spot coordinates",
+          "interactiveMapPro": "Interactive map is available on Pro plan",
+          "mapLoading": "Loading map..."
+        },
+        "pdfExportModal": {
+          "title": "PDF export settings",
+          "close": "Close",
+          "required": "Required",
+          "unknownError": "Unknown error",
+          "itinerary": {
+            "label": "Itinerary",
+            "description": "Schedule and activities"
+          },
+          "travelInfo": {
+            "label": "Travel info and safety guide",
+            "description": "Safety, visa, etiquette, and more"
+          },
+          "presets": {
+            "essential": "Essential set",
+            "full": "Full set"
+          },
+          "selectedCategoryCount": "{count} categories selected",
+          "packingList": {
+            "label": "Packing list",
+            "count": "{count} items",
+            "empty": "Generate a packing list first"
+          },
+          "fetching": {
+            "title": "Fetching travel information...",
+            "progress": "{current} / {total} categories completed"
+          },
+          "cancel": "Cancel",
+          "creating": "Creating...",
+          "createPdf": "Create PDF"
+        },
+        "packingListView": {
+          "generateFailed": "Failed to generate.",
+          "retry": "Retry",
+          "initial": {
+            "title": "Create a packing list",
+            "description": "AI suggests an optimal packing list<br></br>for your {days}-day trip to {destination}.",
+            "generateButton": "Generate packing list with AI"
+          },
+          "generating": {
+            "title": "Generating packing list...",
+            "description": "Creating an optimal list for your trip to {destination}"
+          },
+          "proRequired": {
+            "title": "Pro-only feature",
+            "description": "AI packing-list generation is available on Pro only.<br></br>Upgrade to make trip prep easier.",
+            "cta": "Upgrade to Pro"
+          },
+          "progress": {
+            "title": "Preparation progress",
+            "count": "{checked}/{total} completed",
+            "completed": "Everything is ready. Have a great trip!"
+          },
+          "regenerate": "Regenerate list",
+          "disclaimer": "* AI-generated suggestions. Add or remove items based on your personal needs.",
+          "priority": {
+            "essential": "Essential"
+          },
+          "categories": {
+            "documents": "Documents",
+            "clothing": "Clothing",
+            "electronics": "Electronics",
+            "toiletries": "Toiletries",
+            "medicine": "Medicine",
+            "theme": "Theme-specific",
+            "other": "Other"
+          }
+        },
+        "shioriJournalEditor": {
+          "title": "Journal notes",
+          "description": "You can keep notes for each itinerary spot before, during, and after your trip. {count} entries saved.",
+          "defaultDayTitle": "Itinerary",
+          "fields": {
+            "phase": "Journal phase",
+            "placeName": "Visited place",
+            "content": "Memo",
+            "photoUrls": "Photo URLs (newline or comma separated)"
+          },
+          "phase": {
+            "before": "Before visit",
+            "during": "During trip",
+            "after": "After visit"
+          },
+          "placePlaceholder": "e.g. Nishiki Market",
+          "contentPlaceholder": "Record what you did, what you ate, and how you felt...",
+          "lastSaved": "Last saved: {time}",
+          "notSavedYet": "Not saved yet",
+          "saving": "Saving...",
+          "save": "Save this note",
+          "errors": {
+            "emptyContent": "Please enter memo content.",
+            "saveFailed": "Failed to save."
+          }
+        },
+        "resultView": {
+          "durationString": "{nights} nights {days} days",
+          "updatingTitle": "Rewriting your plan...",
+          "newActivity": {
+            "title": "New activity",
+            "description": "Enter details"
+          },
+          "tabs": {
+            "plan": "Itinerary",
+            "journal": "Journal",
+            "info": "Travel info",
+            "packing": "Packing"
+          },
+          "viewMode": {
+            "mapAndList": "Map + itinerary",
+            "listOnly": "Itinerary only"
+          },
+          "mobileView": {
+            "list": "List",
+            "map": "Map"
+          },
+          "chatCta": {
+            "title": "Adjust with AI assistance",
+            "description": "You can ask things like \"I want less transit\" or \"Add a cafe on this day\"."
+          },
+          "addSchedule": "Add schedule",
+          "booking": {
+            "title": "Book this trip",
+            "hotel": "Book hotels",
+            "flight": "Find flights",
+            "activity": "Book activities"
+          },
+          "disclaimer": {
+            "line1": "* This plan is AI-generated. Accuracy is not guaranteed.",
+            "line2": "* This page may include ads or affiliate links."
+          }
+        },
+        "travelPlannerSimplified": {
+          "defaultDates": "2 nights 3 days",
+          "errors": {
+            "deploymentUpdate": "A new version is available. Please reload the page to use the latest version.",
+            "generic": "An error occurred."
+          },
+          "actions": {
+            "reloadPage": "Reload page",
+            "tryAgain": "Try again"
+          },
+          "contact": {
+            "prefix": "If the problem persists, please contact us via the",
+            "link": "contact page",
+            "suffix": "."
+          },
+          "notices": {
+            "expired": "The saved input was deleted because more than 24 hours have passed.",
+            "restored": "Input has been restored."
+          }
+        },
+        "streamingResultView": {
+          "durationString": "{nights} nights {days} days",
+          "dayLabel": "Day",
+          "shareDisabled": "Share and PDF export become available after generation completes.",
+          "transition": {
+            "title": "Auto-navigating to detail page",
+            "defaultMessage": "Details are complete. You will be redirected to the detail page in a few seconds."
+          },
+          "hero": {
+            "photoBy": "Photo by",
+            "on": "on",
+            "unsplash": "Unsplash",
+            "loadingImage": "Loading image...",
+            "destinationLabel": "Your Destination"
+          },
+          "progress": {
+            "movingToDetail": "Moving to detail page...",
+            "completed": "Completed",
+            "generatingDetails": "Generating detailed plan...",
+            "dayCount": "{completed}/{total} days",
+            "detailReadyMessage": "Details are ready. Please wait a moment; you will be moved to the detail page automatically."
+          },
+          "disclaimer": {
+            "title": "Important notice about AI-generated plans",
+            "body": "This plan is automatically generated by AI. Please verify latest opening hours, prices, and addresses on official websites."
+          },
+          "accommodationDescription": "Accommodation area for day {day}"
+        },
+        "citationBadge": {
+          "labels": {
+            "blog": "Blog article",
+            "google_places": "Google Places",
+            "ai_knowledge": "AI recommendation",
+            "golden_plan": "Recommended plan"
+          },
+          "shortLabels": {
+            "blog": "Article",
+            "google_places": "Places",
+            "ai_knowledge": "AI",
+            "golden_plan": "Recommended"
+          },
+          "aria": {
+            "withTitle": "Source: {label} - {title}",
+            "withoutTitle": "Source: {label}"
+          },
+          "viewArticle": "View article ->",
+          "confidencePrefix": "Confidence: ",
+          "confidence": {
+            "high": "High",
+            "medium": "Medium",
+            "low": "Low"
           }
         }
       }

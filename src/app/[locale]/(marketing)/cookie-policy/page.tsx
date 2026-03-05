@@ -51,49 +51,48 @@ export default async function CookiePolicy() {
         <div className="space-y-8 text-stone-600 leading-relaxed">
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
-              1. クッキー（Cookie）とは
+              {t("full.section1.title")}
             </h2>
-            <p>
-              クッキー（Cookie）とは、ウェブサイトを閲覧した際に、お客様のコンピュータやスマートフォンなどの端末に保存される小さなテキストファイルのことです。
-              これを利用することで、お客様が再度ウェブサイトを訪れた際に、より便利に利用していただいたり、ウェブサイトの利用状況を分析してサービスの改善に役立てたりすることができます。
-            </p>
+            <p>{t("full.section1.body")}</p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
-              2. クッキーの利用目的
+              {t("full.section2.title")}
             </h2>
-            <p>当サービスでは、以下の目的でクッキーを使用しています。</p>
+            <p>{t("full.section2.intro")}</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <strong className="text-stone-700">サービスの利便性向上：</strong>{" "}
-                お客様の設定内容（言語設定や入力内容の一時保存など）を記憶し、再度入力する手間を省くため。
+                <strong className="text-stone-700">
+                  {t("full.section2.items.convenience.label")}
+                </strong>{" "}
+                {t("full.section2.items.convenience.body")}
               </li>
               <li>
-                <strong className="text-stone-700">アクセス解析：</strong>{" "}
-                Google Analyticsなどの分析ツールを使用し、サイトの訪問数や閲覧ページなどの利用状況を把握し、サービスの改善に役立てるため。
+                <strong className="text-stone-700">
+                  {t("full.section2.items.analytics.label")}
+                </strong>{" "}
+                {t("full.section2.items.analytics.body")}
               </li>
               <li>
-                <strong className="text-stone-700">セキュリティ・不正利用対策：</strong>{" "}
-                不正アクセスや不正利用の検知・防止のため。
+                <strong className="text-stone-700">
+                  {t("full.section2.items.security.label")}
+                </strong>{" "}
+                {t("full.section2.items.security.body")}
               </li>
             </ul>
             <p className="mt-3">
-              なお、行動ターゲティング広告を目的としたCookieを新たに導入する場合は、本ポリシーで事前に告知します。
+              {t("full.section2.notice")}
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
-              3. Google Analyticsの利用について
+              {t("full.section3.title")}
             </h2>
-            <p>
-              当サービスでは、Googleによるアクセス解析ツール「Google Analytics」を使用しています。
-              このGoogle Analyticsはデータの収集のためにクッキーを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
-            </p>
+            <p>{t("full.section3.body1")}</p>
             <p className="mt-2">
-              Google Analyticsにより収集されたデータは、Google社のプライバシーポリシーに基づいて管理されます。
-              詳細は以下のページをご覧ください。
+              {t("full.section3.body2")}
             </p>
             <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
@@ -103,7 +102,7 @@ export default async function CookiePolicy() {
                   rel="noopener noreferrer"
                   className="text-[#e67e22] hover:underline"
                 >
-                  Googleのサービスを使用するサイトやアプリから収集した情報のGoogleによる使用
+                  {t("full.section3.partnerSitesLinkLabel")}
                 </a>
               </li>
               <li>
@@ -113,7 +112,7 @@ export default async function CookiePolicy() {
                   rel="noopener noreferrer"
                   className="text-[#e67e22] hover:underline"
                 >
-                  Google プライバシーポリシー
+                  {t("full.section3.googlePrivacyLinkLabel")}
                 </a>
               </li>
             </ul>
@@ -121,58 +120,59 @@ export default async function CookiePolicy() {
 
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
-              4. クッキーの無効化（オプトアウト）について
+              {t("full.section4.title")}
             </h2>
-            <p>
-              お客様は、ブラウザの設定を変更することにより、クッキーの受け入れを拒否（無効化）することができます。
-              ただし、クッキーを無効にした場合、当サービスの一部機能が正常に動作しなくなる可能性がありますので、あらかじめご了承ください。
-            </p>
+            <p>{t("full.section4.body")}</p>
 
             <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
-              ブラウザの設定変更方法
+              {t("full.section4.browserSettingsTitle")}
             </h3>
-            <p>主要なブラウザの設定方法は以下の各社サポートページをご確認ください。</p>
+            <p>{t("full.section4.browserSettingsBody")}</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
               <li>
-                <a href="https://support.google.com/chrome/answer/95647?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Chrome</a>
+                <a href="https://support.google.com/chrome/answer/95647?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.browserLinks.chrome")}</a>
               </li>
               <li>
-                <a href="https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Apple Safari (Mac)</a> / <a href="https://support.apple.com/ja-jp/HT201265" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">iPhone・iPad</a>
+                <a href="https://support.apple.com/ja-jp/guide/safari/sfri11471/mac" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.browserLinks.safariMac")}</a> / <a href="https://support.apple.com/ja-jp/HT201265" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.browserLinks.iphoneIpad")}</a>
               </li>
               <li>
-                <a href="https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Mozilla Firefox</a>
+                <a href="https://support.mozilla.org/ja/kb/enhanced-tracking-protection-firefox-desktop" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.browserLinks.firefox")}</a>
               </li>
               <li>
-                <a href="https://support.microsoft.com/ja-jp/microsoft-edge/microsoft-edge-%E3%81%A7-cookie-%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B-63947406-40ac-c2b9-25b4-935471955f0e" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Microsoft Edge</a>
+                <a href="https://support.microsoft.com/ja-jp/microsoft-edge/microsoft-edge-%E3%81%A7-cookie-%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B-63947406-40ac-c2b9-25b4-935471955f0e" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.browserLinks.edge")}</a>
               </li>
             </ul>
 
              <h3 className="text-lg font-bold text-stone-700 mt-6 mb-2">
-              Google Analyticsのオプトアウト
+              {t("full.section4.googleOptOutTitle")}
             </h3>
-            <p>
-              Google Analyticsによるデータ収集のみを無効にしたい場合は、Google社が提供する「Google Analyticsオプトアウトアドオン」をご利用ください。
-            </p>
+            <p>{t("full.section4.googleOptOutBody")}</p>
              <ul className="list-disc pl-6 mt-2 space-y-1">
               <li>
-                <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">Google Analytics オプトアウト アドオン</a>
+                <a href="https://tools.google.com/dlpage/gaoptout?hl=ja" target="_blank" rel="noopener noreferrer" className="text-[#e67e22] hover:underline">{t("full.section4.googleOptOutAddonLabel")}</a>
               </li>
              </ul>
           </section>
 
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-4 border-b border-stone-200 pb-2">
-              5. お問い合わせ
+              {t("full.section5.title")}
             </h2>
             <p>
-              本クッキーポリシーに関するお問い合わせは、<PolicyLink href="/contact">お問い合わせフォーム</PolicyLink>よりお願いいたします。
+              {t.rich("full.section5.bodyWithContact", {
+                contact: () => (
+                  <PolicyLink href="/contact">
+                    {t("full.section5.contactFormLabel")}
+                  </PolicyLink>
+                ),
+              })}
             </p>
           </section>
 
           <div className="text-right text-sm text-stone-500 mt-12">
-            策定日：2026年1月8日
+            {t("full.establishedDateLabel")}
             <br />
-            最終更新日: 2026年3月3日
+            {t("full.updatedDateLabel")}
           </div>
         </div>
       </main>

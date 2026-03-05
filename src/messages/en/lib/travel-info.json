@@ -1,0 +1,29 @@
+{
+  "lib": {
+    "travelInfo": {
+      "categoryLabels": {
+        "basic": "Basic Info",
+        "safety": "Safety & Medical",
+        "climate": "Climate & Clothing",
+        "visa": "Visa & Entry",
+        "manner": "Manners & Tips",
+        "transport": "Transportation",
+        "local_food": "Local Food",
+        "souvenir": "Souvenirs & Shopping",
+        "events": "Events & Festivals",
+        "technology": "Power & Connectivity",
+        "healthcare": "Healthcare & Hygiene",
+        "restrooms": "Restroom Info",
+        "smoking": "Smoking Rules",
+        "alcohol": "Alcohol Rules"
+      },
+      "dangerLevelDescriptions": {
+        "0": "No travel advisory",
+        "1": "Exercise caution",
+        "2": "Avoid non-essential travel",
+        "3": "Avoid all travel",
+        "4": "Evacuate / Do not travel"
+      }
+    }
+  }
+}

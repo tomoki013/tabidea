@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import PolicyLink from "@/components/ui/PolicyLink";
-import { getRequestLanguage } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("pages.marketing.privacyLegal");
@@ -9,34 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function PrivacyPolicy() {
-  const language = await getRequestLanguage();
   const t = await getTranslations("pages.marketing.privacyLegal");
-
-  if (language === "en") {
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
-        <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
-            {t("title")}
-          </h1>
-          <p className="text-sm text-stone-500 mb-8 text-center">
-            {t("legalNotice")}
-          </p>
-          <section className="space-y-4 text-stone-600 leading-relaxed">
-            <h2 className="text-xl font-semibold text-foreground border-b pb-2">
-              {t("englishSummaryHeading")}
-            </h2>
-            <p>{t("englishSummaryBody1")}</p>
-            <p>{t("englishSummaryBody2")}</p>
-            <p>{t("englishSummaryBody3")}</p>
-            <p>
-              <PolicyLink href="/contact">{t("contactLabel")}</PolicyLink>
-            </p>
-          </section>
-        </main>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
@@ -51,53 +23,48 @@ export default async function PrivacyPolicy() {
         <div className="space-y-8 text-stone-600 leading-relaxed">
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              1. はじめに
+              {t("full.section1.title")}
             </h2>
-            <p>
-              Tabidea（以下、「当サービス」といいます。）は、当サービスが提供するアプリケーション（以下、「本アプリ」といいます。）および関連サービスにおける、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
-              当サービスは、個人情報保護の重要性を認識し、個人情報の保護に関する法律（以下、「個人情報保護法」といいます。）等の遵守徹底に努めます。
-            </p>
+            <p>{t("full.section1.body")}</p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              2. 収集する情報
+              {t("full.section2.title")}
             </h2>
-            <p>
-              当サービスは、サービスの提供にあたり、以下の情報を取得する場合があります。
-            </p>
+            <p>{t("full.section2.intro")}</p>
             <div className="mt-3 space-y-4">
               <div>
                 <h3 className="font-medium text-foreground">
-                  2-1. ユーザーから直接提供される情報
+                  {t("full.section2.subsections.directProvided.title")}
                 </h3>
                 <ul className="list-disc pl-6 mt-2 space-y-1">
                   <li>
-                    <strong>アカウント情報（ログイン時）：</strong>
-                    Googleアカウントの基本情報（メールアドレス、ユーザーID、プロフィール画像等）。
+                    <strong>
+                      {t("full.section2.subsections.directProvided.items.account.label")}
+                    </strong>
+                    {t("full.section2.subsections.directProvided.items.account.body")}
                   </li>
                   <li>
-                    旅行計画に関する情報（目的地、日程、予算、同行者、興味・関心、その他要望等）
+                    {t("full.section2.subsections.directProvided.items.tripInfo")}
                   </li>
                   <li>
-                    お問い合わせ時に提供される連絡先情報（メールアドレス、氏名等）
+                    {t("full.section2.subsections.directProvided.items.contactInfo")}
                   </li>
                   <li>
-                    フィードバックやアンケート回答等の任意で提供される情報
+                    {t("full.section2.subsections.directProvided.items.feedback")}
                   </li>
                 </ul>
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  2-2. サービス利用時に自動的に収集される情報
+                  {t("full.section2.subsections.autoCollected.title")}
                 </h3>
                 <ul className="list-disc pl-6 mt-2 space-y-1">
-                  <li>端末情報（デバイスの種類、OSのバージョン、機種等）</li>
-                  <li>
-                    ログ情報（アクセス日時、IPアドレス、ブラウザの種類、リファラ情報等）
-                  </li>
-                  <li>Cookie（クッキー）および類似技術を用いた識別子</li>
-                  <li>位置情報（ユーザーが許可した場合に限る）</li>
+                  <li>{t("full.section2.subsections.autoCollected.items.device")}</li>
+                  <li>{t("full.section2.subsections.autoCollected.items.log")}</li>
+                  <li>{t("full.section2.subsections.autoCollected.items.cookie")}</li>
+                  <li>{t("full.section2.subsections.autoCollected.items.location")}</li>
                 </ul>
               </div>
             </div>
@@ -105,185 +72,157 @@ export default async function PrivacyPolicy() {
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              3. 利用目的
+              {t("full.section3.title")}
             </h2>
-            <p>当サービスは、収集した情報を以下の目的で利用します。</p>
+            <p>{t("full.section3.intro")}</p>
             <ol className="list-decimal pl-6 mt-3 space-y-2">
               <li>
-                <strong>ユーザー認証・管理：</strong>
-                ログイン機能の提供、本人確認、設定の保存のため。
+                <strong>{t("full.section3.items.authentication.label")}</strong>
+                {t("full.section3.items.authentication.body")}
               </li>
               <li>
-                <strong>サービスの提供・運営：</strong>
-                AIによる旅行プランの生成、提案、保存、共有機能の提供のため。
+                <strong>{t("full.section3.items.operations.label")}</strong>
+                {t("full.section3.items.operations.body")}
               </li>
               <li>
-                <strong>サービスの改善・開発：</strong>
-                利用状況の分析、AIモデルの精度向上、新機能の企画・開発のため。
+                <strong>{t("full.section3.items.improvement.label")}</strong>
+                {t("full.section3.items.improvement.body")}
               </li>
               <li>
-                <strong>ユーザーサポート：</strong>
-                お問い合わせへの対応、不具合の調査・修正のため。
+                <strong>{t("full.section3.items.support.label")}</strong>
+                {t("full.section3.items.support.body")}
               </li>
               <li>
-                <strong>安全管理：</strong>
-                不正アクセス、スパム行為、利用規約違反の防止および対応のため。
+                <strong>{t("full.section3.items.security.label")}</strong>
+                {t("full.section3.items.security.body")}
               </li>
               <li>
-                <strong>サービス案内・通知：</strong>
-                重要なお知らせ、規約改定、機能更新情報の案内のため。
+                <strong>{t("full.section3.items.notifications.label")}</strong>
+                {t("full.section3.items.notifications.body")}
               </li>
               <li>
-                <strong>その他：</strong>
-                上記各目的に付随する業務のため。
+                <strong>{t("full.section3.items.other.label")}</strong>
+                {t("full.section3.items.other.body")}
               </li>
             </ol>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              4. 第三者提供
+              {t("full.section4.title")}
             </h2>
-            <p>
-              当サービスは、以下の場合を除き、ユーザーの同意なく個人情報を第三者に提供することはありません。
-            </p>
+            <p>{t("full.section4.intro")}</p>
             <ul className="list-disc pl-6 mt-3 space-y-2">
-              <li>法令に基づく場合</li>
+              <li>{t("full.section4.items.item1")}</li>
+              <li>{t("full.section4.items.item2")}</li>
+              <li>{t("full.section4.items.item3")}</li>
+              <li>{t("full.section4.items.item4")}</li>
               <li>
-                人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難である場合
-              </li>
-              <li>
-                公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難である場合
-              </li>
-              <li>
-                国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがある場合
-              </li>
-              <li>
-                <strong>合併等の場合：</strong>
-                合併、会社分割、事業譲渡その他の事由による事業の承継に伴って個人情報が提供される場合
+                <strong>{t("full.section4.items.merger.label")}</strong>
+                {t("full.section4.items.merger.body")}
               </li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              5. 外部委託および外部サービスの利用
+              {t("full.section5.title")}
             </h2>
-            <p>
-              当サービスは、利用目的の達成に必要な範囲内において、個人情報の取扱いの全部または一部を外部に委託する場合や、外部サービスを利用する場合があります。
-            </p>
+            <p>{t("full.section5.intro")}</p>
             <div className="mt-4 space-y-4">
               <div>
                 <h3 className="font-medium text-foreground">
-                  5-1. AIサービスプロバイダー
+                  {t("full.section5.subsections.ai.title")}
                 </h3>
                 <p className="mt-1">
-                  旅行プランの生成には、Google LLCが提供する生成AIサービス（Gemini
-                  API）を主に利用し、一部プラン・機能ではOpenAI, L.L.C.が提供する生成AIサービス（OpenAI API）を利用します。ユーザーが入力した情報は、各サービスのプライバシーポリシーに従って処理されるほか、AIの学習には利用されない契約条件で利用することを原則とします。詳細は
-                  <PolicyLink href="/ai-policy">AIポリシー</PolicyLink>
-                  をご確認ください。
+                  {t.rich("full.section5.subsections.ai.bodyWithLink", {
+                    aiPolicy: (chunks) => (
+                      <PolicyLink href="/ai-policy">{chunks}</PolicyLink>
+                    ),
+                  })}
                 </p>
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  5-2. アクセス解析ツール
+                  {t("full.section5.subsections.analytics.title")}
                 </h3>
-                <p className="mt-1">
-                  当サービスでは、Google
-                  Analyticsを利用しています。これらはCookie等を用いてトラフィックデータを収集しますが、個人を特定する情報は含まれません。収集されたデータはGoogle社のプライバシーポリシーに基づいて管理されます。
-                </p>
+                <p className="mt-1">{t("full.section5.subsections.analytics.body")}</p>
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  5-3. 決済サービスプロバイダー
+                  {t("full.section5.subsections.payment.title")}
                 </h3>
-                <p className="mt-1">
-                  有料サービスの決済処理には、Stripe社のサービスを利用しています。クレジットカード情報は当サービスのサーバーには保存されず、Stripe社のセキュアな環境で処理されます。Stripe社は国際的なセキュリティ基準（PCI DSS）に準拠しています。
-                </p>
+                <p className="mt-1">{t("full.section5.subsections.payment.body")}</p>
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  5-4. アフィリエイトプログラム
+                  {t("full.section5.subsections.affiliate.title")}
                 </h3>
-                <p className="mt-1">
-                  当サービスでは、提携プログラムを利用した紹介リンクを表示する場合があります。これらのリンクを通じて購入等が行われた場合、第三者がCookie等を使用して情報を収集する可能性があります。
-                </p>
+                <p className="mt-1">{t("full.section5.subsections.affiliate.body")}</p>
               </div>
             </div>
             <p className="mt-4">
-              クッキー（Cookie）の利用目的や無効化（オプトアウト）等の詳細については、別途定める
-              <PolicyLink href="/cookie-policy">クッキーポリシー</PolicyLink>
-              をご確認ください。
+              {t.rich("full.section5.cookieNoticeWithLink", {
+                cookiePolicy: (chunks) => (
+                  <PolicyLink href="/cookie-policy">{chunks}</PolicyLink>
+                ),
+              })}
             </p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              6. 個人情報の管理とセキュリティ
+              {t("full.section6.title")}
             </h2>
-            <p>
-              当サービスは、個人情報の漏洩、滅失または毀損の防止その他の個人情報の安全管理のために必要かつ適切な措置を講じます。また、個人情報を取り扱う従業員や委託先（もしあれば）に対して、必要かつ適切な監督を行います。
-            </p>
+            <p>{t("full.section6.intro")}</p>
             <div className="mt-4 space-y-4">
               <div>
                 <h3 className="font-medium text-foreground">
-                  6-1. データの暗号化
+                  {t("full.section6.subsections.encryption.title")}
                 </h3>
-                <p className="mt-1">
-                  データベースに保存されるユーザーの旅行プラン等の情報は、暗号化技術を用いて保護されています。
-                </p>
+                <p className="mt-1">{t("full.section6.subsections.encryption.body")}</p>
               </div>
               <div>
                 <h3 className="font-medium text-foreground">
-                  6-2. 管理者のアクセス権限
+                  {t("full.section6.subsections.adminAccess.title")}
                 </h3>
-                <p className="mt-1">
-                  システムの保守運用やトラブルシューティングのため、技術的にはシステム管理者がデータベース内の情報を閲覧可能な状態にありますが、ユーザーの事前の同意がある場合、法令に基づく場合、またはサービスの重大な不具合の調査など正当な理由がある場合を除き、管理者がユーザーの保存した個人的なプラン内容を閲覧することはありません。
-                </p>
+                <p className="mt-1">{t("full.section6.subsections.adminAccess.body")}</p>
               </div>
             </div>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              7. ユーザーの権利（開示・訂正・利用停止等）
+              {t("full.section7.title")}
             </h2>
-            <p>
-              ユーザーは、当サービスが保有する自身の個人情報について、開示、訂正、追加、削除、利用停止、消去（以下、「開示等」といいます。）を請求することができます。当サービスは、ユーザー本人からの請求であることを確認した上で、法令の定めに従い遅滞なく対応いたします。ただし、個人情報保護法その他の法令により、当サービスが開示等の義務を負わない場合はこの限りではありません。
-            </p>
+            <p>{t("full.section7.body")}</p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              8. 通信の秘密
+              {t("full.section8.title")}
             </h2>
-            <p>
-              当サービスは、電気通信事業法に基づき、ユーザーの通信の秘密を守ります。ただし、法令の定めに基づく強制処分が行われた場合や、正当防衛、緊急避難に該当する場合には、この限りではありません。
-            </p>
+            <p>{t("full.section8.body")}</p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              9. プライバシーポリシーの変更
+              {t("full.section9.title")}
             </h2>
-            <p>
-              当サービスは、必要と判断した場合、本ポリシーを変更することができるものとします。本ポリシーを変更する場合、変更後の本ポリシーの施行時期および内容を当サービス上の適切な場所に掲示することにより周知します。変更後のプライバシーポリシーは、掲示された時点で効力を生じるものとします。
-            </p>
+            <p>{t("full.section9.body")}</p>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-4 border-b pb-2">
-              10. お問い合わせ窓口
+              {t("full.section10.title")}
             </h2>
-            <p>
-              本ポリシーに関するご質問、ご意見、個人情報の開示等のご請求は、当サービスのお問い合わせページまたは指定の連絡先までご連絡ください。
-            </p>
+            <p>{t("full.section10.body")}</p>
           </section>
 
           <div className="text-right text-sm text-muted-foreground mt-12">
-            策定日：2025年12月23日
+            {t("full.establishedDateLabel")}
             <br />
-            最終更新日：2026年3月3日
+            {t("full.updatedDateLabel")}
           </div>
         </div>
       </main>

@@ -1,0 +1,286 @@
+{
+  "components": {
+    "faq": {
+      "data": {
+        "categories": {
+          "planning": {
+            "items": [
+              {
+                "q": "Can I see an estimated travel cost?",
+                "a": "Yes. Based on your generated plan, AI automatically estimates and displays transportation, accommodation, meals, and activity costs. You can use it as a budgeting guideline."
+              },
+              {
+                "q": "Can I sync with calendar apps?",
+                "a": "Yes. You can export your plan to Google Calendar or Apple Calendar (iCal format) and manage your schedule in your own calendar app."
+              },
+              {
+                "q": "How long does plan generation take?",
+                "a": "It usually takes about 10 to 60 seconds. AI needs a little time to build an optimal plan from a large amount of data, so please enjoy the \"preparing your trip\" animation while you wait."
+              },
+              {
+                "q": "Can I use it even if I have not decided where to go?",
+                "a": "Yes, absolutely. If you choose \"destination undecided,\" AI can suggest areas and concrete plans based on your mood (relaxed, active, etc.) and travel theme."
+              },
+              {
+                "q": "Can I create international travel plans too?",
+                "a": "Yes. We support both domestic and international travel, including major destinations worldwide. Try entering a specific city or country such as Paris or Hawaii."
+              },
+              {
+                "q": "Can I create plans for rainy days?",
+                "a": "We do not currently have direct weather-forecast integration, but you can specify requests like \"places to enjoy even in rain\" in free text, and AI can suggest indoor-focused plans (museums, malls, etc.)."
+              },
+              {
+                "q": "Can it create child-friendly plans?",
+                "a": "Yes. If you select \"family\" in companions, the plan prioritizes child-friendly spots and manageable schedules."
+              },
+              {
+                "q": "Can I specify a budget when creating a plan?",
+                "a": "Yes. In the plan creation steps, you can choose an approximate budget level (budget, standard, luxury, etc.). AI reflects that level in suggested spots and meals."
+              },
+              {
+                "q": "Can I set detailed times?",
+                "a": "Yes. After generation, you can manually adjust each spot's stay duration and travel time to build a more precise schedule."
+              },
+              {
+                "q": "What if I want to change the plan midway?",
+                "a": "Even after generation, you can use chat requests like \"change the lunch place\" or \"make the pace slower\" to flexibly restructure the plan."
+              },
+              {
+                "q": "Can I open routes in Google Maps?",
+                "a": "Yes. Generated spots and routes can be opened in Google Maps with one click and used for navigation."
+              },
+              {
+                "q": "Can I specify must-visit spots?",
+                "a": "Yes. If you enter spot names in the \"must-visit places\" field, AI will propose routes that include them."
+              },
+              {
+                "q": "Can I create a day-trip plan?",
+                "a": "Yes. If you choose \"day trip\" in the schedule step, AI will generate a plan optimized for a one-day trip."
+              },
+              {
+                "q": "Can I edit a generated plan?",
+                "a": "Yes. From the plan results screen, use \"edit plan\" to freely update spots and times and make it your own."
+              },
+              {
+                "q": "Can I print the plan I created?",
+                "a": "Yes. You can download a PDF from the plan detail page and print it. Travel information (such as safety guide and visa info) can also be exported as PDF."
+              },
+              {
+                "q": "Can I view it offline?",
+                "a": "Browsing the website requires an internet connection, but if you save the plan as PDF in advance, you can check your itinerary offline."
+              },
+              {
+                "q": "What is included in travel information?",
+                "a": "It includes broad travel essentials such as basics (currency and time zone), safety (public security and emergency contacts), climate and clothing, visa requirements, local etiquette and tipping, transportation, food, souvenirs, events, power and connectivity, healthcare and hygiene, restroom norms, and smoking/drinking rules."
+              },
+              {
+                "q": "Can I check tipping customs in other countries?",
+                "a": "Yes. In the travel information feature, you can also check country-specific tipping and etiquette guidance."
+              }
+            ]
+          },
+          "account": {
+            "items": [
+              {
+                "q": "Do I need to register an account?",
+                "a": "You can use core features like plan generation as a guest (not logged in). If you sign in with Google, you can save plans to the cloud, sync across devices, and view past plans (My Page)."
+              },
+              {
+                "q": "What login methods are available?",
+                "a": "Currently, we support Google sign-in (Google authentication). You do not need to manage a separate email/password pair."
+              },
+              {
+                "q": "Are plans saved permanently even on the free plan?",
+                "a": "Yes. As long as you are logged in, plans are saved without limits and without expiration, even on the free plan."
+              },
+              {
+                "q": "Where are my created plans saved?",
+                "a": "If logged in, created plans are securely saved in our database. This lets you view and edit plans across devices. For guest use, data may be temporarily stored in your browser (cookie/local storage)."
+              },
+              {
+                "q": "If I change devices, can I keep my data?",
+                "a": "Yes. If you sign in with your Google account, your past plans and settings are available on your new device."
+              },
+              {
+                "q": "Is the privacy of saved plans protected?",
+                "a": "Yes. Plan data stored in our database is encrypted and protected with strong security. Administrators have technical access for maintenance, but they do not view your plan content without legitimate reasons such as your consent or legal requirements."
+              },
+              {
+                "q": "How can I delete my account?",
+                "a": "After logging in, you can start account deletion from \"Settings\" in My Page or from the account menu. Once deleted, all saved plans and account data are permanently removed and cannot be restored."
+              },
+              {
+                "q": "Is there a limit on the number of saved plans?",
+                "a": "If you are logged in (free or Pro), saved plans are unlimited. For guests (not logged in), the number is limited due to security and browser constraints (typically one)."
+              },
+              {
+                "q": "Why can guests save only one plan?",
+                "a": "Guest data is stored in browser local storage, which has capacity and data-loss risks. The limit also helps protect the server from abuse/spam. To keep important plans safely and access them from multiple devices, we recommend free account registration (login)."
+              },
+              {
+                "q": "Can I have multiple accounts?",
+                "a": "In principle, we ask users to use one account. You may use multiple Google accounts, but plans cannot be merged across accounts."
+              }
+            ]
+          },
+          "billing": {
+            "items": [
+              {
+                "q": "What pricing plans are available?",
+                "a": "We offer Free, Pro, Premium, and ticket packs. Plan generation limits are 3/month for Free, 30/month for Pro, and 100/month for Premium. Travel-info usage is once/week (3 categories) for Free, 10/month (3 categories) for Pro, and unlimited (all categories) for Premium."
+              },
+              {
+                "q": "What is the difference between Free and Pro?",
+                "a": "The main differences are usage limits and available features. Free includes 3 generations/month and static map display. Pro supports up to 30 generations/month, Leaflet interactive map, travel style settings, 10 place details per plan, and 3 flight/hotel candidates."
+              },
+              {
+                "q": "What is \"travel style\" in Pro?",
+                "a": "It lets you save preferences and reflect them in plan generation. For example, you can register preferences like \"prioritize historical spots\" or \"slow mornings\" to reduce repeated input each time."
+              },
+              {
+                "q": "How do I cancel a paid subscription?",
+                "a": "Open the \"Account\" tab in settings and click \"Manage plan\" to move to the Stripe customer portal. You can cancel there. After cancellation, your current plan features (Pro/Premium) remain available until the end of the current billing period."
+              },
+              {
+                "q": "Can I keep using the service after cancellation?",
+                "a": "Yes. You can keep using paid features until the current billing period ends. After that, your plan automatically returns to Free. Your created plan data is not deleted."
+              },
+              {
+                "q": "What payment methods are supported?",
+                "a": "You can pay by credit card (Visa, Mastercard, American Express, JCB). Payments are securely processed by Stripe."
+              },
+              {
+                "q": "How do I change my payment information?",
+                "a": "From settings, open \"Manage plan\" to access the Stripe portal, where you can update your credit card information."
+              },
+              {
+                "q": "Can I get receipts?",
+                "a": "Yes. You can download receipts from the Stripe customer portal. Open \"Manage plan\" from settings, then download past receipts from billing history. Qualified invoices are supported."
+              },
+              {
+                "q": "Can businesses use this service?",
+                "a": "Yes. Business use is supported, and receipts can be issued for expense processing."
+              },
+              {
+                "q": "Do ticket packs have expiration dates?",
+                "a": "Yes. Single-use tickets are valid for 30 days, 5-ticket packs for 90 days, and 10-ticket packs for 180 days. You can use them across multiple sessions within the validity period."
+              },
+              {
+                "q": "Can I get a refund?",
+                "a": "Due to the nature of digital services, refunds for customer convenience are generally not available. Refunds are handled only when required by law or in cases defined in our Terms and legal disclosures, such as prolonged system outage caused by us."
+              },
+              {
+                "q": "Can I change my plan?",
+                "a": "Yes. You can upgrade from Free to Pro or Premium. If you cancel, your plan returns to Free after the current billing period ends."
+              }
+            ]
+          },
+          "service": {
+            "items": [
+              {
+                "q": "Who operates this service?",
+                "a": "It is developed and operated by an individual developer (tomokichi) with the goal of maximizing travel excitement through technology. Development background and technical details are also shared on GitHub."
+              },
+              {
+                "q": "Where can I view travel information and safety guides?",
+                "a": "You can access them from the \"Travel Info\" item in the top navigation menu or from the \"Travel Info & Safety Guide\" section on the homepage."
+              },
+              {
+                "q": "Is there a smartphone app?",
+                "a": "Currently, only the web version is available. It supports responsive design, so you can use it comfortably on iPhone and Android. A mobile app is on the roadmap."
+              },
+              {
+                "q": "Can I use it for commercial purposes?",
+                "a": "Using generated plans for your own personal travel is fully allowed. However, commercial use such as reselling generated output as-is is generally prohibited. Please contact us for specific cases."
+              },
+              {
+                "q": "Are there cancellation fees?",
+                "a": "No. This service only proposes travel plans and does not handle actual bookings, so no cancellation fee is charged."
+              },
+              {
+                "q": "Is there a user manual?",
+                "a": "Yes. You can learn the basics from the \"How to use\" section on the homepage and this FAQ. The operation is simple, so we also recommend trying it directly."
+              }
+            ]
+          },
+          "trouble": {
+            "items": [
+              {
+                "q": "Plan generation fails with an error",
+                "a": "Sorry about that. It may be caused by temporary AI service congestion or a network issue. Please wait a moment and try the \"regenerate\" button again. If it keeps failing, changing your conditions may help."
+              },
+              {
+                "q": "Information for suggested spots is incorrect",
+                "a": "AI can sometimes produce plausible but incorrect information (hallucinations). Please always verify important details such as opening hours, prices, and exact addresses on official sources before departure."
+              },
+              {
+                "q": "The screen layout is broken",
+                "a": "Sorry for the inconvenience. Because the service is actively evolving, layout issues may occur in some environments. We would appreciate a report via the contact form or GitHub Issues."
+              },
+              {
+                "q": "Is there a recommended environment?",
+                "a": "You can use the service on smartphone, PC, and tablet. We recommend the latest versions of Google Chrome, Safari, and Microsoft Edge. Older browsers such as Internet Explorer may not work properly."
+              },
+              {
+                "q": "Sometimes MOFA safety information is not displayed",
+                "a": "If the Ministry of Foreign Affairs open data system is under maintenance or heavy load, data retrieval may temporarily fail. In that case, AI may supplement with general safety information, or we provide a link to the MOFA overseas safety site. For critical travel decisions, please always check official safety information as well."
+              },
+              {
+                "q": "AI sometimes gives strange answers",
+                "a": "AI generates text probabilistically, so it may occasionally output inaccurate or context-mismatched content (hallucinations). In that case, please use \"regenerate\" to create another plan."
+              }
+            ]
+          },
+          "security": {
+            "items": [
+              {
+                "q": "Is my input used to train AI models?",
+                "a": "No. Based on Gemini API and OpenAI API policies, user input data (such as destinations and preferences) is not used for model training."
+              },
+              {
+                "q": "Is it safe to enter personal information?",
+                "a": "For this service, authentication information is used only for Google login. You do not need to enter personal data such as name, address, or phone number for plan generation. Please avoid entering personal information in free-text fields."
+              },
+              {
+                "q": "Do you use cookies?",
+                "a": "Yes. We use cookies to improve usability (such as keeping login sessions) and to analyze usage. Please check the footer's Cookie Policy for details."
+              }
+            ]
+          },
+          "others": {
+            "items": [
+              {
+                "q": "Can I book hotels or flights on this service?",
+                "a": "No. This service focuses on itinerary proposals and does not provide booking functionality. However, links in generated plans let you move smoothly to booking sites."
+              },
+              {
+                "q": "Can I link to this site?",
+                "a": "Yes, absolutely. Feel free to share links on X (formerly Twitter), Instagram, Facebook, blogs, and more. No prior notice is needed."
+              },
+              {
+                "q": "Can I post generated plans on social media?",
+                "a": "Of course. Please share your travel plans. If your plan includes personal notes (such as names), make sure those details are not publicly exposed."
+              },
+              {
+                "q": "How can I support the developer?",
+                "a": "Thank you. Sharing the service on social media and sending feedback are very helpful. GitHub follows are also appreciated."
+              },
+              {
+                "q": "Where can I send feature requests or bug reports?",
+                "a": "You can use the contact form via the footer link, mention us on X, or submit issues on GitHub."
+              },
+              {
+                "q": "What is the origin of the name \"Tabidea\"?",
+                "a": "It is a coined word combining \"Tabi\" (travel), \"Idea,\" and \"Deai\" (encounter). It reflects our hope that new travel ideas lead to wonderful new encounters with places, experiences, and people."
+              },
+              {
+                "q": "Is there a development roadmap?",
+                "a": "Yes. Upcoming features and update history are published on the \"Updates & Roadmap\" page. We also plan to continuously reflect user requests."
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

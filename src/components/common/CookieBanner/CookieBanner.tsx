@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { FaCookieBite } from "react-icons/fa";
@@ -11,6 +12,7 @@ import { FaXmark, FaCheck } from "react-icons/fa6";
  * サイト全体で使用されるCookie利用の同意を取得するバナー
  */
 export default function CookieBanner() {
+  const t = useTranslations("components.common.cookieBanner");
   const [isVisible, setIsVisible] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
 
@@ -55,7 +57,7 @@ export default function CookieBanner() {
                 <button
                   onClick={handleClose}
                   className="absolute -top-2 -right-2 md:-top-4 md:-right-4 p-2 text-stone-400 hover:text-stone-600 transition-colors z-10"
-                  aria-label="一時的に閉じる"
+                  aria-label={t("aria.closeTemporarily")}
                 >
                   <FaXmark size={20} />
                 </button>
@@ -66,8 +68,8 @@ export default function CookieBanner() {
                       <FaCookieBite size={24} />
                     </div>
                     <p className="text-sm md:text-base text-stone-700 leading-relaxed font-medium">
-                      当サイトでは、サービスの向上とお客様により適したサービスを提供するためにクッキー（Cookie）を使用しています。
-                      サイトの利用を継続することで、クッキーの使用に同意したものとみなされます。
+                      {t("descriptionLine1")}
+                      {t("descriptionLine2")}
                     </p>
                   </div>
                   <div className="flex gap-4 shrink-0 w-full md:w-auto justify-end">
@@ -75,13 +77,13 @@ export default function CookieBanner() {
                       href="/cookie-policy"
                       className="flex-1 md:flex-none py-2 px-6 rounded-full border border-stone-300 text-stone-600 hover:bg-stone-100 hover:text-stone-800 transition-colors text-center text-sm font-bold whitespace-nowrap"
                     >
-                      詳細へ
+                      {t("details")}
                     </Link>
                     <button
                       onClick={handleAgree}
                       className="flex-1 md:flex-none py-2 px-6 rounded-full bg-[#e67e22] text-white hover:bg-[#d35400] transition-colors shadow-sm hover:shadow-md text-center text-sm font-bold whitespace-nowrap"
                     >
-                      同意する
+                      {t("agree")}
                     </button>
                   </div>
                 </div>
@@ -100,11 +102,11 @@ export default function CookieBanner() {
                     <FaCheck size={20} />
                   </div>
                   <span className="font-bold text-lg text-stone-800">
-                    ご同意いただきありがとうございます！
+                    {t("thankYouTitle")}
                   </span>
                 </div>
                 <p className="text-stone-500 text-sm mt-1">
-                  設定を保存しました。引き続き旅の計画をお楽しみください。
+                  {t("thankYouBody")}
                 </p>
               </motion.div>
             )}

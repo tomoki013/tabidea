@@ -75,6 +75,8 @@ export {
   ALL_TRAVEL_INFO_CATEGORIES,
   CATEGORY_LABELS,
   DANGER_LEVEL_DESCRIPTIONS,
+  getCategoryLabels,
+  getDangerLevelDescriptions,
 } from './travel-info';
 
 // API関連型

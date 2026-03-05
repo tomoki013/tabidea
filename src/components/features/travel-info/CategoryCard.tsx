@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
   Globe,
@@ -20,7 +19,6 @@ import {
   Cigarette,
   Wine,
 } from 'lucide-react';
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from '@/lib/i18n/locales';
 import { getCategoryInfo, type CategoryCardProps, type CategoryIcon } from './types';
 
 /**
@@ -55,10 +53,9 @@ export default function CategoryCard({
   onToggle,
   disabled = false,
 }: CategoryCardProps) {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const t = useTranslations("components.features.travelInfo.categoryCard");
-  const info = getCategoryInfo(category, language);
+  const tCategoryInfo = useTranslations("components.features.travelInfo.categoryInfo");
+  const info = getCategoryInfo(category, tCategoryInfo);
   const IconComponent = IconComponents[info.icon];
 
   return (

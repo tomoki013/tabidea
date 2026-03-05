@@ -1,6 +1,7 @@
 'use client';
 
 import { Utensils, Info } from 'lucide-react';
+import { useTranslations } from "next-intl";
 import type { LocalFoodInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
@@ -10,13 +11,15 @@ import type { SectionBaseProps } from '../types';
  * 代表的な料理、食事のマナー・習慣を表示
  */
 export default function LocalFoodSection({ data }: SectionBaseProps<LocalFoodInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.localFood");
+
   return (
     <div className="space-y-6">
       {/* 代表的な料理 */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Utensils className="w-5 h-5 text-primary" />
-          代表的な料理
+          {t("popularDishesTitle")}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {data.popularDishes.map((dish, index) => (
@@ -52,7 +55,7 @@ export default function LocalFoodSection({ data }: SectionBaseProps<LocalFoodInf
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <Info className="w-5 h-5 text-primary" />
-            食事のマナー・習慣
+            {t("diningEtiquetteTitle")}
           </h4>
           <ul className="space-y-2">
             {data.diningEtiquette.map((item, index) => (

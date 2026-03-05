@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useLocale, useTranslations } from "next-intl";
 import { Loader2, CheckCircle2, Circle, ChevronDown, Sparkles } from "lucide-react";
 import ModelBadge from "@/components/ui/ModelBadge";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,9 +12,7 @@ import type {
   PackingCategory,
 } from "@/types/packing-list";
 import {
-  PACKING_CATEGORY_LABELS,
   PACKING_CATEGORY_ICONS,
-  PACKING_PRIORITY_LABELS,
 } from "@/types/packing-list";
 
 // ============================================================================
@@ -62,6 +61,7 @@ function CategorySection({
   checkedItems: Set<string>;
   onToggle: (id: string) => void;
 }) {
+  const t = useTranslations("components.features.planner.packingListView");
   const [isOpen, setIsOpen] = useState(true);
   const checkedCount = items.filter((i) => checkedItems.has(i.id)).length;
 
@@ -74,7 +74,7 @@ function CategorySection({
         <div className="flex items-center gap-3">
           <span className="text-lg">{PACKING_CATEGORY_ICONS[category]}</span>
           <span className="font-bold text-stone-800 text-sm">
-            {PACKING_CATEGORY_LABELS[category]}
+            {t(`categories.${category}`)}
           </span>
           <span className="text-xs text-stone-400">
             {checkedCount}/{items.length}
@@ -128,7 +128,7 @@ function CategorySection({
                         </span>
                         {item.priority === "essential" && (
                           <span className="text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
-                            {PACKING_PRIORITY_LABELS.essential}
+                            {t("priority.essential")}
                           </span>
                         )}
                       </div>
@@ -164,6 +164,9 @@ export default function PackingListView({
   packingList: controlledList,
   onPackingListChange,
 }: PackingListViewProps) {
+  const t = useTranslations("components.features.planner.packingListView");
+  const locale = useLocale();
+
   // Only initialize from localStorage if NOT controlled
   const [internalList, setInternalList] = useState<PackingList | null>(() => {
     if (controlledList !== undefined) return null;
@@ -233,6 +236,7 @@ export default function PackingListView({
       companions,
       budget,
       region,
+      locale,
     });
 
     if (result.success && result.data) {
@@ -253,7 +257,7 @@ export default function PackingListView({
         // ignore
       }
     } else {
-      setError(result.error || "生成に失敗しました");
+      setError(result.error || t("generateFailed"));
     }
 
     setIsGenerating(false);
@@ -295,18 +299,21 @@ export default function PackingListView({
       <div className="max-w-2xl mx-auto text-center py-12">
         <div className="text-5xl mb-4">🧳</div>
         <h3 className="text-xl font-bold text-stone-800 mb-2">
-          持ち物リストを作成
+          {t("initial.title")}
         </h3>
         <p className="text-sm text-stone-500 mb-6 leading-relaxed">
-          {destination}への{days}日間の旅行に最適な<br />
-          持ち物リストをAIが提案します
+          {t.rich("initial.description", {
+            destination,
+            days,
+            br: () => <br />,
+          })}
         </p>
         <button
           onClick={handleGenerate}
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors shadow-md"
         >
           <Sparkles className="w-4 h-4" />
-          AIで持ち物リストを生成
+          {t("initial.generateButton")}
         </button>
       </div>
     );
@@ -317,9 +324,9 @@ export default function PackingListView({
     return (
       <div className="max-w-2xl mx-auto text-center py-12">
         <Loader2 className="w-8 h-8 text-primary animate-spin mx-auto mb-4" />
-        <p className="text-stone-600 font-medium">持ち物リストを生成中...</p>
+        <p className="text-stone-600 font-medium">{t("generating.title")}</p>
         <p className="text-xs text-stone-400 mt-1">
-          {destination}への旅行に最適なリストを作成しています
+          {t("generating.description", { destination })}
         </p>
       </div>
     );
@@ -331,17 +338,18 @@ export default function PackingListView({
       <div className="max-w-2xl mx-auto text-center py-12">
         <div className="text-5xl mb-4">🔒</div>
         <h3 className="text-xl font-bold text-stone-800 mb-2">
-          Pro限定機能
+          {t("proRequired.title")}
         </h3>
         <p className="text-sm text-stone-500 mb-6 leading-relaxed">
-          AI持ち物リスト生成はProプラン限定の機能です。<br />
-          アップグレードして、旅の準備をもっと便利に。
+          {t.rich("proRequired.description", {
+            br: () => <br />,
+          })}
         </p>
         <a
           href="/pricing"
           className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors shadow-md"
         >
-          Proにアップグレード
+          {t("proRequired.cta")}
         </a>
       </div>
     );
@@ -356,7 +364,7 @@ export default function PackingListView({
           onClick={handleGenerate}
           className="px-4 py-2 bg-primary text-white rounded-full text-sm font-bold"
         >
-          再試行
+          {t("retry")}
         </button>
       </div>
     );
@@ -369,10 +377,10 @@ export default function PackingListView({
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <span className="text-lg">🧳</span>
-            <span className="font-bold text-stone-800">準備状況</span>
+            <span className="font-bold text-stone-800">{t("progress.title")}</span>
           </div>
           <span className="text-sm font-bold text-primary tabular-nums">
-            {checkedCount}/{totalItems} 準備完了
+            {t("progress.count", { checked: checkedCount, total: totalItems })}
           </span>
         </div>
         <div className="w-full h-3 bg-stone-100 rounded-full overflow-hidden">
@@ -385,7 +393,7 @@ export default function PackingListView({
         </div>
         {progressPercent === 100 && (
           <p className="text-xs text-green-600 font-medium mt-2 text-center">
-            全ての準備が完了しました！良い旅を！
+            {t("progress.completed")}
           </p>
         )}
       </div>
@@ -410,7 +418,7 @@ export default function PackingListView({
           disabled={isGenerating}
           className="text-sm text-stone-500 hover:text-primary transition-colors underline"
         >
-          リストを再生成する
+          {t("regenerate")}
         </button>
       </div>
 
@@ -418,7 +426,7 @@ export default function PackingListView({
       <div className="flex flex-col items-center gap-1">
         {modelName && <ModelBadge modelName={modelName} />}
         <p className="text-[11px] text-stone-400 text-center leading-relaxed">
-          ※ AIによる提案です。個人の必要に応じてアイテムを追加・削除してください。
+          {t("disclaimer")}
         </p>
       </div>
     </div>

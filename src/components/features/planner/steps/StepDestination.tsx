@@ -3,6 +3,7 @@
 import { useState, KeyboardEvent } from "react";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface StepDestinationProps {
   value: string[];
@@ -19,6 +20,7 @@ export default function StepDestination({
   canComplete,
   onComplete,
 }: StepDestinationProps) {
+  const t = useTranslations("components.features.planner.steps.stepDestination");
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
@@ -49,16 +51,16 @@ export default function StepDestination({
     <div className="flex flex-col h-full justify-center space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
       <div className="space-y-6 text-center">
         <div className="inline-block px-4 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-bold tracking-widest uppercase mb-4 shadow-sm">
-          Step 1: The Destinations
+          {t("badge")}
         </div>
         <h2 className="text-4xl sm:text-5xl font-serif font-bold text-foreground leading-tight">
-          まずは、行き先を
+          {t("titleLine1")}
           <br />
-          教えてください。
+          {t("titleLine2")}
         </h2>
         <p className="text-stone-600 text-lg font-hand">
-          複数の場所を周遊できます。<br />
-          都市名やイメージを入力してEnterで追加。
+          {t("leadLine1")}<br />
+          {t("leadLine2")}
         </p>
       </div>
 
@@ -86,7 +88,7 @@ export default function StepDestination({
                       type="button"
                       onClick={() => removeDestination(index)}
                       className="p-0.5 hover:bg-primary/20 rounded-full transition-colors"
-                      aria-label={`${destination}を削除`}
+                      aria-label={t("removeAria", { destination })}
                     >
                       <X className="w-4 h-4" />
                     </button>
@@ -104,7 +106,7 @@ export default function StepDestination({
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder={value.length === 0 ? "パリ、京都..." : "次の行き先を追加..."}
+            placeholder={value.length === 0 ? t("placeholderFirst") : t("placeholderNext")}
             className="w-full bg-transparent border-b-2 border-stone-300 pb-2 text-2xl sm:text-3xl font-serif text-center text-foreground placeholder:text-stone-300 focus:outline-hidden focus:border-primary transition-all duration-300"
             autoFocus
           />
@@ -113,7 +115,7 @@ export default function StepDestination({
 
           {/* Hint text */}
           <div className="absolute right-0 -bottom-6 text-stone-500 opacity-70 text-sm font-hand">
-            {inputValue.trim() ? "Enter で追加 ↵" : value.length > 0 ? "続けて追加、または次へ" : ""}
+            {inputValue.trim() ? t("inputHintEnter") : value.length > 0 ? t("inputHintContinue") : ""}
           </div>
         </div>
 
@@ -125,7 +127,7 @@ export default function StepDestination({
             onClick={addDestination}
             className="mt-6 mx-auto block px-6 py-2 bg-primary/10 text-primary border border-primary/20 rounded-full text-sm font-medium hover:bg-primary/20 transition-colors"
           >
-            「{inputValue.trim()}」を追加
+            {t("addButton", { destination: inputValue.trim() })}
           </motion.button>
         )}
 
@@ -140,7 +142,7 @@ export default function StepDestination({
               onClick={onNext}
               className="text-primary font-medium hover:underline font-hand text-lg"
             >
-              {value.length}つの行き先で次へ進む →
+              {t("nextWithCount", { count: value.length })}
             </button>
 
             {/* Skip & Create Plan Button */}
@@ -150,7 +152,7 @@ export default function StepDestination({
                    onClick={onComplete}
                    className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                  >
-                   任意項目をスキップしてプランを作成
+                   {t("skipAndCreate")}
                  </button>
                </div>
             )}

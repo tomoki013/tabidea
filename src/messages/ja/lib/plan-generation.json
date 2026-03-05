@@ -1,0 +1,58 @@
+{
+  "lib": {
+    "planGeneration": {
+      "progress": {
+        "steps": {
+          "usage_check": "利用制限を確認中...",
+          "cache_check": "キャッシュを確認中...",
+          "rag_search": "関連記事を検索中...",
+          "prompt_build": "プロンプトを構築中...",
+          "ai_generation": "AIがプランを生成中...",
+          "hero_image": "メイン画像を取得中..."
+        },
+        "errors": {
+          "requestFailed": "HTTP {status}: リクエストに失敗しました",
+          "generic": "エラーが発生しました",
+          "streamUnexpectedEnd": "ストリームが予期せず終了しました",
+          "cancelled": "生成がキャンセルされました"
+        }
+      },
+      "hook": {
+        "defaults": {
+          "theme": [
+            "グルメ"
+          ]
+        },
+        "errors": {
+          "chunkServerError": "サーバーエラー ({status})",
+          "saveFailed": "プランの保存に失敗しました。",
+          "outlineFailed": "プラン概要の作成に失敗しました。",
+          "timeout": "サーバーとの通信がタイムアウトしました。もう一度お試しください。",
+          "networkTimeout": "ネットワークエラーまたはサーバータイムアウトが発生しました。",
+          "detailsFailed": "詳細プランの生成に失敗しました。"
+        }
+      },
+      "server": {
+        "errors": {
+          "limitExceeded": "利用制限に達しました",
+          "apiKeyMissing": "APIキーが設定されていません",
+          "outlineCreationFailed": "プラン概要の作成に失敗しました。"
+        },
+        "query": {
+          "join": {
+            "destination": "、",
+            "theme": "や"
+          },
+          "region": {
+            "domestic": "日本国内",
+            "overseas": "海外",
+            "anywhere": "おすすめの場所"
+          },
+          "decided": "{destinations}で{companions}と{themes}を楽しむ旅行",
+          "undecidedWithVibe": "{region}で{vibe}な{themes}を楽しむ{companions}旅行",
+          "undecidedWithoutVibe": "{region}で{themes}を楽しむ{companions}旅行"
+        }
+      }
+    }
+  }
+}

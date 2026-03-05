@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import PolicyLink from "@/components/ui/PolicyLink";
 import { FaPaperPlane } from "react-icons/fa6";
 
@@ -9,13 +10,14 @@ interface StepInitialChoiceProps {
 }
 
 export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) {
+  const t = useTranslations("components.features.planner.steps.stepInitialChoice");
   return (
     <div className="w-full max-w-3xl mx-auto animate-in fade-in slide-in-from-bottom-8 duration-700 py-4 relative">
       {/* Decorative Badge */}
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
         <div className="bg-[#2c2c2c] text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg flex items-center gap-2 tracking-widest uppercase border-2 border-white">
           <FaPaperPlane className="text-primary" />
-          <span>Free Travel Planner</span>
+          <span>{t("badge")}</span>
         </div>
       </div>
 
@@ -32,12 +34,12 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
         <div className="relative z-10 flex flex-col justify-center space-y-8 p-8 sm:p-12">
           <div className="space-y-4 text-center">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 leading-tight">
-              行き先は
+              {t("titleLine1")}
               <br className="sm:hidden"/>
-              決まっていますか？
+              {t("titleLine2")}
             </h2>
             <p className="text-stone-500 text-base font-hand">
-              AIがあなたにぴったりの旅をご提案します
+              {t("lead")}
             </p>
           </div>
 
@@ -56,7 +58,7 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
                     </span>
                 </div>
                 <h3 className="text-xl font-bold text-stone-800 mb-1 font-serif group-hover:text-primary transition-colors">
-                    決まっている
+                    {t("decided")}
                 </h3>
                 <p className="text-stone-400 text-xs font-bold tracking-wide mt-1">
                     I HAVE A PLAN
@@ -78,7 +80,7 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
                     </span>
                 </div>
                 <h3 className="text-xl font-bold text-stone-800 mb-1 font-serif group-hover:text-teal-600 transition-colors">
-                    決まっていない
+                    {t("notDecided")}
                 </h3>
                 <p className="text-stone-400 text-xs font-bold tracking-wide mt-1">
                     INSPIRE ME
@@ -89,14 +91,14 @@ export default function StepInitialChoice({ onDecide }: StepInitialChoiceProps) 
 
           <div className="text-center space-y-1 mt-4 pt-4 border-t border-dashed border-stone-200">
             <p className="text-stone-400 text-[10px] font-sans">
-              入力内容はAIの学習には使用されません
+              {t("privacyLine1")}
             </p>
             <p className="text-stone-400 text-[10px] font-sans">
-              詳細は
+              {t("privacyLine2Prefix")}
               <PolicyLink href="/ai-policy" className="mx-1 font-bold hover:text-primary">
-                AIポリシー
+                {t("policy")}
               </PolicyLink>
-              をご確認ください
+              {t("privacyLine2Suffix")}
             </p>
           </div>
         </div>

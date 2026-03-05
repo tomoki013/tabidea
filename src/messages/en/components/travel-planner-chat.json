@@ -1,0 +1,20 @@
+{
+  "components": {
+    "travelPlannerChat": {
+      "title": "Chat with Your Planner",
+      "initialAssistantMessage": "How did it look? Tell me what you'd like to tweak or learn more about.",
+      "emptyState": "Ask to adjust schedules, suggest restaurants, or explain spots in more detail.",
+      "regenerateButton": "Regenerate plan from this chat",
+      "thinking": "Thinking...",
+      "errorWithContact": "An error occurred. Please try again. If the issue persists, contact us on the <contact>contact page</contact>.",
+      "inputPlaceholder": "e.g. What are cheaper lunch options?",
+      "suggestionChips": [
+        "I want to eat more local food! 🍜",
+        "Add a cafe-hopping stop ☕️",
+        "Can we reduce the budget a bit? 💰",
+        "I want a slower pace 🐢",
+        "I want more photo spots 📸"
+      ]
+    }
+  }
+}

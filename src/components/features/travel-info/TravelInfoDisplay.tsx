@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -49,7 +48,6 @@ import {
 } from "./sections";
 import type { TravelInfoDisplayProps, CategoryState } from "./types";
 import { getCategoryInfo } from "./types";
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 import PDFExportButton from "./PDFExportButton";
 import ShareButton from "./ShareButton";
 
@@ -68,8 +66,6 @@ export default function TravelInfoDisplay({
   dates,
   onRetryCategory,
 }: TravelInfoDisplayProps) {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
   const t = useTranslations("components.features.travelInfo.display");
   // 展開状態を管理（デフォルトは最初のカテゴリを展開）
   const [expandedCategories, setExpandedCategories] = useState<
@@ -260,7 +256,6 @@ export default function TravelInfoDisplay({
                       key={category}
                       category={category}
                       state={state}
-                      language={language}
                       isExpanded={expandedCategories.has(category)}
                       onToggle={() => toggleCategory(category)}
                       onRetry={
@@ -311,20 +306,19 @@ export default function TravelInfoDisplay({
 function CategorySection({
   category,
   state,
-  language,
   isExpanded,
   onToggle,
   onRetry,
 }: {
   category: TravelInfoCategory;
   state: CategoryState;
-  language: "ja" | "en";
   isExpanded: boolean;
   onToggle: () => void;
   onRetry?: () => void;
 }) {
   const t = useTranslations("components.features.travelInfo.display");
-  const info = getCategoryInfo(category, language);
+  const tCategoryInfo = useTranslations("components.features.travelInfo.categoryInfo");
+  const info = getCategoryInfo(category, tCategoryInfo);
   const categoryLabel = info?.label || category;
 
   // If category info is undefined, use fallbacks

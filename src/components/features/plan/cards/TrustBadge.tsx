@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import { Check, Bot, AlertTriangle, XCircle } from "lucide-react";
 
 // ============================================================================
@@ -27,44 +28,34 @@ const TRUST_CONFIG: Record<
   TrustLevel,
   {
     icon: typeof Check;
-    label: string;
     bgColor: string;
     textColor: string;
     borderColor: string;
-    tooltip: string;
   }
 > = {
   verified: {
     icon: Check,
-    label: "検証済み",
     bgColor: "bg-green-50",
     textColor: "text-green-700",
     borderColor: "border-green-200",
-    tooltip: "Google Places等で存在を確認済み",
   },
   ai_generated: {
     icon: Bot,
-    label: "AI生成",
     bgColor: "bg-blue-50",
     textColor: "text-blue-700",
     borderColor: "border-blue-200",
-    tooltip: "AIが生成した情報（未検証）",
   },
   needs_check: {
     icon: AlertTriangle,
-    label: "要確認",
     bgColor: "bg-amber-50",
     textColor: "text-amber-700",
     borderColor: "border-amber-200",
-    tooltip: "存在が不確かな場合があります",
   },
   unverified: {
     icon: XCircle,
-    label: "位置情報未確認",
     bgColor: "bg-red-50",
     textColor: "text-red-700",
     borderColor: "border-red-200",
-    tooltip: "Google Placesで該当スポットが見つかりませんでした",
   },
 };
 
@@ -78,8 +69,11 @@ export default function TrustBadge({
   showLabel = false,
   className = "",
 }: TrustBadgeProps) {
+  const t = useTranslations("components.features.plan.cards.trustBadge");
   const config = TRUST_CONFIG[level];
   const Icon = config.icon;
+  const label = t(`levels.${level}.label`);
+  const tooltip = t(`levels.${level}.tooltip`);
 
   const sizeClasses = {
     sm: {
@@ -104,11 +98,11 @@ export default function TrustBadge({
         ${sizes.wrapper}
         ${className}
       `}
-      title={config.tooltip}
+      title={tooltip}
     >
       <Icon className={sizes.icon} />
       {showLabel && (
-        <span className={`font-medium ${sizes.text}`}>{config.label}</span>
+        <span className={`font-medium ${sizes.text}`}>{label}</span>
       )}
     </div>
   );

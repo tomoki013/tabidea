@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface StepCompanionsProps {
   value: string;
@@ -17,31 +18,32 @@ export default function StepCompanions({
   canComplete,
   onComplete,
 }: StepCompanionsProps) {
+  const t = useTranslations("components.features.planner.steps.stepCompanions");
   const options = [
-    { id: "solo", label: "一人旅", icon: "👤", desc: "気ままに" },
+    { id: "solo", label: t("options.solo.label"), icon: "👤", desc: t("options.solo.desc") },
     {
       id: "couple",
-      label: "カップル・夫婦",
+      label: t("options.couple.label"),
       icon: "💑",
-      desc: "ロマンチックに",
+      desc: t("options.couple.desc"),
     },
-    { id: "family", label: "家族", icon: "👨‍👩‍👧‍👦", desc: "みんなで楽しく" },
-    { id: "friends", label: "友人", icon: "👯", desc: "ワイワイと" },
-    { id: "male_trip", label: "男旅", icon: "🍻", desc: "とことん" },
-    { id: "female_trip", label: "女旅", icon: "💅", desc: "華やかに" },
-    { id: "backpacker", label: "バックパッカー", icon: "🎒", desc: "冒険を" },
-    { id: "business", label: "ビジネス", icon: "💼", desc: "効率的に" },
-    { id: "pet", label: "ペットと", icon: "🐕", desc: "一緒に" },
+    { id: "family", label: t("options.family.label"), icon: "👨‍👩‍👧‍👦", desc: t("options.family.desc") },
+    { id: "friends", label: t("options.friends.label"), icon: "👯", desc: t("options.friends.desc") },
+    { id: "male_trip", label: t("options.male_trip.label"), icon: "🍻", desc: t("options.male_trip.desc") },
+    { id: "female_trip", label: t("options.female_trip.label"), icon: "💅", desc: t("options.female_trip.desc") },
+    { id: "backpacker", label: t("options.backpacker.label"), icon: "🎒", desc: t("options.backpacker.desc") },
+    { id: "business", label: t("options.business.label"), icon: "💼", desc: t("options.business.desc") },
+    { id: "pet", label: t("options.pet.label"), icon: "🐕", desc: t("options.pet.desc") },
   ];
 
   return (
     <div className="flex flex-col space-y-8 pt-4 animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-serif font-bold text-foreground">
-          誰との旅ですか？
+          {t("title")}
         </h2>
         <p className="font-hand text-muted-foreground">
-          旅のパートナーを選んでください
+          {t("lead")}
         </p>
       </div>
 
@@ -94,7 +96,7 @@ export default function StepCompanions({
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            次へ進む →
+            {t("next")}
           </button>
 
           {/* Skip & Create Plan Button */}
@@ -104,7 +106,7 @@ export default function StepCompanions({
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

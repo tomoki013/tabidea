@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import {
   FaMapMarkerAlt,
   FaRegLightbulb,
@@ -11,8 +10,8 @@ import {
   FaUserCircle,
   FaCreditCard,
 } from "react-icons/fa";
-import { faqCategories } from "@/lib/data/faq";
 import FAQCard from "./FAQCard";
+import { useLocalizedFaqData } from "./useLocalizedFaq";
 
 // Map category IDs to icons for a richer UI
 const iconMap: Record<string, React.ElementType> = {
@@ -26,8 +25,7 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export default function FAQCategoryList() {
-  const t = useTranslations("components.faq.categoryList");
-  const categoryTitles = t.raw("categoryTitles") as Record<string, string>;
+  const { categories } = useLocalizedFaqData();
 
   // Track open state per question uniquely across all categories
   // Format: `${categoryId}-${itemIndex}`
@@ -39,7 +37,7 @@ export default function FAQCategoryList() {
 
   return (
     <div className="w-full max-w-5xl mx-auto space-y-16 pb-24">
-      {faqCategories.map((category) => {
+      {categories.map((category) => {
         const Icon = iconMap[category.id] || FaQuestionCircle;
 
         return (
@@ -50,7 +48,7 @@ export default function FAQCategoryList() {
                 <Icon className="text-xl" />
               </div>
               <h2 className="text-2xl md:text-3xl font-serif font-bold text-[#2c2c2c]">
-                {categoryTitles[category.id] ?? category.title}
+                {category.title}
               </h2>
             </div>
 

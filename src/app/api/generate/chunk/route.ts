@@ -93,6 +93,6 @@ export async function POST(req: Request) {
   } catch (error) {
     timer.log();
     console.error(`[api/chunk] Chunk generation failed (${startDay}-${endDay}):`, error);
-    return Response.json({ success: false, message: "詳細プランの生成に失敗しました。" });
+    return Response.json({ success: false, message: "chunk_generation_failed" });
   }
 }

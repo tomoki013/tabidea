@@ -3,22 +3,38 @@
     "contactForm": {
       "contact": "Contact",
       "contactJa": "Contact",
+      "brand": "Tabidea",
       "sent": "Sent",
       "newInquiry": "Send another inquiry",
       "name": "Name",
       "namePlaceholder": "Tabidea user",
       "email": "Email",
+      "emailPlaceholder": "tabidea@example.com",
       "subject": "Subject",
       "subjectPlaceholder": "About a feature request",
       "message": "Message",
       "messagePlaceholder": "Please enter details",
-      "agree": "I agree",
+      "agreementText": "I agree to the <privacy></privacy>, <terms></terms>, and <aiPolicy></aiPolicy>",
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "aiPolicy": "AI Policy",
+      "postService": "Post Service",
       "sending": "Sending...",
       "submit": "Send",
-      "note": "As this is an indie project, replies may take some time."
+      "note": "As this is an indie project, replies may take some time.",
+      "messages": {
+        "submitted": "Your inquiry has been received. A confirmation email is not sent, but we will contact you after review.",
+        "submittedDev": "Submitted (development mode: email not actually sent)"
+      },
+      "errors": {
+        "validationFailed": "There are errors in your input.",
+        "sendFailed": "Failed to send. Please try again later.",
+        "nameRequired": "Please enter your name",
+        "emailRequired": "Please enter your email address",
+        "emailInvalid": "Please enter a valid email address",
+        "subjectRequired": "Please enter a subject",
+        "messageRequired": "Please enter your message"
+      }
     }
   }
 }

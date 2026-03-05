@@ -1,11 +1,34 @@
 import { ImageResponse } from "next/og";
 import { NextRequest } from "next/server";
+import enOgMessages from "@/messages/en/api/og.json";
+import jaOgMessages from "@/messages/ja/api/og.json";
 
 // ============================================================================
 // Configuration
 // ============================================================================
 
 export const runtime = "edge";
+
+type LanguageCode = "ja" | "en";
+
+const OG_MESSAGES = {
+  ja: jaOgMessages.api.og,
+  en: enOgMessages.api.og,
+} as const;
+
+function resolveLanguage(value: string | null): LanguageCode {
+  return value === "en" ? "en" : "ja";
+}
+
+function formatTemplate(
+  template: string,
+  values: Record<string, string | number>
+): string {
+  return Object.entries(values).reduce(
+    (message, [key, value]) => message.replaceAll(`{${key}}`, String(value)),
+    template
+  );
+}
 
 // ============================================================================
 // Font Loading
@@ -32,9 +55,11 @@ async function loadFont(): Promise<ArrayBuffer | null> {
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
+  const language = resolveLanguage(searchParams.get("lang"));
+  const t = OG_MESSAGES[language];
 
   // Extract parameters
-  const destination = searchParams.get("destination") || "旅行プラン";
+  const destination = searchParams.get("destination") || t.defaultDestination;
   const days = searchParams.get("days") || "";
   // Validate imageUrl: only allow https URLs to prevent errors
   const rawImageUrl = searchParams.get("imageUrl") || "";
@@ -45,9 +70,12 @@ export async function GET(request: NextRequest) {
   if (days) {
     const dayNum = parseInt(days);
     if (dayNum === 1) {
-      durationText = "日帰り";
+      durationText = t.durationOneDay;
     } else if (dayNum > 1) {
-      durationText = `${dayNum - 1}泊${dayNum}日`;
+      durationText = formatTemplate(t.durationTemplate, {
+        nights: dayNum - 1,
+        days: dayNum,
+      });
     }
   }
 
@@ -156,7 +184,7 @@ export async function GET(request: NextRequest) {
                 lineHeight: 1.2,
               }}
             >
-              {destination}の旅
+              {formatTemplate(t.destinationTitleTemplate, { destination })}
             </div>
 
             {/* Tagline */}
@@ -168,7 +196,7 @@ export async function GET(request: NextRequest) {
                 textShadow: "0 2px 10px rgba(0,0,0,0.3)",
               }}
             >
-              AIがあなただけの旅程を作成
+              {t.tagline}
             </div>
           </div>
 
@@ -260,7 +288,7 @@ export async function GET(request: NextRequest) {
               marginTop: "20px",
             }}
           >
-            Tabidea - AI Travel Planner
+            {t.fallbackSubtitle}
           </div>
         </div>
       ),

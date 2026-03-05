@@ -1,34 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaPen, FaRobot, FaSuitcase, FaMapMarkedAlt } from "react-icons/fa";
 import { Tape } from "@/components/ui/journal";
 
 export default function HowItWorksSection() {
+  const t = useTranslations("components.features.landing.v2.howItWorksSection");
   const steps = [
     {
       id: "01",
-      title: "Input",
-      subtitle: "まずは、思いつくままに",
-      desc: "「京都で紅葉が見たい」「美味しい抹茶スイーツが食べたい」。そんな漠然とした希望でOK。予算や日数も自由に設定できます。",
+      title: t("steps.0.title"),
+      subtitle: t("steps.0.subtitle"),
+      desc: t("steps.0.desc"),
       image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&w=500&q=80",
       icon: <FaPen className="text-white" />,
       color: "bg-orange-400"
     },
     {
       id: "02",
-      title: "Proposal",
-      subtitle: "AIが数秒でプランを提案",
-      desc: "あなたの好みに合わせて、AIが最適なルートとスポットを提案します。移動時間や混雑状況も考慮した、実現可能なプランです。",
+      title: t("steps.1.title"),
+      subtitle: t("steps.1.subtitle"),
+      desc: t("steps.1.desc"),
       image: "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=500&q=80",
       icon: <FaMapMarkedAlt className="text-white" />,
       color: "bg-blue-400"
     },
     {
       id: "03",
-      title: "Go",
-      subtitle: "あなただけのしおりを持って",
-      desc: "気になったスポットを追加・削除してプランを保存。スマホ一つで持ち歩ける「旅のしおり」の完成です。友達への共有もURL一つで。",
+      title: t("steps.2.title"),
+      subtitle: t("steps.2.subtitle"),
+      desc: t("steps.2.desc"),
       image: "https://images.unsplash.com/photo-1500835556837-99ac94a94552?auto=format&fit=crop&w=500&q=80",
       icon: <FaSuitcase className="text-white" />,
       color: "bg-green-400"
@@ -49,13 +51,13 @@ export default function HowItWorksSection() {
           className="text-center mb-20 space-y-4"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-stone-100 border border-stone-200 text-stone-600 text-sm font-bold tracking-wider mb-4 shadow-sm">
-            How It Works
+            {t("badge")}
           </span>
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-stone-800">
-            使い方は、とてもシンプル。
+            {t("title")}
           </h2>
           <p className="text-stone-500 mt-4">
-            3つのステップで、あなたの旅が始まります。
+            {t("lead")}
           </p>
         </motion.div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   AlertTriangle,
@@ -16,7 +17,6 @@ import {
   ChevronDown,
 } from 'lucide-react';
 import type { SafetyInfo, DangerLevel, HighRiskRegion, WarningInfo, WarningPriority } from '@/types';
-import { DANGER_LEVEL_DESCRIPTIONS } from '@/types';
 import type { SectionBaseProps } from '../types';
 
 /**
@@ -29,42 +29,37 @@ const MOFA_OPENDATA_URL = 'https://www.ezairyu.mofa.go.jp/html/opendata/index.ht
  */
 const DANGER_LEVEL_STYLES: Record<
   DangerLevel,
-  { bg: string; text: string; border: string; icon: typeof ShieldCheck; label: string }
+  { bg: string; text: string; border: string; icon: typeof ShieldCheck }
 > = {
   0: {
     bg: 'bg-white',
     text: 'text-stone-700',
     border: 'border-stone-200',
     icon: ShieldCheck,
-    label: '危険情報なし',
   },
   1: {
     bg: 'bg-yellow-50',
     text: 'text-yellow-800',
     border: 'border-yellow-200',
     icon: ShieldAlert,
-    label: '十分注意',
   },
   2: {
     bg: 'bg-orange-50',
     text: 'text-orange-800',
     border: 'border-orange-200',
     icon: AlertTriangle,
-    label: '不要不急の渡航中止',
   },
   3: {
     bg: 'bg-red-50',
     text: 'text-red-800',
     border: 'border-red-200',
     icon: AlertTriangle,
-    label: '渡航中止勧告',
   },
   4: {
     bg: 'bg-purple-50',
     text: 'text-purple-800',
     border: 'border-purple-200',
     icon: AlertOctagon,
-    label: '退避勧告',
   },
 };
 
@@ -74,6 +69,7 @@ const DANGER_LEVEL_STYLES: Record<
  * 危険度レベル、警告、緊急連絡先を表示
  */
 export default function SafetyInfoSection({ data, source }: SectionBaseProps<SafetyInfo>) {
+  const t = useTranslations('components.features.travelInfo.sections.safetyInfoSection');
   const style = DANGER_LEVEL_STYLES[data.dangerLevel];
   const DangerIcon = style.icon;
   const isAiGenerated = source?.sourceType === 'ai_generated';
@@ -91,11 +87,11 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
           <Bot className="w-5 h-5 text-stone-500 flex-shrink-0 mt-0.5" />
           <div>
             <h4 className="font-bold text-stone-700 text-sm font-serif">
-              AIによる生成情報です
+              {t('aiFallback.title')}
             </h4>
             <p className="text-xs text-stone-500 mt-1 leading-relaxed">
-              公式情報の取得に失敗したため、AIが一般的な情報を表示しています。
-              正確な情報は必ず外務省海外安全ホームページをご確認ください。
+              {t('aiFallback.bodyLine1')}
+              {t('aiFallback.bodyLine2')}
             </p>
           </div>
         </motion.div>
@@ -115,7 +111,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
           <div className="flex-1 space-y-3">
             <div className="flex items-center gap-3">
               <span className="inline-block px-3 py-1 rounded-sm bg-stone-800 text-white text-[10px] font-bold tracking-widest uppercase shadow-sm">
-                Security Level
+                {t('securityLevelBadge')}
               </span>
             </div>
 
@@ -124,7 +120,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
                 Lv.{data.dangerLevel}
               </h3>
               <span className={`text-xl font-bold ${style.text} opacity-80 font-serif`}>
-                {style.label}
+                {t(`dangerLevels.${data.dangerLevel}`)}
               </span>
             </div>
 
@@ -135,7 +131,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
             {data.isPartialCountryRisk && data.maxCountryLevel !== undefined && (
               <div className="mt-3 inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-800 text-xs font-bold rounded-lg border border-orange-100/50 shadow-sm">
                 <AlertTriangle className="w-3.5 h-3.5" />
-                一部地域でレベル{data.maxCountryLevel}の警告が出ています
+                {t('partialCountryRisk', { level: data.maxCountryLevel })}
               </div>
             )}
           </div>
@@ -153,12 +149,12 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
             <div className="w-8 h-8 rounded-full bg-stone-200/50 flex items-center justify-center">
               <MapPinned className="w-4 h-4 text-stone-500" />
             </div>
-            <h4 className="font-serif font-bold text-stone-700 text-base">地域別の危険情報</h4>
+            <h4 className="font-serif font-bold text-stone-700 text-base">{t('regionalRiskTitle')}</h4>
           </div>
           <div className="p-8">
             <p className="text-xs text-stone-400 mb-6 flex items-center gap-1.5 font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-              以下の地域へ渡航する際は特に注意が必要です
+              {t('regionalRiskLead')}
             </p>
             <div className="grid gap-4">
               {data.highRiskRegions.map((region, index) => (
@@ -183,7 +179,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
                 <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
                   <ShieldCheck className="w-4 h-4" />
                 </span>
-                概要
+                {t('summary')}
               </h4>
               <p className="font-medium text-stone-700 leading-loose text-base">
                 {data.lead}
@@ -196,7 +192,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
               <summary className="flex items-center justify-between p-6 cursor-pointer hover:bg-stone-50/50 transition-colors list-none select-none">
                 <span className="font-bold text-stone-700 flex items-center gap-3 text-base font-serif">
                   <span className="w-2 h-2 rounded-full bg-stone-300 group-open:bg-primary transition-colors" />
-                  詳細な安全情報
+                  {t('detailedSafetyInfo')}
                 </span>
                 <div className="w-8 h-8 rounded-full bg-stone-100 flex items-center justify-center group-hover:bg-stone-200 transition-colors">
                   <ChevronDown className="w-4 h-4 text-stone-500 transition-transform duration-300 group-open:rotate-180" />
@@ -217,7 +213,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
             <span className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
               <AlertTriangle className="w-4 h-4" />
             </span>
-            主な注意事項
+            {t('mainWarnings')}
           </h4>
           <ul className="grid gap-4">
             {data.warnings.map((warning, index) => (
@@ -233,7 +229,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
           <div className="space-y-3">
             <h4 className="flex items-center gap-2 font-bold text-stone-700 text-sm uppercase tracking-wider">
               <Phone className="w-4 h-4 text-primary" />
-              Emergency Contacts
+              {t('emergencyContacts')}
             </h4>
             <div className="bg-white border border-stone-200 rounded-xl overflow-hidden shadow-sm">
               {data.emergencyContacts.map((contact, index) => (
@@ -267,7 +263,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
           <div className="space-y-3">
             <h4 className="flex items-center gap-2 font-bold text-stone-700 text-sm uppercase tracking-wider">
               <Building2 className="w-4 h-4 text-primary" />
-              Japanese Embassy
+              {t('japaneseEmbassy')}
             </h4>
             <div className="bg-white border border-stone-200 rounded-xl p-5 shadow-sm h-full flex flex-col justify-center">
               <p className="font-bold text-stone-800 mb-3 border-b border-stone-100 pb-2">
@@ -297,7 +293,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
       <div className="mt-8 pt-4 border-t border-dashed border-stone-200 text-center">
         {isMofaSource ? (
           <p className="text-[10px] text-stone-400">
-            出典：外務省 海外安全情報オープンデータ 提供情報
+            {t('sourceOfficialPrefix')}
             {source?.sourceUrl && (
               <>
                 （
@@ -312,18 +308,18 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
                 ）
               </>
             )}
-            を加工して作成
+            {t('sourceOfficialSuffix')}
           </p>
         ) : (
           <p className="text-[10px] text-stone-400">
-            情報提供: 外務省 海外安全情報オープンデータ
+            {t('sourceFallbackPrefix')}
             <a
               href={MOFA_OPENDATA_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-2 hover:text-primary hover:underline inline-flex items-center gap-1"
             >
-              公式サイト
+              {t('officialSite')}
               <ExternalLink className="w-2.5 h-2.5" />
             </a>
           </p>
@@ -337,6 +333,7 @@ export default function SafetyInfoSection({ data, source }: SectionBaseProps<Saf
  * 高リスク地域の表示アイテム
  */
 function HighRiskRegionItem({ region }: { region: HighRiskRegion }) {
+  const t = useTranslations('components.features.travelInfo.sections.safetyInfoSection');
   const levelColors: Record<DangerLevel, string> = {
     0: 'bg-stone-100 text-stone-600 border-stone-200',
     1: 'bg-yellow-50 text-yellow-700 border-yellow-200',
@@ -352,7 +349,7 @@ function HighRiskRegionItem({ region }: { region: HighRiskRegion }) {
       </span>
       <div className="flex-1">
         <p className="font-bold text-sm mb-0.5">{region.regionName}</p>
-        <p className="text-xs opacity-90">{DANGER_LEVEL_DESCRIPTIONS[region.level]}</p>
+        <p className="text-xs opacity-90">{t(`dangerDescriptions.${region.level}`)}</p>
         {region.description && (
           <p className="text-xs mt-1 pt-1 border-t border-black/5 opacity-80 leading-relaxed">
             {region.description}
@@ -368,52 +365,39 @@ function HighRiskRegionItem({ region }: { region: HighRiskRegion }) {
  */
 const WARNING_PRIORITY_STYLES: Record<
   WarningPriority,
-  { bg: string; border: string; badge: string; badgeText: string; label: string }
+  { bg: string; border: string; badge: string; badgeText: string }
 > = {
   critical: {
     bg: 'bg-red-50',
     border: 'border-red-200',
     badge: 'bg-red-500',
     badgeText: 'text-white',
-    label: '最重要',
   },
   high: {
     bg: 'bg-orange-50',
     border: 'border-orange-200',
     badge: 'bg-orange-500',
     badgeText: 'text-white',
-    label: '重要',
   },
   medium: {
     bg: 'bg-yellow-50',
     border: 'border-yellow-200',
     badge: 'bg-yellow-500',
     badgeText: 'text-white',
-    label: '注意',
   },
   low: {
     bg: 'bg-stone-50',
     border: 'border-stone-200',
     badge: 'bg-stone-400',
     badgeText: 'text-white',
-    label: '参考',
   },
-};
-
-/**
- * 警告の種類に応じたラベル
- */
-const WARNING_TYPE_LABELS: Record<WarningInfo['type'], string> = {
-  danger: '危険情報',
-  spot: 'スポット情報',
-  mail: '安全情報',
-  general: '一般情報',
 };
 
 /**
  * 警告情報の表示アイテム（リッチな構造）
  */
 function WarningItem({ warning, index }: { warning: WarningInfo; index: number }) {
+  const t = useTranslations('components.features.travelInfo.sections.safetyInfoSection');
   const style = WARNING_PRIORITY_STYLES[warning.priority];
   const [isOpen, setIsOpen] = useState(warning.priority === 'critical');
 
@@ -439,10 +423,10 @@ function WarningItem({ warning, index }: { warning: WarningInfo; index: number }
             <span
               className={`px-2 py-0.5 rounded text-[10px] font-bold ${style.badge} ${style.badgeText}`}
             >
-              {style.label}
+              {t(`warningPriority.${warning.priority}`)}
             </span>
             <span className="px-2 py-0.5 rounded bg-white/70 text-stone-500 text-[10px] font-bold border border-stone-200/50">
-              {WARNING_TYPE_LABELS[warning.type]}
+              {t(`warningType.${warning.type}`)}
             </span>
             <div className="ml-auto flex items-center gap-2">
               {warning.date && (

@@ -14,12 +14,12 @@ export interface PolicyLinkProps {
 }
 
 /**
- * ポリシーリンクコンポーネント
- * @param props.href - リンク先URL
- * @param props.children - リンクテキスト
- * @param props.className - 追加のCSSクラス
- * @param props.target - リンクターゲット
- * @param props.rel - rel属性
+ * Locale-aware policy link component.
+ * @param props.href Target URL.
+ * @param props.children Link text/content.
+ * @param props.className Additional CSS classes.
+ * @param props.target Optional link target.
+ * @param props.rel Optional rel attribute.
  */
 export default function PolicyLink({ href, children, className = "", target, rel }: PolicyLinkProps) {
   const pathname = usePathname();

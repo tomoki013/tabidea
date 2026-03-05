@@ -1,6 +1,7 @@
 'use client';
 
 import { Bath, Info, CheckCircle2 } from 'lucide-react';
+import { useTranslations } from "next-intl";
 import type { RestroomsInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
@@ -8,13 +9,15 @@ import type { SectionBaseProps } from '../types';
  * RestroomsSection - トイレ事情セクション
  */
 export default function RestroomsSection({ data }: SectionBaseProps<RestroomsInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.restrooms");
+
   return (
     <div className="space-y-6">
       {/* 普及状況・清潔度 */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Bath className="w-5 h-5 text-primary" />
-          トイレの清潔度・普及状況
+          {t("availabilityTitle")}
         </h4>
         <div className="p-6 bg-[#fcfbf9] border border-stone-200 rounded-xl shadow-sm relative overflow-hidden">
            <div className="absolute left-0 top-0 w-1 h-full bg-primary/20" />
@@ -27,7 +30,7 @@ export default function RestroomsSection({ data }: SectionBaseProps<RestroomsInf
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <Info className="w-5 h-5 text-primary" />
-            利用時の注意
+            {t("notesTitle")}
           </h4>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {data.notes.map((note, index) => (

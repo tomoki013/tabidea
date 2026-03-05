@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import { ChevronDown, Wallet, Lightbulb } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   calculateTravelCost,
   formatCostRange,
@@ -56,6 +57,7 @@ export default function CostEstimate({
   itinerary,
   className = "",
 }: CostEstimateProps) {
+  const t = useTranslations("components.features.planner.costEstimate");
   const [isOpen, setIsOpen] = useState(false);
 
   const estimate = useMemo(
@@ -82,10 +84,13 @@ export default function CostEstimate({
             <Wallet className="w-5 h-5 text-emerald-600" />
           </div>
           <div className="text-left">
-            <h3 className="font-bold text-stone-800 text-sm">旅費の概算</h3>
+            <h3 className="font-bold text-stone-800 text-sm">{t("title")}</h3>
             <p className="text-xs text-stone-500 mt-0.5">
-              {estimate.nights}泊{estimate.days}日 ・{" "}
-              {estimate.isDomestic ? "国内" : "海外"}旅行
+              {t("tripSummary", {
+                nights: estimate.nights,
+                days: estimate.days,
+                tripType: estimate.isDomestic ? t("tripType.domestic") : t("tripType.overseas"),
+              })}
             </p>
           </div>
         </div>
@@ -119,26 +124,26 @@ export default function CostEstimate({
               {/* Breakdown */}
               <div className="bg-stone-50 rounded-xl p-4">
                 <h4 className="text-xs font-bold text-stone-500 uppercase tracking-wider mb-3">
-                  内訳
+                  {t("breakdownTitle")}
                 </h4>
                 <CostItem
                   icon="🏨"
-                  label={`宿泊費（${estimate.nights}泊）`}
+                  label={t("breakdown.accommodation", { nights: estimate.nights })}
                   range={estimate.breakdown.accommodation}
                 />
                 <CostItem
                   icon="🍽️"
-                  label={`食費（${estimate.days}日分）`}
+                  label={t("breakdown.meals", { days: estimate.days })}
                   range={estimate.breakdown.meals}
                 />
                 <CostItem
                   icon="🚃"
-                  label={`交通費（${estimate.days}日分）`}
+                  label={t("breakdown.transport", { days: estimate.days })}
                   range={estimate.breakdown.transport}
                 />
                 <CostItem
                   icon="🎯"
-                  label={`アクティビティ（${estimate.days}日分）`}
+                  label={t("breakdown.activities", { days: estimate.days })}
                   range={estimate.breakdown.activities}
                 />
               </div>
@@ -146,7 +151,7 @@ export default function CostEstimate({
               {/* Per Day */}
               <div className="flex items-center justify-between bg-emerald-50 rounded-xl p-4">
                 <span className="text-sm text-emerald-700 font-medium">
-                  1日あたりの目安
+                  {t("perDay")}
                 </span>
                 <span className="font-bold text-emerald-800 tabular-nums">
                   {formatCostRange(estimate.perDay.min, estimate.perDay.max)}
@@ -158,7 +163,7 @@ export default function CostEstimate({
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm font-bold text-amber-700">
                     <Lightbulb className="w-4 h-4" />
-                    <span>節約のコツ</span>
+                    <span>{t("savingTips")}</span>
                   </div>
                   <ul className="space-y-1.5">
                     {estimate.savingTips.map((tip, i) => (
@@ -177,25 +182,25 @@ export default function CostEstimate({
               {/* Booking CTA */}
               <div className="pt-2 border-t border-stone-100">
                 <p className="text-xs text-stone-500 mb-3">
-                  この価格帯で探す
+                  {t("searchPrompt")}
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <BookingLinkButton
                     type="hotel"
                     destination={itinerary.destination}
-                    label="ホテルを探す"
+                    label={t("actions.searchHotels")}
                   />
                   <BookingLinkButton
                     type="flight"
                     destination={itinerary.destination}
-                    label="航空券を探す"
+                    label={t("actions.searchFlights")}
                   />
                 </div>
               </div>
 
               {/* Disclaimer */}
               <p className="text-[11px] text-stone-400 leading-relaxed">
-                ※ 概算は目安です。実際の費用は時期、予約タイミング、為替レートなどにより変動します。
+                {t("disclaimer")}
               </p>
             </div>
           </motion.div>

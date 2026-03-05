@@ -1,0 +1,145 @@
+{
+  "lib": {
+    "replan": {
+      "estimatedDurationHours": "{count}h",
+      "explanations": {
+        "rain": {
+          "indoor": "Enjoy a relaxed indoor spot that's perfect for a rainy day.",
+          "food": "How about enjoying local food while taking shelter from the rain?",
+          "culture": "Spend time exploring culture without worrying about the weather.",
+          "rest": "There is a place where you can take a quiet break while listening to the rain.",
+          "outdoor": "This is a spot you can enjoy once the rain eases up."
+        },
+        "fatigue": {
+          "rest": "Here is a place where you can rest your tired body at an easy pace.",
+          "food": "Would you like to recharge with something delicious?",
+          "indoor": "Take a breather at an indoor place where you can sit and relax.",
+          "culture": "Take your time at a place where you can look around without rushing.",
+          "outdoor": "Take a short break in a park with benches and a nice view."
+        },
+        "delay": {
+          "food": "Make good use of your wait time with nearby local food.",
+          "indoor": "Here is a nearby spot that's ideal for filling time.",
+          "culture": "Use the extra time to enjoy nearby cultural highlights.",
+          "rest": "There is a calm place where you can stay until the next schedule.",
+          "outdoor": "Take a short walk and explore the surrounding area."
+        },
+        "fallback": "Here is a new plan suggestion."
+      },
+      "fallbackActivities": {
+        "indoor": [
+          "Explore indoor attractions",
+          "Visit museums and galleries",
+          "Shopping"
+        ],
+        "food": [
+          "Explore local food",
+          "Take a break at a cafe",
+          "Signature dish lunch"
+        ],
+        "rest": [
+          "Cafe break",
+          "Hotel break",
+          "Relax in a park"
+        ],
+        "outdoor": [
+          "City walk",
+          "Park walk",
+          "Scenic viewpoint"
+        ],
+        "culture": [
+          "Cultural experience",
+          "Historic site visit",
+          "Traditional craft experience"
+        ]
+      },
+      "keywords": {
+        "indoor": [
+          "restaurant",
+          "cafe",
+          "lunch",
+          "dinner",
+          "breakfast",
+          "meal",
+          "museum",
+          "gallery",
+          "shopping",
+          "mall",
+          "department",
+          "hotel",
+          "spa",
+          "massage",
+          "theater",
+          "concert",
+          "indoor"
+        ],
+        "outdoor": [
+          "walk",
+          "hike",
+          "trek",
+          "park",
+          "garden",
+          "beach",
+          "coast",
+          "viewpoint",
+          "cycling",
+          "outdoor",
+          "market",
+          "ruins",
+          "temple",
+          "shrine"
+        ],
+        "rest": [
+          "restaurant",
+          "cafe",
+          "lunch",
+          "dinner",
+          "breakfast",
+          "meal",
+          "rest",
+          "relax",
+          "spa",
+          "massage",
+          "onsen"
+        ],
+        "physical": [
+          "walk",
+          "hike",
+          "trek",
+          "cycling",
+          "climb",
+          "activity",
+          "adventure",
+          "snorkeling",
+          "diving",
+          "surfing",
+          "kayak",
+          "rafting"
+        ],
+        "companion": {
+          "family": [
+            "family",
+            "kids",
+            "children"
+          ],
+          "couple": [
+            "couple",
+            "partner",
+            "lover"
+          ],
+          "friends": [
+            "friend",
+            "friends"
+          ]
+        },
+        "budget": {
+          "low": [
+            "budget",
+            "cheap",
+            "low cost"
+          ]
+        }
+      }
+    }
+  }
+}

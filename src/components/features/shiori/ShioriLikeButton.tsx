@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { useTranslations } from 'next-intl';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 import { toggleShioriLike } from '@/app/actions/shiori';
@@ -18,6 +19,7 @@ export default function ShioriLikeButton({
   initialLikesCount,
   canLike,
 }: ShioriLikeButtonProps) {
+  const t = useTranslations('components.features.shiori.likeButton');
   const [liked, setLiked] = useState(initialLiked);
   const [likesCount, setLikesCount] = useState(initialLikesCount);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
@@ -27,14 +29,14 @@ export default function ShioriLikeButton({
     setErrorMessage(null);
 
     if (!canLike) {
-      setErrorMessage('ログインするといいねできます。');
+      setErrorMessage(t('loginRequired'));
       return;
     }
 
     startTransition(async () => {
       const result = await toggleShioriLike(slug);
       if (!result.success) {
-        setErrorMessage(result.error ?? 'いいねの更新に失敗しました。');
+        setErrorMessage(result.error ?? t('updateFailed'));
         return;
       }
 

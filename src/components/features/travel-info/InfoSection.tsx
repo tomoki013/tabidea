@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import {
   Globe,
   Shield,
@@ -19,7 +20,7 @@ import {
   Wine,
 } from 'lucide-react';
 import SourceBadge from './SourceBadge';
-import { CATEGORY_INFO, type InfoSectionProps, type CategoryIcon } from './types';
+import { getCategoryInfo, type InfoSectionProps, type CategoryIcon } from './types';
 
 /**
  * アイコンコンポーネントのマッピング
@@ -54,7 +55,8 @@ export default function InfoSection({
   children,
   source,
 }: InfoSectionProps) {
-  const info = CATEGORY_INFO[category];
+  const tCategoryInfo = useTranslations("components.features.travelInfo.categoryInfo");
+  const info = getCategoryInfo(category, tCategoryInfo);
   const IconComponent = IconComponents[info.icon];
 
   return (

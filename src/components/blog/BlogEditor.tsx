@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from "next-intl";
 
 import { createOrUpdateBlogPost, uploadBlogImage, upsertBlogProfile } from '@/app/actions/blog';
 
@@ -22,6 +23,7 @@ interface Props {
 }
 
 export default function BlogEditor({ initial, profile }: Props) {
+  const t = useTranslations("components.extraUi.blogEditor");
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -57,11 +59,11 @@ export default function BlogEditor({ initial, profile }: Props) {
           contentType: file.type,
         });
         if (!res.success) {
-          setMessage(res.error ?? '画像アップロードに失敗しました');
+          setMessage(res.error ?? t("uploadFailed"));
           return;
         }
         setCoverImagePath(res.path ?? '');
-        setMessage(`アップロード完了: ${res.publicUrl}`);
+        setMessage(t("uploadCompleted", { url: res.publicUrl ?? "" }));
       });
     };
     reader.readAsDataURL(file);
@@ -70,7 +72,7 @@ export default function BlogEditor({ initial, profile }: Props) {
   const save = (status: 'draft' | 'published') => {
     startTransition(async () => {
       if (!username) {
-        setMessage('username は必須です');
+        setMessage(t("usernameRequired"));
         return;
       }
 
@@ -80,7 +82,7 @@ export default function BlogEditor({ initial, profile }: Props) {
         bio,
       });
       if (!profileRes.success) {
-        setMessage(profileRes.error ?? 'プロフィール保存失敗');
+        setMessage(profileRes.error ?? t("profileSaveFailed"));
         return;
       }
 
@@ -95,11 +97,11 @@ export default function BlogEditor({ initial, profile }: Props) {
       });
 
       if (!res.success) {
-        setMessage(res.error ?? '保存に失敗しました');
+        setMessage(res.error ?? t("saveFailed"));
         return;
       }
 
-      setMessage(status === 'published' ? '公開しました' : '下書きを保存しました');
+      setMessage(status === 'published' ? t("published") : t("draftSaved"));
       router.push(`/blog/edit/${res.id}`);
       router.refresh();
     });
@@ -108,44 +110,44 @@ export default function BlogEditor({ initial, profile }: Props) {
   return (
     <div className="space-y-4">
       <section className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
-        <h2 className="font-semibold">Blog Profile</h2>
+        <h2 className="font-semibold">{t("profileTitle")}</h2>
         <input className="w-full border rounded px-2 py-1 text-sm" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username (a-z0-9_)" />
         <input className="w-full border rounded px-2 py-1 text-sm" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="display name" />
         <textarea className="w-full border rounded px-2 py-1 text-sm" value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio" />
       </section>
 
       <section className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
-        <h2 className="font-semibold">Post Editor</h2>
+        <h2 className="font-semibold">{t("postEditorTitle")}</h2>
         <input className="w-full border rounded px-2 py-1 text-sm" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" />
         <input className="w-full border rounded px-2 py-1 text-sm" value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="slug" />
         <textarea className="w-full border rounded px-2 py-1 text-sm" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="excerpt" />
 
         <div className="text-xs text-stone-600">
-          旅のしおり埋め込み: <code>[[tabidea:shiori:slug]]</code> または <code>[[tabidea:shiori:slug?t=token]]</code>
+          {t("shioriEmbedGuide")} <code>[[tabidea:shiori:slug]]</code> or <code>[[tabidea:shiori:slug?t=token]]</code>
         </div>
         <textarea
           className="w-full border rounded px-2 py-2 text-sm min-h-[260px]"
           value={contentHtml}
           onChange={(e) => setContentHtml(e.target.value)}
-          placeholder="HTMLベース本文"
+          placeholder={t("contentPlaceholder")}
         />
 
         <div className="space-y-1">
-          <label className="text-sm">Cover image</label>
+          <label className="text-sm">{t("coverImageLabel")}</label>
           <input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleUpload(e.target.files[0])} />
           {coverImagePath && <p className="text-xs text-stone-600">storage path: {coverImagePath}</p>}
         </div>
 
         <div className="flex gap-2">
-          <button type="button" disabled={isPending} className="px-3 py-1 rounded bg-stone-800 text-white text-sm" onClick={() => save('draft')}>下書き保存</button>
-          <button type="button" disabled={isPending} className="px-3 py-1 rounded bg-primary text-white text-sm" onClick={() => save('published')}>公開</button>
+          <button type="button" disabled={isPending} className="px-3 py-1 rounded bg-stone-800 text-white text-sm" onClick={() => save('draft')}>{t("saveDraft")}</button>
+          <button type="button" disabled={isPending} className="px-3 py-1 rounded bg-primary text-white text-sm" onClick={() => save('published')}>{t("publish")}</button>
         </div>
         {message && <p className="text-sm text-stone-700">{message}</p>}
       </section>
 
       {previewEmbeds.length > 0 && (
         <section className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
-          <h2 className="font-semibold">Embed Preview</h2>
+          <h2 className="font-semibold">{t("embedPreviewTitle")}</h2>
           {previewEmbeds.map((embed, index) => (
             <iframe
               key={`${embed.slug}-${index}`}

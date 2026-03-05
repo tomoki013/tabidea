@@ -1,0 +1,280 @@
+{
+  "components": {
+    "extraUi": {
+      "mapErrorBoundary": {
+        "failedToLoadMap": "Failed to load the map",
+        "checkGoogleMapsApiSettings": "Please check your Google Maps API settings"
+      },
+      "loginPromptModal": {
+        "title": "Let’s continue your trip",
+        "benefitsIntro": "Create a free account to unlock...",
+        "benefitMonthlyLimitCount": "Up to 3 times/month",
+        "benefitMonthlyLimitSuffix": "plan generation",
+        "benefitPlanSaveManage": "Save and manage plans",
+        "benefitMultiDevice": "Access from multiple devices",
+        "restoreNotice": "Your current input will be restored after login",
+        "loginCta": "Login / Sign up free",
+        "laterCta": "Maybe later"
+      },
+      "travelInfoShareButton": {
+        "trigger": "Share",
+        "copied": "Copied!",
+        "copyUrl": "Copy URL",
+        "shareOnTwitter": "Share on Twitter",
+        "shareOnLine": "Share on LINE"
+      },
+      "shioriPromotionSection": {
+        "badge": "CREATE YOUR OWN",
+        "title": "Create your own travel journal",
+        "descriptionLine1": "With Tabidea, just enter your destination and dates,",
+        "descriptionLine2": "and AI suggests your ideal itinerary in seconds.",
+        "cta": "Create a plan for free"
+      },
+      "authLoginPrompt": {
+        "title": "Save your plan?",
+        "description": "Log in to save your plan and revisit it anytime.",
+        "localPlansCount": "{count} plans are currently saved locally",
+        "loginCta": "Log in",
+        "compactText": "Log in to save your plan",
+        "compactCta": "Log in"
+      },
+      "blogEditor": {
+        "uploadFailed": "Failed to upload image",
+        "uploadCompleted": "Upload completed: {url}",
+        "usernameRequired": "username is required",
+        "profileSaveFailed": "Failed to save profile",
+        "saveFailed": "Failed to save",
+        "published": "Published",
+        "draftSaved": "Draft saved",
+        "profileTitle": "Blog Profile",
+        "postEditorTitle": "Post Editor",
+        "shioriEmbedGuide": "Shiori embed:",
+        "contentPlaceholder": "HTML content",
+        "coverImageLabel": "Cover image",
+        "saveDraft": "Save draft",
+        "publish": "Publish",
+        "embedPreviewTitle": "Embed Preview"
+      },
+      "samplePlanCard": {
+        "viewDetails": "View details"
+      },
+      "samplePlanList": {
+        "dayOptions": {
+          "all": "All",
+          "2days": "1 night / 2 days",
+          "3days": "2 nights / 3 days",
+          "4days": "3 nights / 4 days",
+          "5daysOrMore": "4 nights / 5+ days"
+        },
+        "tabs": {
+          "theme": "Theme",
+          "oshikatsu": "Fan travel",
+          "companion": "Companion",
+          "season": "Season"
+        },
+        "searchPlaceholder": "Search by keyword, destination, or mood...",
+        "tabAll": "All",
+        "tabDomestic": "Domestic",
+        "tabOverseas": "Overseas",
+        "filter": "Filters",
+        "filterSearchTitle": "Filter search",
+        "clearAll": "Clear all",
+        "days": "Trip length",
+        "tags": "Tags (category)",
+        "noMatchingTags": "No matching tags",
+        "area": "Area",
+        "applyAndClose": "Apply filters and close",
+        "selected": "Selected:",
+        "plansCount": "plans",
+        "showMore": "Show more ({count})",
+        "emptySearchNotFound": "No plans found for \"{query}\"",
+        "emptyNotFound": "No plans found",
+        "emptySearchTip": "Try a different keyword and search again.",
+        "emptyFilterTip": "No travel plans matched your selected conditions.\nTry loosening your filters and search again.",
+        "clearAllFilters": "Clear all filters"
+      },
+      "travelPlannerLegacy": {
+        "defaultUndecidedDates": "Date undecided",
+        "errors": {
+          "destinationRequired": "Please enter at least one destination ✈️",
+          "regionOrVibeRequired": "Select an area or enter your preferred vibe 🌏",
+          "mustVisitChoiceRequired": "Please select yes or no 🤔",
+          "mustVisitPlacesRequired": "Please enter places you want to visit ✍️",
+          "companionsRequired": "Please select your travel companions 👥",
+          "themeRequired": "Please select at least one theme 🎭",
+          "budgetRequired": "Please select a budget level 💰",
+          "datesRequired": "Please select dates or season 📅",
+          "paceRequired": "Please select the travel pace ⚡",
+          "saveFailed": "Failed to save the plan.",
+          "outlineGenerationFailed": "Failed to generate plan outline.",
+          "networkOrTimeout": "A network error or server timeout occurred.",
+          "deploymentUpdated": "A new version is available. Refresh the page to continue.",
+          "generic": "An error occurred",
+          "contactHintPrefix": "If the issue persists,",
+          "contactPage": "contact us",
+          "contactHintSuffix": "from the support page.",
+          "restoreExpired": "More than 24 hours passed since saving, so your input was removed.",
+          "restoreSuccess": "Your input was restored."
+        },
+        "actions": {
+          "refreshPage": "Refresh page",
+          "retry": "Try again"
+        }
+      },
+      "landingAboutSection": {
+        "headlineLine1": "Cross the boundary of daily life,",
+        "headlineLine2": "and meet new scenery and yourself.",
+        "leadLine1": "Tabidea picks up that vague feeling in your heart,",
+        "leadLine2": "and turns it into a once-in-a-lifetime experience.",
+        "tabiTitle": "Tabi (Journey)",
+        "tabiLine1": "It is more than just moving around.",
+        "tabiLine2": "Leaving daily life and opening your heart creates the most vivid palette in life.",
+        "ideaTitle": "Idea",
+        "ideaLine1": "That vague wish: “I want to go somewhere.”",
+        "ideaLine2": "Through AI dialogue, we shape the desire you had not yet articulated.",
+        "deaiTitle": "Deai (Encounter)",
+        "deaiLine1": "Unexpected joy born inside a well-crafted plan.",
+        "deaiLine2": "Serendipitous sights and people turn a trip into a special story.",
+        "storyLink": "Our Brand Story"
+      },
+      "landingHeroSection": {
+        "badge": "Story of your journey starts here",
+        "headlinePrefix": "The feeling deep in your heart,",
+        "headlineHighlight": "“I want to go”",
+        "headlineMiddle": "can be shaped into",
+        "headlineSuffix": "a real journey.",
+        "subLine1": "That travel seed not yet in words,",
+        "subLine2": "why not grow it with AI?",
+        "usageLink": "New here? Start with the guide"
+      },
+      "landingTravelInfoSection": {
+        "badge": "Travel Support",
+        "headlineLine1": "Safety is also",
+        "headlineLine2": "part of the journey.",
+        "leadLine1": "Going to an unfamiliar place can feel a little uncertain.",
+        "leadLine2": "With Tabidea, you can check essential local info while planning your trip.",
+        "featureLocalTime": "See local time in major cities",
+        "featureExchangeRate": "Calculate latest exchange rates instantly",
+        "featureSafetyLink": "Direct link to MOFA safety information",
+        "cta": "Open travel info tools",
+        "mockLocalTimeLabel": "Local Time",
+        "mockLocalTimeLocation": "in Paris",
+        "mockCurrencyLabel": "Currency",
+        "mockCurrencyBase": "JPY",
+        "mockCurrencyConverted": "JPY 20,350",
+        "mockPassportLabel": "PASSPORT"
+      },
+      "landingV2ConceptSection": {
+        "badge": "Concept",
+        "headlineSub": "Weaving journeys, ideas, and encounters.",
+        "quoteLine1": "A sudden “I want to go”",
+        "quoteLine2": "becomes a once-in-a-lifetime story.",
+        "quoteLine3": "AI does not just create a schedule,",
+        "quoteLine4": "it creates your own travel journal.",
+        "descriptionRich": "<brand>Tabidea</brand> offers more than efficient routing, surfacing <deai>\"serendipitous encounters (Deai)\"</deai> and your <idea>\"latent desires (Idea)\"</idea> to shape a one-of-a-kind <tabi>\"journey (Tabi)\"</tabi>.",
+        "descriptionPrefix": "Tabidea offers more than efficient routing,",
+        "descriptionDeai": "\"serendipitous encounters (Deai)\"",
+        "descriptionMiddle": "and",
+        "descriptionIdea": "\"latent desires (Idea)\"",
+        "descriptionMiddle2": "to shape",
+        "descriptionTabi": "\"your journey (Tabi)\"",
+        "descriptionSuffix": "that is uniquely yours."
+      },
+      "travelInfoSections": {
+        "alcohol": {
+          "rulesTitle": "Sales & drinking rules",
+          "ageLimitTitle": "Age limit",
+          "legalAgeLabel": "Legal Age",
+          "notesTitle": "Additional notes"
+        },
+        "events": {
+          "majorEventsTitle": "Major events",
+          "seasonalFestivalsTitle": "Seasonal festivals",
+          "dateLabel": "DATE"
+        },
+        "localFood": {
+          "popularDishesTitle": "Popular dishes",
+          "diningEtiquetteTitle": "Dining etiquette"
+        },
+        "healthcare": {
+          "drinkingWaterTitle": "Drinking water",
+          "vaccinesTitle": "Recommended vaccines",
+          "noSpecificVaccines": "No specific vaccines required",
+          "medicalTitle": "Medical standard & hospitals"
+        },
+        "restrooms": {
+          "availabilityTitle": "Restroom cleanliness & availability",
+          "notesTitle": "Usage notes"
+        },
+        "manner": {
+          "tippingTitle": "Tipping culture",
+          "customsTitle": "Local customs & manners",
+          "taboosTitle": "Taboos to avoid",
+          "badgeRequired": "Tipping required",
+          "badgeCustomary": "Tipping customary",
+          "badgeNotNeeded": "No tipping required"
+        },
+        "souvenir": {
+          "popularItemsTitle": "Popular souvenirs",
+          "shoppingAreasTitle": "Recommended shopping areas",
+          "taxFreeTitle": "Tax-free info"
+        },
+        "smoking": {
+          "rulesTitle": "Smoking rules & penalties",
+          "areasTitle": "Smoking areas",
+          "finesTitle": "Fines for violations"
+        },
+        "transport": {
+          "publicTransportTitle": "Public transport",
+          "rideshareTitle": "Ride-hailing",
+          "rideshareAvailable": "Ride-hailing available",
+          "rideshareUnavailable": "Ride-hailing unavailable or limited",
+          "drivingNotesTitle": "Driving notes"
+        }
+      },
+      "itineraryPdf": {
+        "labels": {
+          "languages": "Languages",
+          "timezone": "Timezone",
+          "currency": "Currency",
+          "dangerLevel": "Danger level",
+          "safetyWarnings": "Safety warnings",
+          "visaRequired": "Visa requirement",
+          "visaFreeStay": "Visa-free stay",
+          "requiredDocuments": "Required documents",
+          "medicalLevel": "Medical level",
+          "vaccines": "Recommended vaccines",
+          "drinkingWater": "Drinking water",
+          "localCustoms": "Local customs",
+          "taboos": "Taboos / cautions",
+          "tipping": "Tipping",
+          "season": "Season",
+          "recommendedClothing": "Recommended clothing",
+          "createdAt": "Created at",
+          "memo": "Memo",
+          "travelInfoGuide": "Travel Info & Safety Guide",
+          "travelInfoSubtitle": "{destination} - Travel Information & Safety Guide",
+          "aiDisclaimer": "This information is AI-generated and may be inaccurate. Always verify official sources before traveling.",
+          "packingList": "Packing List",
+          "packingSubtitle": "Items needed for your trip to {destination}",
+          "itemsCount": "{count} items"
+        },
+        "values": {
+          "required": "Required",
+          "notRequired": "Not required",
+          "daysTrip": "{count} Days Trip",
+          "daysCount": "{count} days"
+        },
+        "packingCategories": {
+          "documents": "Documents & valuables",
+          "clothing": "Clothing",
+          "electronics": "Electronics",
+          "toiletries": "Toiletries",
+          "medicine": "Medicine",
+          "theme": "Theme-specific",
+          "other": "Other"
+        }
+      }
+    }
+  }
+}

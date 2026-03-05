@@ -68,13 +68,37 @@ export default function DestinationClient({
   const [sources, setSources] = useState<TravelInfoSource[]>([]);
 
   const fetchStartTime = useRef<number>(0);
+  const mapTravelInfoError = useCallback(
+    (code?: string | null) => {
+      switch (code) {
+        case "destination_required":
+          return t("errors.destinationRequired");
+        case "category_required":
+          return t("errors.categoryRequired");
+        case "usage_limit_reached":
+          return t("errors.usageLimitReached");
+        case "no_accessible_categories":
+          return t("errors.noAccessibleCategories");
+        case "system_configuration_error":
+          return t("errors.systemConfigurationError");
+        case "category_fetch_failed":
+          return t("errors.categoryFetchFailed");
+        case "category_unexpected_error":
+        case "unexpected_error":
+          return t("errors.unexpected");
+        default:
+          return t("errors.generic");
+      }
+    },
+    [t]
+  );
 
   /**
    * 単一カテゴリを取得
    */
   const fetchSingleCategory = useCallback(
     async (category: TravelInfoCategory) => {
-      console.log("[DestinationClient] カテゴリ取得開始:", {
+      console.log("[DestinationClient] category_fetch_started:", {
         destination,
         category,
       });
@@ -97,7 +121,7 @@ export default function DestinationClient({
         );
 
         if (result.success) {
-          console.log("[DestinationClient] カテゴリ取得成功:", { category });
+          console.log("[DestinationClient] category_fetch_succeeded:", { category });
 
           // 成功状態に更新
           setCategoryStates((prev) => {
@@ -118,7 +142,7 @@ export default function DestinationClient({
             return prev;
           });
         } else {
-          console.error("[DestinationClient] カテゴリ取得失敗:", {
+          console.error("[DestinationClient] category_fetch_failed:", {
             category,
             error: result.error,
           });
@@ -126,23 +150,28 @@ export default function DestinationClient({
           // エラー状態に更新
           setCategoryStates((prev) => {
             const next = new Map(prev);
-            next.set(category, { status: "error", error: result.error });
+            next.set(category, {
+              status: "error",
+              error: mapTravelInfoError(result.error),
+            });
             return next;
           });
         }
       } catch (err) {
-        console.error("[DestinationClient] 例外発生:", { category, err });
-
-        const errorMessage =
-          err instanceof Error ? err.message : "エラーが発生しました";
+        console.error("[DestinationClient] category_fetch_exception:", { category, err });
         setCategoryStates((prev) => {
           const next = new Map(prev);
-          next.set(category, { status: "error", error: errorMessage });
+          next.set(category, {
+            status: "error",
+            error: mapTravelInfoError(
+              err instanceof Error ? err.message : "unexpected_error"
+            ),
+          });
           return next;
         });
       }
     },
-    [destination, dates, country]
+    [destination, dates, country, mapTravelInfoError]
   );
 
   /**
@@ -152,7 +181,7 @@ export default function DestinationClient({
     (categories: TravelInfoCategory[]) => {
       fetchStartTime.current = Date.now();
 
-      console.log("[DestinationClient] 全カテゴリ取得開始:", {
+      console.log("[DestinationClient] all_categories_fetch_started:", {
         destination,
         categories,
       });
@@ -173,7 +202,7 @@ export default function DestinationClient({
 
   // 初期ロード
   useEffect(() => {
-    console.log("[DestinationClient] コンポーネントマウント:", {
+    console.log("[DestinationClient] mounted:", {
       destination,
       initialCategories,
       dates,
@@ -189,7 +218,7 @@ export default function DestinationClient({
    * カテゴリ変更時の処理
    */
   const handleCategoryChange = (newCategories: TravelInfoCategory[]) => {
-    console.log("[DestinationClient] カテゴリ変更:", {
+    console.log("[DestinationClient] category_selection_changed:", {
       previous: selectedCategories,
       new: newCategories,
     });
@@ -200,14 +229,14 @@ export default function DestinationClient({
    * 再検索
    */
   const handleResearch = () => {
-    console.log("[DestinationClient] 再検索開始:", {
+    console.log("[DestinationClient] refetch_started:", {
       destination,
       categories: selectedCategories,
     });
 
     // URLを更新
     const newUrl = encodeTravelInfoUrl(destination, selectedCategories, dates);
-    console.log("[DestinationClient] URL更新:", newUrl);
+    console.log("[DestinationClient] url_updated:", newUrl);
     router.replace(localizePath(newUrl, language), { scroll: false });
 
     // 再取得
@@ -218,7 +247,7 @@ export default function DestinationClient({
    * 単一カテゴリの再取得
    */
   const handleRetryCategory = (category: TravelInfoCategory) => {
-    console.log("[DestinationClient] カテゴリ再取得:", { category });
+    console.log("[DestinationClient] category_retry:", { category });
     fetchSingleCategory(category);
   };
 
