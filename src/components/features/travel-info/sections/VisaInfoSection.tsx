@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import {
   FileCheck,
   FileX,
@@ -18,6 +19,8 @@ import type { SectionBaseProps } from '../types';
  * ビザ要件、滞在可能日数、入国条件を表示
  */
 export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
+  const t = useTranslations('components.features.travelInfo.sections.visaInfoSection');
+
   return (
     <div className="space-y-6">
       {/* ビザ要否インジケーター */}
@@ -48,14 +51,16 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
                 data.required ? 'text-orange-800' : 'text-green-800'
               }`}
             >
-              {data.required ? 'ビザが必要です' : 'ビザ不要'}
+              {data.required ? t('visaRequired') : t('visaNotRequired')}
             </p>
             {!data.required && data.visaFreeStayDays && (
               <div className="flex items-center gap-2 text-green-700 font-medium font-serif">
                 <Calendar className="w-4 h-4" />
                 <span>
-                  最大 <strong className="text-lg">{data.visaFreeStayDays}日間</strong>{' '}
-                  ビザなしで滞在可能
+                  {t.rich('visaFreeStay', {
+                    days: data.visaFreeStayDays,
+                    strong: (chunks) => <strong className="text-lg">{chunks}</strong>,
+                  })}
                 </span>
               </div>
             )}
@@ -70,7 +75,7 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
             <span className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
               <CheckCircle className="w-4 h-4" />
             </span>
-            入国要件
+            {t('entryRequirements')}
           </h4>
           <ul className="space-y-3">
             {data.requirements.map((requirement, index) => (
@@ -100,7 +105,7 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <Info className="w-5 h-5 text-primary" />
-            補足事項
+            {t('notes')}
           </h4>
           <ul className="space-y-2">
             {data.notes.map((note, index) => (
@@ -126,8 +131,8 @@ export default function VisaInfoSection({ data }: SectionBaseProps<VisaInfo>) {
       {/* 注意書き */}
       <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
         <p className="text-sm text-amber-800">
-          <strong>注意:</strong>{' '}
-          ビザ要件は変更される場合があります。渡航前に必ず大使館・領事館の公式情報をご確認ください。
+          <strong>{t('cautionLabel')}</strong>{' '}
+          {t('cautionText')}
         </p>
       </div>
     </div>

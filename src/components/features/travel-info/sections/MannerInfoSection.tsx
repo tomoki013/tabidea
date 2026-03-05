@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from "next-intl";
 import {
   Heart,
   Coins,
@@ -17,13 +18,15 @@ import type { SectionBaseProps } from '../types';
  * チップの習慣、現地マナー、タブーを表示
  */
 export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.manner");
+
   return (
     <div className="space-y-6">
       {/* チップ情報 */}
       <div className="space-y-4">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
           <Coins className="w-5 h-5 text-primary" />
-          チップの習慣
+          {t("tippingTitle")}
         </h4>
         <motion.div
           initial={{ scale: 0.95, opacity: 0 }}
@@ -40,7 +43,7 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
           <div className="absolute top-0 right-8 w-8 h-12 bg-stone-100 border-x border-b border-stone-200/50 shadow-sm rounded-b-sm" />
 
           <div className="flex items-center gap-4 mb-4 relative z-10">
-            <TippingBadge tipping={data.tipping} />
+            <TippingBadge tipping={data.tipping} t={t} />
           </div>
           <p className="text-stone-700 text-lg leading-loose font-serif relative z-10">
             {data.tipping.guideline}
@@ -53,7 +56,7 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
         <div className="space-y-4">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <Heart className="w-6 h-6 text-primary" />
-            現地の習慣・マナー
+            {t("customsTitle")}
           </h4>
           <ul className="space-y-3">
             {data.customs.map((custom, index) => (
@@ -83,7 +86,7 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
         <div className="space-y-4">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c] text-lg">
             <AlertTriangle className="w-6 h-6 text-red-500" />
-            タブー・避けるべきこと
+            {t("taboosTitle")}
           </h4>
           <ul className="space-y-3">
             {data.taboos.map((taboo, index) => (
@@ -112,12 +115,18 @@ export default function MannerInfoSection({ data }: SectionBaseProps<MannerInfo>
 /**
  * チップ必要度バッジ
  */
-function TippingBadge({ tipping }: { tipping: MannerInfo['tipping'] }) {
+function TippingBadge({
+  tipping,
+  t,
+}: {
+  tipping: MannerInfo['tipping'];
+  t: ReturnType<typeof useTranslations>;
+}) {
   if (tipping.required) {
     return (
       <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-200 text-amber-800 font-bold text-sm">
         <Coins className="w-4 h-4" />
-        チップ必須
+        {t("badgeRequired")}
       </span>
     );
   }
@@ -126,7 +135,7 @@ function TippingBadge({ tipping }: { tipping: MannerInfo['tipping'] }) {
     return (
       <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-200 text-blue-800 font-bold text-sm">
         <Coins className="w-4 h-4" />
-        チップは慣習的
+        {t("badgeCustomary")}
       </span>
     );
   }
@@ -134,7 +143,7 @@ function TippingBadge({ tipping }: { tipping: MannerInfo['tipping'] }) {
   return (
     <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-green-200 text-green-800 font-bold text-sm">
       <CheckCircle className="w-4 h-4" />
-      チップ不要
+      {t("badgeNotNeeded")}
     </span>
   );
 }

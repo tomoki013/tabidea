@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect, ChangeEvent, KeyboardEvent } from 'react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils/cn';
 
 interface EditableTextProps {
@@ -22,6 +23,7 @@ export function EditableText({
   multiline = false,
   type = 'text',
 }: EditableTextProps) {
+  const t = useTranslations('components.common.editableText');
   const [isEditing, setIsEditing] = useState(false);
   const [localValue, setLocalValue] = useState(value);
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
@@ -104,7 +106,7 @@ export function EditableText({
         }
       }}
     >
-      {value || placeholder || "（未入力）"}
+      {value || placeholder || t('empty')}
     </div>
   );
 }

@@ -4,13 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaUser } from 'react-icons/fa';
+import { useTranslations } from 'next-intl';
 import { useAuth } from '@/context/AuthContext';
 import SettingsModal from './SettingsModal';
-import { JournalButton } from '@/components/ui/journal';
-import { cn } from '@/lib/utils';
 
 export function AuthButton() {
   const { user, isLoading, isAuthenticated } = useAuth();
+  const t = useTranslations('components.common.authButton');
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   if (isLoading) {
@@ -27,7 +27,7 @@ export function AuthButton() {
       >
         <div className="bg-stone-100 hover:bg-stone-200 text-stone-600 px-4 py-2 rounded-sm border border-stone-300 border-dashed transition-all hover:-rotate-1 font-hand flex items-center gap-2">
           <FaUser className="text-stone-400 group-hover:text-primary transition-colors" />
-          <span>ログイン</span>
+          <span>{t('login')}</span>
         </div>
       </Link>
     );
@@ -38,13 +38,13 @@ export function AuthButton() {
       <button
         onClick={() => setIsSettingsOpen(true)}
         className="flex items-center gap-2 p-1 rounded-full hover:bg-stone-100 transition-all group relative"
-        aria-label="ユーザーメニュー"
+        aria-label={t('userMenuAriaLabel')}
       >
         {user?.avatarUrl ? (
           <div className="relative">
             <Image
               src={user.avatarUrl}
-              alt={user.displayName || 'ユーザー'}
+              alt={user.displayName || t('userFallback')}
               width={36}
               height={36}
               className="rounded-full ring-2 ring-white shadow-sm group-hover:scale-105 transition-all"

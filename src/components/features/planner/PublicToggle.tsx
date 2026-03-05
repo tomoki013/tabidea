@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { updatePlanVisibility } from "@/app/actions/travel-planner";
 import { motion } from "framer-motion";
 import { FaGlobe, FaLock } from "react-icons/fa";
@@ -16,6 +17,7 @@ export default function PublicToggle({
   initialIsPublic,
   className = "",
 }: PublicToggleProps) {
+  const t = useTranslations("components.features.planner.publicToggle");
   const [isPublic, setIsPublic] = useState(initialIsPublic);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +52,7 @@ export default function PublicToggle({
     <div className={`flex flex-col items-center sm:items-start gap-2 ${className}`}>
       <span className="text-sm font-bold text-stone-600 flex items-center gap-2">
         {isPublic ? <FaGlobe /> : <FaLock />}
-        公開設定
+        {t("label")}
       </span>
       <div className="flex items-center gap-3">
         <button
@@ -61,7 +63,7 @@ export default function PublicToggle({
             ${isPublic ? "bg-primary" : "bg-stone-300"}
             ${isLoading ? "opacity-70 cursor-wait" : "cursor-pointer"}
           `}
-          aria-label={isPublic ? "公開中" : "非公開"}
+          aria-label={isPublic ? t("states.public") : t("states.private")}
         >
           <motion.div
             className="absolute top-1 left-1 w-6 h-6 bg-white rounded-full shadow-md flex items-center justify-center text-xs"
@@ -79,7 +81,7 @@ export default function PublicToggle({
           </motion.div>
         </button>
         <span className="text-xs font-mono text-stone-500 min-w-[4rem]">
-          {isPublic ? "Public" : "Private"}
+          {isPublic ? t("states.public") : t("states.private")}
         </span>
       </div>
     </div>

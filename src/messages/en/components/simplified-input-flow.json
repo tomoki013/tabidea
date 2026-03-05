@@ -1,0 +1,124 @@
+{
+  "components": {
+    "features": {
+      "planner": {
+        "simplifiedInputFlow": {
+          "header": {
+            "title": "Create Your Travel Plan",
+            "lead": "Enter key details and let AI craft a plan tailored to you"
+          },
+          "budget": {
+            "units": {
+              "tenThousandYen": " ten-thousand JPY",
+              "yen": " JPY"
+            }
+          },
+          "step1": {
+            "title": "Basic Information",
+            "requiredHint": "* Required section",
+            "destinationModeLabel": "1) How do you want to set the destination?",
+            "specific": {
+              "title": "Enter destinations",
+              "bodyLine1": "Kyoto, Hawaii, etc.",
+              "bodyLine2": "You already know where to go"
+            },
+            "omakase": {
+              "title": "Let AI suggest",
+              "bodyLine1": "Still undecided!",
+              "bodyLine2": "Ask AI for ideas"
+            },
+            "vibe": {
+              "label": "What kind of trip do you want?",
+              "placeholder": "Example: island resort, old European streets, relaxing hot springs..."
+            },
+            "destinationInput": {
+              "placeholderFirst": "Example: Kyoto, Paris, Hawaii...",
+              "placeholderNext": "Add another destination..."
+            },
+            "dates": {
+              "label": "2) Dates",
+              "mode": {
+                "durationOnly": "Duration only",
+                "calendar": "Calendar"
+              },
+              "departureLabel": "Departure date",
+              "returnLabel": "Return date",
+              "selectDatePrompt": "Please select dates"
+            },
+            "companions": {
+              "label": "3) Who are you traveling with?"
+            }
+          },
+          "phase2": {
+            "title": "Set Details",
+            "subtitleCompleted": "OK!",
+            "subtitleRecommended": "Recommended",
+            "theme": {
+              "label": "Themes (multiple selections)"
+            },
+            "budget": {
+              "label": "Budget level",
+              "useSlider": "Set a specific amount",
+              "sliderTitle": "Set budget range",
+              "backToPresets": "Back to presets"
+            },
+            "pace": {
+              "label": "Travel pace"
+            }
+          },
+          "phase3": {
+            "title": "More Details",
+            "subtitle": "Optional",
+            "reservations": {
+              "label": "Booked items (flight / hotel, etc.)",
+              "addTitle": "Add booked item",
+              "namePlaceholder": "Name (e.g. JL123, Hilton Tokyo)",
+              "memoPlaceholder": "Memo (optional)",
+              "cancel": "Cancel",
+              "add": "Add",
+              "addButton": "Add booked item"
+            },
+            "transport": {
+              "label": "Preferred transport"
+            },
+            "mustVisit": {
+              "label": "Must-visit places",
+              "placeholder": "Enter a place name (e.g. Kiyomizu-dera)"
+            },
+            "freeText": {
+              "label": "Additional requests",
+              "placeholder": "Feel free to add requests, such as museum hopping or a restaurant with a great night view..."
+            }
+          },
+          "transport": {
+            "options": {
+              "flight": "Flight",
+              "shinkansen": "Shinkansen",
+              "train": "Train",
+              "bus": "Bus",
+              "car": "Car / rental car",
+              "ferry": "Ferry"
+            }
+          },
+          "reservation": {
+            "types": {
+              "flight": "Flight",
+              "train": "Train / Shinkansen",
+              "bus": "Bus",
+              "hotel": "Hotel",
+              "activity": "Activity",
+              "other": "Other"
+            }
+          },
+          "generate": {
+            "generating": "Generating your plan...",
+            "missingRequired": "Please fill in required fields",
+            "withDetails": "Generate with detailed settings",
+            "quick": "Generate quickly",
+            "hint": "Adding detail settings helps generate a more accurate plan ✨"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { TransitInfo, TransitType } from "@/types";
+import { useTranslations } from "next-intl";
 import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaLongArrowAltRight, FaLock, FaUnlock } from "react-icons/fa";
 import { motion } from "framer-motion";
 
@@ -18,15 +19,6 @@ const ICONS: Record<TransitType, React.ComponentType<{ className?: string }>> = 
   ship: FaShip,
   car: FaCar,
   other: FaQuestion,
-};
-
-const TYPE_LABELS: Record<TransitType, string> = {
-  flight: "Flight",
-  train: "Train",
-  bus: "Bus",
-  ship: "Ship",
-  car: "Car",
-  other: "Transit",
 };
 
 // Color themes for each transit type
@@ -75,8 +67,9 @@ const TYPE_COLORS: Record<TransitType, {
 };
 
 export default function TransitCard({ transit, className = "", isEditing = false, onLockToggle }: TransitCardProps) {
+  const t = useTranslations("components.features.plan.cards.transitCard");
   const Icon = ICONS[transit.type] || FaQuestion;
-  const label = TYPE_LABELS[transit.type] || "Transit";
+  const label = t(`types.${transit.type}`);
   const colors = TYPE_COLORS[transit.type] || TYPE_COLORS.other;
 
   return (
@@ -128,7 +121,7 @@ export default function TransitCard({ transit, className = "", isEditing = false
               <div className="flex-1 min-w-0">
                  <div className="text-xs text-stone-500 font-bold uppercase tracking-wider mb-1 flex items-center gap-1">
                    <span className="w-2 h-2 rounded-full bg-stone-400"></span>
-                   Departure
+                   {t("departure")}
                  </div>
                  <div className="text-xl font-bold text-stone-900 font-serif leading-tight truncate" title={transit.departure.place}>
                    {transit.departure.place}
@@ -150,12 +143,12 @@ export default function TransitCard({ transit, className = "", isEditing = false
                 <div className="flex flex-col gap-1 items-center">
                   {transit.isBooked && (
                     <span className="text-[10px] bg-green-600 text-white px-2 py-1 rounded-full font-bold shadow-sm whitespace-nowrap">
-                      ✓ BOOKED
+                      ✓ {t("booked")}
                     </span>
                   )}
                   {transit.isLocked && !isEditing && (
                     <span className="text-[10px] bg-amber-600 text-white px-2 py-1 rounded-full font-bold shadow-sm whitespace-nowrap flex items-center gap-1">
-                      <FaLock size={8} /> 固定
+                      <FaLock size={8} /> {t("locked")}
                     </span>
                   )}
                   {isEditing && onLockToggle && (
@@ -166,10 +159,10 @@ export default function TransitCard({ transit, className = "", isEditing = false
                           ? 'bg-amber-600 text-white hover:bg-amber-700'
                           : 'bg-stone-200 text-stone-600 hover:bg-stone-300'
                       }`}
-                      title={transit.isLocked ? "ロック解除" : "ロック"}
+                      title={transit.isLocked ? t("unlock") : t("lock")}
                     >
                       {transit.isLocked ? <FaLock size={8} /> : <FaUnlock size={8} />}
-                      {transit.isLocked ? '固定' : 'ロック'}
+                      {transit.isLocked ? t("unlock") : t("lock")}
                     </button>
                   )}
                 </div>
@@ -178,7 +171,7 @@ export default function TransitCard({ transit, className = "", isEditing = false
               {/* Arrival */}
               <div className="flex-1 min-w-0 text-right">
                  <div className="text-xs text-stone-500 font-bold uppercase tracking-wider mb-1 flex items-center justify-end gap-1">
-                   Arrival
+                   {t("arrival")}
                    <span className="w-2 h-2 rounded-full bg-stone-400"></span>
                  </div>
                  <div className="text-xl font-bold text-stone-900 font-serif leading-tight truncate" title={transit.arrival.place}>
@@ -192,7 +185,7 @@ export default function TransitCard({ transit, className = "", isEditing = false
 
            {transit.memo && (
              <div className="mt-3 pt-3 border-t-2 border-dashed border-stone-300/60 text-sm text-stone-700 flex items-start gap-2 bg-white/40 -mx-6 px-6 -mb-6 pb-6">
-               <span className="font-bold flex-shrink-0 text-stone-600">📝 Memo:</span>
+               <span className="font-bold flex-shrink-0 text-stone-600">📝 {t("memo")}:</span>
                <span className="font-medium">{transit.memo}</span>
              </div>
            )}

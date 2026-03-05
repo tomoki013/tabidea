@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { FaMapMarkerAlt, FaRegSave } from 'react-icons/fa';
 
 import type { NormalizedPlanDay } from '@/types/normalized-plan';
@@ -55,6 +56,8 @@ function parsePhotoUrls(photoUrlsText: string) {
 }
 
 export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournalEditorProps) {
+  const t = useTranslations("components.features.planner.shioriJournalEditor");
+  const locale = useLocale();
   const [drafts, setDrafts] = useState<Record<string, JournalDraft>>(() => buildInitialDrafts(days));
   const [savingIds, setSavingIds] = useState<Record<string, boolean>>({});
   const [errorByItemId, setErrorByItemId] = useState<Record<string, string | null>>({});
@@ -86,7 +89,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
     if (!draft.content.trim()) {
       setErrorByItemId((prev) => ({
         ...prev,
-        [itemId]: '本文を入力してください。',
+        [itemId]: t("errors.emptyContent"),
       }));
       return;
     }
@@ -107,7 +110,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
     if (!result.success) {
       setErrorByItemId((prev) => ({
         ...prev,
-        [itemId]: result.error ?? '保存に失敗しました。',
+        [itemId]: result.error ?? t("errors.saveFailed"),
       }));
       return;
     }
@@ -125,9 +128,9 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
   return (
     <div className="mx-auto w-full max-w-5xl space-y-8">
       <div className="rounded-xl border border-stone-200 bg-white p-5">
-        <h3 className="text-lg font-bold text-stone-800">しおり記録</h3>
+        <h3 className="text-lg font-bold text-stone-800">{t("title")}</h3>
         <p className="mt-1 text-sm text-stone-600">
-          旅程スポットごとに、行く前・旅の最中・行った後のメモを残せます。記録済み {totalEntries} 件
+          {t("description", { count: totalEntries })}
         </p>
       </div>
 
@@ -135,7 +138,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
         <section key={day.id} className="rounded-xl border border-stone-200 bg-white p-5">
           <div className="mb-4 border-b border-dashed border-stone-200 pb-3">
             <h4 className="text-lg font-semibold text-stone-800">Day {day.day_number}</h4>
-            <p className="text-sm text-stone-500">{day.title ?? '旅程'}</p>
+            <p className="text-sm text-stone-500">{day.title ?? t("defaultDayTitle")}</p>
           </div>
 
           <div className="space-y-4">
@@ -158,42 +161,42 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
 
                   <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                     <label className="flex flex-col gap-1 text-xs font-semibold text-stone-600">
-                      記録フェーズ
+                      {t("fields.phase")}
                       <select
                         value={draft.phase}
                         onChange={(event) => updateDraft(item.id, { phase: event.target.value as JournalPhase })}
                         className="rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-700"
                       >
-                        <option value="before">行く前</option>
-                        <option value="during">旅の最中</option>
-                        <option value="after">行った後</option>
+                        <option value="before">{t("phase.before")}</option>
+                        <option value="during">{t("phase.during")}</option>
+                        <option value="after">{t("phase.after")}</option>
                       </select>
                     </label>
 
                     <label className="flex flex-col gap-1 text-xs font-semibold text-stone-600">
-                      訪問場所
+                      {t("fields.placeName")}
                       <input
                         type="text"
                         value={draft.placeName}
                         onChange={(event) => updateDraft(item.id, { placeName: event.target.value })}
-                        placeholder="例: 錦市場"
+                        placeholder={t("placePlaceholder")}
                         className="rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-700"
                       />
                     </label>
                   </div>
 
                   <label className="mt-3 flex flex-col gap-1 text-xs font-semibold text-stone-600">
-                    メモ本文
+                    {t("fields.content")}
                     <textarea
                       value={draft.content}
                       onChange={(event) => updateDraft(item.id, { content: event.target.value })}
-                      placeholder="ここで何をしたか、何を食べたか、感じたことを記録..."
+                      placeholder={t("contentPlaceholder")}
                       className="min-h-[100px] rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-700"
                     />
                   </label>
 
                   <label className="mt-3 flex flex-col gap-1 text-xs font-semibold text-stone-600">
-                    写真URL（改行またはカンマ区切り）
+                    {t("fields.photoUrls")}
                     <textarea
                       value={draft.photoUrlsText}
                       onChange={(event) => updateDraft(item.id, { photoUrlsText: event.target.value })}
@@ -204,7 +207,9 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
 
                   <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                     <div className="text-xs text-stone-500">
-                      {draft.updatedAt ? `最終保存: ${new Date(draft.updatedAt).toLocaleString()}` : 'まだ保存されていません'}
+                      {draft.updatedAt
+                        ? t("lastSaved", { time: new Date(draft.updatedAt).toLocaleString(locale) })
+                        : t("notSavedYet")}
                     </div>
                     <button
                       onClick={() => void handleSave(item.id)}
@@ -212,7 +217,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
                       className="inline-flex items-center justify-center gap-2 rounded-full border border-stone-300 bg-white px-4 py-2 text-xs font-bold text-stone-700 transition hover:bg-stone-100 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       <FaRegSave />
-                      {savingIds[item.id] ? '保存中...' : 'この記録を保存'}
+                      {savingIds[item.id] ? t("saving") : t("save")}
                     </button>
                   </div>
                   {errorByItemId[item.id] && (

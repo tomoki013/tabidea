@@ -1,8 +1,14 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { createTranslator, useTranslations } from "next-intl";
+import type { AbstractIntlMessages } from "next-intl";
 import { Itinerary } from '@/types';
 import type { PackingList } from '@/types/packing-list';
+import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
+import enFeatureMessages from "@/messages/en/components/features-ui.json";
+import jaFeatureMessages from "@/messages/ja/components/features-ui.json";
 import {
   generateTravelPlanPdf,
   generatePdfFilename,
@@ -29,6 +35,15 @@ export default function PDFExportButton({
   className = "",
   packingList,
 }: PDFExportButtonProps) {
+  const t = useTranslations("components.features.planner.pdfExportButton");
+  const pathname = usePathname();
+  const locale = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  const messages = (locale === "en" ? enFeatureMessages : jaFeatureMessages) as unknown as AbstractIntlMessages;
+  const categoryTranslator = createTranslator({ locale, messages });
+  const resolveCategoryLabel = useCallback(
+    (key: string) => categoryTranslator(`components.features.travelInfo.categoryInfo.${key}` as never),
+    [categoryTranslator]
+  );
   const [isGenerating, setIsGenerating] = useState(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isPreviewModalOpen, setIsPreviewModalOpen] = useState(false);
@@ -79,7 +94,7 @@ export default function PDFExportButton({
 
         await navigator.share({
           files: [file],
-          title: `${itinerary.destination} 旅程表`,
+          title: t("shareTitle", { destination: itinerary.destination }),
         });
       } catch (shareError) {
         // User cancelled share or share failed
@@ -124,6 +139,8 @@ export default function PDFExportButton({
     try {
       console.log("Starting PDF generation with options:", options);
       const blob = await generateTravelPlanPdf(itinerary, {
+        locale,
+        messages,
         includeTravelInfo: options.includeTravelInfo,
         travelInfoData: options.travelInfoData,
         includePackingList: options.includePackingList,
@@ -141,14 +158,14 @@ export default function PDFExportButton({
       console.error("PDF generation failed:", err);
       const errorMessage =
         err instanceof Error
-          ? `PDFの生成に失敗しました: ${err.message}`
-          : "PDFの生成に失敗しました。もう一度お試しください。";
+          ? t("generateFailedWithMessage", { message: err.message })
+          : t("generateFailed");
       setError(errorMessage);
       alert(errorMessage);
     } finally {
       setIsGenerating(false);
     }
-  }, [itinerary, handleShowPreview]);
+  }, [itinerary, locale, messages, handleShowPreview]);
 
   // Handle download from modal
   const handleDownload = useCallback(() => {
@@ -181,24 +198,24 @@ export default function PDFExportButton({
     <>
       <div className={className}>
         <h4 className="text-sm font-bold text-stone-600 mb-3 text-center sm:text-left flex items-center gap-2">
-          <FaFilePdf /> Download
+          <FaFilePdf /> {t("heading")}
         </h4>
         <button
           onClick={handleButtonClick}
           disabled={isGenerating}
           className="flex items-center gap-2 px-6 py-3 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white transition-all shadow-md hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed font-bold"
-          aria-label="PDFとして出力"
+          aria-label={t("ariaLabel")}
           aria-busy={isGenerating}
         >
           {isGenerating ? (
             <>
               <FaSpinner className="animate-spin" size={18} />
-              <span className="text-sm">生成中...</span>
+              <span className="text-sm">{t("generating")}</span>
             </>
           ) : (
             <>
               <FaFilePdf size={18} />
-              <span className="text-sm">PDF出力</span>
+              <span className="text-sm">{t("label")}</span>
             </>
           )}
         </button>
@@ -217,6 +234,7 @@ export default function PDFExportButton({
         destination={itinerary.destination}
         isGenerating={isGenerating}
         packingList={packingList}
+        resolveCategoryLabel={resolveCategoryLabel}
       />
 
       {/* PDF Preview Modal for Desktop/Tablet */}

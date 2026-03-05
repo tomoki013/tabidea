@@ -1,6 +1,7 @@
 'use client';
 
 import { ShoppingBag, MapPin, Tag } from 'lucide-react';
+import { useTranslations } from "next-intl";
 import type { SouvenirInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
@@ -10,13 +11,15 @@ import type { SectionBaseProps } from '../types';
  * 人気のお土産、おすすめの買い物エリア、免税情報を表示
  */
 export default function SouvenirSection({ data }: SectionBaseProps<SouvenirInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.souvenir");
+
   return (
     <div className="space-y-6">
       {/* 人気のお土産 */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <ShoppingBag className="w-5 h-5 text-primary" />
-          人気のお土産
+          {t("popularItemsTitle")}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {data.popularItems.map((item, index) => (
@@ -45,7 +48,7 @@ export default function SouvenirSection({ data }: SectionBaseProps<SouvenirInfo>
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <MapPin className="w-5 h-5 text-primary" />
-            おすすめの買い物エリア
+            {t("shoppingAreasTitle")}
           </h4>
           <div className="flex flex-wrap gap-2">
             {data.shoppingAreas.map((area, index) => (
@@ -65,7 +68,7 @@ export default function SouvenirSection({ data }: SectionBaseProps<SouvenirInfo>
         <div className="p-5 bg-stone-50 rounded-xl border border-stone-200">
           <h4 className="flex items-center gap-2 font-bold text-stone-700 mb-2 text-sm">
             <Tag className="w-4 h-4" />
-            免税情報
+            {t("taxFreeTitle")}
           </h4>
           <p className="text-sm text-stone-600 leading-relaxed">
             {data.taxFreeInfo}

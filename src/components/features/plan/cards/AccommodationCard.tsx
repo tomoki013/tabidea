@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useTranslations } from "next-intl";
 import { Building2, MapPin, ExternalLink, Star, ChevronDown, Moon, Sun, Trash2 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import TrustBadge from "./TrustBadge";
@@ -76,6 +77,7 @@ interface AffiliateDropdownProps {
 }
 
 function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
+  const t = useTranslations("components.features.plan.cards.accommodationCard");
   const [isOpen, setIsOpen] = useState(false);
 
   if (links.length === 0) return null;
@@ -95,7 +97,7 @@ function AffiliateDropdown({ links, destination }: AffiliateDropdownProps) {
         className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl hover:from-purple-600 hover:to-purple-700 transition-all text-sm font-bold shadow-sm hover:shadow-md"
       >
         <Building2 className="w-4 h-4" />
-        ホテルを探す
+        {t("searchHotels")}
         <ChevronDown
           className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
@@ -149,6 +151,7 @@ export default function AccommodationCard({
   onDelete,
   className = "",
 }: AccommodationCardProps) {
+  const t = useTranslations("components.features.plan.cards.accommodationCard");
   const {
     name,
     description,
@@ -190,7 +193,7 @@ export default function AccommodationCard({
         onChange={(val) => onUpdate?.({ checkIn: val })}
         isEditable={true}
         type="time"
-        placeholder="IN"
+        placeholder={t("time.in")}
         className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200 w-16"
       />
       <span className="text-xs text-stone-400">-</span>
@@ -199,7 +202,7 @@ export default function AccommodationCard({
         onChange={(val) => onUpdate?.({ checkOut: val })}
         isEditable={true}
         type="time"
-        placeholder="OUT"
+        placeholder={t("time.out")}
         className="font-mono text-xs text-stone-600 bg-stone-50 px-1 rounded border border-stone-200 w-16"
       />
     </div>
@@ -227,7 +230,7 @@ export default function AccommodationCard({
             isEditable={true}
             className="text-sm text-stone-500 font-hand block w-full truncate"
           />
-        ) : (description || (dayNumber ? `${dayNumber}日目の宿泊` : "宿泊"))
+        ) : (description || (dayNumber ? t("subtitle.day", { dayNumber }) : t("subtitle.default")))
       }
       time={timeComponent}
       state={state}
@@ -245,12 +248,12 @@ export default function AccommodationCard({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (confirm('この宿泊情報を削除しますか？')) {
+              if (confirm(t("confirmDelete"))) {
                 onDelete();
               }
             }}
             className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
-            title="削除"
+            title={t("delete")}
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -268,7 +271,7 @@ export default function AccommodationCard({
                   onChange={(val) => onUpdate?.({ description: val })}
                   isEditable={true}
                   multiline
-                  placeholder="宿泊メモ..."
+                  placeholder={t("memoPlaceholder")}
                   className="text-sm text-stone-600 leading-relaxed w-full min-h-[60px] p-2 bg-stone-50 border border-stone-200 rounded"
                />
             ) : (
@@ -310,7 +313,7 @@ export default function AccommodationCard({
                   </div>
                   <div>
                     <span className="text-purple-600 font-medium text-xs">
-                      チェックイン
+                      {t("checkIn")}
                     </span>
                     <div className="text-purple-800 font-bold">{checkIn}</div>
                   </div>
@@ -323,7 +326,7 @@ export default function AccommodationCard({
                   </div>
                   <div>
                     <span className="text-indigo-600 font-medium text-xs">
-                      チェックアウト
+                      {t("checkOut")}
                     </span>
                     <div className="text-indigo-800 font-bold">{checkOut}</div>
                   </div>
@@ -351,7 +354,7 @@ export default function AccommodationCard({
               className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm text-purple-700 bg-purple-50 hover:bg-purple-100 rounded-xl font-medium transition-colors border border-purple-200/60"
             >
               <ExternalLink className="w-4 h-4" />
-              予約サイトを見る
+              {t("viewBookingSite")}
             </a>
           )}
 
@@ -368,7 +371,7 @@ export default function AccommodationCard({
             className="inline-flex items-center gap-1.5 px-3 py-2.5 text-sm text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-xl transition-colors"
           >
             <MapPin className="w-4 h-4" />
-            地図で見る
+            {t("viewOnMap")}
           </a>
         </div>
       </div>

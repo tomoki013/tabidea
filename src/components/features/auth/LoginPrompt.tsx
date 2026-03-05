@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useTranslations } from "next-intl";
 import { FaMapMarkerAlt, FaArrowRight, FaSuitcase } from 'react-icons/fa';
 
 import { useAuth } from '@/context/AuthContext';
@@ -15,6 +16,7 @@ export function LoginPrompt({
   className = '',
   showLocalPlansCount = true,
 }: LoginPromptProps) {
+  const t = useTranslations("components.extraUi.authLoginPrompt");
   const { isAuthenticated, isLoading } = useAuth();
   const { plans: localPlans } = useLocalPlans();
 
@@ -37,14 +39,14 @@ export function LoginPrompt({
         </div>
         <div className="flex-1">
           <h3 className="font-serif font-bold text-stone-800 text-lg mb-1">
-            プランを保存しませんか？
+            {t("title")}
           </h3>
           <p className="text-sm text-stone-600 mb-4">
-            ログインすると、プランを保存していつでも見返すことができます。
+            {t("description")}
             {showLocalPlansCount && localPlans.length > 0 && (
               <span className="block mt-2 text-[#e67e22] font-medium bg-[#e67e22]/5 px-3 py-1.5 rounded-lg inline-flex items-center gap-2">
                 <FaMapMarkerAlt className="text-xs" />
-                現在 {localPlans.length} 件のプランがローカルに保存されています
+                {t("localPlansCount", { count: localPlans.length })}
               </span>
             )}
           </p>
@@ -53,7 +55,7 @@ export function LoginPrompt({
             href="/auth/login"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#e67e22] text-white rounded-full text-sm font-bold hover:bg-[#d35400] transition-all transform hover:-translate-y-0.5 shadow-md hover:shadow-lg"
           >
-            ログインする
+            {t("loginCta")}
             <FaArrowRight className="text-xs" />
           </Link>
         </div>
@@ -67,6 +69,7 @@ interface CompactLoginPromptProps {
 }
 
 export function CompactLoginPrompt({ className = '' }: CompactLoginPromptProps) {
+  const t = useTranslations("components.extraUi.authLoginPrompt");
   const { isAuthenticated, isLoading } = useAuth();
 
   if (isLoading || isAuthenticated) {
@@ -79,13 +82,13 @@ export function CompactLoginPrompt({ className = '' }: CompactLoginPromptProps) 
     >
       <p className="text-sm text-stone-600 flex items-center gap-2">
         <FaSuitcase className="text-[#e67e22]/60" />
-        ログインしてプランを保存
+        {t("compactText")}
       </p>
       <Link
         href="/auth/login"
         className="text-sm font-bold text-[#e67e22] hover:text-[#d35400] transition-colors flex items-center gap-1"
       >
-        ログイン
+        {t("compactCta")}
         <FaArrowRight className="text-xs" />
       </Link>
     </div>

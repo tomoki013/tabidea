@@ -9,8 +9,18 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-06
+
+- `local` fix(i18n,components): `src/components` の未翻訳文言を追加移行。`MapErrorBoundary`、`LoginPromptModal`、`LoginPrompt`、`ShareButton`、`ShioriPromotionSection`、`landing` の `About/Hero/TravelInfo/v2 Concept`、`travel-info` 各 section、`BlogEditor`、`ItineraryPDF`、`TravelPlannerLegacy`、`DayPlaceholder`、`SamplePlanCard`/`SamplePlanList` の表示文言を `t()` 参照へ統一し、`src/messages/{ja,en}/components/extra-ui.json` を新設
+- `local` fix(i18n,pdf): PDF出力のカテゴリラベル・ビザ要否・注意文・持ち物リスト見出しを翻訳キー化し、`ja/en` ロケールで同一キー運用へ統一
+- `local` feat(i18n,samples): サンプル一覧の検索・絞り込みUI文言（タブ、モーダル、空状態、件数、もっと見る等）を翻訳キー化
+- `local` fix(i18n,faq): FAQ本文データを `src/lib/data/faq.ts` の日本語固定文言参照から `t()` ベースへ移行。`src/messages/{ja,en}/components/faq-data.json` を新設し、`FAQContent`・`FAQCategoryList`・`landing/FAQSection` の質問/回答を `ja/en` で表示できるよう統一
+- `local` fix(i18n,about/planner): `AboutContent` の `language === "en"` 分岐を廃止し、`t()` 参照へ一本化。`src/messages/{ja,en}/components/about-content.json` を追加。`SimplifiedInputFlow` も英語専用分岐と日本語直書きを撤去し、`components.features.planner.simplifiedInputFlow` 名前空間（`src/messages/{ja,en}/components/simplified-input-flow.json`）へ移行
+- `local` fix(i18n,landing/pdf): `landing/v2/ConceptSection` の説明文を `t.rich()` 化して接続語の直書きを撤去。`landing/TravelInfoSection` の為替説明・モック通貨/パスポート文言を `t()` 化。`ItineraryPDF` の `日` サフィックス、Travel Info サブタイトル、メモ見出し、持ち物カテゴリ名を翻訳キー参照へ統一
+
 ### 2026-03-05
 
+- `local` fix(i18n,lib): `src/lib`/`src/types` の実行時ハードコード文言を `t` ベースへ移行。`useGenerationProgress`・`usePlanGeneration`・`generate-outline`・`rate-limit`・`replan`（説明文/判定語彙）を翻訳キー参照化し、`messages/{ja,en}/lib/*` を新設。`travel-info` のカテゴリ/危険度ラベル定数は `getCategoryLabels` / `getDangerLevelDescriptions` を追加して翻訳生成へ統一
 - `local` fix(i18n): `src/app` 起点の英語対応を強化し、`contact` 送信フローをサーバー文字列返却からコード返却 + UI側 `t(...)` マッピングへ統一。`ContactForm` / `TravelPlannerChat` / `plan` 系クライアントでハードコード文言を翻訳キー管理へ移行し、`travel-info` 人気目的地リスト・`travel-info/[destination]` エラー文言・`sync-plans` エラー表示を辞書管理へ統一。再生成指示文は `app.planner.plan.regenerateInstruction` で共通化し、`/api/og` の画像内テキストも `messages/{ja,en}/api/og.json` ベースのロケール分岐へ変更
 - `local` fix(settings,ui): 設定モーダルの出発・帰着都市が保存後の再表示で地域代表都市へ戻る不具合を修正。読み込み時は保存済み `homeBaseCity` を保持し、地域変更時のみ代表都市を自動補完するように調整。同一地域の再選択や地域不変の操作ではユーザー明示値を上書きしない挙動へ変更
 - `local` fix(i18n): 言語切り替えボタン押下後に `preferredLanguage`（例: `ja`）で再リダイレクトされ、`/en/*` から日本語へ戻ってしまう不具合を修正。`proxy` の言語解決を「URLプレフィックス最優先」に変更し、明示的に選択したルート言語を保持するよう調整。あわせて優先順位ロジックを `src/lib/i18n/proxy-language.ts` に切り出し、回帰防止テストを追加
@@ -383,3 +393,4 @@
 - [patch] 多言語対応の拡張（渡航情報 action）: `travel-info` helper のソース表示名・免責文を翻訳キー管理へ移行し、action 層でも locale 指定で文言切替できるようにしました。
 - [patch] 多言語対応の拡張（国抽出辞書の外部化）: `country-extractor` の都市→国マッピングおよび国名リストを messages 管理へ移行し、action 内の辞書ハードコードを撤去しました。
 - [patch] 多言語対応の拡張（src/app 文字列リテラル整理）: `PlanCodeClient` の日付解析トークンを翻訳キー管理へ移行し、`src/app` 内の日本語文字列リテラルを解消しました。
+- [patch] 多言語対応の拡張（components 共通UI）: `AuthButton` / `SyncPrompt` / `PublishingSection` の文言を翻訳キー管理へ移行し、コンポーネント層のハードコードを削減しました。

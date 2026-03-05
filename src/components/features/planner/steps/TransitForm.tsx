@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { TransitInfo, TransitType } from "@/types";
+import { useTranslations } from "next-intl";
 import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaTimes, FaCheck, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 interface TransitFormProps {
@@ -13,15 +14,6 @@ interface TransitFormProps {
   onCancel: () => void;
 }
 
-const TRANSIT_TYPES: { id: TransitType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
-  { id: "flight", label: "飛行機", icon: FaPlane },
-  { id: "train", label: "電車", icon: FaTrain },
-  { id: "bus", label: "バス", icon: FaBus },
-  { id: "ship", label: "船", icon: FaShip },
-  { id: "car", label: "車", icon: FaCar },
-  { id: "other", label: "その他", icon: FaQuestion },
-];
-
 export default function TransitForm({
   dayIndex,
   totalDays,
@@ -30,6 +22,7 @@ export default function TransitForm({
   onSave,
   onCancel,
 }: TransitFormProps) {
+  const t = useTranslations("components.features.planner.steps.transitForm");
   const [type, setType] = useState<TransitType>(initialData?.type || "flight");
   const [depPlace, setDepPlace] = useState(initialData?.departure.place || "");
   const [depTime, setDepTime] = useState(initialData?.departure.time || "");
@@ -38,6 +31,14 @@ export default function TransitForm({
   const [memo, setMemo] = useState(initialData?.memo || "");
   // Default to true if undefined, as users typically enter booked flights
   const [isBooked, setIsBooked] = useState(initialData?.isBooked ?? true);
+  const transitTypes: { id: TransitType; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
+    { id: "flight", label: t("types.flight"), icon: FaPlane },
+    { id: "train", label: t("types.train"), icon: FaTrain },
+    { id: "bus", label: t("types.bus"), icon: FaBus },
+    { id: "ship", label: t("types.ship"), icon: FaShip },
+    { id: "car", label: t("types.car"), icon: FaCar },
+    { id: "other", label: t("types.other"), icon: FaQuestion },
+  ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,7 +56,7 @@ export default function TransitForm({
       <div className="flex justify-between items-center mb-6">
         <h4 className="font-bold text-stone-800 flex items-center gap-2 text-lg">
           <span className="bg-[#e67e22]/10 text-[#e67e22] px-2 py-1 rounded-md text-sm font-bold">Day {dayIndex}</span>
-          移動手段の編集
+          {t("title")}
         </h4>
         <button
           onClick={onCancel}
@@ -69,11 +70,11 @@ export default function TransitForm({
         {/* Is Booked Switch */}
         <div className="bg-stone-50 p-3 rounded-lg flex items-center justify-between border border-stone-200">
           <div className="flex flex-col">
-            <span className="font-bold text-stone-800 text-sm">予約状況</span>
+            <span className="font-bold text-stone-800 text-sm">{t("bookingStatus.label")}</span>
             <span className="text-[10px] text-stone-500">
               {isBooked
-                ? "この移動を確定事項としてプランを作成します"
-                : "あくまで希望としてAIに伝えます（変更の可能性あり）"}
+                ? t("bookingStatus.bookedDescription")
+                : t("bookingStatus.unbookedDescription")}
             </span>
           </div>
           <label className="relative inline-flex items-center cursor-pointer">
@@ -85,28 +86,28 @@ export default function TransitForm({
             />
             <div className="w-11 h-6 bg-stone-300 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-[#e67e22]/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-stone-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[#e67e22]"></div>
             <span className="ml-2 text-xs font-bold text-stone-600">
-              {isBooked ? "予約済" : "未予約"}
+              {isBooked ? t("bookingStatus.booked") : t("bookingStatus.unbooked")}
             </span>
           </label>
         </div>
 
         {/* Type Selection */}
         <div className="space-y-2">
-          <label className="text-xs font-bold text-stone-500 uppercase tracking-wide">移動タイプ</label>
+          <label className="text-xs font-bold text-stone-500 uppercase tracking-wide">{t("typeLabel")}</label>
           <div className="flex gap-3 overflow-x-auto pb-2 no-scrollbar">
-            {TRANSIT_TYPES.map((t) => (
+            {transitTypes.map((transitType) => (
               <button
-                key={t.id}
+                key={transitType.id}
                 type="button"
-                onClick={() => setType(t.id)}
+                onClick={() => setType(transitType.id)}
                 className={`flex flex-col items-center justify-center px-4 py-3 rounded-xl border-2 min-w-[80px] transition-all ${
-                  type === t.id
+                  type === transitType.id
                     ? "bg-[#e67e22]/5 border-[#e67e22] text-[#e67e22]"
                     : "bg-white border-stone-100 text-stone-400 hover:border-stone-200 hover:bg-stone-50"
                 }`}
               >
-                <t.icon className="text-2xl mb-1.5" />
-                <span className="text-xs font-bold whitespace-nowrap">{t.label}</span>
+                <transitType.icon className="text-2xl mb-1.5" />
+                <span className="text-xs font-bold whitespace-nowrap">{transitType.label}</span>
               </button>
             ))}
           </div>
@@ -124,7 +125,7 @@ export default function TransitForm({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-500 flex items-center gap-1">
-                出発 <span className="text-[10px] font-normal text-stone-400">(FROM)</span>
+                {t("departure.label")} <span className="text-[10px] font-normal text-stone-400">(FROM)</span>
               </label>
               <div className="grid grid-cols-[1fr_auto] gap-3">
                 <div className="relative">
@@ -133,7 +134,7 @@ export default function TransitForm({
                     required
                     value={depPlace}
                     onChange={(e) => setDepPlace(e.target.value)}
-                    placeholder="出発地 (例: 東京駅)"
+                    placeholder={t("departure.placeholder")}
                     className="w-full pl-9 pr-4 py-3 bg-white border border-stone-200 rounded-lg text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50 focus:border-[#e67e22]"
                   />
                 </div>
@@ -157,7 +158,7 @@ export default function TransitForm({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-500 flex items-center gap-1">
-                到着 <span className="text-[10px] font-normal text-stone-400">(TO)</span>
+                {t("arrival.label")} <span className="text-[10px] font-normal text-stone-400">(TO)</span>
               </label>
               <div className="grid grid-cols-[1fr_auto] gap-3">
                 <div className="relative">
@@ -166,7 +167,7 @@ export default function TransitForm({
                     required
                     value={arrPlace}
                     onChange={(e) => setArrPlace(e.target.value)}
-                    placeholder="到着地 (例: 大阪駅)"
+                    placeholder={t("arrival.placeholder")}
                     className="w-full pl-9 pr-4 py-3 bg-white border border-stone-200 rounded-lg text-stone-800 placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50 focus:border-[#e67e22]"
                   />
                 </div>
@@ -186,11 +187,11 @@ export default function TransitForm({
 
         {/* Memo */}
         <div>
-          <label className="block text-xs font-bold text-stone-500 mb-2 uppercase tracking-wide">メモ</label>
+          <label className="block text-xs font-bold text-stone-500 mb-2 uppercase tracking-wide">{t("memo.label")}</label>
           <input
             value={memo}
             onChange={(e) => setMemo(e.target.value)}
-            placeholder="便名、座席番号、予約番号など (例: JL123便 15A)"
+            placeholder={t("memo.placeholder")}
             className="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-lg text-stone-800 placeholder-stone-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#e67e22]/50 focus:border-[#e67e22]"
           />
         </div>
@@ -201,13 +202,13 @@ export default function TransitForm({
             onClick={onCancel}
             className="flex-1 py-3 px-4 bg-stone-100 text-stone-600 font-bold rounded-xl hover:bg-stone-200 transition-colors"
           >
-            キャンセル
+            {t("actions.cancel")}
           </button>
           <button
             type="submit"
             className="flex-[2] py-3 px-4 bg-[#e67e22] text-white font-bold rounded-xl hover:bg-[#d35400] transition-colors shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
           >
-            <FaCheck /> 保存する
+            <FaCheck /> {t("actions.save")}
           </button>
         </div>
       </form>

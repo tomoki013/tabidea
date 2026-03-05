@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { UserInput, PlanOutline } from "@/types";
 import { usePlanGeneration, useLimitModals } from "@/lib/hooks";
 import SimplifiedInputFlow from "./SimplifiedInputFlow";
@@ -35,7 +36,7 @@ const DEFAULT_INPUT: UserInput = {
   destinations: [],
   isDestinationDecided: undefined,
   region: "",
-  dates: "2泊3日",
+  dates: "",
   companions: "",
   theme: [],
   budget: "",
@@ -56,6 +57,7 @@ export default function TravelPlannerSimplified({
   showOutlineReview = true, // Force true to handle redirection after outline
   isInModal = false,
 }: TravelPlannerSimplifiedProps) {
+  const t = useTranslations("components.features.planner.travelPlannerSimplified");
   const router = useRouter();
   const searchParams = useSearchParams();
   const shouldRestore = searchParams.get("restore") === "true";
@@ -73,9 +75,12 @@ export default function TravelPlannerSimplified({
       ) {
         merged.isDestinationDecided = true;
       }
+      if (!merged.dates) {
+        merged.dates = t("defaultDates");
+      }
       return merged;
     }
-    return DEFAULT_INPUT;
+    return { ...DEFAULT_INPUT, dates: t("defaultDates") };
   });
 
   // ========================================
@@ -273,8 +278,8 @@ export default function TravelPlannerSimplified({
       errorMessage === "DEPLOYMENT_UPDATE_ERROR" ||
       generationState.error === "DEPLOYMENT_UPDATE_ERROR";
     const displayMessage = isDeploymentError
-      ? "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。"
-      : generationState.error || errorMessage || "エラーが発生しました";
+      ? t("errors.deploymentUpdate")
+      : generationState.error || errorMessage || t("errors.generic");
 
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -291,17 +296,17 @@ export default function TravelPlannerSimplified({
           }}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
         >
-          {isDeploymentError ? "ページを更新" : "もう一度試す"}
+          {isDeploymentError ? t("actions.reloadPage") : t("actions.tryAgain")}
         </button>
         <p className="text-stone-600 text-sm mt-2">
-          問題が解決しない場合は、
+          {t("contact.prefix")}
           <a
             href="/contact"
             className="text-primary hover:underline font-medium ml-1"
           >
-            お問い合わせページ
+            {t("contact.link")}
           </a>
-          からご連絡ください。
+          {t("contact.suffix")}
         </p>
       </div>
     );
@@ -331,7 +336,7 @@ export default function TravelPlannerSimplified({
             </svg>
             <div className="flex-1">
               <p className="text-amber-800 text-sm font-medium">
-                保存から24時間以上経過したため、入力内容は削除されました。
+                {t("notices.expired")}
               </p>
             </div>
             <button
@@ -375,7 +380,7 @@ export default function TravelPlannerSimplified({
             </svg>
             <div className="flex-1">
               <p className="text-green-800 text-sm font-medium">
-                入力内容を復元しました
+                {t("notices.restored")}
               </p>
             </div>
             <button

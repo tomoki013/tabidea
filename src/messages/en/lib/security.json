@@ -1,0 +1,10 @@
+{
+  "lib": {
+    "security": {
+      "rateLimit": {
+        "planCreationTooFrequent": "Plan creation is too frequent. Please wait and try again.",
+        "planUpdateTooFrequent": "Updates are too frequent. Please wait a moment before trying again."
+      }
+    }
+  }
+}

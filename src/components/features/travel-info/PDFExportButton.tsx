@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { useLocale, useMessages, useTranslations } from "next-intl";
 import { Loader2, FileText } from "lucide-react";
 import { TravelInfoCategory, CategoryState } from "./types";
 import { downloadBlob } from "@/lib/utils";
@@ -23,6 +24,9 @@ export default function PDFExportButton({
   disabled = false,
   dates,
 }: PDFExportButtonProps) {
+  const locale = useLocale();
+  const messages = useMessages();
+  const t = useTranslations("components.features.travelInfo.pdfExportButton");
   const [isGenerating, setIsGenerating] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pdfBlobUrl, setPdfBlobUrl] = useState<string | null>(null);
@@ -69,6 +73,8 @@ export default function PDFExportButton({
     const TravelInfoPDF = TravelInfoPDFModule.default;
 
     const pdfElement = React.createElement(TravelInfoPDF, {
+      locale,
+      messages,
       destination,
       country,
       categoryStates,
@@ -97,7 +103,7 @@ export default function PDFExportButton({
 
     } catch (err) {
       console.error("PDF Generation Error:", err);
-      setError(err instanceof Error ? err.message : "PDF生成に失敗しました");
+      setError(err instanceof Error ? err.message : t("generateFailed"));
     } finally {
       setIsGenerating(false);
     }
@@ -121,14 +127,14 @@ export default function PDFExportButton({
           onClick={handleExportPDF}
           disabled={disabled || isGenerating}
           className={`flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white transition-all shadow-md hover:shadow-lg hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed font-bold ${className}`}
-          aria-label="PDFとして出力"
+          aria-label={t("ariaLabel")}
         >
           {isGenerating ? (
             <Loader2 className="w-4 h-4 animate-spin" />
           ) : (
             <FileText className="w-4 h-4" />
           )}
-          <span className="text-sm">PDF出力</span>
+          <span className="text-sm">{t("label")}</span>
         </button>
         {error && (
           <p className="mt-1 text-xs text-red-600 font-medium">

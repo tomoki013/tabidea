@@ -1,6 +1,7 @@
 "use client";
 
 import { TransitInfo, TransitType } from "@/types";
+import { useTranslations } from "next-intl";
 import { FaPlane, FaTrain, FaBus, FaShip, FaCar, FaQuestion, FaTimes, FaPen } from "react-icons/fa";
 
 interface TransitListItemProps {
@@ -25,6 +26,7 @@ export default function TransitListItem({
   onEdit,
   onDelete,
 }: TransitListItemProps) {
+  const t = useTranslations("components.features.planner.steps.transitListItem");
   const Icon = ICONS[data.type] || FaQuestion;
 
   return (
@@ -41,7 +43,7 @@ export default function TransitListItem({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 mb-0.5">
           <span className="bg-stone-800 text-white text-[10px] font-bold px-1.5 rounded-sm">
-            Day {dayIndex}
+            {t("dayLabel", { day: dayIndex })}
           </span>
           {data.memo && <span className="text-[10px] text-stone-400 truncate">{data.memo}</span>}
         </div>

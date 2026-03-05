@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import { FaDownload, FaTimes, FaShareAlt, FaFilePdf, FaCheckCircle } from "react-icons/fa";
 
 interface PDFPreviewModalProps {
@@ -22,6 +23,7 @@ export default function PDFPreviewModal({
   onShare,
   enablePreview = true,
 }: PDFPreviewModalProps) {
+  const t = useTranslations("components.features.planner.pdfPreviewModal");
   // Handle escape key to close modal
   const handleKeyDown = useCallback(
     (event: KeyboardEvent) => {
@@ -74,12 +76,12 @@ export default function PDFPreviewModal({
             id="pdf-preview-title"
             className="text-lg font-bold text-stone-800 truncate pr-4"
           >
-            {enablePreview ? filename : "PDF生成完了"}
+            {enablePreview ? filename : t("generatedTitle")}
           </h2>
           <button
             onClick={onClose}
             className="flex items-center justify-center w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors"
-            aria-label="閉じる"
+            aria-label={t("close")}
           >
             <FaTimes className="text-stone-600" size={18} />
           </button>
@@ -92,11 +94,11 @@ export default function PDFPreviewModal({
               <iframe
                 src={pdfBlobUrl}
                 className="w-full h-full min-h-[60vh] rounded-lg border border-stone-200 bg-white"
-                title="PDF Preview"
+                title={t("iframeTitle")}
               />
             ) : (
               <div className="flex items-center justify-center h-full min-h-[60vh] text-stone-500">
-                PDFを読み込み中...
+                {t("loading")}
               </div>
             )
           ) : (
@@ -104,9 +106,9 @@ export default function PDFPreviewModal({
               <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
                  <FaCheckCircle className="text-green-600" size={40} />
               </div>
-              <h3 className="text-xl font-bold text-stone-800 mb-2">PDFの準備ができました</h3>
+              <h3 className="text-xl font-bold text-stone-800 mb-2">{t("readyTitle")}</h3>
               <p className="text-stone-600 mb-8 max-w-xs mx-auto">
-                旅程表のPDFファイルが正常に生成されました。以下のボタンから共有または保存してください。
+                {t("readyDescription")}
               </p>
 
               <div className="bg-white p-4 rounded-xl border border-stone-200 w-full max-w-xs flex items-center gap-3 shadow-sm mb-4">
@@ -115,7 +117,7 @@ export default function PDFPreviewModal({
                  </div>
                  <div className="text-left overflow-hidden">
                     <p className="font-bold text-stone-800 truncate text-sm">{filename}</p>
-                    <p className="text-xs text-stone-500">PDF Document</p>
+                    <p className="text-xs text-stone-500">{t("documentLabel")}</p>
                  </div>
               </div>
             </div>
@@ -128,7 +130,7 @@ export default function PDFPreviewModal({
             onClick={onClose}
             className="px-6 py-2.5 rounded-full border-2 border-stone-300 text-stone-700 hover:bg-stone-100 transition-colors font-medium"
           >
-            閉じる
+            {t("close")}
           </button>
 
            {/* Download Button - Secondary if Share is available */}
@@ -141,7 +143,7 @@ export default function PDFPreviewModal({
             }`}
           >
             <FaDownload size={16} />
-            <span>保存</span>
+            <span>{t("save")}</span>
           </button>
 
           {/* Share Button - Primary if available */}
@@ -151,7 +153,7 @@ export default function PDFPreviewModal({
               className="flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#DC2626] hover:bg-[#B91C1C] text-white transition-colors shadow-md hover:shadow-lg font-bold"
             >
               <FaShareAlt size={16} />
-              <span>共有</span>
+              <span>{t("share")}</span>
             </button>
           )}
         </div>

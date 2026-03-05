@@ -1,13 +1,14 @@
 "use client";
 
 /**
- * LeafletRouteView — Leaflet ルート表示 (Pro ティア)
+ * LeafletRouteView - Leaflet route view (Pro tier)
  *
- * react-leaflet + OpenStreetMap によるゼロコストの対話型ルートマップ。
- * 複数日のマーカーを色分け表示し、ルートラインを描画。
+ * Zero-cost interactive route map powered by react-leaflet + OpenStreetMap.
+ * Displays color-coded markers across days and draws route lines.
  */
 
 import { useEffect, useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import {
   MapContainer,
   TileLayer,
@@ -106,6 +107,7 @@ export default function LeafletRouteView({
   destination,
   className = "",
 }: MapRouteViewBaseProps) {
+  const t = useTranslations("components.features.planner.mapRoute");
   useLeafletCSS();
   const [isExpanded, setIsExpanded] = useState(true);
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
@@ -197,11 +199,11 @@ export default function LeafletRouteView({
         <div className="flex items-center gap-2">
           <FaMapMarkedAlt className="text-primary" />
           <span className="font-bold text-sm text-stone-700">
-            全日程マップ
+            {t("headerTitle")}
           </span>
           {markers.length > 0 && (
             <span className="text-xs text-stone-500">
-              ({markers.length} spots)
+              {t("spotsCount", { count: markers.length })}
             </span>
           )}
         </div>
@@ -225,7 +227,7 @@ export default function LeafletRouteView({
                     : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                 }`}
               >
-                全日程
+                {t("allDays")}
               </button>
               {days.map((day) => {
                 const color = getDayColor(day.day - 1);
@@ -240,7 +242,7 @@ export default function LeafletRouteView({
                       color: isActive ? "#fff" : color.bg,
                     }}
                   >
-                    Day {day.day}
+                    {t("dayLabel", { day: day.day })}
                   </button>
                 );
               })}
@@ -290,7 +292,7 @@ export default function LeafletRouteView({
                             className="text-[10px] font-bold px-1.5 py-0.5 rounded-full inline-block text-white mb-1"
                             style={{ backgroundColor: color.bg }}
                           >
-                            Day {marker.dayNumber}
+                            {t("dayLabel", { day: marker.dayNumber })}
                           </div>
                           <h3 className="font-bold text-xs text-stone-800 mb-1">
                             {marker.name}
@@ -305,7 +307,7 @@ export default function LeafletRouteView({
                             rel="noopener noreferrer"
                             className="text-[10px] text-primary font-bold flex items-center gap-1 hover:underline border-t border-stone-100 pt-1 mt-1"
                           >
-                            <FaExternalLinkAlt size={8} /> Google Mapsで見る
+                            <FaExternalLinkAlt size={8} /> {t("openInGoogleMaps")}
                           </a>
                         </div>
                       </Popup>
@@ -322,10 +324,10 @@ export default function LeafletRouteView({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-md text-xs font-bold text-stone-600 hover:bg-white hover:text-primary transition-colors flex items-center gap-2 z-[1000]"
-                title="Google Mapsでルートを開く"
+                title={t("openRouteTitle")}
               >
                 <FaExternalLinkAlt />
-                <span className="hidden sm:inline">Google Maps</span>
+                <span className="hidden sm:inline">{t("googleMapsLabel")}</span>
               </a>
 
               {/* Legend */}
@@ -333,15 +335,15 @@ export default function LeafletRouteView({
                 <span className="font-medium">{destination}</span>
                 <span className="mx-1.5 text-stone-300">|</span>
                 <span>
-                  {selectedDay ? `Day ${selectedDay}` : `${days.length}日間`}
+                  {selectedDay ? t("dayLabel", { day: selectedDay }) : t("tripDays", { days: days.length })}
                 </span>
               </div>
             </div>
           ) : (
             <div className="flex-1 min-h-[200px] flex flex-col items-center justify-center bg-stone-50 text-stone-400 gap-3 p-6">
               <FaMapMarkedAlt className="text-3xl text-stone-300" />
-              <p className="text-sm font-medium">位置情報を読み込み中...</p>
-              <p className="text-xs text-stone-400">スポットの座標を取得しています</p>
+              <p className="text-sm font-medium">{t("loadingLocation")}</p>
+              <p className="text-xs text-stone-400">{t("loadingCoordinates")}</p>
             </div>
           )}
         </>

@@ -1,6 +1,7 @@
 'use client';
 
 import { Calendar, Star } from 'lucide-react';
+import { useTranslations } from "next-intl";
 import type { EventsInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
 
@@ -10,17 +11,19 @@ import type { SectionBaseProps } from '../types';
  * 主要なイベント、季節の祭りを表示
  */
 export default function EventsSection({ data }: SectionBaseProps<EventsInfo>) {
+  const t = useTranslations("components.extraUi.travelInfoSections.events");
+
   return (
     <div className="space-y-6">
       {/* 主要なイベント */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Star className="w-5 h-5 text-primary" />
-          主要なイベント
+          {t("majorEventsTitle")}
         </h4>
         <div className="space-y-3">
           {data.majorEvents.map((event, index) => (
-            <EventCard key={index} event={event} />
+            <EventCard key={index} event={event} dateLabel={t("dateLabel")} />
           ))}
         </div>
       </div>
@@ -30,11 +33,16 @@ export default function EventsSection({ data }: SectionBaseProps<EventsInfo>) {
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <Calendar className="w-5 h-5 text-primary" />
-            季節の祭り
+            {t("seasonalFestivalsTitle")}
           </h4>
           <div className="space-y-3">
             {data.seasonalFestivals.map((festival, index) => (
-              <EventCard key={index} event={festival} variant="seasonal" />
+              <EventCard
+                key={index}
+                event={festival}
+                variant="seasonal"
+                dateLabel={t("dateLabel")}
+              />
             ))}
           </div>
         </div>
@@ -48,10 +56,12 @@ export default function EventsSection({ data }: SectionBaseProps<EventsInfo>) {
  */
 function EventCard({
   event,
-  variant = 'default'
+  variant = 'default',
+  dateLabel,
 }: {
   event: { name: string; date: string; description: string };
   variant?: 'default' | 'seasonal';
+  dateLabel: string;
 }) {
   return (
     <div className={`
@@ -69,7 +79,7 @@ function EventCard({
             : 'bg-white border-orange-200 text-orange-600'
           }
         `}>
-          <span className="text-[10px] font-bold uppercase tracking-wider">DATE</span>
+          <span className="text-[10px] font-bold uppercase tracking-wider">{dateLabel}</span>
           <span className="text-xs font-bold text-center px-1 leading-tight mt-1">
             {event.date}
           </span>

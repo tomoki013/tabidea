@@ -176,6 +176,8 @@ export interface TripContext {
   returnConstraint?: string;
   /** 予算レベル */
   budget: string;
+  /** 表示・文言生成に利用する言語 */
+  language?: "ja" | "en";
 }
 
 // ============================================================================

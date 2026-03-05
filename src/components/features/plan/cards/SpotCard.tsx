@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { MapPin, Clock, Star, ExternalLink, Camera, AlertCircle, Loader2, Trash2 } from "lucide-react";
 import BaseCard, { CardState } from "./BaseCard";
 import { Activity, ActivityValidation, PlacePhoto } from "@/types";
@@ -44,6 +45,7 @@ interface PhotoCarouselProps {
 }
 
 function PhotoCarousel({ photos }: PhotoCarouselProps) {
+  const t = useTranslations("components.features.plan.cards.spotCard");
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (photos.length === 0) return null;
@@ -55,7 +57,7 @@ function PhotoCarousel({ photos }: PhotoCarouselProps) {
         {photos[currentIndex]?.url ? (
           <img
             src={photos[currentIndex].url}
-            alt={`写真 ${currentIndex + 1}`}
+            alt={t("photoAlt", { index: currentIndex + 1 })}
             className="w-full h-full object-cover"
           />
         ) : (
@@ -78,7 +80,7 @@ function PhotoCarousel({ photos }: PhotoCarouselProps) {
               className={`w-2 h-2 rounded-full transition-colors ${
                 index === currentIndex ? "bg-white" : "bg-white/50"
               }`}
-              aria-label={`写真 ${index + 1}`}
+              aria-label={t("photoAlt", { index: index + 1 })}
             />
           ))}
         </div>
@@ -137,6 +139,7 @@ export default function SpotCard({
   onDelete,
   expandable = true,
 }: SpotCardProps) {
+  const t = useTranslations("components.features.plan.cards.spotCard");
   const { activity: name, description, validation, activityType } = activity;
 
   // Determine if this activity should trigger Places API search
@@ -244,12 +247,12 @@ export default function SpotCard({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (confirm('この予定を削除しますか？')) {
+              if (confirm(t("confirmDelete"))) {
                 onDelete();
               }
             }}
             className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
-            title="削除"
+            title={t("delete")}
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -261,7 +264,7 @@ export default function SpotCard({
         {/* Description */}
         <div>
           <div className="flex items-center justify-between mb-1">
-            <h4 className="text-sm font-bold text-stone-700">詳細</h4>
+            <h4 className="text-sm font-bold text-stone-700">{t("details")}</h4>
             {activity.source && <CitationBadge source={activity.source} />}
           </div>
           {isEditable ? (
@@ -281,7 +284,7 @@ export default function SpotCard({
         {isNotFound && !skipPlacesSearch && (
           <div className="flex items-center gap-2 text-sm text-red-600 bg-red-50 rounded-lg p-3 border border-red-200">
             <AlertCircle className="w-4 h-4 flex-shrink-0" />
-            <span>位置情報未確認：Google Placesで該当スポットが見つかりませんでした。AI生成の情報のため、実在しない可能性があります。</span>
+            <span>{t("unverifiedAlert")}</span>
           </div>
         )}
 
@@ -314,7 +317,7 @@ export default function SpotCard({
                     </span>
                     {fetchedDetails?.details?.reviewCount && (
                       <span className="text-sm text-stone-500">
-                        ({fetchedDetails.details.reviewCount}件の口コミ)
+                        {t("reviewCount", { count: fetchedDetails.details.reviewCount })}
                       </span>
                     )}
                   </div>
@@ -331,7 +334,7 @@ export default function SpotCard({
                       {mergedValidation.details.openingHours.length > 3 && (
                         <details className="mt-1">
                           <summary className="text-blue-600 cursor-pointer hover:underline">
-                            すべての営業時間を見る
+                            {t("viewAllHours")}
                           </summary>
                           <div className="mt-1">
                             {mergedValidation.details.openingHours.slice(3).map((hours, i) => (
@@ -366,7 +369,7 @@ export default function SpotCard({
                 className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 hover:underline"
               >
                 <Loader2 className="w-4 h-4" />
-                詳細情報を取得
+                {t("fetchDetails")}
               </button>
             )}
 
@@ -385,7 +388,7 @@ export default function SpotCard({
                 onClick={(e) => e.stopPropagation()}
               >
                 <ExternalLink className="w-4 h-4" />
-                Google マップで見る
+                {t("viewOnGoogleMaps")}
               </a>
             )}
           </>

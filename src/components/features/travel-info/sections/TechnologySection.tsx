@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { Zap, Wifi, Smartphone, Plug } from 'lucide-react';
 import type { TechnologyInfo } from '@/types';
 import type { SectionBaseProps } from '../types';
@@ -8,22 +9,24 @@ import type { SectionBaseProps } from '../types';
  * TechnologySection - 電源・通信情報セクション
  */
 export default function TechnologySection({ data }: SectionBaseProps<TechnologyInfo>) {
+  const t = useTranslations('components.features.travelInfo.sections.technologySection');
+
   return (
     <div className="space-y-6">
       {/* 電源事情 */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Zap className="w-5 h-5 text-primary" />
-          電源・コンセント
+          {t('powerAndPlug')}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <InfoCard
-            label="コンセント形状"
+            label={t('labels.plugType')}
             value={data.plugs.join(', ')}
             icon={<Plug className="w-4 h-4 text-stone-500" />}
           />
           <InfoCard
-            label="電圧"
+            label={t('labels.voltage')}
             value={data.voltage}
             icon={<Zap className="w-4 h-4 text-stone-500" />}
           />
@@ -34,7 +37,7 @@ export default function TechnologySection({ data }: SectionBaseProps<TechnologyI
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Wifi className="w-5 h-5 text-primary" />
-          インターネット・Wi-Fi
+          {t('internetWifi')}
         </h4>
         <div className="bg-[#fcfbf9] rounded-xl p-6 border border-stone-200 relative shadow-sm">
           <div className="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary/10 rounded-tr-xl" />
@@ -56,7 +59,7 @@ export default function TechnologySection({ data }: SectionBaseProps<TechnologyI
         <div className="space-y-3">
           <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
             <Smartphone className="w-5 h-5 text-primary" />
-            SIMカード
+            {t('simCard')}
           </h4>
           <div className="bg-white rounded-xl p-6 border border-stone-200 border-dashed shadow-sm">
             <p className="text-stone-700 leading-relaxed text-sm font-serif">{data.sim}</p>

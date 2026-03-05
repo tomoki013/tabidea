@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { UserInput, TransitInfo } from '@/types';
 import { FaPlus, FaTicketAlt } from "react-icons/fa";
 import TransitForm from "./TransitForm";
@@ -15,34 +16,45 @@ interface StepTransitProps {
   onComplete?: () => void;
 }
 
-// Helper functions (duplicated from StepDates for independence)
+const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 const parseDate = (str: string) => {
   const match = str.match(/(\d{4}-\d{2}-\d{2})/);
   return match ? match[1] : "";
 };
 
-const parseDuration = (str: string) => {
-  // Check for "日帰り" (Day trip = 1 day)
-  if (str.includes("日帰り")) return 1;
-
-  const daysMatch = str.match(/(\d+)日間/);
-  if (daysMatch) {
-    const d = parseInt(daysMatch[1]);
-    return Math.max(1, isNaN(d) ? 1 : d);
-  }
-  const nightsMatch = str.match(/(\d+)泊(\d+)日/);
-  if (nightsMatch) {
-    const d = parseInt(nightsMatch[2]);
-    return Math.max(1, isNaN(d) ? 1 : d);
-  }
-  return 3; // Default
-};
-
-const isDurationUndecidedCheck = (str: string) =>
-  !str.includes("日帰り") && !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
-
-
 export default function StepTransit({ input, onChange, onNext, canComplete, onComplete }: StepTransitProps) {
+  const t = useTranslations("components.features.planner.steps.stepTransit");
+  const tDates = useTranslations("components.features.planner.steps.stepDates");
+
+  const dayTripLabel = tDates("formats.dayTrip");
+  const daysUnit = tDates("formats.daysUnit");
+  const nightsUnit = tDates("formats.nightsUnit");
+  const dayUnit = tDates("formats.dayUnit");
+  const daysRegex = new RegExp(`(\\d+)\\s*${escapeRegex(daysUnit)}`);
+  const nightsRegex = new RegExp(`(\\d+)\\s*${escapeRegex(nightsUnit)}\\s*(\\d+)\\s*${escapeRegex(dayUnit)}`);
+
+  const parseDuration = (str: string) => {
+    if (str.includes(dayTripLabel)) return 1;
+
+    const daysMatch = str.match(daysRegex);
+    if (daysMatch) {
+      const d = Number.parseInt(daysMatch[1], 10);
+      return Math.max(1, Number.isNaN(d) ? 1 : d);
+    }
+
+    const nightsMatch = str.match(nightsRegex);
+    if (nightsMatch) {
+      const d = Number.parseInt(nightsMatch[2], 10);
+      return Math.max(1, Number.isNaN(d) ? 1 : d);
+    }
+
+    return 3;
+  };
+
+  const isDurationUndecidedCheck = (str: string) =>
+    !str.includes(dayTripLabel) && !daysRegex.test(str) && !nightsRegex.test(str);
+
   const startDate = parseDate(input.dates);
   const duration = parseDuration(input.dates);
   const isDurationUndecided = isDurationUndecidedCheck(input.dates);
@@ -70,17 +82,17 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
     <div className="flex flex-col h-full space-y-8 pt-4 animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-serif font-bold text-foreground">
-          移動手段は決まっていますか？
+          {t("title")}
         </h2>
         <p className="font-hand text-muted-foreground">
-          飛行機や新幹線など、予約済みのものがあれば教えてください
+          {t("lead")}
         </p>
       </div>
 
       <div className="flex-1 overflow-y-auto px-1 pb-4">
         {isDurationUndecided ? (
              <div className="text-center p-8 bg-stone-50 rounded-xl border border-stone-200 text-stone-500">
-                <p>日程が未定のため、移動情報の入力はスキップします。</p>
+                <p>{t("durationUndecidedMessage")}</p>
              </div>
         ) : (
             <div className="space-y-6 max-w-md mx-auto">
@@ -88,8 +100,8 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                     <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
                         <span className="text-xl text-primary"><FaTicketAlt /></span>
                         <span className="flex flex-col leading-none">
-                            登録済みの移動
-                            <span className="text-[10px] text-stone-400 font-normal normal-case">スケジュールに反映されます</span>
+                            {t("registeredTransit.label")}
+                            <span className="text-[10px] text-stone-400 font-normal normal-case">{t("registeredTransit.subLabel")}</span>
                         </span>
                     </label>
                     {!isAddingTransit && (
@@ -101,7 +113,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                             }}
                             className="text-xs text-white bg-stone-800 px-3 py-1.5 rounded-full font-bold hover:bg-black transition-colors flex items-center gap-1 shadow-sm"
                         >
-                            <FaPlus size={10} /> 追加
+                            <FaPlus size={10} /> {t("add")}
                         </button>
                     )}
                 </div>
@@ -110,7 +122,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                 <div className="space-y-3">
                     {Object.keys(transits).length === 0 && !isAddingTransit && (
                         <div className="text-center py-8 border-2 border-dashed border-stone-200 rounded-xl text-stone-400 bg-stone-50/50">
-                            まだ登録されていません
+                            {t("empty")}
                         </div>
                     )}
 
@@ -134,7 +146,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                         {/* Day Selector if new */}
                         {!editingDay && (
                             <div className="mb-4 bg-stone-50 p-3 rounded-lg border border-stone-200">
-                                <label className="text-xs font-bold text-stone-500 mb-2 block">何日目の移動？</label>
+                                <label className="text-xs font-bold text-stone-500 mb-2 block">{t("daySelector.label")}</label>
                                 <div className="flex gap-2 flex-wrap max-h-32 overflow-y-auto custom-scrollbar">
                                     {Array.from({ length: duration }, (_, i) => i + 1).map(d => (
                                         <button
@@ -146,7 +158,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                                                     : "bg-white text-stone-500 border-stone-200 hover:border-primary hover:text-primary"
                                             } ${transits[d] ? "opacity-50" : ""}`}
                                         >
-                                            Day {d}
+                                            {t("dayLabel", { day: d })}
                                         </button>
                                     ))}
                                 </div>
@@ -185,7 +197,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            {Object.keys(transits).length > 0 ? "次へ進む →" : "特になし（次へ） →"}
+            {Object.keys(transits).length > 0 ? t("next") : t("nextWithoutTransit")}
           </button>
 
            {/* Skip & Create Plan Button */}
@@ -195,7 +207,7 @@ export default function StepTransit({ input, onChange, onNext, canComplete, onCo
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

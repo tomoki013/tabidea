@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { FaSearch } from "react-icons/fa";
-import { faqs } from "@/lib/data/faq";
 import FAQCategoryList from "./FAQCategoryList";
 import FAQCard from "./FAQCard";
+import { useLocalizedFaqData } from "./useLocalizedFaq";
 
 export default function FAQContent() {
   const t = useTranslations("components.faq.content");
+  const { faqs } = useLocalizedFaqData();
   const [searchTerm, setSearchTerm] = useState("");
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 

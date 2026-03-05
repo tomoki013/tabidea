@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { UserInput } from '@/types';
 import {
   FaUtensils,
@@ -26,21 +27,28 @@ interface StepThemesProps {
 }
 
 const THEME_ITEMS = [
-  { label: "グルメ", icon: FaUtensils, id: "グルメ" },
-  { label: "歴史・文化", icon: FaLandmark, id: "歴史・文化" },
-  { label: "自然・絶景", icon: FaMountain, id: "自然・絶景" },
-  { label: "リラックス", icon: FaCoffee, id: "リラックス" },
-  { label: "穴場スポット", icon: FaSearch, id: "穴場スポット" },
-  { label: "ショッピング", icon: FaShoppingBag, id: "ショッピング" },
-  { label: "アート", icon: FaPalette, id: "アート" },
-  { label: "体験・アクティビティ", icon: FaRunning, id: "体験・アクティビティ" },
-  { label: "温泉・サウナ", icon: FaHotTub, id: "温泉・サウナ" },
-  { label: "写真映え", icon: FaCamera, id: "写真映え" },
-  { label: "冒険", icon: FaCompass, id: "冒険" },
-  { label: "その他", icon: FaQuestion, id: "その他" },
+  { key: "gourmet", icon: FaUtensils },
+  { key: "historyCulture", icon: FaLandmark },
+  { key: "natureScenery", icon: FaMountain },
+  { key: "relax", icon: FaCoffee },
+  { key: "hiddenSpots", icon: FaSearch },
+  { key: "shopping", icon: FaShoppingBag },
+  { key: "art", icon: FaPalette },
+  { key: "experienceActivity", icon: FaRunning },
+  { key: "onsenSauna", icon: FaHotTub },
+  { key: "photogenic", icon: FaCamera },
+  { key: "adventure", icon: FaCompass },
+  { key: "other", icon: FaQuestion },
 ];
 
 export default function StepThemes({ input, onChange, onNext, canComplete, onComplete }: StepThemesProps) {
+  const t = useTranslations("components.features.planner.steps.stepThemes");
+  const items = THEME_ITEMS.map((item) => ({
+    ...item,
+    label: t(`themes.${item.key}`),
+    value: t(`themeValues.${item.key}`),
+  }));
+
   const toggleTheme = (t: string) => {
     if (input.theme.includes(t)) {
       onChange({ theme: input.theme.filter((x) => x !== t) });
@@ -53,23 +61,23 @@ export default function StepThemes({ input, onChange, onNext, canComplete, onCom
     <div className="flex flex-col h-full w-full animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="space-y-2 text-center mb-8 shrink-0">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-foreground leading-tight">
-          どんな旅にしますか？
+          {t("title")}
         </h2>
         <p className="font-hand text-muted-foreground text-sm sm:text-base">
-          気になるテーマをタップして選んでください
+          {t("lead")}
         </p>
       </div>
 
       <div className="flex-1 overflow-y-auto min-h-0 px-2 sm:px-4 pb-4">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-          {THEME_ITEMS.map((item) => {
-            const isSelected = input.theme.includes(item.id);
+          {items.map((item) => {
+            const isSelected = input.theme.includes(item.value);
             const Icon = item.icon;
 
             return (
               <button
-                key={item.id}
-                onClick={() => toggleTheme(item.id)}
+                key={item.key}
+                onClick={() => toggleTheme(item.value)}
                 className={`
                   group relative flex flex-col items-center justify-center p-4 aspect-square
                   transition-all duration-300 ease-out
@@ -114,7 +122,7 @@ export default function StepThemes({ input, onChange, onNext, canComplete, onCom
               onClick={onNext}
               className="text-primary font-medium hover:underline font-hand text-lg"
             >
-              {input.theme.length}つのテーマで次へ進む →
+              {t("nextWithCount", { count: input.theme.length })}
             </button>
 
             {/* Skip & Create Plan Button */}
@@ -124,7 +132,7 @@ export default function StepThemes({ input, onChange, onNext, canComplete, onCom
                     onClick={onComplete}
                     className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                     >
-                    任意項目をスキップしてプランを作成
+                    {t("skipAndCreate")}
                     </button>
                 </div>
             )}

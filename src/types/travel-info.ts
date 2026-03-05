@@ -2,6 +2,10 @@
  * 渡航情報機能の型定義
  * Travel Information Types for AI Travel Planner
  */
+import { createTranslator } from "next-intl";
+import type { LanguageCode } from "@/lib/i18n/locales";
+import enMessages from "@/messages/en/lib/travel-info.json";
+import jaMessages from "@/messages/ja/lib/travel-info.json";
 
 // ============================================
 // 基本列挙型・リテラル型
@@ -565,30 +569,59 @@ export const ALL_TRAVEL_INFO_CATEGORIES: TravelInfoCategory[] = [
 /**
  * カテゴリの日本語ラベル
  */
-export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = {
-  basic: "基本情報",
-  safety: "安全・医療",
-  climate: "気候・服装",
-  visa: "ビザ・入国",
-  manner: "マナー・チップ",
-  transport: "交通事情",
-  local_food: "グルメ",
-  souvenir: "お土産・買い物",
-  events: "イベント・祭り",
-  technology: "電源・通信",
-  healthcare: "医療・衛生",
-  restrooms: "トイレ事情",
-  smoking: "喫煙ルール",
-  alcohol: "飲酒ルール",
-};
+const TRAVEL_INFO_MESSAGES = {
+  en: enMessages,
+  ja: jaMessages,
+} as const;
+
+function resolveTravelInfoLocale(locale?: string): LanguageCode {
+  return locale === "en" ? "en" : "ja";
+}
+
+function createTravelInfoTranslator(locale?: string) {
+  const resolvedLocale = resolveTravelInfoLocale(locale);
+  return createTranslator({
+    locale: resolvedLocale,
+    messages: TRAVEL_INFO_MESSAGES[resolvedLocale],
+    namespace: "lib.travelInfo",
+  });
+}
+
+export function getCategoryLabels(locale?: string): Record<TravelInfoCategory, string> {
+  const t = createTravelInfoTranslator(locale);
+  return {
+    basic: t("categoryLabels.basic"),
+    safety: t("categoryLabels.safety"),
+    climate: t("categoryLabels.climate"),
+    visa: t("categoryLabels.visa"),
+    manner: t("categoryLabels.manner"),
+    transport: t("categoryLabels.transport"),
+    local_food: t("categoryLabels.local_food"),
+    souvenir: t("categoryLabels.souvenir"),
+    events: t("categoryLabels.events"),
+    technology: t("categoryLabels.technology"),
+    healthcare: t("categoryLabels.healthcare"),
+    restrooms: t("categoryLabels.restrooms"),
+    smoking: t("categoryLabels.smoking"),
+    alcohol: t("categoryLabels.alcohol"),
+  };
+}
+
+export const CATEGORY_LABELS: Record<TravelInfoCategory, string> = getCategoryLabels("ja");
 
 /**
  * 危険度レベルの日本語説明
  */
-export const DANGER_LEVEL_DESCRIPTIONS: Record<DangerLevel, string> = {
-  0: "危険情報なし",
-  1: "十分注意してください",
-  2: "不要不急の渡航は止めてください",
-  3: "渡航は止めてください（渡航中止勧告）",
-  4: "退避してください（退避勧告）",
-};
+export function getDangerLevelDescriptions(locale?: string): Record<DangerLevel, string> {
+  const t = createTravelInfoTranslator(locale);
+  return {
+    0: t("dangerLevelDescriptions.0"),
+    1: t("dangerLevelDescriptions.1"),
+    2: t("dangerLevelDescriptions.2"),
+    3: t("dangerLevelDescriptions.3"),
+    4: t("dangerLevelDescriptions.4"),
+  };
+}
+
+export const DANGER_LEVEL_DESCRIPTIONS: Record<DangerLevel, string> =
+  getDangerLevelDescriptions("ja");

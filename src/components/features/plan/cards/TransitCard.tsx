@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
+import { useTranslations } from "next-intl";
 import {
   Plane,
   Train,
@@ -62,38 +63,31 @@ const TRANSIT_CONFIG: Record<
   TransitType,
   {
     icon: typeof Plane;
-    label: string;
     colorTheme: "blue" | "green" | "orange" | "purple" | "teal";
   }
 > = {
   flight: {
     icon: Plane,
-    label: "飛行機",
     colorTheme: "blue",
   },
   train: {
     icon: Train,
-    label: "電車",
     colorTheme: "green",
   },
   bus: {
     icon: Bus,
-    label: "バス",
     colorTheme: "orange",
   },
   ship: {
     icon: Ship,
-    label: "船",
     colorTheme: "teal",
   },
   car: {
     icon: Car,
-    label: "車",
     colorTheme: "purple",
   },
   other: {
     icon: MapPin,
-    label: "その他",
     colorTheme: "orange",
   },
 };
@@ -116,6 +110,7 @@ export default function TransitCard({
   className = "",
   expandable = true,
 }: TransitCardProps) {
+  const t = useTranslations("components.features.plan.cards.transitCard");
   const config = TRANSIT_CONFIG[transit.type];
   const Icon = config.icon;
 
@@ -157,7 +152,7 @@ export default function TransitCard({
       return (
         <div className="flex items-center gap-2 text-sm text-stone-500" onClick={(e) => e.stopPropagation()}>
            <div className="flex items-center gap-1">
-              <span>発:</span>
+              <span>{t("departureShort")}</span>
               <EditableText
                  value={transit.departure.time || ''}
                  onChange={(val) => onUpdate?.({ departure: { ...transit.departure, time: val } })}
@@ -168,7 +163,7 @@ export default function TransitCard({
            </div>
            <span>-</span>
            <div className="flex items-center gap-1">
-              <span>着:</span>
+              <span>{t("arrivalShort")}</span>
               <EditableText
                  value={transit.arrival.time || ''}
                  onChange={(val) => onUpdate?.({ arrival: { ...transit.arrival, time: val } })}
@@ -182,10 +177,10 @@ export default function TransitCard({
     }
     const parts: string[] = [];
     if (transit.departure.time) {
-      parts.push(`${transit.departure.time}発`);
+      parts.push(t("departureTime", { time: transit.departure.time }));
     }
     if (transit.arrival.time) {
-      parts.push(`${transit.arrival.time}着`);
+      parts.push(t("arrivalTime", { time: transit.arrival.time }));
     }
     if (parts.length === 0 && transit.memo) {
       return transit.memo;
@@ -215,7 +210,7 @@ export default function TransitCard({
             value={transit.duration || ''}
             onChange={(val) => onUpdate?.({ duration: val })}
             isEditable={true}
-            placeholder="所要時間"
+            placeholder={t("durationPlaceholder")}
             className="w-16 text-xs"
          />
       ) : transit.duration}
@@ -227,7 +222,7 @@ export default function TransitCard({
       badge={
         transit.isBooked ? (
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-            予約済み
+            {t("booked")}
           </span>
         ) : undefined
       }
@@ -236,12 +231,12 @@ export default function TransitCard({
           <button
             onClick={(e) => {
               e.stopPropagation();
-              if (confirm('この移動を削除しますか？')) {
+              if (confirm(t("confirmDelete"))) {
                 onDelete();
               }
             }}
             className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors ml-2"
-            title="削除"
+            title={t("delete")}
           >
             <Trash2 className="w-4 h-4" />
           </button>
@@ -255,7 +250,7 @@ export default function TransitCard({
           <div className="flex items-center gap-3">
             {/* Departure */}
             <div className="flex-1 min-w-0">
-              <div className="text-xs text-stone-500 font-medium mb-0.5">出発</div>
+              <div className="text-xs text-stone-500 font-medium mb-0.5">{t("departure")}</div>
               <div className="text-base font-bold text-stone-800 truncate">
                 {transit.departure.place}
               </div>
@@ -285,7 +280,7 @@ export default function TransitCard({
 
             {/* Arrival */}
             <div className="flex-1 min-w-0 text-right">
-              <div className="text-xs text-stone-500 font-medium mb-0.5">到着</div>
+              <div className="text-xs text-stone-500 font-medium mb-0.5">{t("arrival")}</div>
               <div className="text-base font-bold text-stone-800 truncate">
                 {transit.arrival.place}
               </div>
@@ -301,14 +296,14 @@ export default function TransitCard({
         {/* Memo */}
         {(transit.memo || isEditable) && (
           <div>
-            <h4 className="text-sm font-bold text-stone-700 mb-1">メモ</h4>
+            <h4 className="text-sm font-bold text-stone-700 mb-1">{t("memo")}</h4>
             {isEditable ? (
                <EditableText
                   value={transit.memo || ''}
                   onChange={(val) => onUpdate?.({ memo: val })}
                   isEditable={true}
                   multiline
-                  placeholder="メモを入力..."
+                  placeholder={t("memoPlaceholder")}
                   className="text-sm w-full min-h-[60px] p-2 bg-stone-50 border border-stone-200 rounded"
                />
             ) : (
@@ -322,7 +317,7 @@ export default function TransitCard({
           <div className="pt-2 space-y-2 border-t border-stone-100">
             {transit.isBooked && (
               <p className="text-xs text-green-600 font-medium text-center">
-                予約済みですが、別の航空券も検索できます
+                {t("bookedHint")}
               </p>
             )}
             {/* Flight Search Button */}
@@ -334,11 +329,11 @@ export default function TransitCard({
               className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-xl hover:from-blue-600 hover:to-blue-700 transition-all text-sm font-bold shadow-sm hover:shadow-md"
             >
               <Plane className="w-4 h-4" />
-              航空券を探す
+              {t("searchFlights")}
               <ExternalLink className="w-3 h-3 ml-1" />
             </a>
             <p className="text-xs text-stone-400 text-center">
-              {flightLinks[0].displayName}で航空券を検索
+              {t("searchWithProvider", { provider: flightLinks[0].displayName })}
             </p>
           </div>
         )}
@@ -363,12 +358,12 @@ export default function TransitCard({
               {transit.isLocked ? (
                 <>
                   <Lock className="w-4 h-4" />
-                  ロック中
+                  {t("locked")}
                 </>
               ) : (
                 <>
                   <Unlock className="w-4 h-4" />
-                  ロック
+                  {t("lock")}
                 </>
               )}
             </button>

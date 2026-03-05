@@ -1,39 +1,41 @@
 "use client";
 
 /**
- * MapRouteViewRenderer — ティア別ルートマップファクトリー
+ * MapRouteViewRenderer - Tier-based route map factory
  *
- * | ティア           | プロバイダー  | コスト |
+ * | Tier            | Provider    | Cost   |
  * |-----------------|-------------|--------|
- * | anonymous/free  | static      | ゼロ   |
- * | pro             | leaflet     | ゼロ   |
- * | premium/admin   | google_maps | 有料   |
+ * | anonymous/free  | static      | zero   |
+ * | pro             | leaflet     | zero   |
+ * | premium/admin   | google_maps | paid   |
  */
 
 import dynamic from "next/dynamic";
+import { useTranslations } from "next-intl";
 import type { MapRouteViewProps } from "./types";
 import StaticRouteView from "./StaticRouteView";
 
-// Leaflet は SSR 非対応のため dynamic import
+function MapLoadingPlaceholder() {
+  const t = useTranslations("components.features.planner.mapRoute");
+  return (
+    <div className="w-full min-h-[300px] bg-stone-100 rounded-xl animate-pulse flex items-center justify-center">
+      <span className="text-stone-400 text-sm">{t("mapLoading")}</span>
+    </div>
+  );
+}
+
+// Leaflet is SSR-incompatible, so use dynamic import.
 const LeafletRouteView = dynamic(() => import("./LeafletRouteView"), {
   ssr: false,
-  loading: () => (
-    <div className="w-full min-h-[300px] bg-stone-100 rounded-xl animate-pulse flex items-center justify-center">
-      <span className="text-stone-400 text-sm">マップを読み込み中...</span>
-    </div>
-  ),
+  loading: () => <MapLoadingPlaceholder />,
 });
 
-// Google Maps (既存の MapRouteView) も dynamic import
+// Google Maps route view is also loaded dynamically.
 const GoogleRouteView = dynamic(
   () => import("../MapRouteView"),
   {
     ssr: false,
-    loading: () => (
-      <div className="w-full min-h-[300px] bg-stone-100 rounded-xl animate-pulse flex items-center justify-center">
-        <span className="text-stone-400 text-sm">マップを読み込み中...</span>
-      </div>
-    ),
+    loading: () => <MapLoadingPlaceholder />,
   },
 );
 

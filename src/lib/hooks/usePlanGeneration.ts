@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import {
   UserInput,
   Itinerary,
@@ -71,15 +72,7 @@ export interface UsePlanGenerationReturn {
   progressCurrentStep: string | null;
 }
 
-// ============================================================================
-// Default input values for optional fields
-// ============================================================================
-
-const DEFAULT_INPUT_VALUES = {
-  budget: "standard",
-  pace: "balanced",
-  theme: ["グルメ"],
-};
+type TranslatorFn = (key: string, values?: Record<string, unknown>) => string;
 
 // ============================================================================
 // API Route helper for chunk generation (replaces Server Action)
@@ -91,6 +84,7 @@ async function fetchChunkFromAPI(
   outlineDays: PlanOutline["days"],
   startDay: number,
   endDay: number,
+  t: TranslatorFn,
   previousOvernightLocation?: string
 ): Promise<ChunkActionState> {
   const res = await fetch("/api/generate/chunk", {
@@ -107,7 +101,10 @@ async function fetchChunkFromAPI(
   });
 
   if (!res.ok) {
-    return { success: false, message: `サーバーエラー (${res.status})` };
+    return {
+      success: false,
+      message: t("errors.chunkServerError", { status: res.status }),
+    };
   }
 
   return res.json();
@@ -120,6 +117,7 @@ async function fetchChunkFromAPI(
 export function usePlanGeneration(
   options: UsePlanGenerationOptions = {}
 ): UsePlanGenerationReturn {
+  const t = useTranslations("lib.planGeneration.hook");
   const { onComplete, streamingMode = true } = options;
 
   const router = useRouter();
@@ -219,6 +217,7 @@ export function usePlanGeneration(
           chunkOutlineDays,
           chunk.start,
           chunk.end,
+          t as TranslatorFn,
           previousOvernightLocation
         );
 
@@ -241,7 +240,7 @@ export function usePlanGeneration(
         }
       }
     },
-    [updateDayStatus, addCompletedDays]
+    [updateDayStatus, addCompletedDays, t]
   );
 
   // ========================================
@@ -302,11 +301,11 @@ export function usePlanGeneration(
       setGenerationState((prev) => ({
         ...prev,
         phase: "error",
-        error: "プランの保存に失敗しました。",
+        error: t("errors.saveFailed"),
         errorType: "save",
       }));
     }
-  }, [generationState, isAuthenticated, refreshPlans, router, onComplete]);
+  }, [generationState, isAuthenticated, refreshPlans, router, onComplete, t]);
 
   // ========================================
   // Watch for completion and auto-save
@@ -347,10 +346,11 @@ export function usePlanGeneration(
         preparedInput.region = "anywhere";
       }
 
-      if (!preparedInput.budget) preparedInput.budget = DEFAULT_INPUT_VALUES.budget;
-      if (!preparedInput.pace) preparedInput.pace = DEFAULT_INPUT_VALUES.pace;
-      if (preparedInput.theme.length === 0)
-        preparedInput.theme = DEFAULT_INPUT_VALUES.theme;
+      if (!preparedInput.budget) preparedInput.budget = "standard";
+      if (!preparedInput.pace) preparedInput.pace = "balanced";
+      if (preparedInput.theme.length === 0) {
+        preparedInput.theme = (t.raw("defaults.theme") as string[]) || ["Gourmet"];
+      }
       if (preparedInput.hasMustVisitPlaces === undefined) {
         preparedInput.hasMustVisitPlaces =
           (preparedInput.mustVisitPlaces?.length ?? 0) > 0;
@@ -397,7 +397,7 @@ export function usePlanGeneration(
 
         if (!outlineResponse.success || !outlineResponse.data) {
           throw new Error(
-            outlineResponse.message || "プラン概要の作成に失敗しました。"
+            outlineResponse.message || t("errors.outlineFailed")
           );
         }
 
@@ -482,9 +482,9 @@ export function usePlanGeneration(
         // Detect timeout/network errors from Server Actions
         let msg: string;
         if (rawMsg && (rawMsg.includes("unexpected response") || rawMsg.includes("Failed to fetch") || rawMsg.includes("AbortError") || rawMsg.includes("NEXT_SERVER_ACTION"))) {
-          msg = "サーバーとの通信がタイムアウトしました。もう一度お試しください。";
+          msg = t("errors.timeout");
         } else {
-          msg = rawMsg || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+          msg = rawMsg || t("errors.networkTimeout");
         }
 
         if (rawMsg && rawMsg.includes("Server Action") && rawMsg.includes("not found")) {
@@ -506,7 +506,7 @@ export function usePlanGeneration(
         }
       }
     },
-    [streamingMode, generateChunk, generationState.phase, generateOutlineStream, resetProgress]
+    [streamingMode, generateChunk, generationState.phase, generateOutlineStream, resetProgress, t]
   );
 
   // ========================================
@@ -549,7 +549,7 @@ export function usePlanGeneration(
         await Promise.all(allChunkPromises);
       } catch (e: unknown) {
         console.error(e);
-        const errMsg = (e instanceof Error ? e.message : null) || "詳細プランの生成に失敗しました。";
+        const errMsg = (e instanceof Error ? e.message : null) || t("errors.detailsFailed");
         setGenerationState((prev) => ({
           ...prev,
           phase: "error",
@@ -559,7 +559,7 @@ export function usePlanGeneration(
         setErrorMessage(errMsg);
       }
     },
-    [generateChunk]
+    [generateChunk, t]
   );
 
   // ========================================

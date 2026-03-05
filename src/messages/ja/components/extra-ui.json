@@ -1,0 +1,280 @@
+{
+  "components": {
+    "extraUi": {
+      "mapErrorBoundary": {
+        "failedToLoadMap": "地図の読み込みに失敗しました",
+        "checkGoogleMapsApiSettings": "Google Maps APIの設定を確認してください"
+      },
+      "loginPromptModal": {
+        "title": "旅の続きを始めましょう",
+        "benefitsIntro": "無料アカウントを作成すると...",
+        "benefitMonthlyLimitCount": "月3回まで",
+        "benefitMonthlyLimitSuffix": "プラン生成",
+        "benefitPlanSaveManage": "プランの保存・管理",
+        "benefitMultiDevice": "複数デバイスからアクセス",
+        "restoreNotice": "※ 入力中のデータはログイン後に復元されます",
+        "loginCta": "ログイン / 無料登録",
+        "laterCta": "あとで登録する"
+      },
+      "travelInfoShareButton": {
+        "trigger": "共有",
+        "copied": "コピーしました!",
+        "copyUrl": "URLをコピー",
+        "shareOnTwitter": "Twitterで共有",
+        "shareOnLine": "LINEで共有"
+      },
+      "shioriPromotionSection": {
+        "badge": "CREATE YOUR OWN",
+        "title": "あなただけの旅のしおりを作りませんか？",
+        "descriptionLine1": "Tabideaなら、行き先と日程を入れるだけで",
+        "descriptionLine2": "AIがあなたの理想の旅行プランを数秒で提案します。",
+        "cta": "無料でプランを作成する"
+      },
+      "authLoginPrompt": {
+        "title": "プランを保存しませんか？",
+        "description": "ログインすると、プランを保存していつでも見返すことができます。",
+        "localPlansCount": "現在 {count} 件のプランがローカルに保存されています",
+        "loginCta": "ログインする",
+        "compactText": "ログインしてプランを保存",
+        "compactCta": "ログイン"
+      },
+      "blogEditor": {
+        "uploadFailed": "画像アップロードに失敗しました",
+        "uploadCompleted": "アップロード完了: {url}",
+        "usernameRequired": "username は必須です",
+        "profileSaveFailed": "プロフィール保存失敗",
+        "saveFailed": "保存に失敗しました",
+        "published": "公開しました",
+        "draftSaved": "下書きを保存しました",
+        "profileTitle": "Blog Profile",
+        "postEditorTitle": "Post Editor",
+        "shioriEmbedGuide": "旅のしおり埋め込み:",
+        "contentPlaceholder": "HTMLベース本文",
+        "coverImageLabel": "Cover image",
+        "saveDraft": "下書き保存",
+        "publish": "公開",
+        "embedPreviewTitle": "Embed Preview"
+      },
+      "samplePlanCard": {
+        "viewDetails": "詳細を見る"
+      },
+      "samplePlanList": {
+        "dayOptions": {
+          "all": "すべて",
+          "2days": "1泊2日",
+          "3days": "2泊3日",
+          "4days": "3泊4日",
+          "5daysOrMore": "4泊5日以上"
+        },
+        "tabs": {
+          "theme": "テーマ",
+          "oshikatsu": "推し活",
+          "companion": "同行者",
+          "season": "季節"
+        },
+        "searchPlaceholder": "キーワード、目的地、気分で検索...",
+        "tabAll": "すべて",
+        "tabDomestic": "国内",
+        "tabOverseas": "海外",
+        "filter": "絞り込み",
+        "filterSearchTitle": "条件検索",
+        "clearAll": "すべてクリア",
+        "days": "日数",
+        "tags": "タグ（カテゴリ）",
+        "noMatchingTags": "該当するタグがありません",
+        "area": "エリア",
+        "applyAndClose": "条件を適用して閉じる",
+        "selected": "選択中:",
+        "plansCount": "件のプラン",
+        "showMore": "もっと見る ({count}件)",
+        "emptySearchNotFound": "「{query}」のプランは見つかりませんでした",
+        "emptyNotFound": "プランが見つかりませんでした",
+        "emptySearchTip": "キーワードを変えて、もう一度探してみてください。",
+        "emptyFilterTip": "選択した条件に一致する旅のプランがありませんでした。\n条件を少し緩めて、もう一度探してみてください。",
+        "clearAllFilters": "すべてのフィルタを解除"
+      },
+      "travelPlannerLegacy": {
+        "defaultUndecidedDates": "時期は未定",
+        "errors": {
+          "destinationRequired": "行き先を少なくとも1つ入力してください ✈️",
+          "regionOrVibeRequired": "エリアを選択するか、希望の雰囲気を入力してください 🌏",
+          "mustVisitChoiceRequired": "あるか、ないかを選択してください 🤔",
+          "mustVisitPlacesRequired": "行きたい場所を入力してください ✍️",
+          "companionsRequired": "誰との旅行か選択してください 👥",
+          "themeRequired": "テーマを少なくとも1つ選択してください 🎭",
+          "budgetRequired": "予算感を選択してください 💰",
+          "datesRequired": "日程または時期を選択してください 📅",
+          "paceRequired": "旅行のペースを選択してください ⚡",
+          "saveFailed": "プランの保存に失敗しました。",
+          "outlineGenerationFailed": "プラン概要の作成に失敗しました。",
+          "networkOrTimeout": "ネットワークエラーまたはサーバータイムアウトが発生しました。",
+          "deploymentUpdated": "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。",
+          "generic": "エラーが発生しました",
+          "contactHintPrefix": "問題が解決しない場合は、",
+          "contactPage": "お問い合わせページ",
+          "contactHintSuffix": "からご連絡ください。",
+          "restoreExpired": "保存から24時間以上経過したため、入力内容は削除されました。",
+          "restoreSuccess": "入力内容を復元しました"
+        },
+        "actions": {
+          "refreshPage": "ページを更新",
+          "retry": "もう一度試す"
+        }
+      },
+      "landingAboutSection": {
+        "headlineLine1": "日常の境界線を越え、",
+        "headlineLine2": "新しい景色と自分に出会う。",
+        "leadLine1": "Tabideaは、あなたの心の奥にある「なんとなく」をすくい上げ、",
+        "leadLine2": "一生モノの体験へと変えるトラベルパートナーです。",
+        "tabiTitle": "Tabi（旅）",
+        "tabiLine1": "ただの移動ではありません。",
+        "tabiLine2": "日常を離れ、心を開放する冒険の時間は、人生を彩る最も鮮やかなパレットです。",
+        "ideaTitle": "Idea（アイデア）",
+        "ideaLine1": "「どこかに行きたい」という曖昧な願い。",
+        "ideaLine2": "AIとの対話を通して、あなた自身も気づいていなかった本当の望みを形にします。",
+        "deaiTitle": "Deai（出会い）",
+        "deaiLine1": "完璧な計画の中に生まれる、予期せぬ喜び。",
+        "deaiLine2": "偶然の景色や人々との出会いこそが、旅を特別な物語に変えてくれます。",
+        "storyLink": "私たちの想い（Brand Story）"
+      },
+      "landingHeroSection": {
+        "badge": "Story of your journey starts here",
+        "headlinePrefix": "心の奥にある",
+        "headlineHighlight": "『行きたい』",
+        "headlineMiddle": "を、",
+        "headlineSuffix": "かたちに。",
+        "subLine1": "まだ言葉にならない旅の種を、",
+        "subLine2": "AIと一緒に育ててみませんか？",
+        "usageLink": "初めての方はこちら（使い方）"
+      },
+      "landingTravelInfoSection": {
+        "badge": "Travel Support",
+        "headlineLine1": "安心も、",
+        "headlineLine2": "旅の一部です。",
+        "leadLine1": "知らない土地へ行くときは、誰でも少し不安になるもの。",
+        "leadLine2": "Tabideaなら、旅の計画と一緒に、現地に必要な情報もまとめてチェックできます。",
+        "featureLocalTime": "主要都市の現地時間を表示",
+        "featureExchangeRate": "最新の為替レートをかんたん計算",
+        "featureSafetyLink": "外務省の安全情報へのダイレクトリンク",
+        "cta": "渡航情報・ツールを見る",
+        "mockLocalTimeLabel": "Local Time",
+        "mockLocalTimeLocation": "in Paris",
+        "mockCurrencyLabel": "Currency",
+        "mockCurrencyBase": "JPY",
+        "mockCurrencyConverted": "¥20,350",
+        "mockPassportLabel": "PASSPORT"
+      },
+      "landingV2ConceptSection": {
+        "badge": "Concept",
+        "headlineSub": "旅と、発想と、出会いを紡ぐ。",
+        "quoteLine1": "ふとした「行きたい」が、",
+        "quoteLine2": "一生モノの物語に変わる瞬間。",
+        "quoteLine3": "AIが提案するのは、ただの予定表ではなく",
+        "quoteLine4": "あなただけの「旅のしおり」です。",
+        "descriptionRich": "<brand>Tabidea</brand>は、効率的なルート提案だけでなく、旅先での<deai>「偶然の出会い (Deai)」</deai>や、あなた自身の<idea>「潜在的な願望 (Idea)」</idea>を引き出し、世界に一つだけの<tabi>「旅 (Tabi)」</tabi>を創造します。",
+        "descriptionPrefix": "Tabideaは、効率的なルート提案だけでなく、",
+        "descriptionDeai": "「偶然の出会い (Deai)」",
+        "descriptionMiddle": "や、",
+        "descriptionIdea": "「潜在的な願望 (Idea)」",
+        "descriptionMiddle2": "を引き出し、",
+        "descriptionTabi": "「旅 (Tabi)」",
+        "descriptionSuffix": "を創造します。"
+      },
+      "travelInfoSections": {
+        "alcohol": {
+          "rulesTitle": "販売・飲酒ルール",
+          "ageLimitTitle": "年齢制限",
+          "legalAgeLabel": "Legal Age",
+          "notesTitle": "その他の注意点"
+        },
+        "events": {
+          "majorEventsTitle": "主要なイベント",
+          "seasonalFestivalsTitle": "季節の祭り",
+          "dateLabel": "DATE"
+        },
+        "localFood": {
+          "popularDishesTitle": "代表的な料理",
+          "diningEtiquetteTitle": "食事のマナー・習慣"
+        },
+        "healthcare": {
+          "drinkingWaterTitle": "飲料水",
+          "vaccinesTitle": "推奨される予防接種",
+          "noSpecificVaccines": "特に指定はありません",
+          "medicalTitle": "医療水準・病院"
+        },
+        "restrooms": {
+          "availabilityTitle": "トイレの清潔度・普及状況",
+          "notesTitle": "利用時の注意"
+        },
+        "manner": {
+          "tippingTitle": "チップの習慣",
+          "customsTitle": "現地の習慣・マナー",
+          "taboosTitle": "タブー・避けるべきこと",
+          "badgeRequired": "チップ必須",
+          "badgeCustomary": "チップは慣習的",
+          "badgeNotNeeded": "チップ不要"
+        },
+        "souvenir": {
+          "popularItemsTitle": "人気のお土産",
+          "shoppingAreasTitle": "おすすめの買い物エリア",
+          "taxFreeTitle": "免税情報"
+        },
+        "smoking": {
+          "rulesTitle": "喫煙ルール・罰則",
+          "areasTitle": "喫煙場所",
+          "finesTitle": "違反時の罰金"
+        },
+        "transport": {
+          "publicTransportTitle": "公共交通機関",
+          "rideshareTitle": "配車サービス",
+          "rideshareAvailable": "配車サービス利用可能",
+          "rideshareUnavailable": "配車サービス利用不可または限定的",
+          "drivingNotesTitle": "運転に関する注意事項"
+        }
+      },
+      "itineraryPdf": {
+        "labels": {
+          "languages": "公用語",
+          "timezone": "タイムゾーン",
+          "currency": "通貨",
+          "dangerLevel": "危険度",
+          "safetyWarnings": "安全警告",
+          "visaRequired": "ビザ要否",
+          "visaFreeStay": "ビザなし滞在",
+          "requiredDocuments": "必要書類",
+          "medicalLevel": "医療水準",
+          "vaccines": "推奨予防接種",
+          "drinkingWater": "飲料水",
+          "localCustoms": "現地の習慣",
+          "taboos": "タブー・注意事項",
+          "tipping": "チップ",
+          "season": "季節",
+          "recommendedClothing": "おすすめの服装",
+          "createdAt": "作成日",
+          "memo": "メモ",
+          "travelInfoGuide": "渡航情報・安全ガイド",
+          "travelInfoSubtitle": "{destination} - 渡航情報・安全ガイド",
+          "aiDisclaimer": "※ この情報はAIによって生成されたものであり、正確性を保証するものではありません。渡航前には必ず外務省海外安全ホームページ等の公式情報をご確認ください。",
+          "packingList": "持ち物リスト",
+          "packingSubtitle": "{destination} への旅行に必要なもの",
+          "itemsCount": "{count}アイテム"
+        },
+        "values": {
+          "required": "必要",
+          "notRequired": "不要",
+          "daysTrip": "{count} Days Trip",
+          "daysCount": "{count}日"
+        },
+        "packingCategories": {
+          "documents": "書類・貴重品",
+          "clothing": "衣類",
+          "electronics": "電子機器",
+          "toiletries": "衛生用品",
+          "medicine": "医薬品",
+          "theme": "テーマ別",
+          "other": "その他"
+        }
+      }
+    }
+  }
+}

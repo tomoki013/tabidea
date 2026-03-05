@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 interface LimitExceededModalProps {
@@ -15,21 +16,17 @@ export function LimitExceededModal({
   resetAt,
   actionType,
 }: LimitExceededModalProps) {
-  const actionLabels = {
-    plan_generation: 'プラン生成',
-    travel_info: '渡航情報取得',
-    chat: 'チャット',
-    regenerate: '再生成',
-  };
-
-  const actionLabel = actionLabels[actionType];
+  const t = useTranslations('components.common.limitExceededModal');
+  const locale = useLocale();
+  const actionLabel = t(`actionType.${actionType}`);
 
   const formatResetDate = (date: Date) => {
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-    const weekday = weekdays[date.getDay()];
-    return `${month}月${day}日 (${weekday})`;
+    const formatter = new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
+      month: 'short',
+      day: 'numeric',
+      weekday: 'short',
+    });
+    return formatter.format(date);
   };
 
   const getTimeUntilReset = (date: Date) => {
@@ -39,11 +36,11 @@ export function LimitExceededModal({
     const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 
     if (days > 0) {
-      return `あと${days}日`;
+      return t('timeUntilReset.days', { days });
     } else if (hours > 0) {
-      return `あと${hours}時間`;
+      return t('timeUntilReset.hours', { hours });
     } else {
-      return 'もうすぐ';
+      return t('timeUntilReset.soon');
     }
   };
 
@@ -75,11 +72,11 @@ export function LimitExceededModal({
               />
             </svg>
             <h2 className="text-xl font-bold text-stone-800">
-              {actionLabel}の利用制限に達しました
+              {t('title', { actionLabel })}
             </h2>
           </div>
           <p className="text-stone-600 mb-4">
-            今月の無料枠を使い切りました。
+            {t('description')}
           </p>
 
           {resetAt && (
@@ -98,7 +95,7 @@ export function LimitExceededModal({
                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="font-medium">次回リセット</span>
+                <span className="font-medium">{t('nextReset')}</span>
               </div>
               <p className="text-lg font-bold text-primary">
                 {formatResetDate(resetAt)}
@@ -111,12 +108,13 @@ export function LimitExceededModal({
 
           <div className="bg-primary/5 p-4 rounded-lg mb-4">
             <p className="text-sm text-stone-600 mb-3">
-              プレミアムプランなら<strong>無制限</strong>で利用できます。
-              回数券も購入可能です。
+              {t.rich('upgradeMessage', {
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
             <Link href="/pricing">
               <button className="w-full px-4 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors">
-                プランを見る
+                {t('viewPlans')}
               </button>
             </Link>
           </div>
@@ -126,7 +124,7 @@ export function LimitExceededModal({
             onClick={onClose}
             className="w-full px-4 py-2.5 border border-stone-300 text-stone-700 font-medium rounded-xl hover:bg-stone-50 transition-colors"
           >
-            閉じる
+            {t('close')}
           </button>
         </div>
       </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Plane } from 'lucide-react';
 import type { LoadingStateProps } from './types';
@@ -10,9 +11,12 @@ import type { LoadingStateProps } from './types';
  * スケルトンUIとアニメーションでローディング中を表現
  */
 export default function LoadingState({
-  message = '渡航情報を取得中...',
+  message,
   categoryCount = 3,
 }: LoadingStateProps) {
+  const t = useTranslations('components.features.travelInfo.loadingState');
+  const resolvedMessage = message || t('defaultMessage');
+
   return (
     <div className="space-y-8">
       {/* メインローディングインジケーター */}
@@ -35,7 +39,7 @@ export default function LoadingState({
           className="flex items-center justify-center gap-2 text-stone-600"
         >
           <Plane className="w-5 h-5 text-primary animate-bounce" />
-          <span className="font-hand text-lg">{message}</span>
+          <span className="font-hand text-lg">{resolvedMessage}</span>
         </motion.div>
       </div>
 

@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { FaCalendarAlt, FaUsers, FaMapMarkerAlt } from "react-icons/fa";
 import { SamplePlan, regionTags } from "@/lib/sample-plans";
 
@@ -52,6 +53,8 @@ const defaultTagStyle = {
 };
 
 const SamplePlanCard = memo(function SamplePlanCard({ plan, index }: SamplePlanCardProps) {
+  const t = useTranslations("components.extraUi.samplePlanCard");
+
   // 地域タグとその他のタグを分離して表示順序を整理
   const regionTag = plan.tags.find(tag => regionTags.includes(tag));
   const otherTags = plan.tags.filter(tag => !regionTags.includes(tag));
@@ -124,7 +127,7 @@ const SamplePlanCard = memo(function SamplePlanCard({ plan, index }: SamplePlanC
           {/* Card Footer */}
           <div className="px-5 py-3 bg-stone-50 border-t border-stone-100">
             <span className="text-sm font-bold text-[#e67e22] group-hover:underline">
-              詳細を見る &rarr;
+              {t("viewDetails")} &rarr;
             </span>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface StepRegionProps {
   value?: string;
@@ -21,10 +22,11 @@ export default function StepRegion({
   canComplete,
   onComplete,
 }: StepRegionProps) {
+  const t = useTranslations("components.features.planner.steps.stepRegion");
   const regions = [
-    { id: "domestic", label: "国内", sub: "Domestic", icon: "🗾" },
-    { id: "overseas", label: "海外", sub: "Overseas", icon: "🗽" },
-    { id: "anywhere", label: "指定なし", sub: "Anywhere", icon: "🎲" },
+    { id: "domestic", label: t("regions.domestic.label"), sub: t("regions.domestic.sub"), icon: "🗾" },
+    { id: "overseas", label: t("regions.overseas.label"), sub: t("regions.overseas.sub"), icon: "🗽" },
+    { id: "anywhere", label: t("regions.anywhere.label"), sub: t("regions.anywhere.sub"), icon: "🎲" },
   ];
 
   const handleSelect = (id: string) => {
@@ -38,10 +40,10 @@ export default function StepRegion({
     <div className="flex flex-col min-h-full justify-start space-y-12 animate-in fade-in slide-in-from-right-8 duration-500 py-4">
       <div className="space-y-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground leading-tight">
-          どんな旅行に行きたいですか？
+          {t("title")}
         </h2>
         <p className="text-stone-600 font-hand">
-          ざっくりとしたイメージや、やりたいことを教えてください
+          {t("lead")}
         </p>
       </div>
 
@@ -50,7 +52,7 @@ export default function StepRegion({
           <textarea
             value={vibe || ""}
             onChange={(e) => onVibeChange(e.target.value)}
-            placeholder="例：南の島、リゾートでゆっくり、温泉があるところ..."
+            placeholder={t("vibePlaceholder")}
             className="w-full h-32 bg-white border border-stone-300 rounded-lg p-4 text-foreground placeholder:text-stone-300 focus:outline-hidden focus:border-primary focus:ring-1 focus:ring-primary transition-colors resize-none text-base leading-relaxed font-hand shadow-sm"
             style={{
               backgroundImage:
@@ -67,7 +69,7 @@ export default function StepRegion({
 
       <div className="space-y-4">
         <label className="block text-stone-500 font-bold text-center text-sm uppercase tracking-widest">
-          エリアで絞り込む（任意）
+          {t("filterLabel")}
         </label>
         <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-4xl mx-auto w-full px-4">
           {regions.map((region, i) => {
@@ -124,7 +126,7 @@ export default function StepRegion({
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            次へ進む →
+            {t("next")}
           </button>
 
           {/* Skip & Create Plan Button */}
@@ -134,7 +136,7 @@ export default function StepRegion({
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

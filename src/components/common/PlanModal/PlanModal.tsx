@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 import { useSearchParams } from 'next/navigation';
 import TravelPlannerSimplified from "@/components/features/planner/TravelPlannerSimplified";
 import { UserInput } from '@/types';
@@ -27,6 +28,7 @@ export default function PlanModal({
   initialInput,
   initialStep = 0,
 }: PlanModalProps) {
+  const t = useTranslations("components.common.planModal");
   const searchParams = useSearchParams();
 
   // 復元パラメータをチェック
@@ -111,7 +113,7 @@ export default function PlanModal({
         <button
           onClick={handleClose}
           className="absolute -top-2 -right-2 z-10 w-10 h-10 bg-white rounded-full shadow-lg hover:bg-stone-100 transition-all flex items-center justify-center text-stone-600 hover:text-stone-800 border-2 border-stone-200 hover:scale-110"
-          aria-label="閉じる"
+          aria-label={t("closeAriaLabel")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

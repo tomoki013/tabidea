@@ -28,6 +28,283 @@
           "empty": "該当する質問はありません。",
           "viewAll": "すべてのFAQを見る"
         },
+        "publishingSection": {
+          "badge": "Share your travel story",
+          "titleLine1": "計画で終わらせず、",
+          "titleLine2": "旅の価値を「伝わる形」に。",
+          "leadLine1": "Tabideaでは、作ったプランを「旅のしおり」として公開したり、ブログ記事として発信したりできます。",
+          "leadLine2": "旅行前の共有にも、旅行後の記録にも使える導線を用意しました。",
+          "cards": {
+            "shiori": {
+              "title": "旅のしおり",
+              "description": "旅程・費用・メモをまとめて公開。同行者や家族に、URLひとつで旅の全体像を共有できます。",
+              "cta": "旅のしおりの使い方を見る"
+            },
+            "blog": {
+              "title": "ブログ",
+              "description": "旅の背景や気づき、現地で役立った情報を記事化。旅のしおりの埋め込みで、実用性の高い旅行記事を作れます。",
+              "cta": "ブログ機能を詳しく見る"
+            }
+          }
+        },
+        "featureSection": {
+          "items": {
+            "guide": {
+              "title": "あなただけのガイド",
+              "description": "AIがあなたの好みを理解し、世界に一つだけのプランを提案します。"
+            },
+            "discovery": {
+              "title": "未知の場所へ",
+              "description": "ガイドブックには載っていない、隠れた名所を見つけましょう。"
+            },
+            "edit": {
+              "title": "物語を編集する",
+              "description": "提案されたプランは自由自在。あなたの旅の物語を完成させてください。"
+            }
+          }
+        },
+        "howItWorksSection": {
+          "title": "旅のつくりかた",
+          "lead": "とてもシンプル。まるで日記を書くように。",
+          "steps": [
+            {
+              "title": "行き先と日程を決める",
+              "description": "行きたい場所と期間を入力してください。漠然としていても大丈夫。"
+            },
+            {
+              "title": "AIがドラフトを作成",
+              "description": "数秒で旅行プランのたたき台ができあがります。"
+            },
+            {
+              "title": "自由にアレンジ",
+              "description": "気に入らない場所は変更したり、新しいアイデアを追加したり。"
+            }
+          ]
+        },
+        "usageGuideHero": {
+          "badge": "HOW TO USE",
+          "titleLine1": "使い方は、",
+          "titleLine2": "とてもシンプル。",
+          "leadLine1": "行き先を決めて、AIと話すだけ。",
+          "leadLine2": "あなたのわがままを、素敵な旅のプランに変えましょう。",
+          "steps": {
+            "destinationAndDates": "行き先と日程を入力",
+            "autoGenerate": "AIがプランを自動生成",
+            "customize": "自由にカスタマイズ"
+          },
+          "viewDetailedGuide": "詳しい使い方を見る",
+          "viewTravelInfoGuide": "渡航情報・安全ガイドはこちら",
+          "visualWriting": "AI is writing your plan..."
+        },
+        "blogPromotionSection": {
+          "badge": "Everyone's Blog",
+          "titleLine1": "みんなの",
+          "titleLine2": "旅行記",
+          "leadLine1": "実際に訪れた場所、食べたもの、感じたこと。",
+          "leadLine2": "みんなのリアルな体験談から、新しい旅の発見があるかもしれません。",
+          "highlights": [
+            {
+              "title": "3泊4日の京都旅行！穴場スポット巡り"
+            },
+            {
+              "title": "初めての台湾一人旅、食べ歩き記録"
+            },
+            {
+              "title": "北海道で大自然を満喫する旅"
+            }
+          ],
+          "readBlog": "ブログを読む",
+          "mock": {
+            "tipLabel": "Tips",
+            "tipTitle": "How to Plan Your Next Trip with AI"
+          }
+        },
+        "exampleSection": {
+          "title": "みんなの旅の記録",
+          "lead": "例えばこんなプラン。",
+          "examples": [
+            {
+              "location": "京都",
+              "theme": "静寂と歴史",
+              "note": "朝一番の清水寺から始まり、嵐山の竹林で深呼吸。夜は先斗町で京料理を。"
+            },
+            {
+              "location": "沖縄",
+              "theme": "青と白のコントラスト",
+              "note": "レンタカーで古宇利島へ。美ら海水族館の後は、サンセットビーチで波の音を聴く。"
+            },
+            {
+              "location": "金沢",
+              "theme": "アートと海鮮",
+              "note": "21世紀美術館で現代アートに触れ、近江町市場で新鮮な海鮮丼を堪能する旅。"
+            }
+          ],
+          "ctaPrompt": "もっと色々なプランを見てみませんか？",
+          "ctaButton": "サンプルプランをもっと見る"
+        },
+        "trinityCircle": {
+          "deaiLine1": "未知との遭遇",
+          "deaiLine2": "最高の瞬間",
+          "tabiLabel": "旅の実行",
+          "ideaLine1": "一人一人に",
+          "ideaLine2": "最適なプラン",
+          "brandLabel": "Tabidea",
+          "brandKana": "タビデア",
+          "descriptionPrefix": "は、あなたの",
+          "tabiLabelLong": "旅（Tabi）",
+          "descriptionMiddle": "を、",
+          "descriptionLine2": "一生モノの体験へ変えるAIプランナーです。"
+        },
+        "travelShioriHeroSection": {
+          "badge": "Discover",
+          "titleLine1": "みんなの",
+          "titleLine2": "旅のしおりを探そう",
+          "leadLine1": "他のユーザーが作成した実際の旅行プランを参考に、",
+          "leadLine2": "あなたの次の旅のインスピレーションを見つけましょう。",
+          "featureCards": [
+            {
+              "title": "リアルな体験談",
+              "desc": "実際に訪れた人の生の声や、写真付きの記録が見られます。"
+            },
+            {
+              "title": "プランを参考に",
+              "desc": "気に入ったプランをコピーして、自分だけの旅にアレンジ。"
+            },
+            {
+              "title": "地図で探す",
+              "desc": "行きたいエリアから、みんなの旅のしおりを検索できます。"
+            }
+          ],
+          "mock": {
+            "location": "Paris, France",
+            "title": "Paris Art Trip",
+            "date": "2026.04.10 - 04.15",
+            "items": [
+              {
+                "title": "ルーヴル美術館",
+                "time": "9:00 - 予約済み"
+              },
+              {
+                "title": "ベーカリー巡り",
+                "time": "マレ地区周辺"
+              }
+            ]
+          },
+          "viewShiori": "みんなの旅のしおりを見る"
+        },
+        "v2": {
+          "featuresSection": {
+            "badge": "Why Tabidea?",
+            "title": "旅を、もっと「自分らしく」。",
+            "leadLine1": "ただのスケジュール管理ツールではありません。",
+            "leadLine2": "あなたの旅への想いをカタチにする、3つの約束。",
+            "values": {
+              "freedom": {
+                "title": "主役は、あなた。",
+                "subtitle": "AIはあくまで「提案」役。",
+                "desc": "行きたい場所、食べたいもの、予算。すべてあなたの思い通りにカスタマイズ。AIが作ったプランをベースに、自分好みに書き換える楽しさを。",
+                "stamp": "My Way"
+              },
+              "story": {
+                "title": "物語を残す。",
+                "subtitle": "計画が「しおり」になる。",
+                "desc": "作ったプランは、そのまま旅のしおり（Travel Journal）として持ち歩けます。旅の思い出や写真を記録して、あなただけの物語を完成させましょう。",
+                "stamp": "Memory"
+              },
+              "serendipity": {
+                "title": "予期せぬ出会い。",
+                "subtitle": "効率だけじゃない旅を。",
+                "desc": "最短ルートも大事だけど、ちょっと寄り道も悪くない。Tabideaは、あなたの心の奥にある「本当に行きたかった場所」との出会いをサポートします。",
+                "stamp": "Serendipity"
+              }
+            },
+            "stepLabel": "Step {step}",
+            "quoteLine1": "“旅の主役は、いつでも「あなた」というひとりの人間です。",
+            "quoteLine2": "Tabideaは、あなたの心の機微を誰よりも深く理解するパートナーでありたい。”",
+            "quoteAuthor": "- Tabidea Team"
+          },
+          "howItWorksSection": {
+            "badge": "How It Works",
+            "title": "使い方は、とてもシンプル。",
+            "lead": "3つのステップで、あなたの旅が始まります。",
+            "steps": [
+              {
+                "title": "Input",
+                "subtitle": "まずは、思いつくままに",
+                "desc": "「京都で紅葉が見たい」「美味しい抹茶スイーツが食べたい」。そんな漠然とした希望でOK。予算や日数も自由に設定できます。"
+              },
+              {
+                "title": "Proposal",
+                "subtitle": "AIが数秒でプランを提案",
+                "desc": "あなたの好みに合わせて、AIが最適なルートとスポットを提案します。移動時間や混雑状況も考慮した、実現可能なプランです。"
+              },
+              {
+                "title": "Go",
+                "subtitle": "あなただけのしおりを持って",
+                "desc": "気になったスポットを追加・削除してプランを保存。スマホ一つで持ち歩ける「旅のしおり」の完成です。友達への共有もURL一つで。"
+              }
+            ]
+          },
+          "communitySection": {
+            "badge": "Community",
+            "titleLine1": "みんなの旅を、",
+            "titleLine2": "次の旅のヒントに。",
+            "leadLine1": "Tabideaで作成された実際のプランを見てみましょう。",
+            "leadLine2": "気に入ったプランはコピーして、自分好みにカスタマイズできます。",
+            "viewMore": "もっと見る",
+            "viewAllPlans": "全てのプランを見る",
+            "samplePlans": {
+              "kyoto": {
+                "title": "京都の紅葉を満喫する旅",
+                "days": "2泊3日",
+                "budget": "5万円",
+                "tags": [
+                  "#紅葉",
+                  "#歴史",
+                  "#グルメ"
+                ]
+              },
+              "hawaii": {
+                "title": "ハワイでリフレッシュ",
+                "days": "4泊6日",
+                "budget": "20万円",
+                "tags": [
+                  "#ビーチ",
+                  "#ショッピング",
+                  "#女子旅"
+                ]
+              },
+              "paris": {
+                "title": "パリの美術館巡り",
+                "days": "5泊7日",
+                "budget": "30万円",
+                "tags": [
+                  "#アート",
+                  "#カフェ",
+                  "#一人旅"
+                ]
+              },
+              "newYork": {
+                "title": "ニューヨークのクリスマス",
+                "days": "3泊5日",
+                "budget": "25万円",
+                "tags": [
+                  "#イルミネーション",
+                  "#ショッピング"
+                ]
+              },
+              "santorini": {
+                "title": "サントリーニ島の絶景",
+                "days": "4泊6日",
+                "budget": "40万円",
+                "tags": [
+                  "#絶景",
+                  "#ハネムーン"
+                ]
+              }
+            }
+          }
+        },
         "featuresHero": {
           "badge": "FEATURES & GUIDE",
           "titleLine1": "旅の計画は、",
@@ -213,6 +490,170 @@
           ]
         }
       },
+      "feedback": {
+        "postTripReflection": {
+          "title": "旅行はいかがでしたか？",
+          "lead": "簡単なフィードバックで、サービスの改善に役立てます",
+          "satisfactionAriaLabel": "満足度",
+          "satisfaction": {
+            "helped": "助かった",
+            "neutral": "ふつう",
+            "struggled": "苦労した"
+          },
+          "replanQuestion": "プラン変更の提案は役に立ちましたか？",
+          "yes": "はい",
+          "no": "いいえ",
+          "commentLabel": "ご感想（任意）",
+          "commentPlaceholder": "旅行中に感じたことを教えてください...",
+          "later": "あとで",
+          "submitting": "送信中...",
+          "submit": "送信する"
+        }
+      },
+      "plan": {
+        "generatingOverlay": {
+          "status": {
+            "complete": "プラン完成！",
+            "detailsGenerated": "すべての詳細が生成されました",
+            "generatingDay": "Day {generatingDay}/{totalDays} の詳細を生成中...",
+            "preparing": "生成を準備中...",
+            "generating": "詳細を生成中..."
+          },
+          "progress": "{completedDays}/{totalDays} 日完了 • スクロールして閲覧できます",
+          "scrollHint": "スクロールしてプランを確認できます",
+          "close": "閉じる",
+          "partialFailure": "一部の日程で生成に失敗しました",
+          "retryDay": "Day {day} を再試行"
+        },
+        "cards": {
+          "trustBadge": {
+            "levels": {
+              "verified": {
+                "label": "検証済み",
+                "tooltip": "Google Places等で存在を確認済み"
+              },
+              "ai_generated": {
+                "label": "AI生成",
+                "tooltip": "AIが生成した情報（未検証）"
+              },
+              "needs_check": {
+                "label": "要確認",
+                "tooltip": "存在が不確かな場合があります"
+              },
+              "unverified": {
+                "label": "位置情報未確認",
+                "tooltip": "Google Placesで該当スポットが見つかりませんでした"
+              }
+            }
+          },
+          "accommodationCard": {
+            "searchHotels": "ホテルを探す",
+            "time": {
+              "in": "IN",
+              "out": "OUT"
+            },
+            "subtitle": {
+              "day": "{dayNumber}日目の宿泊",
+              "default": "宿泊"
+            },
+            "confirmDelete": "この宿泊情報を削除しますか？",
+            "delete": "削除",
+            "memoPlaceholder": "宿泊メモ...",
+            "checkIn": "チェックイン",
+            "checkOut": "チェックアウト",
+            "viewBookingSite": "予約サイトを見る",
+            "viewOnMap": "地図で見る"
+          },
+          "spotCard": {
+            "photoAlt": "写真 {index}",
+            "confirmDelete": "この予定を削除しますか？",
+            "delete": "削除",
+            "details": "詳細",
+            "unverifiedAlert": "位置情報未確認：Google Placesで該当スポットが見つかりませんでした。AI生成の情報のため、実在しない可能性があります。",
+            "reviewCount": "({count}件の口コミ)",
+            "viewAllHours": "すべての営業時間を見る",
+            "fetchDetails": "詳細情報を取得",
+            "viewOnGoogleMaps": "Google マップで見る"
+          },
+          "transitCard": {
+            "departureShort": "発:",
+            "arrivalShort": "着:",
+            "departureTime": "{time}発",
+            "arrivalTime": "{time}着",
+            "durationPlaceholder": "所要時間",
+            "booked": "予約済み",
+            "confirmDelete": "この移動を削除しますか？",
+            "delete": "削除",
+            "departure": "出発",
+            "arrival": "到着",
+            "memo": "メモ",
+            "memoPlaceholder": "メモを入力...",
+            "bookedHint": "予約済みですが、別の航空券も検索できます",
+            "searchFlights": "航空券を探す",
+            "searchWithProvider": "{provider}で航空券を検索",
+            "locked": "ロック中",
+            "lock": "ロック",
+            "unlock": "ロック解除",
+            "types": {
+              "flight": "飛行機",
+              "train": "電車",
+              "bus": "バス",
+              "ship": "船",
+              "car": "車",
+              "other": "移動"
+            }
+          }
+        }
+      },
+      "replan": {
+        "triggerPanel": {
+          "ariaLabel": "プラン変更トリガー"
+        },
+        "triggerButton": {
+          "labels": {
+            "rain": "天気が悪い",
+            "fatigue": "疲れた",
+            "delay": "遅れてる"
+          },
+          "ariaLabel": "{label}でプランを変更"
+        },
+        "suggestionCard": {
+          "regionAriaLabel": "提案カード",
+          "estimatedDuration": "約{duration}",
+          "acceptAriaLabel": "この提案を採用する",
+          "accept": "採用する",
+          "viewAlternativesAriaLabel": "別の提案を見る",
+          "otherOptions": "他の案"
+        },
+        "sheet": {
+          "dialogAriaLabel": "代替提案一覧",
+          "title": "他の提案",
+          "closeAriaLabel": "閉じる",
+          "noAlternatives": "他の提案はありません",
+          "estimatedDuration": "約{duration}",
+          "category": {
+            "indoor": "屋内",
+            "outdoor": "屋外",
+            "rest": "休憩",
+            "food": "グルメ",
+            "culture": "文化",
+            "other": "その他"
+          }
+        }
+      },
+      "shiori": {
+        "likeButton": {
+          "loginRequired": "ログインするといいねできます。",
+          "updateFailed": "いいねの更新に失敗しました。"
+        },
+        "publicPlanCard": {
+          "destinationTbd": "未定の目的地",
+          "durationTbd": "期間未定",
+          "duration": "{nights}泊{days}日",
+          "entries": "記録",
+          "likes": "いいね"
+        }
+      },
       "samples": {
         "collectionPromotion": {
           "title": "公開中の旅のしおりを見てみる",
@@ -239,6 +680,82 @@
             "unselect": "解除"
           }
         },
+        "categoryInfo": {
+          "basic": {
+            "label": "基本情報",
+            "description": "通貨・言語・時差"
+          },
+          "safety": {
+            "label": "安全・医療",
+            "description": "危険度・緊急連絡先"
+          },
+          "climate": {
+            "label": "気候・服装",
+            "description": "天気予報・服装アドバイス"
+          },
+          "visa": {
+            "label": "ビザ・手続き",
+            "description": "入国要件・必要書類"
+          },
+          "manner": {
+            "label": "マナー・チップ",
+            "description": "現地の習慣・タブー"
+          },
+          "transport": {
+            "label": "交通事情",
+            "description": "公共交通・配車サービス"
+          },
+          "local_food": {
+            "label": "グルメ",
+            "description": "代表的な料理・食事マナー"
+          },
+          "souvenir": {
+            "label": "お土産・買い物",
+            "description": "人気のお土産・免税情報"
+          },
+          "events": {
+            "label": "イベント・祭り",
+            "description": "主要イベント・季節の祭り"
+          },
+          "technology": {
+            "label": "電源・通信",
+            "description": "コンセント・Wi-Fi・SIM"
+          },
+          "healthcare": {
+            "label": "医療・衛生",
+            "description": "水・ワクチン・医療事情"
+          },
+          "restrooms": {
+            "label": "トイレ事情",
+            "description": "清潔度・利用時の注意"
+          },
+          "smoking": {
+            "label": "喫煙ルール",
+            "description": "喫煙場所・罰金"
+          },
+          "alcohol": {
+            "label": "飲酒ルール",
+            "description": "年齢制限・販売規制"
+          }
+        },
+        "sourceBadge": {
+          "labels": {
+            "official_api": "公式情報",
+            "web_search": "Web検索",
+            "ai_generated": "AI生成",
+            "blog": "ブログ",
+            "default": "情報源"
+          },
+          "aria": {
+            "showDetails": "{sourceName}の詳細を表示",
+            "openSource": "{sourceName}を開く（新しいタブ）"
+          },
+          "checkSource": "ソースを確認",
+          "reliability": "信頼性 {score}%"
+        },
+        "loadingState": {
+          "defaultMessage": "渡航情報を取得中..."
+        },
         "display": {
           "headerSuffix": "の渡航情報",
           "expandAll": "すべて展開",
@@ -261,6 +778,810 @@
             "errorLine2": "しばらく経ってから再度お試しください。",
             "errorDetails": "エラー詳細",
             "retry": "再取得"
+          }
+        },
+        "embeddedTravelInfo": {
+          "defaultError": "エラーが発生しました",
+          "title": "渡航情報・安全ガイド",
+          "close": "閉じる",
+          "scrollLeft": "スクロール左",
+          "scrollRight": "スクロール右",
+          "travelDates": "渡航予定: {start} 〜 {end}",
+          "changeCategories": "カテゴリを変更",
+          "currentSelection": "（現在 {count} 件選択中）",
+          "loading": "取得中...",
+          "research": "再検索",
+          "footerHint": "情報は参考用です。必ず公式サイトで最新情報を確認してください。"
+        },
+        "pdfExportButton": {
+          "generateFailed": "PDF生成に失敗しました",
+          "ariaLabel": "PDFとして出力",
+          "label": "PDF出力"
+        },
+        "pdfDocument": {
+          "createdDate": "作成日: {date}",
+          "travelSchedule": "渡航予定: {start} - {end}",
+          "dangerDescriptions": {
+            "0": "危険情報なし",
+            "1": "十分注意",
+            "2": "不要不急の渡航中止",
+            "3": "渡航中止勧告",
+            "4": "退避勧告"
+          },
+          "labels": {
+            "currency": "通貨",
+            "language": "言語",
+            "timeDifference": "時差",
+            "timezone": "タイムゾーン",
+            "visaRequirement": "ビザ要否",
+            "voltage": "電圧",
+            "plugType": "プラグ形状",
+            "tapWater": "水道水",
+            "medicalLevel": "医療水準",
+            "restroomAvailability": "清潔度・普及",
+            "fine": "罰金",
+            "ageLimit": "年齢制限"
+          },
+          "subHeaders": {
+            "emergencyContacts": "緊急連絡先",
+            "clothingAdvice": "服装アドバイス",
+            "requirements": "要件",
+            "tipping": "チップ",
+            "customs": "マナー・習慣",
+            "publicTransport": "交通機関",
+            "rideshare": "ライドシェア",
+            "popularDishes": "代表的な料理",
+            "diningEtiquette": "食事のマナー",
+            "popularSouvenirs": "人気のお土産",
+            "recommendedAreas": "おすすめエリア",
+            "majorEvents": "主要なイベント",
+            "seasonalFestivals": "季節の祭り",
+            "internet": "インターネット事情",
+            "recommendedVaccines": "推奨ワクチン",
+            "restroomNotes": "利用上の注意",
+            "smokingRules": "喫煙ルール",
+            "smokingAreas": "喫煙場所",
+            "alcoholRules": "飲酒ルール"
+          },
+          "visa": {
+            "required": "必要",
+            "notRequired": "不要",
+            "withinDays": " ({days}日以内)"
+          },
+          "tipping": {
+            "required": "必須",
+            "customary": "慣習",
+            "notRequired": "不要"
+          },
+          "rideshare": {
+            "available": "利用可 ({services})",
+            "unavailable": "利用不可"
+          }
+        },
+        "sections": {
+          "basicInfoSection": {
+            "currencyInfo": "通貨情報",
+            "labels": {
+              "currency": "通貨",
+              "exchangeRate": "為替レート",
+              "timezone": "タイムゾーン",
+              "timeDifferenceFromJapan": "日本との時差"
+            },
+            "updatedAt": "更新: {date}",
+            "language": "言語",
+            "timeDifference": "時差"
+          },
+          "technologySection": {
+            "powerAndPlug": "電源・コンセント",
+            "labels": {
+              "plugType": "コンセント形状",
+              "voltage": "電圧"
+            },
+            "internetWifi": "インターネット・Wi-Fi",
+            "simCard": "SIMカード"
+          },
+          "climateInfoSection": {
+            "currentWeather": "Current Weather",
+            "forecast": "天気予報",
+            "seasonFeatures": "季節の特徴",
+            "clothingAdvice": "服装アドバイス",
+            "weatherKeywords": {
+              "sunny": [
+                "晴",
+                "sunny",
+                "clear"
+              ],
+              "rain": [
+                "雨",
+                "rain"
+              ],
+              "snow": [
+                "雪",
+                "snow"
+              ]
+            }
+          },
+          "safetyInfoSection": {
+            "aiFallback": {
+              "title": "AIによる生成情報です",
+              "bodyLine1": "公式情報の取得に失敗したため、AIが一般的な情報を表示しています。",
+              "bodyLine2": "正確な情報は必ず外務省海外安全ホームページをご確認ください。"
+            },
+            "securityLevelBadge": "Security Level",
+            "dangerLevels": {
+              "0": "危険情報なし",
+              "1": "十分注意",
+              "2": "不要不急の渡航中止",
+              "3": "渡航中止勧告",
+              "4": "退避勧告"
+            },
+            "dangerDescriptions": {
+              "0": "危険情報なし",
+              "1": "十分注意してください",
+              "2": "不要不急の渡航は止めてください",
+              "3": "渡航は止めてください（渡航中止勧告）",
+              "4": "退避してください。渡航は止めてください"
+            },
+            "partialCountryRisk": "一部地域でレベル{level}の警告が出ています",
+            "regionalRiskTitle": "地域別の危険情報",
+            "regionalRiskLead": "以下の地域へ渡航する際は特に注意が必要です",
+            "summary": "概要",
+            "detailedSafetyInfo": "詳細な安全情報",
+            "mainWarnings": "主な注意事項",
+            "emergencyContacts": "Emergency Contacts",
+            "japaneseEmbassy": "Japanese Embassy",
+            "sourceOfficialPrefix": "出典：外務省 海外安全情報オープンデータ 提供情報",
+            "sourceOfficialSuffix": "を加工して作成",
+            "sourceFallbackPrefix": "情報提供: 外務省 海外安全情報オープンデータ",
+            "officialSite": "公式サイト",
+            "warningPriority": {
+              "critical": "最重要",
+              "high": "重要",
+              "medium": "注意",
+              "low": "参考"
+            },
+            "warningType": {
+              "danger": "危険情報",
+              "spot": "スポット情報",
+              "mail": "安全情報",
+              "general": "一般情報"
+            }
+          },
+          "visaInfoSection": {
+            "visaRequired": "ビザが必要です",
+            "visaNotRequired": "ビザ不要",
+            "visaFreeStay": "最大 <strong>{days}日間</strong> ビザなしで滞在可能",
+            "entryRequirements": "入国要件",
+            "notes": "補足事項",
+            "cautionLabel": "注意:",
+            "cautionText": "ビザ要件は変更される場合があります。渡航前に必ず大使館・領事館の公式情報をご確認ください。"
+          }
+        }
+      },
+      "planner": {
+        "steps": {
+          "stepCompanions": {
+            "title": "誰との旅ですか？",
+            "lead": "旅のパートナーを選んでください",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "options": {
+              "solo": { "label": "一人旅", "desc": "気ままに" },
+              "couple": { "label": "カップル・夫婦", "desc": "ロマンチックに" },
+              "family": { "label": "家族", "desc": "みんなで楽しく" },
+              "friends": { "label": "友人", "desc": "ワイワイと" },
+              "male_trip": { "label": "男旅", "desc": "とことん" },
+              "female_trip": { "label": "女旅", "desc": "華やかに" },
+              "backpacker": { "label": "バックパッカー", "desc": "冒険を" },
+              "business": { "label": "ビジネス", "desc": "効率的に" },
+              "pet": { "label": "ペットと", "desc": "一緒に" }
+            }
+          },
+          "stepPace": {
+            "title": "旅のペースは？",
+            "lead": "あなたのスタイルに合わせて",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "options": {
+              "relaxed": { "label": "ゆったり", "desc": "1日1-2箇所、のんびりと" },
+              "balanced": { "label": "バランスよく", "desc": "観光と休息を程よく" },
+              "active": { "label": "アクティブ", "desc": "主要スポットを網羅" },
+              "packed": { "label": "詰め込み", "desc": "朝から晩まで全力で" }
+            }
+          },
+          "stepBudget": {
+            "title": "予算はどれくらい？",
+            "lead": "無理のない範囲で、最高のプランを",
+            "or": "または",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "units": {
+              "yen": "円",
+              "tenThousandYen": "万円"
+            },
+            "slider": {
+              "title": "金額で指定する",
+              "lead": "スライダーで予算範囲を設定"
+            },
+            "options": {
+              "saving": { "label": "なるべく安く", "desc": "お財布に優しく、賢く旅する" },
+              "standard": { "label": "普通", "desc": "一般的な予算で楽しむ" },
+              "high": { "label": "少し贅沢に", "desc": "良いホテルや食事をプラス" },
+              "luxury": { "label": "リッチに", "desc": "最高級の体験を味わう" }
+            }
+          },
+          "stepRegion": {
+            "title": "どんな旅行に行きたいですか？",
+            "lead": "ざっくりとしたイメージや、やりたいことを教えてください",
+            "vibePlaceholder": "例：南の島、リゾートでゆっくり、温泉があるところ...",
+            "filterLabel": "エリアで絞り込む（任意）",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "regions": {
+              "domestic": { "label": "国内", "sub": "Domestic" },
+              "overseas": { "label": "海外", "sub": "Overseas" },
+              "anywhere": { "label": "指定なし", "sub": "Anywhere" }
+            }
+          },
+          "stepFreeText": {
+            "titleLine1": "最後に、",
+            "titleLine2": "特別なご要望は？",
+            "leadLine1": "「美術館巡りをしたい」「静かなカフェに行きたい」など、",
+            "leadLine2": "自由に入力してください。(任意)",
+            "placeholder": "例: 古着屋巡りがしたい、夜景が綺麗なレストランに行きたい...",
+            "charCount": "{count}文字",
+            "complete": "プランを作成する →"
+          },
+          "stepPlaces": {
+            "titleLine1": "絶対に行きたい",
+            "titleLine2": "観光地はありますか？",
+            "lead": "もしあれば、優先的にプランに組み込みます",
+            "yes": "ある",
+            "no": "ない",
+            "placePlaceholder": "場所名を入力 (例: 清水寺)",
+            "nextWithCount": "{count}箇所を追加して次へ進む →",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成"
+          },
+          "stepDestination": {
+            "badge": "Step 1: The Destinations",
+            "titleLine1": "まずは、行き先を",
+            "titleLine2": "教えてください。",
+            "leadLine1": "複数の場所を周遊できます。",
+            "leadLine2": "都市名やイメージを入力してEnterで追加。",
+            "removeAria": "{destination}を削除",
+            "placeholderFirst": "パリ、京都...",
+            "placeholderNext": "次の行き先を追加...",
+            "inputHintEnter": "Enter で追加 ↵",
+            "inputHintContinue": "続けて追加、または次へ",
+            "addButton": "「{destination}」を追加",
+            "nextWithCount": "{count}つの行き先で次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成"
+          },
+          "stepInitialChoice": {
+            "badge": "Free Travel Planner",
+            "titleLine1": "行き先は",
+            "titleLine2": "決まっていますか？",
+            "lead": "AIがあなたにぴったりの旅をご提案します",
+            "decided": "決まっている",
+            "notDecided": "決まっていない",
+            "privacyLine1": "入力内容はAIの学習には使用されません",
+            "privacyLine2Prefix": "詳細は",
+            "policy": "AIポリシー",
+            "privacyLine2Suffix": "をご確認ください"
+          },
+          "stepThemes": {
+            "title": "どんな旅にしますか？",
+            "lead": "気になるテーマをタップして選んでください",
+            "nextWithCount": "{count}つのテーマで次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "themes": {
+              "gourmet": "グルメ",
+              "historyCulture": "歴史・文化",
+              "natureScenery": "自然・絶景",
+              "relax": "リラックス",
+              "hiddenSpots": "穴場スポット",
+              "shopping": "ショッピング",
+              "art": "アート",
+              "experienceActivity": "体験・アクティビティ",
+              "onsenSauna": "温泉・サウナ",
+              "photogenic": "写真映え",
+              "adventure": "冒険",
+              "other": "その他"
+            },
+            "themeValues": {
+              "gourmet": "グルメ",
+              "historyCulture": "歴史・文化",
+              "natureScenery": "自然・絶景",
+              "relax": "リラックス",
+              "hiddenSpots": "穴場スポット",
+              "shopping": "ショッピング",
+              "art": "アート",
+              "experienceActivity": "体験・アクティビティ",
+              "onsenSauna": "温泉・サウナ",
+              "photogenic": "写真映え",
+              "adventure": "冒険",
+              "other": "その他"
+            }
+          },
+          "stepDates": {
+            "title": "いつ、どれくらい？",
+            "lead": "決まっていなければチェックを入れてください",
+            "next": "次へ進む →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成",
+            "date": {
+              "label": "出発日",
+              "undecided": "未定"
+            },
+            "duration": {
+              "label": "旅行日数",
+              "undecided": "未定",
+              "toggleDays": "○日間",
+              "toggleNights": "○泊○日",
+              "daysUnitDisplay": "日間",
+              "decreaseAria": "旅行日数を減らす",
+              "increaseAria": "旅行日数を増やす"
+            },
+            "formats": {
+              "dayTrip": "日帰り",
+              "daysUnit": "日間",
+              "nightsUnit": "泊",
+              "dayUnit": "日",
+              "days": "{days}日間",
+              "nightsDays": "{nights}泊{days}日",
+              "dateUndecidedValue": "時期は未定",
+              "dateWithUndecidedDuration": "{date}出発 (期間未定)",
+              "dateFromWithDuration": "{date}から{duration}"
+            }
+          },
+          "stepTransit": {
+            "title": "移動手段は決まっていますか？",
+            "lead": "飛行機や新幹線など、予約済みのものがあれば教えてください",
+            "durationUndecidedMessage": "日程が未定のため、移動情報の入力はスキップします。",
+            "registeredTransit": {
+              "label": "登録済みの移動",
+              "subLabel": "スケジュールに反映されます"
+            },
+            "add": "追加",
+            "empty": "まだ登録されていません",
+            "daySelector": {
+              "label": "何日目の移動？"
+            },
+            "dayLabel": "{day}日目",
+            "next": "次へ進む →",
+            "nextWithoutTransit": "特になし（次へ） →",
+            "skipAndCreate": "任意項目をスキップしてプランを作成"
+          },
+          "transitListItem": {
+            "dayLabel": "{day}日目"
+          },
+          "transitForm": {
+            "title": "移動手段の編集",
+            "typeLabel": "移動タイプ",
+            "types": {
+              "flight": "飛行機",
+              "train": "電車",
+              "bus": "バス",
+              "ship": "船",
+              "car": "車",
+              "other": "その他"
+            },
+            "bookingStatus": {
+              "label": "予約状況",
+              "bookedDescription": "この移動を確定事項としてプランを作成します",
+              "unbookedDescription": "あくまで希望としてAIに伝えます（変更の可能性あり）",
+              "booked": "予約済",
+              "unbooked": "未予約"
+            },
+            "departure": {
+              "label": "出発",
+              "placeholder": "出発地 (例: 東京駅)"
+            },
+            "arrival": {
+              "label": "到着",
+              "placeholder": "到着地 (例: 大阪駅)"
+            },
+            "memo": {
+              "label": "メモ",
+              "placeholder": "便名、座席番号、予約番号など (例: JL123便 15A)"
+            },
+            "actions": {
+              "cancel": "キャンセル",
+              "save": "保存する"
+            }
+          }
+        },
+        "requestSummary": {
+          "editAria": "編集",
+          "editTitle": "修正する",
+          "destinationAreaUndecided": "エリア未定 (雰囲気重視)",
+          "vibePrefix": "雰囲気:",
+          "unset": "未設定",
+          "sections": {
+            "destination": "目的地・エリア",
+            "mustVisit": "絶対に行きたい場所",
+            "companions": "誰と行く？",
+            "themes": "旅のテーマ",
+            "budget": "予算感",
+            "dates": "日程・時期",
+            "pace": "旅行のペース",
+            "transits": "移動手段",
+            "freeText": "その他の要望"
+          },
+          "pace": {
+            "value": "{label} ({desc})",
+            "normal": "普通 (1日3-4箇所)"
+          },
+          "budget": {
+            "range": "{min} 〜 {max}",
+            "tenThousandAmount": "{value}万円",
+            "yenAmount": "{value}円"
+          }
+        },
+        "stepContainer": {
+          "backTitle": "戻る",
+          "stepLabel": "STEP",
+          "showSummaryTitle": "選択内容を確認",
+          "closeTitle": "閉じる",
+          "summaryTitle": "現在のリクエスト",
+          "close": "閉じる"
+        },
+        "dayPlaceholder": {
+          "dayLabel": "Day",
+          "pendingDetails": "詳細を待機中...",
+          "generating": "生成中...",
+          "errorTitle": "詳細の生成に失敗しました",
+          "errorMessage": "もう一度お試しください",
+          "retry": "再試行"
+        },
+        "costEstimate": {
+          "title": "旅費の概算",
+          "tripSummary": "{nights}泊{days}日 ・{tripType}旅行",
+          "tripType": {
+            "domestic": "国内",
+            "overseas": "海外"
+          },
+          "breakdownTitle": "内訳",
+          "breakdown": {
+            "accommodation": "宿泊費（{nights}泊）",
+            "meals": "食費（{days}日分）",
+            "transport": "交通費（{days}日分）",
+            "activities": "アクティビティ（{days}日分）"
+          },
+          "perDay": "1日あたりの目安",
+          "savingTips": "節約のコツ",
+          "searchPrompt": "この価格帯で探す",
+          "actions": {
+            "searchHotels": "ホテルを探す",
+            "searchFlights": "航空券を探す"
+          },
+          "disclaimer": "※ 概算は目安です。実際の費用は時期、予約タイミング、為替レートなどにより変動します。"
+        },
+        "calendarExportButton": {
+          "buttonLabel": "カレンダーに追加",
+          "datePicker": {
+            "title": "開始日を選択",
+            "description": "旅行の開始日を入力してください。カレンダーにイベントを追加します。",
+            "cancel": "キャンセル",
+            "confirm": "追加"
+          },
+          "options": {
+            "ics": {
+              "title": ".ics ファイル",
+              "description": "Apple / Outlook カレンダー"
+            },
+            "google": {
+              "title": "Google カレンダー",
+              "description": "ブラウザで追加"
+            }
+          }
+        },
+        "loadingView": {
+          "messages": {
+            "guidebook": "ガイドブックを開いています...",
+            "weather": "現地の天気を調べています...",
+            "hiddenSpots": "とっておきの場所を探しています...",
+            "journal": "旅のしおりを作成中...",
+            "story": "あなただけの物語を書いています..."
+          },
+          "footer": "もうすぐ出発です。"
+        },
+        "planFeedbackBar": {
+          "title": "このプランはいかがでしたか？",
+          "starAria": "{star}つ星",
+          "commentPlaceholder": "コメント（任意）",
+          "submitting": "送信中...",
+          "submit": "送信する",
+          "submittedTitle": "ありがとうございます！",
+          "submittedDescription": "フィードバックを送信しました"
+        },
+        "publicToggle": {
+          "label": "公開設定",
+          "states": {
+            "public": "公開",
+            "private": "非公開"
+          }
+        },
+        "pdfDownloadButton": {
+          "heading": "ダウンロード",
+          "ariaLabel": "PDFプレビューとダウンロード",
+          "generating": "生成中...",
+          "label": "PDF出力",
+          "generateFailed": "PDFの生成に失敗しました。もう一度お試しください。",
+          "generateFailedWithMessage": "PDFの生成に失敗しました: {message}"
+        },
+        "pdfExportButton": {
+          "heading": "ダウンロード",
+          "ariaLabel": "PDFとして出力",
+          "generating": "生成中...",
+          "label": "PDF出力",
+          "generateFailed": "PDFの生成に失敗しました。もう一度お試しください。",
+          "generateFailedWithMessage": "PDFの生成に失敗しました: {message}",
+          "shareTitle": "{destination} 旅程表"
+        },
+        "pdfPreviewModal": {
+          "generatedTitle": "PDF生成完了",
+          "iframeTitle": "PDFプレビュー",
+          "loading": "PDFを読み込み中...",
+          "readyTitle": "PDFの準備ができました",
+          "readyDescription": "旅程表のPDFファイルが正常に生成されました。以下のボタンから共有または保存してください。",
+          "documentLabel": "PDFドキュメント",
+          "close": "閉じる",
+          "save": "保存",
+          "share": "共有"
+        },
+        "outlineLoadingAnimation": {
+          "waiting": "準備中...",
+          "stepsProgress": "{completed}/{total} steps",
+          "footer": "旅の計画を練っています...",
+          "fallback": {
+            "destination": {
+              "text": "目的地を分析中...",
+              "subText": "Analyzing destinations"
+            },
+            "concept": {
+              "text": "旅のコンセプトを考え中...",
+              "subText": "Crafting your concept"
+            },
+            "route": {
+              "text": "ベストなルートを探索中...",
+              "subText": "Finding optimal routes"
+            },
+            "almostDone": {
+              "text": "もうすぐ完成！",
+              "subText": "Almost ready!"
+            }
+          }
+        },
+        "outlineReview": {
+          "title": "旅の概要ができました",
+          "leadLine1": "詳細プランを作成する前に、宿泊地や大まかな流れを調整できます。",
+          "leadLine2": "特に宿泊地を変更したい場合はここで修正してください。",
+          "fields": {
+            "title": "テーマ・タイトル",
+            "overnightLocation": "宿泊エリア"
+          },
+          "overnightPlaceholder": "例：京都市内、大阪・梅田周辺...",
+          "overnightHint": "※この場所を基準に翌日の行程が生成されます",
+          "generating": "詳細プランを作成中...",
+          "confirm": "旅のしおりを作成する"
+        },
+        "mapRoute": {
+          "headerTitle": "全日程マップ",
+          "spotsCount": "({count} spots)",
+          "allDays": "全日程",
+          "dayLabel": "Day {day}",
+          "openInGoogleMaps": "Google Mapsで見る",
+          "openRouteTitle": "Google Mapsでルートを開く",
+          "googleMapsLabel": "Google Maps",
+          "tripDays": "{days}日間",
+          "loadingLocation": "位置情報を読み込み中...",
+          "loadingCoordinates": "スポットの座標を取得しています",
+          "interactiveMapPro": "Proプランで対話型マップが利用可能になります",
+          "mapLoading": "マップを読み込み中..."
+        },
+        "pdfExportModal": {
+          "title": "PDF出力設定",
+          "close": "閉じる",
+          "required": "必須",
+          "unknownError": "不明なエラー",
+          "itinerary": {
+            "label": "旅程表",
+            "description": "日程・アクティビティ"
+          },
+          "travelInfo": {
+            "label": "渡航情報・安全ガイド",
+            "description": "安全情報、ビザ、マナーなど"
+          },
+          "presets": {
+            "essential": "基本セット",
+            "full": "フルセット"
+          },
+          "selectedCategoryCount": "{count}カテゴリ選択中",
+          "packingList": {
+            "label": "持ち物リスト",
+            "count": "{count}アイテム",
+            "empty": "先に持ち物リストを生成してください"
+          },
+          "fetching": {
+            "title": "渡航情報を取得中...",
+            "progress": "{current} / {total} カテゴリ完了"
+          },
+          "cancel": "キャンセル",
+          "creating": "作成中...",
+          "createPdf": "PDF作成"
+        },
+        "packingListView": {
+          "generateFailed": "生成に失敗しました",
+          "retry": "再試行",
+          "initial": {
+            "title": "持ち物リストを作成",
+            "description": "{destination}への{days}日間の旅行に最適な<br></br>持ち物リストをAIが提案します",
+            "generateButton": "AIで持ち物リストを生成"
+          },
+          "generating": {
+            "title": "持ち物リストを生成中...",
+            "description": "{destination}への旅行に最適なリストを作成しています"
+          },
+          "proRequired": {
+            "title": "Pro限定機能",
+            "description": "AI持ち物リスト生成はProプラン限定の機能です。<br></br>アップグレードして、旅の準備をもっと便利に。",
+            "cta": "Proにアップグレード"
+          },
+          "progress": {
+            "title": "準備状況",
+            "count": "{checked}/{total} 準備完了",
+            "completed": "全ての準備が完了しました！良い旅を！"
+          },
+          "regenerate": "リストを再生成する",
+          "disclaimer": "※ AIによる提案です。個人の必要に応じてアイテムを追加・削除してください。",
+          "priority": {
+            "essential": "必須"
+          },
+          "categories": {
+            "documents": "書類",
+            "clothing": "衣類",
+            "electronics": "電子機器",
+            "toiletries": "洗面用品",
+            "medicine": "医薬品",
+            "theme": "テーマ別",
+            "other": "その他"
+          }
+        },
+        "shioriJournalEditor": {
+          "title": "しおり記録",
+          "description": "旅程スポットごとに、行く前・旅の最中・行った後のメモを残せます。記録済み {count} 件",
+          "defaultDayTitle": "旅程",
+          "fields": {
+            "phase": "記録フェーズ",
+            "placeName": "訪問場所",
+            "content": "メモ本文",
+            "photoUrls": "写真URL（改行またはカンマ区切り）"
+          },
+          "phase": {
+            "before": "行く前",
+            "during": "旅の最中",
+            "after": "行った後"
+          },
+          "placePlaceholder": "例: 錦市場",
+          "contentPlaceholder": "ここで何をしたか、何を食べたか、感じたことを記録...",
+          "lastSaved": "最終保存: {time}",
+          "notSavedYet": "まだ保存されていません",
+          "saving": "保存中...",
+          "save": "この記録を保存",
+          "errors": {
+            "emptyContent": "本文を入力してください。",
+            "saveFailed": "保存に失敗しました。"
+          }
+        },
+        "resultView": {
+          "durationString": "{nights}泊{days}日",
+          "updatingTitle": "プランを書き直しています...",
+          "newActivity": {
+            "title": "新しい予定",
+            "description": "詳細を入力してください"
+          },
+          "tabs": {
+            "plan": "旅程表",
+            "journal": "しおり記録",
+            "info": "渡航情報",
+            "packing": "持ち物"
+          },
+          "viewMode": {
+            "mapAndList": "マップ＋旅程",
+            "listOnly": "旅程のみ"
+          },
+          "mobileView": {
+            "list": "リスト",
+            "map": "マップ"
+          },
+          "chatCta": {
+            "title": "AIと相談しながら調整する",
+            "description": "「移動少なめにしたい」「この日にカフェを追加したい」など、気軽に相談できます。"
+          },
+          "addSchedule": "予定を追加",
+          "booking": {
+            "title": "この旅を予約する",
+            "hotel": "ホテルを予約",
+            "flight": "航空券を探す",
+            "activity": "体験を予約"
+          },
+          "disclaimer": {
+            "line1": "※このプランはAIによって生成されています。情報の正確性は保証されません。",
+            "line2": "※このページには広告・アフィリエイトリンクが含まれる場合があります。"
+          }
+        },
+        "travelPlannerSimplified": {
+          "defaultDates": "2泊3日",
+          "errors": {
+            "deploymentUpdate": "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。",
+            "generic": "エラーが発生しました"
+          },
+          "actions": {
+            "reloadPage": "ページを更新",
+            "tryAgain": "もう一度試す"
+          },
+          "contact": {
+            "prefix": "問題が解決しない場合は、",
+            "link": "お問い合わせページ",
+            "suffix": "からご連絡ください。"
+          },
+          "notices": {
+            "expired": "保存から24時間以上経過したため、入力内容は削除されました。",
+            "restored": "入力内容を復元しました"
+          }
+        },
+        "streamingResultView": {
+          "durationString": "{nights}泊{days}日",
+          "dayLabel": "Day",
+          "shareDisabled": "シェア・PDF出力は生成完了後に利用可能です",
+          "transition": {
+            "title": "詳細ページへ自動移動します",
+            "defaultMessage": "詳細が完成しました。数秒以内に自動で詳細ページへ切り替わります。"
+          },
+          "hero": {
+            "photoBy": "Photo by",
+            "on": "on",
+            "unsplash": "Unsplash",
+            "loadingImage": "画像を読み込み中...",
+            "destinationLabel": "Your Destination"
+          },
+          "progress": {
+            "movingToDetail": "詳細ページへ移動中...",
+            "completed": "生成完了",
+            "generatingDetails": "詳細プランを生成中...",
+            "dayCount": "{completed}/{total} 日",
+            "detailReadyMessage": "詳細が完成しました。このまましばらくお待ちください。自動で詳細ページへ移動します。"
+          },
+          "disclaimer": {
+            "title": "AI生成プランに関する重要なお知らせ",
+            "body": "このプランはAIによって自動生成されています。施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください。"
+          },
+          "accommodationDescription": "{day}日目の宿泊エリア"
+        },
+        "citationBadge": {
+          "labels": {
+            "blog": "ブログ記事",
+            "google_places": "Google Places",
+            "ai_knowledge": "AI推薦",
+            "golden_plan": "おすすめプラン"
+          },
+          "shortLabels": {
+            "blog": "記事",
+            "google_places": "Places",
+            "ai_knowledge": "AI",
+            "golden_plan": "おすすめ"
+          },
+          "aria": {
+            "withTitle": "情報源: {label} - {title}",
+            "withoutTitle": "情報源: {label}"
+          },
+          "viewArticle": "記事を見る →",
+          "confidencePrefix": "信頼度: ",
+          "confidence": {
+            "high": "高",
+            "medium": "中",
+            "low": "低"
           }
         }
       }

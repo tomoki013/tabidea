@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect, useCallback, KeyboardEvent, useRef } from "react";
-import { usePathname } from "next/navigation";
+import { useState, useEffect, useCallback, KeyboardEvent, useRef, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { UserInput, FixedScheduleItem } from "@/types";
 import { ChevronDown, Check, X, Plus, Minus } from "lucide-react";
 import {
@@ -19,7 +19,6 @@ import {
   FaCompass,
   FaQuestion,
   FaPlus,
-  FaTrash,
   FaPlane,
   FaTrain,
   FaBus,
@@ -29,90 +28,86 @@ import {
   FaTicketAlt,
   FaCalendarAlt,
   FaClock,
-  FaStickyNote,
 } from "react-icons/fa";
 import {
   JournalSheet,
-  JournalInput,
   JournalButton,
-  HandwrittenText,
   Tape,
   Stamp
 } from "@/components/ui/journal";
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from "@/lib/i18n/locales";
 
 // ============================================================================
 // Constants
 // ============================================================================
 
 const COMPANION_OPTIONS = [
-  { id: "solo", label: "一人旅", icon: "👤" },
-  { id: "couple", label: "カップル", icon: "💑" },
-  { id: "family", label: "家族", icon: "👨‍👩‍👧‍👦" },
-  { id: "friends", label: "友人", icon: "👯" },
-  { id: "male_trip", label: "男旅", icon: "🍻" },
-  { id: "female_trip", label: "女旅", icon: "💅" },
-  { id: "backpacker", label: "バックパッカー", icon: "🎒" },
-  { id: "business", label: "ビジネス", icon: "💼" },
-  { id: "pet", label: "ペットと", icon: "🐕" },
+  { id: "solo", key: "solo", icon: "👤" },
+  { id: "couple", key: "couple", icon: "💑" },
+  { id: "family", key: "family", icon: "👨‍👩‍👧‍👦" },
+  { id: "friends", key: "friends", icon: "👯" },
+  { id: "male_trip", key: "male_trip", icon: "🍻" },
+  { id: "female_trip", key: "female_trip", icon: "💅" },
+  { id: "backpacker", key: "backpacker", icon: "🎒" },
+  { id: "business", key: "business", icon: "💼" },
+  { id: "pet", key: "pet", icon: "🐕" },
 ];
 
 const THEME_OPTIONS = [
-  { label: "グルメ", icon: FaUtensils, id: "グルメ" },
-  { label: "歴史・文化", icon: FaLandmark, id: "歴史・文化" },
-  { label: "自然・絶景", icon: FaMountain, id: "自然・絶景" },
-  { label: "リラックス", icon: FaCoffee, id: "リラックス" },
-  { label: "穴場スポット", icon: FaSearch, id: "穴場スポット" },
-  { label: "ショッピング", icon: FaShoppingBag, id: "ショッピング" },
-  { label: "アート", icon: FaPalette, id: "アート" },
-  { label: "体験・アクティビティ", icon: FaRunning, id: "体験・アクティビティ" },
-  { label: "温泉・サウナ", icon: FaHotTub, id: "温泉・サウナ" },
-  { label: "写真映え", icon: FaCamera, id: "写真映え" },
-  { label: "冒険", icon: FaCompass, id: "冒険" },
-  { label: "その他", icon: FaQuestion, id: "その他" },
+  { key: "gourmet", icon: FaUtensils },
+  { key: "historyCulture", icon: FaLandmark },
+  { key: "natureScenery", icon: FaMountain },
+  { key: "relax", icon: FaCoffee },
+  { key: "hiddenSpots", icon: FaSearch },
+  { key: "shopping", icon: FaShoppingBag },
+  { key: "art", icon: FaPalette },
+  { key: "experienceActivity", icon: FaRunning },
+  { key: "onsenSauna", icon: FaHotTub },
+  { key: "photogenic", icon: FaCamera },
+  { key: "adventure", icon: FaCompass },
+  { key: "other", icon: FaQuestion },
 ];
 
 const BUDGET_PRESETS = [
-  { id: "saving", label: "なるべく安く", icon: "💸", desc: "お財布に優しく" },
-  { id: "standard", label: "普通", icon: "💰", desc: "一般的な予算" },
-  { id: "high", label: "少し贅沢に", icon: "✨", desc: "良いホテル・食事" },
-  { id: "luxury", label: "リッチに", icon: "💎", desc: "最高級の体験" },
+  { id: "saving", key: "saving", icon: "💸" },
+  { id: "standard", key: "standard", icon: "💰" },
+  { id: "high", key: "high", icon: "✨" },
+  { id: "luxury", key: "luxury", icon: "💎" },
 ];
 
 const PACE_OPTIONS = [
-  { id: "relaxed", label: "ゆったり", icon: "☕", desc: "1日1〜2箇所" },
-  { id: "balanced", label: "バランスよく", icon: "⚖️", desc: "1日3〜4箇所" },
-  { id: "active", label: "アクティブ", icon: "👟", desc: "1日5箇所以上" },
-  { id: "packed", label: "詰め込み", icon: "🔥", desc: "限界まで回る" },
+  { id: "relaxed", key: "relaxed", icon: "☕" },
+  { id: "balanced", key: "balanced", icon: "⚖️" },
+  { id: "active", key: "active", icon: "👟" },
+  { id: "packed", key: "packed", icon: "🔥" },
 ];
 
 const DURATION_OPTIONS = [
-  { value: 0, label: "未定" },
-  { value: 1, label: "日帰り" },
-  { value: 2, label: "1泊2日" },
-  { value: 3, label: "2泊3日" },
-  { value: 4, label: "3泊4日" },
-  { value: 5, label: "4泊5日" },
-  { value: 6, label: "5泊6日" },
-  { value: 7, label: "6泊7日" },
+  { value: 0 },
+  { value: 1 },
+  { value: 2 },
+  { value: 3 },
+  { value: 4 },
+  { value: 5 },
+  { value: 6 },
+  { value: 7 },
 ];
 
 const TRANSPORT_OPTIONS = [
-  { id: "flight", label: "飛行機", icon: FaPlane },
-  { id: "shinkansen", label: "新幹線", icon: FaTrain },
-  { id: "train", label: "電車", icon: FaTrain },
-  { id: "bus", label: "バス", icon: FaBus },
-  { id: "car", label: "車・レンタカー", icon: FaCar },
-  { id: "ferry", label: "フェリー", icon: FaShip },
+  { id: "flight", key: "flight", icon: FaPlane },
+  { id: "shinkansen", key: "shinkansen", icon: FaTrain },
+  { id: "train", key: "train", icon: FaTrain },
+  { id: "bus", key: "bus", icon: FaBus },
+  { id: "car", key: "car", icon: FaCar },
+  { id: "ferry", key: "ferry", icon: FaShip },
 ];
 
 const RESERVATION_TYPES = [
-  { id: 'flight', label: '飛行機', icon: FaPlane },
-  { id: 'train', label: '電車・新幹線', icon: FaTrain },
-  { id: 'bus', label: 'バス', icon: FaBus },
-  { id: 'hotel', label: '宿泊・ホテル', icon: FaHotel },
-  { id: 'activity', label: 'アクティビティ', icon: FaTicketAlt },
-  { id: 'other', label: 'その他', icon: FaQuestion },
+  { id: "flight", key: "flight", icon: FaPlane },
+  { id: "train", key: "train", icon: FaTrain },
+  { id: "bus", key: "bus", icon: FaBus },
+  { id: "hotel", key: "hotel", icon: FaHotel },
+  { id: "activity", key: "activity", icon: FaTicketAlt },
+  { id: "other", key: "other", icon: FaQuestion },
 ];
 
 // New Budget Logic
@@ -159,31 +154,28 @@ interface SimplifiedInputFlowProps {
 // Utility Functions
 // ============================================================================
 
-const parseDuration = (str: string): number => {
-  if (str === "未定") return 0;
-  if (str.includes("日帰り")) return 1;
-  const nightsMatch = str.match(/(\d+)泊(\d+)日/);
-  if (nightsMatch) {
-    return parseInt(nightsMatch[2]) || 3;
-  }
-  const daysMatch = str.match(/(\d+)日間/);
-  if (daysMatch) {
-    return parseInt(daysMatch[1]) || 3;
+function parseDurationValue(
+  str: string,
+  labels: { undecided: string; dayTrip: string }
+): number {
+  if (!str) return 3;
+  if (str === labels.undecided) return 0;
+  if (str.includes(labels.dayTrip)) return 1;
+  const numbers = str.match(/\d+/g);
+  if (numbers && numbers.length > 0) {
+    const last = Number(numbers[numbers.length - 1]);
+    if (Number.isFinite(last) && last > 0 && last < 1000) {
+      return last;
+    }
   }
   return 3;
-};
+}
 
-const formatDuration = (days: number): string => {
-  if (days === 0) return "未定";
-  if (days === 1) return "日帰り";
-  return `${days - 1}泊${days}日`;
-};
-
-function formatBudget(amount: number): string {
+function formatBudget(amount: number, units: { tenThousandYen: string; yen: string }): string {
   if (amount >= 10000) {
-    return `${(amount / 10000).toLocaleString()}万円`;
+    return `${(amount / 10000).toLocaleString()}${units.tenThousandYen}`;
   }
-  return `${amount.toLocaleString()}円`;
+  return `${amount.toLocaleString()}${units.yen}`;
 }
 
 function parseBudgetRange(value: string): { min: number; max: number } | null {
@@ -278,11 +270,72 @@ export default function SimplifiedInputFlow({
   onChange,
   onGenerate: parentOnGenerate,
   isGenerating = false,
-  isInModal = false,
+  isInModal: _isInModal = false,
 }: SimplifiedInputFlowProps) {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
+  void _isInModal;
+  const t = useTranslations("components.features.planner.simplifiedInputFlow");
+  const tCompanion = useTranslations("components.features.planner.steps.stepCompanions.options");
+  const tTheme = useTranslations("components.features.planner.steps.stepThemes.themes");
+  const tThemeValue = useTranslations("components.features.planner.steps.stepThemes.themeValues");
+  const tBudget = useTranslations("components.features.planner.steps.stepBudget.options");
+  const tPace = useTranslations("components.features.planner.steps.stepPace.options");
+  const tDateFormats = useTranslations("components.features.planner.steps.stepDates.formats");
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const durationLabels = useMemo(() => ({
+    undecided: tDateFormats("dateUndecidedValue"),
+    dayTrip: tDateFormats("dayTrip"),
+  }), [tDateFormats]);
+
+  const formatDuration = useCallback((days: number) => {
+    if (days === 0) return durationLabels.undecided;
+    if (days === 1) return durationLabels.dayTrip;
+    return tDateFormats("nightsDays", { nights: days - 1, days });
+  }, [durationLabels.dayTrip, durationLabels.undecided, tDateFormats]);
+
+  const budgetUnits = {
+    tenThousandYen: t("budget.units.tenThousandYen"),
+    yen: t("budget.units.yen"),
+  };
+
+  const companionOptions = COMPANION_OPTIONS.map((opt) => ({
+    ...opt,
+    label: tCompanion(`${opt.key}.label`),
+    desc: tCompanion(`${opt.key}.desc`),
+  }));
+
+  const themeOptions = THEME_OPTIONS.map((opt) => ({
+    ...opt,
+    label: tTheme(opt.key),
+    value: tThemeValue(opt.key),
+  }));
+
+  const budgetPresets = BUDGET_PRESETS.map((opt) => ({
+    ...opt,
+    label: tBudget(`${opt.key}.label`),
+    desc: tBudget(`${opt.key}.desc`),
+  }));
+
+  const paceOptions = PACE_OPTIONS.map((opt) => ({
+    ...opt,
+    label: tPace(`${opt.key}.label`),
+    desc: tPace(`${opt.key}.desc`),
+  }));
+
+  const durationOptions = DURATION_OPTIONS.map((opt) => ({
+    value: opt.value,
+    label: formatDuration(opt.value),
+  }));
+
+  const transportOptions = TRANSPORT_OPTIONS.map((opt) => ({
+    ...opt,
+    label: t(`transport.options.${opt.key}`),
+  }));
+
+  const reservationTypes = RESERVATION_TYPES.map((type) => ({
+    ...type,
+    label: t(`reservation.types.${type.key}`),
+  }));
 
   // Accordion state
   const [phase2Open, setPhase2Open] = useState(false);
@@ -303,7 +356,7 @@ export default function SimplifiedInputFlow({
   const [resNotes, setResNotes] = useState('');
 
   // Derived state
-  const duration = parseDuration(input.dates);
+  const duration = parseDurationValue(input.dates, durationLabels);
   const isOmakase = input.isDestinationDecided === false;
 
   // Parse date state
@@ -360,7 +413,7 @@ export default function SimplifiedInputFlow({
     if (match) {
         queueMicrotask(() => {
           setStartDate(match[1]);
-          const dur = parseDuration(input.dates);
+          const dur = parseDurationValue(input.dates, durationLabels);
           if (dur > 0) {
               const d = new Date(match[1]);
               d.setDate(d.getDate() + (dur - 1));
@@ -368,7 +421,7 @@ export default function SimplifiedInputFlow({
           }
         });
     }
-  }, [input.dates]);
+  }, [durationLabels, input.dates]);
 
   // Phase completion checks
   const hasDest = (input.destinations && input.destinations.length > 0) ||
@@ -378,7 +431,7 @@ export default function SimplifiedInputFlow({
   const hasCompanion = !!input.companions;
   const hasValidDates = useCalendar
     ? true
-    : (input.dates === "未定" || !!input.dates);
+    : (input.dates === durationLabels.undecided || !!input.dates);
 
   const canGenerate = hasDest && hasCompanion && hasValidDates;
 
@@ -428,8 +481,8 @@ export default function SimplifiedInputFlow({
 
     const finalInput = { ...input };
     if (useCalendar && (!startDate || !endDate)) {
-        finalInput.dates = "未定";
-        onChange({ dates: "未定" });
+        finalInput.dates = durationLabels.undecided;
+        onChange({ dates: durationLabels.undecided });
     }
 
     const trimmed = destinationInput.trim();
@@ -477,8 +530,10 @@ export default function SimplifiedInputFlow({
         const newEndDate = d.toISOString().split('T')[0];
         setEndDate(newEndDate);
 
-        const nights = newDuration - 1;
-        const dateString = `${startDate}から${nights}泊${newDuration}日`;
+        const dateString = tDateFormats("dateFromWithDuration", {
+          date: startDate,
+          duration: formatDuration(newDuration),
+        });
         onChange({ dates: dateString });
     } else {
         onChange({ dates: formatDuration(newDuration) });
@@ -497,8 +552,10 @@ export default function SimplifiedInputFlow({
 
         if (diffDays >= 0) {
             const durationDays = diffDays + 1;
-            const nights = durationDays - 1;
-            const dateString = `${newStart}から${nights}泊${durationDays}日`;
+            const dateString = tDateFormats("dateFromWithDuration", {
+              date: newStart,
+              duration: formatDuration(durationDays),
+            });
             onChange({ dates: dateString });
         }
     }
@@ -573,182 +630,6 @@ export default function SimplifiedInputFlow({
   const minPercent = (minIndex / SLIDER_MAX) * 100;
   const maxPercent = (maxIndex / SLIDER_MAX) * 100;
 
-  if (language === "en") {
-    const companionLabelById: Record<string, string> = {
-      solo: "Solo",
-      couple: "Couple",
-      family: "Family",
-      friends: "Friends",
-      male_trip: "Boys trip",
-      female_trip: "Girls trip",
-      backpacker: "Backpacker",
-      business: "Business",
-      pet: "With pet",
-    };
-
-    const durationOptionsEn = [
-      { value: 0, label: "Flexible" },
-      { value: 1, label: "Day trip" },
-      { value: 2, label: "2 days" },
-      { value: 3, label: "3 days" },
-      { value: 4, label: "4 days" },
-      { value: 5, label: "5 days" },
-      { value: 6, label: "6 days" },
-      { value: 7, label: "7 days" },
-    ];
-
-    const englishCanGenerate = input.destinations.length > 0 && Boolean(input.companions);
-
-    const addDestinationEn = () => {
-      const trimmed = destinationInput.trim();
-      if (!trimmed || input.destinations.includes(trimmed)) {
-        return;
-      }
-      onChange({
-        destinations: [...input.destinations, trimmed],
-        isDestinationDecided: true,
-      });
-      setDestinationInput("");
-    };
-
-    const removeDestinationEn = (index: number) => {
-      const next = input.destinations.filter((_, i) => i !== index);
-      onChange({
-        destinations: next,
-        isDestinationDecided: next.length > 0 ? true : undefined,
-      });
-    };
-
-    const handleGenerateEn = () => {
-      if (destinationInput.trim()) {
-        addDestinationEn();
-      }
-      parentOnGenerate({
-        ...input,
-        freeText: input.freeText ?? "",
-      });
-    };
-
-    return (
-      <div className="w-full max-w-3xl mx-auto px-2 sm:px-4 py-6 scroll-mt-24">
-        <JournalSheet variant="default" className="p-6 sm:p-8 space-y-8">
-          <div className="space-y-2 text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 font-sans">
-              Create Your Travel Plan
-            </h1>
-            <p className="text-sm text-stone-500 font-sans">
-              English wizard is currently simplified. You can still generate and edit plans after creation.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            <label className="block text-sm font-bold text-stone-700 font-sans">
-              Destinations
-            </label>
-            <div className="flex flex-wrap gap-2">
-              {input.destinations.map((dest, index) => (
-                <span
-                  key={`${dest}-${index}`}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-stone-200 rounded-lg text-sm font-sans font-bold shadow-sm"
-                >
-                  📍 {dest}
-                  <button
-                    type="button"
-                    onClick={() => removeDestinationEn(index)}
-                    className="hover:text-red-500 transition-colors p-0.5"
-                  >
-                    <X className="w-3.5 h-3.5" />
-                  </button>
-                </span>
-              ))}
-            </div>
-            <div className="flex gap-2">
-              <input
-                value={destinationInput}
-                onChange={(e) => setDestinationInput(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    addDestinationEn();
-                  }
-                }}
-                placeholder="e.g. Paris, Bangkok, Kyoto"
-                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
-              />
-              <JournalButton
-                variant="secondary"
-                onClick={addDestinationEn}
-                disabled={!destinationInput.trim()}
-                className="h-12 w-12 p-0 rounded-lg shadow-sm border-2 border-stone-200 hover:border-primary/50"
-              >
-                <FaPlus className="w-5 h-5" />
-              </JournalButton>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <label className="block text-sm font-bold text-stone-700 font-sans">
-                Duration
-              </label>
-              <select
-                value={parseDuration(input.dates)}
-                onChange={(e) => onChange({ dates: formatDuration(Number(e.target.value)) })}
-                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white transition-all text-stone-800 font-sans"
-              >
-                {durationOptionsEn.map((opt) => (
-                  <option key={opt.value} value={opt.value}>
-                    {opt.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div className="space-y-2">
-              <label className="block text-sm font-bold text-stone-700 font-sans">
-                Companions
-              </label>
-              <select
-                value={input.companions}
-                onChange={(e) => onChange({ companions: e.target.value })}
-                className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white transition-all text-stone-800 font-sans"
-              >
-                <option value="">Select companions</option>
-                {COMPANION_OPTIONS.map((option) => (
-                  <option key={option.id} value={option.id}>
-                    {companionLabelById[option.id] ?? option.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-sm font-bold text-stone-700 font-sans">
-              Additional requests (optional)
-            </label>
-            <textarea
-              value={input.freeText || ""}
-              onChange={(e) => onChange({ freeText: e.target.value })}
-              placeholder="Any preferences? e.g. museums, local food, slow mornings..."
-              className="w-full h-24 bg-stone-50 border-2 border-stone-300 rounded-lg p-3 text-sm font-sans placeholder:text-stone-400 focus:border-primary focus:bg-white focus:outline-none resize-none leading-relaxed text-stone-800"
-            />
-          </div>
-
-          <JournalButton
-            variant="primary"
-            size="lg"
-            onClick={handleGenerateEn}
-            disabled={isGenerating || !englishCanGenerate}
-            className="w-full h-14 text-lg font-bold shadow-xl hover:scale-[1.01] transition-transform font-sans rounded-xl"
-          >
-            {isGenerating ? "Generating plan..." : "Generate plan"}
-          </JournalButton>
-        </JournalSheet>
-      </div>
-    );
-  }
-
   return (
     <div
       id="planner-input-section"
@@ -758,10 +639,10 @@ export default function SimplifiedInputFlow({
       {/* Header */}
       <div className="text-center mb-8">
         <h1 className="text-2xl sm:text-3xl font-bold text-stone-800 mb-2 font-sans">
-          <span className="border-b-2 border-primary/30 pb-1">旅行プランを作成</span>
+          <span className="border-b-2 border-primary/30 pb-1">{t("header.title")}</span>
         </h1>
         <p className="text-stone-500 font-bold font-sans text-sm sm:text-base">
-          必要な情報を入力して、AIがあなただけのプランを作成します
+          {t("header.lead")}
         </p>
       </div>
 
@@ -777,9 +658,9 @@ export default function SimplifiedInputFlow({
         <div className="flex items-center gap-3 mb-4 border-b-2 border-stone-200 border-dashed pb-2">
           <Stamp color="red" size="sm" className="w-12 h-12 text-sm border-2">step 1</Stamp>
           <div className="flex flex-col">
-             <span className="font-bold text-xl text-stone-800 font-sans">基本情報</span>
+             <span className="font-bold text-xl text-stone-800 font-sans">{t("step1.title")}</span>
              <span className="text-xs text-primary font-bold font-sans">
-               ※ここは必ず書いてね
+               {t("step1.requiredHint")}
              </span>
           </div>
         </div>
@@ -787,7 +668,7 @@ export default function SimplifiedInputFlow({
         {/* Destination Mode Selector */}
         <div className="space-y-4">
           <label className="block text-base font-bold text-stone-700 font-sans ml-1">
-            ① 目的地はどうしますか？
+            {t("step1.destinationModeLabel")}
           </label>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -803,9 +684,9 @@ export default function SimplifiedInputFlow({
                 <span className={`text-3xl ${!isOmakase ? "opacity-100" : "opacity-50"}`}>📍</span>
                 {!isOmakase && <Check className="w-6 h-6 text-primary" />}
               </div>
-              <div className="font-bold text-lg font-sans">目的地を入力</div>
+              <div className="font-bold text-lg font-sans">{t("step1.specific.title")}</div>
               <div className="text-sm opacity-70 font-sans text-left">
-                京都、ハワイなど<br/>行きたい場所が決まっている
+                {t("step1.specific.bodyLine1")}<br />{t("step1.specific.bodyLine2")}
               </div>
             </JournalButton>
 
@@ -821,9 +702,9 @@ export default function SimplifiedInputFlow({
                 <span className={`text-3xl ${isOmakase ? "opacity-100" : "opacity-50"}`}>🎲</span>
                 {isOmakase && <Check className="w-6 h-6 text-primary" />}
               </div>
-              <div className="font-bold text-lg font-sans">おまかせで決める</div>
+              <div className="font-bold text-lg font-sans">{t("step1.omakase.title")}</div>
               <div className="text-sm opacity-70 font-sans text-left">
-                まだ未定！<br/>AIに提案してほしい
+                {t("step1.omakase.bodyLine1")}<br />{t("step1.omakase.bodyLine2")}
               </div>
             </JournalButton>
           </div>
@@ -841,12 +722,12 @@ export default function SimplifiedInputFlow({
                 <div className="bg-white border-2 border-stone-200 rounded-lg p-4 space-y-3 relative shadow-sm">
                   <Tape color="green" position="top-right" className="w-16 h-4 opacity-70" />
                   <label className="block text-sm font-bold text-stone-600 font-sans">
-                    どんな旅にしたい？
+                    {t("step1.vibe.label")}
                   </label>
                   <textarea
                     value={input.travelVibe || ""}
                     onChange={(e) => onChange({ travelVibe: e.target.value })}
-                    placeholder="例：南の島でリゾート、ヨーロッパの古い街並み、温泉でゆっくり..."
+                    placeholder={t("step1.vibe.placeholder")}
                     className="w-full h-28 bg-stone-50 border border-stone-200 rounded-md p-3 text-base font-sans placeholder:text-stone-400 focus:outline-none focus:border-primary transition-colors resize-none leading-relaxed text-stone-800"
                   />
                 </div>
@@ -887,7 +768,7 @@ export default function SimplifiedInputFlow({
                       value={destinationInput}
                       onChange={(e) => setDestinationInput(e.target.value)}
                       onKeyDown={handleDestinationKeyDown}
-                      placeholder={input.destinations.length === 0 ? "例：京都、パリ、ハワイ..." : "次の行き先を追加..."}
+                      placeholder={input.destinations.length === 0 ? t("step1.destinationInput.placeholderFirst") : t("step1.destinationInput.placeholderNext")}
                       className="w-full h-12 px-4 text-lg bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
                     />
                   </div>
@@ -909,7 +790,7 @@ export default function SimplifiedInputFlow({
         <div className="space-y-4">
           <div className="flex items-center justify-between mb-2">
             <label className="block text-base font-bold text-stone-700 font-sans ml-1">
-              ② 日程
+              {t("step1.dates.label")}
             </label>
 
             {/* Toggle Switch */}
@@ -928,7 +809,7 @@ export default function SimplifiedInputFlow({
                             : "bg-white text-stone-500 border-stone-200 hover:bg-stone-50"
                     }`}
                 >
-                    日数のみ
+                    {t("step1.dates.mode.durationOnly")}
                 </button>
                 <button
                     type="button"
@@ -939,7 +820,7 @@ export default function SimplifiedInputFlow({
                             : "bg-white text-stone-500 border-stone-200 hover:bg-stone-50"
                     }`}
                 >
-                    カレンダー
+                    {t("step1.dates.mode.calendar")}
                 </button>
             </div>
           </div>
@@ -949,7 +830,7 @@ export default function SimplifiedInputFlow({
                 <Tape color="white" position="top-center" className="w-16 h-4 opacity-50" />
                 <div className="grid grid-cols-2 gap-6">
                     <div className="space-y-2">
-                        <span className="text-sm font-bold text-stone-500 font-sans">出発日</span>
+                        <span className="text-sm font-bold text-stone-500 font-sans">{t("step1.dates.departureLabel")}</span>
                         <input
                             type="date"
                             value={startDate}
@@ -969,7 +850,7 @@ export default function SimplifiedInputFlow({
                         />
                     </div>
                     <div className="space-y-2">
-                        <span className="text-sm font-bold text-stone-500 font-sans">帰着日</span>
+                        <span className="text-sm font-bold text-stone-500 font-sans">{t("step1.dates.returnLabel")}</span>
                         <input
                             type="date"
                             value={endDate}
@@ -982,10 +863,10 @@ export default function SimplifiedInputFlow({
                 <div className="text-center font-sans pt-2">
                     {startDate && endDate ? (
                         <p className="text-base font-bold text-primary inline-block border-b-2 border-primary/20 pb-1">
-                           🗓️ {startDate} 〜 {endDate} ({duration - 1}泊{duration}日)
+                           🗓️ {startDate} 〜 {endDate} ({formatDuration(duration)})
                         </p>
                     ) : (
-                        <p className="text-sm text-stone-400">日付を選択してください</p>
+                        <p className="text-sm text-stone-400">{t("step1.dates.selectDatePrompt")}</p>
                     )}
                 </div>
             </div>
@@ -1014,7 +895,7 @@ export default function SimplifiedInputFlow({
 
                 {/* Preset Buttons (Bottom) */}
                 <div className="flex flex-wrap justify-center gap-2">
-                    {DURATION_OPTIONS.map((opt) => (
+                    {durationOptions.map((opt) => (
                     <button
                         key={opt.value}
                         type="button"
@@ -1035,11 +916,11 @@ export default function SimplifiedInputFlow({
 
         {/* Companion Selector */}
         <div className="space-y-4">
-          <label className="block text-base font-bold text-stone-700 font-sans ml-1">
-            ③ 誰と行く？
-          </label>
-          <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
-            {COMPANION_OPTIONS.map((opt) => (
+            <label className="block text-base font-bold text-stone-700 font-sans ml-1">
+              {t("step1.companions.label")}
+            </label>
+            <div className="grid grid-cols-3 sm:grid-cols-3 gap-3">
+            {companionOptions.map((opt) => (
               <button
                 key={opt.id}
                 type="button"
@@ -1063,8 +944,8 @@ export default function SimplifiedInputFlow({
       {/* ================================================================== */}
       <div className="mt-10">
         <AccordionSection
-            title="詳細を設定"
-            subtitle={isPhase2Complete ? "OK!" : "推奨"}
+            title={t("phase2.title")}
+            subtitle={isPhase2Complete ? t("phase2.subtitleCompleted") : t("phase2.subtitleRecommended")}
             isOpen={phase2Open}
             onToggle={() => setPhase2Open(!phase2Open)}
             isComplete={isPhase2Complete}
@@ -1074,17 +955,17 @@ export default function SimplifiedInputFlow({
             {/* Theme Selection */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                テーマ（複数選択可）
+                {t("phase2.theme.label")}
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {THEME_OPTIONS.map((theme) => {
+                {themeOptions.map((theme) => {
                     const Icon = theme.icon;
-                    const isSelected = input.theme.includes(theme.id);
+                    const isSelected = input.theme.includes(theme.value);
                     return (
                     <button
-                        key={theme.id}
+                        key={theme.key}
                         type="button"
-                        onClick={() => toggleTheme(theme.id)}
+                        onClick={() => toggleTheme(theme.value)}
                         className={`py-3 px-3 text-sm font-bold rounded-lg border transition-all flex flex-col items-center gap-2 font-sans shadow-sm min-h-[5rem] justify-center ${
                         isSelected
                             ? "border-primary bg-white text-primary shadow-md border-2"
@@ -1102,14 +983,14 @@ export default function SimplifiedInputFlow({
             {/* Budget Selection */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                予算感
+                {t("phase2.budget.label")}
                 </label>
 
                 {/* Mode Switch (Slider vs Presets) */}
                 {!useBudgetSlider ? (
                 <div className="space-y-3">
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {BUDGET_PRESETS.map((opt) => (
+                    {budgetPresets.map((opt) => (
                         <button
                         key={opt.id}
                         type="button"
@@ -1132,26 +1013,26 @@ export default function SimplifiedInputFlow({
                     className="w-full py-4 px-4 rounded-lg bg-stone-50 hover:bg-stone-100 text-stone-700 text-sm font-bold transition-colors flex items-center justify-center gap-2 border border-stone-200 shadow-sm"
                     >
                     <span>🎚️</span>
-                    <span>具体的な金額で指定する</span>
+                    <span>{t("phase2.budget.useSlider")}</span>
                     </button>
                 </div>
                 ) : (
                 <div className="bg-white border border-stone-200 rounded-lg p-5 space-y-4 relative shadow-sm">
                     <Tape color="white" position="top-right" className="opacity-50 w-12 h-4" />
                     <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-stone-500 font-sans">金額範囲を指定</span>
+                    <span className="text-xs font-bold text-stone-500 font-sans">{t("phase2.budget.sliderTitle")}</span>
                     <button
                         type="button"
                         onClick={() => toggleBudgetSlider(false)}
                         className="text-xs text-stone-400 hover:text-stone-600 underline font-sans"
                     >
-                        選択式に戻す
+                        {t("phase2.budget.backToPresets")}
                     </button>
                     </div>
 
                     <div className="text-center">
                     <span className="text-2xl font-bold text-primary font-mono">
-                        {formatBudget(budgetMinAmount)} 〜 {formatBudget(budgetMaxAmount)}
+                        {formatBudget(budgetMinAmount, budgetUnits)} 〜 {formatBudget(budgetMaxAmount, budgetUnits)}
                     </span>
                     </div>
 
@@ -1202,10 +1083,10 @@ export default function SimplifiedInputFlow({
             {/* Pace Selection */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                旅のペース
+                {t("phase2.pace.label")}
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                {PACE_OPTIONS.map((opt) => (
+                {paceOptions.map((opt) => (
                     <button
                     key={opt.id}
                     type="button"
@@ -1232,8 +1113,8 @@ export default function SimplifiedInputFlow({
       {/* ================================================================== */}
       <div>
         <AccordionSection
-            title="さらに詳しく"
-            subtitle="任意"
+            title={t("phase3.title")}
+            subtitle={t("phase3.subtitle")}
             isOpen={phase3Open}
             onToggle={() => setPhase3Open(!phase3Open)}
             isComplete={isPhase3Complete}
@@ -1244,7 +1125,7 @@ export default function SimplifiedInputFlow({
             {/* Reservations (Fixed Schedule) */}
             <div className="space-y-3">
               <label className="block text-sm font-bold text-stone-700 font-sans">
-                予約済みの予定（飛行機・ホテル等）
+                {t("phase3.reservations.label")}
               </label>
 
               {/* List of added reservations */}
@@ -1288,11 +1169,11 @@ export default function SimplifiedInputFlow({
               {/* Add New Reservation Form */}
               {isAddingReservation ? (
                 <div className="bg-white border border-stone-300 rounded-lg p-5 space-y-4 shadow-md relative animate-in fade-in zoom-in-95 duration-200">
-                  <div className="font-bold text-base text-stone-700 font-sans mb-1">予定を追加</div>
+                  <div className="font-bold text-base text-stone-700 font-sans mb-1">{t("phase3.reservations.addTitle")}</div>
 
                   {/* Type Selector */}
                   <div className="grid grid-cols-3 gap-2">
-                     {RESERVATION_TYPES.map(type => (
+                     {reservationTypes.map(type => (
                        <button
                          key={type.id}
                          onClick={() => setResType(type.id as FixedScheduleItem['type'])}
@@ -1313,7 +1194,7 @@ export default function SimplifiedInputFlow({
                     type="text"
                     value={resName}
                     onChange={e => setResName(e.target.value)}
-                    placeholder="名前（例：JL123便、ヒルトン東京）"
+                    placeholder={t("phase3.reservations.namePlaceholder")}
                     className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary text-stone-800"
                   />
 
@@ -1337,7 +1218,7 @@ export default function SimplifiedInputFlow({
                   <textarea
                     value={resNotes}
                     onChange={e => setResNotes(e.target.value)}
-                    placeholder="メモ（任意）"
+                    placeholder={t("phase3.reservations.memoPlaceholder")}
                     className="w-full p-3 border border-stone-300 rounded-md text-sm font-sans focus:outline-none focus:border-primary h-20 resize-none text-stone-800"
                   />
 
@@ -1347,14 +1228,14 @@ export default function SimplifiedInputFlow({
                       onClick={() => setIsAddingReservation(false)}
                       className="px-4 py-2 text-sm font-bold text-stone-500 hover:bg-stone-100 rounded-lg transition-colors"
                     >
-                      キャンセル
+                      {t("phase3.reservations.cancel")}
                     </button>
                     <button
                       onClick={addReservation}
                       disabled={!resName.trim()}
                       className="px-6 py-2 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
                     >
-                      追加
+                      {t("phase3.reservations.add")}
                     </button>
                   </div>
                 </div>
@@ -1363,7 +1244,7 @@ export default function SimplifiedInputFlow({
                   onClick={() => setIsAddingReservation(true)}
                   className="w-full py-3 border-2 border-dashed border-stone-300 rounded-lg text-stone-500 font-bold text-sm hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2 bg-white"
                 >
-                  <Plus size={18} /> 予約済みの予定を追加
+                  <Plus size={18} /> {t("phase3.reservations.addButton")}
                 </button>
               )}
             </div>
@@ -1371,10 +1252,10 @@ export default function SimplifiedInputFlow({
             {/* Preferred Transport */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                    希望する移動手段
+                    {t("phase3.transport.label")}
                 </label>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    {TRANSPORT_OPTIONS.map((opt) => {
+                    {transportOptions.map((opt) => {
                     const isSelected = input.preferredTransport?.includes(opt.id) || false;
                     const Icon = opt.icon;
                     return (
@@ -1400,7 +1281,7 @@ export default function SimplifiedInputFlow({
             {/* Must-Visit Places */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                絶対行きたい場所
+                {t("phase3.mustVisit.label")}
                 </label>
 
                 {/* Added Places */}
@@ -1435,7 +1316,7 @@ export default function SimplifiedInputFlow({
                             addPlace();
                         }
                         }}
-                        placeholder="場所名を入力（例：清水寺）"
+                        placeholder={t("phase3.mustVisit.placeholder")}
                         className="w-full h-12 px-4 text-sm bg-stone-50 border-2 border-stone-300 rounded-lg focus:border-primary focus:bg-white focus:ring-2 focus:ring-primary/10 transition-all text-stone-800 placeholder:text-stone-400 font-sans"
                     />
                   </div>
@@ -1454,13 +1335,13 @@ export default function SimplifiedInputFlow({
             {/* Free Text */}
             <div className="space-y-3">
                 <label className="block text-sm font-bold text-stone-700 font-sans">
-                その他のリクエスト
+                {t("phase3.freeText.label")}
                 </label>
                 <div className="bg-white border-2 border-stone-200 rounded-lg p-3 relative shadow-sm">
                     <textarea
                         value={input.freeText || ""}
                         onChange={(e) => onChange({ freeText: e.target.value })}
-                        placeholder="美術館巡りがしたい、夜景が綺麗なレストランに行きたい、など自由に入力してください..."
+                        placeholder={t("phase3.freeText.placeholder")}
                         className="w-full h-24 bg-transparent border-none p-1 text-sm font-sans placeholder:text-stone-300 focus:outline-none resize-none leading-relaxed text-stone-800"
                     />
                 </div>
@@ -1488,28 +1369,28 @@ export default function SimplifiedInputFlow({
           {isGenerating ? (
             <>
               <span className="animate-spin mr-3">⏳</span>
-              プランを作成中...
+              {t("generate.generating")}
             </>
           ) : !canGenerate ? (
             <>
               <span className="mr-3">⚠️</span>
-              必須項目を入力してください
+              {t("generate.missingRequired")}
             </>
           ) : hasDetailedInput ? (
             <>
               <span className="mr-3">✨</span>
-              詳細条件でプランを作成
+              {t("generate.withDetails")}
             </>
           ) : (
             <>
               <span className="mr-3">✨</span>
-              とりあえず生成する
+              {t("generate.quick")}
             </>
           )}
         </JournalButton>
         {canGenerate && !hasDetailedInput && (
           <p className="text-center text-sm mt-4 text-stone-500 font-sans font-medium">
-            詳細設定を追加すると、より精度の高いプランが作成されます✨
+            {t("generate.hint")}
           </p>
         )}
       </motion.div>

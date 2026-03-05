@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -28,11 +29,11 @@ interface StreamingResultViewProps {
   onRetryChunk?: (dayStart: number, dayEnd: number) => void;
   isTransitioningToDetail?: boolean;
   transitionMessage?: string;
-  /** リプラントリガーを表示するか（旅行中モード） */
+  /** Whether replan triggers are visible (traveling mode). */
   showReplanTriggers?: boolean;
-  /** リプラントリガー発火コールバック */
+  /** Callback when a replan trigger is fired. */
   onReplanTrigger?: (trigger: ReplanTrigger) => void;
-  /** リプラン処理中か */
+  /** Whether replanning is currently running. */
   isReplanning?: boolean;
 }
 
@@ -50,6 +51,7 @@ export default function StreamingResultView({
   onReplanTrigger,
   isReplanning = false,
 }: StreamingResultViewProps) {
+  const t = useTranslations("components.features.planner.streamingResultView");
   // Card expansion state: track which cards are expanded
   const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
 
@@ -71,31 +73,11 @@ export default function StreamingResultView({
   // Calculate completed count
   const completedCount = completedDays.length;
 
-  // Helper to parse date string
-  const formatTravelDates = (dateStr: string) => {
-    const match = dateStr.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
-    if (match) {
-      const startDate = new Date(match[1]);
-      const duration = parseInt(match[2], 10);
-      const endDate = new Date(startDate);
-      endDate.setDate(startDate.getDate() + duration - 1);
-
-      const formatDate = (d: Date) => `${d.getMonth() + 1}/${d.getDate()}`;
-      return `${formatDate(startDate)} - ${formatDate(endDate)}`;
-    }
-    // If no specific date but has duration
-    const durationMatch = dateStr.match(/(\d+)日間/);
-    if (durationMatch) {
-      return `${durationMatch[1]} Days Trip`;
-    }
-    return dateStr;
-  };
-
-  const travelDates = formatTravelDates(input.dates);
+  const travelDates = input.dates;
 
   // Calculate duration string
   const numberOfNights = Math.max(0, totalDays - 1);
-  const durationString = `${numberOfNights}泊${totalDays}日`;
+  const durationString = t("durationString", { nights: numberOfNights, days: totalDays });
 
   // Construct a partial itinerary for sharing/PDF (when complete)
   const partialItinerary: Itinerary | null = useMemo(() => {
@@ -159,9 +141,9 @@ export default function StreamingResultView({
           <div className="flex items-start gap-3">
             <FaSpinner className="w-5 h-5 flex-shrink-0 mt-0.5 animate-spin" />
             <div className="flex-1">
-              <p className="text-sm font-bold">詳細ページへ自動移動します</p>
+              <p className="text-sm font-bold">{t("transition.title")}</p>
               <p className="text-xs text-white/90 mt-1">
-                {transitionMessage || "詳細が完成しました。数秒以内に自動で詳細ページへ切り替わります。"}
+                {transitionMessage || t("transition.defaultMessage")}
               </p>
             </div>
           </div>
@@ -184,7 +166,7 @@ export default function StreamingResultView({
             {/* Unsplash Credit */}
             {heroImage.photographer && heroImage.photographerUrl && (
               <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
-                Photo by{" "}
+                {t("hero.photoBy")}{" "}
                 <a
                   href={heroImage.photographerUrl}
                   target="_blank"
@@ -193,14 +175,14 @@ export default function StreamingResultView({
                 >
                   {heroImage.photographer}
                 </a>{" "}
-                on{" "}
+                {t("hero.on")}{" "}
                 <a
                   href="https://unsplash.com/?utm_source=Tabidea&utm_medium=referral"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline hover:text-stone-300 transition-colors"
                 >
-                  Unsplash
+                  {t("hero.unsplash")}
                 </a>
               </div>
             )}
@@ -209,7 +191,7 @@ export default function StreamingResultView({
           <div className="relative aspect-video sm:aspect-21/9 w-full rounded-sm overflow-hidden shadow-md border-4 border-white bg-stone-100 flex items-center justify-center mx-auto max-w-4xl">
             <div className="text-stone-400 text-center">
               <FaMapMarkerAlt className="text-4xl mx-auto mb-2" />
-              <p className="text-sm">画像を読み込み中...</p>
+              <p className="text-sm">{t("hero.loadingImage")}</p>
             </div>
           </div>
         )}
@@ -232,7 +214,7 @@ export default function StreamingResultView({
             <p className="text-sm font-hand text-stone-500 uppercase tracking-widest mb-2 flex items-center justify-center gap-2">
               <FaMapMarkerAlt className="text-primary" />
               <HandwrittenText tag="span" className="text-sm font-hand text-stone-500 uppercase tracking-widest">
-                Your Destination
+                {t("hero.destinationLabel")}
               </HandwrittenText>
             </p>
             <h1 className="text-4xl sm:text-6xl font-serif text-stone-800 mb-4 tracking-tight">
@@ -254,7 +236,7 @@ export default function StreamingResultView({
             </>
           ) : (
             <div className="flex items-center gap-3 text-stone-400 text-sm">
-              <span>シェア・PDF出力は生成完了後に利用可能です</span>
+              <span>{t("shareDisabled")}</span>
             </div>
           )}
         </div>
@@ -268,18 +250,18 @@ export default function StreamingResultView({
             <div className="flex items-center justify-between mb-3">
               <span className="text-sm font-medium text-stone-700">
                 {isTransitioningToDetail
-                  ? "詳細ページへ移動中..."
+                  ? t("progress.movingToDetail")
                   : isCompleted
-                    ? "生成完了"
-                    : "詳細プランを生成中..."}
+                    ? t("progress.completed")
+                    : t("progress.generatingDetails")}
               </span>
               <span className="text-sm text-stone-500 font-mono">
-                {completedCount}/{totalDays} 日
+                {t("progress.dayCount", { completed: completedCount, total: totalDays })}
               </span>
             </div>
             {isTransitioningToDetail && (
               <div className="mb-3 px-3 py-2 rounded-lg border border-primary/20 bg-primary/5 text-primary text-sm font-medium">
-                詳細が完成しました。このまましばらくお待ちください。自動で詳細ページへ移動します。
+                {t("progress.detailReadyMessage")}
               </div>
             )}
             {/* Progress Bar */}
@@ -322,11 +304,11 @@ export default function StreamingResultView({
             <div className="flex-shrink-0 text-2xl">⚠️</div>
             <div className="flex-1">
               <h3 className="font-bold text-amber-900 mb-2 text-lg">
-                AI生成プランに関する重要なお知らせ
+                {t("disclaimer.title")}
               </h3>
               <div className="text-amber-800 text-sm leading-relaxed space-y-2">
                 <p>
-                  このプランはAIによって自動生成されています。施設の営業時間、料金、住所などの情報は必ず公式サイトで最新情報をご確認ください。
+                  {t("disclaimer.body")}
                 </p>
               </div>
             </div>
@@ -359,7 +341,7 @@ export default function StreamingResultView({
                         </span>
                         <div className="flex flex-col">
                           <span className="text-xs text-stone-400 uppercase tracking-widest font-bold">
-                            Day
+                            {t("dayLabel")}
                           </span>
                           <span className="text-stone-600 font-serif italic text-lg leading-none">
                             {completedDay.title}
@@ -400,7 +382,7 @@ export default function StreamingResultView({
                         />
                       ))}
 
-                      {/* Replan Trigger Panel (PR-K: 旅中モード) */}
+                      {/* Replan Trigger Panel (traveling mode) */}
                       {showReplanTriggers && onReplanTrigger && (
                         <div className="pt-4 animate-in fade-in duration-300">
                           <ReplanTriggerPanel
@@ -416,7 +398,7 @@ export default function StreamingResultView({
                         <AccommodationCard
                           accommodation={{
                             name: outlineDay.overnight_location,
-                            description: `${completedDay.day}日目の宿泊エリア`,
+                            description: t("accommodationDescription", { day: completedDay.day }),
                           }}
                           dayNumber={completedDay.day}
                           state={getCardState(`accommodation-${completedDay.day}`)}

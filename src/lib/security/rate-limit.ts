@@ -1,9 +1,28 @@
 import { createClient } from "@/lib/supabase/server";
+import { createTranslator } from "next-intl";
+import { getMessages } from "@/lib/i18n/messages";
+import { DEFAULT_LANGUAGE, type LanguageCode } from "@/lib/i18n/locales";
+import { getRequestLanguage } from "@/lib/i18n/server";
 
 export type RateLimitResult = {
   success: boolean;
   message?: string;
 };
+
+async function createRateLimitTranslator() {
+  let language: LanguageCode = DEFAULT_LANGUAGE;
+  try {
+    language = await getRequestLanguage();
+  } catch {
+    language = DEFAULT_LANGUAGE;
+  }
+
+  return createTranslator({
+    locale: language,
+    messages: getMessages(language),
+    namespace: "lib.security.rateLimit",
+  });
+}
 
 /**
  * Checks if the user has exceeded the plan creation rate limit.
@@ -15,6 +34,7 @@ export type RateLimitResult = {
 export async function checkPlanCreationRate(userId: string): Promise<RateLimitResult> {
   const limit = 5;
   const windowSeconds = 60;
+  const t = await createRateLimitTranslator();
 
   try {
     const supabase = await createClient();
@@ -37,7 +57,7 @@ export async function checkPlanCreationRate(userId: string): Promise<RateLimitRe
     if (count !== null && count >= limit) {
       return {
         success: false,
-        message: "プラン作成の頻度が高すぎます。しばらく待ってから再試行してください。",
+        message: t("planCreationTooFrequent"),
       };
     }
 
@@ -56,6 +76,7 @@ export async function checkPlanCreationRate(userId: string): Promise<RateLimitRe
  */
 export async function checkPlanUpdateRate(planId: string): Promise<RateLimitResult> {
   const minIntervalSeconds = 3;
+  const t = await createRateLimitTranslator();
 
   try {
     const supabase = await createClient();
@@ -79,7 +100,7 @@ export async function checkPlanUpdateRate(planId: string): Promise<RateLimitResu
     if (diffSeconds < minIntervalSeconds) {
       return {
         success: false,
-        message: "更新頻度が高すぎます。少し時間を置いてください。",
+        message: t("planUpdateTooFrequent"),
       };
     }
 

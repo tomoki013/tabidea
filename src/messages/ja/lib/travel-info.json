@@ -1,0 +1,29 @@
+{
+  "lib": {
+    "travelInfo": {
+      "categoryLabels": {
+        "basic": "基本情報",
+        "safety": "安全・医療",
+        "climate": "気候・服装",
+        "visa": "ビザ・入国",
+        "manner": "マナー・チップ",
+        "transport": "交通事情",
+        "local_food": "グルメ",
+        "souvenir": "お土産・買い物",
+        "events": "イベント・祭り",
+        "technology": "電源・通信",
+        "healthcare": "医療・衛生",
+        "restrooms": "トイレ事情",
+        "smoking": "喫煙ルール",
+        "alcohol": "飲酒ルール"
+      },
+      "dangerLevelDescriptions": {
+        "0": "危険情報なし",
+        "1": "十分注意してください",
+        "2": "不要不急の渡航は止めてください",
+        "3": "渡航は止めてください（渡航中止勧告）",
+        "4": "退避してください（退避勧告）"
+      }
+    }
+  }
+}

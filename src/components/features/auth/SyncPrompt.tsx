@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { FaCloudUploadAlt, FaCheck, FaTimes, FaSpinner, FaPlane } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -14,6 +15,7 @@ interface SyncPromptProps {
 }
 
 export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
+  const t = useTranslations('components.common.syncPrompt');
   const { isAuthenticated, isLoading: authLoading } = useAuth();
   const [hasLocalPlans, setHasLocalPlans] = useState(false);
   const [localPlansCount, setLocalPlansCount] = useState(0);
@@ -62,7 +64,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
         syncedCount: 0,
         failedCount: localPlansCount,
         skippedCount: 0,
-        errors: ['同期中にエラーが発生しました'],
+        errors: [t('syncError')],
         mergeInfo: {
           existingPlansCount: 0,
           newPlansAdded: 0,
@@ -96,9 +98,9 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
             <FaCheck className="text-[#27ae60] text-xl" />
           </div>
           <div>
-            <p className="font-serif font-bold text-[#27ae60] text-lg">同期完了</p>
+            <p className="font-serif font-bold text-[#27ae60] text-lg">{t('successTitle')}</p>
             <p className="text-stone-600">
-              {syncResult.syncedCount}件のプランを保存しました
+              {t('successBody', { count: syncResult.syncedCount })}
             </p>
           </div>
         </div>
@@ -133,7 +135,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
           <button
             onClick={handleDismiss}
             className="absolute top-4 right-4 p-2 text-stone-400 hover:text-stone-600 hover:bg-stone-100 rounded-full transition-colors"
-            aria-label="閉じる"
+            aria-label={t('close')}
           >
             <FaTimes size={16} />
           </button>
@@ -144,21 +146,21 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
             </div>
 
             <h3 className="font-serif text-2xl font-bold text-stone-800 mb-2">
-              プランを同期しますか？
+              {t('title')}
             </h3>
 
             <p className="text-stone-600 mb-6 flex flex-col items-center justify-center gap-1">
-              <span>お使いのブラウザに保存されている</span>
+              <span>{t('descriptionLine1')}</span>
               <span className="font-bold flex items-center gap-1 text-stone-800 bg-[#e67e22]/10 px-2 py-0.5 rounded-full">
                 <FaPlane className="text-[#e67e22]" />
-                {localPlansCount}件のプラン
+                {t('countLabel', { count: localPlansCount })}
               </span>
-              <span>をアカウントに保存します。</span>
+              <span>{t('descriptionLine2')}</span>
             </p>
 
             {syncResult && !syncResult.success && (
               <div className="mb-6 p-3 bg-red-50 border border-dashed border-red-200 rounded-xl text-sm text-red-600 w-full">
-                一部のプランの同期に失敗しました
+                {t('partialFailure')}
               </div>
             )}
 
@@ -171,12 +173,12 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
                 {isSyncing ? (
                   <>
                     <FaSpinner className="animate-spin" />
-                    同期中...
+                    {t('syncing')}
                   </>
                 ) : (
                   <>
                     <FaCloudUploadAlt />
-                    同期する
+                    {t('syncNow')}
                   </>
                 )}
               </button>
@@ -185,7 +187,7 @@ export function SyncPrompt({ onSyncComplete }: SyncPromptProps) {
                 disabled={isSyncing}
                 className="w-full sm:w-auto px-6 py-3.5 text-stone-500 hover:text-[#e67e22] hover:bg-stone-50 rounded-xl text-base font-medium transition-colors"
               >
-                後で
+                {t('later')}
               </button>
             </div>
           </div>

@@ -1,9 +1,32 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { FaArrowRight, FaPen, FaShareAlt, FaMapMarkedAlt, FaImages } from 'react-icons/fa';
 import { JournalSheet, Tape, HandwrittenText, Stamp } from '@/components/ui/journal';
 
 export default function TravelShioriHeroSection() {
+  const t = useTranslations('components.features.landing.travelShioriHeroSection');
+  const featureCards = [
+    {
+      icon: <FaPen />,
+      title: t('featureCards.0.title'),
+      desc: t('featureCards.0.desc'),
+      color: 'blue' as const,
+    },
+    {
+      icon: <FaShareAlt />,
+      title: t('featureCards.1.title'),
+      desc: t('featureCards.1.desc'),
+      color: 'orange' as const,
+    },
+    {
+      icon: <FaMapMarkedAlt />,
+      title: t('featureCards.2.title'),
+      desc: t('featureCards.2.desc'),
+      color: 'green' as const,
+    },
+  ];
+
   return (
     <section className="relative w-full py-24 md:py-32 overflow-hidden bg-[#fcfbf9]">
       {/* Background decoration */}
@@ -29,25 +52,25 @@ export default function TravelShioriHeroSection() {
                               <FaImages size={40} />
                            </div>
                            <div className="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded backdrop-blur-sm">
-                              Paris, France
+                              {t('mock.location')}
                            </div>
                         </div>
-                        <HandwrittenText className="text-2xl font-bold text-stone-800 mb-1">Paris Art Trip</HandwrittenText>
-                        <p className="text-stone-500 text-xs font-mono mb-4">2026.04.10 - 04.15</p>
+                        <HandwrittenText className="text-2xl font-bold text-stone-800 mb-1">{t('mock.title')}</HandwrittenText>
+                        <p className="text-stone-500 text-xs font-mono mb-4">{t('mock.date')}</p>
 
                         <div className="space-y-3">
                            <div className="flex items-center gap-3 p-2 bg-red-50 rounded border border-red-100">
                               <span className="w-8 h-8 flex items-center justify-center bg-white rounded-full border border-red-200 text-lg">🎨</span>
                               <div className="flex-1">
-                                 <p className="text-xs font-bold text-stone-700">ルーヴル美術館</p>
-                                 <p className="text-[10px] text-stone-500">9:00 - 予約済み</p>
+                                 <p className="text-xs font-bold text-stone-700">{t('mock.items.0.title')}</p>
+                                 <p className="text-[10px] text-stone-500">{t('mock.items.0.time')}</p>
                               </div>
                            </div>
                            <div className="flex items-center gap-3 p-2 bg-orange-50 rounded border border-orange-100">
                               <span className="w-8 h-8 flex items-center justify-center bg-white rounded-full border border-orange-200 text-lg">🥐</span>
                               <div className="flex-1">
-                                 <p className="text-xs font-bold text-stone-700">ベーカリー巡り</p>
-                                 <p className="text-[10px] text-stone-500">マレ地区周辺</p>
+                                 <p className="text-xs font-bold text-stone-700">{t('mock.items.1.title')}</p>
+                                 <p className="text-[10px] text-stone-500">{t('mock.items.1.time')}</p>
                               </div>
                            </div>
                         </div>
@@ -87,12 +110,12 @@ export default function TravelShioriHeroSection() {
                <div>
                   <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-100/50 text-orange-600 border border-orange-200 text-xs font-bold uppercase tracking-wider mb-4">
                      <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-                     Discover
+                     {t('badge')}
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-stone-800 leading-[1.1]">
-                    みんなの<br/>
+                    {t('titleLine1')}<br/>
                     <span className="relative inline-block text-primary">
-                       旅のしおりを探そう
+                       {t('titleLine2')}
                        <svg className="absolute w-full h-3 -bottom-1 left-0 text-yellow-300 -z-10" viewBox="0 0 100 10" preserveAspectRatio="none">
                           <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" className="opacity-60" />
                        </svg>
@@ -101,29 +124,20 @@ export default function TravelShioriHeroSection() {
                </div>
 
                <p className="text-lg md:text-xl text-stone-600 font-hand leading-relaxed max-w-lg">
-                  他のユーザーが作成した実際の旅行プランを参考に、<br/>
-                  あなたの次の旅のインスピレーションを見つけましょう。
+                  {t('leadLine1')}<br/>
+                  {t('leadLine2')}
                </p>
 
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <FeatureCard
-                     icon={<FaPen />}
-                     title="リアルな体験談"
-                     desc="実際に訪れた人の生の声や、写真付きの記録が見られます。"
-                     color="blue"
-                  />
-                  <FeatureCard
-                     icon={<FaShareAlt />}
-                     title="プランを参考に"
-                     desc="気に入ったプランをコピーして、自分だけの旅にアレンジ。"
-                     color="orange"
-                  />
-                  <FeatureCard
-                     icon={<FaMapMarkedAlt />}
-                     title="地図で探す"
-                     desc="行きたいエリアから、みんなの旅のしおりを検索できます。"
-                     color="green"
-                  />
+                  {featureCards.map((feature) => (
+                    <FeatureCard
+                      key={feature.title}
+                      icon={feature.icon}
+                      title={feature.title}
+                      desc={feature.desc}
+                      color={feature.color}
+                    />
+                  ))}
                </div>
 
                <div className="pt-4 flex flex-col sm:flex-row gap-4">
@@ -131,7 +145,7 @@ export default function TravelShioriHeroSection() {
                      href="/shiori"
                      className="inline-flex justify-center items-center gap-3 bg-stone-800 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl hover:bg-stone-700 hover:-translate-y-1 transition-all duration-300"
                   >
-                     みんなの旅のしおりを見る
+                     {t('viewShiori')}
                      <FaArrowRight />
                   </Link>
                </div>

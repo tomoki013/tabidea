@@ -1,13 +1,14 @@
 "use client";
 
 /**
- * StaticRouteView — 静的ルート表示 (Anonymous/Free ティア)
+ * StaticRouteView - Static route view (Anonymous/Free tier)
  *
- * Google Maps/Leaflet API を使わず、全日程のスポットをリスト形式で表示。
- * ゼロコスト。Google Maps への外部リンクを提供。
+ * Shows all-day spots in list format without Google Maps/Leaflet APIs.
+ * Zero-cost implementation with external Google Maps links.
  */
 
 import { useState, useMemo, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import {
   FaMapMarkedAlt,
   FaChevronDown,
@@ -28,6 +29,7 @@ export default function StaticRouteView({
   destination,
   className = "",
 }: MapRouteViewBaseProps) {
+  const t = useTranslations("components.features.planner.mapRoute");
   const [isExpanded, setIsExpanded] = useState(true);
   const [selectedDay, setSelectedDay] = useState<number | null>(null);
 
@@ -87,11 +89,11 @@ export default function StaticRouteView({
         <div className="flex items-center gap-2">
           <FaMapMarkedAlt className="text-primary" />
           <span className="font-bold text-sm text-stone-700">
-            全日程マップ
+            {t("headerTitle")}
           </span>
           {markers.length > 0 && (
             <span className="text-xs text-stone-500">
-              ({markers.length} spots)
+              {t("spotsCount", { count: markers.length })}
             </span>
           )}
         </div>
@@ -116,7 +118,7 @@ export default function StaticRouteView({
                       : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                   }`}
                 >
-                  全日程
+                  {t("allDays")}
                 </button>
                 {days.map((day) => {
                   const color = getDayColor(day.day - 1);
@@ -131,7 +133,7 @@ export default function StaticRouteView({
                         color: isActive ? "#fff" : color.bg,
                       }}
                     >
-                      Day {day.day}
+                      {t("dayLabel", { day: day.day })}
                     </button>
                   );
                 })}
@@ -152,7 +154,7 @@ export default function StaticRouteView({
                             color: color.bg,
                           }}
                         >
-                          Day {dayNum}
+                          {t("dayLabel", { day: dayNum })}
                         </div>
                         <div className="space-y-1.5 ml-1">
                           {dayMarkers
@@ -186,7 +188,7 @@ export default function StaticRouteView({
               {/* Footer */}
               <div className="px-4 py-3 border-t border-stone-100 flex items-center justify-between shrink-0">
                 <p className="text-[10px] text-stone-400">
-                  Proプランで対話型マップが利用可能になります
+                  {t("interactiveMapPro")}
                 </p>
                 <a
                   href={googleMapsUrl}
@@ -195,15 +197,15 @@ export default function StaticRouteView({
                   className="flex items-center gap-1.5 text-xs font-bold text-primary hover:underline"
                 >
                   <FaExternalLinkAlt size={10} />
-                  Google Mapsで見る
+                  {t("openInGoogleMaps")}
                 </a>
               </div>
             </>
           ) : (
             <div className="flex-1 min-h-[200px] flex flex-col items-center justify-center bg-stone-50 text-stone-400 gap-3 p-6">
               <FaMapMarkedAlt className="text-3xl text-stone-300" />
-              <p className="text-sm font-medium">位置情報を読み込み中...</p>
-              <p className="text-xs text-stone-400">スポットの座標を取得しています</p>
+              <p className="text-sm font-medium">{t("loadingLocation")}</p>
+              <p className="text-xs text-stone-400">{t("loadingCoordinates")}</p>
             </div>
           )}
         </>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { useTranslations } from 'next-intl';
 import { submitPlanFeedback } from '@/app/actions/feedback';
 
 interface PlanFeedbackBarProps {
@@ -9,6 +10,7 @@ interface PlanFeedbackBarProps {
 }
 
 export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBarProps) {
+  const t = useTranslations("components.features.planner.planFeedbackBar");
   const [rating, setRating] = useState<number>(0);
   const [hoveredRating, setHoveredRating] = useState<number>(0);
   const [comment, setComment] = useState('');
@@ -39,8 +41,8 @@ export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBar
   if (submitted) {
     return (
       <div className="bg-green-50 border border-green-200 rounded-xl p-4 text-center">
-        <p className="text-green-700 font-medium">ありがとうございます！</p>
-        <p className="text-green-600 text-sm mt-1">フィードバックを送信しました</p>
+        <p className="text-green-700 font-medium">{t("submittedTitle")}</p>
+        <p className="text-green-600 text-sm mt-1">{t("submittedDescription")}</p>
       </div>
     );
   }
@@ -48,7 +50,7 @@ export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBar
   return (
     <div className="bg-stone-50 border border-stone-200 rounded-xl p-4 sm:p-6">
       <p className="text-stone-700 font-medium text-center mb-3">
-        このプランはいかがでしたか？
+        {t("title")}
       </p>
 
       {/* Star Rating */}
@@ -63,7 +65,7 @@ export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBar
             onMouseEnter={() => setHoveredRating(star)}
             onMouseLeave={() => setHoveredRating(0)}
             className="text-2xl transition-transform hover:scale-110"
-            aria-label={`${star}つ星`}
+            aria-label={t("starAria", { star })}
           >
             {star <= (hoveredRating || rating) ? '⭐' : '☆'}
           </button>
@@ -76,7 +78,7 @@ export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBar
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder="コメント（任意）"
+            placeholder={t("commentPlaceholder")}
             className="w-full px-3 py-2 border border-stone-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/50"
             rows={2}
           />
@@ -88,7 +90,7 @@ export default function PlanFeedbackBar({ planId, destination }: PlanFeedbackBar
             disabled={isPending || rating === 0}
             className="w-full py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {isPending ? '送信中...' : '送信する'}
+            {isPending ? t("submitting") : t("submit")}
           </button>
         </div>
       )}

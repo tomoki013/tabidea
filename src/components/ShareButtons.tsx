@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useSyncExternalStore } from "react";
+import { useTranslations } from "next-intl";
 import { Itinerary, UserInput } from "@/types";
 import { FaFacebook, FaLine, FaLink, FaShareAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -30,6 +31,7 @@ export default function ShareButtons({
   shareCode,
   localId,
 }: ShareButtonsProps) {
+  const t = useTranslations("components.common.shareButtons");
   const [copied, setCopied] = useState(false);
 
   // Memoize the getSnapshot function to prevent infinite loop
@@ -57,9 +59,10 @@ export default function ShareButtons({
     getFalseSnapshot,
   );
 
-  const shareText = `AIに旅行プランを作ってもらいました！\n目的地: ${
-    result.destination
-  }\nテーマ: ${input.theme.join(", ")}\n\n#Tabidea #ともきち日記`;
+  const shareText = t("shareText", {
+    destination: result.destination,
+    themes: input.theme.join(", "),
+  });
 
   const handleCopy = async () => {
     try {
@@ -74,7 +77,7 @@ export default function ShareButtons({
   const handleNativeShare = async () => {
     try {
       await navigator.share({
-        title: `${result.destination}の旅行プラン`,
+        title: t("nativeShareTitle", { destination: result.destination }),
         text: shareText,
         url: shareUrl,
       });
@@ -99,14 +102,14 @@ export default function ShareButtons({
   return (
     <div className={`space-y-4 ${className}`}>
       <h4 className="text-sm font-bold text-stone-600 mb-3 text-center sm:text-left flex items-center gap-2">
-        <FaShareAlt /> Share this plan
+        <FaShareAlt /> {t("heading")}
       </h4>
       <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
         {canShare && (
           <button
             onClick={handleNativeShare}
             className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all w-10 h-10 flex items-center justify-center"
-            aria-label="Share"
+            aria-label={t("aria.share")}
           >
             <FaShareAlt size={18} />
           </button>
@@ -117,7 +120,7 @@ export default function ShareButtons({
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full bg-black hover:bg-gray-900 text-white border border-white/20 transition-all flex items-center justify-center w-10 h-10"
-          aria-label="Share on X"
+          aria-label={t("aria.shareOnX")}
         >
           <FaXTwitter size={16} />
         </a>
@@ -127,7 +130,7 @@ export default function ShareButtons({
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full bg-[#06C755] hover:bg-[#05b34c] text-white transition-all flex items-center justify-center w-10 h-10"
-          aria-label="Share on LINE"
+          aria-label={t("aria.shareOnLine")}
         >
           <FaLine size={20} />
         </a>
@@ -137,7 +140,7 @@ export default function ShareButtons({
           target="_blank"
           rel="noopener noreferrer"
           className="p-3 rounded-full bg-[#1877F2] hover:bg-[#166fe5] text-white transition-all flex items-center justify-center w-10 h-10"
-          aria-label="Share on Facebook"
+          aria-label={t("aria.shareOnFacebook")}
         >
           <FaFacebook size={18} />
         </a>
@@ -145,11 +148,11 @@ export default function ShareButtons({
         <button
           onClick={handleCopy}
           className="p-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-600 transition-all relative w-10 h-10 flex items-center justify-center"
-          aria-label="Copy Link"
+          aria-label={t("aria.copyLink")}
         >
           {copied ? (
             <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-xs py-1 px-2 rounded shadow whitespace-nowrap">
-              Copied!
+              {t("copied")}
             </span>
           ) : null}
           <FaLink size={16} />

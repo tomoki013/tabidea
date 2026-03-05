@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { UserInput } from '@/types';
 import { FaPlus, FaMinus } from "react-icons/fa6";
 
@@ -12,39 +13,14 @@ interface StepDatesProps {
   onComplete?: () => void;
 }
 
-// Parsing logic can be moved outside or kept if it's only used here.
+const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
 const parseDate = (str: string) => {
   const match = str.match(/(\d{4}-\d{2}-\d{2})/);
   return match ? match[1] : "";
 };
 
-const parseDuration = (str: string) => {
-  // Check for "日帰り" (Day trip = 1 day)
-  if (str.includes("日帰り")) return 1;
-
-  const daysMatch = str.match(/(\d+)日間/);
-  if (daysMatch) {
-    const d = parseInt(daysMatch[1]);
-    return Math.max(1, isNaN(d) ? 1 : d);
-  }
-  const nightsMatch = str.match(/(\d+)泊(\d+)日/);
-  if (nightsMatch) {
-    const d = parseInt(nightsMatch[2]);
-    return Math.max(1, isNaN(d) ? 1 : d);
-  }
-  return 3;
-};
-
-const parseDisplayFormat = (str: string): "days" | "nights" => {
-  if (str.includes("日帰り") || /\d+泊\d+日/.test(str)) return "nights";
-  return "days";
-};
-
 const isDateUndecidedCheck = (str:string) => !/(\d{4}-\d{2}-\d{2})/.test(str);
-
-// Revised check: explicitly exclude "日帰り" from being considered "undecided"
-const isDurationUndecidedCheck = (str: string) =>
-  !str.includes("日帰り") && !/(\d+)日間/.test(str) && !/(\d+)泊(\d+)日/.test(str);
 
 const getTomorrow = () => {
   const d = new Date();
@@ -53,6 +29,41 @@ const getTomorrow = () => {
 };
 
 export default function StepDates({ input, onChange, onNext, canComplete, onComplete }: StepDatesProps) {
+  const t = useTranslations("components.features.planner.steps.stepDates");
+
+  const dayTripLabel = t("formats.dayTrip");
+  const daysUnit = t("formats.daysUnit");
+  const nightsUnit = t("formats.nightsUnit");
+  const dayUnit = t("formats.dayUnit");
+  const daysRegex = new RegExp(`(\\d+)\\s*${escapeRegex(daysUnit)}`);
+  const nightsRegex = new RegExp(`(\\d+)\\s*${escapeRegex(nightsUnit)}\\s*(\\d+)\\s*${escapeRegex(dayUnit)}`);
+
+  const parseDuration = (str: string) => {
+    if (str.includes(dayTripLabel)) return 1;
+
+    const daysMatch = str.match(daysRegex);
+    if (daysMatch) {
+      const d = Number.parseInt(daysMatch[1], 10);
+      return Math.max(1, Number.isNaN(d) ? 1 : d);
+    }
+
+    const nightsMatch = str.match(nightsRegex);
+    if (nightsMatch) {
+      const d = Number.parseInt(nightsMatch[2], 10);
+      return Math.max(1, Number.isNaN(d) ? 1 : d);
+    }
+
+    return 3;
+  };
+
+  const parseDisplayFormat = (str: string): "days" | "nights" => {
+    if (str.includes(dayTripLabel) || nightsRegex.test(str)) return "nights";
+    return "days";
+  };
+
+  const isDurationUndecidedCheck = (str: string) =>
+    !str.includes(dayTripLabel) && !daysRegex.test(str) && !nightsRegex.test(str);
+
   // --- STATE DERIVATION ---
   const startDate = parseDate(input.dates);
   const duration = parseDuration(input.dates);
@@ -70,16 +81,16 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
   ): string => {
     const formatDur = (d: number) => {
       if (format === "nights") {
-        if (d === 1) return "日帰り";
-        return `${d - 1}泊${d}日`;
+        if (d === 1) return t("formats.dayTrip");
+        return t("formats.nightsDays", { nights: d - 1, days: d });
       }
-      return `${d}日間`;
+      return t("formats.days", { days: d });
     };
 
-    if (dateUndecided && durationUndecided) return "時期は未定";
+    if (dateUndecided && durationUndecided) return t("formats.dateUndecidedValue");
     if (dateUndecided) return formatDur(dur);
-    if (durationUndecided) return sDate ? `${sDate}出発 (期間未定)` : "時期は未定";
-    return sDate ? `${sDate}から${formatDur(dur)}` : formatDur(dur);
+    if (durationUndecided) return sDate ? t("formats.dateWithUndecidedDuration", { date: sDate }) : t("formats.dateUndecidedValue");
+    return sDate ? t("formats.dateFromWithDuration", { date: sDate, duration: formatDur(dur) }) : formatDur(dur);
   };
 
   const handleDurationChange = (delta: number) => {
@@ -113,10 +124,10 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
     <div className="flex flex-col h-full justify-center space-y-10 animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="text-center space-y-2">
         <h2 className="text-3xl font-serif font-bold text-foreground">
-          いつ、どれくらい？
+          {t("title")}
         </h2>
         <p className="font-hand text-muted-foreground">
-          決まっていなければチェックを入れてください
+          {t("lead")}
         </p>
       </div>
 
@@ -126,7 +137,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
         <div className="space-y-3">
             <div className="flex items-center justify-between">
                 <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
-                    <span className="text-xl">📅</span> 出発日
+                    <span className="text-xl">📅</span> {t("date.label")}
                 </label>
                 <div className="flex items-center gap-2">
                     <input
@@ -137,7 +148,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                         className="w-5 h-5 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
                     <label htmlFor="date-undecided" className="text-sm text-stone-700 font-bold cursor-pointer select-none">
-                        未定
+                        {t("date.undecided")}
                     </label>
                 </div>
             </div>
@@ -157,7 +168,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
         <div className="space-y-3">
              <div className="flex items-center justify-between">
                 <label className="text-sm font-bold text-stone-700 uppercase tracking-widest flex items-center gap-2">
-                    <span className="text-xl">⏱️</span> 旅行日数
+                    <span className="text-xl">⏱️</span> {t("duration.label")}
                 </label>
                 <div className="flex items-center gap-2">
                     <input
@@ -168,7 +179,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                         className="w-5 h-5 text-primary border-stone-300 rounded-sm focus:ring-primary cursor-pointer"
                     />
                     <label htmlFor="duration-undecided" className="text-sm text-stone-700 font-bold cursor-pointer select-none">
-                        未定
+                        {t("duration.undecided")}
                     </label>
                 </div>
             </div>
@@ -183,7 +194,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                             : "bg-stone-50 text-stone-500 border-stone-300 hover:bg-stone-100"
                     }`}
                 >
-                    ○日間
+                    {t("duration.toggleDays")}
                 </button>
                 <button
                     onClick={() => handleDisplayFormatChange("nights")}
@@ -193,7 +204,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                             : "bg-stone-50 text-stone-500 border-stone-300 hover:bg-stone-100"
                     }`}
                 >
-                    ○泊○日
+                    {t("duration.toggleNights")}
                 </button>
             </div>
 
@@ -202,7 +213,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                     onClick={() => handleDurationChange(-1)}
                     disabled={duration <= 1 || isDurationUndecided}
                     className="w-12 h-12 flex items-center justify-center rounded-full bg-stone-100 border border-stone-200 text-stone-600 hover:bg-stone-200 hover:border-stone-300 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    aria-label="Decrease duration"
+                    aria-label={t("duration.decreaseAria")}
                 >
                     <FaMinus size={14} />
                 </button>
@@ -214,12 +225,12 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                                 {duration}
                             </span>
                             <span className="ml-2 text-sm text-stone-500 font-bold mt-1">
-                                日間
+                                {t("duration.daysUnitDisplay")}
                             </span>
                         </>
                     ) : (
                         <span className="text-xl font-bold font-serif text-foreground">
-                            {duration === 1 ? "日帰り" : `${duration - 1}泊${duration}日`}
+                            {duration === 1 ? t("formats.dayTrip") : t("formats.nightsDays", { nights: duration - 1, days: duration })}
                         </span>
                     )}
                 </div>
@@ -228,7 +239,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                     onClick={() => handleDurationChange(1)}
                     disabled={duration >= 30 || isDurationUndecided}
                     className="w-12 h-12 flex items-center justify-center rounded-full bg-stone-100 border border-stone-200 text-stone-600 hover:bg-stone-200 hover:border-stone-300 active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                    aria-label="Increase duration"
+                    aria-label={t("duration.increaseAria")}
                 >
                     <FaPlus size={14} />
                 </button>
@@ -238,8 +249,8 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                  {!isDurationUndecided && (
                     <span className="text-xs text-stone-400 font-mono block animate-in fade-in duration-300">
                         {displayFormat === "days"
-                            ? (duration === 1 ? "日帰り" : `${duration - 1}泊${duration}日`)
-                            : `${duration}日間`
+                            ? (duration === 1 ? t("formats.dayTrip") : t("formats.nightsDays", { nights: duration - 1, days: duration }))
+                            : t("formats.days", { days: duration })
                         }
                     </span>
                  )}
@@ -259,7 +270,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            次へ進む →
+            {t("next")}
           </button>
 
           {/* Skip & Create Plan Button */}
@@ -269,7 +280,7 @@ export default function StepDates({ input, onChange, onNext, canComplete, onComp
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

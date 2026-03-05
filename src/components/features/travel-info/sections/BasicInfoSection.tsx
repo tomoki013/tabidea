@@ -1,5 +1,6 @@
 'use client';
 
+import { useLocale, useTranslations } from 'next-intl';
 import {
   Coins,
   Languages,
@@ -17,25 +18,28 @@ import type { SectionBaseProps } from '../types';
  * 通貨、為替レート、言語、タイムゾーン情報を表示
  */
 export default function BasicInfoSection({ data }: SectionBaseProps<BasicCountryInfo>) {
+  const t = useTranslations('components.features.travelInfo.sections.basicInfoSection');
+  const locale = useLocale();
+
   return (
     <div className="space-y-6">
       {/* 通貨情報 */}
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Coins className="w-5 h-5 text-primary" />
-          通貨情報
+          {t('currencyInfo')}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <InfoCard
-            label="通貨"
+            label={t('labels.currency')}
             value={data.currency.name}
             subValue={`${data.currency.code} (${data.currency.symbol})`}
           />
           {data.exchangeRate && (
             <InfoCard
-              label="為替レート"
+              label={t('labels.exchangeRate')}
               value={`1 ${data.currency.code} = ${data.exchangeRate.rate.toFixed(2)} ${data.exchangeRate.baseCurrency}`}
-              subValue={`更新: ${formatUpdateDate(data.exchangeRate.updatedAt)}`}
+              subValue={t('updatedAt', { date: formatUpdateDate(data.exchangeRate.updatedAt, locale) })}
               icon={
                 data.exchangeRate.rate > 100 ? (
                   <TrendingUp className="w-4 h-4 text-green-500" />
@@ -52,7 +56,7 @@ export default function BasicInfoSection({ data }: SectionBaseProps<BasicCountry
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Languages className="w-5 h-5 text-primary" />
-          言語
+          {t('language')}
         </h4>
         <div className="flex flex-wrap gap-2">
           {data.languages.map((language, index) => (
@@ -70,15 +74,15 @@ export default function BasicInfoSection({ data }: SectionBaseProps<BasicCountry
       <div className="space-y-3">
         <h4 className="flex items-center gap-2 font-serif font-bold text-[#2c2c2c]">
           <Clock className="w-5 h-5 text-primary" />
-          時差
+          {t('timeDifference')}
         </h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <InfoCard
-            label="タイムゾーン"
+            label={t('labels.timezone')}
             value={data.timezone}
           />
           <InfoCard
-            label="日本との時差"
+            label={t('labels.timeDifferenceFromJapan')}
             value={data.timeDifference}
             icon={<ArrowRightLeft className="w-4 h-4 text-primary" />}
           />
@@ -124,8 +128,8 @@ function InfoCard({
 /**
  * 更新日時をフォーマット
  */
-function formatUpdateDate(date: Date): string {
-  return new Intl.DateTimeFormat('ja-JP', {
+function formatUpdateDate(date: Date, locale: string): string {
+  return new Intl.DateTimeFormat(locale === 'ja' ? 'ja-JP' : 'en-US', {
     month: 'short',
     day: 'numeric',
     hour: '2-digit',

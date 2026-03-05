@@ -15,7 +15,6 @@ import type {
   RecoveryOption,
   ReplanResult,
   ReplanTrigger,
-  ScoreBreakdown,
   TravelerState,
   TripContext,
   TripPlan,
@@ -25,6 +24,7 @@ import { classifyActivity } from "@/lib/utils/activity-classifier";
 import { generateExplanation } from "./explanation-generator";
 import { scoreHumanResolution } from "./scoring/score-human-resolution";
 import type { HumanResolutionInput } from "./scoring/types";
+import { createReplanTranslator } from "./i18n";
 
 // ============================================================================
 // Types
@@ -58,28 +58,27 @@ const MAX_ALTERNATIVES = 3;
 // ============================================================================
 
 /**
- * フォールバック用のアクティビティ名テンプレート
- */
-const FALLBACK_ACTIVITIES: Record<RecoveryCategory, string[]> = {
-  indoor: ["屋内スポット散策", "博物館・美術館見学", "ショッピング"],
-  food: ["地元グルメ探訪", "カフェでひと休み", "名物料理ランチ"],
-  rest: ["カフェで休憩", "ホテルで休憩", "公園でリラックス"],
-  outdoor: ["街歩き散策", "公園散歩", "展望スポット"],
-  culture: ["文化体験", "歴史スポット見学", "伝統工芸体験"],
-};
-
-/**
  * AI がタイムアウトした場合のフォールバック代替案。
  * カテゴリを変えて3つの汎用オプションを返す。
  * 各スロットに個別のアクティビティ名を割り当てる。
  */
 function buildFallbackOptions(
   trigger: ReplanTrigger,
-  affectedSlots: PlanSlot[]
+  affectedSlots: PlanSlot[],
+  locale?: string
 ): RecoveryOption[] {
+  const t = createReplanTranslator(locale);
+  const fallbackActivities: Record<RecoveryCategory, string[]> = {
+    indoor: t.raw("fallbackActivities.indoor") as string[],
+    food: t.raw("fallbackActivities.food") as string[],
+    rest: t.raw("fallbackActivities.rest") as string[],
+    outdoor: t.raw("fallbackActivities.outdoor") as string[],
+    culture: t.raw("fallbackActivities.culture") as string[],
+  };
+
   const categories: RecoveryCategory[] = ["indoor", "food", "rest"];
   return categories.map((category, i) => {
-    const activityNames = FALLBACK_ACTIVITIES[category];
+    const activityNames = fallbackActivities[category];
     return {
       id: `fallback-${i}`,
       replacementSlots: affectedSlots.map((slot, j) => ({
@@ -88,11 +87,13 @@ function buildFallbackOptions(
         activity: {
           ...slot.activity,
           activity: activityNames[j % activityNames.length],
-          description: generateExplanation(trigger.type, category),
+          description: generateExplanation(trigger.type, category, undefined, locale),
         },
       })),
-      explanation: generateExplanation(trigger.type, category),
-      estimatedDuration: `${affectedSlots.length}時間`,
+      explanation: generateExplanation(trigger.type, category, undefined, locale),
+      estimatedDuration: t("estimatedDurationHours", {
+        count: affectedSlots.length,
+      }),
       category,
     };
   });
@@ -124,10 +125,11 @@ export class ReplanEngine {
     state: TravelerState,
     context: TripContext
   ): Promise<ReplanResult> {
+    const locale = context.language;
     const startTime = performance.now();
 
     // 1. 影響スロットを特定
-    const affectedSlots = this.findAffectedSlots(trigger, tripPlan);
+    const affectedSlots = this.findAffectedSlots(trigger, tripPlan, locale);
 
     // 2. AI 代替案を生成 (2秒タイムアウト)
     let options: RecoveryOption[];
@@ -139,12 +141,12 @@ export class ReplanEngine {
       );
     } catch {
       // タイムアウトまたはエラー → フォールバック
-      options = buildFallbackOptions(trigger, affectedSlots);
+      options = buildFallbackOptions(trigger, affectedSlots, locale);
     }
 
     // フォールバック保証
     if (options.length === 0) {
-      options = buildFallbackOptions(trigger, affectedSlots);
+      options = buildFallbackOptions(trigger, affectedSlots, locale);
     }
 
     // 3. 各オプションをスコアリング
@@ -193,7 +195,8 @@ export class ReplanEngine {
 
   private findAffectedSlots(
     trigger: ReplanTrigger,
-    tripPlan: TripPlan
+    tripPlan: TripPlan,
+    locale?: string
   ): PlanSlot[] {
     // Handle "day-N-current" format from UI (e.g., "day-1-current")
     const currentMatch = trigger.slotId.match(/^day-(\d+)-current$/);
@@ -206,7 +209,7 @@ export class ReplanEngine {
         (s) => s.dayNumber === dayNumber
       );
       // トリガー種別に基づいて影響範囲を絞り込む
-      return this.filterByTriggerType(trigger.type, candidates);
+      return this.filterByTriggerType(trigger.type, candidates, locale);
     }
 
     const triggerSlot = tripPlan.slots.find((s) => s.id === trigger.slotId);
@@ -220,7 +223,7 @@ export class ReplanEngine {
         s.isSkippable
     );
 
-    return this.filterByTriggerType(trigger.type, candidates);
+    return this.filterByTriggerType(trigger.type, candidates, locale);
   }
 
   /**
@@ -229,8 +232,11 @@ export class ReplanEngine {
    */
   private filterByTriggerType(
     triggerType: string,
-    candidates: PlanSlot[]
+    candidates: PlanSlot[],
+    locale?: string
   ): PlanSlot[] {
+    const t = createReplanTranslator(locale);
+
     const filtered = candidates.filter((slot) => {
       const classification = classifyActivity(
         slot.activity.activity,
@@ -241,10 +247,10 @@ export class ReplanEngine {
       switch (triggerType) {
         case "rain":
           // 雨: 屋外系のスポットのみ影響。レストラン・屋内施設はそのまま
-          return this.isOutdoorActivity(slot.activity, classification.category);
+          return this.isOutdoorActivity(slot.activity, classification.category, t);
         case "fatigue":
           // 疲労: 体力を使うアクティビティのみ影響。食事・休憩はそのまま
-          return this.isPhysicalActivity(slot.activity, classification.category);
+          return this.isPhysicalActivity(slot.activity, classification.category, t);
         case "delay":
           // 遅延: 必須でないアクティビティのみ影響。予約済みはそのまま
           return slot.priority !== "must" && !slot.activity.isLocked;
@@ -260,21 +266,15 @@ export class ReplanEngine {
   /** 屋外アクティビティかどうかを判定 */
   private isOutdoorActivity(
     activity: PlanSlot["activity"],
-    category: string
+    category: string,
+    t: ReturnType<typeof createReplanTranslator>
   ): boolean {
     const name = activity.activity.toLowerCase();
     const desc = (activity.description || "").toLowerCase();
     const combined = `${name} ${desc}`;
 
     // 明確に屋内のキーワード → 影響なし
-    const indoorKeywords = [
-      "レストラン", "カフェ", "ランチ", "ディナー", "朝食", "食事",
-      "博物館", "美術館", "水族館", "ミュージアム", "ギャラリー",
-      "ショッピング", "モール", "デパート", "百貨店", "お土産",
-      "ホテル", "旅館", "温泉", "スパ", "マッサージ",
-      "映画", "シアター", "劇場", "コンサート",
-      "室内", "屋内", "indoor",
-    ];
+    const indoorKeywords = t.raw("keywords.indoor") as string[];
     if (indoorKeywords.some((kw) => combined.includes(kw))) {
       return false;
     }
@@ -283,14 +283,7 @@ export class ReplanEngine {
     if (category === "restaurant") return false;
 
     // 明確に屋外のキーワード → 影響あり
-    const outdoorKeywords = [
-      "散歩", "散策", "街歩き", "ウォーキング", "ハイキング", "トレッキング",
-      "公園", "庭園", "ガーデン", "ビーチ", "海岸", "海水浴",
-      "展望台", "展望", "眺望", "サイクリング", "自転車",
-      "アウトドア", "outdoor", "屋外",
-      "市場", "マーケット", "朝市",
-      "遺跡", "城跡", "神社", "寺",
-    ];
+    const outdoorKeywords = t.raw("keywords.outdoor") as string[];
     if (outdoorKeywords.some((kw) => combined.includes(kw))) {
       return true;
     }
@@ -304,29 +297,22 @@ export class ReplanEngine {
   /** 体力を使うアクティビティかどうかを判定 */
   private isPhysicalActivity(
     activity: PlanSlot["activity"],
-    category: string
+    category: string,
+    t: ReturnType<typeof createReplanTranslator>
   ): boolean {
     const name = activity.activity.toLowerCase();
     const desc = (activity.description || "").toLowerCase();
     const combined = `${name} ${desc}`;
 
     // 食事・休憩系 → 影響なし
-    const restKeywords = [
-      "レストラン", "カフェ", "ランチ", "ディナー", "朝食", "食事",
-      "休憩", "リラックス", "スパ", "マッサージ", "温泉",
-    ];
+    const restKeywords = t.raw("keywords.rest") as string[];
     if (restKeywords.some((kw) => combined.includes(kw))) {
       return false;
     }
     if (category === "restaurant") return false;
 
     // 体力を使うキーワード → 影響あり
-    const physicalKeywords = [
-      "散歩", "散策", "街歩き", "ウォーキング", "ハイキング", "トレッキング",
-      "サイクリング", "自転車", "登山", "クライミング",
-      "アクティビティ", "アドベンチャー", "シュノーケリング", "ダイビング",
-      "サーフィン", "カヤック", "ラフティング",
-    ];
+    const physicalKeywords = t.raw("keywords.physical") as string[];
     if (physicalKeywords.some((kw) => combined.includes(kw))) {
       return true;
     }
@@ -343,7 +329,7 @@ export class ReplanEngine {
     context: TripContext
   ): Promise<RecoveryOption[]> {
     if (!this.aiProvider) {
-      return buildFallbackOptions(trigger, affectedSlots);
+      return buildFallbackOptions(trigger, affectedSlots, context.language);
     }
 
     const controller = new AbortController();

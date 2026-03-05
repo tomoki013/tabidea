@@ -1,34 +1,36 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { JournalSheet, Tape, HandwrittenText, JournalButton } from "@/components/ui/journal";
 
-const examples = [
-  {
-    location: "京都",
-    theme: "静寂と歴史",
-    note: "朝一番の清水寺から始まり、嵐山の竹林で深呼吸。夜は先斗町で京料理を。",
-    tapeColor: "green",
-    rotate: "rotate-1",
-  },
-  {
-    location: "沖縄",
-    theme: "青と白のコントラスト",
-    note: "レンタカーで古宇利島へ。美ら海水族館の後は、サンセットビーチで波の音を聴く。",
-    tapeColor: "blue",
-    rotate: "-rotate-1",
-  },
-  {
-    location: "金沢",
-    theme: "アートと海鮮",
-    note: "21世紀美術館で現代アートに触れ、近江町市場で新鮮な海鮮丼を堪能する旅。",
-    tapeColor: "yellow",
-    rotate: "rotate-2",
-  },
-];
-
 export default function ExampleSection() {
+  const t = useTranslations("components.features.landing.exampleSection");
+  const examples = [
+    {
+      location: t("examples.0.location"),
+      theme: t("examples.0.theme"),
+      note: t("examples.0.note"),
+      tapeColor: "green",
+      rotate: "rotate-1",
+    },
+    {
+      location: t("examples.1.location"),
+      theme: t("examples.1.theme"),
+      note: t("examples.1.note"),
+      tapeColor: "blue",
+      rotate: "-rotate-1",
+    },
+    {
+      location: t("examples.2.location"),
+      theme: t("examples.2.theme"),
+      note: t("examples.2.note"),
+      tapeColor: "yellow",
+      rotate: "rotate-2",
+    },
+  ];
+
   return (
     <section className="w-full py-24 px-4 border-t border-dashed border-stone-200 relative overflow-hidden bg-[#fcfbf9]">
        {/* Background Pattern */}
@@ -37,10 +39,10 @@ export default function ExampleSection() {
       <div className="max-w-6xl mx-auto space-y-16 relative z-10">
         <div className="text-center space-y-4">
           <HandwrittenText tag="h2" className="text-3xl sm:text-4xl font-bold text-stone-800">
-            みんなの旅の記録
+            {t("title")}
           </HandwrittenText>
           <p className="text-stone-500 font-hand text-lg">
-            例えばこんなプラン。
+            {t("lead")}
           </p>
         </div>
 
@@ -83,11 +85,11 @@ export default function ExampleSection() {
         >
           <div className="inline-block relative">
             <div className="mb-3 font-hand text-stone-600 text-base">
-              もっと色々なプランを見てみませんか？
+              {t("ctaPrompt")}
             </div>
             <Link href="/samples">
               <JournalButton variant="outline" size="lg" className="border-primary/50 text-primary hover:bg-primary/5">
-                 サンプルプランをもっと見る
+                 {t("ctaButton")}
                  <span className="ml-2 font-hand">→</span>
               </JournalButton>
             </Link>

@@ -8,6 +8,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { useTranslations } from "next-intl";
 
 import type { ReplanTrigger, ReplanTriggerType } from "@/types/replan";
 
@@ -30,22 +31,16 @@ interface ReplanTriggerButtonProps {
 // Config
 // ============================================================================
 
-const TRIGGER_CONFIG: Record<
-  ReplanTriggerType,
-  { label: string; icon: string; className: string }
-> = {
+const TRIGGER_CONFIG: Record<ReplanTriggerType, { icon: string; className: string }> = {
   rain: {
-    label: "天気が悪い",
     icon: "🌧️",
     className: "bg-blue-50 text-blue-700 hover:bg-blue-100 border-blue-200",
   },
   fatigue: {
-    label: "疲れた",
     icon: "😮‍💨",
     className: "bg-amber-50 text-amber-700 hover:bg-amber-100 border-amber-200",
   },
   delay: {
-    label: "遅れてる",
     icon: "⏰",
     className: "bg-red-50 text-red-700 hover:bg-red-100 border-red-200",
   },
@@ -61,7 +56,9 @@ export function ReplanTriggerButton({
   onTrigger,
   disabled = false,
 }: ReplanTriggerButtonProps) {
+  const t = useTranslations("components.features.replan.triggerButton");
   const config = TRIGGER_CONFIG[triggerType];
+  const label = t(`labels.${triggerType}`);
 
   const handleClick = useCallback(() => {
     const trigger: ReplanTrigger = {
@@ -84,10 +81,10 @@ export function ReplanTriggerButton({
         disabled:opacity-50 disabled:cursor-not-allowed
         ${config.className}
       `}
-      aria-label={`${config.label}でプランを変更`}
+      aria-label={t("ariaLabel", { label })}
     >
       <span aria-hidden="true">{config.icon}</span>
-      <span>{config.label}</span>
+      <span>{label}</span>
     </button>
   );
 }

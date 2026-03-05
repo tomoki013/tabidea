@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaTimes, FaFilePdf, FaSpinner, FaCheck, FaGlobe, FaSuitcase } from "react-icons/fa";
 import type { TravelInfoCategory } from "@/types";
@@ -16,6 +17,7 @@ interface PDFExportModalProps {
   destination: string;
   isGenerating: boolean;
   packingList?: PackingList | null;
+  resolveCategoryLabel?: (key: string) => string;
 }
 
 export interface PDFExportOptions {
@@ -29,13 +31,9 @@ export interface PDFExportOptions {
 
 const TRAVEL_INFO_PRESETS = {
   essential: {
-    label: "基本セット",
-    description: "必須の安全・基本情報",
     categories: ["basic", "safety", "visa", "healthcare"] as TravelInfoCategory[],
   },
   full: {
-    label: "フルセット",
-    description: "すべての渡航情報",
     categories: [
       "basic", "safety", "climate", "visa", "manner", "transport",
       "local_food", "souvenir", "events", "technology", "healthcare",
@@ -51,7 +49,9 @@ export default function PDFExportModal({
   destination,
   isGenerating,
   packingList,
+  resolveCategoryLabel,
 }: PDFExportModalProps) {
+  const t = useTranslations("components.features.planner.pdfExportModal");
   const [includeTravelInfo, setIncludeTravelInfo] = useState(false);
   const [includePackingList, setIncludePackingList] = useState(false);
   const [selectedPreset, setSelectedPreset] = useState<"essential" | "full" | "custom">("essential");
@@ -144,7 +144,7 @@ export default function PDFExportModal({
       } catch (error) {
         data.set(category, {
           status: "error",
-          error: error instanceof Error ? error.message : "Unknown error",
+          error: error instanceof Error ? error.message : t("unknownError"),
         });
       }
 
@@ -207,7 +207,7 @@ export default function PDFExportModal({
             </div>
             <div>
               <h2 id="pdf-export-modal-title" className="text-lg font-bold text-stone-800">
-                PDF出力設定
+                {t("title")}
               </h2>
               <p className="text-sm text-stone-500">{destination}</p>
             </div>
@@ -216,7 +216,7 @@ export default function PDFExportModal({
             onClick={() => !isProcessing && onClose()}
             disabled={isProcessing}
             className="flex items-center justify-center w-10 h-10 rounded-full bg-stone-100 hover:bg-stone-200 transition-colors disabled:opacity-50"
-            aria-label="閉じる"
+            aria-label={t("close")}
           >
             <FaTimes className="text-stone-600" size={18} />
           </button>
@@ -231,11 +231,11 @@ export default function PDFExportModal({
                 <FaCheck className="text-white" size={12} />
               </div>
               <div>
-                <p className="font-bold text-stone-800">旅程表</p>
-                <p className="text-xs text-stone-500">日程・アクティビティ</p>
+                <p className="font-bold text-stone-800">{t("itinerary.label")}</p>
+                <p className="text-xs text-stone-500">{t("itinerary.description")}</p>
               </div>
             </div>
-            <span className="text-xs text-stone-400 font-medium">必須</span>
+            <span className="text-xs text-stone-400 font-medium">{t("required")}</span>
           </div>
 
           {/* Travel Info Option */}
@@ -250,8 +250,8 @@ export default function PDFExportModal({
               <div className="flex items-center gap-3 flex-1">
                 <FaGlobe className="text-primary" size={20} />
                 <div>
-                  <p className="font-bold text-stone-800">渡航情報・安全ガイド</p>
-                  <p className="text-xs text-stone-500">安全情報、ビザ、マナーなど</p>
+                  <p className="font-bold text-stone-800">{t("travelInfo.label")}</p>
+                  <p className="text-xs text-stone-500">{t("travelInfo.description")}</p>
                 </div>
               </div>
             </label>
@@ -278,7 +278,7 @@ export default function PDFExportModal({
                               : "bg-stone-100 text-stone-600 hover:bg-stone-200"
                           }`}
                         >
-                          {TRAVEL_INFO_PRESETS[preset].label}
+                          {t(`presets.${preset}`)}
                         </button>
                       ))}
                     </div>
@@ -305,14 +305,16 @@ export default function PDFExportModal({
                             >
                               {isSelected && <FaCheck className="text-white" size={10} />}
                             </div>
-                            <span className="truncate">{info.label}</span>
+                            <span className="truncate">
+                              {resolveCategoryLabel ? resolveCategoryLabel(info.label) : info.label}
+                            </span>
                           </button>
                         );
                       })}
                     </div>
 
                     <p className="text-xs text-stone-500 text-center">
-                      {selectedCategories.length}カテゴリ選択中
+                      {t("selectedCategoryCount", { count: selectedCategories.length })}
                     </p>
                   </div>
                 </motion.div>
@@ -337,11 +339,11 @@ export default function PDFExportModal({
               <div className="flex items-center gap-3 flex-1">
                 <FaSuitcase className="text-primary" size={20} />
                 <div>
-                  <p className="font-bold text-stone-800">持ち物リスト</p>
+                  <p className="font-bold text-stone-800">{t("packingList.label")}</p>
                   <p className="text-xs text-stone-500">
                     {packingList
-                      ? `${packingList.items.length}アイテム`
-                      : "先に持ち物リストを生成してください"}
+                      ? t("packingList.count", { count: packingList.items.length })
+                      : t("packingList.empty")}
                   </p>
                 </div>
               </div>
@@ -360,9 +362,9 @@ export default function PDFExportModal({
                 <div className="flex items-center gap-3">
                   <FaSpinner className="animate-spin text-blue-600" size={20} />
                   <div className="flex-1">
-                    <p className="font-medium text-blue-800">渡航情報を取得中...</p>
+                    <p className="font-medium text-blue-800">{t("fetching.title")}</p>
                     <p className="text-sm text-blue-600">
-                      {fetchProgress.current} / {fetchProgress.total} カテゴリ完了
+                      {t("fetching.progress", { current: fetchProgress.current, total: fetchProgress.total })}
                     </p>
                   </div>
                 </div>
@@ -388,7 +390,7 @@ export default function PDFExportModal({
             disabled={isProcessing}
             className="px-6 py-2.5 rounded-full border-2 border-stone-300 text-stone-700 hover:bg-stone-100 transition-colors font-medium disabled:opacity-50"
           >
-            キャンセル
+            {t("cancel")}
           </button>
           <button
             onClick={handleExport}
@@ -398,12 +400,12 @@ export default function PDFExportModal({
             {isProcessing ? (
               <>
                 <FaSpinner className="animate-spin" size={16} />
-                <span>作成中...</span>
+                <span>{t("creating")}</span>
               </>
             ) : (
               <>
                 <FaFilePdf size={16} />
-                <span>PDF作成</span>
+                <span>{t("createPdf")}</span>
               </>
             )}
           </button>

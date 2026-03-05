@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useMemo, useRef } from "react";
+import { useTranslations } from "next-intl";
 import type { UserInput } from "@/types";
 import type { OutlineActionState } from "@/lib/services/plan-generation/generate-outline";
 
@@ -13,15 +14,6 @@ export interface GenerationStep {
   message: string;
   status: "pending" | "active" | "completed";
 }
-
-const OUTLINE_STEPS: { id: string; message: string }[] = [
-  { id: "usage_check", message: "利用制限を確認中..." },
-  { id: "cache_check", message: "キャッシュを確認中..." },
-  { id: "rag_search", message: "関連記事を検索中..." },
-  { id: "prompt_build", message: "プロンプトを構築中..." },
-  { id: "ai_generation", message: "AIがプランを生成中..." },
-  { id: "hero_image", message: "メイン画像を取得中..." },
-];
 
 // ============================================================================
 // SSE Parser
@@ -41,6 +33,20 @@ function parseSSELine(line: string): { type: string; [key: string]: unknown } | 
 // ============================================================================
 
 export function useGenerationProgress() {
+  const t = useTranslations("lib.planGeneration.progress");
+
+  const outlineSteps: { id: string; message: string }[] = useMemo(
+    () => [
+      { id: "usage_check", message: t("steps.usage_check") },
+      { id: "cache_check", message: t("steps.cache_check") },
+      { id: "rag_search", message: t("steps.rag_search") },
+      { id: "prompt_build", message: t("steps.prompt_build") },
+      { id: "ai_generation", message: t("steps.ai_generation") },
+      { id: "hero_image", message: t("steps.hero_image") },
+    ],
+    [t]
+  );
+
   const [steps, setSteps] = useState<GenerationStep[]>([]);
   const [currentStep, setCurrentStep] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
@@ -57,7 +63,7 @@ export function useGenerationProgress() {
     ): Promise<OutlineActionState> => {
       // Initialize steps
       setSteps(
-        OUTLINE_STEPS.map((s) => ({ ...s, status: "pending" as const }))
+        outlineSteps.map((s) => ({ ...s, status: "pending" as const }))
       );
       setCurrentStep(null);
 
@@ -77,7 +83,7 @@ export function useGenerationProgress() {
       if (!response.ok || !response.body) {
         return {
           success: false,
-          message: `HTTP ${response.status}: リクエストに失敗しました`,
+          message: t("errors.requestFailed", { status: response.status }),
         };
       }
 
@@ -114,8 +120,8 @@ export function useGenerationProgress() {
                         return { ...s, status: "active", message: (event.message as string) || s.message };
                       }
                       // Mark previous steps as completed
-                      const currentIdx = OUTLINE_STEPS.findIndex((os) => os.id === stepId);
-                      const thisIdx = OUTLINE_STEPS.findIndex((os) => os.id === s.id);
+                      const currentIdx = outlineSteps.findIndex((os) => os.id === stepId);
+                      const thisIdx = outlineSteps.findIndex((os) => os.id === s.id);
                       if (thisIdx < currentIdx && s.status !== "completed") {
                         return { ...s, status: "completed" };
                       }
@@ -135,7 +141,7 @@ export function useGenerationProgress() {
                   setCurrentStep(null);
                   resolve({
                     success: false,
-                    message: (event.message as string) || "エラーが発生しました",
+                    message: (event.message as string) || t("errors.generic"),
                     limitExceeded: event.limitExceeded as boolean | undefined,
                     userType: event.userType as OutlineActionState["userType"],
                     resetAt: event.resetAt as string | null | undefined,
@@ -149,11 +155,11 @@ export function useGenerationProgress() {
             // If stream ended without complete/error event
             resolve({
               success: false,
-              message: "ストリームが予期せず終了しました",
+              message: t("errors.streamUnexpectedEnd"),
             });
           } catch (err) {
             if ((err as Error).name === "AbortError") {
-              resolve({ success: false, message: "生成がキャンセルされました" });
+              resolve({ success: false, message: t("errors.cancelled") });
             } else {
               reject(err);
             }
@@ -163,7 +169,7 @@ export function useGenerationProgress() {
         processStream();
       });
     },
-    []
+    [outlineSteps, t]
   );
 
   return {

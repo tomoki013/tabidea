@@ -2,6 +2,7 @@
 
 import { ReactNode, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaPlane, FaListCheck, FaXmark, FaChevronLeft } from "react-icons/fa6";
 import { UserInput } from '@/types';
 import RequestSummary from "./RequestSummary";
@@ -37,6 +38,7 @@ export default function StepContainer({
   onClose,
   canComplete = false,
 }: StepContainerProps) {
+  const t = useTranslations("components.features.planner.stepContainer");
   const [showSummary, setShowSummary] = useState(false);
   const isLastStep = step === totalSteps - 1;
 
@@ -67,14 +69,14 @@ export default function StepContainer({
               className={`w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-500 transition-all hover:bg-stone-100 hover:text-stone-800 active:scale-95 ${
                 step <= 0 ? "opacity-0 pointer-events-none" : ""
               }`}
-              title="戻る"
+              title={t("backTitle")}
             >
               <FaChevronLeft />
           </button>
 
           {/* Center: Step Indicator */}
           <span className="text-stone-400 font-mono text-xs tracking-widest bg-stone-100/50 px-3 py-1 rounded-full border border-stone-100">
-            STEP {step} <span className="text-stone-300">/</span> {safeTotal}
+            {t("stepLabel")} {step} <span className="text-stone-300">/</span> {safeTotal}
           </span>
 
           {/* Right: Actions */}
@@ -82,7 +84,7 @@ export default function StepContainer({
              <button
                 onClick={() => setShowSummary(true)}
                 className="w-10 h-10 flex items-center justify-center rounded-full border border-stone-200 text-stone-500 transition-all hover:bg-stone-100 hover:text-primary active:scale-95"
-                title="選択内容を確認"
+                title={t("showSummaryTitle")}
               >
                 <FaListCheck />
               </button>
@@ -91,7 +93,7 @@ export default function StepContainer({
                 <button
                   onClick={onClose}
                   className="w-10 h-10 flex items-center justify-center rounded-full bg-stone-100 border border-stone-200 text-stone-500 transition-all hover:bg-red-50 hover:text-red-500 hover:border-red-200 active:scale-95"
-                  title="閉じる"
+                  title={t("closeTitle")}
                 >
                   <FaXmark />
                 </button>
@@ -155,7 +157,7 @@ export default function StepContainer({
             className="absolute inset-0 z-50 bg-stone-50/95 backdrop-blur-sm p-6 overflow-y-auto"
           >
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-lg font-bold text-stone-800 font-serif">現在のリクエスト</h2>
+                <h2 className="text-lg font-bold text-stone-800 font-serif">{t("summaryTitle")}</h2>
                 <button
                   onClick={() => setShowSummary(false)}
                   className="w-8 h-8 flex items-center justify-center rounded-full bg-stone-200 text-stone-600 hover:bg-stone-300 transition-colors"
@@ -176,7 +178,7 @@ export default function StepContainer({
                   onClick={() => setShowSummary(false)}
                   className="px-6 py-2 bg-stone-800 text-white rounded-full text-sm font-bold hover:bg-stone-700 transition-colors"
                 >
-                  閉じる
+                  {t("close")}
                 </button>
               </div>
           </motion.div>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
 import { FaCalendarAlt, FaMapMarkerAlt, FaHeart, FaBookOpen } from 'react-icons/fa';
 import { PublicShioriListItem } from '@/types';
 import { localizePath, resolveRegionalLocale } from '@/lib/i18n/locales';
@@ -10,34 +11,17 @@ interface PublicPlanCardProps {
   language: 'ja' | 'en';
 }
 
-const COPY_BY_LANGUAGE = {
-  ja: {
-    destinationTbd: '未定の目的地',
-    durationTbd: '期間未定',
-    entries: '記録',
-    likes: 'いいね',
-  },
-  en: {
-    destinationTbd: 'Destination TBD',
-    durationTbd: 'Duration TBD',
-    entries: 'Entries',
-    likes: 'Likes',
-  },
-} as const;
-
-const formatDurationByLanguage: Record<'ja' | 'en', (days: number) => string> = {
-  ja: (days) => `${Math.max(0, days - 1)}泊${days}日`,
-  en: (days) => `${days} day(s)`,
-};
-
-export default function PublicPlanCard({ plan, language }: PublicPlanCardProps) {
-  const copy = COPY_BY_LANGUAGE[language];
-  const destination = plan.destination || copy.destinationTbd;
+export default async function PublicPlanCard({ plan, language }: PublicPlanCardProps) {
+  const t = await getTranslations({
+    locale: language,
+    namespace: 'components.features.shiori.publicPlanCard',
+  });
+  const destination = plan.destination || t('destinationTbd');
 
   const days = plan.durationDays || 0;
   const duration = days > 0
-    ? formatDurationByLanguage[language](days)
-    : copy.durationTbd;
+    ? t('duration', { nights: Math.max(0, days - 1), days })
+    : t('durationTbd');
 
   return (
     <Link href={localizePath(`/shiori/${plan.slug}`, language)} className="block group h-full">
@@ -86,11 +70,11 @@ export default function PublicPlanCard({ plan, language }: PublicPlanCardProps) 
           <div className="mt-3 flex items-center gap-2 text-xs text-stone-500">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaBookOpen className="text-stone-400" />
-              {copy.entries} {plan.entriesCount}
+              {t('entries')} {plan.entriesCount}
             </span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-2 py-1 border border-stone-200">
               <FaHeart className="text-rose-400" />
-              {copy.likes} {plan.likesCount}
+              {t('likes')} {plan.likesCount}
             </span>
           </div>
         </div>

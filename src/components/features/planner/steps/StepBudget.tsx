@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useMemo } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface StepBudgetProps {
   value?: string;
@@ -14,15 +15,15 @@ interface StepBudgetProps {
 
 // Budget range configuration per region
 const BUDGET_CONFIG = {
-  domestic: { min: 10000, max: 500000, step: 10000, defaultMin: 30000, defaultMax: 100000, unit: "円" },
-  overseas: { min: 50000, max: 2000000, step: 10000, defaultMin: 100000, defaultMax: 500000, unit: "円" },
+  domestic: { min: 10000, max: 500000, step: 10000, defaultMin: 30000, defaultMax: 100000 },
+  overseas: { min: 50000, max: 2000000, step: 10000, defaultMin: 100000, defaultMax: 500000 },
 } as const;
 
-function formatBudget(amount: number): string {
+function formatBudget(amount: number, t: (key: string) => string): string {
   if (amount >= 10000) {
-    return `${(amount / 10000).toFixed(amount % 10000 === 0 ? 0 : 1)}万円`;
+    return `${(amount / 10000).toFixed(amount % 10000 === 0 ? 0 : 1)}${t("units.tenThousandYen")}`;
   }
-  return `${amount.toLocaleString()}円`;
+  return `${amount.toLocaleString()}${t("units.yen")}`;
 }
 
 function parseBudgetRange(value: string): { min: number; max: number } | null {
@@ -39,25 +40,26 @@ function encodeBudgetRange(min: number, max: number): string {
 }
 
 export default function StepBudget({ value, region, onChange, onNext, canComplete, onComplete }: StepBudgetProps) {
+  const t = useTranslations("components.features.planner.steps.stepBudget");
   const presetOptions = [
     {
       id: "saving",
-      label: "なるべく安く",
+      label: t("options.saving.label"),
       icon: "💸",
-      desc: "お財布に優しく、賢く旅する",
+      desc: t("options.saving.desc"),
     },
-    { id: "standard", label: "普通", icon: "💰", desc: "一般的な予算で楽しむ" },
+    { id: "standard", label: t("options.standard.label"), icon: "💰", desc: t("options.standard.desc") },
     {
       id: "high",
-      label: "少し贅沢に",
+      label: t("options.high.label"),
       icon: "✨",
-      desc: "良いホテルや食事をプラス",
+      desc: t("options.high.desc"),
     },
     {
       id: "luxury",
-      label: "リッチに",
+      label: t("options.luxury.label"),
       icon: "💎",
-      desc: "最高級の体験を味わう",
+      desc: t("options.luxury.desc"),
     },
   ];
 
@@ -104,10 +106,10 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
     <div className="flex flex-col h-full justify-center space-y-10 animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="space-y-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground leading-tight">
-          予算はどれくらい？
+          {t("title")}
         </h2>
         <p className="text-stone-600 font-hand">
-          無理のない範囲で、最高のプランを
+          {t("lead")}
         </p>
       </div>
 
@@ -173,7 +175,7 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
       {/* Divider with "or" */}
       <div className="flex items-center gap-4 max-w-3xl mx-auto w-full px-4">
         <div className="flex-1 border-t border-dashed border-stone-200" />
-        <span className="text-sm text-stone-400 font-medium">または</span>
+        <span className="text-sm text-stone-400 font-medium">{t("or")}</span>
         <div className="flex-1 border-t border-dashed border-stone-200" />
       </div>
 
@@ -200,9 +202,9 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
             </div>
             <div className="text-left flex-1">
               <h3 className={`text-lg font-bold font-serif mb-1 ${useSlider ? "text-primary" : "text-stone-800"}`}>
-                金額で指定する
+                {t("slider.title")}
               </h3>
-              <p className="text-xs text-stone-500 font-medium">スライダーで予算範囲を設定</p>
+              <p className="text-xs text-stone-500 font-medium">{t("slider.lead")}</p>
             </div>
           </div>
 
@@ -216,7 +218,7 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
               {/* Budget display */}
               <div className="text-center">
                 <span className="text-2xl font-bold text-primary">
-                  {formatBudget(rangeMin)} 〜 {formatBudget(rangeMax)}
+                  {formatBudget(rangeMin, t)} 〜 {formatBudget(rangeMax, t)}
                 </span>
               </div>
 
@@ -271,8 +273,8 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
 
                 {/* Min/Max labels */}
                 <div className="flex justify-between mt-4 text-xs text-stone-400">
-                  <span>{formatBudget(config.min)}</span>
-                  <span>{formatBudget(config.max)}</span>
+                  <span>{formatBudget(config.min, t)}</span>
+                  <span>{formatBudget(config.max, t)}</span>
                 </div>
               </div>
             </motion.div>
@@ -291,7 +293,7 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            次へ進む →
+            {t("next")}
           </button>
 
           {/* Skip & Create Plan Button */}
@@ -301,7 +303,7 @@ export default function StepBudget({ value, region, onChange, onNext, canComplet
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

@@ -1,17 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-const loadingMessages = [
-  "ガイドブックを開いています...",
-  "現地の天気を調べています...",
-  "とっておきの場所を探しています...",
-  "旅のしおりを作成中...",
-  "あなただけの物語を書いています...",
-];
+import { useTranslations } from "next-intl";
 
 export default function LoadingView() {
+  const t = useTranslations("components.features.planner.loadingView");
   const [step, setStep] = useState(0);
+  const loadingMessages = [
+    t("messages.guidebook"),
+    t("messages.weather"),
+    t("messages.hiddenSpots"),
+    t("messages.journal"),
+    t("messages.story"),
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,7 +45,7 @@ export default function LoadingView() {
         </div>
 
         <p className="text-sm font-hand text-muted-foreground -rotate-2">
-          もうすぐ出発です。
+          {t("footer")}
         </p>
       </div>
     </div>

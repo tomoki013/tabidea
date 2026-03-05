@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { FaPlus, FaTrash } from "react-icons/fa";
 
 interface StepPlacesProps {
@@ -23,6 +24,7 @@ export default function StepPlaces({
   canComplete,
   onComplete,
 }: StepPlacesProps) {
+  const t = useTranslations("components.features.planner.steps.stepPlaces");
   // We use the prop hasDecided if available, otherwise fallback to local logic (though validation relies on parent)
   // To handle the animation/UI state locally, we can derive it or use local state if props aren't passed (backward compat)
   // But for this task, we assume props are passed.
@@ -69,12 +71,12 @@ export default function StepPlaces({
     <div className="flex flex-col h-full w-full animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="space-y-4 text-center mb-6 shrink-0">
         <h2 className="text-2xl sm:text-3xl font-serif font-bold text-foreground leading-tight">
-          絶対に行きたい
+          {t("titleLine1")}
           <br />
-          観光地はありますか？
+          {t("titleLine2")}
         </h2>
         <p className="font-hand text-muted-foreground text-sm sm:text-base">
-          もしあれば、優先的にプランに組み込みます
+          {t("lead")}
         </p>
       </div>
 
@@ -89,7 +91,7 @@ export default function StepPlaces({
                 : "bg-white text-stone-600 border border-stone-200 hover:bg-stone-50"
             }`}
           >
-            ある
+            {t("yes")}
           </button>
           <button
             onClick={handleNo}
@@ -99,7 +101,7 @@ export default function StepPlaces({
                 : "bg-white text-stone-600 border border-stone-200 hover:bg-stone-50"
             }`}
           >
-            ない
+            {t("no")}
           </button>
         </div>
 
@@ -113,7 +115,7 @@ export default function StepPlaces({
                 value={currentInput}
                 onChange={(e) => setCurrentInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="場所名を入力 (例: 清水寺)"
+                placeholder={t("placePlaceholder")}
                 className="flex-1 px-4 py-3 rounded-xl border border-stone-300 bg-white focus:outline-hidden focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all"
                 autoFocus
               />
@@ -157,7 +159,7 @@ export default function StepPlaces({
                   onClick={onNext}
                   className="text-primary font-medium hover:underline font-hand text-lg"
                 >
-                  {mustVisitPlaces.length}箇所を追加して次へ進む →
+                  {t("nextWithCount", { count: mustVisitPlaces.length })}
                 </button>
 
                 {/* Skip & Create Plan Button */}
@@ -167,7 +169,7 @@ export default function StepPlaces({
                         onClick={onComplete}
                         className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                         >
-                        任意項目をスキップしてプランを作成
+                        {t("skipAndCreate")}
                         </button>
                     </div>
                 )}
@@ -187,7 +189,7 @@ export default function StepPlaces({
               onClick={onNext}
               className="text-primary font-medium hover:underline font-hand text-lg"
             >
-              次へ進む →
+              {t("next")}
             </button>
 
             {/* Skip & Create Plan Button */}
@@ -197,7 +199,7 @@ export default function StepPlaces({
                     onClick={onComplete}
                     className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                     >
-                    任意項目をスキップしてプランを作成
+                    {t("skipAndCreate")}
                     </button>
                 </div>
             )}

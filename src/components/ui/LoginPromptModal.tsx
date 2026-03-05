@@ -1,7 +1,7 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { savePendingState } from '@/lib/restore/pending-state';
 import type { UserInput, Itinerary } from '@/types';
 import { JournalSheet, Stamp, HandwrittenText, Tape, JournalButton } from '@/components/ui/journal';
@@ -28,6 +28,7 @@ export function LoginPromptModal({
   isInModal = false,
   autoSaveOnLogin = false,
 }: LoginPromptModalProps) {
+  const t = useTranslations("components.extraUi.loginPromptModal");
   const router = useRouter();
   const pathname = usePathname();
 
@@ -91,26 +92,26 @@ export function LoginPromptModal({
 
            <div className="p-6 sm:p-8">
               <HandwrittenText tag="h2" className="text-xl font-bold text-stone-800 mb-4 text-center">
-                旅の続きを始めましょう
+                {t("title")}
               </HandwrittenText>
 
               <div className="bg-stone-50 border border-stone-200 rounded-sm p-4 mb-6 relative">
                  <Tape color="yellow" position="top-center" className="w-24 -top-3 opacity-80" />
                  <p className="text-stone-600 text-sm mb-3 font-hand">
-                    無料アカウントを作成すると...
+                    {t("benefitsIntro")}
                  </p>
                  <ul className="space-y-2 text-sm text-stone-600 font-hand">
                     <li className="flex items-center gap-2">
                        <FaCheck className="text-primary text-xs" />
-                       <strong className="text-primary">月3回まで</strong>プラン生成
+                       <strong className="text-primary">{t("benefitMonthlyLimitCount")}</strong>{t("benefitMonthlyLimitSuffix")}
                     </li>
                     <li className="flex items-center gap-2">
                        <FaCheck className="text-primary text-xs" />
-                       プランの保存・管理
+                       {t("benefitPlanSaveManage")}
                     </li>
                     <li className="flex items-center gap-2">
                        <FaCheck className="text-primary text-xs" />
-                       複数デバイスからアクセス
+                       {t("benefitMultiDevice")}
                     </li>
                  </ul>
               </div>
@@ -118,7 +119,7 @@ export function LoginPromptModal({
               {userInput && (
                 <div className="mb-6 text-center">
                    <p className="text-xs text-stone-500 font-hand bg-blue-50 inline-block px-3 py-1 rounded-sm border border-blue-100">
-                      ※ 入力中のデータはログイン後に復元されます
+                      {t("restoreNotice")}
                    </p>
                 </div>
               )}
@@ -129,14 +130,14 @@ export function LoginPromptModal({
                   onClick={handleLogin}
                   className="w-full font-bold shadow-md"
                 >
-                  ログイン / 無料登録
+                  {t("loginCta")}
                 </JournalButton>
                 <button
                   type="button"
                   onClick={onClose}
                   className="text-stone-400 hover:text-stone-600 text-sm underline decoration-dashed font-hand"
                 >
-                  あとで登録する
+                  {t("laterCta")}
                 </button>
               </div>
            </div>

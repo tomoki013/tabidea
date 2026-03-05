@@ -1,9 +1,30 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { FaArrowRight, FaBookOpen, FaPlaneDeparture, FaStar } from 'react-icons/fa';
 import { Tape, HandwrittenText } from '@/components/ui/journal';
 
 export default function BlogPromotionSection() {
+  const t = useTranslations('components.features.landing.blogPromotionSection');
+  const highlights = [
+    {
+      title: t('highlights.0.title'),
+      category: 'Kyoto',
+      date: '2026.04.15',
+    },
+    {
+      title: t('highlights.1.title'),
+      category: 'Taiwan',
+      date: '2026.05.01',
+      isNew: true,
+    },
+    {
+      title: t('highlights.2.title'),
+      category: 'Hokkaido',
+      date: '2026.05.10',
+    },
+  ];
+
   return (
     <section className="relative w-full py-24 md:py-32 overflow-hidden bg-white">
       {/* Background decoration */}
@@ -23,38 +44,31 @@ export default function BlogPromotionSection() {
               <div>
                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100/50 text-green-700 border border-green-200 text-xs font-bold uppercase tracking-wider mb-4">
                     <FaBookOpen className="text-xs" />
-                    Everyone's Blog
+                    {t('badge')}
                  </div>
                  <h2 className="text-4xl md:text-5xl font-serif font-bold text-stone-800 mb-6 leading-tight relative inline-block">
-                    みんなの<br/>
+                    {t('titleLine1')}<br/>
                     <span className="relative z-10">
-                       旅行記
+                       {t('titleLine2')}
                        <span className="absolute -bottom-2 left-0 w-full h-4 bg-green-200/40 -z-10 rounded-sm transform -rotate-1"></span>
                     </span>
                  </h2>
                  <p className="text-lg text-stone-600 leading-relaxed font-hand">
-                    実際に訪れた場所、食べたもの、感じたこと。<br/>
-                    みんなのリアルな体験談から、新しい旅の発見があるかもしれません。
+                    {t('leadLine1')}<br/>
+                    {t('leadLine2')}
                  </p>
               </div>
 
               <div className="space-y-4">
-                 <BlogHighlight
-                    title="3泊4日の京都旅行！穴場スポット巡り"
-                    category="Kyoto"
-                    date="2026.04.15"
-                 />
-                 <BlogHighlight
-                    title="初めての台湾一人旅、食べ歩き記録"
-                    category="Taiwan"
-                    date="2026.05.01"
-                    isNew
-                 />
-                 <BlogHighlight
-                    title="北海道で大自然を満喫する旅"
-                    category="Hokkaido"
-                    date="2026.05.10"
-                 />
+                 {highlights.map((highlight) => (
+                    <BlogHighlight
+                      key={`${highlight.category}-${highlight.date}`}
+                      title={highlight.title}
+                      category={highlight.category}
+                      date={highlight.date}
+                      isNew={highlight.isNew}
+                    />
+                  ))}
               </div>
 
               <div className="pt-4">
@@ -62,7 +76,7 @@ export default function BlogPromotionSection() {
                     href="/blog"
                     className="inline-flex items-center gap-3 bg-white text-stone-800 border-2 border-stone-200 px-8 py-4 rounded-full font-bold hover:border-primary hover:text-primary transition-all shadow-sm hover:shadow-lg hover:-translate-y-1"
                  >
-                    ブログを読む
+                    {t('readBlog')}
                     <FaArrowRight />
                  </Link>
               </div>
@@ -95,8 +109,8 @@ export default function BlogPromotionSection() {
                               <FaPlaneDeparture size={48} className="opacity-20" />
                            </div>
                            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent text-white">
-                              <span className="text-xs font-bold bg-primary px-2 py-0.5 rounded text-white mb-1 inline-block">Tips</span>
-                              <p className="font-bold text-sm truncate">How to Plan Your Next Trip with AI</p>
+                              <span className="text-xs font-bold bg-primary px-2 py-0.5 rounded text-white mb-1 inline-block">{t('mock.tipLabel')}</span>
+                              <p className="font-bold text-sm truncate">{t('mock.tipTitle')}</p>
                            </div>
                         </div>
                         <div className="p-6 space-y-4 bg-white relative z-10">

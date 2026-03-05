@@ -6,13 +6,15 @@ import {
   View,
   StyleSheet,
 } from "@react-pdf/renderer";
+import { createTranslator, type AbstractIntlMessages } from "next-intl";
 import {
   TravelInfoCategory,
   CategoryState,
+  getCategoryInfo,
+  type CategoryInfoTranslator,
 } from "@/components/features/travel-info/types";
 import {
   BasicCountryInfo,
-  CATEGORY_LABELS,
   SafetyInfo,
   ClimateInfo,
   VisaInfo,
@@ -26,7 +28,6 @@ import {
   RestroomsInfo,
   SmokingInfo,
   AlcoholInfo,
-  DANGER_LEVEL_DESCRIPTIONS,
 } from '@/types';
 
 const theme = {
@@ -218,6 +219,8 @@ const styles = StyleSheet.create({
 });
 
 interface TravelInfoPDFProps {
+  locale: string;
+  messages: AbstractIntlMessages;
   destination: string;
   country: string;
   categoryStates: Map<TravelInfoCategory, CategoryState>;
@@ -225,14 +228,16 @@ interface TravelInfoPDFProps {
 }
 
 // Helpers
-const DangerBadge = ({ level }: { level: number }) => {
+type PdfTranslations = (key: string, values?: Record<string, string | number>) => string;
+
+const DangerBadge = ({ level, t }: { level: number; t: PdfTranslations }) => {
   const colors = ["#10b981", "#f59e0b", "#f97316", "#ef4444", "#7f1d1d"];
   const safeLevel = (level >= 0 && level <= 4 ? level : 0) as 0 | 1 | 2 | 3 | 4;
   const color = colors[safeLevel] || "#6b7280";
   return (
     <View style={[styles.badge, { backgroundColor: color }]}>
       <Text style={styles.badgeText}>
-        LV.{level} {DANGER_LEVEL_DESCRIPTIONS[safeLevel]}
+        LV.{level} {t(`dangerDescriptions.${safeLevel}`)}
       </Text>
     </View>
   );
@@ -240,33 +245,33 @@ const DangerBadge = ({ level }: { level: number }) => {
 
 // --- Section Renderers ---
 
-const BasicInfoView = ({ data }: { data: BasicCountryInfo }) => (
+const BasicInfoView = ({ data, t }: { data: BasicCountryInfo; t: PdfTranslations }) => (
   <View>
     <View style={styles.row}>
-      <Text style={styles.label}>通貨</Text>
+      <Text style={styles.label}>{t("labels.currency")}</Text>
       <Text style={styles.value}>{data.currency.name} ({data.currency.code})</Text>
     </View>
     <View style={styles.row}>
-      <Text style={styles.label}>言語</Text>
+      <Text style={styles.label}>{t("labels.language")}</Text>
       <Text style={styles.value}>{data.languages.join(", ")}</Text>
     </View>
     <View style={styles.row}>
-      <Text style={styles.label}>時差</Text>
+      <Text style={styles.label}>{t("labels.timeDifference")}</Text>
       <Text style={styles.value}>{data.timeDifference}</Text>
     </View>
     <View style={[styles.row, styles.rowLast]}>
-      <Text style={styles.label}>タイムゾーン</Text>
+      <Text style={styles.label}>{t("labels.timezone")}</Text>
       <Text style={styles.value}>{data.timezone}</Text>
     </View>
   </View>
 );
 
-const SafetyInfoView = ({ data }: { data: SafetyInfo }) => (
+const SafetyInfoView = ({ data, t }: { data: SafetyInfo; t: PdfTranslations }) => (
   <View>
-    <DangerBadge level={data.dangerLevel} />
+    <DangerBadge level={data.dangerLevel} t={t} />
     <Text style={styles.text}>{data.dangerLevelDescription}</Text>
 
-    <Text style={styles.subHeader}>緊急連絡先</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.emergencyContacts")}</Text>
     {data.emergencyContacts.map((c, i) => (
       <View key={i} style={[styles.row, i === data.emergencyContacts.length - 1 ? styles.rowLast : {}]}>
         <Text style={styles.label}>{c.name}</Text>
@@ -276,10 +281,10 @@ const SafetyInfoView = ({ data }: { data: SafetyInfo }) => (
   </View>
 );
 
-const ClimateInfoView = ({ data }: { data: ClimateInfo }) => (
+const ClimateInfoView = ({ data, t }: { data: ClimateInfo; t: PdfTranslations }) => (
   <View>
     <Text style={styles.text}>{data.seasonDescription}</Text>
-    <Text style={styles.subHeader}>服装アドバイス</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.clothingAdvice")}</Text>
     {data.recommendedClothing.map((item, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -289,18 +294,20 @@ const ClimateInfoView = ({ data }: { data: ClimateInfo }) => (
   </View>
 );
 
-const VisaInfoView = ({ data }: { data: VisaInfo }) => (
+const VisaInfoView = ({ data, t }: { data: VisaInfo; t: PdfTranslations }) => (
   <View>
     <View style={[styles.row, styles.rowLast]}>
-      <Text style={styles.label}>ビザ要否</Text>
+      <Text style={styles.label}>{t("labels.visaRequirement")}</Text>
       <Text style={[styles.value, { color: data.required ? '#ef4444' : '#10b981', fontWeight: 'bold' }]}>
-        {data.required ? "必要" : "不要"}
-        {data.visaFreeStayDays ? ` (${data.visaFreeStayDays}日以内)` : ""}
+        {data.required ? t("visa.required") : t("visa.notRequired")}
+        {data.visaFreeStayDays
+          ? t("visa.withinDays", { days: data.visaFreeStayDays })
+          : ""}
       </Text>
     </View>
     {data.requirements.length > 0 && (
       <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>要件</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.requirements")}</Text>
         {data.requirements.map((req, i) => (
           <View key={i} style={styles.bulletItem}>
             <View style={styles.bullet} />
@@ -312,12 +319,19 @@ const VisaInfoView = ({ data }: { data: VisaInfo }) => (
   </View>
 );
 
-const MannerInfoView = ({ data }: { data: MannerInfo }) => (
+const MannerInfoView = ({ data, t }: { data: MannerInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>チップ: {data.tipping.required ? "必須" : data.tipping.customary ? "慣習" : "不要"}</Text>
+    <Text style={styles.subHeader}>
+      {t("subHeaders.tipping")}:{" "}
+      {data.tipping.required
+        ? t("tipping.required")
+        : data.tipping.customary
+          ? t("tipping.customary")
+          : t("tipping.notRequired")}
+    </Text>
     <Text style={styles.text}>{data.tipping.guideline}</Text>
 
-    <Text style={styles.subHeader}>マナー・習慣</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.customs")}</Text>
     {data.customs.slice(0, 3).map((c, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -327,9 +341,9 @@ const MannerInfoView = ({ data }: { data: MannerInfo }) => (
   </View>
 );
 
-const TransportInfoView = ({ data }: { data: TransportInfo }) => (
+const TransportInfoView = ({ data, t }: { data: TransportInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>交通機関</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.publicTransport")}</Text>
     {data.publicTransport.slice(0, 3).map((pt, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -337,17 +351,19 @@ const TransportInfoView = ({ data }: { data: TransportInfo }) => (
       </View>
     ))}
     <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>ライドシェア</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.rideshare")}</Text>
         <Text style={styles.value}>
-            {data.rideshare.available ? `利用可 (${data.rideshare.services.join(", ")})` : "利用不可"}
+            {data.rideshare.available
+              ? t("rideshare.available", { services: data.rideshare.services.join(", ") })
+              : t("rideshare.unavailable")}
         </Text>
     </View>
   </View>
 );
 
-const LocalFoodInfoView = ({ data }: { data: LocalFoodInfo }) => (
+const LocalFoodInfoView = ({ data, t }: { data: LocalFoodInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>代表的な料理</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.popularDishes")}</Text>
     {data.popularDishes.slice(0, 3).map((dish, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -356,7 +372,7 @@ const LocalFoodInfoView = ({ data }: { data: LocalFoodInfo }) => (
     ))}
     {data.diningEtiquette.length > 0 && (
       <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>食事のマナー</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.diningEtiquette")}</Text>
         {data.diningEtiquette.slice(0, 3).map((etiquette, i) => (
             <View key={i} style={styles.bulletItem}>
               <View style={styles.bullet} />
@@ -368,9 +384,9 @@ const LocalFoodInfoView = ({ data }: { data: LocalFoodInfo }) => (
   </View>
 );
 
-const SouvenirInfoView = ({ data }: { data: SouvenirInfo }) => (
+const SouvenirInfoView = ({ data, t }: { data: SouvenirInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>人気のお土産</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.popularSouvenirs")}</Text>
     {data.popularItems.slice(0, 3).map((item, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -379,16 +395,16 @@ const SouvenirInfoView = ({ data }: { data: SouvenirInfo }) => (
     ))}
     {data.shoppingAreas.length > 0 && (
         <View style={{ marginTop: 6 }}>
-            <Text style={styles.subHeader}>おすすめエリア</Text>
+            <Text style={styles.subHeader}>{t("subHeaders.recommendedAreas")}</Text>
             <Text style={styles.value}>{data.shoppingAreas.join("、")}</Text>
         </View>
     )}
   </View>
 );
 
-const EventsInfoView = ({ data }: { data: EventsInfo }) => (
+const EventsInfoView = ({ data, t }: { data: EventsInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>主要なイベント</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.majorEvents")}</Text>
     {data.majorEvents.slice(0, 2).map((event, i) => (
       <View key={i} style={styles.bulletItem}>
         <View style={styles.bullet} />
@@ -397,7 +413,7 @@ const EventsInfoView = ({ data }: { data: EventsInfo }) => (
     ))}
     {data.seasonalFestivals.length > 0 && (
         <View style={{ marginTop: 6 }}>
-            <Text style={styles.subHeader}>季節の祭り</Text>
+            <Text style={styles.subHeader}>{t("subHeaders.seasonalFestivals")}</Text>
             {data.seasonalFestivals.slice(0, 2).map((festival, i) => (
                 <View key={i} style={styles.bulletItem}>
                     <View style={styles.bullet} />
@@ -409,19 +425,19 @@ const EventsInfoView = ({ data }: { data: EventsInfo }) => (
   </View>
 );
 
-const TechnologyInfoView = ({ data }: { data: TechnologyInfo }) => (
+const TechnologyInfoView = ({ data, t }: { data: TechnologyInfo; t: PdfTranslations }) => (
   <View>
     <View style={styles.row}>
-      <Text style={styles.label}>電圧</Text>
+      <Text style={styles.label}>{t("labels.voltage")}</Text>
       <Text style={styles.value}>{data.voltage}</Text>
     </View>
     <View style={[styles.row, styles.rowLast]}>
-      <Text style={styles.label}>プラグ形状</Text>
+      <Text style={styles.label}>{t("labels.plugType")}</Text>
       <Text style={styles.value}>{data.plugs.join(", ")}</Text>
     </View>
     {data.internet.length > 0 && (
       <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>インターネット事情</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.internet")}</Text>
         {data.internet.slice(0, 3).map((info, i) => (
           <View key={i} style={styles.bulletItem}>
             <View style={styles.bullet} />
@@ -433,34 +449,34 @@ const TechnologyInfoView = ({ data }: { data: TechnologyInfo }) => (
   </View>
 );
 
-const HealthcareInfoView = ({ data }: { data: HealthcareInfo }) => (
+const HealthcareInfoView = ({ data, t }: { data: HealthcareInfo; t: PdfTranslations }) => (
   <View>
     <View style={styles.row}>
-      <Text style={styles.label}>水道水</Text>
+      <Text style={styles.label}>{t("labels.tapWater")}</Text>
       <Text style={styles.value}>{data.water}</Text>
     </View>
     <View style={[styles.row, styles.rowLast]}>
-      <Text style={styles.label}>医療水準</Text>
+      <Text style={styles.label}>{t("labels.medicalLevel")}</Text>
       <Text style={styles.value}>{data.medicalLevel}</Text>
     </View>
     {data.vaccines.length > 0 && (
       <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>推奨ワクチン</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.recommendedVaccines")}</Text>
         <Text style={styles.value}>{data.vaccines.join("、")}</Text>
       </View>
     )}
   </View>
 );
 
-const RestroomsInfoView = ({ data }: { data: RestroomsInfo }) => (
+const RestroomsInfoView = ({ data, t }: { data: RestroomsInfo; t: PdfTranslations }) => (
   <View>
     <View style={[styles.row, styles.rowLast]}>
-      <Text style={styles.label}>清潔度・普及</Text>
+      <Text style={styles.label}>{t("labels.restroomAvailability")}</Text>
       <Text style={styles.value}>{data.availability}</Text>
     </View>
     {data.notes.length > 0 && (
       <View style={{ marginTop: 6 }}>
-        <Text style={styles.subHeader}>利用上の注意</Text>
+        <Text style={styles.subHeader}>{t("subHeaders.restroomNotes")}</Text>
         {data.notes.slice(0, 3).map((note, i) => (
           <View key={i} style={styles.bulletItem}>
             <View style={styles.bullet} />
@@ -472,27 +488,29 @@ const RestroomsInfoView = ({ data }: { data: RestroomsInfo }) => (
   </View>
 );
 
-const SmokingInfoView = ({ data }: { data: SmokingInfo }) => (
+const SmokingInfoView = ({ data, t }: { data: SmokingInfo; t: PdfTranslations }) => (
   <View>
-    <Text style={styles.subHeader}>喫煙ルール</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.smokingRules")}</Text>
     <Text style={styles.text}>{data.rules}</Text>
-    <Text style={styles.subHeader}>喫煙場所</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.smokingAreas")}</Text>
     <Text style={styles.text}>{data.areas}</Text>
     {data.fines && (
         <View style={{ marginTop: 4 }}>
-            <Text style={[styles.value, { color: '#ef4444', fontWeight: 'bold' }]}>罰金: {data.fines}</Text>
+            <Text style={[styles.value, { color: '#ef4444', fontWeight: 'bold' }]}>
+              {t("labels.fine")}: {data.fines}
+            </Text>
         </View>
     )}
   </View>
 );
 
-const AlcoholInfoView = ({ data }: { data: AlcoholInfo }) => (
+const AlcoholInfoView = ({ data, t }: { data: AlcoholInfo; t: PdfTranslations }) => (
   <View>
     <View style={styles.row}>
-      <Text style={styles.label}>年齢制限</Text>
+      <Text style={styles.label}>{t("labels.ageLimit")}</Text>
       <Text style={styles.value}>{data.ageLimit}</Text>
     </View>
-    <Text style={styles.subHeader}>飲酒ルール</Text>
+    <Text style={styles.subHeader}>{t("subHeaders.alcoholRules")}</Text>
     <Text style={styles.text}>{data.rules}</Text>
     {data.notes.length > 0 && (
       <View style={{ marginTop: 4 }}>
@@ -507,7 +525,24 @@ const AlcoholInfoView = ({ data }: { data: AlcoholInfo }) => (
   </View>
 );
 
-const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({ destination, country, categoryStates, dates }) => {
+const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({
+  locale,
+  messages,
+  destination,
+  country,
+  categoryStates,
+  dates,
+}) => {
+  const translate = createTranslator({ locale, messages });
+  const translateAny = translate as unknown as (
+    key: string,
+    values?: Record<string, string | number>
+  ) => string;
+  const t: PdfTranslations = (key, values) =>
+    translateAny(`components.features.travelInfo.pdfDocument.${key}`, values);
+  const tCategoryInfo: CategoryInfoTranslator = (key) =>
+    translateAny(`components.features.travelInfo.categoryInfo.${key}`);
+  const dateLocale = locale.toLowerCase().startsWith("ja") ? "ja-JP" : "en-US";
 
   const renderSection = (category: TravelInfoCategory) => {
     const state = categoryStates.get(category);
@@ -515,22 +550,23 @@ const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({ destination, country, cat
 
     const data = state.data.data;
     let content = null;
+    const info = getCategoryInfo(category, tCategoryInfo);
 
     switch (category) {
-      case "basic": content = <BasicInfoView data={data as BasicCountryInfo} />; break;
-      case "safety": content = <SafetyInfoView data={data as SafetyInfo} />; break;
-      case "climate": content = <ClimateInfoView data={data as ClimateInfo} />; break;
-      case "visa": content = <VisaInfoView data={data as VisaInfo} />; break;
-      case "manner": content = <MannerInfoView data={data as MannerInfo} />; break;
-      case "transport": content = <TransportInfoView data={data as TransportInfo} />; break;
-      case "local_food": content = <LocalFoodInfoView data={data as LocalFoodInfo} />; break;
-      case "souvenir": content = <SouvenirInfoView data={data as SouvenirInfo} />; break;
-      case "events": content = <EventsInfoView data={data as EventsInfo} />; break;
-      case "technology": content = <TechnologyInfoView data={data as TechnologyInfo} />; break;
-      case "healthcare": content = <HealthcareInfoView data={data as HealthcareInfo} />; break;
-      case "restrooms": content = <RestroomsInfoView data={data as RestroomsInfo} />; break;
-      case "smoking": content = <SmokingInfoView data={data as SmokingInfo} />; break;
-      case "alcohol": content = <AlcoholInfoView data={data as AlcoholInfo} />; break;
+      case "basic": content = <BasicInfoView data={data as BasicCountryInfo} t={t} />; break;
+      case "safety": content = <SafetyInfoView data={data as SafetyInfo} t={t} />; break;
+      case "climate": content = <ClimateInfoView data={data as ClimateInfo} t={t} />; break;
+      case "visa": content = <VisaInfoView data={data as VisaInfo} t={t} />; break;
+      case "manner": content = <MannerInfoView data={data as MannerInfo} t={t} />; break;
+      case "transport": content = <TransportInfoView data={data as TransportInfo} t={t} />; break;
+      case "local_food": content = <LocalFoodInfoView data={data as LocalFoodInfo} t={t} />; break;
+      case "souvenir": content = <SouvenirInfoView data={data as SouvenirInfo} t={t} />; break;
+      case "events": content = <EventsInfoView data={data as EventsInfo} t={t} />; break;
+      case "technology": content = <TechnologyInfoView data={data as TechnologyInfo} t={t} />; break;
+      case "healthcare": content = <HealthcareInfoView data={data as HealthcareInfo} t={t} />; break;
+      case "restrooms": content = <RestroomsInfoView data={data as RestroomsInfo} t={t} />; break;
+      case "smoking": content = <SmokingInfoView data={data as SmokingInfo} t={t} />; break;
+      case "alcohol": content = <AlcoholInfoView data={data as AlcoholInfo} t={t} />; break;
       default: return null;
     }
 
@@ -538,7 +574,7 @@ const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({ destination, country, cat
       <View key={category} style={styles.section}>
         <View style={styles.sectionTitleBox}>
           <View style={styles.sectionIcon} />
-          <Text style={styles.sectionTitle}>{CATEGORY_LABELS[category]}</Text>
+          <Text style={styles.sectionTitle}>{info.label}</Text>
         </View>
         {content}
       </View>
@@ -558,11 +594,11 @@ const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({ destination, country, cat
           <View style={styles.headerRight}>
             <View style={styles.dateBox}>
                 <Text style={styles.dateText}>
-                    作成日: {new Date().toLocaleDateString("ja-JP")}
+                    {t("createdDate", { date: new Date().toLocaleDateString(dateLocale) })}
                 </Text>
                 {dates && (
                     <Text style={[styles.dateText, { marginTop: 2 }]}>
-                        渡航予定: {dates.start} - {dates.end}
+                        {t("travelSchedule", { start: dates.start, end: dates.end })}
                     </Text>
                 )}
             </View>

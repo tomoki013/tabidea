@@ -3,6 +3,86 @@
     "common": {
       "startPlanningButton": {
         "label": "Create a plan"
+      },
+      "authButton": {
+        "login": "Log in",
+        "userMenuAriaLabel": "User menu",
+        "userFallback": "User"
+      },
+      "syncPrompt": {
+        "syncError": "An error occurred during sync.",
+        "successTitle": "Sync complete",
+        "successBody": "Saved {count} plan(s)",
+        "close": "Close",
+        "title": "Sync your plans?",
+        "descriptionLine1": "Plans currently saved in this browser",
+        "countLabel": "{count} plan(s)",
+        "descriptionLine2": "will be saved to your account.",
+        "partialFailure": "Some plans failed to sync",
+        "syncing": "Syncing...",
+        "syncNow": "Sync now",
+        "later": "Later"
+      },
+      "shareButtons": {
+        "shareText": "AI created a travel plan for me!\nDestination: {destination}\nThemes: {themes}\n\n#Tabidea #TomokichiDiary",
+        "nativeShareTitle": "{destination} travel plan",
+        "heading": "Share this plan",
+        "copied": "Copied!",
+        "aria": {
+          "share": "Share",
+          "shareOnX": "Share on X",
+          "shareOnLine": "Share on LINE",
+          "shareOnFacebook": "Share on Facebook",
+          "copyLink": "Copy link"
+        }
+      },
+      "floatingPlanButton": {
+        "createNewPlan": "Create a new plan"
+      },
+      "cookieBanner": {
+        "aria": {
+          "closeTemporarily": "Close temporarily"
+        },
+        "descriptionLine1": "This site uses cookies to improve services and provide a better experience.",
+        "descriptionLine2": "By continuing to use this site, you are considered to have agreed to cookie usage.",
+        "details": "Details",
+        "agree": "Agree",
+        "thankYouTitle": "Thank you for your consent!",
+        "thankYouBody": "Your settings have been saved. Enjoy planning your trip."
+      },
+      "planModal": {
+        "closeAriaLabel": "Close"
+      },
+      "limitExceededModal": {
+        "actionType": {
+          "plan_generation": "Plan generation",
+          "travel_info": "Travel info fetch",
+          "chat": "Chat",
+          "regenerate": "Regeneration"
+        },
+        "title": "You reached the usage limit for {actionLabel}",
+        "description": "You have used all free quota for this month.",
+        "nextReset": "Next reset",
+        "timeUntilReset": {
+          "days": "{days} day(s) remaining",
+          "hours": "{hours} hour(s) remaining",
+          "soon": "Soon"
+        },
+        "upgradeMessage": "With Premium, you can use it <strong>without limits</strong>. Ticket packs are also available.",
+        "viewPlans": "View plans",
+        "close": "Close"
+      },
+      "editableText": {
+        "empty": "(Empty)"
+      },
+      "syncSelectionModal": {
+        "title": "Select plans to sync",
+        "description": "This device has <strong>{localCount}</strong> plan(s), but you can save only <strong>{availableCount}</strong> more.<br></br>Please select plans to sync.",
+        "destinationFallback": "Destination not set",
+        "deleteUnselected": "Delete unselected plans from this device",
+        "selectedCount": "Selected: {selected} / {max}",
+        "cancel": "Cancel",
+        "confirmSync": "Sync {count} plan(s)"
       }
     }
   }

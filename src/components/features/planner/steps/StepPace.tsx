@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface StepPaceProps {
   value?: string;
@@ -11,36 +12,37 @@ interface StepPaceProps {
 }
 
 export default function StepPace({ value, onChange, onNext, canComplete, onComplete }: StepPaceProps) {
+  const t = useTranslations("components.features.planner.steps.stepPace");
   const options = [
     {
       id: "relaxed",
-      label: "ゆったり",
+      label: t("options.relaxed.label"),
       icon: "☕",
-      desc: "1日1-2箇所、のんびりと",
+      desc: t("options.relaxed.desc"),
     },
     {
       id: "balanced",
-      label: "バランスよく",
+      label: t("options.balanced.label"),
       icon: "⚖️",
-      desc: "観光と休息を程よく",
+      desc: t("options.balanced.desc"),
     },
     {
       id: "active",
-      label: "アクティブ",
+      label: t("options.active.label"),
       icon: "👟",
-      desc: "主要スポットを網羅",
+      desc: t("options.active.desc"),
     },
-    { id: "packed", label: "詰め込み", icon: "🔥", desc: "朝から晩まで全力で" },
+    { id: "packed", label: t("options.packed.label"), icon: "🔥", desc: t("options.packed.desc") },
   ];
 
   return (
     <div className="flex flex-col h-full justify-center space-y-12 animate-in fade-in slide-in-from-right-8 duration-500">
       <div className="space-y-6 text-center">
         <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground leading-tight">
-          旅のペースは？
+          {t("title")}
         </h2>
         <p className="text-stone-600 font-hand">
-          あなたのスタイルに合わせて
+          {t("lead")}
         </p>
       </div>
 
@@ -109,7 +111,7 @@ export default function StepPace({ value, onChange, onNext, canComplete, onCompl
             onClick={onNext}
             className="text-primary font-medium hover:underline font-hand text-lg"
           >
-            次へ進む →
+            {t("next")}
           </button>
 
           {/* Skip & Create Plan Button */}
@@ -119,7 +121,7 @@ export default function StepPace({ value, onChange, onNext, canComplete, onCompl
                   onClick={onComplete}
                   className="text-stone-400 hover:text-stone-600 text-xs sm:text-sm font-medium hover:underline transition-colors"
                 >
-                  任意項目をスキップしてプランを作成
+                  {t("skipAndCreate")}
                 </button>
               </div>
           )}

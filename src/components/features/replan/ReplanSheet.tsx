@@ -7,6 +7,7 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import { FaTimes } from "react-icons/fa";
 
 import type { RecoveryOption } from "@/types/replan";
@@ -31,11 +32,11 @@ interface ReplanSheetProps {
 // ============================================================================
 
 const CATEGORY_LABELS: Record<string, string> = {
-  indoor: "屋内",
-  outdoor: "屋外",
-  rest: "休憩",
-  food: "グルメ",
-  culture: "文化",
+  indoor: "indoor",
+  outdoor: "outdoor",
+  rest: "rest",
+  food: "food",
+  culture: "culture",
 };
 
 // ============================================================================
@@ -48,6 +49,7 @@ export function ReplanSheet({
   onClose,
   isOpen,
 }: ReplanSheetProps) {
+  const t = useTranslations("components.features.replan.sheet");
   if (!isOpen) return null;
 
   return (
@@ -68,20 +70,20 @@ export function ReplanSheet({
           animate-in slide-in-from-bottom duration-300
         "
         role="dialog"
-        aria-label="代替提案一覧"
+        aria-label={t("dialogAriaLabel")}
       >
         {/* ハンドル & ヘッダー */}
         <div className="sticky top-0 bg-white rounded-t-2xl border-b border-stone-100 px-5 pt-3 pb-4">
           <div className="w-10 h-1 bg-stone-300 rounded-full mx-auto mb-3" />
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-bold text-stone-800">
-              他の提案
+              {t("title")}
             </h3>
             <button
               type="button"
               onClick={onClose}
               className="p-2 rounded-full hover:bg-stone-100 transition-colors"
-              aria-label="閉じる"
+              aria-label={t("closeAriaLabel")}
             >
               <FaTimes className="w-4 h-4 text-stone-400" />
             </button>
@@ -92,7 +94,7 @@ export function ReplanSheet({
         <div className="px-5 py-3 space-y-3">
           {alternatives.length === 0 ? (
             <p className="text-center text-stone-400 py-8">
-              他の提案はありません
+              {t("noAlternatives")}
             </p>
           ) : (
             alternatives.map((alt) => (
@@ -108,10 +110,10 @@ export function ReplanSheet({
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-medium text-primary px-2 py-0.5 rounded-full bg-primary/10">
-                    {CATEGORY_LABELS[alt.category] ?? alt.category}
+                    {t(`category.${CATEGORY_LABELS[alt.category] ?? "other"}`)}
                   </span>
                   <span className="text-xs text-stone-400">
-                    約{alt.estimatedDuration}
+                    {t("estimatedDuration", { duration: alt.estimatedDuration })}
                   </span>
                 </div>
                 <p className="text-sm text-stone-700 leading-relaxed">

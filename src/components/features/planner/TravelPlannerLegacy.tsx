@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { UserInput, Itinerary, DayPlan, GenerationState, initialGenerationState } from '@/types';
 import type { DayGenerationStatus, ChunkInfo, Article, PlanOutlineDay } from '@/types';
 import { splitDaysIntoChunks, extractDuration } from "@/lib/utils";
@@ -50,6 +52,7 @@ interface TravelPlannerProps {
  * @deprecated Use the new 3-phase TravelPlanner instead
  */
 export default function TravelPlannerLegacy({ initialInput, initialStep, onClose }: TravelPlannerProps) {
+  const t = useTranslations("components.extraUi.travelPlannerLegacy");
   const router = useRouter();
   const searchParams = useSearchParams();
   const { isAuthenticated } = useAuth();
@@ -73,7 +76,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       destinations: [],
       isDestinationDecided: undefined,
       region: "",
-      dates: "時期は未定",
+      dates: t("defaultUndecidedDates"),
       companions: "",
       theme: [],
       budget: "",
@@ -190,44 +193,44 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       case 1: // Destinations or Region
         if (input.isDestinationDecided) {
           if (input.destinations.length === 0) {
-            setErrorMessage("行き先を少なくとも1つ入力してください ✈️");
+            setErrorMessage(t("errors.destinationRequired"));
             return false;
           }
         } else {
           // If no region selected, but user typed a vibe, that's acceptable.
           if (!input.region && !input.travelVibe?.trim()) {
-            setErrorMessage("エリアを選択するか、希望の雰囲気を入力してください 🌏");
+            setErrorMessage(t("errors.regionOrVibeRequired"));
             return false;
           }
         }
         break;
       case 2: // Must-Visit Places
         if (input.hasMustVisitPlaces === undefined) {
-          setErrorMessage("あるか、ないかを選択してください 🤔");
+          setErrorMessage(t("errors.mustVisitChoiceRequired"));
           return false;
         }
         if (input.hasMustVisitPlaces === true && (!input.mustVisitPlaces || input.mustVisitPlaces.length === 0)) {
            // If they said Yes but didn't add anything, that's confusing.
            // Let's require at least one place if "Yes" is selected.
-           setErrorMessage("行きたい場所を入力してください ✍️");
+           setErrorMessage(t("errors.mustVisitPlacesRequired"));
            return false;
         }
         break;
       case 3: // Companions
         if (!input.companions) {
-          setErrorMessage("誰との旅行か選択してください 👥");
+          setErrorMessage(t("errors.companionsRequired"));
           return false;
         }
         break;
       case 4: // Themes
         if (input.theme.length === 0) {
-          setErrorMessage("テーマを少なくとも1つ選択してください 🎭");
+          setErrorMessage(t("errors.themeRequired"));
           return false;
         }
         break;
       case 5: // Budget
         if (!input.budget) {
-          setErrorMessage("予算感を選択してください 💰");
+          setErrorMessage(t("errors.budgetRequired"));
           return false;
         }
         break;
@@ -239,7 +242,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
           // Let's assume StepDates sets a default or handles "flexible".
           // If flexible toggle is on, input.dates is set to "時期は未定..."
           // So just check if it's empty string
-          setErrorMessage("日程または時期を選択してください 📅");
+          setErrorMessage(t("errors.datesRequired"));
           return false;
         }
         break;
@@ -247,7 +250,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
         break;
       case 8: // Pace
          if (!input.pace) {
-          setErrorMessage("旅行のペースを選択してください ⚡");
+          setErrorMessage(t("errors.paceRequired"));
           return false;
         }
         break;
@@ -422,11 +425,11 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       setGenerationState(prev => ({
         ...prev,
         phase: 'error',
-        error: 'プランの保存に失敗しました。',
+        error: t("errors.saveFailed"),
         errorType: 'save'
       }));
     }
-  }, [generationState, isAuthenticated, refreshPlans, router, onClose]);
+  }, [generationState, isAuthenticated, refreshPlans, router, onClose, t]);
 
   // Watch for completion and auto-save
   useEffect(() => {
@@ -483,7 +486,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
       }
 
       if (!outlineResponse.success || !outlineResponse.data) {
-        throw new Error(outlineResponse.message || "プラン概要の作成に失敗しました。");
+        throw new Error(outlineResponse.message || t("errors.outlineGenerationFailed"));
       }
 
       const { outline, context, input: updatedInput, heroImage } = outlineResponse.data;
@@ -534,7 +537,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
 
     } catch (e: unknown) {
       console.error(e);
-      const msg = (e instanceof Error ? e.message : null) || "ネットワークエラーまたはサーバータイムアウトが発生しました。";
+      const msg = (e instanceof Error ? e.message : null) || t("errors.networkOrTimeout");
 
       if (msg.includes("Server Action") && msg.includes("not found")) {
         setGenerationState(prev => ({
@@ -594,8 +597,8 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
   if (generationState.phase === 'error' || status === "error") {
     const isDeploymentError = errorMessage === "DEPLOYMENT_UPDATE_ERROR" || generationState.error === "DEPLOYMENT_UPDATE_ERROR";
     const displayMessage = isDeploymentError
-        ? "新しいバージョンが公開されました。ページを更新して最新の状態にしてください。"
-        : (generationState.error || errorMessage || "エラーが発生しました");
+        ? t("errors.deploymentUpdated")
+        : (generationState.error || errorMessage || t("errors.generic"));
 
     return (
       <div className="flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
@@ -615,17 +618,14 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
           }}
           className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
         >
-          {isDeploymentError ? "ページを更新" : "もう一度試す"}
+          {isDeploymentError ? t("actions.refreshPage") : t("actions.retry")}
         </button>
         <p className="text-stone-600 text-sm mt-2">
-          問題が解決しない場合は、
-          <a
-            href="/contact"
-            className="text-primary hover:underline font-medium ml-1"
-          >
-            お問い合わせページ
-          </a>
-          からご連絡ください。
+          {t("errors.contactHintPrefix")}
+          <Link href="/contact" className="text-primary hover:underline font-medium ml-1">
+            {t("errors.contactPage")}
+          </Link>
+          {t("errors.contactHintSuffix")}
         </p>
       </div>
     );
@@ -674,7 +674,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
             </svg>
             <div className="flex-1">
               <p className="text-amber-800 text-sm font-medium">
-                保存から24時間以上経過したため、入力内容は削除されました。
+                {t("errors.restoreExpired")}
               </p>
             </div>
             <button
@@ -718,7 +718,7 @@ export default function TravelPlannerLegacy({ initialInput, initialStep, onClose
             </svg>
             <div className="flex-1">
               <p className="text-green-800 text-sm font-medium">
-                入力内容を復元しました
+                {t("errors.restoreSuccess")}
               </p>
             </div>
             <button

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 // ============================================================================
 // Types
@@ -58,6 +59,8 @@ export default function DayPlaceholder({
   error,
   onRetry,
 }: DayPlaceholderProps) {
+  const t = useTranslations("components.features.planner.dayPlaceholder");
+
   // Error state
   if (error) {
     return (
@@ -68,7 +71,7 @@ export default function DayPlaceholder({
           </div>
           <div className="flex-1">
             <h3 className="font-bold text-red-800 text-lg mb-1">
-              Day {day} の生成に失敗しました
+              Day {day} {t("errorTitle")}
             </h3>
             <p className="text-sm text-red-600 mb-4">{error}</p>
             {onRetry && (
@@ -76,7 +79,7 @@ export default function DayPlaceholder({
                 onClick={onRetry}
                 className="px-4 py-2 bg-red-600 text-white rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
               >
-                再試行
+                {t("retry")}
               </button>
             )}
           </div>
@@ -130,11 +133,11 @@ export default function DayPlaceholder({
           <>
             <Loader2 className="w-4 h-4 text-primary animate-spin" />
             <span className="text-sm text-primary font-medium">
-              詳細を生成中...
+              {t("generating")}
             </span>
           </>
         ) : (
-          <span className="text-sm text-stone-400">生成待機中</span>
+          <span className="text-sm text-stone-400">{t("pendingDetails")}</span>
         )}
       </div>
 
