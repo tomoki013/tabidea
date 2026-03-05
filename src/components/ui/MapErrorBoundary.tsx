@@ -27,7 +27,7 @@ function resolveLocale(pathname?: string): LanguageCode {
     return DEFAULT_LANGUAGE;
   }
 
-  return getLanguageFromPathname(pathname);
+  return getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
 }
 
 export default class MapErrorBoundary extends Component<

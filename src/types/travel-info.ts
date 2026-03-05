@@ -574,17 +574,31 @@ const TRAVEL_INFO_MESSAGES = {
   ja: jaMessages,
 } as const;
 
+type TravelInfoTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
+
 function resolveTravelInfoLocale(locale?: string): LanguageCode {
   return locale === "en" ? "en" : "ja";
 }
 
 function createTravelInfoTranslator(locale?: string) {
   const resolvedLocale = resolveTravelInfoLocale(locale);
-  return createTranslator({
+  const rawT = createTranslator({
     locale: resolvedLocale,
     messages: TRAVEL_INFO_MESSAGES[resolvedLocale],
     namespace: "lib.travelInfo",
   });
+
+  const t: TravelInfoTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
 }
 
 export function getCategoryLabels(locale?: string): Record<TravelInfoCategory, string> {

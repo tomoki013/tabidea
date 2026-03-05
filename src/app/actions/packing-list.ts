@@ -15,24 +15,37 @@ const PACKING_LIST_MESSAGES = {
 } as const;
 
 type PackingListLocale = keyof typeof PACKING_LIST_MESSAGES;
+type PackingListTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
 
 function resolvePackingListLocale(locale?: string): PackingListLocale {
   return locale === "en" ? "en" : "ja";
 }
 
 function createPackingListTranslator(locale: PackingListLocale) {
-  return createTranslator({
+  const rawT = createTranslator({
     locale: locale as LanguageCode,
     messages: PACKING_LIST_MESSAGES[locale],
     namespace: "actions.packingList",
   });
+
+  const t: PackingListTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
 }
 
 // ============================================
 // Schema
 // ============================================
 
-function createPackingListSchema(t: ReturnType<typeof createPackingListTranslator>) {
+function createPackingListSchema(t: PackingListTranslator) {
   const PackingItemSchema = z.object({
     id: z.string().describe(t("schema.idDescription")),
     name: z.string().describe(t("schema.nameDescription")),

@@ -47,12 +47,26 @@ export type OutlineActionState = {
   remaining?: number;
 };
 
+type PlanGenerationTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
+
 function createPlanGenerationTranslator(language: LanguageCode) {
-  return createTranslator({
+  const rawT = createTranslator({
     locale: language,
     messages: getMessages(language),
     namespace: "lib.planGeneration",
   });
+
+  const t: PlanGenerationTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
 }
 
 function getResolvedLanguage(preferredLanguage?: string): LanguageCode {

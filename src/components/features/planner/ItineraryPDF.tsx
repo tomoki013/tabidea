@@ -331,6 +331,7 @@ interface ItineraryPDFProps {
 }
 
 type ItineraryPdfTranslator = ReturnType<typeof createTranslator>;
+type ItineraryPdfTranslate = (key: string, values?: Record<string, unknown>) => string;
 
 const PACKING_CATEGORY_TRANSLATION_KEYS: Record<PackingCategory, string> = {
   documents: "components.extraUi.itineraryPdf.packingCategories.documents",
@@ -347,7 +348,7 @@ const TravelInfoSection: React.FC<{
   category: TravelInfoCategory;
   state: CategoryState;
   translateCategoryInfo: CategoryInfoTranslator;
-  t: ItineraryPdfTranslator;
+  t: ItineraryPdfTranslate;
 }> = ({ category, state, translateCategoryInfo, t }) => {
   if (state.status !== "success" || !state.data) return null;
 
@@ -375,7 +376,7 @@ const TravelInfoSection: React.FC<{
 };
 
 // Content components for each category
-const BasicInfoContent: React.FC<{ data: BasicCountryInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const BasicInfoContent: React.FC<{ data: BasicCountryInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.languages && data.languages.length > 0 && (
       <View style={styles.infoRow}>
@@ -400,7 +401,7 @@ const BasicInfoContent: React.FC<{ data: BasicCountryInfo; t: ItineraryPdfTransl
   </>
 );
 
-const SafetyInfoContent: React.FC<{ data: SafetyInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const SafetyInfoContent: React.FC<{ data: SafetyInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.dangerLevel !== undefined && (
       <View style={styles.infoRow}>
@@ -427,7 +428,7 @@ const SafetyInfoContent: React.FC<{ data: SafetyInfo; t: ItineraryPdfTranslator 
   </>
 );
 
-const VisaInfoContent: React.FC<{ data: VisaInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const VisaInfoContent: React.FC<{ data: VisaInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.required !== undefined && (
       <View style={styles.infoRow}>
@@ -461,7 +462,7 @@ const VisaInfoContent: React.FC<{ data: VisaInfo; t: ItineraryPdfTranslator }> =
   </>
 );
 
-const HealthcareInfoContent: React.FC<{ data: HealthcareInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const HealthcareInfoContent: React.FC<{ data: HealthcareInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.medicalLevel && (
       <View style={styles.infoRow}>
@@ -489,7 +490,7 @@ const HealthcareInfoContent: React.FC<{ data: HealthcareInfo; t: ItineraryPdfTra
   </>
 );
 
-const MannerInfoContent: React.FC<{ data: MannerInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const MannerInfoContent: React.FC<{ data: MannerInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.customs && data.customs.length > 0 && (
       <View style={{ marginTop: 8 }}>
@@ -522,7 +523,7 @@ const MannerInfoContent: React.FC<{ data: MannerInfo; t: ItineraryPdfTranslator 
   </>
 );
 
-const ClimateInfoContent: React.FC<{ data: ClimateInfo; t: ItineraryPdfTranslator }> = ({ data, t }) => (
+const ClimateInfoContent: React.FC<{ data: ClimateInfo; t: ItineraryPdfTranslate }> = ({ data, t }) => (
   <>
     {data.seasonDescription && (
       <View style={styles.infoRow}>
@@ -553,12 +554,18 @@ const ItineraryPDF: React.FC<ItineraryPDFProps> = ({
   includePackingList,
   packingList,
 }) => {
-  const t = createTranslator({ locale, messages });
+  const rawT: ItineraryPdfTranslator = createTranslator({ locale, messages });
+  const t: ItineraryPdfTranslate = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
   const translateCategoryInfo: CategoryInfoTranslator = (key) =>
-    t(`components.features.travelInfo.categoryInfo.${key}` as never);
+    t(`components.features.travelInfo.categoryInfo.${key}`);
   const getPackingCategoryLabel = (category: string): string => {
     const translationKey = PACKING_CATEGORY_TRANSLATION_KEYS[category as PackingCategory];
-    return translationKey ? t(translationKey as never) : category;
+    return translationKey ? t(translationKey) : category;
   };
 
   // Get categories that have successful data

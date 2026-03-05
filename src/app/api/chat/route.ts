@@ -16,6 +16,10 @@ const CHAT_MESSAGES = {
 } as const;
 
 type ChatLocale = keyof typeof CHAT_MESSAGES;
+type ChatTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
 
 function resolveChatLocale(req: Request, prefersJapanese: boolean): ChatLocale {
   if (prefersJapanese) {
@@ -30,11 +34,20 @@ function resolveChatLocale(req: Request, prefersJapanese: boolean): ChatLocale {
 }
 
 function createChatTranslator(locale: ChatLocale) {
-  return createTranslator({
+  const rawT = createTranslator({
     locale: locale as LanguageCode,
     messages: CHAT_MESSAGES[locale],
     namespace: "api.chat",
   });
+
+  const t: ChatTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
 }
 
 export async function POST(req: Request) {

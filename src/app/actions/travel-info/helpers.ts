@@ -19,6 +19,10 @@ const TRAVEL_INFO_HELPER_MESSAGES = {
 } as const;
 
 type TravelInfoLocale = keyof typeof TRAVEL_INFO_HELPER_MESSAGES;
+type TravelInfoTranslator = (
+  key: string,
+  values?: Record<string, unknown>
+) => string;
 
 function resolveTravelInfoLocale(locale?: string): TravelInfoLocale {
   return locale === "en" ? "en" : "ja";
@@ -26,11 +30,20 @@ function resolveTravelInfoLocale(locale?: string): TravelInfoLocale {
 
 function createTravelInfoTranslator(locale?: string) {
   const resolvedLocale = resolveTravelInfoLocale(locale);
-  return createTranslator({
+  const rawT = createTranslator({
     locale: resolvedLocale as LanguageCode,
     messages: TRAVEL_INFO_HELPER_MESSAGES[resolvedLocale],
     namespace: "actions.travelInfo",
   });
+
+  const t: TravelInfoTranslator = (key, values) => {
+    if (values) {
+      return rawT(key as never, values as never);
+    }
+    return rawT(key as never);
+  };
+
+  return t;
 }
 
 // ============================================

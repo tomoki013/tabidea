@@ -9,6 +9,10 @@ export type RateLimitResult = {
   message?: string;
 };
 
+type RateLimitTranslator = (
+  key: "planCreationTooFrequent" | "planUpdateTooFrequent"
+) => string;
+
 async function createRateLimitTranslator() {
   let language: LanguageCode = DEFAULT_LANGUAGE;
   try {
@@ -17,11 +21,14 @@ async function createRateLimitTranslator() {
     language = DEFAULT_LANGUAGE;
   }
 
-  return createTranslator({
+  const rawT = createTranslator({
     locale: language,
     messages: getMessages(language),
     namespace: "lib.security.rateLimit",
   });
+
+  const t: RateLimitTranslator = (key) => rawT(key as never);
+  return t;
 }
 
 /**
