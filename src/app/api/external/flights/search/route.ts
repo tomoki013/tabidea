@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: false,
-        error: '外部航空券検索に失敗しました。条件を調整して再試行してください。',
+        error: 'external_flights_search_failed',
       },
       { status: 500 },
     );

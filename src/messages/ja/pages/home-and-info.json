@@ -21,6 +21,20 @@
           "destinationLabel": "目的地を決める",
           "destinationPlaceholder": "どこへ行きますか？（例: パリ、バンコク）",
           "popularDestinations": "Popular Destinations",
+          "popularDestinationItems": [
+            { "name": "パリ", "country": "フランス" },
+            { "name": "ソウル", "country": "韓国" },
+            { "name": "バンコク", "country": "タイ" },
+            { "name": "ニューヨーク", "country": "アメリカ" },
+            { "name": "台北", "country": "台湾" },
+            { "name": "シンガポール", "country": "シンガポール" },
+            { "name": "ロンドン", "country": "イギリス" },
+            { "name": "ホノルル", "country": "アメリカ" },
+            { "name": "ローマ", "country": "イタリア" },
+            { "name": "シドニー", "country": "オーストラリア" },
+            { "name": "ロサンゼルス", "country": "アメリカ" },
+            { "name": "バリ島", "country": "インドネシア" }
+          ],
           "categoriesLabel": "知りたいことを選ぶ",
           "searching": "検索中...",
           "createGuide": "ガイドを作成する",
@@ -46,7 +60,17 @@
         "changeCategories": "カテゴリを変更",
         "selectedCount": "（現在 {count} 件選択中）",
         "fetching": "取得中...",
-        "research": "選択したカテゴリで再検索"
+        "research": "選択したカテゴリで再検索",
+        "errors": {
+          "destinationRequired": "目的地を入力してください。",
+          "categoryRequired": "カテゴリを選択してください。",
+          "usageLimitReached": "利用上限に達しました。しばらくしてから再度お試しください。",
+          "noAccessibleCategories": "選択したカテゴリを現在利用できません。",
+          "systemConfigurationError": "システム設定に問題があります。時間をおいて再度お試しください。",
+          "categoryFetchFailed": "カテゴリ情報の取得に失敗しました。",
+          "unexpected": "予期しないエラーが発生しました。",
+          "generic": "情報の取得に失敗しました。"
+        }
       }
     }
   }

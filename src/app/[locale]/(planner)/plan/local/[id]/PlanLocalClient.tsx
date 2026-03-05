@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { FaPlus } from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, LocalPlan } from '@/types';
 import { regeneratePlan, savePlan } from '@/app/actions/travel-planner';
@@ -18,12 +19,12 @@ interface PlanLocalClientProps {
   localId: string;
 }
 
-const REGENERATE_INSTRUCTION_TEXT =
-  "この会話で合意した変更内容を現在のプランに反映して再生成してください。";
-
 export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const tPlan = useTranslations("app.planner.plan");
+  const tError = useTranslations("errors.ui.plan");
+  const regenerateInstruction = tPlan("regenerateInstruction");
   const { isAuthenticated, isLoading: authLoading } = useAuth();
 
   // 復元パラメータをチェック
@@ -41,6 +42,26 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
   const [isEditingRequest, setIsEditingRequest] = useState(false);
   const [initialEditStep, setInitialEditStep] = useState(0);
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
+
+  const mapPlanError = useCallback((code?: string | null) => {
+    switch (code) {
+      case "api_key_missing":
+        return tError("apiKeyMissing");
+      case "regenerate_no_effect":
+        return tError("regenerateNoEffect");
+      case "regenerate_failed":
+      case "detail_generation_failed":
+      case "chunk_generation_failed":
+        return tError("regenerateFailed");
+      case "plan_save_failed":
+        return tError("saveFailed");
+      case "plan_not_found":
+      case "plan_not_found_or_access_denied":
+        return tPlan("localPlanNotFound");
+      default:
+        return tError("generic");
+    }
+  }, [tError, tPlan]);
 
   const cleanupUrl = () => {
     const url = new URL(window.location.href);
@@ -63,16 +84,16 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         // 保存成功 → /plan/id/[id] へリダイレクト
         router.replace(`/plan/id/${saveResult.plan.id}`);
       } else {
-        setAutoSaveError(saveResult.error || '保存に失敗しました');
+        setAutoSaveError(mapPlanError(saveResult.error));
         setStatus('idle');
         cleanupUrl();
       }
     } catch (error) {
-      setAutoSaveError('保存中にエラーが発生しました');
+      setAutoSaveError(tPlan("autoSaveUnexpected"));
       setStatus('idle');
       cleanupUrl();
     }
-  }, [localId, router]);
+  }, [localId, mapPlanError, router, tPlan]);
 
   // Load plan from local storage & 復元＆自動保存処理
   useEffect(() => {
@@ -81,7 +102,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
     if (!foundPlan) {
       queueMicrotask(() => {
-        setError('プランが見つかりませんでした。');
+        setError(tPlan("localPlanNotFound"));
         setStatus('error');
       });
       return;
@@ -100,7 +121,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
       if (restoreResult.expired) {
         queueMicrotask(() => {
-          setAutoSaveError('保存から24時間以上経過したため、自動保存できませんでした。');
+          setAutoSaveError(tPlan("autoSaveExpired"));
         });
         clearPendingState();
         cleanupUrl();
@@ -117,7 +138,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
 
       clearPendingState();
     }
-  }, [localId, shouldRestore, shouldAutoSave, handleAutoSave]);
+  }, [localId, shouldRestore, shouldAutoSave, handleAutoSave, tPlan]);
 
   // Auto-sync to database when user logs in
   const syncToDatabase = useCallback(async () => {
@@ -159,7 +180,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
     const persistedHistory =
       chatHistory.length > 0 &&
       chatHistory[chatHistory.length - 1]?.role === "user" &&
-      chatHistory[chatHistory.length - 1]?.text === REGENERATE_INSTRUCTION_TEXT
+      chatHistory[chatHistory.length - 1]?.text === regenerateInstruction
         ? chatHistory.slice(0, -1)
         : chatHistory;
 
@@ -185,12 +206,12 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         }, 100);
       } else {
         console.error(response.message);
-        setRegenerateError(response.message || '再生成に失敗しました。時間をおいて再試行してください。');
+        setRegenerateError(mapPlanError(response.message));
         setStatus('idle');
       }
     } catch (e) {
       console.error(e);
-      setRegenerateError('再生成中にエラーが発生しました。時間をおいて再試行してください。');
+      setRegenerateError(mapPlanError("regenerate_failed"));
       setStatus('idle');
     }
   };
@@ -228,7 +249,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
       <div className="flex flex-col min-h-screen bg-[#fcfbf9] overflow-x-clip">
         <main className="flex-1 w-full flex flex-col items-center justify-center gap-4">
           <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-          <p className="text-stone-600">プランをアカウントに保存しています...</p>
+          <p className="text-stone-600">{tPlan("syncingToAccount")}</p>
         </main>
       </div>
     );
@@ -240,16 +261,16 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         <main className="flex-1 w-full flex flex-col items-center justify-center min-h-[50vh] gap-4 text-center p-8">
           <div className="text-6xl mb-4">😢</div>
           <p className="text-destructive font-medium text-lg">
-            {error || 'プランが見つかりませんでした'}
+            {error || tPlan("localPlanNotFound")}
           </p>
           <p className="text-stone-500 text-sm">
-            ローカルに保存されたプランが見つからないか、削除された可能性があります。
+            {tPlan("localPlanMissingDescription")}
           </p>
           <Link
             href="/"
             className="px-6 py-3 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors font-bold"
           >
-            新しいプランを作成
+            {tPlan("createNewPlan")}
           </Link>
         </main>
       </div>
@@ -344,19 +365,19 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
         {/* Title Section */}
         <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
-            Result
+            {tPlan("resultBadge")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
-            旅行プラン結果
+            {tPlan("resultTitle")}
           </h1>
           <p className="text-stone-500 mt-3 font-hand text-lg">
             {result.destination
-              ? `${result.destination}への旅のしおり`
-              : 'あなただけの特別な旅のしおりが完成しました'}
+              ? tPlan("resultSubtitleWithDestination", { destination: result.destination })
+              : tPlan("resultSubtitleFallback")}
           </p>
           {!isAuthenticated && (
             <p className="text-amber-600 text-sm mt-4 bg-amber-50 inline-block px-4 py-2 rounded-full">
-              ログインするとプランが自動的にアカウントに保存されます
+              {tPlan("loginSaveHint")}
             </p>
           )}
         </div>
@@ -390,7 +411,7 @@ export default function PlanLocalClient({ localId }: PlanLocalClientProps) {
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             <FaPlus className="mr-2 relative z-10" />
-            <span className="relative z-10">新しいプランを作る</span>
+            <span className="relative z-10">{tPlan("createNewPlan")}</span>
           </button>
         </div>
 

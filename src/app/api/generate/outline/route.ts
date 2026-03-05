@@ -61,7 +61,7 @@ export async function POST(req: Request) {
           }
         } else {
           emit("error", {
-            message: result.message || "生成に失敗しました",
+            message: result.message || "outline_generation_failed",
             limitExceeded: result.limitExceeded,
             userType: result.userType,
             resetAt: result.resetAt,
@@ -72,7 +72,7 @@ export async function POST(req: Request) {
         console.error("[SSE /api/generate/outline] Uncaught error:", err);
         emit("error", {
           message:
-            err instanceof Error ? err.message : "予期しないエラーが発生しました",
+            err instanceof Error ? err.message : "unexpected_error",
         });
       }
 

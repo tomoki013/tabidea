@@ -1,9 +1,41 @@
 import { streamText, type Message } from "ai";
+import { createTranslator } from "next-intl";
 import { resolveModel } from '@/lib/services/ai/model-provider';
 import { Itinerary } from '@/types';
+import type { LanguageCode } from "@/lib/i18n/locales";
+import { resolveLanguageFromAcceptLanguage } from "@/lib/i18n/locales";
+import enMessages from "@/messages/en/api/chat.json";
+import jaMessages from "@/messages/ja/api/chat.json";
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
+
+const CHAT_MESSAGES = {
+  en: enMessages,
+  ja: jaMessages,
+} as const;
+
+type ChatLocale = keyof typeof CHAT_MESSAGES;
+
+function resolveChatLocale(req: Request, prefersJapanese: boolean): ChatLocale {
+  if (prefersJapanese) {
+    return "ja";
+  }
+
+  const acceptedLanguage = resolveLanguageFromAcceptLanguage(
+    req.headers.get("accept-language")
+  );
+
+  return acceptedLanguage === "ja" ? "ja" : "en";
+}
+
+function createChatTranslator(locale: ChatLocale) {
+  return createTranslator({
+    locale: locale as LanguageCode,
+    messages: CHAT_MESSAGES[locale],
+    namespace: "api.chat",
+  });
+}
 
 export async function POST(req: Request) {
   try {
@@ -12,8 +44,23 @@ export async function POST(req: Request) {
     const { model, modelName } = resolveModel('chat');
     console.log(`[chat] Using model: ${modelName}`);
 
-    const destination = itinerary.destination || '不明';
+    const destination = itinerary.destination || "Unknown destination";
     const dayCount = itinerary.days?.length || 0;
+    const latestUserMessage = [...messages]
+      .reverse()
+      .find((message) => message.role === "user");
+    const latestUserText =
+      typeof latestUserMessage?.content === "string"
+        ? latestUserMessage.content
+        : "";
+    const prefersJapanese = /[ぁ-んァ-ン一-龯]/.test(latestUserText);
+    const locale = resolveChatLocale(req, prefersJapanese);
+    const t = createChatTranslator(locale);
+    const languageInstruction = t("languageInstruction");
+    const agreementExamples = t("agreementExamples");
+    const destinationChangeResponse = t("destinationChangeResponse", {
+      destination,
+    });
 
     // Build system message with the travel plan context
     const systemMessage = `You are a friendly travel assistant discussing a travel plan with the user.
@@ -26,17 +73,17 @@ INSTRUCTIONS:
 1. Keep responses SHORT and CONCISE (aim for 1-2 sentences).
 2. Do NOT end every message with a question. Only ask if clarification is truly needed.
 3. Be helpful but efficient.
-4. Reply in Japanese.
+4. ${languageInstruction}
 5. Remember the conversation history and refer back to it when relevant.
-6. If the user clearly agrees to apply your proposed adjustments (e.g., 「はい」「お願いします」「その内容で」), append exactly this tag at the END of your response: [[REGEN_READY]]
+6. If the user clearly agrees to apply your proposed adjustments (e.g., ${agreementExamples}), append exactly this tag at the END of your response: [[REGEN_READY]]
 7. Do NOT output [[REGEN_READY]] unless the user agreement is clear.
 8. Never include more than one [[REGEN_READY]] tag in a single response.
 
 CRITICAL CONSTRAINTS - YOU MUST FOLLOW THESE:
 - The destination "${destination}" CANNOT be changed. If the user asks to change the destination entirely, politely decline and explain that a new plan should be created for a different destination.
-- The overall trip duration (${dayCount}日間) should remain the same.
+- The overall trip duration (${dayCount} days) should remain the same.
 - Only suggest modifications within the scope of the current destination: changing specific spots, restaurants, activities, time adjustments, adding/removing activities within the same area.
-- If the user requests a completely different trip (different country, different city, different duration), respond: "行き先を大きく変更する場合は、新しいプランを作成してください。こちらでは${destination}のプランの微調整をお手伝いします！"
+- If the user requests a completely different trip (different country, different city, different duration), respond: "${destinationChangeResponse}"
 - Never suggest or agree to changes that would fundamentally alter the trip's destination or region.`;
 
     const result = await streamText({

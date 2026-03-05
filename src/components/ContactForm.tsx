@@ -24,6 +24,38 @@ export default function ContactForm() {
     initialState
   );
 
+  const mapContactMessage = (code: ContactState["message"]) => {
+    switch (code) {
+      case "validation_failed":
+        return t("errors.validationFailed");
+      case "submitted":
+        return t("messages.submitted");
+      case "submitted_dev":
+        return t("messages.submittedDev");
+      case "send_failed":
+        return t("errors.sendFailed");
+      default:
+        return "";
+    }
+  };
+
+  const mapContactFieldError = (code?: string) => {
+    switch (code) {
+      case "name_required":
+        return t("errors.nameRequired");
+      case "email_required":
+        return t("errors.emailRequired");
+      case "email_invalid":
+        return t("errors.emailInvalid");
+      case "subject_required":
+        return t("errors.subjectRequired");
+      case "message_required":
+        return t("errors.messageRequired");
+      default:
+        return "";
+    }
+  };
+
   return (
     <section className="relative bg-[#fffdfa] p-8 md:p-12 rounded-lg shadow-lg border border-stone-200 overflow-hidden max-w-4xl mx-auto">
       {/* Texture Overlay */}
@@ -38,9 +70,9 @@ export default function ContactForm() {
         </div>
         <div className="absolute -left-12 top-6 w-32 h-32 rounded-full border-2 border-stone-300/50 flex items-center justify-center -rotate-12 z-0">
           <div className="text-[10px] font-mono text-stone-300 uppercase tracking-widest text-center">
-            Tabidea
+            {t("brand")}
             <br />
-            Post Service
+            {t("postService")}
             <br />
             {new Date().getFullYear()}
           </div>
@@ -68,7 +100,7 @@ export default function ContactForm() {
           className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-xl text-center"
         >
           <p className="font-bold text-lg mb-2">{t("sent")}</p>
-          <p>{state.message}</p>
+          <p>{mapContactMessage(state.message)}</p>
           <button
             onClick={() => window.location.reload()}
             className="mt-4 text-green-700 underline text-sm hover:text-green-900"
@@ -80,7 +112,7 @@ export default function ContactForm() {
         <form action={formAction} className="space-y-6">
           {state.message && !state.success && (
             <div className="bg-red-50 border border-red-200 text-red-600 p-4 rounded-lg text-sm">
-              {state.message}
+              {mapContactMessage(state.message)}
             </div>
           )}
 
@@ -101,7 +133,7 @@ export default function ContactForm() {
             />
             {state.errors?.name && (
               <p className="text-red-500 text-xs mt-1">
-                {state.errors.name[0]}
+                {mapContactFieldError(state.errors.name[0])}
               </p>
             )}
           </div>
@@ -119,11 +151,11 @@ export default function ContactForm() {
               name="email"
               required
               className="w-full p-4 rounded-xl border-2 border-stone-200 bg-white focus:border-[#e67e22] focus:outline-none transition-colors font-sans"
-              placeholder="tabidea@example.com"
+              placeholder={t("emailPlaceholder")}
             />
             {state.errors?.email && (
               <p className="text-red-500 text-xs mt-1">
-                {state.errors.email[0]}
+                {mapContactFieldError(state.errors.email[0])}
               </p>
             )}
           </div>
@@ -145,7 +177,7 @@ export default function ContactForm() {
             />
             {state.errors?.subject && (
               <p className="text-red-500 text-xs mt-1">
-                {state.errors.subject[0]}
+                {mapContactFieldError(state.errors.subject[0])}
               </p>
             )}
           </div>
@@ -167,7 +199,7 @@ export default function ContactForm() {
             />
             {state.errors?.message && (
               <p className="text-red-500 text-xs mt-1">
-                {state.errors.message[0]}
+                {mapContactFieldError(state.errors.message[0])}
               </p>
             )}
           </div>
@@ -183,12 +215,24 @@ export default function ContactForm() {
               />
             </div>
             <label htmlFor="agreement" className="text-sm text-stone-700 cursor-pointer select-none">
-              <Link href={localizeHref("/privacy", language)} className="text-[#e67e22] hover:underline" target="_blank">{t("privacy")}</Link>
-              、
-              <Link href={localizeHref("/terms", language)} className="text-[#e67e22] hover:underline" target="_blank">{t("terms")}</Link>
-              、及び
-              <Link href={localizeHref("/ai-policy", language)} className="text-[#e67e22] hover:underline" target="_blank">{t("aiPolicy")}</Link>
-              {t("agree")} <span className="text-red-500">*</span>
+              {t.rich("agreementText", {
+                privacy: () => (
+                  <Link href={localizeHref("/privacy", language)} className="text-[#e67e22] hover:underline" target="_blank">
+                    {t("privacy")}
+                  </Link>
+                ),
+                terms: () => (
+                  <Link href={localizeHref("/terms", language)} className="text-[#e67e22] hover:underline" target="_blank">
+                    {t("terms")}
+                  </Link>
+                ),
+                aiPolicy: () => (
+                  <Link href={localizeHref("/ai-policy", language)} className="text-[#e67e22] hover:underline" target="_blank">
+                    {t("aiPolicy")}
+                  </Link>
+                ),
+              })}{" "}
+              <span className="text-red-500">*</span>
             </label>
           </div>
 

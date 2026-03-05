@@ -31,6 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
         meta?: {
           defaultTitle?: string;
           titleTemplate?: string;
+          siteName?: string;
+          authorName?: string;
           description?: string;
           openGraphDescription?: string;
           ogImageAlt?: string;
@@ -41,15 +43,13 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 
   const meta = messages.app?.rootLayout?.meta;
-  const defaultTitle = meta?.defaultTitle ?? "Tabidea - AI Travel Planner";
-  const titleTemplate = meta?.titleTemplate ?? "%s - Tabidea";
-  const description =
-    meta?.description ??
-    "Tabideaは、AIの力とリアルな旅行体験をかけ合わせた、新しい旅行プランニングサービスです。";
-  const openGraphDescription =
-    meta?.openGraphDescription ??
-    "日本と世界の美しい風景、文化、食べ物を通じて、新しい旅の発見をお届けする旅行ブログ。";
-  const ogImageAlt = meta?.ogImageAlt ?? "Tabidea - AI Travel Planner";
+  const defaultTitle = meta?.defaultTitle ?? "";
+  const titleTemplate = meta?.titleTemplate ?? "%s";
+  const siteName = meta?.siteName ?? defaultTitle;
+  const authorName = meta?.authorName ?? siteName;
+  const description = meta?.description ?? "";
+  const openGraphDescription = meta?.openGraphDescription ?? description;
+  const ogImageAlt = meta?.ogImageAlt ?? defaultTitle;
   const twitterDescription = meta?.twitterDescription ?? description;
 
   return {
@@ -58,12 +58,12 @@ export async function generateMetadata(): Promise<Metadata> {
       template: titleTemplate,
     },
     description,
-    authors: [{ name: "ともきち" }],
+    authors: [{ name: authorName }],
     openGraph: {
       title: defaultTitle,
       description: openGraphDescription,
       url: "https://tabide.ai",
-      siteName: "Tabidea",
+      siteName,
       type: "website",
       images: [
         {

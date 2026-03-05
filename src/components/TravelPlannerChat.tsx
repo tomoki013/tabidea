@@ -3,20 +3,13 @@
 import { useRef, useEffect } from "react";
 import { useChat } from "ai/react";
 import type { Message } from "ai";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { Itinerary } from '@/types';
 import ModelBadge from "@/components/ui/ModelBadge";
+import { localizeHref, resolveLanguageFromPathname } from "@/lib/i18n/navigation";
 
 const REGEN_READY_TAG = "[[REGEN_READY]]";
-const REGEN_TRIGGER_MESSAGE =
-  "この会話で合意した変更内容を現在のプランに反映して再生成してください。";
-
-const SUGGESTION_CHIPS = [
-  "地元の料理をもっと食べたい！ 🍜",
-  "カフェ巡りを入れたい ☕️",
-  "予算を少し抑えたい 💰",
-  "もっとゆったりしたい 🐢",
-  "写真映えスポットに行きたい 📸",
-];
 
 const stripRegenReadyTag = (text: string) =>
   text.replace(/\s*\[\[REGEN_READY\]\]\s*/g, " ").trim();
@@ -36,8 +29,17 @@ export default function TravelPlannerChat({
   initialChatHistory?: { role: string; text: string }[];
   onChatChange?: (messages: { role: string; text: string }[]) => void;
 }) {
+  const pathname = usePathname();
+  const language = resolveLanguageFromPathname(pathname);
+  const tChat = useTranslations("components.travelPlannerChat");
+  const tPlan = useTranslations("app.planner.plan");
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const regenerateTriggerMessage = tPlan("regenerateInstruction");
+  const suggestionChipsRaw = tChat.raw("suggestionChips");
+  const suggestionChips = Array.isArray(suggestionChipsRaw)
+    ? suggestionChipsRaw.filter((chip): chip is string => typeof chip === "string")
+    : [];
 
   const initialMessages: Message[] =
     initialChatHistory && initialChatHistory.length > 0
@@ -50,8 +52,7 @@ export default function TravelPlannerChat({
           {
             id: "initial",
             role: "assistant",
-            content:
-              "いかがでしたか？プランについて気になるところや、詳しく知りたいことがあれば教えてくださいね！",
+            content: tChat("initialAssistantMessage"),
           },
         ];
 
@@ -96,7 +97,7 @@ export default function TravelPlannerChat({
     }));
     onRegenerate([
       ...formattedHistory,
-      { role: "user", text: REGEN_TRIGGER_MESSAGE },
+      { role: "user", text: regenerateTriggerMessage },
     ]);
   };
 
@@ -117,7 +118,7 @@ export default function TravelPlannerChat({
     <div className="mt-8 pt-8 animate-in fade-in duration-700 w-full min-w-0 overflow-hidden">
       <div className="flex items-center gap-2 mb-4 px-2">
         <h3 className="text-xl font-serif text-stone-800">
-          Chat with your Planner
+          {tChat("title")}
         </h3>
         <ModelBadge modelName={process.env.NEXT_PUBLIC_CHAT_MODEL_NAME || "gemini-2.5-flash"} />
       </div>
@@ -125,8 +126,7 @@ export default function TravelPlannerChat({
         <div ref={chatContainerRef} className="max-h-[300px] overflow-y-auto space-y-4 pr-1 sm:pr-2 custom-scrollbar w-full min-w-0">
           {messages.length === 0 && (
             <p className="text-stone-500 text-sm italic text-center">
-              Ask me to adjust the schedule, suggest restaurants, or explain
-              more about a spot.
+              {tChat("emptyState")}
             </p>
           )}
           {messages.map((m) => {
@@ -171,7 +171,7 @@ export default function TravelPlannerChat({
                         d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
                       />
                     </svg>
-                    会話の内容でプランを再生成
+                    {tChat("regenerateButton")}
                   </button>
                 )}
               </div>
@@ -180,23 +180,23 @@ export default function TravelPlannerChat({
           {isLoading && messages[messages.length - 1]?.role === "user" && (
             <div className="flex justify-start">
               <div className="bg-stone-100 text-stone-500 rounded-2xl rounded-bl-none px-5 py-3 text-sm animate-pulse">
-                考え中...
+                {tChat("thinking")}
               </div>
             </div>
           )}
           {error && (
             <div className="flex justify-start">
               <div className="bg-red-50 text-red-600 rounded-2xl rounded-bl-none px-5 py-3 text-sm">
-                エラーが発生しました。もう一度お試しください。
-                <br />
-                問題が解決しない場合は、
-                <a
-                  href="/contact"
-                  className="underline font-medium ml-1"
-                >
-                  お問い合わせページ
-                </a>
-                からご連絡ください。
+                {tChat.rich("errorWithContact", {
+                  contact: (chunks) => (
+                    <a
+                      href={localizeHref("/contact", language)}
+                      className="underline font-medium"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                })}
               </div>
             </div>
           )}
@@ -206,7 +206,7 @@ export default function TravelPlannerChat({
         {/* Suggestion Chips */}
         {!isLoading && !isRegenerating && (
           <div className="flex gap-2 overflow-x-auto pb-2 noscrollbar mask-right-fade w-full min-w-0 -mx-1 px-1">
-            {SUGGESTION_CHIPS.map((chip) => (
+            {suggestionChips.map((chip) => (
               <button
                 key={chip}
                 onClick={() => handleChipClick(chip)}
@@ -222,7 +222,7 @@ export default function TravelPlannerChat({
           <input
             value={input}
             onChange={handleInputChange}
-            placeholder="例: もっと安いランチの選択肢は？"
+            placeholder={tChat("inputPlaceholder")}
             disabled={isRegenerating}
             className="flex-1 min-w-0 bg-transparent border-none px-3 sm:px-4 py-1 text-stone-800 text-sm focus:outline-hidden placeholder:text-stone-400 disabled:opacity-50 disabled:cursor-not-allowed"
           />

@@ -69,7 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t("meta.shortTitle", { title: plan.title }),
       description: plan.description,
       url: pageUrl,
-      siteName: "Tabidea",
+      siteName: t("meta.siteName"),
       images: [
         {
           url: ogImage,
@@ -151,7 +151,7 @@ export default async function SamplePlanDetailPage({ params }: Props) {
             itemListElement: itinerary.days.map((day, i) => ({
               "@type": "ListItem",
               position: i + 1,
-              name: `Day ${day.day}: ${day.title}`,
+              name: t("meta.dayLabel", { day: day.day, title: day.title }),
             })),
           }
         : undefined,

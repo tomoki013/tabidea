@@ -188,8 +188,9 @@ export function useReplan(
 
         if (!response.ok) {
           const errorData = await response.json().catch(() => ({}));
+          const errorCode = (errorData as { error?: string }).error;
           throw new Error(
-            (errorData as { error?: string }).error ?? "リプランに失敗しました"
+            errorCode ?? "replan_failed"
           );
         }
 
@@ -197,7 +198,7 @@ export function useReplan(
         setResult(data);
       } catch (err) {
         const message =
-          err instanceof Error ? err.message : "リプランに失敗しました";
+          err instanceof Error ? err.message : "replan_failed";
         setError(message);
       } finally {
         setIsReplanning(false);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo, useCallback } from "react";
+import { useLocale } from "next-intl";
 import { Loader2, CheckCircle2, Circle, ChevronDown, Sparkles } from "lucide-react";
 import ModelBadge from "@/components/ui/ModelBadge";
 import { motion, AnimatePresence } from "framer-motion";
@@ -164,6 +165,8 @@ export default function PackingListView({
   packingList: controlledList,
   onPackingListChange,
 }: PackingListViewProps) {
+  const locale = useLocale();
+
   // Only initialize from localStorage if NOT controlled
   const [internalList, setInternalList] = useState<PackingList | null>(() => {
     if (controlledList !== undefined) return null;
@@ -233,6 +236,7 @@ export default function PackingListView({
       companions,
       budget,
       region,
+      locale,
     });
 
     if (result.success && result.data) {

@@ -59,6 +59,17 @@ export default function MobileSidebar({
   const language = resolveLanguageFromPathname(pathname);
   const normalizedPathname = stripLanguagePrefix(pathname);
   const dateLocale = resolveRegionalLocale(language);
+  const mapSidebarError = (code?: string | null, fallback: "renameFailed" | "deleteFailed" = "deleteFailed") => {
+    switch (code) {
+      case "plan_name_required":
+      case "plan_name_update_failed":
+        return t("renameFailed");
+      case "plan_delete_failed":
+        return t("deleteFailed");
+      default:
+        return t(fallback);
+    }
+  };
 
   // Menu state
   const [openMenuId, setOpenMenuId] = useState<string | null>(null);
@@ -136,7 +147,7 @@ export default function MobileSidebar({
     if (result.success) {
       updatePlan(planId, { destination: renameValue.trim() });
     } else {
-      alert(result.error || t('renameFailed'));
+      alert(mapSidebarError(result.error, 'renameFailed'));
     }
 
     setIsRenaming(null);
@@ -173,7 +184,7 @@ export default function MobileSidebar({
       if (result.success) {
         removePlan(planToDelete);
       } else {
-        alert(result.error || t('deleteFailed'));
+        alert(mapSidebarError(result.error, 'deleteFailed'));
       }
     }
 

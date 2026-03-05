@@ -47,7 +47,7 @@ function buildAlreadySubscribedResult(
         isSubscribed: true,
         isAdmin: false,
       })
-    : "有料";
+    : "Paid";
 
   return {
     success: false,

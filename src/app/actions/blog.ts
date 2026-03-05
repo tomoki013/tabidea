@@ -71,7 +71,7 @@ export async function createOrUpdateBlogPost(input: {
     .maybeSingle();
 
   if (!profile?.username) {
-    return { success: false, error: 'ブログプロフィールのユーザー名を先に設定してください。' };
+    return { success: false, error: 'blog_profile_username_required' };
   }
 
   const slug = toSlug(input.slug || input.title || 'post');

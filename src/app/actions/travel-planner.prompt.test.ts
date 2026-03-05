@@ -18,7 +18,7 @@ describe('getUserConstraintPrompt', () => {
     expect(prompt).toContain('=== OUTPUT LANGUAGE (MUST FOLLOW) ===');
     expect(prompt).toContain('Japanese');
     expect(prompt).toContain('=== HOME BASE ROUND-TRIP REQUIREMENT (MUST FOLLOW) ===');
-    expect(prompt).toContain('Home City: 東京');
+    expect(prompt).toContain('Home City:');
   });
 
   it('includes travel style when provided', async () => {

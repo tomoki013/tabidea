@@ -25,8 +25,8 @@ vi.mock("@/lib/services/plan-generation/generate-outline", () => ({
 
 const basePlan = {
   id: "plan-1",
-  destination: "東京",
-  description: "初期プラン",
+  destination: "Tokyo",
+  description: "Initial plan",
   days: [
     {
       day: 1,
@@ -34,8 +34,8 @@ const basePlan = {
       activities: [
         {
           time: "10:00",
-          activity: "浅草観光",
-          description: "散策",
+          activity: "Asakusa sightseeing",
+          description: "Walk around",
         },
       ],
     },
@@ -52,13 +52,13 @@ describe("regeneratePlan", () => {
   it("succeeds without retry when first result differs from current plan", async () => {
     mockModifyItinerary.mockResolvedValue({
       ...basePlan,
-      description: "更新後プラン",
+      description: "Updated plan",
     });
 
-    const response = await regeneratePlan(basePlan, [{ role: "user", text: "カフェ追加" }]);
+    const response = await regeneratePlan(basePlan, [{ role: "user", text: "Add a cafe stop" }]);
 
     expect(response.success).toBe(true);
-    expect(response.data?.description).toBe("更新後プラン");
+    expect(response.data?.description).toBe("Updated plan");
     expect(mockModifyItinerary).toHaveBeenCalledTimes(1);
   });
 
@@ -67,17 +67,17 @@ describe("regeneratePlan", () => {
       .mockResolvedValueOnce({ ...basePlan })
       .mockResolvedValueOnce({
         ...basePlan,
-        description: "2回目で変更",
+        description: "Changed on second attempt",
       });
 
-    const response = await regeneratePlan(basePlan, [{ role: "user", text: "昼食を安くして" }]);
+    const response = await regeneratePlan(basePlan, [{ role: "user", text: "Make lunch cheaper" }]);
 
     expect(response.success).toBe(true);
-    expect(response.data?.description).toBe("2回目で変更");
+    expect(response.data?.description).toBe("Changed on second attempt");
     expect(mockModifyItinerary).toHaveBeenCalledTimes(2);
 
     const secondHistory = mockModifyItinerary.mock.calls[1][1];
-    expect(secondHistory[secondHistory.length - 1].text).toContain("前回の出力は元プランと同一でした");
+    expect(secondHistory[secondHistory.length - 1].text).toContain("The previous output was identical");
   });
 
   it("returns failure when plan remains unchanged after retry", async () => {
@@ -85,10 +85,10 @@ describe("regeneratePlan", () => {
       .mockResolvedValueOnce({ ...basePlan })
       .mockResolvedValueOnce({ ...basePlan });
 
-    const response = await regeneratePlan(basePlan, [{ role: "user", text: "夜をゆったりに" }]);
+    const response = await regeneratePlan(basePlan, [{ role: "user", text: "Make the evening more relaxed" }]);
 
     expect(response.success).toBe(false);
-    expect(response.message).toContain("変更を作成できませんでした");
+    expect(response.message).toBe("regenerate_no_effect");
     expect(mockModifyItinerary).toHaveBeenCalledTimes(2);
   });
 });

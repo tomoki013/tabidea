@@ -80,6 +80,21 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const currentLanguage = resolveLanguageFromPathname(pathname);
   const { theme, setTheme } = useTheme();
   const { user, signOut } = useAuth();
+  const mapSettingsError = (code?: string | null, fallback: "saveFailed" | "deleteAccountFailed" | "generic" = "generic") => {
+    switch (code) {
+      case "authentication_required":
+        return tSettings("errors.generic");
+      case "settings_fetch_failed":
+      case "settings_update_failed":
+        return tSettings("errors.saveFailed");
+      case "account_delete_failed":
+        return tSettings("errors.deleteAccountFailed");
+      default:
+        if (fallback === "saveFailed") return tSettings("errors.saveFailed");
+        if (fallback === "deleteAccountFailed") return tSettings("errors.deleteAccountFailed");
+        return tSettings("errors.generic");
+    }
+  };
   const [activeTab, setActiveTab] = useState<Tab>('account');
   const [mounted, setMounted] = useState(false);
 
@@ -174,12 +189,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         const resolvedRegion =
           result.settings.preferredRegion || getDefaultRegionForLanguage(resolvedLanguage);
         setPreferredRegion(resolvedRegion);
+        const savedHomeBaseCity =
+          typeof result.settings.homeBaseCity === "string"
+            ? result.settings.homeBaseCity.trim()
+            : "";
         setHomeBaseCity(
-          resolveHomeBaseCityForRegion(
-            resolvedRegion,
-            resolvedLanguage,
-            result.settings.homeBaseCity
-          )
+          savedHomeBaseCity ||
+            resolveHomeBaseCityForRegion(
+              resolvedRegion,
+              resolvedLanguage
+            )
         );
       }
     } catch {
@@ -228,7 +247,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         }
         onClose();
       } else {
-        setSettingsError(result.error || tSettings("errors.saveFailed"));
+        setSettingsError(mapSettingsError(result.error, "saveFailed"));
       }
     } catch {
       setSettingsError(tSettings("errors.generic"));
@@ -261,7 +280,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         onClose();
         router.push(localizeHref('/', currentLanguage));
       } else {
-        alert(result.error || tSettings("errors.deleteAccountFailed"));
+        alert(mapSettingsError(result.error, "deleteAccountFailed"));
         setIsDeletingAccount(false);
       }
     } catch {
@@ -444,11 +463,14 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           onChange={(e) => {
                             const nextLanguage = e.target.value as LanguageCode;
                             const nextRegion = getDefaultRegionForLanguage(nextLanguage);
+                            const hasRegionChanged = nextRegion !== preferredRegion;
                             setPreferredLanguage(nextLanguage);
                             setPreferredRegion(nextRegion);
-                            setHomeBaseCity(
-                              resolveHomeBaseCityForRegion(nextRegion, nextLanguage)
-                            );
+                            if (hasRegionChanged) {
+                              setHomeBaseCity(
+                                resolveHomeBaseCityForRegion(nextRegion, nextLanguage)
+                              );
+                            }
                           }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
@@ -468,10 +490,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           language={preferredLanguage}
                           value={preferredRegion}
                           onChange={(nextRegion) => {
+                            const hasRegionChanged = nextRegion !== preferredRegion;
                             setPreferredRegion(nextRegion);
-                            setHomeBaseCity(
-                              resolveHomeBaseCityForRegion(nextRegion, preferredLanguage)
-                            );
+                            if (hasRegionChanged) {
+                              setHomeBaseCity(
+                                resolveHomeBaseCityForRegion(nextRegion, preferredLanguage)
+                              );
+                            }
                           }}
                         />
                       </div>

@@ -233,6 +233,61 @@ describe('SettingsModal', () => {
     });
   });
 
+  it('keeps explicitly saved home base city on reload and save', async () => {
+    (userSettingsActions.getUserSettings as any).mockResolvedValueOnce({
+      success: true,
+      settings: {
+        customInstructions: 'Original instructions',
+        travelStyle: 'Original style',
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
+        homeBaseCity: 'Seattle',
+      },
+    });
+
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    fireEvent.click(screen.getByText('AI設定'));
+    const saveButton = await screen.findByText('設定を保存');
+    fireEvent.click(saveButton);
+
+    await waitFor(() => {
+      expect(userSettingsActions.updateUserSettings).toHaveBeenCalledWith({
+        customInstructions: 'Original instructions',
+        travelStyle: 'Original style',
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
+        homeBaseCity: 'Seattle',
+      });
+    });
+  });
+
+  it('does not overwrite home base city when selecting the same region', async () => {
+    render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
+
+    const regionTrigger = await screen.findByRole('button', { name: /United States \(US\)/ });
+    fireEvent.click(regionTrigger);
+
+    const searchInput = await screen.findByPlaceholderText('Search region by name or code');
+    fireEvent.change(searchInput, { target: { value: 'United States' } });
+
+    const usOption = await screen.findByRole('option', { name: 'United States (US)' });
+    fireEvent.click(usOption);
+
+    fireEvent.click(screen.getByText('AI設定'));
+    fireEvent.click(screen.getByText('設定を保存'));
+
+    await waitFor(() => {
+      expect(userSettingsActions.updateUserSettings).toHaveBeenCalledWith({
+        customInstructions: 'Original instructions',
+        travelStyle: 'Original style',
+        preferredLanguage: 'en',
+        preferredRegion: 'US',
+        homeBaseCity: 'New York',
+      });
+    });
+  });
+
   it('shows no-result message when region search has no match', async () => {
     render(<SettingsModal isOpen={true} onClose={vi.fn()} />);
 

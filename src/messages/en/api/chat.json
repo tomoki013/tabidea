@@ -1,0 +1,9 @@
+{
+  "api": {
+    "chat": {
+      "languageInstruction": "Reply in English.",
+      "agreementExamples": "\"yes\", \"please do that\", \"sounds good\"",
+      "destinationChangeResponse": "If you want to change the destination significantly, please create a new plan. I can help fine-tune the current plan for {destination}."
+    }
+  }
+}

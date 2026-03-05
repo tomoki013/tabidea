@@ -1,0 +1,12 @@
+{
+  "api": {
+    "og": {
+      "defaultDestination": "旅行プラン",
+      "durationOneDay": "日帰り",
+      "durationTemplate": "{nights}泊{days}日",
+      "destinationTitleTemplate": "{destination}の旅",
+      "tagline": "AIがあなただけの旅程を作成",
+      "fallbackSubtitle": "Tabidea - AIトラベルプランナー"
+    }
+  }
+}

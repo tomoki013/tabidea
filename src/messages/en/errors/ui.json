@@ -15,6 +15,7 @@
         "detailGenerationFailed": "An error occurred while generating detailed plans.",
         "saveFailed": "Failed to save the plan.",
         "outlineFailed": "Failed to generate the plan outline.",
+        "regenerateFailed": "Failed to regenerate the plan. Please try again later.",
         "generic": "An error occurred.",
         "timeout": "A network error or server timeout occurred.",
         "sampleNotFound": "The specified sample plan was not found."

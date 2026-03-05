@@ -115,7 +115,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json<PlacesSearchResponse>(
         {
           success: false,
-          error: 'クエリパラメータ "q" が必要です',
+          error: 'query_param_q_required',
         },
         { status: 400 }
       );
@@ -126,7 +126,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       return NextResponse.json<PlacesSearchResponse>(
         {
           success: false,
-          error: 'Google Maps API が設定されていません',
+          error: 'google_maps_api_not_configured',
         },
         { status: 500 }
       );
@@ -162,7 +162,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     console.error('Places search error:', error);
 
     const errorMessage =
-      error instanceof Error ? error.message : '検索中にエラーが発生しました';
+      error instanceof Error ? error.message : 'search_failed';
 
     return NextResponse.json<PlacesSearchResponse>(
       {

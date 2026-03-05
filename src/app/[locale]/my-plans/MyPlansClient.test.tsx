@@ -20,7 +20,7 @@ const mocks = vi.hoisted(() => ({
 const planFixture = vi.hoisted(() => ({
   id: "plan-1",
   shareCode: "share-1",
-  destination: "東京",
+  destination: "Tokyo",
   durationDays: 3,
   thumbnailUrl: null,
   isPublic: false,
@@ -57,8 +57,11 @@ vi.mock("next/navigation", () => ({
 vi.mock("next-intl", () => ({
   useTranslations: (namespace: string) => {
     const dictionary: Record<string, string> = {
-      "app.myPlans.makePublic": "旅のしおりを公開する",
-      "app.myPlans.makePrivate": "旅のしおりを非公開にする",
+      "app.myPlans.makePublic": "Publish travel note",
+      "app.myPlans.makePrivate": "Make travel note private",
+      "errors.ui.myPlans.deleteFailed": "Delete failed",
+      "errors.ui.myPlans.visibilityFailed": "Update failed",
+      "errors.ui.myPlans.renameFailed": "Rename failed",
     };
 
     return (key: string) => dictionary[`${namespace}.${key}`] ?? key;
@@ -126,7 +129,7 @@ function openActionMenu() {
 
   for (const button of iconOnlyButtons) {
     fireEvent.click(button);
-    if (screen.queryByText("旅のしおりを公開する")) {
+    if (screen.queryByText("Publish travel note")) {
       return;
     }
   }
@@ -153,9 +156,9 @@ describe("MyPlansClient visibility actions", () => {
   it("uses updatePlanVisibility and updates local state when publishing", async () => {
     render(<MyPlansClient initialPlans={[planFixture]} totalPlans={1} />);
 
-    await screen.findByText("東京");
+    await screen.findByText("Tokyo");
     openActionMenu();
-    fireEvent.click(screen.getByText("旅のしおりを公開する"));
+    fireEvent.click(screen.getByText("Publish travel note"));
 
     await waitFor(() => {
       expect(mocks.updatePlanVisibility).toHaveBeenCalledWith("plan-1", true);
@@ -165,20 +168,20 @@ describe("MyPlansClient visibility actions", () => {
   });
 
   it("shows error and does not update local state on visibility update failure", async () => {
-    mocks.updatePlanVisibility.mockResolvedValue({ success: false, error: "更新失敗" });
+    mocks.updatePlanVisibility.mockResolvedValue({ success: false, error: "plan_update_failed" });
     const alertSpy = vi.spyOn(window, "alert");
 
     render(<MyPlansClient initialPlans={[planFixture]} totalPlans={1} />);
 
-    await screen.findByText("東京");
+    await screen.findByText("Tokyo");
     openActionMenu();
-    fireEvent.click(screen.getByText("旅のしおりを公開する"));
+    fireEvent.click(screen.getByText("Publish travel note"));
 
     await waitFor(() => {
       expect(mocks.updatePlanVisibility).toHaveBeenCalledWith("plan-1", true);
     });
 
     expect(mocks.updatePlan).not.toHaveBeenCalled();
-    expect(alertSpy).toHaveBeenCalledWith("更新失敗");
+    expect(alertSpy).toHaveBeenCalledWith("Update failed");
   });
 });

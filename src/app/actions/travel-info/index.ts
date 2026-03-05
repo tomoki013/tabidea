@@ -11,7 +11,6 @@ import type {
   CategoryDataEntry,
   SourceType,
 } from '@/types';
-import { CATEGORY_LABELS } from '@/types';
 import { createDefaultTravelInfoService } from '@/lib/services/travel-info';
 import { extractCountryFromDestination } from './country-extractor';
 import {
@@ -76,7 +75,7 @@ export async function getTravelInfo(
   const startTime = Date.now();
   const requestId = generateRequestId();
 
-  logInfo('getTravelInfo', '処理開始', {
+  logInfo('getTravelInfo', 'processing_started', {
     requestId,
     destination,
     categories,
@@ -85,13 +84,13 @@ export async function getTravelInfo(
 
   // 入力バリデーション
   if (!destination || destination.trim().length === 0) {
-    logWarn('getTravelInfo', 'バリデーションエラー: 目的地が空', { requestId });
-    return { success: false, error: '目的地を指定してください。' };
+    logWarn('getTravelInfo', 'validation_error_destination_empty', { requestId });
+    return { success: false, error: 'destination_required' };
   }
 
   if (categories.length === 0) {
-    logWarn('getTravelInfo', 'バリデーションエラー: カテゴリが空', { requestId });
-    return { success: false, error: 'カテゴリを1つ以上指定してください。' };
+    logWarn('getTravelInfo', 'validation_error_categories_empty', { requestId });
+    return { success: false, error: 'category_required' };
   }
 
   // 利用制限チェック
@@ -101,7 +100,7 @@ export async function getTravelInfo(
   });
 
   if (!limitResult.allowed) {
-    logWarn('getTravelInfo', '利用制限超過', {
+    logWarn('getTravelInfo', 'usage_limit_exceeded', {
       requestId,
       userType: limitResult.userType,
     });
@@ -110,7 +109,7 @@ export async function getTravelInfo(
       limitExceeded: true,
       userType: limitResult.userType,
       resetAt: limitResult.resetAt?.toISOString() ?? null,
-      error: '利用制限に達しました',
+      error: 'usage_limit_reached',
     };
   }
 
@@ -123,21 +122,21 @@ export async function getTravelInfo(
 
   // フィルタ後のカテゴリが空の場合
   if (filteredCategories.length === 0) {
-    logWarn('getTravelInfo', 'アクセス可能なカテゴリなし', {
+    logWarn('getTravelInfo', 'no_accessible_categories', {
       requestId,
       userType: userInfo.type,
       requestedCategories: categories,
     });
     return {
       success: false,
-      error: '閲覧可能なカテゴリがありません',
+      error: 'no_accessible_categories',
       accessibleCategories,
     };
   }
 
   // ログに記録
   if (filteredCategories.length < categories.length) {
-    logInfo('getTravelInfo', 'カテゴリフィルタリング実施', {
+    logInfo('getTravelInfo', 'category_filtering_applied', {
       requestId,
       original: categories,
       filtered: filteredCategories,
@@ -147,19 +146,19 @@ export async function getTravelInfo(
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    logError('getTravelInfo', 'APIキーが設定されていません', undefined, { requestId });
+    logError('getTravelInfo', 'missing_api_key', undefined, { requestId });
     return {
       success: false,
-      error: 'システムエラーが発生しました。管理者にお問い合わせください。',
+      error: 'system_configuration_error',
     };
   }
 
   try {
     // 目的地から国名を抽出
-    logInfo('getTravelInfo', '国名抽出開始', { requestId, destination });
+    logInfo('getTravelInfo', 'country_extraction_started', { requestId, destination });
     const countryStartTime = Date.now();
     const country = await extractCountryFromDestination(destination);
-    logInfo('getTravelInfo', '国名抽出完了', {
+    logInfo('getTravelInfo', 'country_extraction_completed', {
       requestId,
       country,
       elapsedMs: Date.now() - countryStartTime,
@@ -168,7 +167,7 @@ export async function getTravelInfo(
     // TravelInfoServiceのインスタンスを作成
     const service = createDefaultTravelInfoService();
 
-    logInfo('getTravelInfo', 'TravelInfoService呼び出し開始', {
+    logInfo('getTravelInfo', 'travel_info_service_call_started', {
       requestId,
       destination,
       country,
@@ -188,7 +187,7 @@ export async function getTravelInfo(
     const successCount = response.categories.size;
     const failedCount = response.failedCategories?.length ?? 0;
 
-    logInfo('getTravelInfo', '処理完了', {
+    logInfo('getTravelInfo', 'processing_completed', {
       requestId,
       successCount,
       failedCount,
@@ -198,7 +197,7 @@ export async function getTravelInfo(
     return { success: true, data: response };
   } catch (error) {
     const elapsed = Date.now() - startTime;
-    logError('getTravelInfo', '予期しないエラー発生', error, {
+    logError('getTravelInfo', 'unexpected_error', error, {
       requestId,
       destination,
       categories,
@@ -206,7 +205,7 @@ export async function getTravelInfo(
     });
     return {
       success: false,
-      error: '予期しないエラーが発生しました。しばらく経ってから再度お試しください。',
+      error: 'unexpected_error',
     };
   }
 }
@@ -251,7 +250,7 @@ export async function getSingleCategoryInfo(
   const startTime = Date.now();
   const requestId = generateRequestId(`single_${category}`);
 
-  logInfo('getSingleCategoryInfo', '処理開始', {
+  logInfo('getSingleCategoryInfo', 'processing_started', {
     requestId,
     destination,
     category,
@@ -259,17 +258,17 @@ export async function getSingleCategoryInfo(
 
   // 入力バリデーション
   if (!destination || destination.trim().length === 0) {
-    logWarn('getSingleCategoryInfo', 'バリデーションエラー: 目的地が空', { requestId });
-    return { success: false, category, error: '目的地を指定してください。' };
+    logWarn('getSingleCategoryInfo', 'validation_error_destination_empty', { requestId });
+    return { success: false, category, error: 'destination_required' };
   }
 
   const apiKey = process.env.GOOGLE_GENERATIVE_AI_API_KEY;
   if (!apiKey) {
-    logError('getSingleCategoryInfo', 'APIキーが設定されていません', undefined, { requestId });
+    logError('getSingleCategoryInfo', 'missing_api_key', undefined, { requestId });
     return {
       success: false,
       category,
-      error: 'システムエラーが発生しました。',
+      error: 'system_configuration_error',
     };
   }
 
@@ -278,13 +277,13 @@ export async function getSingleCategoryInfo(
     let country: string;
     if (options?.knownCountry) {
       country = options.knownCountry;
-      logInfo('getSingleCategoryInfo', '国名抽出スキップ（指定あり）', {
+      logInfo('getSingleCategoryInfo', 'country_extraction_skipped_known_country', {
         requestId,
         country,
       });
     } else {
       country = await extractCountryFromDestination(destination);
-      logInfo('getSingleCategoryInfo', '国名抽出完了', {
+      logInfo('getSingleCategoryInfo', 'country_extraction_completed', {
         requestId,
         country,
       });
@@ -302,7 +301,7 @@ export async function getSingleCategoryInfo(
     const elapsed = Date.now() - startTime;
 
     if (result.success) {
-      logInfo('getSingleCategoryInfo', '取得成功', {
+      logInfo('getSingleCategoryInfo', 'fetch_succeeded', {
         requestId,
         category,
         elapsedMs: elapsed,
@@ -319,7 +318,7 @@ export async function getSingleCategoryInfo(
         },
       };
     } else {
-      logWarn('getSingleCategoryInfo', '取得失敗', {
+      logWarn('getSingleCategoryInfo', 'fetch_failed', {
         requestId,
         category,
         error: result.error,
@@ -329,14 +328,12 @@ export async function getSingleCategoryInfo(
       return {
         success: false,
         category,
-        error:
-          result.error ||
-          `${CATEGORY_LABELS[category]}の取得に失敗しました。しばらく経ってから再度お試しください。`,
+        error: result.error || 'category_fetch_failed',
       };
     }
   } catch (error) {
     const elapsed = Date.now() - startTime;
-    logError('getSingleCategoryInfo', '予期しないエラー発生', error, {
+    logError('getSingleCategoryInfo', 'unexpected_error', error, {
       requestId,
       category,
       elapsedMs: elapsed,
@@ -345,7 +342,7 @@ export async function getSingleCategoryInfo(
     return {
       success: false,
       category,
-      error: `${CATEGORY_LABELS[category]}の取得中にエラーが発生しました。`,
+      error: 'category_unexpected_error',
     };
   }
 }

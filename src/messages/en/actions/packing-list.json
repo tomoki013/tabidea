@@ -1,0 +1,49 @@
+{
+  "actions": {
+    "packingList": {
+      "schema": {
+        "idDescription": "Unique ID (e.g., doc-1, cloth-2)",
+        "nameDescription": "Item name (English)",
+        "categoryDescription": "Category",
+        "quantityDescription": "Quantity",
+        "noteDescription": "Optional note (e.g., plug type)",
+        "priorityDescription": "Priority",
+        "itemsDescription": "Packing list items"
+      },
+      "prompt": {
+        "role": "You are a travel preparation expert. Generate a categorized packing list based on the travel conditions below.",
+        "travelConditionsTitle": "Travel conditions:",
+        "destination": "- Destination: {destination}",
+        "days": "- Duration: {days} days",
+        "themes": "- Themes: {themes}",
+        "companions": "- Companions: {companions}",
+        "budget": "- Budget: {budget}",
+        "tripType": {
+          "overseas": "- International trip",
+          "domestic": "- Domestic trip"
+        },
+        "passportRequired": " (required)",
+        "passportNotRequired": " (not required)",
+        "adapterNote": ", travel adapter (include destination-compatible plug type in note)",
+        "rulesTitle": "Rules:",
+        "rules": {
+          "rule1": "1. Classify items by category.",
+          "rule2": "2. documents: passport{passportRequirement}, flight tickets, wallet, credit card, travel insurance card, local currency, etc.",
+          "rule3": "3. clothing: suggest clothing for {days} days based on climate.",
+          "rule4": "4. electronics: charger, power bank{overseasAdapterNote}, etc.",
+          "rule5": "5. toiletries: toothbrush, sunscreen, etc.",
+          "rule6": "6. medicine: regular medication, motion sickness medicine, etc.",
+          "rule7": "7. theme: items matching themes (e.g., beach -> swimsuit/sunglasses, cold region -> warm gear).",
+          "rule8": "8. other: foldable umbrella, eco bag, etc.",
+          "rule9Title": "9. Set priority for each item:",
+          "rule9Essential": "   - essential: must-have items",
+          "rule9Recommended": "   - recommended: better to have",
+          "rule9Optional": "   - optional: nice to have",
+          "rule10": "10. Use ID format \"first 3 letters of category-sequence\" (e.g., doc-1, clo-2, ele-3).",
+          "rule11": "11. If companions include children, add child-specific items.",
+          "rule12": "12. Target approximately 25-40 total items."
+        }
+      }
+    }
+  }
+}

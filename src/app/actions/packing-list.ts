@@ -1,34 +1,61 @@
 "use server";
 
 import { generateObject } from "ai";
+import { createTranslator } from "next-intl";
 import { z } from "zod";
 import { resolveModel } from '@/lib/services/ai/model-provider';
 import type { PackingList } from "@/types/packing-list";
+import type { LanguageCode } from "@/lib/i18n/locales";
+import enMessages from "@/messages/en/actions/packing-list.json";
+import jaMessages from "@/messages/ja/actions/packing-list.json";
+
+const PACKING_LIST_MESSAGES = {
+  en: enMessages,
+  ja: jaMessages,
+} as const;
+
+type PackingListLocale = keyof typeof PACKING_LIST_MESSAGES;
+
+function resolvePackingListLocale(locale?: string): PackingListLocale {
+  return locale === "en" ? "en" : "ja";
+}
+
+function createPackingListTranslator(locale: PackingListLocale) {
+  return createTranslator({
+    locale: locale as LanguageCode,
+    messages: PACKING_LIST_MESSAGES[locale],
+    namespace: "actions.packingList",
+  });
+}
 
 // ============================================
 // Schema
 // ============================================
 
-const PackingItemSchema = z.object({
-  id: z.string().describe("ユニークID（例: doc-1, cloth-2）"),
-  name: z.string().describe("アイテム名（日本語）"),
-  category: z.enum([
-    "documents",
-    "clothing",
-    "electronics",
-    "toiletries",
-    "medicine",
-    "theme",
-    "other",
-  ]).describe("カテゴリ"),
-  quantity: z.number().optional().describe("数量"),
-  note: z.string().optional().describe("補足メモ（変換プラグの型など）"),
-  priority: z.enum(["essential", "recommended", "optional"]).describe("優先度"),
-});
+function createPackingListSchema(t: ReturnType<typeof createPackingListTranslator>) {
+  const PackingItemSchema = z.object({
+    id: z.string().describe(t("schema.idDescription")),
+    name: z.string().describe(t("schema.nameDescription")),
+    category: z.enum([
+      "documents",
+      "clothing",
+      "electronics",
+      "toiletries",
+      "medicine",
+      "theme",
+      "other",
+    ]).describe(t("schema.categoryDescription")),
+    quantity: z.number().optional().describe(t("schema.quantityDescription")),
+    note: z.string().optional().describe(t("schema.noteDescription")),
+    priority: z
+      .enum(["essential", "recommended", "optional"])
+      .describe(t("schema.priorityDescription")),
+  });
 
-const PackingListSchema = z.object({
-  items: z.array(PackingItemSchema).min(1).describe("持ち物アイテム一覧"),
-});
+  return z.object({
+    items: z.array(PackingItemSchema).min(1).describe(t("schema.itemsDescription")),
+  });
+}
 
 // ============================================
 // Types
@@ -41,6 +68,7 @@ export interface GeneratePackingListParams {
   companions: string;
   budget: string;
   region: string;
+  locale?: string;
 }
 
 export interface PackingListResult {
@@ -57,6 +85,9 @@ export interface PackingListResult {
 export async function generatePackingList(
   params: GeneratePackingListParams
 ): Promise<PackingListResult> {
+  const locale = resolvePackingListLocale(params.locale);
+  const t = createPackingListTranslator(locale);
+
   // Pro entitlement check
   try {
     const { checkBillingAccess } = await import("@/lib/billing/billing-checker");
@@ -71,42 +102,47 @@ export async function generatePackingList(
 
   try {
     const { model, modelName } = resolveModel('packing', { structuredOutputs: true });
+    const schema = createPackingListSchema(t);
 
     const isOverseas = params.region !== "domestic";
-    const prompt = `
-あなたは旅行準備のエキスパートです。以下の旅行条件に基づいて、カテゴリ分けされた持ち物リストを生成してください。
-
-旅行条件:
-- 目的地: ${params.destination}
-- 日数: ${params.days}日間
-- テーマ: ${params.themes.join(", ")}
-- 同行者: ${params.companions}
-- 予算: ${params.budget}
-- ${isOverseas ? "海外旅行" : "国内旅行"}
-
-ルール:
-1. カテゴリごとにアイテムを分類してください
-2. documents（書類・貴重品）: パスポート${isOverseas ? "（必須）" : "（不要）"}、航空券、財布、クレジットカード、海外旅行保険証、現地通貨 等
-3. clothing（衣類）: ${params.days}日分の服を提案。気候に応じて。
-4. electronics（電子機器）: 充電器、モバイルバッテリー${isOverseas ? "、変換プラグ（目的地に合った型をnoteに記載）" : ""} 等
-5. toiletries（衛生用品）: 歯ブラシ、日焼け止め 等
-6. medicine（医薬品）: 常備薬、酔い止め 等
-7. theme（テーマ別）: テーマに合わせたアイテム（ビーチ→水着・サングラス、寒冷地→防寒具 等）
-8. other（その他）: 折りたたみ傘、エコバッグ 等
-
-9. 各アイテムにpriorityを設定:
-   - essential: なくては困るもの
-   - recommended: あったほうが良いもの
-   - optional: あると便利なもの
-
-10. idは "カテゴリ名の先頭3文字-連番" の形式で（例: doc-1, clo-2, ele-3）
-11. 同行者が子連れなら子供用アイテムも追加
-12. 全体で25〜40アイテム程度
-`;
+    const passportRequirement = isOverseas
+      ? t("prompt.passportRequired")
+      : t("prompt.passportNotRequired");
+    const overseasAdapterNote = isOverseas ? t("prompt.adapterNote") : "";
+    const prompt = [
+      t("prompt.role"),
+      "",
+      t("prompt.travelConditionsTitle"),
+      t("prompt.destination", { destination: params.destination }),
+      t("prompt.days", { days: params.days }),
+      t("prompt.themes", { themes: params.themes.join(", ") }),
+      t("prompt.companions", { companions: params.companions }),
+      t("prompt.budget", { budget: params.budget }),
+      isOverseas ? t("prompt.tripType.overseas") : t("prompt.tripType.domestic"),
+      "",
+      t("prompt.rulesTitle"),
+      t("prompt.rules.rule1"),
+      t("prompt.rules.rule2", { passportRequirement }),
+      t("prompt.rules.rule3", { days: params.days }),
+      t("prompt.rules.rule4", { overseasAdapterNote }),
+      t("prompt.rules.rule5"),
+      t("prompt.rules.rule6"),
+      t("prompt.rules.rule7"),
+      t("prompt.rules.rule8"),
+      "",
+      t("prompt.rules.rule9Title"),
+      t("prompt.rules.rule9Essential"),
+      t("prompt.rules.rule9Recommended"),
+      t("prompt.rules.rule9Optional"),
+      "",
+      t("prompt.rules.rule10"),
+      t("prompt.rules.rule11"),
+      t("prompt.rules.rule12"),
+    ].join("\n");
 
     const { object } = await generateObject({
       model,
-      schema: PackingListSchema,
+      schema,
       prompt,
       temperature: 0.5,
     });
@@ -128,7 +164,7 @@ export async function generatePackingList(
     console.error("[packing-list] Generation failed:", error);
     return {
       success: false,
-      error: "持ち物リストの生成に失敗しました。",
+      error: "packing_list_generation_failed",
     };
   }
 }

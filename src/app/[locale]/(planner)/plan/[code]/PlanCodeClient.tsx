@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { FaPlus } from 'react-icons/fa6';
+import { useTranslations } from 'next-intl';
 
 import type { UserInput, Itinerary, Plan } from '@/types';
 import type { MapProviderType } from '@/lib/limits/config';
@@ -27,6 +28,10 @@ interface PlanCodeClientProps {
   mapProvider?: MapProviderType;
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 export default function PlanCodeClient({
   plan,
   input: initialInput,
@@ -39,6 +44,7 @@ export default function PlanCodeClient({
   mapProvider = "static",
 }: PlanCodeClientProps) {
   const router = useRouter();
+  const tPlan = useTranslations("app.planner.plan");
   const [result, setResult] = useState<Itinerary>(initialItinerary);
   const [input] = useState<UserInput>(initialInput);
   const [status, setStatus] = useState<'idle' | 'regenerating' | 'saving'>('idle');
@@ -50,9 +56,19 @@ export default function PlanCodeClient({
   const [isNewPlanModalOpen, setIsNewPlanModalOpen] = useState(false);
 
   // ---- PR-N: Post-trip reflection ----
-  // 旅行終了日を input.dates から算出 ("2024-03-15から3日間" 形式)
+  // Derive trip end date from input.dates.
+  // Supports both Japanese and English date formats.
   const tripEndDate = (() => {
-    const match = initialInput.dates.match(/(\d{4}-\d{2}-\d{2})から(\d+)日間/);
+    const jaFrom = tPlan("dateParser.jaFrom");
+    const jaDays = tPlan("dateParser.jaDays");
+    const enFor = tPlan("dateParser.enFor");
+    const enDaysRegex = tPlan("dateParser.enDaysRegex");
+
+    const match = initialInput.dates.match(
+      new RegExp(
+        `(\\d{4}-\\d{2}-\\d{2})(?:${escapeRegExp(jaFrom)}|\\s${escapeRegExp(enFor)}\\s)(\\d+)(?:${escapeRegExp(jaDays)}|\\s${enDaysRegex})`
+      )
+    );
     if (match) {
       const start = new Date(match[1]);
       const days = parseInt(match[2], 10);
@@ -181,15 +197,15 @@ export default function PlanCodeClient({
         {/* Title Section */}
         <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
           <div className="inline-block mb-4 px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-wider uppercase">
-            Result
+            {tPlan("resultBadge")}
           </div>
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
-            旅行プラン結果
+            {tPlan("resultTitle")}
           </h1>
           <p className="text-stone-500 mt-3 font-hand text-lg">
             {plan.destination
-              ? `${plan.destination}への旅のしおり`
-              : 'あなただけの特別な旅のしおりが完成しました'}
+              ? tPlan("resultSubtitleWithDestination", { destination: plan.destination })
+              : tPlan("resultSubtitleFallback")}
           </p>
         </div>
 
@@ -240,7 +256,7 @@ export default function PlanCodeClient({
              >
                <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                <FaPlus className="mr-2 relative z-10" />
-               <span className="relative z-10">新しいプランを作る</span>
+               <span className="relative z-10">{tPlan("createNewPlan")}</span>
              </button>
            </div>
         )}

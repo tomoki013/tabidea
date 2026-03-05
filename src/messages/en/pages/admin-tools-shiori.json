@@ -129,6 +129,8 @@
           "notFoundTitle": "Plan Not Found - Tabidea",
           "title": "[AI Generated] {title} | Tabidea - AI Travel Planner",
           "shortTitle": "[AI Generated] {title}",
+          "siteName": "Tabidea",
+          "dayLabel": "Day {day}: {title}",
           "imageAlt": "Travel plan for {destinations}",
           "enhancedDescription": "{description} An AI-generated {dates} itinerary by Tabidea for {companions}, designed around {destinations} with themes like {themes}.",
           "keywordSeeds": [
@@ -165,6 +167,384 @@
           "major": "Major",
           "minor": "Minor",
           "patch": "Patch"
+        },
+        "entries": {
+          "entry001": {
+            "title": "Update 001",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry002": {
+            "title": "Update 002",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry003": {
+            "title": "Update 003",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry004": {
+            "title": "Update 004",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry005": {
+            "title": "Update 005",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry006": {
+            "title": "Update 006",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry007": {
+            "title": "Update 007",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry008": {
+            "title": "Update 008",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry009": {
+            "title": "Update 009",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry010": {
+            "title": "Update 010",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry011": {
+            "title": "Update 011",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry012": {
+            "title": "Update 012",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry013": {
+            "title": "Update 013",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry014": {
+            "title": "Update 014",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry015": {
+            "title": "Update 015",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry016": {
+            "title": "Update 016",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry017": {
+            "title": "Update 017",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry018": {
+            "title": "Update 018",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry019": {
+            "title": "Update 019",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry020": {
+            "title": "Update 020",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry021": {
+            "title": "Update 021",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry022": {
+            "title": "Update 022",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry023": {
+            "title": "Update 023",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry024": {
+            "title": "Update 024",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry025": {
+            "title": "Update 025",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry026": {
+            "title": "Update 026",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry027": {
+            "title": "Update 027",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry028": {
+            "title": "Update 028",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry029": {
+            "title": "Update 029",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry030": {
+            "title": "Update 030",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry031": {
+            "title": "Update 031",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry032": {
+            "title": "Update 032",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry033": {
+            "title": "Update 033",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry034": {
+            "title": "Update 034",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry035": {
+            "title": "Update 035",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry036": {
+            "title": "Update 036",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry037": {
+            "title": "Update 037",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry038": {
+            "title": "Update 038",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry039": {
+            "title": "Update 039",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry040": {
+            "title": "Update 040",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry041": {
+            "title": "Update 041",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry042": {
+            "title": "Update 042",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry043": {
+            "title": "Update 043",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry044": {
+            "title": "Update 044",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry045": {
+            "title": "Update 045",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry046": {
+            "title": "Update 046",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry047": {
+            "title": "Update 047",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry048": {
+            "title": "Update 048",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry049": {
+            "title": "Update 049",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry050": {
+            "title": "Update 050",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry051": {
+            "title": "Update 051",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry052": {
+            "title": "Update 052",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry053": {
+            "title": "Update 053",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry054": {
+            "title": "Update 054",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry055": {
+            "title": "Update 055",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry056": {
+            "title": "Update 056",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry057": {
+            "title": "Update 057",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry058": {
+            "title": "Update 058",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry059": {
+            "title": "Update 059",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry060": {
+            "title": "Update 060",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry061": {
+            "title": "Update 061",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry062": {
+            "title": "Update 062",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry063": {
+            "title": "Update 063",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry064": {
+            "title": "Update 064",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry065": {
+            "title": "Update 065",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry066": {
+            "title": "Update 066",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry067": {
+            "title": "Update 067",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry068": {
+            "title": "Update 068",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry069": {
+            "title": "Update 069",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry070": {
+            "title": "Update 070",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry071": {
+            "title": "Update 071",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry072": {
+            "title": "Update 072",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry073": {
+            "title": "Update 073",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry074": {
+            "title": "Update 074",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry075": {
+            "title": "Update 075",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry076": {
+            "title": "Update 076",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry077": {
+            "title": "Update 077",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry078": {
+            "title": "Update 078",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry079": {
+            "title": "Update 079",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry080": {
+            "title": "Update 080",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry081": {
+            "title": "Update 081",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry082": {
+            "title": "Update 082",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry083": {
+            "title": "Update 083",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry084": {
+            "title": "Update 084",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry085": {
+            "title": "Update 085",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry086": {
+            "title": "Update 086",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry087": {
+            "title": "Update 087",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry088": {
+            "title": "Update 088",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry089": {
+            "title": "Update 089",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry090": {
+            "title": "Update 090",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry091": {
+            "title": "Update 091",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry092": {
+            "title": "Update 092",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry093": {
+            "title": "Update 093",
+            "description": "Details are currently available on the Japanese page."
+          },
+          "entry094": {
+            "title": "Update 094",
+            "description": "Details are currently available on the Japanese page."
+          }
         }
       }
     }

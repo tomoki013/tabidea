@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import PolicyLink from "@/components/ui/PolicyLink";
 import { getRequestLanguage } from "@/lib/i18n/server";
@@ -50,100 +51,86 @@ export default async function SpecifiedPage() {
 
         <div className="space-y-6 text-stone-600 leading-relaxed">
           <dl className="divide-y divide-stone-100">
-            <InfoRow label="事業者" value="Tabidea" />
             <InfoRow
-              label="事業者の所在"
-              value="請求があった場合には遅滞なく開示いたします。"
+              label={t("full.rows.businessLabel")}
+              value={t("full.rows.businessValue")}
             />
-            <InfoRow label="運営責任者" value="髙木　友喜" />
             <InfoRow
-              label="お問合せ先"
+              label={t("full.rows.addressLabel")}
+              value={t("full.rows.addressValue")}
+            />
+            <InfoRow
+              label={t("full.rows.operatorLabel")}
+              value={t("full.rows.operatorValue")}
+            />
+            <InfoRow
+              label={t("full.rows.contactLabel")}
               value={
                 <div className="space-y-1">
-                  <p>080-6648-1475</p>
+                  <p>{t("full.rows.phoneValue")}</p>
                   <p className="text-sm text-stone-500">
-                    ※電話がつながらない場合がございます。あらかじめご了承ください。
+                    {t("full.rows.phoneNote")}
                   </p>
-                  <p>gaomuyouxi@gmail.com</p>
+                  <p>{t("full.rows.emailValue")}</p>
                   <p>
                     <PolicyLink href="/contact">
-                      お問い合わせ
+                      {t("full.rows.contactFormLabel")}
                     </PolicyLink>
                   </p>
                 </div>
               }
             />
             <InfoRow
-              label="販売価格と手数料"
+              label={t("full.rows.salesAndFeesLabel")}
               value={
                 <div className="space-y-2">
-                  <p>
-                    販売ページおよび購入手続きの画面において、消費税・手数料を含む価格で表示されています。
-                  </p>
-                  <p>
-                    本サービスの利用に必要となるインターネット通信料金はお客様のご負担となります。
-                  </p>
-                  <p>
-                    デジタルコンテンツ（役務）のため送料や返品送料は発生しません。
-                  </p>
+                  <p>{t("full.rows.salesAndFeesLine1")}</p>
+                  <p>{t("full.rows.salesAndFeesLine2")}</p>
+                  <p>{t("full.rows.salesAndFeesLine3")}</p>
                 </div>
               }
             />
             <InfoRow
-              label="提供時期"
-              value="お支払いが確認でき次第、すぐに利用できるようになります。"
+              label={t("full.rows.deliveryTimingLabel")}
+              value={t("full.rows.deliveryTimingValue")}
             />
             <InfoRow
-              label="お支払方法"
-              value="クレジットカード、またはその他当社が定める方法（Apple Pay、Google Pay、Stripe Link）によりお支払いいただきます"
+              label={t("full.rows.paymentMethodLabel")}
+              value={t("full.rows.paymentMethodValue")}
             />
             <InfoRow
-              label="お支払時期"
+              label={t("full.rows.paymentTimingLabel")}
               value={
                 <div className="space-y-2">
-                  <p>
-                    サブスクリプション（Pro/Premium）は前払いです。初回は購入時に課金され、以降は毎月同日に自動課金されます（翌月に同日がない場合はその月の末日）。
-                  </p>
-                  <p>
-                    回数券は購入手続き完了時に一括で課金されます。
-                  </p>
-                  <p>
-                    クレジットカード会社からお客様への請求時期は、お客様とクレジットカード会社との間の契約に基づきます。
-                  </p>
+                  <p>{t("full.rows.paymentTimingLine1")}</p>
+                  <p>{t("full.rows.paymentTimingLine2")}</p>
+                  <p>{t("full.rows.paymentTimingLine3")}</p>
                 </div>
               }
             />
             <InfoRow
-              label="返品・キャンセル・解約について"
+              label={t("full.rows.refundLabel")}
               value={
                 <div className="space-y-2">
-                  <p>
-                    デジタルサービスという性質上、お客様都合による返金・キャンセルはお受けしておりません。
-                  </p>
-                  <p>
-                    法令上必要な場合または当社の責による長期システム停止等、当社利用規約で定める場合に限り、未提供日数を日割り計算の上で返金いたします。
-                  </p>
-                  <p>
-                    次回更新日の24時間前までに解約いただけます。解約後も当該請求期間の終了日まではサービスをご利用いただけます。
-                  </p>
+                  <p>{t("full.rows.refundLine1")}</p>
+                  <p>{t("full.rows.refundLine2")}</p>
+                  <p>{t("full.rows.refundLine3")}</p>
                 </div>
               }
             />
             <InfoRow
-              label="推奨するご利用環境"
+              label={t("full.rows.environmentLabel")}
               value={
                 <div className="space-y-2">
-                  <p>以下の環境でのご利用を推奨します。</p>
-                  <p>
-                    お支払い前にあらかじめご利用環境での動作をご確認ください。
-                  </p>
+                  <p>{t("full.rows.environmentLine1")}</p>
+                  <p>{t("full.rows.environmentLine2")}</p>
                   <div className="mt-2">
-                    <p className="font-semibold text-stone-800">Web版（ブラウザ）</p>
+                    <p className="font-semibold text-stone-800">{t("full.rows.webLabel")}</p>
                     <ul className="list-disc list-inside ml-1 space-y-1">
-                      <li>macOSの場合、ChromeまたはSafariの最新版</li>
-                      <li>Windowsの場合、EdgeまたはChromeの最新版</li>
-                      <li>iOSの場合、Safariの最新版</li>
-                      <li>Androidの場合、Chromeの最新版</li>
+                      <li>{t("full.rows.webItemMac")}</li>
+                      <li>{t("full.rows.webItemWindows")}</li>
+                      <li>{t("full.rows.webItemIos")}</li>
+                      <li>{t("full.rows.webItemAndroid")}</li>
                     </ul>
                   </div>
                 </div>
@@ -152,9 +139,9 @@ export default async function SpecifiedPage() {
           </dl>
 
           <div className="text-right text-sm text-stone-500 mt-12">
-            制定日：2026年1月31日
+            {t("full.establishedDateLabel")}
             <br />
-            最終更新日：2026年3月3日
+            {t("full.updatedDateLabel")}
           </div>
         </div>
       </main>
@@ -167,7 +154,7 @@ function InfoRow({
   value,
 }: {
   label: string;
-  value: React.ReactNode;
+  value: ReactNode;
 }) {
   return (
     <div className="py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
