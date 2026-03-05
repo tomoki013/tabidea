@@ -24,7 +24,7 @@ import {
 } from './model-selector';
 import { resolveModelForProvider, resolveProvider, type ProviderName } from './model-provider';
 import { executeOutlineStrategy, executeDetailsStrategy, getModifyProvider } from './strategies/orchestrator';
-import { buildContextSandwich, type PromptBuilderOptions } from './prompt-builder';
+import { buildContextSandwich } from './prompt-builder';
 import type { GoldenPlanExample } from '@/data/golden-plans/types';
 import type { TravelInfoSnapshot } from './adapters/travel-info-adapter';
 
@@ -253,7 +253,7 @@ export class GeminiService implements AIService {
       .join("\n");
 
     const systemInstruction = `
-      Create travel itinerary in JAPANESE.${startDay && endDay ? ` Days ${startDay}-${endDay} only.` : ""}
+      Create travel itinerary in the output language required by the user constraints.${startDay && endDay ? ` Days ${startDay}-${endDay} only.` : ""}
       ${contextText ? `Context: ${contextText}` : ""}
 
       Rules:
@@ -264,7 +264,7 @@ export class GeminiService implements AIService {
       The "id" should be a unique-ish identifier.
       The "description" should be compelling, mentioning if you used specific blog tips.
       The "heroImage" should be a URL from context articles if available, otherwise null.
-      Each activity should have detailed descriptions in Japanese.
+      Each activity should have detailed descriptions in the required output language.
       "reference_indices" should only include IDs of articles RELEVANT to the destination.
     `;
 
@@ -567,7 +567,7 @@ ${prompt}`;
       : "";
 
     const detailInstructions = `
-      Create detailed itinerary for Days ${startDay} to ${endDay} in JAPANESE.
+      Create detailed itinerary for Days ${startDay} to ${endDay} in the output language required by user constraints.
 
       MASTER PLAN OUTLINE (You MUST follow this):
       ${outlineInfo}
@@ -589,7 +589,7 @@ ${prompt}`;
       - locationEn: "City, Country" format (e.g., "Kyoto, Japan") for Places API region filtering.
 
       QUALITY:
-      - Write engaging, practical descriptions in Japanese.
+      - Write engaging, practical descriptions in the required output language.
       - Geographic continuity: no teleporting. Include realistic travel between cities.
     `;
 

@@ -56,6 +56,10 @@
     "languageAndRegion": "Language & region",
     "languageDescription": "When you switch language, the recommended region for that language is set as default.",
     "displayLanguage": "Display language",
-    "region": "Region"
+    "region": "Region",
+    "homeBaseCity": "Home departure/return city",
+    "homeBaseCityPlaceholder": "Example: Tokyo / New York",
+    "languageAndRouteUsage": "AI outputs plans in your selected language and uses the selected region/city as both departure and return points.",
+    "aiOutputAndRoutePolicy": "AI plan generation prioritizes your selected output language and builds round-trip itineraries from your home city."
   }
 }

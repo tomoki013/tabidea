@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { useRouter, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { getUserSettings, updateUserSettings } from "@/app/actions/user-settings";
@@ -13,6 +14,7 @@ import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
 import { canAccess, resolvePlanDisplayName } from "@/lib/billing/plan-catalog";
 import {
+  getDefaultHomeBaseCityForRegion,
   getDefaultRegionForLanguage,
   type LanguageCode,
   type RegionCode,
@@ -76,6 +78,7 @@ const REGION_OPTIONS: Array<{ value: RegionCode; label: string }> = [
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const router = useRouter();
   const pathname = usePathname();
+  const tSettings = useTranslations("settings");
   const currentLanguage = resolveLanguageFromPathname(pathname);
   const { theme, setTheme } = useTheme();
   const { user, signOut } = useAuth();
@@ -87,6 +90,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [travelStyle, setTravelStyle] = useState("");
   const [preferredLanguage, setPreferredLanguage] = useState<LanguageCode>("en");
   const [preferredRegion, setPreferredRegion] = useState<RegionCode>("US");
+  const [homeBaseCity, setHomeBaseCity] = useState("New York");
   const [isLoadingSettings, setIsLoadingSettings] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [settingsError, setSettingsError] = useState<string | null>(null);
@@ -185,7 +189,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         setCustomInstructions(result.settings.customInstructions || "");
         setTravelStyle(result.settings.travelStyle || "");
         setPreferredLanguage(result.settings.preferredLanguage || "en");
-        setPreferredRegion(result.settings.preferredRegion || "US");
+        const resolvedRegion = result.settings.preferredRegion || "US";
+        setPreferredRegion(resolvedRegion);
+        setHomeBaseCity(
+          result.settings.homeBaseCity || getDefaultHomeBaseCityForRegion(resolvedRegion)
+        );
       }
     } catch (e) {
       setSettingsError("エラーが発生しました");
@@ -203,6 +211,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         travelStyle,
         preferredLanguage,
         preferredRegion,
+        homeBaseCity,
       });
       if (result.success) {
         if (preferredLanguage !== currentLanguage) {
@@ -409,21 +418,28 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   {/* Language & Region Settings */}
                   <div className="bg-white rounded-sm border border-stone-200 p-6 shadow-sm space-y-4">
                     <h4 className="font-bold text-stone-800 mb-1 font-hand text-lg">
-                      言語と地域
+                      {tSettings("languageAndRegion")}
                     </h4>
                     <p className="text-sm text-stone-500 font-hand">
-                      言語を切り替えると、その言語の推奨地域が初期値として設定されます。
+                      {tSettings("languageDescription")}
+                    </p>
+                    <p className="text-sm text-primary/90 bg-primary/5 border border-primary/20 rounded-sm px-3 py-2 font-hand">
+                      {tSettings("languageAndRouteUsage")}
                     </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <label className="flex flex-col gap-2">
-                        <span className="text-sm font-bold text-stone-700 font-hand">表示言語</span>
+                        <span className="text-sm font-bold text-stone-700 font-hand">
+                          {tSettings("displayLanguage")}
+                        </span>
                         <select
                           value={preferredLanguage}
                           onChange={(e) => {
                             const nextLanguage = e.target.value as LanguageCode;
+                            const nextRegion = getDefaultRegionForLanguage(nextLanguage);
                             setPreferredLanguage(nextLanguage);
-                            setPreferredRegion(getDefaultRegionForLanguage(nextLanguage));
+                            setPreferredRegion(nextRegion);
+                            setHomeBaseCity(getDefaultHomeBaseCityForRegion(nextRegion));
                           }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
@@ -436,10 +452,16 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       </label>
 
                       <label className="flex flex-col gap-2">
-                        <span className="text-sm font-bold text-stone-700 font-hand">地域</span>
+                        <span className="text-sm font-bold text-stone-700 font-hand">
+                          {tSettings("region")}
+                        </span>
                         <select
                           value={preferredRegion}
-                          onChange={(e) => setPreferredRegion(e.target.value as RegionCode)}
+                          onChange={(e) => {
+                            const nextRegion = e.target.value as RegionCode;
+                            setPreferredRegion(nextRegion);
+                            setHomeBaseCity(getDefaultHomeBaseCityForRegion(nextRegion));
+                          }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
                           {REGION_OPTIONS.map((option) => (
@@ -448,6 +470,19 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             </option>
                           ))}
                         </select>
+                      </label>
+
+                      <label className="flex flex-col gap-2 md:col-span-2">
+                        <span className="text-sm font-bold text-stone-700 font-hand">
+                          {tSettings("homeBaseCity")}
+                        </span>
+                        <input
+                          type="text"
+                          value={homeBaseCity}
+                          onChange={(e) => setHomeBaseCity(e.target.value)}
+                          placeholder={tSettings("homeBaseCityPlaceholder")}
+                          className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
+                        />
                       </label>
                     </div>
                   </div>
@@ -661,6 +696,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     </div>
                   ) : (
                     <div className="space-y-6">
+                      <div className="bg-primary/5 border border-primary/20 rounded-sm p-4 text-sm text-stone-700 font-hand">
+                        {tSettings("aiOutputAndRoutePolicy")}
+                      </div>
+
                       {/* Custom Instructions */}
                       <div className="bg-white p-5 rounded-sm border border-stone-200 shadow-sm relative">
                         <Tape color="blue" position="top-left" rotation="left" className="opacity-60 w-16 h-4" />

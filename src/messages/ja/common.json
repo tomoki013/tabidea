@@ -56,6 +56,10 @@
     "languageAndRegion": "言語と地域",
     "languageDescription": "言語を切り替えると、その言語の推奨地域が初期値として設定されます。",
     "displayLanguage": "表示言語",
-    "region": "地域"
+    "region": "地域",
+    "homeBaseCity": "出発・帰着都市",
+    "homeBaseCityPlaceholder": "例: 東京 / New York",
+    "languageAndRouteUsage": "AIは指定言語でプランを出力し、指定した地域・都市を出発地と帰着地として利用します。",
+    "aiOutputAndRoutePolicy": "AIプラン生成では、設定した言語で出力し、ホーム都市を起点に往復する旅程になるよう優先して生成します。"
   }
 }

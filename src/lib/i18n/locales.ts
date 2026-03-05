@@ -15,6 +15,11 @@ const DEFAULT_REGION_BY_LANGUAGE: Record<LanguageCode, RegionCode> = {
   ja: "JP",
 };
 
+const DEFAULT_HOME_BASE_CITY_BY_REGION: Record<RegionCode, string> = {
+  JP: "東京",
+  US: "New York",
+};
+
 const REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION: Record<
   LanguageCode,
   Partial<Record<RegionCode, RegionalLocale>>
@@ -41,6 +46,10 @@ export function isRegionalLocale(value: string): value is RegionalLocale {
 
 export function getDefaultRegionForLanguage(language: LanguageCode): RegionCode {
   return DEFAULT_REGION_BY_LANGUAGE[language];
+}
+
+export function getDefaultHomeBaseCityForRegion(region: RegionCode): string {
+  return DEFAULT_HOME_BASE_CITY_BY_REGION[region];
 }
 
 export function resolveRegionalLocale(

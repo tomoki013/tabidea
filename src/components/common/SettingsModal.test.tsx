@@ -20,6 +20,22 @@ vi.mock('next-themes', () => ({
   })),
 }));
 
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => {
+    const dictionary: Record<string, string> = {
+      languageAndRegion: '言語と地域',
+      languageDescription: '言語を切り替えると、その言語の推奨地域が初期値として設定されます。',
+      displayLanguage: '表示言語',
+      region: '地域',
+      homeBaseCity: '出発・帰着都市',
+      homeBaseCityPlaceholder: '例: 東京 / New York',
+      languageAndRouteUsage: 'AIは指定言語で出力し、指定した地域・都市を出発地と帰着地に利用します。',
+      aiOutputAndRoutePolicy: 'AIプラン生成は表示言語で出力され、ホーム都市を起点に往復する旅程を優先します。',
+    };
+    return dictionary[key] ?? key;
+  },
+}));
+
 vi.mock('@/app/actions/travel-planner', () => ({
   deleteAccount: vi.fn(),
 }));
@@ -86,6 +102,7 @@ describe('SettingsModal', () => {
         travelStyle: 'Original style',
         preferredLanguage: 'en',
         preferredRegion: 'US',
+        homeBaseCity: 'New York',
       },
     });
     (userSettingsActions.updateUserSettings as any).mockResolvedValue({ success: true });
@@ -163,6 +180,7 @@ describe('SettingsModal', () => {
         travelStyle: 'New style',
         preferredLanguage: 'en',
         preferredRegion: 'US',
+        homeBaseCity: 'New York',
       });
     });
   });

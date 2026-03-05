@@ -9,6 +9,11 @@ import { getBudgetContext, getFixedSchedulePrompt } from "@/lib/utils/plan-promp
 import { getOutlineCache, setOutlineCache } from "@/lib/cache";
 import { checkAndRecordUsage } from "@/lib/limits/check";
 import { getUserSettings } from "@/app/actions/user-settings";
+import {
+  DEFAULT_LANGUAGE,
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+} from "@/lib/i18n/locales";
 import { GOLDEN_PLAN_EXAMPLES } from "@/data/golden-plans/examples";
 import { MetricsCollector } from "@/lib/services/ai/metrics/collector";
 import {
@@ -47,7 +52,31 @@ export type OutlineActionState = {
  */
 export async function getUserConstraintPrompt(): Promise<string> {
   const { settings } = await getUserSettings();
+  const preferredLanguage = settings?.preferredLanguage ?? DEFAULT_LANGUAGE;
+  const preferredRegion =
+    settings?.preferredRegion ?? getDefaultRegionForLanguage(preferredLanguage);
+  const homeBaseCity =
+    settings?.homeBaseCity?.trim() ||
+    getDefaultHomeBaseCityForRegion(preferredRegion);
+  const outputLanguageLabel = preferredLanguage === "en" ? "English" : "Japanese";
+
   let prompt = "";
+
+  prompt += `
+    === OUTPUT LANGUAGE (MUST FOLLOW) ===
+    All user-facing itinerary text MUST be written in ${outputLanguageLabel}.
+    Do not switch to other languages except for proper nouns or official place names.
+    =====================================
+    \n`;
+
+  prompt += `
+    === HOME BASE ROUND-TRIP REQUIREMENT (MUST FOLLOW) ===
+    Home Region: ${preferredRegion}
+    Home City: ${homeBaseCity}
+    The trip MUST start from ${homeBaseCity} and MUST return to ${homeBaseCity} on the final day.
+    Include outbound and return transit legs explicitly in the itinerary when needed.
+    =====================================
+    \n`;
 
   if (settings?.travelStyle && settings.travelStyle.trim().length > 0) {
     prompt += `

@@ -87,7 +87,7 @@ ${knowledgeHierarchy}`;
 
 [CURRENT TASK: OUTLINE GENERATION]
 旅行のアウトライン（概要・ルート計画）を生成してください。
-出力は日本語で行うこと。`;
+出力言語はユーザー設定の制約に厳密に従うこと（制約未指定時のみ日本語）。`;
   }
 
   if (generationType === 'dayDetails') {
@@ -95,7 +95,7 @@ ${knowledgeHierarchy}`;
 
 [CURRENT TASK: DAY DETAILS GENERATION]
 マスタープランアウトラインに基づいて、各日の詳細アクティビティを生成してください。
-出力は日本語で行うこと。
+出力言語はユーザー設定の制約に厳密に従うこと（制約未指定時のみ日本語）。
 
 [OUTPUT FORMAT]
 各アクティビティには以下のフィールドを含めること:
@@ -118,7 +118,7 @@ ${knowledgeHierarchy}`;
 [CURRENT TASK: ITINERARY MODIFICATION]
 既存の旅程をユーザーのフィードバックに基づいて修正してください。
 変更が求められていない部分は一切変更しないこと。
-出力は日本語で行うこと。
+出力言語はユーザー設定の制約に厳密に従うこと（制約未指定時のみ日本語）。
 
 [searchQuery RULE]
 アクティビティのactivityフィールドが装飾的な名前の場合、searchQueryにスポットの正式名称を設定すること。
