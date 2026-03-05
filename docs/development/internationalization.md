@@ -13,8 +13,8 @@
 
 - Entry paths without language prefix are redirected based on resolved language.
   - Example: `/pricing` -> `/en/pricing` (if resolved language is `en`)
-- Locale mismatch is normalized to resolved language.
-  - Example: `/ja/pricing` with resolved language `en` -> `/en/pricing`
+- URL prefix language is treated as an explicit user choice.
+  - Example: `/en/pricing` is preserved even when `preferredLanguage` is `ja`
 - UI pages are implemented under `src/app/[locale]/*`.
   - Example: `/ja/pricing` maps to `src/app/[locale]/(marketing)/pricing/page.tsx`
 - Excluded from locale routing:
@@ -25,13 +25,20 @@
 
 Implementation: [`src/proxy.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/proxy.ts)
 
-Language/region resolution priority (high -> low):
+Language resolution priority (high -> low):
 
-1. Logged-in user metadata (`preferredLanguage`, `preferredRegion`)
-2. Cookies (`tabidea-language`, `tabidea-region`)
-3. URL prefix language (for language only)
-4. Request headers (`Accept-Language`, `x-vercel-ip-country`, `cf-ipcountry`)
-5. Default language/region (`ja` / `JP`)
+1. URL prefix language (explicit route language)
+2. Logged-in user metadata (`preferredLanguage`) when URL prefix is absent
+3. Cookie (`tabidea-language`) when URL prefix is absent
+4. Request header (`Accept-Language`) when URL prefix is absent
+5. Default language (`ja`)
+
+Region resolution priority (high -> low):
+
+1. Logged-in user metadata (`preferredRegion`)
+2. Cookie (`tabidea-region`)
+3. Request headers (`x-vercel-ip-country`, `cf-ipcountry`)
+4. Default region (`JP` for `ja`, `US` for `en`)
 
 When logged in and metadata is missing, proxy auto-persists detected language/region once.
 

@@ -12,7 +12,6 @@ import {
   REGION_HEADER,
 } from '@/lib/i18n/constants';
 import {
-  DEFAULT_LANGUAGE,
   getDefaultRegionForLanguage,
   getLanguageFromPathname,
   isLanguageCode,
@@ -23,6 +22,10 @@ import {
   type LanguageCode,
   type RegionCode,
 } from '@/lib/i18n/locales';
+import {
+  resolveDetectedLanguageForProxy,
+  resolveRoutingLanguageForProxy,
+} from '@/lib/i18n/proxy-language';
 import { routing } from "@/i18n/routing";
 
 const PASSTHROUGH_PATHS = ['/api', '/auth/callback', '/auth/logout', '/_next', '/favicon.ico'];
@@ -79,8 +82,11 @@ export async function proxy(request: NextRequest) {
     request.headers.get('accept-language')
   );
 
-  const detectedLanguage =
-    cookieLanguage ?? languageFromPath ?? acceptLanguage ?? DEFAULT_LANGUAGE;
+  const detectedLanguage = resolveDetectedLanguageForProxy({
+    languageFromPath,
+    cookieLanguage,
+    acceptLanguage,
+  });
   const detectedRegion =
     resolveRegionFromCookie(request) ??
     resolveRegionFromGeoHeaders({
@@ -97,7 +103,12 @@ export async function proxy(request: NextRequest) {
       detectedRegion,
     });
 
-  const resolvedLanguage = preferences.language ?? detectedLanguage;
+  const preferredLanguage = preferences.language ?? detectedLanguage;
+  const resolvedLanguage = resolveRoutingLanguageForProxy({
+    languageFromPath,
+    preferredLanguage,
+    detectedLanguage,
+  });
   const resolvedRegion = preferences.region ?? detectedRegion;
   const localizedPath = localizePath(pathname, resolvedLanguage);
 
