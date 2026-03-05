@@ -1,6 +1,6 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { getTranslations } from "next-intl/server";
 import { getSamplePlanByIdDynamic, loadAllSamplePlans } from "@/lib/sample-plans-loader";
 import { getSampleItinerary } from "@/lib/sample-itineraries";
 import { UserInput } from '@/types';
@@ -21,16 +21,14 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.planner.sampleDetail");
   const { id } = await params;
   const plan = await getSamplePlanByIdDynamic(id);
   const itinerary = await getSampleItinerary(id);
 
   if (!plan) {
     return {
-      title:
-        language === "ja"
-          ? "プランが見つかりません - Tabidea (タビデア)"
-          : "Plan Not Found - Tabidea",
+      title: t("meta.notFoundTitle"),
     };
   }
 
@@ -38,54 +36,32 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const pageUrl = `${siteUrl}/${language}/samples/${id}`;
   const ogImage = itinerary?.heroImage || `${siteUrl}/og-default.png`;
 
-  // キーワードとしてタグとテーマを活用
-  const destinationsStr = plan.input.destinations.join("、");
-  const keywords =
-    language === "ja"
-      ? [
-          ...plan.input.destinations,
-          ...plan.input.theme,
-          plan.input.companions,
-          plan.input.dates,
-          "AI旅行プラン",
-          "旅程作成",
-          "旅行計画",
-          "Tabidea",
-          ...plan.tags,
-        ]
-      : [
-          ...plan.input.destinations,
-          ...plan.input.theme,
-          plan.input.companions,
-          plan.input.dates,
-          "AI travel plan",
-          "itinerary",
-          "trip planning",
-          "Tabidea",
-          ...plan.tags,
-        ];
+  const destinationsStr = plan.input.destinations.join(language === "ja" ? "、" : ", ");
+  const themesStr = plan.input.theme.join(language === "ja" ? "・" : ", ");
+  const keywordSeeds = t.raw("meta.keywordSeeds") as string[];
+  const keywords = [
+    ...plan.input.destinations,
+    ...plan.input.theme,
+    plan.input.companions,
+    plan.input.dates,
+    ...keywordSeeds,
+    ...plan.tags,
+  ];
 
-  const enhancedDescription =
-    language === "ja"
-      ? `${
-          plan.description
-        } Tabidea(タビデア)のAIが作成した${plan.input.dates}の旅行プラン。${
-          destinationsStr
-        }で${plan.input.theme.join("・")}を楽しむ${
-          plan.input.companions
-        }向けプラン。`
-      : `${plan.description} An AI-generated ${plan.input.dates} itinerary by Tabidea for ${plan.input.companions}, designed around ${destinationsStr} with themes like ${plan.input.theme.join(", ")}.`;
+  const enhancedDescription = t("meta.enhancedDescription", {
+    description: plan.description,
+    dates: plan.input.dates,
+    destinations: destinationsStr,
+    themes: themesStr,
+    companions: plan.input.companions,
+  });
 
   return {
-    title:
-      language === "ja"
-        ? `【AI作成】${plan.title} | Tabidea - AIトラベルプランナー`
-        : `[AI Generated] ${plan.title} | Tabidea - AI Travel Planner`,
+    title: t("meta.title", { title: plan.title }),
     description: enhancedDescription,
     keywords: keywords,
     openGraph: {
-      title:
-        language === "ja" ? `【AI作成】${plan.title}` : `[AI Generated] ${plan.title}`,
+      title: t("meta.shortTitle", { title: plan.title }),
       description: plan.description,
       url: pageUrl,
       siteName: "Tabidea",
@@ -94,10 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: ogImage,
           width: 1200,
           height: 630,
-          alt:
-            language === "ja"
-              ? `${destinationsStr}の旅行プラン`
-              : `Travel plan for ${destinationsStr}`,
+          alt: t("meta.imageAlt", { destinations: destinationsStr }),
         },
       ],
       type: "article",
@@ -105,8 +78,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title:
-        language === "ja" ? `【AI作成】${plan.title}` : `[AI Generated] ${plan.title}`,
+      title: t("meta.shortTitle", { title: plan.title }),
       description: plan.description,
       images: [ogImage],
     },
@@ -117,6 +89,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function SamplePlanDetailPage({ params }: Props) {
+  const t = await getTranslations("pages.planner.sampleDetail");
   const { id } = await params;
   const plan = await getSamplePlanByIdDynamic(id);
 
@@ -194,7 +167,7 @@ export default async function SamplePlanDetailPage({ params }: Props) {
            {/* Title Section (Simulating PlanCodeClient style) */}
             <div className="w-full pt-32 pb-8 text-center px-4 animate-in fade-in slide-in-from-top-4 duration-700">
               <div className="inline-block mb-4 px-3 py-1 bg-stone-100 text-stone-500 rounded-full text-xs font-bold tracking-wider uppercase border border-stone-200">
-                Sample Plan
+                {t("badge")}
               </div>
               <h1 className="text-3xl sm:text-4xl font-serif font-bold text-stone-800 tracking-tight">
                 {plan.title}

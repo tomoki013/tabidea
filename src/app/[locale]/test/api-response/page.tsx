@@ -1,80 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { verifyPassword, getDestinationList, fetchRawData, type RawDataResult } from './actions';
-import { usePathname } from 'next/navigation';
-import { DEFAULT_LANGUAGE, getLanguageFromPathname } from '@/lib/i18n/locales';
 
 export default function ApiResponseDebugPage() {
-  const pathname = usePathname();
-  const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
-  const text = language === 'ja'
-    ? {
-        invalidPassword: 'パスワードが正しくありません',
-        clientError: 'クライアント側エラーが発生しました',
-        noContent: 'コンテンツがありません',
-        truncated: '\n\n...（表示のため省略しています）',
-        accessTitle: 'APIデバッグアクセス',
-        password: 'パスワード',
-        passwordPlaceholder: 'パスワードを入力',
-        access: 'アクセス',
-        mainTitle: 'API生レスポンスデバッガー',
-        authenticated: '管理者として認証済み',
-        apiSource: 'APIソース',
-        feedType: 'フィード種別',
-        destination: '目的地',
-        loadingDestinations: '目的地を読み込み中...',
-        fetching: '取得中...',
-        fetchRawData: '生データを取得',
-        requestDetails: 'リクエスト詳細',
-        responseStatus: 'レスポンス状態',
-        rawResponseBody: '生レスポンス本文',
-        truncatedDisplay: '省略表示',
-        fullDisplay: '全文表示',
-        responseHeaders: 'レスポンスヘッダー',
-        noHeaders: 'ヘッダー情報なし',
-        targetUrl: '対象URL',
-        method: 'メソッド',
-        countryCode: '国コード',
-        targetDestination: '対象目的地',
-        success: '成功',
-        httpStatus: 'HTTPステータス',
-        size: 'サイズ',
-        message: 'メッセージ',
-      }
-    : {
-        invalidPassword: 'Invalid password',
-        clientError: 'Client-side error occurred',
-        noContent: 'No content',
-        truncated: '\n\n... (Truncated for display to prevent browser lag)',
-        accessTitle: 'API Debug Access',
-        password: 'Password',
-        passwordPlaceholder: 'Enter password',
-        access: 'Access',
-        mainTitle: 'API Raw Response Debugger',
-        authenticated: 'Authenticated as Admin',
-        apiSource: 'API Source',
-        feedType: 'Feed Type',
-        destination: 'Destination',
-        loadingDestinations: 'Loading destinations...',
-        fetching: 'Fetching...',
-        fetchRawData: 'Fetch Raw Data',
-        requestDetails: 'Request Details',
-        responseStatus: 'Response Status',
-        rawResponseBody: 'Raw Response Body',
-        truncatedDisplay: 'Truncated display',
-        fullDisplay: 'Full display',
-        responseHeaders: 'Response Headers',
-        noHeaders: 'No headers available',
-        targetUrl: 'Target URL',
-        method: 'Method',
-        countryCode: 'Country Code',
-        targetDestination: 'Target Destination',
-        success: 'Success',
-        httpStatus: 'HTTP Status',
-        size: 'Size',
-        message: 'Message',
-      };
+  const t = useTranslations('pages.test.apiResponse');
 
   const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -106,7 +37,7 @@ export default function ApiResponseDebugPage() {
       setIsAuthenticated(true);
       setError('');
     } else {
-      setError(text.invalidPassword);
+      setError(t('invalidPassword'));
     }
   };
 
@@ -118,7 +49,7 @@ export default function ApiResponseDebugPage() {
       setResult(data);
     } catch (err) {
       console.error(err);
-      setResult({ success: false, message: text.clientError });
+      setResult({ success: false, message: t('clientError') });
     } finally {
       setFetching(false);
     }
@@ -126,7 +57,7 @@ export default function ApiResponseDebugPage() {
 
   // Function to prettify body content based on format
   const getFormattedBody = () => {
-    if (!result?.body) return result?.message || text.noContent;
+    if (!result?.body) return result?.message || t('noContent');
 
     const MAX_DISPLAY_SIZE = 50 * 1024; // 50KB limit for display
     let content = result.body;
@@ -148,7 +79,7 @@ export default function ApiResponseDebugPage() {
     }
 
     if (isTruncated) {
-      return content + text.truncated;
+      return content + t('truncated');
     }
 
     return content;
@@ -158,16 +89,16 @@ export default function ApiResponseDebugPage() {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gray-100">
         <div className="w-full max-w-md rounded-lg bg-white p-8 shadow-md">
-          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800">{text.accessTitle}</h1>
+          <h1 className="mb-6 text-center text-2xl font-bold text-gray-800">{t('accessTitle')}</h1>
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700">{text.password}</label>
+              <label className="block text-sm font-medium text-gray-700">{t('password')}</label>
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="mt-1 block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
-                placeholder={text.passwordPlaceholder}
+                placeholder={t('passwordPlaceholder')}
               />
             </div>
             {error && <p className="text-sm text-red-600">{error}</p>}
@@ -175,7 +106,7 @@ export default function ApiResponseDebugPage() {
               type="submit"
               className="w-full rounded-md bg-indigo-600 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
             >
-              {text.access}
+              {t('access')}
             </button>
           </form>
         </div>
@@ -187,46 +118,46 @@ export default function ApiResponseDebugPage() {
     <div className="min-h-screen bg-gray-50 p-8">
       <div className="mx-auto max-w-7xl space-y-8">
         <header className="flex items-center justify-between border-b border-gray-200 pb-4">
-          <h1 className="text-3xl font-bold text-gray-900">{text.mainTitle}</h1>
-          <div className="text-sm text-gray-500">{text.authenticated}</div>
+          <h1 className="text-3xl font-bold text-gray-900">{t('mainTitle')}</h1>
+          <div className="text-sm text-gray-500">{t('authenticated')}</div>
         </header>
 
         {/* Controls */}
         <div className="rounded-lg bg-white p-6 shadow">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">{text.apiSource}</label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t('apiSource')}</label>
               <select
                 value={selectedSource}
                 onChange={(e) => setSelectedSource(e.target.value)}
                 className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
               >
-                <option value="mofa">Ministry of Foreign Affairs (MOFA)</option>
-                <option value="restcountries">REST Countries API</option>
-                <option value="weather" disabled>Weather API (Not Implemented)</option>
-                <option value="exchange" disabled>Exchange API (Not Implemented)</option>
+                <option value="mofa">{t('sourceOptions.mofa')}</option>
+                <option value="restcountries">{t('sourceOptions.restcountries')}</option>
+                <option value="weather" disabled>{t('sourceOptions.weather')}</option>
+                <option value="exchange" disabled>{t('sourceOptions.exchange')}</option>
               </select>
             </div>
 
             {selectedSource === 'mofa' && (
               <div>
-                <label className="mb-2 block text-sm font-medium text-gray-700">{text.feedType}</label>
+                <label className="mb-2 block text-sm font-medium text-gray-700">{t('feedType')}</label>
                 <select
                   value={feedType}
                   onChange={(e) => setFeedType(e.target.value)}
                   className="block w-full rounded-md border border-gray-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
                 >
-                  <option value="A">All (Risk + Detail + History)</option>
-                  <option value="L">Light (Risk + Titles only)</option>
-                  <option value="Normal">Normal (Risk + Detail)</option>
+                  <option value="A">{t('feedOptions.all')}</option>
+                  <option value="L">{t('feedOptions.light')}</option>
+                  <option value="Normal">{t('feedOptions.normal')}</option>
                 </select>
               </div>
             )}
 
             <div>
-              <label className="mb-2 block text-sm font-medium text-gray-700">{text.destination}</label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t('destination')}</label>
               {loadingDestinations ? (
-                <div className="p-2 text-gray-500">{text.loadingDestinations}</div>
+                <div className="p-2 text-gray-500">{t('loadingDestinations')}</div>
               ) : (
                 <select
                   value={selectedDestination}
@@ -248,7 +179,7 @@ export default function ApiResponseDebugPage() {
                 disabled={fetching || loadingDestinations}
                 className="w-full rounded-md bg-indigo-600 px-4 py-2 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:bg-indigo-300"
               >
-                {fetching ? text.fetching : text.fetchRawData}
+                {fetching ? t('fetching') : t('fetchRawData')}
               </button>
             </div>
           </div>
@@ -260,53 +191,53 @@ export default function ApiResponseDebugPage() {
             {/* Metadata Cards */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div className="rounded-lg bg-white p-6 shadow">
-                <h3 className="mb-4 text-lg font-medium text-gray-900">{text.requestDetails}</h3>
+                <h3 className="mb-4 text-lg font-medium text-gray-900">{t('requestDetails')}</h3>
                 <dl className="space-y-2 text-sm">
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.targetUrl}</dt>
+                    <dt className="font-medium text-gray-500">{t('targetUrl')}</dt>
                     <dd className="col-span-2 break-all font-mono text-gray-900">{result.url || 'N/A'}</dd>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.method}</dt>
+                    <dt className="font-medium text-gray-500">{t('method')}</dt>
                     <dd className="col-span-2 text-gray-900">{result.method || 'GET'}</dd>
                   </div>
                   {result.countryCode && (
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.countryCode}</dt>
+                    <dt className="font-medium text-gray-500">{t('countryCode')}</dt>
                     <dd className="col-span-2 font-mono text-gray-900">{result.countryCode}</dd>
                   </div>
                   )}
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.targetDestination}</dt>
+                    <dt className="font-medium text-gray-500">{t('targetDestination')}</dt>
                     <dd className="col-span-2 text-gray-900">{result.destination || selectedDestination}</dd>
                   </div>
                 </dl>
               </div>
 
               <div className="rounded-lg bg-white p-6 shadow">
-                <h3 className="mb-4 text-lg font-medium text-gray-900">{text.responseStatus}</h3>
+                <h3 className="mb-4 text-lg font-medium text-gray-900">{t('responseStatus')}</h3>
                 <dl className="space-y-2 text-sm">
                    <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.success}</dt>
+                    <dt className="font-medium text-gray-500">{t('success')}</dt>
                     <dd className={`col-span-2 font-bold ${result.success ? 'text-green-600' : 'text-red-600'}`}>
                       {result.success ? 'TRUE' : 'FALSE'}
                     </dd>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.httpStatus}</dt>
+                    <dt className="font-medium text-gray-500">{t('httpStatus')}</dt>
                     <dd className="col-span-2 text-gray-900">
                       {result.status ? `${result.status} ${result.statusText || ''}` : 'N/A'}
                     </dd>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.size}</dt>
+                    <dt className="font-medium text-gray-500">{t('size')}</dt>
                     <dd className="col-span-2 text-gray-900 font-mono">
                       {result.size ? `${(result.size / 1024).toFixed(2)} KB` : 'Unknown'}
                       {result.size && result.size > 1024 * 1024 ? ` (${(result.size / (1024 * 1024)).toFixed(2)} MB)` : ''}
                     </dd>
                   </div>
                   <div className="grid grid-cols-3 gap-4">
-                    <dt className="font-medium text-gray-500">{text.message}</dt>
+                    <dt className="font-medium text-gray-500">{t('message')}</dt>
                     <dd className="col-span-2 text-gray-900">{result.message || '-'}</dd>
                   </div>
                 </dl>
@@ -316,9 +247,9 @@ export default function ApiResponseDebugPage() {
             {/* Raw Body */}
             <div className="rounded-lg bg-white shadow">
               <div className="border-b border-gray-200 px-6 py-4 flex justify-between items-center">
-                <h3 className="text-lg font-medium text-gray-900">{text.rawResponseBody}</h3>
+                <h3 className="text-lg font-medium text-gray-900">{t('rawResponseBody')}</h3>
                 <span className="text-xs text-gray-500">
-                    {result.body && result.body.length > 50 * 1024 ? text.truncatedDisplay : text.fullDisplay}
+                    {result.body && result.body.length > 50 * 1024 ? t('truncatedDisplay') : t('fullDisplay')}
                 </span>
               </div>
               <div className="p-0">
@@ -331,7 +262,7 @@ export default function ApiResponseDebugPage() {
             {/* Headers (Collapsible or just listed) */}
              <div className="rounded-lg bg-white shadow">
               <div className="border-b border-gray-200 px-6 py-4">
-                <h3 className="text-lg font-medium text-gray-900">{text.responseHeaders}</h3>
+                <h3 className="text-lg font-medium text-gray-900">{t('responseHeaders')}</h3>
               </div>
               <div className="p-6">
                 <div className="max-h-[200px] overflow-auto">
@@ -346,7 +277,7 @@ export default function ApiResponseDebugPage() {
                         </tbody>
                     </table>
                      {(!result.headers || Object.keys(result.headers).length === 0) && (
-                        <p className="text-gray-500 italic">{text.noHeaders}</p>
+                        <p className="text-gray-500 italic">{t('noHeaders')}</p>
                     )}
                 </div>
               </div>

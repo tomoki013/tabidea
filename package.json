@@ -8,7 +8,8 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest",
+    "i18n:check": "pnpm exec tsx scripts/i18n/check-messages.ts",
+    "test": "pnpm i18n:check && vitest",
     "docs:catalog": "pnpm exec tsx src/scripts/generate-doc-file-catalog.ts"
   },
   "dependencies": {

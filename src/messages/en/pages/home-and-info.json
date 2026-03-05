@@ -1,0 +1,53 @@
+{
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Tabidea - AI Travel Planner",
+        "description": "Create your personalized travel plan in seconds with AI. Just enter destination, budget and themes to generate itineraries, travel notes, and packing lists."
+      },
+      "loading": "Turning pages..."
+    },
+    "info": {
+      "travelInfo": {
+        "meta": {
+          "title": "Travel Info & Safety Guide",
+          "description": "Check visas, power plugs, tipping and safety information for destinations worldwide."
+        },
+        "travelInfoClient": {
+          "badge": "Travel Support Guide",
+          "heroTitle": "Travel Info & Safety Guide",
+          "heroLead1": "Great trips start with confidence.",
+          "heroLead2": "Collect destination essentials like notes before departure.",
+          "destinationLabel": "Choose your destination",
+          "destinationPlaceholder": "Where are you going? (e.g. Paris, Bangkok)",
+          "popularDestinations": "Popular Destinations",
+          "categoriesLabel": "Select what you want to know",
+          "searching": "Searching...",
+          "createGuide": "Create guide",
+          "guideDesc": "AI gathers the latest information and builds a personalized guide.",
+          "doneInThreeSteps": "Done in 3 steps",
+          "step1Title": "Enter destination",
+          "step1Body": "Type the country or city\nyou want to visit",
+          "step2Title": "Choose categories",
+          "step2Body": "Pick only the information\nyou care about",
+          "step3Title": "Generate guide",
+          "step3Body": "AI compiles and\ndisplays the results"
+        }
+      },
+      "travelInfoDestination": {
+        "metaTitle": "{destination} Travel Info | AI Travel Planner",
+        "metaDescription": "Check visa, safety, weather, etiquette, and other travel essentials for {destination}.",
+        "ogTitle": "{destination} Travel Info",
+        "ogDescription": "AI-curated travel essentials for visiting {destination}."
+      },
+      "destinationClient": {
+        "titleSuffix": "Travel Info",
+        "travelDates": "Travel dates",
+        "changeCategories": "Change categories",
+        "selectedCount": "({count} selected)",
+        "fetching": "Fetching...",
+        "research": "Refetch with selected categories"
+      }
+    }
+  }
+}

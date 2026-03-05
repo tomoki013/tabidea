@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { NextIntlClientProvider } from "next-intl";
 import { beforeEach, describe, expect, it, vi } from "vitest";
+import { getMessages } from "@/lib/i18n/messages";
 
 const mocks = vi.hoisted(() => ({
   mockPush: vi.fn(),
@@ -13,6 +15,7 @@ vi.mock("next/navigation", () => ({
     push: mocks.mockPush,
     refresh: mocks.mockRefresh,
   }),
+  usePathname: () => "/ja/pricing",
   useSearchParams: () => ({
     get: vi.fn(() => null),
   }),
@@ -59,23 +62,25 @@ describe("PricingPageClient", () => {
     });
 
     render(
-      <PricingPageClient
-        isLoggedIn={true}
-        billingStatus={{
-          userId: "user-1",
-          email: "user@test.com",
-          userType: "free",
-          isSubscribed: false,
-          planType: "free",
-          subscriptionEndsAt: null,
-          ticketCount: 0,
-          isPro: false,
-          isPremium: false,
-          isAdmin: false,
-          isFree: true,
-          isAnonymous: false,
-        }}
-      />,
+      <NextIntlClientProvider locale="ja" messages={getMessages("ja")}>
+        <PricingPageClient
+          isLoggedIn={true}
+          billingStatus={{
+            userId: "user-1",
+            email: "user@test.com",
+            userType: "free",
+            isSubscribed: false,
+            planType: "free",
+            subscriptionEndsAt: null,
+            ticketCount: 0,
+            isPro: false,
+            isPremium: false,
+            isAdmin: false,
+            isFree: true,
+            isAnonymous: false,
+          }}
+        />
+      </NextIntlClientProvider>,
     );
 
     fireEvent.click(screen.getByText("buy-pro"));

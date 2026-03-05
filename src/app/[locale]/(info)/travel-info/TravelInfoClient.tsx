@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import {
   Search,
   Info,
@@ -49,43 +50,7 @@ export default function TravelInfoClient() {
   const router = useRouter();
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
-  const text = language === "ja"
-    ? {
-        heroTitle: "渡航情報・安全ガイド",
-        heroLead1: "旅の準備は、安心を集めることから。",
-        heroLead2: "知りたい国や都市の情報を、あなたのノートに書き留めるように。",
-        destinationLabel: "目的地を決める",
-        destinationPlaceholder: "どこへ行きますか？（例: パリ、バンコク）",
-        categoriesLabel: "知りたいことを選ぶ",
-        searching: "検索中...",
-        createGuide: "ガイドを作成する",
-        guideDesc: "AIが最新の情報を収集して、あなただけのガイドを作成します",
-        doneInThreeSteps: "3ステップで完了",
-        step1Title: "目的地を入力",
-        step1Body: "行きたい国や都市を\n入力します",
-        step2Title: "カテゴリを選択",
-        step2Body: "知りたい情報だけを\nピックアップ",
-        step3Title: "ガイドを作成",
-        step3Body: "AIが情報をまとめて\n表示します",
-      }
-    : {
-        heroTitle: "Travel Info & Safety Guide",
-        heroLead1: "Great trips start with confidence.",
-        heroLead2: "Collect destination essentials like notes before departure.",
-        destinationLabel: "Choose your destination",
-        destinationPlaceholder: "Where are you going? (e.g. Paris, Bangkok)",
-        categoriesLabel: "Select what you want to know",
-        searching: "Searching...",
-        createGuide: "Create guide",
-        guideDesc: "AI gathers the latest information and builds a personalized guide.",
-        doneInThreeSteps: "Done in 3 steps",
-        step1Title: "Enter destination",
-        step1Body: "Type the country or city\nyou want to visit",
-        step2Title: "Choose categories",
-        step2Body: "Pick only the information\nyou care about",
-        step3Title: "Generate guide",
-        step3Body: "AI compiles and\ndisplays the results",
-      };
+  const t = useTranslations("pages.info.travelInfoClient");
   const [destination, setDestination] = useState("");
   // Initial categories match MANDATORY_CATEGORIES in CategorySelector
   // basic: 基本情報, safety: 治安, manner: マナー
@@ -148,16 +113,16 @@ export default function TravelInfoClient() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-100/50 border border-orange-200 text-orange-800 text-sm font-bold tracking-wider mb-4">
               <Sparkles className="w-4 h-4" />
-              <span>Travel Support Guide</span>
+              <span>{t("badge")}</span>
             </div>
 
             <h1 className="text-4xl sm:text-6xl font-serif font-bold text-[#2c2c2c] leading-tight drop-shadow-sm">
-              {text.heroTitle}
+              {t("heroTitle")}
             </h1>
             <p className="text-lg sm:text-xl text-stone-600 font-sans max-w-2xl mx-auto leading-relaxed">
-              {text.heroLead1}
+              {t("heroLead1")}
               <br className="hidden sm:block" />
-              {text.heroLead2}
+              {t("heroLead2")}
             </p>
           </motion.div>
         </div>
@@ -181,7 +146,7 @@ export default function TravelInfoClient() {
                   className="flex items-center gap-2 text-xl font-bold text-[#2c2c2c] font-serif"
                 >
                   <MapPin className="w-6 h-6 text-primary" />
-                  <span>{text.destinationLabel}</span>
+                  <span>{t("destinationLabel")}</span>
                 </label>
 
                 <div className="relative group max-w-2xl mx-auto w-full">
@@ -190,7 +155,7 @@ export default function TravelInfoClient() {
                     id="destination"
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
-                    placeholder={text.destinationPlaceholder}
+                    placeholder={t("destinationPlaceholder")}
                     className="w-full bg-stone-50 border border-stone-200 px-6 py-4 pl-12 text-lg sm:text-xl font-bold text-stone-800 placeholder:text-stone-400 placeholder:font-normal focus:outline-none focus:ring-4 focus:ring-primary/10 focus:border-primary transition-all rounded-full shadow-inner"
                     disabled={isNavigating}
                   />
@@ -202,10 +167,10 @@ export default function TravelInfoClient() {
                 {/* 人気の目的地 - Minimal & Stylish */}
                 <div className="pt-2">
                   <p className="text-xs text-stone-400 font-sans mb-3 ml-1 tracking-widest uppercase">
-                    Popular Destinations
+                    {t("popularDestinations")}
                   </p>
                   <div className="flex flex-wrap gap-x-4 gap-y-3">
-                    {POPULAR_DESTINATIONS.map((dest, i) => (
+                    {POPULAR_DESTINATIONS.map((dest) => (
                       <button
                         key={dest.name}
                         type="button"
@@ -226,7 +191,7 @@ export default function TravelInfoClient() {
               <div className="space-y-4">
                 <label className="flex items-center gap-2 text-xl font-bold text-[#2c2c2c] font-serif">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
-                  <span>{text.categoriesLabel}</span>
+                  <span>{t("categoriesLabel")}</span>
                 </label>
                 <div className="bg-stone-50/50 p-4 rounded-xl border border-stone-100">
                   <CategorySelector
@@ -257,7 +222,7 @@ export default function TravelInfoClient() {
                   "
                 >
                   <span>
-                    {isNavigating ? text.searching : text.createGuide}
+                    {isNavigating ? t("searching") : t("createGuide")}
                   </span>
                   {!isNavigating && <ArrowRight className="w-6 h-6" />}
                 </button>
@@ -265,7 +230,7 @@ export default function TravelInfoClient() {
                 <p className="text-sm text-stone-500 flex items-center gap-2 font-sans">
                   <Info className="w-4 h-4" />
                   <span>
-                    {text.guideDesc}
+                    {t("guideDesc")}
                   </span>
                 </p>
               </div>
@@ -281,7 +246,7 @@ export default function TravelInfoClient() {
           >
             <h2 className="text-2xl font-serif font-bold text-stone-700 text-center mb-10 relative">
               <span className="relative z-10 bg-[#fcfbf9] px-6">
-                {text.doneInThreeSteps}
+                {t("doneInThreeSteps")}
               </span>
               <div className="absolute top-1/2 left-0 right-0 h-px bg-stone-300 z-0"></div>
             </h2>
@@ -294,12 +259,12 @@ export default function TravelInfoClient() {
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
-                    {text.step1Title}
+                    {t("step1Title")}
                   </h3>
                   <p className="text-stone-500 text-sm font-sans">
-                    {text.step1Body.split("\n")[0]}
+                    {t("step1Body").split("\n")[0]}
                     <br />
-                    {text.step1Body.split("\n")[1]}
+                    {t("step1Body").split("\n")[1]}
                   </p>
                 </div>
               </div>
@@ -319,12 +284,12 @@ export default function TravelInfoClient() {
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
-                    {text.step2Title}
+                    {t("step2Title")}
                   </h3>
                   <p className="text-stone-500 text-sm font-sans">
-                    {text.step2Body.split("\n")[0]}
+                    {t("step2Body").split("\n")[0]}
                     <br />
-                    {text.step2Body.split("\n")[1]}
+                    {t("step2Body").split("\n")[1]}
                   </p>
                 </div>
               </div>
@@ -344,12 +309,12 @@ export default function TravelInfoClient() {
                 </div>
                 <div>
                   <h3 className="font-serif font-bold text-lg text-stone-800">
-                    {text.step3Title}
+                    {t("step3Title")}
                   </h3>
                   <p className="text-stone-500 text-sm font-sans">
-                    {text.step3Body.split("\n")[0]}
+                    {t("step3Body").split("\n")[0]}
                     <br />
-                    {text.step3Body.split("\n")[1]}
+                    {t("step3Body").split("\n")[1]}
                   </p>
                 </div>
               </div>

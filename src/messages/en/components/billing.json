@@ -1,0 +1,38 @@
+{
+  "components": {
+    "billing": {
+      "pricingPage": {
+        "checkoutFailed": "Checkout failed. Please try again.",
+        "adminCannotPurchase": "Admin accounts cannot make purchases.",
+        "alreadySubscribed": "You are already subscribed to {name}. Please manage it from plan settings.",
+        "paidFallback": "Paid",
+        "configError": "Payment configuration is incomplete. Please try again later.",
+        "invalidPlan": "Selected plan is invalid. Please reload this page.",
+        "unexpectedError": "An unexpected error occurred.",
+        "noSubscription": "No subscription found. Please subscribe to a plan first.",
+        "portalNotConfigured": "Customer portal is not configured yet. Please contact support.",
+        "portalLoadFailed": "Failed to load the customer portal. Please try again later.",
+        "title": "Pricing Plans",
+        "subtitle": "Choose a plan that matches your travel style",
+        "currentPlan": "Current plan",
+        "admin": "Admin",
+        "nextBilling": "Next billing",
+        "ticketPack": "Ticket pack",
+        "times": " times",
+        "loading": "Loading...",
+        "manageCancel": "Manage / Cancel plan",
+        "upgradeHint": "You can upgrade from the plans below",
+        "subscriptionPlans": "Subscription Plans",
+        "subscriptionNote": "Subscriptions auto-renew monthly. After cancellation, you can keep using features until the end of the billing period.",
+        "refundPolicyPrefix": "For refund policy, see",
+        "refundPolicyLink": "Legal Disclosure",
+        "refundPolicySuffix": ".",
+        "specified": "Legal Disclosure",
+        "terms": "Terms",
+        "privacy": "Privacy",
+        "aiPolicy": "AI Policy",
+        "cookiePolicy": "Cookie Policy"
+      }
+    }
+  }
+}

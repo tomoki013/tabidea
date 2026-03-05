@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { stripe } from "@/lib/stripe/client";
 import SuccessPageClient from "@/components/billing/SuccessPageClient";
-import { getRequestLanguage } from "@/lib/i18n/server";
 import {
   isSubscriptionPlanType,
   resolveSubscriptionPlanByPriceId,
@@ -9,16 +9,11 @@ import {
 } from "@/lib/billing/plan-catalog";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: "購入完了 | Tabidea",
-        description: "ご購入ありがとうございます。",
-      }
-    : {
-        title: "Purchase Complete | Tabidea",
-        description: "Thank you for your purchase.",
-      };
+  const t = await getTranslations("pages.marketing.pricingSuccess.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 interface SuccessPageProps {

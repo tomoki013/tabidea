@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "rootLoading": {
+      "loadingLabel": "Loading...",
+      "note": "Preparing your trip..."
+    },
+    "rootNotFound": {
+      "title": "Page not found",
+      "description": "The page you are looking for may have been removed or moved to a different URL.",
+      "subLine1": "Getting lost can be part of the journey,",
+      "subLine2": "but this page really does not exist.",
+      "back": "Back to home"
+    },
+    "rootError": {
+      "title": "Something went wrong",
+      "description": "An unexpected error occurred. Please reload the page or try again in a moment.",
+      "reload": "Reload page",
+      "retry": "Try again"
+    }
+  }
+}

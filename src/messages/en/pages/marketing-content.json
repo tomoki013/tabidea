@@ -1,0 +1,39 @@
+{
+  "pages": {
+    "marketing": {
+      "faq": {
+        "meta": {
+          "title": "FAQ",
+          "description": "Find answers about Tabidea usage, plan creation, pricing, and AI safety."
+        },
+        "badge": "SUPPORT CENTER",
+        "title": "Frequently Asked Questions",
+        "leadLine1": "For using Tabidea,",
+        "leadLine2": "resolve your questions and concerns here.",
+        "leadLine3": "Enjoy a smoother experience while planning your trip.",
+        "contactTitle": "Still need help?",
+        "contactLine1": "If you still have questions or requests,",
+        "contactLine2": "please contact us through the inquiry form.",
+        "contactButton": "Go to contact"
+      },
+      "contact": {
+        "meta": {
+          "title": "Contact",
+          "description": "Contact Tabidea for inquiries, feature requests, and bug reports."
+        },
+        "title": "Contact",
+        "subtitle": "Inquiries, feedback, and requests",
+        "policyNotice": "Before contacting us, please review these policies.",
+        "terms": "Terms",
+        "privacy": "Privacy Policy",
+        "aiPolicy": "AI Policy",
+        "cookiePolicy": "Cookie Policy",
+        "otherMethodsTitle": "Other ways to contact",
+        "githubTitle": "Bugs & requests (GitHub)",
+        "githubDescription": "You can also use GitHub Issues.",
+        "xTitle": "General inquiries",
+        "xDescription": "For feedback, interview requests, and general inquiries, feel free to reach out via X (Twitter) DM."
+      }
+    }
+  }
+}

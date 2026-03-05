@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { RefreshCw } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import type {
   TravelInfoCategory,
@@ -49,23 +50,7 @@ export default function DestinationClient({
   const router = useRouter();
   const pathname = usePathname();
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
-  const text = language === "ja"
-    ? {
-        titleSuffix: "の渡航情報",
-        travelDates: "渡航予定",
-        changeCategories: "カテゴリを変更",
-        selectedCount: (count: number) => `（現在 ${count} 件選択中）`,
-        fetching: "取得中...",
-        research: "選択したカテゴリで再検索",
-      }
-    : {
-        titleSuffix: " Travel Info",
-        travelDates: "Travel dates",
-        changeCategories: "Change categories",
-        selectedCount: (count: number) => `(${count} selected)`,
-        fetching: "Fetching...",
-        research: "Refetch with selected categories",
-      };
+  const t = useTranslations("pages.info.destinationClient");
   const [selectedCategories, setSelectedCategories] =
     useState<TravelInfoCategory[]>(initialCategories);
 
@@ -258,10 +243,10 @@ export default function DestinationClient({
             <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c]">
               {destination}
             </h1>
-            <p className="text-stone-600">{text.titleSuffix}</p>
+            <p className="text-stone-600">{t("titleSuffix")}</p>
             {dates && (
               <p className="text-sm text-stone-500">
-                {text.travelDates}: {dates.start} 〜 {dates.end}
+                {t("travelDates")}: {dates.start} 〜 {dates.end}
               </p>
             )}
           </motion.div>
@@ -274,9 +259,9 @@ export default function DestinationClient({
             className="bg-white rounded-2xl border border-stone-200 overflow-hidden"
           >
             <summary className="p-4 sm:p-6 cursor-pointer hover:bg-stone-50 transition-colors">
-              <span className="font-bold text-[#2c2c2c]">{text.changeCategories}</span>
+              <span className="font-bold text-[#2c2c2c]">{t("changeCategories")}</span>
               <span className="text-stone-500 ml-2">
-                {text.selectedCount(selectedCategories.length)}
+                {t("selectedCount", { count: selectedCategories.length })}
               </span>
             </summary>
             <div className="p-4 sm:p-6 border-t border-stone-100 space-y-6">
@@ -295,7 +280,7 @@ export default function DestinationClient({
                   <RefreshCw
                     className={`w-5 h-5 ${isLoading ? "animate-spin" : ""}`}
                   />
-                  {isLoading ? text.fetching : text.research}
+                  {isLoading ? t("fetching") : t("research")}
                 </button>
               </div>
             </div>

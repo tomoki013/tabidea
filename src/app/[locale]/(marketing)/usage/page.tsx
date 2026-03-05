@@ -4,19 +4,14 @@ import {
   HowToUseSection,
 } from "@/components/features/landing";
 import type { Metadata } from "next";
-import { getRequestLanguage } from "@/lib/i18n/server";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: "使い方",
-        description: "Tabideaの機能や使い方について詳しく説明します。AIを活用した旅行プランの作成方法をステップごとに紹介。",
-      }
-    : {
-        title: "How to Use",
-        description: "Learn how to use Tabidea and build travel plans with AI step by step.",
-      };
+  const t = await getTranslations("pages.marketing.usage.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default function UsagePage() {

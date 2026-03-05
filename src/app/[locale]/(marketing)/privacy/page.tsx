@@ -1,27 +1,52 @@
 import type { Metadata } from "next";
-import { getRequestLanguage } from "@/lib/i18n/server";
+import { getTranslations } from "next-intl/server";
 import PolicyLink from "@/components/ui/PolicyLink";
+import { getRequestLanguage } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? { title: "プライバシーポリシー" }
-    : { title: "Privacy Policy" };
+  const t = await getTranslations("pages.marketing.privacyLegal");
+  return { title: t("metaTitle") };
 }
 
 export default async function PrivacyPolicy() {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.marketing.privacyLegal");
+
+  if (language === "en") {
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
+        <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
+            {t("title")}
+          </h1>
+          <p className="text-sm text-stone-500 mb-8 text-center">
+            {t("legalNotice")}
+          </p>
+          <section className="space-y-4 text-stone-600 leading-relaxed">
+            <h2 className="text-xl font-semibold text-foreground border-b pb-2">
+              {t("englishSummaryHeading")}
+            </h2>
+            <p>{t("englishSummaryBody1")}</p>
+            <p>{t("englishSummaryBody2")}</p>
+            <p>{t("englishSummaryBody3")}</p>
+            <p>
+              <PolicyLink href="/contact">{t("contactLabel")}</PolicyLink>
+            </p>
+          </section>
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9] pt-32 pb-20 px-4 font-sans">
       <main className="max-w-4xl mx-auto bg-white p-6 sm:p-12 rounded-3xl border-2 border-dashed border-stone-200 shadow-sm">
         <h1 className="text-3xl sm:text-4xl font-bold text-[#2c2c2c] mb-12 text-center">
-          {language === "ja" ? "プライバシーポリシー" : "Privacy Policy"}
+          {t("title")}
         </h1>
-        {language === "en" && (
-          <p className="text-sm text-stone-500 mb-8 text-center">
-            This page currently contains the official Japanese legal text.
-          </p>
-        )}
+        <p className="text-sm text-stone-500 mb-8 text-center">
+          {t("legalNotice")}
+        </p>
 
         <div className="space-y-8 text-stone-600 leading-relaxed">
           <section>

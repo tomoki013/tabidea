@@ -1,0 +1,21 @@
+{
+  "pages": {
+    "planner": {
+      "samples": {
+        "meta": {
+          "title": "Sample Plans",
+          "description": "Explore AI-generated travel plan samples for families, couples, solo trips, and more scenarios."
+        },
+        "badge": "SAMPLE PLANS",
+        "title": "Sample Plans",
+        "leadLine1": "Explore examples of AI-generated travel plans.",
+        "leadLine2": "Get inspiration for your next journey.",
+        "leadLine3": "Use any sample as a starting point and plan your own trip.",
+        "ctaTitle": "Ready to create your own plan?",
+        "ctaLine1": "Once you review samples,",
+        "ctaLine2": "let AI create a plan tailored to you.",
+        "ctaLine3": "It suggests the best itinerary for your destination, dates, and travel companions."
+      }
+    }
+  }
+}

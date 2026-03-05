@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 
 import { createClient, getUser } from '@/lib/supabase/server';
 import { listMyBlogPosts } from '@/app/actions/blog';
@@ -8,6 +9,7 @@ import { getRequestLanguage } from '@/lib/i18n/server';
 
 export default async function BlogDashboardPage() {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.blog.dashboard");
   const user = await getUser();
   if (!user) {
     redirect(`${localizePath('/auth/login', language)}?redirect=${encodeURIComponent(localizePath('/blog', language))}`);
@@ -27,19 +29,17 @@ export default async function BlogDashboardPage() {
       <div className="rounded-xl border border-stone-200 bg-white p-6 space-y-2">
         <h1 className="text-2xl font-bold text-stone-900">Blog Studio</h1>
         <p className="text-sm text-stone-600">
-          {language === "ja" ? "Tabideaのブログ記事を作成・公開します。" : "Create and publish blog posts on Tabidea."}
+          {t("description")}
         </p>
         {profile?.username ? (
-          <p className="text-sm">{language === "ja" ? `プロフィール: @${profile.username}` : `Profile: @${profile.username}`}</p>
+          <p className="text-sm">{t("profile", { username: profile.username })}</p>
         ) : (
           <p className="text-sm text-amber-700">
-            {language === "ja"
-              ? "公開前にプロフィールの username 設定が必要です（新規記事画面で設定可）。"
-              : "Set your profile username before publishing (available in new post screen)."}
+            {t("profileMissing")}
           </p>
         )}
         <Link href={localizePath("/blog/new", language)} className="inline-block px-4 py-2 rounded bg-primary text-white text-sm">
-          {language === "ja" ? "新規記事を作成" : "Create new post"}
+          {t("createPost")}
         </Link>
       </div>
 
@@ -53,11 +53,11 @@ export default async function BlogDashboardPage() {
                 <p className="text-xs text-stone-500">/{post.slug} · {post.status}</p>
               </div>
               <Link href={localizePath(`/blog/edit/${post.id}`, language)} className="text-sm text-primary">
-                {language === "ja" ? "編集" : "Edit"}
+                {t("edit")}
               </Link>
             </div>
           ))}
-          {posts.length === 0 && <p className="text-sm text-stone-500">{language === "ja" ? "まだ記事がありません。" : "No posts yet."}</p>}
+          {posts.length === 0 && <p className="text-sm text-stone-500">{t("empty")}</p>}
         </div>
       </section>
     </main>

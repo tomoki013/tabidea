@@ -1,0 +1,38 @@
+{
+  "components": {
+    "billing": {
+      "pricingPage": {
+        "checkoutFailed": "決済処理に失敗しました。もう一度お試しください。",
+        "adminCannotPurchase": "管理者アカウントでは購入できません。",
+        "alreadySubscribed": "既に{name}プランに加入しています。プラン管理からご確認ください。",
+        "paidFallback": "有料",
+        "configError": "決済設定が未完了です。時間をおいて再度お試しください。",
+        "invalidPlan": "選択したプラン情報が無効です。ページを再読み込みしてください。",
+        "unexpectedError": "予期せぬエラーが発生しました。",
+        "noSubscription": "サブスクリプション情報が見つかりません。まずプランにご加入ください。",
+        "portalNotConfigured": "カスタマーポータルの設定が完了していません。管理者にお問い合わせください。",
+        "portalLoadFailed": "ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。",
+        "title": "料金プラン",
+        "subtitle": "あなたの旅行スタイルに合わせたプランをお選びください",
+        "currentPlan": "現在のプラン",
+        "admin": "管理者",
+        "nextBilling": "次回更新",
+        "ticketPack": "回数券",
+        "times": "回",
+        "loading": "読み込み中...",
+        "manageCancel": "プランを管理・解約",
+        "upgradeHint": "下記のプランからアップグレードできます",
+        "subscriptionPlans": "サブスクリプションプラン",
+        "subscriptionNote": "サブスクリプションは月次自動更新です。解約後も請求期間終了まではご利用いただけます。",
+        "refundPolicyPrefix": "返金ポリシーは",
+        "refundPolicyLink": "特定商取引法に基づく表記",
+        "refundPolicySuffix": "をご確認ください。",
+        "specified": "特定商取引法に基づく表記",
+        "terms": "利用規約",
+        "privacy": "プライバシーポリシー",
+        "aiPolicy": "AIポリシー",
+        "cookiePolicy": "クッキーポリシー"
+      }
+    }
+  }
+}

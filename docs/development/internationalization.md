@@ -38,9 +38,14 @@ Resolution rules:
 ## Messages
 
 - Message dictionaries live in:
-  - [`src/messages/ja.json`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/messages/ja.json)
-  - [`src/messages/en.json`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/messages/en.json)
+  - `src/messages/ja/**.json`
+  - `src/messages/en/**.json`
+- Messages are loaded by recursively merging locale directories.
+  - Implementation: [`src/lib/i18n/load-messages.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/lib/i18n/load-messages.ts)
+  - Entry point: [`src/lib/i18n/messages.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/lib/i18n/messages.ts)
 - Provider setup is in [`src/app/layout.tsx`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/app/layout.tsx).
+- Translation key consistency is verified by `pnpm i18n:check`.
+  - Script: [`scripts/i18n/check-messages.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/scripts/i18n/check-messages.ts)
 
 ## Settings persistence
 

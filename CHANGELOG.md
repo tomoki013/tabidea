@@ -11,6 +11,10 @@
 
 ### 2026-03-05
 
+- `local` feat(i18n): 翻訳メッセージ管理を `src/messages/{ja,en}/**.json` の分割構成へ移行し、`src/lib/i18n/load-messages.ts` による再帰マージ読み込みを導入。`pnpm i18n:check`（`scripts/i18n/check-messages.ts`）を追加して ja/en キー不整合をCIで失敗させる運用へ変更
+- `local` feat(i18n): 主要ページ（ルートエラー系、ホーム、FAQ、Contact、Blog Guide、Samples、Shiori、Travel Info、Pricing関連、ログイン/マイプラン等）の文言とメタデータを `next-intl` の `t()` / `getTranslations()` ベースへ段階移行し、`language === "ja"` 直書き分岐の削減を開始
+- `local` feat(i18n): 追加ページ（`/admin/metrics`、`/sync-plans`、`/test/api-response`、`/shiori/[slug]`、`/samples/[id]`、`/updates`）を `t()` / `getTranslations()` ベースへ移行し、専用辞書 `src/messages/{ja,en}/pages/admin-tools-shiori.json` を追加
+- `local` fix(i18n): 法務ページ（利用規約・プライバシー・Cookie・特商法・AIポリシー）の英語ロケールで、日本語本文の代わりに `t()` 管理の英語サマリーを表示する分岐を追加。`/updates` は英語ロケール時に英語案内カードを表示するよう調整
 - `local` fix(i18n): `next-intl` の設定解決を公式構成へ統一。`next.config.ts` に `next-intl/plugin` を追加し、`src/i18n/request.ts` / `src/i18n/routing.ts` を導入して、開発サーバーの `Couldn't find next-intl config file` エラーを解消
 - `local` fix(i18n): `proxy` を `next-intl` ミドルウェア連携に更新し、言語プレフィックスURL（`/ja` `/en`）のリダイレクトと `LANGUAGE_COOKIE` / `LANGUAGE_HEADER` の同期を安定化
 - `local` fix(route): App Router のUIルートを `src/app/[locale]/*` へ移行し、`/ja` アクセスが 404 になる問題を解消。`/` や `/pricing` は `localePrefix: "always"` に従って `/ja` / `/ja/pricing` へリダイレクト

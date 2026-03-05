@@ -1,0 +1,171 @@
+{
+  "pages": {
+    "admin": {
+      "metrics": {
+        "title": "AI生成品質ダッシュボード",
+        "subtitle": "直近30日間のKPIサマリー",
+        "noData": "メトリクスデータがまだありません",
+        "noDataHint": "プランが生成されると、ここにKPIが表示されます",
+        "naValue": "N/A",
+        "replanKpiTitle": "リプラン KPI",
+        "cards": {
+          "totalGenerations": {
+            "label": "総生成数",
+            "unit": "件"
+          },
+          "avgTotalTime": {
+            "label": "平均生成時間",
+            "unit": "秒"
+          },
+          "validationPassRate": {
+            "label": "検証通過率"
+          },
+          "citationRate": {
+            "label": "Citation率"
+          },
+          "avgUserRating": {
+            "label": "平均ユーザー評価"
+          },
+          "reportedIssues": {
+            "label": "報告された問題",
+            "unit": "件"
+          }
+        },
+        "kpiLabels": {
+          "plan_to_action_rate": "提案→行動変換率",
+          "replan_rate": "リプラン利用率",
+          "rescue_success_rate": "リプラン成功率",
+          "reusage_intent_rate": "再利用意向率",
+          "companion_share_rate": "同行者シェア率"
+        }
+      }
+    },
+    "syncPlans": {
+      "loading": "読み込み中...",
+      "syncPreparationError": "同期の準備中にエラーが発生しました",
+      "syncError": "同期中にエラーが発生しました",
+      "errorTitle": "エラーが発生しました",
+      "toDashboard": "ダッシュボードへ",
+      "syncing": "同期中...",
+      "unsetDestination": "未設定"
+    },
+    "test": {
+      "apiResponse": {
+        "invalidPassword": "パスワードが正しくありません",
+        "clientError": "クライアント側エラーが発生しました",
+        "noContent": "コンテンツがありません",
+        "truncated": "\n\n...（表示のため省略しています）",
+        "accessTitle": "APIデバッグアクセス",
+        "password": "パスワード",
+        "passwordPlaceholder": "パスワードを入力",
+        "access": "アクセス",
+        "mainTitle": "API生レスポンスデバッガー",
+        "authenticated": "管理者として認証済み",
+        "apiSource": "APIソース",
+        "feedType": "フィード種別",
+        "destination": "目的地",
+        "loadingDestinations": "目的地を読み込み中...",
+        "fetching": "取得中...",
+        "fetchRawData": "生データを取得",
+        "requestDetails": "リクエスト詳細",
+        "responseStatus": "レスポンス状態",
+        "rawResponseBody": "生レスポンス本文",
+        "truncatedDisplay": "省略表示",
+        "fullDisplay": "全文表示",
+        "responseHeaders": "レスポンスヘッダー",
+        "noHeaders": "ヘッダー情報なし",
+        "targetUrl": "対象URL",
+        "method": "メソッド",
+        "countryCode": "国コード",
+        "targetDestination": "対象目的地",
+        "success": "成功",
+        "httpStatus": "HTTPステータス",
+        "size": "サイズ",
+        "message": "メッセージ",
+        "sourceOptions": {
+          "mofa": "外務省（MOFA）",
+          "restcountries": "REST Countries API",
+          "weather": "天気API（未実装）",
+          "exchange": "為替API（未実装）"
+        },
+        "feedOptions": {
+          "all": "全件（危険情報 + 詳細 + 履歴）",
+          "light": "軽量（危険情報 + タイトル）",
+          "normal": "通常（危険情報 + 詳細）"
+        }
+      }
+    },
+    "shiori": {
+      "detail": {
+        "metadataNotFoundTitle": "旅のしおりが見つかりません",
+        "metadataTitleWithDestination": "{destination}の旅のしおり",
+        "metadataTitleFallback": "旅のしおり",
+        "metadataDescription": "{days}日間の旅程を公開中",
+        "metadataFallbackDestination": "旅",
+        "headerBadge": "Tabidea 旅のしおり",
+        "headerDestinationFallback": "旅のしおり",
+        "headerSummary": "{days}日間 / 記録 {entries}件 / {visibility}",
+        "backToList": "みんなの旅のしおり一覧に戻る",
+        "dayTitleFallback": "旅の記録",
+        "locationFallback": "場所未設定",
+        "visitedPlaceLabel": "訪問場所",
+        "photoLink": "写真リンク",
+        "phase": {
+          "before": "行く前メモ",
+          "during": "旅の最中メモ",
+          "after": "行った後メモ"
+        },
+        "visibility": {
+          "public": "公開",
+          "unlisted": "限定公開",
+          "private": "非公開"
+        }
+      }
+    },
+    "planner": {
+      "sampleDetail": {
+        "meta": {
+          "notFoundTitle": "プランが見つかりません - Tabidea (タビデア)",
+          "title": "【AI作成】{title} | Tabidea - AIトラベルプランナー",
+          "shortTitle": "【AI作成】{title}",
+          "imageAlt": "{destinations}の旅行プラン",
+          "enhancedDescription": "{description} Tabidea(タビデア)のAIが作成した{dates}の旅行プラン。{destinations}で{themes}を楽しむ{companions}向けプラン。",
+          "keywordSeeds": [
+            "AI旅行プラン",
+            "旅程作成",
+            "旅行計画",
+            "Tabidea"
+          ]
+        },
+        "badge": "サンプルプラン"
+      }
+    },
+    "marketing": {
+      "updatesPage": {
+        "metaTitle": "更新情報・ロードマップ",
+        "metaDescription": "Tabideaの更新情報と今後の開発ロードマップを掲載しています。",
+        "title": "Updates & Roadmap",
+        "lead": "Tabideaのこれまでの歩みと、これからの計画。",
+        "roadmapTitle": "開発ロードマップ",
+        "inProgress": "開発中",
+        "historyTitle": "更新履歴",
+        "roadmapUnavailableTitle": "英語版は準備中です",
+        "roadmapUnavailableBody": "ロードマップ詳細は現在日本語版で提供しています。近日中に英語版へ展開予定です。",
+        "historyUnavailableTitle": "英語版履歴は準備中です",
+        "historyUnavailableBody": "更新履歴の詳細は現在日本語版で提供しています。",
+        "feedbackTitle": "ご意見・お問い合わせ",
+        "contactTitle": "お問い合わせ",
+        "contactDescription": "一般的なご質問やご感想はこちら",
+        "bugTitle": "不具合報告・要望",
+        "bugDescription": "GitHub Issueにて受け付けています",
+        "updateTypeLabels": {
+          "release": "Release",
+          "pre_release": "Pre-release",
+          "major": "Major",
+          "minor": "Minor",
+          "patch": "Patch"
+        }
+      }
+    }
+  }
+}

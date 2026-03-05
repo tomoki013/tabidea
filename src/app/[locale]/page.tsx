@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { getTranslations } from "next-intl/server";
 import TravelPlannerSimplified from "@/components/features/planner/TravelPlannerSimplified";
 import { Header } from "@/components/common";
 import {
@@ -14,27 +15,14 @@ import {
 import { getSamplePlanById } from "@/lib/sample-plans";
 import { UserInput } from '@/types';
 import type { Metadata } from "next";
-import { getRequestLanguage } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-
-  if (language === "ja") {
-    return {
-      title: {
-        absolute: "Tabidea - AI Travel Planner",
-      },
-      description:
-        "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、旅のしおり作成、持ち物リストも自動生成。",
-    };
-  }
-
+  const t = await getTranslations("pages.home.meta");
   return {
     title: {
-      absolute: "Tabidea - AI Travel Planner",
+      absolute: t("title"),
     },
-    description:
-      "Create your personalized travel plan in seconds with AI. Just enter destination, budget and themes to generate itineraries, travel notes, and packing lists.",
+    description: t("description"),
   };
 }
 
@@ -43,7 +31,7 @@ interface HomeProps {
 }
 
 export default async function Home({ searchParams }: HomeProps) {
-  const language = await getRequestLanguage();
+  const t = await getTranslations("pages.home");
   const { sample } = await searchParams;
 
   // Get sample plan input if sample ID is provided
@@ -72,7 +60,7 @@ export default async function Home({ searchParams }: HomeProps) {
             fallback={
               <div className="w-full max-w-2xl h-[400px] bg-white rounded-3xl border-2 border-dashed border-gray-300 animate-pulse flex items-center justify-center mx-auto">
                 <span className="font-hand text-gray-400 text-xl">
-                  {language === "ja" ? "ページをめくっています..." : "Turning pages..."}
+                  {t("loading")}
                 </span>
               </div>
             }

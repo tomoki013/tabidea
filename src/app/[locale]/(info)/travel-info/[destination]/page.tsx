@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 import { parseCategoriesParam, parseDatesParam } from '@/lib/utils';
 import { getRequestLanguage } from '@/lib/i18n/server';
 import DestinationClient from './DestinationClient';
@@ -17,30 +18,18 @@ interface PageProps {
  */
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.info.travelInfoDestination");
   const resolvedParams = await params;
   const destination = decodeURIComponent(resolvedParams.destination);
 
-  if (language === 'ja') {
-    return {
-      title: `${destination}の渡航情報 | AI Travel Planner`,
-      description: `${destination}への渡航に必要な情報をまとめてチェック。ビザ、安全情報、気候、マナーなど。`,
-      openGraph: {
-        title: `${destination}の渡航情報`,
-        description: `${destination}への渡航に必要な情報をAIがまとめました。`,
-        type: 'website',
-        locale: 'ja_JP',
-      },
-    };
-  }
-
   return {
-    title: `${destination} Travel Info | AI Travel Planner`,
-    description: `Check visa, safety, weather, etiquette, and other travel essentials for ${destination}.`,
+    title: t("metaTitle", { destination }),
+    description: t("metaDescription", { destination }),
     openGraph: {
-      title: `${destination} Travel Info`,
-      description: `AI-curated travel essentials for visiting ${destination}.`,
+      title: t("ogTitle", { destination }),
+      description: t("ogDescription", { destination }),
       type: 'website',
-      locale: 'en_US',
+      locale: language === "ja" ? "ja_JP" : "en_US",
     },
   };
 }

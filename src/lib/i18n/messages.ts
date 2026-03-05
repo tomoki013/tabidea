@@ -1,15 +1,14 @@
-import enMessages from "@/messages/en.json";
-import jaMessages from "@/messages/ja.json";
 import {
   DEFAULT_LANGUAGE,
   type LanguageCode,
 } from "@/lib/i18n/locales";
+import { loadMessagesFromFiles } from "@/lib/i18n/load-messages";
 
-type AppMessages = typeof enMessages;
+type AppMessages = Record<string, unknown>;
 
 const MESSAGES_BY_LANGUAGE: Record<LanguageCode, AppMessages> = {
-  en: enMessages,
-  ja: jaMessages,
+  en: loadMessagesFromFiles("en"),
+  ja: loadMessagesFromFiles("ja"),
 };
 
 function mergeWithFallback(

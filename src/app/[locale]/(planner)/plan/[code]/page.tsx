@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 
 import { planService } from '@/lib/plans/service';
 import { getUser, createClient } from '@/lib/supabase/server';
@@ -15,21 +16,22 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.planCode");
   const { code } = await params;
   const user = await getUser();
   const result = await planService.getPlanByShareCode(code, user?.id);
 
   if (!result.success || !result.plan) {
     return {
-      title: language === "ja" ? 'プランが見つかりません' : 'Plan not found',
+      title: t("notFoundTitle"),
     };
   }
 
   const { plan } = result;
-  const title = language === "ja"
-    ? (plan.destination ? `${plan.destination}の旅行プラン` : '旅行プラン')
-    : (plan.destination ? `${plan.destination} Trip Plan` : 'Trip Plan');
-  const description = plan.itinerary?.description || (language === "ja" ? 'AIが生成した旅行プラン' : 'AI-generated travel plan');
+  const title = plan.destination
+    ? t("titleWithDestination", { destination: plan.destination })
+    : t("titleFallback");
+  const description = plan.itinerary?.description || t("descriptionFallback");
 
   // Build dynamic OGP image URL
   const ogParams = new URLSearchParams();

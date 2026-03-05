@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 
 import { localizePath } from '@/lib/i18n/locales';
 import { getRequestLanguage } from '@/lib/i18n/server';
@@ -8,16 +9,11 @@ import { planService } from '@/lib/plans/service';
 import MyPlansClient from './MyPlansClient';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: 'マイプラン',
-        description: '保存した旅行プランの一覧です。',
-      }
-    : {
-        title: 'My Plans',
-        description: 'Your saved travel plans.',
-      };
+  const t = await getTranslations("pages.myPlans.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function MyPlansPage() {
