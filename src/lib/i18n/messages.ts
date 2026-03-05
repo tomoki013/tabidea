@@ -1,15 +1,15 @@
 import {
   DEFAULT_LANGUAGE,
+  SUPPORTED_LANGUAGES,
   type LanguageCode,
 } from "@/lib/i18n/locales";
 import { loadMessagesFromFiles } from "@/lib/i18n/load-messages";
 
 type AppMessages = Record<string, unknown>;
 
-const MESSAGES_BY_LANGUAGE: Record<LanguageCode, AppMessages> = {
-  en: loadMessagesFromFiles("en"),
-  ja: loadMessagesFromFiles("ja"),
-};
+const MESSAGES_BY_LANGUAGE: Record<LanguageCode, AppMessages> = Object.fromEntries(
+  SUPPORTED_LANGUAGES.map((language) => [language, loadMessagesFromFiles(language)])
+) as Record<LanguageCode, AppMessages>;
 
 function mergeWithFallback(
   fallback: Record<string, unknown>,

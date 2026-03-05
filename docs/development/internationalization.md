@@ -2,15 +2,19 @@
 
 ## Scope
 
-- URL strategy: language-only prefix (`/ja`, `/en`)
+- URL strategy: language-only prefix (`/{locale}`, e.g. `/ja`, `/en`)
 - Internal locale: regional locale (`ja-JP`, `en-US`)
 - Default language/locale: `ja` / `ja-JP`
 - User preference persistence: `public.users.metadata` (`preferredLanguage`, `preferredRegion`, `preferredLocale`, `homeBaseCity`)
+- Supported languages are generated from `src/messages/*` directories.
+  - Generated file: [`src/lib/i18n/generated-locales.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/lib/i18n/generated-locales.ts)
 
 ## Routing design
 
-- Entry paths without language prefix are redirected to default language.
-  - Example: `/pricing` -> `/ja/pricing`
+- Entry paths without language prefix are redirected based on resolved language.
+  - Example: `/pricing` -> `/en/pricing` (if resolved language is `en`)
+- Locale mismatch is normalized to resolved language.
+  - Example: `/ja/pricing` with resolved language `en` -> `/en/pricing`
 - UI pages are implemented under `src/app/[locale]/*`.
   - Example: `/ja/pricing` maps to `src/app/[locale]/(marketing)/pricing/page.tsx`
 - Excluded from locale routing:
@@ -20,6 +24,16 @@
   - Next.js static assets and public files
 
 Implementation: [`src/proxy.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/proxy.ts)
+
+Language/region resolution priority (high -> low):
+
+1. Logged-in user metadata (`preferredLanguage`, `preferredRegion`)
+2. Cookies (`tabidea-language`, `tabidea-region`)
+3. URL prefix language (for language only)
+4. Request headers (`Accept-Language`, `x-vercel-ip-country`, `cf-ipcountry`)
+5. Default language/region (`ja` / `JP`)
+
+When logged in and metadata is missing, proxy auto-persists detected language/region once.
 
 ## Locale model
 
@@ -48,6 +62,10 @@ Resolution rules:
 - Provider setup is in [`src/app/layout.tsx`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/src/app/layout.tsx).
 - Translation key consistency is verified by `pnpm i18n:check`.
   - Script: [`scripts/i18n/check-messages.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/scripts/i18n/check-messages.ts)
+  - Locales are discovered from `src/messages/*` directories (reference locale: `ja`).
+- Locale list sync is done by `pnpm i18n:sync-locales`.
+  - Script: [`scripts/i18n/generate-locales.ts`](/C:/Users/tomoki_ttttt/Next.js/Tabidea/tabidea/scripts/i18n/generate-locales.ts)
+  - This script runs automatically via `predev`, `prebuild`, `pretest`, and `prei18n:check`.
 
 ## Settings persistence
 

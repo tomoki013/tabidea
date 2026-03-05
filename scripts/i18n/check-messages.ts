@@ -2,10 +2,8 @@ import { readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 
 type MessageTree = Record<string, unknown>;
-type LocaleCode = "ja" | "en";
-
-const SUPPORTED_LOCALES: LocaleCode[] = ["ja", "en"];
 const MESSAGES_ROOT = path.join(process.cwd(), "src", "messages");
+const REFERENCE_LOCALE = "ja";
 
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -54,7 +52,7 @@ function collectJsonFiles(directory: string): string[] {
   return files;
 }
 
-function loadLocaleMessages(locale: LocaleCode): MessageTree {
+function loadLocaleMessages(locale: string): MessageTree {
   const localeDirectory = path.join(MESSAGES_ROOT, locale);
   const files = collectJsonFiles(localeDirectory);
 
@@ -89,8 +87,34 @@ function missingKeys(source: Set<string>, target: Set<string>): string[] {
   return [...source].filter((key) => !target.has(key)).sort();
 }
 
+function detectLocales(): string[] {
+  if (!statSync(MESSAGES_ROOT, { throwIfNoEntry: false })?.isDirectory()) {
+    return [];
+  }
+
+  return readdirSync(MESSAGES_ROOT)
+    .map((entryName) => path.join(MESSAGES_ROOT, entryName))
+    .filter((entryPath) => statSync(entryPath).isDirectory())
+    .map((entryPath) => path.basename(entryPath))
+    .sort((a, b) => a.localeCompare(b));
+}
+
 function main() {
-  const [referenceLocale, ...otherLocales] = SUPPORTED_LOCALES;
+  const supportedLocales = detectLocales();
+  if (!supportedLocales.includes(REFERENCE_LOCALE)) {
+    console.error(
+      `[i18n:check] Reference locale "${REFERENCE_LOCALE}" is missing in ${MESSAGES_ROOT}`
+    );
+    process.exit(1);
+  }
+
+  const otherLocales = supportedLocales.filter((locale) => locale !== REFERENCE_LOCALE);
+  if (otherLocales.length === 0) {
+    console.error("[i18n:check] No target locales found to validate.");
+    process.exit(1);
+  }
+
+  const referenceLocale = REFERENCE_LOCALE;
   const referenceMessages = loadLocaleMessages(referenceLocale);
   const referenceKeys = flattenKeys(referenceMessages);
 
@@ -123,7 +147,7 @@ function main() {
     process.exit(1);
   }
 
-  console.log(`[i18n:check] OK (${SUPPORTED_LOCALES.join(", ")})`);
+  console.log(`[i18n:check] OK (${supportedLocales.join(", ")})`);
 }
 
 main();

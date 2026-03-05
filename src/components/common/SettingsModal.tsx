@@ -14,12 +14,14 @@ import { createPortalSession } from "@/app/actions/stripe/portal";
 import { useAuth } from "@/context/AuthContext";
 import { canAccess, resolvePlanDisplayName } from "@/lib/billing/plan-catalog";
 import {
-  getDefaultHomeBaseCityForRegion,
   getDefaultRegionForLanguage,
+  resolveRegionalLocale,
   type LanguageCode,
   type RegionCode,
 } from "@/lib/i18n/locales";
-import { getRegionOptions } from "@/lib/i18n/regions";
+import RegionSearchSelect from "@/components/common/RegionSearchSelect";
+import HomeBaseCitySearchSelect from "@/components/common/HomeBaseCitySearchSelect";
+import { resolveHomeBaseCityForRegion } from "@/lib/i18n/home-base-cities";
 import {
   localizeHref,
   resolveLanguageFromPathname,
@@ -58,17 +60,17 @@ type ThemeOption = "light" | "dark" | "system";
 
 const THEME_OPTIONS: Array<{
   value: ThemeOption;
-  label: string;
+  labelKey: string;
   icon: React.ComponentType<{ className?: string }>;
 }> = [
-  { value: "light", label: "ライト", icon: FaSun },
-  { value: "dark", label: "ダーク", icon: FaMoon },
-  { value: "system", label: "システム", icon: FaDesktop },
+  { value: "light", labelKey: "themeLight", icon: FaSun },
+  { value: "dark", labelKey: "themeDark", icon: FaMoon },
+  { value: "system", labelKey: "themeSystem", icon: FaDesktop },
 ];
 
-const LANGUAGE_OPTIONS: Array<{ value: LanguageCode; label: string }> = [
-  { value: "ja", label: "日本語" },
-  { value: "en", label: "English" },
+const LANGUAGE_OPTIONS: Array<{ value: LanguageCode; labelKey: string }> = [
+  { value: "ja", labelKey: "languageJa" },
+  { value: "en", labelKey: "languageEn" },
 ];
 
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
@@ -89,7 +91,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     getDefaultRegionForLanguage("en")
   );
   const [homeBaseCity, setHomeBaseCity] = useState(
-    getDefaultHomeBaseCityForRegion(getDefaultRegionForLanguage("en"), "en")
+    resolveHomeBaseCityForRegion(getDefaultRegionForLanguage("en"), "en")
   );
   const [isLoadingSettings, setIsLoadingSettings] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -117,27 +119,6 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
     }
   }, [pathname]);
 
-  useEffect(() => {
-    if (isOpen) {
-      loadSettings();
-      loadBillingInfo();
-      setActiveTab('account');
-      setShowDeleteConfirm(false);
-      setDeleteConfirmText('');
-
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.documentElement.style.overflow = "hidden";
-      document.body.style.overflow = "hidden";
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-
-      return () => {
-        document.documentElement.style.overflow = "";
-        document.body.style.overflow = "";
-        document.body.style.paddingRight = "";
-      };
-    }
-  }, [isOpen]);
-
   const loadBillingInfo = async () => {
     setIsLoadingBilling(true);
     try {
@@ -164,18 +145,18 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       } else if (result.error === 'not_authenticated') {
         window.location.href = `${localizeHref("/auth/login", currentLanguage)}?redirect=${encodeURIComponent(localizeHref("/pricing", currentLanguage))}`;
       } else if (result.error === 'no_subscription') {
-        setPortalError('サブスクリプション情報が見つかりません。まずプランにご加入ください。');
+        setPortalError(tSettings("errors.noSubscription"));
         setIsRedirectingToPortal(false);
       } else if (result.error === 'portal_not_configured') {
-        setPortalError('カスタマーポータルの設定が完了していません。管理者にお問い合わせください。');
+        setPortalError(tSettings("errors.portalNotConfigured"));
         setIsRedirectingToPortal(false);
       } else {
-        setPortalError('ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。');
+        setPortalError(tSettings("errors.portalLoadFailed"));
         setIsRedirectingToPortal(false);
       }
     } catch (e) {
       console.error("Failed to open portal:", e);
-      setPortalError('ポータルの読み込みに失敗しました。しばらくしてからもう一度お試しください。');
+      setPortalError(tSettings("errors.portalLoadFailed"));
       setIsRedirectingToPortal(false);
     }
   };
@@ -194,16 +175,40 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           result.settings.preferredRegion || getDefaultRegionForLanguage(resolvedLanguage);
         setPreferredRegion(resolvedRegion);
         setHomeBaseCity(
-          result.settings.homeBaseCity ||
-            getDefaultHomeBaseCityForRegion(resolvedRegion, resolvedLanguage)
+          resolveHomeBaseCityForRegion(
+            resolvedRegion,
+            resolvedLanguage,
+            result.settings.homeBaseCity
+          )
         );
       }
-    } catch (e) {
-      setSettingsError("エラーが発生しました");
+    } catch {
+      setSettingsError(tSettings("errors.generic"));
     } finally {
       setIsLoadingSettings(false);
     }
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      loadSettings();
+      loadBillingInfo();
+      setActiveTab('account');
+      setShowDeleteConfirm(false);
+      setDeleteConfirmText('');
+
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+
+      return () => {
+        document.documentElement.style.overflow = "";
+        document.body.style.overflow = "";
+        document.body.style.paddingRight = "";
+      };
+    }
+  }, [isOpen]);
 
   const handleSaveSettings = async () => {
     setIsSaving(true);
@@ -223,10 +228,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         }
         onClose();
       } else {
-        setSettingsError(result.error || "保存に失敗しました");
+        setSettingsError(result.error || tSettings("errors.saveFailed"));
       }
-    } catch (e) {
-      setSettingsError("エラーが発生しました");
+    } catch {
+      setSettingsError(tSettings("errors.generic"));
     } finally {
       setIsSaving(false);
     }
@@ -243,7 +248,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   };
 
   const handleDeleteAccount = async () => {
-    if (deleteConfirmText !== '削除する') {
+    if (deleteConfirmText !== tSettings("dangerZone.deleteConfirmKeyword")) {
       return;
     }
 
@@ -256,11 +261,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         onClose();
         router.push(localizeHref('/', currentLanguage));
       } else {
-        alert(result.error || 'アカウントの削除に失敗しました');
+        alert(result.error || tSettings("errors.deleteAccountFailed"));
         setIsDeletingAccount(false);
       }
-    } catch (e) {
-      alert('エラーが発生しました');
+    } catch {
+      alert(tSettings("errors.generic"));
       setIsDeletingAccount(false);
     }
   };
@@ -276,12 +281,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         isSubscribed: billingInfo.isSubscribed,
         isAdmin: billingInfo.isAdmin,
       })
-    : "Free";
+    : tSettings("plan.freeLabel");
   const canUseTravelStyle = billingInfo ? canAccess(billingInfo.userType, "travel_style") : false;
   const selectedTheme: ThemeOption =
     theme === "light" || theme === "dark" || theme === "system" ? theme : "system";
-  const regionOptions = getRegionOptions(preferredLanguage);
-
   return createPortal(
     <div
       className="fixed inset-0 z-[100] bg-stone-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-300"
@@ -307,7 +310,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           <div className="w-full md:w-64 bg-stone-100 border-b md:border-b-0 md:border-r-2 border-stone-300 border-dashed p-6 flex flex-col relative">
             <div className="mb-8 hidden md:block">
                <Stamp color="black" size="sm" className="w-16 h-16 border-2 mx-auto rotate-[-6deg]">
-                  SET<br/>TINGS
+                  {tSettings("stampLine1")}<br/>{tSettings("stampLine2")}
                </Stamp>
             </div>
 
@@ -316,19 +319,19 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 active={activeTab === 'account'}
                 onClick={() => setActiveTab('account')}
                 icon={FaUserCog}
-                label="アカウント"
+                label={tSettings("tabs.account")}
               />
               <TabButton
                 active={activeTab === 'plan'}
                 onClick={() => setActiveTab('plan')}
                 icon={FaChartPie}
-                label="プラン管理"
+                label={tSettings("tabs.plan")}
               />
               <TabButton
                 active={activeTab === 'ai'}
                 onClick={() => setActiveTab('ai')}
                 icon={FaRobot}
-                label="AI設定"
+                label={tSettings("tabs.ai")}
               />
             </div>
 
@@ -337,7 +340,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 onClick={onClose}
                 className="flex items-center gap-2 text-stone-500 hover:text-stone-800 transition-colors text-sm font-hand"
               >
-                <FaTimes /> 閉じる
+                <FaTimes /> {tSettings("close")}
               </button>
             </div>
           </div>
@@ -352,7 +355,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-300">
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
                     <HandwrittenText tag="h3" className="text-2xl font-bold text-stone-800">
-                      アカウント設定
+                      {tSettings("account.title")}
                     </HandwrittenText>
                   </div>
 
@@ -362,7 +365,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                        {user?.avatarUrl ? (
                         <Image
                           src={user.avatarUrl}
-                          alt={user.displayName || 'ユーザー'}
+                          alt={user.displayName || tSettings("account.userFallback")}
                           width={64}
                           height={64}
                           className="rounded-full ring-4 ring-white shadow-sm"
@@ -370,7 +373,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       ) : (
                         <div className="w-16 h-16 rounded-full bg-stone-100 ring-4 ring-white flex items-center justify-center border border-stone-300 border-dashed">
                           <span className="text-stone-500 font-hand text-2xl font-bold">
-                            {user?.displayName?.[0] || user?.email?.[0] || 'U'}
+                            {user?.displayName?.[0] || user?.email?.[0] || tSettings("account.userInitialFallback")}
                           </span>
                         </div>
                       )}
@@ -379,7 +382,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
 
                     <div className="flex-1 min-w-0">
                       <HandwrittenText className="font-bold text-lg text-stone-800 truncate">
-                        {user?.displayName || 'ユーザー'}
+                        {user?.displayName || tSettings("account.userFallback")}
                       </HandwrittenText>
                       <p className="text-stone-500 truncate font-mono text-sm">{user?.email}</p>
                     </div>
@@ -388,10 +391,10 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   {/* Theme Settings */}
                   <div className="bg-white rounded-sm border border-stone-200 p-6 shadow-sm">
                     <h4 className="font-bold text-stone-800 mb-2 font-hand text-lg">
-                      表示テーマ
+                      {tSettings("theme.title")}
                     </h4>
                     <p className="text-sm text-stone-500 mb-4 font-hand">
-                      画面の見た目をライト・ダーク・システム連動から選択できます。
+                      {tSettings("theme.description")}
                     </p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -412,7 +415,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               }`}
                           >
                             <Icon className={isActive ? "text-primary" : "text-stone-400"} />
-                            <span>{option.label}</span>
+                            <span>{tSettings(option.labelKey)}</span>
                           </button>
                         );
                       })}
@@ -444,52 +447,45 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             setPreferredLanguage(nextLanguage);
                             setPreferredRegion(nextRegion);
                             setHomeBaseCity(
-                              getDefaultHomeBaseCityForRegion(nextRegion, nextLanguage)
+                              resolveHomeBaseCityForRegion(nextRegion, nextLanguage)
                             );
                           }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
                           {LANGUAGE_OPTIONS.map((option) => (
                             <option key={option.value} value={option.value}>
-                              {option.label}
+                              {tSettings(option.labelKey)}
                             </option>
                           ))}
                         </select>
                       </label>
 
-                      <label className="flex flex-col gap-2">
+                      <div className="flex flex-col gap-2">
                         <span className="text-sm font-bold text-stone-700 font-hand">
                           {tSettings("region")}
                         </span>
-                        <select
+                        <RegionSearchSelect
+                          language={preferredLanguage}
                           value={preferredRegion}
-                          onChange={(e) => {
-                            const nextRegion = e.target.value as RegionCode;
+                          onChange={(nextRegion) => {
                             setPreferredRegion(nextRegion);
                             setHomeBaseCity(
-                              getDefaultHomeBaseCityForRegion(nextRegion, preferredLanguage)
+                              resolveHomeBaseCityForRegion(nextRegion, preferredLanguage)
                             );
                           }}
-                          className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
-                        >
-                          {regionOptions.map((option) => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
+                        />
+                      </div>
 
                       <label className="flex flex-col gap-2 md:col-span-2">
                         <span className="text-sm font-bold text-stone-700 font-hand">
                           {tSettings("homeBaseCity")}
                         </span>
-                        <input
-                          type="text"
+                        <HomeBaseCitySearchSelect
+                          language={preferredLanguage}
+                          region={preferredRegion}
                           value={homeBaseCity}
-                          onChange={(e) => setHomeBaseCity(e.target.value)}
-                          placeholder={tSettings("homeBaseCityPlaceholder")}
-                          className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
+                          onChange={setHomeBaseCity}
+                          contactHref={localizeHref("/contact", currentLanguage)}
                         />
                       </label>
                     </div>
@@ -502,7 +498,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       onClick={handleSignOut}
                       className="w-full justify-between"
                     >
-                      <span>ログアウト</span>
+                      <span>{tSettings("account.logout")}</span>
                       <FaSignOutAlt className="text-stone-400" />
                     </JournalButton>
                   </div>
@@ -510,7 +506,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   {/* Danger Zone */}
                   <div className="pt-6 border-t-2 border-stone-200 border-dashed">
                     <HandwrittenText className="font-bold text-red-500 mb-4 flex items-center gap-2">
-                      <FaExclamationTriangle /> 危険なエリア
+                      <FaExclamationTriangle /> {tSettings("dangerZone.title")}
                     </HandwrittenText>
 
                     {!showDeleteConfirm ? (
@@ -518,23 +514,25 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         onClick={() => setShowDeleteConfirm(true)}
                         className="text-red-500 text-sm font-hand underline decoration-dashed hover:text-red-700"
                       >
-                        アカウントを削除する
+                        {tSettings("dangerZone.openDeleteButton")}
                       </button>
                     ) : (
                       <div className="bg-red-50/50 rounded-sm p-5 border border-red-200 border-dashed relative">
                         <Tape color="red" position="top-right" rotation="right" className="opacity-70" />
                         <h5 className="font-bold text-red-800 mb-2 font-hand">
-                          本当に削除しますか？
+                          {tSettings("dangerZone.deleteConfirmTitle")}
                         </h5>
                         <p className="text-sm text-red-700/80 mb-4 font-hand">
-                          復元することはできません。<br/>
-                          確認のため「削除する」と入力してください。
+                          {tSettings("dangerZone.deleteConfirmLine1")}<br/>
+                          {tSettings("dangerZone.deleteConfirmLine2", {
+                            keyword: tSettings("dangerZone.deleteConfirmKeyword"),
+                          })}
                         </p>
                         <input
                           type="text"
                           value={deleteConfirmText}
                           onChange={(e) => setDeleteConfirmText(e.target.value)}
-                          placeholder="削除する"
+                          placeholder={tSettings("dangerZone.deleteConfirmKeyword")}
                           className="w-full px-3 py-2 border-b-2 border-red-300 bg-transparent mb-3 focus:outline-none focus:border-red-500 font-hand"
                         />
                         <div className="flex gap-3">
@@ -546,16 +544,19 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             }}
                             className="flex-1"
                           >
-                            キャンセル
+                            {tSettings("dangerZone.cancel")}
                           </JournalButton>
                           <JournalButton
                             variant="primary"
                             onClick={handleDeleteAccount}
-                            disabled={deleteConfirmText !== '削除する' || isDeletingAccount}
+                            disabled={
+                              deleteConfirmText !== tSettings("dangerZone.deleteConfirmKeyword") ||
+                              isDeletingAccount
+                            }
                             className="flex-1 bg-red-600 border-red-800 text-white hover:bg-red-700"
                           >
                             {isDeletingAccount ? <FaSpinner className="animate-spin" /> : <FaTrash />}
-                            削除実行
+                            {tSettings("dangerZone.deleteAction")}
                           </JournalButton>
                         </div>
                       </div>
@@ -568,7 +569,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
                     <HandwrittenText tag="h3" className="text-2xl font-bold text-stone-800">
-                      プラン管理
+                      {tSettings("plan.title")}
                     </HandwrittenText>
                   </div>
 
@@ -583,7 +584,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         <Tape color="yellow" position="top-left" rotation="left" className="opacity-80" />
                         <h4 className="font-bold text-stone-800 flex items-center gap-2 mb-4 font-hand">
                           <FaCreditCard className="text-primary" />
-                          現在のプラン
+                          {tSettings("plan.currentPlanTitle")}
                         </h4>
 
                         <div className="flex items-center justify-between p-4 bg-stone-50 rounded-sm mb-4 border border-stone-100">
@@ -592,7 +593,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               {isAdmin ? (
                                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-stone-800 text-white text-sm font-bold rounded-sm transform -rotate-1">
                                   <FaUserCog className="text-xs" />
-                                  管理者
+                                  {tSettings("plan.adminBadge")}
                                 </span>
                               ) : isPaidOrAdmin ? (
                                 <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary text-white text-sm font-bold rounded-sm transform -rotate-1 shadow-sm border border-primary/20">
@@ -601,20 +602,25 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                 </span>
                               ) : (
                                 <span className="inline-flex items-center px-3 py-1 bg-stone-200 text-stone-600 text-sm font-bold rounded-sm transform rotate-1">
-                                  Free
+                                  {tSettings("plan.freeLabel")}
                                 </span>
                               )}
                             </div>
                             {isPaidPlan && billingInfo?.subscriptionEndsAt && (
                               <p className="text-xs text-stone-500 mt-2 font-mono">
-                                次回更新: {new Date(billingInfo.subscriptionEndsAt).toLocaleDateString('ja-JP')}
+                                {tSettings("plan.nextRenewal")}{" "}
+                                {new Date(billingInfo.subscriptionEndsAt).toLocaleDateString(
+                                  resolveRegionalLocale(currentLanguage, preferredRegion)
+                                )}
                               </p>
                             )}
                           </div>
                           {billingInfo?.ticketCount && billingInfo.ticketCount > 0 ? (
                             <div className="text-right">
-                              <p className="text-sm text-stone-500 font-hand">チケット残数</p>
-                              <p className="text-xl font-bold text-primary font-hand">{billingInfo.ticketCount}枚</p>
+                              <p className="text-sm text-stone-500 font-hand">{tSettings("plan.ticketRemaining")}</p>
+                              <p className="text-xl font-bold text-primary font-hand">
+                                {tSettings("plan.ticketCountValue", { count: billingInfo.ticketCount })}
+                              </p>
                             </div>
                           ) : null}
                         </div>
@@ -622,7 +628,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         <div className="flex flex-col sm:flex-row gap-3">
                           {isAdmin ? (
                              <div className="w-full text-center text-sm text-stone-500 bg-stone-100 p-3 rounded-sm font-hand">
-                               管理者アカウントです
+                               {tSettings("plan.adminAccount")}
                              </div>
                           ) : isPaidOrAdmin ? (
                             <JournalButton
@@ -634,12 +640,12 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               {isRedirectingToPortal ? (
                                 <>
                                   <FaSpinner className="animate-spin mr-2" />
-                                  読み込み中...
+                                  {tSettings("plan.loading")}
                                 </>
                               ) : (
                                 <>
                                   <FaCog className="text-stone-400 mr-2" />
-                                  プランを管理・解約
+                                  {tSettings("plan.manageSubscription")}
                                 </>
                               )}
                             </JournalButton>
@@ -647,11 +653,14 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             <a href={localizeHref("/pricing", currentLanguage)} onClick={onClose} className="flex-1">
                                <JournalButton variant="primary" className="w-full">
                                   <FaCrown className="mr-2" />
-                                  アップグレードする
+                                  {tSettings("plan.upgrade")}
                                </JournalButton>
                             </a>
                           )}
                         </div>
+                        {portalError && (
+                          <p className="mt-3 text-sm text-red-600 font-hand">{portalError}</p>
+                        )}
                       </div>
 
                       {/* Usage Stats */}
@@ -660,21 +669,27 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           <Tape color="green" position="top-right" rotation="right" className="opacity-80" />
                           <h4 className="font-bold text-stone-800 flex items-center gap-2 mb-4 font-hand">
                             <FaChartPie className="text-primary" />
-                            利用状況
+                            {tSettings("plan.usageTitle")}
                           </h4>
 
                           <div className="grid gap-4 sm:grid-cols-2">
                             <UsageStatCard
-                              title="プラン生成数"
+                              title={tSettings("plan.planGeneration")}
                               current={usageStats.planGeneration.current}
                               limit={usageStats.planGeneration.limit}
                               resetAt={usageStats.planGeneration.resetAt}
+                              resetPrefix={tSettings("plan.limitReset")}
+                              unlimitedLabel={tSettings("plan.unlimited")}
+                              locale={resolveRegionalLocale(currentLanguage, preferredRegion)}
                             />
                             <UsageStatCard
-                              title="渡航情報取得"
+                              title={tSettings("plan.travelInfo")}
                               current={usageStats.travelInfo.current}
                               limit={usageStats.travelInfo.limit}
                               resetAt={usageStats.travelInfo.resetAt}
+                              resetPrefix={tSettings("plan.limitReset")}
+                              unlimitedLabel={tSettings("plan.unlimited")}
+                              locale={resolveRegionalLocale(currentLanguage, preferredRegion)}
                             />
                           </div>
                         </div>
@@ -688,7 +703,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
                   <div className="border-b-2 border-stone-200 border-dashed pb-4">
                     <HandwrittenText tag="h3" className="text-2xl font-bold text-stone-800 flex items-center gap-2">
-                      AI設定
+                      {tSettings("ai.title")}
                       {isPaidOrAdmin && (
                         <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-sm border border-primary/20 transform -rotate-2">
                           <FaCrown className="text-[0.6rem]" />
@@ -712,19 +727,19 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       <div className="bg-white p-5 rounded-sm border border-stone-200 shadow-sm relative">
                         <Tape color="blue" position="top-left" rotation="left" className="opacity-60 w-16 h-4" />
                         <label className="block text-sm font-bold text-stone-700 mb-2 font-hand">
-                          カスタム指示（制約事項）
+                          {tSettings("ai.customInstructionsLabel")}
                         </label>
                         <div className="text-xs text-stone-500 mb-3 bg-stone-50 p-3 rounded-sm border-l-4 border-stone-300">
-                          <p className="mb-1 font-bold font-hand">💡 ヒント</p>
+                          <p className="mb-1 font-bold font-hand">{tSettings("ai.customInstructionsHintTitle")}</p>
                           <span className="font-hand">
-                             「美術館は含めないで」「移動少なめで」など、AIに守らせたい条件を書いてね。
+                             {tSettings("ai.customInstructionsHintBody")}
                           </span>
                         </div>
                         <textarea
                           value={customInstructions}
                           onChange={(e) => setCustomInstructions(e.target.value)}
                           className="w-full h-32 p-3 bg-transparent border-b-2 border-stone-300 focus:border-primary focus:outline-none resize-none font-hand text-lg leading-relaxed"
-                          placeholder="ここに指示を入力..."
+                          placeholder={tSettings("ai.customInstructionsPlaceholder")}
                         />
                       </div>
 
@@ -732,11 +747,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       <div className="bg-white p-5 rounded-sm border border-stone-200 shadow-sm relative overflow-hidden">
                         <div className="flex justify-between items-center mb-2">
                           <label className="block text-sm font-bold text-stone-700 font-hand">
-                            旅のスタイル
+                            {tSettings("ai.travelStyleLabel")}
                           </label>
                           {!canUseTravelStyle && (
                             <span className="text-xs font-bold text-primary bg-primary/5 px-2 py-1 rounded-sm border border-primary/20 flex items-center gap-1">
-                              <FaLock size={10} /> Tabidea Pro以上限定
+                              <FaLock size={10} /> {tSettings("ai.travelStyleLocked")}
                             </span>
                           )}
                         </div>
@@ -751,7 +766,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                                 ? "border-stone-200 text-stone-300 cursor-not-allowed"
                                 : "border-stone-300 focus:border-primary text-stone-800"
                               }`}
-                            placeholder={!canUseTravelStyle ? "アップグレードして利用可能" : "歴史的な場所が好き、朝はゆっくり..."}
+                            placeholder={
+                              !canUseTravelStyle
+                                ? tSettings("ai.travelStyleLockedPlaceholder")
+                                : tSettings("ai.travelStylePlaceholder")
+                            }
                           />
 
                           {!canUseTravelStyle && (
@@ -759,7 +778,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                               <a href={localizeHref("/pricing", currentLanguage)} onClick={onClose}>
                                 <JournalButton variant="primary" size="sm">
                                    <FaCrown className="mr-2" />
-                                   アップグレード
+                                   {tSettings("plan.upgrade")}
                                 </JournalButton>
                               </a>
                             </div>
@@ -768,6 +787,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       </div>
 
                       <div className="flex justify-end pt-2">
+                        {settingsError && (
+                          <p className="mr-auto text-sm text-red-600 font-hand self-center">
+                            {settingsError}
+                          </p>
+                        )}
                         <JournalButton
                           variant="primary"
                           onClick={handleSaveSettings}
@@ -776,11 +800,11 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         >
                           {isSaving ? (
                             <>
-                              <FaSpinner className="animate-spin mr-2" /> 保存中...
+                              <FaSpinner className="animate-spin mr-2" /> {tSettings("saving")}
                             </>
                           ) : (
                             <>
-                              <FaSave className="mr-2" /> 設定を保存
+                              <FaSave className="mr-2" /> {tSettings("save")}
                             </>
                           )}
                         </JournalButton>
@@ -815,7 +839,23 @@ function TabButton({ active, onClick, icon: Icon, label }: { active: boolean; on
   );
 }
 
-function UsageStatCard({ title, current, limit, resetAt }: { title: string, current: number, limit: number, resetAt: Date | null }) {
+function UsageStatCard({
+  title,
+  current,
+  limit,
+  resetAt,
+  resetPrefix,
+  unlimitedLabel,
+  locale,
+}: {
+  title: string;
+  current: number;
+  limit: number;
+  resetAt: Date | null;
+  resetPrefix: string;
+  unlimitedLabel: string;
+  locale: string;
+}) {
   const isUnlimited = limit === -1;
   const percentage = isUnlimited ? 0 : Math.min(100, (current / limit) * 100);
 
@@ -825,7 +865,7 @@ function UsageStatCard({ title, current, limit, resetAt }: { title: string, curr
         <span className="font-bold text-stone-700 text-sm font-hand">{title}</span>
         {resetAt && (
           <span className="text-[10px] text-stone-400 font-mono">
-            Limit: {resetAt.toLocaleDateString('ja-JP')}
+            {resetPrefix}: {resetAt.toLocaleDateString(locale)}
           </span>
         )}
       </div>
@@ -848,7 +888,7 @@ function UsageStatCard({ title, current, limit, resetAt }: { title: string, curr
       )}
       {isUnlimited && (
         <div className="flex items-center gap-1 text-xs font-bold text-primary mt-2 font-hand">
-          <FaCheckCircle /> 無制限
+          <FaCheckCircle /> {unlimitedLabel}
         </div>
       )}
     </div>

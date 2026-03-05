@@ -1,12 +1,27 @@
-import { type NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 import createMiddleware from "next-intl/middleware";
 
-import { updateSession } from '@/lib/supabase/proxy';
-import { LANGUAGE_COOKIE, LANGUAGE_HEADER } from '@/lib/i18n/constants';
+import {
+  resolveUserI18nPreferences,
+  updateSession,
+} from '@/lib/supabase/proxy';
+import {
+  LANGUAGE_COOKIE,
+  LANGUAGE_HEADER,
+  REGION_COOKIE,
+  REGION_HEADER,
+} from '@/lib/i18n/constants';
 import {
   DEFAULT_LANGUAGE,
+  getDefaultRegionForLanguage,
   getLanguageFromPathname,
+  isLanguageCode,
+  isRegionCode,
+  localizePath,
+  resolveLanguageFromAcceptLanguage,
+  resolveRegionFromGeoHeaders,
   type LanguageCode,
+  type RegionCode,
 } from '@/lib/i18n/locales';
 import { routing } from "@/i18n/routing";
 
@@ -24,6 +39,32 @@ function shouldBypassI18n(pathname: string): boolean {
   );
 }
 
+function resolveLanguageFromCookie(request: NextRequest): LanguageCode | null {
+  const cookieLanguage = request.cookies.get(LANGUAGE_COOKIE)?.value;
+  return cookieLanguage && isLanguageCode(cookieLanguage) ? cookieLanguage : null;
+}
+
+function resolveRegionFromCookie(request: NextRequest): RegionCode | null {
+  const cookieRegion = request.cookies.get(REGION_COOKIE)?.value;
+  return cookieRegion && isRegionCode(cookieRegion) ? cookieRegion : null;
+}
+
+function createRedirectResponse(
+  request: NextRequest,
+  responseWithCookies: NextResponse,
+  pathname: string
+): NextResponse {
+  const url = request.nextUrl.clone();
+  url.pathname = pathname;
+  const redirectResponse = NextResponse.redirect(url);
+
+  for (const cookie of responseWithCookies.cookies.getAll()) {
+    redirectResponse.cookies.set(cookie);
+  }
+
+  return redirectResponse;
+}
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -33,15 +74,50 @@ export async function proxy(request: NextRequest) {
 
   const i18nResponse = handleI18nRouting(request);
   const languageFromPath = getLanguageFromPathname(pathname);
-  const language: LanguageCode = languageFromPath ?? DEFAULT_LANGUAGE;
+  const cookieLanguage = resolveLanguageFromCookie(request);
+  const acceptLanguage = resolveLanguageFromAcceptLanguage(
+    request.headers.get('accept-language')
+  );
 
-  i18nResponse.cookies.set(LANGUAGE_COOKIE, language, {
+  const detectedLanguage =
+    cookieLanguage ?? languageFromPath ?? acceptLanguage ?? DEFAULT_LANGUAGE;
+  const detectedRegion =
+    resolveRegionFromCookie(request) ??
+    resolveRegionFromGeoHeaders({
+      vercelCountry: request.headers.get('x-vercel-ip-country'),
+      cloudflareCountry: request.headers.get('cf-ipcountry'),
+      fallbackLanguage: detectedLanguage,
+    }) ??
+    getDefaultRegionForLanguage(detectedLanguage);
+
+  const { response: responseWithSession, preferences } =
+    await resolveUserI18nPreferences(request, {
+      existingResponse: i18nResponse,
+      detectedLanguage,
+      detectedRegion,
+    });
+
+  const resolvedLanguage = preferences.language ?? detectedLanguage;
+  const resolvedRegion = preferences.region ?? detectedRegion;
+  const localizedPath = localizePath(pathname, resolvedLanguage);
+
+  const response =
+    localizedPath !== pathname
+      ? createRedirectResponse(request, responseWithSession, localizedPath)
+      : responseWithSession;
+
+  response.cookies.set(LANGUAGE_COOKIE, resolvedLanguage, {
     path: '/',
     sameSite: 'lax',
   });
-  i18nResponse.headers.set(LANGUAGE_HEADER, language);
+  response.cookies.set(REGION_COOKIE, resolvedRegion, {
+    path: '/',
+    sameSite: 'lax',
+  });
+  response.headers.set(LANGUAGE_HEADER, resolvedLanguage);
+  response.headers.set(REGION_HEADER, resolvedRegion);
 
-  return await updateSession(request, i18nResponse);
+  return response;
 }
 
 export const config = {
