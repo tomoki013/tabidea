@@ -10,12 +10,12 @@ interface TapeProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Tape = ({ color = "yellow", position = "top-center", rotation = "left", className, ...props }: TapeProps) => {
   const colors = {
-    yellow: "bg-yellow-100/80 border-yellow-200/50",
-    pink: "bg-pink-100/80 border-pink-200/50",
-    blue: "bg-blue-100/80 border-blue-200/50",
-    green: "bg-green-100/80 border-green-200/50",
-    white: "bg-white/80 border-stone-200/50",
-    red: "bg-red-100/80 border-red-200/50",
+    yellow: "bg-yellow-100/80 dark:bg-yellow-900/40 border-yellow-200/50 dark:border-yellow-900/30",
+    pink: "bg-pink-100/80 dark:bg-pink-900/40 border-pink-200/50 dark:border-pink-900/30",
+    blue: "bg-blue-100/80 dark:bg-blue-900/40 border-blue-200/50 dark:border-blue-900/30",
+    green: "bg-green-100/80 dark:bg-green-900/40 border-green-200/50 dark:border-green-900/30",
+    white: "bg-white/80 dark:bg-white/10 border-stone-200/50 dark:border-white/10",
+    red: "bg-red-100/80 dark:bg-red-900/40 border-red-200/50 dark:border-red-900/30",
   };
 
   const positions = {
