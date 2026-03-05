@@ -1,0 +1,56 @@
+{
+  "pages": {
+    "marketing": {
+      "termsLegal": {
+        "metaTitle": "利用規約",
+        "title": "利用規約",
+        "legalNotice": "本ページには公式な日本語法務テキストを掲載しています。",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "お問い合わせ"
+      },
+      "privacyLegal": {
+        "metaTitle": "プライバシーポリシー",
+        "title": "プライバシーポリシー",
+        "legalNotice": "本ページには公式な日本語法務テキストを掲載しています。",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "お問い合わせ"
+      },
+      "cookiePolicyLegal": {
+        "metaTitle": "クッキーポリシー",
+        "title": "クッキーポリシー",
+        "legalNotice": "本ページには公式な日本語法務テキストを掲載しています。",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "お問い合わせ"
+      },
+      "specifiedLegal": {
+        "metaTitle": "特定商取引法に基づく表記",
+        "title": "特定商取引法に基づく表記",
+        "legalNotice": "本ページには公式な日本語法務テキストを掲載しています。",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "お問い合わせ"
+      },
+      "aiPolicyLegal": {
+        "metaTitle": "AIポリシー",
+        "title": "AIポリシー",
+        "legalNotice": "本ページには公式な日本語法務テキストを掲載しています。",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "お問い合わせ"
+      }
+    }
+  }
+}

@@ -1,24 +1,21 @@
 import FAQContent from "@/components/faq/FAQContent";
 // TODO: Move faq components to features/ when component structure is finalized
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { localizePath } from "@/lib/i18n/locales";
 import { getRequestLanguage } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: "よくある質問",
-        description: "Tabideaの使い方、プラン作成、料金、AIの安全性などに関するよくある質問と回答をまとめています。",
-      }
-    : {
-        title: "FAQ",
-        description: "Find answers about Tabidea usage, plan creation, pricing, and AI safety.",
-      };
+  const t = await getTranslations("pages.marketing.faq.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default async function FAQPage() {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.marketing.faq");
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-primary/5 to-[#fcfbf9]">
       {/* Header Section */}
@@ -27,15 +24,15 @@ export default async function FAQPage() {
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-6">
           <div className="inline-block px-4 py-1.5 rounded-full border border-[#e67e22]/30 bg-[#e67e22]/5 text-[#e67e22] text-sm font-bold tracking-wider mb-4">
-            SUPPORT CENTER
+            {t("badge")}
           </div>
           <h1 className="text-3xl md:text-5xl font-serif font-bold text-[#2c2c2c] tracking-tight">
-            {language === "ja" ? "よくある質問" : "Frequently Asked Questions"}
+            {t("title")}
           </h1>
           <p className="text-stone-600 font-hand text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            {language === "ja" ? "Tabideaのご利用について、" : "For using Tabidea,"}<br className="md:hidden" />
-            {language === "ja" ? "疑問や不安な点はここで解決しましょう。" : "resolve your questions and concerns here."}<br />
-            {language === "ja" ? "旅行の準備と同じくらい、スムーズな体験を。" : "Enjoy a smoother experience while planning your trip."}
+            {t("leadLine1")}<br className="md:hidden" />
+            {t("leadLine2")}<br />
+            {t("leadLine3")}
           </p>
         </div>
       </div>
@@ -48,21 +45,17 @@ export default async function FAQPage() {
         <div className="max-w-2xl mx-auto mt-12 mb-20 p-8 md:p-12 bg-white rounded-xl border border-stone-200 shadow-sm text-center space-y-6 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#e67e22] to-[#f39c12]" />
           <h3 className="text-2xl font-serif font-bold text-[#2c2c2c]">
-            {language === "ja" ? "解決しませんでしたか？" : "Still need help?"}
+            {t("contactTitle")}
           </h3>
           <p className="text-stone-600 leading-relaxed">
-            {language === "ja"
-              ? "その他、ご不明な点やご要望がございましたら、"
-              : "If you still have questions or requests,"}<br />
-            {language === "ja"
-              ? "お問い合わせフォームよりお気軽にご連絡ください。"
-              : "please contact us through the inquiry form."}
+            {t("contactLine1")}<br />
+            {t("contactLine2")}
           </p>
           <a
             href={localizePath("/contact", language)}
             className="inline-flex items-center justify-center px-8 py-3 bg-[#e67e22] text-white font-bold rounded-full hover:bg-[#d35400] transition-all hover:scale-105 shadow-md group"
           >
-            <span>{language === "ja" ? "お問い合わせへ" : "Go to contact"}</span>
+            <span>{t("contactButton")}</span>
           </a>
         </div>
       </main>

@@ -1,31 +1,28 @@
 import { Suspense } from 'react';
 import type { Metadata } from 'next';
+import { getTranslations } from "next-intl/server";
 import { planService } from '@/lib/plans/service';
 import { getRequestLanguage } from '@/lib/i18n/server';
 import PublicPlanCard from '@/components/features/shiori/PublicPlanCard';
 import { Tape, HandwrittenText } from '@/components/ui/journal';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: 'みんなの旅のしおり',
-        description: 'Tabideaで作成・公開された旅行プラン（旅のしおり）の一覧です。次の旅行の参考にしてみましょう。',
-      }
-    : {
-        title: "Community Travel Notes",
-        description: "Browse public travel plans created in Tabidea and get inspiration for your next trip.",
-      };
+  const t = await getTranslations("pages.shiori.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 async function PublicPlansGrid() {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.shiori");
   const { plans, error } = await planService.getPublicShioriFeed({ limit: 50 });
 
   if (error) {
     return (
       <div className="text-center py-20">
-        <p className="text-stone-500">{language === "ja" ? "プランの読み込みに失敗しました。" : "Failed to load plans."}</p>
+        <p className="text-stone-500">{t("loadError")}</p>
       </div>
     );
   }
@@ -33,8 +30,8 @@ async function PublicPlansGrid() {
   if (!plans || plans.length === 0) {
     return (
       <div className="text-center py-20 bg-white/50 rounded-lg border border-dashed border-stone-300">
-        <p className="text-stone-500 font-hand text-lg">{language === "ja" ? "まだ公開されたプランはありません。" : "No public plans yet."}</p>
-        <p className="text-sm text-stone-400 mt-2">{language === "ja" ? "最初のプランを公開してみませんか？" : "Why not publish the first one?"}</p>
+        <p className="text-stone-500 font-hand text-lg">{t("emptyTitle")}</p>
+        <p className="text-sm text-stone-400 mt-2">{t("emptyDescription")}</p>
       </div>
     );
   }
@@ -55,7 +52,7 @@ export default function ShioriPage() {
 }
 
 async function ShioriPageContent() {
-  const language = await getRequestLanguage();
+  const t = await getTranslations("pages.shiori");
   return (
     <main className="min-h-screen bg-[#fcfbf9] pb-24 relative overflow-hidden">
       {/* Background decoration */}
@@ -65,17 +62,13 @@ async function ShioriPageContent() {
         <div className="text-center mb-16 space-y-4">
           <div className="inline-block relative">
             <HandwrittenText tag="h1" className="text-4xl md:text-5xl font-bold text-stone-800 mb-2 transform -rotate-2">
-              {language === "ja" ? "みんなの旅のしおり" : "Community Travel Notes"}
+              {t("title")}
             </HandwrittenText>
             <Tape color="blue" position="top-right" className="opacity-70 -right-8 -top-4 w-24" />
           </div>
           <p className="text-stone-500 font-hand text-lg max-w-2xl mx-auto">
-            {language === "ja"
-              ? "旅程そのものよりも、旅の温度感を読むためのページです。"
-              : "A place to read the tone and story of each trip, not only the itinerary."}<br/>
-            {language === "ja"
-              ? "公開された旅のしおりを、ストーリーとしてたどれます。"
-              : "Follow published travel notes as personal stories."}
+            {t("leadLine1")}<br/>
+            {t("leadLine2")}
           </p>
         </div>
 

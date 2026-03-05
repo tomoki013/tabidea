@@ -1,0 +1,53 @@
+{
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Tabidea - AI Travel Planner",
+        "description": "AIが数秒であなただけの旅行プランを作成。目的地、予算、テーマを入力するだけ。モデルコース作成、旅のしおり作成、持ち物リストも自動生成。"
+      },
+      "loading": "ページをめくっています..."
+    },
+    "info": {
+      "travelInfo": {
+        "meta": {
+          "title": "渡航情報・安全ガイド",
+          "description": "世界各国のビザ、電源、チップ、治安情報を一括チェック。"
+        },
+        "travelInfoClient": {
+          "badge": "Travel Support Guide",
+          "heroTitle": "渡航情報・安全ガイド",
+          "heroLead1": "旅の準備は、安心を集めることから。",
+          "heroLead2": "知りたい国や都市の情報を、あなたのノートに書き留めるように。",
+          "destinationLabel": "目的地を決める",
+          "destinationPlaceholder": "どこへ行きますか？（例: パリ、バンコク）",
+          "popularDestinations": "Popular Destinations",
+          "categoriesLabel": "知りたいことを選ぶ",
+          "searching": "検索中...",
+          "createGuide": "ガイドを作成する",
+          "guideDesc": "AIが最新の情報を収集して、あなただけのガイドを作成します",
+          "doneInThreeSteps": "3ステップで完了",
+          "step1Title": "目的地を入力",
+          "step1Body": "行きたい国や都市を\n入力します",
+          "step2Title": "カテゴリを選択",
+          "step2Body": "知りたい情報だけを\nピックアップ",
+          "step3Title": "ガイドを作成",
+          "step3Body": "AIが情報をまとめて\n表示します"
+        }
+      },
+      "travelInfoDestination": {
+        "metaTitle": "{destination}の渡航情報 | AI Travel Planner",
+        "metaDescription": "{destination}への渡航に必要な情報をまとめてチェック。ビザ、安全情報、気候、マナーなど。",
+        "ogTitle": "{destination}の渡航情報",
+        "ogDescription": "{destination}への渡航に必要な情報をAIがまとめました。"
+      },
+      "destinationClient": {
+        "titleSuffix": "の渡航情報",
+        "travelDates": "渡航予定",
+        "changeCategories": "カテゴリを変更",
+        "selectedCount": "（現在 {count} 件選択中）",
+        "fetching": "取得中...",
+        "research": "選択したカテゴリで再検索"
+      }
+    }
+  }
+}

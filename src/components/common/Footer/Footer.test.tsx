@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { NextIntlClientProvider } from 'next-intl';
 import { describe, it, expect, vi } from 'vitest';
 import Footer from './Footer';
-import jaMessages from '@/messages/ja.json';
+import { getMessages } from '@/lib/i18n/messages';
 
 vi.mock('next/navigation', () => ({
   usePathname: () => '/ja',
@@ -18,6 +18,8 @@ vi.mock('@/components/common/LanguageSwitcher', () => ({
 }));
 
 describe('Footer Component', () => {
+  const jaMessages = getMessages('ja');
+
   it('renders "特商法表記" instead of "特定商取引法に基づく表記"', () => {
     render(
       <NextIntlClientProvider locale="ja-JP" messages={jaMessages}>

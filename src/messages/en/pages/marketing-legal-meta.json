@@ -1,0 +1,56 @@
+{
+  "pages": {
+    "marketing": {
+      "termsLegal": {
+        "metaTitle": "Terms of Service",
+        "title": "Terms of Service",
+        "legalNotice": "This page currently contains the official Japanese legal text.",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "Contact"
+      },
+      "privacyLegal": {
+        "metaTitle": "Privacy Policy",
+        "title": "Privacy Policy",
+        "legalNotice": "This page currently contains the official Japanese legal text.",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "Contact"
+      },
+      "cookiePolicyLegal": {
+        "metaTitle": "Cookie Policy",
+        "title": "Cookie Policy",
+        "legalNotice": "This page currently contains the official Japanese legal text.",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "Contact"
+      },
+      "specifiedLegal": {
+        "metaTitle": "Legal Disclosure",
+        "title": "Legal Disclosure",
+        "legalNotice": "This page currently contains the official Japanese legal text.",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "Contact"
+      },
+      "aiPolicyLegal": {
+        "metaTitle": "AI Policy",
+        "title": "AI Policy",
+        "legalNotice": "This page currently contains the official Japanese legal text.",
+        "englishSummaryHeading": "English Summary",
+        "englishSummaryBody1": "This page currently publishes the official Japanese legal text.",
+        "englishSummaryBody2": "If you need an English explanation for practical use, please contact us.",
+        "englishSummaryBody3": "In case of discrepancy, the Japanese text takes precedence.",
+        "contactLabel": "Contact"
+      }
+    }
+  }
+}

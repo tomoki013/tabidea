@@ -1,0 +1,9 @@
+{
+  "components": {
+    "common": {
+      "startPlanningButton": {
+        "label": "プランを作成する"
+      }
+    }
+  }
+}

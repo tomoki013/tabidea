@@ -1,0 +1,24 @@
+{
+  "components": {
+    "contactForm": {
+      "contact": "Contact",
+      "contactJa": "お問い合わせ",
+      "sent": "送信完了",
+      "newInquiry": "新しいお問い合わせを送る",
+      "name": "お名前",
+      "namePlaceholder": "たびであ",
+      "email": "メールアドレス",
+      "subject": "件名",
+      "subjectPlaceholder": "機能追加のリクエストについて",
+      "message": "お問い合わせ内容",
+      "messagePlaceholder": "具体的な内容をご記入ください",
+      "agree": "に同意します",
+      "privacy": "プライバシーポリシー",
+      "terms": "利用規約",
+      "aiPolicy": "AIポリシー",
+      "sending": "送信中...",
+      "submit": "送信する",
+      "note": "※ 個人開発のため、返信にお時間をいただく場合がございます。"
+    }
+  }
+}

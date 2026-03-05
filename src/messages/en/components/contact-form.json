@@ -1,0 +1,24 @@
+{
+  "components": {
+    "contactForm": {
+      "contact": "Contact",
+      "contactJa": "Contact",
+      "sent": "Sent",
+      "newInquiry": "Send another inquiry",
+      "name": "Name",
+      "namePlaceholder": "Tabidea user",
+      "email": "Email",
+      "subject": "Subject",
+      "subjectPlaceholder": "About a feature request",
+      "message": "Message",
+      "messagePlaceholder": "Please enter details",
+      "agree": "I agree",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "aiPolicy": "AI Policy",
+      "sending": "Sending...",
+      "submit": "Send",
+      "note": "As this is an indie project, replies may take some time."
+    }
+  }
+}

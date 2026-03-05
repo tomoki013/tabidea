@@ -1,0 +1,9 @@
+{
+  "components": {
+    "common": {
+      "startPlanningButton": {
+        "label": "Create a plan"
+      }
+    }
+  }
+}

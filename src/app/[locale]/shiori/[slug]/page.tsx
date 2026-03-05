@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { getTranslations } from 'next-intl/server';
 
 import { localizePath } from '@/lib/i18n/locales';
 import { getRequestLanguage } from '@/lib/i18n/server';
@@ -47,31 +48,18 @@ interface PageProps {
   searchParams: Promise<{ t?: string }>;
 }
 
-function formatPhaseLabel(phase: 'before' | 'during' | 'after', language: 'ja' | 'en') {
-  if (language === 'ja') {
-    if (phase === 'before') return '行く前メモ';
-    if (phase === 'after') return '行った後メモ';
-    return '旅の最中メモ';
-  }
-
-  if (phase === 'before') return 'Before trip note';
-  if (phase === 'after') return 'After trip note';
-  return 'During trip note';
+function formatPhaseLabel(
+  phase: 'before' | 'during' | 'after',
+  t: (key: string) => string,
+) {
+  return t(`phase.${phase}`);
 }
 
 function formatVisibilityLabel(
   visibility: 'private' | 'unlisted' | 'public',
-  language: 'ja' | 'en'
+  t: (key: string) => string,
 ) {
-  if (language === 'ja') {
-    if (visibility === 'public') return '公開';
-    if (visibility === 'unlisted') return '限定公開';
-    return '非公開';
-  }
-
-  if (visibility === 'public') return 'Public';
-  if (visibility === 'unlisted') return 'Unlisted';
-  return 'Private';
+  return t(`visibility.${visibility}`);
 }
 
 async function loadShiori(slug: string, token?: string): Promise<ShioriPayload | null> {
@@ -86,26 +74,24 @@ async function loadShiori(slug: string, token?: string): Promise<ShioriPayload |
 
 export async function generateMetadata({ params, searchParams }: PageProps): Promise<Metadata> {
   const language = await getRequestLanguage();
+  const t = await getTranslations('pages.shiori.detail');
   const { slug } = await params;
-  const { t } = await searchParams;
-  const data = await loadShiori(slug, t);
+  const { t: token } = await searchParams;
+  const data = await loadShiori(slug, token);
 
   if (!data?.plan) {
     return {
-      title: language === 'ja' ? '旅のしおりが見つかりません' : 'Travel note not found',
+      title: t('metadataNotFoundTitle'),
     };
   }
 
   const title =
-    language === 'ja'
-      ? (data.plan.destination ? `${data.plan.destination}の旅のしおり` : '旅のしおり')
-      : (data.plan.destination ? `${data.plan.destination} Travel Note` : 'Travel Note');
-  const description =
-    language === 'ja'
-      ? `${data.plan.duration_days ?? ''}日間の旅程を公開中`
-      : `Published itinerary for ${data.plan.duration_days ?? '-'} day(s)`;
+    data.plan.destination
+      ? t('metadataTitleWithDestination', { destination: data.plan.destination })
+      : t('metadataTitleFallback');
+  const description = t('metadataDescription', { days: data.plan.duration_days ?? '-' });
   const baseUrl = (process.env.NEXT_PUBLIC_APP_URL || 'https://tabide.ai').replace(/\/$/, '');
-  const fallbackDestination = language === 'ja' ? '旅' : 'Trip';
+  const fallbackDestination = t('metadataFallbackDestination');
   const ogImageUrl = `${baseUrl}/api/og?destination=${encodeURIComponent(data.plan.destination ?? fallbackDestination)}&days=${data.plan.duration_days ?? ''}&lang=${language}`;
 
   return {
@@ -122,10 +108,11 @@ export async function generateMetadata({ params, searchParams }: PageProps): Pro
 
 export default async function ShioriPage({ params, searchParams }: PageProps) {
   const language = await getRequestLanguage();
+  const t = await getTranslations('pages.shiori.detail');
   const { slug } = await params;
-  const { t } = await searchParams;
+  const { t: token } = await searchParams;
   const user = await getUser();
-  const data = await loadShiori(slug, t);
+  const data = await loadShiori(slug, token);
 
   if (!data?.plan) notFound();
 
@@ -139,14 +126,16 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
         <header className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="space-y-2">
-              <p className="text-xs uppercase tracking-wide text-stone-500">Tabidea Travel Shiori</p>
+              <p className="text-xs uppercase tracking-wide text-stone-500">{t('headerBadge')}</p>
               <h1 className="text-2xl font-bold text-stone-800 md:text-3xl">
-                {data.plan.destination ?? (language === 'ja' ? '旅のしおり' : 'Travel Note')}
+                {data.plan.destination ?? t('headerDestinationFallback')}
               </h1>
               <p className="text-sm text-stone-600">
-                {language === 'ja'
-                  ? `${data.plan.duration_days ?? '-'}日間 / 記録 ${entriesCount}件 / ${formatVisibilityLabel(data.plan.visibility, language)}`
-                  : `${data.plan.duration_days ?? '-'} day(s) / ${entriesCount} entries / ${formatVisibilityLabel(data.plan.visibility, language)}`}
+                {t('headerSummary', {
+                  days: data.plan.duration_days ?? '-',
+                  entries: entriesCount,
+                  visibility: formatVisibilityLabel(data.plan.visibility, t),
+                })}
               </p>
             </div>
             <ShioriLikeButton
@@ -160,7 +149,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
             href={localizePath('/shiori', language)}
             className="mt-4 inline-block text-xs font-semibold text-primary hover:underline"
           >
-            {language === 'ja' ? 'みんなの旅のしおり一覧に戻る' : 'Back to community travel notes'}
+            {t('backToList')}
           </Link>
         </header>
 
@@ -168,14 +157,14 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
           <section key={day.id} className="rounded-2xl border border-stone-200 bg-white p-6 md:p-8">
             <div className="mb-6 flex items-baseline justify-between border-b border-dashed border-stone-200 pb-3">
               <h2 className="text-lg font-semibold text-stone-800">Day {day.day_number}</h2>
-              <p className="text-sm text-stone-500">{day.title ?? (language === 'ja' ? '旅の記録' : 'Trip record')}</p>
+              <p className="text-sm text-stone-500">{day.title ?? t('dayTitleFallback')}</p>
             </div>
 
             <div className="space-y-6">
               {day.items?.map((item) => (
                 <article key={item.id} className="relative rounded-xl border border-stone-100 bg-stone-50/50 p-4">
                   <div className="mb-2 text-xs font-semibold text-stone-500">
-                    {item.start_time ?? '--:--'} / {item.location ?? (language === 'ja' ? '場所未設定' : 'No location set')}
+                    {item.start_time ?? '--:--'} / {item.location ?? t('locationFallback')}
                   </div>
                   <h3 className="text-base font-bold text-stone-800">{item.title}</h3>
                   {item.description && (
@@ -186,7 +175,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
                     <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4">
                       <div className="mb-2 flex items-center gap-2">
                         <span className="rounded-full bg-white px-2 py-1 text-xs font-semibold text-amber-700">
-                          {formatPhaseLabel(item.journal.phase, language)}
+                          {formatPhaseLabel(item.journal.phase, t)}
                         </span>
                         <span className="text-xs text-stone-500">
                           {new Date(item.journal.updated_at).toLocaleDateString(
@@ -199,7 +188,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
                       </p>
                       {item.journal.place_name && (
                         <p className="mt-3 text-xs text-stone-600">
-                          {language === 'ja' ? '訪問場所' : 'Visited place'}: {item.journal.place_name}
+                          {t('visitedPlaceLabel')}: {item.journal.place_name}
                         </p>
                       )}
                       {item.journal.photo_urls.length > 0 && (
@@ -212,7 +201,7 @@ export default async function ShioriPage({ params, searchParams }: PageProps) {
                               rel="noopener noreferrer"
                               className="rounded-full border border-stone-200 bg-white px-2 py-1 text-xs text-stone-600 hover:bg-stone-100"
                             >
-                              {language === 'ja' ? '写真リンク' : 'Photo link'}
+                              {t('photoLink')}
                             </a>
                           ))}
                         </div>

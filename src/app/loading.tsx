@@ -1,17 +1,12 @@
 "use client";
 
 import React from 'react';
-import { usePathname } from 'next/navigation';
-import { resolveLanguageFromPathname } from '@/lib/i18n/navigation';
+import { useTranslations } from "next-intl";
 
 export default function Loading() {
-  const pathname = usePathname();
-  const language = resolveLanguageFromPathname(pathname);
-  const loadingLabel = language === "ja" ? "Loading..." : "Loading...";
-  const note =
-    language === "ja"
-      ? "旅の準備をしています..."
-      : "Preparing your trip...";
+  const t = useTranslations("pages.rootLoading");
+  const loadingLabel = t("loadingLabel");
+  const note = t("note");
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-background">

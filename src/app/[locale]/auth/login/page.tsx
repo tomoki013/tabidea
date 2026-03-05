@@ -1,18 +1,13 @@
 import type { Metadata } from 'next';
+import { getTranslations } from "next-intl/server";
 import LoginClient from './LoginClient';
-import { getRequestLanguage } from '@/lib/i18n/server';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: 'ログイン',
-        description: 'Tabideaにログインして、保存したプランにアクセスしたり、新しい旅を作成しましょう。',
-      }
-    : {
-        title: 'Log in',
-        description: 'Log in to Tabidea to access saved plans and create your next trip.',
-      };
+  const t = await getTranslations("pages.auth.login.meta");
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }
 
 export default function LoginPage() {

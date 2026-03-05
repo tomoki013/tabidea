@@ -1,0 +1,25 @@
+{
+  "pages": {
+    "blog": {
+      "guide": {
+        "meta": {
+          "title": "Tabidea Blog ガイド",
+          "description": "Tabideaで旅行記事を公開するための使い方と、旅のしおり連携の活用方法を紹介します。"
+        },
+        "badge": "Tabidea blog",
+        "title": "旅の知見を、記事として残す。",
+        "description": "Tabideaのブログ機能では、旅程の背景や体験談、現地Tipsを読み物として公開できます。公開した旅のしおりを記事内に埋め込めるため、読み手はそのまま行程も確認できます。",
+        "featuresTitle": "できること",
+        "featuresList1": "ブログ記事の下書き・公開管理",
+        "featuresList2": "プロフィール（@username）付きの公開URL生成",
+        "featuresList3": "旅のしおり埋め込みによる、実用的な旅行記事の作成",
+        "gettingStartedTitle": "はじめ方",
+        "gettingStartedList1": "Tabideaにログイン",
+        "gettingStartedList2": "Blog Studioで新規記事を作成",
+        "gettingStartedList3": "必要に応じて旅のしおりURLを埋め込み、公開",
+        "openStudio": "Blog Studioを開く",
+        "openShiori": "旅のしおり機能を見る"
+      }
+    }
+  }
+}

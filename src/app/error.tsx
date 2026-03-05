@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import { resolveLanguageFromPathname } from "@/lib/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 /**
  * グローバルエラーバウンダリ
@@ -16,24 +15,7 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
-  const pathname = usePathname();
-  const language = resolveLanguageFromPathname(pathname);
-  const ui =
-    language === "ja"
-      ? {
-          title: "エラーが発生しました",
-          description:
-            "予期しないエラーが発生しました。ページを再読み込みするか、しばらくしてからもう一度お試しください。",
-          reload: "ページを再読み込み",
-          retry: "もう一度試す",
-        }
-      : {
-          title: "Something went wrong",
-          description:
-            "An unexpected error occurred. Please reload the page or try again in a moment.",
-          reload: "Reload page",
-          retry: "Try again",
-        };
+  const t = useTranslations("pages.rootError");
 
   useEffect(() => {
     console.error("[global-error]", error);
@@ -66,23 +48,23 @@ export default function Error({
       <div className="max-w-md w-full text-center space-y-6">
         <div className="text-6xl">😢</div>
         <h2 className="text-2xl font-serif font-bold text-stone-800">
-          {ui.title}
+          {t("title")}
         </h2>
         <p className="text-stone-600 text-sm leading-relaxed">
-          {ui.description}
+          {t("description")}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <button
             onClick={() => window.location.reload()}
             className="px-6 py-3 bg-primary text-white rounded-full font-bold hover:bg-primary/90 transition-colors shadow-md"
           >
-            {ui.reload}
+            {t("reload")}
           </button>
           <button
             onClick={reset}
             className="px-6 py-3 bg-white text-stone-700 rounded-full font-bold border border-stone-200 hover:bg-stone-50 transition-colors shadow-sm"
           >
-            {ui.retry}
+            {t("retry")}
           </button>
         </div>
       </div>

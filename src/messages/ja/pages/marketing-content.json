@@ -1,0 +1,39 @@
+{
+  "pages": {
+    "marketing": {
+      "faq": {
+        "meta": {
+          "title": "よくある質問",
+          "description": "Tabideaの使い方、プラン作成、料金、AIの安全性などに関するよくある質問と回答をまとめています。"
+        },
+        "badge": "SUPPORT CENTER",
+        "title": "よくある質問",
+        "leadLine1": "Tabideaのご利用について、",
+        "leadLine2": "疑問や不安な点はここで解決しましょう。",
+        "leadLine3": "旅行の準備と同じくらい、スムーズな体験を。",
+        "contactTitle": "解決しませんでしたか？",
+        "contactLine1": "その他、ご不明な点やご要望がございましたら、",
+        "contactLine2": "お問い合わせフォームよりお気軽にご連絡ください。",
+        "contactButton": "お問い合わせへ"
+      },
+      "contact": {
+        "meta": {
+          "title": "お問い合わせ",
+          "description": "Tabideaに関するお問い合わせ、機能リクエスト、不具合報告はこちらから。"
+        },
+        "title": "Contact",
+        "subtitle": "お問い合わせ・ご意見・ご感想",
+        "policyNotice": "お問い合わせ前に、以下のポリシーもご確認ください。",
+        "terms": "利用規約",
+        "privacy": "プライバシーポリシー",
+        "aiPolicy": "AIポリシー",
+        "cookiePolicy": "クッキーポリシー",
+        "otherMethodsTitle": "その他のご連絡方法",
+        "githubTitle": "不具合・要望 (GitHub)",
+        "githubDescription": "GitHub Issuesもご利用いただけます。",
+        "xTitle": "その他のお問い合わせ",
+        "xDescription": "サービスへのご感想、取材のご依頼、その他一般的なお問い合わせは、X(Twitter) のDMにてお気軽にご連絡ください。"
+      }
+    }
+  }
+}

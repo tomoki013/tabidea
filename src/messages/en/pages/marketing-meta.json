@@ -1,0 +1,36 @@
+{
+  "pages": {
+    "marketing": {
+      "about": {
+        "meta": {
+          "title": "About Tabidea - Brand Story",
+          "description": "Tabidea is your travel partner that turns your inner \"I want to go\" into unforgettable experiences."
+        }
+      },
+      "features": {
+        "meta": {
+          "title": "Features",
+          "description": "Explore Tabidea features and learn how AI helps you build travel plans step by step."
+        }
+      },
+      "usage": {
+        "meta": {
+          "title": "How to Use",
+          "description": "Learn how to use Tabidea and build travel plans with AI step by step."
+        }
+      },
+      "pricing": {
+        "meta": {
+          "title": "Pricing",
+          "description": "Compare Tabidea plans, including Free, Pro/Premium, and ticket packs with feature limits."
+        }
+      },
+      "pricingSuccess": {
+        "meta": {
+          "title": "Purchase Complete | Tabidea",
+          "description": "Thank you for your purchase."
+        }
+      }
+    }
+  }
+}

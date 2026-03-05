@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 import { SyncSelectionModal } from '@/components/ui/SyncSelectionModal';
 import {
   DEFAULT_LANGUAGE,
@@ -19,8 +20,8 @@ import { createClient } from '@/lib/supabase/client';
 function SyncPlansContent() {
   const router = useRouter();
   const pathname = usePathname();
+  const t = useTranslations('pages.syncPlans');
   const language = getLanguageFromPathname(pathname) ?? DEFAULT_LANGUAGE;
-  const searchParams = useSearchParams();
   const [localPlans, setLocalPlans] = useState<
     Array<{ id: string; destination: string; createdAt: string }>
   >([]);
@@ -28,26 +29,6 @@ function SyncPlansContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSyncing, setIsSyncing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  const text = language === 'ja'
-    ? {
-        loading: '読み込み中...',
-        syncPreparationError: '同期の準備中にエラーが発生しました',
-        syncError: '同期中にエラーが発生しました',
-        errorTitle: 'エラーが発生しました',
-        toDashboard: 'ダッシュボードへ',
-        syncing: '同期中...',
-        unsetDestination: '未設定',
-      }
-    : {
-        loading: 'Loading...',
-        syncPreparationError: 'An error occurred while preparing sync.',
-        syncError: 'An error occurred during sync.',
-        errorTitle: 'Something went wrong',
-        toDashboard: 'Go to dashboard',
-        syncing: 'Syncing...',
-        unsetDestination: 'Unspecified',
-      };
 
   useEffect(() => {
     async function init() {
@@ -86,7 +67,7 @@ function SyncPlansContent() {
         setLocalPlans(
           plans.map((p) => ({
             id: p.id,
-            destination: p.itinerary.destination || text.unsetDestination,
+            destination: p.itinerary.destination || t('unsetDestination'),
             createdAt: p.createdAt,
           }))
         );
@@ -94,12 +75,12 @@ function SyncPlansContent() {
         setIsLoading(false);
       } catch (err) {
         console.error('Failed to initialize sync page:', err);
-        setError(text.syncPreparationError);
+        setError(t('syncPreparationError'));
         setIsLoading(false);
       }
     }
     init();
-  }, [language, router, text.syncPreparationError, text.unsetDestination]);
+  }, [language, router, t]);
 
   const handleConfirm = async (
     selectedIds: string[],
@@ -127,13 +108,13 @@ function SyncPlansContent() {
           setError(
             result.errors.length > 0
               ? result.errors[0]
-              : text.syncError
+              : t('syncError')
           );
           setIsSyncing(false);
         }
       } catch (err) {
         console.error('Sync error:', err);
-        setError(text.syncError);
+        setError(t('syncError'));
         setIsSyncing(false);
       }
   };
@@ -143,7 +124,7 @@ function SyncPlansContent() {
       <div className="min-h-screen flex items-center justify-center bg-stone-50">
         <div className="flex flex-col items-center gap-4">
           <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-          <p className="text-stone-600">{text.loading}</p>
+          <p className="text-stone-600">{t('loading')}</p>
         </div>
       </div>
     );
@@ -156,14 +137,14 @@ function SyncPlansContent() {
           <div className="text-center">
             <div className="text-5xl mb-4">😢</div>
             <h2 className="text-xl font-bold text-stone-800 mb-2">
-              {text.errorTitle}
+              {t('errorTitle')}
             </h2>
             <p className="text-stone-600 mb-4">{error}</p>
             <button
               onClick={() => router.push(localizePath('/dashboard', language))}
               className="px-6 py-2.5 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-colors"
             >
-              {text.toDashboard}
+              {t('toDashboard')}
             </button>
           </div>
         </div>
@@ -185,7 +166,7 @@ function SyncPlansContent() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
           <div className="bg-white rounded-2xl shadow-2xl p-8 flex flex-col items-center gap-4">
             <div className="w-12 h-12 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
-            <p className="text-stone-800 font-medium">{text.syncing}</p>
+            <p className="text-stone-800 font-medium">{t('syncing')}</p>
           </div>
         </div>
       )}

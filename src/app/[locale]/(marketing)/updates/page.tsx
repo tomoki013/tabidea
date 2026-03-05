@@ -1,20 +1,15 @@
 import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { FaFlag, FaCheck, FaTools } from "react-icons/fa";
 import { localizePath } from "@/lib/i18n/locales";
 import { getRequestLanguage } from "@/lib/i18n/server";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const language = await getRequestLanguage();
-  return language === "ja"
-    ? {
-        title: "更新情報・ロードマップ",
-        description:
-          "Tabideaの更新情報と今後の開発ロードマップを掲載しています。",
-      }
-    : {
-        title: "Updates & Roadmap",
-        description: "Product updates and upcoming roadmap for Tabidea.",
-      };
+  const t = await getTranslations("pages.marketing.updatesPage");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
 }
 
 type UpdateType = "release" | "pre_release" | "patch" | "minor" | "major";
@@ -815,17 +810,17 @@ const historyItems = roadmapData
 
 export default async function UpdatesPage() {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.marketing.updatesPage");
+  const isEnglish = language === "en";
   return (
     <div className="min-h-screen pt-32 pb-20 px-8 sm:px-20 font-sans">
       <main className="max-w-4xl mx-auto">
         <header className="mb-12 text-center">
           <h1 className="text-3xl sm:text-4xl font-serif font-bold text-[#2c2c2c] mb-4">
-            Updates & Roadmap
+            {t("title")}
           </h1>
           <p className="text-stone-600 font-hand text-lg">
-            {language === "ja"
-              ? "Tabideaのこれまでの歩みと、これからの計画。"
-              : "A look back at Tabidea's progress and what comes next."}
+            {t("lead")}
           </p>
         </header>
 
@@ -834,100 +829,119 @@ export default async function UpdatesPage() {
           <section>
             <h2 className="text-xl font-bold text-[#e67e22] mb-6 flex items-center gap-2 border-b-2 border-[#e67e22]/20 pb-2">
               <FaTools />
-              <span>{language === "ja" ? "開発ロードマップ" : "Roadmap"}</span>
+              <span>{t("roadmapTitle")}</span>
             </h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {sortedRoadmap
-                .filter((i) => i.status !== "done")
-                .map((item, index) => (
-                  <div
-                    key={index}
-                    className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 relative h-full flex flex-col"
-                  >
-                    {item.status === "developing" && (
-                      <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
-                        {language === "ja" ? "開発中" : "In progress"}
-                      </span>
-                    )}
-                    <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
-                      {item.title}
-                    </h3>
-                    <p className="text-stone-600 leading-relaxed text-sm flex-grow">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
-            </div>
+            {isEnglish ? (
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-100">
+                <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                  {t("roadmapUnavailableTitle")}
+                </h3>
+                <p className="text-stone-600 leading-relaxed text-sm">
+                  {t("roadmapUnavailableBody")}
+                </p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {sortedRoadmap
+                  .filter((i) => i.status !== "done")
+                  .map((item, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 relative h-full flex flex-col"
+                    >
+                      {item.status === "developing" && (
+                        <span className="absolute -top-3 right-4 bg-blue-100 text-blue-600 text-xs px-2 py-1 rounded-full font-bold">
+                          {t("inProgress")}
+                        </span>
+                      )}
+                      <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                        {item.title}
+                      </h3>
+                      <p className="text-stone-600 leading-relaxed text-sm flex-grow">
+                        {item.description}
+                      </p>
+                    </div>
+                  ))}
+              </div>
+            )}
           </section>
 
           {/* Section: Update History */}
           <section>
             <h2 className="text-xl font-bold text-[#2c2c2c] mb-6 flex items-center gap-2 border-b-2 border-stone-200 pb-2">
               <FaCheck className="text-green-600" />
-              <span>{language === "ja" ? "更新履歴" : "History"}</span>
+              <span>{t("historyTitle")}</span>
             </h2>
 
-            {/* 2-column Timeline Layout */}
-            <div className="md:columns-2 gap-12 mt-8 space-y-0">
-              {historyItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="relative pl-6 border-l-2 border-stone-200 pb-10 break-inside-avoid"
-                >
-                  {/* Dot */}
-                  <div className="absolute -left-[7px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
+            {isEnglish ? (
+              <div className="bg-white p-6 rounded-lg shadow-sm border border-stone-100 mt-8">
+                <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                  {t("historyUnavailableTitle")}
+                </h3>
+                <p className="text-stone-600 leading-relaxed text-sm">
+                  {t("historyUnavailableBody")}
+                </p>
+              </div>
+            ) : (
+              <div className="md:columns-2 gap-12 mt-8 space-y-0">
+                {historyItems.map((item, index) => (
+                  <div
+                    key={index}
+                    className="relative pl-6 border-l-2 border-stone-200 pb-10 break-inside-avoid"
+                  >
+                    <div className="absolute -left-[7px] top-0 w-4 h-4 rounded-full border-2 border-green-500 bg-white"></div>
 
-                  {/* Content */}
-                  <div>
-                    <span className="text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap">
-                      {item.date}
-                      {item.version && (
-                        <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
-                          v{item.version}
-                        </span>
-                      )}
-                      {item.updateType && (
-                        <span
-                          className={`px-2 py-0.5 rounded text-xs border ${
-                            item.updateType === "release"
-                              ? "bg-orange-50 text-red-600 border-orange-200"
+                    <div>
+                      <span className="text-sm font-bold text-stone-400 block mb-1 font-mono flex items-center gap-2 flex-wrap">
+                        {item.date}
+                        {item.version && (
+                          <span className="bg-stone-100 text-stone-600 px-2 py-0.5 rounded text-xs">
+                            v{item.version}
+                          </span>
+                        )}
+                        {item.updateType && (
+                          <span
+                            className={`px-2 py-0.5 rounded text-xs border ${
+                              item.updateType === "release"
+                                ? "bg-orange-50 text-red-600 border-orange-200"
+                                : item.updateType === "pre_release"
+                                  ? "bg-blue-50 text-blue-600 border-blue-200"
+                                  : item.updateType === "major"
+                                    ? "bg-red-50 text-orange-600 border-red-200"
+                                    : item.updateType === "minor"
+                                      ? "bg-green-50 text-green-600 border-green-200"
+                                      : "bg-stone-50 text-stone-500 border-stone-200"
+                            }`}
+                          >
+                            {item.updateType === "release"
+                              ? t("updateTypeLabels.release")
                               : item.updateType === "pre_release"
-                                ? "bg-blue-50 text-blue-600 border-blue-200"
+                                ? t("updateTypeLabels.pre_release")
                                 : item.updateType === "major"
-                                  ? "bg-red-50 text-orange-600 border-red-200"
+                                  ? t("updateTypeLabels.major")
                                   : item.updateType === "minor"
-                                    ? "bg-green-50 text-green-600 border-green-200"
-                                    : "bg-stone-50 text-stone-500 border-stone-200"
-                          }`}
-                        >
-                          {item.updateType === "release"
-                            ? "Release"
-                            : item.updateType === "pre_release"
-                              ? "Pre-release"
-                              : item.updateType === "major"
-                                ? "Major"
-                                : item.updateType === "minor"
-                                  ? "Minor"
-                                  : "Patch"}
-                        </span>
-                      )}
-                    </span>
-                    <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
-                      {item.title}
-                    </h3>
-                    <p className="text-stone-600 leading-relaxed text-sm">
-                      {item.description}
-                    </p>
+                                    ? t("updateTypeLabels.minor")
+                                    : t("updateTypeLabels.patch")}
+                          </span>
+                        )}
+                      </span>
+                      <h3 className="text-lg font-bold text-[#2c2c2c] mb-2 font-serif">
+                        {item.title}
+                      </h3>
+                      <p className="text-stone-600 leading-relaxed text-sm">
+                        {item.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </section>
 
           <div className="mt-16 bg-stone-50 rounded-xl border border-stone-200 p-8">
             <h3 className="text-center font-bold text-lg text-[#2c2c2c] mb-6 font-serif">
-              {language === "ja" ? "ご意見・お問い合わせ" : "Feedback & Contact"}
+              {t("feedbackTitle")}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <a
@@ -935,12 +949,10 @@ export default async function UpdatesPage() {
                 className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border border-stone-200 hover:border-[#e67e22] hover:shadow-sm transition-all group"
               >
                 <span className="font-bold text-[#2c2c2c] group-hover:text-[#e67e22] mb-2">
-                  {language === "ja" ? "お問い合わせ" : "Contact"}
+                  {t("contactTitle")}
                 </span>
                 <span className="text-xs text-stone-500 text-center">
-                  {language === "ja"
-                    ? "一般的なご質問やご感想はこちら"
-                    : "General questions and feedback"}
+                  {t("contactDescription")}
                 </span>
               </a>
               <a
@@ -950,12 +962,10 @@ export default async function UpdatesPage() {
                 className="flex flex-col items-center justify-center p-6 bg-white rounded-lg border border-stone-200 hover:border-[#e67e22] hover:shadow-sm transition-all group"
               >
                 <span className="flex items-center gap-2 font-bold text-[#2c2c2c] group-hover:text-[#e67e22] mb-2">
-                  <FaFlag size={14} /> {language === "ja" ? "不具合報告・要望" : "Bug Reports & Requests"}
+                  <FaFlag size={14} /> {t("bugTitle")}
                 </span>
                 <span className="text-xs text-stone-500 text-center">
-                  {language === "ja"
-                    ? "GitHub Issueにて受け付けています"
-                    : "Please submit via GitHub Issues"}
+                  {t("bugDescription")}
                 </span>
               </a>
             </div>

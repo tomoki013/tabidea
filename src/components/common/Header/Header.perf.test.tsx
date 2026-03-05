@@ -6,7 +6,7 @@ import React from "react";
 import { PlanModalProvider } from "@/context/PlanModalContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { UserPlansProvider } from "@/context/UserPlansContext";
-import enMessages from "@/messages/en.json";
+import { getMessages } from "@/lib/i18n/messages";
 
 // Mock next/navigation
 vi.mock("next/navigation", () => ({
@@ -62,6 +62,7 @@ vi.mock("@/lib/local-storage/plans", () => ({
 
 describe("Header Performance Benchmark", () => {
   let scrollYSpy: ReturnType<typeof vi.spyOn>;
+  const enMessages = getMessages("en");
 
   beforeEach(() => {
     // Reset scroll position

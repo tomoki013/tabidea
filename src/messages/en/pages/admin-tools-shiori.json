@@ -1,0 +1,171 @@
+{
+  "pages": {
+    "admin": {
+      "metrics": {
+        "title": "AI Generation Quality Dashboard",
+        "subtitle": "KPI summary for the last 30 days",
+        "noData": "No metrics data yet",
+        "noDataHint": "KPIs will appear here once plans are generated",
+        "naValue": "N/A",
+        "replanKpiTitle": "Replan KPI",
+        "cards": {
+          "totalGenerations": {
+            "label": "Total generations",
+            "unit": "items"
+          },
+          "avgTotalTime": {
+            "label": "Avg generation time",
+            "unit": "sec"
+          },
+          "validationPassRate": {
+            "label": "Validation pass rate"
+          },
+          "citationRate": {
+            "label": "Citation rate"
+          },
+          "avgUserRating": {
+            "label": "Average user rating"
+          },
+          "reportedIssues": {
+            "label": "Reported issues",
+            "unit": "items"
+          }
+        },
+        "kpiLabels": {
+          "plan_to_action_rate": "Plan-to-action rate",
+          "replan_rate": "Replan usage rate",
+          "rescue_success_rate": "Replan success rate",
+          "reusage_intent_rate": "Reuse intent rate",
+          "companion_share_rate": "Companion share rate"
+        }
+      }
+    },
+    "syncPlans": {
+      "loading": "Loading...",
+      "syncPreparationError": "An error occurred while preparing sync.",
+      "syncError": "An error occurred during sync.",
+      "errorTitle": "Something went wrong",
+      "toDashboard": "Go to dashboard",
+      "syncing": "Syncing...",
+      "unsetDestination": "Unspecified"
+    },
+    "test": {
+      "apiResponse": {
+        "invalidPassword": "Invalid password",
+        "clientError": "Client-side error occurred",
+        "noContent": "No content",
+        "truncated": "\n\n... (Truncated for display to prevent browser lag)",
+        "accessTitle": "API Debug Access",
+        "password": "Password",
+        "passwordPlaceholder": "Enter password",
+        "access": "Access",
+        "mainTitle": "API Raw Response Debugger",
+        "authenticated": "Authenticated as Admin",
+        "apiSource": "API Source",
+        "feedType": "Feed Type",
+        "destination": "Destination",
+        "loadingDestinations": "Loading destinations...",
+        "fetching": "Fetching...",
+        "fetchRawData": "Fetch Raw Data",
+        "requestDetails": "Request Details",
+        "responseStatus": "Response Status",
+        "rawResponseBody": "Raw Response Body",
+        "truncatedDisplay": "Truncated display",
+        "fullDisplay": "Full display",
+        "responseHeaders": "Response Headers",
+        "noHeaders": "No headers available",
+        "targetUrl": "Target URL",
+        "method": "Method",
+        "countryCode": "Country Code",
+        "targetDestination": "Target Destination",
+        "success": "Success",
+        "httpStatus": "HTTP Status",
+        "size": "Size",
+        "message": "Message",
+        "sourceOptions": {
+          "mofa": "Ministry of Foreign Affairs (MOFA)",
+          "restcountries": "REST Countries API",
+          "weather": "Weather API (Not Implemented)",
+          "exchange": "Exchange API (Not Implemented)"
+        },
+        "feedOptions": {
+          "all": "All (Risk + Detail + History)",
+          "light": "Light (Risk + Titles only)",
+          "normal": "Normal (Risk + Detail)"
+        }
+      }
+    },
+    "shiori": {
+      "detail": {
+        "metadataNotFoundTitle": "Travel note not found",
+        "metadataTitleWithDestination": "{destination} Travel Note",
+        "metadataTitleFallback": "Travel Note",
+        "metadataDescription": "Published itinerary for {days} day(s)",
+        "metadataFallbackDestination": "Trip",
+        "headerBadge": "Tabidea Travel Shiori",
+        "headerDestinationFallback": "Travel Note",
+        "headerSummary": "{days} day(s) / {entries} entries / {visibility}",
+        "backToList": "Back to community travel notes",
+        "dayTitleFallback": "Trip record",
+        "locationFallback": "No location set",
+        "visitedPlaceLabel": "Visited place",
+        "photoLink": "Photo link",
+        "phase": {
+          "before": "Before trip note",
+          "during": "During trip note",
+          "after": "After trip note"
+        },
+        "visibility": {
+          "public": "Public",
+          "unlisted": "Unlisted",
+          "private": "Private"
+        }
+      }
+    },
+    "planner": {
+      "sampleDetail": {
+        "meta": {
+          "notFoundTitle": "Plan Not Found - Tabidea",
+          "title": "[AI Generated] {title} | Tabidea - AI Travel Planner",
+          "shortTitle": "[AI Generated] {title}",
+          "imageAlt": "Travel plan for {destinations}",
+          "enhancedDescription": "{description} An AI-generated {dates} itinerary by Tabidea for {companions}, designed around {destinations} with themes like {themes}.",
+          "keywordSeeds": [
+            "AI travel plan",
+            "itinerary",
+            "trip planning",
+            "Tabidea"
+          ]
+        },
+        "badge": "Sample Plan"
+      }
+    },
+    "marketing": {
+      "updatesPage": {
+        "metaTitle": "Updates & Roadmap",
+        "metaDescription": "Product updates and upcoming roadmap for Tabidea.",
+        "title": "Updates & Roadmap",
+        "lead": "A look back at Tabidea's progress and what comes next.",
+        "roadmapTitle": "Roadmap",
+        "inProgress": "In progress",
+        "historyTitle": "History",
+        "roadmapUnavailableTitle": "English details are coming soon",
+        "roadmapUnavailableBody": "Roadmap details are currently maintained on the Japanese page and will be expanded in English.",
+        "historyUnavailableTitle": "English history details are coming soon",
+        "historyUnavailableBody": "Detailed update history is currently available on the Japanese page.",
+        "feedbackTitle": "Feedback & Contact",
+        "contactTitle": "Contact",
+        "contactDescription": "General questions and feedback",
+        "bugTitle": "Bug Reports & Requests",
+        "bugDescription": "Please submit via GitHub Issues",
+        "updateTypeLabels": {
+          "release": "Release",
+          "pre_release": "Pre-release",
+          "major": "Major",
+          "minor": "Minor",
+          "patch": "Patch"
+        }
+      }
+    }
+  }
+}

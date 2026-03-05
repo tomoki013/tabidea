@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { getTranslations } from "next-intl/server";
 import type React from 'react';
 
 import { localizePath } from '@/lib/i18n/locales';
@@ -59,15 +60,16 @@ function renderContentWithEmbeds(content: string, language: 'ja' | 'en') {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const language = await getRequestLanguage();
+  const t = await getTranslations("pages.blog.publicPost");
   const { handle, slug } = await params;
   const post = await getPublishedPost(handle, slug);
   if (!post) {
-    return { title: language === 'ja' ? '記事が見つかりません' : 'Post not found' };
+    return { title: t("notFoundTitle") };
   }
 
   const title = `${post.title} | Tabidea Blog`;
   const description =
-    post.excerpt || (language === 'ja' ? 'Tabidea 旅行ブログ記事' : 'Tabidea travel blog post');
+    post.excerpt || t("defaultDescription");
   const image = post.cover_image_path
     ? `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/blog-images/${post.cover_image_path}`
     : '/favicon.ico';
