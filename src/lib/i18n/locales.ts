@@ -1,24 +1,21 @@
+import {
+  DEFAULT_REGION_BY_LANGUAGE,
+  SUPPORTED_REGIONS,
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isRegionCode,
+  type RegionCode,
+} from "@/lib/i18n/regions";
+
 export const SUPPORTED_LANGUAGES = ["ja", "en"] as const;
-export const SUPPORTED_REGIONS = ["JP", "US"] as const;
 export const SUPPORTED_REGIONAL_LOCALES = ["ja-JP", "en-US"] as const;
 
 export type LanguageCode = (typeof SUPPORTED_LANGUAGES)[number];
-export type RegionCode = (typeof SUPPORTED_REGIONS)[number];
 export type RegionalLocale = (typeof SUPPORTED_REGIONAL_LOCALES)[number];
 
 export const DEFAULT_LANGUAGE: LanguageCode = "ja";
-export const DEFAULT_REGION: RegionCode = "JP";
+export const DEFAULT_REGION: RegionCode = DEFAULT_REGION_BY_LANGUAGE[DEFAULT_LANGUAGE];
 export const DEFAULT_REGIONAL_LOCALE: RegionalLocale = "ja-JP";
-
-const DEFAULT_REGION_BY_LANGUAGE: Record<LanguageCode, RegionCode> = {
-  en: "US",
-  ja: "JP",
-};
-
-const DEFAULT_HOME_BASE_CITY_BY_REGION: Record<RegionCode, string> = {
-  JP: "東京",
-  US: "New York",
-};
 
 const REGIONAL_LOCALE_BY_LANGUAGE_AND_REGION: Record<
   LanguageCode,
@@ -41,20 +38,8 @@ export function isLanguageCode(value: string): value is LanguageCode {
   return SUPPORTED_LANGUAGES.includes(value as LanguageCode);
 }
 
-export function isRegionCode(value: string): value is RegionCode {
-  return SUPPORTED_REGIONS.includes(value as RegionCode);
-}
-
 export function isRegionalLocale(value: string): value is RegionalLocale {
   return SUPPORTED_REGIONAL_LOCALES.includes(value as RegionalLocale);
-}
-
-export function getDefaultRegionForLanguage(language: LanguageCode): RegionCode {
-  return DEFAULT_REGION_BY_LANGUAGE[language];
-}
-
-export function getDefaultHomeBaseCityForRegion(region: RegionCode): string {
-  return DEFAULT_HOME_BASE_CITY_BY_REGION[region];
 }
 
 export function resolveRegionalLocale(
@@ -113,3 +98,11 @@ export function replacePathLanguage(
 ): string {
   return localizePath(pathname, targetLanguage);
 }
+
+export {
+  SUPPORTED_REGIONS,
+  getDefaultHomeBaseCityForRegion,
+  getDefaultRegionForLanguage,
+  isRegionCode,
+  type RegionCode,
+};

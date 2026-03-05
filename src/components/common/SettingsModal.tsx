@@ -19,6 +19,7 @@ import {
   type LanguageCode,
   type RegionCode,
 } from "@/lib/i18n/locales";
+import { getRegionOptions } from "@/lib/i18n/regions";
 import {
   localizeHref,
   resolveLanguageFromPathname,
@@ -70,11 +71,6 @@ const LANGUAGE_OPTIONS: Array<{ value: LanguageCode; label: string }> = [
   { value: "en", label: "English" },
 ];
 
-const REGION_OPTIONS: Array<{ value: RegionCode; label: string }> = [
-  { value: "JP", label: "日本 (JP)" },
-  { value: "US", label: "United States (US)" },
-];
-
 export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const router = useRouter();
   const pathname = usePathname();
@@ -89,8 +85,12 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const [customInstructions, setCustomInstructions] = useState("");
   const [travelStyle, setTravelStyle] = useState("");
   const [preferredLanguage, setPreferredLanguage] = useState<LanguageCode>("en");
-  const [preferredRegion, setPreferredRegion] = useState<RegionCode>("US");
-  const [homeBaseCity, setHomeBaseCity] = useState("New York");
+  const [preferredRegion, setPreferredRegion] = useState<RegionCode>(
+    getDefaultRegionForLanguage("en")
+  );
+  const [homeBaseCity, setHomeBaseCity] = useState(
+    getDefaultHomeBaseCityForRegion(getDefaultRegionForLanguage("en"), "en")
+  );
   const [isLoadingSettings, setIsLoadingSettings] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [settingsError, setSettingsError] = useState<string | null>(null);
@@ -188,11 +188,14 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
       if (result.success && result.settings) {
         setCustomInstructions(result.settings.customInstructions || "");
         setTravelStyle(result.settings.travelStyle || "");
-        setPreferredLanguage(result.settings.preferredLanguage || "en");
-        const resolvedRegion = result.settings.preferredRegion || "US";
+        const resolvedLanguage = result.settings.preferredLanguage || "en";
+        setPreferredLanguage(resolvedLanguage);
+        const resolvedRegion =
+          result.settings.preferredRegion || getDefaultRegionForLanguage(resolvedLanguage);
         setPreferredRegion(resolvedRegion);
         setHomeBaseCity(
-          result.settings.homeBaseCity || getDefaultHomeBaseCityForRegion(resolvedRegion)
+          result.settings.homeBaseCity ||
+            getDefaultHomeBaseCityForRegion(resolvedRegion, resolvedLanguage)
         );
       }
     } catch (e) {
@@ -277,6 +280,7 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const canUseTravelStyle = billingInfo ? canAccess(billingInfo.userType, "travel_style") : false;
   const selectedTheme: ThemeOption =
     theme === "light" || theme === "dark" || theme === "system" ? theme : "system";
+  const regionOptions = getRegionOptions(preferredLanguage);
 
   return createPortal(
     <div
@@ -439,7 +443,9 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                             const nextRegion = getDefaultRegionForLanguage(nextLanguage);
                             setPreferredLanguage(nextLanguage);
                             setPreferredRegion(nextRegion);
-                            setHomeBaseCity(getDefaultHomeBaseCityForRegion(nextRegion));
+                            setHomeBaseCity(
+                              getDefaultHomeBaseCityForRegion(nextRegion, nextLanguage)
+                            );
                           }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
@@ -460,11 +466,13 @@ export default function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                           onChange={(e) => {
                             const nextRegion = e.target.value as RegionCode;
                             setPreferredRegion(nextRegion);
-                            setHomeBaseCity(getDefaultHomeBaseCityForRegion(nextRegion));
+                            setHomeBaseCity(
+                              getDefaultHomeBaseCityForRegion(nextRegion, preferredLanguage)
+                            );
                           }}
                           className="px-3 py-2 rounded-sm border border-stone-300 bg-white text-stone-700 font-hand focus:outline-none focus:border-primary"
                         >
-                          {REGION_OPTIONS.map((option) => (
+                          {regionOptions.map((option) => (
                             <option key={option.value} value={option.value}>
                               {option.label}
                             </option>
