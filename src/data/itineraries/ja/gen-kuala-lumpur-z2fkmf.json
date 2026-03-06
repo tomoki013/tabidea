@@ -1,0 +1,272 @@
+{
+  "id": "bf09f6d8-518a-46e1-9dd5-a3d0a3e68d59",
+  "destination": "クアラルンプール",
+  "description": "クアラルンプールの魅力を存分に味わう3日間の旅。歴史的な文化と現代的なグルメが交錯するこの街で、地元の人々と触れ合いながら、心温まる体験をお楽しみください。活気あふれる市場や美味しい屋台料理、そしてリゾート気分を味わえるスポットを巡ります。",
+  "days": [
+    {
+      "day": 1,
+      "title": "クアラルンプールの文化とグルメを堪能",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、マレーシアの伝統的な朝食を楽しみます。ナシレマやロティチャナイなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ペトロナスツインタワー",
+          "description": "クアラルンプールのシンボル、ペトロナスツインタワーを訪れます。展望台からの眺めは圧巻で、街の全景を楽しむことができます。事前にチケットを購入しておくとスムーズです。",
+          "searchQuery": "Petronas Twin Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "チャイナタウンでランチ",
+          "description": "クアラルンプールのチャイナタウンで、地元の屋台料理を楽しみます。特におすすめは、バクテー（肉骨茶）やチキンライス。活気ある雰囲気の中で食事を楽しんでください。",
+          "searchQuery": "Chinatown Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントラルマーケット散策",
+          "description": "チャイナタウンから徒歩圏内のセントラルマーケットで、地元のアートや手工芸品を見て回ります。お土産探しにもぴったりのスポットです。",
+          "searchQuery": "Central Market Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ブキッビンタン散策",
+          "description": "ショッピングやカフェが立ち並ぶブキッビンタンエリアを散策します。おしゃれなカフェで一息つくのも良いでしょう。",
+          "searchQuery": "Bukit Bintang",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クアラルンプールの地元のレストランで、マレー料理を楽しみます。特に、サテ（串焼き）やラクサ（ヌードルスープ）は絶品です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "KLタワーで夜景観賞",
+          "description": "KLタワーの展望台から、クアラルンプールの美しい夜景を楽しみます。特に夜のライトアップは幻想的で、素晴らしい写真スポットです。",
+          "searchQuery": "KL Tower",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史とアクティビティの一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、マレーシアの伝統的な朝食を楽しみます。ナシレマ（ココナッツミルクご飯）やロティチャナイ（薄焼きパン）など、地元の味を堪能しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バトゥ洞窟",
+          "description": "クアラルンプールの名所、バトゥ洞窟を訪れます。巨大なヒンドゥー教の神像が迎えてくれるこの場所は、色とりどりの階段を登ると美しい洞窟寺院が待っています。",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "セントラルマーケットでランチ",
+          "description": "セントラルマーケットで、地元のストリートフードを楽しみましょう。ラクサやサテなど、マレーシアの多様な料理が揃っています。食べ歩きもおすすめです！",
+          "searchQuery": "Central Market Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントラルマーケット散策",
+          "description": "マーケット内を散策し、地元のアートや手工芸品を見て回ります。お土産探しにもぴったりのスポットです。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "KLタワー展望台",
+          "description": "KLタワーの展望台から、クアラルンプールの街並みを一望します。特に夕方の時間帯は美しい夕日が見られるので、ぜひ訪れてみてください。",
+          "searchQuery": "KL Tower",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ホテルに戻る",
+          "description": "観光を終えたら、ホテルに戻って少し休憩。旅の疲れを癒しましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クアラルンプールの地元レストランで、マレーシア料理のディナーを楽しみます。特に、ナシゴレンやミーゴレンは絶品です。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クアラルンプールのホテルで、地元のフルーツやトーストを使った朝食を楽しみます。エネルギーをチャージして、素敵な一日をスタート！",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クアラルンプール国立博物館",
+          "description": "マレーシアの歴史と文化を深く知ることができる国立博物館を訪れます。展示物は多彩で、特にマレーシアの伝統衣装や工芸品は見応えがあります。",
+          "searchQuery": "National Museum of Malaysia",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元の食堂でランチ",
+          "description": "クアラルンプールの地元の食堂で、ナシレマ（ココナッツご飯）やサテ（串焼き）を楽しみます。リーズナブルで美味しい料理が揃っています。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "プトラジャヤ観光",
+          "description": "クアラルンプールから車で約30分のプトラジャヤへ。美しいモスクや公園を散策し、近代的な建築と自然の調和を楽しみます。",
+          "searchQuery": "Putrajaya",
+          "locationEn": "Putrajaya, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "サンウェイ・ラグーンでリラックス",
+          "description": "サンウェイ・ラグーンでアクティビティを楽しみます。ウォーターパークやテーマパークがあり、リフレッシュするのにぴったりです。",
+          "searchQuery": "Sunway Lagoon",
+          "locationEn": "Petaling Jaya, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "サンウェイ・ラグーン近くのレストランでディナー",
+          "description": "サンウェイ・ラグーン近くのレストランで、マレーシア料理を堪能します。特にシーフード料理が新鮮でおすすめです。",
+          "locationEn": "Petaling Jaya, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。リラックスした時間を過ごし、明日の旅に備えましょう。",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

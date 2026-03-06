@@ -1,0 +1,261 @@
+{
+  "id": "ad14184d-2020-49d9-8468-29d345874fe4",
+  "destination": "ウィーン",
+  "description": "ウィーンの美しい街並みと豊かな文化を感じながら、特にクラシック音楽に焦点を当てた旅をお楽しみください。歴史的な建物や美術館を巡り、地元の人々が愛するカフェでリラックスしながら、あなたの推し活を満喫する3日間のプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ウィーンの歴史と音楽を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウィーンのカフェ文化を体験しながら、伝統的なウィーン風朝食を楽しみます。新鮮なパンやチーズ、ハム、そしてコーヒーで一日をスタート。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シュテファン大聖堂",
+          "description": "ウィーンのシンボルとも言えるシュテファン大聖堂を訪れます。壮大なゴシック建築を堪能し、塔に登れば市内の美しい景色が広がります。",
+          "searchQuery": "St. Stephen's Cathedral",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・ザッハーでランチ",
+          "description": "ウィーン名物のザッハトルテを楽しむため、カフェ・ザッハーでランチを取ります。美味しいケーキと共に、ウィーンの雰囲気を満喫。",
+          "searchQuery": "Café Sacher Wien",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ウィーン国立歌劇場の見学",
+          "description": "ウィーン国立歌劇場を見学し、その豪華な内装や歴史を学びます。オペラの舞台裏を覗くツアーもおすすめです。",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "音楽関連のグッズを探す",
+          "description": "ウィーンの音楽ショップを巡り、クラシック音楽のファングッズやCDを探します。特にモーツァルトやシュトラウスの関連商品が豊富です。",
+          "searchQuery": "Mozart House",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウィーンの公園でリラックス",
+          "description": "美しい公園で散策しながら、ウィーンの自然を楽しみます。ベンチに座って、ゆったりとした時間を過ごすのも良いでしょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ウィーンのレストランでディナー",
+          "description": "地元の料理を楽しむため、ウィーンのレストランでディナーを取ります。オーストリアの伝統料理を味わいながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ウィーンのアートとリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウィーンのカフェで、伝統的なウィーン風朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並ぶ贅沢な朝食で、1日のスタートを切りましょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "美術史美術館",
+          "description": "ウィーンの美術史美術館で、古代から近代までの名画を鑑賞します。特に、フェルメールやレンブラントの作品は必見。美術館内のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Kunsthistorisches Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ナッシュマルクトでランチ",
+          "description": "ウィーンの人気市場、ナッシュマルクトで地元の食材を使った料理を楽しみましょう。多国籍な屋台が並び、特にオーストリアのソーセージやスイーツは絶品です。",
+          "searchQuery": "Naschmarkt",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ベルヴェデーレ宮殿",
+          "description": "美しい庭園とともに、ベルヴェデーレ宮殿を訪れます。クリムトの「接吻」を含む多くの名作が展示されており、アートファンにはたまらないスポットです。",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ウィーンのクラシック音楽ショップ巡り",
+          "description": "ウィーンのクラシック音楽関連のショップを巡り、CDや楽譜、ファングッズを探しましょう。特に、ウィーンフィルのオフィシャルショップはおすすめです。",
+          "searchQuery": "Vienna Philharmonic Shop",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ウィーンのレストランでディナー",
+          "description": "ウィーンの伝統的なレストランで、地元の料理を楽しみます。特に、ウィーン風シュニッツェルは外せません。食事の後は、カフェでデザートを楽しむのも良いでしょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ウィーンの音楽とお土産探し",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ウィーンのカフェで、伝統的なオーストリアの朝食を楽しみます。新鮮なパンやチーズ、ハムに加え、香り高いコーヒーで一日をスタート。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ウィーン楽友協会",
+          "description": "クラシック音楽の聖地、ウィーン楽友協会を訪れます。美しい建物の内部を見学し、音楽の歴史に触れることができます。特に、コンサートホールの豪華な装飾は必見です。",
+          "searchQuery": "Wiener Musikverein",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ザッハーでランチ",
+          "description": "ウィーン名物のザッハトルテを楽しむために、カフェ・ザッハーでランチを取ります。美味しいケーキと共に、ウィーンの雰囲気を満喫しましょう。",
+          "searchQuery": "Café Sacher Wien",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モーツァルトの家",
+          "description": "モーツァルトがかつて住んでいた家を訪れ、彼の生涯や音楽について学びます。展示品や楽譜を通じて、彼の偉大な業績を感じることができます。",
+          "searchQuery": "Mozarthaus Wien",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ウィーンの音楽関連グッズショップ巡り",
+          "description": "ウィーンの街を散策しながら、音楽関連のファングッズを扱うショップを訪れます。お土産にぴったりなアイテムを見つけましょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ウィーンのカフェでリラックス",
+          "description": "訪れたカフェで、ゆったりとした時間を過ごします。音楽をテーマにしたドリンクやデザートを楽しみながら、旅の思い出を語り合いましょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。ウィーンの夜を楽しむための準備をしましょう。",
+          "locationEn": "Vienna, Austria",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

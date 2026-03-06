@@ -1,0 +1,375 @@
+{
+  "id": "56bb5d55-3ce2-4472-a678-e882b6b0db4e",
+  "destination": "スイス",
+  "description": "スイスの美しい風景と文化を満喫しながら、特に『Crash Landing on You』のファンにぴったりなスポットを巡る旅。美術館や歴史的な名所を訪れ、地元の人々と交流しながら、心温まる体験をお届けします。",
+  "heroImage": "https://images.unsplash.com/photo-1716533523426-ea7e653fc0c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE2NzB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mohamed B.",
+  "heroImagePhotographerUrl": "https://unsplash.com/@bangscreative?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "チューリッヒでの文化探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チューリッヒのホテルで、スイスの伝統的な朝食を楽しみます。新鮮なパンやチーズ、ハムなど、地元の味を堪能しましょう。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スイス国立博物館",
+          "description": "スイスの歴史と文化を深く知ることができるスイス国立博物館を訪れます。美しい建物の中で、さまざまな展示を楽しみながら、スイスの魅力を再発見しましょう。",
+          "searchQuery": "Swiss National Museum",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "博物館近くのカフェで、スイスの軽食やサンドイッチを楽しみます。地元の人々に人気のあるお店で、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "チューリッヒ湖散策",
+          "description": "美しいチューリッヒ湖の周りを散策します。湖のほとりでのんびりとした時間を過ごし、周囲の自然を楽しみながら、写真を撮るのもおすすめです。",
+          "searchQuery": "Lake Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リマト川沿い散策",
+          "description": "リマト川沿いを歩きながら、歴史的な建物や美しい風景を楽しみます。川の流れを感じながら、アートや文化に触れる素敵な時間を過ごしましょう。",
+          "searchQuery": "Limmat River",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元のレストランで",
+          "description": "チューリッヒの地元料理を楽しめるレストランで夕食を。スイスの名物料理を味わいながら、家族との楽しい時間を過ごしましょう。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ファングッズを探しにショッピング",
+          "description": "チューリッヒのショッピングエリアで、Crash Landing on Youの関連グッズを探します。お土産や思い出に残るアイテムを見つける楽しみもあります。",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ルツェルンの美しい風景",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "チューリッヒ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ルツェルン",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "チューリッヒからルツェルンへは電車で約1時間。美しい湖の景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "カペル橋散策",
+          "description": "ルツェルンのシンボル、カペル橋を渡りながら美しい風景を楽しみましょう。橋の中には歴史的な絵画が描かれており、写真スポットとしても人気です。",
+          "searchQuery": "Chapel Bridge",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ルツェルン湖でランチ",
+          "description": "湖畔のカフェで、地元の食材を使った軽食を楽しみます。美しい湖の景色を眺めながら、リラックスしたひとときを過ごしましょう。",
+          "searchQuery": "Restaurant Lake Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "美術館巡り",
+          "description": "ルツェルンには多くの美術館があります。特に、ロザリオ美術館では現代アートを楽しむことができます。アートに触れながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Rosengart Collection",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ファングッズ購入",
+          "description": "ルツェルンの中心街で、Crash Landing on Youの関連グッズを探しましょう。地元のショップやお土産屋さんで、ユニークなアイテムが見つかるかもしれません。",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ルツェルンの街散策",
+          "description": "美しい街並みを散策しながら、カフェで一息つくのもおすすめです。夕暮れ時のルツェルンは特にロマンチックです。",
+          "searchQuery": "Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ルツェルンの地元料理を楽しめるレストランで、スイスの伝統的な料理を堪能しましょう。特にチーズフォンデュはおすすめです。",
+          "searchQuery": "Restaurant Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "インターラーケンでの自然とアート",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ルツェルン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "インターラーケン",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "美しい湖と山々を眺めながらの電車旅。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ハーダークルム展望台",
+          "description": "インターラーケンのシンボルとも言えるハーダークルム展望台へ。ここからの眺望は息をのむ美しさで、特にユングフラウの山々が一望できます。",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "インターラーケンの地元カフェで、スイスの名物料理を楽しみましょう。特にチーズフォンデュやロスティはおすすめです。",
+          "searchQuery": "Cafe in Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "インターラーケンのアートギャラリー",
+          "description": "地元アーティストの作品を展示しているアートギャラリーを訪れ、スイスの現代アートに触れてみましょう。",
+          "searchQuery": "Art Gallery in Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "地元の市場でショッピング",
+          "description": "インターラーケンの市場で、スイスの特産品やお土産を探しましょう。ファングッズも見つかるかもしれません！",
+          "searchQuery": "Interlaken Market",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "インターラーケンの公園で散策",
+          "description": "美しい自然に囲まれた公園で、ゆったりとした時間を過ごしましょう。周囲の山々を背景にした散策は心を癒してくれます。",
+          "searchQuery": "Park in Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "インターラーケンのレストランで、スイス料理のディナーを楽しみましょう。特に地元のワインと一緒に味わうのがおすすめです。",
+          "searchQuery": "Restaurant in Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ジュネーブの国際都市を満喫",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "インターラーケン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ジュネーブ",
+          "time": "10:00"
+        },
+        "duration": "2h 00m",
+        "memo": "インターラーケンからジュネーブへは直通の列車で快適に移動できます。美しいアルプスの景色を楽しみながらの旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ジュネーブ湖散策",
+          "description": "ジュネーブ湖の美しい景色を楽しみながら、湖畔を散策します。湖の中央に立つ大噴水は必見です。",
+          "searchQuery": "Lake Geneva",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "湖を眺めながら、地元のスイス料理を楽しむランチタイム。特にチーズフォンデュがおすすめです。",
+          "searchQuery": "Restaurant Les Armures",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "国連欧州本部見学",
+          "description": "国連欧州本部の見学ツアーに参加し、国際的な舞台での活動を学びます。歴史的な建物や展示も見どころです。",
+          "searchQuery": "United Nations Office at Geneva",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アートギャラリー巡り",
+          "description": "ジュネーブのアートギャラリーを巡り、地元アーティストの作品や国際的な展覧会を楽しみます。特に現代アートが充実しています。",
+          "searchQuery": "Museum of Modern and Contemporary Art",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ファングッズ購入",
+          "description": "「Crash Landing on You」の関連グッズを取り扱うショップを訪れ、思い出の品をゲットします。",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ディナー",
+          "description": "ジュネーブのレストランで、スイスの郷土料理を楽しむディナー。地元のワインと共に、素敵な夜を過ごしましょう。",
+          "searchQuery": "Café du Soleil",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

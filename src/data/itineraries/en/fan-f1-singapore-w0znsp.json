@@ -1,0 +1,657 @@
+{
+  "id": "4256fc4f-4727-49d6-a88b-7c51197939fe",
+  "destination": "Singapore",
+  "description": "Immerse yourself in the vibrant tapestry of Singapore, a city where modernity meets tradition. Over the course of seven exhilarating days, you and your friends will explore the rich cultural heritage, indulge in art and history, and dive deep into the world of motorsport fandom, particularly around the exhilarating Formula 1 scene. From the bustling streets of Chinatown to the serene gardens of Marina Bay, this journey promises a blend of excitement and relaxation, with plenty of opportunities to collect unique memorabilia and savor local delicacies. Get ready to create unforgettable memories in this dynamic city!",
+  "heroImage": "https://images.unsplash.com/photo-1573275497600-8e2a7d8eac90?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE1OTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Wengang Zhai",
+  "heroImagePhotographerUrl": "https://unsplash.com/@wgzhai?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Little India",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tekka Centre",
+          "description": "Start your day with a delicious breakfast at Tekka Centre, where you can enjoy local dishes like roti prata and teh tarik. The vibrant atmosphere and diverse food stalls make it a perfect introduction to Singapore's culinary scene.",
+          "searchQuery": "Tekka Centre",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Sri Veeramakaliamman Temple",
+          "description": "Explore the stunning Sri Veeramakaliamman Temple, one of the oldest Hindu temples in Singapore. Admire the intricate sculptures and vibrant colors that reflect the rich cultural heritage of the Indian community.",
+          "searchQuery": "Sri Veeramakaliamman Temple",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Banana Leaf Apolo",
+          "description": "Savor a traditional South Indian meal served on a banana leaf at Banana Leaf Apolo. The fish head curry is a must-try, and the communal dining experience adds to the fun.",
+          "searchQuery": "Banana Leaf Apolo",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Little India Arcade",
+          "description": "Stroll through the Little India Arcade, a vibrant shopping area filled with shops selling traditional Indian clothing, jewelry, and souvenirs. Don't forget to pick up some F1 merchandise if available!",
+          "searchQuery": "Little India Arcade",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Indian Heritage Centre",
+          "description": "Discover the rich history and culture of the Indian community in Singapore at the Indian Heritage Centre. The interactive exhibits and artifacts provide insight into the contributions of Indians to Singapore's development.",
+          "searchQuery": "Indian Heritage Centre",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at The Banana Leaf Apolo Cafe",
+          "description": "Take a break and enjoy a refreshing drink at The Banana Leaf Apolo Cafe. It's a great spot to relax and recharge before continuing your exploration.",
+          "searchQuery": "The Banana Leaf Apolo Cafe",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Evening Walk at Mustafa Centre",
+          "description": "End your day with a visit to Mustafa Centre, a 24-hour shopping mall that offers everything from electronics to groceries. It's a great place to find unique souvenirs and F1-related items.",
+          "searchQuery": "Mustafa Centre",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Komala Vilas",
+          "description": "Enjoy a hearty dinner at Komala Vilas, known for its authentic vegetarian South Indian cuisine. The thali is highly recommended for a fulfilling meal.",
+          "searchQuery": "Komala Vilas",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion in Chinatown and F1 Experiences",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ya Kun Kaya Toast",
+          "description": "Start your day with a traditional Singaporean breakfast at Ya Kun Kaya Toast, famous for its kaya toast and soft-boiled eggs. The rich, coconut jam paired with crispy toast is a must-try!",
+          "searchQuery": "Ya Kun Kaya Toast",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through the vibrant streets of Chinatown, where you can admire the beautiful architecture and visit the Buddha Tooth Relic Temple. Don't forget to check out the local shops for unique souvenirs!",
+          "searchQuery": "Buddha Tooth Relic Temple",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chinatown Food Street",
+          "description": "Indulge in a variety of local dishes at Chinatown Food Street. From Hainanese chicken rice to satay skewers, this bustling food market offers a taste of Singapore's culinary delights.",
+          "searchQuery": "Chinatown Food Street",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit F1 Pit Building",
+          "description": "Head to the F1 Pit Building to immerse yourself in the world of Formula 1. Explore the exhibits and learn about the history of the Singapore Grand Prix. It's a great spot for motorsport enthusiasts!",
+          "searchQuery": "F1 Pit Building",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "F1 Merchandise Shops",
+          "description": "Visit nearby F1 merchandise shops to grab some exclusive fan gear. Whether it's caps, shirts, or collectibles, you'll find plenty of items to show your support for your favorite teams.",
+          "searchQuery": "F1 Merchandise",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ArtScience Museum",
+          "description": "Explore the ArtScience Museum, where art meets science. The museum features fascinating exhibitions that blend creativity and technology, making it a perfect stop for art lovers.",
+          "searchQuery": "ArtScience Museum",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Lau Pa Sat",
+          "description": "End your day with dinner at Lau Pa Sat, a historic hawker center. Enjoy a variety of local dishes in a lively atmosphere, and don't miss the satay stalls outside!",
+          "searchQuery": "Lau Pa Sat",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and History at Museums",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tiong Bahru Bakery",
+          "description": "Start your day with a delicious breakfast at Tiong Bahru Bakery, famous for its freshly baked pastries and artisanal coffee. The croissants here are a must-try!",
+          "searchQuery": "Tiong Bahru Bakery",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery Singapore",
+          "description": "Explore the National Gallery Singapore, home to an extensive collection of Singaporean and Southeast Asian art. The stunning architecture of the former Supreme Court and City Hall adds to the experience.",
+          "searchQuery": "National Gallery Singapore",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Courtyard",
+          "description": "Enjoy a leisurely lunch at The Courtyard, located within the National Gallery. The menu features a delightful selection of local and international dishes, perfect for refueling after your museum visit.",
+          "searchQuery": "The Courtyard",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the Asian Civilisations Museum",
+          "description": "Dive into the rich cultural heritage of Asia at the Asian Civilisations Museum. The exhibits showcase the diverse history and art of various Asian cultures, making it a fascinating stop for art lovers.",
+          "searchQuery": "Asian Civilisations Museum",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Peranakan Museum",
+          "description": "Discover the unique culture of the Peranakan people at the Peranakan Museum. The colorful displays of traditional clothing, jewelry, and artifacts provide insight into this vibrant community.",
+          "searchQuery": "Peranakan Museum",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Chatterbox",
+          "description": "Indulge in a delightful dinner at Chatterbox, known for its award-winning Mandarin chicken rice. The restaurant's cozy ambiance makes it a perfect spot to unwind after a day of exploration.",
+          "searchQuery": "Chatterbox",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Shopping for F1 Merchandise at F1 Pit Building",
+          "description": "End your day with a visit to the F1 Pit Building, where you can find exclusive F1 merchandise. It's a great place to pick up souvenirs and gear related to your favorite drivers and teams.",
+          "searchQuery": "F1 Pit Building",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Gardens by the Bay and Marina Bay Sands",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Toast Box",
+          "description": "Start your day with a traditional Singaporean breakfast at Toast Box, where you can enjoy kaya toast and soft-boiled eggs, paired with a cup of local kopi. It's a delightful way to fuel up for a day of exploration!",
+          "searchQuery": "Toast Box",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Gardens by the Bay",
+          "description": "Explore the stunning Gardens by the Bay, a futuristic park featuring the iconic Supertree Grove. Don't miss the Flower Dome and Cloud Forest, where you can marvel at exotic plants and a breathtaking indoor waterfall.",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Satay by the Bay",
+          "description": "Enjoy a casual lunch at Satay by the Bay, where you can savor delicious satay skewers and other local delights while enjoying views of the gardens. It's a perfect spot to relax and recharge.",
+          "searchQuery": "Satay by the Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Marina Bay Sands SkyPark",
+          "description": "Head to Marina Bay Sands and take the elevator up to the SkyPark for panoramic views of the city skyline. The observation deck offers a unique perspective of Singapore's iconic landmarks.",
+          "searchQuery": "Marina Bay Sands SkyPark",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the ArtScience Museum",
+          "description": "Explore the ArtScience Museum, known for its unique lotus-inspired design. Check out the latest exhibitions that blend art and science, making for an inspiring experience.",
+          "searchQuery": "ArtScience Museum",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at The Shoppes at Marina Bay Sands",
+          "description": "Indulge in some retail therapy at The Shoppes, where you can find luxury brands and unique boutiques. Don't forget to check out the F1 merchandise stores for some exclusive fan gear!",
+          "searchQuery": "The Shoppes at Marina Bay Sands",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "Savor a delicious dinner at Din Tai Fung, famous for its xiao long bao (soup dumplings). The restaurant's lively atmosphere and delectable dishes make it a must-visit for food lovers.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along Marina Bay",
+          "description": "End your day with a leisurely stroll along the Marina Bay waterfront. Enjoy the stunning views of the city lights reflecting on the water, and take in the vibrant atmosphere of this iconic area.",
+          "searchQuery": "Marina Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "F1 Circuit Tour and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Toast Box",
+          "description": "Start your day with a traditional Singaporean breakfast at Toast Box, where you can enjoy kaya toast and soft-boiled eggs, paired with a cup of local kopi. It's a delightful way to fuel up for an exciting day ahead!",
+          "searchQuery": "Toast Box",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit the F1 Pit Building",
+          "description": "Head over to the iconic F1 Pit Building, where you can explore the history of Formula 1 in Singapore. Check out the memorabilia and learn about the thrilling races that take place here every year.",
+          "searchQuery": "F1 Pit Building",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Satay by the Bay",
+          "description": "Enjoy a delicious lunch at Satay by the Bay, where you can savor a variety of local dishes including satay skewers, seafood, and more, all while enjoying views of the Marina Bay area.",
+          "searchQuery": "Satay by the Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore F1 Merchandise Stores",
+          "description": "Visit the nearby F1 merchandise stores to pick up some exclusive fan gear. From caps to shirts, you’ll find plenty of items to show your support for your favorite teams and drivers!",
+          "searchQuery": "F1 Merchandise Store",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Gardens by the Bay",
+          "description": "Take a leisurely stroll through the stunning Gardens by the Bay. Don't miss the Supertree Grove and the Cloud Forest, where you can enjoy the beautiful flora and unique architecture.",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Orchard Road",
+          "description": "Head to Orchard Road, Singapore's famous shopping street, where you can find everything from luxury brands to local boutiques. It's the perfect place to indulge in some retail therapy after a day of F1 excitement!",
+          "searchQuery": "Orchard Road",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "End your day with a delicious dinner at Din Tai Fung, renowned for its xiao long bao (soup dumplings). Enjoy a variety of Taiwanese dishes in a cozy atmosphere.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Sentosa Island Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Toast Box",
+          "description": "Start your day with a traditional Singaporean breakfast at Toast Box, where you can enjoy kaya toast and soft-boiled eggs, paired with a cup of local kopi. It's a delightful way to fuel up for a day of adventure!",
+          "searchQuery": "Toast Box",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Universal Studios Singapore",
+          "description": "Dive into the thrilling world of Universal Studios Singapore! Experience exciting rides and attractions based on your favorite movies, from Transformers to Jurassic Park. Don't miss the chance to snap photos with your favorite characters!",
+          "searchQuery": "Universal Studios Singapore",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Malaysian Food Street",
+          "description": "Savor a variety of Malaysian dishes at Malaysian Food Street, located within Resorts World Sentosa. Try local favorites like char kway teow and satay in a vibrant, market-style setting.",
+          "searchQuery": "Malaysian Food Street",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "S.E.A. Aquarium",
+          "description": "Explore the wonders of the ocean at the S.E.A. Aquarium, one of the largest aquariums in the world. Marvel at the diverse marine life, including majestic manta rays and vibrant coral reefs. It's an educational and visually stunning experience!",
+          "searchQuery": "S.E.A. Aquarium",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for F1 Merchandise at VivoCity",
+          "description": "Head to VivoCity, Singapore's largest shopping mall, to hunt for exclusive F1 merchandise. From apparel to collectibles, you'll find plenty of items to show your support for your favorite teams and drivers!",
+          "searchQuery": "VivoCity",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "Indulge in a delicious dinner at Din Tai Fung, famous for its xiao long bao (soup dumplings). The restaurant's meticulous preparation and flavorful dishes make it a must-visit for food lovers.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along Sentosa Beach",
+          "description": "End your day with a relaxing stroll along Sentosa Beach. Enjoy the gentle sea breeze and the sound of waves as you unwind after an exciting day. It's the perfect way to reflect on your adventures!",
+          "searchQuery": "Sentosa Beach",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure and Last-Minute Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ya Kun Kaya Toast",
+          "description": "Start your day with a traditional Singaporean breakfast at Ya Kun Kaya Toast, famous for its kaya toast and soft-boiled eggs. It's a local favorite and a great way to fuel up for your last day in Singapore.",
+          "searchQuery": "Ya Kun Kaya Toast",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Changi Airport",
+          "description": "Head to Changi Airport, not just for your departure but to explore its stunning facilities. Don't miss the Jewel, with its indoor waterfall and lush gardens, perfect for some last-minute photos and relaxation before your flight.",
+          "searchQuery": "Changi Airport",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Changi Airport",
+          "description": "Enjoy a leisurely lunch at one of the many dining options in Changi Airport. From local delights to international cuisine, there's something for everyone to savor before heading home.",
+          "searchQuery": "Changi Airport Dining",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Last-Minute Shopping at Bugis Street",
+          "description": "Make your way to Bugis Street for some last-minute shopping. This bustling market is known for its affordable fashion, souvenirs, and F1 merchandise, perfect for picking up some unique gifts and memorabilia.",
+          "searchQuery": "Bugis Street",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Check-Out",
+          "description": "Head back to your hotel to collect your luggage and check out. Make sure you have all your souvenirs and memories packed up before you leave Singapore!",
+          "searchQuery": "Hotel Check-Out",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Departure from Changi Airport",
+          "description": "Arrive at Changi Airport for your departure. Take a moment to reflect on your amazing trip to Singapore filled with culture, art, and F1 excitement!",
+          "searchQuery": "Changi Airport",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

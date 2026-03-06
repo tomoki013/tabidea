@@ -1,0 +1,450 @@
+{
+  "id": "0fc78942-f1af-488f-b8ba-4495a662e872",
+  "destination": "アイルランド",
+  "description": "アイルランドの美しい風景と豊かな文化を背景に、家族での特別な旅を楽しむ5日間。特に「スター・ウォーズ」のファンにはたまらないスポットを巡りながら、地元のグルメも堪能できるプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ダブリン到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ダブリンのホテルで、アイルランドの伝統的な朝食を楽しみます。ソーセージやベーコン、卵、トーストが並ぶ豪華な朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ダブリン城",
+          "description": "ダブリンの歴史的なシンボル、ダブリン城を訪れます。美しい庭園や壮大な建物を見学し、アイルランドの歴史に触れることができます。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "トリニティ・カレッジでランチ",
+          "description": "トリニティ・カレッジ近くのカフェで軽食を楽しみます。サンドイッチやスープなど、手軽に食べられるメニューが豊富です。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "トリニティ・カレッジとケルズの書",
+          "description": "トリニティ・カレッジ内にあるケルズの書を見学します。美しい装飾が施された古代の写本を間近で見ることができ、歴史の深さを感じられます。",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "グラフトンストリート散策",
+          "description": "ダブリンの賑やかなショッピングストリート、グラフトンストリートを散策します。ストリートパフォーマンスを楽しみながら、ファングッズやお土産を探しましょう。",
+          "searchQuery": "Grafton Street",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファンショップでの買い物",
+          "description": "Star Wars関連のファングッズを取り扱うショップを訪れます。お子様も喜ぶアイテムが揃っているので、ぜひチェックしてみてください。",
+          "searchQuery": "Star Wars Shop Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダブリンのパブでディナー",
+          "description": "地元のパブでアイルランド料理を楽しみます。フィッシュ＆チップスやシチューなど、家族みんなでシェアしながら味わいましょう。",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ダブリンからアラン諸島へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ダブリン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アラン諸島",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ダブリンからアラン諸島へのフェリーでの移動。美しい海の景色を楽しみながら、アラン諸島の冒険が始まります。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "アラン諸島の観光",
+          "description": "アラン諸島に到着後、まずは島の美しい風景を楽しみながら散策。特にダン・アン・ダンの壮大な遺跡は必見です。",
+          "searchQuery": "Dún Aonghasa",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アラン諸島の地元レストランでランチ",
+          "description": "新鮮なシーフードや地元の食材を使った料理を楽しめるレストランで、アラン諸島の味を堪能しましょう。",
+          "searchQuery": "The Bar, Inis Meain",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アラン諸島のビーチで遊ぶ",
+          "description": "子供たちと一緒にアラン諸島の美しいビーチで遊びましょう。海水浴や砂遊びが楽しめます。",
+          "searchQuery": "Inis Meain Beach",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アラン諸島の土産物店でファングッズを購入",
+          "description": "アラン諸島の土産物店で、Star Wars関連のファングッズを探してみましょう。ユニークなアイテムが見つかるかもしれません。",
+          "searchQuery": "Aran Sweater Market",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アラン諸島の宿泊先でディナー",
+          "description": "宿泊先のレストランで、アラン諸島の地元料理を楽しみながら、家族でのんびりとした時間を過ごしましょう。",
+          "searchQuery": "Inis Meain Restaurant",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先でリラックス",
+          "description": "宿泊先で家族と一緒にリラックスし、今日の思い出を語り合いましょう。",
+          "locationEn": "Inis Meain, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アラン諸島からゴールウェイへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "アラン諸島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ゴールウェイ",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "アラン諸島からゴールウェイへのフェリーでの移動。海の景色を楽しみながらの旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ゴールウェイ市内散策",
+          "description": "ゴールウェイの街を散策し、カラフルな建物やアートを楽しみましょう。地元のアーティストの作品が並ぶショップも多く、ファングッズ探しにもぴったりです。",
+          "searchQuery": "Galway City",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "The Pie Makerでランチ",
+          "description": "地元の人気店で、手作りのパイを楽しみましょう。ボリューム満点で、子供たちも喜ぶ味です。",
+          "searchQuery": "The Pie Maker",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "クルーグ・ナ・マハー訪問",
+          "description": "アイルランドの歴史を感じることができるクルーグ・ナ・マハーを訪れ、古代の遺跡を見学します。子供たちにも興味深い体験になるでしょう。",
+          "searchQuery": "Cruach na nDeamhain",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ファングッズショップ巡り",
+          "description": "ゴールウェイ市内のファングッズショップを巡り、Star Wars関連のアイテムを探しましょう。特に地元のアーティストが手がけたグッズはおすすめです。",
+          "searchQuery": "Galway Star Wars Merchandise",
+          "locationEn": "Galway, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ゴールウェイのビーチでリラックス",
+          "description": "ゴールウェイのビーチで、海を眺めながらリラックス。子供たちが遊ぶ姿を見守りつつ、家族でのんびりとした時間を過ごします。",
+          "searchQuery": "Galway Beach",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "The Quay Street Kitchenでディナー",
+          "description": "地元の食材を使った料理が楽しめるレストランで、家族でのディナーを楽しみましょう。アイルランドの伝統料理を味わう絶好の機会です。",
+          "searchQuery": "The Quay Street Kitchen",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ゴールウェイからバレンに向かう",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ゴールウェイ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "バレン",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "バスでの移動は快適で、車窓からの美しい風景を楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "バレン国立公園散策",
+          "description": "バレン国立公園で自然の美しさを満喫。特に独特な石灰岩の風景が広がり、子供たちも楽しめるハイキングコースがあります。",
+          "searchQuery": "Burren National Park",
+          "locationEn": "Burren, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のカフェでランチ",
+          "description": "バレンの地元カフェで、アイルランドの伝統的な料理を楽しみましょう。特にスープとサンドイッチのセットが人気です。",
+          "searchQuery": "The Burren Perfumery Cafe",
+          "locationEn": "Burren, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "スター・ウォーズ撮影地巡り",
+          "description": "バレン周辺にはスター・ウォーズの撮影地が点在しています。特に「最後のジェダイ」の撮影地として知られる美しい海岸線を訪れましょう。",
+          "searchQuery": "Star Wars filming locations in Burren",
+          "locationEn": "Burren, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バレンのファングッズショップ訪問",
+          "description": "スター・ウォーズ関連のファングッズを取り扱うショップで、家族みんなでお気に入りのアイテムを探しましょう。",
+          "searchQuery": "Burren Star Wars Shop",
+          "locationEn": "Burren, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "バレンでディナー",
+          "description": "地元のレストランでアイルランド料理を堪能。特にシーフード料理が新鮮でおすすめです。",
+          "searchQuery": "The Burren Restaurant",
+          "locationEn": "Burren, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "バレンからダブリンへ戻り",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "バレン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダブリン",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "バレンからダブリンまでのドライブを楽しみながら、アイルランドの美しい風景を堪能します。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "ダブリンのファングッズショップ巡り",
+          "description": "ダブリン市内にあるファングッズショップを訪れ、Star Wars関連のグッズを探しましょう。特に、アイルランドの文化と融合したユニークなアイテムが見つかるかもしれません。",
+          "searchQuery": "Star Wars Merchandise Store Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ：The Woollen Mills",
+          "description": "地元の人にも人気のカジュアルなレストランで、アイルランドの伝統的な料理を楽しみましょう。特に、シェパーズパイやスコーンが絶品です。",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ダブリン城見学",
+          "description": "ダブリンの歴史的なランドマークであるダブリン城を訪れ、アイルランドの歴史を学びましょう。美しい庭園もあり、家族での散策にぴったりです。",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ダブリンのパブ巡り",
+          "description": "アイルランドの文化を体験するために、地元のパブを訪れましょう。子供も楽しめる軽食やソフトドリンクを楽しみながら、アイルランドの音楽や雰囲気を味わえます。",
+          "searchQuery": "Dublin Pub",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：The Brazen Head",
+          "description": "アイルランド最古のパブで、伝統的なアイルランド料理を楽しみましょう。特に、アイリッシュシチューやギネスビールが人気です。",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ダブリンの夜景散策",
+          "description": "ダブリンの美しい夜景を楽しみながら、家族でのんびりと散策しましょう。特に、リフィ川沿いのライトアップが素敵です。",
+          "searchQuery": "Dublin Night View",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

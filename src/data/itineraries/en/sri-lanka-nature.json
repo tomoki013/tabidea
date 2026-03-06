@@ -1,0 +1,520 @@
+{
+  "id": "4483d89e-1486-4a5e-89d4-298223462a9e",
+  "destination": "Colombo & Sigiriya",
+  "description": "Embark on an unforgettable journey through the vibrant landscapes and rich heritage of Sri Lanka. From the bustling streets of Colombo to the majestic heights of Sigiriya Rock, this trip promises a perfect blend of adventure, relaxation, and culinary delights. Experience the serenity of Ayurvedic treatments, explore ancient ruins, and savor the flavors of local cuisine as you immerse yourself in the beauty of this island nation.",
+  "heroImage": "https://images.unsplash.com/photo-1706161738664-15c9b101b5c2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODU1Mjd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Vivan Maldeniya",
+  "heroImagePhotographerUrl": "https://unsplash.com/@vivan_maldeniya?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Colombo",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring a mix of local Sri Lankan dishes and international favorites to fuel your adventures ahead.",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Colombo Fort",
+          "description": "Stroll through the historic Colombo Fort area, where colonial architecture meets vibrant street life. Don't miss the iconic Clock Tower and the Old Dutch Hospital, now a trendy shopping and dining precinct.",
+          "searchQuery": "Colombo Fort",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ministry of Crab",
+          "description": "Indulge in a seafood feast at one of Colombo's most famous restaurants, known for its fresh crab dishes. The ambiance is lively, making it a perfect spot to enjoy local flavors.",
+          "searchQuery": "Ministry of Crab",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Galle Face Green",
+          "description": "Take a leisurely walk along Galle Face Green, a beautiful oceanfront promenade. Enjoy the sea breeze and watch locals flying kites or enjoying snacks from street vendors.",
+          "searchQuery": "Galle Face Green",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Pettah Market",
+          "description": "Dive into the bustling atmosphere of Pettah Market, where you can find everything from spices to textiles. It's a great place to experience local culture and pick up unique souvenirs.",
+          "searchQuery": "Pettah Market",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Gallery Cafe",
+          "description": "Enjoy dinner at The Gallery Cafe, known for its delicious fusion of Sri Lankan and international cuisine. The setting in a converted art gallery adds to the dining experience.",
+          "searchQuery": "The Gallery Cafe",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the hotel",
+          "description": "After a day of exploration, unwind at your hotel. Consider booking an Ayurvedic massage to rejuvenate your body and mind, setting the tone for your upcoming adventures.",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Colombo",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Colombo Fort Station",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Sigiriya",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic train ride to Sigiriya."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Gallery Café",
+          "description": "Start your day with a delicious breakfast at The Gallery Café, known for its vibrant atmosphere and a menu featuring local and international dishes. Don't miss their signature Sri Lankan breakfast!",
+          "searchQuery": "The Gallery Café",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Arrive in Sigiriya",
+          "description": "Upon arrival in Sigiriya, take a moment to soak in the stunning views of the surrounding landscape before heading to your accommodation.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a traditional Sri Lankan lunch at a local restaurant. Try the rice and curry, a staple dish that showcases the rich flavors of the region.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Climb Sigiriya Rock Fortress",
+          "description": "Prepare for an exhilarating climb up the iconic Sigiriya Rock Fortress, a UNESCO World Heritage site. The views from the top are breathtaking, and you'll encounter ancient frescoes and ruins along the way.",
+          "searchQuery": "Sigiriya Rock Fortress",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Your Hotel",
+          "description": "After a day of exploration, unwind at your hotel. Consider a refreshing dip in the pool or simply relax in your room, soaking in the beauty of Sigiriya.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hotel Restaurant",
+          "description": "Enjoy a leisurely dinner at your hotel restaurant, where you can savor local dishes while enjoying the serene ambiance of the surroundings.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Sigiriya Rock Adventure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Colombo",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Sigiriya",
+          "time": "09:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive through Sri Lanka's countryside."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Climb Sigiriya Rock Fortress",
+          "description": "Start your adventure by climbing the iconic Sigiriya Rock Fortress, a UNESCO World Heritage site. The views from the top are breathtaking, and the ancient frescoes along the way are a must-see.",
+          "searchQuery": "Sigiriya Rock Fortress",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious Sri Lankan meal at a nearby restaurant. Try the traditional rice and curry, which is a staple of the local cuisine.",
+          "searchQuery": "Local Restaurant Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Pidurangala Rock",
+          "description": "After lunch, head to Pidurangala Rock for another stunning viewpoint. The hike is less crowded than Sigiriya and offers a unique perspective of the fortress and surrounding landscape.",
+          "searchQuery": "Pidurangala Rock",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Ayurvedic Massage Experience",
+          "description": "Relax and rejuvenate with an Ayurvedic massage at a local spa. Experience the healing properties of traditional Sri Lankan treatments, perfect after a day of hiking.",
+          "searchQuery": "Ayurvedic Spa Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hotel Restaurant",
+          "description": "Enjoy a relaxing dinner at your hotel, featuring a mix of local and international dishes. Reflect on your adventurous day while enjoying the serene atmosphere.",
+          "searchQuery": "Hotel Restaurant Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Ayurvedic Relaxation and Nature",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Sigiriya, featuring a mix of local and international dishes to fuel your adventure ahead.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Climb Sigiriya Rock Fortress",
+          "description": "Embark on an exhilarating climb up the iconic Sigiriya Rock Fortress, a UNESCO World Heritage site. The breathtaking views from the top and the ancient frescoes along the way make this a must-do experience.",
+          "searchQuery": "Sigiriya Rock Fortress",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a nearby restaurant, where you can savor traditional Sri Lankan dishes like rice and curry, prepared with fresh local ingredients.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Ayurvedic Spa Treatment",
+          "description": "Indulge in a rejuvenating Ayurvedic spa treatment at a local wellness center. Experience the healing properties of herbal oils and traditional techniques that will leave you feeling relaxed and revitalized.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Dambulla Cave Temple",
+          "description": "Take a short drive to the Dambulla Cave Temple, another UNESCO World Heritage site. Explore the stunning cave complex filled with ancient Buddha statues and beautiful frescoes, surrounded by lush greenery.",
+          "searchQuery": "Dambulla Cave Temple",
+          "locationEn": "Dambulla, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Hotel and Relax",
+          "description": "Head back to your hotel in Sigiriya to unwind after a day of exploration. Enjoy the serene surroundings and perhaps take a dip in the pool.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Savor a delightful dinner at a local restaurant, where you can try more of Sri Lanka's culinary delights, including seafood and vegetarian options, all while enjoying the warm hospitality of the locals.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Immersion in Sigiriya",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Sigiriya",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Colombo",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic train ride from Sigiriya to Colombo."
+      },
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring local Sri Lankan dishes like hoppers and fresh tropical fruits.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Climb Sigiriya Rock Fortress",
+          "description": "Embark on an early morning adventure to Sigiriya Rock, a UNESCO World Heritage site. The climb offers breathtaking views and fascinating ancient frescoes along the way.",
+          "searchQuery": "Sigiriya Rock Fortress",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Ayurvedic Massage Experience",
+          "description": "Relax and rejuvenate with a traditional Ayurvedic massage at a local spa. This holistic treatment will help you unwind after your climb and is a perfect way to experience Sri Lankan wellness culture.",
+          "searchQuery": "Ayurvedic Spa Sigiriya",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a nearby restaurant, sampling local specialties such as rice and curry, which is a staple of Sri Lankan cuisine.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Minneriya National Park",
+          "description": "Take a safari tour in Minneriya National Park, famous for its large elephant gatherings. Witness these majestic creatures in their natural habitat and enjoy the stunning landscapes.",
+          "searchQuery": "Minneriya National Park",
+          "locationEn": "Minneriya, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Sigiriya",
+          "description": "After an exciting day, return to Sigiriya and relax at your hotel, reflecting on the day's adventures.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Eatery",
+          "description": "Savor a delightful dinner at a local eatery, where you can try more Sri Lankan dishes and enjoy the warm hospitality of the locals.",
+          "locationEn": "Sigiriya, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Colombo and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Sigiriya",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Colombo",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic drive back to Colombo."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ministry of Crab",
+          "description": "Indulge in a seafood feast at one of Colombo's most famous restaurants, known for its fresh crab dishes and vibrant atmosphere. A must-visit for seafood lovers!",
+          "searchQuery": "Ministry of Crab",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Pettah Market",
+          "description": "Explore the bustling Pettah Market, where you can find everything from spices to textiles. It's a great place to pick up souvenirs and experience local life.",
+          "searchQuery": "Pettah Market",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Ayurvedic Massage at Spa Ceylon",
+          "description": "Relax and rejuvenate with a traditional Ayurvedic massage at Spa Ceylon, known for its luxurious treatments and serene ambiance. A perfect way to unwind before your departure.",
+          "searchQuery": "Spa Ceylon",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Gallery Café",
+          "description": "Enjoy a delightful dinner at The Gallery Café, set in a charming colonial building. The menu features a mix of local and international dishes, perfect for a final meal in Sri Lanka.",
+          "searchQuery": "The Gallery Café",
+          "locationEn": "Colombo, Sri Lanka",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

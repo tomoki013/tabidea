@@ -1,0 +1,376 @@
+{
+  "id": "70267385-9672-44c0-9218-1971f8b598f1",
+  "destination": "Melbourne",
+  "description": "Escape to the vibrant city of Melbourne, where the arts flourish, nature beckons, and shopping delights await. Over four days, immerse yourself in the stunning landscapes of the Great Ocean Road, explore the eclectic laneways filled with street art, and indulge in the culinary scene that reflects the city’s multicultural spirit. This itinerary is crafted for couples seeking a leisurely pace, allowing you to savor every moment in this Australian gem.",
+  "heroImage": "https://images.unsplash.com/photo-1663217928094-1333efed5138?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUxMTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Gabriel Yahya",
+  "heroImagePhotographerUrl": "https://unsplash.com/@littlegiantgarage?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day with a delightful breakfast at Hardware Société, known for its French-inspired dishes and cozy atmosphere. Don't miss their famous baked eggs and freshly brewed coffee!",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Federation Square",
+          "description": "Explore Federation Square, the cultural precinct of Melbourne. This vibrant area is home to galleries, museums, and restaurants, making it a perfect spot to soak in the city's artistic vibe.",
+          "searchQuery": "Federation Square",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Riverland Bar",
+          "description": "Enjoy a leisurely lunch at Riverland Bar, located by the Yarra River. The outdoor seating offers stunning views of the city skyline, and their menu features delicious share plates and refreshing drinks.",
+          "searchQuery": "Riverland Bar",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Flinders Street Station",
+          "description": "Visit the iconic Flinders Street Station, a Melbourne landmark. Take some photos of its stunning architecture and vibrant atmosphere, and perhaps grab a coffee from one of the nearby cafes.",
+          "searchQuery": "Flinders Street Station",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Royal Botanic Gardens",
+          "description": "Stroll through the beautiful Royal Botanic Gardens, a serene oasis in the heart of the city. Enjoy the lush landscapes, diverse plant species, and tranquil lakes as you unwind in nature.",
+          "searchQuery": "Royal Botanic Gardens",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Attica",
+          "description": "Indulge in a fine dining experience at Attica, one of Australia's top restaurants. Their innovative menu showcases local ingredients and unique flavors, making it a memorable culinary adventure.",
+          "searchQuery": "Attica",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Yarra River",
+          "description": "End your day with a romantic evening walk along the Yarra River. The city lights reflecting on the water create a magical atmosphere, perfect for a couple's stroll.",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Great Ocean Road Adventure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Melbourne",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Twelve Apostles",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive along the Great Ocean Road."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day with a delicious breakfast at this popular café known for its French-inspired dishes and cozy atmosphere. Don't miss their famous baked eggs!",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Twelve Apostles",
+          "description": "Marvel at the stunning limestone stacks rising from the Southern Ocean. The breathtaking views are perfect for photos, especially in the morning light.",
+          "searchQuery": "Twelve Apostles",
+          "locationEn": "Twelve Apostles, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Apollo Bay Hotel",
+          "description": "Enjoy a hearty lunch at this local favorite, offering fresh seafood and classic pub fare with a view of the ocean.",
+          "searchQuery": "Apollo Bay Hotel",
+          "locationEn": "Apollo Bay, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Loch Ard Gorge",
+          "description": "Discover the dramatic cliffs and beautiful beach at Loch Ard Gorge. Take a walk along the trails and learn about the shipwreck history of the area.",
+          "searchQuery": "Loch Ard Gorge",
+          "locationEn": "Loch Ard Gorge, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Great Otway National Park",
+          "description": "Immerse yourself in nature as you explore the lush rainforests and stunning waterfalls of this national park. A perfect spot for a leisurely hike.",
+          "searchQuery": "Great Otway National Park",
+          "locationEn": "Great Otway National Park, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Beach Hotel",
+          "description": "End your day with a relaxing dinner at this beachfront hotel, known for its fresh local produce and stunning sunset views over the ocean.",
+          "searchQuery": "The Beach Hotel",
+          "locationEn": "Apollo Bay, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Shopping Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hardware Société",
+          "description": "Start your day with a delightful breakfast at Hardware Société, known for its French-inspired dishes and cozy atmosphere. Don't miss their famous baked eggs and freshly brewed coffee!",
+          "searchQuery": "Hardware Société",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery of Victoria",
+          "description": "Explore Australia's oldest and most visited art museum, featuring an impressive collection of international and Australian art. The gallery's stunning architecture and beautiful gardens make it a perfect spot for art lovers.",
+          "searchQuery": "National Gallery of Victoria",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Queen Victoria Market",
+          "description": "Head to the iconic Queen Victoria Market for lunch. Sample local delicacies and fresh produce from various stalls, or enjoy a meal at one of the many eateries. It's a vibrant place to soak in the local culture.",
+          "searchQuery": "Queen Victoria Market",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Hosier Lane",
+          "description": "Stroll through Hosier Lane, famous for its vibrant street art and graffiti. This ever-changing canvas showcases the work of local and international artists, making it a must-see for art enthusiasts.",
+          "searchQuery": "Hosier Lane",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping at Bourke Street Mall",
+          "description": "After exploring the art scene, head to Bourke Street Mall for some shopping. This bustling area is home to a variety of shops, from high-end boutiques to popular retail chains, perfect for a leisurely shopping spree.",
+          "searchQuery": "Bourke Street Mall",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Chin Chin",
+          "description": "Indulge in a delicious dinner at Chin Chin, a trendy restaurant known for its modern Thai cuisine. The vibrant atmosphere and creative dishes make it a perfect spot to end your day.",
+          "searchQuery": "Chin Chin",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Yarra River",
+          "description": "Conclude your day with a relaxing evening walk along the Yarra River. Enjoy the beautiful city skyline and the serene atmosphere as the sun sets, making for a romantic end to your day.",
+          "searchQuery": "Yarra River",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature Retreat and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Melbourne",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Yarra Valley",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive through the countryside."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Yarra Valley Wine Tasting",
+          "description": "Start your day with a delightful wine tasting experience at one of Yarra Valley's renowned wineries. Sample exquisite local wines while soaking in the stunning vineyard views.",
+          "searchQuery": "Yarra Valley Wine Tasting",
+          "locationEn": "Yarra Valley, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Healesville Hotel",
+          "description": "Savor a delicious lunch at the Healesville Hotel, known for its farm-to-table menu featuring local produce and wines. The rustic ambiance adds to the charm of your dining experience.",
+          "searchQuery": "Healesville Hotel",
+          "locationEn": "Healesville, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Healesville Sanctuary",
+          "description": "Visit Healesville Sanctuary, a wildlife park dedicated to Australian animals. Get up close with kangaroos, koalas, and other native species in a beautiful natural setting.",
+          "searchQuery": "Healesville Sanctuary",
+          "locationEn": "Healesville, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Dandenong Ranges National Park",
+          "description": "Take a scenic drive to Dandenong Ranges National Park. Enjoy a leisurely walk among towering trees and lush ferns, and don't miss the breathtaking views from the lookout points.",
+          "searchQuery": "Dandenong Ranges National Park",
+          "locationEn": "Dandenong Ranges, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at SkyHigh Mount Dandenong",
+          "description": "End your day with a romantic dinner at SkyHigh Mount Dandenong. Enjoy panoramic views of Melbourne as you indulge in a fine dining experience featuring seasonal dishes.",
+          "searchQuery": "SkyHigh Mount Dandenong",
+          "locationEn": "Mount Dandenong, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Melbourne",
+          "description": "After a fulfilling day, drive back to Melbourne. Reflect on the beautiful sights and experiences of the day as you head back to your accommodation.",
+          "locationEn": "Melbourne, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

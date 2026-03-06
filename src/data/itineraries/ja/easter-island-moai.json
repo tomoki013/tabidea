@@ -1,0 +1,601 @@
+{
+  "id": "472f92d3-c131-4db5-a645-0947f22514c4",
+  "destination": "イースター島",
+  "description": "神秘的なモアイ像が点在するイースター島は、世界の果てに位置する孤島で、歴史と文化が息づく冒険の舞台です。8日間の旅では、モアイ像を間近で見ながら、島の美しい風景を自転車やバイクで巡り、地元の人々との交流を楽しむことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からイースター島へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ホセ・アントニオ・エフエス空港",
+          "time": "15:00"
+        },
+        "duration": "12h",
+        "memo": "直行便でイースター島へ向かいます。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "イースター島の宿泊施設チェックイン",
+          "description": "ホセ・アントニオ・エフエス空港から宿泊施設へ移動し、チェックインします。島の雰囲気を感じながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Hotel Hangaroa",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アフ・トンガリキ",
+          "description": "イースター島の中でも特に壮大なモアイ像が並ぶアフ・トンガリキを訪れます。夕日が沈む時間帯に訪れると、モアイ像が美しく照らされ、絶景が広がります。",
+          "searchQuery": "Ahu Tongariki",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "イースター島の新鮮なシーフードを楽しめるレストランで、地元の料理を堪能します。特に、タロイモや魚料理がおすすめです。",
+          "searchQuery": "Te Moana",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "モアイ像巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アフ・トンガリキ訪問",
+          "description": "イースター島で最も壮大なモアイ像が並ぶアフ・トンガリキへ。海を背景に立ち並ぶモアイ像は圧巻で、特に朝の光の中での眺めは絶景です。",
+          "searchQuery": "Ahu Tongariki",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "アフ・トンガリキから近いレストランで、イースター島の新鮮なシーフードを使った料理を楽しみます。地元の味を堪能しましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アフ・ナウナウ訪問",
+          "description": "次に、アフ・ナウナウへ向かいます。ここでは、モアイ像の歴史や文化について学びながら、静かなビーチでリラックスすることもできます。",
+          "searchQuery": "Ahu Nau Nau",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "自転車で島を巡る",
+          "description": "レンタル自転車でイースター島を自由に探索。美しい海岸線や隠れたビーチを訪れながら、モアイ像を見つける冒険を楽しみます。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルに戻り、地元の食材を使ったディナーを楽しみます。新鮮な魚料理や伝統的なイースター島の料理を味わいながら、今日の冒険を振り返りましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "島の北部を探検",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやアボカドが特におすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "オロンゴ村の散策",
+          "description": "オロンゴ村へ向かい、古代の祭祀場やモアイ像の跡を見学します。美しい海の景色と共に、歴史を感じることができるスポットです。",
+          "searchQuery": "Orongo",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "オロンゴ近くのレストランで、地元の魚料理やタロイモを使った料理を楽しみます。新鮮な素材を使った料理は絶品です。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ラノ・ララクのモアイ像見学",
+          "description": "ラノ・ララクへ移動し、モアイ像が作られた石切り場を訪れます。ここでは、未完成のモアイ像やその背後にある歴史を学ぶことができます。",
+          "searchQuery": "Rano Raraku",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "自転車で島を巡る",
+          "description": "レンタル自転車を借りて、島の北部を自由に探索します。美しいビーチや隠れた景色を楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルのレストランで、イースター島の特産品を使ったディナーを楽しみます。地元のワインと共に、素晴らしい夕食を堪能してください。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ビーチでリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやマンゴーが特におすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アナ・ケナビーチでリラックス",
+          "description": "アナ・ケナビーチでのんびりとした時間を過ごします。美しい白砂のビーチと青い海が広がり、モアイ像を背景に素晴らしい写真が撮れます。",
+          "searchQuery": "Anakena Beach",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アナ・カイでランチ",
+          "description": "アナ・カイのビーチ近くにあるレストランで、新鮮なシーフードを使ったランチを楽しみます。特に、地元の魚を使ったセビーチェが絶品です。",
+          "searchQuery": "Anakena Beach Restaurant",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アナ・カイのモアイ像見学",
+          "description": "アナ・カイのモアイ像をじっくり観察します。これらの巨大な像は、イースター島の文化と歴史を感じさせてくれます。",
+          "searchQuery": "Moai Statues at Anakena",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "自転車で島を巡る",
+          "description": "レンタル自転車でイースター島を探索します。美しい風景や隠れたビーチを見つけながら、自由な時間を楽しみましょう。",
+          "searchQuery": "Bicycle Rental Easter Island",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルのレストランで、イースター島の特産を使ったディナーを楽しみます。地元のワインと共に、素晴らしい料理を堪能しましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "文化体験と地元の人との交流",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやアボカドが特におすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "イースター島の村を訪問",
+          "description": "地元の村を訪れ、伝統的な文化や生活様式を体験します。村の人々との交流を通じて、彼らの歴史や習慣について学ぶことができます。",
+          "searchQuery": "Easter Island Village",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元の市場でランチ",
+          "description": "イースター島の市場で新鮮なシーフードや地元の料理を楽しみます。特に、魚のタルタルやココナッツライスが絶品です。",
+          "searchQuery": "Easter Island Market",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "自転車で島を巡る",
+          "description": "自転車を借りて、イースター島の美しい風景を楽しみながら巡ります。モアイ像を見ながら、島の自然を満喫しましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "モアイ像を見学",
+          "description": "島の各地に点在するモアイ像を訪れ、その壮大さに圧倒されます。特にアフ・トンガリキのモアイ像は必見です。",
+          "searchQuery": "Ahu Tongariki",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "夕日を見ながらのディナー",
+          "description": "モアイ像を背景に、夕日を眺めながら地元のレストランでディナーを楽しみます。新鮮な魚料理や地元のワインが楽しめます。",
+          "searchQuery": "Easter Island Restaurant",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "モアイ像の歴史を学ぶ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラパ・ヌイ国立公園",
+          "description": "モアイ像が点在するラパ・ヌイ国立公園を訪れます。壮大な景色の中で、モアイ像の歴史や文化について学びながら、島の自然を満喫しましょう。",
+          "searchQuery": "Rapa Nui National Park",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "島の新鮮なシーフードを使った料理を楽しめるレストランで、ランチを取ります。特に、タロイモや魚のグリルがおすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "モアイ博物館",
+          "description": "モアイ像の歴史や文化を深く理解するために、モアイ博物館を訪れます。展示物を通じて、モアイ像の制作過程や島の人々の生活を知ることができます。",
+          "searchQuery": "Museo Antropológico P. Sebastian Englert",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "自転車で島を巡る",
+          "description": "自転車を借りて、イースター島の美しい風景を楽しみながら巡ります。モアイ像やビーチを訪れ、自由な時間を満喫しましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕日を見ながらディナー",
+          "description": "海辺のレストランで、夕日を眺めながらディナーを楽しみます。新鮮な魚料理や地元のワインを味わいながら、素晴らしい景色を堪能。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "イースター島の絶景を堪能",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやアボカドが特におすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラノ・カウ訪問",
+          "description": "イースター島の最高峰、ラノ・カウへ。美しい火口湖と周囲の絶景を楽しみながら、モアイ像の歴史について学びます。",
+          "searchQuery": "Rano Kau",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "イースター島の地元料理を楽しめるレストランで、シーフードや伝統的なポカリカを味わいます。新鮮な魚介類が自慢です。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "自転車で島を巡る",
+          "description": "レンタル自転車で島を探索。美しいビーチや隠れたモアイ像を訪れながら、のんびりとした時間を過ごします。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "パスクワの夕日観賞",
+          "description": "パスクワのビーチで夕日を眺める特別な時間。モアイ像を背景に、オレンジ色に染まる空を楽しみます。",
+          "searchQuery": "Ahu Tahai",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、イースター島の特産品を使ったディナーを楽しみます。地元のワインと共に、特別な夜を締めくくります。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "イースター島から東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ホセ・アントニオ・エフエス空港",
+          "time": "11:00"
+        },
+        "arrival": {
+          "place": "成田国際空港",
+          "time": "19:00"
+        },
+        "duration": "12h 0m",
+        "memo": "イースター島から東京への直行便です。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "イースター島のホテルで、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやアボカドが特におすすめです。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ラノ・ララクのモアイ像見学",
+          "description": "イースター島の象徴、モアイ像が並ぶラノ・ララクへ。壮大な景色の中で、歴史を感じながらモアイ像を間近で見ることができます。",
+          "searchQuery": "Rano Raraku",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "イースター島の地元料理を楽しめるレストランで、シーフードや伝統的なポカリカを味わいます。新鮮な魚介類が絶品です。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "自転車で島を巡る",
+          "description": "自転車を借りて、イースター島の美しい風景を楽しみながら巡ります。特に、海岸沿いの道は絶景です。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホセ・アントニオ・エフエス空港へ移動",
+          "description": "自転車を返却後、空港へ向かいます。最後のイースター島の風景を楽しみながら、ゆっくりと移動しましょう。",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "成田国際空港到着",
+          "description": "東京に到着。イースター島での素晴らしい思い出を胸に、帰路につきます。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

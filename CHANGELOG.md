@@ -9,6 +9,10 @@
 
 ## 開発者向けコミット履歴（コミット単位）
 
+### 2026-03-07
+
+- `local` fix(ui,planner): 現行の希望入力フォーム `SimplifiedInputFlow` の視認性を微調整。選択式UIの灰色ベースの丸表現を廃止し、オレンジ地+白チェックの選択インジケータへ統一。あわせて同行者・テーマ・旅のペース・予算プリセットの未選択状態の文字色/境界線、入力欄プレースホルダ、フォーカスリングを調整し、ライトモードで白背景に白文字が出る箇所を解消。ヘッダーとセクション間の上余白も詰めて全体の密度を改善
+
 ### 2026-03-06
 
 - `local` feat(samples,i18n,ai): サンプル旅程再生成フローを新方式（outline + chunk）に更新し、`src/scripts/generate-sample-itineraries.ts` を `ja/en` 生成対応へ刷新。サンプル専用APIキー（`SAMPLE_GOOGLE_GENERATIVE_AI_API_KEY` / `SAMPLE_OPENAI_API_KEY`）の優先利用を追加し、`/samples` ではロケール別旅程JSON（`src/data/itineraries/{locale}`）優先読込に対応。あわせてサンプルカード/フィルタのタグ・エリア表示をロケールに応じて出し分け

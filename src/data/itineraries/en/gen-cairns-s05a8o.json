@@ -1,0 +1,358 @@
+{
+  "id": "d8101449-2a21-42c2-b1c1-7125bc6a9ba7",
+  "destination": "Cairns",
+  "description": "Immerse yourself in the vibrant culture and stunning natural beauty of Cairns, where the Great Barrier Reef meets lush rainforests. This 4-day adventure will take you through the heart of this tropical paradise, exploring local art, indulging in exquisite cuisine, and uncovering the rich history of the region. Get ready for an active journey filled with unforgettable experiences!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Cultural Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Caffiend",
+          "description": "Start your day with a delicious breakfast at Caffiend, known for its vibrant atmosphere and excellent coffee. Try their famous avocado toast or a hearty breakfast burrito to fuel your day of exploration.",
+          "searchQuery": "Caffiend",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Cairns Esplanade",
+          "description": "Stroll along the picturesque Cairns Esplanade, where you can enjoy stunning views of the Coral Sea. Take a moment to relax by the lagoon or explore the nearby gardens filled with tropical flora.",
+          "searchQuery": "Cairns Esplanade",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ochre Restaurant",
+          "description": "Indulge in a unique dining experience at Ochre Restaurant, where you can savor modern Australian cuisine with a focus on local ingredients. Don't miss their signature dishes featuring native Australian flavors.",
+          "searchQuery": "Ochre Restaurant",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Cairns Art Gallery",
+          "description": "Visit the Cairns Art Gallery, which showcases a diverse collection of contemporary and traditional art from the region. Take your time to appreciate the local artists and their interpretations of the vibrant culture.",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Cairns Night Markets",
+          "description": "Explore the Cairns Night Markets, a bustling hub of local crafts, souvenirs, and delicious street food. It's the perfect place to pick up unique gifts and enjoy a casual dinner while soaking in the lively atmosphere.",
+          "searchQuery": "Cairns Night Markets",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Raw Prawn",
+          "description": "End your day with a delightful dinner at The Raw Prawn, known for its fresh seafood and stunning views of the Esplanade. Enjoy a relaxed meal while watching the sunset over the water.",
+          "searchQuery": "The Raw Prawn",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Great Barrier Reef Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Caffiend",
+          "description": "Start your day with a delicious breakfast at Caffiend, known for its vibrant atmosphere and excellent coffee. Try their famous avocado toast or the hearty breakfast burrito to fuel up for the day ahead.",
+          "searchQuery": "Caffiend",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Great Barrier Reef Tour",
+          "description": "Embark on an unforgettable day trip to the Great Barrier Reef. Enjoy snorkeling or diving among the stunning coral reefs and vibrant marine life. This is a must-do experience while in Cairns!",
+          "searchQuery": "Great Barrier Reef Tour",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch on the Reef",
+          "description": "Enjoy a packed lunch provided during your reef tour, surrounded by the breathtaking views of the ocean. Take a moment to relax and soak in the beauty of the Great Barrier Reef.",
+          "locationEn": "Great Barrier Reef, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Cairns",
+          "description": "After a day of adventure, return to Cairns and take some time to unwind. Reflect on the incredible sights you’ve seen and the memories made.",
+          "locationEn": "Cairns, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Cairns Esplanade",
+          "description": "Stroll along the Cairns Esplanade, where you can enjoy the beautiful waterfront views. Check out the local markets and perhaps grab a refreshing drink at one of the nearby cafes.",
+          "searchQuery": "Cairns Esplanade",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ochre Restaurant",
+          "description": "Indulge in a fine dining experience at Ochre Restaurant, known for its use of native Australian ingredients. Savor dishes that showcase the unique flavors of the region, paired with a great selection of wines.",
+          "searchQuery": "Ochre Restaurant",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Cairns Night Markets",
+          "description": "End your day by exploring the Cairns Night Markets. Browse through local crafts, souvenirs, and enjoy some late-night snacks from the food stalls. It's a perfect way to experience the local culture.",
+          "searchQuery": "Cairns Night Markets",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Rainforest and Historical Insights",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Caffiend",
+          "description": "Start your day with a delicious breakfast at Caffiend, known for its vibrant atmosphere and excellent coffee. Try their famous avocado toast or the hearty breakfast burrito to fuel up for the day ahead.",
+          "searchQuery": "Caffiend",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Skyrail Rainforest Cableway",
+          "description": "Experience the breathtaking views of the World Heritage-listed rainforest as you glide above the treetops on the Skyrail Rainforest Cableway. This 7.5 km journey offers stunning panoramas and a unique perspective of the lush landscape below.",
+          "searchQuery": "Skyrail Rainforest Cableway",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Kuranda Village Exploration",
+          "description": "Arrive in Kuranda, a charming village nestled in the rainforest. Explore the local markets, art galleries, and unique shops. Don't miss the chance to taste some local delicacies at the Kuranda Markets, where you can find everything from handmade crafts to delicious treats.",
+          "searchQuery": "Kuranda Village",
+          "locationEn": "Kuranda, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Frogs Restaurant",
+          "description": "Enjoy a delightful lunch at Frogs Restaurant, known for its fresh, locally sourced ingredients and beautiful rainforest views. Their menu features a variety of dishes, including vegetarian options and fresh seafood.",
+          "searchQuery": "Frogs Restaurant",
+          "locationEn": "Kuranda, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the Kuranda Koala Gardens",
+          "description": "Get up close with Australia's iconic wildlife at the Kuranda Koala Gardens. Here, you can see koalas, kangaroos, and other native animals in a natural setting. Don't forget to take a photo with a koala!",
+          "searchQuery": "Kuranda Koala Gardens",
+          "locationEn": "Kuranda, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return via Skyrail Rainforest Cableway",
+          "description": "Take the Skyrail back to Cairns, soaking in the stunning views once more. This return journey offers a different perspective of the rainforest, and you might even spot some wildlife along the way.",
+          "searchQuery": "Skyrail Rainforest Cableway",
+          "locationEn": "Cairns, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Ochre Restaurant",
+          "description": "Indulge in a fine dining experience at Ochre Restaurant, where you can savor modern Australian cuisine with a focus on native ingredients. The ambiance is perfect for a solo traveler looking to enjoy a memorable meal.",
+          "searchQuery": "Ochre Restaurant",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening Stroll along the Cairns Esplanade",
+          "description": "End your day with a leisurely stroll along the Cairns Esplanade. Enjoy the vibrant atmosphere, street performances, and beautiful views of the ocean as the sun sets. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Cairns Esplanade",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Local Flavors and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Rusty's Markets",
+          "description": "Start your day with a vibrant breakfast at Rusty's Markets, where you can enjoy fresh local produce and delicious breakfast options. The lively atmosphere and colorful stalls make it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Rusty's Markets",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Cairns Botanical Gardens",
+          "description": "Stroll through the stunning Cairns Botanical Gardens, home to a diverse collection of tropical plants and beautiful walking trails. Take your time to appreciate the lush greenery and perhaps spot some local wildlife along the way.",
+          "searchQuery": "Cairns Botanical Gardens",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ochre Restaurant",
+          "description": "Indulge in a unique dining experience at Ochre Restaurant, known for its innovative use of native Australian ingredients. Enjoy dishes that reflect the local culture and flavors, all while overlooking the beautiful waterfront.",
+          "searchQuery": "Ochre Restaurant",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Cairns Art Gallery",
+          "description": "Visit the Cairns Art Gallery, which showcases a fantastic collection of contemporary Australian art, with a focus on works from the region. The gallery often hosts exhibitions that highlight local artists and cultural themes.",
+          "searchQuery": "Cairns Art Gallery",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Esplanade Lagoon",
+          "description": "Take a leisurely walk to the Esplanade Lagoon, a popular spot for both locals and tourists. Enjoy the scenic views of the ocean and relax by the water, soaking in the tropical atmosphere before your departure.",
+          "searchQuery": "Esplanade Lagoon",
+          "locationEn": "Cairns, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Raw Prawn",
+          "description": "End your day with a delightful dinner at The Raw Prawn, where you can savor fresh seafood dishes and enjoy the laid-back ambiance. It's a great way to reflect on your Cairns adventure before heading home.",
+          "searchQuery": "The Raw Prawn",
+          "locationEn": "Cairns, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

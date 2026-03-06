@@ -1,0 +1,492 @@
+{
+  "id": "ee8eb9d7-616c-4164-b7c1-7c4c95d06207",
+  "destination": "ボラボラ島",
+  "description": "ボラボラ島は、青い海と白い砂浜に囲まれた楽園。水上コテージでの贅沢なひとときを過ごしながら、何もしない贅沢を味わうことができます。美しいサンセットを眺めながら、ロマンチックなディナーを楽しむのも忘れずに。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からボラボラ島へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ボラボラ島",
+          "time": "15:00"
+        },
+        "duration": "8h",
+        "memo": "直行便でボラボラ島へ。機内ではリゾート気分を高めるために、南国の音楽を聴きながら過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "水上コテージチェックイン",
+          "description": "ボラボラ島の美しい水上コテージにチェックイン。目の前には透き通った海が広がり、まるで絵画のような景色が楽しめます。",
+          "searchQuery": "InterContinental Bora Bora Resort & Thalasso Spa",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチでのんびり",
+          "description": "コテージの前のビーチで、夕日を眺めながらリラックス。波の音を聞きながら、心地よい時間を過ごしましょう。",
+          "searchQuery": "Bora Bora Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "コテージでディナー",
+          "description": "水上コテージのテラスで、ロマンチックなディナーを楽しみます。新鮮なシーフードや地元の料理を堪能しながら、特別な夜を過ごしましょう。",
+          "searchQuery": "InterContinental Bora Bora Resort & Thalasso Spa",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ボラボラ島でのんびり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "ボラボラ島の水上コテージで、朝日を浴びながらの朝食。新鮮なフルーツや地元の特産品を使った料理を楽しみ、ゆったりとした時間を過ごします。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ビーチでリラックス",
+          "description": "美しい白砂のビーチで、波の音を聞きながらリラックス。シュノーケリングや日光浴を楽しむのもおすすめです。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "水上レストランでランチ",
+          "description": "水上に浮かぶレストランで、地元のシーフードを使ったランチを堪能。透明な海を眺めながら、贅沢なひとときを過ごします。",
+          "searchQuery": "Bloody Mary's Bora Bora",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スパでリフレッシュ",
+          "description": "リゾート内のスパで、マッサージやトリートメントを受けて心身ともにリフレッシュ。特別なハネムーンにぴったりの贅沢な体験です。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "水上コテージでのんびり",
+          "description": "水上コテージに戻り、プライベートデッキでのんびりとした時間を過ごします。夕日を眺めながら、カクテルを楽しむのも素敵です。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロマンチックなディナー",
+          "description": "水上コテージのデッキで、キャンドルライトの下でのディナー。新鮮なシーフードや地元の料理を楽しみながら、特別な夜を演出します。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "シュノーケリングとリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "ボラボラ島の美しい海を眺めながら、贅沢な朝食を楽しみます。新鮮なフルーツや地元の特産品を使った料理が並び、心地よい海風を感じながらのひとときです。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シュノーケリング体験",
+          "description": "透明度の高い海で、色とりどりの魚たちと一緒に泳ぎます。ボラボラ島の美しいサンゴ礁を探索し、海の生き物たちとの出会いを楽しんでください。",
+          "searchQuery": "Bora Bora snorkeling",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチでランチ",
+          "description": "ビーチサイドのレストランで、地元のシーフードを使ったランチを楽しみます。波の音を聞きながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "プライベートビーチでのんびり",
+          "description": "プライベートビーチで、ただただリラックス。ビーチチェアに寝転び、青い海と空を眺めながら、何もしない贅沢を味わいます。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "水上コテージでのサンセット",
+          "description": "水上コテージのデッキから、息をのむようなサンセットを楽しみます。夕日が海に沈む瞬間は、ロマンチックなひととき。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "水上コテージでディナー",
+          "description": "コテージでのプライベートディナー。シェフが用意した特別な料理を楽しみながら、二人だけの時間を大切に過ごします。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ボラボラ島の自然を満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、フルーツやパン、コーヒーを楽しむ贅沢な朝食。朝の静けさの中で、ゆったりとした時間を過ごします。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ボラボラ島の展望台ハイキング",
+          "description": "ボラボラ島の絶景を楽しむために、展望台へハイキング。途中のトレイルでは、色とりどりの花々や美しい風景が広がり、頂上からの眺めは息をのむ美しさです。",
+          "searchQuery": "Bora Bora Viewpoint",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチでランチ",
+          "description": "ビーチサイドのレストランで新鮮なシーフードランチ。波の音を聞きながら、地元の料理を楽しむ贅沢なひととき。",
+          "searchQuery": "Bora Bora Beach Restaurant",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "白い砂浜でのんびりと過ごす時間。海に浸かりながら、日光浴や読書を楽しむ、何もしない贅沢を満喫します。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サンセットクルーズ",
+          "description": "ボラボラの美しい夕日を楽しむためのクルーズ。海の上から見る夕日は、ロマンチックなひとときを演出します。",
+          "searchQuery": "Bora Bora Sunset Cruise",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "水上コテージでディナー",
+          "description": "水上コテージでのプライベートディナー。キャンドルの灯りの中、特別な料理を楽しみながら、二人だけの時間を過ごします。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "スパで贅沢な時間",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "水上コテージで朝食",
+          "description": "美しい海を眺めながら、フルーツやパン、地元の特産品を使った朝食を楽しみます。朝の静けさの中で、特別なひとときを過ごしましょう。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "スパでリラックス",
+          "description": "ボラボラ島の高級スパで、トリートメントを受けながら心身ともにリフレッシュ。オーシャンビューのトリートメントルームで、波の音を聞きながら贅沢な時間を堪能します。",
+          "searchQuery": "Bora Bora Spa",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチでのんびり",
+          "description": "プライベートビーチで、ビーチチェアに寝転びながら、青い海を眺めたり、軽食を楽しんだりします。何もしない贅沢を味わいましょう。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "水上アクティビティ",
+          "description": "カヤックやシュノーケリングを楽しみながら、色とりどりの魚たちと触れ合います。透明度の高い海でのアクティビティは、特別な思い出になること間違いなし。",
+          "searchQuery": "Bora Bora Water Activities",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロマンチックディナー",
+          "description": "水上コテージのデッキで、キャンドルライトの下でのディナー。新鮮なシーフードや地元の料理を楽しみながら、星空を眺める贅沢なひとときを過ごします。",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ボラボラ島から東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ボラボラ島",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "8h",
+        "memo": "ボラボラ島から東京への直行便。機内での食事を楽しみながら、ゆったりとした時間を過ごします。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "水上コテージで朝食",
+          "description": "ボラボラ島の水上コテージで、朝日を浴びながらの朝食。新鮮なフルーツや地元のパンを楽しみ、リゾート気分を満喫します。",
+          "searchQuery": "Bora Bora Water Bungalow Breakfast",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ボラボラ島のビーチでリラックス",
+          "description": "美しい白砂のビーチで、波の音を聞きながらのんびりと過ごします。海に入ったり、ビーチチェアで読書を楽しんだり、心地よい時間をお過ごしください。",
+          "searchQuery": "Bora Bora Beach",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "水上コテージでのんびり",
+          "description": "水上コテージに戻り、プライベートデッキでのんびりとした時間を過ごします。海を眺めながら、カクテルを楽しむのもおすすめです。",
+          "searchQuery": "Bora Bora Water Bungalow",
+          "locationEn": "Bora Bora, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "東京到着",
+          "description": "東京に到着後、ホテルへ移動。旅の疲れを癒しながら、次の冒険に備えましょう。",
+          "searchQuery": "Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "東京でのんびり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "東京の高級ホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや和洋折衷の料理が揃い、優雅な朝のひとときを過ごせます。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "東京タワー",
+          "description": "東京のシンボル、東京タワーを訪れます。展望台からの眺望は素晴らしく、晴れた日には富士山も見えるかもしれません。",
+          "searchQuery": "Tokyo Tower",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "東京タワー近くのカフェで軽めのランチを。おしゃれな雰囲気の中で、サンドイッチやサラダを楽しみましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "芝公園散策",
+          "description": "東京タワーの近くにある芝公園を散策します。広々とした緑の中で、のんびりとした時間を過ごし、リラックスできます。",
+          "searchQuery": "Shiba Park",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アフタヌーンティー",
+          "description": "高級ホテルのラウンジでアフタヌーンティーを楽しみます。美しいスイーツやサンドイッチを味わいながら、優雅なひとときを過ごしましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻る",
+          "description": "ゆったりとした時間を過ごした後、ホテルに戻ります。夜はお部屋でのんびりと過ごすのも良いでしょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

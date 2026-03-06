@@ -1,0 +1,526 @@
+{
+  "id": "b56b7cc2-0979-4774-8c97-9c51f06b7438",
+  "destination": "ニューオーリンズ",
+  "description": "音楽と文化の交差点、ニューオーリンズでの6日間の旅。ジャズの歴史を感じながら、地元のグルメやアートに浸り、友人と共に心温まるひとときを過ごします。リラックスしながらも、活気あふれる街の魅力を存分に味わうことができるプランです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューオーリンズ到着とフレンチクォーター散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューオーリンズの名物、ベニエを楽しむ朝食。粉砂糖がたっぷりかかった揚げ菓子は、コーヒーとの相性も抜群です。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フレンチクォーター散策",
+          "description": "歴史的なフレンチクォーターを散策。カラフルな建物やアートギャラリー、ジャズの生演奏が楽しめるカフェが立ち並び、街の雰囲気を存分に味わえます。",
+          "searchQuery": "French Quarter",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Cafe du Mondeでランチ",
+          "description": "フレンチクォーターの名店、Cafe du Mondeで軽食。名物のベニエとカフェオレを楽しみながら、観光客や地元の人々の賑わいを感じてください。",
+          "searchQuery": "Cafe du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジャクソン広場訪問",
+          "description": "ジャクソン広場でのんびりとした時間を過ごします。周囲にはアートや音楽のパフォーマンスがあり、地元のアーティストの作品を楽しむことができます。",
+          "searchQuery": "Jackson Square",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "バーボンストリート散策",
+          "description": "バーボンストリートを歩きながら、ジャズの生演奏を楽しみます。多くのバーやクラブがあり、夜の雰囲気を感じるのも良いでしょう。",
+          "searchQuery": "Bourbon Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャズクラブでディナー",
+          "description": "地元のジャズクラブでディナーを楽しみながら、ライブ演奏を堪能します。ニューオーリンズの音楽シーンを体感する絶好の機会です。",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ジャズ関連グッズのショッピング",
+          "description": "フレンチクォーター周辺のショップで、ジャズ関連のグッズを探します。お気に入りのアーティストのCDやTシャツを見つける楽しみがあります。",
+          "searchQuery": "Jazz Shop",
+          "locationEn": "New Orleans, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジャズとアートの一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューオーリンズのホテルで、南部の伝統的な朝食を楽しみます。ビスケットやグレービーソース、フルーツなど、地元の味を堪能しましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マリオット・ジャズクラブ",
+          "description": "ニューオーリンズの名物、マリオット・ジャズクラブで生演奏を楽しみます。地元のアーティストによるジャズの演奏を聴きながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Marriott Jazz Club",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "フレンチクォーターでランチ",
+          "description": "フレンチクォーターの人気レストランで、ジャンバラヤやポーボーイサンドイッチなど、ニューオーリンズの名物料理を楽しみます。地元の雰囲気を感じながら、食事を満喫しましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ニューオーリンズ美術館",
+          "description": "ニューオーリンズ美術館を訪れ、地元アーティストの作品やアメリカのアートを楽しみます。美術館の周囲には美しい公園もあり、散策するのもおすすめです。",
+          "searchQuery": "New Orleans Museum of Art",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー巡り",
+          "description": "フレンチクォーター周辺のアートギャラリーを巡り、地元アーティストの作品を鑑賞します。お気に入りの作品が見つかるかもしれません。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャズバーでディナー",
+          "description": "地元のジャズバーで、ライブ演奏を聴きながらディナーを楽しみます。美味しい料理と共に、ジャズの雰囲気を満喫しましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "フレンチクォーターの夜の散策",
+          "description": "フレンチクォーターの街並みを散策し、夜の雰囲気を楽しみます。ストリートパフォーマンスやお土産屋さんを見ながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元のグルメと音楽",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューオーリンズのホテルで、南部スタイルの朝食を楽しみます。ビスケットやグレービーソース、フルーツなど、地元の味を堪能しましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フレンチマーケット散策",
+          "description": "フレンチマーケットで地元のアートや手作りの品々を見て回ります。特にジャズ関連のグッズやお土産が豊富で、友人へのプレゼント探しにもぴったりです。",
+          "searchQuery": "French Market",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Cafe du Mondeでランチ",
+          "description": "名物のベニエとカフェオレを楽しむために、Cafe du Mondeへ。甘い香りに包まれながら、リラックスしたひとときを過ごしましょう。",
+          "searchQuery": "Cafe du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジャズクラブ巡り",
+          "description": "ニューオーリンズの有名なジャズクラブを訪れ、地元のミュージシャンによる生演奏を楽しみます。特にフレンチクォーターのクラブは雰囲気が抜群です。",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "地元のレストランでディナー",
+          "description": "地元の人気レストランで、ケイジャン料理やクレオール料理を堪能します。特にシーフード料理は絶品です。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャズの歴史を学ぶ",
+          "description": "ニューオーリンズのジャズ博物館を訪れ、ジャズの歴史や文化について学びます。展示物や音楽を通じて、ジャズの魅力を深く理解できるでしょう。",
+          "searchQuery": "New Orleans Jazz Museum",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のジャズライブ",
+          "description": "最後は、地元のジャズバンドによるライブを楽しみながら、素敵な夜を締めくくります。生演奏の迫力を体感し、心に残る思い出を作りましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ジャズの歴史を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューオーリンズの名物、ベニエを楽しむ朝食。粉砂糖がたっぷりかかった揚げ菓子は、コーヒーとの相性も抜群です。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ジャズ博物館",
+          "description": "ジャズの歴史を深く知ることができる博物館。展示物や音楽体験を通じて、ニューオーリンズが生んだ音楽の魅力を堪能できます。",
+          "searchQuery": "New Orleans Jazz Museum",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フレンチマーケットでランチ",
+          "description": "地元の食材を使った料理が楽しめるフレンチマーケットで、クレオール料理やシーフードを味わいましょう。屋外の雰囲気も楽しめます。",
+          "searchQuery": "French Market",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントルイス墓地訪問",
+          "description": "ニューオーリンズの歴史的な墓地、セントルイス墓地を散策。独特の墓石や歴史的な背景を学びながら、静かな時間を過ごせます。",
+          "searchQuery": "Saint Louis Cemetery No. 1",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ジャズクラブでのライブ鑑賞",
+          "description": "地元のジャズクラブで、実際の演奏を楽しむ時間。生の音楽に触れながら、ニューオーリンズの夜を満喫しましょう。",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャズ関連グッズのショッピング",
+          "description": "ジャズのファングッズを探しに、地元のショップやマーケットを巡ります。お気に入りのアイテムを見つけて、思い出を持ち帰りましょう。",
+          "searchQuery": "New Orleans Jazz Shop",
+          "locationEn": "New Orleans, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューオーリンズの名物料理を楽しむディナー。ジャズの生演奏を聴きながら、地元の味を堪能しましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューオーリンズのホテルで、南部の伝統的な朝食を楽しみます。ビスケットやグレービーソース、フルーツが盛りだくさんのプレートで、エネルギーをチャージしましょう。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロイヤルストリート散策",
+          "description": "ロイヤルストリートを散策しながら、アートギャラリーやユニークなショップを訪れます。地元アーティストの作品や、ジャズ関連のグッズを見つけるチャンスです。",
+          "searchQuery": "Royal Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Cafe du Mondeでランチ",
+          "description": "ニューオーリンズ名物のベニエを楽しむために、Cafe du Mondeへ。粉砂糖がたっぷりかかったベニエと、香ばしいカフェオレの組み合わせは絶品です。",
+          "searchQuery": "Cafe du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートギャラリー巡り",
+          "description": "フレンチクォーターのアートギャラリーを訪れ、地元のアーティストの作品を鑑賞します。特にジャズをテーマにしたアートが多く、心が躍ります。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ジャズショップでファングッズ購入",
+          "description": "ジャズ関連のグッズが揃うショップで、お気に入りのアーティストのCDやTシャツを探しましょう。お土産にもぴったりです。",
+          "searchQuery": "Jazz Shop",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "フレンチクォーターでディナー",
+          "description": "フレンチクォーターのレストランで、地元のシーフード料理を楽しみます。特にガンボやジャンバラヤはおすすめです。",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ジャズクラブでライブ鑑賞",
+          "description": "夜はジャズクラブで生演奏を楽しみましょう。地元のミュージシャンによる熱い演奏が、ニューオーリンズの夜を彩ります。",
+          "searchQuery": "Jazz Club",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰路につく前のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェ・デュ・モンドで朝食",
+          "description": "ニューオーリンズの名物、ベニエを楽しむためにカフェ・デュ・モンドへ。粉砂糖がたっぷりかかった揚げ菓子と、香ばしいコーヒーで朝をスタートしましょう。",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ミシシッピ川クルーズ",
+          "description": "ミシシッピ川をクルーズしながら、ニューオーリンズの美しい景色を楽しみます。川の流れに身を任せ、リラックスしたひとときを過ごしましょう。",
+          "searchQuery": "Mississippi River Cruise",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "フレンチクォーター散策",
+          "description": "歴史的なフレンチクォーターを散策し、ジャズの名所やアートギャラリーを訪れます。地元のアーティストの作品を見ながら、ニューオーリンズの文化に触れましょう。",
+          "searchQuery": "French Quarter",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ジャズ関連グッズのショッピング",
+          "description": "フレンチクォーター内のショップで、ジャズ関連のグッズやお土産を探します。お気に入りのアーティストのCDや、ユニークなアイテムを見つけてみてください。",
+          "searchQuery": "Jazz Merchandise",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ジャズクラブでのひととき",
+          "description": "地元のジャズクラブで生演奏を楽しみながら、リラックスした時間を過ごします。ニューオーリンズの音楽シーンを体感する絶好の機会です。",
+          "searchQuery": "Jazz Club",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ニューオーリンズのレストランでディナー",
+          "description": "地元の料理を楽しむために、ニューオーリンズの人気レストランでディナーを。クレオール料理やシーフードを堪能しましょう。",
+          "searchQuery": "New Orleans Restaurant",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,436 @@
+{
+  "id": "2a89878a-4582-402f-883c-2701d50bc112",
+  "destination": "Maldives",
+  "description": "Escape to the enchanting Maldives, where turquoise waters meet powdery white sands, creating an idyllic paradise perfect for couples seeking romance and relaxation. This 6-day journey is designed for you to unwind in luxurious water bungalows, indulge in exquisite dining, and explore the vibrant marine life that makes this destination truly unforgettable. Let the gentle ocean breeze and the sound of waves be your backdrop as you create cherished memories together on your honeymoon.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure to Paradise",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Maldives",
+          "time": "22:00"
+        },
+        "duration": "14h",
+        "memo": "Direct flight to Maldives, including a layover."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Airport",
+          "description": "Enjoy a light meal at the airport before your long flight. Look for local specialties to get a taste of what's to come in the Maldives!",
+          "searchQuery": "Washington D.C. Airport Restaurants",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "Arrival at Maldives",
+          "description": "Welcome to the Maldives! After a long journey, you will be greeted by the stunning turquoise waters and white sandy beaches. Transfer to your water villa for a romantic start to your honeymoon.",
+          "searchQuery": "Maldives",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "23:00",
+          "activity": "Check-in at Water Villa",
+          "description": "Settle into your luxurious water villa, where you can enjoy breathtaking views of the ocean right from your room. Take a moment to relax and unwind after your travels.",
+          "searchQuery": "Water Villa Maldives",
+          "locationEn": "Maldives",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Welcome to Your Water Bungalow",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Your Water Bungalow",
+          "description": "Start your day with a delightful breakfast served right at your water bungalow. Enjoy fresh tropical fruits, pastries, and a selection of local dishes while taking in the stunning views of the turquoise lagoon.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Snorkeling at the House Reef",
+          "description": "Dive into the crystal-clear waters and explore the vibrant marine life at the house reef. This is a perfect opportunity to swim alongside colorful fish and maybe even spot a turtle or two!",
+          "searchQuery": "House Reef Maldives",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at the Resort Restaurant",
+          "description": "Savor a delicious lunch at the resort's beachfront restaurant. Choose from a variety of international and local dishes while enjoying the gentle sea breeze and the sound of waves.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relaxing Afternoon on the Deck",
+          "description": "Spend a leisurely afternoon lounging on your private deck. Take a dip in the lagoon, read a book, or simply soak up the sun in your own little paradise.",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Couples Spa Treatment",
+          "description": "Indulge in a rejuvenating couples spa treatment at the resort's spa. Enjoy a soothing massage with ocean views, perfect for unwinding together in a serene setting.",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner Under the Stars",
+          "description": "End your day with a romantic dinner on the beach. Enjoy a specially curated menu featuring fresh seafood and local delicacies, all while gazing at the stars above.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Explore Underwater Wonders",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a delightful breakfast at your water villa. Enjoy a selection of fresh fruits, pastries, and local delicacies while overlooking the serene ocean.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Snorkeling Adventure",
+          "description": "Dive into the crystal-clear waters for a snorkeling experience. Explore vibrant coral reefs and swim alongside colorful fish in this underwater paradise.",
+          "searchQuery": "Maldives snorkeling",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch on the Sandbank",
+          "description": "Indulge in a romantic picnic lunch on a secluded sandbank. Enjoy a gourmet meal prepared by the resort while surrounded by the stunning turquoise waters.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relaxation at the Beach",
+          "description": "Spend your afternoon lounging on the soft sands of the beach. Take a dip in the warm ocean or simply relax under the sun with a good book.",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Dolphin Cruise",
+          "description": "Embark on a magical sunset cruise to spot playful dolphins. Enjoy the breathtaking views as the sun sets over the horizon, painting the sky in vibrant colors.",
+          "searchQuery": "Maldives sunset dolphin cruise",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort's Restaurant",
+          "description": "Savor a romantic dinner at the resort's beachfront restaurant. Choose from a menu of exquisite dishes featuring fresh seafood and local flavors.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relax and Rejuvenate",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a delightful breakfast at your water villa. Enjoy a selection of fresh tropical fruits, pastries, and local delicacies while overlooking the serene ocean.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Spa Day at the Resort Spa",
+          "description": "Indulge in a luxurious spa treatment designed for couples. Choose from a variety of massages and treatments that will leave you feeling relaxed and rejuvenated, surrounded by the soothing sounds of the ocean.",
+          "searchQuery": "Resort Spa",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Beachside Restaurant",
+          "description": "Savor a delicious lunch at the beachside restaurant, featuring fresh seafood and local cuisine. Dine with your toes in the sand and enjoy the gentle sea breeze.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax by the Infinity Pool",
+          "description": "Spend your afternoon lounging by the infinity pool, sipping on refreshing cocktails. Take in the stunning views of the ocean and enjoy the tranquility of your surroundings.",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset Dinner on the Beach",
+          "description": "Experience a romantic sunset dinner set up on the beach. Enjoy a private dining experience with a specially curated menu, as the sun sets over the horizon, creating a magical atmosphere.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing from Your Water Villa",
+          "description": "End your day by stargazing from the deck of your water villa. The clear night sky over the Maldives offers a breathtaking view of the stars, perfect for a romantic evening together.",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Immersion and Leisure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a delightful breakfast at your water villa, featuring a selection of tropical fruits, fresh pastries, and local delicacies. Enjoy the serene view of the turquoise waters right from your table.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit a Local Island",
+          "description": "Take a short boat ride to a nearby local island to immerse yourself in the Maldivian culture. Explore the vibrant markets, interact with friendly locals, and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Local Island Maldives",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Beachside Café",
+          "description": "Enjoy a leisurely lunch at a beachside café, where you can savor fresh seafood and traditional Maldivian dishes while listening to the gentle waves lapping at the shore.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Beach Relaxation",
+          "description": "Spend your afternoon lounging on the pristine beach. Whether you prefer sunbathing, swimming, or simply enjoying a good book, this is your time to unwind in paradise.",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset Dolphin Cruise",
+          "description": "Embark on a romantic sunset dolphin cruise. Watch as playful dolphins leap through the waves against the backdrop of a stunning sunset, creating a magical moment to cherish together.",
+          "searchQuery": "Dolphin Cruise Maldives",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner Under the Stars",
+          "description": "Indulge in a private dinner set up on the beach, complete with candlelight and the sound of the ocean. Enjoy a gourmet meal prepared by the resort's chef, making for an unforgettable evening.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Farewell to the Maldives",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Maldives",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "20:00"
+        },
+        "duration": "16h",
+        "memo": "Connecting flight with a layover."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Water Villa",
+          "description": "Enjoy a leisurely breakfast on your private terrace, overlooking the turquoise waters. Indulge in fresh tropical fruits, pastries, and a selection of local dishes to savor your last morning in paradise.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Snorkeling Adventure",
+          "description": "Dive into the vibrant underwater world surrounding your resort. Explore the coral reefs and swim alongside colorful fish, making the most of your final hours in the Maldives.",
+          "searchQuery": "Maldives snorkeling",
+          "locationEn": "Maldives",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Check-out and Relax at the Resort",
+          "description": "After snorkeling, return to your water villa to freshen up and check out. Spend some time relaxing by the beach or pool, soaking in the last moments of this tropical paradise.",
+          "locationEn": "Maldives",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lunch at the Resort Restaurant",
+          "description": "Enjoy a final lunch at the resort's beachfront restaurant, featuring a mix of international and Maldivian cuisine. Take in the stunning ocean views one last time before your departure.",
+          "locationEn": "Maldives",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Departure to the Airport",
+          "description": "Transfer to the airport for your flight back home. Reflect on the beautiful memories created during your stay in the Maldives as you head to the airport.",
+          "locationEn": "Maldives",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,726 @@
+{
+  "id": "2b2af5d3-3809-4a0e-81a0-d8da5243ec90",
+  "destination": "El Calafate, Patagonia",
+  "description": "Immerse yourself in the breathtaking natural beauty of El Calafate, Patagonia, where towering glaciers and stunning mountain landscapes await. This 9-day adventure is designed for the intrepid solo traveler eager to explore the wild heart of Argentina. From witnessing the awe-inspiring Perito Moreno Glacier calving to trekking through pristine national parks, each day promises new thrills and unforgettable views. Get ready to lace up your hiking boots and embark on a journey through one of the most spectacular regions on Earth!",
+  "heroImage": "https://images.unsplash.com/photo-1615657071655-3748ccc3340c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYyMDl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Juan Pablo Mascanfroni",
+  "heroImagePhotographerUrl": "https://unsplash.com/@juanmascan1978?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Journey to Patagonia",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Buenos Aires",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "El Calafate",
+          "time": "10:30"
+        },
+        "duration": "3h 30m",
+        "memo": "Direct flight from Buenos Aires to El Calafate."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Check-in at Hotel Posada Los Alamos",
+          "description": "Settle into your comfortable room at Hotel Posada Los Alamos, a charming hotel surrounded by beautiful gardens, perfect for relaxing after your journey.",
+          "searchQuery": "Hotel Posada Los Alamos",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Tablita",
+          "description": "Enjoy a hearty meal at La Tablita, known for its delicious Patagonian lamb and local wines. The rustic atmosphere adds to the experience of dining in this beautiful region.",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Los Glaciares National Park",
+          "description": "Embark on an adventure to Los Glaciares National Park, a UNESCO World Heritage site. Witness the stunning Perito Moreno Glacier, where you can hear the thunderous sound of ice calving into the lake.",
+          "searchQuery": "Los Glaciares National Park",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Ice Trekking on Perito Moreno Glacier",
+          "description": "Experience the thrill of ice trekking on the Perito Moreno Glacier. A guided tour will take you across the glacier's surface, offering breathtaking views and a unique perspective of this natural wonder.",
+          "searchQuery": "Perito Moreno Glacier Ice Trekking",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at El Cucharon",
+          "description": "Savor a delicious dinner at El Cucharon, where you can indulge in traditional Argentine cuisine, including empanadas and asado, while enjoying the cozy ambiance.",
+          "searchQuery": "El Cucharon",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Perito Moreno Glacier",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Tablita",
+          "description": "Start your day with a hearty breakfast at La Tablita, known for its delicious Argentine pastries and fresh coffee. It's a great way to fuel up for a day of adventure!",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Perito Moreno Glacier",
+          "description": "Head to the stunning Perito Moreno Glacier, one of the few advancing glaciers in the world. Walk along the designated trails and witness the breathtaking views as chunks of ice calve into the turquoise waters of Lago Argentino. Don't forget your camera!",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Lechuza",
+          "description": "Enjoy a delicious lunch at La Lechuza, where you can savor traditional Patagonian dishes. The lamb is a must-try, cooked to perfection and served with local vegetables.",
+          "searchQuery": "La Lechuza",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hiking around the Glacier",
+          "description": "After lunch, embark on a guided hiking tour around the glacier. Experience the unique landscapes of Patagonia up close, with stunning views of the ice formations and surrounding mountains. This is a perfect opportunity for adventure seekers!",
+          "searchQuery": "Perito Moreno Glacier Hiking",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to El Calafate",
+          "description": "After a day filled with exploration, return to El Calafate. Take some time to relax and reflect on the incredible sights you've seen today.",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Pura Vida Resto Bar",
+          "description": "End your day with a delightful dinner at Pura Vida Resto Bar, known for its cozy atmosphere and diverse menu featuring local ingredients. Try the Patagonian trout for a true taste of the region!",
+          "searchQuery": "Pura Vida Resto Bar",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Hiking in Los Glaciares National Park",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at La Zaina",
+          "description": "Start your day with a hearty breakfast at La Zaina, known for its delicious homemade pastries and local jams. The cozy atmosphere will prepare you for an adventurous day ahead.",
+          "searchQuery": "La Zaina",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Depart for Los Glaciares National Park",
+          "description": "Set off early to Los Glaciares National Park, a UNESCO World Heritage site. The drive offers stunning views of the Patagonian landscape, setting the stage for an unforgettable hiking experience.",
+          "searchQuery": "Los Glaciares National Park",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Hiking to Laguna de los Tres",
+          "description": "Embark on a challenging hike to Laguna de los Tres, where you'll be rewarded with breathtaking views of Mount Fitz Roy and the turquoise glacial lake. This hike is a must for nature lovers and adventure seekers!",
+          "searchQuery": "Laguna de los Tres",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Laguna de los Tres",
+          "description": "Enjoy a packed lunch amidst the stunning scenery of Laguna de los Tres. Take a moment to soak in the beauty around you and recharge for the hike back.",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Return hike from Laguna de los Tres",
+          "description": "Make your way back from Laguna de los Tres, taking in the changing views and perhaps spotting some local wildlife along the trail. This hike will test your endurance but is incredibly rewarding.",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to El Calafate",
+          "description": "After a fulfilling day of hiking, return to El Calafate. Reflect on the stunning landscapes you've encountered and the adventures you've had in Patagonia.",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Cuchitril",
+          "description": "End your day with a delightful dinner at El Cuchitril, a local favorite known for its Patagonian lamb and fresh ingredients. The warm ambiance and friendly service will make for a perfect conclusion to your adventurous day.",
+          "searchQuery": "El Cuchitril",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Adventure in El Chaltén",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "El Calafate",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "El Chaltén",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy the scenic bus ride through the stunning landscapes of Patagonia."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Cerro Fitz Roy Hike",
+          "description": "Start your adventure with a hike to the iconic Cerro Fitz Roy. The trail offers breathtaking views of the mountain and surrounding valleys, making it a must-do for nature lovers.",
+          "searchQuery": "Cerro Fitz Roy",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Picnic Lunch at Laguna de los Tres",
+          "description": "Take a break and enjoy a packed lunch at Laguna de los Tres, where you can admire the stunning turquoise waters and the majestic Fitz Roy in the background.",
+          "searchQuery": "Laguna de los Tres",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Hiking to Laguna de los Tres",
+          "description": "After lunch, continue your hike to Laguna de los Tres for even more spectacular views. This is a great spot for photography and soaking in the natural beauty.",
+          "searchQuery": "Laguna de los Tres",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return Hike to El Chaltén",
+          "description": "Begin your descent back to El Chaltén, taking in the changing perspectives of the landscape as you go. This hike will take about 2-3 hours.",
+          "searchQuery": "El Chaltén",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at La Tapera",
+          "description": "End your adventurous day with a hearty dinner at La Tapera, known for its delicious Patagonian lamb and local wines. A perfect way to refuel after a long day of hiking.",
+          "searchQuery": "La Tapera",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Relax at Your Accommodation",
+          "description": "Return to your hotel and unwind after an exhilarating day. Enjoy the cozy atmosphere and perhaps share stories with fellow travelers.",
+          "searchQuery": "El Chaltén",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Trekking to Laguna Torre",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at La Waflería",
+          "description": "Start your day with a delicious breakfast at La Waflería, known for its freshly made waffles and local jams. It's a cozy spot to fuel up before your trek.",
+          "searchQuery": "La Waflería",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Trek to Laguna Torre",
+          "description": "Embark on a challenging trek to Laguna Torre, a stunning glacial lake surrounded by towering peaks, including the iconic Cerro Torre. The hike offers breathtaking views and a chance to witness the glacier calving into the lake.",
+          "searchQuery": "Laguna Torre",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Deja Vu",
+          "description": "After your trek, enjoy a hearty lunch at Deja Vu, a local favorite known for its homemade pasta and warm atmosphere. Perfect for recharging after a morning of adventure.",
+          "searchQuery": "Deja Vu",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Trekking to Laguna Torre",
+          "description": "Continue your exploration around Laguna Torre, taking in the stunning views and perhaps catching a glimpse of icebergs floating in the lake. This is a great spot for photography and reflection.",
+          "searchQuery": "Laguna Torre",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to El Chaltén",
+          "description": "Make your way back to El Chaltén, enjoying the scenic views along the trail. Take your time to soak in the beauty of Patagonia as you descend.",
+          "searchQuery": "El Chaltén",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Tapera",
+          "description": "End your day with a delightful dinner at La Tapera, where you can savor traditional Argentine cuisine, including grilled meats and local wines. A perfect way to celebrate your adventurous day.",
+          "searchQuery": "La Tapera",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to El Calafate",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "El Chaltén",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "El Calafate",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic views of Patagonia during the bus ride."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Zaina",
+          "description": "Savor a delicious meal at La Zaina, known for its Patagonian lamb and local wines. The cozy atmosphere makes it a perfect spot to relax after your journey.",
+          "searchQuery": "La Zaina",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Glaciarium",
+          "description": "Explore the Glaciarium, a modern museum dedicated to glaciers and climate change. Don't miss the ice bar for a unique experience!",
+          "searchQuery": "Glaciarium",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through El Calafate's Local Markets",
+          "description": "Wander through the vibrant local markets, where you can find handmade crafts, local delicacies, and souvenirs. It's a great way to immerse yourself in the local culture.",
+          "searchQuery": "El Calafate Local Markets",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Don Pichon",
+          "description": "Indulge in a hearty dinner at Don Pichon, famous for its Patagonian cuisine and warm hospitality. Try the local trout or the traditional asado.",
+          "searchQuery": "Don Pichon",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk by Lago Argentino",
+          "description": "End your day with a peaceful walk along the shores of Lago Argentino. The sunset views over the lake are breathtaking and a perfect way to reflect on your adventures in Patagonia.",
+          "searchQuery": "Lago Argentino",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Exploring Upsala Glacier",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Zaina",
+          "description": "Start your day with a hearty breakfast at La Zaina, known for its delicious homemade pastries and local jams. Enjoy a warm atmosphere and prepare for an adventurous day ahead.",
+          "searchQuery": "La Zaina",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Boat Tour to Upsala Glacier",
+          "description": "Embark on a scenic boat tour to Upsala Glacier, one of the largest glaciers in the Southern Patagonian Ice Field. Witness the stunning blue ice formations and the breathtaking landscape as you glide through the waters of Lago Argentino.",
+          "searchQuery": "Upsala Glacier",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Estancia Cristina",
+          "description": "Enjoy a delicious lunch at Estancia Cristina, a historic ranch that offers a taste of local cuisine. Savor traditional Argentine dishes while surrounded by stunning views of the glacier and mountains.",
+          "searchQuery": "Estancia Cristina",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hiking at Estancia Cristina",
+          "description": "After lunch, take a guided hike around Estancia Cristina. Explore the rugged terrain and enjoy panoramic views of the Upsala Glacier and the surrounding mountains. This hike is perfect for adventure seekers looking to immerse themselves in nature.",
+          "searchQuery": "Estancia Cristina Hiking",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return Boat Ride",
+          "description": "Take the boat back to El Calafate, soaking in the stunning views one last time. Keep your camera ready for any wildlife sightings along the way.",
+          "searchQuery": "Lago Argentino",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Cucharon",
+          "description": "End your day with a delightful dinner at El Cucharon, a local favorite known for its hearty Argentine barbecue. Enjoy a variety of grilled meats and traditional sides in a cozy setting.",
+          "searchQuery": "El Cucharon",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Relax and Reflect",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Zaina",
+          "description": "Start your day with a hearty breakfast at La Zaina, known for its delicious homemade pastries and local specialties. Enjoy a warm atmosphere and friendly service as you fuel up for a day of exploration.",
+          "searchQuery": "La Zaina",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Nimez Lagoon",
+          "description": "Take a leisurely stroll around Nimez Lagoon, a beautiful nature reserve just a short walk from the town center. This serene spot is perfect for birdwatching, where you can spot flamingos and other wildlife while enjoying the stunning Patagonian landscape.",
+          "searchQuery": "Nimez Lagoon",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Don Pichon",
+          "description": "Savor a delicious lunch at Don Pichon, a local favorite known for its Patagonian lamb and fresh ingredients. The rustic ambiance and attentive service make it a great place to relax and enjoy the flavors of the region.",
+          "searchQuery": "Don Pichon",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Glaciarium",
+          "description": "Visit the Glaciarium, a unique museum dedicated to glaciers and the Patagonian ice fields. Learn about the science behind glaciers and their impact on the environment through interactive exhibits and stunning visuals.",
+          "searchQuery": "Glaciarium",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Hotel",
+          "description": "Return to your hotel for some downtime. Enjoy the amenities, perhaps take a dip in the pool or unwind with a book while soaking in the breathtaking views of the surrounding mountains.",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Tablita",
+          "description": "End your day with a delightful dinner at La Tablita, renowned for its grilled meats and traditional Argentine cuisine. The cozy atmosphere and excellent service make it a perfect spot to reflect on your adventures in Patagonia.",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "El Calafate",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "20:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from El Calafate to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at La Tablita",
+          "description": "Start your day with a hearty breakfast at La Tablita, known for its delicious Argentine pastries and fresh coffee. It's a great way to fuel up before your journey home.",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Perito Moreno Glacier",
+          "description": "Before heading to the airport, take a final trip to the stunning Perito Moreno Glacier. Witness the breathtaking sight of ice calving into the turquoise waters, a truly unforgettable experience in Patagonia.",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to collect your luggage and check out. Make sure you have everything packed for your flight.",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Transfer to El Calafate Airport",
+          "description": "A short drive to the airport where you can reflect on your incredible adventures in Patagonia. Make sure to arrive with enough time to check in and go through security.",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

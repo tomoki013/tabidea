@@ -1,0 +1,791 @@
+{
+  "id": "6dab66d6-a61e-4363-8a0e-5a832422b215",
+  "destination": "ウユニ",
+  "description": "Embark on an unforgettable adventure to the breathtaking landscapes of Uyuni, Bolivia, where the surreal salt flats stretch endlessly under the vast sky. This nine-day journey is designed for those who crave stunning vistas and the thrill of exploration. Capture the mesmerizing mirror effect of the salt flats at sunrise and sunset, and lose yourself in the starry night sky that blankets this remote paradise. With your friends by your side, prepare for an exhilarating experience filled with natural wonders and unforgettable memories.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "La Paz",
+          "time": "14:00"
+        },
+        "duration": "6h",
+        "memo": "Direct flight to La Paz."
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "Travel to Uyuni",
+          "description": "After arriving in La Paz, take a bus to Uyuni. The journey offers stunning views of the Bolivian landscape, so keep your camera ready!",
+          "searchQuery": "Bus from La Paz to Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a hearty Bolivian dinner at a local restaurant in Uyuni. Try the llama steak or quinoa soup for an authentic taste of the region.",
+          "searchQuery": "Restaurant in Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Stargazing at Uyuni Salt Flats",
+          "description": "Head out to the salt flats for an unforgettable stargazing experience. The clear skies and lack of light pollution make it a perfect spot to see the Milky Way.",
+          "searchQuery": "Uyuni Salt Flats",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Salt Flats",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Uyuni, featuring local Bolivian dishes to fuel your adventure ahead.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Salar de Uyuni Tour",
+          "description": "Embark on a guided tour of the breathtaking Salar de Uyuni, the world's largest salt flat. Marvel at the endless white expanse and capture stunning photos, especially at the iconic 'cactus island' of Incahuasi.",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Salar de Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a local restaurant, where you can savor traditional Bolivian cuisine, including llama steak and quinoa dishes, while soaking in the unique atmosphere of Uyuni.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Incahuasi Island",
+          "description": "Continue your adventure by exploring Incahuasi Island, known for its giant cacti and panoramic views of the salt flats. This is a perfect spot for photography and enjoying the surreal landscape.",
+          "searchQuery": "Incahuasi Island",
+          "locationEn": "Incahuasi Island, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at Salar de Uyuni",
+          "description": "Return to the salt flats to witness a breathtaking sunset. The colors reflecting off the salt create a magical atmosphere, perfect for capturing unforgettable photos.",
+          "locationEn": "Salar de Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "After a day of exploration, enjoy dinner at a cozy local restaurant. Try the famous Bolivian salteñas or a hearty stew to warm up after a long day in the cold salt flats.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at Salar de Uyuni",
+          "description": "End your day with a magical stargazing experience on the salt flats. The clear skies offer a stunning view of the Milky Way, making it a perfect spot for night photography.",
+          "locationEn": "Salar de Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Mirror Effect at Sunrise",
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "Sunrise at Salar de Uyuni",
+          "description": "Wake up early to witness the breathtaking sunrise over the Salar de Uyuni. The vast salt flats create a stunning mirror effect, perfect for photography. Bring your camera to capture the magical moment as the sun rises above the horizon, illuminating the salt crust with vibrant colors.",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:30",
+          "activity": "Breakfast at Hotel",
+          "description": "Enjoy a hearty breakfast at your hotel, featuring local Bolivian dishes and fresh fruits to energize you for the day ahead. The view of the salt flats from the dining area is a perfect start to your adventure.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Explore Incahuasi Island",
+          "description": "Take a guided tour to Incahuasi Island, known for its giant cacti and panoramic views of the salt flats. The unique landscape and the contrast of the green cacti against the white salt make for incredible photo opportunities.",
+          "searchQuery": "Incahuasi Island",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a traditional Bolivian lunch at a local restaurant. Try dishes like llama steak or quinoa salad, which are both delicious and representative of the region's cuisine.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Train Graveyard",
+          "description": "Explore the eerie yet fascinating Train Graveyard, where old locomotives and carriages lie abandoned in the desert. This unique site offers a glimpse into Bolivia's railway history and is a great spot for creative photography.",
+          "searchQuery": "Train Graveyard Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Rest",
+          "description": "Head back to your hotel to relax and recharge. Take some time to enjoy the stunning views of the salt flats from your accommodation before the evening activities.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy dinner at a cozy local restaurant, where you can try more Bolivian specialties. The warm atmosphere and friendly service will make for a delightful dining experience.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at Salar de Uyuni",
+          "description": "As night falls, head back to the salt flats for an unforgettable stargazing experience. The clear skies and lack of light pollution make it one of the best places in the world to observe the stars. Bring a blanket and enjoy the celestial show.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Laguna Colorada and Surroundings",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Uyuni",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Laguna Colorada",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "4x4 tour to Laguna Colorada, enjoy the stunning landscapes along the way."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "4x4 Tour Departure",
+          "description": "Start your adventure with a thrilling 4x4 tour from Uyuni to Laguna Colorada. The journey takes you through breathtaking landscapes, including the surreal salt flats and colorful lagoons.",
+          "searchQuery": "Laguna Colorada",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Laguna Colorada",
+          "description": "Arrive at the stunning Laguna Colorada, famous for its vibrant red waters and flocks of flamingos. Take your time to explore the area and capture the perfect photos of this unique natural wonder.",
+          "searchQuery": "Laguna Colorada",
+          "locationEn": "Laguna Colorada, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Laguna Colorada",
+          "description": "Enjoy a packed lunch amidst the breathtaking scenery of Laguna Colorada. Take in the views while savoring local Bolivian cuisine, surrounded by nature.",
+          "locationEn": "Laguna Colorada, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Flamingo Watching",
+          "description": "Spend the afternoon observing the beautiful flamingos that inhabit the lagoon. This is a photographer's paradise, so be sure to have your camera ready for some stunning shots!",
+          "searchQuery": "Laguna Colorada Flamingos",
+          "locationEn": "Laguna Colorada, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Uyuni",
+          "description": "Begin your journey back to Uyuni, reflecting on the day's adventures and the incredible sights you've seen. The sunset over the salt flats is a sight not to be missed.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner in Uyuni",
+          "description": "After returning to Uyuni, enjoy a hearty dinner at a local restaurant. Try some traditional Bolivian dishes to recharge after a day of exploration.",
+          "searchQuery": "Restaurant in Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at Uyuni Salt Flats",
+          "description": "End your day with a magical stargazing experience on the Uyuni Salt Flats. The clear skies offer a breathtaking view of the stars, making it a perfect way to conclude your adventure.",
+          "searchQuery": "Uyuni Salt Flats",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Exploring the Altiplano",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Uyuni",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Uyuni",
+          "time": "17:00"
+        },
+        "duration": "9h",
+        "memo": "4x4 tour exploring the stunning landscapes of the Altiplano."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Uyuni, featuring local Bolivian dishes to fuel your adventure ahead.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit the Siloli Desert",
+          "description": "Embark on a 4x4 tour to the Siloli Desert, known for its surreal landscapes and unique rock formations. Don't miss the famous Stone Tree, a natural rock formation that resembles a tree, set against the backdrop of the stunning desert.",
+          "searchQuery": "Siloli Desert",
+          "locationEn": "Siloli Desert, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch in the Altiplano",
+          "description": "Enjoy a packed lunch amidst the breathtaking scenery of the Altiplano, surrounded by mountains and unique geological formations. This is a perfect time to take in the beauty of your surroundings.",
+          "locationEn": "Altiplano, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore the Stone Tree",
+          "description": "Continue your tour to the Stone Tree, where you can take stunning photos of this natural wonder. The contrast of the rock against the blue sky makes for incredible photography opportunities.",
+          "searchQuery": "Stone Tree",
+          "locationEn": "Stone Tree, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Laguna Colorada",
+          "description": "Visit the stunning Laguna Colorada, famous for its red waters and flocks of flamingos. This picturesque lake is a photographer's paradise, especially in the late afternoon light.",
+          "searchQuery": "Laguna Colorada",
+          "locationEn": "Laguna Colorada, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Uyuni",
+          "description": "After a day of exploring the Altiplano, return to Uyuni. Reflect on the breathtaking landscapes you've witnessed throughout the day.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Savor a delicious dinner at a local restaurant in Uyuni, where you can try traditional Bolivian cuisine, such as llama steak or quinoa dishes, to end your adventurous day.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at the Salt Flats",
+          "description": "Head out to the Uyuni Salt Flats for an unforgettable stargazing experience. The vast, open space provides a perfect view of the night sky, where you can see countless stars and even the Milky Way.",
+          "locationEn": "Uyuni Salt Flats, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Starry Night at the Salt Flats",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Uyuni, featuring local Bolivian dishes to fuel your adventure ahead.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Salar de Uyuni",
+          "description": "Head out to the breathtaking Salar de Uyuni, the world's largest salt flat. Capture stunning photos of the endless white landscape, especially if you visit during the wet season when it transforms into a mirror-like surface.",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Enjoy a delicious lunch at a local restaurant, where you can taste traditional Bolivian cuisine, including llama steak and quinoa dishes.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Incahuasi Island",
+          "description": "Take a guided tour to Incahuasi Island, known for its giant cacti and panoramic views of the salt flats. This unique ecosystem is a perfect spot for more stunning photographs.",
+          "searchQuery": "Incahuasi Island",
+          "locationEn": "Salar de Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Uyuni",
+          "description": "After a day of exploration, return to Uyuni. Take some time to relax and refresh at your hotel before the evening activities.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Savor a delightful dinner at a local eatery, where you can enjoy more of Bolivia's culinary delights, perhaps trying a traditional salteña or a hearty soup.",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing at Salar de Uyuni",
+          "description": "As night falls, head back to the salt flats for an unforgettable stargazing experience. The clear skies offer a spectacular view of the Milky Way, making it a perfect end to your day.",
+          "locationEn": "Salar de Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to La Paz",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Uyuni",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "La Paz",
+          "time": "13:00"
+        },
+        "duration": "4h",
+        "memo": "Enjoy the scenic views of the Bolivian highlands during the bus ride."
+      },
+      "activities": [
+        {
+          "time": "13:30",
+          "activity": "Lunch at Café del Parque",
+          "description": "Savor a delicious lunch at this cozy café known for its local Bolivian dishes and warm atmosphere. A perfect spot to recharge after your journey.",
+          "searchQuery": "Café del Parque",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Witches' Market",
+          "description": "Dive into the vibrant culture of La Paz at the Witches' Market, where you can find unique souvenirs, traditional remedies, and local crafts. Don't forget to take some photos of the colorful stalls!",
+          "searchQuery": "Witches' Market",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Valle de la Luna",
+          "description": "Head to the stunning Valle de la Luna, known for its otherworldly rock formations. The sunset here is breathtaking, providing a perfect backdrop for your photography.",
+          "searchQuery": "Valle de la Luna",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Gustu",
+          "description": "Indulge in a fine dining experience at Gustu, a restaurant that showcases the best of Bolivian cuisine with a modern twist. Reservations are recommended due to its popularity.",
+          "searchQuery": "Gustu",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing at El Alto",
+          "description": "End your day with a magical stargazing experience at El Alto. The high altitude and clear skies make it an ideal spot to marvel at the stars and constellations.",
+          "searchQuery": "El Alto",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "La Paz City Tour",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café del Mundo",
+          "description": "Start your day with a hearty breakfast at Café del Mundo, known for its delicious local dishes and cozy atmosphere. Try their traditional Bolivian breakfast with fresh bread and local cheese.",
+          "searchQuery": "Café del Mundo",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Valle de la Luna",
+          "description": "Explore the stunning Valle de la Luna, a surreal landscape of eroded rock formations that resemble a lunar surface. Take your time to capture breathtaking photos of this unique natural wonder.",
+          "searchQuery": "Valle de la Luna",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Casa del Camba",
+          "description": "Enjoy a delicious lunch at La Casa del Camba, famous for its grilled meats and traditional Bolivian dishes. The vibrant atmosphere and local flavors will enhance your culinary experience.",
+          "searchQuery": "La Casa del Camba",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Witches' Market",
+          "description": "Visit the Witches' Market, a fascinating place where you can find traditional remedies, potions, and unique souvenirs. Immerse yourself in the local culture and perhaps pick up a few quirky items.",
+          "searchQuery": "Witches' Market",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Historic Center",
+          "description": "Stroll through the historic center of La Paz, visiting landmarks such as Plaza Murillo and the San Francisco Church. The colonial architecture and vibrant street life make for great photo opportunities.",
+          "searchQuery": "Plaza Murillo",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Gustu",
+          "description": "Indulge in a fine dining experience at Gustu, a restaurant that showcases the best of Bolivian cuisine with a modern twist. Enjoy a multi-course meal prepared with local ingredients.",
+          "searchQuery": "Gustu",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing at Salar de Uyuni",
+          "description": "Embark on a night trip to Salar de Uyuni for an unforgettable stargazing experience. The vast salt flats provide a perfect backdrop for observing the Milky Way and capturing stunning night sky photos.",
+          "searchQuery": "Salar de Uyuni",
+          "locationEn": "Uyuni, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "La Paz",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "20:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight from La Paz to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café del Mundo",
+          "description": "Start your day with a hearty breakfast at Café del Mundo, known for its delicious Bolivian coffee and fresh pastries. It's a cozy spot to reflect on your adventures in Bolivia before heading home.",
+          "searchQuery": "Café del Mundo",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Valle de la Luna",
+          "description": "Explore the stunning Valle de la Luna, a surreal landscape of eroded rock formations that resemble a lunar surface. It's a perfect spot for some last-minute photos and to soak in the unique beauty of Bolivia.",
+          "searchQuery": "Valle de la Luna",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to pack up and check out. Make sure to keep your camera handy for any last-minute shots of La Paz's vibrant streets.",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Casa del Camba",
+          "description": "Enjoy a traditional Bolivian lunch at La Casa del Camba, famous for its grilled meats and local dishes. A great way to savor the flavors of Bolivia one last time before your flight.",
+          "searchQuery": "La Casa del Camba",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Transfer to Airport",
+          "description": "Make your way to El Alto International Airport for your departure. Allow plenty of time for check-in and security.",
+          "locationEn": "La Paz, Bolivia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

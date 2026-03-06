@@ -1,0 +1,620 @@
+{
+  "id": "2ebee9a9-15ec-4853-accc-d58a5085ed15",
+  "destination": "台北",
+  "description": "Immerse yourself in the vibrant culture and breathtaking nature of Taipei over a week-long adventure that combines the thrill of Ghibli fandom with the rich tapestry of Taiwanese history and stunning landscapes. From exploring the bustling streets filled with local delicacies to visiting serene temples and lush parks, this itinerary is designed for families seeking both excitement and tranquility. Get ready to create unforgettable memories as you dive into the heart of Taiwan's capital!",
+  "heroImage": "https://images.unsplash.com/photo-1650446781402-bc6d1a21a868?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTI1Mzl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Tyler Rogers",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ataraxia86?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Taipei",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its fresh soy milk and crispy fried dough sticks. It's a local favorite and a great way to fuel up for your day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Palace Museum",
+          "description": "Explore the National Palace Museum, home to an extensive collection of Chinese art and artifacts. The museum's beautiful gardens and stunning architecture make it a perfect spot for both culture and history enthusiasts.",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Shilin Night Market",
+          "description": "Head to Shilin Night Market for lunch, where you can sample a variety of Taiwanese street food. Don't miss the famous fried chicken steak and bubble tea!",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Ximending Shopping District",
+          "description": "After lunch, make your way to Ximending, a vibrant shopping area known for its trendy shops and street performances. It's a great place to find Ghibli merchandise and other unique souvenirs.",
+          "searchQuery": "Ximending",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Modern Toilet Restaurant",
+          "description": "Enjoy a quirky dining experience at Modern Toilet Restaurant, where the theme is based on toilets! The food is surprisingly good, and it's a fun way to end your first day in Taipei.",
+          "searchQuery": "Modern Toilet Restaurant",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stroll through Ximending Night Market",
+          "description": "As the sun sets, take a leisurely stroll through the Ximending Night Market. Enjoy the lively atmosphere, grab some snacks, and soak in the local culture before heading back to your accommodation.",
+          "searchQuery": "Ximending Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Ghibli Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its warm soy milk and crispy fried dough sticks. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit the Ghibli Store",
+          "description": "Head to the Ghibli Store in Taipei, where you can immerse yourself in the enchanting world of Studio Ghibli. Browse through a variety of merchandise, from plush toys to art books, and find the perfect souvenirs to take home.",
+          "searchQuery": "Ghibli Store Taipei",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Din Tai Fung",
+          "description": "Enjoy a delicious lunch at the world-renowned Din Tai Fung, famous for its xiaolongbao (soup dumplings). The restaurant's meticulous preparation and flavorful dishes make it a must-visit for any foodie.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Taipei Fine Arts Museum",
+          "description": "After lunch, visit the Taipei Fine Arts Museum, where you can explore contemporary art exhibitions and installations. The museum's unique architecture and engaging displays make it a great spot for art lovers.",
+          "searchQuery": "Taipei Fine Arts Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Daan Forest Park",
+          "description": "Take a leisurely stroll through Daan Forest Park, a beautiful green space in the heart of Taipei. Enjoy the serene atmosphere, lush landscapes, and perhaps even spot some local wildlife.",
+          "searchQuery": "Daan Forest Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Shilin Night Market",
+          "description": "End your day at Shilin Night Market, where you can indulge in a variety of street food delights. Try local favorites like stinky tofu, bubble tea, and grilled squid while soaking in the vibrant atmosphere of the market.",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day of exploration, head back to your hotel to relax and recharge for another exciting day ahead in Taipei.",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its warm soy milk and crispy fried dough sticks. It's a local favorite and a great way to fuel up for a day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit National Palace Museum",
+          "description": "Explore the National Palace Museum, home to an extensive collection of Chinese imperial artifacts. Don't miss the jade cabbage and the meat-shaped stone, which are highlights of the museum!",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Jin Feng Braised Pork Rice",
+          "description": "Enjoy a hearty lunch at Jin Feng, known for its delicious braised pork rice. This dish is a must-try in Taipei, and the cozy atmosphere makes it a perfect spot for families.",
+          "searchQuery": "Jin Feng Braised Pork Rice",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Shilin Night Market",
+          "description": "Spend your afternoon at Shilin Night Market, where you can shop for Ghibli merchandise and enjoy local street food. It's a vibrant place to soak in the local culture and find unique souvenirs!",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Shilin Night Market",
+          "description": "Stay at Shilin Night Market for dinner and indulge in various Taiwanese snacks like stinky tofu, bubble tea, and fried chicken. The lively atmosphere is perfect for family bonding!",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel",
+          "description": "After a fun-filled day, head back to your hotel to relax and reflect on the day's adventures. It's a great time to share your favorite moments with your family!",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its fresh soy milk and crispy fried dough sticks. A perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Yangmingshan National Park",
+          "description": "Head to Yangmingshan National Park, known for its stunning landscapes, hot springs, and hiking trails. Enjoy the beautiful scenery and perhaps spot some cherry blossoms if the season is right!",
+          "searchQuery": "Yangmingshan National Park",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a hearty lunch at a local eatery near Yangmingshan, where you can try traditional Taiwanese dishes like beef noodle soup or braised pork rice. A great way to experience local flavors!",
+          "searchQuery": "Taiwanese local eatery",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Beitou Hot Springs",
+          "description": "After lunch, relax at Beitou Hot Springs. You can soak in the natural hot springs and enjoy the serene atmosphere. Don't forget to visit the Beitou Hot Springs Museum to learn about the area's history!",
+          "searchQuery": "Beitou Hot Springs",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Beitou Park",
+          "description": "Stroll through Beitou Park, where you can enjoy the lush greenery and beautiful landscapes. It's a perfect spot to unwind after your hot spring experience.",
+          "searchQuery": "Beitou Park",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "End your day with dinner at a local restaurant in Beitou, where you can savor more Taiwanese cuisine. Try the local specialty, hot spring eggs, cooked in the natural hot springs!",
+          "searchQuery": "Beitou local restaurant",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Taipei City",
+          "description": "Head back to Taipei City for a relaxing evening. You can explore the night markets or simply enjoy a quiet evening at your accommodation.",
+          "searchQuery": "Taipei City",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Jiufen",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Taipei",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Jiufen",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Take the bus from Taipei to Jiufen for a scenic ride."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Jiufen Old Street",
+          "description": "Explore the charming Jiufen Old Street, lined with traditional tea houses and shops selling local snacks. Don't miss trying the famous taro balls and peanut ice cream rolls!",
+          "searchQuery": "Jiufen Old Street",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at A-Mei Tea House",
+          "description": "Enjoy a delicious lunch at A-Mei Tea House, known for its stunning views and traditional Taiwanese tea. Savor local dishes while soaking in the atmosphere of this historic tea house.",
+          "searchQuery": "A-Mei Tea House",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Gold Museum",
+          "description": "Visit the Gold Museum to learn about Jiufen's gold mining history. The museum features interesting exhibits and a chance to try your hand at gold panning!",
+          "searchQuery": "Gold Museum",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Tea Tasting Experience",
+          "description": "Participate in a tea tasting experience at a local tea shop. Learn about the different types of Taiwanese tea and enjoy sampling some of the best brews.",
+          "searchQuery": "Taiwanese Tea Tasting",
+          "locationEn": "Jiufen, Taiwan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Taipei",
+          "description": "Head back to Taipei after a fulfilling day in Jiufen. Reflect on the beautiful scenery and delicious food as you ride the bus back.",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "End your day with a delightful dinner at Din Tai Fung, famous for its xiaolongbao (soup dumplings). A perfect way to conclude your Jiufen adventure!",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Local Markets and Temples",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its warm soy milk and crispy fried dough sticks. It's a local favorite and a great way to fuel up for a day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Longshan Temple",
+          "description": "Visit the historic Longshan Temple, a stunning example of Taiwanese architecture and spirituality. The intricate carvings and vibrant atmosphere make it a must-see. Don't forget to take a moment to soak in the peaceful ambiance!",
+          "searchQuery": "Longshan Temple",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Huaxi Street Night Market",
+          "description": "Enjoy a delicious lunch at Huaxi Street Night Market, where you can sample local delicacies like stinky tofu and oyster omelets. The lively market atmosphere adds to the experience!",
+          "searchQuery": "Huaxi Street Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Huashan 1914 Creative Park",
+          "description": "Explore Huashan 1914 Creative Park, a vibrant cultural hub filled with art exhibitions, shops, and cafes. It's a great place to find unique Ghibli merchandise and enjoy the creative atmosphere.",
+          "searchQuery": "Huashan 1914 Creative Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Ghibli Merchandise",
+          "description": "Spend some time shopping for Ghibli merchandise at nearby stores. Look for exclusive items that you can only find in Taiwan, making your collection even more special!",
+          "searchQuery": "Ghibli Merchandise Store",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "End your day with a delightful dinner at Din Tai Fung, renowned for its xiaolongbao (soup dumplings). The restaurant's reputation for quality and flavor makes it a perfect choice for a family meal.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Taipei 101",
+          "description": "Take a leisurely evening stroll around Taipei 101, one of the tallest buildings in the world. The view of the city lights is breathtaking, and it's a perfect way to wrap up your day in Taipei!",
+          "searchQuery": "Taipei 101",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Taipei",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Taipei",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Taipei",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Enjoy your last day in Taipei before departure."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its warm soy milk and crispy fried dough sticks. A perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Taipei 101",
+          "description": "No trip to Taipei is complete without a visit to Taipei 101. Take the high-speed elevator to the observation deck for breathtaking views of the city and beyond. Don't forget to check out the souvenir shops for Ghibli merchandise!",
+          "searchQuery": "Taipei 101",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Din Tai Fung",
+          "description": "Savor a delicious lunch at Din Tai Fung, renowned for its xiaolongbao (soup dumplings). The restaurant's casual atmosphere makes it a great spot for families to enjoy a meal together.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Daan Forest Park",
+          "description": "Take a leisurely stroll through Daan Forest Park, a green oasis in the heart of Taipei. Enjoy the serene environment, beautiful trees, and perhaps spot some local wildlife. It's a great place to relax and unwind.",
+          "searchQuery": "Daan Forest Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Ghibli Store",
+          "description": "Head to the Ghibli Store in Taipei to find exclusive merchandise and collectibles from your favorite Studio Ghibli films. It's a must-visit for any fan and a perfect place to pick up some unique souvenirs.",
+          "searchQuery": "Ghibli Store Taipei",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Shilin Night Market",
+          "description": "End your day with a visit to Shilin Night Market, where you can indulge in a variety of street food. Try the famous stinky tofu and bubble tea while enjoying the vibrant atmosphere of the market.",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

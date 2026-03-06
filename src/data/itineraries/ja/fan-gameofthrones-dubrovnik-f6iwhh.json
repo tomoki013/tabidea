@@ -1,0 +1,282 @@
+{
+  "id": "cd3e29e3-763d-431c-a0e9-eecad04cf290",
+  "destination": "ドゥブロヴニク",
+  "description": "美しいアドリア海に面したドゥブロヴニクは、歴史と文化が息づく街です。特に『ゲーム・オブ・スローンズ』のファンにはたまらないスポットが点在しています。家族での旅行にぴったりなリラックスした雰囲気の中で、歴史的な観光地を巡り、地元の美味しい料理を楽しみましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ドゥブロヴニクの旧市街を探索",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツや自家製のパン、地元のハムなど、朝からエネルギーをチャージ！",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街散策",
+          "description": "ドゥブロヴニクの旧市街をゆっくりと散策。美しい石畳の道や歴史的な建物を眺めながら、家族でのんびりとした時間を過ごします。特に、聖ブレイズ教会の美しい外観は必見です。",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロクルム島へのフェリー",
+          "description": "旧市街からロクルム島へのフェリーに乗り、自然豊かな島を訪れます。島内には美しいビーチや歴史的な遺跡があり、家族でのんびりと過ごすのに最適です。",
+          "searchQuery": "Lokrum Island",
+          "locationEn": "Lokrum, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ロクルム島でランチ",
+          "description": "島内のカフェで軽食を楽しみます。新鮮なシーフードや地元の料理を味わいながら、穏やかな海の景色を楽しむことができます。",
+          "locationEn": "Lokrum, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ドゥブロヴニク城壁を散策",
+          "description": "ドゥブロヴニクの城壁を歩きながら、街の全景を楽しみます。特に子供たちには、歴史を感じながらの冒険気分が味わえるスポットです。",
+          "searchQuery": "Dubrovnik City Walls",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ゲーム・オブ・スローンズの撮影スポット巡り",
+          "description": "人気ドラマ『ゲーム・オブ・スローンズ』の撮影スポットを巡ります。特に、フランシスコ教会やレクター宮殿など、ファンにはたまらない場所です。",
+          "searchQuery": "Game of Thrones filming locations",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "旧市街でディナー",
+          "description": "旧市街のレストランで、地元の料理を楽しむディナー。特に、海の幸を使った料理や、クロアチアのワインを味わうのがおすすめです。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "お土産探し",
+          "description": "旧市街のショップで、ゲーム・オブ・スローンズ関連のファングッズや地元の工芸品を探します。家族みんなで楽しめるお土産を見つけましょう。",
+          "searchQuery": "Dubrovnik souvenirs",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "『ゲーム・オブ・スローンズ』の聖地巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に新鮮な魚料理やクロアチアのパンが絶品です。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フランシスコ会修道院",
+          "description": "『ゲーム・オブ・スローンズ』の撮影地としても知られるフランシスコ会修道院を訪れます。美しいゴシック様式の建築と静かな庭園で、歴史を感じながらリラックスできます。",
+          "searchQuery": "Franciscan Monastery",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レッド・キープの見学",
+          "description": "レッド・キープは、ドラマの中で重要な舞台となった場所です。壮大な城壁と美しい景色を楽しみながら、撮影秘話を思い出してみてください。",
+          "searchQuery": "Fort Lovrijenac",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "地元のレストランで、クロアチアの伝統料理を堪能します。特に新鮮なシーフード料理やパスタがおすすめです。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロブスターの家を訪問",
+          "description": "『ゲーム・オブ・スローンズ』のファンにはたまらない、ロブスターの家を訪れます。ここでは、関連グッズやお土産を購入することができます。",
+          "searchQuery": "Game of Thrones Shop",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ドゥブロヴニク旧市街散策",
+          "description": "美しい旧市街を散策しながら、歴史的な建物やお土産屋を楽しみます。特に、ストラドゥン通りの雰囲気は格別です。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "夕食は、ドゥブロヴニクの海沿いのレストランで、地元のワインと共に新鮮なシーフードを楽しみます。美しい夕日を眺めながらの食事は格別です。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ビーチでリラックスとお土産探し",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやクロワッサン、地元のハムやチーズが並び、家族みんなで満足できる内容です。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "バニェビーチでリラックス",
+          "description": "ドゥブロヴニクの美しいバニェビーチで、家族みんなでのんびりと過ごします。青い海と白い砂浜が広がり、子供たちも安心して遊べるスポットです。",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "ビーチ近くのレストランで、地元の新鮮なシーフードを楽しみます。特に、グリルした魚やパスタは絶品で、家族全員が喜ぶメニューです。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ゲーム・オブ・スローンズの撮影スポット巡り",
+          "description": "ドゥブロヴニクの街を散策しながら、ゲーム・オブ・スローンズの撮影スポットを訪れます。特に、城壁や旧市街の美しい景観は、ドラマのシーンを思い出させてくれます。",
+          "searchQuery": "Game of Thrones filming locations",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "お土産ショップでファングッズ探し",
+          "description": "ゲーム・オブ・スローンズの関連商品を扱うお土産ショップで、家族みんなでお気に入りのアイテムを探します。Tシャツやフィギュアなど、思い出に残る品々が揃っています。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一日の疲れを癒すために、ホテルで少し休憩します。家族でゆっくりと過ごし、夕食の計画を立てましょう。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ドゥブロヴニクのレストランでディナー",
+          "description": "地元の人気レストランで、クロアチア料理を堪能します。特に、パスタや肉料理が評判で、家族全員が楽しめるメニューが揃っています。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

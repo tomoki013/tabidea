@@ -1,0 +1,408 @@
+{
+  "id": "5ffef372-3e76-44ac-b45b-160a222fe647",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, a bustling metropolis that never sleeps. Over four days, you'll explore the cultural landmarks, indulge in delectable cuisine, and shop for unique fan merchandise that celebrates your favorite fandoms. From iconic sights to hidden gems, this trip is designed to satisfy your love for culture, history, and shopping while allowing you to connect with the city's rich tapestry of experiences.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Iconic Landmarks",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a cozy spot that will energize you for a day of exploration!",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Times Square",
+          "description": "Immerse yourself in the vibrant atmosphere of Times Square, where the bright lights and bustling crowds create an unforgettable experience. Don't forget to snap some photos with the iconic billboards!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ellen's Stardust Diner",
+          "description": "Enjoy a fun lunch at Ellen's Stardust Diner, where the waitstaff perform Broadway hits while you dine. It's a unique experience that combines great food with entertainment!",
+          "searchQuery": "Ellen's Stardust Diner",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Central Park",
+          "description": "Take a leisurely stroll through Central Park, a beautiful oasis in the heart of the city. You can visit iconic spots like Bethesda Terrace and Bow Bridge, or simply relax on the grass and enjoy the scenery.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Dive into art and culture at The Metropolitan Museum of Art. With its vast collection, you can explore everything from ancient artifacts to modern masterpieces. Don't miss the rooftop garden for stunning views of the city!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Smith",
+          "description": "End your day with a delicious dinner at The Smith, a lively American brasserie known for its comfort food and vibrant atmosphere. It's a great place to unwind after a busy day!",
+          "searchQuery": "The Smith",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping at The Shops at Columbus Circle",
+          "description": "Wrap up your day with some shopping at The Shops at Columbus Circle, where you can find a mix of high-end brands and unique boutiques. Perfect for picking up some Friends-themed merchandise!",
+          "searchQuery": "The Shops at Columbus Circle",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Fandom and Shopping Extravaganza",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a delicious breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try their famous Green Shakshuka for a flavorful kick!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Strand Bookstore",
+          "description": "Explore the iconic Strand Bookstore, home to 18 miles of books! This is a must-visit for any book lover, and you might just find some unique Friends memorabilia in their collection.",
+          "searchQuery": "The Strand Bookstore",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chelsea Market",
+          "description": "Head over to Chelsea Market for lunch, where you can sample a variety of cuisines. Don't miss out on the tacos at Los Tacos No. 1 or the fresh seafood at Chelsea Fish Market!",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Forbidden Planet",
+          "description": "Dive into the world of comics and collectibles at Forbidden Planet, a paradise for fans of pop culture. Look for Friends-themed merchandise and other unique finds!",
+          "searchQuery": "Forbidden Planet",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through the High Line",
+          "description": "Take a leisurely walk along the High Line, an elevated park built on a former railway track. Enjoy the beautiful views of the city and some art installations along the way.",
+          "searchQuery": "High Line",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Meatball Shop",
+          "description": "Savor a hearty dinner at The Meatball Shop, where you can customize your meatball dish. It's a fun and casual dining experience that will satisfy your cravings!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Visit Friends Experience",
+          "description": "End your day with a visit to the Friends Experience, an interactive exhibit that brings the beloved show to life. Take photos in iconic sets and relive your favorite moments!",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a hearty breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try the Green Shakshuka for a flavorful kick!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a scenic walk across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you make your way to Brooklyn.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore DUMBO",
+          "description": "Once you reach Brooklyn, explore the trendy DUMBO neighborhood. Snap photos at the famous Washington Street for that perfect shot of the Manhattan Bridge framed by brick buildings.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local food vendors. Don't miss the lobster roll from Red Hook Lobster Pound!",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Smorgasburg Food Market",
+          "description": "If it's the weekend, visit Smorgasburg, the outdoor food market featuring a diverse range of food vendors. It's a paradise for food lovers!",
+          "searchQuery": "Smorgasburg",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Friends Merchandise",
+          "description": "Explore local shops in the area for Friends-themed merchandise. Look for unique items that celebrate your favorite show!",
+          "searchQuery": "Friends merchandise",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The River Café",
+          "description": "End your day with a romantic dinner at The River Café, known for its stunning views of the Manhattan skyline and exquisite cuisine. Make sure to reserve a table in advance!",
+          "searchQuery": "The River Café",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Brooklyn Promenade",
+          "description": "Take a leisurely stroll along the Brooklyn Promenade. The views of the city lights reflecting on the water are simply magical at night.",
+          "searchQuery": "Brooklyn Promenade",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Explorations and Return",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "SoHo, New York City",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Start your day exploring the trendy SoHo area."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a delicious breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try their famous Green Shakshuka for a flavorful kick!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore SoHo",
+          "description": "Wander through the charming streets of SoHo, famous for its cast-iron architecture and boutique shops. Don't forget to check out some unique stores for Friends merchandise!",
+          "searchQuery": "SoHo",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Grey Dog",
+          "description": "Enjoy a casual lunch at The Grey Dog, a local favorite known for its hearty sandwiches and vibrant atmosphere. Perfect for a quick bite before more exploring!",
+          "searchQuery": "The Grey Dog",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Friends Experience",
+          "description": "Dive into the world of Friends at this interactive exhibit. Relive your favorite moments and take photos in iconic sets like Central Perk!",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Chinatown Exploration",
+          "description": "Head over to Chinatown for a cultural experience. Explore the vibrant streets, shop for unique souvenirs, and maybe grab a bubble tea!",
+          "searchQuery": "Chinatown",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Joe's Shanghai",
+          "description": "Indulge in some of the best soup dumplings in the city at Joe's Shanghai. A must-visit for any foodie!",
+          "searchQuery": "Joe's Shanghai",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Little Italy Stroll",
+          "description": "Take a leisurely stroll through Little Italy, soaking in the charming atmosphere. Stop by a gelato shop for a sweet treat to end your day!",
+          "searchQuery": "Little Italy",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to relax and reflect on your exciting day in New York City!",
+          "locationEn": "New York City, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "id": "ccfa97b5-e6d1-4b7c-a127-87722b06e91e",
+  "destination": "クイーンズタウン",
+  "description": "クイーンズタウンは、壮大な自然とアクティビティの宝庫です。美しい湖と山々に囲まれたこの街では、アドベンチャーを楽しむだけでなく、地元のグルメも堪能できます。7日間の旅では、アクティブな日々を送りながら、心に残る絶景を満喫しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からクイーンズタウンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "クイーンズタウン",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "16:00",
+          "activity": "クイーンズタウン湖散策",
+          "description": "美しいクイーンズタウン湖の周りを散策し、湖面に映る山々の景色を楽しみます。夕方の柔らかな光の中で、ロマンチックな雰囲気を満喫。",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "スカイラインゴンドラ",
+          "description": "スカイラインゴンドラに乗って、クイーンズタウンの絶景を一望。夕暮れ時の景色は特に美しく、写真撮影にも最適です。",
+          "searchQuery": "Skyline Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ストーンストリートでディナー",
+          "description": "地元の食材を使った料理が楽しめるレストランで、クイーンズタウンの美味しいディナーを堪能。特にニュージーランド産のワインとのペアリングがおすすめ。",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アドベンチャーの始まり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオムレツ、トーストなど、エネルギーをチャージしてアクティブな一日をスタート！",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バンジージャンプ体験",
+          "description": "クイーンズタウンの名物、バンジージャンプに挑戦！ネイザン川に架かるカワラウ橋からのジャンプは、スリル満点で絶景を楽しむことができます。心臓がドキドキする瞬間を味わいましょう。",
+          "searchQuery": "Kawarau Bridge Bungy Jump",
+          "locationEn": "Kawarau Bridge, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "アドベンチャーの後は、クイーンズタウンの人気カフェでランチ。新鮮なサラダやサンドイッチを楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジェットボート体験",
+          "description": "クイーンズタウンの美しい湖と山々を背景に、スリリングなジェットボート体験を楽しみます。急旋回やスピンを繰り返しながら、自然の中を駆け抜ける爽快感は格別です！",
+          "searchQuery": "Shotover Jet",
+          "locationEn": "Shotover River, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "湖畔でのんびり",
+          "description": "アクティビティの後は、ワカティプ湖の湖畔でのんびりとした時間を過ごします。美しい景色を眺めながら、カフェでコーヒーを楽しむのもおすすめ。",
+          "locationEn": "Lake Wakatipu, Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "高級レストランでディナー",
+          "description": "クイーンズタウンの高級レストランで、地元の食材を使ったディナーを堪能します。ワインと共に、特別な夜を演出する美味しい料理を楽しんでください。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日のアクティビティを終え、ホテルに戻ります。明日の冒険に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然の美を堪能する",
+      "activities": [
+        {
+          "time": "07:30",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオートミール、地元のパンが揃い、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ミルフォードサウンドクルーズ",
+          "description": "世界遺産に登録されたミルフォードサウンドでのクルーズ。壮大なフィヨルドの景色を楽しみながら、滝や野生動物を観察できます。特に、晴れた日のクルーズは絶景です。",
+          "searchQuery": "Milford Sound",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ミルフォードサウンドでランチ",
+          "description": "クルーズ後、ミルフォードサウンドの近くで軽食を楽しみます。地元のカフェでサンドイッチやスープを味わい、自然の美しさを堪能しながらリラックス。",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンズタウンへ戻る",
+          "description": "ミルフォードサウンドからクイーンズタウンへ戻ります。美しい山々を眺めながらのドライブは、移動時間も楽しめるひとときです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クイーンズタウンでの散策",
+          "description": "クイーンズタウンの中心部を散策。湖畔の美しい景色を楽しみながら、地元のショップやカフェを訪れます。特に、アートギャラリーやお土産屋さんは見逃せません。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "地元のレストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、ニュージーランドの新鮮なシーフードや肉料理を堪能します。特に、地元のワインと一緒に楽しむのがおすすめです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでリラックス",
+          "description": "一日の疲れを癒すため、ホテルでゆっくりと過ごします。温泉やスパがある場合は、ぜひ利用してリフレッシュしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ワイナリー巡りとリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツや自家製のパンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ワイナリー巡り",
+          "description": "クイーンズタウン近郊の美しいワイナリーを訪れ、ワインテイスティングを楽しみます。壮大な山々に囲まれた景色を眺めながら、地元のワインを味わう贅沢なひととき。",
+          "searchQuery": "Gibbston Valley Winery",
+          "locationEn": "Gibbston, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ワイナリー内のレストランでランチ",
+          "description": "ワイナリー内のレストランで、地元の食材を使ったランチを楽しみます。ワインと相性抜群の料理が揃い、特にチーズプレートはおすすめです。",
+          "searchQuery": "Gibbston Valley Winery Restaurant",
+          "locationEn": "Gibbston, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ワイナリー周辺の散策",
+          "description": "ワイナリーの周辺を散策し、自然の美しさを堪能します。美しいブドウ畑や山々の景色を楽しみながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Gibbston, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クイーンズタウンに戻る",
+          "description": "ワイナリーからクイーンズタウンへ戻ります。美しい風景を楽しみながらのドライブで、心もリフレッシュ。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クイーンズタウンの湖畔で散策",
+          "description": "クイーンズタウンの美しい湖畔を散策します。夕暮れ時の湖の景色は特に美しく、ロマンチックな雰囲気を楽しめます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元レストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、地元の食材を使ったディナーを楽しみます。特にニュージーランド産のラム肉は絶品です。",
+          "searchQuery": "Rātā",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ハイキングと絶景",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。エネルギーをチャージして、素晴らしい一日をスタートしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ロブロック山ハイキング",
+          "description": "ロブロック山のハイキングコースへ。美しい自然に囲まれたトレイルを歩きながら、クイーンズタウンの絶景を楽しむことができます。特に頂上からの眺めは圧巻です。",
+          "searchQuery": "Rochedale Mountain",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハイキング後のランチ",
+          "description": "ハイキングの後は、クイーンズタウンのカフェで軽食を。新鮮なサラダやサンドイッチを楽しみながら、リフレッシュしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンズタウン湖でのボートツアー",
+          "description": "クイーンズタウン湖でのボートツアーに参加。湖の美しい景色を楽しみながら、周囲の山々を眺めることができます。",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "スカイライン・クイーンズタウン",
+          "description": "スカイライン・クイーンズタウンでゴンドラに乗り、山の上からのパノラマビューを楽しみます。夕暮れ時の景色は特に美しいです。",
+          "searchQuery": "Skyline Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、地元の食材を使ったディナーを楽しみます。特にニュージーランド産のワインと一緒に味わう料理は絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "クイーンズタウンの文化を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやオートミール、地元のパンが並ぶビュッフェスタイルで、エネルギーをチャージ。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "クイーンズタウンアートギャラリー",
+          "description": "地元アーティストの作品を展示するクイーンズタウンアートギャラリーを訪れます。美しい自然をテーマにしたアートが多く、心が和むひとときを過ごせます。",
+          "searchQuery": "Queenstown Art Gallery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "クイーンズタウンの地元市場を散策",
+          "description": "地元の人々が集まる市場で、新鮮な野菜や手作りの工芸品を見て回ります。地元の食材を使ったスナックを試食しながら、賑やかな雰囲気を楽しんでください。",
+          "searchQuery": "Queenstown Farmers Market",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "市場近くのカフェでランチ",
+          "description": "市場の近くにあるカフェで、地元の食材を使ったサンドイッチやサラダを楽しみます。新鮮な食材を使った料理が自慢のカフェで、リラックスした時間を過ごせます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボブスケート体験",
+          "description": "クイーンズタウンの美しい自然の中で、ボブスケートを体験します。スリル満点のアクティビティで、絶景を楽しみながら心躍る時間を過ごせます。",
+          "searchQuery": "Queenstown Luge",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "湖畔を散策",
+          "description": "ワカティプ湖の湖畔を散策し、穏やかな風景を楽しみます。湖の美しい景色を眺めながら、ゆったりとした時間を過ごすのに最適な場所です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "湖畔のレストランでディナー",
+          "description": "湖を眺めながら、地元の食材を使ったディナーを楽しみます。新鮮なシーフードや肉料理が揃い、特別な夜を演出してくれます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のクイーンズタウン散策",
+          "description": "ディナー後は、夜のクイーンズタウンを散策。ライトアップされた街並みや、賑やかなバーやカフェの雰囲気を楽しみながら、素敵な夜を締めくくります。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "クイーンズタウンから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "クイーンズタウン空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "クイーンズタウンから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ニュージーランド産のフルーツやヨーグルトが絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "クイーンズタウン湖散策",
+          "description": "美しいクイーンズタウン湖の周りを散策。湖面に映る山々の景色は、まるで絵画のようです。朝の静けさの中でリラックスした時間を過ごせます。",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "最後のショッピング",
+          "description": "クイーンズタウンの中心街でお土産や地元のアートを探しながら、最後のショッピングを楽しみます。特に、手作りの工芸品やニュージーランドワインがおすすめです。",
+          "searchQuery": "Queenstown Shopping",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ",
+          "description": "クイーンズタウンの人気カフェでランチ。新鮮な地元の食材を使ったサンドイッチやサラダを楽しみながら、最後のひとときを満喫します。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンズタウン空港へ移動",
+          "description": "空港へ向かう途中、最後にクイーンズタウンの美しい景色を楽しみます。移動中も素晴らしい自然を堪能できます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

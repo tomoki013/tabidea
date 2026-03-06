@@ -1,0 +1,506 @@
+{
+  "id": "df621269-db11-4ab3-9b6a-df67019a097c",
+  "destination": "ゴールドコースト",
+  "description": "オーストラリアのゴールドコーストは、家族で楽しむのに最適なビーチリゾートです。美しい海岸線、動物とのふれあい、そして刺激的なテーマパークが揃い、子供たちも大人も心躍る体験が待っています。自然の絶景も楽しめるこの地で、思い出に残る6日間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ゴールドコースト到着とビーチでのんびり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのホテルで、家族みんなでゆったりと朝食を楽しみます。オーストラリアの新鮮なフルーツやパンケーキが並ぶビュッフェスタイルがおすすめです。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サーファーズパラダイスビーチで遊ぶ",
+          "description": "サーファーズパラダイスの美しいビーチで、子供たちと一緒に砂遊びや海水浴を楽しみましょう。波の音を聞きながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Surfers Paradise, Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチ近くのカフェでランチ",
+          "description": "ビーチの近くにあるカジュアルなカフェで、軽食やサンドイッチを楽しみます。海を眺めながらのランチは格別です。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "コアラの抱っこ体験",
+          "description": "コアラを抱っこして写真を撮れる動物園へ。子供たちにとって特別な思い出になること間違いなしです。コアラの生態についても学べます。",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Currumbin, Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ビーチでのんびり",
+          "description": "午後は再びビーチに戻り、家族でのんびりと過ごします。ビーチボールやフリスビーを持参して、楽しい時間を過ごしましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチ沿いのレストランでディナー",
+          "description": "夕食はビーチ沿いのレストランで、シーフードやオーストラリア料理を楽しみます。夕日を眺めながらの食事は、家族の素敵な思い出になります。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "動物とのふれあいとテーマパーク",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのホテルで、家族みんなで楽しめるビュッフェスタイルの朝食をいただきます。フルーツやパン、オムレツなど、バラエティ豊かなメニューが揃っています。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ドリームワールド",
+          "description": "オーストラリア最大のテーマパーク、ドリームワールドで一日中遊びましょう。子供向けのアトラクションからスリル満点の絶叫マシンまで、家族全員が楽しめるスポットが満載です。",
+          "searchQuery": "Dreamworld",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ドリームワールド内でランチ",
+          "description": "ドリームワールド内のカフェで、軽食やファストフードを楽しみます。子供たちも喜ぶメニューが揃っているので、楽しいひとときを過ごせます。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "コアラ抱っこ体験",
+          "description": "ドリームワールド内でコアラを抱っこして、記念写真を撮る特別な体験を楽しみます。オーストラリアの象徴的な動物とのふれあいは、子供たちにとっても忘れられない思い出になるでしょう。",
+          "searchQuery": "Koala Encounter Dreamworld",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチで遊ぶ",
+          "description": "ゴールドコーストの美しいビーチで、家族みんなで砂遊びや海水浴を楽しみます。子供たちが波と戯れる姿は、まさに夏の思い出です。",
+          "searchQuery": "Gold Coast Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチ近くのレストランで夕食",
+          "description": "ビーチ沿いのレストランで、新鮮なシーフードやオーストラリア料理を楽しみます。夕日を眺めながらのディナーは、特別なひとときになるでしょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。家族での楽しい思い出を振り返りながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然の絶景を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオーストラリアの特産品を使った料理が並び、家族みんなでエネルギーをチャージ。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "スプリングブルック国立公園訪問",
+          "description": "スプリングブルック国立公園へ向かい、壮大な自然の中でハイキングを楽しみます。特に「ゴールドコーストの滝」として知られる美しい滝を見学し、子供たちも大興奮。",
+          "searchQuery": "Springbrook National Park",
+          "locationEn": "Springbrook, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "公園内でピクニックランチ",
+          "description": "公園内のピクニックエリアで、事前に用意したサンドイッチやフルーツを楽しみます。自然の中での食事は格別で、家族の思い出に残るひととき。",
+          "locationEn": "Springbrook, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コアラ抱っこ体験",
+          "description": "スプリングブルック国立公園近くの動物園で、コアラを抱っこして写真を撮る特別な体験をします。子供たちにとっても忘れられない思い出になるでしょう。",
+          "searchQuery": "Cuddle a Koala",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ビーチで遊ぶ",
+          "description": "ゴールドコーストの美しいビーチに移動し、砂遊びや海水浴を楽しみます。子供たちが波と戯れる姿は、家族の楽しい思い出を作る最高の時間。",
+          "searchQuery": "Gold Coast Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチ近くのレストランで夕食",
+          "description": "ビーチ沿いのレストランで、新鮮なシーフードを楽しみます。特に地元の魚料理は絶品で、家族みんなでシェアしながら楽しむのがおすすめ。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。子供たちと一緒に今日の思い出を振り返りながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アドベンチャーとリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオーストラリアの特産品を使った料理が並び、家族みんなでエネルギーをチャージ。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ムービーワールド",
+          "description": "家族で楽しめるムービーワールドへ。映画の世界を体験できるアトラクションやショーが盛りだくさんで、特に子供たちに大人気のキャラクターたちと写真を撮るチャンスも！",
+          "searchQuery": "Warner Bros. Movie World",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ムービーワールド内でランチ",
+          "description": "ムービーワールド内のカフェで軽食を取りましょう。ハンバーガーやピザなど、子供たちが喜ぶメニューが揃っています。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "コアラ抱っこ体験",
+          "description": "ムービーワールド内の動物園で、コアラを抱っこして写真を撮る特別な体験を楽しみます。子供たちにとっても忘れられない思い出になることでしょう。",
+          "searchQuery": "Koala Encounter",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチで遊ぶ",
+          "description": "ゴールドコーストの美しいビーチで、家族みんなで砂遊びや海水浴を楽しみます。子供たちが安心して遊べるエリアもあるので、リラックスして過ごせます。",
+          "searchQuery": "Gold Coast Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "ビーチ沿いのレストランで、新鮮なシーフードやオーストラリア料理を楽しみます。夕日を眺めながらの食事は、特別なひとときになるでしょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。家族での楽しい思い出を振り返りながら、リラックスした夜を過ごしましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ゴールドコーストの文化とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "家族みんなで楽しめるビュッフェスタイルの朝食。新鮮なフルーツやオーストラリアの特産品を使った料理が並び、エネルギーをチャージして一日をスタートします。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カビルアベニュー散策",
+          "description": "ゴールドコーストの中心地、カビルアベニューでショッピングやストリートパフォーマンスを楽しみましょう。お土産や地元のアートを見つけるのにぴったりの場所です。",
+          "searchQuery": "Cavill Avenue",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のマーケットでランチ",
+          "description": "カビルアベニュー近くのマーケットで、地元の食材を使ったフードトラックや屋台からランチを楽しみます。新鮮なシーフードやオーストラリアのスナックを味わってみてください。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コアラ抱っこ体験",
+          "description": "コアラを抱っこして写真を撮れる体験ができる動物園へ。子供たちにとって特別な思い出になること間違いなしです。",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ビーチで遊ぶ",
+          "description": "ゴールドコーストの美しいビーチで、家族みんなで砂遊びや海水浴を楽しみましょう。子供たちが安全に遊べるエリアもあるので安心です。",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチ沿いのレストランでディナー",
+          "description": "夕日を眺めながら、ビーチ沿いのレストランでシーフードディナーを楽しみます。新鮮な魚介類やオーストラリアのワインを堪能しましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。家族で楽しい思い出を振り返りながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ゴールドコースト出発と東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ゴールドコースト空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "成田国際空港",
+          "time": "18:00"
+        },
+        "duration": "9h",
+        "memo": "直行便で東京へ帰ります。機内での食事を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "家族で楽しめるビュッフェスタイルの朝食をいただきます。新鮮なフルーツやパン、オーストラリアの特産品を味わいながら、楽しい一日の始まりです。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サーファーズパラダイスビーチで遊ぶ",
+          "description": "美しいビーチで子供たちと一緒に砂遊びや海水浴を楽しみましょう。波が穏やかな日には、家族でのんびりと海で遊ぶのに最適です。",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "コアラの抱っこ体験",
+          "description": "コアラを抱っこして写真を撮れる体験を楽しみます。子供たちにとっても特別な思い出になることでしょう。",
+          "searchQuery": "Currumbin Wildlife Sanctuary",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "空港近くのレストランでランチ",
+          "description": "空港に向かう前に、地元のレストランで軽めのランチを楽しみます。オーストラリアの新鮮なシーフードやサラダを味わいましょう。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ゴールドコースト空港へ移動",
+          "description": "空港へ向かう途中、最後のゴールドコーストの景色を楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "id": "324e8a75-2185-4867-b2b2-2f5af5f24b75",
+  "destination": "Dubai",
+  "description": "Escape to the dazzling city of Dubai, where modern marvels meet the serene beauty of nature. Over the course of seven days, immerse yourself in the vibrant culture, indulge in luxurious shopping, and explore breathtaking landscapes that will leave you in awe. From the iconic Burj Khalifa to the tranquil deserts, this trip promises a perfect blend of relaxation and adventure, ideal for couples seeking both excitement and serenity.",
+  "heroImage": "https://images.unsplash.com/photo-1721291155736-c1ca1af628e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUwNjd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nelemson Guevarra",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nelemson?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dubai",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Sum of Us",
+          "description": "Start your day with a delicious breakfast at The Sum of Us, known for its artisanal coffee and freshly baked pastries. The cozy atmosphere is perfect for couples looking to relax and enjoy a leisurely meal.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Dubai Marina",
+          "description": "Stroll along the stunning Dubai Marina, where you can admire the luxurious yachts and skyscrapers. The waterfront promenade is perfect for a romantic walk, and you can stop by one of the many cafes for a refreshing drink.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Pier 7",
+          "description": "Enjoy lunch at Pier 7, a unique dining destination with seven different restaurants, each offering a different cuisine. Choose a spot with a view of the marina for a memorable dining experience.",
+          "searchQuery": "Pier 7",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Jumeirah Beach",
+          "description": "Head to Jumeirah Beach for some sun and relaxation. This beautiful beach offers stunning views of the Burj Al Arab and is a great spot to unwind or take a dip in the sea.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Dubai Miracle Garden",
+          "description": "Discover the breathtaking Dubai Miracle Garden, home to over 50 million flowers arranged in stunning designs. This is a perfect spot for couples to take romantic photos amidst the vibrant blooms.",
+          "searchQuery": "Dubai Miracle Garden",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at At.mosphere",
+          "description": "Dine at At.mosphere, located on the 122nd floor of the Burj Khalifa. Enjoy exquisite cuisine while taking in panoramic views of the city as the sun sets. A truly unforgettable dining experience for couples.",
+          "searchQuery": "At.mosphere",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening stroll at The Dubai Fountain",
+          "description": "End your day with a romantic evening stroll by The Dubai Fountain. Watch the spectacular water show set to music, a perfect way to conclude your first day in Dubai.",
+          "searchQuery": "The Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Explore the Modern Wonders",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Dubai Mall",
+          "description": "Start your day with a delightful breakfast at one of the many cafes in The Dubai Mall, where you can enjoy a variety of international cuisines while overlooking the stunning views of the Burj Khalifa.",
+          "searchQuery": "The Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Burj Khalifa",
+          "description": "Ascend to the observation deck of Burj Khalifa, the tallest building in the world. The panoramic views of Dubai's skyline and the surrounding desert are simply breathtaking, especially in the morning light.",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at At.mosphere",
+          "description": "Indulge in a luxurious lunch at At.mosphere, located on the 122nd floor of Burj Khalifa. Enjoy gourmet dishes while taking in the stunning views from one of the highest restaurants in the world.",
+          "searchQuery": "At.mosphere",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Dubai Fountain",
+          "description": "After lunch, head outside to witness the mesmerizing Dubai Fountain show. The fountain dances to music and lights, creating a magical atmosphere that is perfect for a romantic afternoon.",
+          "searchQuery": "Dubai Fountain",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Dubai Marina",
+          "description": "Take a leisurely stroll along the Dubai Marina Walk, where you can enjoy the beautiful waterfront views and vibrant atmosphere. This area is perfect for relaxing and soaking in the sun.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Pierchic",
+          "description": "End your day with a romantic dinner at Pierchic, a stunning seafood restaurant located on a pier overlooking the Arabian Gulf. The ambiance and fresh seafood make for an unforgettable dining experience.",
+          "searchQuery": "Pierchic",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Evening at Jumeirah Beach",
+          "description": "After dinner, take a relaxing walk along Jumeirah Beach. The sound of the waves and the view of the illuminated Burj Al Arab create a perfect romantic setting to conclude your day.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Desert Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Hotel",
+          "description": "Start your day with a lavish breakfast at your hotel, featuring a variety of international and Middle Eastern dishes to fuel your desert adventure.",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Dubai Desert Conservation Reserve",
+          "description": "Embark on a guided tour of the Dubai Desert Conservation Reserve, where you can witness the stunning landscapes and diverse wildlife of the Arabian desert. Keep your eyes peeled for the endangered Arabian oryx and other native species.",
+          "searchQuery": "Dubai Desert Conservation Reserve",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Al Marmoom Oasis",
+          "description": "Enjoy a traditional Emirati lunch at Al Marmoom Oasis, surrounded by palm trees and the serene desert landscape. Savor local dishes like lamb machboos and fresh dates.",
+          "searchQuery": "Al Marmoom Oasis",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Camel Riding Experience",
+          "description": "Experience the thrill of camel riding through the golden dunes. This unique experience allows you to connect with the desert in a traditional way, guided by local experts.",
+          "searchQuery": "Camel Riding Dubai",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Dune Bashing Adventure",
+          "description": "Get your adrenaline pumping with an exhilarating dune bashing session in a 4x4 vehicle. Feel the rush as you navigate the towering sand dunes, a must-do for adventure seekers!",
+          "searchQuery": "Dune Bashing Dubai",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset at the Desert",
+          "description": "As the sun sets over the desert, take a moment to soak in the breathtaking views. The golden hues of the sand create a magical atmosphere, perfect for capturing memorable photos.",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner Under the Stars",
+          "description": "Indulge in a romantic dinner under the stars, complete with traditional music and dance performances. Enjoy a buffet of Middle Eastern delicacies while surrounded by the tranquil desert ambiance.",
+          "searchQuery": "Desert Dinner Dubai",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to Hotel",
+          "description": "After a day filled with adventure and relaxation, return to your hotel to unwind and reflect on the day's experiences.",
+          "locationEn": "Dubai, United Arab Emirates",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Arabian Tea House",
+          "description": "Start your day with a traditional Emirati breakfast at the Arabian Tea House. Enjoy dishes like foul medames (fava beans) and freshly baked bread in a charming courtyard setting.",
+          "searchQuery": "Arabian Tea House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Dubai Museum",
+          "description": "Explore the rich history of Dubai at the Dubai Museum, located in the Al Fahidi Fort. The museum showcases the city’s transformation from a small fishing village to a modern metropolis.",
+          "searchQuery": "Dubai Museum",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through Al Fahidi Historical Neighborhood",
+          "description": "Wander through the narrow lanes of Al Fahidi Historical Neighborhood, where you can admire traditional wind-tower architecture and visit art galleries and cultural exhibits.",
+          "searchQuery": "Al Fahidi Historical Neighborhood",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Local Restaurant",
+          "description": "Savor a delicious lunch at a local restaurant, where you can try authentic Middle Eastern dishes such as shawarma and kebabs, perfect for refueling after your morning explorations.",
+          "searchQuery": "Local Restaurant",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Gold and Spice Souks",
+          "description": "Dive into the vibrant atmosphere of the Gold and Spice Souks. Marvel at the dazzling displays of gold jewelry and the aromatic spices that fill the air, making for a sensory delight.",
+          "searchQuery": "Gold and Spice Souks",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Dubai Creek",
+          "description": "Take a leisurely stroll along Dubai Creek, where you can enjoy the views of traditional dhows and the bustling waterfront. Consider taking an abra ride for a unique perspective.",
+          "searchQuery": "Dubai Creek",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Pierchic",
+          "description": "Indulge in a romantic dinner at Pierchic, a fine dining restaurant located on a pier overlooking the Arabian Gulf. Enjoy fresh seafood while taking in stunning sunset views.",
+          "searchQuery": "Pierchic",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Dubai Mall and Burj Khalifa",
+          "description": "End your day with a visit to the Dubai Mall for some shopping and entertainment. Don’t miss the spectacular fountain show outside, followed by a visit to the observation deck of Burj Khalifa for breathtaking views of the city at night.",
+          "searchQuery": "Burj Khalifa",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Hamptons Cafe",
+          "description": "Start your day with a delightful breakfast at The Hamptons Cafe, known for its cozy atmosphere and delicious dishes like avocado toast and freshly brewed coffee. It's a perfect spot to relax and enjoy a leisurely morning.",
+          "searchQuery": "The Hamptons Cafe",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Jumeirah Beach",
+          "description": "Spend your morning at Jumeirah Beach, where you can soak up the sun on the soft sands and enjoy stunning views of the Burj Al Arab. Take a refreshing swim in the turquoise waters or simply relax under a beach umbrella.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Pierchic",
+          "description": "Indulge in a luxurious seafood lunch at Pierchic, located on a pier extending into the Arabian Gulf. Enjoy fresh catches of the day while taking in panoramic views of the sea and the iconic Burj Al Arab.",
+          "searchQuery": "Pierchic",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Burj Al Arab",
+          "description": "Take a guided tour of the Burj Al Arab, one of the most luxurious hotels in the world. Marvel at its stunning architecture and opulent interiors, and learn about its fascinating history and design.",
+          "searchQuery": "Burj Al Arab",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Madinat Jumeirah",
+          "description": "Stroll through the beautiful Madinat Jumeirah, a resort complex that features traditional Arabian architecture, winding waterways, and lush gardens. Enjoy some shopping at the souk or sip on a refreshing drink at one of the many cafes.",
+          "searchQuery": "Madinat Jumeirah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Al Nafoorah",
+          "description": "Savor authentic Lebanese cuisine at Al Nafoorah, where you can enjoy a variety of mezze and grilled dishes in a charming setting. The restaurant's ambiance and delicious food make it a perfect end to your day.",
+          "searchQuery": "Al Nafoorah",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Beach",
+          "description": "Conclude your day with a peaceful evening walk along the beach. The gentle sound of the waves and the cool breeze create a serene atmosphere, perfect for unwinding and reflecting on your day.",
+          "searchQuery": "Jumeirah Beach",
+          "locationEn": "Dubai, UAE",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Shopping Extravaganza",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Sum of Us",
+          "description": "Start your day with a delightful breakfast at The Sum of Us, known for its artisanal coffee and delicious baked goods. The cozy atmosphere makes it a perfect spot to fuel up for a day of shopping.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Mall of the Emirates",
+          "description": "Head to the iconic Mall of the Emirates, where you can shop from luxury brands and enjoy the unique experience of Ski Dubai, an indoor ski resort. Don't miss the chance to take a few photos with the snow-covered slopes!",
+          "searchQuery": "Mall of the Emirates",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Al Hallab Restaurant",
+          "description": "Indulge in a delicious Lebanese lunch at Al Hallab, located within the mall. Their grilled meats and fresh mezze are highly recommended, offering a taste of authentic Middle Eastern cuisine.",
+          "searchQuery": "Al Hallab Restaurant",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Ski Dubai Experience",
+          "description": "After lunch, enjoy some fun at Ski Dubai. Whether you want to ski, snowboard, or simply play in the snow, this unique indoor winter wonderland is a must-visit.",
+          "searchQuery": "Ski Dubai",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Global Village",
+          "description": "In the afternoon, make your way to Global Village, a cultural and entertainment destination that showcases pavilions from different countries. Explore the vibrant atmosphere, shop for unique souvenirs, and enjoy live performances.",
+          "searchQuery": "Global Village",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Cheesecake Factory",
+          "description": "Wrap up your day with a delightful dinner at The Cheesecake Factory in the Mall of the Emirates. Enjoy a wide variety of dishes and, of course, save room for their famous cheesecakes!",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll at Dubai Marina",
+          "description": "End your day with a relaxing evening stroll along Dubai Marina. The stunning skyline and waterfront views create a perfect backdrop for a romantic walk.",
+          "searchQuery": "Dubai Marina",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Dubai",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Dubai International Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Home",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Departure flight back home."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Sum of Us",
+          "description": "Start your day with a delightful breakfast at The Sum of Us, known for its artisanal coffee and freshly baked pastries. The cozy atmosphere makes it a perfect spot to relax before your journey home.",
+          "searchQuery": "The Sum of Us",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Dubai Miracle Garden",
+          "description": "Explore the stunning Dubai Miracle Garden, a floral paradise featuring over 150 million flowers arranged in breathtaking designs. This is a perfect way to soak in the beauty of nature before leaving the city.",
+          "searchQuery": "Dubai Miracle Garden",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Last-minute Shopping at The Dubai Mall",
+          "description": "Head to The Dubai Mall for some last-minute shopping. With over 1,200 shops, you can find everything from luxury brands to unique souvenirs. Don't forget to check out the Dubai Aquarium while you're there!",
+          "searchQuery": "The Dubai Mall",
+          "locationEn": "Dubai, UAE",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Social House",
+          "description": "Enjoy a leisurely lunch at Social House, offering a diverse menu with stunning views of the Burj Khalifa. It's a great spot to reflect on your trip and enjoy some delicious food before heading to the airport.",
+          "searchQuery": "Social House",
+          "locationEn": "Dubai, UAE",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

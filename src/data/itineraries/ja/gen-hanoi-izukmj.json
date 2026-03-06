@@ -1,0 +1,259 @@
+{
+  "id": "30321be0-5fcb-47cd-9f34-e60571e76bda",
+  "destination": "ハノイ",
+  "description": "ハノイの魅力を存分に味わう3日間の旅へようこそ。歴史的な街並みと美しい湖、そして美味しいグルメが揃うこの都市で、リゾート気分を味わいながら、ゆったりとした時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ハノイの歴史と文化を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイの高級ホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能しながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ホアンキエム湖散策",
+          "description": "ハノイの中心に位置するホアンキエム湖を散策。湖の周りには美しい公園が広がり、地元の人々がジョギングや散歩を楽しむ姿が見られます。湖の真ん中に浮かぶ玉山祠も訪れてみてください。",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "旧市街でランチ",
+          "description": "旧市街の人気レストランで、ベトナム料理のランチを楽しみます。特に、バインセオ（ベトナム風お好み焼き）や生春巻きはおすすめです。地元の雰囲気を感じながら、食事を楽しんでください。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "旧市街散策",
+          "description": "旧市街の狭い路地を歩きながら、地元のショップやカフェを訪れます。特に、伝統的な手工芸品やお土産を探すのに最適な場所です。",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "文廟訪問",
+          "description": "ハノイの文化的なシンボルである文廟を訪れます。孔子を祀るこの寺院は、静かな雰囲気の中で学問の重要性を感じることができます。美しい庭園も見どころです。",
+          "searchQuery": "Temple of Literature",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルでリラックス",
+          "description": "観光の後は、宿泊先のホテルでリラックス。スパやプールを利用して、旅の疲れを癒しましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "高級レストランでディナー",
+          "description": "ハノイの高級レストランで、ベトナム料理のコースディナーを楽しみます。新鮮な食材を使った創作料理を堪能し、特別な夜を演出します。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美食とリゾートを楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能しながら一日をスタート。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハロン湾クルーズ",
+          "description": "美しいハロン湾をクルーズします。青い海と奇岩が織りなす絶景を楽しみながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Halong Bay",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハロン湾でシーフードランチ",
+          "description": "湾内のレストランで新鮮なシーフードを使ったランチを楽しみます。地元の特産品を味わいながら、海の景色を堪能。",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハロン湾の洞窟探検",
+          "description": "ハロン湾の有名な洞窟を探検します。神秘的な雰囲気の中で、自然の造形美を楽しむことができます。",
+          "searchQuery": "Sung Sot Cave",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハノイへ戻る",
+          "description": "ハロン湾からハノイへ戻ります。車窓からの風景を楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ハノイのレストランでディナー",
+          "description": "ハノイの人気レストランで、ベトナム料理のディナーを楽しみます。特にバインセオや生春巻きがおすすめです。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ハノイの夜市散策",
+          "description": "ハノイの夜市を散策し、地元のストリートフードやお土産を楽しみます。活気ある雰囲気の中で、旅の思い出を作りましょう。",
+          "searchQuery": "Hanoi Night Market",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ハノイのリラックスした朝と帰路",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能しながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "タンロン遺跡",
+          "description": "ユネスコ世界遺産に登録されているタンロン遺跡を訪れます。歴史的な背景を感じながら、古代の城壁や遺跡を散策し、ハノイの歴史に触れる貴重な体験ができます。",
+          "searchQuery": "Thang Long Imperial Citadel",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"ハノイの歴史を感じるタンロン遺跡\",\"url\":\"https://example.com/thang-long-citadel\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "ハノイのカフェ文化を楽しむため、地元の人気カフェでランチを取ります。ベトナムコーヒーと共に、軽食やサンドイッチを味わいながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハノイ旧市街散策",
+          "description": "ハノイの旧市街を散策し、地元のマーケットやショップを訪れます。色とりどりの雑貨や手工芸品を見ながら、ショッピングを楽しむことができます。",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リゾートでのんびり",
+          "description": "ハノイ近郊のリゾートに移動し、スパやプールでリラックスした時間を過ごします。日常の喧騒を忘れ、心身ともにリフレッシュしましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "リゾート内のレストランで、ベトナム料理のディナーを楽しみます。新鮮な食材を使った料理を味わいながら、旅の締めくくりを満喫しましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

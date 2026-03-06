@@ -1,0 +1,358 @@
+{
+  "id": "6631c0bd-ad0d-4b0e-b7ce-8f966b72ff27",
+  "destination": "フィレンツェ",
+  "description": "フィレンツェの美しい街並みを家族で楽しむ4日間の旅。歴史的な建物やアートに囲まれながら、ショッピングやリゾート気分も満喫できるプランです。子供たちも楽しめるアクティビティを取り入れ、ゆったりとしたペースで過ごします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "フィレンツェ到着と街の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "フィレンツェのホテルで、イタリアの伝統的な朝食を楽しみます。新鮮なペストリーやエスプレッソで、エネルギーをチャージしましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ドゥオーモ（サンタ・マリア・デル・フィオーレ大聖堂）",
+          "description": "フィレンツェのシンボル、ドゥオーモを訪れます。美しいクーポラを見上げながら、周囲の広場でのんびりと過ごすのもおすすめです。",
+          "searchQuery": "Cathedral of Santa Maria del Fiore",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のトラットリアでランチ",
+          "description": "フィレンツェの地元のトラットリアで、パスタやピザなどのイタリアンランチを楽しみます。家族みんなでシェアしながら、楽しい食事の時間を過ごしましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ピッティ宮殿",
+          "description": "ルネッサンスの美しい建築を誇るピッティ宮殿を訪れます。広大な庭園もあり、子供たちが遊ぶのにもぴったりです。",
+          "searchQuery": "Palazzo Pitti",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ボボリ庭園散策",
+          "description": "ピッティ宮殿に隣接するボボリ庭園で、自然の中を散策します。美しい景色を楽しみながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Boboli Gardens",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ショッピングタイム",
+          "description": "フィレンツェのショッピングエリアで、地元の特産品やお土産を探します。革製品や手作りの工芸品が豊富です。",
+          "locationEn": "Florence, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "フィレンツェのレストランで、家族みんなでディナーを楽しみます。地元のワインと共に、イタリアの美味しい料理を堪能しましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートとショッピングの一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "フィレンツェのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なパンやフルーツ、イタリアのコーヒーでエネルギーをチャージ。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ウフィツィ美術館",
+          "description": "世界的に有名なウフィツィ美術館で、ルネサンスの名作を鑑賞します。ボッティチェリやダ・ヴィンチの作品に触れ、アートの深い世界に浸りましょう。",
+          "searchQuery": "Uffizi Gallery",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "トラットリア・ダ・オリヴェッティでランチ",
+          "description": "地元の人々に愛されるトラットリアで、フィレンツェ名物のビステッカ・アッラ・フィオレンティーナを堪能。家族みんなでシェアして楽しむのもおすすめです。",
+          "searchQuery": "Trattoria da Olivetti",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ヴェッキオ橋散策",
+          "description": "フィレンツェのシンボル、ヴェッキオ橋を渡りながら、周囲のショップやアートギャラリーを楽しみます。橋の上からのアルノ川の眺めも絶景です。",
+          "searchQuery": "Ponte Vecchio",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "サン・ロレンツォ市場でショッピング",
+          "description": "地元の食材やお土産が揃うサン・ロレンツォ市場で、ショッピングを楽しみます。新鮮なフルーツや手作りのパスタなど、家族で楽しめるアイテムがたくさん。",
+          "searchQuery": "Mercato di San Lorenzo",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。子供たちも疲れた様子なので、ゆっくり休む時間を持ちましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のピッツェリアでディナー",
+          "description": "フィレンツェの人気ピッツェリアで、家族みんなで本格的なナポリピザを楽しみます。子供たちも喜ぶメニューが揃っています。",
+          "searchQuery": "Pizzeria da Michele",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "トスカーナの自然とリゾート体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "フィレンツェのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なパンやフルーツ、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フィレンツェ近郊のワイナリー訪問",
+          "description": "トスカーナの美しい風景を楽しみながら、ワイナリーを訪れます。地元のワインの試飲や、ワイン作りのプロセスを学ぶことができます。子供たちも楽しめる広い庭や動物たちがいる場所もあります。",
+          "searchQuery": "Tuscany Winery",
+          "locationEn": "Tuscany, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ワイナリーでランチ",
+          "description": "ワイナリー内のレストランで、地元の食材を使った美味しいランチを楽しみます。トスカーナの郷土料理を味わいながら、家族でのんびりとした時間を過ごしましょう。",
+          "locationEn": "Tuscany, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "トスカーナの田園風景を散策",
+          "description": "ワイナリー周辺の美しい田園風景を散策します。広がるブドウ畑やオリーブの木々の中を歩きながら、自然の美しさを満喫しましょう。",
+          "locationEn": "Tuscany, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "フィレンツェに戻る",
+          "description": "ワイナリーを後にして、フィレンツェへ戻ります。車での移動中も、トスカーナの美しい風景を楽しむことができます。",
+          "locationEn": "Florence, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "フィレンツェのショッピングエリア散策",
+          "description": "フィレンツェの中心部に戻り、ショッピングを楽しみます。地元の手工芸品やファッションアイテムを探しながら、街の雰囲気を味わいましょう。",
+          "searchQuery": "Florence Shopping District",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "フィレンツェの地元のレストランで、トスカーナ料理を楽しみます。家族でシェアしながら、楽しい夕食のひとときを過ごしましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "フィレンツェの最後の散策と帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "フィレンツェのホテルで、イタリアの朝食を楽しみます。クロワッサンやカプチーノで、優雅な朝をスタートしましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アカデミア美術館",
+          "description": "フィレンツェの名所、アカデミア美術館を訪れます。ミケランジェロの「ダビデ像」を間近で見ることができ、芸術の素晴らしさを感じられます。",
+          "searchQuery": "Accademia Gallery",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"フィレンツェのアカデミア美術館を訪れて\",\"url\":\"https://example.com/accedemia\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のトラットリアでランチ",
+          "description": "アカデミア美術館近くのトラットリアで、パスタやピザなどの本格的なイタリアンランチを楽しみます。地元の人々に愛されるお店で、リーズナブルな価格で美味しい料理が味わえます。",
+          "locationEn": "Florence, Italy",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サンタ・クローチェ教会",
+          "description": "サンタ・クローチェ教会を訪れ、フィレンツェの歴史を感じるひとときを過ごします。美しいフレスコ画や、著名な人物の墓も見どころです。",
+          "searchQuery": "Basilica di Santa Croce",
+          "locationEn": "Florence, Italy",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"サンタ・クローチェ教会の魅力\",\"url\":\"https://example.com/santa-croce\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ショッピングタイム",
+          "description": "フィレンツェのショッピングエリアで、地元の手工芸品やファッションアイテムを探します。特にレザー製品はお土産にぴったりです。",
+          "locationEn": "Florence, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻り、チェックアウト",
+          "description": "ホテルに戻り、チェックアウトの準備をします。最後のフィレンツェの思い出を振り返りながら、ゆっくりと過ごしましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "フィレンツェ空港へ移動",
+          "description": "フィレンツェ空港へ向かいます。帰国の準備をしながら、楽しかった旅行を振り返りましょう。",
+          "locationEn": "Florence, Italy",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

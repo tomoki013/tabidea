@@ -1,0 +1,497 @@
+{
+  "id": "bdf0f555-6287-4874-bac8-c4e2b0ef70c9",
+  "destination": "Delhi, Agra, Jaipur",
+  "description": "Embark on an exhilarating 6-day journey through the heart of India, where history, culture, and cuisine intertwine in a vibrant tapestry. From the bustling streets of Delhi to the majestic Taj Mahal in Agra, and the royal charm of Jaipur, this adventure is designed for the curious traveler seeking to immerse themselves in the rich heritage of India. Prepare your camera for stunning photo opportunities and your palate for authentic Indian flavors as you explore this enchanting region.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Delhi: A Cultural Odyssey Begins",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Delhi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Agra",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Train ride from Delhi to Agra, enjoy the scenic views along the way."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chaat Gali",
+          "description": "Dive into the vibrant street food scene at Chaat Gali, where you can savor local favorites like Pani Puri and Aloo Tikki. It's a great way to kick off your culinary adventure in India!",
+          "searchQuery": "Chaat Gali",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Taj Mahal",
+          "description": "No trip to Agra is complete without visiting the iconic Taj Mahal. Marvel at its stunning architecture and learn about its rich history. Be sure to capture some beautiful photos in the gardens!",
+          "searchQuery": "Taj Mahal",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Agra Fort",
+          "description": "After the Taj Mahal, head to Agra Fort, a UNESCO World Heritage site. The fort's impressive red sandstone walls and intricate architecture offer a glimpse into Mughal history.",
+          "searchQuery": "Agra Fort",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dasaprakash",
+          "description": "Enjoy a delicious South Indian meal at Dasaprakash, known for its authentic dosas and thalis. A perfect way to end your first day in Agra!",
+          "searchQuery": "Dasaprakash",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at Hotel Taj Resorts",
+          "description": "Settle into your comfortable accommodation at Hotel Taj Resorts, conveniently located near the Taj Mahal. Relax and recharge for the adventures ahead!",
+          "searchQuery": "Hotel Taj Resorts",
+          "locationEn": "Agra, India",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Agra: The Majestic Taj Mahal Awaits",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Delhi",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Agra",
+          "time": "09:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic drive to Agra, where the iconic Taj Mahal awaits."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Taj Mahal",
+          "description": "Start your day with a visit to the breathtaking Taj Mahal, a UNESCO World Heritage site. Marvel at its stunning architecture and take plenty of photos in the morning light.",
+          "searchQuery": "Taj Mahal",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shankara Vegis Restaurant",
+          "description": "Savor authentic North Indian cuisine at Shankara Vegis, known for its delicious curries and vegetarian options. A perfect spot to recharge after exploring the Taj Mahal.",
+          "searchQuery": "Shankara Vegis Restaurant",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Agra Fort",
+          "description": "Explore the majestic Agra Fort, another UNESCO World Heritage site. Discover its rich history and enjoy panoramic views of the Taj Mahal from its ramparts.",
+          "searchQuery": "Agra Fort",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Mehtab Bagh",
+          "description": "Visit Mehtab Bagh, a beautiful garden that offers a stunning view of the Taj Mahal across the Yamuna River. It's a great spot for photography and relaxation.",
+          "searchQuery": "Mehtab Bagh",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Elephant Ride Experience",
+          "description": "Experience a unique elephant ride at a nearby sanctuary. This memorable activity allows you to connect with these gentle giants while enjoying the scenic surroundings.",
+          "searchQuery": "Elephant Ride Agra",
+          "locationEn": "Agra, India",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Pind Balluchi",
+          "description": "End your day with a delightful dinner at Pind Balluchi, famous for its traditional Indian dishes and vibrant ambiance. Don't miss their signature curries!",
+          "searchQuery": "Pind Balluchi",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Jaipur: The Pink City Unveiled",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Agra",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Jaipur",
+          "time": "11:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic drive from Agra to Jaipur, passing through beautiful landscapes."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Amber Fort",
+          "description": "Start your Jaipur adventure at the majestic Amber Fort, known for its stunning architecture and panoramic views. Don't miss the elephant rides available at the entrance for a unique experience!",
+          "searchQuery": "Amber Fort",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Chokhi Dhani",
+          "description": "Savor authentic Rajasthani cuisine at Chokhi Dhani, a cultural village that offers a delightful buffet. Enjoy traditional dishes like dal baati churma and gatte ki sabzi in a vibrant setting.",
+          "searchQuery": "Chokhi Dhani",
+          "locationEn": "Jaipur, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "City Palace",
+          "description": "Explore the City Palace, a beautiful blend of Mughal and Rajput architecture. The museum inside showcases royal artifacts and offers a glimpse into Jaipur's rich history.",
+          "searchQuery": "City Palace Jaipur",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Hawa Mahal (Palace of Winds)",
+          "description": "Visit the iconic Hawa Mahal, famous for its unique façade and numerous windows. Capture stunning photos of this architectural marvel, especially during the golden hour.",
+          "searchQuery": "Hawa Mahal",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Laxmi Misthan Bhandar",
+          "description": "End your day with a delicious dinner at Laxmi Misthan Bhandar, known for its mouthwatering Rajasthani sweets and savory snacks. Try their famous thali for a complete experience.",
+          "searchQuery": "Laxmi Misthan Bhandar",
+          "locationEn": "Jaipur, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Overnight at Hotel Pearl Palace",
+          "description": "Check in to Hotel Pearl Palace, a budget-friendly hotel with charming decor and excellent service. Relax and recharge for another exciting day ahead in Jaipur.",
+          "searchQuery": "Hotel Pearl Palace",
+          "locationEn": "Jaipur, India",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Delhi: A Day of Exploration and Flavors",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Jaipur",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Delhi",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Traveling from Jaipur to Delhi by car."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Jama Masjid",
+          "description": "Visit the majestic Jama Masjid, one of the largest mosques in India. Marvel at its stunning architecture and enjoy the vibrant atmosphere of the surrounding area.",
+          "searchQuery": "Jama Masjid",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Karim's",
+          "description": "Savor authentic Mughlai cuisine at Karim's, a legendary eatery near Jama Masjid. Don't miss their famous mutton biryani and kebabs, which are a feast for the senses.",
+          "searchQuery": "Karim's",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Chandni Chowk Exploration",
+          "description": "Stroll through the bustling streets of Chandni Chowk, where you can shop for spices, textiles, and traditional sweets. The vibrant market is a photographer's paradise!",
+          "searchQuery": "Chandni Chowk",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Lotus Temple",
+          "description": "Visit the serene Lotus Temple, known for its unique flower-like architecture. Take a moment to relax in the tranquil gardens and enjoy the peaceful ambiance.",
+          "searchQuery": "Lotus Temple",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Saravana Bhavan",
+          "description": "Indulge in a delicious South Indian meal at Saravana Bhavan. Their dosas and thalis are highly recommended for an authentic taste of Indian cuisine.",
+          "searchQuery": "Saravana Bhavan",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to relax and reflect on a day filled with cultural exploration and culinary delights.",
+          "locationEn": "Delhi, India",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.: Memories of India",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Indira Gandhi International Airport, Delhi",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C., USA",
+          "time": "16:00"
+        },
+        "duration": "15h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Saravana Bhavan",
+          "description": "Start your day with a delicious South Indian breakfast at Saravana Bhavan, known for its authentic dosas and idlis. It's a great way to fuel up before your journey home!",
+          "searchQuery": "Saravana Bhavan, Delhi",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Humayun's Tomb",
+          "description": "Explore the stunning Humayun's Tomb, a UNESCO World Heritage site and a beautiful example of Mughal architecture. The gardens and intricate designs make it a perfect spot for photography.",
+          "searchQuery": "Humayun's Tomb",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Last-minute shopping at Dilli Haat",
+          "description": "Before heading to the airport, visit Dilli Haat for some last-minute shopping. This open-air market features handicrafts and local foods from different states of India, perfect for souvenirs.",
+          "searchQuery": "Dilli Haat",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Final Day: Reflecting on an Unforgettable Journey",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "New Delhi, India",
+          "time": "12:30"
+        },
+        "duration": "15h 30m",
+        "memo": "Flight back to New Delhi."
+      },
+      "activities": [
+        {
+          "time": "13:00",
+          "activity": "Lunch at Saravana Bhavan",
+          "description": "Enjoy a delicious South Indian meal at Saravana Bhavan, famous for its authentic dosas and thalis. A perfect way to savor the flavors of India before heading home!",
+          "searchQuery": "Saravana Bhavan",
+          "locationEn": "New Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Humayun's Tomb",
+          "description": "Explore the stunning Humayun's Tomb, a UNESCO World Heritage site. This beautiful garden tomb is a precursor to the Taj Mahal and offers a serene atmosphere for reflection and photography.",
+          "searchQuery": "Humayun's Tomb",
+          "locationEn": "New Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore India Gate",
+          "description": "Stroll around India Gate, a war memorial dedicated to Indian soldiers. The surrounding gardens are perfect for a leisurely walk and capturing some memorable photos.",
+          "searchQuery": "India Gate",
+          "locationEn": "New Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Karim's",
+          "description": "Savor the rich flavors of Mughlai cuisine at Karim's, one of the oldest and most famous restaurants in Delhi. Don't miss their iconic mutton biryani and kebabs!",
+          "searchQuery": "Karim's",
+          "locationEn": "New Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Connaught Place",
+          "description": "Wrap up your trip with a visit to Connaught Place, a bustling area filled with shops and cafes. Enjoy a leisurely walk and perhaps pick up some souvenirs before heading back.",
+          "searchQuery": "Connaught Place",
+          "locationEn": "New Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,568 @@
+{
+  "id": "b3affece-a2ba-4f10-b8a7-2276686cf6dc",
+  "destination": "Taipei",
+  "description": "Escape to the vibrant city of Taipei, where modernity meets tradition amidst lush landscapes and breathtaking views. Over the course of six days, immerse yourself in the rich culture, indulge in delectable street food, and find tranquility in the city's serene parks and mountains. This journey is designed for relaxation and exploration, allowing you to unwind while discovering the hidden gems of this dynamic city.",
+  "heroImage": "https://images.unsplash.com/photo-1588420747232-55732e120966?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU0MzR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "jk retiza",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mrretiza?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Taipei",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Hotel",
+          "description": "Arrive at your hotel in Taipei and settle in. A great choice for a relaxing stay is the 'Hotel Midtown Richardson', which offers comfortable rooms and is centrally located.",
+          "searchQuery": "Hotel Midtown Richardson",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Din Tai Fung",
+          "description": "Savor a delicious meal at the famous Din Tai Fung, known for its mouthwatering xiaolongbao (soup dumplings). The restaurant's atmosphere is lively, making it a perfect spot to start your Taipei adventure.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Taipei 101",
+          "description": "Head to Taipei 101, one of the tallest buildings in the world. Take the high-speed elevator to the observation deck for breathtaking views of the city and surrounding mountains. Don't forget to snap some photos!",
+          "searchQuery": "Taipei 101",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Ximending",
+          "description": "Explore the vibrant Ximending district, known for its shopping, street food, and lively atmosphere. It's a great place to soak in the local culture and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Ximending",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ay Chung Rice Noodle",
+          "description": "Enjoy a casual dinner at Ay Chung Rice Noodle, famous for its delicious and comforting rice noodles in a flavorful broth. A must-try for a true taste of Taipei's street food scene.",
+          "searchQuery": "Ay Chung Rice Noodle",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Relax at Daan Forest Park",
+          "description": "End your day with a peaceful stroll in Daan Forest Park. This urban oasis is perfect for unwinding amidst nature, with beautiful walking paths and serene ponds.",
+          "searchQuery": "Daan Forest Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Taipei",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its fresh soy milk and crispy fried dough sticks. It's a local favorite and a perfect way to fuel up for a day of exploration.",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Taipei 101 Observatory",
+          "description": "Visit the iconic Taipei 101 and head up to the observatory for breathtaking views of the city. On a clear day, you can see all the way to the mountains surrounding Taipei. Don't forget to take some photos!",
+          "searchQuery": "Taipei 101 Observatory",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore the Taipei 101 Mall",
+          "description": "After enjoying the views, take some time to explore the Taipei 101 Mall located at the base of the tower. Here, you can find luxury shops, local boutiques, and even some great cafes to relax in.",
+          "searchQuery": "Taipei 101 Mall",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Din Tai Fung",
+          "description": "Indulge in a delicious lunch at Din Tai Fung, renowned for its xiaolongbao (soup dumplings). The restaurant's meticulous preparation and delightful flavors make it a must-visit for any food lover.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hike Elephant Mountain",
+          "description": "Take a short hike up Elephant Mountain for a stunning view of Taipei, especially during the late afternoon. The trail is well-maintained and offers several viewpoints along the way, making it a popular spot for both locals and tourists.",
+          "searchQuery": "Elephant Mountain",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Daan Forest Park",
+          "description": "After your hike, unwind at Daan Forest Park, a beautiful green space in the heart of the city. Enjoy a leisurely stroll, or simply relax on a bench and soak in the natural surroundings.",
+          "searchQuery": "Daan Forest Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Shilin Night Market",
+          "description": "End your day with a visit to Shilin Night Market, where you can sample a variety of street foods. Try the famous fried chicken steak and bubble tea while enjoying the vibrant atmosphere of the market.",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature and Serenity at Yangmingshan",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious Taiwanese breakfast at a local café. Try the classic dan bing (egg crepe) and a warm soy milk for a hearty meal.",
+          "searchQuery": "Taiwanese breakfast café",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Yangmingshan National Park",
+          "description": "Head to Yangmingshan National Park, known for its stunning landscapes and hot springs. Enjoy a leisurely hike through the lush trails and take in the breathtaking views of the mountains and valleys.",
+          "searchQuery": "Yangmingshan National Park",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "After your hike, enjoy lunch at a nearby restaurant specializing in local dishes. Don't miss the chance to try the famous beef noodle soup, a comforting and flavorful dish.",
+          "searchQuery": "Beef noodle soup restaurant",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Hot Springs",
+          "description": "Relax in one of the natural hot springs in Yangmingshan. The soothing waters are perfect for unwinding after a day of hiking, surrounded by nature's beauty.",
+          "searchQuery": "Yangmingshan hot springs",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore the Flower Clock",
+          "description": "On your way back, stop by the Flower Clock, a beautiful landmark in the park. It's a great spot for photos and to enjoy the vibrant floral displays.",
+          "searchQuery": "Yangmingshan Flower Clock",
+          "locationEn": "Yangmingshan, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Night Market",
+          "description": "End your day with dinner at a local night market. Sample a variety of street food, from stinky tofu to bubble tea, and soak in the lively atmosphere.",
+          "searchQuery": "Taipei night market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day, head back to your hotel to relax and recharge for the next day's adventures.",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion in Tamsui",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Taipei",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Tamsui",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Take the bus from Taipei to Tamsui for a scenic ride along the river."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Tamsui Old Street",
+          "description": "Stroll through the vibrant Tamsui Old Street, where you can sample local snacks like A-gei (fried tofu stuffed with noodles) and enjoy the charming atmosphere of this historic area.",
+          "searchQuery": "Tamsui Old Street",
+          "locationEn": "Tamsui, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Seafood Restaurant",
+          "description": "Indulge in a delicious seafood lunch at one of the local restaurants along the waterfront, where you can enjoy fresh catches of the day while overlooking the river.",
+          "searchQuery": "Tamsui Seafood Restaurant",
+          "locationEn": "Tamsui, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Fisherman's Wharf",
+          "description": "Visit the picturesque Fisherman's Wharf, famous for its beautiful sunset views and the iconic Lover's Bridge. Take a leisurely walk along the pier and soak in the serene surroundings.",
+          "searchQuery": "Fisherman's Wharf Tamsui",
+          "locationEn": "Tamsui, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Tamsui Riverside Park",
+          "description": "Unwind at the Tamsui Riverside Park, where you can enjoy the peaceful ambiance, take a nap on the grass, or simply watch the boats go by on the river.",
+          "searchQuery": "Tamsui Riverside Park",
+          "locationEn": "Tamsui, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Taipei",
+          "description": "Head back to Taipei via bus, reflecting on the beautiful sights and flavors of Tamsui.",
+          "searchQuery": "Bus from Tamsui to Taipei",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Shilin Night Market",
+          "description": "Experience the bustling atmosphere of Shilin Night Market, where you can try a variety of street foods, shop for souvenirs, and enjoy the lively night scene.",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Relax at a Local Café",
+          "description": "End your day by relaxing at a cozy café in Taipei, sipping on a cup of Taiwanese bubble tea or coffee, and enjoying the local vibe.",
+          "searchQuery": "Café in Taipei",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation Day at Beitou",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Taipei. Enjoy a traditional Taiwanese breakfast set with soy milk and fried dough sticks, perfect for fueling your day ahead.",
+          "searchQuery": "Taipei Local Café",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Beitou Hot Springs",
+          "description": "Head to Beitou, famous for its natural hot springs. Relax in the soothing waters and enjoy the serene surroundings. Don't forget to visit the public hot spring for a unique experience!",
+          "searchQuery": "Beitou Hot Springs",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a delightful lunch at a local restaurant in Beitou, where you can try traditional Taiwanese dishes like beef noodle soup or braised pork rice.",
+          "searchQuery": "Beitou Local Restaurant",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Beitou Library",
+          "description": "Visit the stunning Beitou Library, known for its eco-friendly design and beautiful wooden architecture. Take a moment to relax in the peaceful reading areas surrounded by nature.",
+          "searchQuery": "Beitou Library",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Beitou Park",
+          "description": "Stroll through Beitou Park, where you can enjoy the lush greenery and scenic views. It's a perfect spot for a leisurely walk or to simply unwind in nature.",
+          "searchQuery": "Beitou Park",
+          "locationEn": "Beitou, Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Taipei City",
+          "description": "Head back to Taipei City, taking in the sights along the way. You can choose to relax at your accommodation or explore nearby attractions.",
+          "searchQuery": "Taipei City",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Din Tai Fung",
+          "description": "End your day with a delicious dinner at Din Tai Fung, famous for its xiaolongbao (soup dumplings). Enjoy the bustling atmosphere and savor the flavors of Taiwan.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Taipei",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Taipei Main Station",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Taipei Taoyuan International Airport",
+          "time": "null"
+        },
+        "duration": "1h",
+        "memo": "Take the MRT to Taipei Main Station and then transfer to the airport shuttle."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Yonghe Soy Milk King",
+          "description": "Start your day with a traditional Taiwanese breakfast at Yonghe Soy Milk King, famous for its warm soy milk and crispy fried dough sticks. A perfect way to fuel up before your journey!",
+          "searchQuery": "Yonghe Soy Milk King",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Taipei 101",
+          "description": "Head to Taipei 101, once the tallest building in the world. Take the high-speed elevator to the observation deck for breathtaking views of the city and beyond. Don't forget to snap some photos!",
+          "searchQuery": "Taipei 101",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Relax at Daan Forest Park",
+          "description": "After the hustle and bustle of the city, unwind at Daan Forest Park. This urban oasis features beautiful walking paths, ponds, and plenty of green space to relax and enjoy nature.",
+          "searchQuery": "Daan Forest Park",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Din Tai Fung",
+          "description": "Savor a delicious lunch at Din Tai Fung, renowned for its xiaolongbao (soup dumplings). The restaurant's meticulous preparation and flavorful dishes make it a must-visit.",
+          "searchQuery": "Din Tai Fung",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the National Palace Museum",
+          "description": "Visit the National Palace Museum, home to an extensive collection of Chinese art and artifacts. Take your time to appreciate the rich history and culture on display.",
+          "searchQuery": "National Palace Museum",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Shilin Night Market",
+          "description": "Before heading to the airport, take a leisurely stroll through Shilin Night Market. Sample local street food and pick up some last-minute souvenirs to remember your trip.",
+          "searchQuery": "Shilin Night Market",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Transit to Taipei Taoyuan International Airport",
+          "description": "Make your way to the airport for your departure. Ensure you leave with enough time to check in and relax before your flight.",
+          "searchQuery": "Taipei Taoyuan International Airport",
+          "locationEn": "Taipei, Taiwan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

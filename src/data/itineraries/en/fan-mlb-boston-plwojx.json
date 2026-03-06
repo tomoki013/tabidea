@@ -1,0 +1,388 @@
+{
+  "id": "ffe9d0ce-9532-4d3b-a4ca-717e7f379b5b",
+  "destination": "Boston",
+  "description": "Escape to Boston, a city steeped in rich history and vibrant culture, where the echoes of the past blend seamlessly with the excitement of modern life. This 4-day adventure is perfect for couples looking to explore the heart of New England while indulging in their passion for MLB. From historic landmarks to iconic baseball sites, you’ll create unforgettable memories together in this charming city.",
+  "heroImage": "https://images.unsplash.com/photo-1718537418159-6c7ff91db38f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIwOTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Gene Giromini",
+  "heroImagePhotographerUrl": "https://unsplash.com/@ewgino?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Historic Boston",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tatte Bakery & Cafe",
+          "description": "Start your day with a delightful breakfast at Tatte Bakery & Cafe, known for its delicious pastries and hearty breakfast options. Try their shakshuka or a fresh croissant to fuel your day of exploration!",
+          "searchQuery": "Tatte Bakery & Cafe",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Freedom Trail",
+          "description": "Embark on the iconic Freedom Trail, a 2.5-mile route that takes you through 16 historical sites in Boston. This self-guided tour will lead you to landmarks like the Massachusetts State House and Paul Revere's House, immersing you in the rich history of the American Revolution.",
+          "searchQuery": "Freedom Trail",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Faneuil Hall Marketplace",
+          "description": "Enjoy lunch at Faneuil Hall Marketplace, where you can choose from a variety of food stalls and restaurants. Sample local favorites like clam chowder or lobster rolls while soaking in the vibrant atmosphere of this historic market.",
+          "searchQuery": "Faneuil Hall Marketplace",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Boston Common",
+          "description": "Stroll through Boston Common, the oldest public park in the United States. Relax on the grass, take a leisurely walk, or enjoy a peaceful moment by the pond. This is a perfect spot to unwind and enjoy the beauty of nature in the heart of the city.",
+          "searchQuery": "Boston Common",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Boston Red Sox Hall of Fame",
+          "description": "For baseball fans, a visit to the Boston Red Sox Hall of Fame is a must. Learn about the team's storied history and see memorabilia from legendary players. Don't forget to check out the gift shop for some exclusive Red Sox merchandise!",
+          "searchQuery": "Boston Red Sox Hall of Fame",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Legal Sea Foods",
+          "description": "Indulge in a seafood dinner at Legal Sea Foods, a Boston staple. Enjoy fresh catches of the day, including their famous clam chowder and lobster dishes, all while enjoying views of the harbor.",
+          "searchQuery": "Legal Sea Foods",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Waterfront",
+          "description": "End your day with a romantic evening walk along the Boston waterfront. The views of the city skyline at night are breathtaking, and it's a lovely way to reflect on your first day in this historic city.",
+          "searchQuery": "Boston Waterfront",
+          "locationEn": "Boston, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB Fan Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Flour Bakery",
+          "description": "Start your day with a delicious breakfast at Flour Bakery, known for its freshly baked pastries and hearty breakfast options. Don't miss their famous sticky buns!",
+          "searchQuery": "Flour Bakery",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Fenway Park Tour",
+          "description": "Take a guided tour of Fenway Park, one of the oldest ballparks in Major League Baseball. Learn about its rich history and iconic features, including the Green Monster!",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Bleacher Bar",
+          "description": "Enjoy lunch at The Bleacher Bar, located underneath the bleachers of Fenway Park. This unique spot offers a great view of the field while you savor classic American fare.",
+          "searchQuery": "The Bleacher Bar",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Boston Red Sox Team Store",
+          "description": "After lunch, head to the Boston Red Sox Team Store to pick up some official merchandise. From jerseys to caps, it's the perfect place to find your fan gear!",
+          "searchQuery": "Boston Red Sox Team Store",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Yawkey Way",
+          "description": "Stroll along Yawkey Way, the vibrant street leading to Fenway Park. Enjoy the atmosphere filled with fellow fans and take some photos with the iconic ballpark in the background.",
+          "searchQuery": "Yawkey Way",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore the Boston Sports Museum",
+          "description": "Visit the Boston Sports Museum located at TD Garden. Discover the history of Boston's sports teams, including the Red Sox, and see memorabilia from legendary players.",
+          "searchQuery": "Boston Sports Museum",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Legal Sea Foods",
+          "description": "End your day with a seafood dinner at Legal Sea Foods, a Boston staple. Enjoy fresh catches and local specialties in a cozy atmosphere.",
+          "searchQuery": "Legal Sea Foods",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Flour Bakery",
+          "description": "Start your day with a delicious breakfast at Flour Bakery, known for its freshly baked pastries and hearty breakfast sandwiches. The warm atmosphere and friendly staff make it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Flour Bakery",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Museum of Fine Arts",
+          "description": "Explore the Museum of Fine Arts, one of the most comprehensive art museums in the world. From ancient artifacts to contemporary art, the diverse collections will captivate your imagination. Don't miss the special exhibitions that often feature local artists.",
+          "searchQuery": "Museum of Fine Arts",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Capital Grille",
+          "description": "Enjoy a refined lunch at The Capital Grille, where you can savor expertly prepared steaks and fresh seafood. The elegant setting and attentive service make it a great choice for a special meal.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping on Newbury Street",
+          "description": "Stroll down Newbury Street, known for its chic boutiques and high-end shops. This is the perfect place to find MLB merchandise and unique souvenirs. Take your time exploring the vibrant storefronts and perhaps stop for a coffee at a local café.",
+          "searchQuery": "Newbury Street",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Fenway Park",
+          "description": "No trip to Boston is complete without a visit to Fenway Park, the oldest ballpark in Major League Baseball. Take a guided tour to learn about its rich history and maybe even catch a glimpse of a game if the Red Sox are playing.",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Legal Sea Foods",
+          "description": "Indulge in a seafood dinner at Legal Sea Foods, a Boston institution. Known for its fresh catches and clam chowder, this restaurant offers a taste of New England's culinary delights in a casual setting.",
+          "searchQuery": "Legal Sea Foods",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Charles River Esplanade",
+          "description": "End your day with a leisurely walk along the Charles River Esplanade. The scenic views of the river and the Boston skyline at sunset create a romantic atmosphere, perfect for couples.",
+          "searchQuery": "Charles River Esplanade",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Boston",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Traveling back to Washington D.C. from Boston."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Flour Bakery",
+          "description": "Start your day with a delicious breakfast at Flour Bakery, known for its freshly baked pastries and hearty breakfast sandwiches. Don't miss their famous sticky buns!",
+          "searchQuery": "Flour Bakery",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Fenway Park",
+          "description": "Explore the iconic Fenway Park, home of the Boston Red Sox. Take a guided tour to learn about the history of this legendary ballpark and its significance in baseball culture.",
+          "searchQuery": "Fenway Park",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Shop at the MLB Store",
+          "description": "Head to the MLB Store to find a wide range of merchandise, including jerseys, caps, and other fan gear. It's the perfect place to pick up souvenirs to remember your trip!",
+          "searchQuery": "MLB Store",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Quincy Market",
+          "description": "Enjoy lunch at Quincy Market, where you can choose from a variety of food stalls offering everything from clam chowder to lobster rolls. It's a great spot to experience local flavors.",
+          "searchQuery": "Quincy Market",
+          "locationEn": "Boston, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Boston Harbor",
+          "description": "Take a leisurely stroll along Boston Harbor. Enjoy the scenic views and perhaps stop for a quick coffee at one of the waterfront cafes. It's a lovely way to unwind before your journey.",
+          "searchQuery": "Boston Harbor",
+          "locationEn": "Boston, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to check out and prepare for your journey back to Washington D.C. Make sure you have all your souvenirs packed!",
+          "searchQuery": "null",
+          "locationEn": "Boston, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Travel to Washington D.C.",
+          "description": "Begin your journey back to Washington D.C. Reflect on the wonderful memories made during your trip to Boston!",
+          "searchQuery": "null",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

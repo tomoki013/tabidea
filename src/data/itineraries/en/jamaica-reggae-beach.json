@@ -1,0 +1,564 @@
+{
+  "id": "d891d15e-ae79-49fd-90ab-5146e998cd96",
+  "destination": "Montego Bay",
+  "description": "Escape to the vibrant shores of Montego Bay, where the rhythm of reggae music fills the air and the tantalizing aroma of jerk chicken wafts from nearby grills. This 7-day retreat is designed for you and your friends to unwind on sun-kissed beaches, savor delicious local cuisine, and immerse yourselves in the rich culture of Jamaica. From lazy beach days to lively nights, every moment is an invitation to indulge in the laid-back island lifestyle.",
+  "heroImage": "https://images.unsplash.com/photo-1531429498869-cbe1ee3372d9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYzNzd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "David Groves",
+  "heroImagePhotographerUrl": "https://unsplash.com/@pumplekin?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Montego Bay",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Arrival at Sangster International Airport",
+          "description": "Welcome to Montego Bay! After clearing customs, take a moment to soak in the vibrant atmosphere of the airport, filled with reggae music and friendly smiles. This is the start of your Caribbean adventure!",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Pelican Grill",
+          "description": "Enjoy a delicious introduction to Jamaican cuisine with a plate of jerk chicken at The Pelican Grill, located right on the beach. The flavors are bold, and the view of the Caribbean Sea is simply breathtaking!",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Doctor's Cave Beach",
+          "description": "Spend your afternoon relaxing at Doctor's Cave Beach, famous for its crystal-clear waters and soft white sand. Grab a cold beer from a beach bar and let the soothing sounds of reggae music wash over you as you unwind under the sun.",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Scotchies",
+          "description": "Savor the authentic taste of Jamaica with a visit to Scotchies, renowned for its mouthwatering jerk chicken. The casual outdoor setting is perfect for enjoying your meal while listening to live reggae music.",
+          "searchQuery": "Scotchies",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Margaritaville",
+          "description": "End your day at Margaritaville, a lively spot where you can enjoy drinks, music, and a fun atmosphere. Dance to reggae tunes and soak in the vibrant nightlife of Montego Bay.",
+          "searchQuery": "Margaritaville",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Beach Bliss and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Pelican Grill",
+          "description": "Start your day with a hearty breakfast at The Pelican Grill, known for its stunning views of the Caribbean Sea and delicious local dishes. Try the ackee and saltfish for an authentic Jamaican experience.",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Doctor's Cave Beach",
+          "description": "Spend a relaxing morning at Doctor's Cave Beach, famous for its crystal-clear waters and soft white sand. Enjoy the sun, swim in the warm sea, and sip on a cold Red Stripe beer while listening to reggae music in the background.",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Pork Pit",
+          "description": "Indulge in some mouth-watering jerk chicken at The Pork Pit, a local favorite. The smoky flavor and spicy marinade make it a must-try, and you can enjoy it with a side of festival (fried dumplings).",
+          "searchQuery": "The Pork Pit",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Hip Strip Exploration",
+          "description": "Stroll along the famous Hip Strip, where you can shop for souvenirs, enjoy street performances, and soak in the vibrant atmosphere. Don't forget to stop by local bars for more reggae tunes and refreshing drinks.",
+          "searchQuery": "Hip Strip",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Margueritaville",
+          "description": "Head to Margueritaville for a lively evening filled with music, dancing, and delicious cocktails. This beachfront restaurant is perfect for unwinding after a day in the sun, and you can enjoy the sunset while sipping on a frozen margarita.",
+          "searchQuery": "Margueritaville",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at the Beach",
+          "description": "End your day with a relaxing evening on the beach. Feel the cool breeze, listen to the waves, and enjoy the sounds of reggae music as you unwind under the stars.",
+          "searchQuery": "Montego Bay Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring the Heart of Jamaica",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Pelican Grill",
+          "description": "Start your day with a hearty breakfast at The Pelican Grill, known for its stunning views of the Caribbean Sea and delicious local dishes. Try the ackee and saltfish for an authentic Jamaican experience.",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Rose Hall Great House",
+          "description": "Explore the historic Rose Hall Great House, a beautifully restored plantation home with a fascinating history. Take a guided tour to learn about the legendary White Witch of Rose Hall and enjoy the stunning views from the estate.",
+          "searchQuery": "Rose Hall Great House",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Scotchies",
+          "description": "Indulge in some of the best jerk chicken in Jamaica at Scotchies. This casual eatery is famous for its smoky, flavorful jerk dishes, served with traditional sides like festival and rice and peas.",
+          "searchQuery": "Scotchies",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Bob Marley Experience",
+          "description": "Immerse yourself in the life and music of Bob Marley at this interactive museum. Discover memorabilia, listen to his iconic songs, and learn about his impact on reggae music and culture.",
+          "searchQuery": "The Bob Marley Experience",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Doctor's Cave Beach",
+          "description": "Unwind at Doctor's Cave Beach, known for its crystal-clear waters and soft white sand. Enjoy a cold beer while listening to reggae music and soaking up the sun. This beach is perfect for a leisurely afternoon.",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Marguerites",
+          "description": "Savor a delightful dinner at Marguerites, a beachfront restaurant offering a mix of Jamaican and international cuisine. The ambiance is perfect for enjoying the sunset while indulging in fresh seafood and local flavors.",
+          "searchQuery": "Marguerites",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Live Reggae Music at The House of Dancehall",
+          "description": "End your day with live reggae music at The House of Dancehall. Enjoy the vibrant atmosphere, dance to the rhythms, and experience the local nightlife while sipping on a refreshing drink.",
+          "searchQuery": "The House of Dancehall",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Adventure Awaits",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Montego Bay",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Ocho Rios",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive along the coast to Ocho Rios."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Dunn's River Falls",
+          "description": "Start your day with an exhilarating climb up the iconic Dunn's River Falls. The cascading waters and lush surroundings create a perfect backdrop for a refreshing adventure. Don't forget to bring your camera for some stunning photos!",
+          "searchQuery": "Dunn's River Falls",
+          "locationEn": "Ocho Rios, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Scotchies",
+          "description": "Savor the authentic flavors of Jamaica at Scotchies, famous for its mouthwatering jerk chicken. Enjoy the smoky, spicy goodness in a laid-back outdoor setting, perfect for relaxing after your waterfall adventure.",
+          "searchQuery": "Scotchies",
+          "locationEn": "Ocho Rios, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at James Bond Beach",
+          "description": "After lunch, head to James Bond Beach for some sun and relaxation. Sip on a cold beer while listening to reggae music, and take in the beautiful Caribbean views. It's the perfect spot to unwind and soak up the vibrant atmosphere.",
+          "searchQuery": "James Bond Beach",
+          "locationEn": "Ocho Rios, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Ocho Rios Craft Market",
+          "description": "Stroll through the Ocho Rios Craft Market, where you can find unique handmade souvenirs and local art. Engage with local artisans and perhaps pick up a few treasures to remember your trip by.",
+          "searchQuery": "Ocho Rios Craft Market",
+          "locationEn": "Ocho Rios, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Lobster Pot",
+          "description": "End your day with a delightful dinner at The Lobster Pot, known for its fresh seafood and stunning ocean views. Enjoy a delicious meal while listening to the sounds of the waves and reggae music in the background.",
+          "searchQuery": "The Lobster Pot",
+          "locationEn": "Ocho Rios, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Reggae and Relaxation",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Ocho Rios",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Negril",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive along the coast."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Negril Beach",
+          "description": "Kick off your day at the stunning Negril Beach, known for its soft white sands and crystal-clear waters. Relax under the sun, swim in the warm Caribbean Sea, and soak in the vibrant atmosphere filled with reggae music.",
+          "searchQuery": "Negril Beach",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Pelican Grill",
+          "description": "Savor a delicious lunch at The Pelican Grill, where you can indulge in local favorites like jerk chicken and fresh seafood while enjoying views of the beach. The laid-back vibe and friendly service make it a perfect spot to unwind.",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Rick's Cafe",
+          "description": "Head to the iconic Rick's Cafe, famous for its stunning cliffside views and lively atmosphere. Enjoy a cold beer while watching daring cliff divers plunge into the sea, and soak in the reggae beats that fill the air.",
+          "searchQuery": "Rick's Cafe",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Ivan's Bar & Restaurant",
+          "description": "End your day with a delightful dinner at Ivan's Bar & Restaurant, where you can enjoy a mix of Jamaican and international cuisine. The beachfront setting and live reggae music create a perfect ambiance for a relaxing evening.",
+          "searchQuery": "Ivan's Bar & Restaurant",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Rick's Cafe",
+          "description": "Return to Rick's Cafe for a lively evening filled with music and dancing. Enjoy the vibrant atmosphere as you sip on cocktails and mingle with locals and fellow travelers, all while the sun sets over the horizon.",
+          "searchQuery": "Rick's Cafe",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Cultural Immersion and Farewell Dinner",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Negril",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Montego Bay",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive along the coast."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Local Market Visit",
+          "description": "Start your day by immersing yourself in the vibrant atmosphere of a local market in Negril. Here, you can find fresh produce, handmade crafts, and local delicacies. It's a great way to experience the culture and interact with friendly locals.",
+          "searchQuery": "Negril Local Market",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Jerk Chicken Spot",
+          "description": "Savor the authentic flavors of Jamaica at a renowned jerk chicken spot. The smoky, spicy chicken served with rice and peas is a must-try. Enjoy your meal in a casual setting, surrounded by the sounds of reggae music.",
+          "searchQuery": "Jerk Chicken Negril",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Seven Mile Beach",
+          "description": "Spend a leisurely afternoon at the famous Seven Mile Beach. Lounge on the soft sands, take a dip in the turquoise waters, and sip on a cold Red Stripe beer while listening to live reggae music from nearby beach bars.",
+          "searchQuery": "Seven Mile Beach",
+          "locationEn": "Negril, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Drive to Montego Bay",
+          "description": "Take a scenic drive to Montego Bay, enjoying the coastal views along the way. This is a perfect time to reflect on your trip and soak in the beautiful Jamaican landscape.",
+          "searchQuery": "Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "End your trip with a farewell dinner at a beachfront restaurant in Montego Bay. Enjoy fresh seafood and traditional Jamaican dishes while watching the sunset over the Caribbean Sea. The lively atmosphere and music will make for a memorable evening.",
+          "searchQuery": "Beachfront Restaurant Montego Bay",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure Day",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Sangster International Airport, Montego Bay",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Your Home Destination",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Check-in at the airport at least 2 hours before your flight."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Pelican Grill",
+          "description": "Start your day with a hearty breakfast at The Pelican Grill, known for its stunning views of the Caribbean Sea and delicious local dishes. Try the ackee and saltfish for a true Jamaican experience!",
+          "searchQuery": "The Pelican Grill",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Relax at Doctor's Cave Beach",
+          "description": "Spend your morning soaking up the sun at Doctor's Cave Beach, famous for its clear turquoise waters and soft white sand. Enjoy the vibrant atmosphere, reggae music, and perhaps a cold Red Stripe beer while you unwind.",
+          "searchQuery": "Doctor's Cave Beach",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Pork Pit",
+          "description": "Indulge in some authentic Jamaican jerk chicken at The Pork Pit, a local favorite. The smoky flavor and spicy marinade will leave you craving more!",
+          "searchQuery": "The Pork Pit",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Last-minute shopping at the Hip Strip",
+          "description": "Take a stroll along the Hip Strip for some last-minute souvenir shopping. Explore local shops and pick up unique crafts, clothing, and Jamaican rum to take home.",
+          "searchQuery": "Hip Strip",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Departure to Sangster International Airport",
+          "description": "Make your way to the airport for your departure. Enjoy the scenic drive and reflect on the wonderful memories made during your trip!",
+          "searchQuery": "Sangster International Airport",
+          "locationEn": "Montego Bay, Jamaica",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "id": "9a5847a1-6f48-46b6-a82d-8cf56632b083",
+  "destination": "河口湖",
+  "description": "富士山の美しい姿を背景に、自然とアクティビティが融合した河口湖での2日間の旅。友人との思い出を作りながら、絶景を楽しみ、富士急ハイランドでのスリル満点のアトラクションを体験しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "河口湖の自然と絶景を満喫",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "河口湖のホテルで、地元の食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "大石公園散策",
+          "description": "大石公園では、富士山をバックに美しい湖の景色を楽しむことができます。特に、晴れた日には絶好の写真スポットです。公園内を散策しながら、自然の美しさを堪能しましょう。",
+          "searchQuery": "Oishi Park",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "河口湖でランチ",
+          "description": "湖畔のレストランで、地元の名物料理を楽しみます。特に、富士山を眺めながらの食事は格別です。",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "富士急ハイランド",
+          "description": "富士急ハイランドで、絶叫アトラクションやテーマパークの楽しさを満喫！富士山を背景にしたアトラクションは、スリル満点です。",
+          "searchQuery": "Fuji-Q Highland",
+          "locationEn": "Fujiyoshida, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "河口湖の夕日鑑賞",
+          "description": "夕暮れ時の河口湖は、富士山と湖が美しいオレンジ色に染まります。静かな湖畔で、心温まるひとときを過ごしましょう。",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "河口湖の居酒屋でディナー",
+          "description": "地元の居酒屋で、旬の食材を使った料理を楽しみます。特に、富士山の水で育ったお米を使ったご飯は絶品です。",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルにチェックイン",
+          "description": "河口湖のホテルにチェックインし、ゆったりとした時間を過ごします。温泉がある場合は、ぜひリラックスして疲れを癒してください。",
+          "locationEn": "Kawaguchi, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "富士山を眺めながらのアクティビティ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "河口湖で朝食",
+          "description": "地元のカフェで、富士山を眺めながらの朝食を楽しみます。新鮮な地元の食材を使ったモーニングプレートが人気です。",
+          "searchQuery": "Kawaguchiko Cafe",
+          "locationEn": "Kawaguchiko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "河口湖美術館",
+          "description": "美しい富士山を背景に、アートと自然を楽しむことができる河口湖美術館を訪れます。特に、印象派の絵画が展示されているエリアは必見です。",
+          "searchQuery": "Kawaguchiko Music Forest Museum",
+          "locationEn": "Kawaguchiko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "河口湖でランチ",
+          "description": "湖畔のレストランで、地元の名物料理を味わいます。特に、富士山を見ながらの食事は格別です。",
+          "searchQuery": "Kawaguchiko Lakeside Restaurant",
+          "locationEn": "Kawaguchiko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "富士急ハイランド",
+          "description": "日本一の絶叫マシンが揃う富士急ハイランドで、アドレナリン全開の一日を過ごします。富士山を背景にした絶景の中で、スリル満点のアトラクションを楽しんでください。",
+          "searchQuery": "Fuji-Q Highland",
+          "locationEn": "Fujiyoshida, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "河口湖温泉でリラックス",
+          "description": "一日の疲れを癒すために、河口湖温泉に浸かります。富士山を眺めながらの露天風呂は、心身ともにリフレッシュできる最高の体験です。",
+          "searchQuery": "Kawaguchiko Onsen",
+          "locationEn": "Kawaguchiko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "河口湖でディナー",
+          "description": "湖畔のレストランで、地元の食材を使ったディナーを楽しみます。特に、富士山を眺めながらの食事は、旅の思い出に残ることでしょう。",
+          "searchQuery": "Kawaguchiko Lakeside Dinner",
+          "locationEn": "Kawaguchiko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

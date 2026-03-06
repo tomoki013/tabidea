@@ -1,0 +1,530 @@
+{
+  "id": "2cb6b4c6-96fe-4c1b-a9e3-8f951f013622",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where the iconic skyline meets the rich tapestry of culture, art, and the beloved world of 'Sex and the City.' This 6-day journey is designed for couples who want to explore the city's hidden gems, indulge in local cuisine, and pay homage to their favorite TV show. From trendy boutiques to serene parks, each day is a delightful blend of exploration and relaxation, ensuring you savor every moment together in the city that never sleeps.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to New York City",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "New York City",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic ride along the East Coast."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Grey Dog",
+          "description": "Start your New York adventure with a delicious lunch at The Grey Dog, known for its cozy atmosphere and hearty sandwiches. It's a great spot to relax and recharge before exploring the city.",
+          "searchQuery": "The Grey Dog",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Sex and the City Hotspots Tour",
+          "description": "Join a guided tour that takes you to iconic locations featured in the beloved series 'Sex and the City'. From Carrie Bradshaw's apartment to the famous Magnolia Bakery, relive your favorite moments from the show.",
+          "searchQuery": "Sex and the City Hotspots Tour",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Museum of Sex",
+          "description": "Dive into the fascinating world of human sexuality at the Museum of Sex. With interactive exhibits and thought-provoking displays, it's both educational and entertaining, perfect for couples.",
+          "searchQuery": "Museum of Sex",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Buddakan",
+          "description": "Indulge in a lavish dinner at Buddakan, a stylish Asian fusion restaurant. The ambiance is as impressive as the food, making it a perfect romantic dinner spot.",
+          "searchQuery": "Buddakan",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Broadway Show",
+          "description": "End your day with a spectacular Broadway show. Choose from a variety of performances, from musicals to dramas, and immerse yourself in the vibrant theater scene of New York City.",
+          "searchQuery": "Broadway Show",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Manhattan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pastries and classic American breakfast options. The cozy atmosphere is perfect for couples looking to enjoy a leisurely meal together.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Central Park",
+          "description": "Stroll through the iconic Central Park, where you can enjoy the beautiful landscapes, take a romantic walk, or even rent a bike. Don't miss the Bethesda Terrace and the Bow Bridge for some picturesque views.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Loeb Boathouse",
+          "description": "Enjoy a scenic lunch at The Loeb Boathouse, located right in Central Park. The views of the lake and the surrounding nature make it a perfect spot to relax and recharge.",
+          "searchQuery": "The Loeb Boathouse Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore The Metropolitan Museum of Art",
+          "description": "Dive into the world of art at The Met, one of the largest and most prestigious art museums in the world. From ancient artifacts to modern masterpieces, there's something for every art lover here.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping on 5th Avenue",
+          "description": "After soaking in the art, head to 5th Avenue for some shopping. This famous street is lined with luxury boutiques and flagship stores, perfect for picking up some exclusive fan merchandise.",
+          "searchQuery": "5th Avenue",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Capital Grille",
+          "description": "Indulge in a fine dining experience at The Capital Grille, known for its dry-aged steaks and extensive wine list. A perfect way to end your day in Manhattan with a romantic dinner.",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Sex and the City Tour",
+          "description": "Join a guided tour that takes you to various filming locations from the beloved series 'Sex and the City'. Visit iconic spots like Carrie's apartment and the famous Magnolia Bakery for a sweet treat.",
+          "searchQuery": "Sex and the City Tour",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Sex and the City Tour",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pastries and classic American breakfast options. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Carrie Bradshaw's Apartment",
+          "description": "Head over to Carrie Bradshaw's iconic apartment located at 66 Perry Street. Snap some photos and soak in the charm of this famous location from the series. Don't forget to check out the nearby streets for a quintessential New York vibe!",
+          "searchQuery": "Carrie Bradshaw's Apartment",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Magnolia Bakery",
+          "description": "Indulge in a sweet treat at Magnolia Bakery, famous for its classic cupcakes and banana pudding. This charming bakery is a must-visit for fans of the show and a perfect spot for a light lunch.",
+          "searchQuery": "Magnolia Bakery",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the West Village",
+          "description": "Take a leisurely stroll through the West Village, where you can enjoy the quaint streets and unique shops. This area is filled with character and is a great place to find some Sex and the City-themed merchandise.",
+          "searchQuery": "West Village",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Scout",
+          "description": "Stop by Scout, the bar owned by Aidan in the series. While it may not be the same as in the show, it’s a great place to grab a drink and reminisce about your favorite moments from Sex and the City.",
+          "searchQuery": "Scout",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Coffee at Bleecker Street",
+          "description": "Take a break at one of the many coffee shops on Bleecker Street. Enjoy a cup of coffee while people-watching in this vibrant neighborhood, which is also featured in the series.",
+          "searchQuery": "Bleecker Street",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Bistro du Soleil",
+          "description": "End your day with a romantic dinner at Bistro du Soleil, a charming French restaurant. Enjoy a delicious meal while reflecting on your day of exploring the iconic spots from Sex and the City.",
+          "searchQuery": "Bistro du Soleil",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Museum of Modern Art (MoMA)",
+          "description": "Dive into the world of contemporary art at MoMA, where you can admire works by Van Gogh, Warhol, and many more. Don't miss the sculpture garden for a peaceful escape amidst the art.",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Chelsea Market",
+          "description": "Head to Chelsea Market for lunch, where you can sample a variety of cuisines from artisanal vendors. Try the lobster roll or grab a fresh taco while soaking in the vibrant atmosphere.",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the High Line",
+          "description": "Stroll along the High Line, an elevated park built on a former railway track. Enjoy the lush gardens, public art installations, and stunning views of the city as you walk.",
+          "searchQuery": "High Line",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Sex and the City Hotspots",
+          "description": "Take a guided tour or explore on your own to visit iconic locations from 'Sex and the City'. Don't forget to stop by the famous Magnolia Bakery for a cupcake!",
+          "searchQuery": "Sex and the City Tour",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Smith",
+          "description": "Enjoy a lively dinner at The Smith, a trendy American brasserie known for its vibrant atmosphere and delicious comfort food. Perfect for unwinding after a day of exploration.",
+          "searchQuery": "The Smith",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Sex and the City Merchandise",
+          "description": "End your day by shopping for 'Sex and the City' merchandise at local boutiques or online stores. Look for unique items that celebrate your favorite show!",
+          "searchQuery": "Sex and the City Merchandise",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Shopping and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. The cozy atmosphere is perfect for a leisurely morning.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Sex and the City Hotspots Tour",
+          "description": "Join a guided tour that takes you to iconic locations featured in the beloved series, including Carrie Bradshaw's apartment and the famous Magnolia Bakery for a cupcake treat.",
+          "searchQuery": "Sex and the City Hotspots Tour",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Enjoy a casual lunch at The Meatball Shop, where you can customize your meatball dish with various sauces and sides. A fun and hearty meal to keep you energized!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shopping in SoHo",
+          "description": "Stroll through the trendy streets of SoHo, where you can find a mix of high-end boutiques and unique shops. Don't forget to look for Sex and the City-themed merchandise!",
+          "searchQuery": "SoHo",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Brooklyn Bridge",
+          "description": "Take a leisurely walk across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and capture some memorable photos together.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The River Café",
+          "description": "End your day with a romantic dinner at The River Café, located under the Brooklyn Bridge. The restaurant offers exquisite dining with breathtaking views of the Manhattan skyline.",
+          "searchQuery": "The River Café",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a comfortable train ride back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh pastries. It's a cozy spot perfect for couples to enjoy a leisurely meal before heading out.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Visit the Sex and the City Hotspots Tour",
+          "description": "Join a guided tour that takes you to iconic locations featured in 'Sex and the City'. From Carrie’s apartment to the famous Magnolia Bakery, relive your favorite moments from the show.",
+          "searchQuery": "Sex and the City Hotspots Tour",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Savor a casual lunch at The Meatball Shop, where you can customize your meatball dish. It's a fun and relaxed atmosphere, perfect for a couple's outing.",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for Sex and the City Merchandise",
+          "description": "Explore local shops and boutiques for unique 'Sex and the City' merchandise. From clothing to memorabilia, find the perfect fan goods to take home as souvenirs.",
+          "searchQuery": "Sex and the City merchandise",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the New York Public Library",
+          "description": "Take a leisurely stroll to the New York Public Library, a stunning architectural gem. Enjoy the serene atmosphere and perhaps catch a glimpse of a literary event or exhibition.",
+          "searchQuery": "New York Public Library",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Buddakan",
+          "description": "End your New York adventure with a romantic dinner at Buddakan, an upscale Asian fusion restaurant. The ambiance is perfect for couples, and the food is exquisite.",
+          "searchQuery": "Buddakan",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

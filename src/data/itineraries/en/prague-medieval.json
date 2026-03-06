@@ -1,0 +1,564 @@
+{
+  "id": "b885c423-3ea6-4083-a5c1-c62f3a279682",
+  "destination": "Prague",
+  "description": "Escape to the enchanting city of Prague, where cobblestone streets whisper tales of medieval times and the aroma of freshly brewed Czech beer fills the air. This 6-day journey is designed for couples seeking romance, culture, and culinary delights in one of Europe’s most beautiful cities. Stroll hand-in-hand through the historic Old Town, savor exquisite local dishes, and soak in breathtaking views from the iconic Charles Bridge as the sun sets over the Vltava River. Each day unfolds a new chapter of discovery, from hidden gems to vibrant nightlife, all wrapped in the charm of this fairy-tale city.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Prague",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Start your culinary adventure with traditional Czech dishes at Lokál Dlouhááá, known for its fresh ingredients and local beers. The atmosphere is lively, perfect for soaking in the local vibe.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Old Town Square",
+          "description": "Stroll through the historic Old Town Square, where you can admire the stunning architecture, including the iconic Astronomical Clock. Don't forget to take a moment to enjoy the street performances and vibrant atmosphere.",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Astronomical Clock",
+          "description": "Witness the hourly show of the Astronomical Clock, a marvel of medieval engineering. The intricate details and the animated figures make it a must-see attraction in Prague.",
+          "searchQuery": "Astronomical Clock",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Walk across Charles Bridge",
+          "description": "Take a leisurely walk across the historic Charles Bridge, lined with statues and offering stunning views of the Vltava River. It's a romantic spot, especially as the sun begins to set.",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "Enjoy a hearty dinner at U Medvídků, a traditional Czech restaurant famous for its home-brewed beer and classic dishes like goulash and svíčková. The cozy atmosphere adds to the experience.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Vltava River",
+          "description": "End your day with a romantic evening stroll along the Vltava River. The illuminated cityscape provides a magical backdrop, perfect for taking memorable photos together.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Prague",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day at the historic Café Louvre, a favorite among locals and artists alike. Enjoy a traditional Czech breakfast with fresh pastries and strong coffee in a charming atmosphere.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Prague Castle",
+          "description": "Stroll through the beautiful grounds of Prague Castle, the largest ancient castle in the world. Don't miss the stunning views of the city from the castle's ramparts and the impressive architecture of St. Vitus Cathedral.",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Lokál",
+          "description": "Head to Lokál for a taste of authentic Czech cuisine. This restaurant is known for its fresh, locally sourced ingredients and serves a variety of traditional dishes, including goulash and svíčková.",
+          "searchQuery": "Lokál",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lesser Town (Malá Strana)",
+          "description": "Wander through the picturesque streets of Lesser Town, where you can admire the baroque architecture and charming squares. Be sure to visit the John Lennon Wall, a colorful tribute to peace and love.",
+          "searchQuery": "Lesser Town",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit St. Nicholas Church",
+          "description": "Step inside St. Nicholas Church, a stunning example of baroque architecture. The interior is adorned with beautiful frescoes and a magnificent chandelier, making it a perfect spot for some quiet reflection.",
+          "searchQuery": "St. Nicholas Church",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Enjoy a Beer at U Fleků",
+          "description": "Relax at U Fleků, one of Prague's oldest breweries. Sample their famous dark lager and soak in the lively atmosphere, complete with traditional Czech music and hearty snacks.",
+          "searchQuery": "U Fleků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Café Savoy",
+          "description": "Indulge in a romantic dinner at Café Savoy, known for its elegant ambiance and delicious menu. Try their seasonal dishes paired with a fine Czech wine for a memorable dining experience.",
+          "searchQuery": "Café Savoy",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along the Vltava River",
+          "description": "End your day with a leisurely stroll along the Vltava River. The illuminated views of Prague's skyline and the iconic Charles Bridge create a magical atmosphere perfect for couples.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Beer Tasting",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day at Café Louvre, a historic café known for its delicious pastries and rich coffee. Enjoy a traditional Czech breakfast in a charming atmosphere that has welcomed many famous figures over the years.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Vyšehrad Castle",
+          "description": "Explore the stunning Vyšehrad Castle, perched on a hill overlooking the Vltava River. Wander through its beautiful gardens and enjoy panoramic views of the city, while learning about its rich history.",
+          "searchQuery": "Vyšehrad Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at U Medvídků",
+          "description": "Savor traditional Czech cuisine at U Medvídků, a historic brewery and restaurant. Try their famous goulash paired with a refreshing local beer brewed on-site.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Local Brewery Tour",
+          "description": "Join a guided tour of a local brewery to learn about the brewing process and taste a variety of Czech beers. This immersive experience will deepen your appreciation for the country's beer culture.",
+          "searchQuery": "Prague Brewery Tour",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Wenceslas Square",
+          "description": "Stroll through Wenceslas Square, a vibrant hub of activity and history. Admire the impressive architecture and perhaps do some shopping or enjoy a coffee at one of the many cafés lining the square.",
+          "searchQuery": "Wenceslas Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Lokál Dlouhááá",
+          "description": "Enjoy dinner at Lokál Dlouhááá, a popular restaurant known for its authentic Czech dishes and freshly tapped Pilsner. The lively atmosphere makes it a great spot to unwind after a day of exploration.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Vltava River",
+          "description": "End your day with a romantic evening walk along the Vltava River. The illuminated cityscape and the gentle sound of the water create a magical atmosphere perfect for couples.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and History",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day at Café Louvre, a historic café known for its elegant atmosphere and delicious breakfast options. Enjoy a traditional Czech breakfast with fresh pastries and coffee to fuel your day of exploration.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery",
+          "description": "Explore the National Gallery, home to an impressive collection of Czech and international art. Don't miss the stunning modern art section, which offers a unique perspective on contemporary creativity.",
+          "searchQuery": "National Gallery Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Savor traditional Czech cuisine at Lokál Dlouhááá, a popular spot among locals. Try their famous goulash and pair it with a refreshing Pilsner beer for an authentic experience.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Jewish Quarter",
+          "description": "Wander through the historic Jewish Quarter, where you can visit the Old Jewish Cemetery and the beautiful synagogues. The area is rich in history and offers a glimpse into Prague's Jewish heritage.",
+          "searchQuery": "Jewish Quarter Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Vltava River Cruise",
+          "description": "Take a relaxing cruise on the Vltava River. Enjoy stunning views of Prague's skyline and iconic landmarks like Charles Bridge and Prague Castle from the water, making for a romantic afternoon.",
+          "searchQuery": "Vltava River Cruise",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "Indulge in a hearty dinner at U Medvídků, a historic brewery and restaurant. Enjoy traditional Czech dishes and sample their house-brewed beer, known for its rich flavor and quality.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Charles Bridge",
+          "description": "End your day with a romantic stroll along the Charles Bridge. The bridge is beautifully illuminated at night, offering a magical atmosphere as you take in the views of the Vltava River and the city.",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Český Krumlov",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Prague",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Český Krumlov",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic bus ride through the Czech countryside."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Český Krumlov Castle",
+          "description": "Explore the stunning Český Krumlov Castle, a UNESCO World Heritage site. Don't miss the beautiful gardens and the panoramic views of the town from the castle tower.",
+          "searchQuery": "Český Krumlov Castle",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Krcma v Šatlavské",
+          "description": "Savor traditional Czech cuisine at this charming medieval tavern. Try the goulash and local beer for an authentic experience.",
+          "searchQuery": "Krcma v Šatlavské",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Old Town Stroll",
+          "description": "Wander through the picturesque streets of Český Krumlov's Old Town, with its colorful buildings and quaint shops. Stop by the local artisan shops for unique souvenirs.",
+          "searchQuery": "Český Krumlov Old Town",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Vltava River Walk",
+          "description": "Take a leisurely walk along the Vltava River, enjoying the serene views and perhaps stopping for a coffee at a riverside café.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Restaurant Katakomby",
+          "description": "Indulge in a delightful dinner at this cozy restaurant known for its local dishes and excellent beer selection. A perfect way to end your day in Český Krumlov.",
+          "searchQuery": "Restaurant Katakomby",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Prague",
+          "description": "Head back to Prague after a fulfilling day. Reflect on the beautiful sights and delicious food you experienced in Český Krumlov.",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Farewell Prague",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheese, and local meats.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Petřín Hill",
+          "description": "Take a leisurely stroll to Petřín Hill, where you can enjoy panoramic views of Prague from the lookout tower. The park is perfect for a romantic walk, surrounded by beautiful gardens and blooming flowers.",
+          "searchQuery": "Petřín Hill",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Lokál",
+          "description": "Savor traditional Czech cuisine at Lokál, a popular local restaurant known for its fresh ingredients and house-made dishes. Don't miss their famous goulash and freshly tapped Pilsner beer.",
+          "searchQuery": "Lokál",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore John Lennon Wall",
+          "description": "Visit the iconic John Lennon Wall, a vibrant tribute to peace and love. Take your time to admire the colorful graffiti and perhaps leave your own message of hope.",
+          "searchQuery": "John Lennon Wall",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Stroll through Kampa Island",
+          "description": "Wander through the picturesque Kampa Island, known for its charming canals and art installations. This peaceful area is perfect for a romantic walk, with plenty of spots to relax by the water.",
+          "searchQuery": "Kampa Island",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit a Local Market",
+          "description": "Head to a nearby local market to experience the vibrant atmosphere and sample some local delicacies. It's a great opportunity to pick up some unique souvenirs and enjoy the local culture.",
+          "searchQuery": "Prague Local Market",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "Enjoy your final dinner in Prague at U Medvídků, a historic brewery and restaurant. Indulge in hearty Czech dishes paired with their own brewed beer, making for a perfect farewell meal.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along the Vltava River",
+          "description": "End your day with a romantic evening walk along the Vltava River. The illuminated cityscape of Prague is breathtaking at night, providing the perfect backdrop for a memorable farewell.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,570 @@
+{
+  "id": "bc3af037-1b8d-4601-a9de-d81c77e32d24",
+  "destination": "Cancun",
+  "description": "Escape to the tropical paradise of Cancun, where the azure waters meet pristine white sands, and every day feels like a dream. This 7-day getaway is designed for couples seeking relaxation, adventure, and a taste of Mexico's rich heritage. From lounging at luxurious all-inclusive resorts to exploring the mystical cenotes, each moment will be filled with romance and discovery. Get ready to immerse yourself in the vibrant culture, savor exquisite cuisine, and unwind in the sun-drenched beauty of the Caribbean.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cancun",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Hotel",
+          "description": "Arrive at your beachfront resort in Cancun's Hotel Zone. Enjoy a welcome drink and take in the stunning ocean views as you settle into your luxurious accommodations.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Resort",
+          "description": "Indulge in a delicious buffet lunch at the resort's restaurant, featuring a variety of international and local dishes. Enjoy the relaxed atmosphere and ocean breeze.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend your afternoon lounging on the pristine white sands of Cancun's beaches. Take a refreshing dip in the turquoise waters or simply relax under a palm tree with a cocktail in hand.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Sunset at the Beach",
+          "description": "As the sun begins to set, find a cozy spot on the beach to watch the breathtaking colors of the sky. This is a perfect moment for a romantic photo together.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort",
+          "description": "Enjoy a lavish dinner at one of the resort's specialty restaurants. Savor gourmet dishes prepared by top chefs, paired with fine wines or cocktails.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Entertainment",
+          "description": "After dinner, check out the resort's evening entertainment options. Whether it's live music, a themed party, or a quiet stroll along the beach, there's something for everyone.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Relaxation and Beach Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Start your day with a lavish breakfast buffet at the resort, featuring a variety of fresh fruits, pastries, and traditional Mexican dishes. Enjoy the ocean view as you sip on freshly squeezed juice.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Playa Delfines",
+          "description": "Head to Playa Delfines, one of Cancun's most beautiful beaches. Relax on the soft white sand, swim in the turquoise waters, and take in the stunning views. This beach is less crowded, making it perfect for a peaceful morning.",
+          "searchQuery": "Playa Delfines",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Resort",
+          "description": "Return to the resort for a delicious lunch at one of the on-site restaurants. Indulge in local specialties and international cuisine, all while enjoying the all-inclusive benefits.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Relax by the Resort Pool",
+          "description": "Spend your afternoon lounging by the resort pool. Enjoy refreshing cocktails and snacks served by the poolside bar. Take a dip in the pool or simply soak up the sun on a comfortable lounger.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Cenote Visit",
+          "description": "Embark on a short excursion to a nearby cenote, a natural sinkhole filled with crystal-clear water. Swim and explore the stunning surroundings, a perfect way to connect with nature and cool off.",
+          "searchQuery": "Cenote",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at the Resort",
+          "description": "Enjoy a gourmet dinner at one of the resort's specialty restaurants. Savor exquisite dishes prepared by talented chefs, paired with fine wines, all included in your stay.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Entertainment at the Resort",
+          "description": "Wrap up your day with live entertainment at the resort. Enjoy music, dance shows, or themed nights, providing a perfect end to a relaxing day in paradise.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cenote Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Enjoy a leisurely breakfast at your all-inclusive resort, featuring a variety of local and international dishes to fuel your day of adventure.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Cenote Ik Kil",
+          "description": "Dive into the refreshing waters of Cenote Ik Kil, a stunning natural sinkhole surrounded by lush vegetation. It's the perfect spot for swimming and taking memorable photos.",
+          "searchQuery": "Cenote Ik Kil",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ik Kil Restaurant",
+          "description": "Savor a delicious lunch at the on-site restaurant, where you can enjoy traditional Mexican dishes while overlooking the cenote.",
+          "locationEn": "Cenote Ik Kil, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Chichen Itza",
+          "description": "After lunch, head to the iconic Chichen Itza, a UNESCO World Heritage site. Marvel at the impressive El Castillo pyramid and learn about the ancient Mayan civilization.",
+          "searchQuery": "Chichen Itza",
+          "locationEn": "Chichen Itza, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to Cancun",
+          "description": "After a day of exploration, return to your resort in Cancun to relax and unwind. Enjoy the amenities and perhaps a cocktail by the pool.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Resort",
+          "description": "Indulge in a lavish dinner at your resort, where you can choose from a variety of cuisines and enjoy the ambiance of a romantic evening.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Explore Tulum",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Cancun",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Tulum",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy a scenic drive along the coast to Tulum."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Tulum Ruins",
+          "description": "Visit the stunning Tulum Ruins, perched on a cliff overlooking the Caribbean Sea. This ancient Mayan city offers breathtaking views and a glimpse into the rich history of the region.",
+          "searchQuery": "Tulum Ruins",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Sale e Pepe",
+          "description": "Savor a delicious Italian meal at Sale e Pepe, known for its fresh pasta and seafood dishes. The cozy atmosphere makes it a perfect spot for a leisurely lunch.",
+          "searchQuery": "Sale e Pepe",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Relax at Tulum Beach",
+          "description": "Spend a relaxing afternoon at Tulum Beach, famous for its soft white sands and crystal-clear waters. Enjoy sunbathing, swimming, or simply soaking in the beautiful surroundings.",
+          "searchQuery": "Tulum Beach",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Gran Cenote",
+          "description": "Explore Gran Cenote, a stunning natural swimming hole surrounded by lush vegetation. Swim in the clear waters and admire the unique rock formations and underwater life.",
+          "searchQuery": "Gran Cenote",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Kitchen Table",
+          "description": "Indulge in a culinary experience at Kitchen Table, where you can enjoy fresh, locally sourced dishes prepared right in front of you. The ambiance is intimate and perfect for couples.",
+          "searchQuery": "Kitchen Table Tulum",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening stroll along Tulum Beach",
+          "description": "End your day with a romantic evening stroll along Tulum Beach. The sound of the waves and the starry sky create a magical atmosphere perfect for couples.",
+          "searchQuery": "Tulum Beach",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Sian Ka'an Biosphere Reserve",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a lavish breakfast buffet at your all-inclusive resort in Tulum. Enjoy a variety of fresh fruits, pastries, and traditional Mexican dishes to fuel your adventure ahead.",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Sian Ka'an Biosphere Reserve Tour",
+          "description": "Embark on a guided tour of the stunning Sian Ka'an Biosphere Reserve, a UNESCO World Heritage site. Explore the diverse ecosystems, including mangroves and coral reefs, and keep an eye out for exotic wildlife such as dolphins and manatees.",
+          "searchQuery": "Sian Ka'an Biosphere Reserve",
+          "locationEn": "Sian Ka'an, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Beachside Restaurant",
+          "description": "Enjoy a delicious lunch at a beachside restaurant within the reserve, where you can savor fresh seafood and local specialties while taking in the breathtaking views of the Caribbean Sea.",
+          "locationEn": "Sian Ka'an, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Wildlife Viewing and Snorkeling",
+          "description": "Continue your exploration with wildlife viewing and snorkeling in the crystal-clear waters of Sian Ka'an. Discover vibrant marine life and coral formations, making for an unforgettable underwater experience.",
+          "locationEn": "Sian Ka'an, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Tulum",
+          "description": "After a day filled with adventure, return to your resort in Tulum. Relax and unwind as you reflect on the day's experiences.",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort",
+          "description": "Indulge in a gourmet dinner at your resort, where you can choose from a variety of international cuisines. Enjoy the ambiance and perhaps a romantic toast to your wonderful day.",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Cancun and Spa Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Enjoy a leisurely breakfast at your resort, featuring a variety of fresh fruits, pastries, and traditional Mexican dishes to fuel your day ahead.",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Gran Cenote",
+          "description": "Explore the stunning Gran Cenote, a beautiful natural swimming hole surrounded by lush vegetation. Swim in the crystal-clear waters and marvel at the unique rock formations.",
+          "searchQuery": "Gran Cenote",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor authentic Mexican cuisine at a nearby restaurant, where you can try local specialties like tacos al pastor or fresh ceviche.",
+          "locationEn": "Tulum, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Cancun",
+          "description": "Travel back to Cancun, where you can relax and unwind at your resort. The journey takes about 1.5 hours, giving you time to enjoy the scenic views along the way.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Spa Treatment at Resort",
+          "description": "Indulge in a luxurious spa treatment at your resort. Choose from a variety of massages and wellness therapies designed to rejuvenate your body and mind.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Resort Restaurant",
+          "description": "Enjoy a delightful dinner at your resort's restaurant, featuring a diverse menu with international and local dishes, all included in your all-inclusive package.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Cancun",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Cancun",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Home",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Flight back home from Cancun."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Resort",
+          "description": "Enjoy a leisurely breakfast at your all-inclusive resort, featuring a variety of international and local dishes to fuel your day.",
+          "searchQuery": "Cancun All-Inclusive Resort",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit a Cenote",
+          "description": "Take a short trip to a nearby cenote, where you can swim in crystal-clear waters surrounded by stunning natural beauty. It's a perfect way to relax and enjoy the unique landscape of the Yucatan Peninsula.",
+          "searchQuery": "Cenote Ik Kil",
+          "locationEn": "Chichen Itza, Mexico",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Resort",
+          "description": "Return to the resort for a delicious lunch, where you can choose from a variety of cuisines and enjoy refreshing drinks by the pool.",
+          "searchQuery": "Cancun All-Inclusive Resort",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax by the Pool",
+          "description": "Spend your afternoon lounging by the pool, sipping cocktails, and soaking up the sun. Take advantage of the resort's amenities and enjoy the tranquil atmosphere.",
+          "searchQuery": "Cancun All-Inclusive Resort",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Pack and Prepare for Departure",
+          "description": "Take some time to pack your belongings and prepare for your journey home. Reflect on the wonderful memories made during your stay in Cancun.",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at the Resort",
+          "description": "Enjoy a final dinner at the resort, indulging in gourmet dishes and perhaps a toast to your unforgettable vacation in Cancun.",
+          "searchQuery": "Cancun All-Inclusive Resort",
+          "locationEn": "Cancun, Mexico",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

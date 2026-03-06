@@ -1,0 +1,675 @@
+{
+  "id": "ec75ce4a-0fd0-4ecb-a5c8-45b824a5deae",
+  "destination": "イースター島",
+  "description": "Immerse yourself in the mystical allure of Easter Island, where ancient moai statues stand sentinel over the rugged landscape. This 8-day adventure is designed for the solo traveler seeking to explore the rich cultural heritage and breathtaking vistas of this remote paradise. From cycling along the coast to discovering the secrets of the Rapa Nui people, each day promises a blend of adventure, history, and awe-inspiring beauty.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C. International Airport",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Santiago, Chile",
+          "time": "05:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight to Santiago, Chile."
+      },
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "In-flight",
+          "description": "Enjoy your in-flight meal and relax as you travel across the skies towards Santiago. Take this time to catch up on movies or read a book.",
+          "locationEn": "In-flight",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch on the flight",
+          "description": "Savor a delicious meal served on board, featuring local Chilean flavors to get you excited for your arrival.",
+          "locationEn": "In-flight",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Arrival in Santiago",
+          "description": "Upon landing, take a moment to soak in the vibrant atmosphere of Santiago, the capital of Chile, before your next adventure to Easter Island.",
+          "locationEn": "Santiago, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Arrival in Santiago and Flight to Easter Island",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Santiago International Airport",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mataveri International Airport",
+          "time": "12:00"
+        },
+        "duration": "5h",
+        "memo": "Direct flight to Easter Island."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Check-in at Hotel",
+          "description": "Arrive at your hotel in Hanga Roa, the main town on Easter Island. Take a moment to settle in and refresh yourself after the flight.",
+          "searchQuery": "Hotel in Hanga Roa",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Te Moana",
+          "description": "Enjoy a delicious seafood lunch at Te Moana, known for its fresh catch and stunning ocean views. Try the ceviche, a local favorite!",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Ahu Tahai",
+          "description": "Explore the Ahu Tahai archaeological site, where you can see some of the island's iconic moai statues. The sunset views from here are breathtaking!",
+          "searchQuery": "Ahu Tahai",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Bike Rental for Island Exploration",
+          "description": "Rent a bike to explore the beautiful landscapes of Easter Island at your own pace. The island's scenic routes are perfect for leisurely rides.",
+          "searchQuery": "Bike rental in Hanga Roa",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Kaleta",
+          "description": "Savor a delightful dinner at La Kaleta, where you can enjoy traditional Rapa Nui dishes in a cozy atmosphere. Don't miss their grilled fish!",
+          "searchQuery": "La Kaleta",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring the Moai Statues",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hanga Roa",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Rano Raraku",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Rent a bike in Hanga Roa to explore the island."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Rano Raraku",
+          "description": "Start your day at Rano Raraku, the quarry where the iconic Moai statues were carved. Wander through the site and marvel at the hundreds of unfinished statues scattered across the landscape, each telling a story of the island's rich history.",
+          "searchQuery": "Rano Raraku",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Te Moana",
+          "description": "Enjoy a delicious lunch at Te Moana, a local restaurant known for its fresh seafood and traditional Rapa Nui dishes. Try the ceviche or the grilled fish for a taste of the island's flavors.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Ahu Tongariki",
+          "description": "After lunch, head to Ahu Tongariki, the largest ceremonial platform on the island, featuring 15 impressive Moai statues lined up against the backdrop of the ocean. This is a perfect spot for breathtaking photos, especially with the dramatic cliffs behind.",
+          "searchQuery": "Ahu Tongariki",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the coastline by bike",
+          "description": "Take some time to cycle along the beautiful coastline, stopping at various viewpoints to soak in the stunning ocean views and the unique volcanic landscape. This leisurely ride allows you to appreciate the island's natural beauty at your own pace.",
+          "searchQuery": "Easter Island coastline",
+          "locationEn": "Easter Island, Chile",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Hanga Roa's local market",
+          "description": "End your day with dinner at the local market in Hanga Roa, where you can sample various street foods and local delicacies. It's a great way to experience the vibrant atmosphere and mingle with locals.",
+          "searchQuery": "Hanga Roa local market",
+          "locationEn": "Hanga Roa, Easter Island, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Beach Relaxation",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hanga Roa",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Orongo Ceremonial Village",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Rent a bike to explore the scenic routes to Orongo."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Orongo Ceremonial Village",
+          "description": "Explore the ancient ceremonial village of Orongo, known for its stunning views of the Rano Kau volcano and the iconic moai statues. This site is rich in Rapa Nui culture and history, making it a must-visit for any traveler.",
+          "searchQuery": "Orongo Ceremonial Village",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Te Moana",
+          "description": "Enjoy a delicious lunch at Te Moana, a local restaurant offering fresh seafood and traditional Rapa Nui dishes. The ocean view adds to the delightful dining experience.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Anakena Beach",
+          "description": "Spend a relaxing afternoon at Anakena Beach, famous for its white sand and crystal-clear waters. Take a dip in the ocean or simply unwind under the palm trees while enjoying the beautiful scenery.",
+          "searchQuery": "Anakena Beach",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hanga Roa",
+          "description": "Bike back to Hanga Roa, taking in the stunning coastal views along the way. This leisurely ride allows you to soak in the beauty of Easter Island's landscape.",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Kaleta",
+          "description": "Savor a delightful dinner at La Kaleta, known for its local cuisine and warm atmosphere. Try the traditional Rapa Nui dishes, which are sure to be a highlight of your culinary adventure.",
+          "searchQuery": "La Kaleta",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Adventure to Rano Kau and Ahu Akivi",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hanga Roa",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Rano Kau",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Rent a bike to explore the island at your own pace."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Rano Kau",
+          "description": "Start your day with a visit to Rano Kau, a stunning volcanic crater offering breathtaking views of the island and the ocean. The lush greenery and the unique geological formations make it a perfect spot for photography and reflection.",
+          "searchQuery": "Rano Kau",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Te Moana",
+          "description": "Enjoy a delicious lunch at Te Moana, a local restaurant known for its fresh seafood and traditional Rapa Nui dishes. Try the ceviche or the grilled fish for a taste of the island's culinary delights.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Ahu Akivi",
+          "description": "After lunch, bike over to Ahu Akivi, famous for its seven moai statues that face the ocean. This site is unique as it is one of the few places where the moai look out to sea, symbolizing the connection between the islanders and the ocean.",
+          "searchQuery": "Ahu Akivi",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the coastline",
+          "description": "Take some time to explore the beautiful coastline around Ahu Akivi. The rugged cliffs and crashing waves provide a stunning backdrop for a leisurely bike ride or a peaceful walk along the shore.",
+          "searchQuery": "Ahu Akivi coastline",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Hanga Roa's local market",
+          "description": "End your day with dinner at the local market in Hanga Roa. Sample various street foods and local delicacies while enjoying the vibrant atmosphere of the market as the sun sets over the island.",
+          "searchQuery": "Hanga Roa local market",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Discovering the Island's History",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hanga Roa",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hanga Roa",
+          "time": "17:00"
+        },
+        "duration": "8h",
+        "memo": "Exploring the island by bike, visiting key historical sites."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Te Moana",
+          "description": "Start your day with a delicious breakfast at Te Moana, known for its fresh fruit and local dishes. Enjoy the ocean view as you fuel up for a day of exploration.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Museo Antropológico",
+          "description": "Dive into the rich history of Easter Island at the Museo Antropológico. Here, you can learn about the Rapa Nui culture and the significance of the moai statues through fascinating exhibits.",
+          "searchQuery": "Museo Antropológico",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Kaleta",
+          "description": "Enjoy a leisurely lunch at La Kaleta, a local favorite known for its seafood dishes. Try the ceviche, a refreshing dish that perfectly captures the flavors of the island.",
+          "searchQuery": "La Kaleta",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Ahu Vinapu",
+          "description": "Cycle to Ahu Vinapu, an archaeological site featuring impressive moai platforms. The unique stonework here is believed to have been influenced by Incan architecture, making it a must-see for history buffs.",
+          "searchQuery": "Ahu Vinapu",
+          "locationEn": "Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Bike ride along the coast",
+          "description": "Take a scenic bike ride along the coast, enjoying breathtaking views of the ocean and the rugged landscape. Stop at various viewpoints to capture the beauty of Easter Island.",
+          "searchQuery": "Easter Island Coastal Views",
+          "locationEn": "Easter Island",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hanga Roa",
+          "description": "After a fulfilling day of exploration, return to Hanga Roa. Take some time to relax and reflect on the incredible sights you've seen today.",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Hanga Roa Restaurant",
+          "description": "End your day with a delightful dinner at Hanga Roa Restaurant, where you can savor traditional Rapa Nui cuisine in a cozy atmosphere. Don't miss the chance to try the local fish dishes.",
+          "searchQuery": "Hanga Roa Restaurant",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Relaxation and Reflection",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Hanga Roa",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hanga Roa",
+          "time": "17:00"
+        },
+        "duration": "8h",
+        "memo": "Rent a bike to explore the island at your own pace."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Te Moana",
+          "description": "Start your day with a delicious breakfast at Te Moana, known for its fresh fruit and local pastries. Enjoy the view of the ocean while sipping on a refreshing juice.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Hanga Roa Town",
+          "description": "Take a leisurely ride around Hanga Roa, visiting local shops and markets. Immerse yourself in the vibrant culture and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Hanga Roa",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Kaleta",
+          "description": "Enjoy a hearty lunch at La Kaleta, a local favorite known for its fresh seafood and traditional Rapa Nui dishes. The atmosphere is relaxed, perfect for a solo traveler.",
+          "searchQuery": "La Kaleta",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Ahu Tahai",
+          "description": "Ride your bike to Ahu Tahai, a ceremonial site featuring impressive moai statues. Spend some time reflecting on the history and significance of these ancient structures.",
+          "searchQuery": "Ahu Tahai",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Playa Pea",
+          "description": "Head to Playa Pea for some relaxation. This beautiful beach offers stunning views and a chance to unwind by the ocean. Perfect for a quiet afternoon.",
+          "searchQuery": "Playa Pea",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hanga Roa",
+          "description": "After a fulfilling day of exploration, return your bike and enjoy a leisurely evening in Hanga Roa, perhaps with a stroll along the waterfront.",
+          "searchQuery": "Hanga Roa",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at O'tai",
+          "description": "End your day with a delightful dinner at O'tai, where you can savor traditional Rapa Nui cuisine in a cozy setting. Don't miss their famous fish dishes!",
+          "searchQuery": "O'tai",
+          "locationEn": "Hanga Roa, Easter Island",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Santiago International Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C. International Airport",
+          "time": "20:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Te Moana",
+          "description": "Start your day with a delicious breakfast at Te Moana, known for its fresh local ingredients and stunning ocean views. Enjoy a hearty meal to fuel your adventures before departure.",
+          "searchQuery": "Te Moana",
+          "locationEn": "Hanga Roa, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Ahu Tongariki",
+          "description": "Before leaving, take a short trip to Ahu Tongariki, the largest ahu (ceremonial platform) on the island, featuring 15 impressive moai statues. The sight of these ancient figures against the backdrop of the ocean is breathtaking and a perfect farewell to Easter Island.",
+          "searchQuery": "Ahu Tongariki",
+          "locationEn": "Hanga Roa, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Rano Raraku",
+          "description": "Visit Rano Raraku, the quarry where the moai were carved. This UNESCO World Heritage site offers a fascinating insight into the island's history and culture, with many unfinished moai still in place. It's a must-see for any history enthusiast.",
+          "searchQuery": "Rano Raraku",
+          "locationEn": "Hanga Roa, Chile",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Hanga Roa's Local Market",
+          "description": "Enjoy a casual lunch at the local market, where you can sample traditional dishes and fresh seafood. It's a great way to experience the local culture and flavors before heading to the airport.",
+          "searchQuery": "Hanga Roa Market",
+          "locationEn": "Hanga Roa, Chile",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Return to your hotel to pack up and check out. Make sure to take a moment to reflect on your incredible journey through Easter Island.",
+          "searchQuery": "Hotel in Hanga Roa",
+          "locationEn": "Hanga Roa, Chile",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Transfer to Santiago International Airport",
+          "description": "Head to the airport for your flight back to Washington D.C. Enjoy the scenic views of the island one last time as you make your way to the airport.",
+          "searchQuery": "Santiago International Airport",
+          "locationEn": "Santiago, Chile",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

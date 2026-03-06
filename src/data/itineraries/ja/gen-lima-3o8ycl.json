@@ -1,0 +1,302 @@
+{
+  "id": "4fa0ad5c-e4e5-46d4-bdcd-7d35858c3f5d",
+  "destination": "リマ",
+  "description": "リマの魅力は、歴史的な文化と現代アートが融合した独特の雰囲気にあります。家族で楽しむことができるアートや美術館、そしてリゾート地としての魅力を存分に味わいながら、ペルーの首都を探索しましょう。美味しい料理も堪能できる、心温まる旅の始まりです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "リマの文化と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リマのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、素敵な一日のスタートです。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラルコ博物館",
+          "description": "古代ペルーのアートや工芸品が展示されているラルコ博物館を訪れます。特に、金や銀の装飾品は圧巻で、子供たちも楽しめるインタラクティブな展示が豊富です。",
+          "searchQuery": "Larco Museum",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "リマの地元料理を楽しめるレストランで、セビーチェやアヒ・デ・ガジーナを味わいます。新鮮な魚介類を使った料理は、リマならではの味わいです。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ミラフローレス散策",
+          "description": "美しい海岸線を持つミラフローレスエリアを散策します。公園やビーチがあり、子供たちが遊ぶのにも最適な場所です。",
+          "searchQuery": "Miraflores",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "サン・フランシスコ教会",
+          "description": "歴史的なサン・フランシスコ教会を訪れ、その美しいバロック様式の建築を堪能します。地下のカタコンベも見学でき、子供たちにとっても興味深い体験です。",
+          "searchQuery": "San Francisco Church",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "公園でのんびり",
+          "description": "近くの公園で、子供たちと一緒に遊びながらリラックスした時間を過ごします。地元の人々と触れ合う良い機会です。",
+          "locationEn": "Lima, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "リマの人気レストランで、ペルー料理のディナーを楽しみます。家族でシェアしながら、様々な料理を味わうのが楽しいです。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートとリゾートを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リマのホテルで、ペルーの伝統的な朝食を楽しみます。アヒ・デ・ガジーナ（鶏肉のクリーム煮）やフルーツジュースでエネルギーをチャージ。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラルコ博物館",
+          "description": "ペルーの古代文化を深く知ることができるラルコ博物館を訪れます。美しい陶器や金細工が展示されており、子供たちも楽しめるインタラクティブな展示が魅力です。",
+          "searchQuery": "Larco Museum",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"リマのラルコ博物館を訪れて\",\"url\":\"https://example.com/larco-museum\",\"confidence\":\"high\"}"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リマの美食と市場巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リマのホテルで、ペルーの伝統的な朝食を楽しみます。アヒ・デ・ガジーナ（鶏肉のクリーム煮）やフルーツジュースでエネルギーをチャージ。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ミラフローレス散策",
+          "description": "リマの美しい海岸沿いのエリア、ミラフローレスを散策します。海を眺めながら、アート作品やストリートパフォーマンスを楽しむことができます。",
+          "searchQuery": "Miraflores",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ラルコ博物館訪問",
+          "description": "ペルーの古代文化を知ることができるラルコ博物館を訪れます。美しい陶器や金細工が展示されており、子供たちも楽しめるアクティビティが充実しています。",
+          "searchQuery": "Larco Museum",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "市場でランチ（サン・イシドロ市場）",
+          "description": "地元の人々に人気のサン・イシドロ市場で、セビーチェやタコスなどの新鮮な海鮮料理を楽しみます。活気ある雰囲気の中で、ペルーの味を堪能。",
+          "searchQuery": "San Isidro Market",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アートギャラリー巡り",
+          "description": "リマのアートシーンを体験するため、地元のアートギャラリーをいくつか訪れます。子供たちも楽しめるインタラクティブな展示があるギャラリーもあります。",
+          "searchQuery": "art galleries in Lima",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "パルケ・ケネディでリラックス",
+          "description": "パルケ・ケネディでのんびりと過ごします。公園内には多くの猫がいて、子供たちも喜ぶスポットです。周囲のカフェで軽食を楽しむのもおすすめ。",
+          "searchQuery": "Kennedy Park",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "リマの地元のレストランで、ペルー料理のディナーを楽しみます。特に、アヒ・デ・ガジーナやロモ・サルタードが人気です。",
+          "searchQuery": "local restaurant in Lima",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リマの最後のひととき",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リマのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、最後の一日をスタートしましょう。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "パルケ・ケネディ散策",
+          "description": "リマの中心に位置するパルケ・ケネディで、アートや文化を感じながら散策。周囲にはアートショップやカフェが点在しており、家族でのんびり過ごすのにぴったりです。",
+          "searchQuery": "Parque Kennedy",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アートショップ巡り",
+          "description": "パルケ・ケネディ周辺のアートショップを訪れ、地元アーティストの作品を見て回ります。お土産にぴったりなユニークなアートを見つけるチャンスです。",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "リマの地元料理を楽しめるレストランで、セビーチェやロモサルタードなどの名物料理を堪能します。家族みんなでシェアしながら楽しむのがおすすめです。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "リマ美術館訪問",
+          "description": "リマ美術館で、ペルーのアートシーンを体験。現代アートから伝統的な作品まで、幅広いコレクションが楽しめます。子供向けのワークショップもあるので、家族で楽しめます。",
+          "searchQuery": "Museo de Arte de Lima",
+          "locationEn": "Lima, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "帰国準備",
+          "description": "ホテルに戻り、帰国の準備をします。お土産の整理や、旅行の思い出を振り返る時間を持ちましょう。",
+          "locationEn": "Lima, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、最後の晩餐を楽しみます。リマの美味しい料理を再度味わい、家族での楽しい思い出を語り合いましょう。",
+          "locationEn": "Lima, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "id": "d97503c3-fecb-4bc6-926c-cffce42fd1d3",
+  "destination": "Prague",
+  "description": "Immerse yourself in the enchanting atmosphere of Prague, a city where history and culture intertwine beautifully. Over the course of seven days, you and your family will explore the rich tapestry of classical music, stunning architecture, and local traditions, all while indulging in the vibrant culinary scene. From the majestic Prague Castle to the charming streets of the Old Town, every corner of this city tells a story waiting to be discovered. Prepare for a journey filled with unforgettable experiences, delightful surprises, and a deep dive into the heart of Czech culture.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Prague",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day at the historic Café Louvre, a favorite among locals and artists alike. Enjoy a traditional Czech breakfast with fresh pastries and strong coffee in a charming atmosphere.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Prague Castle",
+          "description": "Explore the magnificent Prague Castle, the largest ancient castle in the world. Don't miss the stunning St. Vitus Cathedral and the beautiful gardens that offer breathtaking views of the city.",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Lokál",
+          "description": "Savor authentic Czech cuisine at Lokál, known for its fresh ingredients and traditional dishes. Try the goulash or svíčková, paired with a local Pilsner beer.",
+          "searchQuery": "Lokál",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll across Charles Bridge",
+          "description": "Take a leisurely walk across the iconic Charles Bridge, adorned with statues and offering stunning views of the Vltava River. It's a perfect spot for photos and soaking in the atmosphere.",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Old Town Square",
+          "description": "Wander around the vibrant Old Town Square, where you can admire the Astronomical Clock and the stunning Gothic architecture. This area is also great for shopping for souvenirs and classical music memorabilia.",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "Enjoy dinner at U Medvídků, a historic brewery and restaurant. Indulge in hearty Czech dishes and sample their house-brewed beer in a cozy, traditional setting.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Attend a Classical Music Concert at the Rudolfinum",
+          "description": "End your day with a classical music concert at the stunning Rudolfinum, home to the Czech Philharmonic. Immerse yourself in the rich musical heritage of Prague.",
+          "searchQuery": "Rudolfinum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Classical Music Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheeses, and local jams.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Rudolfinum",
+          "description": "Explore the stunning Rudolfinum, home to the Czech Philharmonic Orchestra. Take a guided tour to learn about its rich history and architecture, and if you're lucky, catch a rehearsal or concert.",
+          "searchQuery": "Rudolfinum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Savor traditional Czech cuisine at Lokál Dlouhááá, a popular restaurant known for its fresh ingredients and local beers. Try the goulash or svíčková for an authentic taste of Prague.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Dvořák Museum",
+          "description": "Visit the Dvořák Museum dedicated to the famous Czech composer Antonín Dvořák. Discover his life, works, and the impact he had on classical music through various exhibits.",
+          "searchQuery": "Dvořák Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "National Theatre Tour",
+          "description": "Take a guided tour of the National Theatre, a cultural gem in Prague. Learn about its history, architecture, and the performances that have taken place here, including operas and ballets.",
+          "searchQuery": "National Theatre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Classical Music Merchandise",
+          "description": "Explore local shops around the National Theatre for classical music merchandise, including CDs, vinyl records, and unique souvenirs to take home as a memory of your musical journey.",
+          "searchQuery": "classical music shop",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "Enjoy dinner at U Medvídků, a historic brewery and restaurant. Indulge in hearty Czech dishes and sample their house-brewed beer in a cozy, traditional setting.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Concert at the National Theatre",
+          "description": "End your day with an enchanting evening concert at the National Theatre. Experience the magic of live classical music in one of Prague's most iconic venues.",
+          "searchQuery": "National Theatre concert",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Historical Treasures",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheeses, and local meats.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Jewish Quarter Exploration",
+          "description": "Dive into the rich history of Prague's Jewish Quarter. Visit the Old Jewish Cemetery, where centuries of history are etched into the gravestones, and the Spanish Synagogue, renowned for its stunning Moorish architecture.",
+          "searchQuery": "Jewish Quarter",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Savor traditional Czech cuisine at Lokál Dlouhááá, a popular eatery known for its fresh ingredients and local beers. Try the goulash or svíčková for an authentic taste of Czech culture.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Old Jewish Cemetery",
+          "description": "Explore the Old Jewish Cemetery, one of the oldest surviving Jewish burial grounds in Europe. The layered graves tell stories of the past and provide a poignant glimpse into the history of the Jewish community in Prague.",
+          "searchQuery": "Old Jewish Cemetery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping for Classical Music Merchandise",
+          "description": "Head to the nearby shops specializing in classical music memorabilia. Look for unique items such as vinyl records, sheet music, and souvenirs related to famous composers like Dvořák and Smetana.",
+          "searchQuery": "classical music shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Evening Concert at Rudolfinum",
+          "description": "End your day with a classical music concert at the stunning Rudolfinum, home to the Czech Philharmonic Orchestra. Enjoy an evening filled with beautiful melodies in a breathtaking setting.",
+          "searchQuery": "Rudolfinum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Café Savoy",
+          "description": "Indulge in a sumptuous dinner at Café Savoy, known for its exquisite interior and delectable dishes. Try their famous Czech desserts to cap off your culinary experience.",
+          "searchQuery": "Café Savoy",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheeses, and local meats.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the National Gallery",
+          "description": "Explore the National Gallery in Prague, home to an impressive collection of Czech and international art. Don't miss the modern art section, which showcases works from the 20th century to the present.",
+          "searchQuery": "National Gallery Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Savor traditional Czech cuisine at Lokál Dlouhááá, a popular restaurant known for its fresh ingredients and local beers. Try the goulash or svíčková for an authentic taste of Prague.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Vyšehrad Fortress",
+          "description": "Visit the historic Vyšehrad Fortress, offering stunning views of the Vltava River and the city. Wander through the beautiful gardens and visit the Basilica of St. Peter and St. Paul.",
+          "searchQuery": "Vyšehrad Fortress",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Café Savoy",
+          "description": "Take a break at Café Savoy, a charming café with a rich history. Enjoy a cup of coffee and a slice of their famous cake while soaking in the elegant atmosphere.",
+          "searchQuery": "Café Savoy",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Visit the Dancing House",
+          "description": "End your day with a visit to the iconic Dancing House. This architectural marvel is a great spot for photos and offers a unique perspective on modern Prague.",
+          "searchQuery": "Dancing House",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at Restaurant Mlýnec",
+          "description": "Enjoy a fine dining experience at Restaurant Mlýnec, located by the river with stunning views of Charles Bridge. The menu features modern Czech cuisine with a creative twist.",
+          "searchQuery": "Restaurant Mlýnec",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Český Krumlov",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Prague",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Český Krumlov",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic bus ride through the beautiful Czech countryside."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Český Krumlov Castle",
+          "description": "Explore the stunning Český Krumlov Castle, a UNESCO World Heritage site. Don't miss the breathtaking views from the castle tower and the beautiful gardens surrounding it.",
+          "searchQuery": "Český Krumlov Castle",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Krcma v Šatlavské",
+          "description": "Savor traditional Czech cuisine at this charming restaurant located in the heart of the Old Town. Try the goulash or svíčková for an authentic taste of the region.",
+          "searchQuery": "Krcma v Šatlavské",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Old Town Exploration",
+          "description": "Stroll through the picturesque streets of Český Krumlov's Old Town, filled with colorful buildings, quaint shops, and local artisans. This is a perfect time to pick up some unique souvenirs and fangoods.",
+          "searchQuery": "Český Krumlov Old Town",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Egon Schiele Art Centrum",
+          "description": "Discover the works of Egon Schiele, a famous Austrian painter, at this dedicated art center. The exhibitions often feature contemporary art as well, making it a cultural highlight.",
+          "searchQuery": "Egon Schiele Art Centrum",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Katakomby",
+          "description": "Enjoy a delightful dinner at this cozy restaurant known for its local dishes and warm atmosphere. It's a great way to end your day in Český Krumlov before heading back to Prague.",
+          "searchQuery": "Restaurant Katakomby",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Return to Prague",
+          "description": "Take the bus back to Prague, reflecting on a wonderful day filled with culture and history.",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Local Markets and Souvenirs",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheeses, and local meats.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Havelska Market",
+          "description": "Explore Havelska Market, a vibrant local market where you can find fresh produce, handmade crafts, and unique souvenirs. It's a great place to immerse yourself in the local culture and pick up some authentic Czech gifts.",
+          "searchQuery": "Havelska Market",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Enjoy a hearty lunch at Lokál Dlouhááá, a popular restaurant that serves traditional Czech cuisine made from fresh, local ingredients. Don't miss their famous goulash and Pilsner beer!",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Wenceslas Square",
+          "description": "Stroll through Wenceslas Square, a historic site and a bustling hub of activity. Here, you can admire the impressive National Museum and enjoy the lively atmosphere filled with shops and street performers.",
+          "searchQuery": "Wenceslas Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Czech Museum of Music",
+          "description": "Dive into the world of classical music at the Czech Museum of Music. Discover fascinating exhibits on Czech composers and musicians, and enjoy the beautiful architecture of the museum itself.",
+          "searchQuery": "Czech Museum of Music",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Local Craft Shops",
+          "description": "Explore the charming local craft shops around the city, where you can find unique handmade items, including traditional Czech glass and ceramics. Perfect for picking up some special souvenirs!",
+          "searchQuery": "local craft shops",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "End your day with dinner at U Medvídků, a historic brewery and restaurant. Enjoy a selection of Czech dishes paired with their own brewed beer in a cozy, traditional setting.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Václav Havel Airport Prague",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "9h",
+        "memo": "Direct flight from Prague to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. Enjoy a traditional Czech breakfast with fresh bread, cheeses, and local meats.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Czech Museum of Music",
+          "description": "Explore the Czech Museum of Music, which showcases the rich history of music in the Czech Republic. Discover fascinating exhibits on classical composers and the evolution of musical instruments.",
+          "searchQuery": "Czech Museum of Music",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Enjoy a hearty lunch at Lokál Dlouhááá, a popular restaurant that serves traditional Czech cuisine in a lively atmosphere. Don't miss their famous svíčková (marinated beef with creamy sauce).",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping for Classical Music Merchandise at Supraphon",
+          "description": "Visit Supraphon, a renowned music store where you can find a variety of classical music CDs, vinyl records, and unique merchandise related to your favorite composers and musicians.",
+          "searchQuery": "Supraphon",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through the Vltava River Promenade",
+          "description": "Take a leisurely stroll along the Vltava River promenade, enjoying the scenic views of Prague's iconic skyline. This is a perfect spot to relax and reflect on your trip before heading to the airport.",
+          "searchQuery": "Vltava River Promenade",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

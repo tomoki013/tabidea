@@ -1,0 +1,539 @@
+{
+  "id": "bca84c84-503a-405e-bcb8-e06f20faa443",
+  "destination": "Amsterdam",
+  "description": "Immerse yourself in the vibrant culture and artistic heritage of Amsterdam over six unforgettable days. From the iconic canals to world-renowned museums, this trip is designed to captivate your senses and inspire your creativity. Stroll through charming streets, indulge in local delicacies, and capture the essence of this photogenic city with your friends. Get ready for a journey filled with art, history, and picturesque views!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Canal Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam, where you can choose from a variety of sweet and savory options. It's a cozy spot that sets the perfect tone for your day of exploration!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. This museum houses the largest collection of his works, providing a deep insight into his life and artistic evolution. Don't miss the iconic 'Sunflowers'!",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Café Loetje",
+          "description": "Enjoy a hearty lunch at Café Loetje, famous for its tender steak and traditional Dutch dishes. The relaxed atmosphere and local vibe make it a great place to recharge before more sightseeing.",
+          "searchQuery": "Café Loetje",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Canal Cruise",
+          "description": "Experience Amsterdam from the water with a scenic canal cruise. Glide through the historic canals and admire the beautiful 17th-century architecture while learning about the city's rich history from the onboard commentary.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Jordaan District",
+          "description": "Stroll through the charming Jordaan District, known for its narrow streets, independent art galleries, and quaint shops. This area is perfect for photography, with picturesque canals and unique architecture at every turn.",
+          "searchQuery": "Jordaan District",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a delightful seafood dinner at The Seafood Bar, where you can savor fresh catches and traditional Dutch seafood dishes. The vibrant atmosphere and quality food make it a must-visit.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Canals",
+          "description": "End your day with a leisurely evening walk along the canals. The city lights reflecting on the water create a magical atmosphere, perfect for capturing stunning photos of Amsterdam at night.",
+          "searchQuery": "Amsterdam Canals",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art Immersion at the Museums",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Jaren",
+          "description": "Start your day with a delightful breakfast at Café de Jaren, known for its spacious terrace overlooking the canal. Enjoy fresh pastries and a cup of Dutch coffee to energize your morning.",
+          "searchQuery": "Café de Jaren",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Van Gogh Museum",
+          "description": "Dive into the world of Vincent van Gogh at the Van Gogh Museum. Explore the largest collection of his works, including iconic pieces like 'Sunflowers' and 'The Bedroom'. Don't forget to check out the temporary exhibitions for a deeper insight into his life and art.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Broads&Butter",
+          "description": "Enjoy a casual lunch at Broads&Butter, a cozy spot known for its delicious sandwiches and fresh salads. It's a great place to refuel before more art exploration.",
+          "searchQuery": "Broads&Butter",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Rijksmuseum",
+          "description": "After lunch, head to the Rijksmuseum, home to masterpieces by Rembrandt and Vermeer. The museum's stunning architecture and beautiful gardens make it a perfect place to immerse yourself in Dutch art and history.",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Museumplein",
+          "description": "Take a leisurely stroll through Museumplein, the cultural heart of Amsterdam. Capture stunning photos with the iconic 'I Amsterdam' sign and enjoy the vibrant atmosphere of this artistic hub.",
+          "searchQuery": "Museumplein",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a seafood feast at The Seafood Bar, where you can savor fresh oysters, lobster, and a variety of fish dishes. The lively ambiance and quality food make it a perfect dining experience after a day of art.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Canal Cruise",
+          "description": "End your day with a scenic evening canal cruise. Experience the beauty of Amsterdam's illuminated canals while enjoying a glass of wine. It's a magical way to see the city from a different perspective.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Delights and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam. Choose from a variety of sweet and savory options, all made with fresh ingredients. It's a cozy spot that will fuel you for a day of exploration!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. With the largest collection of his works, you can admire his iconic paintings and learn about his life and artistic journey. Don't forget to check out the temporary exhibitions as well!",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at De Pijp's Albert Cuyp Market",
+          "description": "Head to the vibrant Albert Cuyp Market for lunch. Sample local delicacies like stroopwafels, herring, and poffertjes while soaking in the lively atmosphere. This market is a great place to experience local culture and grab some unique souvenirs.",
+          "searchQuery": "Albert Cuyp Market",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the De Pijp Neighborhood",
+          "description": "Stroll through the charming streets of De Pijp, known for its multicultural vibe and artistic flair. Discover quirky shops, cafes, and street art as you wander around this vibrant area. It's a perfect spot for some Instagram-worthy photos!",
+          "searchQuery": "De Pijp",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Canal Cruise",
+          "description": "Relax and enjoy a scenic canal cruise through Amsterdam's picturesque waterways. This is a fantastic way to see the city from a different perspective, passing by historic buildings and charming bridges. Opt for a guided tour to learn more about the city's history.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Café de Klos",
+          "description": "End your day with a hearty dinner at Café de Klos, famous for its delicious ribs and cozy atmosphere. This local favorite is perfect for enjoying a satisfying meal after a day of exploring. Be sure to try their homemade BBQ sauce!",
+          "searchQuery": "Café de Klos",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Canals",
+          "description": "Take a leisurely evening walk along the canals, where the city lights reflect beautifully on the water. This is a magical way to end your day, soaking in the serene atmosphere of Amsterdam at night.",
+          "searchQuery": "Amsterdam Canals",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Zaanse Schans",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam. Choose from a variety of sweet and savory options, all made with fresh ingredients. It's a cozy spot that will fuel you for the day ahead!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Zaanse Schans",
+          "description": "Take a short train ride to Zaanse Schans, a picturesque village known for its traditional windmills and wooden houses. Stroll through the area, visit the windmills, and enjoy the stunning views of the Dutch countryside.",
+          "searchQuery": "Zaanse Schans",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at De Kraai",
+          "description": "Enjoy a traditional Dutch lunch at De Kraai, located in Zaanse Schans. Try their famous pancakes or a hearty Dutch sandwich while soaking in the charming atmosphere.",
+          "searchQuery": "De Kraai",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Cheese Factory",
+          "description": "Explore the local cheese factory where you can learn about the cheese-making process and sample some delicious Dutch cheeses. Don't forget to grab some to take home!",
+          "searchQuery": "Zaanse Schans Cheese Factory",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Return to Amsterdam",
+          "description": "Head back to Amsterdam via train, enjoying the scenic views along the way. This is a great time to relax and chat about your favorite moments from the day.",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Canal Cruise",
+          "description": "Experience Amsterdam from the water with a relaxing canal cruise. This is a perfect way to see the city's beautiful architecture and learn about its history while enjoying the serene atmosphere.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Greetje",
+          "description": "End your day with a delightful dinner at Restaurant Greetje, known for its authentic Dutch cuisine. Enjoy dishes made from locally sourced ingredients in a warm and inviting setting.",
+          "searchQuery": "Restaurant Greetje",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Exploring the Historic Heart",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Jaren",
+          "description": "Start your day with a delightful breakfast at Café de Jaren, known for its spacious terrace overlooking the canal. Enjoy fresh pastries and a cup of Dutch coffee to energize your morning.",
+          "searchQuery": "Café de Jaren",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Royal Palace of Amsterdam",
+          "description": "Explore the stunning Royal Palace, a magnificent building that showcases the grandeur of the Dutch monarchy. Don't miss the impressive interiors and the beautiful artwork that adorns the walls.",
+          "searchQuery": "Royal Palace of Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at De Silveren Spiegel",
+          "description": "Savor a traditional Dutch lunch at De Silveren Spiegel, a charming restaurant housed in a historic building. The menu features local specialties, and the ambiance is perfect for a leisurely meal.",
+          "searchQuery": "De Silveren Spiegel",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Begijnhof",
+          "description": "Stroll through the serene Begijnhof, a hidden gem in the heart of the city. This tranquil courtyard is surrounded by historic buildings and offers a glimpse into Amsterdam's past.",
+          "searchQuery": "Begijnhof",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. Admire the largest collection of his works, including iconic paintings and personal letters that reveal his artistic journey.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Canal Cruise",
+          "description": "End your day with a scenic canal cruise. Glide through Amsterdam's picturesque waterways while taking in the stunning architecture and vibrant atmosphere of the city from the water.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a seafood feast at The Seafood Bar, where you can enjoy fresh fish and shellfish in a lively setting. Their platters are perfect for sharing with friends after a day of exploration.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Farewell Amsterdam",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Jaren",
+          "description": "Start your day with a delightful breakfast at Café de Jaren, known for its spacious terrace overlooking the canal. Enjoy fresh pastries and a cup of coffee to fuel your day of exploration.",
+          "searchQuery": "Café de Jaren",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. Explore the largest collection of his works, including famous paintings like 'Sunflowers' and 'The Bedroom'. Don't forget to check out the temporary exhibitions for a deeper insight into his life and art.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Broads&Butter",
+          "description": "Enjoy a casual lunch at Broads&Butter, a local favorite known for its delicious sandwiches and fresh ingredients. It's a great spot to relax and recharge before your afternoon activities.",
+          "searchQuery": "Broads&Butter",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Canal Cruise",
+          "description": "Experience Amsterdam from the water with a scenic canal cruise. Glide through the iconic canals and admire the beautiful architecture of the historic buildings lining the waterways. This is a perfect way to see the city from a different perspective.",
+          "searchQuery": "Amsterdam Canal Cruise",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Vondelpark",
+          "description": "Take a leisurely stroll through Vondelpark, Amsterdam's largest city park. Enjoy the lush greenery, beautiful ponds, and vibrant atmosphere. It's a perfect spot to unwind and soak in the local culture before your trip comes to an end.",
+          "searchQuery": "Vondelpark",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a delicious seafood dinner at The Seafood Bar, where you can savor fresh catches and a variety of seafood dishes. The lively atmosphere and quality food make it a great way to wrap up your Amsterdam adventure.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

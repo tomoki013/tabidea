@@ -1,0 +1,542 @@
+{
+  "id": "7cbac0ae-10fb-40a0-9103-2ce5652dcfb1",
+  "destination": "ミュンヘン",
+  "description": "ミュンヘンの美しい街並みと歴史的な城を巡りながら、ドイツの美味しいビールを心ゆくまで楽しむ6日間の旅へようこそ。友人と共に、文化と歴史が息づくこの街で、特別な体験を満喫しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ミュンヘン到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ミュンヘンの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "マリエン広場散策",
+          "description": "ミュンヘンの中心地、マリエン広場を訪れます。新市庁舎の美しい時計台のパフォーマンスを見ながら、周囲のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Marienplatz",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ヴィクトゥアリエンマーケットでランチ",
+          "description": "地元の食材や特産品が揃うヴィクトゥアリエンマーケットで、ドイツのソーセージやプレッツェルを味わいながら、活気ある雰囲気を楽しみましょう。",
+          "searchQuery": "Viktualienmarkt",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "新市庁舎見学",
+          "description": "新市庁舎の内部を見学し、壮大な建築と歴史を感じます。展望台からのミュンヘンの街並みも絶景です。",
+          "searchQuery": "New Town Hall",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ニンフェンブルク宮殿訪問",
+          "description": "美しい庭園と豪華な宮殿を持つニンフェンブルク宮殿を訪れます。歴史的な部屋を見学し、庭を散策するのもおすすめです。",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のビアホールでディナー",
+          "description": "ミュンヘン名物のビアホールで、地元のビールと共にドイツ料理を堪能します。特に、ソーセージやザワークラウトは絶品です。",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "城巡りとビール体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ミュンヘンのホテルで、ドイツの伝統的な朝食を楽しみます。新鮮なパン、ハム、チーズ、そして地元のジャムを添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ノイシュバンシュタイン城",
+          "description": "美しいアルプスの山々に囲まれたノイシュバンシュタイン城を訪れます。城の内部見学では、ルートヴィヒ2世の夢の世界を体感でき、外観の美しさも圧巻です。",
+          "searchQuery": "Neuschwanstein Castle",
+          "locationEn": "Neuschwanstein Castle, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ホーエンシュバンガウでランチ",
+          "description": "ホーエンシュバンガウのレストランで、地元の料理を楽しみましょう。特に、バイエルン名物のソーセージやビールは外せません。",
+          "locationEn": "Hohenschwangau, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホーエンシュバンガウ城",
+          "description": "ホーエンシュバンガウ城を訪れ、ノイシュバンシュタイン城とは異なる視点からの美しい景色を楽しみます。歴史的な背景を学びながら、城の周りを散策しましょう。",
+          "searchQuery": "Hohenschwangau Castle",
+          "locationEn": "Hohenschwangau, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ミュンヘンに戻る",
+          "description": "ノイシュバンシュタイン城からミュンヘンへ戻ります。美しい風景を楽しみながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ミュンヘンのビアガーデンでディナー",
+          "description": "ミュンヘンのビアガーデンで、地元のビールと共にバイエルン料理を楽しみます。特に、プレッツェルやソーセージは絶品です。友人と一緒に乾杯しましょう！",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ミュンヘンの夜景散策",
+          "description": "ミュンヘンの街を散策しながら、夜の雰囲気を楽しみます。マリエン広場や新市庁舎のライトアップは特に美しいです。",
+          "locationEn": "Munich, Germany",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "バイエルンの自然と文化",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ミュンヘンのホテルで、ドイツの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のジャムをたっぷりと味わって、エネルギーをチャージしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "イーゼル湖散策",
+          "description": "美しいイーゼル湖へ向かい、湖畔を散策します。周囲の山々と湖の景色は絶景で、特に晴れた日には写真を撮るのに最適です。湖の周りにはカフェもあり、休憩しながら自然を満喫できます。",
+          "searchQuery": "Eibsee",
+          "locationEn": "Eibsee, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "イーゼル湖近くのレストランでランチ",
+          "description": "湖の近くにあるレストランで、地元の料理を楽しみます。新鮮な魚料理やバイエルン名物のソーセージを味わいながら、湖の美しい景色を眺める贅沢なひとときを過ごしましょう。",
+          "locationEn": "Eibsee, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ノイシュヴァンシュタイン城見学",
+          "description": "イーゼル湖からノイシュヴァンシュタイン城へ移動し、壮大な城を見学します。美しい山々に囲まれたこのお城は、まるでおとぎ話のような景観です。ガイドツアーに参加して、城の歴史を学びましょう。",
+          "searchQuery": "Neuschwanstein Castle",
+          "locationEn": "Neuschwanstein Castle, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アウグスティーナー醸造所見学",
+          "description": "ミュンヘンに戻り、アウグスティーナー醸造所を訪れます。ここでは、伝統的なドイツビールの製造過程を学び、試飲も楽しめます。ビール好きにはたまらない体験です。",
+          "searchQuery": "Augustiner Bräu",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アウグスティーナー醸造所でディナー",
+          "description": "醸造所内のレストランで、地元の料理と共にビールを楽しみます。特に、ビアホールの雰囲気を味わいながら、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ミュンヘンの夜景散策",
+          "description": "ディナーの後は、ミュンヘンの街を散策しながら夜景を楽しみます。マリエン広場や新市庁舎のライトアップは特に美しく、素敵な思い出になるでしょう。",
+          "searchQuery": "Marienplatz",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ミュンヘンの美術と歴史",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ミュンヘンの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アルテ・ピナコテーク",
+          "description": "ヨーロッパの名画が集まる美術館で、ルネサンスからロマン主義までの作品を堪能。特にダヴィンチやレンブラントの作品は必見です。",
+          "searchQuery": "Alte Pinakothek",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のビアガーデンでランチ",
+          "description": "ミュンヘン名物のソーセージやプレッツェルをビールと共に楽しむ、地元のビアガーデンでのランチ。外のテラスでのんびりとした時間を過ごしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ドイツ博物館",
+          "description": "科学技術の歴史を学べる博物館で、展示物は多岐にわたります。特に交通やエネルギーのセクションは見応えがあります。",
+          "searchQuery": "Deutsches Museum",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ニンフェンブルク城",
+          "description": "美しい庭園に囲まれたバロック様式の城を訪れ、歴史的な部屋や美術品を見学。庭を散策しながら、優雅なひとときを楽しんでください。",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビアホールでディナー",
+          "description": "ミュンヘンの有名なビアホールで、地元のビールと共に伝統的なドイツ料理を堪能。賑やかな雰囲気の中で、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ビールを楽しむ夜",
+          "description": "ミュンヘンの夜を楽しむために、ビアガーデンやビアホールをはしごして、様々な地元のビールを味わいましょう。",
+          "locationEn": "Munich, Germany",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "周辺都市の探索",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ミュンヘン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ニュルンベルク",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "ミュンヘンからニュルンベルクへは快適な電車で移動します。車窓からの景色も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ニュルンベルク城",
+          "description": "中世の雰囲気を感じるニュルンベルク城を訪れます。城の展望台からは街全体を見渡せ、絶景が広がります。",
+          "searchQuery": "Nuremberg Castle",
+          "locationEn": "Nuremberg, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のビアホールでランチ",
+          "description": "ニュルンベルク名物のソーセージと共に、地元のビールを楽しむランチタイム。ビアホールの雰囲気を満喫しながら、ドイツの味を堪能しましょう。",
+          "searchQuery": "Nuremberg Beer Hall",
+          "locationEn": "Nuremberg, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アルブレヒト・デューラーの家",
+          "description": "ルネサンス期の画家アルブレヒト・デューラーの家を訪れ、彼の作品や生活を知ることができます。歴史的な建物の中を散策してみてください。",
+          "searchQuery": "Albrecht Dürer's House",
+          "locationEn": "Nuremberg, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ローテンブルクへ移動",
+          "description": "ニュルンベルクからローテンブルクへ電車で移動します。美しい街並みを楽しみに行きましょう。",
+          "searchQuery": "Rothenburg ob der Tauber",
+          "locationEn": "Rothenburg ob der Tauber, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ローテンブルクの旧市街散策",
+          "description": "中世の面影を残すローテンブルクの旧市街を散策。石畳の道やカラフルな家々が並ぶ風景は、まるで絵本の中にいるようです。",
+          "searchQuery": "Rothenburg Old Town",
+          "locationEn": "Rothenburg ob der Tauber, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ローテンブルクのビアホールでディナー",
+          "description": "ローテンブルクのビアホールで、地元の料理とビールを楽しむディナー。特に、ローテンブルク名物の「ローテンブルク風ソーセージ」は必食です。",
+          "searchQuery": "Rothenburg Beer Hall",
+          "locationEn": "Rothenburg ob der Tauber, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ニュルンベルクへ戻る",
+          "description": "ローテンブルクからニュルンベルクへ電車で戻ります。夜の街の雰囲気を楽しみながら、明日の計画を立てるのも良いでしょう。",
+          "searchQuery": "Nuremberg",
+          "locationEn": "Nuremberg, Germany",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ミュンヘンでの最後のひととき",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ニュルンベルク",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ミュンヘン",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "快適な列車でミュンヘンへ移動します。車窓からの風景も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "英語庭園散策",
+          "description": "ミュンヘンの中心に広がる英語庭園で、自然の美しさを満喫しましょう。広大な公園内には川や池があり、リラックスした時間を過ごせます。",
+          "searchQuery": "Englischer Garten",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "カフェでランチ",
+          "description": "公園内のカフェで軽食を楽しみます。地元のビールと一緒に、プレッツェルやソーセージを味わってみてください。",
+          "searchQuery": "Cafe im Englischen Garten",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ホフブロイハウス見学",
+          "description": "ミュンヘンの名物ビアホール、ホフブロイハウスでドイツビールを堪能します。歴史ある雰囲気の中で、地元の人々と一緒にビールを楽しむのが醍醐味です。",
+          "searchQuery": "Hofbräuhaus München",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ニンフェンブルク城訪問",
+          "description": "美しい庭園に囲まれたニンフェンブルク城を訪れ、豪華な内装や歴史を学びます。城内の博物館も見逃せません。",
+          "searchQuery": "Nymphenburg Palace",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビアガーデンでディナー",
+          "description": "ミュンヘンのビアガーデンで、地元の料理と共にビールを楽しみます。開放的な雰囲気の中で、友人と楽しい時間を過ごしましょう。",
+          "searchQuery": "Augustiner-Keller",
+          "locationEn": "Munich, Germany",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ミュンヘンの夜景を楽しむ",
+          "description": "ミュンヘンの街を散策しながら、夜景を楽しみます。特にマリエン広場周辺のライトアップは美しいです。",
+          "searchQuery": "Marienplatz",
+          "locationEn": "Munich, Germany",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

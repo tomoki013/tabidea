@@ -1,0 +1,617 @@
+{
+  "id": "b0291bb2-809c-4275-9a0c-0a3b1e28cce2",
+  "destination": "クイーンズタウン",
+  "description": "クイーンズタウンは、壮大な自然と映画『ロード・オブ・ザ・リング』の舞台が融合した魅力的な街です。家族での旅行にぴったりのアクティビティが満載で、特に子供たちが楽しめる体験が豊富です。美しい湖と山々に囲まれたこの地で、思い出に残るひとときを過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "クイーンズタウン到着と市内散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ニュージーランド産のフルーツやヨーグルトは絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クイーンズタウン湖散策",
+          "description": "美しいクイーンズタウン湖の周りを散策します。湖面に映る山々の景色は息を呑む美しさで、家族での写真撮影にもぴったりです。",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Fergburgerでランチ",
+          "description": "クイーンズタウン名物のハンバーガー店、Fergburgerでランチ。ボリューム満点のハンバーガーは、子供たちにも大人気です。",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スカイライン・クイーンズタウン",
+          "description": "スカイライン・クイーンズタウンのゴンドラに乗り、山頂からの絶景を楽しみます。子供たちも大喜びのアクティビティです。",
+          "searchQuery": "Skyline Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ルビーの宝石店でファングッズ購入",
+          "description": "「ロード・オブ・ザ・リング」の関連商品が揃うルビーの宝石店で、ファングッズを探します。お土産にぴったりのアイテムが見つかるかも！",
+          "searchQuery": "The Hobbiton Movie Set",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クイーンズタウンの街散策",
+          "description": "クイーンズタウンの中心街を散策し、地元のショップやカフェを楽しみます。特に、アートギャラリーやお土産屋さんは見逃せません。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Rātāでディナー",
+          "description": "地元の食材を使った創作料理を楽しめるRātāでディナー。家族での特別な夜にぴったりのレストランです。",
+          "searchQuery": "Rātā",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "『ロード・オブ・ザ・リング』の舞台巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやオートミール、地元のパンが揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "グレンオーチー訪問",
+          "description": "『ロード・オブ・ザ・リング』の撮影地として有名なグレンオーチーへ。美しい山々と湖の景色が広がり、映画のシーンを思い出しながら散策できます。家族での写真撮影にもぴったり！",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "グレンオーチーでランチ",
+          "description": "地元のカフェで軽食を楽しみます。新鮮なサンドイッチやスープが人気で、映画の話をしながらリラックスした時間を過ごせます。",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アワラキ・フォールズハイキング",
+          "description": "アワラキ・フォールズへのハイキングに挑戦！美しい滝を目指して自然の中を歩き、途中で出会う風景に感動すること間違いなし。子供たちも楽しめるコースです。",
+          "searchQuery": "Awaroa Falls",
+          "locationEn": "Awaroa Falls, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クイーンズタウンに戻る",
+          "description": "ハイキングを終えたら、クイーンズタウンへ戻ります。美しい景色を楽しみながらのドライブは、家族の思い出に残る時間です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "クイーンズタウンでファングッズ探し",
+          "description": "クイーンズタウンのショップで『ロード・オブ・ザ・リング』関連のファングッズを探しましょう。Tシャツやフィギュアなど、家族みんなで楽しめるアイテムが見つかります。",
+          "searchQuery": "Lord of the Rings merchandise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、ニュージーランドの美味しい料理を堪能します。新鮮なシーフードや肉料理が揃い、家族での楽しいディナータイムを過ごせます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然の絶景を楽しむアクティビティ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやオートミール、地元のパンが揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ミルフォードサウンドクルーズ",
+          "description": "世界遺産のミルフォードサウンドへ向かい、壮大な自然の絶景をクルーズで楽しみます。氷河が作り出した壮大なフィヨルドの景色は圧巻で、滝や野生動物にも出会えるかもしれません。",
+          "searchQuery": "Milford Sound",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ミルフォードサウンドでランチ",
+          "description": "クルーズの途中で、ミルフォードサウンドの美しい景色を眺めながらランチを楽しみます。地元の食材を使った軽食が提供され、自然の中での食事は格別です。",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンズタウンに戻る",
+          "description": "クルーズを終えたら、再びクイーンズタウンへ戻ります。美しい景色を楽しみながらの移動です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "クイーンズタウン散策",
+          "description": "クイーンズタウンの中心街を散策し、地元のショップやカフェを訪れます。特に『ロード・オブ・ザ・リング』関連のグッズを扱うお店を探してみましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、ニュージーランドの美味しい料理を堪能します。特にラム肉や新鮮なシーフードがおすすめです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。家族での楽しい思い出を振り返りながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "文化と歴史を学ぶ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ニュージーランド産のフルーツやヨーグルトはおすすめです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "クイーンズタウン歴史博物館",
+          "description": "クイーンズタウンの歴史を学ぶために、歴史博物館を訪れます。ここでは、金鉱時代の歴史や地域の文化についての展示があり、家族で楽しめるインタラクティブなコーナーもあります。",
+          "searchQuery": "Queenstown Museum",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "クイーンズタウンの人気カフェで、サンドイッチやスムージーを楽しみます。特に、地元のコーヒーは絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アートギャラリー訪問",
+          "description": "クイーンズタウンのアートギャラリーで、地元アーティストの作品を鑑賞します。美しい風景画や彫刻が展示されており、子供たちも楽しめるアート体験が用意されています。",
+          "searchQuery": "Queenstown Art Gallery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ロトルアのファングッズショップ訪問",
+          "description": "ロトルアのファングッズショップで、Lord of the Rings関連のアイテムを探します。ここでは、映画に登場するキャラクターのフィギュアや衣装など、ファンにはたまらない商品が揃っています。",
+          "searchQuery": "Weta Workshop",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、ニュージーランドのワインと共に地元の食材を使ったディナーを楽しみます。家族での特別な時間を過ごせる素敵な場所です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のクイーンズタウン散策",
+          "description": "夕食後は、クイーンズタウンの美しい夜景を楽しみながら散策します。湖畔の散歩道は特にロマンチックで、家族での思い出作りにぴったりです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アドベンチャー体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。エネルギーをチャージして、アドベンチャーに備えましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バンジージャンプ体験",
+          "description": "クイーンズタウンの名物、バンジージャンプに挑戦！カワラウ橋からの絶景を楽しみながら、スリル満点の体験を味わえます。家族全員での挑戦も可能です。",
+          "searchQuery": "Kawarau Bridge Bungy",
+          "locationEn": "Kawarau Bridge, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "クイーンズタウンでランチ",
+          "description": "地元の人気カフェでランチを楽しみます。新鮮なサラダやサンドイッチ、子供向けのメニューも充実しているので、家族みんなで満足できる食事ができます。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジェットボート体験",
+          "description": "クイーンズタウンの美しい湖を背景に、スリリングなジェットボート体験を楽しみます。急旋回やスピード感あふれる走行で、家族全員が大興奮！",
+          "searchQuery": "Shotover Jet",
+          "locationEn": "Shotover River, Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ロトルアのロケ地巡り",
+          "description": "映画『ロード・オブ・ザ・リング』の撮影地を訪れ、壮大な自然の中で映画の世界を体感します。家族での思い出作りにぴったりのスポットです。",
+          "searchQuery": "Lord of the Rings filming locations",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ファングッズ購入",
+          "description": "クイーンズタウンのショップで、ロード・オブ・ザ・リングのファングッズを探しましょう。お土産や記念品にぴったりのアイテムが見つかります。",
+          "searchQuery": "Lord of the Rings merchandise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "クイーンズタウンの人気レストランで、地元の食材を使ったディナーを楽しみます。家族での楽しいひとときを過ごしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ファングッズ探しとリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、フレッシュなフルーツや自家製のパンが絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クイーンズタウン中心部散策",
+          "description": "クイーンズタウンの中心部を散策しながら、地元のショップやカフェを訪れます。特に、ファングッズを取り扱うお店を見つけるのが楽しみです。",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ファングッズショップでのショッピング",
+          "description": "「The Hobbiton Movie Set」関連のファングッズを取り扱うお店で、家族みんなでお気に入りのアイテムを探します。子供たちも喜ぶこと間違いなし！",
+          "searchQuery": "Hobbiton Shop",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ランチ：地元のカフェで",
+          "description": "クイーンズタウンの人気カフェで、軽食やコーヒーを楽しみながら、家族でのんびりとした時間を過ごします。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロード・オブ・ザ・リングの撮影スポット巡り",
+          "description": "映画『ロード・オブ・ザ・リング』の撮影スポットを巡ります。美しい自然の中で、映画の世界観を体感できる絶景ポイントを訪れます。",
+          "searchQuery": "Lord of the Rings filming locations",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クイーンズタウン湖畔でリラックス",
+          "description": "クイーンズタウンの湖畔で、家族と一緒にのんびりとした時間を過ごします。美しい景色を眺めながら、子供たちと遊ぶのも楽しいひとときです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：地元のレストランで",
+          "description": "クイーンズタウンの人気レストランで、地元の食材を使ったディナーを楽しみます。特に、ニュージーランド産のラム肉は絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "クイーンズタウンから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "クイーンズタウン空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京成田空港",
+          "time": "16:00"
+        },
+        "duration": "11h",
+        "memo": "クイーンズタウンから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クイーンズタウンのホテルで、地元の食材を使った美味しい朝食を楽しみます。特に、ニュージーランド産のフルーツやヨーグルトはおすすめです。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ロード・オブ・ザ・リングスの撮影スポット巡り",
+          "description": "クイーンズタウン周辺には、映画『ロード・オブ・ザ・リングス』の撮影スポットが点在しています。特に、グレンオーチーの美しい風景は必見です。",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ファングッズ購入",
+          "description": "クイーンズタウンの中心部にあるお土産屋さんで、ロード・オブ・ザ・リングスのファングッズを探しましょう。Tシャツやフィギュアなど、家族みんなが楽しめるアイテムが揃っています。",
+          "searchQuery": "Queenstown souvenir shop",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ",
+          "description": "クイーンズタウンの人気レストランで、ニュージーランドの美味しい料理を堪能します。特に、ラム肉料理は絶品です。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クイーンズタウン散策",
+          "description": "美しい湖畔を散策しながら、最後のクイーンズタウンの風景を楽しみます。子供たちも楽しめる公園や遊び場もあります。",
+          "searchQuery": "Queenstown waterfront",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "空港へ移動",
+          "description": "クイーンズタウン空港へ向かいます。出発の2時間前には空港に到着するようにしましょう。",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

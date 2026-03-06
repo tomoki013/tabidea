@@ -1,0 +1,352 @@
+{
+  "id": "bce406c9-9203-4cf6-9fc9-1cd254166ccf",
+  "destination": "ニューヨーク",
+  "description": "家族で楽しむニューヨークの旅。文化や歴史を感じながら、推し活やアクティビティを満喫する4日間のプランです。特にMLB関連スポットを巡り、ファングッズを手に入れるチャンスも盛りだくさん！",
+  "heroImage": "https://images.unsplash.com/photo-1582719263989-e7df611df537?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE0NjN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Hiroshige Fukuhara",
+  "heroImagePhotographerUrl": "https://unsplash.com/@invisi?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着と観光スタート",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界中の観光客が集まるタイムズスクエア。巨大な広告看板やストリートパフォーマンスを楽しみながら、ニューヨークの活気を感じましょう。子供たちも楽しめるお土産屋さんがたくさんあります。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジョン・スチュワートのレストランでランチ",
+          "description": "人気のコメディアンが経営するレストランで、アメリカンスタイルのランチを楽しみます。ファミリーフレンドリーなメニューが揃っているので、子供たちも大満足！",
+          "searchQuery": "John Stewart's Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ブロードウェイの劇場街を散策",
+          "description": "ブロードウェイの劇場街を歩きながら、次回観る予定のミュージカルのチケットを探したり、劇場の外観を楽しんだりします。子供たちも楽しめるファミリー向けのショーがたくさんあります。",
+          "searchQuery": "Broadway Theatre District",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "MLBの関連スポット訪問",
+          "description": "ニューヨークのMLB関連のショップやスポットを巡ります。ヤンキースのグッズを購入したり、メッツの本拠地を見学したりして、野球ファンにはたまらない体験を！",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "MLBの公式ショップでファングッズを購入します。ユニフォームやキャップなど、家族みんなで楽しめるアイテムが揃っています。",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテル近くのレストランでディナー",
+          "description": "ニューヨークの人気レストランで、家族みんなで楽しめるディナーを。地元の食材を使った料理を堪能し、旅行の思い出を語り合いましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB関連スポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ヤンキー・スタジアム見学",
+          "description": "ニューヨークの象徴的なヤンキー・スタジアムを訪れます。スタジアムツアーに参加して、選手たちがプレーするフィールドや歴史的な展示を見学。野球ファンにはたまらない体験です！",
+          "searchQuery": "Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "MLBショップでショッピング",
+          "description": "ヤンキー・スタジアム内のMLBショップで、チームのファングッズを購入。ユニフォームやキャップ、記念品など、家族みんなで楽しめるアイテムが揃っています。",
+          "searchQuery": "MLB Shop at Yankee Stadium",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ブロンクス動物園",
+          "description": "ヤンキー・スタジアムから少し足を伸ばして、ブロンクス動物園へ。子供たちが楽しめる動物たちとのふれあいや、広大な敷地での散策が魅力です。",
+          "searchQuery": "Bronx Zoo",
+          "locationEn": "Bronx, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "セントラルパークでピクニック",
+          "description": "セントラルパークに移動し、家族でピクニックを楽しみます。公園内の美しい景色を眺めながら、持参したお弁当やスナックを味わいましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元レストランで、アメリカンスタイルのディナーを楽しみます。ハンバーガーやステーキなど、ボリューム満点の料理が揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化と歴史を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。古代から現代までの膨大なコレクションを楽しみながら、アートに触れる素晴らしい体験ができます。特に子供向けのワークショップもあるので、家族で楽しめます。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "美術館近くのカフェで軽食を取りましょう。サンドイッチやサラダなど、手軽に楽しめるメニューが揃っています。美術館の余韻を感じながら、ゆったりとしたランチタイムを過ごしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントラルパーク散策",
+          "description": "セントラルパークで自然を満喫しましょう。広大な公園内を散策しながら、子供たちと一緒に遊具や動物園を楽しむことができます。特に、ボートに乗るのもおすすめです。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "MLB関連ショップ訪問",
+          "description": "ニューヨークのMLBショップでファングッズをゲット！お気に入りのチームのユニフォームやキャップを見つけて、家族みんなで応援グッズを揃えましょう。",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。子供たちも疲れているかもしれないので、早めに休むのも良いでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "近くのレストランでディナー",
+          "description": "ニューヨークの人気レストランでディナーを楽しみます。多国籍な料理が楽しめる場所を選び、家族でシェアしながら食事を楽しむのも良い思い出になります。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ニューヨークの思い出を持ち帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロックフェラーセンター",
+          "description": "ロックフェラーセンターを訪れ、展望台「トップ・オブ・ザ・ロック」からの絶景を楽しみましょう。特に晴れた日には、マンハッタンの美しい景色が広がります。",
+          "searchQuery": "Top of the Rock Observation Deck",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：ジョン・ダリー",
+          "description": "ロックフェラーセンター近くの人気レストラン、ジョン・ダリーでランチ。ニューヨークスタイルのホットドッグやサンドイッチを楽しみながら、家族でのんびり過ごしましょう。",
+          "searchQuery": "John Dory Oyster Bar",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "グランドセントラル駅",
+          "description": "美しいアーキテクチャーが魅力のグランドセントラル駅を見学。天井の星座の絵や、歴史的な雰囲気を楽しみながら、駅内のショップでファングッズを探してみてください。",
+          "searchQuery": "Grand Central Terminal",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "MLBショップでファングッズ購入",
+          "description": "MLBの公式ショップで、お気に入りのチームのグッズを購入しましょう。キャップやTシャツなど、子供たちも喜ぶアイテムが揃っています。",
+          "searchQuery": "MLB Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：ピザ屋",
+          "description": "ニューヨーク名物のピザを楽しむために、地元の人気ピザ屋へ。家族みんなでシェアしながら、アツアツのピザを味わいましょう。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の思い出を振り返りながら、ホテルに戻ります。子供たちも大満足の一日だったことでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

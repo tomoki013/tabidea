@@ -1,0 +1,618 @@
+{
+  "id": "ef0278d5-cafe-48bf-af5a-938c7d940dd2",
+  "destination": "マルタ",
+  "description": "美しい海と歴史的な街並みが織りなすマルタでの7日間の旅。古代の遺跡やカラフルな街並みを散策しながら、リゾート地でのんびりとした時間を楽しむことができます。特に、猫たちと出会える場所も多く、心温まる瞬間が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "マルタ到着とバレッタ散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マルタの伝統的な朝食を楽しむため、地元のカフェで新鮮なペストリーやコーヒーをいただきます。特に、ハニートーストやフィグジャムが絶品です。",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントジョンズ大聖堂",
+          "description": "バレッタの象徴ともいえるセントジョンズ大聖堂を訪れます。豪華な内装とカラヴァッジョの名作を鑑賞し、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "St. John's Co-Cathedral",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "バレッタの地元料理を楽しむため、海の幸を使ったパスタや、マルタ名物のフィンガーフードを提供するレストランでランチを。新鮮な魚介類が楽しめます。",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "上のバラッカ庭園",
+          "description": "美しい海の景色を一望できる上のバラッカ庭園で、リラックスした時間を過ごします。ここからの眺めは特に夕方が美しく、写真撮影にも最適です。",
+          "searchQuery": "Upper Barracca Gardens",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バレッタの街歩き",
+          "description": "バレッタの狭い路地を散策しながら、地元のアートやショップを楽しみます。猫たちが日向ぼっこしている姿にも出会えるかもしれません。",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のカフェでディナー",
+          "description": "バレッタのカフェで、軽めのディナーを楽しみます。新鮮なサラダや、マルタのワインを合わせて、ゆったりとした夕食を。",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バレッタの夜景散策",
+          "description": "夜のバレッタを散策し、ライトアップされた建物や海の景色を楽しみます。特に、バレッタの港からの眺めはロマンチックです。",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ゴゾ島の自然と歴史",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "バレッタ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ゴゾ島",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "バレッタからゴゾ島へのフェリーでの移動。早めに出発して、ゴゾ島の美しい景色を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ゴゾ島のビーチでリラックス",
+          "description": "ゴゾ島の美しいビーチで、青い海を眺めながらリラックス。砂浜でのんびり過ごし、海水浴を楽しむのもおすすめです。",
+          "searchQuery": "Gozo Beach",
+          "locationEn": "Gozo, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ゴゾ島の地元のレストランで、新鮮なシーフードを使ったランチを楽しみます。特に、地元の魚料理は絶品です。",
+          "searchQuery": "Gozo Local Restaurant",
+          "locationEn": "Gozo, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アズールウィンドウの観光",
+          "description": "かつての壮大な自然のアーチ、アズールウィンドウを訪れます。美しい海の景色をバックに、写真撮影を楽しんでください。",
+          "searchQuery": "Azure Window",
+          "locationEn": "Gozo, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "タッパ・ア・リムの散策",
+          "description": "タッパ・ア・リムの絶景ポイントで、海の美しさを堪能します。ここからの眺めは特に素晴らしく、心が癒される場所です。",
+          "searchQuery": "Ta' Pinu",
+          "locationEn": "Gozo, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ゴゾ島の猫たちと遊ぶ",
+          "description": "ゴゾ島には多くの猫がいます。地元のカフェやビーチで、可愛い猫たちと触れ合う時間を楽しんでください。",
+          "searchQuery": "Gozo Cats",
+          "locationEn": "Gozo, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ゴゾ島でディナー",
+          "description": "地元の食材を使ったディナーを楽しむため、再びレストランへ。特に、パスタやリゾットはおすすめです。",
+          "searchQuery": "Gozo Dinner Restaurant",
+          "locationEn": "Gozo, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "古都イムディーナとラバト",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Valletta",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Mdina",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "バレッタからイムディーナまでのバスで、古都の雰囲気を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "イムディーナ散策",
+          "description": "中世の雰囲気が漂うイムディーナの街を散策。狭い石畳の道を歩きながら、美しいバロック様式の建物や教会を楽しむことができます。特に、聖パウロ大聖堂は必見です。",
+          "searchQuery": "Mdina",
+          "locationEn": "Mdina, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "イムディーナでランチ",
+          "description": "地元のレストランで、マルタの伝統料理を楽しみましょう。特に、フィンガーフードの「パスティッツィ」や新鮮なシーフードがおすすめです。",
+          "searchQuery": "Mdina restaurants",
+          "locationEn": "Mdina, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントポールの洞窟",
+          "description": "聖パウロがマルタに漂着した際に隠れたとされる洞窟を訪れます。洞窟内の静けさと神秘的な雰囲気を感じながら、歴史に思いを馳せることができます。",
+          "searchQuery": "St. Paul's Grotto",
+          "locationEn": "Rabat, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ラバト散策",
+          "description": "ラバトの街を散策し、古代ローマの遺跡や美しい庭園を楽しみます。特に、ハイポジウムはユネスコ世界遺産に登録されており、訪れる価値があります。",
+          "searchQuery": "Rabat",
+          "locationEn": "Rabat, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "猫と遊ぶ",
+          "description": "ラバトの街中で出会う猫たちと遊びながら、リラックスした時間を過ごしましょう。マルタでは猫が多く、地元の人々にも愛されています。",
+          "searchQuery": "cats in Rabat",
+          "locationEn": "Rabat, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "バレッタに戻ってディナー",
+          "description": "バレッタに戻り、海を眺めながらディナーを楽しみます。新鮮な魚料理や地元のワインを堪能できるレストランが多数あります。",
+          "searchQuery": "Valletta restaurants",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "スリーマとビーチでのんびり",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Valletta",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Sliema",
+          "time": "09:15"
+        },
+        "duration": "15m",
+        "memo": "バレッタからスリーマまでは徒歩でのんびり移動。海沿いの景色を楽しみながら散策します。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "スリーマプロムナード散策",
+          "description": "スリーマの美しいプロムナードを散策し、青い海と素晴らしい景色を楽しみます。カフェでのんびりと朝のコーヒーを味わうのもおすすめです。",
+          "searchQuery": "Sliema Promenade",
+          "locationEn": "Sliema, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ビーチでリラックス",
+          "description": "スリーマのビーチで、日光浴や海水浴を楽しみましょう。穏やかな波の音を聞きながら、リラックスした時間を過ごせます。",
+          "searchQuery": "Sliema Beach",
+          "locationEn": "Sliema, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "ビーチ近くのレストランで新鮮なシーフードランチを楽しみます。地元の食材を使った料理が味わえます。",
+          "searchQuery": "The Chophouse",
+          "locationEn": "Sliema, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スリーマの猫カフェ訪問",
+          "description": "スリーマにある猫カフェで、可愛い猫たちと触れ合いながら、リラックスしたひとときを過ごします。猫好きにはたまらないスポットです。",
+          "searchQuery": "Cat Cafe Malta",
+          "locationEn": "Sliema, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "スリーマのショッピングエリア散策",
+          "description": "スリーマのショッピングエリアを散策し、地元のショップやお土産屋を訪れます。おしゃれなカフェで一息つくのも良いでしょう。",
+          "searchQuery": "Sliema Shopping District",
+          "locationEn": "Sliema, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕日を眺めながらのディナー",
+          "description": "海沿いのレストランで夕日を眺めながらディナーを楽しみます。ロマンチックな雰囲気の中で、地元の料理を堪能しましょう。",
+          "searchQuery": "Tigne Point",
+          "locationEn": "Sliema, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "スリーマのナイトライフを楽しむ",
+          "description": "スリーマのバーやカフェで、夜の雰囲気を楽しみます。地元の人々と交流しながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Sliema Nightlife",
+          "locationEn": "Sliema, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "マルタの猫たちと出会う",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "スリーマ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "バレッタ",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "スリーマからバレッタまで徒歩で移動します。美しい海岸線を楽しみながらの散歩です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "バレッタの街角散策",
+          "description": "バレッタの美しい街並みを散策します。歴史的な建物やカラフルなバルコニーが並ぶ通りを歩きながら、地元の雰囲気を楽しんでください。",
+          "searchQuery": "Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "バレッタのカフェで軽食を楽しみます。新鮮なシーフードや地元の特産品を使った料理が味わえます。",
+          "searchQuery": "Cafe in Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "猫の保護施設訪問",
+          "description": "バレッタ近くの猫の保護施設を訪れ、可愛い猫たちと触れ合います。猫好きにはたまらない体験です。",
+          "searchQuery": "Cat Sanctuary Malta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "バレッタの大聖堂見学",
+          "description": "セントジョンズ大聖堂を訪れ、その美しい内装と歴史を堪能します。特に、カラヴァッジョの作品は必見です。",
+          "searchQuery": "St John's Co-Cathedral",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "バレッタのビーチでリラックス",
+          "description": "バレッタの近くにあるビーチで、海を眺めながらリラックスします。夕日を楽しむのもおすすめです。",
+          "searchQuery": "Beach near Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バレッタのレストランで、マルタの伝統料理を楽しみます。新鮮な魚料理やパスタが絶品です。",
+          "searchQuery": "Restaurant in Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "マルタの伝統と文化",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "バレッタ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ハル・サフリエニの地下神殿",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "バレッタから徒歩でハル・サフリエニの地下神殿へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ハル・サフリエニの地下神殿",
+          "description": "マルタの歴史的な地下神殿で、紀元前の遺跡を探索します。神秘的な雰囲気の中で、古代の人々の信仰や生活を感じることができます。",
+          "searchQuery": "Hal Saflieni Hypogeum",
+          "locationEn": "Paola, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "ハル・サフリエニの地下神殿近くのカフェで、マルタの伝統的な料理を楽しみます。特に、フィンガーフードの「パスティッツィ」は絶品です。",
+          "searchQuery": "Caffe Cordina",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マルタ国立博物館",
+          "description": "マルタの歴史と文化を深く知ることができる博物館です。美術品や考古学的な展示が豊富で、特に古代の遺物が見どころです。",
+          "searchQuery": "National Museum of Archaeology",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バレッタの街歩き",
+          "description": "バレッタの美しい街並みを散策しながら、歴史的な建物やショップを楽しみます。猫たちが日向ぼっこしている姿にも出会えるかもしれません。",
+          "searchQuery": "Valletta",
+          "locationEn": "Valletta, Malta",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "海辺での夕食",
+          "description": "バレッタの海辺にあるレストランで、新鮮なシーフードを堪能します。夕日を眺めながらの食事は格別です。",
+          "searchQuery": "The Harbour Club",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "帰国の準備と最後の散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "バレッタのカフェで朝食",
+          "description": "バレッタの美しい街並みを眺めながら、地元のカフェで朝食を楽しみます。新鮮なペストリーやコーヒーで、最後の朝を優雅にスタートしましょう。",
+          "searchQuery": "Caffe Cordina",
+          "locationEn": "Valletta, Malta",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "バレッタの街歩き",
+          "description": "歴史的な建物や美しい広場を巡りながら、バレッタの魅力を再発見します。特に、セントジョンズ大聖堂や上のバラッカ庭園からの眺めは必見です。",
+          "searchQuery": "St. John's Co-Cathedral",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "お土産屋でショッピング",
+          "description": "バレッタの中心地にあるお土産屋で、マルタの特産品や手作りの工芸品を探しましょう。友人や家族へのお土産にぴったりなアイテムが見つかります。",
+          "searchQuery": "Valletta Souvenir Shop",
+          "locationEn": "Valletta, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バレッタのビーチでリラックス",
+          "description": "バレッタ近くのビーチで、最後のひとときを海を眺めながら過ごします。穏やかな波の音を聞きながら、リラックスした時間を楽しんでください。",
+          "searchQuery": "St. George's Bay",
+          "locationEn": "St. Julian's, Malta",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "空港へ移動",
+          "description": "バレッタから空港へ向かいます。最後のマルタの思い出を胸に、帰国の準備を整えましょう。",
+          "searchQuery": "Malta International Airport",
+          "locationEn": "Luqa, Malta",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "id": "cebc1fd5-a630-40f4-ad58-62e815166aa0",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant culture and artistic spirit of New York City, where jazz rhythms fill the air and art beckons from every corner. This 3-day adventure is designed for families, blending the excitement of jazz with cultural exploration and artistic discovery. From iconic jazz clubs to world-class museums, each day unfolds a new chapter of creativity and connection, perfect for family bonding and unforgettable memories.",
+  "heroImage": "https://images.unsplash.com/photo-1589467873433-e62634466230?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE5OTF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Lukas H",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lukasphotos_free?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Jazz and Art in the Heart of Manhattan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jacob's Pickles",
+          "description": "Start your day with a hearty breakfast at Jacob's Pickles, known for its Southern comfort food and delicious pickles. The warm atmosphere is perfect for families, and the biscuits are a must-try!",
+          "searchQuery": "Jacob's Pickles",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Apollo Theater",
+          "description": "Head to Harlem to visit the iconic Apollo Theater, a historic venue that has hosted legendary jazz performances. Take a guided tour to learn about its rich history and the artists who have graced its stage.",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Sylvia's Restaurant",
+          "description": "Enjoy a classic soul food lunch at Sylvia's, a Harlem institution. The fried chicken and waffles are particularly popular, and the vibrant atmosphere is family-friendly.",
+          "searchQuery": "Sylvia's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Studio Museum in Harlem",
+          "description": "Visit the Studio Museum, which focuses on contemporary art by artists of African descent. The museum often features jazz-themed exhibitions, making it a perfect fit for your interests.",
+          "searchQuery": "Studio Museum in Harlem",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Jazz at Minton's Playhouse",
+          "description": "Experience live jazz at Minton's Playhouse, a historic jazz club where bebop was born. Enjoy the music while sipping on family-friendly beverages and snacks.",
+          "searchQuery": "Minton's Playhouse",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Jazz Merchandise at Harlem's Jazz Shops",
+          "description": "Stroll through Harlem and visit local shops that sell jazz memorabilia and merchandise. It's a great opportunity to find unique souvenirs and gifts for the family.",
+          "searchQuery": "Harlem Jazz Shops",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Red Rooster Harlem",
+          "description": "End your day with dinner at Red Rooster, a lively restaurant that celebrates the flavors of Harlem. The menu features a mix of Southern comfort food and modern dishes, perfect for families.",
+          "searchQuery": "Red Rooster Harlem",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Brooklyn's Artistic Vibes",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tom's Restaurant",
+          "description": "Start your day with a hearty breakfast at Tom's Restaurant, a classic diner known for its delicious pancakes and friendly atmosphere. It's a great spot to fuel up before a day of exploration!",
+          "searchQuery": "Tom's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Brooklyn Academy of Music (BAM)",
+          "description": "Visit the Brooklyn Academy of Music, a cultural hub that showcases a variety of performances, from theater to music. Check their schedule for family-friendly shows or exhibitions that might interest you.",
+          "searchQuery": "Brooklyn Academy of Music",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Junior's Restaurant",
+          "description": "Enjoy a classic New York lunch at Junior's, famous for its cheesecake and deli sandwiches. It's a family-friendly spot with a lively atmosphere, perfect for a midday break.",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "DUMBO Exploration",
+          "description": "Stroll through DUMBO, a trendy neighborhood with stunning views of the Manhattan skyline. Don't forget to snap a family photo at the iconic Washington Street with the Manhattan Bridge in the background!",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely walk across the Brooklyn Bridge. The views are breathtaking, and it's a great way to connect with the city's history while enjoying some fresh air.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Jazz at the Blue Note",
+          "description": "Experience the vibrant jazz scene at the Blue Note, one of the most famous jazz clubs in the world. Check their schedule for family-friendly performances or matinees that everyone can enjoy.",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at The Olive Tree Cafe",
+          "description": "End your day with dinner at The Olive Tree Cafe, located above the Blue Note. Enjoy Mediterranean dishes in a cozy setting, perfect for families after a day of adventure.",
+          "searchQuery": "The Olive Tree Cafe",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Treasures and Jazz Farewell",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a family-friendly spot that will energize you for a day of exploration!",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "The Metropolitan Museum of Art",
+          "description": "Explore the vast collections at The Met, where art from around the world awaits. Don't miss the Egyptian artifacts and the rooftop garden with stunning views of Central Park!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Met's Cafeteria",
+          "description": "Enjoy a casual lunch at The Met's cafeteria, offering a variety of options from salads to sandwiches, perfect for refueling before more art adventures.",
+          "searchQuery": "The Met Cafeteria",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Jazz at Lincoln Center Tour",
+          "description": "Take a guided tour of Jazz at Lincoln Center, where you can learn about the history of jazz and its impact on American culture. This is a great way to introduce your kids to the world of jazz!",
+          "searchQuery": "Jazz at Lincoln Center",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Jazz Merchandise at the Jazz at Lincoln Center Gift Shop",
+          "description": "After the tour, browse the gift shop for unique jazz memorabilia and merchandise. It's a perfect opportunity to pick up some souvenirs to remember your jazz adventure!",
+          "searchQuery": "Jazz at Lincoln Center Gift Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Times Square Exploration",
+          "description": "Stroll through the vibrant lights and energy of Times Square. It's a great place for family photos and to soak in the bustling atmosphere of New York City.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "End your day with a hearty family-style dinner at Carmine's, famous for its generous portions of classic Italian dishes. A perfect way to share a meal together!",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

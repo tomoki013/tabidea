@@ -1,0 +1,442 @@
+{
+  "id": "f9ffca62-ff71-4a29-b352-d9fe90b0cdb8",
+  "destination": "レイキャビク",
+  "description": "アイスランドの首都、レイキャビクは、独特の文化と美しい自然が融合した魅力的な都市です。カラフルな家々が並ぶ街並みや、地元のアートシーン、そしてショッピングエリアが点在し、アクティビティも豊富。カップルでの旅行にぴったりのロマンティックなスポットが満載です。",
+  "heroImage": "https://images.unsplash.com/photo-1590153739486-208b4dbb473c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU1OTl8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mike Swigunski",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mike_swigunski?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "レイキャビク到着と市内散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "レイキャビクのカフェで、アイスランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトを味わいながら、旅の始まりを感じましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハルパ音楽ホール",
+          "description": "美しいガラスの外観が特徴のハルパ音楽ホールを訪れます。内部のアートや音楽イベントのスケジュールをチェックして、アイスランドの文化を感じるひとときを過ごしましょう。",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レイキャビク市庁舎でランチ",
+          "description": "市庁舎内のカフェで軽食を楽しみます。地元の食材を使ったサンドイッチやスープが人気です。市庁舎の美しい湖の景色を眺めながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ソルファル（太陽の船）",
+          "description": "レイキャビクの海岸沿いにあるソルファルの彫刻を見学します。美しい海と山々を背景に、アイスランドの自然を感じることができるスポットです。",
+          "searchQuery": "Sun Voyager",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ローカルショップでショッピング",
+          "description": "レイキャビクの中心地にあるローカルショップを巡り、アイスランドの手工芸品やお土産を探します。ユニークなデザインのアイテムが揃っており、特別な思い出を持ち帰ることができます。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルにチェックイン",
+          "description": "市内中心部にあるホテルにチェックインし、少し休憩します。観光の疲れを癒し、夕食の準備をしましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "アイスランドの新鮮なシーフードを楽しめるレストランでディナー。特に、アイスランドの名物料理であるハカール（発酵したサメ）や、地元の魚料理を試してみてください。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "レイキャビクのアートとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "レイキャビクのカフェで、アイスランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、地元のヨーグルトを味わいながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハットルグリムス教会",
+          "description": "レイキャビクのシンボルとも言えるハットルグリムス教会を訪れます。教会の塔からは市内を一望でき、特に晴れた日には美しい景色が広がります。",
+          "searchQuery": "Hallgrimskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロイガヴェーグル通りでランチ",
+          "description": "ロイガヴェーグル通りにあるカフェで、アイスランドのサンドイッチやスープを楽しみます。地元の人々にも人気のあるお店で、リラックスした雰囲気の中で食事を楽しめます。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アートギャラリー巡り",
+          "description": "レイキャビクのアートシーンを体験するため、いくつかのアートギャラリーを訪れます。地元アーティストの作品を見ながら、アイスランドの文化に触れることができます。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ロイガヴェーグル通りでショッピング",
+          "description": "ロイガヴェーグル通りには、ユニークなショップやお土産屋が並んでいます。アイスランドの特産品やアート作品を探しながら、ショッピングを楽しみましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "レイキャビクの地元のレストランで、アイスランド料理を堪能します。新鮮な魚やラム肉を使った料理が楽しめるお店を選び、特別な夜を演出しましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のレイキャビク散策",
+          "description": "ディナーの後は、レイキャビクの街を散策します。夜の街並みは幻想的で、特にハットルグリムス教会のライトアップは必見です。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ゴールデンサークルツアー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "レイキャビクのホテルで、アイスランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使ったメニューが揃っています。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ゲイシール",
+          "description": "アイスランドの有名な間欠泉、ゲイシールを訪れます。定期的に噴出する間欠泉の迫力を間近で体感し、周囲の美しい風景も楽しめます。",
+          "searchQuery": "Geysir",
+          "locationEn": "Geysir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "グトルフォスの滝でランチ",
+          "description": "グトルフォスの滝近くのカフェで軽食を取りながら、滝の壮大な景色を楽しみます。サンドイッチやスープなど、手軽に食べられるメニューが揃っています。",
+          "locationEn": "Gullfoss, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "グトルフォスの滝",
+          "description": "アイスランドの自然の驚異、グトルフォスの滝を見学します。滝の迫力ある流れと美しい虹を楽しむことができ、写真撮影にも最適です。",
+          "searchQuery": "Gullfoss Waterfall",
+          "locationEn": "Gullfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シンクヴェトリル国立公園",
+          "description": "シンクヴェトリル国立公園を散策します。大地の裂け目や美しい湖、歴史的な遺跡を巡りながら、アイスランドの自然の美しさを堪能します。",
+          "searchQuery": "Thingvellir National Park",
+          "locationEn": "Thingvellir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レイキャビクに戻る",
+          "description": "ツアーを終え、レイキャビクに戻ります。移動中にアイスランドの美しい風景を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "レイキャビクでディナー",
+          "description": "レイキャビクの地元のレストランでアイスランド料理を楽しみます。新鮮な魚料理やラム肉を使った料理が人気で、地元のビールと一緒に味わうのがおすすめです。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アイスランドの自然を楽しむアクティビティ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "レイキャビクのホテルで、アイスランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使った朝食でエネルギーをチャージしましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ブルーラグーン訪問",
+          "description": "アイスランドの象徴とも言えるブルーラグーンで、温泉に浸かりながらリラックス。美しい青い水と周囲の火山岩のコントラストが印象的で、心身ともに癒されるひとときを過ごせます。",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブルーラグーンでランチ",
+          "description": "ブルーラグーン内のレストランで、地元の食材を使った美味しいランチを楽しみます。温泉を楽しんだ後の食事は格別です。",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スノーモービルツアー",
+          "description": "アイスランドの大自然を満喫するスノーモービルツアーに参加。氷河の上を駆け抜ける爽快感は格別で、息を呑むような景色を楽しむことができます。",
+          "searchQuery": "Snowmobile Tour",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "レイキャビクに戻る",
+          "description": "スノーモービルツアーを終えたら、レイキャビクに戻ります。移動中にアイスランドの美しい風景を楽しみましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "レイキャビクのショッピングエリア散策",
+          "description": "レイキャビクの中心部にあるショッピングエリアを散策。地元のアートや手作りの工芸品、アイスランドのデザイン商品を見つけることができます。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "レイキャビクでディナー",
+          "description": "地元のレストランでアイスランド料理を楽しみます。新鮮な魚やラム肉を使った料理が堪能できるお店を選びましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "レイキャビクでの最後のショッピングと帰国",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "レイキャビクのホテルで、アイスランドの伝統的な朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使った朝食でエネルギーをチャージ。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ロイガヴェーグル通り散策",
+          "description": "レイキャビクのメインストリート、ロイガヴェーグル通りを散策します。おしゃれなカフェやブティックが立ち並び、アイスランドのアートやデザインを感じることができます。お土産探しにも最適です。",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のマーケットでランチ",
+          "description": "地元のマーケットで新鮮な食材を使ったランチを楽しみます。アイスランドの伝統料理やストリートフードを味わいながら、地元の人々の生活を感じることができます。",
+          "searchQuery": "Reykjavik Flea Market",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハルグリムス教会訪問",
+          "description": "レイキャビクのシンボル的存在であるハルグリムス教会を訪れます。教会の展望台からは、街全体を見渡すことができ、素晴らしい写真スポットです。",
+          "searchQuery": "Hallgrimskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "最後のショッピング",
+          "description": "ロイガヴェーグル通りに戻り、最後のショッピングを楽しみます。アイスランドのデザイン雑貨やお土産を見つけるチャンスです。",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルでチェックアウト",
+          "description": "ホテルでチェックアウトを済ませ、帰国の準備をします。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "レイキャビクの空港へ向かいます。帰国のフライトに備えて、余裕を持って移動しましょう。",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

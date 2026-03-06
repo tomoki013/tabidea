@@ -1,0 +1,529 @@
+{
+  "id": "5f9a1f3d-0722-4986-9e80-111ffbf95302",
+  "destination": "ベルゲン・オスロ周遊",
+  "description": "ノルウェーの美しい自然と文化を堪能する7日間の旅。フィヨルドの絶景を船から眺め、鉄道の旅を楽しむことで、心に残る思い出を作りましょう。家族での特別な時間を過ごし、ノルウェーの魅力を存分に味わうことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からオスロへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "オスロ",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "直行便でオスロへ。機内食を楽しみながら、フィヨルドの旅に思いを馳せてください。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "オスロオペラハウス",
+          "description": "オスロのシンボルとも言えるオペラハウス。白い大理石の外観が美しく、屋上からはオスロの街並みやフィヨルドの絶景を楽しむことができます。",
+          "searchQuery": "Oslo Opera House",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アーケシュフース城",
+          "description": "オスロの歴史を感じることができるアーケシュフース城。美しい景観と共に、城内の博物館でノルウェーの歴史を学ぶことができます。",
+          "searchQuery": "Akershus Fortress",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "オスロの地元料理を楽しめるレストランで、ノルウェーの新鮮なシーフードを堪能。特にサーモン料理は絶品です。",
+          "searchQuery": "Fjord Restaurant",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "オスロ市内の快適なホテルにチェックイン。旅の疲れを癒し、明日の冒険に備えましょう。",
+          "searchQuery": "Radisson Blu Plaza Hotel Oslo",
+          "locationEn": "Oslo, Norway",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "オスロの文化と歴史を探る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Oslo",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Oslo Central Station",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "オスロ中央駅からアーケシュフース城へ徒歩で移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "アーケシュフース城",
+          "description": "オスロのシンボルとも言えるアーケシュフース城を訪れます。城内の博物館では、ノルウェーの歴史や文化を学ぶことができ、城の美しい景色も楽しめます。",
+          "searchQuery": "Akershus Fortress",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・フローレンでランチ",
+          "description": "アーケシュフース城近くのカフェ・フローレンで、地元の食材を使った軽食を楽しみます。特にサンドイッチやスープが人気です。",
+          "searchQuery": "Café Sorgenfri",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ヴィーゲラン公園",
+          "description": "オスロの名所、ヴィーゲラン公園を散策します。ユニークな彫刻が点在するこの公園は、自然とアートが融合した美しい場所です。",
+          "searchQuery": "Vigeland Park",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "オスロ市立博物館",
+          "description": "オスロ市立博物館で、ノルウェーの歴史や文化についてさらに深く学びます。特に、ノルウェーの伝統的な生活様式を再現した展示が見どころです。",
+          "searchQuery": "Oslo City Museum",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レストラン・ル・マルシェでディナー",
+          "description": "オスロのフランス料理レストラン、ル・マルシェでディナーを楽しみます。新鮮なシーフードや地元の食材を使った料理が絶品です。",
+          "searchQuery": "Restaurant Le Marché",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "オスロからベルゲンへ鉄道の旅",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Oslo",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Bergen",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "美しいフィヨルドの景色を楽しみながらの鉄道旅です。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ベルゲンの魚市場でランチ",
+          "description": "新鮮なシーフードを楽しめるベルゲンの名所、魚市場でランチを。地元の人々に人気のあるお店で、シーフードプレートをぜひ味わってみてください。",
+          "searchQuery": "Bergen Fish Market",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "フロム鉄道の予約",
+          "description": "フロム鉄道のチケットを事前に予約しておきましょう。美しいフィヨルドの景色を楽しむための絶好のアクティビティです。",
+          "searchQuery": "Flåm Railway",
+          "locationEn": "Flåm, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "フロム鉄道での絶景体験",
+          "description": "フロム鉄道に乗車し、壮大なフィヨルドの景色を堪能します。山々や滝を眺めながらの旅は、まさに絶景の連続です。",
+          "searchQuery": "Flåm Railway",
+          "locationEn": "Flåm, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ベルゲンの街を散策",
+          "description": "ベルゲンの美しい街並みを散策し、ハンザ同盟の歴史を感じることができるブリッゲン地区を訪れます。カラフルな木造建築が並ぶ風景は、写真映えも抜群です。",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ベルゲンでディナー",
+          "description": "地元のレストランで、ノルウェーの伝統料理を楽しみましょう。特に、鮮魚やラム肉を使った料理がおすすめです。",
+          "searchQuery": "Restaurant 1877",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ベルゲンの美しいフィヨルドを巡る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bergen",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Voss",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ベルゲンからボスへ向かう美しい鉄道の旅。山々や湖の景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ハルダンゲルフィヨルドクルーズ",
+          "description": "ハルダンゲルフィヨルドの絶景を船上から楽しむクルーズ。青い水面と緑の山々が織りなす風景は、まさに息を呑む美しさです。",
+          "searchQuery": "Hardangerfjord",
+          "locationEn": "Hardangerfjord, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フィヨルド沿いのレストランでランチ",
+          "description": "フィヨルドの美しい景色を眺めながら、新鮮なシーフードを楽しむランチ。地元の食材を使った料理が堪能できます。",
+          "searchQuery": "Restaurant Hardangerfjord",
+          "locationEn": "Hardangerfjord, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ボスからベルゲンへの鉄道移動",
+          "description": "ボスからベルゲンへの帰り道も、鉄道の美しい景色を楽しみながらの移動です。特に山々の景観が素晴らしい。",
+          "searchQuery": "Bergen Railway",
+          "locationEn": "Bergen, Norway",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ベルゲンのブリッゲン地区散策",
+          "description": "ユネスコ世界遺産に登録されているブリッゲン地区を散策。カラフルな木造の建物が並ぶ風情ある街並みを楽しみながら、地元のショップやカフェを訪れましょう。",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ベルゲンでディナー",
+          "description": "地元の食材を使った料理を楽しめるレストランで、家族でのディナーを。特に新鮮な魚料理が人気です。",
+          "searchQuery": "Restaurant in Bergen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ベルゲンからオスロへ戻る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bergen",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Oslo",
+          "time": "12:30"
+        },
+        "duration": "4h 30m",
+        "memo": "美しいフィヨルドの景色を楽しみながらの鉄道旅です。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "オスロ市内観光",
+          "description": "オスロに到着後、まずは市内観光を楽しみましょう。オスロの中心部には、歴史的な建物や美しい公園が点在しています。",
+          "searchQuery": "Oslo City Center",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アーケシュフース城の見学",
+          "description": "オスロのシンボルとも言えるアーケシュフース城を訪れます。城内の博物館では、ノルウェーの歴史を学ぶことができます。",
+          "searchQuery": "Akershus Fortress",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "オスロオペラハウスの散策",
+          "description": "オスロの美しいオペラハウスを訪れ、屋上からの眺望を楽しみましょう。建物自体も非常に美しく、写真スポットとしても人気です。",
+          "searchQuery": "Oslo Opera House",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "フロッグナー公園でリラックス",
+          "description": "フロッグナー公園でのんびりと過ごします。公園内にはビグダリの彫刻があり、自然の中でアートを楽しむことができます。",
+          "searchQuery": "Frogner Park",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "オスロの地元料理を楽しむために、人気のレストランでディナーを。新鮮なシーフードやノルウェーの伝統料理を堪能しましょう。",
+          "searchQuery": "Restaurant in Oslo",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "オスロの自然を楽しむ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Oslo",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Bergen",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "オスロからベルゲンへの短いフライトで、フィヨルドの美しい景色を楽しむ準備をします。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ベルゲンのフィヨルドクルーズ",
+          "description": "ベルゲンの港から出発するフィヨルドクルーズで、壮大な自然の景色を堪能します。青い海と緑の山々が織りなす絶景は、心に残る思い出になるでしょう。",
+          "searchQuery": "Bergen Fjord Cruise",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フィヨルド沿いのレストランでランチ",
+          "description": "フィヨルドの美しい景色を眺めながら、新鮮なシーフードを楽しむランチタイム。地元の食材を使った料理が自慢のレストランで、特にサーモン料理がおすすめです。",
+          "searchQuery": "Fjord Restaurant Bergen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "フロイエン山への登山",
+          "description": "フロイエン山のケーブルカーで山頂へ。ベルゲン市街とフィヨルドのパノラマビューを楽しみながら、ハイキングコースを散策します。特に晴れた日には、絶景が広がります。",
+          "searchQuery": "Fløyen Mountain",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ベルゲンの旧市街散策",
+          "description": "ベルゲンの歴史的な旧市街を散策。カラフルな木造の建物が並ぶブリッゲン地区は、ユネスコの世界遺産にも登録されています。地元のアートやショップを楽しみながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ベルゲンの地元料理を楽しむディナー。特に、フィヨルドで獲れた新鮮な魚料理や、ノルウェーの伝統的な料理を味わえるお店を選びましょう。",
+          "searchQuery": "Local Restaurant Bergen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "オスロから東京へ帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Oslo Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Tokyo Narita Airport",
+          "time": "06:00"
+        },
+        "duration": "10h",
+        "memo": "直行便で東京へ帰国します。機内での食事をお楽しみください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オスロのホテルで、北欧スタイルの朝食を楽しみます。新鮮なパンやスモークサーモン、ヨーグルトなど、地元の食材を使った朝食が魅力です。",
+          "searchQuery": "Oslo Hotel Breakfast",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "オスロ市内観光",
+          "description": "オスロの中心部を散策します。オスロオペラハウスやアーケシュフース城を訪れ、ノルウェーの文化に触れましょう。",
+          "searchQuery": "Oslo Opera House",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "オスロのカフェでコーヒータイム",
+          "description": "地元のカフェで、ノルウェーのコーヒー文化を体験。美味しいコーヒーと共に、スイーツを楽しむのもおすすめです。",
+          "searchQuery": "Oslo Cafe",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

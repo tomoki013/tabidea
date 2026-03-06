@@ -1,0 +1,381 @@
+{
+  "id": "049bffb0-9c91-4312-902a-8c0c7144d03c",
+  "destination": "釜山",
+  "description": "釜山での4日間は、K-Popの魅力に浸りながら、文化とアートの深淵を探求する旅です。美しい海岸線と活気あふれる市場、そしてアートに満ちた街を巡り、あなたの推し活を存分に楽しむことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "釜山到着と海雲台散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "釜山の地元のカフェで、韓国式の朝食を楽しみます。ビビンバやトースト、フレッシュな果物が並ぶ朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "海雲台ビーチ散策",
+          "description": "釜山の人気ビーチ、海雲台でのんびりとした時間を過ごします。青い海と白い砂浜が広がる美しい景色を楽しみながら、散歩や写真撮影を楽しんでください。",
+          "searchQuery": "Haeundae Beach",
+          "locationEn": "Haeundae Beach, Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "海雲台の海鮮料理店でランチ",
+          "description": "新鮮な海の幸を使った海鮮料理を楽しむランチタイム。特に、釜山名物の生魚や刺身をぜひ味わってみてください。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "釜山アートセンター訪問",
+          "description": "釜山アートセンターで地元アーティストの作品を鑑賞します。アートに触れながら、釜山の文化を深く理解することができます。",
+          "searchQuery": "Busan Art Center",
+          "locationEn": "Busan Art Center, Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "K-Pop関連ショップ巡り",
+          "description": "海雲台周辺のK-Pop関連ショップを巡り、推しのグッズを探します。ファン必見のアイテムが揃っているので、ぜひお気に入りを見つけてください。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "海雲台で夕食",
+          "description": "ビーチ沿いのレストランで、釜山の夜景を楽しみながら夕食を。地元の料理や韓国の焼肉を堪能し、素敵な夜を過ごしましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "海雲台の夜景散策",
+          "description": "夜の海雲台ビーチを散策し、ライトアップされた景色を楽しみます。静かな波の音を聞きながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "K-Popとグルメの融合",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "釜山のホテルで、地元の食材を使った朝食を楽しみます。新鮮な魚や野菜を使った韓国の伝統的な朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "南浦洞散策",
+          "description": "釜山の人気エリア、南浦洞を散策します。K-Pop関連のショップやカフェが立ち並び、ファングッズを探すのにぴったりの場所です。特に、BTSやBLACKPINKのグッズが豊富に揃っています。",
+          "searchQuery": "Nampo-dong",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "光復路でランチ",
+          "description": "光復路にある人気のビビンバ専門店でランチを楽しみます。色とりどりの野菜と肉が盛り付けられたビビンバは、見た目も美しく、味も絶品です。",
+          "searchQuery": "Gwangbok-dong Bibimbap",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "釜山K-Popセンター訪問",
+          "description": "釜山K-Popセンターで、最新のK-Pop情報やアーティストの展示を楽しみます。ファンにはたまらないスポットで、記念撮影も忘れずに！",
+          "searchQuery": "Busan K-Pop Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "釜山アートセンター訪問",
+          "description": "釜山アートセンターで、地元アーティストの作品や特別展を鑑賞します。アートに触れながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Busan Art Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "南浦洞でショッピング",
+          "description": "再び南浦洞に戻り、K-Pop関連のショップでファングッズを購入します。お気に入りのアーティストのアイテムを見つける楽しみがあります。",
+          "searchQuery": "Nampo-dong Shopping",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "釜山の海鮮料理店でディナー",
+          "description": "釜山名物の新鮮な海鮮料理を楽しむため、地元の人気店でディナーを。特に、刺身や焼き魚は絶品です。",
+          "searchQuery": "Busan Seafood Restaurant",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "釜山のホテルで、韓国の伝統的な朝食を楽しみます。キムチやご飯、スープなど、地元の味を堪能して一日をスタート。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "釜山博物館",
+          "description": "釜山の歴史と文化を深く知ることができる釜山博物館を訪れます。展示品を通じて、釜山の成り立ちや伝統を学びましょう。",
+          "searchQuery": "Busan Museum",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元の食堂でランチ",
+          "description": "釜山の地元食堂で、ビビンバや冷麺などの韓国料理を楽しみます。地元の人々に愛されるお店で、アットホームな雰囲気を味わえます。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "甘川文化村散策",
+          "description": "カラフルな家々が立ち並ぶ甘川文化村を散策します。アート作品やストリートアートが点在し、写真映えするスポットがたくさんあります。",
+          "searchQuery": "Gamcheon Culture Village",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "K-Pop関連ショップ巡り",
+          "description": "釜山のK-Pop関連ショップを巡り、推しのグッズを探します。特に南浦洞エリアには多くのショップが集まっているので、ファンにはたまらないスポットです。",
+          "searchQuery": "K-Pop Store Busan",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のカフェで休憩",
+          "description": "甘川文化村近くのカフェで、韓国のスイーツやコーヒーを楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "釜山の夜景を楽しむ",
+          "description": "釜山の美しい夜景を楽しむために、海雲台や広安里ビーチへ向かいます。夜の海と街の灯りが織りなす景色は、心に残る思い出になるでしょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "釜山のアートとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "釜山のホテルで、韓国の伝統的な朝食を楽しみます。キムチやご飯、スープがセットになった朝食で、元気に一日をスタート！",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "釜山国際映画祭の会場を訪問",
+          "description": "釜山国際映画祭の会場である映画の殿堂を訪れ、映画に関する展示やアートを楽しみます。映画ファンにはたまらないスポットです。",
+          "searchQuery": "Busan Cinema Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "西面でランチ",
+          "description": "西面エリアの人気カフェで、ビビンバやトッポッキなどの韓国料理を楽しみます。地元の人々に愛されるお店で、活気ある雰囲気を味わえます。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "西面のK-Popショップ巡り",
+          "description": "西面エリアには多くのK-Pop関連ショップがあります。推しのグッズを探しながら、楽しいショッピングタイムを過ごしましょう。",
+          "searchQuery": "K-Pop Store in Seomyeon",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "釜山アートセンター訪問",
+          "description": "釜山アートセンターで地元アーティストの作品を鑑賞します。アートに触れながら、釜山の文化を深く理解できる貴重な体験です。",
+          "searchQuery": "Busan Art Center",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "釜山のカフェで休憩",
+          "description": "アートセンター近くのカフェで、韓国のスイーツやコーヒーを楽しみながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "西面でディナー",
+          "description": "西面エリアの人気焼肉店で、韓国の焼肉を堪能します。新鮮なお肉を自分で焼きながら、楽しい食事の時間を過ごしましょう。",
+          "locationEn": "Busan, South Korea",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "釜山の夜景を楽しむ",
+          "description": "釜山の夜景スポットである南浦洞の展望台から、夜の街並みを一望します。美しい夜景を眺めながら、旅の締めくくりを楽しみましょう。",
+          "searchQuery": "Nampodong Observatory",
+          "locationEn": "Busan, South Korea",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

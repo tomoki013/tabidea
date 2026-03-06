@@ -1,0 +1,643 @@
+{
+  "id": "2f0d78c6-04ef-4a58-8bbb-c4d0647ea89f",
+  "destination": "ハバナ",
+  "description": "Immerse yourself in the vibrant culture and rich history of Havana, Cuba, where every street corner tells a story and every sunset paints the sky in hues of orange and pink. This 7-day journey is designed for couples seeking romance, adventure, and unforgettable memories amidst the colorful backdrop of classic cars and lively music. From exploring the historic Old Town to savoring local delicacies and sipping on refreshing mojitos, each day is a celebration of Cuban life. Get ready to capture stunning photos and create lasting memories in this enchanting city!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Havana",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at La Guarida",
+          "description": "Start your Cuban adventure with a delicious meal at La Guarida, a famous restaurant known for its stunning views and authentic Cuban cuisine. The ambiance is vibrant, making it a perfect spot to soak in the local culture.",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Old Havana (Habana Vieja)",
+          "description": "Wander through the cobblestone streets of Old Havana, a UNESCO World Heritage site. Marvel at the colorful colonial buildings, vibrant street art, and lively atmosphere. Don't forget your camera; every corner is a photo opportunity!",
+          "searchQuery": "Old Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Classic Car Tour",
+          "description": "Hop into a classic American car for a scenic tour around Havana. This is a fantastic way to see the city while capturing stunning photos of the vintage vehicles against the backdrop of Havana's architecture.",
+          "searchQuery": "Classic Car Tour Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Stroll along Malecón",
+          "description": "Take a leisurely walk along the Malecón, Havana's famous seawall. Enjoy the sunset views over the Caribbean Sea, and feel the refreshing ocean breeze. It's a popular spot for both locals and tourists to unwind.",
+          "searchQuery": "Malecón",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at El Cocinero",
+          "description": "Dine at El Cocinero, a trendy restaurant located in a former cooking oil factory. Enjoy a fusion of traditional Cuban dishes with a modern twist, all while surrounded by a unique industrial atmosphere.",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Live Music at Casa de la Musica",
+          "description": "End your day with some live Cuban music at Casa de la Musica. Experience the vibrant rhythms of salsa and son, and perhaps even join in on the dance! It's a perfect way to immerse yourself in Cuba's rich musical culture.",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Old Havana",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at La Casa de la Música",
+          "description": "Start your day with a hearty breakfast at La Casa de la Música, where you can enjoy traditional Cuban dishes like huevos revueltos (scrambled eggs) and fresh tropical fruits. The vibrant atmosphere sets the perfect tone for your day of exploration.",
+          "searchQuery": "La Casa de la Música",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Plaza de Armas",
+          "description": "Stroll through the historic Plaza de Armas, the oldest square in Havana, surrounded by beautiful colonial buildings. Don't forget to snap some photos with the iconic Castillo de la Real Fuerza in the background, a perfect spot for your travel album.",
+          "searchQuery": "Plaza de Armas",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at El Patio",
+          "description": "Enjoy a leisurely lunch at El Patio, a charming restaurant known for its delicious Cuban cuisine. Try the ropa vieja (shredded beef) or the fresh seafood dishes, all while soaking in the lively atmosphere of Old Havana.",
+          "searchQuery": "El Patio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Cathedral of Havana",
+          "description": "Visit the stunning Cathedral of Havana, a masterpiece of baroque architecture. Take a moment to admire the intricate details and perhaps catch a local musician performing outside, adding to the vibrant ambiance of the area.",
+          "searchQuery": "Cathedral of Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Classic Car Tour",
+          "description": "Hop into a classic American car for a scenic tour around Havana. This is a fantastic opportunity to capture some amazing photos while cruising through the colorful streets and iconic landmarks of the city.",
+          "searchQuery": "Classic Car Tour",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "El Capitolio",
+          "description": "Explore the majestic El Capitolio, a stunning building that resembles the U.S. Capitol. Take a guided tour to learn about its history and significance, and don’t miss the chance to take some memorable photos in front of this architectural gem.",
+          "searchQuery": "El Capitolio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Guarida",
+          "description": "End your day with dinner at La Guarida, one of Havana's most famous restaurants. Known for its exquisite cuisine and charming ambiance, it's the perfect place to indulge in a romantic meal. Be sure to try their signature dishes and enjoy the local wines.",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Live Music at Casa de la Música",
+          "description": "Cap off your evening with live Cuban music at Casa de la Música. Immerse yourself in the vibrant rhythms and enjoy the lively atmosphere as you dance the night away or simply soak in the sounds of talented local musicians.",
+          "searchQuery": "Casa de la Música",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Classic Cars and Cultural Experiences",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de los Artistas",
+          "description": "Start your day with a delightful breakfast at this charming café, known for its fresh pastries and strong Cuban coffee. The vibrant atmosphere is perfect for soaking in the local culture.",
+          "searchQuery": "Café de los Artistas",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Classic Car Tour",
+          "description": "Hop into a vintage classic car for a scenic tour around Havana. This is a fantastic way to explore the city's colorful streets and capture stunning photos of iconic landmarks like the Malecón and Plaza de la Revolución.",
+          "searchQuery": "Classic Car Tour",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Guarida",
+          "description": "Enjoy lunch at La Guarida, a famous restaurant set in a beautifully restored mansion. The menu features traditional Cuban dishes with a modern twist, and the ambiance is simply enchanting.",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Museum of the Revolution",
+          "description": "Visit the Museum of the Revolution to delve into Cuba's rich history. Housed in the former Presidential Palace, the museum showcases fascinating exhibits about the Cuban Revolution and its key figures.",
+          "searchQuery": "Museum of the Revolution",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Fabrica de Arte Cubano",
+          "description": "Explore the Fabrica de Arte Cubano, a cultural center that combines art, music, and gastronomy. This vibrant space often features live music performances, making it a perfect spot to enjoy some Cuban rhythms.",
+          "searchQuery": "Fabrica de Arte Cubano",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Cocinero",
+          "description": "Dine at El Cocinero, located next to the Fabrica de Arte. This trendy restaurant offers a fusion of Cuban and international cuisine, with a rooftop terrace that provides a stunning view of the city.",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Live Music at Casa de la Música",
+          "description": "End your day with a visit to Casa de la Música, where you can enjoy live Cuban music. Dance the night away to the sounds of salsa and son, immersing yourself in the vibrant nightlife of Havana.",
+          "searchQuery": "Casa de la Música",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Viñales",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Havana",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Viñales",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy the scenic views of the countryside during the bus ride."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Viñales Valley Tour",
+          "description": "Explore the stunning Viñales Valley, a UNESCO World Heritage site known for its lush tobacco fields and dramatic limestone mogotes. Capture breathtaking photos of the landscape and learn about the local farming practices.",
+          "searchQuery": "Viñales Valley",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Tobacco Farm",
+          "description": "Savor a traditional Cuban lunch at a local tobacco farm. Enjoy fresh ingredients and learn about the tobacco cultivation process while enjoying the beautiful surroundings.",
+          "searchQuery": "Tobacco Farm Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Tobacco Farm Tour",
+          "description": "Take a guided tour of the tobacco farm, where you can see how cigars are made and even try rolling one yourself. This immersive experience is perfect for photography and understanding Cuban culture.",
+          "searchQuery": "Tobacco Farm Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Classic Car Ride",
+          "description": "Hop into a classic American car for a scenic drive around Viñales. Capture stunning photos of the countryside and enjoy the nostalgic experience of cruising in a vintage vehicle.",
+          "searchQuery": "Classic Car Viñales",
+          "locationEn": "Viñales, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Havana",
+          "description": "Head back to Havana by bus, reflecting on the beautiful sights and experiences of the day.",
+          "locationEn": "Havana, Cuba",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at La Guarida",
+          "description": "Enjoy dinner at La Guarida, one of Havana's most famous restaurants, known for its delicious Cuban cuisine and vibrant atmosphere. Make sure to try their signature dishes and cocktails.",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cuban Music and Nightlife",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at La Casa",
+          "description": "Start your day with a delicious breakfast at La Casa, where you can enjoy traditional Cuban dishes like huevos rancheros and fresh tropical fruits. The vibrant atmosphere sets the perfect tone for your day in Havana.",
+          "searchQuery": "La Casa",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Classic Car Tour of Havana",
+          "description": "Hop into a classic American car for a guided tour around Havana. This is a fantastic way to capture stunning photos of the city's colorful streets and iconic landmarks, all while enjoying the nostalgic feel of these vintage vehicles.",
+          "searchQuery": "Classic Car Tour",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Cocinero",
+          "description": "Head to El Cocinero, a trendy restaurant located in a converted oil factory. Enjoy a fusion of Cuban and international cuisine while soaking in the artistic vibe of the surrounding area.",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit to Museo Nacional de Bellas Artes",
+          "description": "Explore the National Museum of Fine Arts, which showcases an impressive collection of Cuban art from the colonial period to contemporary works. This is a great opportunity to immerse yourself in Cuba's rich cultural history.",
+          "searchQuery": "Museo Nacional de Bellas Artes",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Old Havana (Habana Vieja)",
+          "description": "Take a leisurely stroll through the cobblestone streets of Old Havana, a UNESCO World Heritage site. Admire the colonial architecture, vibrant street art, and lively atmosphere as you explore this historic area.",
+          "searchQuery": "Old Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at La Guarida",
+          "description": "Enjoy dinner at La Guarida, one of Havana's most famous restaurants, known for its delicious Cuban cuisine and stunning views from the rooftop terrace. Make sure to try their signature dishes and cocktails.",
+          "searchQuery": "La Guarida",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Live Music at Casa de la Musica",
+          "description": "End your day with an unforgettable night of live music at Casa de la Musica. Experience the vibrant Cuban nightlife, dance to the rhythms of salsa, and enjoy the lively atmosphere with locals and fellow travelers.",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Art and History",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café El Escorial",
+          "description": "Start your day with a delicious breakfast at this charming café, known for its rich coffee and traditional Cuban pastries. The ambiance is perfect for soaking in the local vibe before a day of exploration.",
+          "searchQuery": "Café El Escorial",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Museo Nacional de Bellas Artes",
+          "description": "Explore the impressive collection of Cuban art at the Museo Nacional de Bellas Artes. From colonial to contemporary works, this museum showcases the rich artistic heritage of Cuba. Don't forget your camera for some stunning shots of the architecture and exhibits!",
+          "searchQuery": "Museo Nacional de Bellas Artes",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Bodeguita del Medio",
+          "description": "Enjoy a leisurely lunch at this iconic restaurant, famous for its mojitos and vibrant atmosphere. The walls are adorned with signatures from famous patrons, making it a perfect spot for a photo op!",
+          "searchQuery": "La Bodeguita del Medio",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Plaza Vieja",
+          "description": "Take a relaxing walk through Plaza Vieja, one of Havana's most picturesque squares. Surrounded by colorful buildings and lively street performers, it's a great place to capture the essence of Havana's culture and history.",
+          "searchQuery": "Plaza Vieja",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Classic Car Tour",
+          "description": "Hop into a classic American car for a scenic tour of Havana. This is a fantastic way to see the city while capturing stunning photos of the vintage vehicles against the backdrop of Havana's vibrant streets.",
+          "searchQuery": "Classic Car Tour Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at El Cocinero",
+          "description": "Dine at El Cocinero, a trendy restaurant located in a converted factory. Enjoy a fusion of Cuban and international cuisine while soaking in the artistic atmosphere. The rooftop terrace offers a beautiful view of the sunset.",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Live Music at Casa de la Musica",
+          "description": "End your day with some lively Cuban music at Casa de la Musica. Experience the rhythm of salsa and son, and maybe even join in on the dance floor! It's a perfect way to immerse yourself in Cuba's vibrant music scene.",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Havana",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Havana",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Havana Airport",
+          "time": "null"
+        },
+        "duration": "30m",
+        "memo": "Last-minute shopping before heading to the airport."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at La Casa",
+          "description": "Start your day with a hearty breakfast at La Casa, known for its delicious Cuban toast and fresh fruit juices. The vibrant atmosphere is perfect for soaking in the local culture one last time.",
+          "searchQuery": "La Casa",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Last-minute shopping at Almacenes San José",
+          "description": "Head to Almacenes San José, a bustling market where you can find unique souvenirs, handmade crafts, and local art. It's a great place to pick up gifts and mementos from your trip.",
+          "searchQuery": "Almacenes San José",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at El Cocinero",
+          "description": "Enjoy a relaxed lunch at El Cocinero, a trendy restaurant set in a former cooking oil factory. The rooftop terrace offers stunning views of the city, making it a perfect spot to unwind before your departure.",
+          "searchQuery": "El Cocinero",
+          "locationEn": "Havana, Cuba",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Classic Car Photo Tour",
+          "description": "Capture the essence of Havana with a classic car photo tour. Ride through the colorful streets in a vintage convertible, stopping at iconic landmarks for memorable photos. This is a must-do for any photography enthusiast!",
+          "searchQuery": "Classic Car Tour Havana",
+          "locationEn": "Havana, Cuba",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Live Music at Casa de la Musica",
+          "description": "Before you leave, enjoy some live Cuban music at Casa de la Musica. This vibrant venue is known for its lively atmosphere and talented musicians, providing a perfect farewell to the rhythms of Cuba.",
+          "searchQuery": "Casa de la Musica",
+          "locationEn": "Havana, Cuba",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Departure to Havana Airport",
+          "description": "Make your way to the airport for your departure. Reflect on the wonderful memories made during your stay in Havana as you head home.",
+          "searchQuery": "Havana Airport",
+          "locationEn": "Havana, Cuba",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

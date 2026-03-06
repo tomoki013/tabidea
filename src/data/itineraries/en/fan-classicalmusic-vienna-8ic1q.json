@@ -1,0 +1,270 @@
+{
+  "id": "5d3bf471-4bb7-4a3e-9509-e111fa23c2ba",
+  "destination": "Vienna",
+  "description": "Immerse yourself in the enchanting world of Vienna, where classical music reverberates through the grand halls and charming streets. This 3-day journey is designed for couples seeking a blend of cultural exploration, relaxation, and the thrill of discovering unique fan merchandise. From the majestic opera houses to quaint cafes, every moment in this city will resonate with the beauty of its rich history and vibrant present.",
+  "days": [
+    {
+      "day": 1,
+      "title": "A Symphony of Culture and History",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, butter, and jam, paired with a rich cup of coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Vienna State Opera",
+          "description": "Explore the magnificent Vienna State Opera, one of the most prestigious opera houses in the world. Take a guided tour to learn about its rich history and stunning architecture, or check the schedule for a matinee performance if you're lucky!",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Naschmarkt",
+          "description": "Head to Naschmarkt, Vienna's famous market, where you can find a variety of international food stalls and restaurants. Enjoy a leisurely lunch sampling local delicacies and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Naschmarkt",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Karlsplatz and the Karlskirche",
+          "description": "Stroll through Karlsplatz, a beautiful square surrounded by stunning architecture. Visit the impressive Karlskirche, known for its baroque style and the stunning frescoes inside. Don't forget to take a moment to relax in the nearby park.",
+          "searchQuery": "Karlskirche",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the House of Music",
+          "description": "Dive into the world of music at the House of Music, an interactive museum dedicated to sound and music. Explore exhibits on famous composers and even try your hand at conducting a virtual orchestra!",
+          "searchQuery": "House of Music",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plachutta",
+          "description": "Indulge in a traditional Viennese dinner at Plachutta, famous for its Tafelspitz (boiled beef). Enjoy the cozy atmosphere and savor the flavors of authentic Austrian cuisine.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Attend a Classical Concert",
+          "description": "End your day with a classical concert at one of Vienna's historic venues. Whether it's a performance at the Musikverein or a smaller venue, immerse yourself in the enchanting world of classical music.",
+          "searchQuery": "Musikverein",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Melodies and Memories",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, butter, and jam, paired with a rich cup of coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "House of Music",
+          "description": "Dive into the world of music at the House of Music, an interactive museum dedicated to sound and music. Explore exhibits on famous composers and even try your hand at conducting a virtual orchestra!",
+          "searchQuery": "House of Music",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Gasthaus Pöschl",
+          "description": "Savor a hearty lunch at Gasthaus Pöschl, a local favorite known for its traditional Austrian dishes. Try the Wiener Schnitzel or Tafelspitz for an authentic taste of Vienna.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Mozarthaus Vienna",
+          "description": "Visit the Mozarthaus, the former residence of Wolfgang Amadeus Mozart. Discover the life and works of this musical genius through fascinating exhibits and enjoy the beautiful architecture of the building.",
+          "searchQuery": "Mozarthaus Vienna",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "St. Stephen's Cathedral",
+          "description": "Explore the stunning St. Stephen's Cathedral, a masterpiece of Gothic architecture. Climb the tower for breathtaking views of the city and take in the intricate details of the cathedral's interior.",
+          "searchQuery": "St. Stephen's Cathedral",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plachutta Wollzeile",
+          "description": "Indulge in a delightful dinner at Plachutta Wollzeile, famous for its Tafelspitz. Enjoy a cozy atmosphere and a menu that showcases the best of Austrian cuisine.",
+          "searchQuery": "Plachutta Wollzeile",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in Stadtpark",
+          "description": "End your day with a relaxing stroll through Stadtpark, where you can admire the beautiful gardens and the famous statue of Johann Strauss. It's a perfect way to unwind after a day filled with music and culture.",
+          "searchQuery": "Stadtpark",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "A Relaxing Farewell",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, butter, and jam, paired with a rich cup of coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Belvedere Palace",
+          "description": "Explore the stunning Belvedere Palace, a masterpiece of Baroque architecture. Don't miss the impressive collection of Austrian art, including Gustav Klimt's famous 'The Kiss'. The gardens offer a perfect spot for a leisurely stroll.",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Gasthaus Pöschl",
+          "description": "Savor traditional Austrian cuisine at Gasthaus Pöschl, known for its cozy atmosphere and delicious Wiener Schnitzel. This local favorite is a great place to experience authentic flavors.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Schönbrunn Palace",
+          "description": "Visit the magnificent Schönbrunn Palace, a UNESCO World Heritage site. Take a guided tour of the opulent rooms and stroll through the beautiful gardens. The palace's rich history and stunning architecture make it a must-see.",
+          "searchQuery": "Schönbrunn Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Classical Music Souvenir Shopping",
+          "description": "Head to the nearby shops specializing in classical music memorabilia. Look for unique items like sheet music, CDs, and themed gifts to take home a piece of Vienna's musical heritage.",
+          "searchQuery": "Classical Music Souvenirs",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Plachutta",
+          "description": "End your day with a delightful dinner at Plachutta, famous for its Tafelspitz (boiled beef). Enjoy a warm and inviting atmosphere while indulging in this classic Viennese dish.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

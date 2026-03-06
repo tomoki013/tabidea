@@ -1,0 +1,359 @@
+{
+  "id": "b46250ea-b6bc-49ed-8a4f-346c058c3052",
+  "destination": "Vancouver",
+  "description": "Escape to the vibrant city of Vancouver, where the stunning natural beauty of mountains meets the dynamic urban landscape. Over four days, immerse yourself in a culinary adventure, explore captivating art scenes, and unwind in serene parks and beaches. This trip is designed for friends looking to indulge in delicious food, relax in picturesque surroundings, and soak up the local culture. Get ready to experience the best of Vancouver's diverse offerings!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Downtown Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jam Cafe",
+          "description": "Start your day with a hearty breakfast at Jam Cafe, known for its delicious brunch options like the famous French toast and pulled pork pancakes. It's a local favorite that will fuel you for a day of exploration.",
+          "searchQuery": "Jam Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Gastown",
+          "description": "Stroll through Gastown, Vancouver's oldest neighborhood, famous for its cobblestone streets and the iconic Gastown Steam Clock. Enjoy the unique shops and art galleries that line the streets, perfect for some leisurely shopping and photography.",
+          "searchQuery": "Gastown",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Flying Pig",
+          "description": "Indulge in a delicious lunch at The Flying Pig, a popular spot known for its farm-to-table dishes. Try their signature pork belly or the fresh seafood options for a taste of local flavors.",
+          "searchQuery": "The Flying Pig",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Canada Place",
+          "description": "Head over to Canada Place, a stunning waterfront complex that offers breathtaking views of the harbor and mountains. Take a leisurely walk along the promenade and enjoy the vibrant atmosphere.",
+          "searchQuery": "Canada Place",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Granville Island Public Market",
+          "description": "Make your way to Granville Island, a bustling hub of artisan shops and food vendors. Explore the Public Market, where you can sample local cheeses, baked goods, and fresh produce. Don't forget to grab a coffee at one of the cozy cafes.",
+          "searchQuery": "Granville Island Public Market",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Blue Water Cafe",
+          "description": "End your day with a delightful dinner at Blue Water Cafe, renowned for its sustainable seafood and elegant atmosphere. Enjoy a fresh seafood platter or their famous sushi, paired with a fine wine.",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at the Hotel",
+          "description": "After a fulfilling day, return to your hotel to unwind. Take some time to relax and reflect on the day's adventures, or enjoy a nightcap at the hotel bar.",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Culinary Delights and Nature",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jam Cafe",
+          "description": "Start your day with a hearty breakfast at Jam Cafe, known for its delicious brunch options like the famous 'Huevos Rancheros' and fluffy pancakes. The cozy atmosphere makes it a perfect spot to fuel up for the day ahead.",
+          "searchQuery": "Jam Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Stanley Park",
+          "description": "Take a leisurely stroll or rent a bike to explore Stanley Park, one of Vancouver's most iconic landmarks. Enjoy the stunning views of the city skyline and the ocean as you wander along the seawall, and don't miss the beautiful totem poles at Brockton Point.",
+          "searchQuery": "Stanley Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fish Shack",
+          "description": "Indulge in fresh seafood at The Fish Shack, where you can savor dishes like fish tacos and clam chowder. The casual vibe and outdoor seating make it a great place to relax after your morning adventures.",
+          "searchQuery": "The Fish Shack",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Vancouver Art Gallery",
+          "description": "Immerse yourself in the local art scene at the Vancouver Art Gallery. With a diverse collection of contemporary and historical works, this gallery showcases the creativity of both Canadian and international artists.",
+          "searchQuery": "Vancouver Art Gallery",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Yaletown",
+          "description": "Wander through the trendy Yaletown district, known for its chic boutiques and vibrant atmosphere. Stop by a local café for a refreshing drink and enjoy the unique architecture of this revitalized area.",
+          "searchQuery": "Yaletown",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Blue Water Cafe",
+          "description": "Treat yourself to a fine dining experience at Blue Water Cafe, renowned for its sustainable seafood and exquisite dishes. The elegant setting and exceptional service make it a memorable dining choice.",
+          "searchQuery": "Blue Water Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at English Bay Beach",
+          "description": "End your day by unwinding at English Bay Beach. Enjoy the sunset views over the ocean and the lively atmosphere as locals and tourists gather to relax and socialize.",
+          "searchQuery": "English Bay Beach",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Culture Immersion",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Medina",
+          "description": "Start your day with a delicious breakfast at Café Medina, famous for its Mediterranean-inspired dishes and delectable waffles. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Café Medina",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Vancouver Art Gallery",
+          "description": "Immerse yourself in the vibrant art scene at the Vancouver Art Gallery. Explore contemporary and historical exhibitions, including works by Canadian artists. Don't miss the stunning architecture of the building itself!",
+          "searchQuery": "Vancouver Art Gallery",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Naam",
+          "description": "Enjoy a hearty vegetarian lunch at The Naam, a beloved local eatery known for its delicious comfort food and laid-back vibe. Try their famous miso gravy on the veggie burger for a unique twist!",
+          "searchQuery": "The Naam",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through Vancouver's historic Chinatown, one of the oldest in North America. Visit the beautiful Dr. Sun Yat-sen Classical Chinese Garden and enjoy the vibrant atmosphere filled with shops and markets.",
+          "searchQuery": "Chinatown Vancouver",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "False Creek Seawall Walk",
+          "description": "Take a leisurely walk along the False Creek Seawall, enjoying stunning views of the city skyline and the mountains. This scenic route is perfect for relaxing and soaking in the beauty of Vancouver.",
+          "searchQuery": "False Creek Seawall",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Miku",
+          "description": "Indulge in a fine dining experience at Miku, renowned for its exquisite sushi and innovative Japanese cuisine. The waterfront location offers a beautiful view, making it a perfect end to your day.",
+          "searchQuery": "Miku",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Granville Island",
+          "description": "Wrap up your day with a visit to Granville Island. Explore the artisan shops, enjoy live performances, and take in the lively atmosphere of this cultural hub. It's a great place to unwind and enjoy the local vibe.",
+          "searchQuery": "Granville Island",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jam Cafe",
+          "description": "Start your day with a hearty breakfast at Jam Cafe, known for its delicious brunch options like the famous French toast and pulled pork pancakes. The cozy atmosphere makes it a perfect spot to relax before your day of exploration.",
+          "searchQuery": "Jam Cafe",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Kitsilano Beach",
+          "description": "Head to Kitsilano Beach, a local favorite for sunbathing and beach volleyball. Enjoy the stunning views of the mountains and the city skyline while taking a leisurely stroll along the sandy shore.",
+          "searchQuery": "Kitsilano Beach",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Boathouse",
+          "description": "Enjoy a delicious seafood lunch at The Boathouse, located right on the beach. Savor fresh catches and local ingredients while overlooking the ocean, making for a perfect dining experience.",
+          "searchQuery": "The Boathouse",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lynn Canyon Park",
+          "description": "Take a short drive to Lynn Canyon Park, where you can explore beautiful hiking trails and the stunning Lynn Canyon Suspension Bridge. The lush greenery and serene atmosphere provide a refreshing escape from the city.",
+          "searchQuery": "Lynn Canyon Park",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Vancouver",
+          "description": "Head back to Vancouver to relax before your departure. You can take a leisurely walk around the city or grab a coffee at a local café to unwind.",
+          "searchQuery": "Vancouver",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Miku",
+          "description": "Indulge in a memorable dinner at Miku, renowned for its exquisite sushi and waterfront views. The combination of fresh ingredients and artistic presentation will leave a lasting impression.",
+          "searchQuery": "Miku",
+          "locationEn": "Vancouver, Canada",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

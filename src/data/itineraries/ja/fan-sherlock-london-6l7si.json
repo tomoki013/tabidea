@@ -1,0 +1,636 @@
+{
+  "id": "45c9c090-caca-4ebc-a60c-add832450fe7",
+  "destination": "ロンドン",
+  "description": "ロンドンの街を巡りながら、推し活と文化・歴史、そしてグルメを楽しむ7日間の旅。特にシャーロック・ホームズに関連するスポットを訪れ、ファングッズを手に入れることができる充実したプランです。家族でのアクティブな日々を過ごしながら、ロンドンの魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ロンドン到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェでイングリッシュブレックファーストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "221Bベイカー街にあるシャーロック・ホームズ博物館を訪れます。ホームズの生活や事件をテーマにした展示があり、ファンにはたまらないスポットです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "ベイカー街周辺のカフェで軽食を。サンドイッチやスコーンを楽しみながら、ロンドンの雰囲気を味わいましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ロンドンの街を散策",
+          "description": "ベイカー街から徒歩で周辺を散策。シャーロック・ホームズに関連するスポットを巡りながら、ロンドンの街並みを楽しみます。",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シャーロック・ホームズ関連グッズの購入",
+          "description": "ベイカー街周辺のショップでシャーロック・ホームズのファングッズを探しましょう。お土産や記念品にぴったりのアイテムが見つかります。",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー",
+          "description": "ロンドンのパブで伝統的なフィッシュ・アンド・チップスを楽しみます。地元の人々と同じように、カジュアルな雰囲気で食事をしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、ゆっくりと過ごしましょう。",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "シャーロック・ホームズの足跡を辿る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェで、イングリッシュブレックファストを楽しみます。ソーセージやベーコン、トーストにスクランブルエッグがセットになったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "シャーロック・ホームズの公式博物館で、彼の生活や冒険を体験できます。博物館内には、彼の部屋や有名なアイテムが展示されており、ファンにはたまらないスポットです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ロンドン・パイでランチ",
+          "description": "ロンドン名物のパイを楽しめるお店で、肉や野菜の具材がたっぷり詰まったパイを味わいましょう。手軽に食べられるので、観光の合間にぴったりです。",
+          "searchQuery": "London Pie",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ベイカー街散策",
+          "description": "シャーロック・ホームズの住所として知られるベイカー街を散策。周辺には関連グッズを扱うショップも多く、ファングッズを探すのに最適なエリアです。",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロンドン塔",
+          "description": "歴史的なロンドン塔を訪れ、王室の宝物や歴史的な展示を見学します。塔の周りの美しい景色も楽しめるので、カメラをお忘れなく。",
+          "searchQuery": "Tower of London",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ファングッズショップ巡り",
+          "description": "ロンドン塔近くのショップで、シャーロック・ホームズ関連のファングッズを探しましょう。お土産や記念品にぴったりなアイテムが見つかるかもしれません。",
+          "locationEn": "London, United Kingdom",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のパブでディナー",
+          "description": "ロンドンの伝統的なパブで、フィッシュ＆チップスやビールを楽しみます。地元の雰囲気を味わいながら、旅の疲れを癒しましょう。",
+          "searchQuery": "local pub",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ロンドンの文化を満喫",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ロンドン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "大英博物館",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "地下鉄で大英博物館へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "大英博物館",
+          "description": "世界的に有名な大英博物館で、古代エジプトのミイラやロゼッタストーンなど、貴重な文化財を見学します。入場は無料ですが、寄付をするとより良い体験ができます。",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのカフェでランチ",
+          "description": "大英博物館近くのカフェで軽食を楽しみます。サンドイッチやスープなど、手軽に食べられるメニューが豊富です。",
+          "searchQuery": "Cafe near British Museum",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コヴェント・ガーデン散策",
+          "description": "コヴェント・ガーデンの市場やショップを散策し、ストリートパフォーマンスを楽しみながら、ファングッズを探します。特にSherlock関連のアイテムが見つかるかも！",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "221Bベイカー街にあるシャーロック・ホームズ博物館を訪れ、ホームズの世界に浸ります。展示物やグッズも充実しており、ファンにはたまらないスポットです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ロンドン・アイ",
+          "description": "ロンドンのシンボル、ロンドン・アイに乗って、街の美しい景色を一望します。夕暮れ時の景色は特に素晴らしいので、カメラをお忘れなく！",
+          "searchQuery": "London Eye",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のパブでディナー",
+          "description": "ロンドンの伝統的なパブでフィッシュ＆チップスを楽しみます。地元の人々と交流しながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Local Pub",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ロンドンの歴史を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェでイングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ウェストミンスター寺院",
+          "description": "歴史的なウェストミンスター寺院を訪れます。ゴシック様式の美しい建築と、イギリスの王族の葬儀が行われる場所としても有名です。内部の荘厳さに圧倒されることでしょう。",
+          "searchQuery": "Westminster Abbey",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "バッキンガム宮殿",
+          "description": "バッキンガム宮殿へ向かい、衛兵交代式を見学します。宮殿の壮大な外観を背景に、イギリスの伝統を感じることができます。",
+          "searchQuery": "Buckingham Palace",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くのカフェでランチ",
+          "description": "バッキンガム宮殿近くのカフェで軽食を楽しみます。サンドイッチやスコーンなど、イギリスの軽食を味わいながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "セント・ジェームズ公園散策",
+          "description": "セント・ジェームズ公園を散策し、自然の美しさを楽しみます。公園内の池や花壇を眺めながら、リラックスしたひとときを過ごせます。",
+          "searchQuery": "St James's Park",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "シャーロック・ホームズのファンにはたまらない、221Bベイカー街にある博物館を訪れます。ホームズの生活や冒険を体験できる展示が盛りだくさんです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ファングッズ購入",
+          "description": "博物館近くのショップでシャーロック・ホームズ関連のファングッズを購入します。お土産や記念品にぴったりのアイテムが揃っています。",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のパブでディナー",
+          "description": "ロンドンの伝統的なパブでディナーを楽しみます。フィッシュ＆チップスやパイなど、イギリスの定番料理を味わいながら、地元の雰囲気を満喫しましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "グルメとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェでイングリッシュブレックファーストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ボローハムマーケット散策",
+          "description": "ロンドンの人気マーケット、ボローハムマーケットで地元の食材や手作りの品々を楽しみます。新鮮なフルーツやスイーツ、ストリートフードを味わいながら、ショッピングも楽しめます。",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ボローハムマーケットでランチ",
+          "description": "マーケット内の屋台で、ロンドン名物のフィッシュ＆チップスや、各国のストリートフードを楽しみます。食べ歩きしながら、気になるお店を見つけるのも楽しいです。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "オックスフォードストリートでショッピング",
+          "description": "ロンドンのメインショッピングストリート、オックスフォードストリートへ。ファッションや雑貨のお店が立ち並び、ショッピングを楽しむことができます。特に、推し活にぴったりのグッズを探してみましょう。",
+          "searchQuery": "Oxford Street",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シャーロック・ホームズ関連グッズショップ訪問",
+          "description": "シャーロック・ホームズのファングッズを扱うショップを訪れます。特に「シャーロック・ホームズ博物館」近くのショップでは、オリジナルグッズや書籍が豊富に揃っています。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナーにロンドンパブで食事",
+          "description": "ロンドンの伝統的なパブで、ビールと共にパブグラブを楽しみます。フィッシュ＆チップスやパイなど、地元の味を堪能しましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ロンドンの隠れた魅力を探る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ロンドン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ノッティングヒル",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "地下鉄でノッティングヒルへ移動します。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "ノッティングヒル散策",
+          "description": "カラフルな家々が並ぶノッティングヒルを散策。特にポートベローマーケットの雰囲気は独特で、週末には多くの人で賑わいます。",
+          "searchQuery": "Notting Hill",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ポートベローマーケットでショッピング",
+          "description": "アンティークやファングッズが豊富に揃うポートベローマーケットで、掘り出し物を探しましょう。特にシャーロック関連のアイテムが見つかるかも！",
+          "searchQuery": "Portobello Market",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "ポートベローマーケット近くのカフェで、サンドイッチやスコーンを楽しみながら、ロンドンの雰囲気を満喫。",
+          "searchQuery": "Cafe near Portobello Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "221Bベイカー街にあるシャーロック・ホームズ博物館を訪れ、名探偵の世界に浸りましょう。展示品やセットがリアルで、ファンにはたまらないスポットです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハイドパークでリラックス",
+          "description": "ハイドパークでのんびりとした時間を過ごします。美しい庭園や湖を眺めながら、家族と一緒にピクニックを楽しむのもおすすめです。",
+          "searchQuery": "Hyde Park",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ロンドンのパブでディナー",
+          "description": "地元のパブでフィッシュ＆チップスを味わいながら、ロンドンの夜を楽しみましょう。カジュアルな雰囲気で、家族での食事にぴったりです。",
+          "searchQuery": "Pub in London",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のロンドン散策",
+          "description": "夜のロンドンを散策し、ライトアップされた名所を楽しみます。特にビッグ・ベンやロンドン・アイの夜景は美しいです。",
+          "searchQuery": "London Eye",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ロンドンから帰国",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ロンドン",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "日本",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "ロンドン・ヒースロー空港からの直行便で帰国します。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのホテルで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストに豆の煮込みがついたボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "London, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "シャーロック・ホームズ博物館",
+          "description": "シャーロック・ホームズの物語を深く知ることができる博物館です。221Bベイカー街に位置し、ホームズの生活空間を再現した展示が魅力的。ファンにはたまらないスポットです。",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, United Kingdom",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ベイカー街周辺でファングッズ探し",
+          "description": "シャーロック・ホームズ関連のグッズを探しに、ベイカー街周辺のショップを散策します。特に、シャーロック・ホームズの関連商品が豊富な店が多いので、思い出の品を見つけるチャンス！",
+          "locationEn": "London, United Kingdom",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ロンドン・ヒースロー空港でランチ",
+          "description": "空港内のカフェで軽食を取りながら、帰国の準備を整えます。サンドイッチやサラダなど、手軽に食べられるメニューが豊富です。",
+          "locationEn": "London Heathrow Airport, United Kingdom",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ロンドン・ヒースロー空港から帰国",
+          "description": "ロンドン・ヒースロー空港から日本へ向けて出発します。思い出に残る旅を振り返りながら、次の旅を楽しみに。",
+          "locationEn": "London Heathrow Airport, United Kingdom",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

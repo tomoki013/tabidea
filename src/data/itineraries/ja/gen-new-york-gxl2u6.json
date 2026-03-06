@@ -1,0 +1,275 @@
+{
+  "id": "4658e125-5e35-435e-b695-c86631cdbc87",
+  "destination": "ニューヨーク",
+  "description": "家族で楽しむニューヨークの3日間。アートと美食を満喫しながら、子供たちも楽しめるアクティビティを織り交ぜたプランです。街のエネルギーを感じながら、家族の絆を深める素敵な旅に出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アートと文化の冒険",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、家族みんなで満足できるメニューです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークで自然を満喫。子供たちと一緒に遊具で遊んだり、ボートを借りて湖を楽しんだり、ピクニックをするのもおすすめです。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "セントラルパーク近くのピザ屋でランチ",
+          "description": "地元の人に人気のピザ屋で、ニューヨークスタイルのピザを堪能。大きなスライスをシェアしながら、家族で楽しいランチタイムを過ごしましょう。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "メトロポリタン美術館訪問",
+          "description": "世界的に有名なメトロポリタン美術館で、アートの宝庫を探索。子供向けのアートワークショップも開催されているので、参加してみるのも良い思い出になります。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アッパーイーストサイド散策",
+          "description": "アッパーイーストサイドの高級住宅街を散策しながら、アートギャラリーやブティックを楽しみます。おしゃれなカフェで一休みするのもおすすめ。",
+          "searchQuery": "Upper East Side",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アッパーイーストサイドのレストランでディナー",
+          "description": "家族で楽しめるカジュアルなレストランで、アメリカン料理を堪能。ボリューム満点のハンバーガーやサラダをシェアして、楽しい夕食を過ごしましょう。",
+          "searchQuery": "The Smith",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。家族で今日の思い出を語り合いながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ニューヨークの名所巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークで自然を満喫。子供たちと一緒に遊具で遊んだり、ボートを借りて湖を楽しんだり、リラックスした時間を過ごせます。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のピザ屋でランチ",
+          "description": "ニューヨーク名物のピザを地元の人気店で味わいます。薄い生地にたっぷりのトッピングが特徴で、子供たちも大好きな味。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アメリカ自然史博物館",
+          "description": "子供たちが楽しめるアメリカ自然史博物館を訪れます。恐竜の化石や宇宙の展示など、見どころが満載で、家族全員が楽しめるスポットです。",
+          "searchQuery": "American Museum of Natural History",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館でアートを堪能。多様なコレクションがあり、子供向けのプログラムも充実しているので、家族で楽しめます。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "タイムズスクエアでディナー",
+          "description": "賑やかなタイムズスクエアで、ファミリーレストランでのディナーを楽しみます。多彩なメニューから選べるので、子供たちも満足できる食事が見つかります。",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ブロードウェイのミュージカル鑑賞",
+          "description": "家族で楽しめるブロードウェイのミュージカルを観賞。子供たちも楽しめる内容の作品を選んで、素晴らしい夜を締めくくります。",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "グルメとアートの締めくくり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "チェルシーマーケット散策",
+          "description": "アートとグルメが融合したチェルシーマーケットで、地元の食材やユニークなショップを楽しみます。特にフードホールでは、様々な料理を試すことができ、家族みんなでシェアするのも楽しいです。",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "チェルシーマーケットでランチ",
+          "description": "マーケット内の人気店で、タコスやサンドイッチなどを楽しみます。新鮮な食材を使った料理が多く、子供たちも喜ぶメニューが揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハイライン散策",
+          "description": "チェルシーマーケットから徒歩でハイラインへ。高架鉄道を利用した公園で、緑に囲まれた散策路を楽しみながら、アート作品や街の景色を堪能します。",
+          "searchQuery": "The High Line",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グラウンドゼロ訪問",
+          "description": "9/11メモリアルを訪れ、歴史を学びながら静かな時間を過ごします。周囲の美しい公園も散策し、心を落ち着けるひとときを。",
+          "searchQuery": "9/11 Memorial",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "近くのレストランでディナー",
+          "description": "グラウンドゼロ近くのレストランで、アメリカンスタイルのディナーを楽しみます。家族向けのメニューが豊富で、子供たちも満足できる内容です。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。家族での楽しい思い出を振り返りながら、リラックスした夜を過ごしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

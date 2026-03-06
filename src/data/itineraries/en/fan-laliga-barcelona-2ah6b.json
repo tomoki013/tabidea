@@ -1,0 +1,655 @@
+{
+  "id": "d9e6ea87-7612-4373-bf06-a4fe36533a49",
+  "destination": "Barcelona",
+  "description": "Immerse yourself in the vibrant culture and history of Barcelona, a city where every corner tells a story. From the stunning architecture of Gaudí to the lively atmosphere of La Rambla, this 7-day adventure is designed for families looking to explore, relax, and indulge in their passions. With a special focus on LaLiga, you'll visit iconic football spots and find the perfect fan merchandise to bring home. Get ready for an unforgettable journey filled with art, history, and family-friendly activities!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Barcelona",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de l'Opera",
+          "description": "Start your day with a delicious breakfast at this charming café located on La Rambla. Enjoy fresh pastries and coffee while soaking in the vibrant atmosphere of the city.",
+          "searchQuery": "Café de l'Opera",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore La Rambla",
+          "description": "Stroll down the famous La Rambla, a lively street filled with shops, street performers, and local vendors. Don't forget to stop by the Mercat de Sant Josep de la Boqueria for some fresh fruit or local delicacies.",
+          "searchQuery": "La Rambla",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Quim de la Boqueria",
+          "description": "Enjoy a casual lunch at this popular spot within the Boqueria market, known for its fresh seafood and tapas. It's a great way to experience local flavors in a bustling environment.",
+          "searchQuery": "El Quim de la Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Gothic Quarter",
+          "description": "Wander through the narrow, winding streets of the Gothic Quarter, where you can admire medieval architecture and visit the stunning Barcelona Cathedral. This area is rich in history and perfect for family exploration.",
+          "searchQuery": "Gothic Quarter",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "LaLiga Experience",
+          "description": "Head to the LaLiga Experience, an interactive exhibition that showcases the history and excitement of Spanish football. It's a fun and engaging way for the whole family to learn about LaLiga and its teams.",
+          "searchQuery": "LaLiga Experience",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at La Fonda",
+          "description": "Enjoy a family-friendly dinner at La Fonda, where you can savor traditional Catalan dishes in a cozy atmosphere. The restaurant is known for its paella and tapas, making it a perfect end to your first day.",
+          "searchQuery": "La Fonda",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll at Barceloneta Beach",
+          "description": "Take a relaxing evening stroll along Barceloneta Beach. The sound of the waves and the beautiful sunset provide a perfect backdrop to unwind after a busy day of exploring.",
+          "searchQuery": "Barceloneta Beach",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Gaudí's Masterpieces",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its delicious hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Sagrada Família",
+          "description": "Visit the iconic Sagrada Família, Antoni Gaudí's masterpiece. Marvel at the intricate facades and stunning interior, which is still under construction but breathtaking nonetheless. Be sure to book your tickets in advance to avoid long lines!",
+          "searchQuery": "Sagrada Família",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Cervecería Catalana",
+          "description": "Enjoy a leisurely lunch at Cervecería Catalana, known for its tapas and vibrant atmosphere. Try their patatas bravas and seafood dishes, which are favorites among locals and tourists alike.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Park Güell",
+          "description": "Stroll through Park Güell, another of Gaudí's creations. The colorful mosaics and whimsical structures provide a perfect backdrop for family photos. Don't forget to explore the gardens and enjoy the panoramic views of the city.",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Casa Batlló",
+          "description": "Visit Casa Batlló, a stunning example of Gaudí's architectural genius. The building's unique design and vibrant colors make it a must-see. Take the audio guide to learn about the fascinating history behind this UNESCO World Heritage site.",
+          "searchQuery": "Casa Batlló",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for LaLiga Merchandise at FC Barcelona Store",
+          "description": "Head to the official FC Barcelona store to pick up some LaLiga merchandise. From jerseys to souvenirs, this is the perfect place to find something special for the family to remember your trip.",
+          "searchQuery": "FC Barcelona Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Fonda",
+          "description": "End your day with a family-friendly dinner at La Fonda, where you can enjoy traditional Spanish dishes in a cozy atmosphere. Their paella is highly recommended, and there's something for everyone on the menu.",
+          "searchQuery": "La Fonda",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "LaLiga Experience",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Brunch & Cake",
+          "description": "Start your day with a delicious breakfast at Brunch & Cake, known for its vibrant dishes and cozy atmosphere. Try their famous pancakes or avocado toast to fuel up for an exciting day ahead!",
+          "searchQuery": "Brunch & Cake",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Camp Nou Stadium Tour",
+          "description": "Visit the iconic Camp Nou, home of FC Barcelona. The guided tour takes you through the stadium, the locker rooms, and the pitch, giving you a behind-the-scenes look at one of the world's most famous football clubs. Don't forget to take plenty of photos!",
+          "searchQuery": "Camp Nou",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "FC Barcelona Museum",
+          "description": "Explore the FC Barcelona Museum, which showcases the club's rich history and achievements. From trophies to memorabilia, this museum is a must-visit for any football fan. Kids will love the interactive exhibits!",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Bodega 1900",
+          "description": "Enjoy a delightful lunch at La Bodega 1900, where you can savor traditional tapas with a modern twist. The atmosphere is family-friendly, making it a great spot to relax and refuel after your morning activities.",
+          "searchQuery": "La Bodega 1900",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit La Masia",
+          "description": "Take a short walk to La Masia, the famous youth academy of FC Barcelona. While tours are limited, you can explore the surrounding area and appreciate the importance of this institution in developing future football stars.",
+          "searchQuery": "La Masia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for FC Barcelona Merchandise",
+          "description": "Head to the official FC Barcelona store located near Camp Nou to pick up some fan gear. From jerseys to scarves, there’s something for everyone in the family to show their support for the team!",
+          "searchQuery": "FC Barcelona Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relax at Parc de la Ciutadella",
+          "description": "After a busy day, unwind at Parc de la Ciutadella. This beautiful park features a lake, playgrounds, and plenty of green space for the kids to run around. It's the perfect spot to relax and enjoy the evening.",
+          "searchQuery": "Parc de la Ciutadella",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Nacional",
+          "description": "End your day with dinner at El Nacional, a unique dining space that offers a variety of Spanish cuisines. Choose from different sections featuring seafood, tapas, and more, all in a lively atmosphere that the whole family will enjoy.",
+          "searchQuery": "El Nacional",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its delicious hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local culture.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Picasso Museum",
+          "description": "Explore the Picasso Museum, which houses one of the most extensive collections of artworks by the 20th-century Spanish artist Pablo Picasso. The museum is located in the heart of the Gothic Quarter and offers a fascinating insight into Picasso's formative years.",
+          "searchQuery": "Picasso Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at El Xampanyet",
+          "description": "Enjoy a delightful lunch at El Xampanyet, a popular tapas bar known for its vibrant atmosphere and delicious Catalan dishes. Don't miss their signature cava and a variety of small plates to share with the family.",
+          "searchQuery": "El Xampanyet",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through El Born District",
+          "description": "After lunch, take a leisurely stroll through the El Born district, known for its narrow streets, unique boutiques, and artistic vibe. This area is perfect for shopping for LaLiga merchandise and local crafts.",
+          "searchQuery": "El Born",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Barceloneta Beach",
+          "description": "Head to Barceloneta Beach for some relaxation time. Let the kids play in the sand while you enjoy the sun and the beautiful Mediterranean views. There are also beachside cafés where you can grab a refreshing drink.",
+          "searchQuery": "Barceloneta Beach",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at La Barceloneta",
+          "description": "Savor a delicious seafood dinner at La Barceloneta, a restaurant known for its fresh catch and traditional paella. The family-friendly atmosphere makes it a great choice for dinner after a day of exploration.",
+          "searchQuery": "La Barceloneta",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Beach Promenade",
+          "description": "End your day with a relaxing evening walk along the beach promenade. Enjoy the sea breeze and the lively atmosphere as you reflect on the day's adventures with your family.",
+          "searchQuery": "Barceloneta Beach Promenade",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Montserrat",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de l'Academia",
+          "description": "Start your day with a hearty breakfast at this charming café known for its delicious pastries and local coffee. It's a great way to fuel up before your adventure to Montserrat!",
+          "searchQuery": "Café de l'Academia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Travel to Montserrat",
+          "description": "Take a scenic train ride from Barcelona to Montserrat. The journey offers stunning views of the Catalan countryside, setting the stage for a day of exploration.",
+          "searchQuery": "Montserrat",
+          "locationEn": "Montserrat, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Montserrat Monastery",
+          "description": "Explore the iconic Montserrat Monastery, perched high in the mountains. Don't miss the chance to see the Black Madonna and enjoy the breathtaking views from the monastery's terrace.",
+          "searchQuery": "Montserrat Monastery",
+          "locationEn": "Montserrat, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Montserrat",
+          "description": "Enjoy a traditional Catalan meal at the restaurant located near the monastery. Try local specialties like 'canelons' or 'escalivada' while soaking in the mountain atmosphere.",
+          "searchQuery": "Restaurant Montserrat",
+          "locationEn": "Montserrat, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Hiking Trails at Montserrat",
+          "description": "After lunch, embark on one of the many hiking trails around Montserrat. Choose a family-friendly route that offers stunning views and a chance to connect with nature.",
+          "searchQuery": "Montserrat Hiking Trails",
+          "locationEn": "Montserrat, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Montserrat Museum",
+          "description": "Explore the Montserrat Museum, which houses a collection of art and artifacts, including works by famous artists. It's a great way to learn more about the cultural significance of Montserrat.",
+          "searchQuery": "Montserrat Museum",
+          "locationEn": "Montserrat, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Barcelona",
+          "description": "Head back to Barcelona via train, reflecting on the day's adventures and the stunning landscapes you've witnessed.",
+          "searchQuery": "Montserrat",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Paradeta",
+          "description": "End your day with a casual seafood dinner at La Paradeta, where you can choose fresh seafood and have it cooked to your liking. A fun and interactive dining experience for the whole family!",
+          "searchQuery": "La Paradeta",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Shopping and Local Cuisine",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Granja Viader",
+          "description": "Start your day with a traditional Catalan breakfast at Granja Viader, famous for its rich hot chocolate and churros. This charming café has been serving locals since 1870, making it a perfect spot to soak in the local culture.",
+          "searchQuery": "Granja Viader",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit La Boqueria Market",
+          "description": "Explore the vibrant La Boqueria Market, where you can find fresh produce, local delicacies, and artisanal products. It's a feast for the senses, and a great place to pick up some unique souvenirs or snacks for later.",
+          "searchQuery": "La Boqueria Market",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at El Quim de la Boqueria",
+          "description": "Enjoy a delicious lunch at El Quim de la Boqueria, located within the market. Their seafood dishes are particularly popular, and you can watch the chefs at work while you dine.",
+          "searchQuery": "El Quim de la Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Passeig de Gràcia",
+          "description": "Stroll along Passeig de Gràcia, known for its stunning architecture and high-end shops. Don't miss the chance to see Gaudí's Casa Batlló and Casa Milà (La Pedrera) as you walk.",
+          "searchQuery": "Passeig de Gràcia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit FC Barcelona Museum",
+          "description": "Dive into the world of LaLiga at the FC Barcelona Museum. Learn about the club's rich history, see trophies, and explore interactive exhibits. A must-visit for any football fan!",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for FC Barcelona Merchandise",
+          "description": "After the museum, head to the official FC Barcelona store nearby to grab some fan merchandise. From jerseys to souvenirs, it's the perfect place to find something special to remember your trip.",
+          "searchQuery": "FC Barcelona Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Cervecería Catalana",
+          "description": "End your day with a delightful dinner at Cervecería Catalana, known for its tapas and vibrant atmosphere. It's a family-friendly spot where you can try a variety of dishes to share.",
+          "searchQuery": "Cervecería Catalana",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Barcelona",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight from Barcelona to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Brunch & Cake",
+          "description": "Start your day with a delightful breakfast at Brunch & Cake, known for its colorful and delicious dishes. The pancakes and avocado toast are particularly popular with families!",
+          "searchQuery": "Brunch & Cake",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Camp Nou",
+          "description": "Explore the iconic home of FC Barcelona, Camp Nou. Take a guided tour to learn about the club's rich history and see the trophy room. Don't forget to check out the official store for some fan merchandise!",
+          "searchQuery": "Camp Nou",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "La Liga Experience",
+          "description": "Dive into the world of La Liga at this interactive exhibition. It's a fun way for the kids to learn about Spanish football and its stars through engaging displays and activities.",
+          "searchQuery": "La Liga Experience",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Cervecería 100 Montaditos",
+          "description": "Enjoy a casual lunch at Cervecería 100 Montaditos, where you can choose from a variety of delicious montaditos (small sandwiches) and tapas. It's a great spot for families with its relaxed atmosphere.",
+          "searchQuery": "Cervecería 100 Montaditos",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shopping for FC Barcelona Merchandise",
+          "description": "Spend some time shopping for FC Barcelona merchandise at the official store near Camp Nou. From jerseys to souvenirs, it's a perfect way to take a piece of the experience home!",
+          "searchQuery": "FC Barcelona Official Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

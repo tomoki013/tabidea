@@ -1,0 +1,297 @@
+{
+  "id": "45fd1d99-89d4-48ef-a93f-10b8ea712a4c",
+  "destination": "Athens",
+  "description": "Immerse yourself in the vibrant history and culture of Athens, where ancient ruins meet modern life. This 3-day solo adventure is designed for the history enthusiast and pop culture fan alike, offering a unique blend of iconic landmarks and local treasures. From the majestic Acropolis to the bustling streets filled with memorabilia, every moment promises to be a delightful exploration of Greece's rich heritage and contemporary charm.",
+  "heroImage": "https://images.unsplash.com/photo-1616171497961-a2a9ea02d790?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTEzNTB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Lazarescu Alexandra",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lazares?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Ancient Wonders",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious Greek breakfast at a cozy café in Plaka. Enjoy traditional dishes like feta cheese, olives, and fresh bread, all while soaking in the charming atmosphere of this historic neighborhood.",
+          "searchQuery": "Plaka Café",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Acropolis",
+          "description": "Explore the iconic Acropolis, a UNESCO World Heritage site. Marvel at the Parthenon and enjoy breathtaking views of Athens from the top. Early morning visits are recommended to avoid crowds and the heat.",
+          "searchQuery": "Acropolis",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Taverna",
+          "description": "Savor authentic Greek cuisine at a local taverna. Try dishes like moussaka or souvlaki, paired with a glass of ouzo for a true taste of Greece. The taverna's ambiance will enhance your dining experience.",
+          "searchQuery": "Traditional Greek Taverna",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Acropolis Museum",
+          "description": "Visit the Acropolis Museum, which houses artifacts from the Acropolis site. The modern architecture and engaging exhibits provide a deeper understanding of ancient Greek culture and history.",
+          "searchQuery": "Acropolis Museum",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Plaka",
+          "description": "Take a leisurely walk through the picturesque streets of Plaka. Browse local shops for unique souvenirs and fan merchandise, perfect for your 'oshi' activities. Don't forget to stop for a refreshing gelato!",
+          "searchQuery": "Plaka Shopping",
+          "locationEn": "Athens, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Rooftop Restaurant",
+          "description": "Enjoy dinner at a rooftop restaurant with stunning views of the Acropolis illuminated at night. Indulge in a fine dining experience featuring modern Greek cuisine, making your evening truly memorable.",
+          "searchQuery": "Rooftop Restaurant Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in the Ancient Agora",
+          "description": "End your day with a peaceful evening stroll through the Ancient Agora. This historical site offers a glimpse into ancient Athenian life and is beautifully lit at night, creating a magical atmosphere.",
+          "searchQuery": "Ancient Agora",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Avissinia",
+          "description": "Start your day with a delightful breakfast at Café Avissinia, known for its cozy atmosphere and delicious Greek pastries. Try their traditional Greek yogurt with honey and nuts for a refreshing start.",
+          "searchQuery": "Café Avissinia",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit the National Archaeological Museum",
+          "description": "Explore one of the world's most important archaeological museums, housing a vast collection of ancient Greek artifacts. Don't miss the stunning gold mask of Agamemnon and the beautiful sculptures that tell the story of Greece's rich history.",
+          "searchQuery": "National Archaeological Museum",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Ta Karamanlidika Tou Fani",
+          "description": "Enjoy a leisurely lunch at this deli-style restaurant, famous for its cured meats and traditional Greek dishes. The atmosphere is vibrant, and the flavors are authentic, making it a perfect spot to recharge.",
+          "searchQuery": "Ta Karamanlidika Tou Fani",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Monastiraki Flea Market",
+          "description": "Wander through the bustling Monastiraki Flea Market, where you can find everything from vintage clothing to unique souvenirs. It's a great place to hunt for fan merchandise and local crafts while soaking in the lively atmosphere.",
+          "searchQuery": "Monastiraki Flea Market",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Psiri District",
+          "description": "Head to the artistic Psiri district, known for its vibrant street art and trendy shops. This area is perfect for finding unique fan goods and enjoying the local culture. Stop by a café for a refreshing drink and people-watching.",
+          "searchQuery": "Psiri District",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Oineas Restaurant",
+          "description": "Indulge in a delicious dinner at Oineas, where you can savor traditional Greek dishes with a modern twist. The ambiance is warm and inviting, making it a great place to unwind after a day of exploration.",
+          "searchQuery": "Oineas Restaurant",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at the Acropolis",
+          "description": "End your day with a serene evening walk around the Acropolis. The illuminated Parthenon at night is a breathtaking sight, and the surrounding area offers a peaceful atmosphere to reflect on your day.",
+          "searchQuery": "Acropolis of Athens",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Final Discoveries and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Avissinia",
+          "description": "Start your day with a delightful breakfast at Café Avissinia, known for its cozy atmosphere and delicious Greek pastries. Try the traditional Greek yogurt with honey and nuts for a perfect energy boost!",
+          "searchQuery": "Café Avissinia",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Syntagma Square",
+          "description": "Visit Syntagma Square, the heart of Athens, where you can witness the changing of the guard at the Hellenic Parliament. The square is surrounded by beautiful neoclassical buildings and is a great spot for people-watching.",
+          "searchQuery": "Syntagma Square",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore Kolonaki District",
+          "description": "Stroll through the upscale Kolonaki district, known for its chic boutiques and art galleries. This area is perfect for finding unique souvenirs and fan merchandise from your favorite Greek artists.",
+          "searchQuery": "Kolonaki",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Ta Karamanlidika Tou Fani",
+          "description": "Enjoy a leisurely lunch at Ta Karamanlidika Tou Fani, a deli and restaurant famous for its cured meats and cheeses. Savor traditional Greek flavors in a warm and inviting setting.",
+          "searchQuery": "Ta Karamanlidika Tou Fani",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Athens Central Market",
+          "description": "Head to the Athens Central Market, a vibrant hub of local produce, meats, and spices. It's a fantastic place to immerse yourself in the local culture and pick up some unique food souvenirs.",
+          "searchQuery": "Athens Central Market",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Acropolis Museum",
+          "description": "Explore the Acropolis Museum, which houses artifacts from the Acropolis site. The museum's modern architecture and stunning exhibits provide a deep insight into ancient Greek history.",
+          "searchQuery": "Acropolis Museum",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Strofi",
+          "description": "End your day with dinner at Strofi, where you can enjoy traditional Greek dishes with a breathtaking view of the Acropolis. The ambiance is perfect for a relaxing evening after a day of exploration.",
+          "searchQuery": "Strofi",
+          "locationEn": "Athens, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll around Plaka",
+          "description": "Take a leisurely evening stroll through the charming streets of Plaka, the old neighborhood of Athens. Enjoy the vibrant atmosphere, and perhaps stop for a drink at one of the local tavernas.",
+          "searchQuery": "Plaka",
+          "locationEn": "Athens, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

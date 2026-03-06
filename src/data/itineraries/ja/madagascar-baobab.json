@@ -1,0 +1,679 @@
+{
+  "id": "047b8793-1bc9-457e-9c0e-af149b0b9c58",
+  "destination": "ムロンダバ",
+  "description": "自然の驚異と動物たちの楽園、ムロンダバへようこそ。ここでは、バオバブの木々が立ち並ぶ幻想的な道や、野生のサルたちが横っ飛びする姿を間近で見ることができます。友人と共に、アドベンチャーとフォトジェニックな瞬間を満喫する8日間の旅をお楽しみください。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からムロンダバへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "アンタナナリボ",
+          "time": "14:00"
+        },
+        "duration": "5h",
+        "memo": "東京からアンタナナリボへの直行便を利用します。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "アンタナナリボ観光",
+          "description": "アンタナナリボの街を散策し、地元の文化や歴史を感じることができます。特に、ロバの市場や旧市街の風情ある街並みが魅力的です。",
+          "searchQuery": "Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランで夕食",
+          "description": "アンタナナリボの地元料理を楽しむために、人気のレストランで夕食を取ります。新鮮なシーフードやマダガスカルの特産品を味わえます。",
+          "searchQuery": "La Varangue",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ムロンダバへの移動に備えて、アンタナナリボのホテルにチェックインします。快適な宿泊施設でリラックスしましょう。",
+          "searchQuery": "Hotel Tamboho",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "バオバブ街道の探検",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ムロンダバのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや、モロンダバ特製のパンが絶品です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "バオバブ街道へ出発",
+          "description": "バオバブ街道へ向かう途中、地元の風景を楽しみながらのドライブ。道沿いには美しい自然が広がり、写真撮影にも最適です。",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バオバブ街道散策",
+          "description": "バオバブの巨木が立ち並ぶ幻想的な風景を堪能します。特に朝の光の中での散策は、フォトジェニックな瞬間がたくさん！",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "バオバブ街道近くのレストランで、モロンダバの伝統料理を楽しみます。新鮮な魚料理や、スパイシーな野菜料理が絶品です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "バオバブ街道での写真撮影",
+          "description": "バオバブの木々をバックに、友人と一緒に素敵な写真を撮影します。特に夕暮れ時の光景は息を呑む美しさです。",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "サルの観察ツアー",
+          "description": "バオバブ街道周辺で、横っ飛びするサルを観察するツアーに参加します。自然の中でのサルの動きはとても楽しい体験です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、夕食",
+          "description": "ムロンダバのホテルに戻り、夕食を楽しみます。地元の食材を使った料理を堪能し、旅の思い出を語り合いましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観察",
+          "description": "ムロンダバの静かな夜空を見上げ、星空観察を楽しみます。南半球の星座を眺める貴重な体験です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "キリンとサルの冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ムロンダバのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやトースト、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "キリン公園訪問",
+          "description": "ムロンダバから車で約30分のキリン公園へ。ここでは、野生のキリンを間近で観察できる貴重な体験が待っています。広大な草原を駆け回る姿は圧巻です。",
+          "searchQuery": "Kirindy Forest",
+          "locationEn": "Kirindy Forest, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "公園近くのレストランで、マダガスカルの伝統料理を楽しみます。新鮮な魚料理や、スパイシーな野菜料理が絶品です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サルの観察",
+          "description": "午後は、サルの生息地へ移動し、横っ飛びするサルたちを観察します。彼らの遊び心満載の動きに思わず笑顔がこぼれます。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バオバブの木の道散策",
+          "description": "バオバブの木が立ち並ぶ道を散策します。夕暮れ時の幻想的な光景は、フォトジェニックな瞬間を提供してくれます。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ホテルに戻りディナー",
+          "description": "ムロンダバのホテルに戻り、夕食を楽しみます。地元の食材を使った料理を堪能し、旅の思い出を語り合いましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ムロンダバの自然を満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ムロンダバのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや、アフリカの伝統的な料理を味わいながら、今日の冒険に備えましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "バオバブ街道散策",
+          "description": "ムロンダバの名所、バオバブ街道へ。壮大なバオバブの木々が並ぶ道を歩きながら、フォトジェニックな景色を楽しみます。特に朝の光の中での撮影は絶好のチャンスです。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "バオバブ街道近くの地元のレストランで、マダガスカル料理を堪能します。新鮮なシーフードや、スパイシーな肉料理が楽しめるお店です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "キツネザル観察ツアー",
+          "description": "午後は、キツネザルを観察するツアーに参加します。横っ飛びする姿を間近で見ることができ、自然の中での彼らの生活を学ぶ貴重な体験です。",
+          "searchQuery": "Lemur Watching Tour Morondava",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでリラックス",
+          "description": "ムロンダバのビーチで、夕方の穏やかな時間を過ごします。美しい海を眺めながら、友人と共にリラックスしたひとときを楽しみましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテルに戻り、地元の食材を使ったディナーを楽しみます。新鮮な魚料理や、マダガスカルの特産品を味わいながら、今日の思い出を語り合いましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ムロンダバからアンタナナリボへ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ムロンダバ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アンタナナリボ",
+          "time": "14:00"
+        },
+        "duration": "6h",
+        "memo": "美しい風景を楽しみながらのドライブです。途中で休憩を取りながら、景色を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ムロンダバで朝食",
+          "description": "地元のカフェで新鮮なフルーツやパンを使った朝食を楽しみます。特に、バナナやパイナップルは絶品です。",
+          "searchQuery": "Mourondava Cafe",
+          "locationEn": "Mourondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "バオバブ街道観光",
+          "description": "ムロンダバの名物、バオバブの木が立ち並ぶ道を散策します。特に朝の光の中での写真撮影はフォトジェニックで、思い出に残る瞬間を捉えられます。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Avenue of the Baobabs, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "バオバブ街道近くのレストランで、マダガスカルの伝統料理を楽しみます。新鮮な魚料理や野菜を使った料理が人気です。",
+          "searchQuery": "Local Restaurant near Avenue of the Baobabs",
+          "locationEn": "Mourondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アンタナナリボへ移動",
+          "description": "ムロンダバからアンタナナリボへ向かう途中、車窓からの美しい風景を楽しみます。特に、山々や田園風景が広がるエリアは見逃せません。",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アンタナナリボ到着後、ホテルチェックイン",
+          "description": "アンタナナリボの高級ホテルにチェックイン。快適な部屋でリラックスし、旅の疲れを癒します。",
+          "searchQuery": "Luxury Hotel in Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アンタナナリボ市内散策",
+          "description": "市内のマーケットや観光スポットを散策し、地元の文化に触れます。特に、地元の人々との交流が楽しめる場所を訪れてみてください。",
+          "searchQuery": "Antananarivo Market",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、マダガスカルの料理を楽しみます。特に、地元のワインと共に味わう料理は格別です。",
+          "searchQuery": "Hotel Restaurant in Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "アンタナナリボの文化体験",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "地元の食材を使った朝食を楽しみながら、今日の冒険に備えます。フルーツやパン、コーヒーが揃ったビュッフェスタイルで、エネルギーをチャージ。",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ロワイヤルパレス訪問",
+          "description": "アンタナナリボの歴史的なロワイヤルパレスを訪れ、マダガスカルの王族の歴史を学びます。美しい建築と庭園が広がり、写真撮影にも最適なスポットです。",
+          "searchQuery": "Rova of Antananarivo",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元市場でランチ",
+          "description": "活気あふれる地元市場で新鮮な食材を使った料理を楽しみます。特に、マダガスカルの伝統的な料理を提供する屋台が多く、地元の人々と交流しながら食事を楽しむことができます。",
+          "searchQuery": "Analakely Market",
+          "locationEn": "Antananarivo, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バオバブの並木道へ移動",
+          "description": "バオバブの木が立ち並ぶ美しい道へ向かいます。壮大な景色を背景に、友人と一緒に写真を撮りながら散策しましょう。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バオバブの並木道散策",
+          "description": "バオバブの木々の間を歩きながら、自然の美しさを堪能します。夕暮れ時には特に幻想的な光景が広がり、フォトジェニックな瞬間を逃さないようにしましょう。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バオバブの並木道近くのレストランで、マダガスカルの郷土料理を楽しみます。新鮮な魚料理や野菜料理が豊富で、地元の味を堪能できます。",
+          "searchQuery": "Restaurant La Varangue",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の冒険を振り返りながら、ホテルに戻ります。明日の計画を立てるのも楽しみの一つです。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ムロンダバへの帰路",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アンタナナリボ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ムロンダバ",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "ムロンダバへ向かう途中、風景を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ムロンダバでランチ",
+          "description": "地元のレストランで新鮮なシーフードやマダガスカル料理を楽しみます。特に、魚のグリルやタピオカのデザートがおすすめです。",
+          "searchQuery": "Restaurant in Morondava",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バオバブ街道散策",
+          "description": "ムロンダバの名物、バオバブの木が立ち並ぶ道を散策します。夕暮れ時の光に照らされたバオバブのシルエットは、まさにフォトジェニックな瞬間です。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "バオバブの木での写真撮影",
+          "description": "バオバブの木の前で友人と一緒に記念写真を撮りましょう。特に夕日が沈む時間帯は、幻想的な雰囲気が漂います。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ムロンダバのビーチで夕日鑑賞",
+          "description": "ムロンダバのビーチで、夕日を眺めながらリラックス。美しい海と空のコントラストが心を癒してくれます。",
+          "searchQuery": "Morondava Beach",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ムロンダバの地元料理を楽しむディナー。新鮮な魚介類や野菜を使った料理が豊富で、特にシーフードパスタが人気です。",
+          "searchQuery": "Restaurant in Morondava",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "ムロンダバから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ムロンダバ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "20:00"
+        },
+        "duration": "8h",
+        "memo": "ムロンダバから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ムロンダバのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、最後の冒険に備えましょう。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "バオバブ並木の散策",
+          "description": "ムロンダバの名物、バオバブ並木を訪れます。壮大なバオバブの木々が立ち並ぶ道を歩きながら、フォトジェニックな景色を楽しみましょう。特に朝の光が木々を照らす瞬間は絶景です。",
+          "searchQuery": "Avenue of the Baobabs",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "サルの観察ツアー",
+          "description": "地元のガイドと共に、横っ飛びするサルを観察するツアーに参加します。サルたちのユニークな動きや生態を間近で見ることができ、自然の中での冒険を満喫できます。",
+          "searchQuery": "Lemur Watching Tour",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ムロンダバの地元のレストランで、新鮮なシーフードやマダガスカル料理を楽しみます。特に、魚のグリルやタコのサラダが絶品です。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ムロンダバのビーチでリラックス",
+          "description": "ムロンダバの美しいビーチで、最後のひとときを過ごします。穏やかな波の音を聞きながら、友人と共に思い出を振り返りましょう。",
+          "searchQuery": "Morondava Beach",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "ムロンダバの空港へ向かいます。出発前に最後のショッピングや軽食を楽しむ時間もあります。",
+          "locationEn": "Morondava, Madagascar",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "東京到着",
+          "description": "東京に到着。旅の思い出を胸に、次の冒険を楽しみにしましょう。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

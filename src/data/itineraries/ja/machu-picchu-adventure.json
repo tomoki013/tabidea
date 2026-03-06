@@ -1,0 +1,649 @@
+{
+  "id": "b8c473b5-1749-4ab0-9bab-568e6c7c676c",
+  "destination": "マチュピチュ・クスコ",
+  "description": "壮大なインカの遺跡と美しい自然が織りなす、ペルーの秘境マチュピチュとその玄関口であるクスコを巡る8日間の冒険の旅。歴史と文化が息づく街並み、絶景が広がる山々、そしてアルパカとの出会いが待っています。友人と共に、心に残る思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からクスコへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "クスコ",
+          "time": "15:00"
+        },
+        "duration": "約14h",
+        "memo": "直行便ではなく、乗り継ぎが必要です。"
+      },
+      "activities": [
+        {
+          "time": "16:00",
+          "activity": "クスコ市街散策",
+          "description": "クスコの歴史的な街並みを散策し、インカの文化を感じることができます。特に、サン・ブラス地区のアートギャラリーやカフェが魅力的です。",
+          "searchQuery": "Cusco, Peru",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランで夕食",
+          "description": "クスコの伝統料理を楽しむために、地元のレストランで夕食を。セビーチェやロモサルタードなど、ペルーの味を堪能しましょう。",
+          "searchQuery": "Pachapapa",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "クスコのナイトライフを楽しむ",
+          "description": "クスコのバーやカフェで、地元の人々と交流しながら楽しい夜を過ごします。特に、音楽やダンスを楽しめる場所が多いです。",
+          "searchQuery": "Mama Africa",
+          "locationEn": "Cusco, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "クスコの文化と歴史を探る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "クスコ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "マチュピチュ",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "クスコからマチュピチュ行きの列車で美しい風景を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "マチュピチュ遺跡",
+          "description": "世界遺産のマチュピチュを訪れ、インカ帝国の壮大な遺跡を探索します。山々に囲まれた神秘的な雰囲気の中で、歴史を感じることができます。",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "マチュピチュでランチ",
+          "description": "遺跡近くのレストランで、ペルーの伝統料理を楽しみます。地元の食材を使った料理は、旅の疲れを癒してくれることでしょう。",
+          "searchQuery": "Machu Picchu Restaurant",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アルパカとのふれあい体験",
+          "description": "マチュピチュ周辺でアルパカと触れ合うことができる体験を楽しみます。可愛らしいアルパカたちと写真を撮ったり、餌をあげたりして、思い出に残るひとときを過ごしましょう。",
+          "searchQuery": "Alpaca Experience Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マチュピチュの展望台",
+          "description": "遺跡の展望台からの絶景を楽しみます。夕暮れ時の光景は特に美しく、心に残る瞬間となるでしょう。",
+          "searchQuery": "Machu Picchu Viewpoint",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "クスコへ帰る",
+          "description": "マチュピチュからクスコへ戻る列車に乗ります。美しい夕焼けを眺めながら、今日の素晴らしい体験を振り返りましょう。",
+          "searchQuery": "Train from Machu Picchu to Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "クスコでディナー",
+          "description": "クスコの地元のレストランで、ペルー料理を堪能します。新鮮な食材を使った料理は、旅の締めくくりにぴったりです。",
+          "searchQuery": "Cusco Restaurant",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "マチュピチュへの旅",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "クスコ",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "アグアスカリエンテス",
+          "time": "11:00"
+        },
+        "duration": "4h",
+        "memo": "マチュピチュ行きのバスは早めに出発するのがおすすめ。美しい風景を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "アグアスカリエンテスでランチ",
+          "description": "地元のレストランでペルー料理を楽しみましょう。新鮮な食材を使ったセビーチェやロモサルタードが絶品です。",
+          "searchQuery": "Aguas Calientes Restaurant",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マチュピチュ遺跡観光",
+          "description": "世界遺産のマチュピチュへ。壮大なインカの遺跡を探索し、絶景を堪能します。特に午後の光が当たる時間帯は写真映え抜群！",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マチュピチュからの帰路",
+          "description": "遺跡を後にし、アグアスカリエンテスへ戻ります。帰り道も美しい景色が広がりますので、ゆっくりと楽しんでください。",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "アグアスカリエンテスでディナー",
+          "description": "夕食は、温かい雰囲気のレストランでペルーの郷土料理を楽しみましょう。アルパカ肉の料理もおすすめです。",
+          "searchQuery": "Aguas Calientes Restaurant",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "アグアスカリエンテスの夜散策",
+          "description": "夜のアグアスカリエンテスを散策し、地元の雰囲気を楽しみましょう。お土産屋さんやカフェも多く、賑やかな雰囲気です。",
+          "searchQuery": "Aguas Calientes",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "マチュピチュ遺跡を満喫",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "アグアスカリエンテス",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "マチュピチュ",
+          "time": "08:00"
+        },
+        "duration": "1h",
+        "memo": "早朝の列車でマチュピチュへ向かいます。美しい景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "08:30",
+          "activity": "マチュピチュ遺跡観光",
+          "description": "世界遺産のマチュピチュを探索します。インカ文明の壮大な遺跡を間近で感じ、絶景を楽しむことができます。特に早朝の静けさの中での訪問は格別です。",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "マチュピチュでランチ",
+          "description": "遺跡内のカフェで軽食を取りながら、周囲の美しい景色を眺めます。地元の食材を使った料理が楽しめます。",
+          "searchQuery": "Machu Picchu Cafe",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ワイナピチュ登山",
+          "description": "ワイナピチュの頂上を目指して登山します。頂上からの眺めは息をのむ美しさで、達成感もひとしおです。",
+          "searchQuery": "Huayna Picchu",
+          "locationEn": "Huayna Picchu, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マチュピチュ遺跡を後にする",
+          "description": "夕方の光の中で遺跡を振り返りながら、再び列車でアグアスカリエンテスへ戻ります。",
+          "searchQuery": "Machu Picchu",
+          "locationEn": "Machu Picchu, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "アグアスカリエンテスでディナー",
+          "description": "地元のレストランでペルー料理を楽しみます。新鮮な食材を使った料理が堪能でき、特にセビーチェはおすすめです。",
+          "searchQuery": "Indio Feliz",
+          "locationEn": "Aguas Calientes, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "クスコに戻る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Aguas Calientes",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Cusco",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "マチュピチュからクスコへ戻るための美しい景色を楽しむ列車の旅です。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "クスコの市場散策",
+          "description": "地元の人々が集うクスコの市場で、色とりどりの食材や手工芸品を楽しみましょう。特にアルパカ製品はお土産にぴったりです。",
+          "searchQuery": "San Pedro Market",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "市場でランチ",
+          "description": "市場内の屋台で、ペルーの伝統料理セビーチェを味わいましょう。新鮮な魚と香辛料が絶妙に絡み合った一品です。",
+          "searchQuery": "Ceviche",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アルパカ牧場訪問",
+          "description": "クスコ近郊のアルパカ牧場で、可愛いアルパカたちと触れ合いましょう。アルパカの毛を使った製品の製作過程も見学できます。",
+          "searchQuery": "Alpaca Farm",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クスコの歴史的中心地散策",
+          "description": "クスコの美しい広場や教会を巡りながら、インカの歴史を感じる散策を楽しみましょう。特にサントドミンゴ教会は必見です。",
+          "searchQuery": "Santo Domingo Church",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "クスコでディナー",
+          "description": "地元のレストランでペルー料理を堪能。特にロモサルタード（牛肉と野菜の炒め物）はおすすめです。",
+          "searchQuery": "Lomo Saltado",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "クスコ周辺の探検",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "クスコ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "オリャンタイタンボ",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "クスコからオリャンタイタンボ行きのバスで、壮大なアンデスの風景を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "オリャンタイタンボ遺跡",
+          "description": "インカ帝国の重要な遺跡であるオリャンタイタンボを訪れます。美しい石造りの建築と、周囲の山々の絶景が広がる中で、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Ollantaytambo",
+          "locationEn": "Ollantaytambo, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "オリャンタイタンボの地元レストランで、ペルーの伝統料理を楽しみます。新鮮な食材を使ったセビーチェやロモサルタードがおすすめです。",
+          "searchQuery": "Ollantaytambo local restaurant",
+          "locationEn": "Ollantaytambo, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ピサック遺跡",
+          "description": "オリャンタイタンボからバスで移動し、ピサック遺跡を訪れます。インカの農業技術が見られる terraces（段々畑）や、壮大な景色を楽しむことができます。",
+          "searchQuery": "Pisac Ruins",
+          "locationEn": "Pisac, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ピサック市場散策",
+          "description": "ピサックの市場で地元の手工芸品や新鮮な食材を見て回ります。色とりどりの品々が並ぶ中で、アルパカの毛で作られた製品も見逃せません。",
+          "searchQuery": "Pisac Market",
+          "locationEn": "Pisac, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "クスコへ戻る",
+          "description": "ピサックからクスコへ戻るバスに乗ります。夕暮れ時の美しい風景を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "クスコのレストランでディナー",
+          "description": "クスコに戻ったら、地元のレストランでディナーを楽しみます。ペルー料理のフルコースを堪能し、旅の思い出を語り合いましょう。",
+          "searchQuery": "Cusco local restaurant",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "クスコの隠れた魅力を発見",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クスコのホテルで、ペルーの伝統的な朝食を楽しみます。アヒ・デ・ガジーナ（鶏肉のクリーム煮）やフルーツジュースでエネルギーをチャージ。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サンブラス地区散策",
+          "description": "アートと文化が息づくサンブラス地区を散策。地元のアーティストが手がけた工芸品や絵画を楽しみながら、カラフルな街並みを堪能します。",
+          "searchQuery": "San Blas",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "クスコの隠れた名店で、ペルー料理を堪能。新鮮な地元の食材を使った料理が楽しめるお店で、特にセビーチェがおすすめです。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クスコの歴史的な遺跡巡り",
+          "description": "クスコの中心部にあるコリカンチャ（太陽の神殿）やサクサイワマンを訪れ、インカの歴史に触れます。壮大な石造りの遺跡は圧巻です。",
+          "searchQuery": "Sacsayhuamán",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アルパカと触れ合う体験",
+          "description": "クスコ近郊のアルパカ牧場を訪れ、可愛いアルパカたちと触れ合います。餌やり体験もでき、写真撮影にもぴったりのスポットです。",
+          "searchQuery": "Alpaca Farm Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "クスコの夜を楽しむために、地元の人気レストランでディナー。ペルーの伝統料理を味わいながら、友人と楽しいひとときを過ごします。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "クスコから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "クスコ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "12h",
+        "memo": "クスコからリマ経由で東京へ帰ります。リマでの乗り継ぎ時間に注意してください。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クスコのホテルで、ペルーの伝統的な朝食を楽しみます。アボカドや卵、トウモロコシのパンなど、地元の味を堪能。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "サクサイワマン遺跡見学",
+          "description": "クスコの近郊にあるサクサイワマン遺跡を訪れます。壮大な石造りの遺跡からは、クスコ市街を一望でき、インカの歴史を感じることができます。",
+          "searchQuery": "Sacsayhuamán",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アルパカと触れ合う",
+          "description": "クスコ近郊のアルパカ牧場を訪れ、可愛いアルパカたちと触れ合います。餌やり体験もでき、思い出に残る写真をたくさん撮りましょう。",
+          "searchQuery": "Alpaca Farm Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "クスコでランチ",
+          "description": "地元のレストランでペルー料理のランチを楽しみます。セビーチェやロモサルタードなど、ペルーの味を堪能しましょう。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "クスコ市内散策",
+          "description": "クスコの街を散策し、歴史的な建物や市場を訪れます。地元の人々との交流を楽しみながら、最後のひとときを満喫。",
+          "searchQuery": "Plaza de Armas Cusco",
+          "locationEn": "Cusco, Peru",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "クスコの空港へ向かい、帰路につきます。最後のペルーの風景を楽しみながら、次の旅を思い描きましょう。",
+          "locationEn": "Cusco, Peru",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

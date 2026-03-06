@@ -1,0 +1,485 @@
+{
+  "id": "3a43b9a2-b60d-4d5f-a1a8-820b9f97dff1",
+  "destination": "チェンマイ",
+  "description": "Escape to the enchanting city of Chiang Mai, where ancient temples and vibrant markets intertwine with the serene beauty of nature. Over five days, immerse yourself in the rich cultural tapestry of Northern Thailand, savoring local delicacies and exploring charming cafes. Experience the magical sight of lanterns illuminating the night sky, creating unforgettable memories with your friends. This trip promises a delightful blend of history, breathtaking views, and unique shopping experiences that will leave you captivated.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Old City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in the Old City. Enjoy traditional Thai dishes like Khao Soi, a rich coconut curry noodle soup, perfect for fueling your exploration ahead.",
+          "searchQuery": "Khao Soi Nimman",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Wat Phra Singh",
+          "description": "Visit Wat Phra Singh, one of Chiang Mai's most revered temples. Admire its stunning Lanna architecture and the beautiful Buddha statue inside. The serene atmosphere makes it a perfect spot for reflection.",
+          "searchQuery": "Wat Phra Singh",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Savor a traditional Thai lunch at a nearby eatery. Try some local favorites like Pad Thai or Som Tum (papaya salad) for an authentic taste of Chiang Mai.",
+          "searchQuery": "Khao Soi Khun Yai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Old City",
+          "description": "Stroll through the charming streets of the Old City, where you can find quaint shops selling handmade crafts and unique souvenirs. Don't miss the chance to pick up some beautiful local handicrafts.",
+          "searchQuery": "Old City Chiang Mai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Sunday Walking Street Market",
+          "description": "If it's Sunday, head to the Sunday Walking Street Market. This vibrant market is filled with local artisans, food stalls, and live performances, making it a great place to soak in the local culture and shop for unique items.",
+          "searchQuery": "Sunday Walking Street Market",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Riverside Restaurant",
+          "description": "Enjoy dinner at a riverside restaurant, where you can relax and enjoy the view of the river while tasting delicious Thai cuisine. The ambiance is perfect for unwinding after a day of exploration.",
+          "searchQuery": "The Riverside Bar & Restaurant",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Lantern Festival Viewing",
+          "description": "End your day by witnessing the breathtaking sight of lanterns lighting up the night sky. If you're lucky, you might catch a local festival or event where you can release your own lanterns into the sky.",
+          "searchQuery": "Yi Peng Lantern Festival",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Temples and Nature",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy local café. Enjoy traditional Thai dishes like Khao Soi, a rich coconut curry noodle soup, perfect for fueling your day of exploration.",
+          "searchQuery": "Khao Soi",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Doi Suthep Temple",
+          "description": "Head to the iconic Doi Suthep Temple, perched on a mountain overlooking Chiang Mai. The stunning views and intricate architecture make this a must-visit. Don't forget to take a moment to enjoy the serene atmosphere and the breathtaking scenery.",
+          "searchQuery": "Wat Phra That Doi Suthep",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "After exploring Doi Suthep, enjoy lunch at a nearby eatery. Try some local favorites like Pad Thai or Som Tum (papaya salad) to experience authentic flavors of Northern Thailand.",
+          "searchQuery": "Pad Thai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Bhubing Palace",
+          "description": "Visit the beautiful Bhubing Palace, the royal winter residence surrounded by stunning gardens. Take a leisurely stroll through the lush landscapes and enjoy the peaceful ambiance.",
+          "searchQuery": "Bhubing Palace",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Nature Trails Exploration",
+          "description": "Explore the nature trails around Doi Suthep. Enjoy a leisurely hike through the lush greenery, where you can spot various flora and fauna. It's a great way to connect with nature and unwind.",
+          "searchQuery": "Doi Suthep Nature Trails",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Local Craft Shops",
+          "description": "After your nature exploration, head back to the city and visit some charming local craft shops. Discover unique handmade souvenirs and beautiful handicrafts that reflect the rich culture of Chiang Mai.",
+          "searchQuery": "Chiang Mai Craft Shops",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Riverside Restaurant",
+          "description": "Enjoy dinner at a riverside restaurant, where you can savor delicious Thai cuisine while taking in the beautiful views of the river. It's the perfect way to end your day in Chiang Mai.",
+          "searchQuery": "Chiang Mai Riverside Restaurant",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Lantern Festival Viewing",
+          "description": "If you're lucky enough to be in Chiang Mai during the Lantern Festival, find a good spot to witness the magical sight of thousands of lanterns lighting up the night sky. It's a breathtaking experience that you won't forget.",
+          "searchQuery": "Chiang Mai Lantern Festival",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Lantern Festival and Night Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy local café. Enjoy traditional Thai dishes like Khao Soi, a rich coconut curry noodle soup, perfect for fueling your day of exploration.",
+          "searchQuery": "Khao Soi Khun Yai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Lantern Festival",
+          "description": "Immerse yourself in the magical atmosphere of the Lantern Festival. Witness thousands of lanterns lighting up the night sky, creating a breathtaking spectacle that symbolizes hope and new beginnings.",
+          "searchQuery": "Yi Peng Lantern Festival",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Savor a traditional Thai lunch at a nearby eatery. Try local favorites like Som Tum (papaya salad) or Pad Thai, all while enjoying the vibrant street life around you.",
+          "searchQuery": "Som Tum Nua",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Local Craft Shops",
+          "description": "Stroll through the charming streets of Chiang Mai, visiting local craft shops. Discover unique handmade goods, from intricate textiles to beautiful pottery, perfect for souvenirs.",
+          "searchQuery": "Chiang Mai Craft Village",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at a Trendy Café",
+          "description": "Take a break at one of Chiang Mai's trendy cafés. Enjoy a refreshing iced coffee or a sweet treat while soaking in the artistic ambiance and local vibes.",
+          "searchQuery": "Ristr8to Coffee",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Chiang Mai Night Bazaar",
+          "description": "As the sun sets, head to the famous Night Bazaar. Browse through countless stalls selling everything from handicrafts to street food, and enjoy the lively atmosphere.",
+          "searchQuery": "Chiang Mai Night Bazaar",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Dinner at the Night Bazaar",
+          "description": "Indulge in a variety of street food options for dinner at the Night Bazaar. Try local delicacies like grilled meats, fresh spring rolls, and sweet mango sticky rice.",
+          "searchQuery": "Chiang Mai Night Bazaar Food",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "Lantern Release Ceremony",
+          "description": "End your day by participating in a lantern release ceremony. Join locals and tourists alike as you send your wishes into the sky, creating a truly unforgettable experience.",
+          "searchQuery": "Yi Peng Lantern Release",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Café Hopping and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ristr8to",
+          "description": "Start your day with a delicious breakfast at Ristr8to, known for its specialty coffee and cozy atmosphere. Their latte art is a must-see!",
+          "searchQuery": "Ristr8to",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Nimmanhaemin District",
+          "description": "Stroll through the vibrant Nimmanhaemin area, filled with trendy boutiques, art galleries, and unique craft shops. It's the perfect place to find local handicrafts and souvenirs.",
+          "searchQuery": "Nimmanhaemin",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Salad Concept",
+          "description": "Enjoy a healthy and refreshing lunch at The Salad Concept, where you can customize your own salad with fresh local ingredients. A great way to recharge for the afternoon!",
+          "searchQuery": "The Salad Concept",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Local Craft Shops",
+          "description": "Continue your shopping adventure by visiting local craft shops in the area. Look for handmade goods, textiles, and unique souvenirs that reflect the culture of Chiang Mai.",
+          "searchQuery": "Chiang Mai Craft Shops",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at The Barn: Eatery Design",
+          "description": "Take a break at The Barn, a beautifully designed café known for its relaxing ambiance and delicious coffee. Perfect for unwinding and enjoying the local vibe.",
+          "searchQuery": "The Barn: Eatery Design",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Visit Art in Paradise",
+          "description": "Explore Art in Paradise, an interactive 3D art museum where you can take fun photos with the amazing artworks. It's a great way to enjoy art in a playful setting!",
+          "searchQuery": "Art in Paradise Chiang Mai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at SP Chicken",
+          "description": "Savor a delicious dinner at SP Chicken, famous for its grilled chicken and flavorful Thai dishes. A local favorite that won't break the bank!",
+          "searchQuery": "SP Chicken",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Lantern Festival Viewing",
+          "description": "End your day by witnessing the breathtaking sights of the Lantern Festival. Enjoy the magical atmosphere as thousands of lanterns light up the night sky, creating a truly unforgettable experience.",
+          "searchQuery": "Lantern Festival Chiang Mai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a delicious breakfast at a cozy café in Chiang Mai. Enjoy traditional Thai dishes like Khao Soi or a simple yet flavorful Thai omelet, paired with freshly brewed coffee.",
+          "searchQuery": "Khao Soi Khun Yai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Warorot Market",
+          "description": "Explore Warorot Market, a bustling local market where you can find everything from fresh produce to unique handicrafts. It's a great place to pick up some last-minute souvenirs and experience the local culture.",
+          "searchQuery": "Warorot Market",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Eatery",
+          "description": "Enjoy a casual lunch at a nearby eatery, sampling local favorites like Pad Thai or Som Tum (papaya salad). This is a perfect opportunity to savor the flavors of Northern Thailand one last time.",
+          "searchQuery": "Huen Phen",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Nimmanhaemin Road",
+          "description": "Stroll along Nimmanhaemin Road, known for its trendy boutiques and cute shops. Discover unique crafts, art, and clothing that reflect the local culture. Don't forget to stop by a café for a refreshing drink!",
+          "searchQuery": "Nimmanhaemin Road",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Last-minute Shopping at Local Craft Shops",
+          "description": "Visit some charming craft shops in the area to find handmade goods and souvenirs. This is a great way to support local artisans and take home a piece of Chiang Mai with you.",
+          "searchQuery": "Local Craft Shops Chiang Mai",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure Preparation",
+          "description": "Head back to your accommodation to pack and prepare for your departure. Take a moment to reflect on your wonderful trip to Chiang Mai and the memories you've created.",
+          "locationEn": "Chiang Mai, Thailand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

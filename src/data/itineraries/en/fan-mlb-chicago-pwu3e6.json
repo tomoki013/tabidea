@@ -1,0 +1,450 @@
+{
+  "id": "7b5be58d-c74d-4900-9f1a-c0b5a8b88342",
+  "destination": "Chicago",
+  "description": "Immerse yourself in the vibrant culture and rich history of Chicago while indulging in your passion for MLB. This 5-day adventure is designed for you and your friends to explore the Windy City, from iconic ballparks to local haunts, all while enjoying the relaxed yet lively atmosphere that Chicago has to offer. Get ready for a journey filled with baseball excitement, cultural experiences, and moments of relaxation amidst the bustling city life.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Chicago and Exploring Wrigley Field",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Lou Mitchell's",
+          "description": "Start your day with a hearty breakfast at Lou Mitchell's, a Chicago institution known for its delicious pancakes and friendly service. Don't forget to try their famous coffee and complimentary donut holes!",
+          "searchQuery": "Lou Mitchell's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Wrigley Field Tour",
+          "description": "Dive into the history of baseball at Wrigley Field, one of the oldest ballparks in the country. The guided tour takes you through the stadium, including the iconic ivy-covered outfield walls and the press box, giving you a true feel of America's pastime.",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Portillo's",
+          "description": "Enjoy a classic Chicago-style hot dog or an Italian beef sandwich at Portillo's, a beloved fast-casual restaurant that captures the essence of Chicago's culinary scene.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lakeview Neighborhood",
+          "description": "Stroll through the vibrant Lakeview neighborhood, where you can find unique shops, local boutiques, and cozy cafes. This area is perfect for picking up some MLB merchandise and fan gear to commemorate your trip!",
+          "searchQuery": "Lakeview Chicago",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Lincoln Park Visit",
+          "description": "Head over to Lincoln Park, where you can relax in the beautiful gardens or visit the Lincoln Park Zoo, which is free to enter. It's a great spot to unwind and enjoy nature in the heart of the city.",
+          "searchQuery": "Lincoln Park Zoo",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Giordano's",
+          "description": "Indulge in Chicago's famous deep-dish pizza at Giordano's. Their stuffed pizza is a must-try, and the cozy atmosphere makes it a perfect place to end your day.",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Chicago Riverwalk",
+          "description": "Take a leisurely stroll along the Chicago Riverwalk, where you can enjoy stunning views of the city skyline. It's a perfect way to wind down your first day in Chicago.",
+          "searchQuery": "Chicago Riverwalk",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB Fan Experience and Downtown Chicago",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Lou Mitchell's",
+          "description": "Start your day with a hearty breakfast at Lou Mitchell's, a Chicago institution known for its delicious pancakes and friendly service. Don't forget to try their famous coffee and complimentary donut holes!",
+          "searchQuery": "Lou Mitchell's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Chicago Sports Museum",
+          "description": "Dive into the world of sports at the Chicago Sports Museum, where you can explore interactive exhibits and learn about the history of Chicago's sports teams, including the Cubs and White Sox. It's a must-visit for any sports fan!",
+          "searchQuery": "Chicago Sports Museum",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Portillo's",
+          "description": "Enjoy a classic Chicago-style hot dog or an Italian beef sandwich at Portillo's, a beloved local chain. The casual atmosphere and delicious food make it a perfect spot for lunch.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Millennium Park",
+          "description": "Stroll through Millennium Park and take in the iconic Cloud Gate sculpture (also known as 'The Bean'). This vibrant park is a great place to relax and enjoy the art and architecture surrounding you.",
+          "searchQuery": "Millennium Park",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Chicago Riverwalk",
+          "description": "Walk along the Chicago Riverwalk, where you can enjoy beautiful views of the city skyline. There are plenty of spots to sit and relax, or grab a drink at one of the riverside cafes.",
+          "searchQuery": "Chicago Riverwalk",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for MLB Merchandise at the Chicago Cubs Store",
+          "description": "Head to the Chicago Cubs Store to pick up some official MLB merchandise. Whether you're a Cubs fan or just looking for a souvenir, this store has a great selection of jerseys, hats, and more!",
+          "searchQuery": "Chicago Cubs Store",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Giordano's",
+          "description": "End your day with a classic Chicago deep-dish pizza at Giordano's. The cheesy, hearty pizza is a must-try and perfect for sharing with friends after a busy day of exploring.",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Lou Mitchell's",
+          "description": "Start your day with a hearty breakfast at Lou Mitchell's, a Chicago institution known for its delicious pancakes and friendly service. Don't forget to try their famous milk duds!",
+          "searchQuery": "Lou Mitchell's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Field Museum",
+          "description": "Explore the Field Museum, home to a vast collection of natural history exhibits, including Sue, the famous T. rex. It's a great way to immerse yourself in the cultural and historical richness of Chicago.",
+          "searchQuery": "Field Museum",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Giordano's",
+          "description": "Indulge in Chicago's iconic deep-dish pizza at Giordano's. The cheesy goodness and flaky crust will leave you craving more!",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Shedd Aquarium",
+          "description": "Visit the Shedd Aquarium, where you can see a variety of marine life, including dolphins and sea turtles. The interactive exhibits make it a fun experience for everyone!",
+          "searchQuery": "Shedd Aquarium",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Grant Park",
+          "description": "Take a leisurely stroll through Grant Park, often referred to as Chicago's 'front yard.' Enjoy the beautiful gardens and public art installations as you relax in the heart of the city.",
+          "searchQuery": "Grant Park",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Portillo's",
+          "description": "Savor a classic Chicago-style hot dog or Italian beef sandwich at Portillo's. This casual eatery is a must-visit for a taste of local flavors.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Explore Wrigleyville",
+          "description": "Head to Wrigleyville, the vibrant neighborhood surrounding Wrigley Field. Check out local shops for MLB merchandise and soak in the lively atmosphere of this baseball-loving community.",
+          "searchQuery": "Wrigleyville",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Shopping and Local Eats",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Lou Mitchell's",
+          "description": "Start your day with a hearty breakfast at Lou Mitchell's, a Chicago institution known for its delicious pancakes and fresh coffee. Don't forget to try their famous milk duds!",
+          "searchQuery": "Lou Mitchell's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Wrigley Field",
+          "description": "Explore the iconic Wrigley Field, home of the Chicago Cubs. Take a guided tour to learn about the history of this historic ballpark and its significance in MLB culture.",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Portillo's",
+          "description": "Enjoy a classic Chicago-style hot dog or Italian beef sandwich at Portillo's. This local favorite is perfect for a quick and satisfying meal.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at the Magnificent Mile",
+          "description": "Stroll along the Magnificent Mile, where you can find a variety of shops, including sports merchandise stores for your MLB fan gear. It's a great place to pick up souvenirs and enjoy the vibrant atmosphere.",
+          "searchQuery": "Magnificent Mile",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Chinatown",
+          "description": "Head to Chinatown for a cultural experience. Visit the shops and markets, and don't miss the chance to try some authentic dim sum or bubble tea.",
+          "searchQuery": "Chinatown Chicago",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Lao Sze Chuan",
+          "description": "Savor a delicious dinner at Lao Sze Chuan, known for its spicy Szechuan cuisine. It's a great way to unwind after a day of exploring.",
+          "searchQuery": "Lao Sze Chuan",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Pilsen",
+          "description": "End your day in the vibrant Pilsen neighborhood, known for its street art and cultural scene. Enjoy a leisurely walk and soak in the local atmosphere.",
+          "searchQuery": "Pilsen Chicago",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Chicago",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "3h",
+        "memo": "Direct flight from O'Hare International Airport to D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Lou Mitchell's",
+          "description": "Start your day with a hearty breakfast at Lou Mitchell's, a Chicago institution known for its delicious pancakes and friendly service. Don't forget to try their famous coffee and complimentary donut holes!",
+          "searchQuery": "Lou Mitchell's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Wrigley Field",
+          "description": "Explore the iconic Wrigley Field, home of the Chicago Cubs. Take a guided tour to learn about the history of this historic ballpark and its significance in baseball culture. You might even catch a glimpse of the field before a game!",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Portillo's",
+          "description": "Enjoy a classic Chicago-style hot dog or Italian beef sandwich at Portillo's. This fast-casual restaurant is a local favorite and offers a taste of Chicago's culinary scene.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping for MLB Merchandise at the Cubs Store",
+          "description": "Head to the Cubs Store located near Wrigley Field to pick up some official MLB merchandise. From jerseys to caps, you'll find plenty of fan gear to take home as a souvenir of your Chicago trip.",
+          "searchQuery": "Cubs Store",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Transit to O'Hare International Airport",
+          "description": "Make your way to O'Hare International Airport for your flight back to Washington D.C. Ensure you leave with enough time to check in and go through security.",
+          "locationEn": "Chicago, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

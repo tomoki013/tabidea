@@ -1,0 +1,284 @@
+{
+  "id": "d0a58311-4133-4937-aab9-131c5ac4c0b8",
+  "destination": "Los Angeles",
+  "description": "Immerse yourself in the vibrant culture and history of Los Angeles, where the sun shines bright and the streets are alive with the spirit of creativity. This 3-day adventure is designed for the solo traveler eager to explore the world of MLB, indulge in shopping, and appreciate the local art scene. From iconic stadiums to hidden gems, this trip will offer a perfect blend of excitement and relaxation, all while keeping your budget in check. Get ready to discover the City of Angels!",
+  "heroImage": "https://images.unsplash.com/photo-1678939026247-e0d9c114f488?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkwNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nils Huenerfuerst",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nhuenerfuerst?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Heart of MLB",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite, so be prepared for a bit of a wait!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Dodger Stadium Tour",
+          "description": "Take a guided tour of Dodger Stadium, the iconic home of the Los Angeles Dodgers. You'll get a behind-the-scenes look at the stadium, including the press box and the field itself. Don't forget to snap some photos!",
+          "searchQuery": "Dodger Stadium",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Dodger Stadium",
+          "description": "Enjoy a classic ballpark lunch at Dodger Stadium. Try the famous Dodger Dog or some nachos while soaking in the atmosphere of this historic venue.",
+          "searchQuery": "Dodger Stadium",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Chavez Ravine",
+          "description": "Explore Chavez Ravine, the neighborhood surrounding Dodger Stadium. This area has a rich history and offers beautiful views of the stadium and downtown Los Angeles. It's a great spot for a leisurely walk.",
+          "searchQuery": "Chavez Ravine",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Echo Park Lake",
+          "description": "Head over to Echo Park Lake for a relaxing afternoon. Rent a paddle boat or simply stroll around the lake while enjoying the views of the city skyline and the iconic row of lotus flowers.",
+          "searchQuery": "Echo Park Lake",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at MLB Store",
+          "description": "Visit the MLB Store in Los Angeles to pick up some official merchandise. Whether you're looking for jerseys, caps, or other fan gear, this is the place to find it!",
+          "searchQuery": "MLB Store Los Angeles",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at In-N-Out Burger",
+          "description": "End your day with a classic California experience at In-N-Out Burger. Enjoy a delicious burger and fries, and don't forget to try their secret menu!",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture in the City",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite, so be prepared for a bit of a wait, but the food is worth it!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Getty Center",
+          "description": "Explore The Getty Center, an architectural marvel that houses an impressive collection of European paintings, sculptures, and decorative arts. The gardens and views of Los Angeles are equally stunning, making it a perfect spot for art lovers.",
+          "searchQuery": "The Getty Center",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy a classic burger and fries at this iconic fast-food chain, known for its fresh ingredients and secret menu.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Santa Monica Pier",
+          "description": "Head to Santa Monica Pier for a leisurely stroll. Enjoy the vibrant atmosphere, take a ride on the Ferris wheel, and soak in the ocean views. Don't forget to snap some photos with the iconic pier sign!",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Third Street Promenade",
+          "description": "Just a short walk from the pier, Third Street Promenade offers a variety of shops and boutiques. It's a great place to find MLB merchandise and other souvenirs. Enjoy the street performances as you shop!",
+          "searchQuery": "Third Street Promenade",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Lobster",
+          "description": "End your day with a seafood dinner at The Lobster, located right by the pier. Enjoy fresh lobster and other seafood dishes while taking in the beautiful sunset views over the ocean.",
+          "searchQuery": "The Lobster",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Hotel",
+          "description": "After a fulfilling day of art, culture, and shopping, head back to your hotel to relax and recharge for tomorrow's adventures.",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and Farewell",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Griddle Cafe",
+          "description": "Start your day with a hearty breakfast at The Griddle Cafe, famous for its oversized pancakes and delicious omelets. It's a local favorite that will fuel you for a day of exploration!",
+          "searchQuery": "The Griddle Cafe",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Hollywood Boulevard",
+          "description": "Stroll along Hollywood Boulevard, where you can see the iconic Walk of Fame and the TCL Chinese Theatre. Don't forget to snap a photo with your favorite star's star!",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at In-N-Out Burger",
+          "description": "No trip to California is complete without a stop at In-N-Out Burger. Enjoy a classic burger and fries at this beloved fast-food chain, known for its fresh ingredients and secret menu.",
+          "searchQuery": "In-N-Out Burger",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Melrose Avenue",
+          "description": "Head to Melrose Avenue for some unique shopping. This trendy street is lined with boutiques, vintage shops, and street art, perfect for finding that special fan merchandise or a unique souvenir.",
+          "searchQuery": "Melrose Avenue",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit LACMA (Los Angeles County Museum of Art)",
+          "description": "Spend your afternoon at LACMA, the largest art museum in the west. Explore its impressive collection of art, including works from various cultures and time periods. Don't miss the iconic Urban Light installation!",
+          "searchQuery": "Los Angeles County Museum of Art",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Bazaar by José Andrés",
+          "description": "Enjoy a delightful dinner at The Bazaar, where you can experience innovative Spanish cuisine in a vibrant atmosphere. It's a great way to end your trip with a culinary treat!",
+          "searchQuery": "The Bazaar by José Andrés",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for MLB Merchandise at the MLB Store",
+          "description": "Before you leave, visit the MLB Store to pick up some official merchandise. Whether it's a jersey or a cap, it's the perfect way to remember your trip and show your support for your favorite team!",
+          "searchQuery": "MLB Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

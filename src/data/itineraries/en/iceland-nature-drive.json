@@ -1,0 +1,659 @@
+{
+  "id": "05bcd8a0-50e5-4bb2-adbb-99e88ba7d9df",
+  "destination": "Reykjavik",
+  "description": "Escape to the enchanting landscapes of Iceland, where nature's artistry unfolds in breathtaking vistas, steaming geothermal pools, and the mesmerizing dance of the Northern Lights. This 7-day adventure is designed for those who crave the thrill of exploration and the soothing embrace of hot springs, all while surrounded by some of the most stunning scenery on the planet. Get ready to embark on a journey filled with adventure, relaxation, and unforgettable memories with your friends!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Reykjavik",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, known for its delicious rye bread and smoked salmon. The cozy atmosphere and local flavors will set the perfect tone for your adventure ahead.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Harpa Concert Hall",
+          "description": "Explore the stunning Harpa Concert Hall, an architectural marvel by the waterfront. Its glass facade reflects the surrounding landscape beautifully, making it a perfect spot for photos and a leisurely stroll.",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Icelandic Street Food",
+          "description": "Enjoy a casual lunch at Icelandic Street Food, where you can savor traditional dishes like lamb soup and fish stew. The laid-back vibe and hearty meals will keep you energized for the day.",
+          "searchQuery": "Icelandic Street Food",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Reykjavik City Center",
+          "description": "Wander through the charming streets of Reykjavik City Center, visiting local shops and cafes. Don't miss the iconic Hallgrímskirkja church, where you can take an elevator to the top for panoramic views of the city.",
+          "searchQuery": "Hallgrímskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Blue Lagoon",
+          "description": "Take a short drive to the famous Blue Lagoon, a geothermal spa known for its milky blue waters and rejuvenating properties. Spend a few hours soaking in the warm waters and enjoying the stunning volcanic landscape.",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavík, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Grillmarkaðurinn",
+          "description": "Indulge in a fine dining experience at Grillmarkaðurinn, where you can enjoy locally sourced ingredients and expertly crafted dishes. The ambiance is perfect for a memorable evening with friends.",
+          "searchQuery": "Grillmarkaðurinn",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Aurora Borealis Tour",
+          "description": "End your day with an exciting Northern Lights tour. Venture out into the countryside away from city lights for a chance to witness the breathtaking auroras dancing across the night sky.",
+          "searchQuery": "Northern Lights Tour",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Golden Circle Adventure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Reykjavik",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Þingvellir National Park",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Start your day with a scenic drive to Þingvellir National Park."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Þingvellir National Park",
+          "description": "Explore the stunning landscapes of Þingvellir, where the North American and Eurasian tectonic plates meet. Enjoy hiking trails and breathtaking views of the rift valley and Öxarárfoss waterfall.",
+          "searchQuery": "Þingvellir National Park",
+          "locationEn": "Þingvellir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Þingvellir Café",
+          "description": "Refuel with a delicious lunch at the café located within the park, offering local dishes and a cozy atmosphere. Don't miss their homemade soups and fresh bread!",
+          "searchQuery": "Þingvellir Café",
+          "locationEn": "Þingvellir, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Geysir Geothermal Area",
+          "description": "Witness the incredible Strokkur geyser erupting every few minutes, shooting hot water up to 30 meters in the air. The surrounding geothermal features create a surreal landscape.",
+          "searchQuery": "Geysir Geothermal Area",
+          "locationEn": "Haukadalur, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Gullfoss Waterfall",
+          "description": "Visit the majestic Gullfoss, one of Iceland's most iconic waterfalls. The roaring cascades and the surrounding canyon create a stunning natural spectacle, especially on sunny days when rainbows appear.",
+          "searchQuery": "Gullfoss Waterfall",
+          "locationEn": "Gullfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Secret Lagoon",
+          "description": "Unwind in the natural hot springs of Secret Lagoon, located nearby. Enjoy the warm waters surrounded by beautiful landscapes, a perfect way to relax after a day of adventure.",
+          "searchQuery": "Secret Lagoon",
+          "locationEn": "Flúðir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Varma",
+          "description": "Savor a delightful dinner at Restaurant Varma, known for its farm-to-table approach and stunning views. Try their lamb or fresh fish dishes for a true taste of Iceland.",
+          "searchQuery": "Restaurant Varma",
+          "locationEn": "Flúðir, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Drive back to Reykjavik",
+          "description": "Enjoy the scenic drive back to Reykjavik, keeping an eye out for the Northern Lights if the conditions are right!",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "South Coast Wonders",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Reykjavik",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Seljalandsfoss Waterfall",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Start your adventure early to make the most of the day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Seljalandsfoss Waterfall",
+          "description": "Experience the breathtaking Seljalandsfoss, where you can walk behind the cascading water for a unique perspective. The morning light creates a magical atmosphere, perfect for photography.",
+          "searchQuery": "Seljalandsfoss Waterfall",
+          "locationEn": "Seljalandsfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Skógafoss Waterfall",
+          "description": "Next, head to Skógafoss, one of Iceland's largest waterfalls. The sheer power and beauty of the water plunging down is awe-inspiring, and you can climb the stairs for a stunning view from above.",
+          "searchQuery": "Skógafoss Waterfall",
+          "locationEn": "Skógafoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Skógar Restaurant",
+          "description": "Enjoy a hearty lunch at Skógar Restaurant, where you can savor traditional Icelandic dishes made from fresh local ingredients. The cozy atmosphere is perfect for recharging before more adventures.",
+          "searchQuery": "Skógar Restaurant",
+          "locationEn": "Skógar, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Reynisfjara Black Sand Beach",
+          "description": "Visit the famous Reynisfjara Black Sand Beach, known for its dramatic basalt columns and powerful waves. Take a stroll along the beach and admire the stunning sea stacks rising from the ocean.",
+          "searchQuery": "Reynisfjara Black Sand Beach",
+          "locationEn": "Reynisfjara, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Check-in at Hotel Vík í Mýrdal",
+          "description": "Arrive at Hotel Vík í Mýrdal, a charming hotel with stunning views of the surrounding landscape. Take some time to relax and enjoy the amenities before dinner.",
+          "searchQuery": "Hotel Vík í Mýrdal",
+          "locationEn": "Vik, Iceland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Sudur Vik",
+          "description": "Dine at Sudur Vik, a local favorite known for its fresh seafood and traditional Icelandic cuisine. The cozy atmosphere and friendly service make it a perfect end to your adventurous day.",
+          "searchQuery": "Sudur Vik",
+          "locationEn": "Vik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Glacier Lagoon and Diamond Beach",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Vik",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Jökulsárlón Glacier Lagoon",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive along the South Coast."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Jökulsárlón Glacier Lagoon",
+          "description": "Explore the stunning Jökulsárlón Glacier Lagoon, where massive icebergs float serenely in the crystal-clear waters. Don't forget your camera for breathtaking photos of this natural wonder!",
+          "searchQuery": "Jökulsárlón Glacier Lagoon",
+          "locationEn": "Jökulsárlón, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Lunch at Hali Country Hotel",
+          "description": "Savor a delicious lunch at Hali Country Hotel, known for its local Icelandic dishes. The cozy atmosphere and beautiful views make it a perfect stop before continuing your adventure.",
+          "searchQuery": "Hali Country Hotel",
+          "locationEn": "Hali, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Diamond Beach",
+          "description": "Visit the nearby Diamond Beach, where glistening ice chunks wash ashore on the black sand. It's a surreal sight that feels like stepping into a dream, perfect for a leisurely stroll.",
+          "searchQuery": "Diamond Beach",
+          "locationEn": "Diamond Beach, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Vatnajökull National Park",
+          "description": "Take a short hike in Vatnajökull National Park, home to Europe’s largest glacier. The park offers various trails with stunning views of glaciers, waterfalls, and unique landscapes.",
+          "searchQuery": "Vatnajökull National Park",
+          "locationEn": "Vatnajökull National Park, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant at Hotel Skaftafell",
+          "description": "Enjoy a delightful dinner at the Restaurant at Hotel Skaftafell, where you can taste fresh local ingredients while enjoying views of the surrounding nature.",
+          "searchQuery": "Restaurant at Hotel Skaftafell",
+          "locationEn": "Skaftafell, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Aurora Borealis Viewing",
+          "description": "If conditions are right, spend the evening searching for the mesmerizing Northern Lights. The dark skies away from city lights provide an excellent opportunity to witness this natural phenomenon.",
+          "searchQuery": "Northern Lights",
+          "locationEn": "Skaftafell, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation at Blue Lagoon",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Vik",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Blue Lagoon, Grindavik",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive along the coast."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Blue Lagoon Spa",
+          "description": "Immerse yourself in the rejuvenating geothermal waters of the Blue Lagoon. The milky blue water surrounded by lava fields offers a unique and relaxing experience. Don't forget to try the silica mud mask for a refreshing skin treatment!",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Blue Lagoon Restaurant",
+          "description": "Savor a delicious meal at the Blue Lagoon's restaurant, featuring fresh Icelandic ingredients and stunning views of the lagoon. The seafood dishes are particularly recommended!",
+          "searchQuery": "Blue Lagoon Restaurant",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Blue Lagoon Area",
+          "description": "Take a leisurely stroll around the Blue Lagoon area, enjoying the unique landscape and perhaps snapping some photos of the stunning contrasts between the blue water and black lava rock.",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Drive to Reykjavik",
+          "description": "After a relaxing time at the Blue Lagoon, head back to Reykjavik. The drive offers beautiful coastal views, so keep your camera ready!",
+          "searchQuery": "Reykjavik",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Check-in at Hotel Borg",
+          "description": "Arrive at Hotel Borg, a luxurious hotel in the heart of Reykjavik. Enjoy the elegant decor and excellent amenities, perfect for unwinding after a day of adventure.",
+          "searchQuery": "Hotel Borg",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Grillmarkadurinn",
+          "description": "Indulge in a gourmet dinner at Grillmarkadurinn, known for its innovative dishes made from local ingredients. The atmosphere is cozy and perfect for enjoying a meal with friends.",
+          "searchQuery": "Grillmarkadurinn",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Northern Lights Tour",
+          "description": "Join a guided tour to chase the mesmerizing Northern Lights. The tour will take you to the best spots away from city lights for a chance to witness this natural wonder.",
+          "searchQuery": "Northern Lights Tour",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Exploring the Snæfellsnes Peninsula",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Reykjavik",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Kirkjufell Mountain",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive along the coast."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Kirkjufell Mountain",
+          "description": "One of Iceland's most photographed mountains, Kirkjufell is a stunning sight with its unique shape and surrounding waterfalls. Take a short hike to capture the perfect photo with the mountain in the background.",
+          "searchQuery": "Kirkjufell Mountain",
+          "locationEn": "Kirkjufell, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bjargarsteinn Mathús",
+          "description": "Enjoy a delicious meal at this cozy restaurant overlooking the sea. Their seafood dishes are particularly recommended, featuring fresh local ingredients.",
+          "searchQuery": "Bjargarsteinn Mathús",
+          "locationEn": "Kirkjufell, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Arnarstapi",
+          "description": "Visit the charming village of Arnarstapi, known for its dramatic coastal cliffs and unique rock formations. Take a leisurely walk along the coastal path to admire the stunning views and spot seabirds.",
+          "searchQuery": "Arnarstapi",
+          "locationEn": "Arnarstapi, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Djúpalónssandur Beach",
+          "description": "Explore the black pebble beach of Djúpalónssandur, surrounded by towering cliffs. This beach is not only beautiful but also rich in history, with remnants of a shipwreck scattered along the shore.",
+          "searchQuery": "Djúpalónssandur Beach",
+          "locationEn": "Djúpalónssandur, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relax at the Blue Lagoon",
+          "description": "End your day with a soothing soak in the famous Blue Lagoon. The geothermal waters are rich in minerals and provide a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavík, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Lava Restaurant",
+          "description": "Enjoy a fine dining experience at the Lava Restaurant located at the Blue Lagoon. The menu features Icelandic cuisine with a modern twist, all while overlooking the stunning lagoon.",
+          "searchQuery": "Lava Restaurant",
+          "locationEn": "Grindavík, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Reykjavik",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Reykjavik",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Keflavik International Airport",
+          "time": "null"
+        },
+        "duration": "45m",
+        "memo": "Allow time for last-minute shopping and enjoying local cafes before heading to the airport."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, known for its rye bread and delicious skyr. The cozy atmosphere is perfect for reflecting on your trip before departure.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Last-minute shopping at Laugavegur Street",
+          "description": "Stroll down Laugavegur, Reykjavik's main shopping street, where you can find unique Icelandic souvenirs, woolen goods, and local art. It's a great place to pick up gifts for friends and family.",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Icelandic Street Food",
+          "description": "Enjoy a casual lunch at Icelandic Street Food, where you can savor traditional dishes like lamb soup and fish stew. The laid-back vibe makes it a great spot to relax before your flight.",
+          "searchQuery": "Icelandic Street Food",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Harpa Concert Hall",
+          "description": "Take a short walk to the stunning Harpa Concert Hall, an architectural marvel by the waterfront. Explore its glass facade and enjoy the views of the harbor and mountains.",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Head to Keflavik International Airport",
+          "description": "Make your way to the airport, allowing plenty of time for check-in and security. Reflect on your incredible Icelandic adventure as you prepare for departure.",
+          "searchQuery": "Keflavik International Airport",
+          "locationEn": "Keflavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,277 @@
+{
+  "id": "fbab934e-552a-43e9-a399-ab324f290381",
+  "destination": "ニューヨーク",
+  "description": "活気あふれるニューヨークで、文化・歴史、ショッピング、リラックス、グルメを満喫する3日間の旅へようこそ。家族での思い出作りにぴったりのプランをお届けします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨークの文化と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークで自然を満喫。美しい景色を眺めながら、散策やピクニックを楽しむのがおすすめです。特に、ベセスダテラスからの眺めは絶景です。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アッパーイーストサイドでランチ",
+          "description": "アッパーイーストサイドのカジュアルなレストランで、ニューヨークスタイルのサンドイッチやサラダを楽しみます。地元の人々に人気のスポットです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れ、豊富なコレクションを楽しみます。特に、古代エジプトの展示や印象派の絵画は必見です。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アッパーイーストサイドのショッピング",
+          "description": "アッパーイーストサイドの高級ブティックやセレクトショップを散策。お土産やファッションアイテムを探すのにぴったりのエリアです。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元のレストランで、ピザやパスタなどのイタリアンディナーを楽しみます。カジュアルな雰囲気で、家族での食事に最適です。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ショッピングとグルメを楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを訪れます。巨大な広告看板や人々の活気を感じながら、周辺のショップを覗いてみましょう。特に、ストリートパフォーマンスも楽しめるので、カメラをお忘れなく！",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Shake Shackでランチ",
+          "description": "ニューヨーク発の人気ハンバーガーチェーン、Shake Shackでランチ。ジューシーなハンバーガーとクリスピーなフライドポテトを堪能しましょう。",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "5番街でショッピング",
+          "description": "高級ブランドが立ち並ぶ5番街でショッピングを楽しみます。ウィンドウショッピングをしながら、気になるアイテムを見つけてみてください。",
+          "searchQuery": "5th Avenue",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "チェルシーマーケット訪問",
+          "description": "チェルシーマーケットで地元の食材やお土産を探しましょう。多様なフードスタンドが揃っているので、軽食をつまみながら散策するのもおすすめです。",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元のレストランでディナーを楽しみます。アメリカン料理やイタリアンなど、選択肢は豊富。家族でシェアしながら、楽しいひとときを過ごしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブロードウェイのショー観賞",
+          "description": "夜はブロードウェイでショーを観賞します。事前にチケットを予約しておくと安心です。感動的なパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リラックスと観光の締めくくり",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ニューヨーク",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "自由の女神",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "フェリーで自由の女神へ向かいます。早めに出発して混雑を避けましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "自由の女神像",
+          "description": "アメリカの象徴、自由の女神を間近で見ることができます。フェリーからの眺めも素晴らしく、写真撮影には最適です。",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "バッテリーパークでの散策",
+          "description": "自由の女神を見た後は、バッテリーパークでのんびりと過ごしましょう。公園内の緑に囲まれた静かな場所で、家族との会話を楽しむのも良いですね。",
+          "searchQuery": "Battery Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ロウアー・マンハッタンでランチ",
+          "description": "地元の人気店でサンドイッチやサラダを楽しみましょう。手軽に食べられるので、観光の合間にぴったりです。",
+          "searchQuery": "Lower Manhattan lunch",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ブルックリンブリッジを渡る",
+          "description": "ブルックリンブリッジを徒歩で渡り、ニューヨークの美しいスカイラインを楽しみましょう。橋の上からの景色は絶景です。",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ブルックリンでのカフェタイム",
+          "description": "ブルックリンに到着したら、地元のカフェで一息つきましょう。おしゃれな雰囲気の中で、コーヒーやスイーツを楽しむのも良いですね。",
+          "searchQuery": "Brooklyn cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ダウンタウンでショッピング",
+          "description": "ダウンタウンのショッピングエリアを散策し、地元のショップやブティックを訪れましょう。お土産探しにも最適です。",
+          "searchQuery": "Downtown shopping",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "地元のレストランでディナーを楽しみましょう。ニューヨークの多様な料理を堪能できる場所がたくさんあります。",
+          "searchQuery": "Downtown dinner",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

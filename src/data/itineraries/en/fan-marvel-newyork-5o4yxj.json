@@ -1,0 +1,553 @@
+{
+  "id": "68db8465-b6cb-45f9-91ce-478086909eda",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant pulse of New York City, where the streets are alive with energy and the aroma of diverse cuisines wafts through the air. This 5-night, 6-day adventure is tailored for a family of Marvel enthusiasts, blending cultural exploration, culinary delights, and the thrill of fandom. From iconic landmarks to hidden gems, prepare to uncover the heart of the Big Apple while indulging in your love for all things Marvel!",
+  "heroImage": "https://images.unsplash.com/photo-1695189993006-975fb45964de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk1Nzd8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Denil Dominic",
+  "heroImagePhotographerUrl": "https://unsplash.com/@denildominic?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in New York City",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, hand-rolled bagels and a variety of spreads. It's a local favorite that will fuel you for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Times Square",
+          "description": "Dive into the vibrant energy of Times Square, where the bright lights and bustling crowds create an unforgettable atmosphere. Take some photos and soak in the iconic sights!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shake Shack",
+          "description": "Enjoy a delicious burger and fries at Shake Shack, a beloved fast-casual chain that started in NYC. The ShackBurger and crinkle-cut fries are must-tries!",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Marvel Store",
+          "description": "Head to the Marvel Store in Times Square to find a wide range of Marvel merchandise, from action figures to apparel. It's a paradise for any Marvel fan!",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Museum of Modern Art (MoMA)",
+          "description": "Immerse yourself in the world of modern art at MoMA, home to an impressive collection of contemporary works. Don't miss Van Gogh's 'Starry Night'!",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "Savor a slice of classic New York-style pizza at Joe's Pizza, a local institution known for its delicious, thin-crust pies. Perfect for a casual family dinner!",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Broadway Show",
+          "description": "End your day with a spectacular Broadway show. Check out what's playing and enjoy the magic of live theater in the heart of the city!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Marvel Universe Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tom's Restaurant",
+          "description": "Start your day with a hearty breakfast at Tom's Restaurant, a classic diner known for its delicious pancakes and friendly atmosphere. It's a great spot to fuel up before a day of Marvel adventures!",
+          "searchQuery": "Tom's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Marvel Store",
+          "description": "Dive into the world of Marvel at the iconic Marvel Store in Times Square. Explore a vast selection of merchandise, from action figures to apparel, perfect for any Marvel fan. Don't forget to take some photos with the life-sized superhero statues!",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Shake Shack",
+          "description": "Enjoy a delicious burger and fries at Shake Shack, a beloved fast-casual chain known for its juicy burgers and creamy shakes. It's a perfect quick stop to recharge before heading to the next Marvel-themed destination.",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "The Museum of Comic and Cartoon Art (MoCCA)",
+          "description": "Explore the fascinating world of comics and cartoons at MoCCA. This museum showcases a variety of exhibits featuring comic art, including works from famous artists. It's a must-visit for any comic book enthusiast!",
+          "searchQuery": "Museum of Comic and Cartoon Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Bryant Park",
+          "description": "Take a leisurely stroll through Bryant Park, a beautiful green space in the heart of the city. Relax on the lawn or grab a coffee from one of the kiosks while enjoying the vibrant atmosphere.",
+          "searchQuery": "Bryant Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Junior's Restaurant",
+          "description": "Indulge in a classic New York meal at Junior's, famous for its cheesecake and hearty dishes. It's a great place to unwind after a day of exploring Marvel-related spots.",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Times Square",
+          "description": "End your day with a visit to the dazzling Times Square. The bright lights and bustling atmosphere are a perfect way to wrap up your Marvel adventure. Take in the sights and maybe catch a street performance!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Icons and Marvel Landmarks",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Explore one of the largest and most prestigious art museums in the world. The Met houses an extensive collection that spans 5,000 years, including works from ancient Egypt to modern American art. Don't miss the rooftop garden for stunning views of Central Park!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Shake Shack",
+          "description": "Enjoy a delicious burger and crinkle-cut fries at Shake Shack, a beloved fast-casual chain that originated in NYC. The ShackBurger is a must-try, and you can pair it with their famous ShackSauce!",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Central Park",
+          "description": "Take a leisurely stroll through Central Park, an urban oasis in the heart of Manhattan. Visit iconic spots like Bethesda Terrace and Bow Bridge, and enjoy the natural beauty and vibrant atmosphere of this historic park.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Marvel Store at Times Square",
+          "description": "Head to the Marvel Store in Times Square to indulge your inner superhero! Browse a wide selection of Marvel merchandise, from action figures to apparel, and pick up some unique souvenirs for your family.",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "Savor a slice of classic New York-style pizza at Joe's Pizza, a local institution known for its delicious, thin-crust pies. Grab a slice to go or enjoy it at the counter for an authentic NYC experience!",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in Times Square",
+          "description": "End your day with a vibrant evening walk in Times Square. The bright lights and bustling atmosphere are a quintessential New York experience. Take in the sights and sounds, and maybe catch a street performance!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Brooklyn Adventure and Marvel Sites",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Tom's Restaurant",
+          "description": "Start your day with a hearty breakfast at Tom's Restaurant, a classic diner known for its delicious pancakes and friendly atmosphere. It's a great spot to fuel up before your Brooklyn adventure!",
+          "searchQuery": "Tom's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you walk towards Brooklyn. Don't forget to snap some photos!",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "DUMBO Exploration",
+          "description": "Explore the trendy DUMBO neighborhood, known for its cobblestone streets and stunning waterfront views. Check out the local shops and art galleries, and be sure to visit the famous Jane's Carousel.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local dishes from different vendors. It's a great way to experience the diverse food scene of Brooklyn!",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the Brooklyn Museum",
+          "description": "Immerse yourself in art and culture at the Brooklyn Museum. With a vast collection ranging from ancient artifacts to contemporary art, there's something for everyone to enjoy.",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Marvel Store Visit",
+          "description": "Make your way to the Marvel Store in Times Square to shop for exclusive Marvel merchandise. From action figures to apparel, it's a must-visit for any Marvel fan!",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Junior's Restaurant",
+          "description": "End your day with a delicious dinner at Junior's, famous for its New York-style cheesecake and classic American diner fare. A perfect way to unwind after a day of exploration!",
+          "searchQuery": "Junior's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Times Square",
+          "description": "Take a leisurely evening stroll through the bright lights of Times Square. Enjoy the vibrant atmosphere and maybe catch a street performance or two!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Marvel Shopping and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Midtown Comics",
+          "description": "Dive into the world of comics at Midtown Comics, one of the largest comic book stores in New York. Here, you can find a wide range of Marvel merchandise, from comics to collectibles, perfect for any fan!",
+          "searchQuery": "Midtown Comics",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Halal Guys",
+          "description": "Enjoy a delicious lunch from The Halal Guys, famous for their flavorful chicken and gyro platters served with their signature white sauce. It's a quick and satisfying meal that won't break the bank!",
+          "searchQuery": "The Halal Guys",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Herald Square",
+          "description": "Stroll around Herald Square, home to the iconic Macy's department store. This bustling area is perfect for some last-minute shopping and soaking in the vibrant atmosphere of New York City.",
+          "searchQuery": "Herald Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Marvel Store",
+          "description": "Head to the Marvel Store located in Times Square, where you can find exclusive Marvel merchandise, apparel, and collectibles. It's a must-visit for any Marvel enthusiast!",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "Wrap up your New York adventure with a slice of classic New York-style pizza at Joe's Pizza. Known for its delicious, thin-crust slices, it's a perfect way to end your trip!",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Departure Preparation",
+          "description": "Head back to your accommodation to gather your belongings and prepare for your departure. Reflect on the wonderful memories made during your trip!",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Amtrak train from Penn Station to Union Station."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Brunch at Sarabeth's",
+          "description": "Start your day with a delightful brunch at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a cozy spot perfect for families, located near Central Park.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Visit the Marvel Store",
+          "description": "Explore the Marvel Store in Times Square, where you can find a wide range of Marvel merchandise, from action figures to apparel. It's a must-visit for any Marvel fan!",
+          "searchQuery": "Marvel Store Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Museum of Modern Art (MoMA)",
+          "description": "Immerse yourself in art at MoMA, home to an impressive collection of modern and contemporary masterpieces. Don't miss the iconic Starry Night by Van Gogh!",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "Enjoy a classic New York slice at Joe's Pizza, a local favorite known for its delicious, thin-crust pizza. It's a great way to end your day in the city before heading back to D.C.",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Transit back to Washington D.C.",
+          "description": "Catch your train back to Washington D.C. after a fulfilling day in New York City. Reflect on the Marvel adventures and art experiences you've had!",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

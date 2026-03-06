@@ -1,0 +1,298 @@
+{
+  "id": "242e8690-8e06-43f9-b818-9994f5319e23",
+  "destination": "リスボン",
+  "description": "リスボンの街は、色とりどりのタイルが敷き詰められた道や、歴史的な建物が立ち並ぶ美しい景観が魅力です。この3日間の旅では、友人と共にリスボンのグルメを堪能しながら、リラックスしたひとときを過ごします。地元の人々が愛するレストランやカフェを巡り、街の雰囲気を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "リスボンの魅力を発見",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、トーストやペストリー、濃厚なエスプレッソを楽しみながら、ゆったりとした朝のひとときを過ごします。地元の人々に混じって、朝の活気を感じましょう。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アルファマ地区散策",
+          "description": "リスボンの古い街並みが残るアルファマ地区を散策。狭い路地やカラフルなタイルの家々を眺めながら、歴史を感じるひとときを楽しみます。途中、展望台からの絶景もお見逃しなく。",
+          "searchQuery": "Alfama",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "アルファマ地区の隠れ家的なレストランで、バカリャウ（干し鱈）の料理を堪能。新鮮な地元の食材を使った料理が楽しめる、リラックスした雰囲気のお店です。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バイロ・アルト地区散策",
+          "description": "リスボンのトレンディなエリア、バイロ・アルトを訪れます。アートギャラリーやおしゃれなカフェが立ち並ぶ通りを歩きながら、地元のアートや文化に触れましょう。",
+          "searchQuery": "Bairro Alto",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ロシオ広場で休憩",
+          "description": "ロシオ広場でのんびりとした時間を過ごします。広場のカフェでアイスクリームを楽しみながら、周囲の人々や街の雰囲気を観察するのも良いでしょう。",
+          "searchQuery": "Rossio Square",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元の居酒屋でディナー",
+          "description": "リスボンの居酒屋で、タパスやワインを楽しむディナー。地元の人々と交流しながら、リラックスした雰囲気の中で食事を楽しみましょう。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のリスボンを散策",
+          "description": "夜のリスボンを散策し、ライトアップされた街並みを楽しみます。特にアルファマ地区の夜景は美しく、ロマンチックな雰囲気が漂います。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美食と歴史の融合",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのホテルで、地元のパンやフルーツを使った朝食を楽しみます。特に、パステル・デ・ナタは外せません！",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ベレン地区観光",
+          "description": "歴史的なベレン地区を散策。ジェロニモス修道院やベレンの塔を訪れ、ポルトガルの大航海時代の栄光を感じましょう。",
+          "searchQuery": "Jerónimos Monastery",
+          "locationEn": "Belém, Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ベレンのパステル・デ・ナタを堪能",
+          "description": "ベレン地区の名物、パステル・デ・ベレンを本場で味わいます。サクサクの生地とクリーミーなカスタードが絶妙です。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Belém, Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "シントラへの移動",
+          "description": "シントラへは電車で約40分。美しい風景を楽しみながら、歴史的な街へ向かいます。",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "シントラのペーナ宮殿",
+          "description": "シントラのシンボル、ペーナ宮殿を訪問。色とりどりの建物と美しい庭園が広がり、まるでおとぎ話の世界に迷い込んだよう。",
+          "searchQuery": "Pena Palace",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "シントラの街散策",
+          "description": "シントラの街を散策し、地元のカフェでリラックス。お土産屋さんも多く、散策が楽しいエリアです。",
+          "locationEn": "Sintra, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "リスボンに戻る",
+          "description": "シントラからリスボンへ戻ります。夕暮れ時の美しい景色を楽しみながら、再びリスボンの街へ。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "リスボンの市場でディナー",
+          "description": "リスボンのタイムアウトマーケットで、様々な料理を楽しみます。地元のシェフが作る料理をシェアしながら、グルメな夜を過ごしましょう。",
+          "searchQuery": "Time Out Market Lisbon",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リスボンの風を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、地元のペストリー「パステル・デ・ナタ」を楽しみながら、朝のひとときを過ごします。コーヒーと一緒に、甘さとクリーミーさが絶妙なこのお菓子は、リスボンの朝食には欠かせません。",
+          "searchQuery": "Pastel de Nata",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カスカイスへの日帰り旅行",
+          "description": "リスボンからカスカイスへは電車で約40分。美しい海岸線を眺めながら、リラックスした雰囲気の街を散策します。カスカイスのビーチでのんびりと過ごすのもおすすめです。",
+          "searchQuery": "Cascais",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カスカイスのビーチでランチ",
+          "description": "ビーチ近くのレストランで、新鮮なシーフードを楽しみましょう。特に、地元の名物料理「バカリャウ（干し鱈）」を使った料理は絶品です。海を眺めながらの食事は格別です。",
+          "searchQuery": "Cascais Seafood Restaurant",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カスカイスのビーチでリラックス",
+          "description": "ビーチでのんびりと過ごし、海の音を聞きながらリラックス。日光浴や海水浴を楽しんで、心身ともにリフレッシュしましょう。",
+          "searchQuery": "Cascais Beach",
+          "locationEn": "Cascais, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リスボンに戻る",
+          "description": "カスカイスからリスボンへ戻り、夕方の街を散策します。",
+          "searchQuery": "Lisbon",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "リスボンのカフェでお茶",
+          "description": "リスボンの街中にあるカフェで、軽食と共にお茶を楽しみます。地元の人々に混じって、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Lisbon Cafe",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リスボンのレストランでディナー",
+          "description": "リスボンの人気レストランで、ポルトガル料理を堪能します。特に、タコのグリルやアフリカンチキンはおすすめです。地元のワインと共に、素敵なディナーを楽しんでください。",
+          "searchQuery": "Lisbon Restaurant",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "リスボンの夜景を楽しむ",
+          "description": "夕食後は、リスボンの丘から美しい夜景を楽しみましょう。特に「サン・ジョルジェ城」からの眺めは絶景です。",
+          "searchQuery": "São Jorge Castle",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

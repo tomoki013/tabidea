@@ -1,0 +1,575 @@
+{
+  "id": "9476a268-1f79-4f0a-89a3-19f3ba510a34",
+  "destination": "ワルシャワ・クラクフ周遊",
+  "description": "ポーランドの歴史と文化を深く学ぶ旅へ、あなたを誘います。美しい街並みと共に、過去の負の遺産をしっかりと見つめ直し、平和の大切さを感じる旅です。ワルシャワの近代的な魅力とクラクフの古都の風情を存分に楽しみながら、心に残る体験をお届けします。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からワルシャワへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ワルシャワ",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "ワルシャワ中央駅",
+          "description": "ワルシャワの中心地に位置する中央駅。美しいアールデコ様式の建物で、周辺にはカフェやショップが立ち並び、観光の拠点に最適です。",
+          "searchQuery": "Warsaw Central Station",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "旧市街散策",
+          "description": "ユネスコ世界遺産に登録されている旧市街。色とりどりの建物が並ぶ広場や歴史的な教会を巡りながら、ポーランドの歴史を感じることができます。",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランで夕食",
+          "description": "ポーランド料理を楽しめるレストランで、ピエロギ（ポーランド風餃子）やビゴス（キャベツの煮込み）を味わいましょう。地元の人々に人気のあるお店です。",
+          "searchQuery": "Pierogi Restaurant Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ワルシャワの夜景を楽しむ",
+          "description": "旧市街の広場から見えるワルシャワの夜景は美しく、特に王宮のライトアップが印象的です。散策しながら、歴史を感じるひとときを過ごしましょう。",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ワルシャワの歴史を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ワルシャワの地元のカフェで、ポーランドの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ワルシャワ起義博物館",
+          "description": "ワルシャワ起義博物館を訪れ、ポーランドの歴史的な出来事であるワルシャワ起義について深く学びます。展示物や映像が豊富で、感情に訴える体験ができます。",
+          "searchQuery": "Warsaw Uprising Museum",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "旧市街広場でランチ",
+          "description": "旧市街広場の周辺には多くのレストランがあり、ポーランド料理を楽しむのに最適です。特に、地元のビールと一緒にピエロギ（ポーランドの餃子）を味わってみてください。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "旧市街散策",
+          "description": "美しい旧市街を散策しながら、カラフルな建物や歴史的な教会を楽しみます。特に、シグムントの像や聖ヨハネ大聖堂は必見です。",
+          "searchQuery": "Old Town Market Square",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ワルシャワ国立博物館",
+          "description": "ワルシャワ国立博物館で、ポーランドの美術や歴史を学びます。特に、ポーランドの画家たちの作品が多く展示されており、文化的な深みを感じることができます。",
+          "searchQuery": "National Museum in Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ワルシャワの地元のレストランで、ポーランドの家庭料理を楽しみます。特に、ビゴス（キャベツと肉の煮込み）や、スープのズワルタ（酸っぱいスープ）が人気です。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ワルシャワの夜景を楽しむ",
+          "description": "ワルシャワの美しい夜景を楽しむために、ヴィスワ川沿いを散策します。川の反射に映る街の灯りは、特別な雰囲気を醸し出します。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "クラクフへの移動と探索",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ワルシャワ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "クラクフ",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "ワルシャワ中央駅からクラクフ行きの電車に乗ります。快適な車両で、車窓からの風景を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "クラクフ旧市街散策",
+          "description": "クラクフの旧市街を散策し、歴史的な建物や広場を楽しみます。特に、中央広場の聖マリア教会は必見です。",
+          "searchQuery": "Main Market Square",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "地元のレストランでランチ",
+          "description": "クラクフの地元料理を楽しめるレストランで、ピエロギ（ポーランドの餃子）を味わいましょう。",
+          "searchQuery": "Pierogi Restaurant Krakow",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ヴァヴェル城訪問",
+          "description": "ポーランドの歴史を感じるヴァヴェル城を訪れ、王室の歴史や美しい庭園を散策します。",
+          "searchQuery": "Wawel Castle",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クラクフのユダヤ人地区カジミエシュ散策",
+          "description": "カジミエシュ地区を散策し、歴史的なシナゴーグやカフェを訪れます。ここでは、ユダヤ文化の影響を感じることができます。",
+          "searchQuery": "Kazimierz District",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の居酒屋でディナー",
+          "description": "クラクフの居酒屋で、地元のビールと共にポーランド料理を楽しみましょう。アットホームな雰囲気が魅力です。",
+          "searchQuery": "Krakow Pub",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "クラクフの深い歴史を学ぶ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "クラクフのホテルで、ポーランドの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "アウシュビッツ強制収容所訪問",
+          "description": "歴史的なアウシュビッツ強制収容所を訪れ、第二次世界大戦中の悲劇を学びます。ガイド付きツアーで、当時の状況や人々の物語を深く理解することができます。",
+          "searchQuery": "Auschwitz Concentration Camp",
+          "locationEn": "Oświęcim, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "アウシュビッツ近くのレストランでランチ",
+          "description": "アウシュビッツから戻った後、近くのレストランでポーランド料理のランチを楽しみます。地元の食材を使った料理が味わえ、心温まるひとときを過ごせます。",
+          "locationEn": "Oświęcim, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シュフラの街散策",
+          "description": "シュフラの美しい街並みを散策します。歴史的な建物や広場を巡りながら、地元のカフェで一息つくのもおすすめです。",
+          "searchQuery": "Szydłowiec",
+          "locationEn": "Szydłowiec, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "クラクフ旧市街散策",
+          "description": "クラクフの旧市街を散策し、歴史的な建物や広場を楽しみます。特に、中央広場の美しい景観は必見です。",
+          "searchQuery": "Krakow Old Town",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "クラクフでディナー",
+          "description": "地元のレストランでポーランド料理のディナーを楽しみます。ピエロギやビゴスなど、伝統的な料理を味わいながら、旅の思い出を振り返ります。",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "クラクフからワルシャワへ戻る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "クラクフ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ワルシャワ",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "クラクフ中央駅からワルシャワ中央駅までの直通電車。快適な車両で、車窓からの景色を楽しみながら移動できます。"
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "ワルシャワ公園散策",
+          "description": "ワルシャワ中央駅から徒歩圏内の公園で、緑豊かな環境の中を散策。特に春や夏には花々が美しく、リラックスした時間を過ごせます。",
+          "searchQuery": "Lazienki Park",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のカフェでランチ",
+          "description": "公園近くのカフェで、ポーランドの伝統的な料理を楽しみます。特にピエロギ（ポーランド風餃子）はおすすめです。",
+          "searchQuery": "Cafe in Lazienki Park",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ウィラヌフ宮殿見学",
+          "description": "ウィラヌフ宮殿は美しいバロック様式の建物で、庭園も見事です。歴史的な背景を学びながら、優雅な雰囲気を楽しめます。",
+          "searchQuery": "Wilanow Palace",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ワルシャワ旧市街散策",
+          "description": "ユネスコ世界遺産に登録されているワルシャワ旧市街を散策。色とりどりの建物や歴史的な広場が魅力的で、写真撮影にも最適です。",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "旧市街のレストランでディナー",
+          "description": "旧市街のレストランで、ポーランド料理を堪能。特に地元のビールと一緒に楽しむのが良いでしょう。",
+          "searchQuery": "Restaurant in Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ワルシャワの文化を楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ワルシャワのホテルで、ポーランドの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ポーランド国立博物館",
+          "description": "ポーランドの歴史と文化を深く学べるポーランド国立博物館を訪れます。美術品や歴史的な展示が豊富で、特に中世のアートは必見です。",
+          "searchQuery": "National Museum in Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ワルシャワの地元のレストランで、ポーランド料理のランチを楽しみます。ピエロギ（ポーランドの餃子）やビゴス（キャベツの煮込み）をぜひ味わってみてください。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ワルシャワの街歩き",
+          "description": "ワルシャワの旧市街を散策します。美しい街並みや歴史的な建物を楽しみながら、地元のカフェで一息つくのも良いでしょう。",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ワルシャワ起源の記念碑訪問",
+          "description": "ワルシャワの歴史を学ぶために、第二次世界大戦の記念碑や、ユダヤ人ゲットーの跡地を訪れます。平和学習の一環として、過去の悲劇を忘れないための重要な場所です。",
+          "searchQuery": "Warsaw Ghetto Memorial",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "散策の疲れを癒すために、ワルシャワのカフェでコーヒーやスイーツを楽しみます。地元の人々と交流する良い機会です。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ワルシャワの人気レストランで、ポーランドの伝統料理を堪能します。地元の食材を使った料理が楽しめるお店を選びましょう。",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "ワルシャワから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ワルシャワ",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "12h",
+        "memo": "ワルシャワ・ショパン空港から東京・成田空港への直行便です。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ワルシャワのホテルで、ポーランドの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして甘いペストリーが並び、エネルギーをチャージ。",
+          "searchQuery": "Warsaw Hotel Breakfast",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ワルシャワ市内観光",
+          "description": "ワルシャワの歴史的な旧市街を散策します。美しい広場やカラフルな建物が並び、街の歴史を感じることができます。特に、王宮広場や聖ヨハネ大聖堂は必見です。",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ワルシャワの地元のレストランで、ポーランド料理のランチを楽しみます。ピエロギ（ポーランドの餃子）やビゴス（キャベツの煮込み）をぜひ味わってみてください。",
+          "searchQuery": "Traditional Polish Restaurant Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ワルシャワ起源の博物館訪問",
+          "description": "ワルシャワの歴史を深く学ぶために、ワルシャワ起源の博物館を訪れます。ここでは、第二次世界大戦やホロコーストに関する展示があり、平和学習にも役立ちます。",
+          "searchQuery": "Museum of Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ワルシャワ・ショパン空港へ移動",
+          "description": "観光を終えたら、ワルシャワ・ショパン空港へ向かいます。空港まではタクシーや公共交通機関を利用できます。",
+          "searchQuery": "Warsaw Chopin Airport",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "機内食",
+          "description": "フライト中に提供される機内食を楽しみます。長旅の疲れを癒しながら、次の目的地を楽しみに待ちます。",
+          "searchQuery": "In-flight meal",
+          "locationEn": "In-flight",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

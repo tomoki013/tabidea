@@ -1,0 +1,502 @@
+{
+  "id": "69ae23b1-9e19-4f44-8d3a-c69b1db5c985",
+  "destination": "サン・セバスティアン",
+  "description": "Escape to San Sebastián, a culinary paradise nestled on the northern coast of Spain. This vibrant city is renowned for its stunning beaches, bustling pintxos bars, and picturesque old town. Over six days, you and your friends will indulge in the rich flavors of Basque cuisine, explore charming streets, and soak up the sun on golden sands. Each day is crafted to immerse you in the local culture, with plenty of opportunities to savor delicious food and drink while enjoying the lively atmosphere of this coastal gem.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Pintxos Exploration",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Arrival in San Sebastián",
+          "description": "Arrive in the beautiful coastal city of San Sebastián, known for its stunning beaches and vibrant culinary scene. Take a moment to soak in the atmosphere as you settle into your accommodation.",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Bar Nestor",
+          "description": "Start your culinary adventure with a visit to Bar Nestor, famous for its mouthwatering tomato salad and perfectly grilled steak. This small bar is a local favorite, so be prepared for a wait, but it's worth it!",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through the Old Town (Parte Vieja)",
+          "description": "Wander through the charming streets of the Old Town, where you can admire the beautiful architecture and vibrant atmosphere. Don't forget to stop by the Plaza de la Constitución, a lively square surrounded by bars and restaurants.",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Pintxos Hopping in Old Town",
+          "description": "Dive into the local culture by hopping from bar to bar, sampling a variety of pintxos. Try the famous 'gilda' (a skewer of olives, anchovies, and peppers) and other delicious bites at places like La Cuchara de San Telmo and Borda Berri.",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at La Vina",
+          "description": "End your day with a delightful dinner at La Vina, known for its incredible cheesecake and traditional Basque dishes. The cozy atmosphere makes it a perfect spot to relax after a day of exploration.",
+          "searchQuery": "La Vina",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along La Concha Beach",
+          "description": "Take a leisurely stroll along La Concha Beach, enjoying the stunning views of the bay and the city lights reflecting on the water. It's a perfect way to unwind after a day filled with delicious food and exploration.",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Culinary Delights and Scenic Views",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de la Concha",
+          "description": "Start your day with a delightful breakfast at Café de la Concha, where you can enjoy fresh pastries and a strong coffee while overlooking the beautiful La Concha beach.",
+          "searchQuery": "Café de la Concha",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Pintxos Bar Hopping in Parte Vieja",
+          "description": "Dive into the vibrant culinary scene of San Sebastián by hopping between pintxos bars in the Parte Vieja district. Sample a variety of delicious pintxos, from seafood to traditional Basque dishes, and enjoy the lively atmosphere.",
+          "searchQuery": "Parte Vieja Pintxos Bars",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Cuchara de San Telmo",
+          "description": "Savor a delicious lunch at La Cuchara de San Telmo, known for its creative pintxos and local wines. Don't miss their signature dishes like the slow-cooked beef cheek.",
+          "searchQuery": "La Cuchara de San Telmo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll along La Concha Beach",
+          "description": "Take a leisurely stroll along La Concha Beach, enjoying the stunning views of the bay and the iconic island. This is a perfect time to relax and soak in the sun.",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Monte Igueldo",
+          "description": "Head to Monte Igueldo for breathtaking panoramic views of San Sebastián. You can take a funicular ride to the top and enjoy the stunning scenery, perfect for some memorable photos.",
+          "searchQuery": "Monte Igueldo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Bar Nestor",
+          "description": "End your day with dinner at Bar Nestor, famous for its exceptional steak and seasonal dishes. The cozy atmosphere and friendly service make it a must-visit.",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Pintxos Crawl",
+          "description": "Continue your culinary adventure with an evening pintxos crawl. Explore more bars in the Old Town, trying out different flavors and enjoying the vibrant nightlife.",
+          "searchQuery": "Pintxos Bars in San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Beach Day and Local Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Bar Nestor",
+          "description": "Start your day with a delicious breakfast at Bar Nestor, famous for its fresh tomato toast and local cheeses. The cozy atmosphere makes it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Zurriola Beach",
+          "description": "Head to Zurriola Beach, known for its vibrant atmosphere and surf culture. Enjoy a leisurely morning soaking up the sun or take a dip in the refreshing waters. It's a great spot for people-watching and enjoying the coastal vibe.",
+          "searchQuery": "Zurriola Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Bretxa Market",
+          "description": "Explore La Bretxa Market for lunch, where you can sample a variety of local delicacies. Try some fresh seafood or grab a few pintxos from different stalls to experience the flavors of the Basque Country.",
+          "searchQuery": "La Bretxa Market",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Pintxos Hopping in Old Town",
+          "description": "Dive into the heart of San Sebastián's culinary scene by hopping from bar to bar in the Old Town. Sample a variety of pintxos, from traditional to innovative creations, and enjoy the lively atmosphere of the bustling streets.",
+          "searchQuery": "Old Town San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Beach",
+          "description": "After a fun-filled afternoon of pintxos, return to Zurriola Beach to relax. Whether you want to sunbathe or take a stroll along the shore, it's the perfect way to unwind after a day of indulgence.",
+          "searchQuery": "Zurriola Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at La Cuchara de San Telmo",
+          "description": "End your day with dinner at La Cuchara de San Telmo, a popular spot known for its creative pintxos and vibrant atmosphere. Be sure to try their signature dishes, which showcase the best of local ingredients.",
+          "searchQuery": "La Cuchara de San Telmo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Getaria",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "San Sebastián",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Getaria",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Enjoy a scenic train ride along the coast."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Getaria's Old Town",
+          "description": "Stroll through the charming streets of Getaria, known for its picturesque harbor and traditional Basque architecture. Don't miss the stunning views of the coastline from the hilltop.",
+          "searchQuery": "Getaria",
+          "locationEn": "Getaria, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Elkano",
+          "description": "Savor the famous grilled fish at Elkano, a local favorite renowned for its fresh seafood. The restaurant's specialty is the whole grilled turbot, a must-try!",
+          "searchQuery": "Restaurante Elkano",
+          "locationEn": "Getaria, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Txakoli Wineries",
+          "description": "Take a guided tour of one of the local Txakoli wineries. Learn about the unique wine-making process and enjoy a tasting session of this refreshing Basque white wine.",
+          "searchQuery": "Txakoli Wineries",
+          "locationEn": "Getaria, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Playa de Getaria",
+          "description": "Unwind at the beautiful Getaria beach. Take a dip in the ocean or simply relax on the sand while enjoying the stunning coastal views.",
+          "searchQuery": "Playa de Getaria",
+          "locationEn": "Getaria, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Tapas Hopping in Getaria",
+          "description": "Experience the vibrant tapas scene by hopping between local bars. Sample a variety of delicious pintxos, from seafood to traditional Basque dishes, and enjoy the lively atmosphere.",
+          "searchQuery": "Getaria Tapas Bars",
+          "locationEn": "Getaria, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to San Sebastián",
+          "description": "Head back to San Sebastián after a delightful day in Getaria. Reflect on the wonderful food and experiences as you enjoy the scenic train ride back.",
+          "searchQuery": "San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Cultural Immersion and Farewell Dinner",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de la Concha",
+          "description": "Start your day with a delightful breakfast at Café de la Concha, where you can enjoy fresh pastries and a rich cup of coffee while overlooking the beautiful La Concha beach.",
+          "searchQuery": "Café de la Concha",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit San Telmo Museoa",
+          "description": "Explore the San Telmo Museoa, a museum dedicated to Basque society and culture, housed in a former convent. The exhibits provide a fascinating insight into the region's history and art.",
+          "searchQuery": "San Telmo Museoa",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Pintxos Lunch at Parte Vieja",
+          "description": "Head to the vibrant Parte Vieja district for lunch, where you can indulge in a variety of pintxos at local bars. Don't miss the chance to try the famous 'gilda' and other delicious bites.",
+          "searchQuery": "Parte Vieja San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Old Town",
+          "description": "Take a leisurely stroll through the charming streets of San Sebastián's Old Town. Enjoy the lively atmosphere, unique shops, and perhaps pick up some local souvenirs.",
+          "searchQuery": "Old Town San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Pintxos Bar Hopping",
+          "description": "Continue your culinary adventure by hopping between pintxos bars. Sample a variety of local specialties and enjoy the lively ambiance of each bar. Ask locals for their favorites!",
+          "searchQuery": "Pintxos Bars San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Farewell Dinner at Restaurante Arzak",
+          "description": "End your day with a memorable farewell dinner at Restaurante Arzak, a Michelin-starred restaurant known for its innovative Basque cuisine. A perfect way to celebrate your trip!",
+          "searchQuery": "Restaurante Arzak",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "San Sebastián",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "9h",
+        "memo": "Direct flight from San Sebastián to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Bar Nestor",
+          "description": "Start your day with a delicious breakfast at Bar Nestor, famous for its fresh produce and local flavors. Don't miss their signature tomato toast and a refreshing coffee to kickstart your morning!",
+          "searchQuery": "Bar Nestor",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Stroll along La Concha Beach",
+          "description": "Take a leisurely walk along the picturesque La Concha Beach. Enjoy the stunning views of the bay and the vibrant atmosphere as locals and tourists alike soak up the sun.",
+          "searchQuery": "La Concha Beach",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Pinchos Hopping in Parte Vieja",
+          "description": "Dive into the culinary scene of San Sebastián by hopping from bar to bar in the Parte Vieja district. Sample a variety of delicious pinchos, from seafood to traditional Basque specialties, and enjoy the lively ambiance.",
+          "searchQuery": "Parte Vieja San Sebastián",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Cuchara de San Telmo",
+          "description": "Savor a delightful lunch at La Cuchara de San Telmo, known for its creative pinchos and local wines. The atmosphere is cozy, making it a perfect spot to relax and enjoy your meal.",
+          "searchQuery": "La Cuchara de San Telmo",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Last-minute shopping at Mercado de la Bretxa",
+          "description": "Before heading to the airport, visit Mercado de la Bretxa for some last-minute shopping. This market offers a variety of local products, from gourmet foods to unique souvenirs.",
+          "searchQuery": "Mercado de la Bretxa",
+          "locationEn": "San Sebastián, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

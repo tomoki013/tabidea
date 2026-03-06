@@ -1,0 +1,530 @@
+{
+  "id": "83d49383-af70-4e85-a5c2-5205dc27f3e3",
+  "destination": "デリー・アグラ・ジャイプール周遊",
+  "description": "インドの魅力を存分に味わう6日間の旅へようこそ。デリーの喧騒から始まり、アグラの壮大なタージマハル、そしてジャイプールの色彩豊かな街並みへと続くこの旅は、歴史と文化、そして美味しいグルメが満載です。各地の名所を巡りながら、地元の人々との触れ合いを楽しむことができる、心温まる体験が待っています。",
+  "days": [
+    {
+      "day": 1,
+      "title": "デリーの歴史と文化を探訪",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "デリー",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アグラ",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "デリーからアグラへの電車移動。快適な車両で、景色を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "タージ・マハル",
+          "description": "世界遺産のタージ・マハルを訪れ、その美しい白大理石の建築を堪能します。朝の光の中での写真撮影は特におすすめです。",
+          "searchQuery": "Taj Mahal",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカレー店でランチ",
+          "description": "アグラの人気カレー店で、本場のインドカレーを楽しみます。スパイシーで風味豊かな料理が揃い、地元の人々にも愛されるお店です。",
+          "searchQuery": "Peshawri Restaurant",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アグラ城",
+          "description": "アグラ城を訪れ、ムガル帝国の歴史を感じながら壮大な城郭を探索します。タージ・マハルの美しい眺めも楽しめます。",
+          "searchQuery": "Agra Fort",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "象に乗る体験",
+          "description": "アグラ近郊で象に乗る体験を楽しみます。象に乗りながらの散策は、特別な思い出になること間違いなしです。",
+          "searchQuery": "Elephant Ride Agra",
+          "locationEn": "Agra, India",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アグラの市場散策",
+          "description": "アグラの地元市場を散策し、手工芸品やスイーツを楽しみます。お土産探しにもぴったりの場所です。",
+          "searchQuery": "Agra Local Market",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "アグラでディナー",
+          "description": "地元のレストランで、インド料理のディナーを楽しみます。特にタンドリーチキンやナンは絶品です。",
+          "searchQuery": "Dasaprakash Restaurant",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アグラのタージマハルとグルメ体験",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "デリー",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アグラ",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "デリーからアグラまでの快適な車移動です。早めに出発して、タージマハルを存分に楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "タージマハル",
+          "description": "世界遺産のタージマハルを訪れ、その美しさに圧倒されます。朝の光の中での写真撮影は特におすすめです。",
+          "searchQuery": "Taj Mahal",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカレー屋でランチ",
+          "description": "アグラの地元で評判のカレー屋で、本場のインドカレーを堪能します。スパイシーで香り高い料理が楽しめます。",
+          "searchQuery": "Peshawri Restaurant",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アグラ城",
+          "description": "アグラ城を訪れ、歴史的な建築と美しい庭園を散策します。タージマハルとはまた違った魅力があります。",
+          "searchQuery": "Agra Fort",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "象に乗る体験",
+          "description": "アグラ近郊で象に乗る体験を楽しみます。象に揺られながらの景色は、特別な思い出になること間違いなしです。",
+          "searchQuery": "Elephant Ride Agra",
+          "locationEn": "Agra, India",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アグラの市場散策",
+          "description": "アグラの地元市場を散策し、手工芸品やスイーツを楽しみます。お土産探しにもぴったりです。",
+          "searchQuery": "Agra Market",
+          "locationEn": "Agra, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "アグラのレストランでディナー",
+          "description": "アグラの人気レストランで、インド料理のディナーを楽しみます。地元の人々に愛される味を堪能しましょう。",
+          "searchQuery": "Dasaprakash Restaurant",
+          "locationEn": "Agra, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アグラからジャイプールへ",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アグラ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ジャイプール",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "アグラからジャイプールへは車での移動。途中、ファテープル・シクリに立ち寄ります。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ファテープル・シクリ",
+          "description": "世界遺産に登録されているファテープル・シクリを訪れます。美しい建築と歴史的な背景を感じながら、写真撮影にも最適なスポットです。",
+          "searchQuery": "Fatehpur Sikri",
+          "locationEn": "Fatehpur Sikri, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "地元のカレー店でランチ",
+          "description": "ファテープル・シクリ近くの地元のカレー店で、本場のインドカレーを楽しみます。スパイシーで香り高い料理が堪能できる、地元の人にも人気のお店です。",
+          "searchQuery": "local curry restaurant near Fatehpur Sikri",
+          "locationEn": "Fatehpur Sikri, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ジャイプールへ移動",
+          "description": "アグラからジャイプールへ向かう途中、車内からの風景を楽しみながら、インドの田舎の風景を堪能します。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ジャイプールの街並み散策",
+          "description": "ジャイプールに到着後、カラフルな街並みを散策します。特に、ハワー・マハル（風の宮殿）の外観はフォトジェニックで、素敵な写真が撮れます。",
+          "searchQuery": "Hawa Mahal",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ジャイプールのレストランでディナー",
+          "description": "ジャイプールの人気レストランで、地元の料理を楽しみます。特に、ラッシーやタンドリーチキンは絶品です。",
+          "searchQuery": "local restaurant in Jaipur",
+          "locationEn": "Jaipur, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "宿泊先チェックイン",
+          "description": "ジャイプールの宿泊先にチェックイン。快適な部屋で、明日の観光に備えてリラックスします。",
+          "searchQuery": "hotel in Jaipur",
+          "locationEn": "Jaipur, India",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ジャイプールの魅力を満喫",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ジャイプール",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "アンベール城",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "ジャイプール市内からアンベール城へ車での移動です。朝の涼しい時間帯に出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "アンベール城",
+          "description": "壮大なアンベール城を訪れ、歴史的な建築と美しい景色を楽しみます。城内の装飾や庭園はフォトジェニックなスポットが満載です。",
+          "searchQuery": "Amber Fort",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカレーランチ",
+          "description": "ジャイプールの人気レストランで本場のカレーを堪能。スパイシーで風味豊かな料理が楽しめます。特にバターチキンカレーはおすすめです。",
+          "searchQuery": "Chokhi Dhani",
+          "locationEn": "Jaipur, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シティ・パレス",
+          "description": "ジャイプールの王宮であるシティ・パレスを見学。美しい庭園や博物館があり、歴史を感じることができます。",
+          "searchQuery": "City Palace",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハワー・マハル",
+          "description": "風の宮殿とも呼ばれるハワー・マハルを訪れ、その独特な外観を写真に収めましょう。特に夕方の光が美しいです。",
+          "searchQuery": "Hawa Mahal",
+          "locationEn": "Jaipur, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャイプールの市場散策",
+          "description": "地元の市場を散策し、手工芸品やスパイスを購入。活気ある雰囲気の中で、地元の人々と触れ合うことができます。",
+          "searchQuery": "Johari Bazaar",
+          "locationEn": "Jaipur, India",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ジャイプールのディナー",
+          "description": "地元のレストランでディナー。タンドリーチキンやナンを楽しみながら、インドの食文化を満喫します。",
+          "searchQuery": "Laxmi Misthan Bhandar",
+          "locationEn": "Jaipur, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "デリーへ戻り、さらなる発見",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ジャイプール",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "デリー",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "ジャイプールからデリーへの電車移動。快適な車両で、車窓からの風景を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ランチ：デリーのカレー専門店",
+          "description": "デリーに到着したら、地元のカレー専門店で本場のカレーを堪能。スパイシーで香り高いカレーは、ライスやナンと一緒に楽しむのが定番です。",
+          "searchQuery": "Karol Bagh Curry House",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "クトゥブ・ミナール",
+          "description": "世界遺産のクトゥブ・ミナールを訪れます。高さ73メートルのミナレットは、インドのイスラム建築の傑作で、周囲の美しい公園も散策できます。",
+          "searchQuery": "Qutub Minar",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ダルシャナ・マハル",
+          "description": "ダルシャナ・マハルを見学。美しい装飾が施された宮殿で、歴史的な背景を感じながら、フォトジェニックなスポットを楽しめます。",
+          "searchQuery": "Darshan Mahal",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食：地元の屋台でストリートフード",
+          "description": "デリーの屋台で、チャートやパニプリなどのストリートフードを楽しみます。地元の人々に混じって、賑やかな雰囲気を味わいましょう。",
+          "searchQuery": "Chaat Wala",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "デリーのホテルにチェックイン。快適な宿泊施設で、明日の観光に備えてリラックスしましょう。",
+          "searchQuery": "Hotel Ajanta",
+          "locationEn": "Delhi, India",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "デリーでの最後のひととき",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "デリーのホテルで、インドの伝統的な朝食を楽しみます。アロウキ・パラタやチャイを味わいながら、最後の朝をゆったりと過ごしましょう。",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "チャトラパティ・シヴァージー・ターミナス見学",
+          "description": "デリーの美しい駅、チャトラパティ・シヴァージー・ターミナスを訪れます。歴史的な建築と活気ある雰囲気を楽しみながら、写真を撮る絶好のスポットです。",
+          "searchQuery": "Chhatrapati Shivaji Terminus",
+          "locationEn": "Mumbai, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "地元のマーケット散策",
+          "description": "デリーの地元マーケットを散策し、色とりどりのスパイスや手工芸品を見て回ります。地元の人々との交流も楽しめる、活気あふれる場所です。",
+          "searchQuery": "Chandni Chowk",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のカレー店でランチ",
+          "description": "デリーの人気カレー店で、本場のカレーを堪能します。スパイシーで風味豊かな料理が楽しめる、地元の人々にも愛されるお店です。",
+          "searchQuery": "Karol Bagh",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "デリーの観光名所を巡る",
+          "description": "デリーの観光名所を巡り、歴史と文化に触れます。特に、インディア・ゲートやフマユーン廟など、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "Humayun's Tomb",
+          "locationEn": "Delhi, India",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "最後のディナー",
+          "description": "デリーでの最後の夜を飾るディナーを、地元のレストランで楽しみます。インド料理の多様性を感じながら、素敵な思い出を振り返りましょう。",
+          "searchQuery": "Bukhara",
+          "locationEn": "Delhi, India",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

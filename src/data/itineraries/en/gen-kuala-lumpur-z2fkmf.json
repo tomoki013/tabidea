@@ -1,0 +1,268 @@
+{
+  "id": "6a694572-24bb-4506-a0fc-d20558d889a5",
+  "destination": "Kuala Lumpur",
+  "description": "Immerse yourself in the vibrant tapestry of Kuala Lumpur, where modern skyscrapers meet rich cultural heritage. This 3-day journey will take you through the bustling streets filled with tantalizing street food, majestic historical sites, and serene green spaces. Experience the warmth of Malaysian hospitality as you explore the city's hidden gems and savor its diverse culinary delights.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Cafe",
+          "description": "Start your day with a traditional Malaysian breakfast at a local cafe. Try Nasi Lemak, a fragrant rice dish cooked in coconut milk, served with sambal, fried crispy anchovies, and boiled egg. It's a delicious way to fuel up for a day of exploration!",
+          "searchQuery": "Nasi Lemak",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Petronas Towers",
+          "description": "Head to the iconic Petronas Towers, the tallest twin towers in the world. Don't miss the sky bridge for breathtaking views of the city. It's best to book your tickets in advance to avoid long queues!",
+          "searchQuery": "Petronas Towers",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Jalan Alor Food Street",
+          "description": "Indulge in a variety of local street food at Jalan Alor. From satay skewers to char kway teow, this bustling food street offers a feast for your taste buds. Enjoy the vibrant atmosphere as you sample different dishes!",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through KLCC Park",
+          "description": "After lunch, take a leisurely stroll through KLCC Park. This urban oasis features beautiful gardens, a lake, and a playground. It's a perfect spot to relax and enjoy the view of the Petronas Towers from below.",
+          "searchQuery": "KLCC Park",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Bukit Bintang",
+          "description": "Make your way to Bukit Bintang, the shopping and entertainment district of Kuala Lumpur. Browse through the shops, and if you're up for it, try some local desserts like Cendol or Ais Kacang at a nearby cafe.",
+          "searchQuery": "Bukit Bintang",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "End your day with dinner at a local restaurant. Try some authentic Malaysian dishes like Rendang or Laksa, paired with a refreshing Teh Tarik, a popular pulled tea. It's a great way to unwind after a day of sightseeing!",
+          "searchQuery": "Malaysian Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at the Petronas Towers",
+          "description": "Return to the Petronas Towers for a stunning view of the towers illuminated at night. The atmosphere is magical, and it's a perfect way to wrap up your first day in Kuala Lumpur.",
+          "searchQuery": "Petronas Towers Night View",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Local Flavors",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Nasi Kandar Pelita",
+          "description": "Start your day with a hearty Malaysian breakfast at Nasi Kandar Pelita, famous for its flavorful rice and a variety of curries. It's a local favorite and a great way to fuel up for a day of exploration.",
+          "searchQuery": "Nasi Kandar Pelita",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Batu Caves",
+          "description": "Explore the stunning Batu Caves, a limestone hill featuring a series of caves and cave temples. The iconic golden statue of Lord Murugan and the colorful steps leading up to the caves are a must-see. Be prepared for a bit of a climb!",
+          "searchQuery": "Batu Caves",
+          "locationEn": "Batu Caves, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restoran Rani",
+          "description": "Enjoy a delicious lunch at Restoran Rani, known for its authentic Indian cuisine. Try their biryani or roti canai for a satisfying meal after your visit to the caves.",
+          "searchQuery": "Restoran Rani",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Chinatown",
+          "description": "Wander through the vibrant streets of Chinatown, where you can shop for souvenirs, enjoy street food, and soak in the lively atmosphere. Don't miss the chance to try some local snacks like char kway teow or satay.",
+          "searchQuery": "Chinatown Kuala Lumpur",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit Sri Mahamariamman Temple",
+          "description": "Visit the Sri Mahamariamman Temple, the oldest Hindu temple in Kuala Lumpur. Its intricate architecture and colorful sculptures make it a fascinating stop during your Chinatown exploration.",
+          "searchQuery": "Sri Mahamariamman Temple",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Little India (Brickfields)",
+          "description": "Head to Little India, where you can experience the vibrant culture and colorful shops. It's a great place to pick up some spices or traditional Indian sweets.",
+          "searchQuery": "Little India Brickfields",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Banana Leaf Apolo",
+          "description": "End your day with a traditional banana leaf meal at Banana Leaf Apolo. Enjoy a variety of dishes served on a banana leaf, a unique dining experience that reflects the local culture.",
+          "searchQuery": "Banana Leaf Apolo",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Village Park Restaurant",
+          "description": "Start your day with a delicious Nasi Lemak, a traditional Malaysian breakfast featuring fragrant rice, sambal, fried chicken, and peanuts. This local favorite is sure to energize you for the day ahead.",
+          "searchQuery": "Village Park Restaurant",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Perdana Botanical Gardens",
+          "description": "Stroll through the lush landscapes of Perdana Botanical Gardens, a serene escape in the heart of the city. Enjoy the vibrant flora and take a moment to relax by the lake, perfect for some peaceful reflection before your departure.",
+          "searchQuery": "Perdana Botanical Gardens",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Jalan Alor Food Street",
+          "description": "Indulge in a variety of local street food at Jalan Alor, where you can sample everything from satay to char kway teow. The lively atmosphere and delicious aromas make this a must-visit for any food lover.",
+          "searchQuery": "Jalan Alor",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Merdeka Square",
+          "description": "Visit Merdeka Square, a historical site where Malaysia declared independence. Admire the colonial architecture and the iconic Sultan Abdul Samad Building, and take some time to learn about the country's rich history.",
+          "searchQuery": "Merdeka Square",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to pack up and check out. Make sure to gather all your belongings and settle any outstanding bills before you leave.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure from Kuala Lumpur",
+          "description": "Depending on your flight schedule, make your way to the airport. Reflect on your wonderful experiences in Kuala Lumpur as you head home.",
+          "locationEn": "Kuala Lumpur, Malaysia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

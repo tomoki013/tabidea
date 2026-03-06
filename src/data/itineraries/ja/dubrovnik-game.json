@@ -1,0 +1,508 @@
+{
+  "id": "9ad4de55-6a88-4954-b644-8331085187d5",
+  "destination": "ドゥブロヴニク",
+  "description": "美しいアドリア海に面したドゥブロヴニクは、歴史と自然が融合した魅力的な街です。世界遺産に登録された旧市街は、赤い屋根の家々と石畳の道が織りなす風景がまるで絵画のよう。カップルで訪れるには最高のロマンティックなスポットが満載です。海の青さと歴史的な建物が織りなす絶景を楽しみながら、地元の海鮮料理を堪能する旅に出かけましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ドゥブロヴニク到着",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "ホテルチェックイン",
+          "description": "ドゥブロヴニクの美しい旧市街に位置する高級ホテルにチェックイン。海を望む部屋で、リラックスした時間を過ごします。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "旧市街散策",
+          "description": "ドゥブロヴニクの旧市街を散策。美しい石畳の道や歴史的な建物を楽しみながら、聖ブレイズ教会やオノフリオの噴水を訪れます。",
+          "searchQuery": "Old Town Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "城壁散策",
+          "description": "ドゥブロヴニクの城壁を歩きながら、絶景の海と街のパノラマを楽しみます。特に夕方の光が美しい時間帯がおすすめです。",
+          "searchQuery": "City Walls of Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "海鮮料理のディナー",
+          "description": "旧市街の海沿いにあるレストランで、新鮮な海の幸を堪能。地元の魚料理やシーフードパスタを楽しみながら、夕日を眺める贅沢なひとときを。",
+          "searchQuery": "Restaurant near Old Town Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "夜の旧市街散策",
+          "description": "ライトアップされた旧市街を再び散策。静かな夜の雰囲気の中で、ロマンチックな時間を過ごします。",
+          "searchQuery": "Old Town Dubrovnik",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "旧市街の散策とビーチ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやクロワッサン、地元のハムやチーズが並び、エネルギーをチャージ。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ドゥブロヴニク旧市街散策",
+          "description": "世界遺産に登録されているドゥブロヴニク旧市街を散策。美しい石畳の道や歴史的な建物が立ち並び、まるで映画の中にいるような気分に。特に、スルジ山からの眺望は圧巻です。",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "海鮮料理ランチ",
+          "description": "旧市街の近くにある人気の海鮮レストランでランチ。新鮮な魚介類を使った料理を堪能し、地元のワインと共に楽しむ贅沢なひととき。",
+          "searchQuery": "Restaurant Nautika",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バニェビーチでリラックス",
+          "description": "ドゥブロヴニクのバニェビーチで、青い海を眺めながらリラックス。ビーチチェアに座り、波の音を聞きながらのんびりとした時間を過ごします。",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ロープウェイでスルジ山へ",
+          "description": "ドゥブロヴニクのロープウェイに乗ってスルジ山へ。山頂からの絶景は、特に夕暮れ時が美しく、海と街のコントラストが楽しめます。",
+          "searchQuery": "Dubrovnik Cable Car",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は旧市街のレストランで",
+          "description": "旧市街に戻り、地元の料理を楽しむディナー。特に、トリュフを使ったパスタや、地元の肉料理がおすすめです。",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "旧市街の夜景散策",
+          "description": "夕食後、旧市街の夜景を楽しみながら散策。ライトアップされた城壁や教会が幻想的で、ロマンチックな雰囲気に包まれます。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "エルフィテ島への日帰り旅行",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやクロワッサン、地元のハムやチーズが並ぶビュッフェスタイルで、エネルギーをチャージ。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "エルフィテ島へのフェリー移動",
+          "description": "ドゥブロヴニクの港からエルフィテ島へ向かうフェリーに乗ります。美しいアドリア海の景色を楽しみながら、約30分の船旅です。",
+          "searchQuery": "Elaphiti Islands",
+          "locationEn": "Elaphiti Islands, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "エルフィテ島到着・スナイダビーチ散策",
+          "description": "エルフィテ島に到着したら、まずはスナイダビーチへ。透明度の高い海と白い砂浜が広がるビーチで、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Sunj Beach",
+          "locationEn": "Sunj Beach, Elaphiti Islands, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "海鮮料理のランチ",
+          "description": "ビーチ近くのレストランで、新鮮な海の幸を使ったランチを楽しみます。地元の魚料理やシーフードパスタがおすすめです。",
+          "searchQuery": "Restaurant Sunj",
+          "locationEn": "Sunj Beach, Elaphiti Islands, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "エルフィテ島の散策",
+          "description": "エルフィテ島の自然を満喫しながら、散策を楽しみます。美しい風景や静かな村の雰囲気を感じながら、のんびりとした時間を過ごしましょう。",
+          "searchQuery": "Elaphiti Islands",
+          "locationEn": "Elaphiti Islands, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "フェリーでドゥブロヴニクへ帰還",
+          "description": "エルフィテ島を後にし、再びフェリーでドゥブロヴニクへ戻ります。夕暮れ時の海の景色が美しいので、カメラをお忘れなく。",
+          "searchQuery": "Elaphiti Islands",
+          "locationEn": "Elaphiti Islands, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ドゥブロヴニク旧市街散策",
+          "description": "ドゥブロヴニクに戻ったら、旧市街を散策。美しい石畳の道や歴史的な建物を楽しみながら、ロマンチックな雰囲気を味わいましょう。",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ドゥブロヴニクでディナー",
+          "description": "旧市街のレストランで、地元の料理を楽しむディナー。特に、海鮮料理や地元のワインをぜひ味わってみてください。",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "歴史的建造物巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った美味しい朝食を楽しみます。新鮮なフルーツやクロワッサン、地元のハムやチーズが並び、エネルギーをチャージ。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "フランシスコ会修道院",
+          "description": "美しいゴシック様式のフランシスコ会修道院を訪れます。中庭の静けさと、歴史的なアート作品に囲まれた空間で、心が落ち着くひとときを過ごせます。",
+          "searchQuery": "Franciscan Monastery",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ドゥブロヴニクの地元のレストランで、新鮮な海鮮料理を堪能します。特に、地元で獲れた魚や貝類を使った料理は絶品です。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スルジ山へのハイキング",
+          "description": "スルジ山へハイキングし、ドゥブロヴニクの絶景を楽しみます。山頂からの眺めはまさに「魔女の宅急便」のような美しさで、海と街が一望できます。",
+          "searchQuery": "Srd Mountain",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ドゥブロヴニク大聖堂",
+          "description": "ドゥブロヴニク大聖堂を訪れ、その壮大なバロック建築を堪能します。内部の美しい装飾や歴史的なアートに触れ、心が豊かになる時間を過ごします。",
+          "searchQuery": "Dubrovnik Cathedral",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチでのんびり",
+          "description": "ドゥブロヴニクのビーチで、夕日を眺めながらのんびりとした時間を過ごします。波の音を聞きながら、リラックスしたひとときを楽しんでください。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "海沿いのレストランでディナー",
+          "description": "海沿いのレストランで、地元の新鮮なシーフードを使ったディナーを楽しみます。特に、グリルした魚やタコのサラダはおすすめです。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ドゥブロヴニクから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ドゥブロヴニク",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "15:00"
+        },
+        "duration": "12h",
+        "memo": "直行便で東京へ。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ドゥブロヴニクのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや自家製のパンが並び、エネルギーをチャージ。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ドゥブロヴニク旧市街散策",
+          "description": "世界遺産に登録されているドゥブロヴニク旧市街を散策。美しい石畳の道や歴史的な建物を眺めながら、ゆったりとした時間を過ごします。特に、城壁からの眺めは絶景です。",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元の市場でランチ",
+          "description": "ドゥブロヴニクの地元市場で新鮮な海鮮料理を楽しみます。地元の人々に人気のあるお店で、魚介のグリルやタコのサラダを味わいましょう。",
+          "searchQuery": "Dubrovnik Fish Market",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでリラックス",
+          "description": "ドゥブロヴニクの美しいビーチで、海を眺めながらリラックス。穏やかな波の音を聞きながら、のんびりとした時間を過ごします。",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "空港へ移動",
+          "description": "ドゥブロヴニクの空港へ向かいます。出発の準備を整え、最後のドゥブロヴニクの景色を楽しみながら、ゆったりとした気持ちで移動しましょう。",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "東京到着",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ドゥブロヴニク",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "東京からドゥブロヴニクへのフライトで、素晴らしい景色を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ドゥブロヴニク旧市街散策",
+          "description": "世界遺産に登録されているドゥブロヴニクの旧市街を散策。美しい石畳の道や歴史的な建物が立ち並び、まるで映画の中にいるような感覚を味わえます。",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "海鮮料理ランチ",
+          "description": "旧市街の近くにある地元の海鮮レストランで、新鮮な魚介類を使った料理を楽しみます。特に、グリルした魚やシーフードパスタがおすすめです。",
+          "searchQuery": "Restaurant Nautika",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "城壁散策",
+          "description": "ドゥブロヴニクの城壁を歩きながら、海と街の絶景を堪能します。特に夕方の光が美しい時間帯に訪れると、素晴らしい写真が撮れます。",
+          "searchQuery": "Dubrovnik City Walls",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ロブスターの夕食",
+          "description": "ドゥブロヴニクの海辺にあるレストランで、豪華なロブスター料理を楽しみます。新鮮な海の幸を贅沢に味わえる特別なディナーです。",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ドゥブロヴニクの夜景観賞",
+          "description": "夕食後、旧市街の灯りがともる中を散策し、ロマンチックな夜景を楽しみます。特に、城壁からの眺めは絶景です。",
+          "searchQuery": "Dubrovnik Night View",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

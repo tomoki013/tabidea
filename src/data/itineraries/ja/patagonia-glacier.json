@@ -1,0 +1,711 @@
+{
+  "id": "95194e04-cd13-4f6b-b7eb-f9b8434c2484",
+  "destination": "エル・カラファテ",
+  "description": "パタゴニアの大自然が織りなす壮大な景色を求めて、エル・カラファテへと旅立ちましょう。氷河が崩れる瞬間を目撃し、息を呑むような絶景を楽しむハイキングが待っています。大自然の中での冒険は、あなたの心に深い感動を刻むことでしょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からエル・カラファテへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "エル・カラファテ",
+          "time": "15:00"
+        },
+        "duration": "14h",
+        "memo": "直行便ではなく、乗り継ぎが必要です。"
+      },
+      "activities": [
+        {
+          "time": "16:00",
+          "activity": "宿泊施設チェックイン",
+          "description": "エル・カラファテの中心部に位置する高級ホテルで、快適な滞在を楽しめます。周囲にはレストランやショップも多く、便利な立地です。",
+          "searchQuery": "Hotel Los Glaciares",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食",
+          "description": "地元の食材を使ったアルゼンチン料理を楽しむため、人気のレストラン「La Tablita」へ。特にパタゴニア産のラム肉が絶品です。",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "エル・カラファテの街散策",
+          "description": "夕食後は、エル・カラファテの街を散策。美しい湖の景色を眺めながら、地元のアートやお土産屋を楽しむことができます。",
+          "searchQuery": "El Calafate",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ペリト・モレノ氷河の探検",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや自家製のパンでエネルギーをチャージ。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "ペリト・モレノ氷河への移動",
+          "description": "専用バスでペリト・モレノ氷河へ向かいます。道中の美しい風景を楽しみながら、氷河の壮大さに心を躍らせましょう。",
+          "locationEn": "Perito Moreno Glacier, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ペリト・モレノ氷河観光",
+          "description": "世界遺産に登録されたペリト・モレノ氷河を見学。氷河の崩落を間近で見ることができるスポットもあり、自然の力を感じることができます。",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "Perito Moreno Glacier, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "氷河トレッキング",
+          "description": "氷河の上を歩くトレッキングツアーに参加。特別な装備を身に着け、氷の上を歩く感覚は忘れられない体験です。",
+          "locationEn": "Perito Moreno Glacier, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "氷河の崩落を観察",
+          "description": "氷河の崩落を観察するためのベストスポットで、自然の驚異を目の当たりにします。大きな音と共に氷が崩れる瞬間は圧巻です。",
+          "locationEn": "Perito Moreno Glacier, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "エル・カラファテへ戻る",
+          "description": "観光を終え、再び専用バスでエル・カラファテへ戻ります。氷河の思い出を胸に、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "エル・カラファテの人気レストランで、アルゼンチンの伝統料理を堪能。特にパタゴニア産のラム肉は絶品です。",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の冒険に備えて、しっかり休息を取りましょう。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ロス・グラシアレス国立公園のハイキング",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや自家製のパンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "ロス・グラシアレス国立公園へ出発",
+          "description": "ロス・グラシアレス国立公園への移動を開始します。美しい風景を眺めながらのドライブは、旅の始まりを感じさせてくれます。",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ロス・グラシアレス国立公園でハイキング",
+          "description": "公園内のトレイルを歩きながら、壮大な氷河や湖の景色を楽しみます。特にペリト・モレノ氷河の近くでは、氷河が崩れる瞬間を目撃できるかもしれません。",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "公園内でピクニックランチ",
+          "description": "美しい自然の中で、持参したランチを楽しみます。周囲の景色を眺めながら、リフレッシュタイムを過ごしましょう。",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "湖畔の散策",
+          "description": "氷河の近くにある湖を散策し、静かな時間を過ごします。湖面に映る氷河の姿は、まるで絵画のような美しさです。",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "エル・カラファテに戻る",
+          "description": "ハイキングを終え、エル・カラファテへ戻ります。道中の風景を楽しみながら、今日の冒険を振り返りましょう。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "エル・カラファテの人気レストランで、パタゴニアの地元料理を堪能します。特に、アルゼンチンのビーフや新鮮な魚料理がおすすめです。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻り、リラックスタイム",
+          "description": "一日の疲れを癒すため、ホテルでリラックス。明日の冒険に備えて、しっかり休息を取りましょう。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "氷河クルーズと自然観察",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。特にパタゴニアのフルーツや自家製のパンが絶品です。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ペリト・モレノ氷河クルーズ",
+          "description": "世界遺産のペリト・モレノ氷河へ向かい、クルーズを楽しみます。氷河が崩れる瞬間を間近で見ることができ、その迫力に圧倒されることでしょう。",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "氷河近くのレストランでランチ",
+          "description": "氷河を眺めながら、地元の料理を楽しむランチタイム。特に、アルゼンチンのビーフや新鮮な魚料理がおすすめです。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "氷河トレッキング",
+          "description": "ペリト・モレノ氷河の上を歩くトレッキングに挑戦します。特別な装備を身に着け、氷の世界を体感する貴重な体験です。",
+          "searchQuery": "Perito Moreno Glacier Trekking",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "野生動物観察",
+          "description": "氷河周辺の自然を散策しながら、パタゴニアの野生動物を観察します。特に、コンドルやパタゴニアの特有の動植物に出会えるチャンスがあります。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "エル・カラファテのホテルに戻り、地元のワインと共にディナーを楽しみます。特に、アルゼンチンの肉料理は絶品です。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "フィッツ・ロイ山のトレッキング",
+      "activities": [
+        {
+          "time": "07:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。特に、パタゴニアの新鮮なフルーツや自家製のパンが絶品です。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "フィッツ・ロイ山トレッキング開始",
+          "description": "フィッツ・ロイ山のトレッキングコースへ出発。美しい湖や森林を抜け、壮大な山々の景色を楽しみながらのハイキングは、心を癒してくれます。",
+          "searchQuery": "Fitz Roy Mountain Trekking",
+          "locationEn": "Fitz Roy Mountain, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "トレッキング中のピクニックランチ",
+          "description": "トレッキングの途中で、持参したサンドイッチやフルーツを楽しむピクニックタイム。大自然の中での食事は格別です。",
+          "locationEn": "Fitz Roy Mountain, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "フィッツ・ロイ山の展望台へ",
+          "description": "フィッツ・ロイ山の展望台に到着。ここからの眺めは圧巻で、山の雄大さを感じることができます。写真撮影をお忘れなく！",
+          "searchQuery": "Fitz Roy Viewpoint",
+          "locationEn": "Fitz Roy Mountain, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "フィッツ・ロイ山トレッキングの帰路",
+          "description": "トレッキングを終え、エル・カラファテへ戻ります。帰り道も美しい景色が広がっており、心に残る思い出となるでしょう。",
+          "locationEn": "Fitz Roy Mountain, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "エル・カラファテでディナー",
+          "description": "エル・カラファテの人気レストランで、パタゴニアの地元料理を堪能。特に、ラム肉のグリルは絶品です。",
+          "searchQuery": "La Tablita",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の冒険に備えて、しっかり休息を取りましょう。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "エル・チャルテンの日帰りハイキング",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "エル・カラファテ",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "エル・チャルテン",
+          "time": "09:00"
+        },
+        "duration": "2h",
+        "memo": "エル・カラファテからエル・チャルテン行きのバスで美しい風景を楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "フィッツ・ロイ山ハイキング",
+          "description": "エル・チャルテンのシンボル、フィッツ・ロイ山を目指してハイキングスタート。美しい湖や森林を抜け、絶景を楽しみながらのトレッキングです。",
+          "searchQuery": "Fitz Roy Mountain",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ハイキング中のランチ",
+          "description": "持参したサンドイッチやフルーツを自然の中で楽しむランチタイム。周囲の美しい景色を眺めながら、エネルギーをチャージしましょう。",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ラグーナ・デ・ロス・トレス",
+          "description": "フィッツ・ロイの麓にあるラグーナ・デ・ロス・トレスへ向かうハイキング。湖の美しい青色と山々のコントラストが素晴らしいです。",
+          "searchQuery": "Laguna de los Tres",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ハイキングの帰路",
+          "description": "エル・チャルテンの町へ戻るハイキング。途中で見かける野生動物や美しい風景を楽しみながら、ゆっくりと戻ります。",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "エル・チャルテンのカフェで休憩",
+          "description": "ハイキング後は、エル・チャルテンのカフェで一息。地元のコーヒーやスイーツを楽しみながら、今日の冒険を振り返ります。",
+          "searchQuery": "La Chocolatería",
+          "locationEn": "El Chaltén, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "エル・チャルテンからエル・カラファテへ戻る",
+          "description": "バスでエル・カラファテへ戻ります。夕暮れの美しい風景を楽しみながら、今日の疲れを癒しましょう。",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "カラファテ湖の静寂",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツや自家製のパンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "カラファテ湖の散策",
+          "description": "美しいカラファテ湖の湖畔を散策します。湖面に映る山々の景色は息を呑む美しさで、特に朝の静けさの中での散歩は心を癒してくれます。",
+          "searchQuery": "Lago Argentino",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "湖を眺めながら、地元の料理を楽しめるレストランでランチ。パタゴニアの特産品を使った料理が味わえます。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ペリト・モレノ氷河観光",
+          "description": "ペリト・モレノ氷河へ向かい、氷河が崩れる瞬間を目撃します。自然の力を感じる迫力ある光景は、一生の思い出になることでしょう。",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "氷河の展望台からの眺め",
+          "description": "氷河の展望台から、氷河の壮大な景色を楽しみます。崩れる氷の音を聞きながら、自然の美しさに浸る贅沢な時間を過ごします。",
+          "locationEn": "Los Glaciares National Park, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "エル・カラファテのレストランでディナー",
+          "description": "地元の食材を使ったディナーを楽しむため、エル・カラファテの人気レストランへ。パタゴニアのワインと共に、特別な一日を締めくくります。",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "エル・カラファテから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "エル・カラファテ空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "18:00"
+        },
+        "duration": "14h",
+        "memo": "エル・カラファテから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "エル・カラファテのホテルで、地元の食材を使った朝食を楽しみます。特にパタゴニアのフルーツを使ったスムージーはおすすめです。",
+          "searchQuery": "Hotel Los Glaciares",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ペリト・モレノ氷河観光",
+          "description": "ペリト・モレノ氷河を訪れ、氷河が崩れる瞬間を目撃します。壮大な自然の力を感じることができる絶景スポットです。",
+          "searchQuery": "Perito Moreno Glacier",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "氷河の近くでランチ",
+          "description": "氷河を眺めながら、地元のレストランでランチを楽しみます。特に、アルゼンチンのビーフステーキは絶品です。",
+          "searchQuery": "La Lechuza",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "エル・カラファテ散策",
+          "description": "エル・カラファテの街を散策し、地元のアートやお土産を楽しみます。特に、パタゴニアの工芸品はお土産にぴったりです。",
+          "searchQuery": "El Calafate",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "空港へ移動",
+          "description": "エル・カラファテ空港へ向かいます。出発の準備を整え、最後のパタゴニアの風景を楽しみましょう。",
+          "searchQuery": "El Calafate Airport",
+          "locationEn": "El Calafate, Argentina",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 9,
+      "title": "東京到着",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "エル・カラファテ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "20:00"
+        },
+        "duration": "11h",
+        "memo": "エル・カラファテから東京への直行便。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "20:30",
+          "activity": "ホテルチェックイン",
+          "description": "東京の中心部にある高級ホテルにチェックイン。快適な部屋で旅の疲れを癒しましょう。",
+          "searchQuery": "Park Hotel Tokyo",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ディナー",
+          "description": "ホテル近くのレストランで和食を楽しみます。新鮮な刺身や季節の天ぷらを堪能し、旅の疲れを癒す美味しい食事を。",
+          "searchQuery": "Sushi Saito",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:30",
+          "activity": "東京タワー夜景観賞",
+          "description": "東京タワーの展望台から、東京の美しい夜景を楽しみます。特に夜のライトアップは幻想的で、心に残るひととき。",
+          "searchQuery": "Tokyo Tower",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

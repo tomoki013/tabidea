@@ -1,0 +1,429 @@
+{
+  "id": "ccb649e6-5fbd-4801-8369-df37559b9858",
+  "destination": "ペトラ",
+  "description": "Embark on an unforgettable adventure to the ancient city of Petra, a UNESCO World Heritage site that whispers tales of history and culture through its stunning rock-cut architecture. Nestled in the heart of Jordan's desert, this archaeological wonder invites you to explore its majestic facades, winding canyons, and breathtaking landscapes. Over five days, you and your friends will immerse yourselves in the rich heritage of this remarkable site, while also enjoying the thrill of desert adventures and the warmth of local hospitality. Get ready for a journey that combines exploration, history, and the beauty of nature!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Amman and Journey to Petra",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Amman",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Petra",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic views of the Jordanian landscape during the bus ride."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Al-Wadi Restaurant",
+          "description": "Savor traditional Jordanian dishes like Mansaf, a delicious lamb dish served with rice and yogurt, at this local favorite in Petra.",
+          "searchQuery": "Al-Wadi Restaurant",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Petra Archaeological Site",
+          "description": "Venture into the ancient city of Petra, a UNESCO World Heritage site. Marvel at the stunning rock-cut architecture and the iconic Treasury, a must-see for any adventurer.",
+          "searchQuery": "Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Hike to the Monastery",
+          "description": "Take a hike up to the Monastery, one of Petra's largest monuments. The trek offers breathtaking views of the surrounding mountains and valleys, perfect for adventure seekers.",
+          "searchQuery": "Monastery of Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Cave Bar",
+          "description": "Dine in a unique setting inside a cave, enjoying local dishes and refreshing drinks. The ambiance is perfect for unwinding after a day of exploration.",
+          "searchQuery": "The Cave Bar",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Wonders of Petra",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at the Cave Bar",
+          "description": "Start your day with a unique breakfast at the Cave Bar, set in a 2000-year-old Nabatean cave. Enjoy traditional Jordanian dishes while soaking in the historical ambiance.",
+          "searchQuery": "Cave Bar Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "The Siq",
+          "description": "Begin your adventure by walking through the Siq, a narrow gorge that leads to Petra. Marvel at the towering cliffs and ancient carvings as you make your way to the iconic Treasury.",
+          "searchQuery": "The Siq",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Al-Khazneh (The Treasury)",
+          "description": "Arrive at Al-Khazneh, also known as The Treasury. This stunning facade carved into the rock is one of the most famous monuments in Petra and a must-see for any visitor.",
+          "searchQuery": "Al-Khazneh",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at the Basin Restaurant",
+          "description": "Enjoy a leisurely lunch at the Basin Restaurant, located near the heart of Petra. Savor a buffet of local and international dishes while taking in the breathtaking views of the surrounding landscape.",
+          "searchQuery": "Basin Restaurant Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "The Monastery (Ad Deir)",
+          "description": "After lunch, embark on a hike to The Monastery, one of Petra's largest monuments. The trek involves climbing over 800 steps, but the stunning views and the grandeur of the Monastery make it worthwhile.",
+          "searchQuery": "The Monastery Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Royal Tombs",
+          "description": "On your way back, take some time to explore the Royal Tombs, a series of elaborate burial sites carved into the rock. Each tomb has its own unique features and stories to tell.",
+          "searchQuery": "Royal Tombs Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at the Petra Kitchen",
+          "description": "End your day with a cooking class and dinner at the Petra Kitchen. Learn how to prepare traditional Jordanian dishes and enjoy the fruits of your labor in a friendly atmosphere.",
+          "searchQuery": "Petra Kitchen",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stargazing in the Desert",
+          "description": "After dinner, take a moment to step outside and enjoy the clear desert skies. The stars shine brightly in this remote location, making for a perfect end to your adventurous day.",
+          "locationEn": "Petra, Jordan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure in the Desert",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Petra",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Wadi Rum",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Traveling by 4x4 jeep to Wadi Rum for an adventurous day."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Wadi Rum 4x4 Jeep Tour",
+          "description": "Embark on an exhilarating 4x4 jeep tour through the stunning landscapes of Wadi Rum. Experience the breathtaking rock formations and vast desert vistas that have made this area famous, including the iconic Lawrence's Spring and the Seven Pillars of Wisdom.",
+          "searchQuery": "Wadi Rum",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Bedouin Camp",
+          "description": "Enjoy a traditional Bedouin lunch at a local camp, featuring delicious dishes like Zarb (slow-cooked lamb) and fresh salads. This is a great opportunity to experience Bedouin hospitality and learn about their culture.",
+          "searchQuery": "Bedouin Camp Wadi Rum",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Ancient Rock Carvings",
+          "description": "After lunch, continue your adventure by exploring ancient rock carvings and inscriptions that date back thousands of years. These fascinating artworks provide insight into the history and culture of the region.",
+          "searchQuery": "Wadi Rum rock carvings",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Sunset Viewing at Wadi Rum",
+          "description": "As the day winds down, find a perfect spot to witness the stunning sunset over the desert. The colors of the sky reflecting off the red sands create a magical atmosphere that is not to be missed.",
+          "searchQuery": "Wadi Rum sunset viewpoint",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner under the Stars",
+          "description": "Enjoy a unique dining experience under the stars at your Bedouin camp. Savor traditional dishes while listening to stories about Bedouin life and the history of the desert.",
+          "searchQuery": "Bedouin Camp Dinner",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stargazing in the Desert",
+          "description": "End your day with a stargazing session in the clear desert sky. The lack of light pollution allows for breathtaking views of constellations and planets, making it a perfect way to conclude your adventure.",
+          "searchQuery": "Wadi Rum stargazing",
+          "locationEn": "Wadi Rum, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Return to Petra",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Wadi Rum",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Petra",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic views of the desert during the bus ride."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Little Petra Visit",
+          "description": "Explore the stunning archaeological site of Little Petra, a lesser-known gem that offers a glimpse into the ancient Nabatean civilization. The intricate rock-cut architecture and beautiful surroundings make it a perfect spot for photography and exploration.",
+          "searchQuery": "Little Petra",
+          "locationEn": "Little Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Petra Kitchen",
+          "description": "Savor a delicious lunch at Petra Kitchen, where you can enjoy traditional Jordanian dishes prepared with fresh local ingredients. The warm atmosphere and friendly staff will make your meal memorable.",
+          "searchQuery": "Petra Kitchen",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Petra Archaeological Park",
+          "description": "Dive into the wonders of Petra, one of the New Seven Wonders of the World. Walk through the Siq to the iconic Treasury, and explore the vast ruins, tombs, and temples that showcase the ingenuity of the Nabateans.",
+          "searchQuery": "Petra Archaeological Park",
+          "locationEn": "Petra, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Al-Wadi Restaurant",
+          "description": "Enjoy a delightful dinner at Al-Wadi Restaurant, known for its authentic Jordanian cuisine. Try the Mansaf, a traditional dish made with lamb and rice, served with a side of yogurt sauce.",
+          "searchQuery": "Al-Wadi Restaurant",
+          "locationEn": "Petra, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll in Petra",
+          "description": "Take a leisurely evening stroll around Petra to witness the site under the soft glow of the setting sun. The colors of the rocks change dramatically, providing a magical end to your day.",
+          "searchQuery": "Petra",
+          "locationEn": "Petra, Jordan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Amman and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Petra",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Amman",
+          "time": "11:00"
+        },
+        "duration": "3h",
+        "memo": "Enjoy the scenic drive through the Jordanian landscape."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Amman Citadel",
+          "description": "Explore the historic Amman Citadel, where you can see ancient ruins and enjoy panoramic views of the city. Don't miss the Temple of Hercules and the Umayyad Palace.",
+          "searchQuery": "Amman Citadel",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Hashem Restaurant",
+          "description": "Savor traditional Jordanian dishes at Hashem, famous for its delicious falafel and hummus. A must-visit for an authentic taste of local cuisine.",
+          "searchQuery": "Hashem Restaurant",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Roman Theater",
+          "description": "Visit the impressive Roman Theater, a well-preserved ancient amphitheater that once hosted thousands of spectators. Take a moment to imagine the performances that took place here.",
+          "searchQuery": "Roman Theater",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Rainbow Street",
+          "description": "Stroll along Rainbow Street, known for its vibrant atmosphere, cafes, and shops. It's a great place to pick up souvenirs and enjoy a coffee while soaking in the local culture.",
+          "searchQuery": "Rainbow Street",
+          "locationEn": "Amman, Jordan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Sufra Restaurant",
+          "description": "End your day with a delightful dinner at Sufra, where you can enjoy a variety of traditional Jordanian dishes in a charming setting. Perfect for reflecting on your adventures in Petra and Amman.",
+          "searchQuery": "Sufra Restaurant",
+          "locationEn": "Amman, Jordan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

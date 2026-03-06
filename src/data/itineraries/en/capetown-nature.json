@@ -1,0 +1,727 @@
+{
+  "id": "dc4b2bbd-f8de-447a-84b8-6d455639ec87",
+  "destination": "ケープタウン",
+  "description": "Escape to the breathtaking landscapes of Cape Town, where the majestic Table Mountain meets the azure waters of the Atlantic Ocean. This 8-day adventure is designed for couples seeking romance, wildlife encounters, and culinary delights, all set against a backdrop of stunning natural beauty. From the iconic Cape of Good Hope to the charming penguins of Boulders Beach, each day promises unforgettable experiences that will deepen your connection with each other and the world around you.",
+  "heroImage": "https://images.unsplash.com/photo-1545510120-66374ff70e4f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODU4NjN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Zoë Reeve",
+  "heroImagePhotographerUrl": "https://unsplash.com/@zoeeee_?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cape Town",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Table Bay Hotel",
+          "description": "Start your day with a lavish breakfast buffet at The Table Bay Hotel, featuring a variety of local and international dishes, all while enjoying stunning views of the V&A Waterfront.",
+          "searchQuery": "The Table Bay Hotel",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore V&A Waterfront",
+          "description": "Stroll around the vibrant V&A Waterfront, where you can shop for local crafts, enjoy street performances, and take in the beautiful harbor views. Don't miss the Two Oceans Aquarium for a glimpse of marine life.",
+          "searchQuery": "V&A Waterfront",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Willoughby & Co.",
+          "description": "Indulge in a seafood feast at Willoughby & Co., known for its fresh sushi and local fish dishes. This bustling restaurant is a favorite among locals and tourists alike.",
+          "searchQuery": "Willoughby & Co.",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Cape Town Diamond Museum",
+          "description": "Discover the fascinating world of diamonds at the Cape Town Diamond Museum. Learn about the history of diamonds in South Africa and see stunning exhibits of diamond jewelry.",
+          "searchQuery": "Cape Town Diamond Museum",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Drive to Boulders Beach",
+          "description": "Take a scenic drive to Boulders Beach, famous for its resident African penguin colony. Spend time observing these charming creatures in their natural habitat.",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Brass Bell",
+          "description": "Enjoy dinner at The Brass Bell, a restaurant located right on the beach in Kalk Bay. Savor delicious seafood while watching the sunset over the ocean.",
+          "searchQuery": "The Brass Bell",
+          "locationEn": "Kalk Bay, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at The Table Bay Hotel",
+          "description": "Settle into your luxurious room at The Table Bay Hotel, where you can unwind and enjoy the amenities after a day of exploration.",
+          "searchQuery": "The Table Bay Hotel",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the City and Table Mountain",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Table Bay Hotel",
+          "description": "Start your day with a lavish breakfast at The Table Bay Hotel, featuring a wide selection of local and international dishes. Enjoy the stunning views of Table Mountain while you dine.",
+          "searchQuery": "The Table Bay Hotel",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Table Mountain Cableway",
+          "description": "Take the iconic cable car up to Table Mountain. The panoramic views of Cape Town and the Atlantic Ocean from the top are breathtaking. Don't forget your camera!",
+          "searchQuery": "Table Mountain Cableway",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore the Bo-Kaap Neighborhood",
+          "description": "Stroll through the colorful streets of Bo-Kaap, known for its vibrant houses and rich Cape Malay culture. Visit the Bo-Kaap Museum to learn about the area's history.",
+          "searchQuery": "Bo-Kaap",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Biesmiellah",
+          "description": "Enjoy a delicious Cape Malay lunch at Biesmiellah, a local favorite. Try their famous bobotie or curry dishes for an authentic taste of the region.",
+          "searchQuery": "Biesmiellah",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the V&A Waterfront",
+          "description": "Head to the V&A Waterfront for shopping, entertainment, and stunning harbor views. You can also visit the Two Oceans Aquarium to see local marine life.",
+          "searchQuery": "V&A Waterfront",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at Signal Hill",
+          "description": "Drive up to Signal Hill for a spectacular sunset view over Cape Town. It's a perfect spot for a romantic moment with your partner as the sun dips below the horizon.",
+          "searchQuery": "Signal Hill",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Test Kitchen",
+          "description": "Indulge in a fine dining experience at The Test Kitchen, one of Cape Town's top restaurants. Enjoy a multi-course meal that showcases the best of South African cuisine.",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cape Peninsula Drive and Boulders Beach",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Table Bay Hotel",
+          "description": "Start your day with a lavish breakfast buffet at The Table Bay Hotel, featuring a variety of local and international dishes. The stunning views of the harbor will set a perfect tone for your adventure ahead.",
+          "searchQuery": "The Table Bay Hotel",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Drive to Cape of Good Hope",
+          "description": "Embark on a scenic drive along the Cape Peninsula, where breathtaking coastal views await. The route is dotted with stunning landscapes, making it a photographer's paradise.",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Cape of Good Hope",
+          "description": "Arrive at the iconic Cape of Good Hope. Take a hike along the trails to enjoy panoramic views of the Atlantic Ocean and the rugged cliffs. Keep an eye out for wildlife, including baboons and various bird species.",
+          "searchQuery": "Cape of Good Hope",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Two Oceans Restaurant",
+          "description": "Enjoy a delicious lunch at the Two Oceans Restaurant, which offers fresh seafood and local dishes with stunning views of the ocean. It's the perfect spot to relax and refuel after your morning adventures.",
+          "searchQuery": "Two Oceans Restaurant",
+          "locationEn": "Cape Point, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Boulders Beach",
+          "description": "Head to Boulders Beach, famous for its resident African penguin colony. Spend time observing these charming creatures in their natural habitat and enjoy the beautiful beach setting.",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Simon's Town",
+          "description": "Stroll through the quaint streets of Simon's Town, filled with charming shops and cafes. Don't miss the chance to visit the historic naval base and enjoy the coastal views.",
+          "searchQuery": "Simon's Town",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Brass Bell",
+          "description": "End your day with a delightful dinner at The Brass Bell, a popular restaurant located right on the water. Savor fresh seafood while watching the sunset over the ocean.",
+          "searchQuery": "The Brass Bell",
+          "locationEn": "Kalk Bay, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to The Table Bay Hotel",
+          "description": "After a fulfilling day of exploration, return to your hotel to relax and unwind. Enjoy the amenities and reflect on the day's adventures.",
+          "searchQuery": "The Table Bay Hotel",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Wine Tasting in Stellenbosch",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Cape Town",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Stellenbosch",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive through the vineyards."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Wine Tasting at Spier Wine Farm",
+          "description": "Start your day with a delightful wine tasting experience at Spier Wine Farm, known for its stunning views and excellent selection of wines. Don't miss their signature Chenin Blanc!",
+          "searchQuery": "Spier Wine Farm",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Spier Hotel Restaurant",
+          "description": "Savor a delicious lunch at The Spier Hotel Restaurant, where you can enjoy local cuisine made with fresh, seasonal ingredients. The outdoor seating offers a lovely view of the vineyards.",
+          "searchQuery": "The Spier Hotel Restaurant",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit to Stellenbosch Village Museum",
+          "description": "Explore the Stellenbosch Village Museum, which showcases the rich history and culture of the area through its beautifully preserved buildings and exhibits. A great way to learn about the local heritage!",
+          "searchQuery": "Stellenbosch Village Museum",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Wine Tasting at Tokara Wine Estate",
+          "description": "Head to Tokara Wine Estate for another round of wine tasting. This estate is famous for its breathtaking views and exceptional wines, including their award-winning Cabernet Sauvignon.",
+          "searchQuery": "Tokara Wine Estate",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Delaire Graff Restaurant",
+          "description": "End your day with a luxurious dinner at Delaire Graff Restaurant, where you can indulge in gourmet dishes paired with exquisite wines. The sunset views from the terrace are simply unforgettable!",
+          "searchQuery": "Delaire Graff Restaurant",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Safari Adventure at Aquila Game Reserve",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Stellenbosch",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Aquila Game Reserve",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive through the beautiful landscapes of the Western Cape."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Safari at Aquila Game Reserve",
+          "description": "Embark on an exciting safari adventure at Aquila Game Reserve. Spot the Big Five and other wildlife in their natural habitat while enjoying the stunning scenery of the reserve.",
+          "searchQuery": "Aquila Game Reserve",
+          "locationEn": "Aquila Game Reserve, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Aquila Game Reserve Restaurant",
+          "description": "Savor a delicious lunch featuring local cuisine at the reserve's restaurant, surrounded by the beauty of nature.",
+          "searchQuery": "Aquila Game Reserve Restaurant",
+          "locationEn": "Aquila Game Reserve, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Continue Safari Tour",
+          "description": "Continue your safari tour, exploring different areas of the reserve and learning about the diverse wildlife and ecosystems.",
+          "searchQuery": "Aquila Game Reserve",
+          "locationEn": "Aquila Game Reserve, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Stellenbosch",
+          "description": "After an exhilarating day, return to Stellenbosch, reflecting on the incredible wildlife experiences you've had.",
+          "searchQuery": "Stellenbosch",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Wine Tasting at a Local Vineyard",
+          "description": "Visit a nearby vineyard for a delightful wine tasting experience. Sample some of the finest wines that Stellenbosch is renowned for.",
+          "searchQuery": "Stellenbosch Vineyard",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Tasting Room",
+          "description": "Enjoy a romantic dinner at The Tasting Room, known for its exquisite dishes and beautiful views of the vineyards.",
+          "searchQuery": "The Tasting Room Stellenbosch",
+          "locationEn": "Stellenbosch, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Cape Town and Relaxation",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Stellenbosch",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Cape Town",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive back to Cape Town."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Kirstenbosch National Botanical Garden",
+          "description": "Start your day with a visit to the stunning Kirstenbosch National Botanical Garden, where you can stroll through beautifully landscaped gardens and enjoy the breathtaking views of Table Mountain. Don't miss the treetop canopy walkway for a unique perspective of the flora.",
+          "searchQuery": "Kirstenbosch National Botanical Garden",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Conservatory",
+          "description": "Enjoy a delightful lunch at The Conservatory, located within the gardens. The menu features fresh, seasonal ingredients, and you can dine with views of the lush surroundings.",
+          "searchQuery": "The Conservatory at Kirstenbosch",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Camps Bay Beach",
+          "description": "After lunch, head to Camps Bay Beach to relax on the sandy shores or take a refreshing swim in the ocean. The beach is framed by the stunning Twelve Apostles mountain range, making it a perfect spot for photos.",
+          "searchQuery": "Camps Bay Beach",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Camps Bay Promenade",
+          "description": "Take a leisurely stroll along the Camps Bay Promenade, lined with trendy cafes and shops. It's a great place to grab a coffee or a refreshing drink while soaking in the vibrant atmosphere.",
+          "searchQuery": "Camps Bay Promenade",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Codfather",
+          "description": "Indulge in a seafood feast at The Codfather, renowned for its fresh catch and sushi. The laid-back atmosphere and delicious dishes make it a favorite among locals and visitors alike.",
+          "searchQuery": "The Codfather",
+          "locationEn": "Camps Bay, Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Sunset at Camps Bay",
+          "description": "End your day by watching the sunset over the Atlantic Ocean from Camps Bay. The vibrant colors of the sky reflecting on the water create a magical experience, perfect for a romantic evening.",
+          "searchQuery": "Camps Bay",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Cultural Immersion and Local Cuisine",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Breakfast Room",
+          "description": "Start your day with a delightful breakfast at The Breakfast Room, known for its fresh ingredients and local flavors. Enjoy a hearty meal to fuel your adventures ahead.",
+          "searchQuery": "The Breakfast Room",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Boulders Beach to see the African Penguins",
+          "description": "Head to Boulders Beach, a unique spot where you can observe a colony of African penguins in their natural habitat. Stroll along the boardwalks and enjoy the stunning views of the beach and the playful penguins.",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Galley Restaurant",
+          "description": "Enjoy a delicious seafood lunch at The Galley Restaurant, located near Boulders Beach. Savor fresh catches of the day while overlooking the ocean.",
+          "searchQuery": "The Galley Restaurant",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Cape Point and the Cape of Good Hope",
+          "description": "After lunch, make your way to Cape Point, where you can hike to the lighthouse for breathtaking views of the Atlantic Ocean. Don’t miss the chance to see the dramatic cliffs and diverse wildlife in this stunning national park.",
+          "searchQuery": "Cape Point",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Cape Town and relax at the V&A Waterfront",
+          "description": "Head back to Cape Town and unwind at the V&A Waterfront. Explore the shops, enjoy the lively atmosphere, and perhaps grab a drink at one of the waterfront bars while watching the sunset.",
+          "searchQuery": "V&A Waterfront",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Test Kitchen",
+          "description": "Indulge in a fine dining experience at The Test Kitchen, one of Cape Town's top restaurants. Enjoy a multi-course meal that showcases the best of local ingredients and innovative culinary techniques.",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Departure from Cape Town",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Cape Town International Airport",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "null",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Departure flight from Cape Town."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Test Kitchen",
+          "description": "Start your day with a delightful breakfast at The Test Kitchen, known for its innovative dishes and vibrant atmosphere. Enjoy a mix of local flavors and international cuisine to fuel your adventures ahead.",
+          "searchQuery": "The Test Kitchen",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Boulders Beach to see the penguins",
+          "description": "Head to Boulders Beach, a unique spot where you can observe a colony of African penguins in their natural habitat. Stroll along the boardwalks and enjoy the stunning views of the beach and the ocean.",
+          "searchQuery": "Boulders Beach",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Brass Bell",
+          "description": "Enjoy a leisurely lunch at The Brass Bell, located right by the ocean. Savor fresh seafood while taking in the beautiful views of the bay and the charming atmosphere of Simon’s Town.",
+          "searchQuery": "The Brass Bell",
+          "locationEn": "Simon’s Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Cape Point and the Cape of Good Hope",
+          "description": "Drive to Cape Point, where you can hike to the lighthouse for breathtaking views of the Atlantic Ocean. Don’t forget to visit the Cape of Good Hope, the southwestern tip of Africa, and take some memorable photos.",
+          "searchQuery": "Cape Point",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Cape Town",
+          "description": "After a day of exploring, head back to Cape Town. Enjoy the scenic drive along the coast, taking in the stunning landscapes and perhaps stopping for a few last photos.",
+          "searchQuery": "Cape Town",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Gold Restaurant",
+          "description": "End your trip with a memorable dinner at Gold Restaurant, where you can enjoy a feast of African cuisine accompanied by live entertainment. Experience the vibrant culture of South Africa one last time before your departure.",
+          "searchQuery": "Gold Restaurant",
+          "locationEn": "Cape Town, South Africa",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

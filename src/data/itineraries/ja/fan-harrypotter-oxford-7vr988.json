@@ -1,0 +1,362 @@
+{
+  "id": "43c634d6-06f1-4dc0-8a44-fa69dcffe1ed",
+  "destination": "オックスフォード",
+  "description": "オックスフォードの街は、歴史と文化が息づく美しい場所です。特にハリーポッターのファンにはたまらないスポットが点在しており、映画の舞台となった場所を巡ることで、まるで魔法の世界に迷い込んだかのような体験ができます。カップルでの旅行にぴったりなロマンチックな雰囲気も漂うこの街で、素敵な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "オックスフォード到着と街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オックスフォードのカフェで、地元の食材を使ったイギリス式の朝食を楽しみます。トーストやベーコン、卵など、ボリューム満点で一日のエネルギーをチャージ！",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オックスフォード大学見学",
+          "description": "世界的に有名なオックスフォード大学を散策。美しいキャンパスや歴史的な建物を見ながら、学生たちの活気を感じることができます。特に、クライストチャーチの美しい庭園は必見です。",
+          "searchQuery": "University of Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ボドリアン図書館見学",
+          "description": "オックスフォード大学のボドリアン図書館を訪れ、歴史ある書籍や美しい建築を堪能します。図書館内の静けさの中で、知識の宝庫を感じることができます。",
+          "searchQuery": "Bodleian Library",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ランチ：The Eagle and Child",
+          "description": "オックスフォードの名物パブで、地元のビールと共に伝統的なイギリス料理を楽しみます。ここはJ.R.R.トールキンやC.S.ルイスが通った場所としても有名です。",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "クライストチャーチ見学",
+          "description": "映画『ハリー・ポッター』の撮影地としても知られるクライストチャーチを訪れます。美しい食堂や庭園を散策し、映画の世界に浸ることができます。",
+          "searchQuery": "Christ Church",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリーポッターグッズのショッピング",
+          "description": "オックスフォードの専門店でハリーポッター関連のグッズを探します。魔法の世界を感じるアイテムがたくさん揃っていますので、お土産選びも楽しめます。",
+          "searchQuery": "Harry Potter Shop at Platform 9¾",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：The Old Bookbinders Ale House",
+          "description": "オックスフォードの伝統的なパブで、地元の料理を楽しみながら、リラックスした夜を過ごします。アットホームな雰囲気で、地元の人々とも交流できるかもしれません。",
+          "searchQuery": "The Old Bookbinders Ale House",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ハリーポッターの世界を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オックスフォードのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、元気に一日をスタートしましょう。",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "クライストチャーチ訪問",
+          "description": "ハリーポッターの撮影地としても知られるクライストチャーチを訪れます。美しい庭園や壮大な食堂は、映画のシーンを思い起こさせることでしょう。",
+          "searchQuery": "Christ Church",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ザ・ボート・ハウスでランチ",
+          "description": "オックスフォードの川沿いにあるカジュアルなレストランで、地元の食材を使った料理を楽しみます。特にフィッシュ＆チップスが人気です。",
+          "searchQuery": "The Boat House",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アシュモレアン博物館見学",
+          "description": "世界最古の大学博物館であるアシュモレアン博物館を訪れ、貴重なアートや歴史的な展示を楽しみます。特に古代エジプトのコレクションは必見です。",
+          "searchQuery": "Ashmolean Museum",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ハリーポッターショップでお買い物",
+          "description": "オックスフォードのハリーポッターショップで、ファングッズを探しましょう。魔法の世界のアイテムやお土産が揃っています。",
+          "searchQuery": "Harry Potter Shop at Platform 9¾",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オックスフォードの街を散策",
+          "description": "歴史的な建物や美しい風景を楽しみながら、オックスフォードの街を散策します。お気に入りのカフェで一息つくのも良いでしょう。",
+          "locationEn": "Oxford, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のパブでディナー",
+          "description": "オックスフォードの伝統的なパブで、ビールと共にイギリスの家庭料理を楽しみます。アットホームな雰囲気で、地元の人々と交流するチャンスも。",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化とショッピングを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "オックスフォードのホテルで、イギリスの伝統的な朝食を楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、元気に一日をスタート！",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ボドリアン図書館見学",
+          "description": "オックスフォード大学の象徴ともいえるボドリアン図書館を訪れます。歴史ある建物の中で、古書や美しい書籍の数々に触れ、知識の宝庫を堪能しましょう。",
+          "searchQuery": "Bodleian Library",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "オックスフォードのマーケットでランチ",
+          "description": "地元のマーケットで新鮮な食材や手作りの料理を楽しみます。特に、サンドイッチやスイーツが人気で、食べ歩きにもぴったりです。",
+          "searchQuery": "Oxford Covered Market",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カーニバル・オックスフォード散策",
+          "description": "カーニバル・オックスフォードで、ハリー・ポッター関連のグッズを探しながら、楽しいひとときを過ごします。ファンにはたまらないアイテムが揃っています！",
+          "searchQuery": "Carnival Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ハリー・ポッターのロケ地巡り",
+          "description": "映画の撮影が行われたオックスフォードの名所を巡ります。特に、クリスチャニア・カレッジやクライストチャーチは必見です。",
+          "searchQuery": "Christ Church College",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "オックスフォードのカフェで、スコーンや紅茶を楽しみながら、旅の思い出を語り合いましょう。地元の雰囲気を感じる素敵な場所です。",
+          "searchQuery": "The Vaults & Garden Cafe",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "オックスフォードのレストランでディナー",
+          "description": "地元のレストランで、イギリス料理を楽しみます。特にフィッシュ＆チップスやパイが人気で、リーズナブルな価格で楽しめます。",
+          "searchQuery": "The Eagle and Child",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "オックスフォードから東京へ帰路",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オックスフォードのホテルで、イングリッシュブレックファーストを楽しみます。ベーコンやソーセージ、トーストに紅茶を添えて、エネルギーをチャージしましょう。",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "オックスフォード大学見学",
+          "description": "世界的に有名なオックスフォード大学を散策します。美しいキャンパスや歴史的な建物を見ながら、学生たちの活気を感じてください。特にボドリアン図書館は必見です。",
+          "searchQuery": "University of Oxford",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ハリーポッター関連ショップ訪問",
+          "description": "オックスフォードのハリーポッター関連ショップで、ファングッズを探しましょう。特に「The Harry Potter Shop at Platform 9¾」では、映画のアイテムが豊富に揃っています。",
+          "searchQuery": "The Harry Potter Shop at Platform 9¾",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "オックスフォードの街中にあるカフェで軽食を楽しみます。地元の人に人気のサンドイッチやスコーンを味わいながら、のんびりとした時間を過ごしましょう。",
+          "locationEn": "Oxford, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "オックスフォードの街を散策",
+          "description": "オックスフォードの街を散策しながら、ショッピングや観光を楽しみます。特に、ボドリアン図書館やクライストチャーチの美しい庭園は見逃せません。",
+          "locationEn": "Oxford, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "オックスフォードからロンドンへ移動",
+          "description": "オックスフォードからロンドンへは、便利な電車での移動が可能です。約1時間の旅を楽しみながら、帰路につきます。",
+          "locationEn": "Oxford, England",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ロンドンでの夕食",
+          "description": "ロンドンに到着後、地元のレストランで夕食を楽しみます。イギリスの伝統料理を味わいながら、旅行の締めくくりをしましょう。",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

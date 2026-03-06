@@ -1,0 +1,275 @@
+{
+  "id": "829fbd62-0971-4fa6-a994-073e30bbc322",
+  "destination": "ニューヨーク",
+  "description": "家族で楽しむニューヨークの旅。文化、歴史、アート、そしてジャズの魅力を存分に味わえる3日間のプランです。子供も楽しめるアクティビティを織り交ぜながら、家族の思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1418075285575-c402f1f7340f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE5NjR8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jon Flobrant",
+  "heroImagePhotographerUrl": "https://unsplash.com/@jonflobrant?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨークの文化とアートを満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークで自然を満喫。子供たちと一緒に遊具で遊んだり、ボートに乗ったりして、家族で楽しい時間を過ごしましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "メトロポリタン美術館でランチ",
+          "description": "美術館内のカフェで軽食を取りながら、アートに囲まれた特別なひとときを。美術館の後は、子供たちも楽しめるアート体験が待っています。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "メトロポリタン美術館見学",
+          "description": "世界的に有名なメトロポリタン美術館で、古代から現代までのアートを楽しみます。特に子供向けのワークショップもあるので、家族でアートを楽しむ良い機会です。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アッパーウエストサイド散策",
+          "description": "アッパーウエストサイドの街並みを散策しながら、地元のショップやカフェを訪れます。特にジャズ関連のグッズを扱うお店を探してみましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ジャズクラブでディナー",
+          "description": "アッパーウエストサイドのジャズクラブで、ライブ演奏を楽しみながらディナーを。家族でジャズの雰囲気を味わいながら、特別な夜を過ごしましょう。",
+          "searchQuery": "Jazz Club",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ジャズクラブでのライブ鑑賞",
+          "description": "ディナーの後は、ジャズクラブで本格的なライブを楽しみます。子供たちも楽しめるようなアットホームな雰囲気のクラブを選ぶと良いでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジャズと歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アポロシアター見学",
+          "description": "ハーレムの象徴ともいえるアポロシアターを訪れます。歴史あるこの劇場では、数々のジャズアーティストがパフォーマンスを行ってきました。内部の見学ツアーに参加して、アートと歴史を感じましょう。",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ハーレムのレストランでランチ",
+          "description": "ハーレムの地元のレストランで、ソウルフードを楽しみます。フライドチキンやコーンブレッドなど、アメリカ南部の味を堪能できるお店です。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハーレム散策",
+          "description": "ハーレムの街を散策しながら、ジャズの歴史を感じるスポットを巡ります。ストリートアートや地元のショップを訪れ、ファングッズを探してみましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ジャズクラブでのライブ鑑賞",
+          "description": "地元のジャズクラブで、アフタヌーンライブを楽しみます。生演奏を聴きながら、リラックスした時間を過ごしましょう。子供向けのイベントもあるので、家族で楽しめます。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ジャズ関連グッズのショッピング",
+          "description": "ハーレムのショップで、ジャズ関連のファングッズを探します。TシャツやCDなど、思い出に残るアイテムを見つけましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ハーレムのレストランでディナー",
+          "description": "ハーレムの人気レストランで、ディナーを楽しみます。地元の食材を使った料理を味わいながら、楽しい一日の締めくくりを。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ニューヨークの魅力を再発見",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、家族みんなで満足できるメニューです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを訪れ、巨大な広告や人々の賑わいを楽しみましょう。子供たちも楽しめるストリートパフォーマンスがたくさんあります。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジョン・スチュワートのカフェでランチ",
+          "description": "タイムズスクエア近くのカフェで軽食を。サンドイッチやサラダを楽しみながら、家族でのんびりとした時間を過ごします。",
+          "searchQuery": "John Stewart Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ミュージアム・オブ・モダンアート（MoMA）訪問",
+          "description": "アート好きにはたまらない、現代美術の宝庫であるMoMAを訪れます。子供向けのアートワークショップも開催されているので、家族で楽しめます。",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ジャズクラブでのライブ鑑賞",
+          "description": "ニューヨークのジャズクラブで、素晴らしいライブパフォーマンスを楽しみます。子供も楽しめるアットホームな雰囲気のクラブを選びましょう。",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ジャズ関連グッズのショッピング",
+          "description": "ジャズのファングッズを探しに、近くの音楽ショップへ。CDやTシャツなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "Jazz Record Shop",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元のレストランで、アメリカンスタイルのディナーを楽しみます。家族でシェアしながら、楽しい食事の時間を過ごしましょう。",
+          "searchQuery": "Local American Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

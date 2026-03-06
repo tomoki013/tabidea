@@ -1,0 +1,571 @@
+{
+  "id": "b50c4909-ee57-4813-9c1b-0475518c2381",
+  "destination": "インターラーケン・ツェルマット",
+  "description": "スイスの美しいアルプスの山々に囲まれたインターラーケンとツェルマットで、家族と共に自然の絶景を満喫する7日間の旅へ出かけましょう。壮大な山々を背景にしたハイキングや、登山鉄道での冒険が待っています。心に残る思い出を作るためのアクティブなプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からインターラーケンへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "チューリッヒ",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "直行便でチューリッヒへ。到着後、列車でインターラーケンへ移動。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "インターラーケンの街散策",
+          "description": "インターラーケンの中心地を散策し、スイスの美しい風景を楽しみましょう。お土産屋やカフェも多く、地元の雰囲気を感じることができます。",
+          "searchQuery": "Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食（Restaurant Taverne）",
+          "description": "インターラーケンの人気レストランで、スイス料理を堪能。特にチーズフォンデュが絶品です。家族でシェアしながら楽しむのがおすすめ。",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルチェックイン（Hotel Interlaken）",
+          "description": "インターラーケンの中心に位置するホテルで、快適な滞在を。美しい庭園もあり、リラックスした時間を過ごせます。",
+          "searchQuery": "Hotel Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "インターラーケンでのハイキング",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "インターラーケン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ハードルク山",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "インターラーケンからハードルク山への登山鉄道での移動。美しいアルプスの景色を楽しみながらの旅。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ハードルク山でのハイキング",
+          "description": "ハードルク山の頂上からの絶景を楽しみながら、周囲の自然を満喫するハイキング。山々の壮大な景色が広がり、心が洗われるような体験ができます。",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "山小屋でランチ",
+          "description": "ハードルク山の山小屋で、地元の食材を使ったランチを楽しみます。特に、スイスのチーズを使った料理は絶品です。",
+          "searchQuery": "Harder Kulm Restaurant",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "トゥーン湖散策",
+          "description": "トゥーン湖の美しい湖畔を散策。湖の透明度と周囲の山々の反射が作り出す風景は、まるで絵画のようです。",
+          "searchQuery": "Lake Thun",
+          "locationEn": "Thun, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "トゥーン湖クルーズ",
+          "description": "トゥーン湖をクルーズしながら、湖の美しい景色を楽しみます。船上からの眺めは格別で、リラックスした時間を過ごせます。",
+          "searchQuery": "Lake Thun Boat Cruise",
+          "locationEn": "Thun, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "インターラーケンでディナー",
+          "description": "インターラーケンのレストランで、スイス料理を堪能。特に、ラクレットやフォンデュは外せない一品です。",
+          "searchQuery": "Restaurant Taverne",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "インターラーケンのホテルにチェックイン。快適な部屋で、明日の冒険に備えてリラックスします。",
+          "searchQuery": "Hotel Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "インターラーケンからツェルマットへ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "インターラーケン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ツェルマット",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "美しいアルプスの景色を楽しみながらの列車移動。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "ツェルマットでランチ",
+          "description": "ツェルマットの中心部にあるレストランで、地元の料理を楽しみましょう。特に、スイスの名物であるラクレットやフォンデュがおすすめです。",
+          "searchQuery": "Restaurant Whymper-Stube",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "マッターホルン展望台",
+          "description": "マッターホルンの絶景を楽しむために、ゴルナーグラート鉄道に乗って展望台へ。山々の壮大な景色が広がり、写真撮影にも最適です。",
+          "searchQuery": "Gornergrat",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ハイキング（ゴルナーグラート周辺）",
+          "description": "展望台からのハイキングコースを歩き、アルプスの自然を満喫。美しい風景を眺めながら、家族でのんびりとした時間を過ごせます。",
+          "searchQuery": "Gornergrat Hiking Trails",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ツェルマットでディナー",
+          "description": "ツェルマットのレストランで、スイス料理を堪能。特に、地元のワインと共に楽しむ料理は格別です。",
+          "searchQuery": "The Omnia",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ツェルマットのホテルにチェックイン。快適な部屋で、明日のハイキングに備えてリラックスしましょう。",
+          "searchQuery": "Hotel Cima",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ツェルマットでの登山鉄道体験",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Zermatt",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Gornergrat",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ゴルナーグラート行きの登山鉄道で、絶景を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ゴルナーグラート展望台",
+          "description": "ゴルナーグラート展望台に到着。ここからは、マッターホルンを含むアルプスの壮大な景色が広がります。特に晴れた日には、息を呑むような美しさです。",
+          "searchQuery": "Gornergrat",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ハイキング（ゴルナーグラートからのトレッキング）",
+          "description": "展望台からのハイキングコースを楽しみます。アルプスの大自然の中を歩きながら、様々な景色を堪能できます。",
+          "searchQuery": "Gornergrat hiking trails",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "山小屋でランチ",
+          "description": "ハイキングの途中にある山小屋で、地元の食材を使ったランチを楽しみます。スイスのチーズやソーセージを味わう絶好の機会です。",
+          "searchQuery": "Mountain hut restaurant",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ツェルマットの街散策",
+          "description": "ツェルマットの街を散策し、可愛らしいショップやカフェを訪れます。地元の人々との交流も楽しめる場所です。",
+          "searchQuery": "Zermatt",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルチェックイン",
+          "description": "ツェルマットのホテルにチェックイン。美しい山々を眺めながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Hotel in Zermatt",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "レストランでディナー",
+          "description": "ツェルマットの人気レストランで、スイス料理のディナーを楽しみます。特に、ラクレットやフォンデュはおすすめです。",
+          "searchQuery": "Restaurant in Zermatt",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ツェルマットでのハイキング",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "ツェルマット",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ゴルナーグラート",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "美しいアルプスの風景を楽しみながら、ゴルナーグラートへ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ゴルナーグラート展望台",
+          "description": "ゴルナーグラート展望台からは、マッターホルンを含むアルプスの壮大な景色が広がります。ここでの絶景は、ハイキングのスタートにぴったりです。",
+          "searchQuery": "Gornergrat",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マッターホルンハイキングコース",
+          "description": "ゴルナーグラートからマッターホルンを眺めながらのハイキング。自然の中でリフレッシュし、心地よい風を感じながら歩きます。",
+          "searchQuery": "Matterhorn Hiking Trail",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハイキング中のピクニックランチ",
+          "description": "持参したお弁当を大自然の中で楽しむ贅沢なひととき。周囲の美しい景色を眺めながら、家族での会話も弾みます。",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "リッフェル湖散策",
+          "description": "リッフェル湖へ向かい、湖面に映るマッターホルンの姿を楽しみます。静かな湖畔での散策は、心を癒してくれるでしょう。",
+          "searchQuery": "Riffelsee",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ツェルマットに戻る",
+          "description": "ハイキングを終え、ツェルマットの街へ戻ります。途中の景色を楽しみながら、ゆっくりと歩きます。",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "レストランでディナー",
+          "description": "ツェルマットのレストランで、地元の料理を楽しみます。特にチーズフォンデュはおすすめです。",
+          "searchQuery": "Restaurant Whymper-Stube",
+          "locationEn": "Zermatt, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ツェルマットからインターラーケンへ戻る",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Zermatt",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Interlaken",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "美しいアルプスの景色を楽しみながらの列車移動。"
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "インターラーケンでランチ",
+          "description": "インターラーケンの中心部にあるレストランで、スイスの伝統料理を楽しみましょう。特にチーズフォンデュは絶品です。",
+          "searchQuery": "Restaurant Taverne Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アレッチ氷河の展望台",
+          "description": "アレッチ氷河を一望できる展望台へハイキング。壮大な氷河の景色に圧倒されること間違いなしです。",
+          "searchQuery": "Aletsch Glacier Viewpoint",
+          "locationEn": "Aletsch Glacier, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハイキングコースを散策",
+          "description": "アレッチ氷河周辺のハイキングコースを散策。自然の中でリフレッシュしながら、家族での楽しい時間を過ごしましょう。",
+          "searchQuery": "Aletsch Glacier Hiking Trails",
+          "locationEn": "Aletsch Glacier, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "インターラーケンでディナー",
+          "description": "インターラーケンのレストランで、地元の食材を使った料理を楽しみます。特に、スイスのワインと一緒にどうぞ。",
+          "searchQuery": "Husi Bierhaus",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "インターラーケンのホテルにチェックイン。快適な部屋で、明日の冒険に備えましょう。",
+          "searchQuery": "Hotel Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "インターラーケンから東京へ帰る",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "インターラーケン",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "14:00"
+        },
+        "duration": "13h",
+        "memo": "インターラーケンからチューリッヒ空港まで電車で移動し、そこから東京行きのフライトに乗ります。"
+      },
+      "activities": [
+        {
+          "time": "07:30",
+          "activity": "ホテルで朝食",
+          "description": "インターラーケンのホテルで、スイスの伝統的な朝食を楽しみます。新鮮なパンやチーズ、ハム、そして地元のヨーグルトが並び、エネルギーをチャージ。",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "インターラーケンの街を散策",
+          "description": "美しいアルプスの山々を背景に、インターラーケンの街を散策します。湖の近くを歩きながら、自然の美しさを堪能しましょう。",
+          "searchQuery": "Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "チューリッヒへ移動",
+          "description": "インターラーケンからチューリッヒへ向かう電車に乗ります。車窓からの美しい風景を楽しみながら、スイスの自然を満喫。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "チューリッヒ空港でランチ",
+          "description": "空港内のレストランで、スイスの名物料理を楽しみます。地元の食材を使った料理が揃っており、旅行の締めくくりにぴったり。",
+          "locationEn": "Zurich Airport, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "東京行きのフライト",
+          "description": "チューリッヒから東京へ向けて出発します。約12時間のフライトで、旅の思い出を振り返りながらリラックス。",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

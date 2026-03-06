@@ -1,0 +1,287 @@
+{
+  "id": "5a941f7e-fb7d-4be3-9285-a46c5aa3a47d",
+  "destination": "五島列島",
+  "description": "五島列島は、静かな海と美しい教会が点在する、心を癒やす島旅にぴったりの場所です。歴史的な教会や美しいビーチを巡りながら、島の自然と文化に触れる贅沢な時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "五島列島の魅力に触れる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "福江島の地元食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、島の朝をゆったりとスタート。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "福江島の教会群巡り",
+          "description": "五島列島の美しい教会群を訪れます。特に、オランダ坂にある「堂崎天主堂」は、海を背景にした美しい景観が魅力です。",
+          "searchQuery": "Dozaki Church",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元の食堂でランチ",
+          "description": "福江島の地元食堂で新鮮な海の幸を使った定食をいただきます。特に、地元の魚を使った刺身定食は絶品です。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "海岸散策",
+          "description": "福江島の美しい海岸を散策します。透明度の高い海と白い砂浜が広がり、心が癒されるひとときを過ごせます。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "五島列島のビーチでリラックス",
+          "description": "静かなビーチでのんびりと過ごします。海の音を聞きながら、読書や昼寝を楽しむのもおすすめです。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで夕食",
+          "description": "ホテル内のレストランで、地元の食材を使ったディナーを楽しみます。新鮮な魚介類や野菜を使った料理が堪能できます。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観賞",
+          "description": "五島列島の澄んだ空気の中で、星空を楽しみます。静かな環境で、満天の星を眺める贅沢な時間を過ごせます。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "美しい海と教会巡り",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "福江島のホテルで、地元の食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、島の朝を元気にスタート。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "奈良尾教会",
+          "description": "美しい海を背景に建つ奈良尾教会を訪れます。教会の内部は静かで、心が落ち着く空間です。海を見渡す絶景も楽しめます。",
+          "searchQuery": "Narao Church",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "大瀬崎",
+          "description": "大瀬崎へ向かい、透明度の高い海でのんびりと過ごします。海岸沿いを散策しながら、自然の美しさに癒やされる時間を楽しんでください。",
+          "searchQuery": "Osezaki",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元の食堂でランチ",
+          "description": "大瀬崎近くの地元の食堂で、新鮮な海の幸を使った定食をいただきます。地元の人々に愛される味を堪能しましょう。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "奈良尾教会周辺散策",
+          "description": "奈良尾教会の周辺を散策し、静かな海辺の風景を楽しみます。教会の美しい建築と自然の調和を感じながら、心をリフレッシュ。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでリラックス",
+          "description": "福江島のビーチで、海の音を聞きながらリラックス。読書や散歩を楽しんで、穏やかな時間を過ごします。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、地元の食材を使ったディナーを楽しみます。新鮮な魚介類や野菜を使った料理で、島の味を堪能。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "星空観賞",
+          "description": "夜空を見上げて、星空観賞を楽しみます。福江島の静かな環境で、満天の星を眺める贅沢な時間を過ごしましょう。",
+          "locationEn": "Fukue Island, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "静かな島でのひととき",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "福江島のホテルで、地元の食材を使った和朝食を楽しみます。新鮮な魚や野菜を使った料理で、エネルギーをチャージしましょう。",
+          "locationEn": "Fukue, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "小値賀島へのフェリー移動",
+          "description": "福江島から小値賀島へフェリーで移動します。約30分の船旅で、海の美しい景色を楽しみながらリラックス。",
+          "locationEn": "Kojima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "小値賀島の教会巡り",
+          "description": "小値賀島には歴史的な教会が点在しています。特に、聖母マリア教会は美しい景観と共に、静かな時間を過ごすのに最適です。",
+          "searchQuery": "Kojima Church",
+          "locationEn": "Kojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "小値賀島でランチ",
+          "description": "地元の食材を使ったランチを楽しむため、島の食堂へ。新鮮な魚料理や、島の特産品を味わいましょう。",
+          "locationEn": "Kojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "小値賀島のビーチ散策",
+          "description": "小値賀島の美しいビーチを散策します。透明度の高い海と白い砂浜で、心身ともにリフレッシュ。",
+          "locationEn": "Kojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "福江島へのフェリー移動",
+          "description": "小値賀島から福江島へ戻るフェリーに乗ります。再び美しい海の景色を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Fukue, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "福江島のビーチでのんびり",
+          "description": "福江島に戻ったら、近くのビーチでのんびりと過ごします。夕日を眺めながら、静かなひとときを楽しんでください。",
+          "locationEn": "Fukue, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "福江島でディナー",
+          "description": "地元の海の幸を楽しめるレストランでディナー。新鮮な魚介類を使った料理を堪能し、旅の締めくくりにふさわしい食事を楽しみましょう。",
+          "locationEn": "Fukue, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

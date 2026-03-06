@@ -1,0 +1,488 @@
+{
+  "id": "bd756a79-058e-4eac-86b4-ebc06d3a81f6",
+  "destination": "Prague",
+  "description": "Immerse yourself in the enchanting city of Prague, where every cobblestone street whispers tales of history, art, and classical music. This 5-day adventure is perfect for families, blending cultural exploration with the excitement of discovering local treasures. From majestic castles to vibrant art scenes, and from classical music venues to charming cafes, Prague offers a delightful mix of experiences that will captivate both young and old. Get ready to create unforgettable memories as you explore this magical city!",
+  "heroImage": "https://images.unsplash.com/photo-1673899618872-89994e617d8c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIwNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Αγγελος Αγοραστος",
+  "heroImagePhotographerUrl": "https://unsplash.com/@agorastos?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Old Town Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a hearty breakfast at Café Louvre, a historic café known for its delicious pastries and traditional Czech breakfast options. The ambiance is perfect for families, with a cozy atmosphere that invites you to linger.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Old Town Square",
+          "description": "Explore the vibrant Old Town Square, where you can admire the stunning architecture, including the iconic Astronomical Clock. This bustling area is perfect for family photos and soaking in the local culture.",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Astronomical Clock Show",
+          "description": "Don't miss the hourly show of the Astronomical Clock, a marvel of medieval engineering. Watch as the clock comes to life with moving figures, a delight for both kids and adults alike.",
+          "searchQuery": "Astronomical Clock",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Enjoy a traditional Czech lunch at Lokál, where you can taste local dishes like goulash and svíčková. The casual setting is family-friendly, and the food is made from fresh, local ingredients.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Charles Bridge",
+          "description": "Stroll across the historic Charles Bridge, lined with statues and offering stunning views of the Vltava River. It's a great spot for family photos and to enjoy street performances.",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Klementinum",
+          "description": "Explore the Klementinum, home to the beautiful Baroque library and astronomical tower. The library is a hidden gem, and the tower offers panoramic views of the city, perfect for a family adventure.",
+          "searchQuery": "Klementinum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Classical Music Merchandise",
+          "description": "Head to the nearby shops specializing in classical music merchandise. Here, you can find unique souvenirs, CDs, and memorabilia related to famous composers and orchestras, perfect for your 'oshi' activities.",
+          "searchQuery": "classical music shop Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "End your day with dinner at U Medvídků, a traditional Czech restaurant known for its hearty meals and local beers. The atmosphere is lively, making it a great place for families to unwind after a day of exploration.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Classical Music and Art Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its elegant atmosphere and delicious pastries. It's a perfect spot to fuel up before a day of exploration.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit the National Theatre",
+          "description": "Explore the stunning National Theatre, a masterpiece of Neo-Renaissance architecture. Take a guided tour to learn about its rich history and the role it plays in Czech culture, especially in classical music.",
+          "searchQuery": "National Theatre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Enjoy a traditional Czech lunch at Lokál Dlouhááá, where you can savor local dishes made from fresh ingredients. The atmosphere is lively, making it a great place for families.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Dvořák Museum",
+          "description": "Visit the Dvořák Museum, dedicated to the life and works of the famous Czech composer Antonín Dvořák. The museum houses a collection of his manuscripts and personal items, providing insight into his musical genius.",
+          "searchQuery": "Dvořák Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll along the Vltava River",
+          "description": "Take a leisurely stroll along the Vltava River, enjoying the scenic views of Prague's iconic skyline. This is a great opportunity for family photos and to soak in the vibrant atmosphere of the city.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Visit a Classical Music Souvenir Shop",
+          "description": "Explore a local shop specializing in classical music memorabilia and souvenirs. It's a perfect place to find unique gifts and fan merchandise related to your favorite composers and musicians.",
+          "searchQuery": "classical music souvenir shop",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "End your day with a hearty dinner at U Medvídků, a traditional Czech restaurant known for its delicious beer and classic dishes. The family-friendly atmosphere makes it a great choice for dinner.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in Old Town Square",
+          "description": "Take an evening walk in the picturesque Old Town Square, where you can admire the Astronomical Clock and the stunning architecture. The square often hosts street performers, adding to the lively ambiance.",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Castle District and Local Markets",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delicious breakfast at Café Louvre, a historic café known for its rich coffee and traditional Czech pastries. The ambiance is perfect for families, and the kids will love the sweet treats!",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Prague Castle",
+          "description": "Explore the magnificent Prague Castle, the largest ancient castle in the world. Wander through its stunning courtyards and gardens, and don't miss the breathtaking views of the city from the castle grounds. It's a great spot for family photos!",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "St. Vitus Cathedral",
+          "description": "Inside Prague Castle, visit the iconic St. Vitus Cathedral. Marvel at its stunning stained glass windows and intricate architecture. The cathedral is a must-see for anyone interested in history and art.",
+          "searchQuery": "St. Vitus Cathedral",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Lokál",
+          "description": "Enjoy a traditional Czech lunch at Lokál, where you can taste authentic dishes like goulash and svíčková. The casual atmosphere is family-friendly, and the prices are reasonable.",
+          "searchQuery": "Lokál",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lesser Town (Malá Strana)",
+          "description": "Stroll through the charming streets of Lesser Town, filled with baroque architecture and quaint shops. This area is perfect for a leisurely walk, and you can stop by local boutiques for unique souvenirs and fan goods related to classical music.",
+          "searchQuery": "Lesser Town",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the John Lennon Wall",
+          "description": "Check out the famous John Lennon Wall, a colorful tribute to peace and love. It's a great spot for kids to express their creativity by adding their own drawings or messages to the wall.",
+          "searchQuery": "John Lennon Wall",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at U Medvídků",
+          "description": "End your day with dinner at U Medvídků, a historic brewery and restaurant. Enjoy hearty Czech dishes and locally brewed beer while the kids can try traditional Czech lemonade. The atmosphere is lively and welcoming for families.",
+          "searchQuery": "U Medvídků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll along the Vltava River",
+          "description": "Take a relaxing evening stroll along the Vltava River. The views of the illuminated Charles Bridge and the castle are stunning, making it a perfect way to end your day in Prague.",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Český Krumlov",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Prague",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Český Krumlov",
+          "time": "10:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic bus ride through the beautiful Czech countryside."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Český Krumlov Castle",
+          "description": "Explore the stunning Český Krumlov Castle, a UNESCO World Heritage site. Don't miss the breathtaking views from the castle tower and the beautiful gardens surrounding it.",
+          "searchQuery": "Český Krumlov Castle",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Krcma v Šatlavské",
+          "description": "Savor traditional Czech cuisine at this cozy restaurant located in the heart of the town. Try the goulash or svíčková for an authentic taste of local flavors.",
+          "searchQuery": "Krcma v Šatlavské",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Historic Town Center",
+          "description": "Stroll through the charming streets of the Historic Town Center, where you can admire the colorful buildings and unique shops. This area is perfect for picking up some classical music souvenirs.",
+          "searchQuery": "Historic Town Center Český Krumlov",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Museum of Torture",
+          "description": "Visit the intriguing Museum of Torture to learn about the darker side of history in a fun and educational way. It's a unique experience that will fascinate both adults and children.",
+          "searchQuery": "Museum of Torture Český Krumlov",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Laibon",
+          "description": "Enjoy a delightful dinner at Laibon, known for its organic and vegetarian options. The atmosphere is warm and inviting, perfect for families after a day of exploration.",
+          "searchQuery": "Laibon",
+          "locationEn": "Český Krumlov, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return to Prague",
+          "description": "After a fulfilling day in Český Krumlov, take the bus back to Prague, reflecting on the beautiful sights and experiences of the day.",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Louvre",
+          "description": "Start your day with a delightful breakfast at Café Louvre, a historic café known for its rich coffee and traditional Czech pastries. It's a perfect spot to fuel up before a day of exploration.",
+          "searchQuery": "Café Louvre",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Jewish Quarter",
+          "description": "Explore the historic Jewish Quarter, where you can visit the Old Jewish Cemetery and the Jewish Museum. This area is steeped in history and offers a glimpse into the rich Jewish heritage of Prague.",
+          "searchQuery": "Jewish Quarter",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Lokál Dlouhááá",
+          "description": "Enjoy a traditional Czech lunch at Lokál Dlouhááá, where you can savor local dishes like svíčková (marinated beef) and freshly brewed Pilsner beer. The casual atmosphere is family-friendly and welcoming.",
+          "searchQuery": "Lokál Dlouhááá",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Wenceslas Square Exploration",
+          "description": "Stroll through Wenceslas Square, a vibrant area filled with shops, cafes, and historical significance. It's a great place to pick up some classical music merchandise and souvenirs for the family.",
+          "searchQuery": "Wenceslas Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the National Museum",
+          "description": "End your day with a visit to the National Museum, where you can explore exhibits on Czech history, culture, and art. The museum's architecture is stunning and provides a perfect backdrop for family photos.",
+          "searchQuery": "National Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure Preparation",
+          "description": "Return to your hotel to collect your luggage and prepare for your departure. Make sure to check your travel documents and souvenirs before heading to the airport.",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

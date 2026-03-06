@@ -1,0 +1,274 @@
+{
+  "id": "e5677624-c8ad-424e-97a4-0d9c53555fd6",
+  "destination": "Chicago",
+  "description": "Escape to the vibrant city of Chicago, where the pulse of art, culture, and baseball intertwines to create an unforgettable experience. Over three days, immerse yourself in the world of Major League Baseball while exploring the city's rich history and artistic treasures. From iconic ballparks to stunning museums, this trip is designed for couples who appreciate the finer things in life and seek to indulge in their passions. Get ready to create lasting memories in the Windy City!",
+  "heroImage": "https://images.unsplash.com/photo-1756254380791-9d14cf62d1a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE3ODF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "VASANTH .",
+  "heroImagePhotographerUrl": "https://unsplash.com/@vsnth?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Heart of Chicago",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Wildberry Pancakes and Cafe",
+          "description": "Start your day with a hearty breakfast at Wildberry, famous for its fluffy pancakes and delicious berry compote. The vibrant atmosphere and friendly service will set a positive tone for your day.",
+          "searchQuery": "Wildberry Pancakes and Cafe",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Millennium Park",
+          "description": "Stroll through Millennium Park, where you can admire the iconic Cloud Gate sculpture (often called 'The Bean'). The park's lush gardens and art installations make it a perfect spot for a leisurely walk and some great photos.",
+          "searchQuery": "Millennium Park",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Giordano's",
+          "description": "Indulge in Chicago's famous deep-dish pizza at Giordano's. This local favorite offers a cozy atmosphere and a menu filled with delicious Italian dishes. Don't forget to try their stuffed pizza, a true Chicago classic!",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Art Institute of Chicago",
+          "description": "Dive into the world of art at the Art Institute of Chicago, home to an impressive collection of Impressionist and Post-Impressionist masterpieces. Spend a few hours wandering through the galleries and soaking in the creativity.",
+          "searchQuery": "Art Institute of Chicago",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Navy Pier",
+          "description": "Head to Navy Pier for a mix of entertainment and relaxation. Enjoy the views of Lake Michigan, explore the shops, and consider taking a ride on the Ferris wheel for a stunning perspective of the city skyline.",
+          "searchQuery": "Navy Pier",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Purple Pig",
+          "description": "Savor a delightful dinner at The Purple Pig, known for its Mediterranean-inspired dishes and extensive wine list. The lively atmosphere and shared plates make it a great spot for couples to enjoy a meal together.",
+          "searchQuery": "The Purple Pig",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for MLB Merchandise at Chicago Sports Depot",
+          "description": "Wrap up your day by visiting the Chicago Sports Depot, where you can find a wide range of MLB merchandise. From jerseys to caps, it's the perfect place to pick up some fan gear to remember your trip.",
+          "searchQuery": "Chicago Sports Depot",
+          "locationEn": "Chicago, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "A Day of Baseball and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Wildberry Pancakes and Cafe",
+          "description": "Start your day with a hearty breakfast at Wildberry Pancakes and Cafe, famous for its fluffy pancakes and delicious berry compote. It's a local favorite, perfect for fueling up before a day of exploration.",
+          "searchQuery": "Wildberry Pancakes and Cafe",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Wrigley Field Tour",
+          "description": "Visit the iconic Wrigley Field, home of the Chicago Cubs. Take a guided tour to learn about the history of this historic ballpark and its significance in baseball culture. Don't forget to snap a photo with the famous marquee!",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Portillo's",
+          "description": "Enjoy a classic Chicago-style hot dog or Italian beef sandwich at Portillo's, a beloved local chain. The vibrant atmosphere and delicious food make it a must-visit for any foodie.",
+          "searchQuery": "Portillo's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lincoln Park Zoo",
+          "description": "Stroll through the Lincoln Park Zoo, one of the oldest zoos in the country. Admission is free, and you can enjoy the beautiful gardens and see a variety of animals. It's a great way to relax and enjoy nature in the city.",
+          "searchQuery": "Lincoln Park Zoo",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Chicago Riverwalk",
+          "description": "Take a leisurely walk along the Chicago Riverwalk. This scenic area is lined with restaurants and shops, making it a perfect spot to relax and enjoy the views of the city. You can also find some unique local merchandise here.",
+          "searchQuery": "Chicago Riverwalk",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Cubs Merchandise at the Cubs Team Store",
+          "description": "Head to the Cubs Team Store to pick up some official Cubs merchandise. Whether it's a jersey, cap, or other fan gear, this is the perfect place to find something special to remember your day.",
+          "searchQuery": "Cubs Team Store",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Purple Pig",
+          "description": "End your day with dinner at The Purple Pig, known for its Mediterranean-inspired dishes and extensive wine list. The lively atmosphere and delicious food will make for a memorable dining experience.",
+          "searchQuery": "The Purple Pig",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Chicago",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Museum Campus, Chicago",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Start the day with a short drive or taxi ride to Museum Campus."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Field Museum",
+          "description": "Explore the Field Museum, home to an extensive collection of natural history exhibits, including Sue, the famous T. rex. Don't miss the Ancient Egypt exhibit for a glimpse into the past!",
+          "searchQuery": "Field Museum",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Field Bistro",
+          "description": "Enjoy a casual lunch at The Field Bistro, located within the museum. They offer a variety of fresh, seasonal dishes perfect for refueling after your museum visit.",
+          "searchQuery": "The Field Bistro",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shedd Aquarium",
+          "description": "Dive into the wonders of the Shedd Aquarium, where you can see everything from playful dolphins to mesmerizing jellyfish. The aquatic exhibits are both educational and entertaining!",
+          "searchQuery": "Shedd Aquarium",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for MLB Merchandise at Wrigley Field",
+          "description": "Head over to Wrigley Field to shop for official MLB merchandise. Whether you're looking for jerseys, caps, or unique memorabilia, this is the place to find your favorite team's gear!",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Lou Malnati's Pizzeria",
+          "description": "Indulge in a classic Chicago deep-dish pizza at Lou Malnati's. This iconic pizzeria is a must-visit for a true taste of Chicago's culinary scene!",
+          "searchQuery": "Lou Malnati's Pizzeria",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,614 @@
+{
+  "id": "c7ad009a-da19-4f3e-878e-e61ebcba4037",
+  "destination": "バルセロナ",
+  "description": "バルセロナでの7日間の旅は、文化、歴史、アクティビティ、そしてリラックスを満喫する素晴らしい体験です。特に、LaLigaの関連スポットを巡りながら、家族全員が楽しめるアクティビティや美味しい食事を取り入れたプランをご提案します。子供たちも大喜びのアクティブな日々を過ごしましょう！",
+  "days": [
+    {
+      "day": 1,
+      "title": "バルセロナ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、地元のパンやハム、トマトを使った朝食を楽しみます。エネルギーをチャージして、今日の観光に備えましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カサ・ミラ（ミラ邸）",
+          "description": "アントニ・ガウディが手掛けた独特な形状の建物、カサ・ミラを訪れます。屋上からはバルセロナの街並みを一望でき、子供たちも楽しめるアートな空間です。",
+          "searchQuery": "Casa Milà",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "グラシア通りでランチ",
+          "description": "グラシア通り沿いのカフェで、スペインのタパスやパエリアを楽しみましょう。家族でシェアしながら、バルセロナの雰囲気を満喫できます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カタルーニャ広場散策",
+          "description": "バルセロナの中心、カタルーニャ広場を散策します。広場周辺にはお土産屋やカフェがたくさんあり、ファングッズを探すのにも最適です。",
+          "searchQuery": "Plaça de Catalunya",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "FCバルセロナのミュージアム訪問",
+          "description": "サッカーファンにはたまらない、FCバルセロナのミュージアムを訪れます。歴史や名選手の展示を見学し、子供たちも楽しめるインタラクティブな体験が待っています。",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップでショッピング",
+          "description": "FCバルセロナの公式ショップで、ユニフォームやグッズを購入します。子供たちもお気に入りのアイテムを見つけられるかもしれません。",
+          "searchQuery": "FC Barcelona Official Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元レストランで、スペイン料理を堪能します。家族で楽しめるメニューが豊富で、リラックスした時間を過ごせます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "サッカーと文化の融合",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、地元のパンやハム、トマトを使った朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カンプ・ノウスタジアム見学",
+          "description": "FCバルセロナの本拠地、カンプ・ノウを訪れます。スタジアムツアーでは、ピッチやロッカールームを見学でき、サッカーの歴史を感じることができます。子供たちも大興奮！",
+          "searchQuery": "Camp Nou",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カンプ・ノウ内のレストランでランチ",
+          "description": "スタジアム内のレストランで、バルセロナ名物のパエリアやタパスを楽しみます。サッカー観戦の興奮を味わいながら、家族で楽しいひとときを過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モンジュイックの丘へ移動",
+          "description": "カンプ・ノウからモンジュイックの丘へ向かいます。美しい公園や展望台があり、バルセロナの街並みを一望できます。子供たちも楽しめるアクティビティがたくさん！",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "モンジュイックの丘でアクティビティ",
+          "description": "モンジュイックの丘では、ケーブルカーに乗ったり、ボタニックガーデンを散策したりして、自然と歴史を楽しみます。家族でのんびりとした時間を過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "モンジュイックの丘からの夕日鑑賞",
+          "description": "丘の上から美しい夕日を眺めながら、バルセロナの街が夕暮れに染まる様子を楽しみます。特別な家族の思い出になることでしょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元のレストランで、スペイン料理を堪能します。特に、子供たちが好きなピザやパスタも豊富に揃っています。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ガウディの世界を探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルを塗った「パン・コン・トマテ」や、ハムとチーズの盛り合わせが定番です。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サグラダ・ファミリア",
+          "description": "ガウディの代表作であるサグラダ・ファミリアを訪れます。壮大な教会の内部は、色とりどりのステンドグラスが美しく、子供たちもその幻想的な雰囲気に魅了されることでしょう。事前にチケットを購入しておくとスムーズです。",
+          "searchQuery": "Sagrada Familia",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのレストランでランチ",
+          "description": "サグラダ・ファミリア近くのレストランで、タパスやパエリアを楽しみましょう。家族みんなでシェアしながら、スペインの味を堪能できます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "パーク・グエル",
+          "description": "ガウディが手がけた色鮮やかな公園、パーク・グエルへ。子供たちが遊べる広場や、ユニークなモザイクのベンチがあり、家族で楽しい時間を過ごせます。",
+          "searchQuery": "Park Guell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "FCバルセロナのミュージアム訪問",
+          "description": "FCバルセロナのミュージアムを訪れ、クラブの歴史や栄光の瞬間を学びましょう。子供たちもサッカーの魅力を感じることができるでしょう。ミュージアム内にはファングッズも販売されています。",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カタルーニャ広場周辺でショッピング",
+          "description": "カタルーニャ広場周辺で、バルセロナのファングッズやお土産を探しましょう。地元のショップやおしゃれなブティックが立ち並び、家族で楽しめるショッピングエリアです。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元料理を楽しむために、家族でディナーを。シーフードパエリアや、バルセロナ名物の「カタルーニャ風クリーム」をぜひ味わってみてください。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "バルセロナのビーチでリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのカフェで、クロワッサンやトースト、フレッシュジュースを楽しむ朝食。地元の人々に混じって、ゆったりとした朝のひとときを過ごします。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "バルセロネータビーチで遊ぶ",
+          "description": "バルセロナの人気ビーチ、バルセロネータで家族みんなで楽しむ時間。砂浜で遊んだり、海に入ったり、リラックスしたりと、思い思いの時間を過ごせます。",
+          "searchQuery": "Barceloneta Beach",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "新鮮なシーフードやパエリアを楽しめるビーチサイドのレストランで、家族でのんびりとランチ。海の景色を眺めながら、地元の味を堪能します。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バルセロナ水族館を訪れる",
+          "description": "バルセロナ水族館で、子供たちと一緒に海の生き物たちを観察。特に大水槽のサメやエイは圧巻で、家族全員が楽しめるスポットです。",
+          "searchQuery": "Barcelona Aquarium",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "LaLiga関連グッズを探す",
+          "description": "バルセロナのスポーツショップで、FCバルセロナのファングッズを探しに行きます。ユニフォームやサイン入りのアイテムなど、子供たちも大喜びのショッピングタイム。",
+          "searchQuery": "FC Barcelona Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチで夕日を眺める",
+          "description": "バルセロネータビーチで夕日を眺めながら、家族でのんびりとした時間を過ごします。美しい夕焼けをバックに、思い出に残るひとときを。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元料理を楽しめるレストランで、家族でのディナー。タパスやパエリアをシェアしながら、楽しい会話を楽しみます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "LaLigaの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、地元のパンやハム、チーズを使った朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カンプ・ノウ博物館",
+          "description": "サッカー好きにはたまらない、FCバルセロナの歴史を学べる博物館です。選手たちのユニフォームやトロフィーが展示されており、スタジアムツアーも楽しめます。子供たちも大興奮！",
+          "searchQuery": "Camp Nou Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "カンプ・ノウの近くにあるカフェで、スペインのタパスやサンドイッチを楽しみましょう。地元の人々に人気のあるお店で、リラックスしたひとときを過ごせます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サッカーショップでファングッズ購入",
+          "description": "カンプ・ノウの近くにある公式ショップで、FCバルセロナのユニフォームやグッズを購入しましょう。子供たちも自分のお気に入りを見つけることができるはず！",
+          "searchQuery": "FC Barcelona Official Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "バルセロナ市内散策",
+          "description": "カンプ・ノウ周辺を散策しながら、バルセロナの街並みを楽しみましょう。地元のアートやストリートパフォーマンスに触れ、活気あふれる雰囲気を味わえます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元料理を楽しめるレストランで、家族みんなでディナーを楽しみましょう。パエリアやタパスをシェアして、楽しい食事の時間を過ごします。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻りましょう。明日の計画を立てながら、リラックスした時間を過ごします。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "バルセロナの隠れた魅力を発見",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのカフェで、トーストやパニーニ、フレッシュジュースを楽しみながら、今日の計画を立てましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ボケリア市場散策",
+          "description": "バルセロナの名物市場、ボケリア市場で新鮮な食材や地元の特産品を見て回ります。色とりどりのフルーツやハム、チーズが並ぶ様子は圧巻です。",
+          "searchQuery": "La Boqueria",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "市場内でランチ",
+          "description": "ボケリア市場内の屋台で、タパスやパエリアを味わいましょう。地元の人々に混じって、バルセロナの食文化を体験できます。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "グエル公園訪問",
+          "description": "アントニ・ガウディが手掛けた美しい公園、グエル公園へ。色鮮やかなモザイクや独特な建築が楽しめ、家族での散策にぴったりです。",
+          "searchQuery": "Park Güell",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "FCバルセロナのミュージアム見学",
+          "description": "カンプ・ノウスタジアム内にあるFCバルセロナのミュージアムを訪れ、クラブの歴史や名選手たちの功績を学びましょう。子供たちも楽しめる展示が充実しています。",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "カンプ・ノウ周辺のショップで、FCバルセロナのファングッズを購入。ユニフォームやマフラーなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "FC Barcelona Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "バルセロナの地元料理を楽しめるレストランで、家族でのディナーを。シーフードパエリアやタパスをシェアしながら、楽しいひとときを過ごしましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "バルセロナから東京へ帰国",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "バルセロナのホテルで、地元のパンやハム、チーズを使った朝食を楽しみます。エネルギーをチャージして、最後の一日をスタート！",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "カタルーニャ広場散策",
+          "description": "バルセロナの中心、カタルーニャ広場を散策。広場の周りにはおしゃれなカフェやショップが並び、最後の買い物にぴったりです。子供たちも楽しめる広場の噴水やアートを楽しみましょう。",
+          "searchQuery": "Plaça de Catalunya",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（地元のタパス）",
+          "description": "カタルーニャ広場近くのタパスバーで、地元の味を楽しむランチ。バルセロナ名物のパタタス・ブラバスやハモン・セラーノを味わいましょう。",
+          "searchQuery": "Cervecería 100 Montaditos",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "FCバルセロナのミュージアム訪問",
+          "description": "サッカーファンにはたまらない、FCバルセロナのミュージアムを訪れます。歴史的なトロフィーや選手のユニフォームを見学し、クラブの魅力を再確認しましょう。",
+          "searchQuery": "FC Barcelona Museum",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズ購入",
+          "description": "FCバルセロナの公式ショップで、ファングッズを購入。子供たちのお土産や、家族の思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "FC Barcelona Official Store",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "バルセロナの空港へ向かいます。帰国の準備を整え、最後のバルセロナの思い出を振り返りながら、楽しい旅を締めくくりましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "バルセロナ発、東京へ帰国",
+          "description": "バルセロナから東京へ向けて出発します。楽しい思い出を胸に、次の旅を楽しみにしながら帰路につきましょう。",
+          "locationEn": "Barcelona, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,347 @@
+{
+  "id": "557535b5-1618-4cfe-b18a-26dc94ac5024",
+  "destination": "Gold Coast",
+  "description": "Escape to the stunning Gold Coast, where sun-kissed beaches meet vibrant culture and exquisite dining. This 4-day getaway is designed for couples seeking a blend of relaxation and adventure, with plenty of opportunities to indulge in local cuisine, explore art galleries, and shop at unique boutiques. From the golden sands of Surfers Paradise to the lush hinterlands, you'll experience the best of this Australian paradise while creating unforgettable memories together.",
+  "heroImage": "https://images.unsplash.com/photo-1679569530369-3e1ddc992a6d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU0ODF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Kathleen Banks",
+  "heroImagePhotographerUrl": "https://unsplash.com/@kitkatlandscapes?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Beach Relaxation",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Check-in at Surfers Paradise Hotel",
+          "description": "Settle into your hotel in Surfers Paradise, where stunning ocean views and a relaxing atmosphere await. Take a moment to unwind and refresh after your journey.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at The Collective",
+          "description": "Enjoy a casual lunch at The Collective, a vibrant dining venue offering a variety of cuisines from tacos to sushi. The lively atmosphere and shared dining concept make it a perfect spot for couples.",
+          "searchQuery": "The Collective",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Surfers Paradise Beach",
+          "description": "Spend a leisurely afternoon soaking up the sun at Surfers Paradise Beach. With its golden sands and clear waters, it's the ideal place to unwind, swim, or take a romantic stroll along the shore.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Cavill Avenue",
+          "description": "Stroll along Cavill Avenue, the heart of Surfers Paradise, filled with shops, cafes, and street performers. It's a great place to pick up souvenirs or enjoy a refreshing drink at one of the outdoor terraces.",
+          "searchQuery": "Cavill Avenue",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at SkyPoint Observation Deck",
+          "description": "Dine at the SkyPoint Observation Deck, where you can enjoy a delicious meal with breathtaking views of the Gold Coast skyline and ocean. It's a romantic setting perfect for couples.",
+          "searchQuery": "SkyPoint Observation Deck",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along the Beach",
+          "description": "End your day with a peaceful evening walk along the beach, listening to the waves and enjoying the cool breeze. It's a perfect way to reflect on your first day in paradise.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Exploration and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Coffee Emporium",
+          "description": "Start your day with a delicious breakfast at The Coffee Emporium, known for its fresh coffee and hearty breakfast options. Try their famous avocado toast or a classic eggs benedict to fuel up for the day ahead.",
+          "searchQuery": "The Coffee Emporium",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Pacific Fair Shopping Centre",
+          "description": "Head to Pacific Fair, one of the largest shopping centers in Queensland. With a mix of high-end brands and local boutiques, it's the perfect place to shop for souvenirs or enjoy a leisurely stroll through the vibrant atmosphere.",
+          "searchQuery": "Pacific Fair Shopping Centre",
+          "locationEn": "Broadbeach, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Social Eating House + Bar",
+          "description": "Enjoy a relaxed lunch at Social Eating House + Bar, where you can savor modern Australian cuisine with a twist. Their share plates are perfect for couples looking to try a variety of dishes together.",
+          "searchQuery": "Social Eating House + Bar",
+          "locationEn": "Broadbeach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Gold Coast Arts Centre",
+          "description": "Visit the Gold Coast Arts Centre to immerse yourself in the local art scene. Check out the latest exhibitions or catch a live performance if time allows. The center often showcases works from both emerging and established artists.",
+          "searchQuery": "Gold Coast Arts Centre",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll along Surfers Paradise Beach",
+          "description": "Take a leisurely walk along the iconic Surfers Paradise Beach. Feel the soft sand between your toes and enjoy the stunning ocean views as the sun begins to set. It's a perfect romantic moment to share with your partner.",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Seascape Restaurant + Bar",
+          "description": "End your day with a delightful dinner at Seascape Restaurant + Bar, where you can enjoy fresh seafood and stunning ocean views. Their menu features a variety of dishes that highlight local ingredients, making it a memorable dining experience.",
+          "searchQuery": "Seascape Restaurant + Bar",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure in Nature and Fine Dining",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Surfers Paradise",
+          "time": "08:30"
+        },
+        "arrival": {
+          "place": "Lamington National Park",
+          "time": "09:30"
+        },
+        "duration": "1h",
+        "memo": "Enjoy the scenic drive to Lamington National Park."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Lamington National Park Exploration",
+          "description": "Immerse yourself in the lush rainforests of Lamington National Park. Enjoy walking trails that lead you through stunning landscapes, waterfalls, and diverse wildlife. Don't forget your camera for the breathtaking views!",
+          "searchQuery": "Lamington National Park",
+          "locationEn": "Lamington National Park, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Picnic Lunch at O'Reilly's Rainforest Retreat",
+          "description": "Savor a delightful picnic lunch at O'Reilly's, surrounded by nature. Choose from a selection of fresh local produce and enjoy the serene atmosphere. It's a perfect spot to recharge before more adventures!",
+          "searchQuery": "O'Reilly's Rainforest Retreat",
+          "locationEn": "O'Reilly's Rainforest Retreat, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tree Top Walk",
+          "description": "Experience the thrill of the Tree Top Walk, a suspended walkway that takes you high above the forest floor. Enjoy panoramic views of the rainforest canopy and spot native birds and wildlife.",
+          "searchQuery": "Tree Top Walk Lamington",
+          "locationEn": "Lamington National Park, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Surfers Paradise",
+          "description": "Head back to Surfers Paradise to relax and freshen up after your nature adventure. The drive back will take about an hour, giving you time to reflect on the day's experiences.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping at Cavill Avenue",
+          "description": "Explore the vibrant shops and boutiques along Cavill Avenue. From local souvenirs to high-end fashion, there's something for everyone. Take your time to find the perfect memento from your trip!",
+          "searchQuery": "Cavill Avenue",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Seascape Restaurant + Bar",
+          "description": "Indulge in a romantic dinner at Seascape, where you can enjoy fresh seafood and stunning ocean views. The ambiance is perfect for a couple's evening out, making it a memorable dining experience.",
+          "searchQuery": "Seascape Restaurant + Bar",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll on the Beach",
+          "description": "End your day with a leisurely stroll along the beach. The sound of the waves and the cool breeze create a perfect setting for a romantic evening together.",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Final Day of Leisure and Return",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Burleigh Pavilion",
+          "description": "Start your day with a delightful breakfast at Burleigh Pavilion, where you can enjoy stunning ocean views while savoring fresh, locally sourced ingredients. The vibrant atmosphere and delicious menu make it a perfect spot to relax before your day of exploration.",
+          "searchQuery": "Burleigh Pavilion",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Coolangatta Beach",
+          "description": "Spend a leisurely morning at Coolangatta Beach, known for its golden sands and crystal-clear waters. Take a stroll along the shore, swim in the gentle waves, or simply relax under the sun. This beach is perfect for couples looking to unwind and enjoy each other's company.",
+          "searchQuery": "Coolangatta Beach",
+          "locationEn": "Coolangatta, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Collective",
+          "description": "Head to The Collective for lunch, a unique dining experience featuring a variety of food stalls offering everything from gourmet burgers to fresh seafood. Enjoy the casual vibe and choose from a range of delicious options to satisfy your cravings.",
+          "searchQuery": "The Collective Palm Beach",
+          "locationEn": "Palm Beach, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping at Pacific Fair Shopping Centre",
+          "description": "After lunch, make your way to Pacific Fair Shopping Centre, one of the largest shopping destinations on the Gold Coast. Explore a mix of high-end boutiques, popular brands, and local shops. Don't forget to check out the art installations throughout the mall for a touch of culture.",
+          "searchQuery": "Pacific Fair Shopping Centre",
+          "locationEn": "Broadbeach, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Art at HOTA (Home of the Arts)",
+          "description": "Visit HOTA, the Home of the Arts, where you can immerse yourself in contemporary art exhibitions and beautiful outdoor spaces. Take a leisurely stroll through the gardens and enjoy the stunning views of the Gold Coast skyline.",
+          "searchQuery": "HOTA Home of the Arts",
+          "locationEn": "Surfers Paradise, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Rick Shores",
+          "description": "End your trip with a romantic dinner at Rick Shores, a beachfront restaurant known for its modern Asian cuisine. Enjoy the sunset views while indulging in delicious dishes made from fresh, local ingredients. A perfect way to conclude your Gold Coast getaway.",
+          "searchQuery": "Rick Shores",
+          "locationEn": "Burleigh Heads, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

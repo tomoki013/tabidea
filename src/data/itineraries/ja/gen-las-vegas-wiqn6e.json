@@ -1,0 +1,564 @@
+{
+  "id": "241f30aa-3135-4e3d-bffd-4d063c404653",
+  "destination": "ラスベガス",
+  "description": "ラスベガスの煌びやかな街並みと、周辺の壮大な自然を満喫する6日間の旅へようこそ。カジノやショーだけでなく、文化や歴史、そして大自然の絶景も楽しめるアクティブなプランをお届けします。",
+  "heroImage": "https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUzNTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Grant Cai",
+  "heroImagePhotographerUrl": "https://unsplash.com/@grantcaiphoto?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ラスベガス到着とストリップ散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点のオムレツやパンケーキで、元気に一日をスタートしましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラスベガス・ストリップ散策",
+          "description": "ラスベガスの象徴、ストリップを散策します。豪華なカジノやホテルが立ち並び、まるで映画の中にいるような感覚を味わえます。特に昼間の明るい時間帯は、建物の美しさが際立ちます。",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ベラージオの噴水観賞",
+          "description": "ベラージオホテル前の噴水ショーは必見です。音楽に合わせて水が踊る様子は、まさに圧巻。昼間のショーも美しいですが、夜のライトアップされた噴水もおすすめです。",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ランチ：The Cheesecake Factory",
+          "description": "ストリップ沿いのThe Cheesecake Factoryでランチ。豊富なメニューから選べるので、軽食からボリューム満点の料理まで楽しめます。特にチーズケーキは絶品です！",
+          "searchQuery": "The Cheesecake Factory",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "フリーモント・ストリート散策",
+          "description": "ダウンタウンのフリーモント・ストリートへ。ここでは、ビンテージな雰囲気の中でストリートパフォーマンスやアートを楽しむことができます。夜になると、LEDのライトショーが始まり、幻想的な空間に変わります。",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：Heart Attack Grill",
+          "description": "ユニークなコンセプトのレストラン、Heart Attack Grillでディナー。ボリューム満点のハンバーガーやフライドポテトを楽しみながら、楽しいひとときを過ごしましょう。",
+          "searchQuery": "Heart Attack Grill",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のストリップ散策",
+          "description": "夜のストリップを再び散策。ネオンの光に包まれた街並みは、昼間とはまた違った魅力があります。カジノの雰囲気を楽しんだり、ショーを観るのも良いでしょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "グランドキャニオン日帰りツアー",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Las Vegas",
+          "time": "07:00"
+        },
+        "arrival": {
+          "place": "Grand Canyon",
+          "time": "09:00"
+        },
+        "duration": "2h",
+        "memo": "レンタカーまたはツアーバスでの移動をおすすめします。早めの出発で混雑を避けましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "グランドキャニオン国立公園",
+          "description": "壮大な自然の美しさを堪能できるグランドキャニオン。サウスリムからの眺望は圧巻で、特にホピポイントからの景色は絶対に見逃せません。",
+          "searchQuery": "Grand Canyon National Park",
+          "locationEn": "Grand Canyon, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "グランドキャニオンでのピクニックランチ",
+          "description": "公園内でのピクニックランチを楽しみましょう。美しい景色を眺めながら、サンドイッチやフルーツを持参してリラックス。",
+          "locationEn": "Grand Canyon, AZ, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ホピポイント",
+          "description": "ホピポイントは、グランドキャニオンの中でも特に美しいスポットの一つ。ここからの眺めは、写真撮影にも最適です。",
+          "searchQuery": "Hopi Point",
+          "locationEn": "Grand Canyon, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "サウスリム散策",
+          "description": "サウスリムを散策しながら、様々な展望台を訪れましょう。各所で異なる景色を楽しむことができます。",
+          "locationEn": "Grand Canyon, AZ, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ラスベガスへ戻る",
+          "description": "グランドキャニオンを後にし、ラスベガスへ戻ります。夕暮れ時の美しい景色を楽しみながらの帰路です。",
+          "locationEn": "Las Vegas, NV, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ラスベガスでディナー",
+          "description": "ラスベガスに戻ったら、地元の人気レストランでディナーを楽しみましょう。多彩な料理が揃っているので、好みに合わせて選べます。",
+          "locationEn": "Las Vegas, NV, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化と歴史を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点の卵料理やパンケーキで、元気に一日をスタートしましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ネバダ州立博物館",
+          "description": "ネバダ州の歴史や文化を学べる博物館です。特に先住民の文化や自然史に関する展示が充実しており、興味深い体験ができます。",
+          "searchQuery": "Nevada State Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ラスベガスの地元のレストランで、アメリカンスタイルのランチを楽しみます。特にハンバーガーやサンドイッチが人気です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "フリーモント・ストリート散策",
+          "description": "ラスベガスの歴史的なエリア、フリーモント・ストリートを散策します。ストリートパフォーマンスやカラフルなネオンが楽しめる場所です。",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ラスベガス自然史博物館",
+          "description": "恐竜の化石や古代の生物に関する展示が豊富な博物館です。特に子供連れの家族にも人気ですが、大人も楽しめる内容です。",
+          "searchQuery": "Las Vegas Natural History Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、休憩",
+          "description": "一度ホテルに戻り、少し休憩を取ります。旅の疲れを癒し、夜のプランに備えましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ラスベガスの人気レストランで、地元の食材を使ったディナーを楽しみます。特にステーキやシーフードが評判です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "レッドロックキャニオンとアート散策",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点の卵料理やパンケーキで、元気に一日をスタートしましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "レッドロックキャニオン国立保護区",
+          "description": "ラスベガスから車で約30分の場所にあるレッドロックキャニオンで、壮大な赤い岩山を背景にハイキングを楽しみます。美しい自然の中で、カップルでのんびりとした時間を過ごしましょう。",
+          "searchQuery": "Red Rock Canyon National Conservation Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レッドロックキャニオン近くのピクニックランチ",
+          "description": "レッドロックキャニオンの美しい景色を眺めながら、持参したサンドイッチやフルーツでピクニックランチを楽しみます。自然の中での食事は格別です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダウンタウンアート地区散策",
+          "description": "ラスベガスのダウンタウンアート地区へ移動し、ストリートアートやギャラリーを巡ります。ユニークなアート作品を楽しみながら、地元の文化に触れることができます。",
+          "searchQuery": "Downtown Arts District",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "フリーモントストリート体験",
+          "description": "ダウンタウンのフリーモントストリートで、ネオンの光に包まれたエンターテイメントを楽しみます。ストリートパフォーマンスやショッピングも楽しめる賑やかなエリアです。",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ダウンタウンでディナー",
+          "description": "地元の人気レストランで、アメリカンスタイルのディナーを楽しみます。カジュアルな雰囲気の中で、ボリューム満点の料理を堪能しましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ラスベガスの夜景観賞",
+          "description": "ディナー後は、ラスベガスの美しい夜景を楽しむために、ストリップ沿いを散策します。煌びやかなカジノやホテルのライトアップが幻想的です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ラスベガスのエンターテイメント",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点の卵料理やパンケーキで、エネルギーをチャージしましょう。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ネバダ州立博物館",
+          "description": "ネバダ州の歴史や文化を学べる博物館です。西部開拓時代の展示や、ネバダの自然史に関する興味深いコレクションが揃っています。",
+          "searchQuery": "Nevada State Museum",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フリーモント・ストリートでランチ",
+          "description": "フリーモント・ストリートの活気ある雰囲気の中で、地元のダイナーでランチを楽しみます。ボリューム満点のハンバーガーやサンドイッチが人気です。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "フリーモント・ストリート散策",
+          "description": "フリーモント・ストリートの歴史的なエリアを散策します。ストリートパフォーマンスやネオンの看板を楽しみながら、ラスベガスの昔ながらの魅力を感じましょう。",
+          "searchQuery": "Fremont Street Experience",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "シルク・ド・ソレイユ「O」観賞",
+          "description": "ラスベガスの象徴的なショー、シルク・ド・ソレイユの「O」を観賞します。水中で繰り広げられる幻想的なパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "O by Cirque du Soleil",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ストリップ沿いでディナー",
+          "description": "ラスベガス・ストリップのレストランで、豪華なディナーを楽しみます。地元の食材を使った創作料理や、ステーキハウスでの食事がおすすめです。",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ラスベガス・ストリップの夜景観賞",
+          "description": "ラスベガス・ストリップの煌びやかな夜景を楽しみながら、ロマンティックな散策をします。特に、ベラージオの噴水ショーは必見です。",
+          "searchQuery": "Bellagio Fountains",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ラスベガス出発",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ラスベガス",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "レッドロックキャニオン",
+          "time": "null"
+        },
+        "duration": "30m",
+        "memo": "ラスベガスから車での移動。美しい自然を楽しむための短いドライブ。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ラスベガスのホテルで、アメリカンブレックファーストを楽しみます。ボリューム満点の料理で、エネルギーをチャージしましょう。",
+          "searchQuery": "Las Vegas Hotel Breakfast",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "レッドロックキャニオン国立保護区",
+          "description": "ラスベガスから車で約30分の場所にあるレッドロックキャニオンで、壮大な自然の景観を堪能します。ハイキングコースも豊富で、カップルでの散策にぴったりです。",
+          "searchQuery": "Red Rock Canyon National Conservation Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レッドロックキャニオン近くのピクニックランチ",
+          "description": "自然の中でのピクニックランチを楽しみます。周囲の美しい景色を眺めながら、サンドイッチやフルーツを味わいましょう。",
+          "searchQuery": "Red Rock Canyon Picnic Area",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "レッドロックキャニオンのハイキング",
+          "description": "レッドロックキャニオン内のトレイルを歩きながら、色とりどりの岩や植物を観察します。特に「カリフォルニア・ポピー・トレイル」はおすすめです。",
+          "searchQuery": "California Poppy Trail",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ラスベガスに戻る",
+          "description": "レッドロックキャニオンからラスベガスに戻ります。移動中に美しい風景を楽しみながら、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Las Vegas",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ラスベガスストリップ散策",
+          "description": "ラスベガスのメインストリート、ストリップを散策します。煌びやかなホテルやカジノを見ながら、観光名所を巡りましょう。",
+          "searchQuery": "Las Vegas Strip",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ストリップ沿いのレストランでディナー",
+          "description": "ラスベガスのストリップ沿いにあるレストランで、豪華なディナーを楽しみます。地元の食材を使った料理や、シェフの特製メニューを堪能しましょう。",
+          "searchQuery": "Las Vegas Strip Restaurant",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ラスベガスの夜景観賞",
+          "description": "夜のラスベガスは特に美しいです。ストリップの明かりを楽しみながら、カップルでロマンチックな時間を過ごしましょう。",
+          "searchQuery": "Las Vegas Night View",
+          "locationEn": "Las Vegas, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

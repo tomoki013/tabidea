@@ -1,0 +1,674 @@
+{
+  "id": "923e836e-e5a4-4265-bae8-4b88b3677ed9",
+  "destination": "リオデジャネイロ",
+  "description": "Immerse yourself in the vibrant culture and breathtaking landscapes of Rio de Janeiro over an unforgettable 8-day adventure. From the iconic Christ the Redeemer statue to the sun-kissed shores of Copacabana Beach, this trip promises a perfect blend of urban exploration, relaxation, and stunning views. Experience the rhythm of samba, indulge in delicious Brazilian cuisine, and soak in the natural beauty that surrounds this lively city. Get ready for a journey that will leave you with lasting memories and a deeper appreciation for the heart of Brazil.",
+  "heroImage": "https://images.unsplash.com/photo-1626568941852-70bc179e493e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYxNDZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Thales Botelho de Sousa",
+  "heroImagePhotographerUrl": "https://unsplash.com/@thalesbs?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Rio de Janeiro",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its beautiful decor and delicious pastries. Enjoy a traditional Brazilian coffee and a pão de queijo (cheese bread) to fuel your adventures ahead.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the surrounding landscape. The statue itself is a marvel, standing tall with open arms, welcoming visitors from around the world.",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, nestled in the Santa Teresa neighborhood. This restaurant offers stunning views of the city and serves delicious Brazilian cuisine, making it the perfect spot to relax and soak in the atmosphere.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Copacabana Beach",
+          "description": "Spend your afternoon unwinding at the famous Copacabana Beach. Take a stroll along the iconic promenade, rent a beach chair, and enjoy the sun. Don't forget to try a refreshing coconut water from one of the local vendors.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Marius Degustare",
+          "description": "Indulge in a lavish dinner at Marius Degustare, a renowned steakhouse known for its exceptional meat selection and seafood. The vibrant atmosphere and attentive service will make for a memorable dining experience.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along Ipanema Beach",
+          "description": "End your day with a relaxing evening stroll along Ipanema Beach. The sunset views are breathtaking, and the lively atmosphere makes it a perfect spot to unwind after a busy day of sightseeing.",
+          "searchQuery": "Ipanema Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Iconic Landmarks",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its stunning architecture and delicious pastries. Enjoy a traditional Brazilian breakfast with fresh fruits, pão de queijo, and strong coffee.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "Head to the iconic Christ the Redeemer statue, one of the New Seven Wonders of the World. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the statue itself. Don't forget your camera!",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, nestled in the hills of Santa Teresa. The restaurant offers a stunning view of the city and serves delicious Brazilian cuisine, making it a perfect spot to relax after your morning adventures.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Sugarloaf Mountain",
+          "description": "After lunch, make your way to Sugarloaf Mountain. Take the cable car to the top for panoramic views of Rio de Janeiro, including Copacabana Beach and the surrounding mountains. The sunset views from here are particularly stunning.",
+          "searchQuery": "Sugarloaf Mountain",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Copacabana Beach",
+          "description": "Spend your late afternoon soaking up the sun at Copacabana Beach. Enjoy the vibrant atmosphere, take a dip in the ocean, or simply relax on the sand with a refreshing coconut water.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Marius Degustare",
+          "description": "Indulge in a lavish dinner at Marius Degustare, a renowned seafood and meat restaurant. The unique buffet-style dining experience allows you to sample a variety of dishes, all while enjoying the lively ambiance.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion in Santa Teresa",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its stunning architecture and delicious pastries. Enjoy a traditional Brazilian coffee and a slice of their famous quindim.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the surrounding landscape. Be sure to bring your camera for stunning photos!",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Aprazível",
+          "description": "Enjoy a leisurely lunch at Aprazível, a restaurant nestled in the hills of Santa Teresa. The menu features a variety of Brazilian dishes made with fresh, local ingredients, and the views of the city are simply spectacular.",
+          "searchQuery": "Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Santa Teresa Neighborhood",
+          "description": "Wander through the charming streets of Santa Teresa, known for its bohemian vibe, colorful houses, and artistic atmosphere. Don't miss the Selarón Steps, a vibrant mosaic staircase created by artist Jorge Selarón, which is a perfect spot for photos.",
+          "searchQuery": "Selarón Steps",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at Café do Alto",
+          "description": "Take a break at Café do Alto, a cozy café that offers a taste of Northeastern Brazilian cuisine. Enjoy a refreshing acai bowl or a traditional tapioca while soaking in the local ambiance.",
+          "searchQuery": "Café do Alto",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Visit Parque das Ruínas",
+          "description": "End your day at Parque das Ruínas, a cultural center located in a beautiful park with stunning views of the city. Explore the ruins of a mansion and enjoy the art exhibitions often held here.",
+          "searchQuery": "Parque das Ruínas",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Oro",
+          "description": "Indulge in a fine dining experience at Oro, a Michelin-starred restaurant that offers a unique tasting menu inspired by Brazilian flavors. This is a perfect way to end your day in Rio with a memorable culinary experience.",
+          "searchQuery": "Oro",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Beach Day and Sunset Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its beautiful decor and delicious pastries. Enjoy a traditional Brazilian breakfast with fresh fruits, pão de queijo, and strong coffee.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "Head to the iconic Christ the Redeemer statue, one of the New Seven Wonders of the World. Take the cog train up Corcovado Mountain for breathtaking views of the city and the surrounding landscape. Don't forget your camera!",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, set in the charming Santa Teresa neighborhood. The restaurant offers stunning views of the city and serves delicious Brazilian cuisine made with fresh, local ingredients.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Relax at Copacabana Beach",
+          "description": "Spend your afternoon soaking up the sun at Copacabana Beach. Enjoy the vibrant atmosphere, take a dip in the ocean, or simply relax on the sand with a caipirinha in hand. This iconic beach is perfect for people-watching and enjoying the local culture.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at Arpoador",
+          "description": "Make your way to Arpoador, a rocky outcrop between Ipanema and Copacabana, for one of the best sunset views in Rio. As the sun sets over the ocean, the sky transforms into a canvas of vibrant colors—an unforgettable sight.",
+          "searchQuery": "Arpoador",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Marius Degustare",
+          "description": "Indulge in a lavish dinner at Marius Degustare, a renowned seafood and meat restaurant. The unique buffet-style dining experience allows you to sample a variety of dishes, all while enjoying the lively atmosphere and excellent service.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Tijuca National Park",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its stunning architecture and delicious pastries. Enjoy a traditional Brazilian coffee and a pão de queijo (cheese bread) to fuel your adventure ahead.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the surrounding landscape. The statue itself is a marvel, standing tall at 30 meters.",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, nestled in the hills of Santa Teresa. The restaurant offers a stunning view of the city and serves delicious Brazilian cuisine, making it a perfect spot to relax after your morning adventures.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Tijuca National Park",
+          "description": "After lunch, head to Tijuca National Park, one of the largest urban rainforests in the world. Enjoy a guided hike through lush greenery, waterfalls, and diverse wildlife. Don't forget your camera for the stunning views!",
+          "searchQuery": "Tijuca National Park",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Vista Chinesa",
+          "description": "Visit Vista Chinesa, a beautiful viewpoint in Tijuca National Park that offers panoramic views of the city and the surrounding mountains. It's a perfect spot to unwind and take in the breathtaking scenery before heading back.",
+          "searchQuery": "Vista Chinesa",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Marius Degustare",
+          "description": "End your day with a sumptuous dinner at Marius Degustare, a renowned seafood and meat restaurant in Copacabana. Indulge in a variety of dishes prepared with fresh ingredients while enjoying the vibrant atmosphere.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Relaxation and Local Flavors",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its beautiful decor and delicious pastries. Enjoy a traditional Brazilian breakfast with fresh fruits, pão de queijo, and strong coffee.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the scenic train ride up to Corcovado Mountain and enjoy breathtaking views of the city as you approach this world-famous landmark.",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Savor a delicious lunch at Restaurante Aprazível, nestled in the hills of Santa Teresa. This restaurant offers a stunning view of the city and serves traditional Brazilian dishes made with fresh, local ingredients.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Santa Teresa Neighborhood",
+          "description": "Stroll through the charming streets of Santa Teresa, known for its bohemian vibe, colorful houses, and art studios. Don't miss the Selarón Steps, a vibrant mosaic staircase created by artist Jorge Selarón.",
+          "searchQuery": "Selarón Steps",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Copacabana Beach",
+          "description": "Head to Copacabana Beach for some sun and relaxation. Enjoy the lively atmosphere, take a dip in the ocean, or simply lounge on the sand with a refreshing coconut water in hand.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Marius Degustare",
+          "description": "Indulge in a lavish dinner at Marius Degustare, a renowned seafood and meat restaurant. The unique buffet-style dining experience allows you to sample a variety of dishes, all while enjoying the vibrant ambiance.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along Copacabana Promenade",
+          "description": "End your day with a leisurely walk along the Copacabana promenade. The beach comes alive at night with street performers and vendors, making it a perfect spot to soak in the local culture.",
+          "searchQuery": "Copacabana Promenade",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Last Day of Exploration",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its stunning architecture and delicious pastries. Enjoy a traditional Brazilian breakfast with fresh fruits, pão de queijo, and strong coffee.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the surrounding landscape. The statue itself is a marvel, standing tall with open arms, symbolizing peace.",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, nestled in the hills of Santa Teresa. The restaurant offers a stunning view of the city and serves delicious Brazilian cuisine, with an emphasis on fresh, local ingredients.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Lapa and its Arches",
+          "description": "After lunch, head to the vibrant neighborhood of Lapa. Stroll through the streets to admire the famous Selarón Steps and the stunning Lapa Arches. This area is known for its lively atmosphere and colorful street art, perfect for capturing memorable photos.",
+          "searchQuery": "Lapa Arches",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Copacabana Beach",
+          "description": "Spend your afternoon soaking up the sun at Copacabana Beach. Enjoy the lively beach culture, take a dip in the ocean, or simply relax with a caipirinha in hand while watching the world go by.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Marius Degustare",
+          "description": "For your final dinner in Rio, indulge in a feast at Marius Degustare, a renowned seafood and meat restaurant. The unique dining experience includes a variety of dishes served in a buffet style, allowing you to taste the best of Brazilian cuisine.",
+          "searchQuery": "Marius Degustare",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Rio de Janeiro",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "20:00"
+        },
+        "duration": "10h",
+        "memo": "Direct flight from Rio de Janeiro to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Confeitaria Colombo",
+          "description": "Start your day with a delightful breakfast at Confeitaria Colombo, a historic café known for its stunning architecture and delicious pastries. Enjoy a traditional Brazilian breakfast with fresh fruits and pão de queijo.",
+          "searchQuery": "Confeitaria Colombo",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Christ the Redeemer",
+          "description": "No trip to Rio is complete without visiting the iconic Christ the Redeemer statue. Take the cog train up to Corcovado Mountain for breathtaking views of the city and the statue itself. Arrive early to avoid the crowds and enjoy the serene atmosphere.",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurante Aprazível",
+          "description": "Enjoy a leisurely lunch at Restaurante Aprazível, located in the Santa Teresa neighborhood. This restaurant offers a stunning view of the city and serves delicious Brazilian cuisine made with fresh, local ingredients.",
+          "searchQuery": "Restaurante Aprazível",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Head to Copacabana Beach",
+          "description": "After lunch, spend some time relaxing at the famous Copacabana Beach. Soak up the sun, take a dip in the ocean, or enjoy a refreshing coconut water from one of the beach vendors. It's the perfect way to unwind before your flight.",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to freshen up and check out. Make sure to collect all your belongings and settle any outstanding bills before you leave.",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Transfer to Airport",
+          "description": "Leave for the airport with ample time to check in for your flight. Enjoy the scenic views of Rio one last time as you make your way to the airport.",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

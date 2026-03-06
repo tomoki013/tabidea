@@ -1,0 +1,414 @@
+{
+  "id": "e2597a85-875b-4df5-9ab7-8f4f4bcd6eea",
+  "destination": "タヒチ",
+  "description": "タヒチの美しいビーチと豊かな文化を満喫する5日間の旅へようこそ。青い海と白い砂浜、そして地元の人々の温かいおもてなしが待っています。アクティビティやショッピングを楽しみながら、家族で特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "タヒチ到着とビーチでのリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "タヒチのリゾートホテルで、フレッシュなフルーツや地元のパンを使った朝食を楽しみます。美しい海を眺めながら、ゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラウラウビーチでのんびり",
+          "description": "ラウラウビーチでのんびりとした時間を過ごします。透明度の高い海でスノーケリングを楽しんだり、ビーチチェアでリラックスしたりして、タヒチの美しい自然を満喫しましょう。",
+          "searchQuery": "La Plage de Laau",
+          "locationEn": "Laau Beach, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ近くのカジュアルなレストランで、タヒチの新鮮なシーフードを使ったランチを楽しみます。特に、地元の魚を使ったグリル料理がおすすめです。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パペーテ市場散策",
+          "description": "パペーテの市場を訪れ、地元の特産品や手工芸品を見て回ります。色とりどりのフルーツやお土産を探しながら、地元の雰囲気を楽しむことができます。",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ホテルでリラックス",
+          "description": "ホテルに戻り、プールサイドでリラックスしたり、スパでマッサージを受けたりして、旅の疲れを癒します。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "タヒチ料理のディナー",
+          "description": "地元のレストランでタヒチ料理を楽しみます。特に、ポリネシア風のローストポークや、ココナッツミルクを使った料理が絶品です。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "タヒチの文化とアクティビティ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "パペーテ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "モーレア島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "フェリーでモーレア島へ移動します。美しい海を眺めながらの移動が楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "モーレア島のビーチでリラックス",
+          "description": "モーレア島の美しいビーチで、白い砂浜と青い海を楽しみながらリラックス。シュノーケリングや日光浴を楽しむのに最適な場所です。",
+          "searchQuery": "Moorea Beach",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルレストランでランチ",
+          "description": "モーレア島の地元のレストランで、新鮮なシーフードやポリネシア料理を楽しみます。特に、魚のタルタルやココナッツミルクを使った料理がおすすめです。",
+          "searchQuery": "Moorea Local Restaurant",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "モーレア島のハイキング",
+          "description": "モーレア島の自然を満喫するハイキングに出かけます。美しい景色を眺めながら、トレッキングを楽しむことができます。",
+          "searchQuery": "Moorea Hiking Trails",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "モーレア島のショッピング",
+          "description": "地元のマーケットでお土産やアート作品を探しながら、ショッピングを楽しみます。タヒチの伝統的な工芸品やジュエリーが手に入ります。",
+          "searchQuery": "Moorea Market",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "モーレア島でディナー",
+          "description": "海を眺めながら、モーレア島のレストランでディナーを楽しみます。新鮮な魚料理や地元の特産品を使った料理が堪能できます。",
+          "searchQuery": "Moorea Dinner Restaurant",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "モーレア島でのアクティビティ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "パペーテ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "モーレア島",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "フェリーでの移動は美しい海の景色を楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "モーレア島のビーチでリラックス",
+          "description": "モーレア島の美しいビーチで、白い砂浜と青い海を満喫。家族でのんびりと過ごすのに最適な場所です。",
+          "searchQuery": "Moorea Beach",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルレストランでランチ",
+          "description": "モーレア島の地元のレストランで、新鮮なシーフードを使った料理を楽しみます。特に、ポリネシア風の魚料理がおすすめです。",
+          "searchQuery": "Moorea Local Restaurant",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シュノーケリング体験",
+          "description": "モーレア島の透明な海でシュノーケリングを楽しみましょう。色とりどりの魚たちとサンゴ礁を間近で見ることができます。",
+          "searchQuery": "Moorea Snorkeling",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハイキングで絶景を堪能",
+          "description": "モーレア島のトレイルをハイキングし、島の美しい景色を楽しみます。特に、展望台からの眺めは圧巻です。",
+          "searchQuery": "Moorea Hiking Trail",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチサイドでディナー",
+          "description": "夕日を眺めながら、ビーチサイドのレストランでディナーを楽しみます。ロマンチックな雰囲気の中で、地元の料理を堪能しましょう。",
+          "searchQuery": "Moorea Beachside Restaurant",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "タヒチでのショッピングとリラックス",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "モーレア島での朝食",
+          "description": "地元のカフェで新鮮なフルーツとパンを楽しむ朝食。タヒチの美しい海を眺めながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "モーレア島のビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごし、シュノーケリングや水上アクティビティを楽しむことができます。透明度の高い海で、色とりどりの魚たちと泳ぎましょう。",
+          "searchQuery": "Moorea Beach",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "モーレア島のレストランでランチ",
+          "description": "地元のシーフードを使った料理を楽しめるレストランで、タヒチの味を堪能します。新鮮な魚のグリルやサラダが絶品です。",
+          "locationEn": "Moorea, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "パペーテへの移動",
+          "description": "モーレア島からフェリーでパペーテへ移動します。約30分の船旅で、タヒチの美しい景色を楽しみながらの移動です。",
+          "locationEn": "Papeete, French Polynesia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "パペーテの市場散策",
+          "description": "地元の人々が集まるパペーテの市場で、手作りの工芸品や新鮮なフルーツを探しながら散策します。お土産探しにもぴったりのスポットです。",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元の工芸品店訪問",
+          "description": "タヒチの伝統的な工芸品を扱うお店を訪れ、ユニークなアイテムを見つける楽しみがあります。地元のアーティストの作品を手に入れるチャンスです。",
+          "searchQuery": "Papeete Craft Store",
+          "locationEn": "Papeete, French Polynesia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パペーテでディナー",
+          "description": "タヒチの伝統料理を楽しめるレストランで、家族での特別なディナーを。新鮮な魚や地元の食材を使った料理が楽しめます。",
+          "locationEn": "Papeete, French Polynesia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルチェックイン",
+          "description": "パペーテのホテルにチェックインし、ゆったりとした夜を過ごします。快適な部屋でリラックスして、明日の冒険に備えましょう。",
+          "locationEn": "Papeete, French Polynesia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "タヒチ出発",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "タヒチの美しい朝日を眺めながら、地元のフルーツやパンを使った朝食を楽しみます。新鮮なパパイヤやバナナが特におすすめです。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "パペーテの市場散策",
+          "description": "地元の人々が集まるパペーテの市場で、色とりどりのフルーツや手工芸品を見て回ります。お土産探しにもぴったりのスポットです。",
+          "searchQuery": "Papeete Market",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "タヒチの新鮮なシーフードを使った料理を楽しめるレストランで、ゆったりとしたランチタイムを過ごします。特に、地元の魚を使ったセビーチェが絶品です。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "タヒチのビーチでリラックス",
+          "description": "美しいビーチでのんびりと過ごし、海の透明度や白い砂浜を堪能します。シュノーケリングや水遊びも楽しめます。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "最後のショッピング",
+          "description": "パペーテの中心部で最後のショッピングを楽しみます。地元のアートや手作りの工芸品を見つけるチャンスです。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでディナー",
+          "description": "タヒチの伝統料理を楽しめるホテルのレストランで、最後の晩餐を堪能します。特に、ポリネシア風のバーベキューが人気です。",
+          "locationEn": "Papeete, Tahiti",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

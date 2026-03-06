@@ -1,0 +1,630 @@
+{
+  "id": "9d58ec3f-4620-4b33-ae3a-d24bbd1e4095",
+  "destination": "Marrakech",
+  "description": "Immerse yourself in the vibrant tapestry of Marrakech, where the ancient and modern blend seamlessly. This enchanting city is a feast for the senses, boasting bustling souks filled with colorful textiles, intricate pottery, and the tantalizing aroma of spices wafting through the air. Over the course of seven days, you and your friends will explore the rich history, indulge in delectable Moroccan cuisine, and capture stunning photographs of this photogenic paradise. From the majestic palaces to the lively streets, every moment will be a new adventure waiting to unfold.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Marrakech",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Jardin",
+          "description": "Enjoy a delightful Moroccan lunch at Le Jardin, a charming restaurant nestled in a lush garden. Savor traditional dishes like tagine and couscous while soaking in the vibrant atmosphere.",
+          "searchQuery": "Le Jardin Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Jemaa el-Fnaa",
+          "description": "Dive into the heart of Marrakech at Jemaa el-Fnaa, a bustling square filled with street performers, food stalls, and local artisans. Capture stunning photos of the vibrant scene and enjoy the lively ambiance.",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Souks of Marrakech",
+          "description": "Wander through the enchanting souks of Marrakech, where you can find unique handicrafts, textiles, and beautiful ceramics. Don't forget to haggle for the best prices on those cute souvenirs!",
+          "searchQuery": "Marrakech Souks",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Al Bahja",
+          "description": "Indulge in a traditional Moroccan dinner at Restaurant Al Bahja, known for its authentic tagine dishes. The cozy atmosphere and delicious food make it a perfect end to your first day in Marrakech.",
+          "searchQuery": "Restaurant Al Bahja",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Stroll in Jemaa el-Fnaa",
+          "description": "As night falls, return to Jemaa el-Fnaa to experience its magical transformation. The square comes alive with food stalls and musicians, creating a vibrant nightlife scene perfect for evening photography.",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Medina",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a traditional Moroccan breakfast at Café de France, where you can enjoy fresh bread, honey, and mint tea while overlooking the bustling Jemaa el-Fnaa square.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Koutoubia Mosque",
+          "description": "Explore the stunning Koutoubia Mosque, the largest mosque in Marrakech, known for its impressive minaret that stands at 77 meters. While non-Muslims cannot enter, the surrounding gardens are perfect for a leisurely stroll.",
+          "searchQuery": "Koutoubia Mosque",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Saadian Tombs",
+          "description": "Discover the Saadian Tombs, a hidden gem dating back to the 16th century. The intricate decorations and serene atmosphere make it a perfect spot for photography and reflection.",
+          "searchQuery": "Saadian Tombs",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Le Tobsil",
+          "description": "Indulge in a delicious Moroccan tagine at Le Tobsil, a charming restaurant tucked away in the Medina. The ambiance is intimate, and the flavors of the traditional dishes will leave you craving more.",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Bahia Palace",
+          "description": "Wander through the beautiful Bahia Palace, known for its stunning gardens and intricate tile work. This historical site offers a glimpse into the opulent lifestyle of the Moroccan elite.",
+          "searchQuery": "Bahia Palace",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Souk Semmarine",
+          "description": "Dive into the vibrant Souk Semmarine, where you can find an array of handmade crafts, textiles, and unique souvenirs. Don't forget to haggle for the best prices!",
+          "searchQuery": "Souk Semmarine",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Dar Yacout",
+          "description": "Experience a magical dinner at Dar Yacout, where you can savor a multi-course Moroccan feast in a beautifully decorated setting. The ambiance is perfect for a memorable evening with friends.",
+          "searchQuery": "Dar Yacout",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll at Jemaa el-Fnaa",
+          "description": "End your day with a leisurely stroll through Jemaa el-Fnaa, where you can soak in the lively atmosphere filled with street performers, food stalls, and local artisans. It's a perfect spot for night photography!",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Souks and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a delicious Moroccan breakfast at Café de France, where you can enjoy fresh bread, honey, and mint tea while overlooking the bustling Jemaa el-Fnaa square.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Explore Souk Semmarine",
+          "description": "Wander through the vibrant Souk Semmarine, known for its colorful textiles and handmade crafts. Don't forget to haggle for unique souvenirs and beautiful Moroccan rugs.",
+          "searchQuery": "Souk Semmarine",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Tobsil",
+          "description": "Indulge in a traditional Moroccan meal at Le Tobsil, where you can savor a flavorful tagine cooked to perfection in a charming setting. Reservations are recommended for this hidden gem.",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Souk Ableuh",
+          "description": "Continue your shopping adventure at Souk Ableuh, famous for its spices and local produce. Take in the aromatic scents and vibrant colors as you browse through the stalls.",
+          "searchQuery": "Souk Ableuh",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Jemaa el-Fnaa",
+          "description": "Take a break at Jemaa el-Fnaa, the heart of Marrakech. Enjoy the lively atmosphere with street performers, snake charmers, and food stalls. It's a perfect spot for people-watching and photography.",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Al Bahja",
+          "description": "End your day with a delightful dinner at Restaurant Al Bahja, where you can enjoy a variety of Moroccan dishes, including a delicious tagine. The cozy ambiance makes it a great place to unwind after a day of shopping.",
+          "searchQuery": "Restaurant Al Bahja",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a delightful breakfast at Café de France, where you can enjoy traditional Moroccan pastries and mint tea while soaking in the vibrant atmosphere of Jemaa el-Fnaa square.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Cooking Class",
+          "description": "Join a hands-on cooking class where you'll learn to prepare classic Moroccan dishes, including the famous tagine. This immersive experience will give you a taste of Moroccan culture and culinary traditions.",
+          "searchQuery": "Moroccan Cooking Class",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at the Cooking Class Venue",
+          "description": "Enjoy the delicious meal you prepared during the cooking class, paired with local bread and fresh salads. This is a great opportunity to savor the flavors of Morocco in a cozy setting.",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit to a Local Market",
+          "description": "Explore a bustling local market where you can find unique handicrafts, spices, and souvenirs. Don't forget to haggle for the best prices on beautiful Moroccan ceramics and textiles!",
+          "searchQuery": "Marrakech Souk",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Jardin Majorelle",
+          "description": "Take a leisurely stroll through the stunning Jardin Majorelle, a vibrant garden filled with exotic plants and beautiful fountains. This serene oasis is perfect for capturing picturesque photos.",
+          "searchQuery": "Jardin Majorelle",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Tobsil",
+          "description": "Indulge in a traditional Moroccan dinner at Le Tobsil, where you can enjoy a multi-course meal featuring tagine and other local specialties in a charming setting.",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening at Jemaa el-Fnaa",
+          "description": "Return to Jemaa el-Fnaa to experience the lively evening atmosphere. Enjoy street performances, food stalls, and the vibrant energy of the square as it comes alive at night.",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to the Atlas Mountains",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a traditional Moroccan breakfast at Café de France, where you can enjoy fresh bread, honey, and mint tea while overlooking the bustling Jemaa el-Fnaa square.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Depart for Ourika Valley",
+          "description": "Set off on a scenic drive to Ourika Valley, located about 30 km from Marrakech. The journey takes you through beautiful landscapes, with the Atlas Mountains as your backdrop.",
+          "searchQuery": "Ourika Valley",
+          "locationEn": "Ourika Valley, Morocco",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Ourika Valley",
+          "description": "Upon arrival, take a leisurely hike along the river and enjoy the stunning views of the valley. Visit local Berber villages and experience the traditional way of life.",
+          "searchQuery": "Ourika Valley",
+          "locationEn": "Ourika Valley, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Berber Restaurant",
+          "description": "Savor a delicious Moroccan tajine at a local restaurant, where you can enjoy the flavors of the region while surrounded by the beautiful scenery of the valley.",
+          "searchQuery": "Berber Restaurant Ourika",
+          "locationEn": "Ourika Valley, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Setti Fatma Waterfalls",
+          "description": "Take a short hike to the Setti Fatma Waterfalls, a series of beautiful cascades that are perfect for photos. The hike is moderate and offers breathtaking views of the surrounding mountains.",
+          "searchQuery": "Setti Fatma Waterfalls",
+          "locationEn": "Ourika Valley, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Marrakech",
+          "description": "Head back to Marrakech, enjoying the scenic drive through the Atlas Mountains once again. This is a great time to reflect on the day's adventures and take in the stunning landscapes.",
+          "searchQuery": "Marrakech",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Souk Semmarine",
+          "description": "Explore the vibrant Souk Semmarine, where you can find unique Moroccan handicrafts, textiles, and cute souvenirs to take home. Don't forget to haggle for the best prices!",
+          "searchQuery": "Souk Semmarine",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Tobsil",
+          "description": "End your day with a delightful dinner at Le Tobsil, known for its exquisite Moroccan cuisine and charming atmosphere. Enjoy a multi-course meal featuring traditional dishes, including tajine.",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Art and Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a delightful breakfast at Café de France, where you can enjoy fresh pastries and Moroccan mint tea while soaking in the vibrant atmosphere of Marrakech.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Majorelle Garden",
+          "description": "Explore the stunning Majorelle Garden, a botanical masterpiece filled with exotic plants and vibrant colors. Don't forget to take plenty of photos in this picturesque setting!",
+          "searchQuery": "Majorelle Garden",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Le Jardin",
+          "description": "Enjoy a delicious Moroccan lunch at Le Jardin, a charming restaurant set in a beautiful garden. Try their traditional tagine for an authentic taste of Morocco.",
+          "searchQuery": "Le Jardin",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Yves Saint Laurent Museum",
+          "description": "Visit the Yves Saint Laurent Museum, dedicated to the legendary fashion designer. The museum showcases his iconic designs and offers insight into his creative process.",
+          "searchQuery": "Yves Saint Laurent Museum",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Souk Semmarine",
+          "description": "Wander through the bustling Souk Semmarine, where you can find a variety of handmade crafts, textiles, and unique souvenirs. It's the perfect place to pick up cute Moroccan trinkets!",
+          "searchQuery": "Souk Semmarine",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Al Fassia",
+          "description": "Savor a traditional Moroccan dinner at Al Fassia, known for its authentic tagine dishes and warm hospitality. It's a great way to end your day with a taste of local cuisine.",
+          "searchQuery": "Al Fassia",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in Jemaa el-Fnaa",
+          "description": "Take a leisurely evening stroll in Jemaa el-Fnaa, the lively square filled with street performers, food stalls, and vibrant energy. It's a perfect spot to soak in the local culture.",
+          "searchQuery": "Jemaa el-Fnaa",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Marrakech",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Marrakech Menara Airport",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Your Destination",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Departure flight from Marrakech."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de France",
+          "description": "Start your day with a delightful breakfast at Café de France, famous for its Moroccan pastries and mint tea. Enjoy the view of the bustling Jemaa el-Fnaa square as you sip your tea and savor a fresh croissant.",
+          "searchQuery": "Café de France",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore the Souks of Marrakech",
+          "description": "Wander through the vibrant souks of Marrakech, where you can find unique handicrafts, textiles, and ceramics. Don't forget to bargain for the best prices and capture the colorful displays with your camera!",
+          "searchQuery": "Marrakech Souks",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Tobsil",
+          "description": "Indulge in a traditional Moroccan meal at Le Tobsil, known for its delicious tagine dishes. The restaurant offers a cozy atmosphere and a set menu that showcases the best of Moroccan cuisine.",
+          "searchQuery": "Le Tobsil",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Majorelle Garden",
+          "description": "Take a leisurely stroll through the enchanting Majorelle Garden, a botanical masterpiece filled with exotic plants and vibrant colors. This serene oasis is perfect for photography and relaxation before your departure.",
+          "searchQuery": "Majorelle Garden",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Last-minute Shopping at Ensemble Artisanal",
+          "description": "Before heading to the airport, stop by Ensemble Artisanal for some last-minute shopping. This artisan cooperative offers a variety of handmade crafts, perfect for souvenirs to remember your trip.",
+          "searchQuery": "Ensemble Artisanal",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Head to Marrakech Menara Airport",
+          "description": "Make your way to Marrakech Menara Airport for your departure. Ensure you arrive with enough time to check in and relax before your flight.",
+          "searchQuery": "Marrakech Menara Airport",
+          "locationEn": "Marrakech, Morocco",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "id": "ba539ba8-babd-4b8f-aa57-898f0f8805a5",
+  "destination": "New York",
+  "description": "Immerse yourself in the vibrant energy of New York City, where art, culture, and culinary delights await your family. This 3-day adventure is designed to engage both adults and children, offering a perfect blend of iconic sights and hidden gems. From world-renowned museums to delicious street food, every moment is crafted to create lasting memories together. Get ready to explore the Big Apple like never before!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Heart of Manhattan",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a family-friendly spot that will fuel you for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Central Park",
+          "description": "Stroll through Central Park, a green oasis in the heart of Manhattan. Enjoy the playgrounds, take a horse-drawn carriage ride, or simply relax by the lake. Don't miss the iconic Bethesda Terrace!",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shake Shack",
+          "description": "Grab a casual lunch at Shake Shack, famous for its delicious burgers and crinkle-cut fries. The outdoor seating is perfect for families, and the ShackSauce is a must-try!",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "The Metropolitan Museum of Art",
+          "description": "Visit The Met, one of the largest and most prestigious art museums in the world. With its vast collection, there's something for everyone, including family-friendly exhibits and activities.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Explore Times Square",
+          "description": "Experience the vibrant energy of Times Square. The bright lights and bustling atmosphere are captivating for both kids and adults. Take some fun family photos with the iconic billboards!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Carmine's Italian Restaurant",
+          "description": "Enjoy a family-style dinner at Carmine's, where you can share large portions of classic Italian dishes. The lively atmosphere is perfect for families, and the garlic bread is a favorite!",
+          "searchQuery": "Carmine's Italian Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Broadway Show (Optional)",
+          "description": "If your family is up for it, catch a family-friendly Broadway show. It's a fantastic way to end your day in the city, filled with music and excitement!",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Adventure in Brooklyn",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Manhattan",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Brooklyn",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the subway from Manhattan to Brooklyn."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Start your day with a scenic walk across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you stroll along this historic landmark.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Brooklyn Museum",
+          "description": "Explore the Brooklyn Museum, home to an impressive collection of art from around the world. Don't miss the Egyptian artifacts and contemporary exhibitions that are sure to captivate both adults and kids alike.",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Smorgasburg",
+          "description": "Head to Smorgasburg, a popular outdoor food market featuring a variety of local vendors. Sample delicious bites from different cuisines, perfect for the whole family to enjoy.",
+          "searchQuery": "Smorgasburg",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "DUMBO Exploration",
+          "description": "After lunch, explore the trendy DUMBO neighborhood. Check out the cobblestone streets, unique shops, and the famous view of the Manhattan Bridge framed by the buildings.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Brooklyn Bridge Park",
+          "description": "Relax at Brooklyn Bridge Park, where the kids can play while you enjoy the beautiful waterfront views. It's a great spot for family photos with the skyline in the background.",
+          "searchQuery": "Brooklyn Bridge Park",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Juliana's Pizza",
+          "description": "End your day with a delicious dinner at Juliana's Pizza, known for its classic New York-style pies. The family-friendly atmosphere makes it a perfect choice for dinner.",
+          "searchQuery": "Juliana's Pizza",
+          "locationEn": "Brooklyn, NY",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Iconic Views",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Brooklyn",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Chelsea Market, New York",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Drive from Brooklyn to Chelsea Market."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Chelsea Market",
+          "description": "Start your day with a delicious breakfast at Chelsea Market, where you can find a variety of options from fresh pastries to hearty breakfast burritos. It's a vibrant spot that showcases local vendors and artisanal foods.",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore the High Line",
+          "description": "After breakfast, take a leisurely stroll along the High Line, an elevated park built on a former railway track. Enjoy the beautiful gardens, art installations, and stunning views of the city and the Hudson River.",
+          "searchQuery": "High Line",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Meatball Shop",
+          "description": "Savor a casual lunch at The Meatball Shop, known for its delicious meatballs served in various styles. It's a family-friendly spot where everyone can customize their meal to their liking.",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Statue of Liberty",
+          "description": "Take a ferry from Battery Park to the Statue of Liberty. Explore the grounds and enjoy the iconic views of the statue and the Manhattan skyline. Don't forget to take plenty of family photos!",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Brooklyn",
+          "description": "After a day of exploring, head back to Brooklyn. You can relax at your accommodation or take a stroll around the neighborhood to unwind after a fun-filled day.",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Juliana's Pizza",
+          "description": "End your day with a family dinner at Juliana's Pizza, famous for its delicious coal-fired pizzas. It's a great place to enjoy a casual meal with the family in a cozy atmosphere.",
+          "searchQuery": "Juliana's Pizza",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

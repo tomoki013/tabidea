@@ -1,0 +1,191 @@
+{
+  "id": "6579bc09-618c-46dd-be49-c629ef9d9325",
+  "destination": "Nikko & Kinugawa",
+  "description": "Immerse yourself in the serene beauty of Nikko and the rejuvenating hot springs of Kinugawa. This two-day family adventure will take you through Japan's rich history, stunning natural landscapes, and the warm embrace of its famous onsen. Perfect for families, this trip balances exploration with relaxation, ensuring that both kids and adults create unforgettable memories together.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring Nikko's Heritage",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring local Japanese dishes that will energize you for a day of exploration.",
+          "locationEn": "Nikko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Toshogu Shrine",
+          "description": "Visit the magnificent Toshogu Shrine, a UNESCO World Heritage site. Marvel at the intricate carvings and the famous 'see no evil, hear no evil, speak no evil' monkeys, which will surely delight the kids!",
+          "searchQuery": "Toshogu Shrine",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Yuba Restaurant",
+          "description": "Enjoy a delicious lunch at a local restaurant specializing in yuba (tofu skin), a specialty of Nikko. It's a unique experience that the whole family will enjoy!",
+          "searchQuery": "Yuba Restaurant",
+          "locationEn": "Nikko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lake Chuzenji",
+          "description": "Take a scenic drive to Lake Chuzenji, where you can enjoy stunning views of the surrounding mountains. It's a perfect spot for a family picnic or a leisurely stroll along the lakeside.",
+          "searchQuery": "Lake Chuzenji",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Kegon Falls",
+          "description": "Visit Kegon Falls, one of Japan's most beautiful waterfalls. You can take an elevator down to the viewing platform for an up-close view of the cascading water, a thrilling experience for the kids!",
+          "searchQuery": "Kegon Falls",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Check-in at Onsen Ryokan",
+          "description": "Relax and unwind at a traditional onsen ryokan. Enjoy the soothing hot springs and the beautiful natural surroundings, perfect for a family retreat.",
+          "searchQuery": "Onsen Ryokan",
+          "locationEn": "Nikko, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ryokan",
+          "description": "Savor a traditional kaiseki dinner at your ryokan, featuring seasonal ingredients and local specialties. A delightful way to end your day!",
+          "locationEn": "Nikko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Relaxation in Kinugawa",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Nikko",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Kinugawa Onsen",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a local bus or taxi to Kinugawa Onsen for a relaxing day."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Kinugawa Onsen",
+          "description": "Start your day by soaking in the soothing waters of Kinugawa Onsen. This hot spring area is perfect for families, offering various ryokans and public baths with beautiful views of the river and mountains.",
+          "searchQuery": "Kinugawa Onsen",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Ryokan",
+          "description": "Enjoy a traditional Japanese lunch at a local ryokan. Savor seasonal ingredients and local specialties, providing a delightful culinary experience for the whole family.",
+          "searchQuery": "Kinugawa Onsen Ryokan",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Tobu World Square",
+          "description": "Visit Tobu World Square, a theme park featuring miniature replicas of famous landmarks from around the world. It's a fun and educational experience for children, allowing them to explore the world in one place.",
+          "searchQuery": "Tobu World Square",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Onsen",
+          "description": "After an exciting afternoon, return to your ryokan or a public bath to relax in the onsen once more. The warm waters will help you unwind and rejuvenate after a day of exploration.",
+          "searchQuery": "Kinugawa Onsen",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy dinner at a local restaurant, where you can try more of the delicious regional cuisine. Look for dishes featuring fresh river fish or seasonal vegetables.",
+          "searchQuery": "Kinugawa Local Restaurant",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll Along the Kinugawa River",
+          "description": "End your day with a peaceful evening stroll along the Kinugawa River. The serene atmosphere and beautiful night views make it a perfect way to conclude your family day.",
+          "searchQuery": "Kinugawa River",
+          "locationEn": "Kinugawa, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

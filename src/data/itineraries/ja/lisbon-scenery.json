@@ -1,0 +1,525 @@
+{
+  "id": "f4ded5b0-4998-4ee8-aad2-84e0b7bc52bc",
+  "destination": "リスボン",
+  "description": "リスボンの街をゆったりと歩きながら、歴史的な世界遺産や美味しいグルメを楽しむ6日間の旅に出かけましょう。カラフルな路面電車が走る街並みを背景に、フォトジェニックな瞬間を切り取ることができます。エッグタルトの食べ比べもお忘れなく、地元の人々が愛する味を堪能しましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "リスボン到着と街歩き",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、地元のペイストリーやコーヒーを楽しみながら、旅の始まりを感じます。特にエッグタルト（パステル・デ・ナタ）は外せません！",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アルファマ地区散策",
+          "description": "リスボンの古い街並みが残るアルファマ地区を散策。狭い路地やカラフルな家々がフォトジェニックで、路面電車の写真も撮りやすいスポットです。",
+          "searchQuery": "Alfama",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "アルファマ地区の小さなレストランで、バカリャウ（干し鱈）の料理を楽しみます。地元の人々に愛される味を堪能しましょう。",
+          "searchQuery": "Restaurante O Prego",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "バイロ・アルト散策",
+          "description": "バイロ・アルト地区へ移動し、カラフルな街並みやアートを楽しみながら散策。カフェで一息つきながら、エッグタルトの食べ比べをするのもおすすめです。",
+          "searchQuery": "Bairro Alto",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "エッグタルト食べ比べ",
+          "description": "バイロ・アルトの人気店でエッグタルトを食べ比べ。異なる店の味を楽しみながら、どの店が一番美味しいかを決めるのも楽しい体験です。",
+          "searchQuery": "Manteigaria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕暮れのリスボンを楽しむ",
+          "description": "夕暮れ時のリスボンを眺めるため、ミラドーロ・デ・サンタ・カタリーナへ。美しい夕日を背景に、街の景色を楽しみましょう。",
+          "searchQuery": "Miradouro de Santa Catarina",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元のタパスバーでディナー",
+          "description": "バイロ・アルトのタパスバーで、地元のワインと共にタパスを楽しみます。リラックスした雰囲気の中で、旅の初日を締めくくりましょう。",
+          "searchQuery": "Taberna da Rua das Flores",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "歴史的名所巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、地元の人々に人気のあるペストリーやコーヒーを楽しみます。特にエッグタルト（パステル・デ・ナタ）は外せません。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ジェロニモス修道院",
+          "description": "ユネスコ世界遺産に登録されている美しい修道院。ゴシック様式の建築が圧巻で、内部の装飾も見逃せません。",
+          "searchQuery": "Jerónimos Monastery",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ベレンの塔",
+          "description": "テージョ川沿いに立つ歴史的な塔で、リスボンのシンボルの一つ。塔の上からの眺めは絶景です。",
+          "searchQuery": "Belém Tower",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ベレン地区でランチ",
+          "description": "ベレン地区のレストランで、地元の料理を楽しみます。シーフード料理やポルトガルの伝統的な料理が豊富です。",
+          "searchQuery": "Restaurante O Prego",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "路面電車の写真撮影",
+          "description": "リスボンの象徴的な路面電車を撮影するために、エレベーター・ダ・グラサやアルファマ地区を散策します。色とりどりの電車が街を走る姿はフォトジェニックです。",
+          "searchQuery": "Lisbon Tram",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "エッグタルト食べ比べ",
+          "description": "ベレンの名店「パステイス・デ・ベレン」で本場のエッグタルトを味わった後、他のカフェでも食べ比べを楽しみます。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "リスボンの夜景を楽しむ",
+          "description": "夕暮れ時にリスボンの丘からの夜景を楽しみます。特にサン・ジョルジェ城からの眺めは絶景です。",
+          "searchQuery": "São Jorge Castle",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "エッグタルト食べ比べとフォトスポット",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのホテルで、地元のパンやフルーツを使った朝食を楽しみます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "パステイス・デ・ベレン",
+          "description": "リスボン名物のエッグタルト、パステイス・デ・ベレンを本場で味わいます。サクサクのパイ生地とクリーミーなカスタードが絶妙なハーモニーを奏でる一品です。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ベレンの塔",
+          "description": "世界遺産に登録されているベレンの塔を訪れます。美しいマヌエル様式の建築と、テージョ川を背景にしたフォトスポットとしても人気です。",
+          "searchQuery": "Belém Tower",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サン・ジョルジェ城",
+          "description": "リスボンのシンボル、サン・ジョルジェ城へ。城壁からの眺めは絶景で、街の全貌を一望できます。歴史を感じながら、ゆったりと散策しましょう。",
+          "searchQuery": "São Jorge Castle",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "エッグタルト食べ比べ",
+          "description": "近くのカフェで、他の店のエッグタルトも試してみましょう。異なる店の味を比べるのは、リスボンの楽しみの一つです。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "路面電車の撮影",
+          "description": "リスボンの象徴的な路面電車を撮影するため、エレベーター・ダ・グラサ（Elevador da Glória）周辺へ。カラフルな電車が街を走る姿は、フォトジェニックな瞬間です。",
+          "searchQuery": "Lisbon Tram",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アルファマ地区散策",
+          "description": "リスボンの古い街並みが残るアルファマ地区を散策。狭い路地や美しいタイルの家々を楽しみながら、地元の雰囲気を感じましょう。",
+          "searchQuery": "Alfama",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "リスボンの地元料理を楽しむため、カジュアルなレストランで夕食を。新鮮なシーフードや伝統的なポルトガル料理を堪能しましょう。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リスボンの隠れた魅力",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、地元のペストリーやコーヒーを楽しみながら、ゆったりとした朝を迎えます。特にエッグタルト（パステル・デ・ナタ）は外せません。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "LXファクトリー散策",
+          "description": "アートとデザインの複合施設、LXファクトリーを訪れます。おしゃれなショップやカフェが立ち並び、フォトジェニックなスポットがたくさんあります。",
+          "searchQuery": "LX Factory",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "LXファクトリー内のレストランで、ポルトガルの伝統料理を楽しみます。新鮮なシーフードやタコのサラダがおすすめです。",
+          "searchQuery": "Cantinho do Avillez",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アグアス・リーダス訪問",
+          "description": "美しいアグアス・リーダス（水の宮殿）を訪れ、歴史的な建物と庭園を散策します。ここは写真撮影にも最適なスポットです。",
+          "searchQuery": "Águas Livres Aqueduct",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "路面電車の写真撮影",
+          "description": "リスボンの象徴的な路面電車を撮影するため、エレベーター・ダ・グラサ（Elevador da Glória）周辺へ。色とりどりの電車が街を走る姿は、フォトジェニックです。",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "エッグタルト食べ比べ",
+          "description": "リスボンの名店でエッグタルトを食べ比べ。異なる店の味を楽しみながら、どの店が一番美味しいかを探ります。",
+          "searchQuery": "Manteigaria",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻り、リラックス",
+          "description": "一日の疲れを癒すため、ホテルでリラックス。明日の計画を立てながら、ゆったりとした時間を過ごします。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リスボンの市場と路面電車",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのカフェで、地元の人々に人気のペストリーやコーヒーを楽しみます。特にエッグタルト（パステル・デ・ナタ）は外せません。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メルカド・ダ・リベイラ",
+          "description": "リスボンの人気市場、メルカド・ダ・リベイラで地元の食材や特産品を見て回ります。新鮮な魚介類やチーズ、ワインなど、食の宝庫です。",
+          "searchQuery": "Mercado da Ribeira",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "エッグタルト食べ比べ",
+          "description": "市場内の人気店でエッグタルトを食べ比べ。異なる店の味を楽しみながら、リスボンのスイーツ文化を堪能します。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "路面電車28番に乗車",
+          "description": "リスボンの名物、路面電車28番に乗って市内観光。美しい街並みを眺めながら、フォトジェニックなスポットを巡ります。",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アルファマ地区散策",
+          "description": "リスボンの古い街並みが残るアルファマ地区を散策。狭い路地やカラフルな家々が魅力的で、写真撮影にも最適です。",
+          "searchQuery": "Alfama",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サン・ジョルジェ城",
+          "description": "リスボンのシンボル、サン・ジョルジェ城を訪れます。城からの眺めは絶景で、夕暮れ時の写真撮影にぴったり。",
+          "searchQuery": "Castelo de São Jorge",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "リスボンの地元料理を楽しむため、カジュアルなレストランで夕食。新鮮な魚料理やバカリャウ（干し鱈）を味わいます。",
+          "searchQuery": "Cervejaria Ramiro",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "リスボンから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "リスボン",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "翌日 06:00"
+        },
+        "duration": "12h",
+        "memo": "リスボンから東京への直行便です。機内でのんびり過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リスボンのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "エッグタルトの食べ比べ",
+          "description": "リスボン名物のエッグタルトを食べ比べるため、人気のパステイス・デ・ベイラ（Pastéis de Belém）へ。サクサクのパイ生地とクリーミーなカスタードが絶妙です。",
+          "searchQuery": "Pastéis de Belém",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "トラム28の撮影",
+          "description": "リスボンの名物、トラム28に乗って街を巡ります。美しい街並みを背景に、トラムの写真をたくさん撮影しましょう。特にアルファマ地区の風景はフォトジェニックです。",
+          "searchQuery": "Tram 28",
+          "locationEn": "Lisbon, Portugal",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

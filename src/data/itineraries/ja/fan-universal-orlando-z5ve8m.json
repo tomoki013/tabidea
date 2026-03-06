@@ -1,0 +1,294 @@
+{
+  "id": "6f71bce8-dfda-447b-95e4-92fa75d9c82b",
+  "destination": "オーランド",
+  "description": "オーランドの魅力を家族で楽しむ3日間の旅へようこそ！この旅では、ユニバーサル・スタジオの魔法の世界を堪能し、文化と歴史に触れる素晴らしい体験を提供します。子供たちの笑顔と共に、家族の絆を深める特別な時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ユニバーサル・スタジオで冒険の始まり",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "家族みんなで楽しめるアメリカンブレックファーストをいただきます。パンケーキやベーコン、フルーツなど、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ユニバーサル・スタジオ・フロリダ",
+          "description": "家族で楽しむアトラクションが盛りだくさんのユニバーサル・スタジオ・フロリダへ。ハリー・ポッターエリアでは、魔法の世界を体験し、映画の中に入り込んだような感覚を味わえます。",
+          "searchQuery": "Universal Studios Florida",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "パーク内でランチ",
+          "description": "ユニバーサル・スタジオ内のレストランで、ハンバーガーやピザなどのアメリカンフードを楽しみます。子供たちも大好きなメニューが揃っています。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハリー・ポッターエリアでのアトラクション",
+          "description": "ハリー・ポッターの世界をさらに深く楽しむために、アトラクションを巡ります。特に「ハリー・ポッターと禁じられた旅」は必見！",
+          "searchQuery": "Harry Potter and the Forbidden Journey",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズ購入",
+          "description": "ユニバーサル・スタジオ内のショップで、ハリー・ポッターや他のキャラクターのファングッズを購入します。お土産にぴったりのアイテムが揃っています。",
+          "searchQuery": "Universal Studios Store",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シティウォークでディナー",
+          "description": "ユニバーサル・シティウォークで、家族みんなで楽しめるレストランを選び、ディナーを楽しみます。多彩な料理が揃っているので、みんなの好みに合わせて選べます。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シティウォーク散策",
+          "description": "ディナーの後は、シティウォークを散策。夜のライトアップされた雰囲気を楽しみながら、ショップやエンターテイメントを楽しみます。",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ユニバーサル・アイランズ・オブ・アドベンチャーでの刺激的な一日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オーランドのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食で元気をチャージ！",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ユニバーサル・アイランズ・オブ・アドベンチャー入園",
+          "description": "家族全員でユニバーサル・アイランズ・オブ・アドベンチャーに入園。スリル満点のアトラクションや、映画の世界を体験できるエリアが盛りだくさん！",
+          "searchQuery": "Universal Islands of Adventure",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "スパイダーマンエリアでのアトラクション",
+          "description": "スパイダーマンのアトラクションで、迫力満点の3D体験を楽しみましょう。子供たちも大興奮間違いなし！",
+          "searchQuery": "The Amazing Adventures of Spider-Man",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "パーク内でランチ",
+          "description": "ユニバーサル内のレストランで、ハンバーガーやピザなどのアメリカンフードを楽しみます。家族みんなでシェアしながら、楽しいひとときを過ごしましょう。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジュラシック・パークエリアでの冒険",
+          "description": "ジュラシック・パークエリアで恐竜たちと遭遇！アトラクションやショーを楽しみながら、子供たちの笑顔を見守ります。",
+          "searchQuery": "Jurassic Park",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ファングッズ購入",
+          "description": "ユニバーサルのショップで、推しのキャラクターグッズやお土産を購入。子供たちが喜ぶアイテムがたくさん揃っています！",
+          "searchQuery": "Universal Studios Store",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "パーク内でのスナックタイム",
+          "description": "アトラクションの合間に、アイスクリームやポップコーンで小腹を満たします。楽しい思い出を語り合いながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ユニバーサル・シティウォークでディナー",
+          "description": "ユニバーサル・シティウォークに移動し、家族でディナー。多彩なレストランから選んで、楽しい夜を締めくくります。",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "Orlando, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "オーランドの文化と歴史を探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "家族みんなで楽しめるアメリカンブレックファーストをいただきます。パンケーキやベーコン、フルーツが盛りだくさんで、元気に一日をスタート！",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "オーランド美術館",
+          "description": "オーランド美術館でアートの世界に浸りましょう。地元アーティストの作品や、アメリカのアートが楽しめる展示が魅力です。子供向けのワークショップもあるので、家族で楽しめます。",
+          "searchQuery": "Orlando Museum of Art",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "オーランドの人気レストランで、地元の食材を使った料理を楽しみます。特にシーフード料理が評判で、家族みんなでシェアしながら味わうのがおすすめです。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "レイク・アイリー公園散策",
+          "description": "美しい湖を囲むレイク・アイリー公園で、自然を満喫しましょう。遊具も充実しているので、子供たちも楽しめます。ピクニックをするのも良いアイデアです。",
+          "searchQuery": "Lake Eola Park",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ユニバーサル・シティウォークでショッピング",
+          "description": "ユニバーサル・シティウォークでファングッズを探しましょう。映画のキャラクターグッズやお土産が豊富に揃っていて、家族みんなで楽しめるスポットです。",
+          "searchQuery": "Universal CityWalk",
+          "locationEn": "Orlando, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シティウォーク内のレストランでディナー",
+          "description": "シティウォーク内のレストランで、アメリカンスタイルのディナーを楽しみます。多彩なメニューから選べるので、家族それぞれの好みに合わせて楽しめます。",
+          "locationEn": "Orlando, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。家族で今日の思い出を語り合いながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Orlando, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

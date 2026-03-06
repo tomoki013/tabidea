@@ -1,0 +1,261 @@
+{
+  "id": "7b654843-67e9-4dc8-a5cf-0b2e0c6cf1ea",
+  "destination": "ニューヨーク",
+  "description": "家族で楽しむニューヨークの旅。文化や歴史を感じながら、推し活やリラックスも満喫できる3日間のプランです。子供たちと一緒に、街の魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨークの魅力を体感",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークで自然を満喫。子供たちと一緒に遊具で遊んだり、ボートに乗ったりして、リラックスした時間を過ごしましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのピザ屋でランチ",
+          "description": "ニューヨーク名物のピザを楽しむため、地元の人気ピザ屋へ。薄い生地にたっぷりのトッピングが特徴で、子供たちも大好きな味！",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れ、アートの世界に浸ります。子供向けのガイドツアーもあるので、家族で楽しめます。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アッパーウエストサイド散策",
+          "description": "アッパーウエストサイドの街並みを散策しながら、地元のショップやカフェを楽しみます。ファングッズを探すのにもぴったりのエリアです。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ジャズクラブでディナー",
+          "description": "ジャズの生演奏を楽しみながら、ディナーをいただきます。家族でリラックスした雰囲気の中、素敵な音楽を堪能しましょう。",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ジャズとファングッズ探し",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハーレムのジャズクラブ巡り",
+          "description": "ハーレムの歴史あるジャズクラブを訪れ、ライブ演奏を楽しみます。特に「アポロシアター」は有名で、ジャズの歴史を感じることができます。",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハーレムでランチ",
+          "description": "地元の人気レストランで、ソウルフードを楽しみます。フライドチキンやコーンブレッドなど、アメリカ南部の味を堪能。",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ジャズ関連のファングッズ探し",
+          "description": "ハーレムのショップやマーケットで、ジャズ関連のファングッズを探します。レコードやTシャツなど、思い出に残るアイテムが見つかるかも。",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを散策。ネオンの光に包まれた街並みを楽しみながら、観光名所を巡ります。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "タイムズスクエア近くでディナー",
+          "description": "タイムズスクエア周辺のレストランで、アメリカンスタイルのディナーを楽しみます。ピザやハンバーガーなど、家族みんなが楽しめるメニューが揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ジャズクラブでの夜の演奏",
+          "description": "夜はハーレムのジャズクラブに戻り、素晴らしいジャズの演奏を楽しみます。生の音楽に包まれながら、特別な夜を過ごしましょう。",
+          "searchQuery": "Jazz Club",
+          "locationEn": "Harlem, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "リラックスしながらの観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ブルックリンブリッジを散策",
+          "description": "ブルックリンブリッジを歩いて渡ります。マンハッタンのスカイラインを眺めながらの散策は、家族での思い出作りにぴったり。橋の途中で写真を撮るのもお忘れなく！",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn Bridge, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ダンボでランチ",
+          "description": "ダンボエリアの人気ピザ店でランチ。ニューヨークスタイルのピザを家族でシェアしながら、ブルックリンブリッジの美しい景色を楽しみます。",
+          "searchQuery": "Juliana's Pizza",
+          "locationEn": "DUMBO, Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ダンボ散策とファングッズ探し",
+          "description": "ダンボの街を散策しながら、ジャズ関連のファングッズを探します。地元のショップやアートギャラリーを訪れて、ユニークなアイテムを見つけましょう。",
+          "locationEn": "DUMBO, Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ワンワールド展望台",
+          "description": "ワンワールド展望台へ向かい、ニューヨークの絶景を楽しみます。高層ビルからの眺めは圧巻で、特に夕方の光景は素晴らしいです。",
+          "searchQuery": "One World Observatory",
+          "locationEn": "One World Trade Center, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ジャズクラブでのひととき",
+          "description": "有名なジャズクラブで、ライブ演奏を楽しみます。家族でリラックスしながら、素晴らしい音楽に浸る時間を過ごしましょう。",
+          "searchQuery": "Blue Note Jazz Club",
+          "locationEn": "Blue Note, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ホテル近くでディナー",
+          "description": "ホテル近くのレストランで、ニューヨークの多国籍料理を楽しみます。家族みんなが満足できるメニューが揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

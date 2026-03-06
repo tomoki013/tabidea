@@ -1,0 +1,287 @@
+{
+  "id": "af0177e0-50f8-4829-b628-7b91d16ed2bc",
+  "destination": "ニューヨーク",
+  "description": "友人との思い出を彩る、ニューヨークの文化とアートを楽しむ3日間の旅。推し活を通じて、心躍る瞬間を共有し、アートの魅力に浸る特別な時間を過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アートと文化の始まり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのカフェで軽めの朝食を楽しみます。ベーグルやコーヒーでエネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークを散策し、自然の中でリラックス。公園内の美しい景色やアート作品を楽しみながら、友人との会話を楽しむのにぴったりの場所です。",
+          "searchQuery": "Central Park",
+          "locationEn": "Central Park, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "アートのランチ：The Met Rooftop Cafe",
+          "description": "メトロポリタン美術館の屋上カフェでランチを。美術館の美しい景色を眺めながら、軽食を楽しむことができます。",
+          "searchQuery": "The Met Rooftop Cafe",
+          "locationEn": "Metropolitan Museum of Art, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メトロポリタン美術館訪問",
+          "description": "世界的に有名なメトロポリタン美術館を訪れ、様々なアート作品を鑑賞。特に「Friends」に関連する展示があれば、ぜひチェックしてみてください。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "Metropolitan Museum of Art, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Friendsの関連スポット巡り",
+          "description": "「Friends」のロケ地を巡り、ファンならではの体験を。特に、ジョーイのピザ屋やセントラルパークのロケ地を訪れるのがおすすめです。",
+          "searchQuery": "Friends TV Show Locations",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：ジョーのピザ",
+          "description": "「Friends」のジョーイが愛したピザを楽しむために、ジョーのピザへ。美味しいピザをシェアしながら、友人との楽しい時間を過ごしましょう。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "Joe's Pizza, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ファングッズショッピング",
+          "description": "「Friends」のグッズを探しに、マンハッタンのショップへ。Tシャツやマグカップなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "Friends Merchandise",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "推し活と街の魅力",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやベーコン、卵料理でエネルギーをチャージ！",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界的に有名なタイムズスクエアを訪れます。巨大な広告看板や人々の賑わいを感じながら、周辺のショップでファングッズを探してみましょう。",
+          "searchQuery": "Times Square",
+          "locationEn": "Times Square, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "チェルシーマーケットでランチ",
+          "description": "チェルシーマーケットで多国籍なフードコートを楽しみます。新鮮なシーフードやタコス、デザートまで、様々な料理をシェアして味わうのがおすすめです。",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "Chelsea Market, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アートギャラリー巡り",
+          "description": "チェルシーエリアのアートギャラリーを巡ります。現代アートの展示を楽しみながら、友人とお気に入りの作品を見つけてみてください。",
+          "locationEn": "Chelsea, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ブロードウェイの劇場見学",
+          "description": "ブロードウェイの劇場を見学し、次回の観劇に向けての下見をします。友人と一緒にお気に入りのミュージカルを選ぶのも楽しい時間です。",
+          "searchQuery": "Broadway Theatre",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "ブロードウェイ周辺のファングッズショップで、友人と一緒にグッズを探します。お気に入りのキャラクターのアイテムを見つけて、思い出を作りましょう。",
+          "locationEn": "Broadway, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マンハッタンでディナー",
+          "description": "マンハッタンのカジュアルなレストランでディナーを楽しみます。アメリカンスタイルのバーガーやピザをシェアして、楽しい一日の締めくくりにしましょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ニューヨークの最後のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンハッタンのカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ブルックリンブリッジを散策",
+          "description": "マンハッタンからブルックリンへ向かうブルックリンブリッジを歩いて渡ります。橋の上からの眺めは絶景で、写真撮影にもぴったり。",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn Bridge, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ダンボエリアでショッピング",
+          "description": "ダンボエリアに到着したら、アートギャラリーやユニークなショップを巡りましょう。特にFriendsのファングッズが手に入るお店もあるので、見逃さないで！",
+          "searchQuery": "DUMBO, Brooklyn",
+          "locationEn": "DUMBO, Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ランチ：ピザを楽しむ",
+          "description": "ダンボエリアの人気ピザ店で、ニューヨークスタイルのピザを堪能します。サクサクのクラストと新鮮なトッピングが絶品です。",
+          "searchQuery": "Juliana's Pizza",
+          "locationEn": "DUMBO, Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Friendsのロケ地巡り",
+          "description": "ダンボエリアからマンハッタンに戻り、Friendsのロケ地を巡ります。特に、モニカのアパートがあった場所を訪れるのはファンにはたまらない体験です。",
+          "searchQuery": "Friends Apartment Building",
+          "locationEn": "90 Bedford St, New York, NY 10014, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アートギャラリー巡り",
+          "description": "マンハッタンのアートディストリクトで、地元のアートギャラリーを訪れます。新進気鋭のアーティストの作品を楽しむことができます。",
+          "searchQuery": "Chelsea Art Galleries",
+          "locationEn": "Chelsea, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：地元のビストロ",
+          "description": "マンハッタンのビストロで、地元の食材を使った料理を楽しみます。カジュアルな雰囲気の中で、友人と最後の晩餐を楽しんでください。",
+          "searchQuery": "Bistro Pierre",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "ゆっくりとホテルに戻り、旅の思い出を振り返りながらリラックス。明日の帰国に備えて、早めに休むのも良いでしょう。",
+          "locationEn": "Manhattan, New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

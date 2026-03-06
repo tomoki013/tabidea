@@ -1,0 +1,654 @@
+{
+  "id": "bbddbd00-5214-4db3-9917-dae0f69f03ab",
+  "destination": "Queenstown",
+  "description": "Immerse yourself in the breathtaking landscapes and rich lore of Queenstown, New Zealand, where the stunning vistas of mountains and lakes meet the enchanting world of 'The Lord of the Rings'. This 7-day adventure is designed for families, blending the thrill of exploration with the magic of Middle-earth. From scenic hikes to cultural experiences, every day is packed with activities that will delight both young and old, ensuring memories that will last a lifetime.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Queenstown",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a delicious breakfast at Vudu Cafe, known for its fresh ingredients and cozy atmosphere. Try their famous pancakes or a hearty breakfast bowl to fuel up for the day ahead.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Skyline Gondola",
+          "description": "Take a scenic ride on the Skyline Gondola for breathtaking views of Queenstown and Lake Wakatipu. At the top, enjoy panoramic vistas and explore the walking trails that showcase the stunning natural beauty of the area.",
+          "searchQuery": "Skyline Gondola",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Stratosfare Restaurant",
+          "description": "Indulge in a buffet lunch at Stratosfare Restaurant, located at the top of the gondola. Enjoy a variety of dishes while soaking in the spectacular views of the Remarkables mountain range.",
+          "searchQuery": "Stratosfare Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Queenstown Gardens",
+          "description": "Stroll through the beautiful Queenstown Gardens, a perfect spot for families. Enjoy the lush greenery, flower beds, and the serene lake views. Don’t forget to check out the frisbee golf course for some family fun!",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Kiwi Birdlife Park",
+          "description": "Experience New Zealand's unique wildlife at the Kiwi Birdlife Park. This conservation park is home to native birds, including the iconic kiwi. Kids will love the interactive exhibits and the chance to see these fascinating creatures up close.",
+          "searchQuery": "Kiwi Birdlife Park",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cow Restaurant",
+          "description": "Enjoy a cozy dinner at The Cow Restaurant, famous for its delicious pizzas and rustic ambiance. This family-friendly spot is perfect for unwinding after a day of exploration.",
+          "searchQuery": "The Cow Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "End your day by exploring local shops for Lord of the Rings merchandise. Look for collectibles, clothing, and memorabilia to take home a piece of Middle-earth with you!",
+          "searchQuery": "Lord of the Rings merchandise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Middle-earth",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious pancakes and fresh coffee. It's a local favorite and perfect for families!",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Glenorchy",
+          "description": "Take a scenic drive to Glenorchy, a stunning village surrounded by mountains and lakes. This area served as a filming location for many scenes in 'The Lord of the Rings'. Don't forget your camera!",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Glenorchy Cafe",
+          "description": "Enjoy a cozy lunch at Glenorchy Cafe, where you can savor local dishes while soaking in the breathtaking views of the surrounding landscapes.",
+          "searchQuery": "Glenorchy Cafe",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Isengard (Mount Aspiring National Park)",
+          "description": "Head to Mount Aspiring National Park, where you can hike and explore the stunning landscapes that resemble Isengard from the movies. The lush greenery and towering mountains will leave you in awe.",
+          "searchQuery": "Mount Aspiring National Park",
+          "locationEn": "Wanaka, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Lothlórien (Queenstown Gardens)",
+          "description": "Return to Queenstown and stroll through the beautiful Queenstown Gardens, which evoke the enchanting feel of Lothlórien. It's a great spot for a family picnic or just to relax.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cow Restaurant",
+          "description": "Enjoy a family-friendly dinner at The Cow Restaurant, famous for its delicious pizzas and rustic atmosphere. It's a great way to unwind after a day of adventure!",
+          "searchQuery": "The Cow Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "End your day by exploring local shops in Queenstown for unique 'Lord of the Rings' merchandise. You'll find everything from collectibles to clothing that will delight any fan!",
+          "searchQuery": "Lord of the Rings merchandise Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Adventure and Nature",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious coffee and fresh, locally sourced ingredients. The pancakes and eggs benedict are particularly popular among families!",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Milford Sound Scenic Cruise",
+          "description": "Embark on a breathtaking scenic cruise through Milford Sound, surrounded by towering cliffs and stunning waterfalls. Keep an eye out for playful dolphins and seals as you glide through the serene waters.",
+          "searchQuery": "Milford Sound",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Blue Duck",
+          "description": "Enjoy a delightful lunch at The Blue Duck, where you can savor fresh seafood and local dishes while taking in the stunning views of the sound. It's a perfect spot to relax before continuing your adventure.",
+          "searchQuery": "The Blue Duck",
+          "locationEn": "Milford Sound, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Fiordland National Park",
+          "description": "After your cruise, take some time to explore the breathtaking landscapes of Fiordland National Park. There are family-friendly walking trails that offer stunning views and opportunities to spot native wildlife.",
+          "searchQuery": "Fiordland National Park",
+          "locationEn": "Fiordland National Park, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Return to Queenstown",
+          "description": "Head back to Queenstown, enjoying the scenic drive through the mountains and valleys. This is a great time to reflect on the day's adventures and take in the stunning scenery.",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Fergburger",
+          "description": "No trip to Queenstown is complete without a visit to Fergburger! Indulge in one of their famous gourmet burgers, perfect for the whole family. Be prepared for a bit of a wait, but it's well worth it!",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "End your day by exploring the local shops for Lord of the Rings merchandise. You'll find a variety of collectibles and souvenirs that will delight fans of all ages.",
+          "searchQuery": "Lord of the Rings merchandise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious coffee and fresh, locally sourced ingredients. The pancakes and eggs benedict are particularly popular among families!",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Arrowtown",
+          "description": "Take a short drive to Arrowtown, a charming historic gold mining town. Stroll along the picturesque streets lined with preserved buildings and enjoy the beautiful autumn foliage if you're visiting in fall.",
+          "searchQuery": "Arrowtown",
+          "locationEn": "Arrowtown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore the Chinese Settlement",
+          "description": "Discover the fascinating history of the Chinese miners who settled in Arrowtown. The Chinese Settlement offers a glimpse into their lives with restored huts and informative displays.",
+          "searchQuery": "Arrowtown Chinese Settlement",
+          "locationEn": "Arrowtown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Fork and Tap",
+          "description": "Enjoy a family-friendly lunch at The Fork and Tap, where you can savor classic Kiwi dishes and local craft beers. The outdoor seating is perfect for enjoying the fresh air.",
+          "searchQuery": "The Fork and Tap",
+          "locationEn": "Arrowtown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Local Art Galleries",
+          "description": "Spend the afternoon exploring local art galleries in Arrowtown. You'll find unique pieces inspired by the stunning landscapes and rich culture of New Zealand.",
+          "searchQuery": "Arrowtown Art Gallery",
+          "locationEn": "Arrowtown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Queenstown",
+          "description": "Head back to Queenstown and take some time to relax at your accommodation or explore the local shops for Lord of the Rings merchandise.",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Fergburger",
+          "description": "No trip to Queenstown is complete without a visit to Fergburger! Indulge in their famous gourmet burgers that are sure to satisfy the whole family.",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll by Lake Wakatipu",
+          "description": "End your day with a peaceful evening stroll along the shores of Lake Wakatipu. The sunset views over the Remarkables mountain range are breathtaking and a perfect way to wind down.",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Lord of the Rings Tour",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious coffee and fresh, locally sourced ingredients. The atmosphere is cozy, making it a perfect spot for families to fuel up for the day ahead.",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Edoras Tour",
+          "description": "Embark on a guided tour to Edoras, the capital of Rohan, located on Mount Sunday. Experience the breathtaking landscapes that served as the backdrop for the films, and learn about the filming process and the lore of Middle-earth.",
+          "searchQuery": "Edoras",
+          "locationEn": "Mount Sunday, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Cow Restaurant",
+          "description": "Enjoy a delicious lunch at The Cow Restaurant, famous for its rustic charm and hearty Italian dishes. The cozy atmosphere is perfect for families, and the pizza is a must-try!",
+          "searchQuery": "The Cow Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Lord of the Rings Filming Locations",
+          "description": "Explore various filming locations around Queenstown, including the stunning landscapes of Glenorchy. Capture family photos at iconic spots where memorable scenes were filmed, and immerse yourself in the magic of Middle-earth.",
+          "searchQuery": "Glenorchy",
+          "locationEn": "Glenorchy, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "Head to the local shops in Queenstown to find exclusive Lord of the Rings merchandise. From collectibles to clothing, there’s something for every fan in the family to take home as a souvenir.",
+          "searchQuery": "Lord of the Rings Merchandise",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "Indulge in a fine dining experience at Botswana Butchery, where you can savor exquisite dishes made from the freshest local ingredients. The restaurant offers a family-friendly atmosphere and a diverse menu to please everyone.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Leisure and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Vudu Cafe",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious pancakes and fresh coffee. It's a local favorite, perfect for families!",
+          "searchQuery": "Vudu Cafe",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Queenstown Gardens",
+          "description": "Stroll through the beautiful Queenstown Gardens, where you can enjoy stunning views of the lake and mountains. The gardens are perfect for a family picnic or a leisurely walk.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Fergburger",
+          "description": "Indulge in a famous Fergburger for lunch, renowned for its massive and delicious burgers. It's a must-visit spot that the whole family will love!",
+          "searchQuery": "Fergburger",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit to the LOTR Filming Locations",
+          "description": "Explore the breathtaking filming locations of 'The Lord of the Rings' around Queenstown. Discover the stunning landscapes that brought Middle-earth to life!",
+          "searchQuery": "Lord of the Rings filming locations",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Fangoods at The Remarkables Park",
+          "description": "Head to The Remarkables Park for some shopping! You'll find a variety of stores selling 'Lord of the Rings' merchandise and other unique souvenirs.",
+          "searchQuery": "The Remarkables Park",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Cow Restaurant",
+          "description": "Enjoy a cozy dinner at The Cow Restaurant, famous for its rustic atmosphere and delicious pizzas. A great way to end your day with the family!",
+          "searchQuery": "The Cow Restaurant",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along Lake Wakatipu",
+          "description": "Take a relaxing evening stroll along the shores of Lake Wakatipu. The sunset views are breathtaking and a perfect way to wind down after a busy day.",
+          "searchQuery": "Lake Wakatipu",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Departure from Queenstown",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Queenstown",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Queenstown Airport",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Prepare for departure from Queenstown."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Vudu Cafe & Larder",
+          "description": "Start your day with a hearty breakfast at Vudu Cafe, known for its delicious coffee and fresh, locally sourced ingredients. The kids will love the pancakes, while adults can enjoy the savory options.",
+          "searchQuery": "Vudu Cafe & Larder",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Hobbiton Movie Set",
+          "description": "Take a scenic drive to the Hobbiton Movie Set, where you can explore the enchanting village from 'The Lord of the Rings' and 'The Hobbit'. This immersive experience is perfect for fans and families alike, with guided tours showcasing the iconic locations.",
+          "searchQuery": "Hobbiton Movie Set",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Green Dragon Inn",
+          "description": "Enjoy a themed lunch at The Green Dragon Inn, where you can savor traditional Hobbit fare in a cozy setting. The atmosphere is magical, and the kids will love the themed drinks.",
+          "searchQuery": "The Green Dragon Inn",
+          "locationEn": "Matamata, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Return to Queenstown",
+          "description": "Head back to Queenstown, taking in the stunning landscapes along the way. This drive is a great opportunity for family photos with the breathtaking scenery as your backdrop.",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Queenstown Gardens",
+          "description": "Spend some time at the beautiful Queenstown Gardens, where the kids can run around and enjoy the playground. The gardens offer stunning views of Lake Wakatipu and the surrounding mountains, perfect for a relaxing stroll.",
+          "searchQuery": "Queenstown Gardens",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Lord of the Rings Merchandise",
+          "description": "Visit local shops in Queenstown to find exclusive Lord of the Rings merchandise. From collectibles to clothing, there are plenty of options for fans to take home a piece of Middle-earth.",
+          "searchQuery": "Queenstown",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Botswana Butchery",
+          "description": "End your day with a delightful dinner at Botswana Butchery, known for its exquisite menu featuring local produce and meats. The restaurant offers a family-friendly atmosphere and a great selection of dishes to satisfy everyone.",
+          "searchQuery": "Botswana Butchery",
+          "locationEn": "Queenstown, New Zealand",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

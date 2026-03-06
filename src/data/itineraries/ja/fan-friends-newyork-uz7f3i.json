@@ -1,0 +1,566 @@
+{
+  "id": "c4e65c9b-cf54-45c5-968e-c9681eaf69ba",
+  "destination": "ニューヨーク",
+  "description": "ニューヨークの街を一人旅で満喫する6日間の旅へようこそ。文化、歴史、グルメ、そして推し活をテーマに、活気あふれる街の魅力を存分に味わいましょう。特に、友達の関連スポットを巡りながら、ファングッズを手に入れる楽しみも忘れずに。",
+  "heroImage": "https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE4NjB8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mike Chavarri",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mikechv?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨークへ到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、エネルギー満点で一日をスタート！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界中の観光客が集まるタイムズスクエア。巨大な広告看板やストリートパフォーマンスを楽しみながら、ニューヨークの活気を感じましょう。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジョン・スチュワートのレストランでランチ",
+          "description": "人気のコメディアンがプロデュースしたレストランで、アメリカンスタイルのランチを楽しみます。ユニークなメニューが揃っており、友達の話題で盛り上がること間違いなし！",
+          "searchQuery": "John Stewart's Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ブロードウェイの劇場見学",
+          "description": "ブロードウェイの劇場を訪れ、次回観たいショーの情報を収集。劇場の外観や雰囲気を楽しみながら、ファンとしての期待感を高めましょう。",
+          "searchQuery": "Broadway Theatre",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Friendsのロケ地巡り",
+          "description": "人気ドラマ『Friends』のロケ地を巡ります。セントラルパークやカフェ『Central Perk』の外観を見学し、思い出のシーンを振り返りましょう。",
+          "searchQuery": "Central Perk",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "『Friends』の公式グッズが揃うショップで、オリジナルのファングッズをゲット！自分へのお土産や友達へのプレゼントにぴったりです。",
+          "searchQuery": "Friends Merchandise Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元料理を楽しむために、人気のレストランでディナーを。ニューヨークスタイルのピザやパスタを堪能しましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のタイムズスクエア再訪",
+          "description": "夜のタイムズスクエアは昼間とは違った魅力があります。ネオンの光に包まれた街を散策し、素敵な写真を撮りましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "推し活と文化体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークを散策しながら、自然の中でリフレッシュ。映画やドラマでおなじみのスポットを巡り、心地よい風を感じてください。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "セントラルパーク内のカフェでランチ",
+          "description": "セントラルパーク内のカフェで軽食を。サンドイッチやサラダを楽しみながら、周囲の景色を満喫しましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "メトロポリタン美術館訪問",
+          "description": "世界的に有名なメトロポリタン美術館で、アートの宝庫を堪能。特に「Friends」の撮影に使われた作品を探してみてください。",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "「Friends」関連スポット巡り",
+          "description": "「Friends」の撮影場所を巡ります。特に、ジョーイの家やカフェ「セントラルパーク」を訪れて、思い出に浸りましょう。",
+          "searchQuery": "Friends Central Perk Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "「Friends」グッズショップでショッピング",
+          "description": "「Friends」のファングッズを取り扱うショップで、オリジナルのアイテムをゲット。お気に入りのキャラクターのグッズを見つけてみて。",
+          "searchQuery": "Friends merchandise store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元レストランで、アメリカンスタイルのディナーを楽しみます。ステーキやシーフードなど、豪華な料理を堪能。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "自由の女神像観光",
+          "description": "フェリーに乗って、自由の女神像へ向かいます。ニューヨークのシンボルを間近で見ることができ、写真撮影にも最適です。",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "エリス島移民博物館",
+          "description": "自由の女神像を見た後は、エリス島の移民博物館を訪れます。アメリカに移住した人々の歴史を学び、感動的な展示を楽しみましょう。",
+          "searchQuery": "Ellis Island Immigration Museum",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ランチ：グリニッジ・ヴィレッジのカフェ",
+          "description": "グリニッジ・ヴィレッジにあるおしゃれなカフェでランチ。地元の人に人気のサンドイッチやサラダを楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Friendsのロケ地巡り",
+          "description": "人気ドラマ『Friends』のロケ地を巡ります。セントラルパークやカフェ「モニカの店」など、ファンにはたまらないスポットを訪れましょう。",
+          "searchQuery": "Friends TV Show Locations",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディナー：チェルシーのレストラン",
+          "description": "チェルシーエリアのレストランでディナー。ニューヨークの多国籍料理を楽しみながら、旅の思い出を語り合いましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ファングッズ購入",
+          "description": "ニューヨークのショップで『Friends』のファングッズを探します。Tシャツやマグカップなど、思い出に残るアイテムを見つけましょう。",
+          "searchQuery": "Friends merchandise",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "グルメとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "チェルシーマーケット散策",
+          "description": "食の宝庫、チェルシーマーケットで地元のグルメを堪能。新鮮なシーフードやアートなスイーツを楽しみながら、友達の関連グッズも探してみましょう。",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：Los Tacos No.1",
+          "description": "チェルシーマーケット内の人気タコス店で、絶品タコスを味わいます。新鮮な具材とスパイシーなソースが絶妙なバランス！",
+          "searchQuery": "Los Tacos No.1",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ソーホーでショッピング",
+          "description": "ソーホーの街を散策しながら、個性的なショップやブティックを訪れます。友達のファングッズを見つけるチャンス！",
+          "searchQuery": "SoHo",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Friends Experience",
+          "description": "「Friends」の世界を体験できるアトラクションへ。撮影セットや小道具を見ながら、思い出のシーンを振り返りましょう。",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "ソーホーのカフェで一息。美味しいコーヒーと共に、友達の思い出を語り合う時間を楽しみます。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ディナー：Balthazar",
+          "description": "フレンチビストロでディナー。おしゃれな雰囲気の中、旬の食材を使った料理を堪能します。",
+          "searchQuery": "Balthazar",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のソーホー散策",
+          "description": "夜のソーホーを散策し、ライトアップされた街並みを楽しみます。おしゃれなバーやショップを覗いてみるのもおすすめ。",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "友達の関連スポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。ふわふわのパンケーキやベーコン、卵料理でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Friends Experience New York",
+          "description": "「フレンズ」の世界に飛び込める体験型ミュージアム。セットの再現や小道具を見ながら、あの名シーンを思い出しながら楽しめます。",
+          "searchQuery": "Friends Experience New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Monica's Restaurant",
+          "description": "フレンズのファンにはたまらない、モニカのレストランを模したお店でランチ。フレンズの名シーンを思い出しながら、アメリカン料理を堪能できます。",
+          "searchQuery": "Monica's Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Central Perk Cafe",
+          "description": "フレンズの象徴的なカフェ、セントラルパークでコーヒーを楽しみながら、リラックスした時間を過ごします。ここでしか味わえない特製ドリンクもおすすめ！",
+          "searchQuery": "Central Perk Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Friends Merchandise Shop",
+          "description": "フレンズ関連のグッズが揃うショップで、オリジナルのアイテムを探しながら、思い出に残るお土産をゲットしましょう。",
+          "searchQuery": "Friends Merchandise Shop",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "グラウンド・ゼロ・メモリアル",
+          "description": "フレンズの舞台背景にもなったニューヨークの歴史を感じる場所。静かな時間の中で、思いを馳せることができます。",
+          "searchQuery": "9/11 Memorial",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：The Olive Tree Cafe",
+          "description": "フレンズのキャストも訪れたことがあるカフェで、アメリカンスタイルのディナーを楽しみます。雰囲気も抜群で、ファンにはたまらない場所です。",
+          "searchQuery": "The Olive Tree Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ニューヨークを後にして",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "John F. Kennedy International Airport",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Tokyo, Japan",
+          "time": "18:00"
+        },
+        "duration": "14h",
+        "memo": "東京行きの直行便です。機内でゆっくり休んでください。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ブライアントパークで朝食",
+          "description": "ニューヨークの中心で、緑に囲まれたブライアントパークで朝食を楽しみましょう。周囲のカフェでベーカリーやコーヒーをテイクアウトして、パークのベンチでリラックス。",
+          "searchQuery": "Bryant Park",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロックフェラーセンター観光",
+          "description": "ロックフェラーセンターを訪れ、展望台「トップ・オブ・ザ・ロック」からの絶景を楽しみましょう。特に晴れた日には、マンハッタンの美しい景色が広がります。",
+          "searchQuery": "Top of the Rock Observation Deck",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・ル・ペックでランチ",
+          "description": "フランス風のカフェで、サンドイッチやサラダを楽しむランチタイム。おしゃれな雰囲気の中で、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Café Lalo",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Friendsのロケ地巡り",
+          "description": "人気ドラマ「Friends」のロケ地を巡ります。特に、グリーンウィッチ・ビレッジにある「Friends」のカフェ「Central Perk」を訪れ、記念撮影を楽しんでください。",
+          "searchQuery": "Central Perk",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ファングッズ購入",
+          "description": "「Friends」の関連商品を取り扱うお店で、ファングッズを購入しましょう。特に、オリジナルのマグカップやTシャツはお土産にぴったりです。",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "空港へ向かうために、タクシーまたは地下鉄を利用します。出発の2時間前には空港に到着するようにしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

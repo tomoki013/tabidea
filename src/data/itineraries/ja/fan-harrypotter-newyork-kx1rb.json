@@ -1,0 +1,436 @@
+{
+  "id": "ed8417ea-a11c-44aa-b4e0-6230f745e66c",
+  "destination": "ニューヨーク",
+  "description": "家族で楽しむニューヨークの旅。文化や歴史を感じながら、推し活に没頭し、リラックスした時間を過ごしましょう。特にハリーポッター関連のスポットを巡り、ファングッズを手に入れることができる特別な旅です。",
+  "heroImage": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTEzNzN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Luca Bravo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lucabravo?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着と街の雰囲気を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界中の観光客が集まるタイムズスクエア。巨大な広告看板やストリートパフォーマンスを楽しみながら、ニューヨークの活気を感じることができます。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ジョン・スチュワートのカフェでランチ",
+          "description": "タイムズスクエア近くのカフェで軽めのランチ。サンドイッチやサラダを楽しみながら、周囲の賑わいを眺めるのも良いでしょう。",
+          "searchQuery": "John Stewart Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークでリラックスした時間を過ごします。美しい景色を楽しみながら、散歩やピクニックをするのもおすすめです。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ハリー・ポッター関連グッズを探す",
+          "description": "ニューヨークの専門店でハリー・ポッターのファングッズを探します。特に「The Harry Potter Store New York」では、様々なアイテムが揃っています。",
+          "searchQuery": "The Harry Potter Store New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルにチェックイン",
+          "description": "宿泊先のホテルにチェックインし、少し休憩。旅の疲れを癒して、夜のプランに備えましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ニューヨークの地元のレストランでディナーを楽しみます。多国籍な料理が楽しめるエリアで、家族みんなでシェアしながら食事をするのも楽しいです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ハリーポッターの世界を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食で一日をスタートしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハリー・ポッターのショップ（The Harry Potter New York）",
+          "description": "ハリー・ポッターの公式ショップで、映画の世界を体験。ファングッズや限定アイテムを手に入れるチャンスです。店内は魔法のような装飾が施されており、写真撮影にもぴったり。",
+          "searchQuery": "The Harry Potter New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "ハリー・ポッターのショップの近くにあるカフェで軽食を楽しみます。サンドイッチやサラダ、スイーツなど、気軽に立ち寄れるお店です。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ブロードウェイでミュージカル鑑賞",
+          "description": "ブロードウェイで人気のミュージカルを観劇します。事前にチケットを購入しておくと安心です。感動的なストーリーと素晴らしいパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブロードウェイ周辺を散策",
+          "description": "ミュージカルの後は、ブロードウェイ周辺を散策。おしゃれなショップやカフェが立ち並ぶエリアで、ショッピングやお土産探しを楽しみましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "近くのレストランでディナー",
+          "description": "ブロードウェイ近くのレストランでディナーを楽しみます。ニューヨークの多国籍料理を堪能できるお店で、家族みんなでシェアしながら食事を楽しむのも良いでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "文化と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食で一日をスタート。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。古代エジプトの遺物から近代アートまで、幅広いコレクションが揃い、文化と歴史を深く感じることができます。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "美術館近くのカフェでランチ",
+          "description": "美術館近くのカフェで軽食を楽しみます。サンドイッチやサラダなど、気軽に食べられるメニューが揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "アメリカ自然史博物館",
+          "description": "アメリカ自然史博物館を訪れ、恐竜の化石や宇宙の展示を楽しみます。特に、巨大な恐竜の骨格は圧巻で、子供から大人まで楽しめるスポットです。",
+          "searchQuery": "American Museum of Natural History",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ハリー・ポッター関連ショップ訪問",
+          "description": "ハリー・ポッターのファングッズを探しに、ニューヨークの専門店を訪れます。魔法の世界のアイテムやお土産を見つける楽しみがあります。",
+          "searchQuery": "Harry Potter New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテル近くのレストランでディナー",
+          "description": "ホテル近くのレストランで、アメリカンスタイルのディナーを楽しみます。ステーキやシーフードなど、ボリューム満点の料理が揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、フレッシュジュースでエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "セントラルパーク散策",
+          "description": "広大なセントラルパークでリラックスした時間を過ごします。美しい景色を眺めながら、家族でのんびりと散策。公園内のベセスダテラスでの写真撮影もお忘れなく。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "セントラルパーク近くのカフェでランチ",
+          "description": "セントラルパークの近くにあるカフェで軽食を楽しみます。サンドイッチやサラダなど、ヘルシーなメニューが揃っています。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハリー・ポッター関連ショップ訪問",
+          "description": "ハリー・ポッターのファングッズが揃うショップを訪れます。魔法の世界に浸りながら、家族でお気に入りのグッズを見つけましょう。",
+          "searchQuery": "Harry Potter New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "5番街でのショッピング",
+          "description": "ニューヨークの5番街でショッピングを楽しみます。高級ブランドからお土産まで、様々なお店が立ち並び、ウィンドウショッピングも楽しいです。",
+          "searchQuery": "5th Avenue",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "5番街近くのレストランでディナー",
+          "description": "5番街近くのレストランで、ニューヨークの多国籍料理を楽しみます。家族でシェアしながら、様々な料理を味わうのも良いでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。リラックスした時間を過ごし、明日の計画を立てるのも良いでしょう。",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ニューヨークを後にして東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "John F. Kennedy International Airport",
+          "time": "15:00"
+        },
+        "arrival": {
+          "place": "Narita International Airport",
+          "time": "18:00"
+        },
+        "duration": "14h",
+        "memo": "直行便で東京へ向かいます。機内での食事を楽しみながら、リラックスした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのカフェで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ハリー・ポッターのショップ「The Harry Potter New York」訪問",
+          "description": "ニューヨークのマンハッタンにあるハリー・ポッターの公式ショップで、ファングッズを探しましょう。魔法の世界に浸りながら、特別なアイテムを見つけることができます。",
+          "searchQuery": "The Harry Potter New York",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのレストランでランチ",
+          "description": "ハリー・ポッターショップの近くにあるレストランで、軽めのランチを楽しみます。ニューヨークの多国籍料理を味わいながら、午後のプランを考えましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セントラルパーク散策",
+          "description": "セントラルパークでのんびりと散策。広大な公園内を歩きながら、自然を感じたり、ベンチでリラックスしたりするのも良いでしょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "自由の女神像（フェリーから）",
+          "description": "自由の女神像をフェリーから眺めるクルーズに参加。ニューヨークのシンボルを海から楽しむ特別な体験です。",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "空港へ移動",
+          "description": "空港へ向かうために、タクシーまたは公共交通機関を利用します。ニューヨークの街並みを最後に楽しみながら、空港へ向かいましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

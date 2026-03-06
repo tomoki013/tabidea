@@ -1,0 +1,194 @@
+{
+  "id": "ee48ed9f-9304-48aa-8cc0-835b27fc8cc4",
+  "destination": "白川郷・高山",
+  "description": "白川郷と高山の美しい風景と豊かな文化を体験する2日間の旅。合掌造りの家々が立ち並ぶ白川郷では、まるで時が止まったかのような静けさに包まれ、飛騨牛の握り寿司を味わうことで、地元の食文化にも触れることができます。高山では、古い町並みを散策しながら、歴史的な雰囲気と美味しいグルメを堪能します。家族でのんびりとした時間を過ごし、心温まる思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "白川郷の合掌造り集落を満喫",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "高山",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "白川郷",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "高山から白川郷行きのバスで美しい山々を眺めながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "白川郷合掌造り集落散策",
+          "description": "世界遺産に登録されている白川郷の合掌造りの家々を見学します。特に、合掌造りの家の中に入って、昔の生活様式を体験することができます。",
+          "searchQuery": "Shirakawa-go",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "白川郷の郷土料理を楽しむ",
+          "description": "地元の食材を使った郷土料理を提供するお店で、飛騨牛の握り寿司を味わいます。新鮮な肉の旨味が口の中で広がります。",
+          "searchQuery": "Shirakawa-go local cuisine",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "白川郷民俗館",
+          "description": "白川郷の歴史や文化を学べる民俗館を訪れます。合掌造りの家の内部や、昔の道具などが展示されており、地域の伝統を深く理解できます。",
+          "searchQuery": "Shirakawa-go Folk Museum",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "白川郷の展望台",
+          "description": "集落全体を見渡せる展望台へ。特に夕方の光に照らされた合掌造りの家々は、幻想的な美しさです。",
+          "searchQuery": "Shirakawa-go viewpoint",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "白川郷での夕食",
+          "description": "地元の食材を使った料理を楽しむ夕食。飛騨牛のしゃぶしゃぶや、地元の野菜を使った料理が堪能できます。",
+          "searchQuery": "Shirakawa-go dinner",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "白川郷の宿泊",
+          "description": "合掌造りの宿に宿泊します。夜の静けさの中で、星空を眺めながらリラックスした時間を過ごせます。",
+          "searchQuery": "Shirakawa-go accommodation",
+          "locationEn": "Shirakawa-go, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "高山の古い町並みとグルメ体験",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "白川郷",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "高山",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "白川郷から高山へは美しい山道を通ります。途中の景色も楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "高山陣屋",
+          "description": "高山の歴史を感じることができる重要文化財。江戸時代の役所の建物で、内部の展示も見応えがあります。",
+          "searchQuery": "Takayama Jinya",
+          "locationEn": "Takayama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "飛騨牛の握り寿司を楽しむ",
+          "description": "高山で有名な飛騨牛を使った握り寿司を堪能。新鮮な肉の旨味が口の中で広がります。地元の人気店で味わってみてください。",
+          "searchQuery": "Hida Beef Sushi Takayama",
+          "locationEn": "Takayama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "古い町並み散策",
+          "description": "高山の古い町並みを散策。伝統的な合掌造りの家々が立ち並び、風情ある雰囲気を楽しめます。お土産屋さんやカフェも点在しています。",
+          "searchQuery": "Takayama Old Town",
+          "locationEn": "Takayama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "高山祭屋台会館",
+          "description": "高山祭の歴史や屋台を展示している施設。美しい屋台を間近で見ることができ、祭りの雰囲気を感じられます。",
+          "searchQuery": "Takayama Festival Floats Exhibition Hall",
+          "locationEn": "Takayama, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "高山の居酒屋で夕食",
+          "description": "地元の居酒屋で飛騨の地酒と共に、旬の食材を使った料理を楽しみましょう。アットホームな雰囲気でリラックスできます。",
+          "searchQuery": "Takayama Izakaya",
+          "locationEn": "Takayama, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "高山の宿で宿泊",
+          "description": "高山の伝統的な宿に宿泊。温泉や地元の料理を楽しみながら、ゆったりとした時間を過ごせます。",
+          "searchQuery": "Takayama Ryokan",
+          "locationEn": "Takayama, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

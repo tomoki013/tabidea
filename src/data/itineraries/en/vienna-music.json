@@ -1,0 +1,516 @@
+{
+  "id": "99292855-4f71-4dcd-97ea-0c8774ff50c1",
+  "destination": "ウィーン",
+  "description": "Immerse yourself in the enchanting city of Vienna, where the echoes of classical music blend seamlessly with the aroma of freshly baked pastries. This 6-day journey is designed for couples who wish to explore the rich cultural tapestry, indulge in art, and savor the world-renowned coffee culture. From majestic palaces to intimate cafes, every moment in Vienna promises to be a delightful experience.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Vienna",
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Don't miss trying their famous apple strudel alongside a cup of Viennese coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Visit Schönbrunn Palace",
+          "description": "Explore the magnificent Schönbrunn Palace, a UNESCO World Heritage site. Stroll through the beautiful gardens and take a guided tour of the opulent rooms where the Habsburgs once lived.",
+          "searchQuery": "Schönbrunn Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Lunch at Naschmarkt",
+          "description": "Head to Naschmarkt, Vienna's famous market, for a casual lunch. Enjoy a variety of international cuisines and local delicacies at one of the many stalls or restaurants.",
+          "searchQuery": "Naschmarkt",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore the Belvedere Palace",
+          "description": "Visit the stunning Belvedere Palace, home to an impressive collection of Austrian art, including Gustav Klimt's 'The Kiss'. The gardens offer a perfect spot for a leisurely walk.",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plachutta",
+          "description": "Indulge in a traditional Viennese dinner at Plachutta, famous for its Tafelspitz (boiled beef). Experience authentic Austrian cuisine in a cozy setting.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Attend a Concert at the Vienna State Opera",
+          "description": "End your day with a magical evening at the Vienna State Opera. Enjoy a classical concert in one of the world's most renowned opera houses, a true highlight of your Vienna experience.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Heart of Vienna",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Don't miss trying their famous Sachertorte, a rich chocolate cake that is a must-have in Vienna!",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "St. Stephen's Cathedral",
+          "description": "Visit the magnificent St. Stephen's Cathedral, a symbol of Vienna. Climb the tower for breathtaking views of the city and admire the stunning Gothic architecture. The intricate details of the interior are equally captivating.",
+          "searchQuery": "St. Stephen's Cathedral",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Plachutta",
+          "description": "Enjoy a traditional Viennese lunch at Plachutta, famous for its Tafelspitz (boiled beef). The cozy atmosphere and authentic flavors make it a perfect spot to experience local cuisine.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Vienna State Opera",
+          "description": "Take a guided tour of the Vienna State Opera, one of the world's most prestigious opera houses. Learn about its rich history and stunning architecture, and if you're lucky, catch a glimpse of a rehearsal.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll along Graben",
+          "description": "Wander along Graben, a famous shopping street lined with beautiful architecture and charming boutiques. Stop by the Pestsäule, a baroque plague column, and enjoy the vibrant atmosphere of this central area.",
+          "searchQuery": "Graben",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Demel",
+          "description": "Take a break at Demel, another historic café known for its exquisite cakes and pastries. Enjoy a slice of cake and a cup of coffee while soaking in the elegant ambiance.",
+          "searchQuery": "Demel",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Attend a Palace Concert",
+          "description": "Experience the magic of classical music at a palace concert. Enjoy a performance in a stunning setting, where you can immerse yourself in the rich musical heritage of Vienna.",
+          "searchQuery": "Vienna Palace Concert",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art and Music Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Don't miss trying their famous Sacher Torte, a rich chocolate cake that is a must-have in Vienna!",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Belvedere Palace",
+          "description": "Explore the stunning Belvedere Palace, a UNESCO World Heritage site. The palace houses an impressive collection of Austrian art, including works by Gustav Klimt. Stroll through the beautiful gardens and enjoy the views of the city.",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Gasthaus Pöschl",
+          "description": "Enjoy a traditional Austrian lunch at Gasthaus Pöschl, known for its cozy atmosphere and delicious Wiener Schnitzel. This local favorite is just a short walk from the Belvedere.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Kunsthistorisches Museum",
+          "description": "After lunch, head to the Kunsthistorisches Museum, one of the world's most important art museums. Marvel at masterpieces by artists like Vermeer, Rembrandt, and Titian. The museum's architecture is as impressive as its collection.",
+          "searchQuery": "Kunsthistorisches Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Stadtpark",
+          "description": "Take a leisurely stroll through Stadtpark, a beautiful public park in the heart of Vienna. Enjoy the lush greenery and the famous golden statue of Johann Strauss, perfect for a romantic moment.",
+          "searchQuery": "Stadtpark",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Plachutta Wollzeile",
+          "description": "Indulge in a delightful dinner at Plachutta Wollzeile, renowned for its Tafelspitz, a traditional boiled beef dish. The restaurant's elegant setting and attentive service make for a memorable dining experience.",
+          "searchQuery": "Plachutta Wollzeile",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Attend a Concert at Vienna Concert Hall",
+          "description": "End your day with a magical evening at the Vienna Concert Hall. Enjoy a classical music concert in this stunning venue, known for its exceptional acoustics and beautiful architecture.",
+          "searchQuery": "Vienna Concert Hall",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Café Culture and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Don't miss trying their famous Sachertorte, a rich chocolate cake that is a must-have in Vienna!",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Albertina Museum",
+          "description": "Explore the Albertina Museum, home to one of the largest and most important print rooms in the world. The museum features works by renowned artists such as Monet and Picasso, making it a cultural gem in the heart of Vienna.",
+          "searchQuery": "Albertina Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Bistro",
+          "description": "Enjoy a leisurely lunch at a nearby bistro, where you can savor traditional Austrian dishes like Wiener Schnitzel or Tafelspitz. The cozy atmosphere will make for a perfect midday break.",
+          "searchQuery": "Austrian Bistro",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Volksgarten",
+          "description": "Take a relaxing stroll through the beautiful Volksgarten, a public park known for its stunning rose gardens and classical statues. It's a perfect spot to unwind and enjoy the serene surroundings.",
+          "searchQuery": "Volksgarten",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Coffee Break at Demel",
+          "description": "Stop by Demel, another famous café, for an afternoon coffee and a slice of their exquisite cake. The historic ambiance and delicious treats will make this a delightful experience.",
+          "searchQuery": "Demel",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Attend a Palace Concert",
+          "description": "In the evening, immerse yourself in Vienna's rich musical heritage by attending a concert at one of the stunning palaces. Experience the magic of classical music in a breathtaking setting.",
+          "searchQuery": "Vienna Palace Concert",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to the Wachau Valley",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Vienna",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Dürnstein",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic drive along the Danube River."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Dürnstein",
+          "description": "Stroll through the charming streets of Dürnstein, famous for its medieval architecture and the stunning blue tower of the church. Don't forget to take in the breathtaking views of the Danube from the castle ruins above the town.",
+          "searchQuery": "Dürnstein",
+          "locationEn": "Dürnstein, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a local wine tavern",
+          "description": "Savor a delicious lunch at a traditional heuriger (wine tavern) where you can taste local wines and hearty Austrian dishes. The ambiance is cozy and perfect for a leisurely meal.",
+          "searchQuery": "heuriger Dürnstein",
+          "locationEn": "Dürnstein, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Melk Abbey",
+          "description": "After lunch, head to the magnificent Melk Abbey, a UNESCO World Heritage site. Explore its stunning baroque architecture, beautiful gardens, and impressive library. The views from the abbey over the Danube are simply spectacular.",
+          "searchQuery": "Melk Abbey",
+          "locationEn": "Melk, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Vienna",
+          "description": "Drive back to Vienna, enjoying the picturesque landscapes along the way. This is a great time to relax and reflect on the day's adventures.",
+          "locationEn": "Vienna, Austria",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sacher Café for Sachertorte",
+          "description": "Indulge in the famous Sachertorte at the original Sacher Café. This rich chocolate cake with a layer of apricot jam is a must-try, especially paired with a dollop of whipped cream.",
+          "searchQuery": "Café Sacher Wien",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Attend a Palace Concert",
+          "description": "Experience the magic of classical music at a concert held in one of Vienna's stunning palaces. Enjoy an evening filled with beautiful melodies in an enchanting setting.",
+          "searchQuery": "Vienna Palace Concert",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Final Day in Vienna",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Sacher",
+          "description": "Start your day with a slice of the world-famous Sachertorte at Café Sacher, the birthplace of this iconic chocolate cake. Enjoy the elegant atmosphere as you sip on a rich coffee and indulge in this sweet treat, a must-try in Vienna!",
+          "searchQuery": "Café Sacher Wien",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Belvedere Palace",
+          "description": "Explore the stunning Belvedere Palace, a UNESCO World Heritage site. Marvel at the impressive Baroque architecture and the beautiful gardens, and don't miss the chance to see Gustav Klimt's 'The Kiss' in the Upper Belvedere.",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Gasthaus Pöschl",
+          "description": "Enjoy a traditional Viennese lunch at Gasthaus Pöschl, known for its cozy atmosphere and delicious local dishes. Try the Wiener Schnitzel, a classic that will leave you satisfied and ready for more exploration.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the Vienna State Opera",
+          "description": "Take a guided tour of the Vienna State Opera, one of the most prestigious opera houses in the world. Learn about its rich history and architecture, and if you're lucky, catch a glimpse of a rehearsal or performance.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Plachutta",
+          "description": "Savor a delightful dinner at Plachutta, famous for its Tafelspitz, a traditional boiled beef dish served with a variety of sides. The restaurant's warm ambiance makes it a perfect spot for a romantic meal.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Vienna Philharmonic Concert",
+          "description": "End your day with a magical evening at the Vienna Philharmonic Concert. Experience the enchanting music in one of the world's most renowned concert halls, a fitting finale to your cultural journey in Vienna.",
+          "searchQuery": "Vienna Philharmonic",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

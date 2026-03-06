@@ -1,0 +1,382 @@
+{
+  "id": "6aa4051e-4bb9-4805-9965-b49694855b8d",
+  "destination": "北アイルランド",
+  "description": "北アイルランドの美しい自然と歴史を感じながら、家族で楽しむ特別な4日間の旅へ出かけましょう。特に「ゲーム・オブ・スローンズ」のファンにはたまらないスポットが盛りだくさん。子供たちも楽しめるアクティビティや文化体験を通じて、思い出に残るひとときを過ごせます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ベルファスト到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ベルファストのホテルで、地元の食材を使った朝食を楽しみます。特に、アイルランドの伝統的な朝食はボリューム満点で、エネルギーをチャージするのにぴったりです。",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ベルファスト市内観光",
+          "description": "ベルファストの中心部を散策し、歴史的な建物やアートを楽しみます。特に、タイタニック博物館や市庁舎は必見です。",
+          "searchQuery": "Belfast City Hall",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のパブでランチ",
+          "description": "アイルランドの伝統的なパブで、フィッシュ＆チップスやスープを楽しみます。地元の人々と交流しながら、アイルランドの雰囲気を味わいましょう。",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Titanic Quarter訪問",
+          "description": "タイタニック号の歴史を学べるタイタニック・クォーターを訪れます。博物館では、タイタニック号の建造過程やその運命についての展示が楽しめます。",
+          "searchQuery": "Titanic Belfast",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Game of Thrones Studio Tour",
+          "description": "「ゲーム・オブ・スローンズ」の撮影スタジオを見学します。実際のセットや衣装を見ながら、ドラマの裏側を体験できる貴重な機会です。",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ベルファストの人気レストランで、アイルランド料理を堪能します。新鮮なシーフードや肉料理が楽しめるお店を選びましょう。",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。家族での楽しい思い出を振り返りながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ゲーム・オブ・スローンズの聖地巡り",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ベルファスト",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ダンルース城",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "レンタカーでの移動。朝の爽やかな空気の中、ダンルース城へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ダンルース城",
+          "description": "映画『ゲーム・オブ・スローンズ』の撮影地として有名なダンルース城。美しい海岸線と共に、城の壮大な景観を楽しむことができます。",
+          "searchQuery": "Dunluce Castle",
+          "locationEn": "Dunluce Castle, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "バランディー・アナの海岸",
+          "description": "美しい海岸線と壮大な崖が広がるバランディー・アナの海岸。ここでは、映画のシーンを思い出しながら、自然の美しさを堪能できます。",
+          "searchQuery": "Ballintoy Harbour",
+          "locationEn": "Ballintoy, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "新鮮なシーフードや地元の食材を使った料理を楽しめるレストランで、家族みんなで美味しいランチを。",
+          "searchQuery": "The Fullerton Arms",
+          "locationEn": "Ballintoy, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "グレンコーの谷",
+          "description": "壮大な自然が広がるグレンコーの谷。ハイキングや写真撮影に最適なスポットで、家族での思い出作りにぴったりです。",
+          "searchQuery": "Glencoe Valley",
+          "locationEn": "Glencoe, Scotland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "ゲーム・オブ・スローンズの関連商品が揃うショップで、家族みんなでお気に入りのグッズを探しましょう。",
+          "searchQuery": "Game of Thrones Studio Tour",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ベルファストでディナー",
+          "description": "ベルファストの人気レストランで、地元の料理を楽しみながら、今日の冒険を振り返ります。",
+          "searchQuery": "The Crown Liquor Saloon",
+          "locationEn": "Belfast, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アントリム海岸と自然の美",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ベルファスト",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ジャイアンツ・コーズウェイ",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "レンタカーでアントリム海岸へ向かいます。美しい景色を楽しみながらのドライブです。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ジャイアンツ・コーズウェイ",
+          "description": "ユネスコ世界遺産に登録されたジャイアンツ・コーズウェイは、自然が作り出した驚異の景観です。六角形の石柱が並ぶ海岸線を散策し、神話の世界に浸りましょう。",
+          "searchQuery": "Giant's Causeway",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェでランチ",
+          "description": "ジャイアンツ・コーズウェイ近くのカフェで軽食を楽しみます。地元の食材を使ったサンドイッチやスープが人気です。",
+          "searchQuery": "Giant's Causeway Cafe",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "カリック・ア・リードの吊り橋",
+          "description": "スリル満点のカリック・ア・リードの吊り橋を渡ります。海に浮かぶこの吊り橋からの眺めは絶景で、家族での思い出作りにぴったりです。",
+          "searchQuery": "Carrick-a-Rede Rope Bridge",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "アントリム海岸のドライブ",
+          "description": "アントリム海岸沿いをドライブしながら、美しい海岸線や壮大な崖を楽しみます。途中、いくつかのビューポイントで写真を撮るのもお忘れなく。",
+          "searchQuery": "Antrim Coast",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アントリムでディナー",
+          "description": "アントリムのレストランで地元の料理を楽しみます。新鮮なシーフードや伝統的なアイリッシュ料理が味わえます。",
+          "searchQuery": "Antrim Restaurant",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アントリムの宿泊先チェックイン",
+          "description": "アントリムの快適な宿泊施設にチェックインします。家族でリラックスできる空間で、明日の冒険に備えましょう。",
+          "searchQuery": "Antrim Accommodation",
+          "locationEn": "County Antrim, Northern Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "北アイルランドの文化体験と帰路",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "アントリム",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ダウンパトリック",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "アントリムからダウンパトリックまでの美しいドライブを楽しみながら移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ダウンパトリックの聖パトリック大聖堂",
+          "description": "アイルランドの守護聖人、聖パトリックに捧げられた美しい大聖堂を訪れます。歴史的な建物の中で、アイルランドの文化と歴史を感じることができます。",
+          "searchQuery": "Saint Patrick's Cathedral, Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ダウンパトリックの地元レストランでアイルランドの伝統料理を楽しみます。特にシチューやスコーンがおすすめです。",
+          "searchQuery": "local restaurant Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アイルランドの伝統工芸体験",
+          "description": "地元の工芸家と一緒にアイルランドの伝統的な工芸品作りを体験します。家族みんなで楽しめるアクティビティです。",
+          "searchQuery": "Irish craft workshop Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Game of Thrones関連ショップ訪問",
+          "description": "ダウンパトリック周辺のGame of Thrones関連のショップを訪れ、ファングッズを購入します。特に、キャラクターのフィギュアやアートワークが人気です。",
+          "searchQuery": "Game of Thrones shop Downpatrick",
+          "locationEn": "Downpatrick, Northern Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "アントリムへ戻る",
+          "description": "ダウンパトリックからアントリムへ戻ります。移動中にアイルランドの美しい風景を楽しんでください。",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アントリムでディナー",
+          "description": "アントリムのレストランでディナーを楽しみます。地元の食材を使った料理が楽しめるお店を選びましょう。",
+          "searchQuery": "restaurant Antrim",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "アントリムのホテルにチェックイン",
+          "description": "旅行の疲れを癒すために、アントリムのホテルにチェックインします。快適な宿泊先でリラックスしましょう。",
+          "searchQuery": "hotel Antrim",
+          "locationEn": "Antrim, Northern Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

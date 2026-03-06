@@ -1,0 +1,348 @@
+{
+  "id": "cb1a3bc9-bcaf-4b4a-a8bc-b74cdc02d71c",
+  "destination": "Madrid",
+  "description": "Immerse yourself in the vibrant culture and rich history of Madrid, where every corner tells a story and every meal is a celebration. This 4-day solo adventure is designed to balance leisurely exploration with exciting activities, ensuring you experience the best of this Spanish capital. From world-class museums to charming neighborhoods, indulge in shopping and savor exquisite cuisine, all while soaking up the sun in beautiful parks. Get ready for a journey that blends relaxation with the thrill of discovery!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and City Introduction",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy a stunning view of the Royal Palace while savoring traditional Spanish pastries and coffee.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Puerta del Sol",
+          "description": "Explore the bustling Puerta del Sol, the heart of Madrid, where you can see the famous 'El Oso y El Madroño' statue and soak in the vibrant atmosphere of the city.",
+          "searchQuery": "Puerta del Sol",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado de San Miguel",
+          "description": "Head to Mercado de San Miguel for lunch, a gourmet market where you can sample a variety of Spanish tapas and local delicacies in a lively setting.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Plaza Mayor",
+          "description": "Take a leisurely stroll through Plaza Mayor, a grand square surrounded by beautiful architecture, perfect for people-watching and enjoying the local vibe.",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Royal Palace of Madrid",
+          "description": "Explore the opulent Royal Palace, the official residence of the Spanish royal family, and marvel at its stunning architecture and rich history.",
+          "searchQuery": "Royal Palace of Madrid",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Sobrino de Botín",
+          "description": "Enjoy dinner at Sobrino de Botín, the oldest restaurant in the world, famous for its traditional Spanish cuisine, especially the roast suckling pig.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk in Retiro Park",
+          "description": "End your day with a peaceful evening walk in Retiro Park, where you can relax by the lake and enjoy the beautiful gardens.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy a traditional Spanish breakfast with stunning views of the Royal Palace. The ambiance is cozy, making it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Museo del Prado",
+          "description": "Immerse yourself in the world of art at the Museo del Prado, home to masterpieces by Spanish artists like Velázquez and Goya. Take your time to appreciate the vast collection and don't miss the iconic 'Las Meninas'.",
+          "searchQuery": "Museo del Prado",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Sobrino de Botín",
+          "description": "Enjoy a leisurely lunch at Sobrino de Botín, the oldest restaurant in the world, famous for its roast suckling pig. The historic atmosphere adds to the experience, making it a must-visit for food lovers.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Stroll through Retiro Park",
+          "description": "After lunch, take a relaxing stroll through Retiro Park. This beautiful green space is perfect for unwinding, with picturesque gardens, a lake, and even a crystal palace. Don't forget to take some photos!",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore Museo Reina Sofía",
+          "description": "Visit the Museo Reina Sofía, where you can admire modern art, including Picasso's famous 'Guernica'. The museum's contemporary vibe contrasts beautifully with the classical art you saw earlier in the day.",
+          "searchQuery": "Museo Reina Sofía",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Restaurante Casa Lucio",
+          "description": "End your day with a sumptuous dinner at Casa Lucio, renowned for its delicious Spanish omelette and traditional dishes. The warm atmosphere and friendly service will make your dining experience memorable.",
+          "searchQuery": "Restaurante Casa Lucio",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and Culinary Delights",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy a traditional Spanish breakfast with stunning views of the Royal Palace. The fresh pastries and rich coffee will energize you for the day ahead.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Gran Vía",
+          "description": "Stroll along Gran Vía, Madrid's bustling main street known for its stunning architecture and vibrant atmosphere. Don't miss the iconic Edificio Telefónica and the beautiful Plaza de Callao as you soak in the city's energy.",
+          "searchQuery": "Gran Vía",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado de San Miguel",
+          "description": "Head to Mercado de San Miguel for lunch, where you can sample a variety of gourmet tapas from local vendors. This market is a food lover's paradise, offering everything from jamón ibérico to fresh seafood.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping in Chueca",
+          "description": "After lunch, explore the trendy Chueca neighborhood, known for its chic boutiques and vibrant atmosphere. This area is perfect for finding unique fashion pieces and local artisan goods.",
+          "searchQuery": "Chueca",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Malasaña",
+          "description": "Continue your shopping adventure in Malasaña, a hip area filled with vintage shops and quirky cafes. Take your time to browse through the eclectic stores and enjoy the artistic vibe of the neighborhood.",
+          "searchQuery": "Malasaña",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Sobrino de Botín",
+          "description": "Indulge in a traditional Spanish dinner at Sobrino de Botín, the oldest restaurant in the world. Famous for its roast suckling pig, this historic eatery offers a unique dining experience steeped in history.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll at Retiro Park",
+          "description": "End your day with a leisurely stroll through Retiro Park. Enjoy the serene atmosphere, beautiful gardens, and the iconic Crystal Palace as the sun sets over the city.",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Oriente",
+          "description": "Start your day with a delightful breakfast at Café de Oriente, where you can enjoy a stunning view of the Royal Palace while savoring traditional Spanish pastries and coffee. It's a perfect spot to relax before your day of exploration.",
+          "searchQuery": "Café de Oriente",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Temple of Debod",
+          "description": "Visit the Temple of Debod, an ancient Egyptian temple that was gifted to Spain. This serene site offers beautiful views of the city and is especially stunning in the morning light. Take a leisurely stroll around the park and enjoy the peaceful atmosphere.",
+          "searchQuery": "Temple of Debod",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mercado de San Miguel",
+          "description": "Head to Mercado de San Miguel for lunch, where you can sample a variety of gourmet tapas and local delicacies. This vibrant market is a food lover's paradise, perfect for trying different flavors in a lively setting.",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Casa de Campo",
+          "description": "Spend your afternoon at Casa de Campo, Madrid's largest park. You can rent a bike or simply walk around the beautiful trails, enjoy the lake, or visit the amusement park if you're in the mood for some fun activities. It's a great way to unwind in nature.",
+          "searchQuery": "Casa de Campo",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Gran Vía",
+          "description": "Take a leisurely stroll down Gran Vía, Madrid's famous shopping street. Here, you'll find a mix of high-end boutiques and popular brands. It's a perfect opportunity to pick up some souvenirs or enjoy window shopping in this vibrant area.",
+          "searchQuery": "Gran Vía",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Sobrino de Botín",
+          "description": "End your day with a memorable dinner at Sobrino de Botín, the oldest restaurant in the world. Indulge in traditional Spanish cuisine, including their famous roast suckling pig, in a charming and historic setting.",
+          "searchQuery": "Sobrino de Botín",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

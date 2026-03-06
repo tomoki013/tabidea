@@ -1,0 +1,553 @@
+{
+  "id": "5122aa10-5f57-4ef9-8213-daa7228833a6",
+  "destination": "サントリーニ",
+  "description": "エーゲ海の青と白のコントラストが美しいサントリーニ。美しい夕日を眺めながら、地元のグルメを楽しみ、アクティビティに挑戦する6日間の旅へ出かけましょう。サントリーニの魅力を存分に味わい、心に残る思い出を作ることができるプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "サントリーニ到着とオイア散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "サントリーニの地元の食材を使った朝食を楽しみます。新鮮なフルーツやヨーグルト、パンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "オイア散策",
+          "description": "美しい白壁の家々が並ぶオイアの街を散策。青いドームの教会や、絵画のような風景を楽しみながら、地元のアートショップやカフェを訪れます。",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のタベルナでランチ",
+          "description": "オイアのタベルナで新鮮なシーフードやギリシャサラダを楽しみます。地元の人々に愛されるお店で、アットホームな雰囲気の中で食事を堪能。",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "フィラへ移動",
+          "description": "オイアからフィラへはバスで約20分。サントリーニの中心地であるフィラの街を探索します。",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "フィラ散策",
+          "description": "フィラのメインストリートを歩きながら、ショップやカフェを楽しみます。美しい景色を眺めながら、地元のアートやお土産を探すのもおすすめ。",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日を眺める",
+          "description": "フィラの展望台でサントリーニの美しい夕日を楽しみます。特にオイアの夕日は有名ですが、フィラからも素晴らしい景色が広がります。",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "フィラのレストランで、ギリシャ料理のディナーを楽しみます。新鮮な魚料理や、伝統的なメゼを味わいながら、旅の疲れを癒します。",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "サントリーニのビーチとワイナリー巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "オイアで朝食",
+          "description": "オイアのカフェで新鮮なフルーツとギリシャヨーグルトの朝食を楽しみます。美しい海の景色を眺めながら、リラックスした朝のひとときを過ごしましょう。",
+          "searchQuery": "Oia, Santorini",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "カマリビーチ",
+          "description": "カマリビーチへ移動し、黒砂のビーチでのんびりと過ごします。海水浴や日光浴を楽しんだり、ビーチ沿いのカフェで軽食を取るのもおすすめです。",
+          "searchQuery": "Kamari Beach",
+          "locationEn": "Kamari, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カマリビーチ近くのレストランでランチ",
+          "description": "カマリビーチ近くのレストランで、新鮮なシーフードや地元の料理を楽しみます。特に、グリルしたイカやサラダは絶品です。",
+          "searchQuery": "Taverna Kamari",
+          "locationEn": "Kamari, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ワイナリー巡り",
+          "description": "サントリーニの有名なワイナリーを訪れ、地元のワインを試飲します。特にアシリティコという白ワインは、サントリーニの特産品です。",
+          "searchQuery": "Santo Wines",
+          "locationEn": "Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "オイアに戻る",
+          "description": "カマリビーチからオイアへ戻ります。途中、サントリーニの美しい風景を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Oia, Santorini",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "オイアの夕日を観賞",
+          "description": "オイアの絶景ポイントで夕日を観賞します。サントリーニの夕日は世界的に有名で、特にこの場所からの眺めは格別です。",
+          "searchQuery": "Oia Sunset",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "オイアでディナー",
+          "description": "オイアのレストランで、地元の料理を楽しむディナー。新鮮な魚料理やギリシャの伝統的な料理を堪能しましょう。",
+          "searchQuery": "Kastro Oia Restaurant",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アクティビティデー：火山と温泉",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "オイアのホテルで、地元の食材を使った朝食を楽しみます。新鮮なフルーツやヨーグルト、パンが並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Oia, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "火山ツアー",
+          "description": "サントリーニの火山へ向かうツアーに参加します。ボートで火山島に渡り、活火山の地形を間近で観察。ガイドの説明を聞きながら、自然の力を感じる貴重な体験ができます。",
+          "searchQuery": "Santorini Volcano",
+          "locationEn": "Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "火山島でのランチ",
+          "description": "火山島のレストランで、地元の新鮮なシーフードを使ったランチを楽しみます。美しい海を眺めながら、サントリーニの味を堪能。",
+          "locationEn": "Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "温泉体験",
+          "description": "火山島の温泉でリラックス。温かい硫黄泉に浸かりながら、日頃の疲れを癒します。自然の中での贅沢なひとときをお楽しみください。",
+          "searchQuery": "Santorini Hot Springs",
+          "locationEn": "Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "オイアに戻る",
+          "description": "ボートでオイアに戻ります。海の景色を楽しみながら、心地よい風を感じる時間。",
+          "locationEn": "Oia, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "オイアの街散策",
+          "description": "オイアの美しい街並みを散策。白い建物と青いドームが特徴的な風景を楽しみながら、地元のショップでお土産探しも。",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "オイアでディナー",
+          "description": "オイアのレストランで、地元の料理を楽しむディナー。新鮮な魚介類やギリシャ料理を堪能しながら、夕日を眺める贅沢な時間を過ごします。",
+          "locationEn": "Oia, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "地元のグルメを楽しむ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "オイアのカフェで朝食",
+          "description": "オイアの美しい景色を眺めながら、地元のカフェで新鮮なギリシャのヨーグルトとハチミツを楽しみます。朝の静けさの中で、ゆったりとした時間を過ごしましょう。",
+          "searchQuery": "Oia Cafe",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "オイアの散策",
+          "description": "オイアの白い建物と青いドームの教会を巡りながら、絵画のような風景を楽しみます。特に、サンセットの名所として知られる場所を訪れるのもおすすめです。",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フィラでランチ",
+          "description": "フィラに移動し、地元のタベルナで新鮮なシーフード料理を堪能します。特に、グリルしたカラマリやサラダは絶品です。",
+          "searchQuery": "Taverna in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ペリッサビーチでリラックス",
+          "description": "ペリッサビーチへ向かい、黒砂のビーチでリラックス。海の音を聞きながら、日光浴や読書を楽しむのも良いでしょう。",
+          "searchQuery": "Perissa Beach",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ペリッサビーチのカフェでおやつ",
+          "description": "ビーチ近くのカフェで、ギリシャの伝統的なスイーツやアイスクリームを楽しみます。特に、バクラヴァはおすすめです。",
+          "searchQuery": "Cafe near Perissa Beach",
+          "locationEn": "Perissa, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "フィラのショップでショッピング",
+          "description": "フィラに戻り、地元のショップでお土産やギリシャの工芸品を探します。特に、手作りのジュエリーや陶器は人気です。",
+          "searchQuery": "Fira Shops",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "フィラでディナー",
+          "description": "フィラのレストランで、地元のワインと共にギリシャ料理を楽しみます。特に、ムサカやスブラキは絶品です。",
+          "searchQuery": "Restaurant in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ショッピングとアート散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "フィラで朝食",
+          "description": "地元のカフェで新鮮なギリシャのヨーグルトとハチミツを楽しみながら、ゆったりとした朝を迎えます。フィラの美しい景色を眺めながら、エネルギーをチャージしましょう。",
+          "searchQuery": "Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アートギャラリー巡り",
+          "description": "フィラにあるアートギャラリーを訪れ、地元アーティストの作品を鑑賞します。特に、サントリーニの風景を描いた絵画や陶器が魅力的です。",
+          "searchQuery": "Art Galleries in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "フィラのレストランでランチ",
+          "description": "地元の食材を使ったギリシャ料理を楽しめるレストランで、サラダや新鮮な魚料理を味わいます。特に、海の幸を使った料理は絶品です。",
+          "searchQuery": "Restaurants in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ショッピングタイム",
+          "description": "フィラのメインストリートを散策し、地元の手作りのアクセサリーやお土産を探します。ユニークな商品が見つかるかもしれません。",
+          "searchQuery": "Shopping in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カフェでひと休み",
+          "description": "おしゃれなカフェで、ギリシャのコーヒーやスイーツを楽しみながら、ゆったりとした時間を過ごします。特に、バクラヴァはおすすめです。",
+          "searchQuery": "Cafes in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "フィラの展望台で夕日鑑賞",
+          "description": "フィラの展望台で、サントリーニの美しい夕日を眺めます。特に、夕暮れ時のオレンジ色の空は心に残る景色です。",
+          "searchQuery": "Sunset Viewpoint in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "フィラでディナー",
+          "description": "地元のレストランで、ギリシャの伝統料理を楽しみます。新鮮な野菜やオリーブオイルを使った料理が絶品です。",
+          "searchQuery": "Dinner in Fira",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "サントリーニ最終日と帰国",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "フィラで朝食",
+          "description": "フィラのカフェで、ギリシャの伝統的な朝食を楽しみます。フレッシュなヨーグルトにハチミツ、ナッツをトッピングした一皿が特におすすめです。",
+          "searchQuery": "フィラ カフェ",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "オイア散策",
+          "description": "美しい白い建物と青いドームが特徴のオイアへ。特に朝の静かな時間帯に散策すると、観光客が少なく、ゆったりとした雰囲気を楽しめます。",
+          "searchQuery": "Oia",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "オイアでランチ",
+          "description": "オイアの海沿いのレストランで、新鮮なシーフードを使ったギリシャ料理を堪能します。特に、グリルしたカラマリ（イカ）が絶品です。",
+          "searchQuery": "Oia Seafood Restaurant",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "オイアのショップ巡り",
+          "description": "オイアの小さなショップで、地元のアートや手作りのアクセサリーを探してみましょう。お土産にぴったりなアイテムが見つかるかもしれません。",
+          "searchQuery": "Oia Shops",
+          "locationEn": "Oia, Santorini, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "フィラへ戻る",
+          "description": "オイアからフィラへは、バスやタクシーで戻ります。美しい景色を楽しみながらの移動です。",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "フィラで最後のショッピング",
+          "description": "フィラのメインストリートで、最後のショッピングを楽しみます。地元の特産品やお土産を見つけるチャンスです。",
+          "searchQuery": "Fira Shops",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "フィラで夕食",
+          "description": "フィラのレストランで、最後の晩餐を楽しみます。地元のワインと共に、ギリシャ料理を堪能しましょう。",
+          "searchQuery": "Fira Restaurant",
+          "locationEn": "Fira, Santorini, Greece",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "空港へ移動",
+          "description": "フィラからサントリーニ空港へ向かいます。帰国の準備を整えましょう。",
+          "locationEn": "Santorini Airport, Greece",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

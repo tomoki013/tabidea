@@ -1,0 +1,308 @@
+{
+  "id": "66052504-d1cd-4688-8783-5142cebb5017",
+  "destination": "New York City",
+  "description": "Escape to the vibrant streets of New York City, where the pulse of art, culture, and fandom comes alive. Over three days, immerse yourself in the world of your favorite fandoms while exploring iconic museums and hidden gems that capture the essence of this bustling metropolis. From the colorful murals of Brooklyn to the historic halls of the Metropolitan Museum of Art, this trip is designed for leisurely exploration, allowing you to soak in every moment with your friends. Get ready to discover the heart of NYC through the lens of your passions!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Brooklyn",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "JFK Airport",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Brooklyn",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Arrive at JFK Airport and make your way to Brooklyn."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Breakfast at Bakeri",
+          "description": "Start your day with a cozy breakfast at Bakeri, a charming Scandinavian bakery known for its delicious pastries and coffee. Enjoy a warm cinnamon bun or a fresh croissant to fuel your day of exploration.",
+          "searchQuery": "Bakeri",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. The views of the Manhattan skyline are breathtaking, especially on a clear day. Don't forget to snap some photos along the way!",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market for lunch, where you can sample a variety of local foods from different vendors. It's a great spot to try everything from artisanal sandwiches to gourmet tacos, all under one roof.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "DUMBO Exploration",
+          "description": "Explore the trendy DUMBO neighborhood, known for its cobblestone streets and stunning waterfront views. Check out the local shops and art galleries, and don’t miss the famous photo spot at Washington Street with the Manhattan Bridge in the background.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Brooklyn Museum",
+          "description": "Immerse yourself in art and culture at the Brooklyn Museum. With a diverse collection ranging from ancient artifacts to contemporary art, there's something for everyone. Admission is often affordable, making it a great budget-friendly option.",
+          "searchQuery": "Brooklyn Museum",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Roberta's",
+          "description": "Enjoy dinner at Roberta's, a beloved pizzeria known for its wood-fired pizzas and vibrant atmosphere. It's a perfect place to unwind after a day of exploring, and the casual vibe makes it great for friends.",
+          "searchQuery": "Roberta's",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening at Brooklyn Heights Promenade",
+          "description": "End your day with a relaxing walk along the Brooklyn Heights Promenade. The views of the Manhattan skyline at night are simply magical, providing a perfect backdrop for a memorable evening with friends.",
+          "searchQuery": "Brooklyn Heights Promenade",
+          "locationEn": "Brooklyn, New York",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture in Manhattan",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Brooklyn",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Manhattan",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take the subway from Brooklyn to Manhattan."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Bakeri",
+          "description": "Start your day with a cozy breakfast at Bakeri, a charming Scandinavian bakery in Williamsburg. Enjoy freshly baked pastries and a cup of coffee to fuel your day of exploration.",
+          "searchQuery": "Bakeri",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "The Metropolitan Museum of Art",
+          "description": "Dive into the world of art at The Met, where you can explore an extensive collection ranging from ancient artifacts to modern masterpieces. Don't miss the rooftop garden for stunning views of Central Park.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Met's Cafeteria",
+          "description": "Enjoy a casual lunch at The Met's cafeteria, offering a variety of options from salads to sandwiches, all while surrounded by art and culture.",
+          "searchQuery": "The Metropolitan Museum of Art Cafeteria",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Central Park",
+          "description": "After lunch, take a leisurely stroll through Central Park. Enjoy the beautiful landscapes, and if you're lucky, catch a street performer or two along the way.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit The High Line",
+          "description": "Explore The High Line, an elevated park built on a former railway track. Enjoy the unique gardens, art installations, and views of the Hudson River as you walk along this urban oasis.",
+          "searchQuery": "The High Line",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Friends Experience",
+          "description": "Dive into the world of Friends at this interactive experience where you can see iconic sets and props from the show. Perfect for fans looking to relive their favorite moments!",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Monica's Restaurant",
+          "description": "End your day with dinner at Monica's Restaurant, a themed eatery inspired by the show. Enjoy classic American dishes in a fun atmosphere reminiscent of the Friends set.",
+          "searchQuery": "Monica's Restaurant",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Fandom and Farewell",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Lalo",
+          "description": "Start your day with a delightful breakfast at Cafe Lalo, a charming spot known for its pastries and cozy atmosphere. It's a great place to fuel up before a day of exploring!",
+          "searchQuery": "Cafe Lalo",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Friends Experience",
+          "description": "Dive into the world of Friends at this interactive exhibit where you can explore iconic sets, take photos, and relive your favorite moments from the show. Don't forget to check out the gift shop for exclusive merchandise!",
+          "searchQuery": "The Friends Experience",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Central Perk Cafe",
+          "description": "Enjoy a casual lunch at the Central Perk Cafe, inspired by the famous coffee shop from Friends. Sip on a cup of coffee and indulge in some tasty sandwiches while soaking in the nostalgic vibes.",
+          "searchQuery": "Central Perk Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Comic Book Shops in Greenwich Village",
+          "description": "Wander through the vibrant streets of Greenwich Village and visit local comic book shops. You'll find a treasure trove of collectibles and graphic novels, perfect for any fandom enthusiast.",
+          "searchQuery": "Comic Book Shops Greenwich Village",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Museum of Modern Art (MoMA)",
+          "description": "Take a leisurely stroll to MoMA, where you can admire an impressive collection of modern and contemporary art. The museum's serene atmosphere makes it a perfect spot to unwind and appreciate creativity.",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Olive Tree Cafe",
+          "description": "Wrap up your day with dinner at The Olive Tree Cafe, a cozy restaurant that offers a mix of Mediterranean and American dishes. It's a great place to reflect on your trip with friends over delicious food.",
+          "searchQuery": "The Olive Tree Cafe",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Stroll through Times Square",
+          "description": "End your day with a stroll through the iconic Times Square. The bright lights and bustling atmosphere are a perfect way to soak in the energy of New York City one last time before heading home.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -13,34 +13,35 @@ export default function FeaturesSection() {
       title: t("values.freedom.title"),
       subtitle: t("values.freedom.subtitle"),
       desc: t("values.freedom.desc"),
-      image: "https://images.unsplash.com/photo-1512413914633-b5043f4041ea?auto=format&fit=crop&w=500&q=80",
+      image: "/images/landing/freedom.png",
       icon: <FaMapMarkedAlt />,
       rotate: "rotate-2",
       tapeColor: "yellow",
-      stamp: t("values.freedom.stamp")
+      stamp: t("values.freedom.stamp"),
     },
     {
       id: "story",
       title: t("values.story.title"),
       subtitle: t("values.story.subtitle"),
       desc: t("values.story.desc"),
-      image: "https://images.unsplash.com/photo-1544367563-12123d8965cd?auto=format&fit=crop&w=500&q=80",
+      image: "/images/landing/story.png",
       icon: <FaPenFancy />,
       rotate: "-rotate-1",
       tapeColor: "blue",
-      stamp: t("values.story.stamp")
+      stamp: t("values.story.stamp"),
     },
     {
       id: "serendipity",
       title: t("values.serendipity.title"),
       subtitle: t("values.serendipity.subtitle"),
       desc: t("values.serendipity.desc"),
-      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=500&q=80",
+      image:
+        "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=500&q=80",
       icon: <FaRegSmileBeam />,
       rotate: "rotate-3",
       tapeColor: "red",
-      stamp: t("values.serendipity.stamp")
-    }
+      stamp: t("values.serendipity.stamp"),
+    },
   ];
 
   return (
@@ -64,7 +65,8 @@ export default function FeaturesSection() {
             {t("title")}
           </h2>
           <p className="text-stone-600 max-w-2xl mx-auto font-medium">
-            {t("leadLine1")}<br/>
+            {t("leadLine1")}
+            <br />
             {t("leadLine2")}
           </p>
         </motion.div>
@@ -88,40 +90,40 @@ export default function FeaturesSection() {
 
               {/* Image Area */}
               <div className="w-full h-48 bg-stone-200 mb-6 overflow-hidden relative border border-stone-100">
-                 <img
-                   src={value.image}
-                   alt={value.title}
-                   className="w-full h-full object-cover sepia-[0.2]"
-                 />
-                 <div className="absolute bottom-2 right-2 opacity-80 rotate-[-12deg]">
-                    <Stamp color={value.tapeColor as "red" | "blue"} size="sm">
-                       {value.stamp}
-                    </Stamp>
-                 </div>
+                <img
+                  src={value.image}
+                  alt={value.title}
+                  className="w-full h-full object-cover sepia-[0.2]"
+                />
+                <div className="absolute bottom-2 right-2 opacity-80 rotate-[-12deg]">
+                  <Stamp color={value.tapeColor as "red" | "blue"} size="sm">
+                    {value.stamp}
+                  </Stamp>
+                </div>
               </div>
 
               {/* Text Content */}
               <div className="space-y-3 text-center">
-                 <div className="flex justify-center text-3xl text-stone-400 mb-2 opacity-50">
-                    {value.icon}
-                 </div>
-                 <h3 className="text-2xl font-serif font-bold text-stone-800">
-                    {value.title}
-                 </h3>
-                 <p className="text-sm font-bold text-primary tracking-wide uppercase">
-                    {value.subtitle}
-                 </p>
-                 <div className="w-12 h-0.5 bg-stone-200 mx-auto my-3" />
-                 <p className="text-stone-600 text-sm leading-relaxed font-medium">
-                    {value.desc}
-                 </p>
+                <div className="flex justify-center text-3xl text-stone-400 mb-2 opacity-50">
+                  {value.icon}
+                </div>
+                <h3 className="text-2xl font-serif font-bold text-stone-800">
+                  {value.title}
+                </h3>
+                <p className="text-sm font-bold text-primary tracking-wide uppercase">
+                  {value.subtitle}
+                </p>
+                <div className="w-12 h-0.5 bg-stone-200 mx-auto my-3" />
+                <p className="text-stone-600 text-sm leading-relaxed font-medium">
+                  {value.desc}
+                </p>
               </div>
 
               {/* Handwriting Note at bottom */}
               <div className="absolute bottom-4 left-0 right-0 text-center">
-                 <HandwrittenText className="text-stone-400 text-xs">
-                    {t("stepLabel", { step: index + 1 })}
-                 </HandwrittenText>
+                <HandwrittenText className="text-stone-400 text-xs">
+                  {t("stepLabel", { step: index + 1 })}
+                </HandwrittenText>
               </div>
             </motion.div>
           ))}
@@ -129,22 +131,24 @@ export default function FeaturesSection() {
 
         {/* Bottom Decorative Note */}
         <motion.div
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.8 }}
-           className="mt-20 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.8 }}
+          className="mt-20 text-center"
         >
-           <div className="inline-block relative p-6 bg-[#fffdf5] border border-stone-200 shadow-sm rotate-1 max-w-lg">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-300 shadow-inner" /> {/* Pin hole */}
-              <p className="font-hand text-lg text-stone-700 leading-relaxed">
-                 {t("quoteLine1")}<br/>
-                 {t("quoteLine2")}
-              </p>
-              <div className="mt-2 text-right text-xs font-bold text-stone-400 uppercase tracking-widest">
-                 {t("quoteAuthor")}
-              </div>
-           </div>
+          <div className="inline-block relative p-6 bg-[#fffdf5] border border-stone-200 shadow-sm rotate-1 max-w-lg">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-stone-300 shadow-inner" />{" "}
+            {/* Pin hole */}
+            <p className="font-hand text-lg text-stone-700 leading-relaxed">
+              {t("quoteLine1")}
+              <br />
+              {t("quoteLine2")}
+            </p>
+            <div className="mt-2 text-right text-xs font-bold text-stone-400 uppercase tracking-widest">
+              {t("quoteAuthor")}
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

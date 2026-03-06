@@ -1,0 +1,371 @@
+{
+  "id": "74d9aa4d-ef7a-4111-9be3-ac3d5d6a3fd7",
+  "destination": "London",
+  "description": "Immerse yourself in the vibrant culture and rich history of London while indulging in your passion for Sherlock Holmes. This 4-day family adventure is designed to blend iconic sights with hidden gems, ensuring a delightful experience filled with culinary delights and relaxation. From exploring the world of Sherlock to savoring local cuisines, every moment is crafted to create lasting memories.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in London and Sherlock's World",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast options. It's a cozy spot that will energize you for a day of exploration.",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Sherlock Holmes Museum",
+          "description": "Dive into the world of Sherlock Holmes at the famous museum located at 221B Baker Street. Explore the rooms filled with memorabilia and exhibits that bring Arthur Conan Doyle's stories to life. Don't forget to take a photo with the iconic statue of Sherlock outside!",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Sherlock Holmes Pub",
+          "description": "Enjoy a themed lunch at The Sherlock Holmes Pub, where you can savor traditional British dishes in a setting filled with Holmes memorabilia. It's a great place to relax and soak in the atmosphere.",
+          "searchQuery": "The Sherlock Holmes Pub",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Baker Street and its shops",
+          "description": "Stroll around Baker Street, where you can find various shops selling Sherlock Holmes merchandise and memorabilia. It's a perfect opportunity to pick up some unique fan goods and souvenirs.",
+          "searchQuery": "Baker Street",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Regent's Park",
+          "description": "Take a leisurely walk to nearby Regent's Park, one of London's most beautiful parks. Enjoy the lush gardens and perhaps have a coffee at one of the park's cafes. It's a perfect spot to unwind after a busy morning.",
+          "searchQuery": "Regent's Park",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Dishoom",
+          "description": "End your day with a delightful dinner at Dishoom, a popular Indian restaurant inspired by the old Irani cafés of Bombay. The vibrant atmosphere and delicious dishes make it a must-visit.",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll along the Thames",
+          "description": "Take a relaxing evening stroll along the Thames River. The views of the city skyline at dusk are breathtaking, and it's a lovely way to wrap up your first day in London.",
+          "searchQuery": "Thames River",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Iconic London",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Dishoom",
+          "description": "Start your day with a delicious breakfast at Dishoom, a Bombay-style café known for its vibrant atmosphere and mouthwatering dishes like the bacon naan roll and spicy chai. It's a great way to fuel up for a day of exploring!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Westminster Abbey",
+          "description": "Explore the stunning Westminster Abbey, a UNESCO World Heritage site. This iconic church has hosted many royal ceremonies and is the final resting place of numerous notable figures. Don't miss the Poets' Corner!",
+          "searchQuery": "Westminster Abbey",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Red Lion",
+          "description": "Enjoy a traditional British pub lunch at The Red Lion, located just a short walk from Westminster Abbey. Try their fish and chips or a hearty pie while soaking in the local atmosphere.",
+          "searchQuery": "The Red Lion",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Sherlock Holmes Museum",
+          "description": "Dive into the world of Sherlock Holmes at the Sherlock Holmes Museum located at 221B Baker Street. This charming museum is filled with memorabilia and recreations of the famous detective's life and cases.",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Sherlock Merchandise",
+          "description": "After visiting the museum, take some time to shop for Sherlock-themed merchandise at nearby shops. You'll find everything from books to collectibles that any fan would love!",
+          "searchQuery": "Sherlock Holmes merchandise",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Visit Big Ben and the Houses of Parliament",
+          "description": "Stroll over to see the iconic Big Ben and the Houses of Parliament. The stunning architecture and the view of the River Thames make for a perfect photo opportunity, especially as the sun begins to set.",
+          "searchQuery": "Big Ben",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Ivy",
+          "description": "End your day with a delightful dinner at The Ivy, a classic British restaurant known for its elegant atmosphere and diverse menu. Be sure to try their famous shepherd's pie or a seasonal special!",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Relax at the hotel",
+          "description": "After a fulfilling day of exploration, head back to your hotel to relax and unwind. Reflect on the day's adventures and prepare for another exciting day ahead!",
+          "locationEn": "London, UK",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Hidden Gems",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Dishoom",
+          "description": "Start your day with a delicious breakfast at Dishoom, where you can enjoy a traditional Bombay-style meal. The bacon naan roll is a must-try!",
+          "searchQuery": "Dishoom Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Sherlock Holmes Museum",
+          "description": "Dive into the world of Sherlock Holmes at the iconic museum located at 221B Baker Street. Explore the rooms and exhibits dedicated to the famous detective and his adventures.",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Borough Market",
+          "description": "Head to Borough Market for lunch, where you can sample a variety of street food from local vendors. Don't miss the artisanal cheeses and fresh pastries!",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Covent Garden",
+          "description": "Stroll through Covent Garden, known for its vibrant atmosphere, shops, and street performances. It's a great place to find unique souvenirs and Sherlock-themed merchandise.",
+          "searchQuery": "Covent Garden",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the British Museum",
+          "description": "Take a leisurely visit to the British Museum, where you can explore a vast collection of art and antiquities from around the world. Admission is free!",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Ivy",
+          "description": "Enjoy a delightful dinner at The Ivy, a classic British restaurant known for its elegant atmosphere and delicious menu. Perfect for a family meal after a day of exploring.",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in Soho",
+          "description": "End your day with a relaxing stroll through Soho, where you can soak in the lively nightlife and perhaps grab a drink at one of the many cozy pubs.",
+          "searchQuery": "Soho",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Last Day in London and Return",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Breakfast Club",
+          "description": "Start your day with a hearty breakfast at The Breakfast Club, known for its delicious pancakes and classic English breakfast. It's a cozy spot that will fuel you for a day of exploration!",
+          "searchQuery": "The Breakfast Club",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit King's Cross Station",
+          "description": "Head to King's Cross Station, a historic railway hub. Don't forget to snap a photo at the iconic Platform 9¾, where Harry Potter fans can pose with a luggage trolley disappearing into the wall!",
+          "searchQuery": "King's Cross Station",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Dishoom",
+          "description": "Enjoy a delightful lunch at Dishoom, a Bombay-style café that serves up delicious Indian dishes. The atmosphere is vibrant, and the food is a perfect blend of flavors. Make sure to try their signature black daal!",
+          "searchQuery": "Dishoom",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Sherlock Holmes Museum",
+          "description": "Visit the Sherlock Holmes Museum located at 221B Baker Street. Dive into the world of Arthur Conan Doyle's famous detective with exhibits that bring his stories to life. A must for any Sherlock fan!",
+          "searchQuery": "Sherlock Holmes Museum",
+          "locationEn": "London, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Sherlock Merchandise",
+          "description": "After the museum, take a stroll around Baker Street and visit nearby shops for exclusive Sherlock Holmes merchandise. From books to collectibles, you'll find plenty of souvenirs to take home!",
+          "searchQuery": "Sherlock Holmes merchandise",
+          "locationEn": "London, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Ivy",
+          "description": "End your day with a lovely dinner at The Ivy, a classic British restaurant. Enjoy a relaxed atmosphere and a menu filled with British favorites. It's the perfect way to wrap up your London adventure!",
+          "searchQuery": "The Ivy",
+          "locationEn": "London, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

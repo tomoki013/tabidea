@@ -1,0 +1,468 @@
+{
+  "id": "0a7c2135-35e4-4217-8352-fb01935718e3",
+  "destination": "ヌメア",
+  "description": "Escape to the sun-kissed shores of Nouméa, where the vibrant culture of New Caledonia meets the serene beauty of the Pacific Ocean. This 6-day getaway is designed for couples seeking a blend of breathtaking beaches, exquisite French cuisine, and the lush natural landscapes that define this tropical paradise. From leisurely beach days to romantic dinners under the stars, immerse yourselves in the tranquility and charm of this idyllic destination.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Nouméa",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Roof",
+          "description": "Enjoy a delightful lunch at Le Roof, where you can savor exquisite French cuisine while overlooking the stunning lagoon. The seafood dishes are particularly recommended, showcasing the fresh catch of the day.",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Anse Vata Beach",
+          "description": "Spend a relaxing afternoon at Anse Vata Beach, known for its crystal-clear waters and soft white sand. You can take a leisurely stroll along the beach or simply unwind under the sun with a refreshing drink.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Baie des Citrons Sunset",
+          "description": "Head to Baie des Citrons to catch a breathtaking sunset. The vibrant colors reflecting on the water create a picturesque scene, perfect for a romantic moment with your partner.",
+          "searchQuery": "Baie des Citrons",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Fare",
+          "description": "Indulge in a delightful dinner at Le Fare, a charming restaurant offering a mix of local and French dishes. The ambiance is cozy, making it a perfect spot for couples to enjoy a romantic meal.",
+          "searchQuery": "Le Fare",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Stroll along the waterfront",
+          "description": "After dinner, take a leisurely stroll along the waterfront promenade. The gentle sea breeze and the sound of waves create a serene atmosphere, ideal for winding down your first day in Nouméa.",
+          "searchQuery": "Nouméa Waterfront",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Beach Relaxation and Local Cuisine",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Le Roof",
+          "description": "Start your day with a delightful breakfast at Le Roof, where you can enjoy stunning views of the lagoon while savoring fresh pastries and local fruits. The ambiance is perfect for a romantic morning.",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Anse Vata Beach",
+          "description": "Spend a relaxing morning at Anse Vata Beach, known for its crystal-clear waters and soft white sand. You can swim, sunbathe, or simply stroll along the beach, soaking in the beautiful scenery.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at L'Atelier Gourmand",
+          "description": "Indulge in a delicious lunch at L'Atelier Gourmand, a local favorite known for its exquisite French cuisine. Try their seafood dishes, which are fresh and flavorful, perfectly paired with a glass of local wine.",
+          "searchQuery": "L'Atelier Gourmand",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Nouméa Market",
+          "description": "Visit the vibrant Nouméa Market, where you can find local produce, crafts, and souvenirs. It's a great place to experience the local culture and perhaps pick up some unique gifts.",
+          "searchQuery": "Nouméa Market",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "Return to Anse Vata Beach for a leisurely afternoon. You can rent a kayak or paddleboard, or simply relax under a palm tree with a good book. The sunset views here are breathtaking.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Roof",
+          "description": "Enjoy a romantic dinner back at Le Roof, where the menu features a variety of French dishes with a local twist. The atmosphere is perfect for couples, especially as the sun sets over the lagoon.",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Nature and Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Le Fare",
+          "description": "Start your day with a delightful breakfast at Le Fare, where you can enjoy fresh pastries and local fruits while overlooking the beautiful lagoon. The relaxed atmosphere is perfect for a couple's morning.",
+          "searchQuery": "Le Fare",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Île aux Canards Excursion",
+          "description": "Take a short boat ride to Île aux Canards, a stunning island known for its crystal-clear waters and vibrant marine life. Spend the morning snorkeling or simply relaxing on the beach, soaking up the sun.",
+          "searchQuery": "Île aux Canards",
+          "locationEn": "Île aux Canards, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at La Terrasse",
+          "description": "Enjoy a leisurely lunch at La Terrasse, where you can savor exquisite French cuisine with a local twist. The restaurant's terrace offers breathtaking views of the lagoon, making it a perfect romantic spot.",
+          "searchQuery": "La Terrasse",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Nouméa Market Visit",
+          "description": "Explore the vibrant Nouméa Market, where you can find fresh produce, local crafts, and delicious street food. It's a great place to immerse yourself in the local culture and pick up some unique souvenirs.",
+          "searchQuery": "Nouméa Market",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at Anse Vata Beach",
+          "description": "Spend a relaxing afternoon at Anse Vata Beach, known for its calm waters and beautiful scenery. You can take a stroll along the beach or simply unwind on the sand, enjoying the peaceful atmosphere.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Roof",
+          "description": "End your day with a romantic dinner at Le Roof, a restaurant famous for its stunning views and delicious seafood dishes. The ambiance is perfect for couples looking to enjoy a special evening together.",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to Île des Pins",
+      "transit": {
+        "type": "ship",
+        "departure": {
+          "place": "Nouméa",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Île des Pins",
+          "time": "09:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy a scenic ferry ride to the stunning Île des Pins."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Kuto Beach",
+          "description": "Start your day at Kuto Beach, known for its powdery white sand and crystal-clear waters. It's the perfect spot to relax, swim, or take a leisurely stroll along the shore.",
+          "searchQuery": "Kuto Beach",
+          "locationEn": "Île des Pins, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Meridien Restaurant",
+          "description": "Indulge in a delicious lunch at the beachfront restaurant of Le Meridien, where you can savor fresh seafood and local specialties while enjoying stunning ocean views.",
+          "searchQuery": "Le Meridien Restaurant",
+          "locationEn": "Île des Pins, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kanumera Bay",
+          "description": "After lunch, head to Kanumera Bay, famous for its picturesque scenery and vibrant marine life. Snorkeling here is a must to see the colorful coral and fish.",
+          "searchQuery": "Kanumera Bay",
+          "locationEn": "Île des Pins, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Beach",
+          "description": "Spend your afternoon relaxing at the beach, soaking up the sun, or enjoying a refreshing swim in the turquoise waters. This is a perfect time to unwind and take in the natural beauty.",
+          "searchQuery": "Kanumera Bay",
+          "locationEn": "Île des Pins, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Before heading back, enjoy dinner at a local restaurant where you can taste traditional French cuisine with a local twist, paired with fine wines.",
+          "searchQuery": "Local Restaurant Île des Pins",
+          "locationEn": "Île des Pins, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Return Ferry to Nouméa",
+          "description": "Take the ferry back to Nouméa, reflecting on a day filled with beautiful beaches and delicious food.",
+          "searchQuery": "Nouméa Ferry Terminal",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Water Activities and Sunset Dinner",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Le Fare",
+          "description": "Start your day with a delightful breakfast at Le Fare, where you can enjoy fresh pastries and local fruits while overlooking the beautiful lagoon. It's a perfect way to soak in the morning sun and prepare for a day of adventure.",
+          "searchQuery": "Le Fare",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Lagoon Activities",
+          "description": "Dive into the crystal-clear waters of the lagoon for a day filled with snorkeling and paddleboarding. Explore the vibrant coral reefs and colorful marine life, making unforgettable memories together.",
+          "searchQuery": "Nouméa Lagoon",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at La Terrasse",
+          "description": "After a morning of fun, enjoy a leisurely lunch at La Terrasse, known for its fresh seafood and stunning views of the lagoon. Try the local specialties, including grilled fish and tropical salads.",
+          "searchQuery": "La Terrasse",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at Anse Vata Beach",
+          "description": "Spend your afternoon relaxing at Anse Vata Beach, where you can sunbathe on the soft sand or take a refreshing swim in the warm waters. This beach is popular among locals and offers a laid-back atmosphere.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Sunset Dinner at L'Atelier du Goût",
+          "description": "End your day with a romantic sunset dinner at L'Atelier du Goût. Indulge in exquisite French cuisine made with local ingredients while enjoying breathtaking views of the sunset over the lagoon. A perfect way to celebrate your time in Nouméa.",
+          "searchQuery": "L'Atelier du Goût",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Nouméa",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Le Roof",
+          "description": "Start your day with a delightful breakfast at Le Roof, where you can enjoy fresh pastries and a stunning view of the lagoon. The ambiance is perfect for a romantic morning together.",
+          "searchQuery": "Le Roof",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Anse Vata Beach",
+          "description": "Spend a relaxing morning at Anse Vata Beach, known for its crystal-clear waters and soft white sand. Take a leisurely stroll along the beach or simply soak up the sun while enjoying the beautiful scenery.",
+          "searchQuery": "Anse Vata Beach",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at L'Atelier Gourmand",
+          "description": "Indulge in a delicious lunch at L'Atelier Gourmand, a charming restaurant offering exquisite French cuisine. Don't miss their seafood dishes, which are a highlight of the menu.",
+          "searchQuery": "L'Atelier Gourmand",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore the Tjibaou Cultural Centre",
+          "description": "Visit the Tjibaou Cultural Centre, an architectural marvel that showcases the rich Kanak culture. Enjoy the beautiful gardens and exhibitions that provide insight into the local heritage.",
+          "searchQuery": "Tjibaou Cultural Centre",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at the Hotel",
+          "description": "Return to your hotel to relax and freshen up before your departure. Take this time to reflect on your wonderful trip and enjoy the last moments in this beautiful destination.",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Fare",
+          "description": "Enjoy a farewell dinner at Le Fare, where you can savor traditional French dishes with a local twist. The cozy atmosphere and friendly service make it a perfect spot to end your trip.",
+          "searchQuery": "Le Fare",
+          "locationEn": "Nouméa, New Caledonia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

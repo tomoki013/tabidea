@@ -1,0 +1,468 @@
+{
+  "id": "005c0436-97cb-46f2-93d9-95f2a0fc877e",
+  "destination": "父島",
+  "description": "Embark on an unforgettable journey to the pristine and untouched beauty of Father Island (父島), where adventure awaits at every turn. This hidden gem in the Ogasawara Islands is a UNESCO World Heritage site, renowned for its breathtaking landscapes, rich biodiversity, and the chance to swim with dolphins in crystal-clear waters. Over the course of six days, immerse yourself in nature, explore vibrant marine life, and experience the thrill of outdoor adventures in a setting that feels like paradise. Get ready for an active itinerary filled with exploration, relaxation, and unforgettable memories!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Journey to Father Island",
+      "transit": {
+        "type": "ship",
+        "departure": {
+          "place": "Tokyo, Japan",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Father Island, Ogasawara Islands, Japan",
+          "time": "15:00"
+        },
+        "duration": "6h",
+        "memo": "Enjoy the scenic views of the Pacific Ocean during the ferry ride."
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "Check-in at Ogasawara Hotel",
+          "description": "Settle into your comfortable room at Ogasawara Hotel, where you can enjoy stunning ocean views and a relaxing atmosphere. Perfect for unwinding after your journey.",
+          "searchQuery": "Ogasawara Hotel",
+          "locationEn": "Father Island, Ogasawara Islands, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Explore the Beaches of Father Island",
+          "description": "Take a leisurely stroll along the pristine beaches of Father Island. The soft white sand and crystal-clear waters are perfect for a refreshing dip or simply soaking up the sun.",
+          "searchQuery": "Father Island Beaches",
+          "locationEn": "Father Island, Ogasawara Islands, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Ogasawara Restaurant",
+          "description": "Savor a delicious dinner featuring local seafood and traditional Japanese dishes at Ogasawara Restaurant. The fresh ingredients and beautiful presentation will delight your palate.",
+          "searchQuery": "Ogasawara Restaurant",
+          "locationEn": "Father Island, Ogasawara Islands, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Natural Wonders",
+      "transit": {
+        "type": "ship",
+        "departure": {
+          "place": "Chichijima",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hahajima",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "Enjoy a scenic boat ride to Hahajima, surrounded by stunning ocean views."
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "Swimming with Dolphins",
+          "description": "Experience the thrill of swimming with dolphins in the crystal-clear waters of Hahajima. This unforgettable encounter allows you to get up close with these intelligent creatures in their natural habitat.",
+          "searchQuery": "Hahajima Dolphin Swimming",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Hahajima Restaurant",
+          "description": "Savor a delicious lunch featuring fresh seafood and local specialties at a charming restaurant overlooking the ocean. The relaxed atmosphere is perfect for recharging after your morning adventure.",
+          "searchQuery": "Hahajima Restaurant",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hiking in Hahajima National Park",
+          "description": "Embark on a guided hike through the lush landscapes of Hahajima National Park. Discover unique flora and fauna, and enjoy breathtaking views from the trails that wind through this pristine environment.",
+          "searchQuery": "Hahajima National Park",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Chichijima",
+          "description": "After a day of exploration, take the boat back to Chichijima. Relax and enjoy the sunset over the ocean during your return journey.",
+          "searchQuery": "Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Indulge in a delightful dinner at a local izakaya, where you can enjoy a variety of Japanese dishes and fresh seafood. The lively atmosphere and friendly locals make for a perfect end to your adventurous day.",
+          "searchQuery": "Chichijima Izakaya",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Dolphin Swimming Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring fresh local ingredients and a view of the ocean. Enjoy a mix of Japanese and Western dishes to fuel your adventure ahead.",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Dolphin Spotting Tour",
+          "description": "Join a guided tour to spot dolphins in their natural habitat. The tour takes you around the beautiful waters surrounding Chichijima, where you can witness these playful creatures swimming alongside the boat.",
+          "searchQuery": "Dolphin Spotting Tour Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Snorkeling with Dolphins",
+          "description": "Dive into the crystal-clear waters for an unforgettable snorkeling experience. Swim with dolphins and explore the vibrant marine life in the surrounding coral reefs. This is a once-in-a-lifetime opportunity to connect with nature.",
+          "searchQuery": "Snorkeling with Dolphins Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch on the Beach",
+          "description": "Enjoy a delicious packed lunch on the beach after your snorkeling adventure. Savor fresh seafood and local delicacies while soaking in the sun and the stunning ocean views.",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore the Island",
+          "description": "Take some time to explore the untouched nature of Chichijima. Hike through lush trails, visit scenic viewpoints, and enjoy the tranquility of this beautiful island. Don't forget your camera for some breathtaking shots!",
+          "searchQuery": "Chichijima Nature Trails",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel",
+          "description": "Head back to your hotel to relax and freshen up after a day of adventure. Take a moment to reflect on the incredible experiences you've had with the dolphins and the beauty of Chichijima.",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Local Restaurant",
+          "description": "Indulge in a delightful dinner at a local restaurant, where you can taste traditional island cuisine. Try the fresh catch of the day and other local specialties, all while enjoying the warm hospitality of the islanders.",
+          "searchQuery": "Local Restaurant Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Hiking and Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Local Café",
+          "description": "Start your day with a hearty breakfast at a local café in Chichijima, enjoying fresh island ingredients and a view of the ocean. Don't miss the homemade pastries!",
+          "searchQuery": "Chichijima Local Café",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Hiking Mount Chachadake",
+          "description": "Embark on an invigorating hike up Mount Chachadake, where you'll be rewarded with breathtaking panoramic views of the Ogasawara Islands. The trail is well-marked and offers a chance to see unique flora and fauna along the way.",
+          "searchQuery": "Mount Chachadake",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Seaside Restaurant",
+          "description": "Enjoy a delicious lunch at a seaside restaurant, where you can savor fresh seafood caught that morning. The view of the ocean while dining is simply spectacular!",
+          "searchQuery": "Chichijima Seaside Restaurant",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Nature Trails Exploration",
+          "description": "After lunch, explore the nature trails around Chichijima. These trails lead you through lush greenery and offer opportunities to spot local wildlife, including various bird species.",
+          "searchQuery": "Chichijima Nature Trails",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Dolphin Swimming Experience",
+          "description": "Join a guided tour for an unforgettable experience swimming with dolphins in their natural habitat. This is a highlight of your trip, allowing you to connect with these playful creatures in the crystal-clear waters.",
+          "searchQuery": "Dolphin Swimming Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "End your day with dinner at a cozy izakaya, where you can enjoy a variety of local dishes and perhaps some sake. The atmosphere is friendly and perfect for reflecting on your day's adventures.",
+          "searchQuery": "Chichijima Izakaya",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Relaxation and Local Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café in Chichijima, where you can enjoy fresh tropical fruits and a delicious omelet made with local ingredients. The café offers a cozy atmosphere with a view of the ocean, perfect for a relaxing morning.",
+          "searchQuery": "Chichijima Café",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore Chichijima Island",
+          "description": "Take a leisurely stroll around Chichijima Island, known for its stunning natural beauty and rich biodiversity. Visit the local market to experience the vibrant culture and perhaps pick up some unique souvenirs. Don't forget to try some local snacks!",
+          "searchQuery": "Chichijima Market",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Seafood Restaurant",
+          "description": "Indulge in a fresh seafood lunch at a popular restaurant that specializes in local catches. Enjoy dishes like sashimi and grilled fish, all while overlooking the beautiful ocean.",
+          "searchQuery": "Chichijima Seafood Restaurant",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Dolphin Swimming Tour",
+          "description": "Join a guided tour to swim with dolphins in the crystal-clear waters surrounding Chichijima. This unforgettable experience allows you to interact with these playful creatures in their natural habitat. Make sure to bring your underwater camera!",
+          "searchQuery": "Dolphin Swimming Chichijima",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at the Beach",
+          "description": "After an exhilarating afternoon, unwind at one of Chichijima's beautiful beaches. Enjoy the sunset while lounging on the sand, or take a refreshing dip in the ocean. It's the perfect way to end your day in paradise.",
+          "searchQuery": "Chichijima Beach",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience the local dining scene at an izakaya, where you can enjoy a variety of small dishes and drinks. This casual setting is perfect for trying different flavors and meeting fellow travelers.",
+          "searchQuery": "Chichijima Izakaya",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "ship",
+        "departure": {
+          "place": "Chichijima",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hahajima",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic views of the Ogasawara Islands during the ferry ride."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Explore Hahajima Island",
+          "description": "Upon arrival at Hahajima, take some time to explore the untouched nature and stunning landscapes of this beautiful island. The lush greenery and pristine beaches are perfect for a leisurely hike or a relaxing stroll.",
+          "searchQuery": "Hahajima Island",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a delicious meal at a local restaurant, where you can enjoy fresh seafood caught from the surrounding waters. The flavors of the ocean will surely enhance your experience of this remote paradise.",
+          "searchQuery": "Hahajima Local Restaurant",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Dolphin Swimming Experience",
+          "description": "Join a guided tour for an unforgettable experience swimming with dolphins in their natural habitat. This adventure will allow you to connect with these intelligent creatures while enjoying the crystal-clear waters.",
+          "searchQuery": "Dolphin Swimming Hahajima",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return Ferry to Chichijima",
+          "description": "After an exhilarating day, board the ferry back to Chichijima. Take in the breathtaking views of the ocean and islands as you reflect on your adventures.",
+          "searchQuery": "Ferry from Hahajima to Chichijima",
+          "locationEn": "Hahajima, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Waterfront Restaurant",
+          "description": "Enjoy a relaxing dinner at a waterfront restaurant in Chichijima, where you can indulge in local delicacies while watching the sunset over the ocean. A perfect way to end your day in paradise.",
+          "searchQuery": "Chichijima Waterfront Restaurant",
+          "locationEn": "Chichijima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

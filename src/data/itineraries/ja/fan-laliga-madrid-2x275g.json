@@ -1,0 +1,616 @@
+{
+  "id": "44f0a0bf-6ca9-4231-8b71-0d141fd78598",
+  "destination": "マドリード",
+  "description": "マドリードでの7日間の旅は、文化と歴史、そしてサッカーへの情熱が交錯する特別な体験です。家族で過ごすこの旅では、ラ・リーガの聖地を巡りながら、地元の美味しい料理や魅力的なスポットを楽しむことができます。ゆったりとしたペースで、マドリードの魅力を存分に味わいましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1543783207-ec64e4d95325?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk0NTJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jorge Fernández Salas",
+  "heroImagePhotographerUrl": "https://unsplash.com/@jorgefdezsalas?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "マドリード到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、ハムとチーズのプレートが定番です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "プラド美術館",
+          "description": "世界的に有名なプラド美術館を訪れ、スペインの巨匠たちの作品を鑑賞します。特にゴヤやベラスケスの絵画は必見です。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "Prado Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レティーロ公園でピクニックランチ",
+          "description": "レティーロ公園で、事前に購入したサンドイッチやフルーツを持参してピクニックランチを楽しみます。公園内の美しい景色を眺めながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "レティーロ公園散策",
+          "description": "公園内を散策し、ボートに乗ったり、彫刻を見たりして、穏やかな時間を楽しみます。特に、クリスタルパレスは美しい写真スポットです。",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "サッカーショップでファングッズ購入",
+          "description": "マドリードのサッカーショップを訪れ、好きなチームのファングッズを探します。ユニフォームやマフラーなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "Real Madrid Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元のレストランで、タパスやパエリアを楽しみます。地元の人々に人気のあるお店で、スペインの味を堪能しましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "サッカーの聖地を巡る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、ハムとチーズのサンドイッチが定番です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サンティアゴ・ベルナベウスタジアム見学",
+          "description": "レアル・マドリードの本拠地、サンティアゴ・ベルナベウスタジアムを訪れます。スタジアムツアーでは、ピッチやロッカールームを見学し、クラブの歴史を学ぶことができます。サッカーファンにはたまらないスポットです。",
+          "searchQuery": "Santiago Bernabéu Stadium",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "サッカーファンのためのランチ",
+          "description": "スタジアム近くのカフェで、スペインの定番料理「トルティージャ」を楽しみましょう。地元の人々に愛されるお店で、サッカー観戦の話に花を咲かせるのも楽しいひとときです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ラ・リーガ関連ショップ巡り",
+          "description": "サンティアゴ・ベルナベウ周辺には、レアル・マドリードの公式グッズを取り扱うショップがあります。ユニフォームやマフラーなど、ファングッズを手に入れる絶好のチャンスです。",
+          "searchQuery": "Real Madrid Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マドリードの公園でリラックス",
+          "description": "リティーロ公園でのんびりとした時間を過ごします。美しい庭園や池を眺めながら、家族と一緒にゆったりとしたひとときを楽しんでください。",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元料理を楽しむために、タパスが豊富なレストランを訪れます。新鮮なシーフードや肉料理をシェアしながら、家族との会話を楽しむのにぴったりです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "マドリードの歴史を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのカフェで、トーストやコーヒーを楽しみながら、ゆったりとした朝を迎えます。地元の人々に混じって、朝のひとときを過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "王宮見学",
+          "description": "スペイン王室の公式な住居である王宮を訪れます。豪華な内装や美しい庭園を散策しながら、歴史を感じるひとときを楽しんでください。",
+          "searchQuery": "Royal Palace of Madrid",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "マヨール広場でランチ",
+          "description": "マヨール広場の周辺には多くのレストランがあります。地元のタパスを楽しみながら、広場の雰囲気を満喫しましょう。",
+          "searchQuery": "Plaza Mayor",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マドリードのサッカーショップ巡り",
+          "description": "LaLiga関連のグッズを探しに、マドリードのサッカーショップを巡ります。特にレアル・マドリードやアトレティコ・マドリードの公式ショップは必見です。",
+          "searchQuery": "Real Madrid Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リラックスのための公園散策",
+          "description": "リティロ公園でのんびりとした時間を過ごします。美しい景色を眺めながら、家族と一緒にリラックスしたひとときを楽しんでください。",
+          "searchQuery": "Retiro Park",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元料理を楽しむために、評判の良いレストランでディナーを。特にパエリアやハモン・セラーノはおすすめです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のマドリード散策",
+          "description": "夕食後は、マドリードの街を散策。ライトアップされた建物や広場を楽しみながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アートと文化の深堀り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、ハムとチーズの盛り合わせが定番です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ソフィア王妃芸術センター",
+          "description": "現代アートの宝庫、ソフィア王妃芸術センターを訪れます。ピカソの「ゲルニカ」をはじめ、スペインの現代アートを堪能できるスポットです。美術館内のカフェで一息つくのもおすすめ。",
+          "searchQuery": "Museo Reina Sofia",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くのレストランでランチ",
+          "description": "ソフィア王妃芸術センター近くのレストランで、スペインのタパスを楽しみましょう。地元の人に人気のあるお店で、様々な小皿料理をシェアして味わうのが楽しいです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ティッセン＝ボルネミッサ美術館",
+          "description": "次に、ティッセン＝ボルネミッサ美術館へ。ルネサンスから現代までの幅広いコレクションが魅力で、特に印象派の作品が多く展示されています。",
+          "searchQuery": "Museo Thyssen-Bornemisza",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マドリードの街を散策",
+          "description": "美術館を出た後は、マドリードの街を散策。プラド通りを歩きながら、地元のショップやカフェを覗いてみましょう。特に、LaLigaのファングッズを扱うお店を探すのも楽しいです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元のレストランで、スペイン料理のディナーを楽しみます。パエリアやタパスを堪能しながら、家族との楽しい時間を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "日帰りでトレドの魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーがオススメです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "トレドへの移動",
+          "description": "マドリードからトレドへは、快適な電車で約30分の旅。美しい風景を楽しみながら、歴史的な街へ向かいます。",
+          "locationEn": "Toledo, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "トレド大聖堂",
+          "description": "トレドのシンボルとも言える壮大な大聖堂を訪れます。ゴシック様式の美しい建築と、内部の豪華な装飾に圧倒されることでしょう。",
+          "searchQuery": "Toledo Cathedral",
+          "locationEn": "Toledo, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "トレドの地元レストランでランチ",
+          "description": "トレド名物の「マルメロの肉料理」を楽しめる地元のレストランで、スペインの味を堪能します。地元の食材を使った料理が魅力です。",
+          "locationEn": "Toledo, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アルカサル",
+          "description": "トレドのアルカサルを訪れ、その歴史を学びます。美しい景色を楽しみながら、城の中を散策するのもおすすめです。",
+          "searchQuery": "Alcázar of Toledo",
+          "locationEn": "Toledo, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "トレドの街を散策",
+          "description": "トレドの狭い石畳の道を散策しながら、地元のショップでファングッズやお土産を探します。特にサッカー関連のアイテムが豊富です。",
+          "locationEn": "Toledo, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "マドリードへの移動",
+          "description": "トレドからマドリードへ戻る電車に乗ります。日が暮れる中、トレドの美しい景色を振り返りながらの帰路です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マドリードでディナー",
+          "description": "マドリードに戻ったら、地元のタパスバーでディナーを楽しみます。様々なタパスをシェアしながら、家族との楽しい時間を過ごしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのホテルで、スペインの伝統的な朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーがオススメです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "グランビア通り散策",
+          "description": "マドリードのメインストリート、グランビア通りを散策します。美しい建築物やショップが立ち並び、ショッピングやカフェでのひとときを楽しむことができます。",
+          "searchQuery": "Gran Via",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のマーケットでランチ",
+          "description": "マドリードの地元マーケット「マルカド・デ・サン・ミゲル」で新鮮なタパスや地元の食材を楽しみながらランチ。色とりどりの料理が並ぶ中、お気に入りを見つけてみてください。",
+          "searchQuery": "Mercado de San Miguel",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ラ・リーガ関連グッズのショッピング",
+          "description": "サッカー好きにはたまらない、ラ・リーガの公式ショップを訪れます。お気に入りのチームのユニフォームやグッズを手に入れて、思い出を作りましょう。",
+          "searchQuery": "La Liga Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "リラックスのためのカフェタイム",
+          "description": "マドリードのカフェで、スペインのコーヒーやデザートを楽しみながら、ゆったりとした時間を過ごします。地元の人々の生活を感じることができる素敵な場所です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "プラド美術館訪問",
+          "description": "スペインの名画が集まるプラド美術館を訪れます。ゴヤやベラスケスの作品を鑑賞し、文化的なひとときを楽しみましょう。",
+          "searchQuery": "Prado Museum",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元料理を楽しめるレストランで、スペインの伝統的な料理を堪能します。特にパエリアやタパスは外せません。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "マドリードの思い出を胸に帰国",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マドリードのカフェで、スペイン風の朝食を楽しみます。トーストにトマトとオリーブオイルをかけた「パン・コン・トマテ」や、甘いペストリーが絶品です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ラ・リガのファングッズショップ訪問",
+          "description": "ラ・リガの公式ショップで、好きなチームのユニフォームやグッズを購入しましょう。サッカーファンにはたまらないアイテムが揃っています。",
+          "searchQuery": "La Liga Official Store",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のカフェでランチ",
+          "description": "マドリードの地元カフェで、タパスやパエリアを楽しみながら、リラックスした時間を過ごします。地元の人々と交流するチャンスも！",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サンティアゴ・ベルナベウスタジアム見学",
+          "description": "レアル・マドリードの本拠地、サンティアゴ・ベルナベウスタジアムを見学。スタジアムツアーでは、ピッチやロッカールームを訪れ、クラブの歴史を学びます。",
+          "searchQuery": "Santiago Bernabéu Stadium",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "お土産屋でショッピング",
+          "description": "マドリードの人気お土産屋で、スペインの特産品や手作りの工芸品を探しましょう。家族や友人へのお土産にぴったりです。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "旅行の疲れを癒すために、ホテルで少し休憩。リラックスした後、夕食の準備をしましょう。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のレストランでディナー",
+          "description": "マドリードの地元レストランで、スペイン料理のディナーを楽しみます。新鮮なシーフードや肉料理を堪能し、旅行の締めくくりにふさわしい食事です。",
+          "locationEn": "Madrid, Spain",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

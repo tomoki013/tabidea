@@ -1,0 +1,477 @@
+{
+  "id": "2871bb85-c65d-49b8-8730-bb1a611b36ef",
+  "destination": "Reykjavik",
+  "description": "Immerse yourself in the vibrant culture and stunning landscapes of Reykjavik, where the charm of Icelandic life meets breathtaking natural beauty. This 5-day adventure is designed for couples looking to explore the city’s unique shopping scene while indulging in exciting activities. From cozy cafes to local boutiques, and from geothermal wonders to the stunning Northern Lights, this trip promises a delightful blend of urban exploration and nature’s splendor.",
+  "heroImage": "https://images.unsplash.com/photo-1647603300281-093c578f7f0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU2MjZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "aiden patrissi",
+  "heroImagePhotographerUrl": "https://unsplash.com/@apatrissi?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Reykjavik",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, where you can enjoy rye bread, herring, and skyr. This cozy café is known for its local flavors and is just a short walk from the city center.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Hallgrímskirkja",
+          "description": "Visit the iconic Hallgrímskirkja, a stunning church that towers over Reykjavik. Take the elevator to the top for panoramic views of the city and surrounding mountains. The architecture is inspired by Iceland's unique basalt columns.",
+          "searchQuery": "Hallgrímskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bæjarins Beztu Pylsur",
+          "description": "No trip to Reykjavik is complete without trying a hot dog from Bæjarins Beztu Pylsur, a famous hot dog stand. Enjoy a delicious Icelandic hot dog topped with crispy onions, raw onions, ketchup, and remoulade.",
+          "searchQuery": "Bæjarins Beztu Pylsur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Laugavegur Street",
+          "description": "Stroll down Laugavegur, Reykjavik's main shopping street, filled with unique boutiques, souvenir shops, and local art galleries. It's the perfect place to pick up some Icelandic wool sweaters or handcrafted jewelry.",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Harpa Concert Hall",
+          "description": "Head to the Harpa Concert Hall, an architectural marvel by the waterfront. Explore its stunning glass facade and, if time allows, catch a glimpse of any ongoing performances or exhibitions.",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Icelandic Street Food",
+          "description": "Enjoy a casual dinner at Icelandic Street Food, where you can savor traditional Icelandic dishes like lamb soup and fish stew in a cozy atmosphere. The prices are reasonable, making it a great budget-friendly option.",
+          "searchQuery": "Icelandic Street Food",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening walk along the waterfront",
+          "description": "Take a leisurely evening stroll along the waterfront promenade, enjoying the fresh sea breeze and views of the mountains. It's a perfect way to unwind after a day of exploring.",
+          "searchQuery": "Reykjavik Waterfront",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Reykjavik's Culture and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, known for its cozy atmosphere and delicious rye bread topped with herring or smoked salmon. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Harpa Concert Hall",
+          "description": "Explore the stunning Harpa Concert Hall, an architectural marvel by the waterfront. Take a guided tour to learn about its design and enjoy the beautiful views of the harbor. Don't forget to snap some photos of its colorful glass facade!",
+          "searchQuery": "Harpa Concert Hall",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Stroll along the Sun Voyager",
+          "description": "Take a leisurely walk to the Sun Voyager, a striking sculpture that symbolizes exploration and discovery. The views of the ocean and mountains from here are breathtaking, making it a perfect spot for a romantic moment.",
+          "searchQuery": "Sun Voyager",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Bæjarins Beztu Pylsur",
+          "description": "Enjoy a quick and delicious lunch at Bæjarins Beztu Pylsur, famous for its hot dogs. Try it with all the toppings for a true Icelandic experience!",
+          "searchQuery": "Bæjarins Beztu Pylsur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Kolaportid Flea Market",
+          "description": "Dive into the local culture at Kolaportid Flea Market, where you can find everything from vintage clothing to Icelandic delicacies. It's a great place to pick up unique souvenirs and try some traditional foods.",
+          "searchQuery": "Kolaportid Flea Market",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the National Museum of Iceland",
+          "description": "Discover Iceland's rich history at the National Museum. The exhibits showcase the country's heritage from the Viking Age to modern times, providing a fascinating insight into Icelandic culture.",
+          "searchQuery": "National Museum of Iceland",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee Break at Te & Kaffi",
+          "description": "Take a break at Te & Kaffi, a popular café chain in Iceland. Enjoy a warm drink and a pastry while you relax and recharge before your evening activities.",
+          "searchQuery": "Te & Kaffi",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Icelandic Street Food",
+          "description": "Savor a casual dinner at Icelandic Street Food, where you can enjoy traditional dishes like lamb soup and fish stew in a cozy setting. It's a great way to end your day with hearty Icelandic flavors!",
+          "searchQuery": "Icelandic Street Food",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Waterfront",
+          "description": "End your day with a romantic stroll along the waterfront. The views of the city lights reflecting on the water are magical, making it a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Reykjavik Waterfront",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Golden Circle Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, where you can enjoy rye bread with herring and a delicious skyr yogurt. This cozy café is known for its local flavors and is just a short walk from your hotel.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Þingvellir National Park",
+          "description": "Explore the stunning landscapes of Þingvellir National Park, a UNESCO World Heritage site. Walk between the tectonic plates of North America and Eurasia, and enjoy the breathtaking views of the rift valley and Öxarárfoss waterfall.",
+          "searchQuery": "Þingvellir National Park",
+          "locationEn": "Þingvellir, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Þingvellir Café",
+          "description": "Refuel with a light lunch at the Þingvellir Café, where you can enjoy homemade soups and sandwiches while taking in the beautiful surroundings of the national park.",
+          "searchQuery": "Þingvellir Café",
+          "locationEn": "Þingvellir, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Geysir Geothermal Area",
+          "description": "Visit the Geysir Geothermal Area, home to the famous Strokkur geyser that erupts every few minutes. Marvel at the bubbling hot springs and the unique geothermal features that make this area a must-see.",
+          "searchQuery": "Geysir Geothermal Area",
+          "locationEn": "Haukadalur, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Gullfoss Waterfall",
+          "description": "Witness the majestic Gullfoss Waterfall, one of Iceland's most iconic natural wonders. The powerful cascades and the surrounding canyon create a stunning sight, especially on sunny days when rainbows often appear.",
+          "searchQuery": "Gullfoss Waterfall",
+          "locationEn": "Gullfoss, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Reykjavik",
+          "description": "Head back to Reykjavik, where you can relax and freshen up after a day of exploring. The drive offers beautiful views of the Icelandic countryside.",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Icelandic Street Food",
+          "description": "Enjoy a casual dinner at Icelandic Street Food, where you can try traditional Icelandic dishes like lamb soup and fish stew in a cozy atmosphere. The prices are reasonable, making it a great spot for a budget-friendly meal.",
+          "searchQuery": "Icelandic Street Food",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Shopping at Laugavegur Street",
+          "description": "Stroll along Laugavegur Street, Reykjavik's main shopping street, filled with unique boutiques, souvenir shops, and local crafts. It's the perfect place to pick up some Icelandic wool sweaters or handmade jewelry.",
+          "searchQuery": "Laugavegur Street",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Nightlife",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, where you can enjoy rye bread, herring, and skyr. This cozy café is known for its local flavors and is just a short walk from Hallgrímskirkja.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Hallgrímskirkja",
+          "description": "Explore the iconic Hallgrímskirkja, one of Reykjavik's most famous landmarks. Climb to the top for stunning panoramic views of the city and surrounding mountains. The architecture is inspired by Iceland's natural landscapes.",
+          "searchQuery": "Hallgrímskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bæjarins Beztu Pylsur",
+          "description": "No visit to Reykjavik is complete without trying the famous hot dogs at Bæjarins Beztu Pylsur. Grab a quick bite and enjoy the unique toppings that make these hot dogs a local favorite.",
+          "searchQuery": "Bæjarins Beztu Pylsur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shopping at Laugavegur Street",
+          "description": "Stroll down Laugavegur, Reykjavik's main shopping street, filled with boutiques, souvenir shops, and local crafts. It's the perfect place to pick up unique Icelandic gifts and fashion.",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Relax at the Blue Lagoon",
+          "description": "Take a short trip to the Blue Lagoon, a geothermal spa known for its stunning blue waters and rejuvenating properties. Enjoy a soak in the warm waters and indulge in a spa treatment if you wish.",
+          "searchQuery": "Blue Lagoon",
+          "locationEn": "Grindavík, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Grillmarkaðurinn",
+          "description": "Savor a delicious dinner at Grillmarkaðurinn, known for its locally sourced ingredients and creative dishes. The atmosphere is warm and inviting, perfect for a romantic evening.",
+          "searchQuery": "Grillmarkaðurinn",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Experience Reykjavik Nightlife",
+          "description": "Explore Reykjavik's vibrant nightlife. Head to the trendy bars and clubs in the city center, where you can enjoy live music and a lively atmosphere. Don't miss out on trying some local craft beers!",
+          "searchQuery": "Reykjavik Nightlife",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Reykjavik",
+          "time": "14:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "17:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from Reykjavik to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Loki",
+          "description": "Start your day with a traditional Icelandic breakfast at Café Loki, known for its rye bread and delicious skyr. It's a cozy spot that offers a taste of local flavors, perfect for fueling up before your day of exploration.",
+          "searchQuery": "Café Loki",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Hallgrímskirkja",
+          "description": "Explore the iconic Hallgrímskirkja, Reykjavik's most famous church. Climb to the top for stunning panoramic views of the city and surrounding mountains. The unique architecture is a must-see and a great photo opportunity!",
+          "searchQuery": "Hallgrímskirkja",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bæjarins Beztu Pylsur",
+          "description": "Enjoy a quick lunch at Bæjarins Beztu Pylsur, famous for its hot dogs. This local favorite is a great way to experience Icelandic street food without breaking the bank. Don't forget to try it with all the toppings!",
+          "searchQuery": "Bæjarins Beztu Pylsur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Shopping at Laugavegur Street",
+          "description": "Stroll down Laugavegur, Reykjavik's main shopping street. Here, you'll find a mix of local boutiques, souvenir shops, and cafes. It's the perfect place to pick up unique Icelandic gifts and enjoy the vibrant atmosphere.",
+          "searchQuery": "Laugavegur",
+          "locationEn": "Reykjavik, Iceland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

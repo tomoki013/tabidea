@@ -1,0 +1,278 @@
+{
+  "id": "8b4f5e23-359a-4426-923e-eeb7a618bb72",
+  "destination": "ザルツブルク",
+  "description": "ザルツブルクは、音楽と歴史が息づく美しい街。モーツァルトの故郷として知られ、古い街並みや壮大な城塞が魅力です。家族での旅行にぴったりなこの地で、クラシック音楽の歴史を感じながら、地元の文化や美味しい料理を楽しみましょう。特に、音楽関連のスポットやファングッズを探す旅は、特別な思い出になること間違いなしです。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ザルツブルクの音楽と歴史を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ザルツブルクの地元のカフェで、フレッシュなパンやコーヒーを楽しみながら、ゆったりとした朝を迎えます。",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "モーツァルトの生家",
+          "description": "音楽の天才モーツァルトが生まれ育った場所を訪れ、彼の人生や作品について学びます。展示品や楽器も見どころです。",
+          "searchQuery": "Mozart's Birthplace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・モーツァルトでランチ",
+          "description": "モーツァルトにちなんだカフェで、地元の料理を楽しみながら、音楽の雰囲気に浸ります。特にデザートが絶品です。",
+          "searchQuery": "Cafe Mozart",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ザルツブルク大聖堂",
+          "description": "美しいバロック様式の大聖堂を訪れ、その壮大な内部や歴史的な背景を感じます。音楽イベントも行われることがあるので、運が良ければ生演奏も楽しめるかもしれません。",
+          "searchQuery": "Salzburg Cathedral",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ホーエンザルツブルク城",
+          "description": "ザルツブルクのシンボルとも言える城を訪れ、街を一望できる絶景を楽しみます。城内の博物館では、歴史的な展示も見られます。",
+          "searchQuery": "Hohensalzburg Fortress",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "音楽関連のグッズショップ巡り",
+          "description": "ザルツブルクの街中にある音楽関連のショップを訪れ、モーツァルトのファングッズやお土産を探します。特に楽器や楽譜は見逃せません。",
+          "searchQuery": "Mozart Shop",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ザルツブルクの伝統料理を楽しめるレストランで、地元のビールやワインと共に、心温まるディナーを堪能します。",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ザルツブルクの魅力を深堀り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ザルツブルクのホテルで、地元の食材を使った朝食を楽しみます。新鮮なパンやチーズ、ハムなど、オーストリアの朝食を堪能しましょう。",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ミラベル宮殿",
+          "description": "美しい庭園とバロック様式の建物が魅力のミラベル宮殿を訪れます。庭園内を散策しながら、モーツァルトの音楽に思いを馳せるのもおすすめです。",
+          "searchQuery": "Mirabell Palace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "カフェ・トリプルでランチ",
+          "description": "ザルツブルクの老舗カフェで、地元の名物料理を楽しみます。特に、ザルツブルク名物のシュニッツェルは絶品です。",
+          "searchQuery": "Cafe Trapp",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ゲトライデ通り散策",
+          "description": "ザルツブルクのメインストリート、ゲトライデ通りを散策します。おしゃれなショップやカフェが立ち並び、ファングッズを探すのにぴったりの場所です。",
+          "searchQuery": "Getreidegasse",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "音楽の家（モーツァルトの生家）",
+          "description": "音楽の家を訪れ、モーツァルトの生涯や彼の音楽に触れることができます。展示品を見ながら、彼の偉大な業績を感じてみましょう。",
+          "searchQuery": "Mozart's Birthplace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ザルツブルク大聖堂",
+          "description": "ザルツブルク大聖堂を訪れ、その壮大な建築と美しい内部を堪能します。特に、オルガンの音色は心に残ることでしょう。",
+          "searchQuery": "Salzburg Cathedral",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ザルツブルクの地元料理を楽しめるレストランで、心温まるディナーを。オーストリアのワインと共に、素敵な夜を過ごしましょう。",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ザルツブルクの最後のひととき",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "カフェ・トルンバッハで朝食",
+          "description": "ザルツブルクの老舗カフェで、地元の人々に愛される朝食を楽しみます。特に、フレッシュなペストリーやコーヒーが絶品です。",
+          "searchQuery": "Cafe Tomaselli",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マーケット広場散策",
+          "description": "ザルツブルクの中心、マーケット広場を散策。美しいバロック様式の建物に囲まれた広場で、地元の市場やお土産屋を楽しむことができます。",
+          "searchQuery": "Salzburg Market Square",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "モーツァルト広場でランチ",
+          "description": "モーツァルト広場近くのレストランで、地元の料理を楽しみながら、モーツァルトの生誕地を感じるひとときを過ごします。",
+          "searchQuery": "Mozartplatz",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "モーツァルトの家を訪問",
+          "description": "モーツァルトの生家を訪れ、彼の音楽と人生について学びます。展示品や楽器が展示されており、音楽ファンにはたまらないスポットです。",
+          "searchQuery": "Mozarts Geburtshaus",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ザルツブルク音楽院を見学",
+          "description": "ザルツブルク音楽院を訪れ、クラシック音楽の教育の現場を体験します。時折行われる公開演奏会も楽しめるかもしれません。",
+          "searchQuery": "Salzburg Mozarteum University",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "ザルツブルクの音楽関連ショップで、モーツァルトやクラシック音楽のファングッズを探します。お土産にぴったりなアイテムが見つかるかも。",
+          "searchQuery": "Mozart Shop Salzburg",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "最後のディナー",
+          "description": "ザルツブルクの伝統的なレストランで、オーストリア料理を堪能します。地元のビールやワインと共に、旅の締めくくりを楽しんでください。",
+          "searchQuery": "St. Peter Stiftskeller",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

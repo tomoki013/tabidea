@@ -1,0 +1,449 @@
+{
+  "id": "e89d3b7c-38f8-4653-9a52-273abcbef789",
+  "destination": "New Orleans",
+  "description": "Immerse yourself in the vibrant culture and rich history of New Orleans, a city that dances to the rhythm of jazz and the spirit of celebration. Over five days, you and your family will explore the soulful streets, indulge in exquisite cuisine, and relax in the charming atmosphere that this unique city offers. From iconic jazz clubs to tranquil parks, every moment will be filled with discovery and delight, making it a perfect getaway for relaxation and cultural immersion.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and French Quarter Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café du Monde",
+          "description": "Start your day with a classic New Orleans breakfast of beignets and café au lait at the iconic Café du Monde. The fluffy, powdered sugar-dusted pastries are a must-try!",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Jackson Square",
+          "description": "Stroll through Jackson Square, a vibrant park surrounded by historic buildings. Enjoy the street performers and artists showcasing their work, capturing the essence of New Orleans culture.",
+          "searchQuery": "Jackson Square",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Gumbo Shop",
+          "description": "Savor authentic Creole cuisine at The Gumbo Shop, known for its rich gumbo and jambalaya. This cozy restaurant is perfect for a family meal in the heart of the French Quarter.",
+          "searchQuery": "The Gumbo Shop",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit St. Louis Cathedral",
+          "description": "Explore the stunning St. Louis Cathedral, the oldest continuously active Roman Catholic cathedral in the United States. Its beautiful architecture and serene atmosphere are worth the visit.",
+          "searchQuery": "St. Louis Cathedral",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping for Jazz Merchandise at Frenchmen Street",
+          "description": "Head to Frenchmen Street, where you can find unique jazz merchandise and local art. This area is known for its vibrant music scene and is perfect for picking up souvenirs.",
+          "searchQuery": "Frenchmen Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Coop's Place",
+          "description": "Enjoy a casual dinner at Coop's Place, famous for its delicious fried chicken and local dishes. The laid-back atmosphere makes it a great spot for families.",
+          "searchQuery": "Coop's Place",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Jazz at Preservation Hall",
+          "description": "End your day with an unforgettable jazz experience at Preservation Hall. This historic venue showcases some of the best local jazz musicians in an intimate setting.",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Jazz and Culture in the Big Easy",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café du Monde",
+          "description": "Start your day with a classic New Orleans breakfast of beignets and café au lait at the iconic Café du Monde. The powdered sugar-dusted pastries are a must-try!",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Louis Armstrong Park",
+          "description": "Stroll through Louis Armstrong Park, a beautiful green space dedicated to the legendary jazz musician. Enjoy the serene atmosphere and take in the stunning sculptures and fountains.",
+          "searchQuery": "Louis Armstrong Park",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Gumbo Shop",
+          "description": "Savor authentic Creole cuisine at The Gumbo Shop, known for its rich gumbo and jambalaya. This cozy restaurant is perfect for a family meal after exploring the park.",
+          "searchQuery": "The Gumbo Shop",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Frenchmen Street",
+          "description": "Head to Frenchmen Street, the heart of New Orleans' live music scene. Browse local shops for jazz memorabilia and enjoy the vibrant atmosphere filled with street performers.",
+          "searchQuery": "Frenchmen Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Preservation Hall",
+          "description": "Experience the essence of New Orleans jazz at Preservation Hall. Attend an afternoon concert to hear some of the best local musicians perform in an intimate setting.",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Cochon",
+          "description": "Indulge in a delicious dinner at Cochon, where you can enjoy traditional Cajun and Southern dishes made with locally sourced ingredients. A perfect way to end your day!",
+          "searchQuery": "Cochon",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Jazz at The Spotted Cat Music Club",
+          "description": "Wrap up your day with live jazz at The Spotted Cat Music Club, a beloved venue on Frenchmen Street. Enjoy the lively performances and soak in the local music culture.",
+          "searchQuery": "The Spotted Cat Music Club",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Garden District and Local Flavors",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café du Monde",
+          "description": "Start your day with a classic New Orleans breakfast of beignets and café au lait at the iconic Café du Monde. The fluffy, powdered sugar-dusted pastries are a must-try!",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore the Garden District",
+          "description": "Stroll through the picturesque Garden District, known for its stunning antebellum mansions and lush gardens. Don't forget to take photos of the beautiful architecture and vibrant flora!",
+          "searchQuery": "Garden District",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Commander's Palace",
+          "description": "Indulge in a luxurious lunch at Commander's Palace, a renowned restaurant famous for its Creole cuisine. Be sure to try their turtle soup and bread pudding soufflé!",
+          "searchQuery": "Commander's Palace",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Lafayette Cemetery No. 1",
+          "description": "Explore the historic Lafayette Cemetery No. 1, one of the oldest cemeteries in New Orleans. The above-ground tombs and unique burial practices offer a glimpse into the city's rich history.",
+          "searchQuery": "Lafayette Cemetery No. 1",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping on Magazine Street",
+          "description": "Head to Magazine Street for some retail therapy! This vibrant street is lined with local boutiques, art galleries, and shops where you can find unique jazz memorabilia and souvenirs.",
+          "searchQuery": "Magazine Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Jazz at Preservation Hall",
+          "description": "Experience the heart of New Orleans jazz at Preservation Hall. Enjoy an intimate performance by talented local musicians in this historic venue, a true gem for jazz lovers.",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Coop's Place",
+          "description": "Wrap up your day with a casual dinner at Coop's Place, known for its delicious Cajun and Creole dishes. Try the jambalaya or the fried chicken for a true taste of New Orleans!",
+          "searchQuery": "Coop's Place",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Relaxation and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café du Monde",
+          "description": "Start your day with a classic New Orleans breakfast at the iconic Café du Monde. Enjoy their famous beignets dusted with powdered sugar and a café au lait to energize you for the day ahead.",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the New Orleans Museum of Art",
+          "description": "Explore the New Orleans Museum of Art, home to an impressive collection of fine art, including pieces from the Renaissance to contemporary works. The museum is set in City Park, making it a perfect spot to enjoy art and nature together.",
+          "searchQuery": "New Orleans Museum of Art",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Garden Room",
+          "description": "Enjoy a delightful lunch at The Garden Room, located within the museum. The menu features fresh, locally sourced ingredients and a beautiful view of the gardens outside.",
+          "searchQuery": "The Garden Room",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through City Park",
+          "description": "After lunch, take a leisurely stroll through City Park. This expansive park is perfect for relaxing, with beautiful oak trees and serene walking paths. Don’t forget to check out the sculptures and the lovely botanical garden.",
+          "searchQuery": "City Park",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping at French Market",
+          "description": "Head to the French Market for some shopping. This historic market offers a variety of local crafts, food, and unique souvenirs, perfect for picking up some jazz-related merchandise and local art.",
+          "searchQuery": "French Market",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Jazz at Preservation Hall",
+          "description": "Experience the heart of New Orleans jazz at Preservation Hall. Enjoy an intimate performance by local musicians in this historic venue, where the spirit of jazz comes alive.",
+          "searchQuery": "Preservation Hall",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Coop's Place",
+          "description": "End your day with a hearty dinner at Coop's Place, known for its authentic Cajun cuisine. Try their famous jambalaya or gumbo for a true taste of New Orleans.",
+          "searchQuery": "Coop's Place",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Louis Armstrong New Orleans International Airport",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "2h",
+        "memo": "Direct flight back to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café du Monde",
+          "description": "Start your day with a classic New Orleans breakfast at the iconic Café du Monde. Enjoy their famous beignets dusted with powdered sugar and a café au lait to fuel your day of exploration.",
+          "searchQuery": "Café du Monde",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the New Orleans Jazz Museum",
+          "description": "Dive into the rich history of jazz at the New Orleans Jazz Museum. Located in the historic Old U.S. Mint, this museum showcases the evolution of jazz music and its cultural significance in New Orleans.",
+          "searchQuery": "New Orleans Jazz Museum",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Frenchmen Street",
+          "description": "Stroll down Frenchmen Street, known for its vibrant music scene and local art. Check out the various shops for unique jazz memorabilia and local art pieces to take home as souvenirs.",
+          "searchQuery": "Frenchmen Street",
+          "locationEn": "New Orleans, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Praline Connection",
+          "description": "Enjoy a delicious lunch at The Praline Connection, famous for its Creole cuisine. Try their jambalaya or gumbo for an authentic taste of New Orleans before heading to the airport.",
+          "searchQuery": "The Praline Connection",
+          "locationEn": "New Orleans, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Departure to Washington D.C.",
+          "description": "Head to the airport for your flight back to Washington D.C. Reflect on the wonderful memories made during your New Orleans trip, filled with jazz, culture, and relaxation.",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,267 @@
+{
+  "id": "a30a9353-f138-47dc-ab3c-5b917320b68f",
+  "destination": "宮古島",
+  "description": "美しい海と自然に囲まれた宮古島で、心身ともにリフレッシュする旅へ出かけましょう。青い海、白い砂浜、そして緑豊かな自然が織りなす絶景を楽しみながら、カップルでのんびりとした時間を過ごすことができます。ドライブをしながら、隠れたビーチや地元の美味しい食事を堪能する、心温まる3日間のプランをご提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "宮古島到着とビーチリラックス",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "宮古空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "宮古島市内",
+          "time": "10:30"
+        },
+        "duration": "30m",
+        "memo": "レンタカーを借りて、宮古島市内へ向かいます。空港からの道中も美しい景色が楽しめます。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "与那覇前浜ビーチ",
+          "description": "宮古島の中でも特に美しいと評判の与那覇前浜ビーチで、青い海と白い砂浜を満喫。海水浴やビーチでのんびり過ごすのに最適です。",
+          "searchQuery": "Yonaha Maehama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチ近くのカフェでランチ",
+          "description": "ビーチの近くにあるカフェで、地元の新鮮な海の幸を使ったランチを楽しみます。特に海鮮丼がおすすめ！",
+          "searchQuery": "Cafe near Yonaha Maehama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ビーチでリラックス",
+          "description": "ランチの後は、再びビーチでリラックス。海に入ったり、日陰で読書をしたり、ゆったりとした時間を過ごします。",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "宮古島市内散策",
+          "description": "宮古島市内をドライブしながら、地元のショップやお土産屋を訪れます。特に、宮古島の特産品を扱う店は見逃せません。",
+          "searchQuery": "Miyakojima City",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の居酒屋でディナー",
+          "description": "宮古島の新鮮な魚介を使った料理が楽しめる居酒屋で、地元の人々と同じように食事を楽しみます。特に、刺身や島豆腐が絶品です。",
+          "searchQuery": "Izakaya in Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "宿泊先チェックイン",
+          "description": "本日の宿泊先にチェックイン。リラックスした後は、明日の計画を立てながらゆっくりと過ごします。",
+          "searchQuery": "Hotel in Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "絶景ドライブと隠れビーチ探訪",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "宮古島",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "伊良部大橋",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "宮古島の美しい風景を楽しみながら、伊良部大橋へ向かいます。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "伊良部大橋",
+          "description": "宮古島と伊良部島を結ぶ全長3,540mの美しい橋。橋の上からはエメラルドグリーンの海が広がり、絶好の写真スポットです。",
+          "searchQuery": "Irabu Bridge",
+          "locationEn": "Irabu Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "佐良浜ビーチ",
+          "description": "透明度の高い海と白い砂浜が広がる隠れたビーチ。静かな環境でリラックスしながら、海に入って楽しむことができます。",
+          "searchQuery": "Saruhama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチ近くのカフェでランチ",
+          "description": "地元の新鮮な食材を使ったランチを楽しめるカフェで、海を眺めながらのんびり過ごします。",
+          "searchQuery": "Cafe near Saruhama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "下地島",
+          "description": "下地島の美しいビーチで、シュノーケリングや海水浴を楽しむことができます。人が少なく、プライベート感を味わえるスポットです。",
+          "searchQuery": "Shimoji Island",
+          "locationEn": "Shimoji Island, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕日を見ながらのドライブ",
+          "description": "下地島から宮古島へ戻る途中、夕日を眺めながらのドライブを楽しみます。美しい夕焼けが心に残るひとときです。",
+          "searchQuery": "Sunset Drive in Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "宮古島のレストランでディナー",
+          "description": "地元の海の幸をふんだんに使ったディナーを楽しむことができるレストランで、特別な夜を過ごします。",
+          "searchQuery": "Restaurant in Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "自然と文化を感じる一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "宮古島の美しい海を眺めながら、地元の食材を使った朝食を楽しみます。新鮮な魚やフルーツが盛りだくさんで、リラックスした一日のスタートにぴったりです。",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "東平安名崎",
+          "description": "宮古島の最東端に位置する東平安名崎へ。青い海と空が織りなす絶景を楽しみながら、灯台までの散策をお楽しみください。特に、晴れた日には美しい海の色が一層映えます。",
+          "searchQuery": "Higashi-Hennazaki",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元食堂でランチ",
+          "description": "宮古島の地元食堂で、沖縄そばや海鮮丼を味わいます。新鮮な魚介類を使った料理は、地元の人々にも愛される味です。",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ドライブでビーチ巡り",
+          "description": "レンタカーで宮古島の美しいビーチを巡ります。特に、与那覇前浜ビーチや砂山ビーチは、白い砂浜と透明な海が広がり、思わず足を止めたくなるスポットです。",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ビーチでリラックス",
+          "description": "与那覇前浜ビーチで、海に入ったり、のんびりと日光浴を楽しんだりします。美しい夕日を眺めながら、ロマンチックなひとときを過ごしましょう。",
+          "searchQuery": "Yonaha Maehama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元の居酒屋でディナー",
+          "description": "宮古島の居酒屋で、地元の料理を楽しみます。新鮮な海の幸や、沖縄の伝統的な料理を味わいながら、旅の思い出を語り合う素敵な時間を過ごしましょう。",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

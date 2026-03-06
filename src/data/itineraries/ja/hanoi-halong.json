@@ -1,0 +1,433 @@
+{
+  "id": "1e072d6d-e0f4-4b28-81da-0e03a5016cc4",
+  "destination": "ハノイ・ハロン湾",
+  "description": "家族で楽しむハノイとハロン湾の旅。歴史と文化が息づくハノイの街並みを散策し、自然の美しさが広がるハロン湾でのクルーズを満喫します。子供たちも楽しめる美味しいベトナム料理を味わいながら、心温まるひとときを過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "ハノイ到着と街散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイのホテルで、ベトナム風の朝食を楽しみます。フォーやバインミーなど、地元の味を堪能できるメニューが揃っています。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ホアンキエム湖散策",
+          "description": "ハノイの中心に位置するホアンキエム湖を散策。湖の周りには美しい公園が広がり、地元の人々が集う憩いの場です。湖の中に浮かぶ玉山祠を訪れるのもおすすめです。",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ハノイの地元のレストランで、子供でも食べやすいベトナム料理を楽しみます。バインミーや春巻きなど、手軽に食べられるメニューが豊富です。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "旧市街散策",
+          "description": "ハノイの旧市街を散策。狭い路地に並ぶお店やカフェを楽しみながら、地元の雰囲気を味わえます。特に、伝統的な手工芸品やお土産を探すのにぴったりです。",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "水上人形劇鑑賞",
+          "description": "ハノイの伝統的な水上人形劇を鑑賞。子供たちも楽しめるストーリーと美しい演出が魅力です。",
+          "searchQuery": "Water Puppet Theatre",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "散策を終えたら、ホテルに戻り、少し休憩。家族でのんびりと過ごす時間を楽しみましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ハノイのレストランでディナー",
+          "description": "ハノイの人気レストランで、ベトナム料理のディナーを楽しみます。特に、子供向けのメニューも豊富で、家族全員が満足できる食事が楽しめます。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ハノイの文化と歴史を探る",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、子供でも食べやすいメニューが揃っています。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "文廟",
+          "description": "ハノイの文化の象徴、文廟を訪れます。孔子を祀るこの寺院は、美しい庭園と歴史的な建物が魅力です。子供たちも楽しめる広々としたスペースがあります。",
+          "searchQuery": "Temple of Literature",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ホーチミン廟",
+          "description": "ホーチミン主席の遺体が安置されているホーチミン廟を見学します。歴史を感じる場所で、子供たちにも教育的な体験となるでしょう。",
+          "searchQuery": "Ho Chi Minh Mausoleum",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ハノイの地元のレストランで、ベトナム料理のランチを楽しみます。子供向けのメニューも豊富で、家族みんなが満足できる食事です。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "旧市街散策",
+          "description": "ハノイの旧市街を散策します。狭い路地や伝統的な商店が並び、地元の雰囲気を感じながらお土産探しも楽しめます。",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食",
+          "description": "旧市街の人気レストランで夕食を楽しみます。子供でも食べやすい料理が揃っており、家族での食事にぴったりです。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。ゆっくりと休息を取り、明日のハロン湾クルーズに備えましょう。",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ハロン湾クルーズ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ハノイ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ハロン湾",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "ハノイからハロン湾までのバス移動。快適なバスでの移動を楽しんでください。"
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "ハロン湾クルーズ",
+          "description": "世界遺産のハロン湾をクルーズしながら、壮大な石灰岩の島々を眺めます。子供たちも楽しめるアクティビティが盛りだくさん！",
+          "searchQuery": "Halong Bay",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "船上でのランチ",
+          "description": "新鮮なシーフードを使ったベトナム料理のランチを船上で楽しみます。子供向けのメニューも用意されているので安心です。",
+          "searchQuery": "Halong Bay Seafood Lunch",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ティエンカン洞窟探検",
+          "description": "神秘的なティエンカン洞窟を探検します。洞窟内の美しい鍾乳石や石筍を見学し、自然の驚異を体感しましょう。",
+          "searchQuery": "Thien Cung Cave",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハロン湾の島々を巡る",
+          "description": "クルーズの途中で、いくつかの小さな島々に立ち寄ります。美しいビーチでのんびりしたり、写真を撮ったりして楽しんでください。",
+          "searchQuery": "Halong Bay Islands",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ハロン湾のホテルにチェックイン",
+          "description": "クルーズを終えた後、ハロン湾のホテルにチェックインします。家族でリラックスできる快適な宿泊先です。",
+          "searchQuery": "Halong Bay Hotel",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルでのディナー",
+          "description": "ホテル内のレストランで、地元の食材を使ったベトナム料理を楽しみます。子供向けのメニューも充実しています。",
+          "searchQuery": "Halong Bay Hotel Restaurant",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ハロン湾からハノイへ",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "ハロン湾",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ハノイ",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "ハロン湾からハノイまでのバス移動。子供連れでも快適なバスです。"
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "ハノイの市場でランチ",
+          "description": "ハノイの地元の市場で新鮮なベトナム料理を楽しみましょう。フォーやバインミーなど、子供でも食べやすいメニューが豊富です。",
+          "searchQuery": "Hanoi Market",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "文廟（ぶんみゅう）",
+          "description": "ハノイの歴史的な文廟を訪れ、古代の学問の中心地を体験しましょう。美しい庭園と歴史的な建物が魅力です。",
+          "searchQuery": "Temple of Literature",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ホアンキエム湖散策",
+          "description": "ハノイの中心に位置するホアンキエム湖を散策。湖の周りには美しい公園があり、子供たちも楽しめる場所です。",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ハノイの屋台で夕食",
+          "description": "ハノイの屋台で、バインセオ（ベトナム風お好み焼き）や生春巻きを楽しみましょう。子供たちも喜ぶ味です。",
+          "searchQuery": "Hanoi Street Food",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ハノイの中心にある家族向けのホテルにチェックイン。ゆっくりと休んで、明日の冒険に備えましょう。",
+          "searchQuery": "Family Hotel in Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ハノイから東京へ帰路",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ノイバイ国際空港",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "成田国際空港",
+          "time": "18:00"
+        },
+        "duration": "6h",
+        "memo": "ハノイから東京への直行便です。出発の2時間前には空港に到着することをおすすめします。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ハノイのホテルで、ベトナム風の朝食を楽しみます。フォーやバインミーなど、地元の味を堪能できるメニューが揃っています。",
+          "searchQuery": "Hanoi Hotel Breakfast",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ハノイ旧市街散策",
+          "description": "ハノイの旧市街を散策し、歴史的な建物や地元の市場を楽しみます。特に、36通りの活気ある雰囲気は子供たちにも楽しめるスポットです。",
+          "searchQuery": "Old Quarter Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ノイバイ国際空港へ移動",
+          "description": "ハノイの旧市街からノイバイ国際空港へ向かいます。タクシーで約30分の距離です。",
+          "searchQuery": "Noi Bai International Airport",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ハノイから東京へ出発",
+          "description": "ノイバイ国際空港から東京行きのフライトに搭乗します。",
+          "searchQuery": "Noi Bai International Airport",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "成田国際空港到着",
+          "description": "東京に到着。旅行の思い出を振り返りながら、帰路につきます。",
+          "searchQuery": "Narita International Airport",
+          "locationEn": "Tokyo, Japan",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

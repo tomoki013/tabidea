@@ -1,0 +1,271 @@
+{
+  "id": "64ab1b71-56eb-4521-bf77-5ec712779a2d",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where jazz fills the air and cultural experiences await around every corner. This 3-day family adventure is designed to blend the excitement of jazz with the rich history and relaxation that the city offers. From iconic landmarks to hidden gems, you’ll create unforgettable memories while exploring the heart of the Big Apple with your loved ones.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Jazz Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Jacob's Pickles",
+          "description": "Start your day with a hearty breakfast at Jacob's Pickles, known for its delicious comfort food and Southern-inspired dishes. Try their famous biscuits and gravy for a true taste of Americana!",
+          "searchQuery": "Jacob's Pickles",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Apollo Theater",
+          "description": "Head to the iconic Apollo Theater in Harlem, a historic venue that has hosted countless legendary performances. Take a guided tour to learn about its rich history and the stars who have graced its stage.",
+          "searchQuery": "Apollo Theater",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Sylvia's Restaurant",
+          "description": "Enjoy a classic soul food lunch at Sylvia's, a Harlem institution. Their fried chicken and waffles are a must-try, and the vibrant atmosphere is perfect for families.",
+          "searchQuery": "Sylvia's Restaurant",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Morningside Park",
+          "description": "Take a leisurely stroll through Morningside Park, a beautiful green space perfect for families. Let the kids play while you enjoy the serene surroundings and views of the city.",
+          "searchQuery": "Morningside Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Jazz at the Cotton Club",
+          "description": "Experience live jazz at the historic Cotton Club, where you can enjoy performances by talented musicians in a vibrant setting. This is a great way to immerse yourself in the jazz culture of Harlem.",
+          "searchQuery": "Cotton Club",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Jazz Merchandise",
+          "description": "Visit local shops in Harlem to find unique jazz merchandise and memorabilia. Look for vinyl records, t-shirts, and other souvenirs to take home as a reminder of your jazz exploration.",
+          "searchQuery": "Harlem Jazz Shops",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Red Rooster Harlem",
+          "description": "End your day with dinner at Red Rooster, a popular restaurant that celebrates the flavors of Harlem. Enjoy dishes inspired by the local culture, and don't forget to try their famous cornbread!",
+          "searchQuery": "Red Rooster Harlem",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Relaxation",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a family-friendly spot that offers a cozy atmosphere, perfect for fueling up before a day of exploration.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Explore the vast collections at The Met, where art from around the world awaits. Don't miss the American Wing, which showcases iconic pieces that tell the story of American culture. The museum is also a great place for kids to engage with art through interactive exhibits.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Met's Cafeteria",
+          "description": "Enjoy a casual lunch at the museum's cafeteria, offering a variety of options from salads to sandwiches. It's a convenient spot to refuel without leaving the museum grounds.",
+          "searchQuery": "The Metropolitan Museum of Art Cafeteria",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through Central Park",
+          "description": "Take a leisurely walk through Central Park, where you can enjoy the beautiful landscapes and perhaps spot some street performers. The park is a perfect place for kids to run around and for the family to relax amidst nature.",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Jazz at Lincoln Center Tour",
+          "description": "Join a guided tour of Jazz at Lincoln Center, where you can learn about the history of jazz and its impact on American culture. This is a great opportunity for the family to appreciate the art form and its legends.",
+          "searchQuery": "Jazz at Lincoln Center",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Blue Smoke",
+          "description": "Savor some delicious Southern BBQ at Blue Smoke, a family-friendly restaurant known for its ribs and brisket. The lively atmosphere and tasty food make it a great choice for dinner after a day of sightseeing.",
+          "searchQuery": "Blue Smoke",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Jazz Performance at Dizzy's Club",
+          "description": "End your day with a live jazz performance at Dizzy's Club, where you can enjoy stunning views of the city skyline while listening to talented musicians. It's a perfect way to immerse yourself in the jazz scene of New York City.",
+          "searchQuery": "Dizzy's Club",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Shopping and Departure",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Take the Amtrak train for a comfortable ride to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "Visit the National Mall",
+          "description": "Explore the iconic National Mall, home to the Lincoln Memorial, Washington Monument, and various museums. It's a great place for family photos and to soak in the history of the nation.",
+          "searchQuery": "National Mall",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Founding Farmers",
+          "description": "Enjoy a hearty lunch at Founding Farmers, a popular farm-to-table restaurant known for its delicious comfort food. The kids will love the pancakes and burgers!",
+          "searchQuery": "Founding Farmers",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Jazz Record Shops Tour",
+          "description": "Visit some of the best jazz record shops in D.C. like 'Jazz & Blues' and 'The Vinyl Lounge'. It's a perfect opportunity to find unique jazz memorabilia and records to take home.",
+          "searchQuery": "Jazz & Blues",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the U Street Corridor",
+          "description": "Stroll through the historic U Street Corridor, known for its vibrant jazz scene. You can stop by the famous Ben's Chili Bowl for a quick snack and enjoy the lively atmosphere.",
+          "searchQuery": "Ben's Chili Bowl",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to New York City",
+          "description": "Head back to New York City via train, reflecting on a wonderful trip filled with jazz and culture.",
+          "searchQuery": "Amtrak",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

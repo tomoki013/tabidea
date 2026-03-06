@@ -1,0 +1,307 @@
+{
+  "id": "edaf8658-77ce-4f3a-a628-663601fdf24a",
+  "destination": "New York",
+  "description": "Immerse yourself in the vibrant pulse of New York City, where every corner tells a story and every street hums with life. This three-day adventure is designed for families seeking a blend of culture, history, shopping, and delicious food. From iconic landmarks to hidden gems, you’ll experience the essence of the Big Apple while enjoying a budget-friendly trip that doesn’t skimp on excitement. Get ready to explore the heart of this bustling metropolis, where each day unfolds with new discoveries and unforgettable moments.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Cultural Landmarks and Iconic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Central Park",
+          "description": "Stroll through the iconic Central Park, where you can enjoy the lush greenery, picturesque bridges, and perhaps even a quick visit to the Central Park Zoo. Don't forget to take a moment at Bethesda Terrace for a lovely view!",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Halal Guys",
+          "description": "Grab a quick and delicious lunch from The Halal Guys, famous for their chicken and gyro platters served with their signature white sauce. It's a must-try street food experience!",
+          "searchQuery": "The Halal Guys",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore The Metropolitan Museum of Art",
+          "description": "Dive into art and history at The Met, one of the largest and most prestigious art museums in the world. With collections spanning over 5,000 years, there's something for everyone to enjoy. Plan for at least a couple of hours here!",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Walk along Fifth Avenue",
+          "description": "Take a leisurely stroll down Fifth Avenue, where you can window shop at iconic stores like Saks Fifth Avenue and Tiffany & Co. It's a great way to soak in the vibrant atmosphere of New York City!",
+          "searchQuery": "Fifth Avenue",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "End your day with a slice of classic New York pizza at Joe's Pizza, a beloved local spot. Grab a few slices and enjoy them on the go or at one of the nearby benches!",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Visit Times Square",
+          "description": "Experience the bright lights and bustling energy of Times Square. It's the perfect place to take photos and soak in the vibrant nightlife of New York City. Don't forget to check out the street performers!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "History and Shopping Extravaganza",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite and a must-try for breakfast!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Statue of Liberty",
+          "description": "Take a ferry from Battery Park to Liberty Island to see the iconic Statue of Liberty up close. The views of the Manhattan skyline from the ferry are breathtaking!",
+          "searchQuery": "Statue of Liberty",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Fraunces Tavern",
+          "description": "Enjoy lunch at Fraunces Tavern, a historic restaurant that dates back to the 18th century. Try their famous pastrami sandwich or a hearty burger while soaking in the rich history of the place.",
+          "searchQuery": "Fraunces Tavern",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Wall Street",
+          "description": "Stroll through the Financial District and take in the sights of Wall Street, including the New York Stock Exchange and the Charging Bull statue. It's a great spot for photos and to feel the pulse of the financial world.",
+          "searchQuery": "Wall Street",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Shopping in SoHo",
+          "description": "Head to SoHo for some retail therapy! This trendy neighborhood is filled with boutiques, art galleries, and unique shops. Don't forget to check out the cast-iron architecture while you shop.",
+          "searchQuery": "SoHo",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Meatball Shop",
+          "description": "Savor a casual dinner at The Meatball Shop, where you can customize your meatball dish with various sauces and sides. It's a fun and delicious way to end your day!",
+          "searchQuery": "The Meatball Shop",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at Washington Square Park",
+          "description": "After dinner, take a leisurely walk to Washington Square Park. Enjoy the lively atmosphere, watch street performers, and unwind in this iconic park surrounded by the vibrant Greenwich Village.",
+          "searchQuery": "Washington Square Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Culinary Delights",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "12:00"
+        },
+        "duration": "3h",
+        "memo": "Traveling by train to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite that will fuel you for the day ahead!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a leisurely stroll across the iconic Brooklyn Bridge. Enjoy stunning views of the Manhattan skyline and the East River as you walk from Manhattan to Brooklyn. It's a perfect way to soak in the city's atmosphere.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore DUMBO",
+          "description": "Once you reach Brooklyn, explore the trendy DUMBO neighborhood. Check out the cobblestone streets, unique shops, and the famous photo spot at Washington Street with the Manhattan Bridge in the background.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Time Out Market",
+          "description": "Head to Time Out Market in DUMBO for lunch, where you can sample a variety of local dishes from different vendors. It's a great place to try everything from artisanal pizza to gourmet tacos.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Chelsea Market Visit",
+          "description": "After lunch, take the subway to Chelsea Market, a bustling food hall and shopping destination. Browse through unique shops, grab a coffee, or indulge in some sweet treats from the local vendors.",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Relax at The High Line",
+          "description": "Stroll along The High Line, an elevated park built on a former railway track. Enjoy the greenery, art installations, and views of the Hudson River as you unwind in this urban oasis.",
+          "searchQuery": "The High Line",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Los Tacos No. 1",
+          "description": "End your day with dinner at Los Tacos No. 1, famous for its authentic Mexican tacos. The vibrant atmosphere and delicious food make it a perfect spot to relax after a day of exploring.",
+          "searchQuery": "Los Tacos No. 1",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Travel to Washington D.C.",
+          "description": "After dinner, board your train to Washington D.C. and enjoy the scenic ride. You'll arrive in the evening, ready to explore the capital city tomorrow!",
+          "searchQuery": "Washington D.C. Train Station",
+          "locationEn": "Washington D.C., USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

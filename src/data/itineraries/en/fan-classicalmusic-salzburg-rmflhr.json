@@ -1,0 +1,284 @@
+{
+  "id": "0aaa659e-e1c5-4e8f-899c-f3852ea43dfb",
+  "destination": "Salzburg",
+  "description": "Escape to the enchanting city of Salzburg, where the echoes of classical music fill the air and the stunning baroque architecture creates a picturesque backdrop for your family adventure. Over three days, immerse yourself in the rich cultural tapestry of this historic city, exploring its musical heritage and indulging in local delicacies. From the majestic fortress overlooking the city to the charming streets that inspired Mozart, every moment will be a celebration of art, history, and family bonding.",
+  "heroImage": "https://images.unsplash.com/photo-1744305876071-16364be3f5bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIxOTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Daniele Mason",
+  "heroImagePhotographerUrl": "https://unsplash.com/@dany90?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring the Old Town",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Tomaselli",
+          "description": "Start your day at Café Tomaselli, one of the oldest coffee houses in Salzburg. Enjoy a traditional Austrian breakfast with fresh pastries and coffee while soaking in the charming atmosphere.",
+          "searchQuery": "Café Tomaselli",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Getreidegasse",
+          "description": "Stroll through Getreidegasse, Salzburg's famous shopping street. Admire the beautiful wrought-iron signs and explore local shops, perfect for finding unique souvenirs and fan goods related to classical music.",
+          "searchQuery": "Getreidegasse",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Mozart's Birthplace",
+          "description": "Visit the birthplace of Wolfgang Amadeus Mozart, now a museum showcasing his life and works. Discover fascinating exhibits and perhaps pick up some Mozart-themed merchandise in the gift shop.",
+          "searchQuery": "Mozart's Birthplace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Gasthaus Zwettler's",
+          "description": "Enjoy a hearty lunch at Gasthaus Zwettler's, known for its traditional Austrian dishes. Try the Wiener Schnitzel or a local specialty while enjoying the cozy ambiance.",
+          "searchQuery": "Gasthaus Zwettler's",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Salzburg Cathedral",
+          "description": "Explore the stunning Salzburg Cathedral, a masterpiece of Baroque architecture. Take a moment to appreciate its beautiful interior and the impressive organ, often used for classical music concerts.",
+          "searchQuery": "Salzburg Cathedral",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Mirabell Palace and Gardens",
+          "description": "Wander through the beautiful Mirabell Gardens, famous for their symmetrical design and stunning views of the fortress. This is a great spot for family photos and enjoying the serene atmosphere.",
+          "searchQuery": "Mirabell Palace and Gardens",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at St. Peter Stiftskeller",
+          "description": "Dine at St. Peter Stiftskeller, one of the oldest restaurants in Europe. Enjoy a delightful meal in a historic setting, with options ranging from traditional Austrian cuisine to modern dishes.",
+          "searchQuery": "St. Peter Stiftskeller",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Salzach River",
+          "description": "End your day with a leisurely walk along the Salzach River. The views of the illuminated city and the fortress are breathtaking, providing a perfect backdrop for a family evening.",
+          "searchQuery": "Salzach River",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Classical Music and Scenic Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Tomaselli",
+          "description": "Start your day at Café Tomaselli, one of the oldest coffee houses in Salzburg. Enjoy a traditional Austrian breakfast with fresh pastries and coffee, soaking in the historic ambiance.",
+          "searchQuery": "Café Tomaselli",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Hohensalzburg Fortress",
+          "description": "Visit the iconic Hohensalzburg Fortress, perched high above the city. Explore the medieval architecture and enjoy breathtaking views of Salzburg and the surrounding Alps. Don't miss the museum showcasing the history of the fortress.",
+          "searchQuery": "Hohensalzburg Fortress",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Stiftskeller St. Peter",
+          "description": "Savor a delicious lunch at Stiftskeller St. Peter, one of the oldest restaurants in Europe. Try traditional Austrian dishes in a charming setting that has hosted many famous guests over the centuries.",
+          "searchQuery": "Stiftskeller St. Peter",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Mirabell Palace and Gardens",
+          "description": "Stroll through the beautiful Mirabell Palace and its stunning gardens. This UNESCO World Heritage site is perfect for a leisurely walk, and you can admire the intricate sculptures and floral displays.",
+          "searchQuery": "Mirabell Palace and Gardens",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Mozart's Birthplace",
+          "description": "Visit Mozart's Birthplace, a museum dedicated to the life and works of Wolfgang Amadeus Mozart. Explore exhibits featuring his early life, personal items, and musical instruments.",
+          "searchQuery": "Mozart's Birthplace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Classical Music Merchandise",
+          "description": "Take some time to shop for classical music merchandise and souvenirs in the Getreidegasse area. Look for unique items related to Mozart and other classical composers to take home as mementos.",
+          "searchQuery": "Getreidegasse",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Gasthaus Zwettler's",
+          "description": "End your day with a hearty dinner at Gasthaus Zwettler's, known for its cozy atmosphere and traditional Austrian cuisine. Enjoy local specialties and a warm ambiance to wrap up your day.",
+          "searchQuery": "Gasthaus Zwettler's",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Local Culture and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Tomaselli",
+          "description": "Start your day at Café Tomaselli, one of the oldest coffee houses in Salzburg. Enjoy a traditional Austrian breakfast with fresh pastries and coffee, soaking in the charming atmosphere.",
+          "searchQuery": "Café Tomaselli",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Hellbrunn Palace",
+          "description": "Explore the beautiful Hellbrunn Palace, famous for its trick fountains and stunning gardens. Take a guided tour to learn about its history and enjoy the playful water features.",
+          "searchQuery": "Hellbrunn Palace",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at St. Peter Stiftskeller",
+          "description": "Indulge in a delightful lunch at St. Peter Stiftskeller, one of the oldest restaurants in Europe. Savor traditional Austrian dishes in a historic setting.",
+          "searchQuery": "St. Peter Stiftskeller",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Mozartplatz",
+          "description": "Stroll through Mozartplatz, the heart of Salzburg, and admire the statue of Mozart. This area is perfect for taking photos and enjoying the local atmosphere.",
+          "searchQuery": "Mozartplatz",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Local Markets for Souvenirs",
+          "description": "Wander through the local markets near the Old Town to find unique souvenirs and classical music merchandise. Look for CDs, sheet music, and other memorabilia related to Mozart.",
+          "searchQuery": "Salzburg Local Markets",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Hotel and Check-out",
+          "description": "Head back to your hotel to collect your belongings and check out, reflecting on a wonderful trip filled with culture and history.",
+          "locationEn": "Salzburg, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

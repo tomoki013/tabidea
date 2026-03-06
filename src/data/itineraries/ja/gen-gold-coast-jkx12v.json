@@ -1,0 +1,352 @@
+{
+  "id": "5d5824d8-5669-46cb-86a8-2ab5f4406643",
+  "destination": "ゴールドコースト",
+  "description": "オーストラリアの美しいゴールドコーストで、リゾートの魅力とグルメ、ショッピング、アートを満喫する4日間の旅に出かけましょう。青い海と白い砂浜、活気あふれる街並みが織りなすこのエリアは、カップルにとって特別な思い出を作るのにぴったりの場所です。",
+  "heroImage": "https://images.unsplash.com/photo-1607309843659-f4ad95cf3277?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTU0NTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "City of Gold Coast",
+  "heroImagePhotographerUrl": "https://unsplash.com/@cityofgoldcoast?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ゴールドコースト到着とビーチ散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのリゾートホテルで、オーシャンビューを楽しみながらの朝食。新鮮なフルーツやオーストラリアの伝統的な朝食を堪能します。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "サーファーズパラダイスビーチ散策",
+          "description": "サーファーズパラダイスの美しいビーチを散策。白い砂浜と青い海が広がり、リラックスした時間を過ごせます。ビーチ沿いのカフェでアイスクリームを楽しむのもおすすめ。",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Surfers Paradise, Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カビルアベニューでランチ",
+          "description": "カビルアベニューの賑やかな通りで、地元のレストランでランチ。新鮮なシーフードやオーストラリアのバーベキューを楽しむことができます。",
+          "searchQuery": "Cavil Avenue",
+          "locationEn": "Cavil Avenue, Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートギャラリー訪問",
+          "description": "ゴールドコーストのアートギャラリーを訪れ、地元アーティストの作品を鑑賞。美術館の静かな雰囲気の中で、アートに触れるひとときを楽しみます。",
+          "searchQuery": "Gold Coast Art Gallery",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでのんびり",
+          "description": "再びビーチに戻り、サンセットを眺めながらのんびりとした時間を過ごします。夕暮れ時の海の美しさは格別です。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチ沿いのレストランでディナー",
+          "description": "ビーチ沿いのレストランで、オーシャンビューを楽しみながらディナー。新鮮なシーフードやオーストラリアワインを堪能します。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナイトマーケット散策",
+          "description": "カビルアベニュー近くのナイトマーケットを散策。地元のアートや手作りの品々を見ながら、夜の雰囲気を楽しみます。",
+          "searchQuery": "Cavil Avenue Night Market",
+          "locationEn": "Cavil Avenue, Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートとグルメを楽しむ一日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのリゾートホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオーストラリアの特産品を使った料理が並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ゴールドコーストアートセンター",
+          "description": "地元アーティストの作品を展示するゴールドコーストアートセンターを訪れます。現代アートの魅力を感じながら、アートに触れるひとときを楽しんでください。",
+          "searchQuery": "Gold Coast Art Centre",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ハーバータウンでランチ",
+          "description": "ハーバータウンのショッピングセンター内にあるカフェで、オーストラリアの新鮮なシーフードを使ったランチを楽しみます。特に、地元の魚を使ったフィッシュ＆チップスは絶品です。",
+          "searchQuery": "Harbour Town",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハーバータウンでショッピング",
+          "description": "ハーバータウンのアウトレットでショッピングを楽しみます。ブランド品が手頃な価格で手に入るので、カップルでのお買い物にぴったりです。",
+          "searchQuery": "Harbour Town",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サーファーズパラダイスビーチ散策",
+          "description": "美しいビーチでのんびりとした時間を過ごします。波の音を聞きながら、砂浜を歩いたり、海を眺めたりしてリラックス。夕日が沈む時間帯は特にロマンチックです。",
+          "searchQuery": "Surfers Paradise Beach",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチ沿いのレストランでディナー",
+          "description": "サーファーズパラダイスのビーチ沿いにあるレストランで、オーストラリアのグリル料理を楽しみます。海を眺めながらのディナーは、特別な思い出になること間違いなし。",
+          "searchQuery": "Surfers Paradise Beach Restaurant",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "ビーチでの夜の散歩",
+          "description": "ディナーの後は、ビーチ沿いを散歩しながら、夜の海の雰囲気を楽しみます。星空の下でのロマンチックなひとときをお過ごしください。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "テーマパークでの冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ゴールドコーストのリゾートホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツやオーストラリアの特産品を使った料理が並び、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ドリームワールド",
+          "description": "オーストラリア最大のテーマパーク、ドリームワールドでアドベンチャーを楽しみましょう。スリル満点のジェットコースターや、動物とのふれあい体験が待っています。特に、コアラやカンガルーと触れ合えるエリアはカップルにおすすめ！",
+          "searchQuery": "Dreamworld",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ドリームワールド内でランチ",
+          "description": "ドリームワールド内のカフェで軽食を取りましょう。ハンバーガーやサンドイッチなど、テーマパークならではのメニューが揃っています。アトラクションの合間に、ゆっくりと食事を楽しんでください。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ホワイトウォーター世界",
+          "description": "水のアトラクションが満載のホワイトウォーター世界で、スリルと爽快感を味わいましょう。流れるプールやウォータースライダーで、暑い日にはぴったりの楽しみ方です。",
+          "searchQuery": "WhiteWater World",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホテルに戻る",
+          "description": "ドリームワールドとホワイトウォーター世界での冒険を終えたら、ホテルに戻ります。リゾートのプールでリラックスするのも良いですね。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ゴールドコーストの人気レストランで、オーストラリア料理を堪能しましょう。新鮮なシーフードやグリル料理が楽しめるお店が多く、特にサンセットを眺めながらのディナーはロマンチックです。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "サーファーズパラダイスの夜景散策",
+          "description": "サーファーズパラダイスのビーチ沿いを散策し、夜景を楽しみましょう。賑やかな雰囲気の中で、カップルでのんびりとした時間を過ごせます。",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "ショッピングと帰路",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "ゴールドコースト",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ブリスベン空港",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "空港までの移動はレンタカーを利用。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "パシフィックフェア",
+          "description": "オーストラリア最大級のショッピングモールで、ブランドショップやレストランが揃っています。お土産やファッションアイテムを探しながら、ゆったりとした時間を楽しんでください。",
+          "searchQuery": "Pacific Fair Shopping Centre",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "モール内でランチ",
+          "description": "パシフィックフェア内のフードコートで、地元の食材を使った料理を楽しみましょう。特にオーストラリアのバーガーやシーフードがおすすめです。",
+          "searchQuery": "Pacific Fair Food Court",
+          "locationEn": "Gold Coast, Australia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "クイーンズランド州立美術館",
+          "description": "ブリスベンにある美術館で、オーストラリアのアートや国際的な展覧会を楽しむことができます。特に現代アートのコレクションが充実しています。",
+          "searchQuery": "Queensland Art Gallery",
+          "locationEn": "Brisbane, Australia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ブリスベン空港へ移動",
+          "description": "美術館を後にして、空港へ向かいます。移動中に最後のオーストラリアの風景を楽しんでください。",
+          "locationEn": "Brisbane, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "帰路",
+          "description": "ブリスベン空港からのフライトで帰路につきます。楽しい思い出を胸に、またの旅を楽しみに。",
+          "locationEn": "Brisbane, Australia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

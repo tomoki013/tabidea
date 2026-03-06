@@ -1,0 +1,443 @@
+{
+  "id": "28f36883-24b1-4d05-85ac-1f226ecafe60",
+  "destination": "カイロ",
+  "description": "エジプトの首都カイロは、古代の歴史と現代の文化が交錯する魅力的な都市です。ピラミッドやスフィンクスといった壮大な遺跡を巡りながら、地元のグルメやショッピングを楽しむことができます。特に、推し活やファングッズ探しにも最適なスポットが豊富に揃っています。",
+  "heroImage": "https://images.unsplash.com/photo-1626692880062-35c360fb6afc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE2MjN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Roaming Pictures",
+  "heroImagePhotographerUrl": "https://unsplash.com/@roamingpictures?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "カイロ到着とナイル川散策",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルでエジプト風の朝食を楽しみます。フラットブレッドやフムス、オリーブオイルを使った新鮮なサラダが並び、エネルギーをチャージ。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "エジプト博物館",
+          "description": "古代エジプトの宝物が集まるエジプト博物館を訪れます。ツタンカーメンの黄金のマスクやミイラの展示は必見です。歴史の深さに触れながら、ゆっくりと見学しましょう。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "エジプトの伝統料理を楽しめるレストランでランチ。コシャリやファラフェルなど、地元の味を堪能しながら、旅のスタートを祝います。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナイル川沿いの散策",
+          "description": "ナイル川の美しい景色を楽しみながら散策します。川沿いのカフェで一休みし、エジプトの風を感じるひとときを過ごしましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カイロのバザール（ハーン・ハリーリ）",
+          "description": "カイロの有名なバザール、ハーン・ハリーリでショッピング。エジプトの伝統的な工芸品やファングッズを探しながら、賑やかな雰囲気を楽しみます。",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ナイル川クルーズディナー",
+          "description": "ナイル川をクルーズしながらのディナーを楽しみます。美しい夜景を眺めながら、エジプト料理を堪能する贅沢な時間です。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日の冒険に備えて、ゆっくりと休息を取りましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ピラミッドとスフィンクスの探訪",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルでエジプト風の朝食を楽しみます。フラットブレッドやフムス、オリーブオイルを使ったシンプルで美味しい朝食がエネルギーを与えてくれます。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ギザのピラミッド見学",
+          "description": "世界の七不思議の一つ、ギザのピラミッドを訪れます。巨大なピラミッドの前に立つと、その壮大さに圧倒されることでしょう。特に朝の光の中での見学は格別です。",
+          "searchQuery": "Giza Pyramids",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "近くのレストランでランチ",
+          "description": "ギザの近くにあるレストランで、エジプト料理を堪能します。タジンやコシャリなど、地元の味を楽しむことができます。",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "スフィンクス見学",
+          "description": "ギザのスフィンクスを訪れ、その神秘的な姿を間近で観察します。スフィンクスの歴史や伝説についてのガイドの話を聞くと、さらに興味深く感じることでしょう。",
+          "searchQuery": "Great Sphinx of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カイロ博物館訪問",
+          "description": "エジプトの歴史を深く知るために、カイロ博物館を訪れます。ツタンカーメンの財宝や古代エジプトの遺物が展示されており、見応えがあります。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "ハーン・ハリーリ市場でショッピング",
+          "description": "カイロのハーン・ハリーリ市場でお土産やファングッズを探します。エジプトの伝統的な工芸品や衣類、アクセサリーが揃っており、交渉を楽しむのもこの市場の醍醐味です。",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "カイロの地元のレストランで、エジプト料理のディナーを楽しみます。特に、スパイスの効いた肉料理や新鮮なサラダが絶品です。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元のグルメとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルで、エジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やタヒニ（ごまペースト）を使った料理が並び、エネルギーをチャージ。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ハーン・ハリーリ市場散策",
+          "description": "カイロの活気あふれるハーン・ハリーリ市場を訪れます。地元の人々と観光客が行き交う中、手作りの工芸品やスカーフ、香辛料などを見て回り、エジプトの文化を肌で感じることができます。",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "市場近くの地元のレストランで、エジプト料理のランチを楽しみます。特にコシャリ（米、パスタ、レンズ豆のミックス）やファラフェルが人気です。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "エジプト考古学博物館",
+          "description": "エジプト考古学博物館を訪れ、古代エジプトの歴史を学びます。ツタンカーメンの財宝やミイラなど、貴重な展示品が揃っています。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "地元のファングッズショップ訪問",
+          "description": "エジプトのファングッズを扱うショップを訪れ、好きなキャラクターのグッズを探します。ユニークなアイテムが見つかるかもしれません。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元の屋台で",
+          "description": "カイロの屋台で、地元のストリートフードを楽しみます。シャワルマやフールターメイヤ（豆のサンドイッチ）など、手軽に味わえる美味しい料理が揃っています。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナイル川沿いの散策",
+          "description": "ナイル川沿いを散策し、夕暮れ時の美しい景色を楽しみます。川の流れを眺めながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "文化体験とファングッズ探し",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルで、エジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やピタパン、フレッシュな野菜が並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "エジプト博物館",
+          "description": "古代エジプトの歴史を感じるエジプト博物館を訪れます。ツタンカーメンの黄金のマスクや、数多くのミイラが展示されており、歴史の深さに圧倒されることでしょう。",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "エジプトの家庭料理を楽しめる地元のレストランでランチ。コシャリやファラフェルなど、エジプトの味を堪能しながら、地元の雰囲気を味わいます。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アズハル公園散策",
+          "description": "アズハル公園でリラックスした時間を過ごします。美しい庭園や池が広がり、カイロの喧騒を忘れて静かなひとときを楽しめます。",
+          "searchQuery": "Al-Azhar Park",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ファングッズ探し",
+          "description": "カイロの市場やショップで、エジプトのファングッズを探します。パピルスや香水、伝統的な工芸品など、旅の思い出にぴったりのアイテムが見つかるかもしれません。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一日の疲れを癒すために、ホテルで少し休憩。カイロの夜を楽しむためのエネルギーを蓄えます。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ナイル川沿いのレストランでディナー",
+          "description": "ナイル川を眺めながら、エジプト料理のディナーを楽しみます。美しい夜景と共に、地元の料理を堪能する贅沢なひとときです。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "カイロの歴史を振り返る",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "カイロのホテルで、エジプトの伝統的な朝食を楽しみます。フール（豆のペースト）やピタパン、フレッシュな野菜が並び、エネルギーをチャージして一日をスタート。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "サラディン城",
+          "description": "カイロのシンボルとも言えるサラディン城を訪れます。城壁からの眺望は素晴らしく、歴史を感じながら散策できます。特に、城内の博物館ではエジプトの歴史に触れることができます。",
+          "searchQuery": "Saladin Citadel",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "エジプト料理を楽しむために、地元の人気レストランでランチを取ります。タジンやコシャリなど、エジプトの味を堪能できるメニューが揃っています。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "モハメド・アリ・モスク",
+          "description": "サラディン城の近くにあるモハメド・アリ・モスクを訪れます。美しいドームと壮大な内装が印象的で、カイロの歴史を感じることができます。",
+          "searchQuery": "Mohamed Ali Mosque",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "カイロのバザール（ハーン・ハリーリ）",
+          "description": "カイロの有名なバザール、ハーン・ハリーリでショッピングを楽しみます。エジプトの伝統的な工芸品やファングッズを探しながら、賑やかな雰囲気を満喫しましょう。",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のカフェでディナー",
+          "description": "バザール近くのカフェで、エジプトのスイーツや軽食を楽しみながら、旅の思い出を振り返ります。特にバクラヴァやハルワは絶品です。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "id": "340c9bd8-d2fc-497f-881d-77db4674d364",
+  "destination": "Helsinki & Rovaniemi",
+  "description": "Embark on a magical winter journey through Finland, where the enchanting landscapes of Helsinki and Rovaniemi await you. Experience the vibrant culture of the capital city, adorned with stunning architecture and cozy cafes, before venturing north to the Arctic Circle, where the allure of the Northern Lights and the charm of Santa Claus beckon. This 7-day itinerary is designed for couples seeking romance and adventure amidst breathtaking natural beauty and unforgettable experiences.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Helsinki",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Engel",
+          "description": "Start your day with a delightful breakfast at Café Engel, located near the Helsinki Cathedral. Enjoy traditional Finnish pastries and a warm cup of coffee while soaking in the beautiful views of the cathedral.",
+          "searchQuery": "Café Engel",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Helsinki Cathedral",
+          "description": "Explore the iconic Helsinki Cathedral, a stunning neoclassical structure that dominates the Senate Square. Climb the steps for a panoramic view of the city and take in the serene atmosphere inside the cathedral.",
+          "searchQuery": "Helsinki Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Market Square",
+          "description": "Head to the bustling Market Square for lunch. Sample local delicacies such as salmon soup or reindeer meat at one of the many food stalls while enjoying the vibrant atmosphere by the harbor.",
+          "searchQuery": "Market Square",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll through Esplanadi Park",
+          "description": "Take a leisurely walk through Esplanadi Park, a beautiful green space in the heart of Helsinki. Enjoy the lively ambiance, street performances, and perhaps grab a coffee at one of the park's cafes.",
+          "searchQuery": "Esplanadi Park",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Design District",
+          "description": "Wander through the Design District, known for its unique boutiques, galleries, and design shops. Discover Finnish design treasures and perhaps pick up a souvenir or two.",
+          "searchQuery": "Design District",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Check-in at Hotel Kämp",
+          "description": "Settle into the luxurious Hotel Kämp, a historic hotel located in the city center. Enjoy the elegant surroundings and prepare for a cozy evening.",
+          "searchQuery": "Hotel Kämp",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Savoy",
+          "description": "Indulge in a fine dining experience at Restaurant Savoy, known for its exquisite Finnish cuisine and stunning views of the city. Make sure to try their seasonal specialties for a true taste of Finland.",
+          "searchQuery": "Restaurant Savoy",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Helsinki's Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Engel",
+          "description": "Start your day with a delightful breakfast at Café Engel, where you can enjoy traditional Finnish pastries and coffee while overlooking the stunning Senate Square.",
+          "searchQuery": "Café Engel",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Temppeliaukio Church",
+          "description": "Visit the unique Temppeliaukio Church, carved directly into solid rock. Its stunning architecture and natural acoustics make it a must-see in Helsinki.",
+          "searchQuery": "Temppeliaukio Church",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Savoy",
+          "description": "Enjoy a luxurious lunch at Restaurant Savoy, known for its elegant atmosphere and exquisite Finnish cuisine, with a beautiful view of the city.",
+          "searchQuery": "Restaurant Savoy",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Kiasma Museum of Contemporary Art",
+          "description": "Explore the Kiasma Museum, where you can immerse yourself in contemporary art and innovative exhibitions that reflect modern Finnish culture.",
+          "searchQuery": "Kiasma Museum of Contemporary Art",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Uspenski Cathedral",
+          "description": "Visit the magnificent Uspenski Cathedral, the largest Orthodox church in Western Europe, known for its striking red brick exterior and golden domes.",
+          "searchQuery": "Uspenski Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Olo",
+          "description": "Indulge in a fine dining experience at Olo, a Michelin-starred restaurant that offers a tasting menu featuring seasonal Finnish ingredients.",
+          "searchQuery": "Olo",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll at Esplanadi Park",
+          "description": "Take a leisurely evening stroll through Esplanadi Park, a beautiful green space in the heart of Helsinki, perfect for relaxing and people-watching.",
+          "searchQuery": "Esplanadi Park",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Journey to Rovaniemi",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Helsinki",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Rovaniemi",
+          "time": "16:00"
+        },
+        "duration": "8h",
+        "memo": "Enjoy scenic views of the Finnish countryside during the train ride."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Train from Helsinki to Rovaniemi",
+          "description": "Start your day with a comfortable train ride from Helsinki to Rovaniemi. The journey takes about 8 hours, offering beautiful views of snowy landscapes and forests along the way.",
+          "searchQuery": "Train from Helsinki to Rovaniemi",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Check-in at Arctic TreeHouse Hotel",
+          "description": "Arrive in Rovaniemi and check into the Arctic TreeHouse Hotel, known for its unique design and cozy atmosphere. Enjoy the stunning views of the surrounding nature from your room.",
+          "searchQuery": "Arctic TreeHouse Hotel",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Visit Santa Claus Village",
+          "description": "Head to Santa Claus Village, where you can meet Santa Claus himself! Don't forget to send a postcard from the official Santa Claus Post Office, a perfect souvenir from your trip.",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restaurant Nili",
+          "description": "Enjoy a delightful dinner at Restaurant Nili, which specializes in traditional Lappish cuisine. Savor dishes made from local ingredients while enjoying the warm and inviting atmosphere.",
+          "searchQuery": "Restaurant Nili",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Aurora Borealis Viewing",
+          "description": "End your day with a chance to witness the magical Northern Lights. Head to a nearby viewing spot recommended by locals or join a guided tour for the best experience.",
+          "searchQuery": "Northern Lights Viewing Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Northern Lights Adventure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel in Rovaniemi, featuring local Finnish delicacies like rye bread, salmon, and cloudberry jam to fuel your adventure ahead.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit Ounasvaara Hill",
+          "description": "Head to Ounasvaara Hill for a morning of breathtaking views and winter activities. You can hike or take a ski lift to the top, where the panoramic views of Rovaniemi and the surrounding snowy landscape are simply stunning.",
+          "searchQuery": "Ounasvaara Hill",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant Nili",
+          "description": "Enjoy a cozy lunch at Restaurant Nili, known for its traditional Lappish cuisine. Try the reindeer stew or salmon soup, which are both local favorites.",
+          "searchQuery": "Restaurant Nili",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Santa Claus Village",
+          "description": "Visit the magical Santa Claus Village, where you can meet Santa himself and send postcards from the official Santa Claus Post Office. Don’t forget to take a photo crossing the Arctic Circle!",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Free Time for Souvenir Shopping",
+          "description": "Take some time to explore the shops in Santa Claus Village. Look for unique Finnish souvenirs, such as handmade crafts, traditional clothing, and delicious local treats.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Arctic Boulevard",
+          "description": "Savor a delightful dinner at Arctic Boulevard, where you can enjoy a mix of traditional Finnish and modern cuisine. The ambiance is warm and inviting, perfect for a romantic evening.",
+          "searchQuery": "Arctic Boulevard",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Northern Lights Tour",
+          "description": "Embark on a guided Northern Lights tour. Your guide will take you to the best spots away from city lights, where you can marvel at the stunning auroras dancing across the night sky. Remember to dress warmly!",
+          "searchQuery": "Northern Lights Tour Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Santa Claus Experience",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Santa's Hotel",
+          "description": "Start your day with a hearty breakfast at Santa's Hotel, featuring a selection of Finnish delicacies and warm pastries to fuel your adventures ahead.",
+          "searchQuery": "Santa's Hotel",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Santa Claus Village",
+          "description": "Immerse yourself in the magic of Christmas at Santa Claus Village. Meet Santa Claus himself, take photos, and explore the charming shops filled with unique gifts and souvenirs.",
+          "searchQuery": "Santa Claus Village",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Send a Letter from Santa's Post Office",
+          "description": "Don't forget to send a postcard from Santa's Post Office! Choose from a variety of festive designs and have it stamped with the special Santa Claus postmark.",
+          "searchQuery": "Santa's Post Office",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Nili",
+          "description": "Enjoy a delicious lunch at Restaurant Nili, where you can savor traditional Lappish cuisine made from local ingredients in a cozy atmosphere.",
+          "searchQuery": "Restaurant Nili",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Reindeer Sleigh Ride",
+          "description": "Experience the thrill of a reindeer sleigh ride through the snowy landscapes. This enchanting ride will take you through the beautiful Finnish wilderness, a perfect way to connect with nature.",
+          "searchQuery": "Reindeer Sleigh Ride",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Arctic Circle",
+          "description": "Take a stroll across the Arctic Circle line, marked by a special sign. Capture the moment with photos and learn about the significance of this geographical landmark.",
+          "searchQuery": "Arctic Circle Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Arctic Boulevard",
+          "description": "Indulge in a delightful dinner at Arctic Boulevard, where you can enjoy a mix of traditional Finnish dishes and modern cuisine, all while enjoying views of the snowy landscape.",
+          "searchQuery": "Arctic Boulevard",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Aurora Borealis Viewing",
+          "description": "End your day with a magical experience of watching the Northern Lights. Head to a nearby viewing spot or join a guided tour to catch this breathtaking natural phenomenon.",
+          "searchQuery": "Northern Lights Rovaniemi",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Exploring Nature and Winter Activities",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a hearty breakfast at your hotel, featuring local Finnish delicacies like rye bread, salmon, and fresh berries to fuel your winter adventures.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Ranua Wildlife Park",
+          "description": "Embark on a short drive to Ranua Wildlife Park, where you can see Arctic animals like polar bears, reindeer, and lynxes in their natural habitats. This park is a fantastic way to connect with Finland's unique wildlife.",
+          "searchQuery": "Ranua Wildlife Park",
+          "locationEn": "Ranua, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Ranua Wildlife Park Café",
+          "description": "Enjoy a cozy lunch at the park's café, offering warm soups and local specialties. It's the perfect spot to relax before continuing your wildlife adventure.",
+          "locationEn": "Ranua, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Snowshoeing Adventure",
+          "description": "After lunch, gear up for a snowshoeing adventure through the beautiful Finnish wilderness. Guided tours are available, allowing you to explore the serene landscapes and possibly spot more wildlife.",
+          "locationEn": "Ranua, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Ice Fishing Experience",
+          "description": "Try your hand at ice fishing on a frozen lake. With a guide, you'll learn the techniques and enjoy the tranquility of the snowy surroundings while waiting for a catch.",
+          "locationEn": "Ranua, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Rovaniemi",
+          "description": "Head back to Rovaniemi after a day filled with nature and adventure. The drive will take about an hour, giving you time to reflect on your experiences.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "Dinner at Restaurant Nili",
+          "description": "Indulge in a delightful dinner at Restaurant Nili, known for its traditional Lappish cuisine. Enjoy dishes made from locally sourced ingredients in a cozy, rustic setting.",
+          "searchQuery": "Restaurant Nili",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Aurora Borealis Viewing",
+          "description": "End your day with a magical experience of watching the Northern Lights. Join a guided tour that takes you to the best spots for aurora viewing, away from city lights.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Helsinki and Departure",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Rovaniemi",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Helsinki",
+          "time": "15:00"
+        },
+        "duration": "6h",
+        "memo": "Enjoy the scenic train ride through the Finnish countryside."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe & Bar 21",
+          "description": "Start your day with a hearty breakfast at this cozy cafe, known for its delicious pastries and local dishes. A perfect way to fuel up before your journey back to Helsinki.",
+          "searchQuery": "Cafe & Bar 21",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Train to Helsinki",
+          "description": "Board the train for a scenic journey to Helsinki. Enjoy the beautiful winter landscapes as you travel south, with comfortable seating and onboard services.",
+          "locationEn": "Rovaniemi, Finland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Arrival in Helsinki",
+          "description": "Arrive in Helsinki and take a moment to soak in the vibrant atmosphere of the city. You’ll have the rest of the day to explore before your departure.",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Helsinki Cathedral",
+          "description": "Marvel at the stunning architecture of the Helsinki Cathedral, a symbol of the city. The white façade and green dome are particularly beautiful against the winter sky.",
+          "searchQuery": "Helsinki Cathedral",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Savoy",
+          "description": "Indulge in a fine dining experience at Restaurant Savoy, known for its exquisite Finnish cuisine and stunning views of the city. A perfect way to end your trip.",
+          "searchQuery": "Restaurant Savoy",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll at Esplanadi Park",
+          "description": "Take a leisurely evening stroll through Esplanadi Park, a popular gathering place in Helsinki. Enjoy the festive lights and perhaps grab a warm drink from a nearby café.",
+          "searchQuery": "Esplanadi Park",
+          "locationEn": "Helsinki, Finland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

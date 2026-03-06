@@ -1,0 +1,581 @@
+{
+  "id": "bc76c60a-a650-4510-882b-390a9d78aef7",
+  "destination": "プラハ",
+  "description": "プラハの街並みをゆっくりと歩きながら、歴史と文化、そして美味しいビールを堪能する旅へようこそ。中世の面影を残す街角や、ロマンチックな夜景が広がる街で、特別なひとときを過ごしましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からプラハへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "プラハ",
+          "time": "14:00"
+        },
+        "duration": "12h",
+        "memo": "直行便での移動。時差に注意。"
+      },
+      "activities": [
+        {
+          "time": "15:00",
+          "activity": "プラハ城",
+          "description": "プラハのシンボル、プラハ城を訪れます。美しいゴシック様式の聖ヴィート大聖堂や、広大な庭園からの眺めは圧巻です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カレル橋散策",
+          "description": "カレル橋を歩きながら、歴史的な彫刻や美しい景色を楽しみます。夕暮れ時の橋は特にロマンチックで、素敵な写真スポットです。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のビールを楽しむディナー",
+          "description": "プラハの伝統的なビアホールで、チェコ料理と共に地元のビールを堪能します。特に「ピルスナー」はおすすめです。",
+          "searchQuery": "U Fleků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ヴルタヴァ川沿いの夜景散策",
+          "description": "ヴルタヴァ川沿いを散策しながら、プラハの美しい夜景を楽しみます。ライトアップされた城や橋が幻想的です。",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "プラハの歴史を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。地元のパンやハム、チーズを使った朝食で、エネルギーをチャージして一日をスタートしましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "旧市街広場散策",
+          "description": "プラハの中心、旧市街広場を散策します。美しいバロック様式の建物や、歴史的な天文時計を眺めながら、街の雰囲気を楽しんでください。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "天文時計の見学",
+          "description": "毎正時に動く天文時計のパフォーマンスを見逃さないようにしましょう。時計の仕掛けや美しい装飾に感動すること間違いなしです。",
+          "searchQuery": "Prague Astronomical Clock",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のビアホールでランチ",
+          "description": "プラハ名物のビールと共に、チェコ料理を楽しむランチタイム。特に、グヤーシュ（牛肉のシチュー）やトドリ（ソーセージ）はおすすめです。",
+          "searchQuery": "U Fleků Brewery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ジョン・レノン壁訪問",
+          "description": "ジョン・レノン壁は、自由と平和の象徴として知られています。カラフルな落書きが施された壁を前に、思い出の写真を撮りましょう。",
+          "searchQuery": "John Lennon Wall",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "カレル橋散策",
+          "description": "カレル橋を渡りながら、プラハの美しい景色を堪能します。橋の上には多くの彫像が並び、ロマンチックな雰囲気が漂います。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビール工場見学",
+          "description": "プラハの有名なビール工場を訪れ、ビールの製造過程を学びます。試飲もできるので、地元のビールを楽しむチャンスです。",
+          "searchQuery": "Pilsner Urquell Brewery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ロマンチックなディナー",
+          "description": "プラハの美しい夜景を楽しみながら、川沿いのレストランでディナーを。地元の食材を使った料理と共に、素敵な時間を過ごしましょう。",
+          "searchQuery": "Restaurant V Zátiší",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のプラハ散策",
+          "description": "ライトアップされたプラハの街を散策します。特にカレル橋や旧市街広場の夜景は、ロマンチックな雰囲気を醸し出しています。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "プラハの美味しいビールを楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ヴルタヴァ川沿いの散策",
+          "description": "美しいヴルタヴァ川沿いを散策しながら、プラハ城やカレル橋の素晴らしい景色を楽しみます。川の流れを感じながら、ロマンチックなひとときを過ごせます。",
+          "searchQuery": "Vltava River",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のビアホールでランチ",
+          "description": "プラハの名物料理を楽しめるビアホールで、地元のビールと共にボヘミア風の料理を堪能します。特に、グラーシュ（牛肉のシチュー）はおすすめです。",
+          "searchQuery": "U Fleků Brewery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "プラハ城見学",
+          "description": "プラハのシンボルであるプラハ城を訪れ、歴史的な建物や美しい庭園を散策します。城内の聖ヴィート大聖堂も必見です。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カレル橋でのんびり",
+          "description": "カレル橋を渡りながら、ストリートパフォーマンスやアートを楽しみます。橋の上からの眺めは特に美しく、写真撮影にも最適です。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビアホールでディナー",
+          "description": "再びビアホールに戻り、夕食を楽しみます。地元のビールを飲みながら、プラハの雰囲気を満喫しましょう。",
+          "searchQuery": "U Fleků Brewery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のプラハ散策",
+          "description": "ライトアップされたプラハの街並みを散策します。特に、旧市街広場の天文時計や、カレル橋の夜景はロマンチックです。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "プラハのアートと文化を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハのカフェで、地元のパンやチーズ、ハムを使った朝食を楽しみます。特に、フレッシュなペストリーは絶品です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "プラハ国立美術館",
+          "description": "プラハ国立美術館で、チェコのアートと歴史を堪能。特に、ルネサンスやバロックの作品が豊富で、アート好きにはたまらないスポットです。",
+          "searchQuery": "National Gallery Prague",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェ・ルネッサンスでランチ",
+          "description": "美術館近くのカフェ・ルネッサンスで、地元の料理を楽しみます。特に、伝統的なスープやサンドイッチが人気です。",
+          "searchQuery": "Cafe Renaissance",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カフカ博物館",
+          "description": "フランツ・カフカの生涯と作品を深く知ることができる博物館。彼の文学の世界に浸りながら、独特の雰囲気を楽しめます。",
+          "searchQuery": "Kafka Museum",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カレル橋を散策",
+          "description": "プラハのシンボル、カレル橋を歩きながら、街の美しい景色を楽しみます。橋の上には多くの彫像が並び、ロマンチックな雰囲気が漂います。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のビールを楽しむ",
+          "description": "プラハのビアホールで、地元のビールを堪能。特に、ピルスナーやラガーが人気で、ビールと一緒に軽食も楽しめます。",
+          "searchQuery": "U Fleků Brewery",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のプラハ城を散策",
+          "description": "夜のプラハ城を訪れ、ライトアップされた美しい景色を楽しみます。ロマンチックな雰囲気の中で、二人の時間を過ごせます。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。プラハの夜景を楽しみながら、ゆっくりとした時間を過ごしましょう。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "プラハの夜景を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のヨーグルトでエネルギーをチャージ。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ペトシーンの丘散策",
+          "description": "ペトシーンの丘へ向かい、展望台からプラハの美しい街並みを一望します。特に晴れた日には、街の赤い屋根とヴルタヴァ川の景色が絶景です。",
+          "searchQuery": "Petrin Hill",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のビールを楽しむランチ",
+          "description": "プラハのビアホールで、チェコの名物料理と共に地元のビールを堪能します。特に、グヤーシュやソーセージはおすすめです。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カレル橋散策",
+          "description": "歴史的なカレル橋を歩きながら、彫刻やストリートパフォーマンスを楽しみます。橋の上からの眺めも素晴らしく、写真撮影にも最適です。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "旧市街広場でのんびり",
+          "description": "旧市街広場にて、天文時計の動きを見たり、周囲のカフェで一息つきます。広場の雰囲気を楽しみながら、地元のスイーツを味わうのも良いでしょう。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元のレストランで",
+          "description": "プラハの伝統料理を提供するレストランで、ロマンチックなディナーを楽しみます。特に、ビールと相性の良い料理が豊富です。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のカレル橋散策",
+          "description": "ライトアップされたカレル橋を再訪し、幻想的な雰囲気を楽しみます。夜の静けさの中で、二人の時間をゆっくりと過ごしましょう。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ビアホールでビールを楽しむ",
+          "description": "最後に、地元のビアホールでビールを楽しみながら、旅の思い出を語り合います。多種多様なビールが揃っているので、ぜひ色々試してみてください。",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "プラハから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "プラハ",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "06:00"
+        },
+        "duration": "12h 0m",
+        "memo": "プラハから東京への直行便です。機内での食事を楽しみながら、ゆったりとした時間を過ごしましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "プラハの伝統的な朝食を楽しみます。新鮮なパンやハム、チーズ、そして地元のビールも選べるかもしれません。",
+          "searchQuery": "Prague Breakfast",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "プラハ城観光",
+          "description": "プラハのシンボル、プラハ城を訪れます。美しい建築と歴史的な雰囲気を感じながら、庭園を散策するのもおすすめです。",
+          "searchQuery": "Prague Castle",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のビアホールでランチ",
+          "description": "プラハのビアホールで、名物のグラーシュやソーセージを味わいながら、地元のビールを楽しみます。",
+          "searchQuery": "U Fleků",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "カレル橋散策",
+          "description": "歴史的なカレル橋を歩きながら、ストリートパフォーマンスやアートを楽しみます。橋の上からの眺めも素晴らしいです。",
+          "searchQuery": "Charles Bridge",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "旧市街広場でのんびり",
+          "description": "旧市街広場で、天文時計の動きを見たり、カフェで一息ついたりして、プラハの雰囲気を満喫します。",
+          "searchQuery": "Old Town Square",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食はロマンチックなレストランで",
+          "description": "プラハの美しい夜景を楽しめるレストランで、特別なディナーを。地元の料理とワインを堪能しましょう。",
+          "searchQuery": "Restaurant Terasa U Prince",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "プラハの夜景を楽しむ",
+          "description": "夜のプラハを散策しながら、ライトアップされた建物や橋を楽しみます。特にカレル橋からの眺めは絶景です。",
+          "searchQuery": "Prague Night View",
+          "locationEn": "Prague, Czech Republic",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

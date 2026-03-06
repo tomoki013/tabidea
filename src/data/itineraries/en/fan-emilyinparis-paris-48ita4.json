@@ -1,0 +1,408 @@
+{
+  "id": "f4b41144-93bd-4e51-88ee-68f0a016771f",
+  "destination": "Paris",
+  "description": "Immerse yourself in the enchanting streets of Paris, where every corner whispers tales of art, culture, and romance. This four-day solo adventure is designed for the passionate fan of 'Emily in Paris', blending iconic sights with hidden gems that will make your heart flutter. From charming cafés to vibrant boutiques, you'll find the perfect spots to indulge in your love for the series while soaking in the rich history and artistic spirit of the City of Light.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Montmartre",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café des Deux Moulins",
+          "description": "Start your day at the charming Café des Deux Moulins, famous from 'Emily in Paris'. Enjoy a classic French breakfast of croissants and café au lait in a cozy atmosphere.",
+          "searchQuery": "Café des Deux Moulins",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Sacré-Cœur Basilica",
+          "description": "Climb up to the stunning Sacré-Cœur Basilica, where you can enjoy breathtaking views of Paris. The basilica's white domes are a perfect backdrop for memorable photos.",
+          "searchQuery": "Sacré-Cœur Basilica",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Consulat",
+          "description": "Enjoy lunch at Le Consulat, a picturesque restaurant in Montmartre. Savor traditional French dishes while soaking in the artistic vibe of the area.",
+          "searchQuery": "Le Consulat",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Place du Tertre",
+          "description": "Stroll through Place du Tertre, where local artists display their work. You might even find a unique piece to take home as a souvenir from your trip.",
+          "searchQuery": "Place du Tertre",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit the Montmartre Museum",
+          "description": "Discover the history of Montmartre at the Montmartre Museum, which showcases the area's artistic heritage and its famous residents.",
+          "searchQuery": "Montmartre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Emily in Paris Merchandise",
+          "description": "Head to local boutiques and shops to find exclusive 'Emily in Paris' merchandise. Look for unique souvenirs that capture the essence of the show.",
+          "searchQuery": "Emily in Paris merchandise",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Relais Gascon",
+          "description": "Indulge in a hearty dinner at Le Relais Gascon, known for its delicious salads and traditional French cuisine. The cozy ambiance makes it a perfect end to your day.",
+          "searchQuery": "Le Relais Gascon",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk in Montmartre",
+          "description": "Take a leisurely evening stroll through the charming streets of Montmartre. The area is beautifully lit at night, creating a romantic atmosphere.",
+          "searchQuery": "Montmartre",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Fashion in Le Marais",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day at the iconic Café de Flore, a favorite among artists and intellectuals. Enjoy a classic French breakfast of croissants and café au lait in a charming atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Musée Picasso",
+          "description": "Explore the Musée Picasso, which houses an extensive collection of works by the legendary artist Pablo Picasso. The museum is located in a beautiful historic hotel and offers a deep dive into his creative genius.",
+          "searchQuery": "Musée Picasso",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Le Mary Celeste",
+          "description": "Enjoy a delicious lunch at Le Mary Celeste, known for its fresh seafood and vibrant atmosphere. Try their famous oysters or a seasonal tartine for a taste of local flavors.",
+          "searchQuery": "Le Mary Celeste",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through Place des Vosges",
+          "description": "Take a leisurely stroll through Place des Vosges, the oldest planned square in Paris. Admire the stunning architecture and perhaps grab a coffee at one of the nearby cafés.",
+          "searchQuery": "Place des Vosges",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping for Emily in Paris Merchandise",
+          "description": "Head to the boutiques in Le Marais to find exclusive 'Emily in Paris' merchandise. Look for fashion items and souvenirs that capture the essence of the show.",
+          "searchQuery": "Le Marais boutiques",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit the Hôtel de Ville",
+          "description": "Stop by the stunning Hôtel de Ville (City Hall) to admire its grand architecture. The building often hosts exhibitions and events, so check for any ongoing activities.",
+          "searchQuery": "Hôtel de Ville",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Relais de l'Entrecôte",
+          "description": "Indulge in a classic French dinner at Le Relais de l'Entrecôte, famous for its steak-frites and secret sauce. A must-visit for meat lovers!",
+          "searchQuery": "Le Relais de l'Entrecôte",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening Walk along the Seine",
+          "description": "End your day with a peaceful walk along the Seine River. Enjoy the illuminated views of Paris and reflect on your day filled with art and culture.",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Iconic Sights and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day at the iconic Café de Flore, a favorite of artists and intellectuals. Enjoy a classic French breakfast of croissants and café au lait in a charming atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Eiffel Tower",
+          "description": "No trip to Paris is complete without a visit to the Eiffel Tower. Take the elevator to the top for breathtaking views of the city. Be sure to book your tickets in advance to avoid long lines!",
+          "searchQuery": "Eiffel Tower",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Le Relais de l'Entrecôte",
+          "description": "Savor a delicious steak-frites lunch at this popular bistro known for its secret sauce. The ambiance is lively, making it a perfect spot to recharge before more sightseeing.",
+          "searchQuery": "Le Relais de l'Entrecôte",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll along the Champs-Élysées",
+          "description": "Take a leisurely walk down the famous Champs-Élysées, lined with shops and cafés. This is a great opportunity to pick up some Emily in Paris-themed merchandise at local boutiques.",
+          "searchQuery": "Champs-Élysées",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping at Galeries Lafayette",
+          "description": "Head to Galeries Lafayette, a stunning department store known for its beautiful glass dome. Explore luxury brands and find unique souvenirs to take home.",
+          "searchQuery": "Galeries Lafayette",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Relax at Jardin des Tuileries",
+          "description": "Unwind in the beautiful Tuileries Garden, a perfect spot to relax after a day of exploring. Enjoy the serene atmosphere and perhaps grab a snack from a nearby vendor.",
+          "searchQuery": "Jardin des Tuileries",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Le Procope",
+          "description": "End your day with dinner at Le Procope, the oldest café in Paris. Indulge in traditional French cuisine in a historic setting that has hosted many famous figures.",
+          "searchQuery": "Le Procope",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Cultural Immersion and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café de Flore",
+          "description": "Start your day at the iconic Café de Flore, a favorite haunt of artists and intellectuals. Enjoy a classic French breakfast of croissants and café au lait while soaking in the Parisian atmosphere.",
+          "searchQuery": "Café de Flore",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Louvre Museum",
+          "description": "Explore the world-renowned Louvre Museum, home to thousands of works of art including the Mona Lisa and the Venus de Milo. Be sure to book your tickets in advance to skip the long lines!",
+          "searchQuery": "Louvre Museum",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Le Fumoir",
+          "description": "Enjoy a leisurely lunch at Le Fumoir, located just a short walk from the Louvre. This stylish restaurant offers a delightful menu featuring French classics in a chic setting.",
+          "searchQuery": "Le Fumoir",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Stroll along the Seine River",
+          "description": "Take a relaxing walk along the Seine River, where you can admire the beautiful bridges and historic buildings. This is a perfect opportunity to capture some stunning photos of Paris.",
+          "searchQuery": "Seine River",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore Île de la Cité",
+          "description": "Visit Île de la Cité, the heart of Paris, and see the magnificent Notre-Dame Cathedral. Although the interior is closed for renovations, the exterior is still breathtaking and worth a visit.",
+          "searchQuery": "Notre-Dame Cathedral",
+          "locationEn": "Paris, France",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for Emily in Paris Merchandise",
+          "description": "Head to the nearby shops to find exclusive 'Emily in Paris' merchandise. From stylish clothing to unique souvenirs, this is the perfect way to remember your trip.",
+          "searchQuery": "Emily in Paris merchandise",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Le Relais de l'Entrecôte",
+          "description": "Indulge in a classic French dinner at Le Relais de l'Entrecôte, famous for its steak-frites and secret sauce. A must-try for meat lovers!",
+          "searchQuery": "Le Relais de l'Entrecôte",
+          "locationEn": "Paris, France",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Seine River Cruise",
+          "description": "End your day with a magical evening cruise on the Seine River. Enjoy the illuminated landmarks of Paris, including the Eiffel Tower and the Louvre, from the water.",
+          "searchQuery": "Seine River Cruise",
+          "locationEn": "Paris, France",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

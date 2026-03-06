@@ -1,0 +1,276 @@
+{
+  "id": "a1baa85a-8f66-46b5-8f03-6b8a39c6acae",
+  "destination": "ロサンゼルス",
+  "description": "ロサンゼルスの魅力は、文化と歴史、アート、そしてショッピングが融合した多様性にあります。特に、MLBファンにとっては、野球の聖地とも言えるこの街での体験は特別なもの。今回は、推し活を楽しみながら、アートや歴史を感じる3日間の旅をご提案します。",
+  "heroImage": "https://images.unsplash.com/photo-1580655653885-65763b2597d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODkwMjF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Jake Blucker",
+  "heroImagePhotographerUrl": "https://unsplash.com/@jakeblucker?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ロサンゼルス到着とダウンタウン探訪",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカフェでアメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツで、元気に一日をスタート！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ロサンゼルス・ライオンズ・スタジアム見学",
+          "description": "MLBの本拠地、ロサンゼルス・ライオンズ・スタジアムを訪れます。スタジアムツアーに参加して、選手たちがプレーするフィールドやロッカールームを見学しましょう。",
+          "searchQuery": "Los Angeles Lions Stadium",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ダウンタウンLAでランチ",
+          "description": "ダウンタウンの人気カフェで、サンドイッチやサラダを楽しみます。地元の人々に愛されるお店で、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ダウンタウンLAのアートギャラリー巡り",
+          "description": "ダウンタウンLAには多くのアートギャラリーがあります。特に、現代アートに特化したギャラリーを訪れて、地元アーティストの作品を楽しんでみてください。",
+          "searchQuery": "Downtown LA Art Galleries",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズショップでショッピング",
+          "description": "MLB関連のファングッズを取り扱うショップを訪れ、好きなチームのグッズを探しましょう。ユニフォームやキャップなど、思い出に残るアイテムが見つかるかも！",
+          "searchQuery": "MLB Merchandise Store",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "エル・マトドール・ビーチで夕日鑑賞",
+          "description": "美しいビーチで夕日を眺めながら、リラックスした時間を過ごします。波の音を聞きながら、心を落ち着けるひとときを楽しんでください。",
+          "searchQuery": "El Matador Beach",
+          "locationEn": "Malibu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "エル・マトドール・ビーチ近くのシーフードレストランで、新鮮な魚介料理を堪能します。海の幸を楽しみながら、素敵な夕食をお楽しみください。",
+          "locationEn": "Malibu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLB関連スポット巡りとアート体験",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツで、元気に一日をスタート！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ドジャースタジアム見学ツアー",
+          "description": "ロサンゼルス・ドジャースの本拠地、ドジャースタジアムを訪れます。スタジアムの歴史や選手たちのエピソードを聞きながら、フィールドやロッカールームを見学。野球ファンにはたまらない体験です！",
+          "searchQuery": "Dodger Stadium",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ドジャースタジアム近くのフードトラックでランチ",
+          "description": "ドジャースタジアム周辺には多くのフードトラックがあります。タコスやホットドッグなど、アメリカのストリートフードを楽しみながら、地元の雰囲気を味わいましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ハリウッド散策",
+          "description": "ハリウッドの名所を巡ります。ウォーク・オブ・フェイムやハリウッドサインを背景に写真を撮ったり、映画の歴史を感じることができるスポットを訪れたりします。",
+          "searchQuery": "Hollywood Walk of Fame",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "グリフィス天文台訪問",
+          "description": "グリフィス天文台からのロサンゼルスの絶景を楽しみます。天文台内の展示も充実しており、宇宙に関する知識を深めることができます。夕方の美しい景色を堪能しましょう。",
+          "searchQuery": "Griffith Observatory",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アートギャラリー巡り",
+          "description": "ロサンゼルスのアートシーンを楽しむため、地元のアートギャラリーを訪れます。新進気鋭のアーティストの作品を見ながら、アートに触れるひとときを過ごします。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ローカルレストランでディナー",
+          "description": "地元の人気レストランでディナーを楽しみます。アメリカンスタイルの料理や、メキシコ料理など、バラエティ豊かなメニューから選べます。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ショッピングと帰国",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロサンゼルスのカフェで、アメリカンブレックファーストを楽しみます。ボリューム満点のパンケーキやオムレツで、元気に一日をスタート！",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メルローズアベニュー散策",
+          "description": "トレンディなショップやカフェが立ち並ぶメルローズアベニューを散策。特に、MLB関連のファングッズを扱うお店も多いので、ぜひ立ち寄ってみてください。",
+          "searchQuery": "Melrose Avenue",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：ロサンゼルスのタコス屋",
+          "description": "地元の人に人気のタコス屋で、手作りのタコスを堪能。新鮮な具材とスパイシーなソースが絶品です。",
+          "searchQuery": "Best Tacos in Los Angeles",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サンタモニカビーチ訪問",
+          "description": "サンタモニカビーチでリラックス。美しい海を眺めながら、ビーチ沿いのショップでお土産を探したり、ビーチバレーを楽しんだりできます。",
+          "searchQuery": "Santa Monica Beach",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "サンタモニカピアでのアクティビティ",
+          "description": "サンタモニカピアで観覧車に乗ったり、アーケードゲームを楽しんだりして、楽しい時間を過ごします。海の風を感じながら、思い出に残るひとときを。",
+          "searchQuery": "Santa Monica Pier",
+          "locationEn": "Santa Monica, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食：ロサンゼルスのダイナー",
+          "description": "アメリカンスタイルのダイナーで、ハンバーガーやフライドポテトを楽しみます。カジュアルな雰囲気で、旅の締めくくりにぴったりです。",
+          "searchQuery": "Best Diner in Los Angeles",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "空港へ移動",
+          "description": "ロサンゼルス国際空港へ向かいます。帰国の準備をしながら、楽しかった旅を振り返りましょう。",
+          "locationEn": "Los Angeles, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

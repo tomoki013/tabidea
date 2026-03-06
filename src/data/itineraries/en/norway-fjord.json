@@ -1,0 +1,573 @@
+{
+  "id": "9448b971-39d3-4733-823d-65559e6686ae",
+  "destination": "Bergen & Oslo",
+  "description": "Embark on a breathtaking journey through Norway, where stunning fjords meet vibrant city life. This 7-day adventure will take you from the picturesque streets of Bergen, known for its colorful wooden houses and stunning natural surroundings, to the bustling capital of Oslo, rich in culture and history. Experience the majestic beauty of Norway's landscapes, from serene fjord cruises to scenic train rides, all while indulging in local cuisine and immersing yourself in the unique Norwegian lifestyle. Get ready for an unforgettable family trip that combines nature, heritage, and the thrill of exploration!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Bergen",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bryggen Tracteursted",
+          "description": "Enjoy a delicious meal at Bryggen Tracteursted, a cozy restaurant located in the historic Bryggen Wharf area. The menu features traditional Norwegian dishes made from local ingredients, perfect for starting your Bergen adventure.",
+          "searchQuery": "Bryggen Tracteursted",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Bryggen Wharf",
+          "description": "Stroll through the UNESCO World Heritage site of Bryggen, known for its colorful wooden houses and rich history. Take your time to explore the artisan shops and galleries that line the narrow alleyways.",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Take the Fløibanen Funicular to Mount Fløyen",
+          "description": "Ride the Fløibanen funicular to the top of Mount Fløyen for breathtaking views of Bergen and the surrounding fjords. Once at the top, enjoy a leisurely hike or simply relax and take in the stunning scenery.",
+          "searchQuery": "Fløibanen Funicular",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant 1877",
+          "description": "Indulge in a fine dining experience at Restaurant 1877, known for its exquisite seafood and local dishes. The ambiance is warm and inviting, making it a perfect spot for a family dinner after a day of exploration.",
+          "searchQuery": "Restaurant 1877",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Wharf",
+          "description": "End your day with a peaceful evening walk along the waterfront. The views of the harbor and the surrounding mountains are particularly magical at sunset, providing a perfect backdrop for family photos.",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Bergen",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Baker Brun",
+          "description": "Start your day with a delicious breakfast at Baker Brun, known for its freshly baked pastries and traditional Norwegian breakfast options. Enjoy a cozy atmosphere as you fuel up for a day of exploration.",
+          "searchQuery": "Baker Brun",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Fantoft Stave Church",
+          "description": "Explore the stunning Fantoft Stave Church, a beautiful example of traditional Norwegian wooden architecture. The intricate carvings and serene surroundings make it a perfect spot for photography and reflection.",
+          "searchQuery": "Fantoft Stave Church",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Bergen Fish Market",
+          "description": "Stroll through the vibrant Bergen Fish Market, where you can sample fresh seafood and local delicacies. It's a great place to experience the local culture and perhaps pick up some unique souvenirs.",
+          "searchQuery": "Bergen Fish Market",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant Enhjørningen",
+          "description": "Enjoy a delightful lunch at Restaurant Enhjørningen, known for its fresh seafood dishes and traditional Norwegian cuisine. The restaurant's charming atmosphere adds to the dining experience.",
+          "searchQuery": "Restaurant Enhjørningen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Bryggen Wharf Exploration",
+          "description": "Wander through the historic Bryggen Wharf, a UNESCO World Heritage site. The colorful wooden buildings and narrow alleyways are filled with shops, galleries, and cafes, perfect for leisurely exploration.",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Take the Fløibanen Funicular",
+          "description": "Ride the Fløibanen Funicular to the top of Mount Fløyen for breathtaking views of Bergen and the surrounding fjords. Enjoy a short hike or relax at the viewpoint before descending back to the city.",
+          "searchQuery": "Fløibanen Funicular",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Cornelius Seafood Restaurant",
+          "description": "Indulge in a memorable dinner at Cornelius Seafood Restaurant, located on a small island with stunning views of the fjords. The restaurant specializes in fresh seafood and offers a unique dining experience.",
+          "searchQuery": "Cornelius Seafood Restaurant",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Wharf",
+          "description": "End your day with a relaxing evening stroll along the wharf, taking in the beautiful lights reflecting on the water. It's a perfect way to unwind and soak in the charm of Bergen at night.",
+          "searchQuery": "Bergen Wharf",
+          "locationEn": "Bergen, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Fjord Cruise Adventure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Bergen",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Nærøyfjord",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Start your day with a scenic cruise through the stunning fjords."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Fjord Cruise from Bergen",
+          "description": "Embark on a breathtaking cruise from Bergen through the majestic Nærøyfjord and Aurlandsfjord. Experience the dramatic cliffs and serene waters, with opportunities to spot waterfalls and wildlife along the way.",
+          "searchQuery": "Nærøyfjord",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch on Board",
+          "description": "Enjoy a delicious lunch on board the cruise, featuring local Norwegian cuisine. Savor the flavors while taking in the panoramic views of the fjords.",
+          "searchQuery": "N/A",
+          "locationEn": "Nærøyfjord, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Aurlandsfjord",
+          "description": "Continue your cruise into Aurlandsfjord, where you can admire the picturesque villages and lush landscapes. Don't forget your camera for this stunning scenery!",
+          "searchQuery": "Aurlandsfjord",
+          "locationEn": "Aurlandsfjord, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Bergen",
+          "description": "After a day of exploring the fjords, return to Bergen. Relax and reflect on the incredible sights you've seen during your adventure.",
+          "searchQuery": "Bergen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Bryggen Tracteursted",
+          "description": "Indulge in a delightful dinner at Bryggen Tracteursted, a restaurant located in the historic Bryggen Wharf. Enjoy traditional Norwegian dishes made with fresh, local ingredients.",
+          "searchQuery": "Bryggen Tracteursted",
+          "locationEn": "Bergen, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Bryggen",
+          "description": "Take a leisurely evening stroll through the charming streets of Bryggen, a UNESCO World Heritage site. The colorful wooden houses and the vibrant atmosphere make for a perfect end to your day.",
+          "searchQuery": "Bryggen",
+          "locationEn": "Bergen, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Scenic Train Ride to Oslo",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Bergen",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Oslo",
+          "time": "12:00"
+        },
+        "duration": "4h",
+        "memo": "Enjoy the scenic views of the Norwegian countryside during the train ride."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Mathallen Oslo",
+          "description": "Indulge in a variety of local and international dishes at this vibrant food hall. It's a great place to sample Norwegian specialties and enjoy the lively atmosphere.",
+          "searchQuery": "Mathallen Oslo",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Viking Ship Museum",
+          "description": "Explore the fascinating history of the Vikings through well-preserved ships and artifacts. This museum offers a unique glimpse into Norway's maritime heritage.",
+          "searchQuery": "Viking Ship Museum",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll through Frogner Park",
+          "description": "Take a leisurely walk in Frogner Park, home to the famous Vigeland sculptures. The park's beautiful gardens and artistic installations make it a perfect spot for relaxation.",
+          "searchQuery": "Frogner Park",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Lofoten Fiskerestaurant",
+          "description": "Savor fresh seafood dishes at this renowned restaurant located by the waterfront. The ambiance and views of the harbor enhance the dining experience.",
+          "searchQuery": "Lofoten Fiskerestaurant",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Oslo waterfront",
+          "description": "End your day with a peaceful stroll along the waterfront, enjoying the views of the Oslo Opera House and the fjord. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Oslo waterfront",
+          "locationEn": "Oslo, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Discovering Oslo",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Sorgenfri",
+          "description": "Start your day with a hearty Norwegian breakfast at Café Sorgenfri, known for its cozy atmosphere and delicious open-faced sandwiches. It's a great way to fuel up for a day of exploration!",
+          "searchQuery": "Café Sorgenfri",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Vigeland Park",
+          "description": "Visit Vigeland Park, the world's largest sculpture park made by a single artist, Gustav Vigeland. Stroll through the park and admire over 200 sculptures that capture the human experience in various forms. It's a peaceful oasis in the heart of Oslo.",
+          "searchQuery": "Vigeland Park",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mathallen Oslo",
+          "description": "Head to Mathallen Oslo, a vibrant food hall where you can sample a variety of local and international dishes. From fresh seafood to artisanal cheeses, there's something for everyone to enjoy.",
+          "searchQuery": "Mathallen Oslo",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Oslo Opera House",
+          "description": "Explore the stunning Oslo Opera House, an architectural masterpiece where you can walk on the roof for panoramic views of the city and the fjord. Don't miss the chance to take some memorable photos here!",
+          "searchQuery": "Oslo Opera House",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Fjord Cruise",
+          "description": "Embark on a scenic fjord cruise to experience the breathtaking beauty of Oslo's surrounding islands and coastline. This is a perfect way to relax and take in the stunning natural landscapes of Norway.",
+          "searchQuery": "Oslo Fjord Cruise",
+          "locationEn": "Oslo, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Eik Annen Etage",
+          "description": "Enjoy a fine dining experience at Restaurant Eik Annen Etage, where you can savor exquisite Norwegian cuisine made from fresh, local ingredients. The elegant setting and attentive service make it a perfect end to your day.",
+          "searchQuery": "Restaurant Eik Annen Etage",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll along the Aker Brygge",
+          "description": "Take a leisurely evening stroll along Aker Brygge, a lively waterfront area filled with shops, bars, and restaurants. Enjoy the vibrant atmosphere and perhaps grab a nightcap while overlooking the fjord.",
+          "searchQuery": "Aker Brygge",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Oslo's Cultural Gems",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Sorgenfri",
+          "description": "Start your day with a hearty breakfast at Café Sorgenfri, known for its traditional Norwegian dishes and cozy atmosphere. Enjoy freshly baked bread, local cheeses, and a selection of cured meats to fuel your day of exploration.",
+          "searchQuery": "Café Sorgenfri",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Munch Museum",
+          "description": "Dive into the world of Edvard Munch at the Munch Museum, home to an extensive collection of his works, including the iconic 'The Scream'. The museum's modern architecture and beautiful waterfront location make it a perfect spot to appreciate art and nature.",
+          "searchQuery": "Munch Museum",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Mathallen Oslo",
+          "description": "Head to Mathallen Oslo, a vibrant food hall offering a variety of local and international cuisines. Sample delicious dishes from various stalls, including fresh seafood, artisanal cheeses, and gourmet street food, all under one roof.",
+          "searchQuery": "Mathallen Oslo",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Akershus Fortress",
+          "description": "After lunch, take a leisurely stroll to Akershus Fortress, a medieval castle that offers stunning views of the Oslo Fjord. Explore the grounds, visit the museums, and learn about Norway's history while enjoying the serene surroundings.",
+          "searchQuery": "Akershus Fortress",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Fjord Cruise on the Oslo Fjord",
+          "description": "Embark on a scenic cruise of the Oslo Fjord, where you'll be treated to breathtaking views of the surrounding islands and coastal landscapes. This is a perfect opportunity to relax and take in the natural beauty of Norway from the water.",
+          "searchQuery": "Oslo Fjord Cruise",
+          "locationEn": "Oslo, Norway",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Restaurant Eik Annen Etage",
+          "description": "End your day with a delightful dinner at Restaurant Eik Annen Etage, known for its exquisite Norwegian cuisine and elegant ambiance. Enjoy a multi-course meal featuring seasonal ingredients and local flavors, making for a memorable dining experience.",
+          "searchQuery": "Restaurant Eik Annen Etage",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Oslo",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "15:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from Oslo to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Sorgenfri",
+          "description": "Start your day with a hearty Norwegian breakfast at Café Sorgenfri, known for its cozy atmosphere and delicious open-faced sandwiches. It's a great way to fuel up before your journey home.",
+          "searchQuery": "Café Sorgenfri",
+          "locationEn": "Oslo, Norway",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Oslo Opera House",
+          "description": "Take a morning stroll to the iconic Oslo Opera House. You can walk on the roof for stunning views of the Oslofjord and the city. The architecture is a masterpiece and a perfect spot for some last-minute photos.",
+          "searchQuery": "Oslo Opera House",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Aker Brygge",
+          "description": "Wander around Aker Brygge, a vibrant waterfront area filled with shops, cafes, and restaurants. It's a lovely place to enjoy the views of the harbor and perhaps pick up some souvenirs before heading to the airport.",
+          "searchQuery": "Aker Brygge",
+          "locationEn": "Oslo, Norway",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

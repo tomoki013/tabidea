@@ -1,0 +1,453 @@
+{
+  "id": "3a9c8954-f289-4ef4-9e56-17561a19028b",
+  "destination": "Honolulu",
+  "description": "Escape to the vibrant shores of Honolulu, where the sun kisses the ocean and art flourishes in every corner. This 5-day journey is designed for the solo traveler who seeks to immerse themselves in the rich tapestry of Hawaiian culture, indulge in exquisite cuisine, and explore the local art scene. From the stunning beaches to the bustling markets, each day promises a blend of relaxation and inspiration, making it the perfect getaway for those who appreciate beauty in all its forms.",
+  "heroImage": "https://images.unsplash.com/photo-1581545067688-f7d6bdee12f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUzMzF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Mark Mialik",
+  "heroImagePhotographerUrl": "https://unsplash.com/@markmialik?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Honolulu",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill Waikiki",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy local Hawaiian dishes with a stunning view of Waikiki Beach. Their macadamia nut pancakes are a must-try!",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Waikiki Beach",
+          "description": "Spend your morning soaking up the sun at the iconic Waikiki Beach. Whether you want to swim, surf, or simply relax on the sand, this vibrant beach is the perfect spot to unwind and enjoy the beautiful scenery.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Duke's Waikiki",
+          "description": "Enjoy a casual lunch at Duke's, famous for its laid-back atmosphere and delicious seafood. Try their fresh poke bowl or the famous Hula Pie for dessert!",
+          "searchQuery": "Duke's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "International Market Place",
+          "description": "Explore the International Market Place, a shopping and dining destination featuring a mix of local boutiques and well-known brands. Don't forget to check out the beautiful banyan tree in the center!",
+          "searchQuery": "International Market Place",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Honolulu Museum of Art",
+          "description": "Visit the Honolulu Museum of Art, where you can admire a diverse collection of Asian, European, and American art. The museum often hosts special exhibitions, so check their schedule for any unique displays during your visit.",
+          "searchQuery": "Honolulu Museum of Art",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "Indulge in a fine dining experience at Roy's Waikiki, known for its innovative Hawaiian fusion cuisine. Enjoy dishes made with fresh local ingredients while taking in the ocean views.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along Waikiki Beach",
+          "description": "End your day with a leisurely stroll along Waikiki Beach. The sunset views are breathtaking, and the atmosphere is lively with street performers and beachgoers enjoying the evening.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill Waikiki",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy local Hawaiian dishes with a stunning ocean view. Their macadamia nut pancakes are a must-try!",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Honolulu Museum of Art",
+          "description": "Explore the Honolulu Museum of Art, which boasts an impressive collection of Asian, European, and American art. Don't miss the beautiful courtyard and the chance to see local artists' works.",
+          "searchQuery": "Honolulu Museum of Art",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Pig and The Lady",
+          "description": "Savor a unique blend of Vietnamese and local flavors at The Pig and The Lady, known for its creative pho and banh mi sandwiches. A perfect spot for food lovers!",
+          "searchQuery": "The Pig and The Lady",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Chinatown",
+          "description": "Stroll through Honolulu's vibrant Chinatown, filled with art galleries, boutiques, and local markets. It's a great place to find unique souvenirs and enjoy the lively atmosphere.",
+          "searchQuery": "Chinatown Honolulu",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Hawaii State Art Museum",
+          "description": "Discover contemporary Hawaiian art at the Hawaii State Art Museum, which showcases local artists and their works. Admission is free, making it a great cultural stop.",
+          "searchQuery": "Hawaii State Art Museum",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "Indulge in a fine dining experience at Roy's Waikiki, where you can enjoy a fusion of Hawaiian and Asian flavors. The ambiance and service are top-notch, perfect for a special evening.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk on Waikiki Beach",
+          "description": "End your day with a relaxing walk along Waikiki Beach. The sunset views are breathtaking, and it's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Culinary Delights and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Leonard's Bakery",
+          "description": "Start your day with a delicious malasada from Leonard's Bakery, a local favorite known for its fluffy, sugar-coated pastries. Enjoy the warm, sweet treat with a cup of Hawaiian coffee to energize your morning.",
+          "searchQuery": "Leonard's Bakery",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Kaka'ako Street Art",
+          "description": "Stroll through the vibrant Kaka'ako district, famous for its stunning street art and murals. This area is a canvas for local artists, and you'll find colorful, Instagram-worthy pieces that reflect the spirit of Hawaii.",
+          "searchQuery": "Kaka'ako Street Art",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Pig and The Lady",
+          "description": "Indulge in a unique Vietnamese-inspired lunch at The Pig and The Lady, where traditional flavors meet local ingredients. Don't miss their famous pho and banh mi sandwiches, which are a hit among locals and visitors alike.",
+          "searchQuery": "The Pig and The Lady",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Honolulu Museum of Art",
+          "description": "Immerse yourself in the world of art at the Honolulu Museum of Art. With a diverse collection ranging from Asian to contemporary art, this museum offers a peaceful retreat and a chance to appreciate local and international artists.",
+          "searchQuery": "Honolulu Museum of Art",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Shopping at Ala Moana Center",
+          "description": "Head to Ala Moana Center, the largest open-air shopping mall in the world. Browse through a mix of high-end boutiques and local shops, and enjoy the vibrant atmosphere. It's a perfect place to find unique souvenirs and gifts.",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Roy's Hawaii Kai",
+          "description": "Savor a fine dining experience at Roy's Hawaii Kai, where Hawaiian fusion cuisine takes center stage. Enjoy dishes that highlight fresh, local ingredients, and don't forget to try their signature chocolate soufflé for dessert.",
+          "searchQuery": "Roy's Hawaii Kai",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Magic Island",
+          "description": "End your day with a relaxing stroll at Magic Island, a beautiful park with stunning views of the sunset over the ocean. It's a perfect spot to unwind and reflect on your day while enjoying the gentle sea breeze.",
+          "searchQuery": "Magic Island",
+          "locationEn": "Honolulu, Hawaii",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Nature and Relaxation",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hula Grill Waikiki",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy local Hawaiian dishes with a stunning view of Waikiki Beach. The fresh fruit and pancakes are a must-try!",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Diamond Head State Monument",
+          "description": "Hike up to the summit of Diamond Head for breathtaking panoramic views of Honolulu and the Pacific Ocean. The trail is well-maintained and takes about 1.5 hours round trip, making it a perfect morning adventure.",
+          "searchQuery": "Diamond Head State Monument",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Leonard's Bakery",
+          "description": "Indulge in a famous malasada from Leonard's Bakery, a local favorite. These Portuguese doughnuts are fluffy and coated in sugar, perfect for a sweet treat after your hike!",
+          "searchQuery": "Leonard's Bakery",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Hanauma Bay Nature Preserve",
+          "description": "Spend your afternoon snorkeling in the crystal-clear waters of Hanauma Bay. This nature preserve is home to vibrant coral reefs and a variety of tropical fish, making it a paradise for underwater exploration.",
+          "searchQuery": "Hanauma Bay Nature Preserve",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Return to Honolulu and relax at Waikiki Beach",
+          "description": "After a day of adventure, unwind at Waikiki Beach. Enjoy the sunset while lounging on the sand or take a leisurely stroll along the shore.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "Treat yourself to a fine dining experience at Roy's Waikiki, where you can savor innovative Hawaiian cuisine with a fusion of Asian flavors. The ambiance is perfect for a relaxing evening.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Day in Paradise",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Hula Grill",
+          "description": "Start your day with a delicious breakfast at Hula Grill, where you can enjoy local favorites like macadamia nut pancakes and fresh tropical fruit. The ocean view adds to the delightful experience.",
+          "searchQuery": "Hula Grill Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Honolulu Museum of Art",
+          "description": "Explore the Honolulu Museum of Art, which features an impressive collection of Asian, European, and American art. Don't miss the beautiful courtyard and the chance to see local artists' works.",
+          "searchQuery": "Honolulu Museum of Art",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Pig and The Lady",
+          "description": "Savor a unique blend of Vietnamese cuisine with a local twist at The Pig and The Lady. Their pho and banh mi are highly recommended, and the vibrant atmosphere is perfect for a leisurely lunch.",
+          "searchQuery": "The Pig and The Lady",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll through the Kaka'ako Art District",
+          "description": "Take a leisurely walk through the Kaka'ako Art District, known for its colorful murals and street art. This area is a hub for local artists and offers a great opportunity to capture some Instagram-worthy photos.",
+          "searchQuery": "Kaka'ako Art District",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping at Ala Moana Center",
+          "description": "Spend your afternoon shopping at Ala Moana Center, one of the largest open-air shopping malls in the world. You'll find a mix of luxury brands and local boutiques, perfect for picking up souvenirs.",
+          "searchQuery": "Ala Moana Center",
+          "locationEn": "Honolulu, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Roy's Waikiki",
+          "description": "Indulge in a fine dining experience at Roy's Waikiki, where Hawaiian fusion cuisine takes center stage. Enjoy dishes made with fresh, local ingredients while overlooking the stunning sunset.",
+          "searchQuery": "Roy's Waikiki",
+          "locationEn": "Honolulu, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk on Waikiki Beach",
+          "description": "End your day with a peaceful evening walk along Waikiki Beach. The sound of the waves and the beautiful night sky create a perfect atmosphere to reflect on your trip.",
+          "searchQuery": "Waikiki Beach",
+          "locationEn": "Honolulu, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

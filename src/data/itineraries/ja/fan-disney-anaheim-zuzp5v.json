@@ -1,0 +1,541 @@
+{
+  "id": "3758b65b-ccae-4c5b-bd80-27060c901da1",
+  "destination": "アナハイム",
+  "description": "アナハイムでの6日間の旅は、家族全員が楽しめる魔法のような体験が待っています。ディズニーの夢の世界を満喫し、地元の文化や歴史に触れ、ショッピングやリラックスの時間も大切にする、バランスの取れたプランです。子供たちの笑顔と共に、特別な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "アナハイム到着とディズニーランド初日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アナハイムのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ディズニーランド",
+          "description": "夢の国、ディズニーランドへ！子供たちと一緒にアトラクションを楽しんだり、キャラクターたちと写真を撮ったり、思い出に残る一日を過ごしましょう。特に「イッツ・ア・スモールワールド」は家族全員におすすめです。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ディズニーランド内でランチ",
+          "description": "パーク内のレストランで、ディズニーテーマのランチを楽しみます。子供たちが喜ぶキャラクターランチプレートや、ヘルシーなサラダも選べます。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ダウンタウン・ディズニー散策",
+          "description": "ディズニーの雰囲気を楽しみながら、ダウンタウン・ディズニーを散策。お土産屋さんやカフェが並び、ファングッズを探すのにぴったりの場所です。",
+          "searchQuery": "Downtown Disney District",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ディズニーランド再入場",
+          "description": "午後も引き続きディズニーランドを楽しみます。人気のアトラクションやパレードを見逃さないように、事前にスケジュールをチェックしておきましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディズニーランド内でディナー",
+          "description": "パーク内のレストランでディナーを楽しみます。ディズニーテーマの特別メニューを味わいながら、家族で楽しい時間を過ごしましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のパレード観賞",
+          "description": "ディズニーランドの夜のパレードを観賞。美しいライトアップとキャラクターたちのパフォーマンスに、子供たちも大興奮！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ディズニーランドでの冒険",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "アナハイムのホテルで、家族みんなで朝食を楽しみます。アメリカンブレックファーストやフルーツ、パンケーキなど、エネルギーをチャージしてディズニーランドに備えましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ディズニーランド入園",
+          "description": "夢の国、ディズニーランドへ！開園と同時に入園し、人気アトラクションを楽しみましょう。特に子供たちが大好きなキャラクターグリーティングは、早めに行くのがポイントです。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "パーク内でランチ",
+          "description": "ディズニーランド内のレストランでランチを楽しみます。子供たちが喜ぶキャラクターをテーマにしたメニューもあり、楽しい食事の時間を過ごせます。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アトラクション巡り",
+          "description": "午後はアトラクションを巡りましょう。特に「イッツ・ア・スモールワールド」や「バズ・ライトイヤーのアストロブラスター」は家族全員で楽しめるおすすめです。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "キャラクターグリーティング",
+          "description": "ディズニーキャラクターとのグリーティングタイム。子供たちが大好きなミッキーやミニーと一緒に写真を撮り、素敵な思い出を作りましょう。",
+          "searchQuery": "Disney Character Meet and Greet",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "パーク内でディナー",
+          "description": "ディズニーランド内のレストランでディナーを楽しみます。テーマパークならではの特別な雰囲気の中で、家族での食事を満喫しましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜のパレード観賞",
+          "description": "ディズニーランドの夜のパレードを観賞します。色とりどりのライトと音楽に包まれた幻想的な時間を家族で楽しみましょう。",
+          "searchQuery": "Disneyland Night Parade",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:30",
+          "activity": "ホテルに戻る",
+          "description": "楽しい一日を終え、ホテルに戻ります。子供たちの笑顔を思い出しながら、明日の計画を立てるのも楽しみの一つです。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ディズニー・カリフォルニア・アドベンチャー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "アナハイムのホテルで、家族みんなで朝食を楽しみます。アメリカンブレックファーストやフルーツ、パンケーキなど、ボリューム満点のメニューでエネルギーをチャージ！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ディズニー・カリフォルニア・アドベンチャー",
+          "description": "夢の国、ディズニー・カリフォルニア・アドベンチャーで一日中楽しみましょう！アトラクションやショーを満喫し、子供たちの笑顔を見ながら、家族の思い出を作ります。特に「カーズランド」や「アナと雪の女王」のエリアは必見です。",
+          "searchQuery": "Disney California Adventure",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "パーク内でランチ",
+          "description": "ディズニー・カリフォルニア・アドベンチャー内のレストランでランチを楽しみます。子供たちが大好きなキャラクターの料理や、アメリカンファストフードを味わいながら、楽しいひとときを過ごしましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトラクション巡り",
+          "description": "午後は、人気のアトラクションを巡ります。特に「インディ・ジョーンズ・アドベンチャー」や「グリズリー・リバー・ラン」は家族全員で楽しめるアトラクションです。待ち時間を利用して、周辺のショップでファングッズをチェックするのもお忘れなく！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ディズニー・カリフォルニア・アドベンチャーのショッピング",
+          "description": "パーク内のショップで、ディズニーのファングッズを購入します。お気に入りのキャラクターのぬいぐるみや、限定アイテムを見つけて、思い出を持ち帰りましょう。",
+          "searchQuery": "Disney California Adventure Merchandise",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "パーク内でディナー",
+          "description": "ディズニー・カリフォルニア・アドベンチャー内のレストランでディナーを楽しみます。家族みんなでシェアできる料理を選んで、楽しい一日の締めくくりをしましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "夜のパレード観賞",
+          "description": "ディズニーの夜のパレードを観賞します。美しいライトアップとキャラクターたちのパフォーマンスに、子供たちも大興奮！素敵な思い出を作りましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アナハイムの文化と歴史を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "アナハイム博物館",
+          "description": "アナハイムの歴史を学ぶことができる博物館です。地元の文化や歴史に触れながら、家族で楽しい時間を過ごせます。特に子供向けの展示も充実しています。",
+          "searchQuery": "Anaheim Museum",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "アナハイムの地元市場でショッピング",
+          "description": "地元の新鮮な食材や手作りの工芸品が並ぶ市場です。お土産やファングッズを探しながら、地元の雰囲気を楽しむことができます。",
+          "searchQuery": "Anaheim Farmers Market",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のカフェでランチ",
+          "description": "アナハイムの人気カフェで、サンドイッチやサラダを楽しみましょう。子供向けのメニューも豊富で、家族みんなで満足できる食事ができます。",
+          "searchQuery": "Café Tu Tu Tango",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ディズニーランドの周辺を散策",
+          "description": "ディズニーランドの外観を楽しみながら、周辺のショップでファングッズを探しましょう。特に子供たちが喜ぶアイテムがたくさんあります。",
+          "searchQuery": "Disneyland Resort",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ディズニーランドのアトラクションを楽しむ",
+          "description": "ディズニーランドに入園し、家族でアトラクションを楽しみましょう。特に子供向けのアトラクションが多く、思い出に残る体験ができます。",
+          "searchQuery": "Disneyland Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディズニーランド内でディナー",
+          "description": "ディズニーランド内のレストランで、特別なディナーを楽しみましょう。テーマに沿った料理が楽しめ、家族での素敵な時間を過ごせます。",
+          "searchQuery": "Blue Bayou Restaurant",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のパレードを観賞",
+          "description": "ディズニーランドの夜のパレードを観賞し、幻想的な雰囲気を楽しみましょう。子供たちの目が輝く瞬間です。",
+          "searchQuery": "Disneyland Night Parade",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アナハイムのホテルで、家族みんなで楽しめるアメリカンブレックファーストをいただきます。パンケーキやベーコン、フルーツなど、ボリューム満点の朝食で一日をスタート！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "アナハイムのショッピングモール訪問",
+          "description": "アナハイムの人気ショッピングモールで、ファングッズやお土産を探しましょう。ディズニー関連のアイテムが豊富に揃っているので、子供たちも大喜び！",
+          "searchQuery": "Anaheim GardenWalk",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ショッピングモール内でランチ",
+          "description": "ショッピングモール内のカジュアルなレストランで、家族みんなでランチを楽しみます。ピザやハンバーガーなど、子供たちが好きなメニューが揃っています。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "スパ体験",
+          "description": "リラックスしたい方にぴったりのスパで、マッサージやフェイシャルを体験。家族全員がリフレッシュできる時間を過ごしましょう。",
+          "searchQuery": "The Spa at Anaheim",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ディズニー関連ショップ巡り",
+          "description": "アナハイムのディズニー関連ショップを巡り、限定グッズやお土産を探します。子供たちの笑顔が見られる瞬間がたくさん！",
+          "searchQuery": "Disneyland Resort",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "ホテル内のレストランで、家族みんなでディナーを楽しみます。アメリカンスタイルのディナーで、楽しい一日の締めくくり。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルでのんびり",
+          "description": "一日の疲れを癒すため、ホテルでのんびり過ごします。家族で映画を観たり、明日の計画を立てたりして、リラックスした時間を楽しみましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "アナハイムから東京へ帰る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "アナハイムのホテルで、家族みんなでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、フルーツなど、ボリューム満点の朝食で一日をスタート！",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アナハイムのダウンタウン散策",
+          "description": "アナハイムのダウンタウンを散策し、地元のショップやカフェを訪れます。特にディズニー関連のグッズを扱うお店も多いので、ファングッズを探すのにぴったりです。",
+          "searchQuery": "Anaheim Downtown",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（地元のカフェ）",
+          "description": "ダウンタウンのカフェで軽めのランチを楽しみます。サンドイッチやサラダなど、子供たちも食べやすいメニューが揃っています。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ディズニー・アナハイムのショップ訪問",
+          "description": "ディズニーの公式ショップで、家族みんなでお土産やファングッズを購入します。特に子供たちが喜ぶキャラクターグッズが豊富です。",
+          "searchQuery": "Disneyland Resort",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "アナハイムの公園でリラックス",
+          "description": "アナハイムの公園で、子供たちが遊ぶ姿を見ながらリラックスした時間を過ごします。周囲の自然を楽しみながら、最後のアナハイムの思い出を作りましょう。",
+          "searchQuery": "Anaheim Park",
+          "locationEn": "Anaheim, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "空港へ移動",
+          "description": "アナハイムから空港へ向かいます。帰国の準備をしながら、楽しかった旅行の思い出を振り返りましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "空港で夕食",
+          "description": "空港内のレストランで軽めの夕食をとります。旅行の締めくくりに、アメリカのファストフードやカジュアルなダイニングを楽しみましょう。",
+          "locationEn": "Anaheim, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

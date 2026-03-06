@@ -1,0 +1,363 @@
+{
+  "id": "2c4df1a3-6f85-4dd7-881f-d32d257e5609",
+  "destination": "香港",
+  "description": "香港は、文化と歴史が交錯する魅力的な都市であり、特にディズニー関連のスポットが充実しています。カップルでの旅行にぴったりなリラックスした雰囲気の中で、推し活を楽しむことができるでしょう。美味しい食事や地元の文化を体験しながら、香港の魅力を存分に味わいましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "香港の魅力を満喫する日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "香港のローカルな飲茶を楽しむ朝食。点心やお粥を味わいながら、香港の朝の雰囲気を満喫します。",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "香港文化博物館",
+          "description": "香港の歴史や文化を深く知ることができる博物館。特に、香港の伝統的な工芸品やアートの展示が魅力的です。",
+          "searchQuery": "Hong Kong Museum of History",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "尖沙咀でランチ",
+          "description": "尖沙咀エリアの地元のレストランで、香港スタイルの焼きそばや海鮮料理を楽しみます。",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビクトリアハーバー散策",
+          "description": "ビクトリアハーバー沿いを散策しながら、香港の美しい景色を堪能。特に、夕方の時間帯は絶景です。",
+          "searchQuery": "Victoria Harbour",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "香港のディズニーストア訪問",
+          "description": "尖沙咀にあるディズニーストアで、推し活にぴったりのファングッズを探します。限定商品も見逃せません！",
+          "searchQuery": "Disney Store Tsim Sha Tsui",
+          "locationEn": "Tsim Sha Tsui, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元の飲茶",
+          "description": "地元の飲茶レストランで、点心やお茶を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ビクトリアピークの夜景観賞",
+          "description": "ビクトリアピークからの夜景は圧巻。香港の煌びやかな夜景を楽しみながら、ロマンチックなひとときを過ごします。",
+          "searchQuery": "Victoria Peak",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "香港ディズニーランドで夢の世界へ",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "香港のローカルな飲茶を楽しむ朝食。点心やお粥を味わいながら、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "香港ディズニーランド",
+          "description": "夢の世界、香港ディズニーランドへ！トイ・ストーリー・ランドやファンタジーランドで、思い出に残るアトラクションを楽しみましょう。特にトイ・ストーリー・ランドは、映画の世界に入り込んだような体験ができます。",
+          "searchQuery": "Hong Kong Disneyland",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ディズニーランド内でランチ",
+          "description": "パーク内のレストランで、ディズニーキャラクターをテーマにしたランチを楽しみます。可愛い料理に心も癒されるひととき。",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "トイ・ストーリー・ランドで遊ぶ",
+          "description": "トイ・ストーリー・ランドで、バズ・ライトイヤーやウッディと一緒に遊びましょう。アトラクションだけでなく、フォトスポットもたくさん！",
+          "searchQuery": "Toy Story Land",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファンタジーランドでのアトラクション",
+          "description": "ファンタジーランドでは、白雪姫の冒険やピーターパンの空の旅など、夢のようなアトラクションを楽しみます。",
+          "searchQuery": "Fantasyland",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ディズニーショップでファングッズ購入",
+          "description": "パーク内のディズニーショップで、限定のファングッズをゲット！お土産や記念品にぴったりです。",
+          "searchQuery": "Disney Store",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ディズニーランド内でディナー",
+          "description": "ディズニーランド内のレストランで、ディズニーキャラクターに囲まれながらディナーを楽しみます。特別な夜を演出してくれることでしょう。",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のパレード観賞",
+          "description": "ディズニーの夜のパレードを観賞。美しいライトアップとキャラクターたちのパフォーマンスに心を奪われることでしょう。",
+          "locationEn": "Hong Kong Disneyland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "香港の隠れた名所を巡る日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "香港のローカルなカフェで、香港式の朝食を楽しみます。特に、ミルクティーとエッグタルトの組み合わせは絶品です。",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "中環の街歩き",
+          "description": "中環エリアを散策しながら、歴史的な建物やアートギャラリーを楽しみます。特に、PMQ（元創方）では地元アーティストの作品を見つけることができます。",
+          "searchQuery": "PMQ",
+          "locationEn": "Central, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ソーホーでランチ",
+          "description": "ソーホーエリアの人気レストランでランチ。地元の食材を使った創作料理を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "SoHo, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マンモス・バル訪問",
+          "description": "マンモス・バルで、香港のユニークなカクテルを楽しみます。特に、ディズニー関連のカクテルがあるので、ファンにはたまらないスポットです。",
+          "searchQuery": "Mammoth Bar",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ディズニーストアでファングッズ購入",
+          "description": "香港のディズニーストアで、推しキャラのグッズを探しましょう。限定商品も多いので、見逃さないように！",
+          "searchQuery": "Disney Store Hong Kong",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "香港の地元料理を楽しむために、人気の飲茶レストランへ。新鮮な海鮮や点心を堪能できます。",
+          "locationEn": "Hong Kong, China",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "夜景を楽しむ",
+          "description": "ビクトリアハーバーの夜景を眺めながら、ロマンチックな時間を過ごします。特に、アベニュー・オブ・スターズからの眺めは絶景です。",
+          "searchQuery": "Avenue of Stars",
+          "locationEn": "Hong Kong, China",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "お土産探しと帰路",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "香港",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "旺角",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "香港の地下鉄を利用して旺角へ移動します。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "旺角でファングッズ探し",
+          "description": "旺角のショッピングエリアで、ディズニー関連のファングッズを探しましょう。特に、香港ディズニーランドのオフィシャルショップや、地元の雑貨店でユニークなアイテムが見つかります。",
+          "searchQuery": "Mong Kok Disney Merchandise",
+          "locationEn": "Mong Kok, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "女人街でランチ",
+          "description": "女人街の屋台で、地元のストリートフードを楽しみましょう。特に、エッグタルトやバブルティーは絶品です。食べ歩きしながら、ショッピングも楽しめます。",
+          "searchQuery": "Ladies Market",
+          "locationEn": "Ladies Market, Mong Kok, Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "九龍公園散策",
+          "description": "九龍公園でリラックスした時間を過ごしましょう。美しい庭園や池があり、静かな雰囲気の中で散策できます。特に、鳥の巣や水の流れが心を癒してくれます。",
+          "searchQuery": "Kowloon Park",
+          "locationEn": "Kowloon Park, Hong Kong",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "香港のカフェで休憩",
+          "description": "香港のカフェで、コーヒーやデザートを楽しみながら、旅の思い出を振り返りましょう。特に、香港式ミルクティーやパイナップルバンはおすすめです。",
+          "searchQuery": "Hong Kong Cafe",
+          "locationEn": "Hong Kong",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "香港国際空港へ移動",
+          "description": "空港へ向かうため、地下鉄を利用します。帰りのフライトに備えて、余裕を持って移動しましょう。",
+          "searchQuery": "Hong Kong International Airport",
+          "locationEn": "Hong Kong International Airport, Hong Kong",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

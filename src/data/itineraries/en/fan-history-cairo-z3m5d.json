@@ -1,0 +1,516 @@
+{
+  "id": "5027206e-ef0a-4e45-9a73-b652682da2ba",
+  "destination": "Cairo",
+  "description": "Immerse yourself in the vibrant tapestry of Cairo, where ancient history meets modern life. Over six days, you'll explore the rich cultural heritage of this bustling metropolis, from the majestic pyramids to the lively bazaars. As a solo traveler, you'll have the freedom to wander at your own pace, savor local delicacies, and discover hidden gems that showcase the true essence of Egyptian life. This journey is not just about seeing the sights; it's about experiencing the heart and soul of Cairo, engaging with its history, and indulging in your passion for cultural exploration and fandom.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Cairo",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a traditional Egyptian breakfast at Felfela, known for its delicious falafel and fresh bread. The vibrant atmosphere will energize you for the day ahead.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Egyptian Museum",
+          "description": "Explore the treasures of ancient Egypt at the Egyptian Museum. Don't miss the stunning artifacts from Tutankhamun's tomb and the mummies exhibit. Allocate at least 2 hours to fully appreciate the history.",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Abou Tarek",
+          "description": "Enjoy a hearty lunch at Abou Tarek, famous for its koshari, a delicious mix of rice, lentils, and pasta topped with spicy tomato sauce. It's a local favorite and very budget-friendly.",
+          "searchQuery": "Abou Tarek",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through Khan el-Khalili Bazaar",
+          "description": "Wander through the bustling Khan el-Khalili Bazaar, where you can shop for unique souvenirs, including pharaonic-themed merchandise and local handicrafts. Don't forget to haggle for the best prices!",
+          "searchQuery": "Khan el-Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Coffee at El Fishawy",
+          "description": "Take a break at El Fishawy, one of the oldest coffee shops in Cairo, located in the heart of Khan el-Khalili. Enjoy a cup of traditional Egyptian coffee or mint tea while soaking in the lively atmosphere.",
+          "searchQuery": "El Fishawy",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Zooba",
+          "description": "Savor modern Egyptian street food at Zooba, where you can try various dishes like taameya and hawawshi in a trendy setting. It's a great way to experience contemporary Egyptian cuisine.",
+          "searchQuery": "Zooba",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Return to hotel",
+          "description": "Head back to your accommodation to relax and reflect on your first day in Cairo. Prepare for more adventures in the coming days!",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "The Pyramids of Giza and Sphinx",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a traditional Egyptian breakfast at Felfela, known for its delicious falafel and fresh bread. The vibrant atmosphere will energize you for a day of exploration.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Great Pyramid of Giza",
+          "description": "Explore the iconic Great Pyramid of Giza, the last of the Seven Wonders of the Ancient World still in existence. Marvel at its grandeur and learn about its fascinating history.",
+          "searchQuery": "Great Pyramid of Giza",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore the Sphinx",
+          "description": "Just a short walk from the pyramids, the Sphinx awaits. This mythical creature with a lion's body and a human head is steeped in mystery and offers a perfect photo opportunity.",
+          "searchQuery": "Sphinx",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Abu Shakra",
+          "description": "Enjoy a hearty lunch at Abu Shakra, famous for its grilled meats and traditional Egyptian dishes. The restaurant's ambiance is perfect for relaxing after your morning adventures.",
+          "searchQuery": "Abu Shakra",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit the Giza Plateau Museum",
+          "description": "Dive deeper into the history of the pyramids at the Giza Plateau Museum. The exhibits provide insights into the construction and significance of these ancient structures.",
+          "searchQuery": "Giza Plateau Museum",
+          "locationEn": "Giza, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for souvenirs at the Giza Bazaar",
+          "description": "Head to the nearby Giza Bazaar to find unique souvenirs and fan merchandise related to ancient Egypt. Bargain for trinkets, papyrus art, and more to take home a piece of history.",
+          "searchQuery": "Giza Bazaar",
+          "locationEn": "Giza, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at El Dar Darak",
+          "description": "End your day with dinner at El Dar Darak, where you can enjoy traditional Egyptian cuisine with a view of the pyramids. The ambiance is perfect for reflecting on your day.",
+          "searchQuery": "El Dar Darak",
+          "locationEn": "Giza, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Exploring Islamic Cairo",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at El-Fishawy Cafe",
+          "description": "Start your day with a traditional Egyptian breakfast at El-Fishawy Cafe, located in the heart of Khan el-Khalili Bazaar. Enjoy a cup of mint tea and some delicious falafel while soaking in the vibrant atmosphere of this historic cafe.",
+          "searchQuery": "El-Fishawy Cafe",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Al-Azhar Mosque",
+          "description": "Explore the stunning Al-Azhar Mosque, one of the oldest mosques in Cairo. Marvel at its beautiful architecture and serene atmosphere, and if you're lucky, you might catch a glimpse of a prayer session.",
+          "searchQuery": "Al-Azhar Mosque",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Naguib Mahfouz Restaurant",
+          "description": "Indulge in a delicious lunch at Naguib Mahfouz Restaurant, named after the Nobel Prize-winning Egyptian author. Savor traditional dishes like koshari and stuffed grape leaves in a charming setting.",
+          "searchQuery": "Naguib Mahfouz Restaurant",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Khan el-Khalili Bazaar",
+          "description": "Wander through the bustling lanes of Khan el-Khalili Bazaar, where you can shop for unique souvenirs, including handmade crafts and fan merchandise. Don't forget to haggle for the best prices!",
+          "searchQuery": "Khan el-Khalili Bazaar",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Museum of Islamic Art",
+          "description": "Discover the rich history of Islamic art at the Museum of Islamic Art. The museum houses an impressive collection of artifacts, textiles, and ceramics that showcase the beauty of Islamic culture.",
+          "searchQuery": "Museum of Islamic Art",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Abou El Sid",
+          "description": "Enjoy a delightful dinner at Abou El Sid, a restaurant known for its authentic Egyptian cuisine. Try their signature dishes like molokhia and grilled meats, all served in a cozy atmosphere.",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the Nile Corniche",
+          "description": "End your day with a relaxing stroll along the Nile Corniche. Enjoy the cool evening breeze and take in the beautiful views of the river and the city skyline.",
+          "searchQuery": "Nile Corniche",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Coptic Cairo and Historical Sites",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Felfela",
+          "description": "Start your day with a delicious Egyptian breakfast at Felfela, known for its traditional dishes like falafel and fuul (fava bean stew). The cozy atmosphere and friendly staff make it a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Coptic Museum",
+          "description": "Visit the Coptic Museum, which houses an impressive collection of Coptic art and artifacts. This museum offers a deep dive into the rich history of Egypt's Christian community, showcasing beautiful textiles, manuscripts, and religious icons.",
+          "searchQuery": "Coptic Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Abou El Sid",
+          "description": "Enjoy a leisurely lunch at Abou El Sid, a restaurant famous for its authentic Egyptian cuisine. Try the koshari, a hearty mix of rice, lentils, and pasta topped with tomato sauce and fried onions, a local favorite.",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Hanging Church (Saint Virgin Mary's Coptic Orthodox Church)",
+          "description": "Explore the Hanging Church, one of the oldest churches in Egypt, built on top of the Babylon Fortress. Its stunning architecture and serene atmosphere make it a must-visit for history enthusiasts.",
+          "searchQuery": "Hanging Church",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Ben Ezra Synagogue",
+          "description": "Just a short walk from the Hanging Church, visit the Ben Ezra Synagogue, which is rich in history and significance. This site is believed to be where baby Moses was found, and it features beautiful architecture and a peaceful courtyard.",
+          "searchQuery": "Ben Ezra Synagogue",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping for Fan Goods at Khan El Khalili Bazaar",
+          "description": "Head to the famous Khan El Khalili Bazaar, where you can shop for unique fan merchandise and souvenirs. The vibrant atmosphere and myriad of shops make it a delightful experience, perfect for picking up some local crafts and gifts.",
+          "searchQuery": "Khan El Khalili",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at El Fishawy",
+          "description": "End your day with dinner at El Fishawy, a historic café in Khan El Khalili. Enjoy traditional Egyptian dishes while soaking in the lively ambiance of this iconic spot, known for its mint tea and delicious pastries.",
+          "searchQuery": "El Fishawy",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Museum Day and Local Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Zooba",
+          "description": "Start your day with a delicious Egyptian breakfast at Zooba, known for its fresh ingredients and local flavors. Try their famous taameya (Egyptian falafel) and a refreshing hibiscus drink.",
+          "searchQuery": "Zooba",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Egyptian Museum",
+          "description": "Explore the treasures of ancient Egypt at the Egyptian Museum. Don't miss the Tutankhamun exhibit and the stunning mummies. Allocate at least 2-3 hours to fully appreciate the artifacts.",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Felfela",
+          "description": "Enjoy a traditional Egyptian lunch at Felfela, a local favorite. Their koshari (a mix of rice, lentils, and pasta) is a must-try, along with some fresh salad.",
+          "searchQuery": "Felfela",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through Zamalek District",
+          "description": "Take a leisurely walk in the Zamalek District, known for its lush greenery and charming streets. This area is perfect for spotting local art galleries and quaint shops.",
+          "searchQuery": "Zamalek District",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Local Cafes",
+          "description": "Relax at one of the local cafes in Zamalek. Try a cup of Egyptian coffee or tea while enjoying the vibrant atmosphere. It's a great spot to unwind and people-watch.",
+          "searchQuery": "Café in Zamalek",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Shopping for Souvenirs",
+          "description": "Explore local shops for unique souvenirs and fan merchandise related to your interests. Look for handmade crafts, papyrus art, and other Egyptian memorabilia.",
+          "searchQuery": "Souvenir shops in Cairo",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Abou El Sid",
+          "description": "End your day with a delightful dinner at Abou El Sid, where you can savor traditional Egyptian dishes in a cozy setting. Their molokhia (jute leaf soup) is highly recommended.",
+          "searchQuery": "Abou El Sid",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure from Cairo",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Cairo International Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Your Destination",
+          "time": "12:00"
+        },
+        "duration": "2h",
+        "memo": "Flight to your next destination."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at El-Fishawy Cafe",
+          "description": "Start your day with a traditional Egyptian breakfast at El-Fishawy Cafe, famous for its mint tea and delicious falafel. This iconic cafe in Khan el-Khalili is a perfect spot to soak in the local atmosphere before your departure.",
+          "searchQuery": "El-Fishawy Cafe",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit the Egyptian Museum",
+          "description": "Before you leave, take a quick visit to the Egyptian Museum, home to an extensive collection of ancient Egyptian antiquities. Don't miss the treasures of Tutankhamun and the fascinating mummies that tell the story of Egypt's rich history.",
+          "searchQuery": "Egyptian Museum",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Head to Cairo International Airport",
+          "description": "Make your way to Cairo International Airport for your departure. Ensure you arrive at least 2 hours before your flight to allow for check-in and security procedures.",
+          "searchQuery": "Cairo International Airport",
+          "locationEn": "Cairo, Egypt",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

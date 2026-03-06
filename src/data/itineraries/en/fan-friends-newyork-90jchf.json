@@ -1,0 +1,420 @@
+{
+  "id": "7dbb95e0-ed31-406c-9a61-fc38941dca1d",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where every street corner tells a story and every neighborhood has its own unique vibe. This 4-day solo adventure will take you through the heart of the city, exploring cultural landmarks, indulging in local delicacies, and diving into the world of your favorite fandoms. From the iconic skyline to the serene parks, this trip promises a blend of excitement and tranquility, perfect for a passionate traveler like you.",
+  "heroImage": "https://images.unsplash.com/photo-1654336364786-5e2187e59d88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk0Mjh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Darwin Vegher",
+  "heroImagePhotographerUrl": "https://unsplash.com/@darwiiiin?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Exploring Midtown",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Ess-a-Bagel",
+          "description": "Start your day with a classic New York bagel at Ess-a-Bagel, known for its fresh, chewy bagels and a variety of spreads. It's a local favorite and a perfect way to fuel up for a day of exploration!",
+          "searchQuery": "Ess-a-Bagel",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Times Square",
+          "description": "Dive into the vibrant atmosphere of Times Square, where the bright lights and bustling crowds create an unforgettable experience. Take a moment to snap some photos and soak in the energy of the city!",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore Bryant Park",
+          "description": "Just a short walk from Times Square, Bryant Park offers a serene escape with its lush gardens and seasonal activities. Enjoy a leisurely stroll or grab a coffee from one of the kiosks and relax on the lawn.",
+          "searchQuery": "Bryant Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Halal Guys",
+          "description": "Savor a delicious lunch from The Halal Guys, famous for their flavorful chicken and gyro platters served over rice. It's a budget-friendly option that won't disappoint your taste buds!",
+          "searchQuery": "The Halal Guys",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit The Vessel",
+          "description": "Head over to Hudson Yards to see The Vessel, an architectural marvel with its honeycomb-like structure. Climb the stairs for stunning views of the city and the Hudson River.",
+          "searchQuery": "The Vessel",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Friends Merchandise at the NBC Store",
+          "description": "Make your way to the NBC Store to find exclusive Friends merchandise. From t-shirts to mugs, it's a great place to pick up some souvenirs that celebrate your favorite show!",
+          "searchQuery": "NBC Store",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Joe's Pizza",
+          "description": "End your day with a classic New York slice at Joe's Pizza, a beloved spot known for its delicious, thin-crust pizza. Grab a slice and enjoy it on the go as you take in the sights of the city.",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk at Hudson River Park",
+          "description": "Take a relaxing evening stroll along Hudson River Park. The views of the river and the city skyline at sunset are breathtaking, making it a perfect way to wind down your day.",
+          "searchQuery": "Hudson River Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Fandom and Culture in the City",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a cozy café in New York City. Enjoy a classic bagel with cream cheese and a cup of freshly brewed coffee to fuel your adventures ahead.",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "The Museum of Modern Art (MoMA)",
+          "description": "Dive into the world of modern art at MoMA, where you can explore iconic works by artists like Van Gogh and Warhol. Don't forget to check out the museum shop for unique art-inspired souvenirs!",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Strand Bookstore Café",
+          "description": "Head to The Strand Bookstore, a haven for book lovers. Grab a light lunch at their café, where you can enjoy a sandwich or salad while surrounded by thousands of books. Perfect for a quick recharge!",
+          "searchQuery": "The Strand Bookstore",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Greenwich Village",
+          "description": "Stroll through the charming streets of Greenwich Village, known for its bohemian vibe. Visit Washington Square Park and soak in the lively atmosphere, perfect for people-watching and enjoying street performances.",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Friends Experience",
+          "description": "Immerse yourself in the world of 'Friends' at this interactive experience. Snap photos at iconic sets like Central Perk and Monica's apartment, and don't forget to pick up some exclusive merchandise!",
+          "searchQuery": "Friends Experience",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at a Local Pizzeria",
+          "description": "End your day with a classic New York slice at a local pizzeria. Enjoy the crispy crust and delicious toppings while reflecting on your day filled with art and fandom.",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk in Central Park",
+          "description": "Take a leisurely evening stroll in Central Park. The park's serene atmosphere and beautiful landscapes provide a perfect backdrop to unwind after a busy day.",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Nature and Views",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Diner",
+          "description": "Start your day with a hearty breakfast at a classic New York diner. Enjoy fluffy pancakes and crispy bacon, a true American breakfast experience!",
+          "searchQuery": "New York Diner",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Central Park",
+          "description": "Stroll through the iconic Central Park, where you can enjoy the lush greenery and perhaps even catch a glimpse of the famous Bethesda Fountain. Don't forget to take a moment to relax on a bench and soak in the atmosphere!",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Loeb Boathouse",
+          "description": "Enjoy a scenic lunch at The Loeb Boathouse, located right in Central Park. Savor fresh salads and sandwiches while overlooking the tranquil lake.",
+          "searchQuery": "The Loeb Boathouse Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Top of the Rock Observation Deck",
+          "description": "Head to the Top of the Rock for breathtaking views of the New York skyline. The panoramic vistas are especially stunning, offering a perfect photo opportunity!",
+          "searchQuery": "Top of the Rock",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Rockefeller Center",
+          "description": "After enjoying the views, take a leisurely walk around Rockefeller Center. Check out the shops and perhaps grab a quick snack at one of the nearby cafes.",
+          "searchQuery": "Rockefeller Center",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Walk Across Brooklyn Bridge",
+          "description": "Take a scenic walk across the Brooklyn Bridge. The views of the Manhattan skyline from the bridge are simply unforgettable, especially as the sun begins to set.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Grimaldi's Pizzeria",
+          "description": "End your day with a delicious slice of New York-style pizza at Grimaldi's, famous for its coal-fired pies. A must-try for any pizza lover!",
+          "searchQuery": "Grimaldi's Pizzeria",
+          "locationEn": "Brooklyn, New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Visit a Friends-themed Store",
+          "description": "Wrap up your day by visiting a store dedicated to Friends merchandise. Find unique souvenirs and memorabilia to take home as a reminder of your trip!",
+          "searchQuery": "Friends Experience New York",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Last Day in the City",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "SoHo, New York City",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Start your day exploring the trendy SoHo area."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Breakfast at Jack's Wife Freda",
+          "description": "Start your day with a hearty breakfast at this cozy spot known for its Mediterranean-inspired dishes. Try the Green Shakshuka for a unique twist!",
+          "searchQuery": "Jack's Wife Freda",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore SoHo",
+          "description": "Wander through the cobblestone streets of SoHo, famous for its cast-iron architecture and high-end boutiques. Don't forget to check out some local art galleries along the way!",
+          "searchQuery": "SoHo",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Butcher's Daughter",
+          "description": "Enjoy a fresh and healthy lunch at this plant-based café. Their avocado toast is a must-try, and the atmosphere is perfect for a relaxing meal.",
+          "searchQuery": "The Butcher's Daughter",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Chinatown",
+          "description": "Head over to Chinatown to immerse yourself in the vibrant culture. Explore the shops and markets, and keep an eye out for unique souvenirs and fan merchandise!",
+          "searchQuery": "Chinatown",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Snack at Vanessa's Dumpling",
+          "description": "Grab a quick bite at this popular dumpling spot. Their pork dumplings are delicious and budget-friendly, perfect for a mid-afternoon snack!",
+          "searchQuery": "Vanessa's Dumpling",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore Little Italy",
+          "description": "Stroll through Little Italy, where you can enjoy the charming atmosphere and perhaps pick up some Italian pastries. It's a great place to relax and soak in the culture.",
+          "searchQuery": "Little Italy",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at Lombardi's Pizza",
+          "description": "End your day with a classic New York pizza at Lombardi's, the first pizzeria in the United States. Their coal-oven pizza is a must-try!",
+          "searchQuery": "Lombardi's Pizza",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Shopping for Friends Merchandise",
+          "description": "Before you leave, stop by the nearby stores to find some Friends-themed merchandise. It's the perfect way to remember your trip!",
+          "searchQuery": "Friends merchandise",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

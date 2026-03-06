@@ -1,0 +1,297 @@
+{
+  "id": "6fa84e82-958a-4bc6-9635-6ed201e77897",
+  "destination": "New York City",
+  "description": "Immerse yourself in the vibrant energy of New York City, where the streets pulse with culture, art, and culinary delights. This 3-day solo adventure is designed for the passionate fan of 'Sex and the City', blending iconic locations with hidden gems that only locals know. From indulging in delicious bites to exploring the artistic heart of the city, this trip promises a delightful mix of nostalgia and modern charm.",
+  "heroImage": "https://images.unsplash.com/photo-1722485760838-a8b5285abd26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTIyNzF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Vihan Dalal",
+  "heroImagePhotographerUrl": "https://unsplash.com/@vihan_?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Heart of Manhattan",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, famous for its fluffy pancakes and fresh fruit. The cozy atmosphere is perfect for fueling up before a day of exploration.",
+          "searchQuery": "Sarabeth's Central Park South",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Carrie Bradshaw's Apartment",
+          "description": "Stroll over to Carrie Bradshaw's iconic apartment building at 66 Perry Street. Snap a photo in front of the charming brownstone that fans of 'Sex and the City' will instantly recognize.",
+          "searchQuery": "Carrie Bradshaw's Apartment",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore Central Park",
+          "description": "Take a leisurely walk through Central Park, where you can enjoy the beautiful landscapes and perhaps even spot some filming locations from the series. Don't miss the Bethesda Terrace and Bow Bridge!",
+          "searchQuery": "Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Loeb Boathouse",
+          "description": "Enjoy a scenic lunch at The Loeb Boathouse, located right in Central Park. The view of the lake is stunning, and the menu offers a variety of delicious options.",
+          "searchQuery": "The Loeb Boathouse Central Park",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit The Metropolitan Museum of Art",
+          "description": "Spend your afternoon at The Met, one of the largest and most prestigious art museums in the world. Explore its vast collection, including pieces that reflect New York's rich cultural history.",
+          "searchQuery": "The Metropolitan Museum of Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Shopping at Magnolia Bakery",
+          "description": "No trip is complete without a sweet treat! Stop by Magnolia Bakery for their famous cupcakes and grab some 'Sex and the City' merchandise to take home as a souvenir.",
+          "searchQuery": "Magnolia Bakery",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Buddakan",
+          "description": "End your day with a stylish dinner at Buddakan, known for its modern Asian cuisine. The ambiance is vibrant, making it a great spot to unwind after a busy day.",
+          "searchQuery": "Buddakan",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Sex and the City Tour & Brooklyn Vibes",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Sarabeth's",
+          "description": "Start your day with a delightful breakfast at Sarabeth's, known for its delicious pancakes and fresh fruit. It's a favorite among locals and a perfect spot to fuel up for a day of exploration.",
+          "searchQuery": "Sarabeth's",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Magnolia Bakery",
+          "description": "No trip inspired by 'Sex and the City' is complete without a visit to Magnolia Bakery. Indulge in their famous cupcakes and enjoy the charming atmosphere that has made this bakery a beloved spot.",
+          "searchQuery": "Magnolia Bakery",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "Explore the West Village",
+          "description": "Stroll through the picturesque streets of the West Village, where you can admire the beautiful brownstones and perhaps spot some iconic filming locations from the show. Don't forget to take a few photos!",
+          "searchQuery": "West Village",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Spotted Pig",
+          "description": "Enjoy a hearty lunch at The Spotted Pig, a cozy gastropub known for its delicious burgers and rustic charm. It's a great place to relax and soak in the local vibe.",
+          "searchQuery": "The Spotted Pig",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Brooklyn Bridge Walk",
+          "description": "Take a scenic walk across the Brooklyn Bridge. The views of the Manhattan skyline are breathtaking, and it's a perfect opportunity to capture some stunning photos.",
+          "searchQuery": "Brooklyn Bridge",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "DUMBO Exploration",
+          "description": "Once in Brooklyn, explore the DUMBO area. Check out the trendy shops and art galleries, and don't miss the iconic photo spot at Washington Street with the Manhattan Bridge in the background.",
+          "searchQuery": "DUMBO",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Time Out Market",
+          "description": "Head to Time Out Market for dinner, where you can sample a variety of dishes from local chefs. It's a great way to experience Brooklyn's culinary scene in one place.",
+          "searchQuery": "Time Out Market",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Brooklyn Heights Promenade",
+          "description": "End your day with a leisurely stroll along the Brooklyn Heights Promenade. The sunset views over the East River and Manhattan are simply magical, providing a perfect conclusion to your day.",
+          "searchQuery": "Brooklyn Heights Promenade",
+          "locationEn": "Brooklyn, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Art, Culture, and Farewell",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "New York City",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "MoMA, New York City",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Start the day with a visit to the Museum of Modern Art."
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "Museum of Modern Art (MoMA)",
+          "description": "Dive into the world of modern and contemporary art at MoMA. Don't miss iconic works by Van Gogh and Warhol, and enjoy the serene sculpture garden.",
+          "searchQuery": "Museum of Modern Art",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Chelsea Market",
+          "description": "Head to Chelsea Market for a delightful lunch. This food hall offers a variety of options, from tacos to artisanal sandwiches, perfect for a quick bite.",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore Chelsea Market",
+          "description": "After lunch, take some time to explore the unique shops in Chelsea Market. Look for Sex and the City-themed merchandise and other fun souvenirs.",
+          "searchQuery": "Chelsea Market",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Times Square",
+          "description": "Experience the vibrant energy of Times Square. Snap photos with the iconic billboards and maybe pick up some last-minute souvenirs from nearby shops.",
+          "searchQuery": "Times Square",
+          "locationEn": "New York City, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at a Local Diner",
+          "description": "Enjoy a classic New York diner experience for dinner. Try a burger or a slice of New York-style pizza to cap off your trip.",
+          "searchQuery": "New York Diner",
+          "locationEn": "New York City, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to pack and prepare for your journey home. Reflect on the wonderful memories made in New York City!",
+          "locationEn": "New York City, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

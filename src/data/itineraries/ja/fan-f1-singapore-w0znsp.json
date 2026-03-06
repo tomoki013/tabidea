@@ -1,0 +1,645 @@
+{
+  "id": "4188afab-f8a1-4754-8d9c-bc25447040f4",
+  "destination": "シンガポール",
+  "description": "シンガポールでの7日間は、友人と共に推し活を楽しみながら、文化や歴史、アートに触れる素晴らしい旅になるでしょう。特にF1の関連スポットを巡り、ファングッズを手に入れることができる特別な体験が待っています。シンガポールの多様な魅力を存分に味わい、心に残る思い出を作りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1530423316264-2b8b006f7d63?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTE1Njh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Nitin Mathew",
+  "heroImagePhotographerUrl": "https://unsplash.com/@nitin_mathew?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "シンガポール到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのローカルな朝食を楽しむため、ホテル近くのカフェでカヤトーストとコーヒーをいただきます。シンプルながらも、甘さと香ばしさが絶妙な組み合わせです。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マリーナベイサンズ",
+          "description": "シンガポールのシンボルとも言えるマリーナベイサンズを訪れます。展望台からの眺めは圧巻で、特に昼間の景色は美しいです。",
+          "searchQuery": "Marina Bay Sands",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ローカルフードマーケットでランチ",
+          "description": "マリーナベイ近くのホーカーセンターで、シンガポール名物のチキンライスやラクサを楽しみます。地元の人々に混じって、リーズナブルな価格で本格的な味を堪能。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ガーデンズ・バイ・ザ・ベイ",
+          "description": "未来的な植物園、ガーデンズ・バイ・ザ・ベイを散策します。スーパーツリーの間を歩きながら、色とりどりの花々や植物を楽しむことができます。",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "チャイナタウン散策",
+          "description": "シンガポールのチャイナタウンを散策し、地元のショップやお土産屋を訪れます。ファングッズを探すのにもぴったりの場所です。",
+          "searchQuery": "Chinatown Singapore",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "チャイナタウンで夕食",
+          "description": "チャイナタウンの人気レストランで、シンガポールの中華料理を楽しみます。特に、チリクラブやハイナンチキンは絶品です。",
+          "locationEn": "Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "マリーナベイの夜景観賞",
+          "description": "夜のマリーナベイを散策し、ライトアップされた景色を楽しみます。特に、マリーナベイサンズの光のショーは見逃せません。",
+          "locationEn": "Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "F1関連スポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやトーストを楽しみながら、今日のプランを練ります。エネルギーをチャージして、F1の世界へ飛び込みましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "シンガポール・グランプリ・サーキット",
+          "description": "F1ファンにはたまらないシンガポール・グランプリ・サーキットを訪れます。サーキットの周囲を散策し、レースの興奮を感じることができます。特に、夜のレースの雰囲気を想像しながら歩くのが楽しいです。",
+          "searchQuery": "Singapore Grand Prix Circuit",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルレストランでランチ",
+          "description": "シンガポールの地元料理を楽しめるレストランで、チキンライスやラクサを味わいます。観光の合間に、シンガポールの味を堪能しましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "F1ファンショップ",
+          "description": "F1関連のグッズが揃うファンショップを訪れます。お気に入りのチームのグッズや、レアなアイテムを見つけるチャンスです。お土産にもぴったり！",
+          "searchQuery": "F1 Fan Shop",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "マリーナベイエリア散策",
+          "description": "美しいマリーナベイエリアを散策しながら、シンガポールの近代的な景観を楽しみます。特に、マリーナベイサンズの壮大な姿は必見です。",
+          "searchQuery": "Marina Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "カフェで休憩",
+          "description": "マリーナベイエリアのカフェで、アイスコーヒーやスイーツを楽しみながら、今日の思い出を振り返ります。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "シンガポールのナイトライフを楽しむ",
+          "description": "シンガポールの夜を楽しむために、ナイトマーケットやバーを訪れます。地元の人々と交流しながら、シンガポールの文化を体験しましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "アートと文化を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやトーストを使った朝食を楽しみます。エネルギーをチャージして、アートの一日をスタート！",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "シンガポール美術館",
+          "description": "シンガポール美術館で、アジアの現代アートを堪能。特にシンガポールのアーティストによる作品が多く、地元の文化を感じることができます。",
+          "searchQuery": "Singapore Art Museum",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ローカルカフェでランチ",
+          "description": "シンガポールのローカルカフェで、カヤトーストやチキンライスを楽しみましょう。地元の人々に人気のメニューを味わうチャンスです！",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アートサイエンスミュージアム",
+          "description": "アートと科学が融合したアートサイエンスミュージアムを訪れます。特に「未来の世界」をテーマにした展示が印象的で、インタラクティブな体験が楽しめます。",
+          "searchQuery": "ArtScience Museum",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "リトルインディア散策",
+          "description": "リトルインディアのカラフルな街並みを散策。地元のショップやストリートアートを楽しみながら、ファングッズを探してみましょう。",
+          "locationEn": "Little India, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "リトルインディアでディナー",
+          "description": "リトルインディアのレストランで、本格的なインド料理を堪能。スパイシーなカレーやナンを楽しみながら、友人と楽しい時間を過ごしましょう。",
+          "locationEn": "Little India, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "F1関連のファングッズを取り扱うショップを訪れ、思い出に残るアイテムをゲットしましょう。シンガポールGPの公式グッズも見逃せません！",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "歴史を感じる日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやトースト、コーヒーを楽しみながら、今日の計画を立てましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シンガポール国立博物館",
+          "description": "シンガポールの歴史と文化を深く知ることができる博物館です。展示物は多彩で、特にシンガポールの多文化共生をテーマにしたコーナーは必見です。",
+          "searchQuery": "National Museum of Singapore",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"シンガポール国立博物館の魅力\",\"url\":\"https://example.com/national-museum-singapore\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルフードでランチ",
+          "description": "博物館近くのホーカーセンターで、チキンライスやラクサなどのシンガポール名物を楽しみましょう。地元の人々に混じって、リーズナブルな価格で本格的な味を堪能できます。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "フォートカニング公園散策",
+          "description": "歴史的な背景を持つフォートカニング公園で、緑豊かな環境の中を散策。公園内にはシンガポールの歴史を感じるモニュメントや、静かな場所でリラックスできるスポットが点在しています。",
+          "searchQuery": "Fort Canning Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium",
+            "title": "{\"type\":\"blog\",\"title\":\"フォートカニング公園の魅力\",\"url\":\"https://example.com/fort-canning-park\",\"confidence\":\"high\"}"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "オーチャードロードでショッピング",
+          "description": "シンガポールのショッピングの中心地、オーチャードロードでファングッズを探しましょう。F1関連のアイテムや、シンガポールならではの土産物も見つかるかもしれません。",
+          "searchQuery": "Orchard Road",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のレストランでディナー",
+          "description": "オーチャードロード近くのレストランで、シンガポールの多国籍料理を楽しみましょう。特に、インド料理や中華料理はおすすめです。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ナイトライフを楽しむ",
+          "description": "シンガポールの夜を楽しむために、クラークキーやマリーナベイエリアでの散策をおすすめします。美しい夜景を眺めながら、バーやカフェでリラックスした時間を過ごしましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "推し活とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやトーストを楽しみながら、今日の計画を立てましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ブギス・ストリート散策",
+          "description": "ブギス・ストリートで、ファングッズやお土産を探しながら、活気あるストリートマーケットを楽しみます。特にF1関連のアイテムが豊富です！",
+          "searchQuery": "Bugis Street",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ローカルフードでランチ",
+          "description": "ブギス・ストリート近くのホーカーセンターで、シンガポール名物のチキンライスやラクサを味わいましょう。地元の人々に混じって、リアルなシンガポールの味を楽しんで。",
+          "searchQuery": "Hainan Street Steamboat",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "シンガポール・アート・ミュージアム訪問",
+          "description": "シンガポール・アート・ミュージアムで、現代アートの展示を楽しみます。アートに触れながら、インスピレーションを得る時間を過ごしましょう。",
+          "searchQuery": "Singapore Art Museum",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ファンショップ巡り",
+          "description": "F1関連のファンショップを巡り、グッズを購入します。特に、シンガポールグランプリの公式グッズは見逃せません！",
+          "searchQuery": "F1 Store Singapore",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マリーナベイサンズ周辺散策",
+          "description": "マリーナベイサンズの周辺を散策し、夜景を楽しみながら、写真を撮る絶好のスポットを探しましょう。",
+          "searchQuery": "Marina Bay Sands",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "シンガポールのストリートフードでディナー",
+          "description": "マリーナベイ近くのホーカーセンターで、シンガポールのストリートフードを堪能します。特に、チリクラブやサテーは必食です！",
+          "searchQuery": "Lau Pa Sat",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "夜のマリーナベイ散策",
+          "description": "夜のマリーナベイを散策し、ライトアップされた景色を楽しみます。特に、スーパーツリーのライトショーは圧巻です。",
+          "searchQuery": "Gardens by the Bay",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "シンガポールの自然とリラックス",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやパンを楽しむ朝食をいただきます。エネルギーをチャージして、今日の冒険に備えましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セントーサ島へ移動",
+          "description": "セントーサ島へは、モノレールやケーブルカーでアクセスできます。美しい景色を楽しみながら、リゾート気分を味わいましょう。",
+          "searchQuery": "Sentosa Island",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "シー・アクアリウム",
+          "description": "世界最大級の水族館、シー・アクアリウムで海の生き物たちを観察。特に、巨大な水槽で泳ぐマンタやサメは圧巻です。",
+          "searchQuery": "S.E.A. Aquarium",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "セントーサ島でランチ",
+          "description": "セントーサ島内のレストランで、シーフードやローカル料理を楽しみましょう。リゾートの雰囲気を満喫しながら、ゆったりとしたランチタイムを過ごします。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ビーチでのんびり",
+          "description": "セントーサ島のビーチでリラックス。砂浜で日光浴をしたり、海に入ってリフレッシュしたり、自由な時間を楽しんでください。",
+          "searchQuery": "Sentosa Beach",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "F1関連ショップ訪問",
+          "description": "シンガポールのF1関連ショップを訪れ、ファングッズを購入。レースの思い出を持ち帰るための素敵なアイテムが見つかるかもしれません。",
+          "searchQuery": "F1 Merchandise Store",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "セントーサ島で夕食",
+          "description": "セントーサ島内のレストランで、夕食を楽しみます。シーフードやアジア料理を堪能しながら、素敵な夜を過ごしましょう。",
+          "locationEn": "Sentosa Island, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "セントーサ島からホテルへ戻ります。今日の思い出を振り返りながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "帰国の準備と最後の観光",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シンガポールのホテルで、地元のフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、最後の観光に備えましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ラッフルズホテル見学",
+          "description": "シンガポールの象徴的なラッフルズホテルを訪れ、その美しい建築と歴史を堪能します。ホテル内のバーでシンガポールスリングを味わうのもおすすめです。",
+          "searchQuery": "Raffles Hotel Singapore",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "マーライオン公園散策",
+          "description": "シンガポールのシンボル、マーライオン像を見に行きます。美しい湾の景色をバックに、記念写真を撮るのをお忘れなく！",
+          "searchQuery": "Merlion Park",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "地元のレストランでランチ",
+          "description": "シンガポールのローカルフードを楽しめるレストランで、チキンライスやラクサを味わいます。友人と一緒にシェアして、いろいろな味を楽しんでください。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シンガポールフライヤー",
+          "description": "シンガポールフライヤーに乗って、街のパノラマビューを楽しみます。特に夕方の時間帯は、夕日とともに美しい景色が広がります。",
+          "searchQuery": "Singapore Flyer",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズ購入",
+          "description": "F1関連のグッズを購入するために、シンガポールのショッピングモールや専門店を訪れます。お気に入りのアイテムを見つけて、思い出に残るお土産をゲットしましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "最後のディナー",
+          "description": "シンガポールのナイトマーケットで、ストリートフードを楽しみながら、旅の締めくくりをします。友人と一緒に楽しい時間を過ごしましょう。",
+          "locationEn": "Singapore, Singapore",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

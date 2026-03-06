@@ -1,0 +1,508 @@
+{
+  "id": "7a250724-35f2-4c84-9104-93316189a4ff",
+  "destination": "シェムリアップ",
+  "description": "Embark on an unforgettable adventure in Siem Reap, where ancient temples and vibrant culture collide. This 5-day journey will take you through the breathtaking ruins of Angkor Wat, the heart of Cambodia's historical heritage, while also allowing you to immerse yourself in the local way of life. From the mesmerizing sunrise over the temples to the bustling markets and serene countryside, each day is packed with exploration and discovery, perfect for those seeking both adventure and a deep connection to history.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Sunset at Angkor Wat",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a hearty breakfast at a local café in Siem Reap. Enjoy traditional Khmer dishes like Bai Sach Chrouk (grilled pork and rice) to fuel your adventure ahead.",
+          "searchQuery": "Local Café Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Sunrise at Angkor Wat",
+          "description": "Head to Angkor Wat early to witness the breathtaking sunrise. The silhouette of the temple against the rising sun is a sight you won't forget. Arrive early to secure a good spot by the reflecting pool.",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Angkor Wat, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Explore Angkor Thom",
+          "description": "After sunrise, explore the ancient city of Angkor Thom. Don't miss the Bayon Temple with its iconic smiling faces and the intricate bas-reliefs that tell stories of the past.",
+          "searchQuery": "Angkor Thom",
+          "locationEn": "Angkor Thom, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Khmer Family Restaurant",
+          "description": "Enjoy a delicious lunch at Khmer Family Restaurant, known for its authentic Cambodian cuisine. Try the Amok fish curry, a local favorite, while soaking in the friendly atmosphere.",
+          "searchQuery": "Khmer Family Restaurant",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Ta Prohm Temple",
+          "description": "Explore the mystical Ta Prohm Temple, famous for its tree-covered ruins. This temple offers a unique blend of nature and history, making it a perfect spot for adventurous exploration.",
+          "searchQuery": "Ta Prohm",
+          "locationEn": "Ta Prohm, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Sunset at Phnom Bakheng",
+          "description": "Climb to the top of Phnom Bakheng for a stunning sunset view over Angkor Wat and the surrounding jungle. It's a popular spot, so arrive early to secure a good vantage point.",
+          "searchQuery": "Phnom Bakheng",
+          "locationEn": "Phnom Bakheng, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Siem Reap Night Market",
+          "description": "End your day with dinner at the vibrant Siem Reap Night Market. Sample local street food like skewered meats and fresh spring rolls while enjoying the lively atmosphere.",
+          "searchQuery": "Siem Reap Night Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring the Temples of Angkor",
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "Sunrise at Angkor Wat",
+          "description": "Start your day early to witness the breathtaking sunrise over Angkor Wat. The reflection of the temple in the surrounding moat creates a magical atmosphere, perfect for photography and quiet contemplation.",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a Local Cafe",
+          "description": "Enjoy a hearty breakfast at a nearby cafe, where you can try traditional Khmer dishes like Bai Sach Chrouk (grilled pork and rice) to fuel your day of exploration.",
+          "searchQuery": "Local Cafe Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Bayon Temple",
+          "description": "Explore the enigmatic Bayon Temple, famous for its massive stone faces and intricate bas-reliefs. Take your time to wander through the temple's corridors and soak in the historical significance of this site.",
+          "searchQuery": "Bayon Temple",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Ta Prohm Temple",
+          "description": "Visit Ta Prohm, known for its stunning tree-covered ruins. This temple offers a unique blend of nature and architecture, making it a favorite for adventurers and photographers alike.",
+          "searchQuery": "Ta Prohm",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a delicious lunch at a local restaurant, where you can try dishes like Amok (coconut fish curry) or Lok Lak (stir-fried beef) for an authentic taste of Cambodian cuisine.",
+          "searchQuery": "Local Restaurant Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Angkor Thom",
+          "description": "Explore the ancient city of Angkor Thom, including the impressive South Gate and the Baphuon Temple. The vast area is perfect for wandering and discovering hidden gems.",
+          "searchQuery": "Angkor Thom",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Return to Siem Reap",
+          "description": "Head back to Siem Reap to relax and refresh after a day of adventure. You can take a stroll through the local markets or enjoy a refreshing drink at your hotel.",
+          "searchQuery": "Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Pub Street",
+          "description": "End your day with dinner at the vibrant Pub Street, where you can choose from a variety of restaurants and street food stalls. Enjoy the lively atmosphere and perhaps try some local beers.",
+          "searchQuery": "Pub Street Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion and Local Adventures",
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "Watch the Sunrise at Angkor Wat",
+          "description": "Start your day early to witness the breathtaking sunrise over Angkor Wat. The reflection of the temple in the surrounding water creates a magical atmosphere, perfect for photography and contemplation.",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Enjoy a hearty breakfast at a nearby café, where you can try traditional Khmer dishes like Bai Sach Chrouk (grilled pork and rice) or a simple omelet with fresh fruit.",
+          "searchQuery": "Local Café Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:00",
+          "activity": "Explore Angkor Thom",
+          "description": "After breakfast, head to Angkor Thom, the last capital of the Khmer Empire. Marvel at the Bayon's iconic smiling faces and the intricate carvings that tell stories of ancient battles and daily life.",
+          "searchQuery": "Angkor Thom",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Visit Ta Prohm",
+          "description": "Known for its stunning tree-covered ruins, Ta Prohm offers a unique glimpse into nature reclaiming ancient architecture. It's a perfect spot for adventurous exploration and photography.",
+          "searchQuery": "Ta Prohm",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Khmer Family Restaurant",
+          "description": "Savor authentic Khmer cuisine at this local favorite. Try the Fish Amok, a traditional curry steamed in banana leaves, and enjoy the warm hospitality of the staff.",
+          "searchQuery": "Khmer Family Restaurant",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Boat Tour on Tonle Sap Lake",
+          "description": "In the afternoon, take a boat tour on Tonle Sap Lake, the largest freshwater lake in Southeast Asia. Experience the floating villages and unique ecosystem, and learn about the local way of life.",
+          "searchQuery": "Tonle Sap Lake",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Return to Siem Reap and Relax",
+          "description": "After a day of adventure, return to Siem Reap. Take some time to relax at your hotel or explore the local markets for souvenirs and snacks.",
+          "searchQuery": "Siem Reap Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at The Sugar Palm",
+          "description": "Enjoy a delightful dinner at The Sugar Palm, known for its cozy atmosphere and delicious Khmer dishes. Don't miss their signature desserts to end your day on a sweet note.",
+          "searchQuery": "The Sugar Palm",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Phare Circus Performance",
+          "description": "End your day with a spectacular performance by Phare, the Cambodian Circus. This unique show combines acrobatics, music, and storytelling, showcasing the rich culture of Cambodia.",
+          "searchQuery": "Phare Circus",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Adventure in the Countryside",
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "Watch the Sunrise at Angkor Wat",
+          "description": "Start your day early to witness the breathtaking sunrise over Angkor Wat. The reflection of the temple in the surrounding water creates a magical atmosphere, perfect for photography and contemplation.",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a Local Cafe",
+          "description": "Enjoy a hearty breakfast at a nearby cafe, where you can try traditional Khmer dishes like Bai Sach Chrouk (grilled pork and rice) or a simple omelet with fresh fruit.",
+          "searchQuery": "Local Cafe Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Explore Banteay Srei",
+          "description": "Travel to Banteay Srei, known for its intricate carvings and pink sandstone. This temple, often referred to as the 'Citadel of Women', is a must-see for its stunning artistry and serene surroundings.",
+          "searchQuery": "Banteay Srei",
+          "locationEn": "Banteay Srei, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Local Village Tour",
+          "description": "Experience the authentic Cambodian lifestyle with a guided tour of a nearby village. Engage with locals, learn about traditional crafts, and perhaps even participate in a cooking class.",
+          "searchQuery": "Local Village Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at a Local Restaurant",
+          "description": "Savor a delicious lunch at a local restaurant, where you can try dishes like Amok (coconut fish curry) or Lok Lak (stir-fried beef) while enjoying the vibrant atmosphere.",
+          "searchQuery": "Local Restaurant Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Return to Siem Reap",
+          "description": "Head back to Siem Reap and take some time to relax at your accommodation or explore the local markets for souvenirs and handicrafts.",
+          "searchQuery": "Siem Reap Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit Angkor Night Market",
+          "description": "In the evening, visit the Angkor Night Market to experience the local culture. Browse through stalls selling handicrafts, clothing, and enjoy street food delicacies.",
+          "searchQuery": "Angkor Night Market",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Eatery",
+          "description": "End your day with dinner at a local eatery, where you can enjoy a variety of Khmer dishes in a cozy setting. Don't forget to try the local beer or fresh fruit juices!",
+          "searchQuery": "Local Eatery Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Final Exploration and Departure",
+      "activities": [
+        {
+          "time": "05:00",
+          "activity": "Watch the Sunrise at Angkor Wat",
+          "description": "Start your day early to witness the breathtaking sunrise at Angkor Wat. The reflection of the temple in the surrounding water creates a magical atmosphere, perfect for photography and contemplation.",
+          "searchQuery": "Angkor Wat",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "07:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Enjoy a hearty breakfast at a nearby café, where you can try traditional Khmer dishes like Bai Sach Chrouk (grilled pork and rice) or a simple omelet with fresh fruit.",
+          "searchQuery": "Local Café Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "08:30",
+          "activity": "Visit Angkor National Museum",
+          "description": "Explore the Angkor National Museum to gain deeper insights into the history and culture of the Khmer Empire. The museum features impressive exhibits and artifacts that enhance your understanding of the temples you’ve visited.",
+          "searchQuery": "Angkor National Museum",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Lunch at a Local Market",
+          "description": "Head to a local market for lunch, where you can sample various street foods and local delicacies. Don't miss trying the fresh spring rolls and Khmer curry, which are favorites among locals.",
+          "searchQuery": "Local Market Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Explore Siem Reap's Local Market",
+          "description": "After lunch, take some time to wander through the local market. It's a great place to pick up souvenirs, handicrafts, and experience the vibrant local culture.",
+          "searchQuery": "Local Market Siem Reap",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to freshen up and pack your belongings. Reflect on your adventures in Siem Reap as you prepare for your journey home.",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Departure from Siem Reap",
+          "description": "Check out from your hotel and head to the airport for your departure flight. Take a moment to appreciate the memories you've created during your stay in this beautiful region.",
+          "locationEn": "Siem Reap, Cambodia",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

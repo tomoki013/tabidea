@@ -1,0 +1,480 @@
+{
+  "id": "7c988ecd-3143-4289-8f01-a0c81628cafa",
+  "destination": "ナンディ・ママヌザ諸島",
+  "description": "ナンディ・ママヌザ諸島での6日間の家族旅行は、青い海と白い砂浜、そして地元の人々との温かい交流が待っています。リラックスした雰囲気の中で、子供たちも安心して遊べるビーチでの時間を楽しむことができます。美しい自然と文化に触れ、心温まる思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "東京からナンディへ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "東京",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ナンディ",
+          "time": "15:00"
+        },
+        "duration": "8h",
+        "memo": "直行便でナンディへ。時差に注意！"
+      },
+      "activities": [
+        {
+          "time": "15:30",
+          "activity": "ナンディビーチでリラックス",
+          "description": "ナンディビーチに到着したら、まずはビーチでのんびり。白い砂浜と青い海が広がり、子供たちも安心して遊べる環境です。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチサイドで夕食",
+          "description": "ナンディビーチ近くのレストランで新鮮なシーフードを楽しみましょう。地元の食材を使った料理が味わえ、家族での食事にぴったりです。",
+          "searchQuery": "The Bounty Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ナンディのリゾートホテルにチェックイン。家族向けのアクティビティが充実しており、リラックスした時間を過ごせます。",
+          "searchQuery": "Radisson Blu Resort Fiji",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "ママヌザ諸島のビーチでのんびり",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ナンディ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ママヌザ諸島",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ナンディからママヌザ諸島へのボート移動。海の景色を楽しみながらリラックス。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "ママヌザ諸島のビーチで遊ぶ",
+          "description": "美しい白砂のビーチで、子供たちと一緒に砂遊びや海水浴を楽しみましょう。透明度の高い海は、家族連れにも安心です。",
+          "searchQuery": "Mamanuca Islands",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "地元のレストランで新鮮なシーフードを楽しみながら、海の景色を堪能。子供向けのメニューも充実しています。",
+          "searchQuery": "Mamanuca Islands Restaurants",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "シュノーケリング体験",
+          "description": "家族でシュノーケリングに挑戦！色とりどりの魚たちと一緒に泳ぎ、海の中の美しい世界を体験しましょう。",
+          "searchQuery": "Mamanuca Islands Snorkeling",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ビーチでのんびり",
+          "description": "ビーチチェアに座って、リラックスしたり、子供たちと一緒にビーチバレーを楽しんだり。穏やかな海風を感じながら、ゆったりとした時間を過ごします。",
+          "searchQuery": "Mamanuca Islands Beach",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元の人との交流",
+          "description": "ビーチ近くのマーケットで地元の人たちと交流し、手作りの工芸品やお土産を探してみましょう。子供たちも楽しめるアクティビティがたくさんあります。",
+          "searchQuery": "Mamanuca Islands Local Market",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチサイドでディナー",
+          "description": "夕日を眺めながら、ビーチサイドのレストランでディナー。地元の料理を楽しみつつ、家族で素敵な時間を過ごしましょう。",
+          "searchQuery": "Mamanuca Islands Dinner",
+          "locationEn": "Mamanuca Islands, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元の文化を体験",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ナンディ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "地元市場",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "ナンディから地元市場へは徒歩で移動します。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "地元市場訪問",
+          "description": "ナンディの地元市場で新鮮な果物や野菜、手作りの工芸品を見て回ります。地元の人々との交流を楽しみながら、色とりどりの食材を堪能しましょう。",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "ビーチで遊ぶ",
+          "description": "ナンディの美しいビーチで、子供たちと一緒に砂遊びや海水浴を楽しみます。透明度の高い海は、家族連れにも安心です。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチサイドでランチ",
+          "description": "ビーチ近くのレストランで、地元のシーフード料理を楽しみます。新鮮な魚介類を使った料理は、家族みんなでシェアするのにぴったり。",
+          "searchQuery": "Beachside Restaurant Nadi",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "村訪問",
+          "description": "近くの村を訪れ、地元の人々と交流します。伝統的な文化や生活様式を学びながら、温かいおもてなしを受けることができます。",
+          "searchQuery": "Fijian Village",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ビーチでのんびり",
+          "description": "再びビーチに戻り、夕方の穏やかな時間を過ごします。子供たちが遊ぶ姿を見守りながら、リラックスしたひとときを楽しみましょう。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ナンディでディナー",
+          "description": "ナンディのレストランで、家族みんなでディナーを楽しみます。地元の料理を味わいながら、旅の思い出を語り合いましょう。",
+          "searchQuery": "Nadi Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "アクティビティ満載の一日",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "ナンディ",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "シュノーケリングスポット",
+          "time": "09:00"
+        },
+        "duration": "1h",
+        "memo": "ナンディからボートでシュノーケリングスポットへ移動します。子供たちも楽しめる安全なルートです。"
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "シュノーケリング",
+          "description": "透明度の高い海で色とりどりの魚たちと遊びましょう。子供向けのライフジャケットも用意されているので安心です。",
+          "searchQuery": "Nadi Snorkeling",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチでランチ",
+          "description": "ビーチ沿いのカフェで新鮮なシーフードランチを楽しみます。子供たちも喜ぶメニューが豊富です。",
+          "searchQuery": "Beachfront Cafe Nadi",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ビーチアクティビティ",
+          "description": "ビーチでのんびりと過ごし、砂遊びやビーチバレーを楽しみます。家族みんなでリラックスできる時間です。",
+          "searchQuery": "Nadi Beach Activities",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "地元の人との交流",
+          "description": "近くの村を訪れ、地元の人々と交流しながら文化を学びます。子供たちも一緒に参加できるアクティビティが用意されています。",
+          "searchQuery": "Fijian Village Experience",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ナンディでディナー",
+          "description": "ナンディのレストランで、フィジー料理を楽しみます。新鮮な地元の食材を使った料理が魅力です。",
+          "searchQuery": "Nadi Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ナンディでのリラックスデー",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ナンディのリゾートホテルで、トロピカルフルーツやパンケーキなどのビュッフェスタイルの朝食を楽しみます。家族みんなでゆったりとした朝のひとときを過ごしましょう。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ナンディビーチで遊ぶ",
+          "description": "ナンディビーチで、子供たちと一緒に海水浴や砂遊びを楽しみます。透明度の高い海と白い砂浜は、家族でのんびり過ごすのにぴったりです。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ビーチサイドでランチ",
+          "description": "ナンディビーチ近くのレストランで、新鮮なシーフードや地元の料理を楽しみます。海を眺めながらの食事は格別です。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "リゾートスパでリラックス",
+          "description": "リゾート内のスパで、マッサージやトリートメントを受けて、日頃の疲れを癒します。家族全員がリラックスできるメニューが揃っています。",
+          "searchQuery": "Resort Spa Nadi",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "地元の人との交流",
+          "description": "ナンディの市場を訪れ、地元の人々と交流しながら、手作りの工芸品や新鮮なフルーツを購入します。子供たちにも楽しい体験になるでしょう。",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルでディナー",
+          "description": "リゾートホテル内のレストランで、家族みんなでディナーを楽しみます。地元の食材を使った料理を堪能し、楽しい一日の締めくくりにしましょう。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "ナンディから東京へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ナンディ空港",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "東京",
+          "time": "17:00"
+        },
+        "duration": "9h",
+        "memo": "ナンディから東京への直行便で、快適な空の旅を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ナンディのリゾートホテルで、ビュッフェスタイルの朝食を楽しみます。新鮮なフルーツや地元の料理が並び、家族みんなで満足できる内容です。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ナンディビーチで遊ぶ",
+          "description": "ナンディビーチで、青い海と白い砂浜を満喫。子供たちが安心して遊べる穏やかな波で、家族で楽しい時間を過ごしましょう。",
+          "searchQuery": "Nadi Beach",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のレストランでランチ",
+          "description": "ナンディの地元のレストランで、フィジー料理を楽しみます。新鮮なシーフードやトロピカルフルーツを使った料理が魅力です。",
+          "searchQuery": "The Bounty Restaurant",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ナンディの市場を訪れる",
+          "description": "ナンディの地元市場を訪れ、地元の人々と交流しながら新鮮な果物や手工芸品を見て回ります。子供たちも楽しめる体験です。",
+          "searchQuery": "Nadi Market",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ナンディ空港へ移動",
+          "description": "ナンディのリゾートから空港へ移動します。出発前に最後のフィジーの風景を楽しみましょう。",
+          "locationEn": "Nadi, Fiji",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

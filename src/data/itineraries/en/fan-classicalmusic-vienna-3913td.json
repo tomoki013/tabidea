@@ -1,0 +1,462 @@
+{
+  "id": "573292af-0f3c-4eeb-92f2-a493c7aa0f5f",
+  "destination": "Vienna",
+  "description": "Immerse yourself in the enchanting city of Vienna, where classical music resonates through the grand halls and charming streets. This 5-day family adventure is designed to indulge your love for classical music while exploring the rich cultural tapestry of this historic city. From iconic concert halls to delightful local shops filled with unique memorabilia, each day promises a blend of exploration, relaxation, and unforgettable experiences. Get ready to create lasting memories as you stroll through beautiful gardens, savor delicious Austrian cuisine, and soak in the artistic atmosphere that makes Vienna a true gem of Europe.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Vienna and Classical Music Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the historic Café Central, a favorite among famous composers like Trotsky and Freud. Enjoy a traditional Viennese breakfast with fresh pastries and coffee in a stunning, grand setting.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Vienna State Opera",
+          "description": "Explore the iconic Vienna State Opera, one of the most prestigious opera houses in the world. Take a guided tour to learn about its rich history and stunning architecture, or check if you can catch a matinee performance.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Plachutta",
+          "description": "Indulge in a traditional Viennese meal at Plachutta, renowned for its Tafelspitz (boiled beef). This family-friendly restaurant offers a cozy atmosphere and delicious local cuisine, perfect for a leisurely lunch.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Mozarthaus Vienna",
+          "description": "Visit the Mozarthaus, the former residence of Wolfgang Amadeus Mozart. Discover his life and works through interactive exhibits and enjoy the beautiful views of the city from the museum's upper floors.",
+          "searchQuery": "Mozarthaus Vienna",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "St. Stephen's Cathedral",
+          "description": "Marvel at the stunning St. Stephen's Cathedral, a masterpiece of Gothic architecture. Climb the tower for breathtaking views of Vienna and explore the intricate details of this historic site.",
+          "searchQuery": "St. Stephen's Cathedral",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Gasthaus Pöschl",
+          "description": "Enjoy a delightful dinner at Gasthaus Pöschl, known for its authentic Austrian dishes. The cozy atmosphere and friendly service make it a great spot for families to unwind after a day of exploration.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll in the city center",
+          "description": "Take a leisurely evening stroll through Vienna's city center. Enjoy the illuminated buildings and vibrant atmosphere, and perhaps stop by a souvenir shop to pick up some classical music memorabilia.",
+          "searchQuery": "Vienna city center",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Cultural Immersion and Family Activities",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the historic Café Central, a favorite among famous writers and intellectuals. Enjoy a traditional Viennese breakfast with fresh pastries and coffee in a stunning setting.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Belvedere Palace",
+          "description": "Explore the magnificent Belvedere Palace, home to an impressive collection of Austrian art, including Gustav Klimt's 'The Kiss'. The gardens are perfect for a leisurely stroll with the family.",
+          "searchQuery": "Belvedere Palace",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Gasthaus Pöschl",
+          "description": "Enjoy a hearty lunch at Gasthaus Pöschl, known for its traditional Viennese dishes. Try the Wiener Schnitzel, a family favorite, in a cozy atmosphere.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Kunsthistorisches Museum",
+          "description": "Visit the Kunsthistorisches Museum, one of the world's most important art museums. The kids will love the Egyptian collection and the impressive art galleries.",
+          "searchQuery": "Kunsthistorisches Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Relax at Prater Park",
+          "description": "Head to Prater Park for some outdoor fun! Enjoy the iconic Ferris wheel and let the kids play in the expansive green spaces. It's a great way to unwind after a day of culture.",
+          "searchQuery": "Prater Park",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Plachutta",
+          "description": "Indulge in a traditional Tafelspitz dinner at Plachutta, famous for its boiled beef. This is a must-try experience for anyone visiting Vienna, especially for families.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll and souvenir shopping",
+          "description": "Take a leisurely evening stroll through the city center, stopping by local shops for classical music souvenirs and memorabilia. It's a perfect way to end your day in Vienna.",
+          "searchQuery": "Vienna souvenir shops",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Music and Art in the Heart of Vienna",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, butter, and jam, paired with a rich cup of coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Haus der Musik",
+          "description": "Explore the fascinating world of sound at Haus der Musik, an interactive sound museum. Engage with exhibits that celebrate the history of music and the Vienna Philharmonic, making it a perfect spot for music lovers of all ages.",
+          "searchQuery": "Haus der Musik",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Naschmarkt",
+          "description": "Head to Naschmarkt, Vienna's famous market, where you can sample a variety of local and international cuisines. Enjoy a leisurely lunch at one of the many stalls or restaurants, soaking in the vibrant atmosphere.",
+          "searchQuery": "Naschmarkt",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Vienna Philharmonic Concert Hall Tour",
+          "description": "Take a guided tour of the Vienna Philharmonic Concert Hall, where you can learn about the history of this prestigious orchestra and its role in the world of classical music. Don't forget to check the gift shop for exclusive merchandise!",
+          "searchQuery": "Vienna Philharmonic",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Vienna State Opera",
+          "description": "Visit the stunning Vienna State Opera, one of the leading opera houses in the world. You can take a guided tour to learn about its rich history and architecture, or simply enjoy the ambiance of this cultural landmark.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Plachutta",
+          "description": "Indulge in a traditional Viennese dinner at Plachutta, famous for its Tafelspitz (boiled beef). This restaurant offers a cozy atmosphere and is perfect for families looking to enjoy authentic local cuisine.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Stadtpark",
+          "description": "End your day with a relaxing stroll through Stadtpark, where you can admire the beautiful gardens and the famous statue of Johann Strauss. It's a lovely way to unwind after a day filled with music and culture.",
+          "searchQuery": "Stadtpark",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Day Trip to the Vienna Woods",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, butter, jam, and a cup of rich coffee.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Kahlenberg",
+          "description": "Take a short trip to Kahlenberg, a hill offering stunning panoramic views of Vienna. It's a perfect spot for a family hike, and you can enjoy the fresh air while taking in the beautiful scenery of the city below.",
+          "searchQuery": "Kahlenberg",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Heuriger in Grinzing",
+          "description": "Head to Grinzing, a charming wine village, for lunch at a traditional Heuriger. Savor local wines and hearty Austrian dishes in a cozy setting surrounded by vineyards.",
+          "searchQuery": "Heuriger Grinzing",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Grinzing and its Vineyards",
+          "description": "After lunch, take a leisurely stroll through the picturesque streets of Grinzing. Visit local vineyards and perhaps pick up some souvenirs or wine-related gifts to take home.",
+          "searchQuery": "Grinzing",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Beethoven Museum",
+          "description": "Explore the Beethoven Museum located in the house where the composer lived. This museum offers a fascinating insight into his life and works, perfect for classical music enthusiasts.",
+          "searchQuery": "Beethoven Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Gasthaus Pöschl",
+          "description": "Enjoy a delightful dinner at Gasthaus Pöschl, known for its traditional Viennese cuisine. The cozy atmosphere and delicious dishes make it a great place to unwind after a day of exploration.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Danube Canal",
+          "description": "End your day with a relaxing evening walk along the Danube Canal. The vibrant atmosphere and beautiful views of the water are perfect for a family stroll before heading back to your accommodation.",
+          "searchQuery": "Danube Canal",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Last Day of Souvenirs and Departure",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Central",
+          "description": "Start your day at the iconic Café Central, a historic coffee house known for its elegant atmosphere and delicious pastries. Enjoy a traditional Viennese breakfast with fresh bread, jam, and coffee, while soaking in the literary history of this famous café.",
+          "searchQuery": "Café Central",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit the Albertina Museum",
+          "description": "Explore the Albertina, home to one of the largest and most important print rooms in the world. Marvel at works by artists like Monet and Picasso, and don't miss the stunning views of the city from the museum's terrace.",
+          "searchQuery": "Albertina Museum",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Plachutta",
+          "description": "Indulge in a traditional Viennese meal at Plachutta, famous for its Tafelspitz (boiled beef). This family-friendly restaurant offers a cozy atmosphere and a taste of authentic Austrian cuisine, perfect for a leisurely lunch.",
+          "searchQuery": "Plachutta",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Shopping for Classical Music Souvenirs",
+          "description": "Stroll through the city center and visit shops specializing in classical music memorabilia. Look for unique items like sheet music, CDs, and themed gifts that celebrate Vienna's rich musical heritage.",
+          "searchQuery": "Classical Music Souvenirs",
+          "locationEn": "Vienna, Austria",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Vienna State Opera",
+          "description": "Take a guided tour of the Vienna State Opera, one of the most prestigious opera houses in the world. Learn about its history and architecture, and if time allows, catch a glimpse of a rehearsal or performance.",
+          "searchQuery": "Vienna State Opera",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Stadtpark",
+          "description": "End your day with a leisurely stroll through Stadtpark, a beautiful public park featuring statues of famous composers like Johann Strauss. It's a perfect spot to unwind and reflect on your Vienna adventure before departure.",
+          "searchQuery": "Stadtpark",
+          "locationEn": "Vienna, Austria",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at Gasthaus Pöschl",
+          "description": "Enjoy a final dinner at Gasthaus Pöschl, known for its cozy atmosphere and traditional Austrian dishes. Savor local favorites like Wiener Schnitzel or a hearty goulash, making it a memorable end to your trip.",
+          "searchQuery": "Gasthaus Pöschl",
+          "locationEn": "Vienna, Austria",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

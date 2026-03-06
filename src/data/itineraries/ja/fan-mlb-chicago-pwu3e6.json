@@ -1,0 +1,453 @@
+{
+  "id": "db859e4a-900e-4fbf-8e13-beef594d2213",
+  "destination": "シカゴ",
+  "description": "シカゴの街を巡りながら、MLBファンとしての熱い気持ちを満たす旅に出かけましょう。美しい湖岸の景色と歴史的な建物が並ぶシカゴの街で、文化やリラックスした時間を楽しみつつ、推し活を存分に満喫する5日間の旅です。",
+  "days": [
+    {
+      "day": 1,
+      "title": "シカゴ到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シカゴのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ミレニアムパーク散策",
+          "description": "シカゴのシンボル、ミレニアムパークを訪れます。美しい公園内には、アート作品や広場があり、特に「クラウドゲート」は必見です。写真撮影にも最適！",
+          "searchQuery": "Millennium Park",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Giordano'sでランチ",
+          "description": "シカゴ名物のディープディッシュピザを楽しむため、Giordano'sへ。ボリューム満点のピザは友人とシェアするのがおすすめです。",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アートインスティテュート・オブ・シカゴ",
+          "description": "世界的に有名なアートインスティテュートを訪れ、印象派の名画やアメリカのアートを堪能します。美術館内のカフェで一休みするのも良いでしょう。",
+          "searchQuery": "Art Institute of Chicago",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "シカゴ・カブスの本拠地、リグレー・フィールド見学",
+          "description": "MLBファン必見のリグレー・フィールドを訪れ、スタジアムツアーに参加します。カブスの歴史やスタジアムの裏側を知ることができます。",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "リグレー・フィールド近くでディナー",
+          "description": "リグレー・フィールド近くのレストランで、シカゴスタイルのホットドッグやビールを楽しみます。地元の雰囲気を味わえるお店を選びましょう。",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シカゴのナイトライフを楽しむ",
+          "description": "シカゴのバーやライブハウスで、地元の音楽や雰囲気を楽しみます。友人と一緒にリラックスした時間を過ごしましょう。",
+          "locationEn": "Chicago, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "MLBスポット巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シカゴのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ。",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "リグレー・フィールド見学",
+          "description": "シカゴ・カブスの本拠地、リグレー・フィールドを訪れます。歴史ある球場の魅力を感じながら、スタジアムツアーでその裏側を探検。",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "近くのカフェでランチ",
+          "description": "リグレー・フィールド近くのカフェで軽食を楽しみます。地元の人に人気のサンドイッチやサラダを味わいながら、シカゴの雰囲気を満喫。",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シカゴ・カブスのファンショップ訪問",
+          "description": "シカゴ・カブスの公式ファンショップで、グッズを購入します。ユニフォームやキャップなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "Chicago Cubs Team Store",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "シカゴの歴史的な街並み散策",
+          "description": "リグレー・フィールド周辺の歴史的な街並みを散策します。美しい建物やアートを楽しみながら、地元のカフェで一息つくのもおすすめ。",
+          "locationEn": "Chicago, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "シカゴ・リバークルーズ",
+          "description": "シカゴ川をクルーズしながら、街の美しい景色を楽しみます。歴史的な建物や現代的な高層ビルを眺めることができ、リラックスした時間を過ごせます。",
+          "searchQuery": "Chicago River Cruise",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "シカゴの地元料理を楽しむために、人気のレストランでディナーを。シカゴピザやホットドッグなど、アメリカの味を堪能しましょう。",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "シカゴの歴史と文化を感じる",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "シカゴの地元のカフェで、ボリューム満点の朝食を楽しみます。パンケーキやオムレツなど、アメリカンブレックファーストを堪能しましょう。",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "シカゴ歴史博物館",
+          "description": "シカゴの歴史を深く知ることができる博物館です。展示物を通じて、シカゴの成り立ちや文化を学びながら、興味深いストーリーに触れられます。",
+          "searchQuery": "Chicago History Museum",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のピザ店でランチ",
+          "description": "シカゴ名物のディープディッシュピザを楽しむランチタイム。地元の人に人気の店で、ボリューム満点のピザを味わいましょう。",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ウィリス・タワー展望台",
+          "description": "シカゴのシンボルとも言えるウィリス・タワーの展望台から、街の絶景を楽しみます。特に晴れた日には、遠くまで見渡せる素晴らしい景色が広がります。",
+          "searchQuery": "Willis Tower Skydeck",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "MLB関連ショップ巡り",
+          "description": "シカゴのMLBチーム、シカゴ・カブスやホワイトソックスのグッズを取り扱うショップを巡ります。お気に入りのファングッズを見つけて、思い出を持ち帰りましょう。",
+          "searchQuery": "Chicago Cubs Merchandise",
+          "locationEn": "Chicago, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "シカゴ川沿いを散策",
+          "description": "シカゴ川沿いを歩きながら、街の美しい景観を楽しみます。川沿いの公園やアート作品を見ながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のビアバーでディナー",
+          "description": "シカゴのクラフトビールを楽しめるビアバーで、軽食と共に地元のビールを味わいます。友人と一緒に楽しいひとときを過ごしましょう。",
+          "searchQuery": "Revolution Brewing",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リラックスとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "シカゴのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ナビゲーター・ビーチ散策",
+          "description": "シカゴの美しい湖岸、ナビゲーター・ビーチでリラックス。湖の青い水と広がる空を眺めながら、友人とゆったりとした時間を過ごします。",
+          "searchQuery": "North Avenue Beach",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Lou Malnati's Pizzeria",
+          "description": "シカゴ名物のディープディッシュピザを楽しむために、Lou Malnati'sへ。サクサクのクラストとたっぷりのチーズが絶品です！",
+          "searchQuery": "Lou Malnati's Pizzeria",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シカゴ・カブスの本拠地、リグレー・フィールド見学",
+          "description": "MLBファン必見のリグレー・フィールドを訪れ、スタジアムツアーに参加。歴史ある球場の魅力を感じながら、カブスのファングッズもゲット！",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ミシガンアベニューでショッピング",
+          "description": "シカゴのメインストリート、ミシガンアベニューでショッピング。おしゃれなブティックやお土産屋さんを巡りながら、友人と楽しい時間を過ごします。",
+          "searchQuery": "Michigan Avenue",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ディナー：Portillo's Hot Dogs",
+          "description": "シカゴ名物のホットドッグをPortillo'sで味わいます。ボリューム満点で、地元の人にも愛される人気店です。",
+          "searchQuery": "Portillo's Hot Dogs",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シカゴの夜景を楽しむ",
+          "description": "シカゴの美しい夜景を眺めるため、ミレニアムパークへ。友人と一緒に、素敵な思い出を作りましょう。",
+          "searchQuery": "Millennium Park",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "シカゴから東京へ帰路",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "シカゴ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "シカゴ・オヘア国際空港",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "空港までの移動はタクシーを利用。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "シカゴ・リバーウォーク散策",
+          "description": "シカゴの美しい川沿いを歩きながら、街の歴史的な建物やアートを楽しむことができます。特に朝の静かな時間帯は、リラックスした雰囲気でおすすめです。",
+          "searchQuery": "Chicago Riverwalk",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Giordano'sでディープディッシュピザランチ",
+          "description": "シカゴ名物のディープディッシュピザを楽しむならGiordano'sが最適。ボリューム満点で、友人とシェアするのも良いでしょう。",
+          "searchQuery": "Giordano's",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シカゴ・カブスの本拠地、リグレー・フィールド見学",
+          "description": "MLBファンにはたまらない、シカゴ・カブスの本拠地を訪れます。スタジアムツアーに参加して、歴史や裏話を聞きながら、球場の雰囲気を味わいましょう。",
+          "searchQuery": "Wrigley Field",
+          "locationEn": "Chicago, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "MLBグッズショップでファングッズ購入",
+          "description": "リグレー・フィールド内のショップで、カブスのファングッズを購入。ユニフォームやキャップなど、思い出に残るアイテムを手に入れましょう。",
+          "searchQuery": "Wrigley Field Team Store",
+          "locationEn": "Chicago, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "シカゴ・オヘア国際空港へ移動",
+          "description": "帰国の準備を整え、空港へ向かいます。タクシーでの移動が便利です。",
+          "searchQuery": "O'Hare International Airport",
+          "locationEn": "Chicago, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "シカゴ・オヘア国際空港から東京へ出発",
+          "description": "シカゴでの楽しい思い出を胸に、東京へ向けて出発します。",
+          "searchQuery": "O'Hare International Airport",
+          "locationEn": "Chicago, USA",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "id": "44986f0c-1201-4054-84ba-7ea09f9f17c0",
+  "destination": "日光・鬼怒川",
+  "description": "歴史と自然が織りなす美しい日光と鬼怒川で、家族みんなが楽しめる特別な2日間を過ごしましょう。世界遺産の日光東照宮では、子供たちが大好きな「見ざる言わざる聞かざる」を見つけて、歴史の物語を感じることができます。そして、鬼怒川の温泉で心も体もリフレッシュ。美しい自然に囲まれたこの地で、家族の絆を深める素敵な思い出を作りましょう。",
+  "days": [
+    {
+      "day": 1,
+      "title": "日光の歴史と自然を満喫",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "日光",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "日光東照宮",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "日光市内から日光東照宮までのバス移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "日光東照宮",
+          "description": "世界遺産に登録されている日光東照宮を訪れます。豪華絢爛な建築と、見ざる言わざる聞かざるの彫刻を子供と一緒に楽しみましょう。",
+          "searchQuery": "Nikko Toshogu Shrine",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "日光の名物ランチ",
+          "description": "日光名物の湯葉料理を楽しめるお店で、家族みんなで美味しいランチをいただきます。地元の味を堪能しましょう。",
+          "searchQuery": "Yuba Restaurant Nikko",
+          "locationEn": "Nikko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "二荒山神社",
+          "description": "日光の守り神を祀る二荒山神社を訪れます。自然に囲まれた静かな境内で、心を落ち着けるひとときを過ごしましょう。",
+          "searchQuery": "Futarasan Shrine",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "華厳の滝",
+          "description": "日本三名瀑の一つ、華厳の滝を見に行きます。迫力ある滝の音と美しい景色に感動すること間違いなしです。",
+          "searchQuery": "Kegon Falls",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "鬼怒川温泉でリラックス",
+          "description": "鬼怒川温泉に移動し、温泉に浸かって旅の疲れを癒します。家族でゆったりとした時間を楽しみましょう。",
+          "searchQuery": "Kinugawa Onsen",
+          "locationEn": "Kinugawa Onsen, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "温泉旅館で夕食",
+          "description": "宿泊する旅館で、地元の食材を使った美味しい夕食をいただきます。温泉に浸かりながら、家族で楽しい会話を楽しみましょう。",
+          "searchQuery": "Kinugawa Onsen Ryokan",
+          "locationEn": "Kinugawa Onsen, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "鬼怒川温泉でリラックス",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "日光",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "鬼怒川温泉",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "日光から鬼怒川温泉へはバスでの移動がおすすめです。美しい自然を楽しみながらの移動です。"
+      },
+      "activities": [
+        {
+          "time": "09:30",
+          "activity": "鬼怒川温泉街散策",
+          "description": "鬼怒川温泉街を散策し、温泉の雰囲気を楽しみましょう。川沿いの景色や温泉宿の風情を感じながら、家族でのんびりとした時間を過ごせます。",
+          "searchQuery": "Kinugawa Onsen",
+          "locationEn": "Kinugawa Onsen, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "鬼怒川温泉で温泉入浴",
+          "description": "鬼怒川温泉の名湯に浸かり、日頃の疲れを癒しましょう。家族みんなで楽しめる大浴場や露天風呂が魅力です。",
+          "searchQuery": "Kinugawa Onsen",
+          "locationEn": "Kinugawa Onsen, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "鬼怒川温泉でランチ",
+          "description": "温泉街の食堂で地元の食材を使った料理を楽しみます。特に、鬼怒川の名物料理をぜひ味わってみてください。",
+          "searchQuery": "Kinugawa Onsen Restaurants",
+          "locationEn": "Kinugawa Onsen, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "日光東照宮",
+          "description": "世界遺産の日光東照宮を訪れ、豪華な装飾や歴史を感じましょう。特に「見ざる言わざる聞かざる」の彫刻は子供たちにも大人気です。",
+          "searchQuery": "Nikko Toshogu Shrine",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "日光の自然散策",
+          "description": "日光の美しい自然を散策し、家族でのんびりとした時間を過ごします。特に、紅葉の季節は絶景です。",
+          "searchQuery": "Nikko National Park",
+          "locationEn": "Nikko, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "日光で夕食",
+          "description": "日光の地元料理を楽しめるレストランで夕食を。新鮮な山の幸や川の幸を使った料理が楽しめます。",
+          "searchQuery": "Nikko Restaurants",
+          "locationEn": "Nikko, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "宿泊先へ移動",
+          "description": "宿泊先のホテルへ移動し、ゆっくりと休息を取ります。温泉でリフレッシュした後は、家族でのんびりとした夜を過ごしましょう。",
+          "searchQuery": "Nikko Hotels",
+          "locationEn": "Nikko, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

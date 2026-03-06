@@ -1,0 +1,538 @@
+{
+  "id": "4653260e-806d-4055-8ed2-ddec2bdfb137",
+  "destination": "スイス",
+  "description": "スイスの美しい風景と文化を満喫する6日間の家族旅行。特に『Crash Landing On You』のファンにはたまらないスポットを巡り、ショッピングやアクティビティも楽しむ充実のプランです。子供たちも楽しめるアクティビティを織り交ぜながら、家族全員が満足できる旅を提案します。",
+  "days": [
+    {
+      "day": 1,
+      "title": "スイスへ出発",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "チューリッヒ空港到着",
+          "description": "スイスの玄関口、チューリッヒ空港に到着。空港内のインフォメーションセンターで観光情報をゲットしましょう。",
+          "searchQuery": "Zurich Airport",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "チューリッヒ市内観光",
+          "description": "空港から電車で約15分、チューリッヒ市内へ。美しい湖と歴史的な建物が並ぶ旧市街を散策し、スイスの文化を感じましょう。",
+          "searchQuery": "Old Town Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ：スイス料理レストラン",
+          "description": "地元のスイス料理を楽しむために、レストラン「Zeughauskeller」へ。名物のチーズフォンデュやローストポークを味わえます。",
+          "searchQuery": "Zeughauskeller",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "チューリッヒ湖散策",
+          "description": "チューリッヒ湖のほとりを散策し、湖の美しい景色を楽しみながら、リラックスした時間を過ごします。子供たちも遊べる公園があります。",
+          "searchQuery": "Lake Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ファングッズショッピング",
+          "description": "「Bahnhofstrasse」でショッピング。スイスの人気ブランドやお土産を探しながら、家族で楽しい時間を過ごしましょう。",
+          "searchQuery": "Bahnhofstrasse",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "夕食：地元のビストロ",
+          "description": "「Restaurant Swiss Chuchi」でスイスの家庭料理を楽しむディナー。子供向けメニューも充実しています。",
+          "searchQuery": "Restaurant Swiss Chuchi",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルチェックイン",
+          "description": "チューリッヒ市内のホテルにチェックイン。家族でゆっくりとくつろぎましょう。",
+          "searchQuery": "Hotel Adler Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "チューリッヒ観光とショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "チューリッヒのホテルで、スイスの伝統的な朝食を楽しみます。新鮮なパンやチーズ、ハムを使った朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "リマト川沿いの散策",
+          "description": "美しいリマト川沿いを散策しながら、チューリッヒの風景を楽しみます。川の流れを眺めつつ、家族でのんびりとした時間を過ごしましょう。",
+          "searchQuery": "Limmat River",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "バンホフ通りでショッピング",
+          "description": "チューリッヒのメインショッピングストリート、バンホフ通りでお買い物。ファングッズやスイスの特産品を探しながら、家族で楽しい時間を過ごせます。",
+          "searchQuery": "Bahnhofstrasse",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のカフェでランチ",
+          "description": "バンホフ通り近くのカフェで、スイスの軽食やサンドイッチを楽しみます。子供たちも喜ぶメニューが揃っています。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "チューリッヒ湖でのアクティビティ",
+          "description": "チューリッヒ湖でボートに乗ったり、湖畔を散策したりして、家族で楽しいひとときを過ごします。湖の美しい景色を楽しみながら、リラックスした時間を持ちましょう。",
+          "searchQuery": "Lake Zurich",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "「Crash Landing on You」に関連するファングッズを取り扱うショップを訪れます。お気に入りのアイテムを見つけて、思い出を持ち帰りましょう。",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "チューリッヒの地元レストランで、スイス料理を楽しみます。家族でシェアしながら、スイスの味を堪能しましょう。",
+          "locationEn": "Zurich, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ルツェルンと『Crash Landing On You』の聖地巡り",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "チューリッヒ",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "ルツェルン",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "チューリッヒからルツェルンまでの美しい景色を楽しみながらの電車移動。"
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "カペル橋",
+          "description": "ルツェルンのシンボル、カペル橋を訪れます。美しい木造の橋とその上に描かれた歴史的な絵画を楽しみながら、家族での写真撮影にもぴったりです。",
+          "searchQuery": "Chapel Bridge",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "ルツェルン湖クルーズ",
+          "description": "ルツェルン湖をクルーズしながら、周囲の美しい山々や風景を堪能します。子供たちも楽しめるアクティビティです。",
+          "searchQuery": "Lake Lucerne Boat Cruise",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランでスイス料理を楽しみます。特にチーズフォンデュは家族みんなでシェアできるのでおすすめです。",
+          "searchQuery": "Restaurant in Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ルツェルンの旧市街散策",
+          "description": "ルツェルンの旧市街を散策し、歴史的な建物やショップを楽しみます。特に『Crash Landing On You』の関連商品を扱うお店を探してみましょう。",
+          "searchQuery": "Old Town Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズショップ訪問",
+          "description": "『Crash Landing On You』のファングッズを取り扱うショップを訪れ、思い出の品をゲットしましょう。子供たちも喜ぶアイテムが見つかるかもしれません。",
+          "searchQuery": "Crash Landing On You Merchandise Shop",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食",
+          "description": "ルツェルンのレストランで夕食を楽しみます。地元の食材を使った料理を味わいながら、家族での楽しい時間を過ごしましょう。",
+          "searchQuery": "Dinner Restaurant in Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "ルツェルンのホテルにチェックイン。家族でゆっくりとくつろぎ、明日の計画を立てる時間を持ちましょう。",
+          "searchQuery": "Hotel in Lucerne",
+          "locationEn": "Lucerne, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "インターラーケンでのアクティビティ",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Lucerne",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Interlaken",
+          "time": "10:00"
+        },
+        "duration": "1h",
+        "memo": "ルツェルンからインターラーケンへの美しい景色を楽しむ電車の旅です。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ハーダークルム展望台",
+          "description": "インターラーケンのシンボル、ハーダークルム展望台へ。ここからは、周囲の山々や湖の絶景が広がり、特に晴れた日には息を呑むような景色が楽しめます。",
+          "searchQuery": "Harder Kulm",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "インターラーケンでランチ",
+          "description": "地元のレストランでスイスの伝統料理を楽しみましょう。特にチーズフォンデュやロスティはおすすめです。家族みんなでシェアしながら、楽しいランチタイムを過ごしましょう。",
+          "searchQuery": "Restaurant Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "インターラーケンの街散策",
+          "description": "インターラーケンの街を散策しながら、地元のショップやカフェを訪れましょう。特にファングッズを探すのにぴったりな場所です。子供たちも楽しめるお土産が見つかるかもしれません。",
+          "searchQuery": "Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アクティビティ体験（パラグライダーなど）",
+          "description": "インターラーケンはアクティビティの宝庫です。家族でパラグライダーやハイキングなど、スリリングな体験を楽しんでみてはいかがでしょうか。",
+          "searchQuery": "Paragliding Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "インターラーケンでディナー",
+          "description": "夕食は、インターラーケンのレストランでスイス料理を堪能。特に地元のビールと一緒に楽しむ料理は格別です。",
+          "searchQuery": "Restaurant Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルチェックイン",
+          "description": "インターラーケンのホテルにチェックイン。家族でゆったりとした時間を過ごし、明日の計画を立てましょう。",
+          "searchQuery": "Hotel Interlaken",
+          "locationEn": "Interlaken, Switzerland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ジュネーブでの文化体験",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "インターラーケン",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "ジュネーブ",
+          "time": "10:00"
+        },
+        "duration": "2h 00m",
+        "memo": "インターラーケンからジュネーブへは美しい山々を眺めながらの列車旅。早めに出発して、ジュネーブでの一日を楽しみましょう。"
+      },
+      "activities": [
+        {
+          "time": "10:30",
+          "activity": "ジュネーブ湖散策",
+          "description": "ジュネーブ湖の美しい景色を楽しみながら、湖畔を散策します。湖の青さと周囲の山々が織りなす風景は、心を癒してくれます。",
+          "searchQuery": "Lake Geneva",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のレストランでスイス料理を楽しみましょう。特に、ラクレットやフォンデュは家族みんなでシェアするのにぴったりです。",
+          "searchQuery": "Restaurant de l'Hotel de Ville",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "国際連合本部見学",
+          "description": "国際連合本部を訪れ、国際的な平和と安全のための活動について学びます。ガイドツアーに参加すると、より深く理解できます。",
+          "searchQuery": "United Nations Office at Geneva",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "ジュネーブ旧市街散策",
+          "description": "歴史的なジュネーブ旧市街を散策し、古い建物や小さなショップを楽しみます。特に、サン・ピエール大聖堂は必見です。",
+          "searchQuery": "Old Town Geneva",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ファングッズ購入",
+          "description": "ジュネーブのショップで『Crash Landing on You』関連のファングッズを探しましょう。お土産にぴったりなアイテムが見つかるかもしれません。",
+          "searchQuery": "Crash Landing on You merchandise",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー",
+          "description": "ジュネーブのレストランでディナーを楽しみます。地元の食材を使った料理を味わいながら、家族で楽しい時間を過ごしましょう。",
+          "searchQuery": "Café du Centre",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "帰国の途へ",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "ジュネーブ",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "チューリッヒ空港",
+          "time": "11:00"
+        },
+        "duration": "1h",
+        "memo": "ジュネーブからチューリッヒ空港へのフライト。空港での手続きに余裕を持って出発しましょう。"
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ジュネーブのホテルで、スイスのパンやチーズを楽しむ朝食をいただきます。地元の食材を使った美味しい朝食で、最後の朝を満喫しましょう。",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "ジュネーブ旧市街散策",
+          "description": "ジュネーブの歴史的な旧市街を散策。美しい建物や広場、カフェが並ぶエリアで、最後の思い出を作りましょう。特にサン・ピエール大聖堂は必見です。",
+          "searchQuery": "St. Pierre Cathedral",
+          "locationEn": "Geneva, Switzerland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "チューリッヒ空港でショッピング",
+          "description": "チューリッヒ空港に到着後、空港内のショップでスイスのファングッズやお土産を購入しましょう。特にチョコレートや時計はおすすめです。",
+          "locationEn": "Zurich Airport, Switzerland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "帰国の途へ",
+          "description": "空港での手続きが終わったら、帰国のフライトに搭乗します。スイスでの素晴らしい思い出を胸に、またの旅を楽しみにしましょう。",
+          "locationEn": "Zurich Airport, Switzerland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

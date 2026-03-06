@@ -1,0 +1,237 @@
+{
+  "id": "6c7ace7b-f097-49b2-9d78-057d9567dfe2",
+  "destination": "宮古島",
+  "description": "Escape to the breathtaking paradise of 宮古島, where pristine beaches meet azure waters and vibrant coral reefs. This 3-day getaway is designed for couples seeking relaxation, adventure, and the natural beauty that only this remote island can offer. Picture yourself lounging on soft sands, exploring hidden coves, and driving along scenic coastal roads, all while soaking in the island's tranquil vibe. Get ready to unwind and create unforgettable memories in this tropical haven!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Beach Bliss",
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Shigira Resort",
+          "description": "Start your day with a delightful lunch at Shigira Resort, where you can enjoy fresh seafood and local delicacies while overlooking the stunning ocean views. The relaxed atmosphere is perfect for couples looking to unwind after their journey.",
+          "searchQuery": "Shigira Resort",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Shigira Beach",
+          "description": "After lunch, head to Shigira Beach, known for its crystal-clear waters and soft white sand. Spend your afternoon swimming, sunbathing, or simply strolling along the shore, soaking in the breathtaking scenery.",
+          "searchQuery": "Shigira Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Higashi-Hennazaki Cape",
+          "description": "Take a scenic drive to Higashi-Hennazaki Cape, where you can enjoy panoramic views of the ocean and the surrounding landscape. This spot is perfect for capturing stunning photos and enjoying the tranquility of nature.",
+          "searchQuery": "Higashi-Hennazaki Cape",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at a Local Izakaya",
+          "description": "Experience the local cuisine at a nearby izakaya, where you can savor traditional Japanese dishes and fresh seafood. The cozy atmosphere and friendly service will make for a memorable dining experience.",
+          "searchQuery": "Izakaya Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Relax at Your Hotel",
+          "description": "After a fulfilling day, return to your hotel to relax. Enjoy the amenities and perhaps take a stroll on the beach under the stars, reflecting on the beautiful moments of the day.",
+          "searchQuery": "Hotel in Miyakojima",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Island Exploration and Scenic Drives",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a delightful breakfast at your hotel, featuring fresh local ingredients and a view of the beautiful ocean. Enjoy tropical fruits and traditional Okinawan dishes to fuel your adventures ahead.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Explore Yabiji Islands",
+          "description": "Take a boat trip to the stunning Yabiji Islands, known for their crystal-clear waters and vibrant coral reefs. Spend the morning snorkeling or simply relaxing on the beach, surrounded by breathtaking natural beauty.",
+          "searchQuery": "Yabiji Islands",
+          "locationEn": "Yabiji Islands, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at a Local Seafood Restaurant",
+          "description": "Savor a delicious seafood lunch at a local restaurant, where you can enjoy freshly caught fish and other local specialties. The flavors of the ocean will surely enhance your experience on this beautiful island.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Sunayama Beach",
+          "description": "After lunch, head to Sunayama Beach, famous for its stunning white sand and turquoise waters. Take a leisurely stroll along the beach, swim in the gentle waves, or simply relax under the sun.",
+          "searchQuery": "Sunayama Beach",
+          "locationEn": "Sunayama Beach, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Scenic Drive Around Miyakojima",
+          "description": "Enjoy a scenic drive around Miyakojima, taking in the stunning coastal views and lush landscapes. Stop at various viewpoints to capture the beauty of the island and create lasting memories together.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Beachfront Restaurant",
+          "description": "End your day with a romantic dinner at a beachfront restaurant, where you can enjoy local cuisine while watching the sunset over the ocean. The ambiance and flavors will make for a perfect evening.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Relaxation and Departure",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Hotel",
+          "description": "Start your day with a delightful breakfast at your hotel, featuring local Okinawan dishes and fresh tropical fruits to energize you for the day ahead.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Toriizaki Beach",
+          "description": "Spend a relaxing morning at Toriizaki Beach, known for its stunning white sands and crystal-clear waters. It's the perfect spot to unwind and soak up the sun before your departure.",
+          "searchQuery": "Toriizaki Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at a Local Seafood Restaurant",
+          "description": "Enjoy a delicious seafood lunch at a local restaurant, where you can savor fresh catches of the day, including sashimi and grilled fish, while overlooking the ocean.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Maehama Beach",
+          "description": "After lunch, head to Maehama Beach, one of the most beautiful beaches in Japan. Take a leisurely swim in the turquoise waters or simply relax on the beach with a good book.",
+          "searchQuery": "Maehama Beach",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Drive Along the Coast",
+          "description": "Take a scenic drive along the coast of Miyakojima, enjoying breathtaking views of the ocean and the surrounding nature. Stop at various lookout points to capture the stunning landscapes.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Hotel and Prepare for Departure",
+          "description": "Head back to your hotel to freshen up and pack your belongings. Take a moment to reflect on the beautiful memories created during your stay in Miyakojima.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Beachside Restaurant",
+          "description": "Enjoy a farewell dinner at a beachside restaurant, where you can indulge in a mix of local and international cuisine while watching the sunset over the ocean.",
+          "locationEn": "Miyakojima, Japan",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

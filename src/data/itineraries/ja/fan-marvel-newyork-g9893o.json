@@ -1,0 +1,303 @@
+{
+  "id": "6060f0ff-6401-4368-8fa4-e9782d4aceb5",
+  "destination": "ニューヨーク",
+  "description": "アメリカの文化と歴史が息づくニューヨークで、友人と共にMarvelの世界を体験し、推し活を満喫する3日間の旅に出かけましょう。街の喧騒の中で、映画の舞台やファングッズを求めて、アクティブに動き回るプランをご提案します。",
+  "heroImage": "https://images.unsplash.com/photo-1496588152823-86ff7695e68f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODk3NTN8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Luca Bravo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lucabravo?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ニューヨーク到着とマンハッタン探索",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、エッグが揃ったボリューム満点の朝食で、元気に一日をスタート！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "タイムズスクエア散策",
+          "description": "世界中の観光客が集まるタイムズスクエア。巨大な広告看板やストリートパフォーマンスを楽しみながら、ニューヨークのエネルギーを感じましょう。ここでの写真撮影は必須です！",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ブロードウェイでランチ",
+          "description": "ブロードウェイの近くにある人気のピザ店で、ニューヨークスタイルのピザを堪能。サクサクのクラストとトッピングの組み合わせが絶品です。",
+          "searchQuery": "Joe's Pizza",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "アベンジャーズ・ステーション訪問",
+          "description": "マーベルファン必見のアベンジャーズ・ステーションで、映画の世界に浸りましょう。展示物やインタラクティブな体験が盛りだくさんで、友人と一緒に楽しめます。",
+          "searchQuery": "Avengers Station",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ファングッズショッピング",
+          "description": "アベンジャーズ・ステーションの近くにあるお土産ショップで、マーベル関連のファングッズを探しましょう。限定アイテムやコレクターズアイテムが見つかるかも！",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルで休憩",
+          "description": "一度ホテルに戻り、少し休憩。旅の疲れを癒して、夜のアクティビティに備えましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ブロードウェイミュージカル鑑賞",
+          "description": "夜はブロードウェイでミュージカルを鑑賞。事前にチケットを予約しておくとスムーズです。感動的なパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "Broadway Shows",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "22:00",
+          "activity": "近くのバーでディナー",
+          "description": "ミュージカルの後は、近くのバーで軽めのディナー。ニューヨークの夜を楽しみながら、友人との思い出を語り合いましょう。",
+          "searchQuery": "The Spotted Pig",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Marvelの聖地巡りとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのホテルで、アメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理など、ボリューム満点の朝食でエネルギーをチャージ！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "アメリカ自然史博物館",
+          "description": "アメリカ自然史博物館を訪れ、恐竜の化石や宇宙の展示を楽しみます。特に「ダイナソー・ホール」は圧巻で、子供心をくすぐるスポットです。",
+          "searchQuery": "American Museum of Natural History",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：Shake Shackでハンバーガー",
+          "description": "セントラルパーク近くのShake Shackで、ジューシーなハンバーガーとフレンチフライを堪能。行列ができる人気店ですが、その味は待つ価値あり！",
+          "searchQuery": "Shake Shack",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "セントラルパーク散策",
+          "description": "セントラルパークを散策しながら、自然の中でリラックス。公園内のベセスダテラスやボートハウスを訪れ、ニューヨークの喧騒を忘れましょう。",
+          "searchQuery": "Central Park",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "マーベル・ストア訪問",
+          "description": "マーベル・ストアで、最新のファングッズをチェック！アメコミやフィギュア、アパレルなど、マーベルファンにはたまらないアイテムが揃っています。",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "タイムズスクエア散策",
+          "description": "タイムズスクエアのネオンに囲まれながら、観光客や地元の人々の活気を感じましょう。お土産屋さんも多く、ショッピングにも最適です。",
+          "searchQuery": "Times Square",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー：The Capital Grilleでステーキ",
+          "description": "高級ステーキハウスThe Capital Grilleで、上質なステーキを楽しみます。落ち着いた雰囲気の中で、特別なディナーを堪能しましょう。",
+          "searchQuery": "The Capital Grille",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ブロードウェイショー観賞",
+          "description": "ブロードウェイでのショーを楽しみます。事前にチケットを購入しておくと、人気のミュージカルや演劇をスムーズに観賞できます。",
+          "searchQuery": "Broadway Show",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ニューヨークの文化を感じる",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ニューヨークのダイナーでアメリカンブレックファーストを楽しみます。パンケーキやベーコン、卵料理が揃い、エネルギーをチャージして一日をスタート！",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "メトロポリタン美術館",
+          "description": "世界的に有名なメトロポリタン美術館を訪れます。古代から現代までの膨大なコレクションを楽しみながら、アートに浸る贅沢な時間を過ごしましょう。特に、アメリカンアートのセクションは必見です。",
+          "searchQuery": "Metropolitan Museum of Art",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "近くのカフェでランチ",
+          "description": "美術館近くのカフェで軽食を。サンドイッチやサラダを楽しみながら、アートの余韻に浸ります。地元の人にも人気のスポットです。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "エンパイア・ステート・ビル",
+          "description": "ニューヨークのシンボル、エンパイア・ステート・ビルを訪れます。展望台からの眺めは圧巻で、特に晴れた日にはマンハッタンの全景を楽しむことができます。",
+          "searchQuery": "Empire State Building",
+          "locationEn": "New York, USA",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Marvelの関連ショップ巡り",
+          "description": "Marvelのファングッズを探しに、タイムズスクエア周辺のショップを巡ります。限定商品やコレクターズアイテムが見つかるかも！",
+          "searchQuery": "Marvel Store",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "近くのレストランでディナー",
+          "description": "ニューヨークの人気レストランでディナーを楽しみます。地元の食材を使った料理や、アメリカンスタイルのディッシュを堪能しましょう。",
+          "locationEn": "New York, USA",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ブロードウェイのショー観賞",
+          "description": "夜はブロードウェイでショーを観賞します。事前にチケットを購入しておくとスムーズです。感動的なパフォーマンスに心を奪われることでしょう。",
+          "searchQuery": "Broadway",
+          "locationEn": "New York, USA",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

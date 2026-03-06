@@ -1,0 +1,475 @@
+{
+  "id": "5ef77910-33a5-45c0-a9a9-faa350b2a919",
+  "destination": "Hanoi & Halong Bay",
+  "description": "Embark on a captivating journey through Vietnam's vibrant capital, Hanoi, and the breathtaking landscapes of Halong Bay. This 5-day adventure is designed for families, blending cultural exploration, natural wonders, and delectable Vietnamese cuisine. From the bustling streets of Hanoi to the serene waters of Halong Bay, each day promises unforgettable experiences that will delight both young and old alike.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Hanoi",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at a Local Café",
+          "description": "Start your day with a traditional Vietnamese breakfast at a local café. Enjoy a bowl of Pho, a flavorful noodle soup that is a favorite among locals and perfect for the whole family.",
+          "searchQuery": "Pho Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Explore Hoan Kiem Lake",
+          "description": "Stroll around the picturesque Hoan Kiem Lake, a central landmark in Hanoi. The serene atmosphere and beautiful scenery make it a great spot for family photos and a leisurely walk.",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Bun Cha Huong Lien",
+          "description": "Savor a delicious lunch of Bun Cha, a grilled pork dish served with rice noodles and fresh herbs. This restaurant is famous for its authentic flavors and is kid-friendly.",
+          "searchQuery": "Bun Cha Huong Lien",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit Ngoc Son Temple",
+          "description": "Take a short walk to Ngoc Son Temple, located on an island in Hoan Kiem Lake. The temple is dedicated to the legendary hero Tran Hung Dao and offers a glimpse into Vietnam's rich history.",
+          "searchQuery": "Ngoc Son Temple",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Explore the Old Quarter",
+          "description": "Wander through the bustling streets of the Old Quarter, where you can find unique shops, street food stalls, and local artisans. It's a vibrant area that showcases the culture of Hanoi.",
+          "searchQuery": "Old Quarter Hanoi",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Cha Ca Thang Long",
+          "description": "Enjoy a family-friendly dinner at Cha Ca Thang Long, known for its grilled fish dish served with herbs and rice noodles. It's a must-try local specialty that kids will love.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Stroll and Water Puppet Show",
+          "description": "End your day with a leisurely evening stroll around the lake, followed by a traditional water puppet show, a unique cultural experience that will entertain both kids and adults.",
+          "searchQuery": "Thang Long Water Puppet Theatre",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Hanoi's Rich Culture",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at a Local Pho Shop",
+          "description": "Start your day with a steaming bowl of Pho, Vietnam's famous noodle soup. This local eatery is known for its rich broth and tender beef, perfect for energizing your family for the day ahead.",
+          "searchQuery": "Pho Bat Dan",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Ho Chi Minh Mausoleum",
+          "description": "Visit the iconic Ho Chi Minh Mausoleum, where the preserved body of Vietnam's revolutionary leader lies. The solemn atmosphere and impressive architecture make it a must-see for understanding Vietnam's history.",
+          "searchQuery": "Ho Chi Minh Mausoleum",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "One Pillar Pagoda",
+          "description": "Just a short walk from the mausoleum, this unique pagoda is built on a single pillar and is a symbol of Hanoi. Its serene surroundings provide a peaceful break for the family.",
+          "searchQuery": "One Pillar Pagoda",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Cha Ca Thang Long",
+          "description": "Enjoy a delicious lunch featuring Cha Ca, a traditional Hanoi dish of grilled fish served with herbs and noodles. This family-friendly restaurant is known for its flavorful dishes that kids will love.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Temple of Literature",
+          "description": "Explore Vietnam's first university, the Temple of Literature. The beautiful gardens and ancient architecture provide a great backdrop for family photos and a chance to learn about Confucianism.",
+          "searchQuery": "Temple of Literature",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Stroll around Hoan Kiem Lake",
+          "description": "Take a leisurely walk around Hoan Kiem Lake, a central spot in Hanoi. The scenic views and the Ngoc Son Temple on the lake island make it a lovely place to relax and enjoy the surroundings.",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Bun Cha Huong Lien",
+          "description": "Savor a family-friendly dinner of Bun Cha, a grilled pork dish served with rice noodles and fresh herbs. This restaurant is famous for its authentic flavors and welcoming atmosphere.",
+          "searchQuery": "Bun Cha Huong Lien",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Water Puppet Show",
+          "description": "End your day with a traditional Water Puppet Show, a unique Vietnamese art form. The colorful puppets and live music will entertain both kids and adults alike, making for a memorable evening.",
+          "searchQuery": "Thang Long Water Puppet Theatre",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Journey to Halong Bay",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Hanoi",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Halong Bay",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive through the countryside of Vietnam."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Halong Bay Cruise",
+          "description": "Embark on a relaxing cruise through the stunning limestone karsts of Halong Bay. Marvel at the breathtaking views and take plenty of photos as you glide through this UNESCO World Heritage site.",
+          "searchQuery": "Halong Bay Cruise",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch on the Cruise",
+          "description": "Savor a delicious Vietnamese lunch on board, featuring fresh seafood and local specialties. The meal is designed to be family-friendly, ensuring even the kids will find something they love.",
+          "searchQuery": "Halong Bay Cruise Lunch",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Visit Floating Villages",
+          "description": "Explore the unique floating villages of Halong Bay. Meet local fishermen and learn about their way of life while enjoying the serene beauty of the bay.",
+          "searchQuery": "Halong Bay Floating Villages",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Kayaking in Halong Bay",
+          "description": "Get up close to the stunning rock formations with a family-friendly kayaking session. Paddle through the calm waters and enjoy the tranquility of the bay.",
+          "searchQuery": "Halong Bay Kayaking",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Hotel",
+          "description": "After a day of adventure, return to your hotel in Halong Bay to relax and unwind. Enjoy the evening with your family, sharing stories of the day's experiences.",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a family-friendly dinner at a local restaurant, where you can try more Vietnamese dishes. Look for options like pho or banh mi that are sure to please the kids.",
+          "searchQuery": "Halong Bay Local Restaurant",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Halong Bay Adventure",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Halong Bay",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Halong Bay",
+          "time": "08:30"
+        },
+        "duration": "30m",
+        "memo": "Short bus ride to the cruise departure point."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Halong Bay Cruise",
+          "description": "Embark on a scenic cruise through the stunning limestone karsts of Halong Bay. Enjoy breathtaking views and explore hidden caves, making it a perfect family adventure.",
+          "searchQuery": "Halong Bay Cruise",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch on the Cruise",
+          "description": "Savor a delicious Vietnamese lunch on board, featuring kid-friendly options like spring rolls and fried rice, while enjoying the panoramic views of the bay.",
+          "searchQuery": "Halong Bay Cruise Lunch",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Sung Sot Cave",
+          "description": "Explore the magnificent Sung Sot Cave, known for its impressive stalactites and stalagmites. The cave's vast chambers are sure to amaze both kids and adults alike.",
+          "searchQuery": "Sung Sot Cave",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Kayaking in Halong Bay",
+          "description": "Enjoy a family-friendly kayaking experience, paddling through the calm waters and getting up close to the stunning rock formations. A great way to bond with your family in nature!",
+          "searchQuery": "Halong Bay Kayaking",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Halong Bay Port",
+          "description": "After a day of adventure, return to the port and take in the last views of the bay as the sun begins to set, painting the sky with beautiful colors.",
+          "searchQuery": "Halong Bay Port",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at a Local Restaurant",
+          "description": "Enjoy a family dinner at a local restaurant, where you can try dishes like Pho and Banh Mi, which are both delicious and kid-friendly.",
+          "searchQuery": "Local Restaurant Halong Bay",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening Stroll by the Bay",
+          "description": "Take a leisurely evening stroll along the waterfront, enjoying the cool breeze and the beautiful night views of Halong Bay. A perfect way to end the day!",
+          "searchQuery": "Halong Bay Waterfront",
+          "locationEn": "Halong Bay, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Hanoi and Departure",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Halong Bay",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Hanoi",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Private car transfer from Halong Bay to Hanoi."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Cha Ca Thang Long",
+          "description": "Enjoy a delicious meal of Cha Ca, a famous Hanoi dish featuring grilled fish with turmeric and dill, served with rice noodles and fresh herbs. This restaurant is known for its family-friendly atmosphere and is a great introduction to Vietnamese cuisine.",
+          "searchQuery": "Cha Ca Thang Long",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Old Quarter",
+          "description": "Stroll through the bustling streets of Hanoi's Old Quarter, where you can shop for souvenirs, local handicrafts, and enjoy the vibrant street life. Don't miss the chance to try some street food snacks along the way!",
+          "searchQuery": "Old Quarter",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Visit Hoan Kiem Lake",
+          "description": "Take a leisurely walk around Hoan Kiem Lake, a serene spot in the heart of the city. You can visit Ngoc Son Temple located on an island in the lake, and enjoy the beautiful scenery, especially in the afternoon light.",
+          "searchQuery": "Hoan Kiem Lake",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at Bun Cha Huong Lien",
+          "description": "Savor a traditional Vietnamese meal of Bun Cha, grilled pork served with rice noodles and fresh herbs. This restaurant is famous for its authentic flavors and is a favorite among locals and tourists alike.",
+          "searchQuery": "Bun Cha Huong Lien",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Departure Preparation",
+          "description": "Head back to your hotel to pack and prepare for your departure. Take a moment to reflect on the beautiful experiences you've had in Vietnam.",
+          "locationEn": "Hanoi, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

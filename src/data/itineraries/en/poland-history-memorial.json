@@ -1,0 +1,598 @@
+{
+  "id": "0b5ee43b-1eab-4262-9ca9-ff4f54b437d2",
+  "destination": "Warsaw & Krakow",
+  "description": "Immerse yourself in the rich tapestry of Poland's history and culture as you explore the vibrant cities of Warsaw and Krakow. From the poignant reminders of the past to the stunning architecture and lively street life, this journey will take you through UNESCO World Heritage sites, peaceful parks, and bustling markets, all while reflecting on the lessons of peace and resilience that Poland embodies. Get ready to stroll through charming streets, savor local delicacies, and engage with the profound stories that shaped this beautiful country.",
+  "heroImage": "https://images.unsplash.com/photo-1709384625039-74ea95bb5997?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODUxNzF8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Aimable Mugabo",
+  "heroImagePhotographerUrl": "https://unsplash.com/@mugabo_library?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "Departure from Washington D.C. to Warsaw",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Washington D.C.",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Warsaw Chopin Airport",
+          "time": "11:30"
+        },
+        "duration": "8h 30m",
+        "memo": "Direct flight to Warsaw."
+      },
+      "activities": [
+        {
+          "time": "12:30",
+          "activity": "Lunch at Bar Mleczny Prasowy",
+          "description": "Enjoy a traditional Polish meal at this historic milk bar, known for its affordable prices and authentic dishes like pierogi and borscht. It's a great way to experience local cuisine without breaking the bank.",
+          "searchQuery": "Bar Mleczny Prasowy",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Warsaw Old Town",
+          "description": "Stroll through the beautifully reconstructed Old Town, a UNESCO World Heritage site. Admire the colorful buildings, visit the Royal Castle, and take in the vibrant atmosphere of this historic area.",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Warsaw Uprising Museum",
+          "description": "Delve into the history of the Warsaw Uprising of 1944 at this engaging museum. The exhibits provide a deep understanding of the city's struggle during World War II and its impact on Polish history.",
+          "searchQuery": "Warsaw Uprising Museum",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Zapiecek",
+          "description": "Savor delicious Polish dumplings at Zapiecek, a cozy restaurant famous for its pierogi. The warm atmosphere and hearty meals make it a perfect end to your first day in Warsaw.",
+          "searchQuery": "Zapiecek",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening walk along the Vistula Boulevards",
+          "description": "Take a leisurely stroll along the Vistula River, where you can enjoy the beautiful views of the city skyline and relax by the water. It's a popular spot for locals and a great way to unwind after a busy day.",
+          "searchQuery": "Vistula Boulevards",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Exploring Warsaw's Historic Heart",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe Bristol",
+          "description": "Start your day with a delightful breakfast at Cafe Bristol, known for its elegant atmosphere and delicious pastries. Enjoy a traditional Polish breakfast with fresh bread, cheese, and local jams.",
+          "searchQuery": "Cafe Bristol",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Royal Castle",
+          "description": "Explore the Royal Castle, a UNESCO World Heritage site that showcases the rich history of Poland. Don't miss the stunning interiors and the beautiful views of the Vistula River from the castle grounds.",
+          "searchQuery": "Royal Castle",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through the Old Town",
+          "description": "Wander through the charming streets of Warsaw's Old Town, a reconstructed area filled with colorful buildings, shops, and cafes. Take your time to admire the architecture and perhaps grab a souvenir.",
+          "searchQuery": "Old Town Warsaw",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Zapiecek",
+          "description": "Enjoy a hearty lunch at Zapiecek, famous for its pierogi (Polish dumplings). Choose from a variety of fillings, and savor the authentic flavors of Polish cuisine.",
+          "searchQuery": "Zapiecek",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit Lazienki Park",
+          "description": "Head to Lazienki Park, a beautiful green space in the heart of Warsaw. Stroll through the gardens, visit the Palace on the Isle, and keep an eye out for the resident peacocks.",
+          "searchQuery": "Lazienki Park",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Warsaw Uprising Museum",
+          "description": "Dive into Poland's history at the Warsaw Uprising Museum, which offers a poignant look at the city's struggle during World War II. The interactive exhibits provide a deep understanding of this significant event.",
+          "searchQuery": "Warsaw Uprising Museum",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Podwale Kompania Piwna",
+          "description": "End your day with dinner at Podwale Kompania Piwna, a cozy restaurant known for its traditional Polish dishes and local beers. Enjoy a warm atmosphere and hearty meals to refuel after a day of exploration.",
+          "searchQuery": "Podwale Kompania Piwna",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Vistula Boulevards",
+          "description": "Take a leisurely evening stroll along the Vistula Boulevards. The riverside path offers beautiful views of the city skyline and is a perfect way to unwind after a busy day.",
+          "searchQuery": "Vistula Boulevards",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Warsaw's Resilience and Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Bristol",
+          "description": "Start your day with a delightful breakfast at Cafe Bristol, known for its elegant atmosphere and delicious pastries. Enjoy a traditional Polish breakfast with fresh bread, cheese, and local jams.",
+          "searchQuery": "Cafe Bristol",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit POLIN Museum of the History of Polish Jews",
+          "description": "Explore the POLIN Museum, a stunning architectural marvel that tells the story of Polish Jews through interactive exhibits. This museum is a profound experience that highlights the resilience and culture of the Jewish community in Poland.",
+          "searchQuery": "POLIN Museum of the History of Polish Jews",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Hala Koszyki",
+          "description": "Head to Hala Koszyki, a vibrant food hall where you can sample a variety of Polish and international dishes. It's a great spot to enjoy a casual meal and soak in the local atmosphere.",
+          "searchQuery": "Hala Koszyki",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Stroll through Łazienki Park",
+          "description": "Take a leisurely walk in Łazienki Park, a beautiful green space filled with historic buildings and sculptures. Don't miss the iconic Palace on the Isle and the peacocks roaming freely in the park.",
+          "searchQuery": "Łazienki Park",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit Wilanów Palace",
+          "description": "Explore the stunning Wilanów Palace, often referred to as the 'Polish Versailles'. The baroque architecture and beautifully landscaped gardens provide a glimpse into Poland's royal history.",
+          "searchQuery": "Wilanów Palace",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Restauracja Stary Dom",
+          "description": "Enjoy a traditional Polish dinner at Restauracja Stary Dom, known for its cozy atmosphere and authentic dishes. Try the pierogi or bigos for a true taste of Poland.",
+          "searchQuery": "Restauracja Stary Dom",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "Evening walk in the Old Town",
+          "description": "End your day with a peaceful evening stroll through Warsaw's Old Town. The beautifully restored buildings and cobblestone streets are especially enchanting at night, providing a perfect backdrop for reflection on the day's experiences.",
+          "searchQuery": "Warsaw Old Town",
+          "locationEn": "Warsaw, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Journey to Krakow: A City of History",
+      "transit": {
+        "type": "train",
+        "departure": {
+          "place": "Warsaw",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Krakow",
+          "time": "11:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic train ride through the Polish countryside."
+      },
+      "activities": [
+        {
+          "time": "12:00",
+          "activity": "Lunch at Pod Wawelem",
+          "description": "Savor traditional Polish dishes at this cozy restaurant located near Wawel Castle. Don't miss their famous pierogi!",
+          "searchQuery": "Pod Wawelem",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Wawel Castle",
+          "description": "Explore the majestic Wawel Castle, a UNESCO World Heritage site. Discover its rich history and stunning architecture, including the Royal Chambers and the Dragon's Den.",
+          "searchQuery": "Wawel Castle",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Main Market Square",
+          "description": "Stroll through the vibrant Main Market Square, one of the largest medieval squares in Europe. Enjoy the lively atmosphere, street performers, and local shops.",
+          "searchQuery": "Main Market Square",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Visit St. Mary's Basilica",
+          "description": "Admire the stunning Gothic architecture of St. Mary's Basilica and listen to the famous trumpet signal played every hour from its tower.",
+          "searchQuery": "St. Mary's Basilica",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Szara Gęś",
+          "description": "Indulge in a delightful dinner at Szara Gęś, known for its modern take on Polish cuisine. The ambiance is perfect for a solo traveler looking to unwind after a day of exploration.",
+          "searchQuery": "Szara Gęś",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:30",
+          "activity": "Evening walk along the Vistula River",
+          "description": "Take a peaceful evening stroll along the Vistula River, enjoying the beautiful views of the illuminated Wawel Castle and the city skyline.",
+          "searchQuery": "Vistula River",
+          "locationEn": "Krakow, Poland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Krakow's Rich Heritage and Reflection",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe Camelot",
+          "description": "Start your day with a delightful breakfast at Cafe Camelot, known for its cozy atmosphere and delicious pastries. Try their famous croissants and a cup of Polish coffee to energize your morning.",
+          "searchQuery": "Cafe Camelot",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Kazimierz District",
+          "description": "Explore the historic Kazimierz District, once the center of Jewish life in Krakow. Wander through its charming streets, visit synagogues, and learn about its rich cultural heritage.",
+          "searchQuery": "Kazimierz District",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Hamsa Hummus & Happiness",
+          "description": "Enjoy a delicious lunch at Hamsa, where you can savor Middle Eastern dishes in a vibrant setting. Their hummus and falafel are highly recommended!",
+          "searchQuery": "Hamsa Hummus & Happiness",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Schindler's Factory Museum",
+          "description": "Visit the Schindler's Factory Museum to gain insight into Krakow's history during World War II. The museum offers a poignant look at the impact of the Holocaust and the resilience of the human spirit.",
+          "searchQuery": "Schindler's Factory Museum",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Walk along the Vistula Boulevards",
+          "description": "Take a leisurely stroll along the Vistula Boulevards, enjoying the scenic views of the river and the Wawel Castle. It's a perfect spot to relax and reflect on your day.",
+          "searchQuery": "Vistula Boulevards",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Pod Wawelem",
+          "description": "End your day with a hearty dinner at Pod Wawelem, a restaurant famous for its traditional Polish cuisine. Don't miss their pierogi and grilled meats, which are local favorites!",
+          "searchQuery": "Pod Wawelem",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "A Day of Remembrance and Peace",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Cafe Camelot",
+          "description": "Start your day with a hearty breakfast at Cafe Camelot, known for its cozy atmosphere and delicious Polish pastries. Try the traditional 'babka' or a hearty omelet to fuel your day of exploration.",
+          "searchQuery": "Cafe Camelot",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Auschwitz-Birkenau Memorial and Museum",
+          "description": "Take a guided tour of the Auschwitz-Birkenau Memorial and Museum, a UNESCO World Heritage site. This poignant experience allows you to learn about the history of the Holocaust and pay respects to the victims. It's a deeply moving and educational visit that lasts approximately 3-4 hours.",
+          "searchQuery": "Auschwitz-Birkenau Memorial and Museum",
+          "locationEn": "Oświęcim, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Lunch at Zajazd Koźmickiego",
+          "description": "After your visit, enjoy a traditional Polish lunch at Zajazd Koźmickiego, located nearby. Savor local dishes such as pierogi or bigos in a rustic setting, perfect for reflecting on your morning.",
+          "searchQuery": "Zajazd Koźmickiego",
+          "locationEn": "Oświęcim, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Return to Krakow",
+          "description": "Travel back to Krakow, where you can take some time to relax or explore the city at your own pace. The return journey takes about 1.5 hours by bus.",
+          "locationEn": "Krakow, Poland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Stroll through the Main Market Square",
+          "description": "Once back in Krakow, take a leisurely stroll through the Main Market Square, one of the largest medieval town squares in Europe. Admire the stunning architecture, including St. Mary's Basilica, and perhaps enjoy a coffee at one of the many outdoor cafes.",
+          "searchQuery": "Main Market Square",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Pod Wawelem",
+          "description": "End your day with dinner at Pod Wawelem, a popular restaurant known for its hearty Polish cuisine. Try the grilled meats or the famous Krakow-style sausages while enjoying the view of Wawel Castle.",
+          "searchQuery": "Pod Wawelem",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening walk along the Vistula Boulevards",
+          "description": "Take a peaceful evening walk along the Vistula Boulevards. The riverside path offers beautiful views of the city and is a perfect way to unwind after a day of reflection and learning.",
+          "searchQuery": "Vistula Boulevards",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Krakow",
+          "time": "12:00"
+        },
+        "arrival": {
+          "place": "Warsaw",
+          "time": "13:00"
+        },
+        "duration": "1h",
+        "memo": "Direct flight from Krakow to Warsaw."
+      },
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Cafe Camelot",
+          "description": "Start your day with a hearty breakfast at Cafe Camelot, known for its cozy atmosphere and delicious Polish pastries. Try their famous apple pie with a cup of coffee to fuel your day.",
+          "searchQuery": "Cafe Camelot",
+          "locationEn": "Krakow, Poland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Wawel Castle",
+          "description": "Explore the majestic Wawel Castle, a UNESCO World Heritage site. Wander through its beautiful gardens and admire the stunning architecture that reflects Poland's rich history.",
+          "searchQuery": "Wawel Castle",
+          "locationEn": "Krakow, Poland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Transit to Warsaw Chopin Airport",
+          "description": "Make your way to the airport for your flight back to Washington D.C. Enjoy the scenic views of Krakow one last time as you travel to the airport.",
+          "locationEn": "Krakow, Poland",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

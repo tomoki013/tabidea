@@ -1,0 +1,273 @@
+{
+  "id": "c66c3379-b9fb-46f7-a1b5-48049ab09983",
+  "destination": "ホーチミン",
+  "description": "ホーチミンの魅力を存分に楽しむ3日間の旅へようこそ。リゾートの贅沢さと、地元のグルメ、自然の美しさ、ショッピングの楽しさを融合させたプランをご提案します。家族でのんびりと過ごしながら、ホーチミンの隠れた魅力を発見してみましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1580835267732-2d232d3d2655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3OTUyNDJ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Markus Winkler",
+  "heroImagePhotographerUrl": "https://unsplash.com/@markuswinkler?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ホーチミンの文化とグルメを楽しむ日",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ホーチミンのホテルで、ベトナム風の朝食を楽しみます。フォーやバインミーなど、地元の味を堪能して一日をスタート。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "ベンタイン市場",
+          "description": "ホーチミンの中心に位置するベンタイン市場で、地元の食材やお土産を探しましょう。活気あふれる雰囲気の中で、ベトナムの文化を感じることができます。",
+          "searchQuery": "Ben Thanh Market",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "市場近くのフォー屋でランチ",
+          "description": "ベンタイン市場近くの人気フォー屋で、アツアツのフォーを味わいます。スパイシーな香りが食欲をそそります。",
+          "searchQuery": "Pho 2000",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "サイゴン大教会",
+          "description": "ホーチミンのシンボルともいえるサイゴン大教会を訪れます。美しいゴシック様式の建築を堪能し、周囲の公園でのんびりと過ごすのもおすすめです。",
+          "searchQuery": "Saigon Notre-Dame Basilica",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ノートルダム大聖堂",
+          "description": "サイゴン大教会のすぐ隣にあるノートルダム大聖堂を見学。荘厳な雰囲気の中で、静かなひとときを楽しむことができます。",
+          "searchQuery": "Saigon Notre-Dame Basilica",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "ドンコイ通りでショッピング",
+          "description": "ドンコイ通りを散策しながら、地元のショップやカフェを楽しみます。お土産やファッションアイテムを探すのにぴったりのエリアです。",
+          "searchQuery": "Dong Khoi Street",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "ホーチミンの地元レストランで、ベトナム料理のディナーを楽しみます。新鮮な海鮮料理や、香草を使った料理が絶品です。",
+          "searchQuery": "Quan An Ngon",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の観光を終え、ホテルに戻ります。明日の計画を立てながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "リゾートでのんびり過ごす日",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "ホーチミンのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能して一日をスタートしましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ミトーへの移動",
+          "description": "ホーチミンからミトーへは、バスで約2時間の旅です。車窓からの田園風景を楽しみながら、リラックスした時間を過ごします。",
+          "locationEn": "Mekong Delta, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:30",
+          "activity": "メコン川クルーズ",
+          "description": "ミトーに到着後、メコン川のクルーズを楽しみます。川の上から見る風景は絶景で、地元の島々を訪れることもできます。",
+          "searchQuery": "Mekong River Cruise",
+          "locationEn": "Mekong Delta, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "地元のレストランでランチ",
+          "description": "クルーズの後は、地元のレストランで新鮮なシーフードやベトナム料理を楽しみましょう。特に、川魚の料理が絶品です。",
+          "locationEn": "Mekong Delta, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "リゾートビーチでのんびり",
+          "description": "ミトーのビーチリゾートで、ゆったりとした時間を過ごします。ビーチでのんびりしたり、スイミングを楽しんだり、リフレッシュしましょう。",
+          "locationEn": "Mekong Delta, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ホーチミンへの帰路",
+          "description": "リゾートでの楽しい時間を終え、ホーチミンへ戻ります。夕暮れ時の美しい景色を楽しみながら、心地よい移動を。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホーチミンでディナー",
+          "description": "ホーチミンに戻ったら、地元の人気レストランでディナーを楽しみます。ベトナム料理のバリエーションを堪能できるお店を選びましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ショッピングと帰路の準備",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ホーチミンのホテルで、ベトナムの伝統的な朝食を楽しみます。フォーやバインミーなど、地元の味を堪能しながら、リラックスした朝を迎えましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "ドンコイ通り散策",
+          "description": "ホーチミンの中心地、ドンコイ通りを散策します。おしゃれなカフェやブティックが立ち並ぶこの通りでは、ショッピングやお土産探しが楽しめます。特に、地元のアートや手工芸品はおすすめです。",
+          "searchQuery": "Dong Khoi Street",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：ベトナム料理レストラン",
+          "description": "ドンコイ通り近くのレストランで、ベトナム料理のランチを楽しみます。新鮮な生春巻きや、香ばしいバーベキューフォーなど、地元の味を満喫しましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "サイゴンセンターでショッピング",
+          "description": "サイゴンセンターでのショッピングタイム。ファッションや雑貨、ベトナムの特産品など、さまざまな商品が揃っています。お土産を選ぶのにぴったりの場所です。",
+          "searchQuery": "Saigon Centre",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "カフェでひと休み",
+          "description": "ショッピングの後は、サイゴンセンター内のカフェで一息。ベトナムコーヒーやスイーツを楽しみながら、家族との楽しい時間を過ごしましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ホテルに戻り、帰路の準備",
+          "description": "ホテルに戻り、帰路の準備をします。荷物を整理し、最後のホーチミンの思い出を振り返りましょう。",
+          "locationEn": "Ho Chi Minh City, Vietnam",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

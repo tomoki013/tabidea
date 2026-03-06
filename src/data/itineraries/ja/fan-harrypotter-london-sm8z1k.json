@@ -1,0 +1,262 @@
+{
+  "id": "c2ff9f72-64f3-4c9e-9181-df0958925f43",
+  "destination": "ロンドン",
+  "description": "ロンドンの魅力を存分に味わう3日間の旅へようこそ！歴史と文化、アートが交錯するこの街で、特にハリーポッターの魔法の世界を巡りながら、地元のグルメやアートシーンも楽しむことができます。カップルでの特別なひとときを、心温まる体験で彩りましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1520986606214-8b456906c813?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODg5MTh8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Lucas Davies",
+  "heroImagePhotographerUrl": "https://unsplash.com/@lucas_davies?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "ハリーポッターの世界へ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェで、イングリッシュブレックファーストを楽しみます。ベーコンやソーセージ、トーストに紅茶がセットになった、ボリューム満点の朝食です。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "キングス・クロス駅",
+          "description": "ハリーポッターのファンには外せないスポット、キングス・クロス駅を訪れます。9と3/4番線の看板で写真を撮り、駅内のショップでグッズを探してみましょう。",
+          "searchQuery": "King's Cross Station",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "ランチ（カフェで軽食）",
+          "description": "駅近くのカフェで軽めのランチを。サンドイッチやスープなど、手軽に楽しめるメニューが揃っています。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "映画の舞台裏を体験できるハリーポッター・スタジオツアーへ。魔法の世界を再現したセットや小道具を見学し、映画の制作過程を学びます。事前予約をお忘れなく！",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "スタジオ内のショップでお土産購入",
+          "description": "スタジオツアーの後は、ショップでハリーポッター関連のグッズを購入。魔法の杖や衣装、フィギュアなど、ファンにはたまらないアイテムが揃っています。",
+          "locationEn": "Leavesden, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ディナー（地元のパブ）",
+          "description": "ロンドンの地元のパブで、フィッシュ＆チップスを楽しみます。カジュアルな雰囲気の中で、地元のビールと共にリラックスした時間を過ごしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すため、ホテルに戻ります。明日のプランを考えながら、ゆっくりと休息を取りましょう。",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "アートと歴史を感じるロンドン",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェでイングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "大英博物館",
+          "description": "世界的に有名な大英博物館を訪れます。古代エジプトのミイラやロゼッタストーンなど、歴史的なアート作品を間近で見ることができます。入場は無料なので、気軽に立ち寄れます。",
+          "searchQuery": "British Museum",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "コヴェント・ガーデンでランチ",
+          "description": "コヴェント・ガーデンのフードマーケットで、地元の食材を使ったランチを楽しみましょう。多彩な屋台が並び、選ぶ楽しさもあります。特に、フレッシュなサンドイッチやスイーツがおすすめです。",
+          "searchQuery": "Covent Garden Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "ハリーポッター・スタジオツアー",
+          "description": "ハリーポッターの魔法の世界を体験できるスタジオツアーに参加します。映画のセットや小道具を見学し、魔法の裏側を知ることができます。ファングッズも購入できるショップもお見逃しなく！",
+          "searchQuery": "Warner Bros. Studio Tour London",
+          "locationEn": "Leavesden, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "テムズ川沿いの散策",
+          "description": "テムズ川沿いを散策しながら、ロンドンの美しい景色を楽しみます。夕暮れ時の川の景色は特にロマンチックで、カップルにぴったりの時間です。",
+          "locationEn": "London, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "地元のパブでディナー",
+          "description": "ロンドンの伝統的なパブで、フィッシュ＆チップスやパイを楽しみます。地元の人々と交流しながら、カジュアルな雰囲気で食事を楽しむのも旅の醍醐味です。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "ロンドンの隠れた魅力を探る",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "ロンドンのカフェで、イングリッシュブレックファストを楽しみます。ベーコンやソーセージ、トーストに豆の煮込みがついたボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "バラマーケット散策",
+          "description": "ロンドンの人気マーケット、バラマーケットで新鮮な食材や地元のグルメを楽しみます。特に、スイーツやストリートフードの屋台が豊富で、食べ歩きが楽しい！",
+          "searchQuery": "Borough Market",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "バラマーケットでランチ",
+          "description": "バラマーケット内の屋台で、地元の食材を使ったランチを楽しみます。特に、フィッシュ＆チップスやサンドイッチが人気です。",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "ロンドン塔見学",
+          "description": "歴史的なロンドン塔を訪れ、王室の宝物や歴史的な展示を見学します。特に、塔の周りの美しい景色は必見です。",
+          "searchQuery": "Tower of London",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "ハリーポッターショップ訪問",
+          "description": "ロンドンのハリーポッターショップで、ファングッズを探します。映画の世界観を楽しみながら、オリジナルのアイテムを手に入れましょう！",
+          "searchQuery": "Harry Potter Shop at Platform 9¾",
+          "locationEn": "London, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "カムデンマーケットで夕食",
+          "description": "カムデンマーケットで多国籍料理を楽しみます。屋台が並ぶ活気ある雰囲気の中で、様々な料理をシェアしながら楽しむのがおすすめです。",
+          "searchQuery": "Camden Market",
+          "locationEn": "London, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。ロンドンの夜景を楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "London, UK",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

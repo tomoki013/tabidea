@@ -1,0 +1,282 @@
+{
+  "id": "874e658f-d5b1-4ab0-8282-7f5f9e5a2aaf",
+  "destination": "Dubrovnik",
+  "description": "Escape to the enchanting city of Dubrovnik, where history meets breathtaking landscapes and the allure of your favorite series, Game of Thrones. This three-day adventure is designed for families, blending cultural exploration with relaxation and the thrill of discovering iconic filming locations. Stroll through ancient streets, indulge in local delicacies, and immerse yourself in the magic of this Adriatic gem, all while creating unforgettable memories with your loved ones.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Exploring the Old Town and Game of Thrones Sites",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delicious breakfast at Café Royal, known for its fresh pastries and local delicacies. Enjoy a leisurely meal while soaking in the charming atmosphere of Dubrovnik's Old Town.",
+          "searchQuery": "Café Royal",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "Visit Fort Lovrijenac",
+          "description": "Explore Fort Lovrijenac, a stunning fortress that offers breathtaking views of the Adriatic Sea and the Old Town. This site is famous for its role in 'Game of Thrones' as the Red Keep, and the views from the top are simply spectacular!",
+          "searchQuery": "Fort Lovrijenac",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Restaurant 360",
+          "description": "Indulge in a gourmet lunch at Restaurant 360, which boasts a Michelin star. Enjoy exquisite dishes made from local ingredients while overlooking the beautiful city walls and the sea.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Stroll along Stradun",
+          "description": "Take a leisurely walk along Stradun, the main street of Dubrovnik. This vibrant area is lined with shops, cafes, and historical buildings, perfect for picking up some Game of Thrones merchandise and local souvenirs.",
+          "searchQuery": "Stradun",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Rector's Palace",
+          "description": "Discover the history of Dubrovnik at the Rector's Palace, a beautiful blend of Gothic and Renaissance architecture. The museum inside showcases artifacts and exhibits that tell the story of the city's past.",
+          "searchQuery": "Rector's Palace",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Relax at Banje Beach",
+          "description": "Unwind at Banje Beach, located just a short walk from the Old Town. Enjoy the sun, sand, and stunning views of the city walls while the kids splash in the water.",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "End your day with a fine dining experience at Nautika, known for its seafood and stunning views of the Old Town and the sea. A perfect way to relax and reflect on your day's adventures.",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Relaxing at the Beach and Local Culture",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delicious breakfast at Café Royal, known for its fresh pastries and local specialties. Enjoy a leisurely meal while soaking in the charming atmosphere of Dubrovnik's Old Town.",
+          "searchQuery": "Café Royal",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Banje Beach",
+          "description": "Head to Banje Beach, one of Dubrovnik's most popular beaches. Relax on the pebbly shore, swim in the crystal-clear waters, or enjoy a refreshing drink at the beach bar. It's a perfect spot for families to unwind and soak up the sun.",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant 360",
+          "description": "Indulge in a luxurious lunch at Restaurant 360, which offers stunning views of the Old Town and the Adriatic Sea. The menu features a blend of Mediterranean and Croatian cuisine, perfect for a special family meal.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Srd Hill",
+          "description": "Take the cable car up to Srd Hill for breathtaking panoramic views of Dubrovnik and the surrounding islands. There are also walking trails and historical sites to explore, making it a great spot for both relaxation and adventure.",
+          "searchQuery": "Srd Hill",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Local Market",
+          "description": "Stroll through the local market where you can find fresh produce, handmade crafts, and unique souvenirs. It's a great place to pick up some Game of Thrones merchandise and local delicacies to take home.",
+          "searchQuery": "Dubrovnik Local Market",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Konoba Dubrava",
+          "description": "Enjoy a traditional Croatian dinner at Konoba Dubrava, a cozy restaurant known for its local dishes and warm hospitality. The family-friendly atmosphere makes it a perfect end to your day.",
+          "searchQuery": "Konoba Dubrava",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Stroll in Old Town",
+          "description": "Take a leisurely evening stroll through the beautifully lit streets of Dubrovnik's Old Town. The ambiance is magical at night, and you can stop by some shops for last-minute souvenirs or Game of Thrones collectibles.",
+          "searchQuery": "Dubrovnik Old Town",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Final Day of Adventure and Souvenir Shopping",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Café Royal",
+          "description": "Start your day with a delightful breakfast at Café Royal, known for its fresh pastries and local delicacies. The cozy atmosphere is perfect for families, and the kids will love the sweet treats!",
+          "searchQuery": "Café Royal",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit Rector's Palace",
+          "description": "Explore the stunning Rector's Palace, a beautiful blend of Gothic and Renaissance architecture. This historical site offers a glimpse into Dubrovnik's rich past and is a great spot for family photos!",
+          "searchQuery": "Rector's Palace",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "Stroll through Ploče Gate",
+          "description": "Take a leisurely walk through the iconic Ploče Gate, one of the main entrances to the Old Town. The impressive stonework and surrounding views make it a memorable stop on your adventure.",
+          "searchQuery": "Ploče Gate",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Restaurant 360",
+          "description": "Enjoy a family-friendly lunch at Restaurant 360, which offers stunning views of the city walls and delicious Mediterranean cuisine. The kids will love the pasta dishes while you savor local seafood specialties.",
+          "searchQuery": "Restaurant 360",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Game of Thrones Shop Visit",
+          "description": "Head to the Game of Thrones Shop to find unique merchandise and souvenirs from the series. It's a must-visit for fans, and the kids will enjoy picking out their favorite items!",
+          "searchQuery": "Game of Thrones Shop",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Relax at Banje Beach",
+          "description": "Spend some time relaxing at Banje Beach, just a short walk from the Old Town. The kids can play in the sand while you unwind with a beautiful view of the Adriatic Sea.",
+          "searchQuery": "Banje Beach",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at Nautika Restaurant",
+          "description": "End your day with a memorable dinner at Nautika, known for its exquisite seafood and breathtaking views of the sea. It's a perfect way to celebrate your last evening in Dubrovnik with the family!",
+          "searchQuery": "Nautika Restaurant",
+          "locationEn": "Dubrovnik, Croatia",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

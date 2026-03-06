@@ -1,0 +1,634 @@
+{
+  "id": "1813c862-7107-4456-878b-5b086fad0b6e",
+  "destination": "リオデジャネイロ",
+  "description": "リオデジャネイロの魅力を存分に味わう8日間の旅。美しいビーチ、壮大な自然、そして活気あふれる都市文化が融合するこの街で、友人と共に忘れられない思い出を作りましょう。コパカバーナビーチでのリラックスタイムや、世界遺産のキリスト像を訪れる感動の瞬間を体験し、リオの魅力を満喫する旅へと出かけましょう。",
+  "heroImage": "https://images.unsplash.com/photo-1626568941852-70bc179e493e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w4NTQ4NTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3NzI3ODYxMTZ8&ixlib=rb-4.1.0&q=80&w=1080",
+  "heroImagePhotographer": "Thales Botelho de Sousa",
+  "heroImagePhotographerUrl": "https://unsplash.com/@thalesbs?utm_source=Tabidea&utm_medium=referral",
+  "days": [
+    {
+      "day": 1,
+      "title": "リオデジャネイロ到着",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージしましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "コパカバーナビーチ",
+          "description": "世界的に有名なコパカバーナビーチでリラックス。白い砂浜と青い海を眺めながら、ビーチバレーやサンバのリズムに合わせて楽しむことができます。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "コパカバーナビーチの近くにあるレストランで、シーフード料理を堪能。新鮮な魚介類を使った料理は、リオの味を感じる絶好のチャンスです。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "リオデジャネイロのシンボル、キリスト像を訪れます。丘の上からの絶景は圧巻で、リオの街並みを一望できます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "夕食は地元のレストランで",
+          "description": "リオの地元料理を楽しむために、人気のレストランで夕食を。フェイジョアーダ（豆の煮込み料理）など、ブラジルの伝統的な味を堪能しましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ホテルに戻る",
+          "description": "一日の疲れを癒すために、ホテルに戻ります。リオの夜景を楽しみながら、明日の計画を立てるのも良いでしょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "コパカバーナビーチでのんびり",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "コパカバーナビーチ",
+          "description": "美しい白砂のコパカバーナビーチでリラックス。海水浴やビーチバレーを楽しんだり、ビーチ沿いのカフェで冷たい飲み物を味わったりして、のんびりとした時間を過ごします。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ビーチ近くのレストランでランチ",
+          "description": "コパカバーナビーチ近くのレストランで、シーフード料理を堪能。新鮮な魚介類を使った料理が楽しめるお店で、海を眺めながらの食事は格別です。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "アトランティカ通り散策",
+          "description": "アトランティカ通りを散策しながら、地元のショップやカフェを訪れます。お土産を探したり、ブラジルのスイーツを試したりして、街の雰囲気を楽しみましょう。",
+          "searchQuery": "Avenida Atlântica",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "コルコバードの丘（キリスト像）訪問",
+          "description": "世界的に有名なキリスト像を見に、コルコバードの丘へ。山頂からのリオデジャネイロの絶景を楽しみながら、記念写真を撮るのをお忘れなく。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "ビーチで夕日鑑賞",
+          "description": "コパカバーナビーチで美しい夕日を眺めながら、リラックスした時間を過ごします。夕日が海に沈む瞬間は、心に残る素晴らしい体験です。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ビーチ沿いのレストランでディナー",
+          "description": "コパカバーナビーチ沿いのレストランで、ブラジル料理のディナーを楽しみます。地元の食材を使った料理を味わいながら、友人との楽しいひとときを過ごしましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "キリスト像とシュガーローフ山",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルのフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、素晴らしい一日をスタートしましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "世界的に有名なキリスト像を訪れます。丘の上からのリオの絶景は圧巻で、特に朝の光の中での眺めは格別です。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "レストランでランチ",
+          "description": "地元のブラジル料理を楽しめるレストランで、フェイジョアーダ（豆の煮込み料理）を味わいます。リオの雰囲気を感じながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "シュガーローフ山",
+          "description": "シュガーローフ山へ向かい、ケーブルカーでの絶景体験を楽しみます。山頂からはリオの海岸線や市街地が一望でき、写真撮影にも最適です。",
+          "searchQuery": "Sugarloaf Mountain",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "コパカバーナビーチでリラックス",
+          "description": "コパカバーナビーチでのんびりと過ごします。ビーチ沿いのカフェで冷たい飲み物を楽しみながら、海の音を聞いてリラックスしましょう。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:30",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "コパカバーナビーチ近くのレストランで、新鮮なシーフードを使ったディナーを楽しみます。夕日を眺めながらの食事は、特別な思い出になるでしょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "リオの文化と歴史を探る",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "セラロンの階段",
+          "description": "色とりどりのタイルで装飾されたセラロンの階段を訪れます。アーティストのセラロンが手がけたこの美しい階段は、リオの象徴的なスポットの一つです。",
+          "searchQuery": "Escadaria Selarón",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "11:00",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "世界的に有名なキリスト像を見にコルコバードの丘へ。山頂からのリオデジャネイロの絶景は圧巻で、特に晴れた日には素晴らしい写真が撮れます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元のブラジル料理を楽しめるレストランでランチ。フェイジョアーダ（豆の煮込み料理）やシュラスコ（ブラジル風バーベキュー）を堪能しましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "コパカバーナビーチで遊ぶ",
+          "description": "リオの象徴的なコパカバーナビーチでリラックス。ビーチバレーやサーフィンを楽しんだり、ビーチ沿いのカフェで冷たい飲み物を楽しむのもおすすめです。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチ沿いを散策",
+          "description": "コパカバーナビーチの散策を続け、夕日を眺めながらのんびりとした時間を過ごします。地元のアーティストによるパフォーマンスも楽しめるかもしれません。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "コパカバーナビーチ近くのレストランで、シーフード料理を楽しむディナー。新鮮な魚介類を使った料理が絶品です。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "ビーチとショッピング",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルのフルーツやパンを使った朝食を楽しみます。エネルギーをチャージして、素晴らしい一日をスタート！",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "リオのシンボル、コルコバードの丘にあるキリスト像を訪れます。山頂からの絶景は圧巻で、リオデジャネイロの街並みを一望できます。早めに行くと混雑を避けられます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "コパカバーナビーチでランチ",
+          "description": "ビーチ沿いのレストランで新鮮なシーフードを楽しみながら、リラックスした時間を過ごします。海の音を聞きながら、ブラジルのビーチ文化を満喫！",
+          "locationEn": "Copacabana Beach, Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "コパカバーナビーチで遊ぶ",
+          "description": "美しいコパカバーナビーチで、日光浴や海水浴を楽しみます。ビーチバレーやサーフィンをするのもおすすめです。友人と一緒に楽しい時間を過ごしましょう！",
+          "locationEn": "Copacabana Beach, Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "フェイラ・デ・イパネマでショッピング",
+          "description": "イパネマのフェイラで地元のアートや手作りの品々を探しながら、ショッピングを楽しみます。お土産やユニークなアイテムが見つかるかも！",
+          "searchQuery": "Feira de Ipanema",
+          "locationEn": "Ipanema, Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "イパネマでディナー",
+          "description": "イパネマの人気レストランで、ブラジル料理を堪能します。地元の食材を使った料理を楽しみながら、友人との素敵な時間を過ごしましょう。",
+          "locationEn": "Ipanema, Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "リオの自然を満喫",
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "ティジュカ国立公園ハイキング",
+          "description": "世界最大の都市公園、ティジュカ国立公園でのハイキングを楽しみます。美しい自然とともに、滝や展望台からの絶景を堪能しましょう。",
+          "searchQuery": "Tijuca National Park",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "公園内でピクニックランチ",
+          "description": "公園内の美しいスポットで、持参したサンドイッチやフルーツを楽しむピクニックランチ。自然の中でリラックスしたひとときを過ごします。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "コルコバードの丘（キリスト像）訪問",
+          "description": "リオのシンボル、キリスト像を訪れます。丘の上からの眺望は圧巻で、リオデジャネイロの街並みを一望できます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "コパカバーナビーチでリラックス",
+          "description": "コパカバーナビーチでのんびりと過ごします。ビーチ沿いのカフェで冷たい飲み物を楽しみながら、海の景色を満喫しましょう。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ビーチ近くのレストランでディナー",
+          "description": "コパカバーナビーチ近くのレストランで、シーフード料理を楽しみます。新鮮な魚介類を使った料理が絶品です。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "title": "リオの夜を楽しむ",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの伝統的な朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "リオのシンボル、コルコバードの丘にあるキリスト像を訪れます。山頂からの絶景は圧巻で、リオの街並みを一望できます。早めの時間に行くと混雑を避けられます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "レストランでランチ",
+          "description": "地元のブラジル料理を楽しめるレストランでランチ。フェイジョアーダ（豆と肉の煮込み）など、リオならではの味を堪能します。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "コパカバーナビーチで遊ぶ",
+          "description": "世界的に有名なコパカバーナビーチでリラックス。ビーチでのんびり過ごしたり、海水浴を楽しんだり、地元の人々と交流する絶好の機会です。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "ビーチ沿いのカフェで夕食",
+          "description": "コパカバーナビーチ沿いのカフェで夕食。夕日を眺めながら、シーフード料理やカイピリーニャを楽しむ贅沢なひととき。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ラパ地区でサンバクラブ体験",
+          "description": "リオの夜を楽しむためにラパ地区へ。サンバクラブで生演奏を楽しみながら、地元の人々と一緒に踊り、リオの活気を体感します。",
+          "searchQuery": "Samba Club in Lapa",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 8,
+      "title": "帰国の準備",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "リオデジャネイロのホテルで、ブラジルの朝食を楽しみます。新鮮なフルーツやパン、コーヒーでエネルギーをチャージ。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "コルコバードの丘（キリスト像）",
+          "description": "リオデジャネイロのシンボル、コルコバードの丘にあるキリスト像を訪れます。山頂からの絶景は圧巻で、リオの街並みを一望できます。",
+          "searchQuery": "Christ the Redeemer",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "レストランでランチ",
+          "description": "地元のブラジル料理を楽しめるレストランでランチ。フェイジョアーダやシュラスコなど、リオの味を堪能しましょう。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "コパカバーナビーチで遊ぶ",
+          "description": "美しいコパカバーナビーチでリラックス。海水浴やビーチバレーを楽しんだり、周辺のカフェで軽食を楽しむのもおすすめです。",
+          "searchQuery": "Copacabana Beach",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "ビーチ沿いのカフェで休憩",
+          "description": "コパカバーナビーチのカフェで、アサイーボウルやカイピリーニャを楽しみながら、夕暮れの海を眺めます。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "ホテルに戻る",
+          "description": "ビーチでの楽しい一日を終え、ホテルに戻ります。",
+          "locationEn": "Rio de Janeiro, Brazil",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

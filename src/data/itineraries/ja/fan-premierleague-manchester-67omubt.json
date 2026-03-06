@@ -1,0 +1,533 @@
+{
+  "id": "3f1f566f-81d8-432e-b35a-e9195a18d13b",
+  "destination": "マンチェスター",
+  "description": "マンチェスターは、サッカーの聖地として知られ、文化と歴史が豊かに息づく魅力的な都市です。特に、プレミアリーグのファンにとっては、マンチェスター・ユナイテッドやマンチェスター・シティのスタジアム訪問は外せません。また、地元のグルメやアクティビティも楽しめるので、カップルでの充実した6日間を過ごすことができます。",
+  "days": [
+    {
+      "day": 1,
+      "title": "マンチェスター到着と市内観光",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターの地元のカフェで、イングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストがセットになったボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マンチェスター・ユナイテッド・スタジアム見学",
+          "description": "サッカーファン必見のマンチェスター・ユナイテッド・スタジアムを訪れます。スタジアムツアーでは、ピッチサイドやロッカールームを見学でき、クラブの歴史を学ぶことができます。",
+          "searchQuery": "Old Trafford",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "スタジアム近くのカフェでランチ",
+          "description": "スタジアム近くのカフェで軽食を楽しみます。サンドイッチやパイなど、イギリスのカジュアルなランチを味わいましょう。",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マンチェスター・シティ・スタジアム見学",
+          "description": "次はマンチェスター・シティ・スタジアムへ。こちらもスタジアムツアーがあり、最新の設備やクラブの歴史を知ることができます。サッカー好きにはたまらないスポットです！",
+          "searchQuery": "Etihad Stadium",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "アポロ・マンチェスターでのイベント参加",
+          "description": "アポロ・マンチェスターで行われるライブイベントやショーを楽しみます。事前にスケジュールを確認して、興味のあるイベントを選びましょう。",
+          "searchQuery": "Apollo Manchester",
+          "locationEn": "Manchester, UK",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のパブでディナー",
+          "description": "マンチェスターの地元のパブで、フィッシュ＆チップスやパブ料理を楽しみます。ビールと一緒に、リラックスした雰囲気の中で食事を堪能しましょう。",
+          "locationEn": "Manchester, UK",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "21:00",
+          "activity": "マンチェスターのナイトライフを楽しむ",
+          "description": "ディナーの後は、マンチェスターのナイトライフを楽しみます。地元のバーやクラブで、音楽やダンスを楽しんで、素敵な夜を過ごしましょう。",
+          "locationEn": "Manchester, UK",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "サッカーと文化の融合",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターの地元のカフェで、イングリッシュブレックファーストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグがついたボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マンチェスター・ユナイテッド・ミュージアム",
+          "description": "サッカーファン必見のスポット、マンチェスター・ユナイテッド・ミュージアムを訪れます。クラブの歴史や名選手たちの功績を展示したエキシビションを見学し、スタジアムツアーも楽しめます。",
+          "searchQuery": "Manchester United Museum",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "カフェでランチ",
+          "description": "ユナイテッド・ミュージアム近くのカフェで軽食を。サンドイッチやサラダなど、手軽に楽しめるメニューが揃っています。サッカーの話題で盛り上がりながら、リラックスした時間を過ごしましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マンチェスター・シティ・ミュージアム",
+          "description": "次はマンチェスター・シティ・ミュージアムへ。こちらもサッカーの歴史を学べるスポットで、クラブの成り立ちや成功を支えた選手たちの展示が見どころです。",
+          "searchQuery": "Manchester City Museum",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マンチェスター市立美術館",
+          "description": "文化を感じるために、マンチェスター市立美術館を訪れます。多彩なアートコレクションが揃い、特に印象派の作品が充実しています。静かな空間でアートに触れ、心をリフレッシュ。",
+          "searchQuery": "Manchester Art Gallery",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "地元のパブでディナー",
+          "description": "マンチェスターの地元のパブで、フィッシュ＆チップスやパイなどの伝統的なイギリス料理を楽しみます。ビールと一緒に、地元の雰囲気を味わいましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "ファングッズショップ巡り",
+          "description": "ディナーの後は、マンチェスター・ユナイテッドやマンチェスター・シティのファングッズショップを巡ります。お気に入りのチームのグッズを手に入れて、思い出を作りましょう！",
+          "locationEn": "Manchester, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "地元グルメとショッピング",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターのホテルで、イングリッシュブレックファーストを楽しみます。ベーコンやソーセージ、トーストにスクランブルエッグがセットになったボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "北部市場を散策",
+          "description": "地元の人々に愛される北部市場で、フレッシュな食材や手作りのスイーツを楽しみながら散策します。特に、地元のチーズやハムは絶品です。お土産にもぴったり！",
+          "searchQuery": "Northern Quarter Market",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：The Wharf",
+          "description": "運河沿いにあるThe Wharfで、地元のビールと共にパブランチを楽しみます。フィッシュ＆チップスやハンバーガーが人気で、カジュアルな雰囲気の中でリラックスできます。",
+          "searchQuery": "The Wharf Manchester",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マンチェスター・ユナイテッド・スタジアム見学",
+          "description": "プレミアリーグの名門、マンチェスター・ユナイテッドのオールド・トラッフォードスタジアムを訪れます。スタジアムツアーでは、ロッカールームやピッチサイドを見学でき、クラブの歴史を学ぶことができます。",
+          "searchQuery": "Old Trafford",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "マンチェスター・シティ・ストアでファングッズ購入",
+          "description": "マンチェスター・シティの公式ストアで、チームのユニフォームやグッズを購入します。サポーターとしての思い出を形にする絶好のチャンスです！",
+          "searchQuery": "Manchester City Store",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "アフタヌーンティー：The Midland Hotel",
+          "description": "歴史あるThe Midland Hotelでアフタヌーンティーを楽しみます。スコーンやサンドイッチ、ケーキが美しく盛り付けられたティーセットで、優雅なひとときを過ごしましょう。",
+          "searchQuery": "The Midland Hotel Afternoon Tea",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "マンチェスターのナイトライフを楽しむ",
+          "description": "地元のパブやバーで、マンチェスターのナイトライフを体験します。カジュアルな雰囲気の中で、地元の人々と交流しながら楽しい時間を過ごしましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "歴史的な名所巡り",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターの地元のカフェで、イングリッシュブレックファストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、エネルギーをチャージ！",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:00",
+          "activity": "マンチェスター・タウンホール",
+          "description": "ゴシック様式の美しい建物、マンチェスター・タウンホールを訪れます。内部の装飾や歴史的な展示を見学しながら、マンチェスターの歴史に触れることができます。",
+          "searchQuery": "Manchester Town Hall",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のパブでランチ",
+          "description": "マンチェスターの伝統的なパブで、フィッシュ＆チップスやパイなどの地元料理を楽しみます。地元の人々と一緒に、カジュアルな雰囲気の中で食事をするのが魅力です。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "ジョン・ライランズ図書館",
+          "description": "美しい建築が魅力のジョン・ライランズ図書館を訪れます。静かな環境で本を楽しむことができ、歴史的な資料も見ることができます。",
+          "searchQuery": "John Rylands Library",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "ロイヤル・エクスチェンジ",
+          "description": "ロイヤル・エクスチェンジでショッピングやカフェを楽しみます。ここでは、マンチェスターの文化を感じながら、ファングッズやお土産を探すのにぴったりの場所です。",
+          "searchQuery": "Royal Exchange",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "マンチェスター・ユナイテッドのショップ訪問",
+          "description": "マンチェスター・ユナイテッドの公式ショップで、ファングッズを購入します。ユニフォームやアクセサリーなど、サポーターにはたまらないアイテムが揃っています。",
+          "searchQuery": "Manchester United Store",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "地元のレストランでディナー",
+          "description": "マンチェスターの人気レストランで、地元の食材を使ったディナーを楽しみます。カジュアルな雰囲気の中で、マンチェスターの美味しい料理を堪能しましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "アクティビティとエンターテイメント",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターの地元のカフェで、イングリッシュブレックファーストを楽しみます。ベーコン、ソーセージ、卵、トーストが揃ったボリューム満点の朝食で、元気をチャージ！",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マンチェスター・アリーナ見学",
+          "description": "マンチェスター・アリーナは、数々のコンサートやイベントが開催される場所です。外観を見学し、周辺の雰囲気を楽しみながら、次回のイベント情報をチェックしてみましょう。",
+          "searchQuery": "Manchester Arena",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "地元のパブでランチ",
+          "description": "マンチェスターの伝統的なパブで、フィッシュ＆チップスやパイを味わいます。地元の人々と交流しながら、リラックスしたひとときを過ごしましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "オールド・トラッフォード・クリケットグラウンド見学",
+          "description": "クリケットの聖地、オールド・トラッフォードを訪れます。スタジアムツアーに参加して、歴史や名選手のエピソードを学びながら、迫力あるグラウンドを間近で体感しましょう。",
+          "searchQuery": "Old Trafford Cricket Ground",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "マンチェスター・ユナイテッドのファングッズショップ訪問",
+          "description": "オールド・トラッフォードの近くにあるマンチェスター・ユナイテッドの公式ショップで、ユニフォームやグッズを購入します。サポーターとしての思い出を持ち帰りましょう！",
+          "searchQuery": "Manchester United Official Store",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "地元のカフェで休憩",
+          "description": "観光の合間に、地元のカフェで一息つきます。スイーツやコーヒーを楽しみながら、ゆったりとした時間を過ごしましょう。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "マンチェスターのレストランでディナー",
+          "description": "地元の人気レストランで、マンチェスターの郷土料理を堪能します。アットホームな雰囲気の中で、特別な夜を楽しんでください。",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "マンチェスターでの最後のひと時",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "ホテルで朝食",
+          "description": "マンチェスターの地元のカフェで、イングリッシュブレックファーストを楽しみます。ベーコン、ソーセージ、卵、トーストが盛りだくさんで、エネルギーをチャージ！",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "マンチェスター・アートギャラリー",
+          "description": "マンチェスター・アートギャラリーを訪れ、地元アーティストの作品や歴史的な絵画を鑑賞します。美しい建物の中で、アートに触れる贅沢な時間を過ごしましょう。",
+          "searchQuery": "Manchester Art Gallery",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "ランチ：The Wharf",
+          "description": "運河沿いのレストランで、地元の食材を使った料理を楽しみます。特にフィッシュ＆チップスが人気で、マンチェスターの雰囲気を感じながらのランチタイムです。",
+          "searchQuery": "The Wharf",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "マンチェスター・ユナイテッドのオールド・トラッフォード見学",
+          "description": "サッカーファンにはたまらない、オールド・トラッフォードのスタジアムツアーに参加。歴史あるスタジアムを巡り、クラブの栄光の瞬間を感じることができます。",
+          "searchQuery": "Old Trafford",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "プレミアリーグ関連ショップでのショッピング",
+          "description": "オールド・トラッフォード近くのショップで、ユナイテッドのファングッズを購入。お気に入りの選手のユニフォームやグッズを手に入れて、思い出を持ち帰りましょう。",
+          "searchQuery": "Manchester United Megastore",
+          "locationEn": "Manchester, England",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "最後のディナー：The French",
+          "description": "マンチェスターの人気レストランで、地元の食材を使ったフランス料理を楽しみます。特別な夜を締めくくるにふさわしい、素晴らしいディナーです。",
+          "searchQuery": "The French",
+          "locationEn": "Manchester, England",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "マンチェスターの夜景を楽しむ散策",
+          "description": "ディナーの後は、マンチェスターの街を散策しながら、夜景を楽しみます。特に、ビクトリア駅周辺のライトアップが美しいです。",
+          "locationEn": "Manchester, England",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

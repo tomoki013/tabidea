@@ -1,0 +1,430 @@
+{
+  "id": "3aa81596-b302-4ee5-b242-67578697de65",
+  "destination": "Ireland",
+  "description": "Embark on an enchanting 5-day journey through the lush landscapes and vibrant culture of Ireland, where the magic of Star Wars meets the rich tapestry of history and culinary delights. This family-friendly adventure is designed to immerse you in the charm of the Emerald Isle while indulging your passion for all things Star Wars. From exploring iconic filming locations to savoring local delicacies, every moment is crafted to create unforgettable memories with your loved ones.",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival in Dublin and Exploring the City",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients. Enjoy traditional dishes like black pudding and scrambled eggs to fuel your adventures ahead.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Dublin Castle",
+          "description": "Explore the historic Dublin Castle, a key site in Ireland's history. Take a guided tour to learn about its fascinating past and admire the stunning architecture and gardens.",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at The Brazen Head",
+          "description": "Enjoy lunch at The Brazen Head, Ireland's oldest pub. Savor classic Irish dishes like beef and Guinness stew while soaking in the pub's rich history and atmosphere.",
+          "searchQuery": "The Brazen Head",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Trinity College and the Book of Kells",
+          "description": "Visit Trinity College to see the famous Book of Kells, an illuminated manuscript that dates back to the 9th century. The Long Room of the Old Library is also a must-see, filled with ancient books and a stunning wooden ceiling.",
+          "searchQuery": "Trinity College Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Explore Temple Bar District",
+          "description": "Stroll through the vibrant Temple Bar District, known for its lively atmosphere, street performers, and unique shops. This is a great place to find Star Wars merchandise and other local crafts.",
+          "searchQuery": "Temple Bar",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at The Porterhouse",
+          "description": "End your day with dinner at The Porterhouse, a popular pub offering a wide selection of craft beers and delicious pub fare. Try their fish and chips or a hearty burger for a satisfying meal.",
+          "searchQuery": "The Porterhouse",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening Walk along the River Liffey",
+          "description": "Take a leisurely evening stroll along the River Liffey, enjoying the beautiful views of the city as the sun sets. It's a perfect way to unwind after a day of exploration.",
+          "searchQuery": "River Liffey",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Star Wars Locations in County Kerry",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Dublin",
+          "time": "08:00"
+        },
+        "arrival": {
+          "place": "Kerry",
+          "time": "10:30"
+        },
+        "duration": "2h 30m",
+        "memo": "Enjoy the scenic drive through the Irish countryside."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Visit Skellig Michael",
+          "description": "Explore the stunning Skellig Michael, a UNESCO World Heritage Site and filming location for Star Wars. The dramatic cliffs and ancient monastery offer breathtaking views and a sense of adventure for the whole family.",
+          "searchQuery": "Skellig Michael",
+          "locationEn": "Kerry, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Moorings",
+          "description": "Enjoy a hearty lunch at The Moorings in Portmagee, known for its fresh seafood and cozy atmosphere. Try the local fish and chips or a delicious seafood chowder to refuel after your morning adventure.",
+          "searchQuery": "The Moorings",
+          "locationEn": "Portmagee, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Explore Portmagee",
+          "description": "Stroll through the charming village of Portmagee, where you can find local shops selling Star Wars memorabilia and other unique souvenirs. Don't forget to snap a family photo with the colorful buildings as your backdrop!",
+          "searchQuery": "Portmagee",
+          "locationEn": "Portmagee, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Skellig Experience Visitor Centre",
+          "description": "Learn more about the history and ecology of Skellig Michael at the Skellig Experience Visitor Centre. The interactive exhibits are perfect for kids and provide insight into the filming of Star Wars.",
+          "searchQuery": "Skellig Experience Visitor Centre",
+          "locationEn": "Kerry, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Bridge Bar",
+          "description": "End your day with a family-friendly dinner at The Bridge Bar in Portmagee. Enjoy traditional Irish dishes and a warm atmosphere, perfect for sharing stories about your day's adventures.",
+          "searchQuery": "The Bridge Bar",
+          "locationEn": "Portmagee, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Check-in at Hotel",
+          "description": "Settle into your accommodation for the night. Choose a family-friendly hotel in Kerry that offers comfortable rooms and amenities for a relaxing stay after a day of exploration.",
+          "searchQuery": "Family-friendly hotel in Kerry",
+          "locationEn": "Kerry, Ireland",
+          "activityType": "accommodation",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Cultural Immersion in Galway",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Kerry",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Galway",
+          "time": "10:30"
+        },
+        "duration": "1h 30m",
+        "memo": "Enjoy the scenic drive through the Irish countryside."
+      },
+      "activities": [
+        {
+          "time": "11:00",
+          "activity": "Explore Quay Street",
+          "description": "Stroll along the vibrant Quay Street, known for its colorful shops and lively atmosphere. It's a great place to find unique Star Wars merchandise and local crafts.",
+          "searchQuery": "Quay Street",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at The Quay Street Kitchen",
+          "description": "Savor a delicious meal at this cozy eatery, offering a variety of local dishes. Don't miss their famous seafood chowder, perfect for a family lunch.",
+          "searchQuery": "The Quay Street Kitchen",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Visit the Spanish Arch",
+          "description": "Discover the historic Spanish Arch, a beautiful landmark that dates back to the 16th century. It's a great spot for family photos and to learn about Galway's history.",
+          "searchQuery": "Spanish Arch",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Galway City Museum",
+          "description": "Explore the Galway City Museum, where you can learn about the city's rich history and culture. The museum often features exhibitions related to local pop culture, including Star Wars.",
+          "searchQuery": "Galway City Museum",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Dinner at McDonagh's Fish & Chips",
+          "description": "Enjoy a classic Irish meal at McDonagh's, famous for its fish and chips. It's a family-friendly spot that offers a taste of local cuisine without breaking the bank.",
+          "searchQuery": "McDonagh's Fish & Chips",
+          "locationEn": "Galway, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "19:00",
+          "activity": "Evening stroll along the River Corrib",
+          "description": "Take a leisurely walk along the River Corrib, enjoying the beautiful views and the peaceful atmosphere. It's a perfect way to wind down after a day of exploration.",
+          "searchQuery": "River Corrib",
+          "locationEn": "Galway, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Dublin's Star Wars Fan Experience",
+      "transit": {
+        "type": "car",
+        "departure": {
+          "place": "Galway",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Dublin",
+          "time": "11:00"
+        },
+        "duration": "2h",
+        "memo": "Enjoy a scenic drive from Galway to Dublin, taking in the beautiful Irish countryside."
+      },
+      "activities": [
+        {
+          "time": "11:30",
+          "activity": "The Little Museum of Dublin",
+          "description": "Dive into Dublin's rich history with a visit to this charming museum. It features a delightful collection of memorabilia, including a section dedicated to Star Wars, showcasing the city's connection to the iconic franchise.",
+          "searchQuery": "The Little Museum of Dublin",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at The Woollen Mills",
+          "description": "Savor traditional Irish dishes at this popular eatery. The Woollen Mills offers a cozy atmosphere and a menu filled with local favorites, perfect for a family meal.",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Star Wars Merchandise Shops",
+          "description": "Explore various shops in Dublin that specialize in Star Wars merchandise. From collectibles to apparel, you'll find plenty of items to satisfy your fandom and take home a piece of the galaxy far, far away.",
+          "searchQuery": "Star Wars Merchandise Shops",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Dublin Castle",
+          "description": "Visit the historic Dublin Castle, where you can learn about Ireland's history and enjoy the beautiful gardens. It's a great spot for a family photo and to relax for a bit.",
+          "searchQuery": "Dublin Castle",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Church Café",
+          "description": "End your day with dinner at The Church Café, a unique venue set in a restored church. Enjoy a variety of dishes while soaking in the stunning architecture and ambiance.",
+          "searchQuery": "The Church Café",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening stroll along the River Liffey",
+          "description": "Take a leisurely walk along the River Liffey, enjoying the views of Dublin's iconic bridges and buildings illuminated at night. A perfect way to wind down after a fun-filled day.",
+          "searchQuery": "River Liffey",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Return to Washington D.C.",
+      "transit": {
+        "type": "flight",
+        "departure": {
+          "place": "Dublin Airport",
+          "time": "10:00"
+        },
+        "arrival": {
+          "place": "Washington D.C.",
+          "time": "13:00"
+        },
+        "duration": "8h",
+        "memo": "Direct flight from Dublin to Washington D.C."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at The Woollen Mills",
+          "description": "Start your day with a hearty Irish breakfast at The Woollen Mills, a cozy spot known for its locally sourced ingredients and traditional dishes. It's a great way to fuel up before your journey home!",
+          "searchQuery": "The Woollen Mills",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:00",
+          "activity": "Visit the Star Wars Exhibition at the Science Gallery",
+          "description": "Before heading to the airport, immerse yourself in the Star Wars universe at the Science Gallery. This exhibition showcases props, costumes, and interactive displays that will delight fans of all ages.",
+          "searchQuery": "Star Wars Exhibition Science Gallery",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:45",
+          "activity": "Last-minute shopping at Dublin Airport",
+          "description": "Take advantage of your time at Dublin Airport to pick up some Star Wars merchandise and souvenirs. The airport shops offer a variety of fan gear that will make great gifts or keepsakes.",
+          "searchQuery": "Dublin Airport",
+          "locationEn": "Dublin, Ireland",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}

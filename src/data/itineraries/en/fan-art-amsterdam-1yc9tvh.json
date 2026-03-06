@@ -1,0 +1,553 @@
+{
+  "id": "b269ca96-53ac-4e77-ab21-4edfcd4a9f9f",
+  "destination": "Amsterdam",
+  "description": "Immerse yourself in the vibrant culture and artistic spirit of Amsterdam over six unforgettable days. This family-friendly itinerary is designed to delight both young and old, with a perfect blend of art, history, and engaging activities. From the iconic canals to the world-renowned museums, every moment will be filled with discovery and joy. Get ready to explore the hidden gems and popular spots that make Amsterdam a must-visit destination!",
+  "days": [
+    {
+      "day": 1,
+      "title": "Arrival and Canal Exploration",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam, where you can choose from a variety of sweet and savory options. The cozy atmosphere is perfect for families!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Amsterdam Canals Tour",
+          "description": "Explore the iconic canals of Amsterdam on a scenic boat tour. This is a fantastic way to see the city from a different perspective while learning about its rich history and architecture. Don't forget your camera!",
+          "searchQuery": "Amsterdam Canals Tour",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Café de Jaren",
+          "description": "Enjoy a leisurely lunch at Café de Jaren, known for its spacious terrace overlooking the water. The menu features a variety of fresh salads, sandwiches, and local dishes, perfect for refueling after your canal tour.",
+          "searchQuery": "Café de Jaren",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. With the largest collection of his works, this museum offers a deep dive into the life and art of one of the Netherlands' most famous painters.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Explore the Jordaan District",
+          "description": "Stroll through the charming streets of the Jordaan District, known for its narrow canals, independent art galleries, and unique shops. This area is perfect for finding local art and souvenirs to take home.",
+          "searchQuery": "Jordaan District",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a seafood feast at The Seafood Bar, where you can enjoy fresh fish and shellfish in a vibrant setting. The kids will love the variety of dishes available, from fish and chips to seafood platters.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Canals",
+          "description": "End your day with a peaceful evening walk along the canals. The city lights reflecting on the water create a magical atmosphere, perfect for family bonding and capturing beautiful photos.",
+          "searchQuery": "Amsterdam Canals",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "title": "Art and Culture Day",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam. Choose from a variety of sweet and savory options, perfect for energizing your family for a day of exploration.",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Rijksmuseum",
+          "description": "Visit the iconic Rijksmuseum, home to masterpieces by Rembrandt and Vermeer. The museum's vast collection will captivate both adults and children, with interactive exhibits designed for younger visitors.",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:00",
+          "activity": "Lunch at Café Loetje",
+          "description": "Enjoy a hearty lunch at Café Loetje, famous for its tender steak and cozy atmosphere. This family-friendly restaurant offers a variety of dishes that cater to all tastes, ensuring everyone leaves satisfied.",
+          "searchQuery": "Café Loetje",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:30",
+          "activity": "Van Gogh Museum",
+          "description": "Explore the Van Gogh Museum, which houses the largest collection of Van Gogh's works. The museum offers engaging activities for children, making it a fun and educational experience for the whole family.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:00",
+          "activity": "Stroll through Vondelpark",
+          "description": "Take a leisurely stroll through Vondelpark, Amsterdam's largest city park. Let the kids play in the playgrounds while you relax and enjoy the beautiful surroundings. It's a perfect way to unwind after a day of art.",
+          "searchQuery": "Vondelpark",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:30",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Savor a delightful seafood dinner at The Seafood Bar, known for its fresh and sustainable seafood dishes. The casual atmosphere makes it a great spot for families to enjoy a meal together.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Art Merchandise at Museumplein",
+          "description": "End your day by shopping for art-related merchandise at the shops around Museumplein. From Van Gogh souvenirs to Rijksmuseum gifts, you'll find the perfect mementos to take home.",
+          "searchQuery": "Museumplein",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "title": "Family Fun and Local Markets",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam. Choose from a variety of sweet and savory options that will delight both kids and adults alike!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit NDSM Wharf",
+          "description": "Explore the vibrant NDSM Wharf, a former shipyard turned creative hub. Enjoy the street art, quirky installations, and perhaps even catch a local event or market. It's a great spot for family photos!",
+          "searchQuery": "NDSM Wharf",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Broads&Butter",
+          "description": "Enjoy a casual lunch at Broads&Butter, known for its fresh sandwiches and local ingredients. The relaxed atmosphere is perfect for families, and there are options for picky eaters too!",
+          "searchQuery": "Broads&Butter",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Albert Cuyp Market",
+          "description": "Stroll through the famous Albert Cuyp Market, where you can find everything from fresh produce to unique souvenirs. Don't forget to try some stroopwafels or herring from the local vendors!",
+          "searchQuery": "Albert Cuyp Market",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Van Gogh at the Van Gogh Museum. The family-friendly exhibits and engaging activities make it a perfect cultural stop for all ages.",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Indulge in a seafood feast at The Seafood Bar, where you can enjoy fresh fish and shellfish in a family-friendly setting. The lively atmosphere is perfect for a fun family dinner!",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Evening Walk along the Canals",
+          "description": "End your day with a peaceful evening walk along Amsterdam's picturesque canals. The illuminated bridges and charming houses create a magical atmosphere, perfect for winding down after a busy day.",
+          "searchQuery": "Amsterdam Canals",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "title": "Historical Insights and Shopping",
+      "activities": [
+        {
+          "time": "09:00",
+          "activity": "Breakfast at Café de Jaren",
+          "description": "Start your day with a delightful breakfast at Café de Jaren, known for its spacious terrace overlooking the canal. Enjoy fresh pastries and a variety of coffee options to energize you for the day ahead.",
+          "searchQuery": "Café de Jaren",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "10:30",
+          "activity": "Visit Anne Frank House",
+          "description": "Explore the poignant history at the Anne Frank House, where Anne Frank wrote her diary during World War II. The museum offers a deep insight into her life and the impact of the Holocaust. Be sure to book tickets in advance to avoid long lines!",
+          "searchQuery": "Anne Frank House",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:30",
+          "activity": "Lunch at Pancakes Amsterdam",
+          "description": "Indulge in a delicious Dutch pancake lunch at Pancakes Amsterdam. Choose from a variety of sweet and savory options, perfect for both kids and adults. The cozy atmosphere makes it a great spot for families.",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "14:00",
+          "activity": "Explore Dam Square",
+          "description": "Stroll around Dam Square, the heart of Amsterdam, where you can admire the Royal Palace and the National Monument. This vibrant area is perfect for people-watching and soaking in the local culture.",
+          "searchQuery": "Dam Square",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Dive into the world of Vincent van Gogh at the Van Gogh Museum. With the largest collection of his works, this museum offers a fascinating look at his life and artistic evolution. Kids will enjoy the interactive exhibits!",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "Enjoy a family-friendly dinner at The Seafood Bar, where you can savor fresh seafood dishes in a relaxed setting. Their platters are perfect for sharing, making it a great choice for families.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "20:00",
+          "activity": "Shopping for Art Merchandise at the Museumplein",
+          "description": "End your day with some shopping at the Museumplein area, where you can find various shops selling art-related merchandise, including prints, books, and unique souvenirs. Perfect for art lovers and fans!",
+          "searchQuery": "Museumplein",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "title": "Day Trip to Zaanse Schans",
+      "transit": {
+        "type": "bus",
+        "departure": {
+          "place": "Amsterdam",
+          "time": "09:00"
+        },
+        "arrival": {
+          "place": "Zaanse Schans",
+          "time": "09:30"
+        },
+        "duration": "30m",
+        "memo": "Take a scenic bus ride to the picturesque windmill village."
+      },
+      "activities": [
+        {
+          "time": "10:00",
+          "activity": "Explore Zaanse Schans",
+          "description": "Wander through this charming village filled with traditional Dutch windmills, wooden houses, and artisan workshops. Don't miss the chance to see the windmills in action and learn about their history.",
+          "searchQuery": "Zaanse Schans",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at De Kraai",
+          "description": "Enjoy a delightful lunch at De Kraai, known for its traditional Dutch pancakes. Choose from a variety of toppings that will please both kids and adults alike.",
+          "searchQuery": "De Kraai",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Visit the Zaans Museum",
+          "description": "Dive into the rich history of the Zaan region at the Zaans Museum. The museum showcases the area's industrial heritage and offers interactive exhibits that are fun for the whole family.",
+          "searchQuery": "Zaans Museum",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "15:00",
+          "activity": "Windmill Tour",
+          "description": "Take a guided tour of one of the iconic windmills, such as De Kat, where you can learn about the traditional methods of mustard production and enjoy stunning views from the top.",
+          "searchQuery": "De Kat Windmill",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:30",
+          "activity": "Shopping for Souvenirs",
+          "description": "Explore the local shops for unique souvenirs and fan goods related to Dutch culture. Look for wooden shoes, cheese, and artisanal crafts to take home as memories of your trip.",
+          "searchQuery": "Zaanse Schans shops",
+          "locationEn": "Zaanse Schans, Netherlands",
+          "activityType": "other",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "18:00",
+          "activity": "Return to Amsterdam",
+          "description": "Head back to Amsterdam after a day filled with culture and fun. Reflect on the beautiful sights and experiences you had in Zaanse Schans.",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "transit",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "title": "Departure",
+      "transit": {
+        "type": "other",
+        "departure": {
+          "place": "Amsterdam",
+          "time": "null"
+        },
+        "arrival": {
+          "place": "Amsterdam Central Station",
+          "time": "null"
+        },
+        "duration": "null",
+        "memo": "Start your day by heading to Amsterdam Central Station for your departure."
+      },
+      "activities": [
+        {
+          "time": "08:00",
+          "activity": "Breakfast at Pancakes Amsterdam",
+          "description": "Start your day with a delicious Dutch pancake breakfast at Pancakes Amsterdam. Choose from a variety of sweet and savory options that will delight both kids and adults alike!",
+          "searchQuery": "Pancakes Amsterdam",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "09:30",
+          "activity": "Visit the Van Gogh Museum",
+          "description": "Immerse yourself in the world of Vincent van Gogh at the Van Gogh Museum. Explore the largest collection of his works and learn about his life and artistic journey. A must-visit for art lovers!",
+          "searchQuery": "Van Gogh Museum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "12:00",
+          "activity": "Lunch at Café Loetje",
+          "description": "Enjoy a hearty lunch at Café Loetje, famous for its delicious steak and cozy atmosphere. It's a great spot for families to relax and refuel before more sightseeing.",
+          "searchQuery": "Café Loetje",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "13:30",
+          "activity": "Explore the Rijksmuseum",
+          "description": "Visit the Rijksmuseum, home to masterpieces by Rembrandt and Vermeer. The museum's stunning architecture and beautiful gardens make it a perfect place for a family outing.",
+          "searchQuery": "Rijksmuseum",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "spot",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "16:00",
+          "activity": "Shopping for Art Merchandise at the Museum Shop",
+          "description": "Don't miss the chance to pick up some unique art merchandise at the museum shop. From prints to books, you'll find perfect souvenirs to take home!",
+          "searchQuery": "Rijksmuseum Shop",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        },
+        {
+          "time": "17:30",
+          "activity": "Dinner at The Seafood Bar",
+          "description": "End your day with a delightful seafood dinner at The Seafood Bar. Enjoy fresh catches and a lively atmosphere, perfect for families looking to indulge in local flavors.",
+          "searchQuery": "The Seafood Bar",
+          "locationEn": "Amsterdam, Netherlands",
+          "activityType": "meal",
+          "source": {
+            "type": "ai_knowledge",
+            "confidence": "medium"
+          }
+        }
+      ]
+    }
+  ],
+  "references": [],
+  "modelInfo": {
+    "modelName": "gpt-4o-mini",
+    "tier": "flash"
+  }
+}
