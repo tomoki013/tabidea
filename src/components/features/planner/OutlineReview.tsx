@@ -68,7 +68,7 @@ export default function OutlineReview({
                 {/* Day Badge */}
                 <div className="flex-shrink-0">
                   <span className="inline-block px-3 py-1 bg-stone-800 text-white text-xs font-bold rounded-full">
-                    Day {day.day}
+                    {t("dayBadge", { day: day.day })}
                   </span>
                 </div>
 

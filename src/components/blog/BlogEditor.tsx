@@ -111,19 +111,19 @@ export default function BlogEditor({ initial, profile }: Props) {
     <div className="space-y-4">
       <section className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
         <h2 className="font-semibold">{t("profileTitle")}</h2>
-        <input className="w-full border rounded px-2 py-1 text-sm" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="username (a-z0-9_)" />
-        <input className="w-full border rounded px-2 py-1 text-sm" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder="display name" />
-        <textarea className="w-full border rounded px-2 py-1 text-sm" value={bio} onChange={(e) => setBio(e.target.value)} placeholder="bio" />
+        <input className="w-full border rounded px-2 py-1 text-sm" value={username} onChange={(e) => setUsername(e.target.value)} placeholder={t("usernamePlaceholder")} />
+        <input className="w-full border rounded px-2 py-1 text-sm" value={displayName} onChange={(e) => setDisplayName(e.target.value)} placeholder={t("displayNamePlaceholder")} />
+        <textarea className="w-full border rounded px-2 py-1 text-sm" value={bio} onChange={(e) => setBio(e.target.value)} placeholder={t("bioPlaceholder")} />
       </section>
 
       <section className="rounded-xl border border-stone-200 bg-white p-4 space-y-3">
         <h2 className="font-semibold">{t("postEditorTitle")}</h2>
-        <input className="w-full border rounded px-2 py-1 text-sm" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" />
-        <input className="w-full border rounded px-2 py-1 text-sm" value={slug} onChange={(e) => setSlug(e.target.value)} placeholder="slug" />
-        <textarea className="w-full border rounded px-2 py-1 text-sm" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder="excerpt" />
+        <input className="w-full border rounded px-2 py-1 text-sm" value={title} onChange={(e) => setTitle(e.target.value)} placeholder={t("titlePlaceholder")} />
+        <input className="w-full border rounded px-2 py-1 text-sm" value={slug} onChange={(e) => setSlug(e.target.value)} placeholder={t("slugPlaceholder")} />
+        <textarea className="w-full border rounded px-2 py-1 text-sm" value={excerpt} onChange={(e) => setExcerpt(e.target.value)} placeholder={t("excerptPlaceholder")} />
 
         <div className="text-xs text-stone-600">
-          {t("shioriEmbedGuide")} <code>[[tabidea:shiori:slug]]</code> or <code>[[tabidea:shiori:slug?t=token]]</code>
+          {t("shioriEmbedGuide")} <code>[[tabidea:shiori:slug]]</code> {t("orLabel")} <code>[[tabidea:shiori:slug?t=token]]</code>
         </div>
         <textarea
           className="w-full border rounded px-2 py-2 text-sm min-h-[260px]"
@@ -135,7 +135,7 @@ export default function BlogEditor({ initial, profile }: Props) {
         <div className="space-y-1">
           <label className="text-sm">{t("coverImageLabel")}</label>
           <input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && handleUpload(e.target.files[0])} />
-          {coverImagePath && <p className="text-xs text-stone-600">storage path: {coverImagePath}</p>}
+          {coverImagePath && <p className="text-xs text-stone-600">{t("storagePathLabel")}: {coverImagePath}</p>}
         </div>
 
         <div className="flex gap-2">

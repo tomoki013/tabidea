@@ -656,7 +656,7 @@ export default function SimplifiedInputFlow({
       {/* ================================================================== */}
       <div className="space-y-10">
         <div className="flex items-center gap-3 mb-4 border-b-2 border-stone-200 border-dashed pb-2">
-          <Stamp color="red" size="sm" className="w-12 h-12 text-sm border-2">step 1</Stamp>
+          <Stamp color="red" size="sm" className="w-12 h-12 text-sm border-2">{t("step1.badge")}</Stamp>
           <div className="flex flex-col">
              <span className="font-bold text-xl text-stone-800 font-sans">{t("step1.title")}</span>
              <span className="text-xs text-primary font-bold font-sans">

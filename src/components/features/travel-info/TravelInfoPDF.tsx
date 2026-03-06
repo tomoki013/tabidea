@@ -587,7 +587,7 @@ const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({
         {/* Header */}
         <View style={styles.header}>
           <View style={styles.headerLeft}>
-            <Text style={styles.brandTitle}>TRAVEL SUPPORT GUIDE</Text>
+            <Text style={styles.brandTitle}>{t("brandTitle")}</Text>
             <Text style={styles.destinationTitle}>{destination}</Text>
             <Text style={styles.countrySubtitle}>{country}</Text>
           </View>
@@ -630,7 +630,9 @@ const TravelInfoPDF: React.FC<TravelInfoPDFProps> = ({
         {/* Footer */}
         <View style={styles.footer} fixed>
           <Text style={styles.footerText} render={({ pageNumber, totalPages }) => `${pageNumber} / ${totalPages}`} />
-          <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>Powered by Tabidea</Text>
+          <Text style={[styles.footerText, { color: theme.primary, fontWeight: 'bold' }]}>
+            {t("poweredBy", { brand: "Tabidea" })}
+          </Text>
         </View>
       </Page>
     </Document>

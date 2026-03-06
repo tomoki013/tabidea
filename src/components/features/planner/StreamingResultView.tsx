@@ -288,7 +288,7 @@ export default function StreamingResultView({
                       ${status === "error" ? "bg-red-50 text-red-500 border border-red-200" : ""}
                     `}
                   >
-                    Day {outlineDay.day}
+                    {t("dayLabelWithNumber", { day: outlineDay.day })}
                   </div>
                 );
               })}

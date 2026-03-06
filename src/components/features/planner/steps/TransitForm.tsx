@@ -55,7 +55,9 @@ export default function TransitForm({
     <div className="bg-white rounded-xl p-5 border-2 border-dashed border-[#e67e22]/30 shadow-sm animate-in fade-in zoom-in-95 duration-200">
       <div className="flex justify-between items-center mb-6">
         <h4 className="font-bold text-stone-800 flex items-center gap-2 text-lg">
-          <span className="bg-[#e67e22]/10 text-[#e67e22] px-2 py-1 rounded-md text-sm font-bold">Day {dayIndex}</span>
+          <span className="bg-[#e67e22]/10 text-[#e67e22] px-2 py-1 rounded-md text-sm font-bold">
+            {t("dayLabel", { day: dayIndex })}
+          </span>
           {t("title")}
         </h4>
         <button
@@ -125,7 +127,7 @@ export default function TransitForm({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-500 flex items-center gap-1">
-                {t("departure.label")} <span className="text-[10px] font-normal text-stone-400">(FROM)</span>
+                {t("departure.label")} <span className="text-[10px] font-normal text-stone-400">({t("departure.fromTag")})</span>
               </label>
               <div className="grid grid-cols-[1fr_auto] gap-3">
                 <div className="relative">
@@ -158,7 +160,7 @@ export default function TransitForm({
             </div>
             <div className="space-y-2">
               <label className="text-xs font-bold text-stone-500 flex items-center gap-1">
-                {t("arrival.label")} <span className="text-[10px] font-normal text-stone-400">(TO)</span>
+                {t("arrival.label")} <span className="text-[10px] font-normal text-stone-400">({t("arrival.toTag")})</span>
               </label>
               <div className="grid grid-cols-[1fr_auto] gap-3">
                 <div className="relative">

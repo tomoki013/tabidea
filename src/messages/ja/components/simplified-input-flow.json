@@ -15,6 +15,7 @@
           },
           "step1": {
             "title": "基本情報",
+            "badge": "step 1",
             "requiredHint": "※ここは必ず書いてね",
             "destinationModeLabel": "① 目的地はどうしますか？",
             "specific": {

@@ -117,7 +117,8 @@
           "mock": {
             "tipLabel": "Tips",
             "tipTitle": "How to Plan Your Next Trip with AI"
-          }
+          },
+          "newBadge": "New"
         },
         "exampleSection": {
           "title": "Travel records from the community",
@@ -659,7 +660,8 @@
           "title": "Explore public travel notes",
           "leadLine1": "See trips shared by other travelers",
           "leadLine2": "and get ideas for your next journey.",
-          "cta": "Browse travel notes"
+          "cta": "Browse travel notes",
+          "badge": "EXPLORE MORE PLANS"
         }
       },
       "travelInfo": {
@@ -856,7 +858,9 @@
           "rideshare": {
             "available": "Available ({services})",
             "unavailable": "Unavailable"
-          }
+          },
+          "brandTitle": "Travel Support Guide",
+          "poweredBy": "Powered by {brand}"
         },
         "sections": {
           "basicInfoSection": {
@@ -963,15 +967,42 @@
             "next": "Continue ->",
             "skipAndCreate": "Skip optional items and create plan",
             "options": {
-              "solo": { "label": "Solo", "desc": "At your own pace" },
-              "couple": { "label": "Couple", "desc": "Romantic style" },
-              "family": { "label": "Family", "desc": "Fun for everyone" },
-              "friends": { "label": "Friends", "desc": "Lively and social" },
-              "male_trip": { "label": "Guys trip", "desc": "All in" },
-              "female_trip": { "label": "Girls trip", "desc": "Stylish and fun" },
-              "backpacker": { "label": "Backpacker", "desc": "For adventure" },
-              "business": { "label": "Business", "desc": "Efficient and focused" },
-              "pet": { "label": "With pet", "desc": "Together always" }
+              "solo": {
+                "label": "Solo",
+                "desc": "At your own pace"
+              },
+              "couple": {
+                "label": "Couple",
+                "desc": "Romantic style"
+              },
+              "family": {
+                "label": "Family",
+                "desc": "Fun for everyone"
+              },
+              "friends": {
+                "label": "Friends",
+                "desc": "Lively and social"
+              },
+              "male_trip": {
+                "label": "Guys trip",
+                "desc": "All in"
+              },
+              "female_trip": {
+                "label": "Girls trip",
+                "desc": "Stylish and fun"
+              },
+              "backpacker": {
+                "label": "Backpacker",
+                "desc": "For adventure"
+              },
+              "business": {
+                "label": "Business",
+                "desc": "Efficient and focused"
+              },
+              "pet": {
+                "label": "With pet",
+                "desc": "Together always"
+              }
             }
           },
           "stepPace": {
@@ -980,10 +1011,22 @@
             "next": "Continue ->",
             "skipAndCreate": "Skip optional items and create plan",
             "options": {
-              "relaxed": { "label": "Relaxed", "desc": "1-2 spots per day, take it slow" },
-              "balanced": { "label": "Balanced", "desc": "A good mix of sightseeing and rest" },
-              "active": { "label": "Active", "desc": "Cover major highlights" },
-              "packed": { "label": "Packed", "desc": "Full-on from morning to night" }
+              "relaxed": {
+                "label": "Relaxed",
+                "desc": "1-2 spots per day, take it slow"
+              },
+              "balanced": {
+                "label": "Balanced",
+                "desc": "A good mix of sightseeing and rest"
+              },
+              "active": {
+                "label": "Active",
+                "desc": "Cover major highlights"
+              },
+              "packed": {
+                "label": "Packed",
+                "desc": "Full-on from morning to night"
+              }
             }
           },
           "stepBudget": {
@@ -1001,10 +1044,22 @@
               "lead": "Adjust your budget range with the slider"
             },
             "options": {
-              "saving": { "label": "Budget", "desc": "Smart and cost-friendly travel" },
-              "standard": { "label": "Standard", "desc": "Enjoy with a typical budget" },
-              "high": { "label": "Comfort+", "desc": "Better hotels and meals" },
-              "luxury": { "label": "Luxury", "desc": "Premium experiences all the way" }
+              "saving": {
+                "label": "Budget",
+                "desc": "Smart and cost-friendly travel"
+              },
+              "standard": {
+                "label": "Standard",
+                "desc": "Enjoy with a typical budget"
+              },
+              "high": {
+                "label": "Comfort+",
+                "desc": "Better hotels and meals"
+              },
+              "luxury": {
+                "label": "Luxury",
+                "desc": "Premium experiences all the way"
+              }
             }
           },
           "stepRegion": {
@@ -1015,9 +1070,18 @@
             "next": "Continue ->",
             "skipAndCreate": "Skip optional items and create plan",
             "regions": {
-              "domestic": { "label": "Domestic", "sub": "Domestic" },
-              "overseas": { "label": "Overseas", "sub": "Overseas" },
-              "anywhere": { "label": "No preference", "sub": "Anywhere" }
+              "domestic": {
+                "label": "Domestic",
+                "sub": "Domestic"
+              },
+              "overseas": {
+                "label": "Overseas",
+                "sub": "Overseas"
+              },
+              "anywhere": {
+                "label": "No preference",
+                "sub": "Anywhere"
+              }
             }
           },
           "stepFreeText": {
@@ -1172,11 +1236,13 @@
             },
             "departure": {
               "label": "Departure",
-              "placeholder": "Departure (e.g. Tokyo Station)"
+              "placeholder": "Departure (e.g. Tokyo Station)",
+              "fromTag": "FROM"
             },
             "arrival": {
               "label": "Arrival",
-              "placeholder": "Arrival (e.g. Osaka Station)"
+              "placeholder": "Arrival (e.g. Osaka Station)",
+              "toTag": "TO"
             },
             "memo": {
               "label": "Memo",
@@ -1185,7 +1251,8 @@
             "actions": {
               "cancel": "Cancel",
               "save": "Save"
-            }
+            },
+            "dayLabel": "Day {day}"
           }
         },
         "requestSummary": {
@@ -1229,7 +1296,8 @@
           "generating": "Generating...",
           "errorTitle": "Failed to generate details",
           "errorMessage": "Please try again.",
-          "retry": "Retry"
+          "retry": "Retry",
+          "dayTitle": "Day {day}"
         },
         "costEstimate": {
           "title": "Estimated trip cost",
@@ -1361,7 +1429,8 @@
           "overnightPlaceholder": "e.g. Central Kyoto, Osaka Umeda area...",
           "overnightHint": "The next day's route will be generated based on this location.",
           "generating": "Generating detailed plan...",
-          "confirm": "Create travel journal"
+          "confirm": "Create travel journal",
+          "dayBadge": "Day {day}"
         },
         "mapRoute": {
           "headerTitle": "Full itinerary map",
@@ -1469,7 +1538,9 @@
           "errors": {
             "emptyContent": "Please enter memo content.",
             "saveFailed": "Failed to save."
-          }
+          },
+          "dayLabelWithNumber": "Day {day}",
+          "photoUrlPlaceholder": "https://..."
         },
         "resultView": {
           "durationString": "{nights} nights {days} days",
@@ -1506,6 +1577,13 @@
           "disclaimer": {
             "line1": "* This plan is AI-generated. Accuracy is not guaranteed.",
             "line2": "* This page may include ads or affiliate links."
+          },
+          "dayLabel": "Day",
+          "hero": {
+            "photoBy": "Photo by",
+            "destinationStampLine1": "DESTI",
+            "destinationStampLine2": "NATION",
+            "travelToLabel": "TRAVEL TO"
           }
         },
         "travelPlannerSimplified": {
@@ -1554,7 +1632,8 @@
             "title": "Important notice about AI-generated plans",
             "body": "This plan is automatically generated by AI. Please verify latest opening hours, prices, and addresses on official websites."
           },
-          "accommodationDescription": "Accommodation area for day {day}"
+          "accommodationDescription": "Accommodation area for day {day}",
+          "dayLabelWithNumber": "Day {day}"
         },
         "citationBadge": {
           "labels": {

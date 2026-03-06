@@ -26,7 +26,7 @@ import {
   FaMap,
   FaList,
 } from "react-icons/fa";
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useFlags } from "@/context/FlagsContext";
 import { useAuth } from "@/context/AuthContext";
@@ -229,6 +229,13 @@ export default function ResultView({
   const numberOfDays = result.days.length;
   const numberOfNights = Math.max(0, numberOfDays - 1);
   const durationString = t("durationString", { nights: numberOfNights, days: numberOfDays });
+  const newActivityDefaults = useMemo(
+    () => ({
+      title: t("newActivity.title"),
+      description: t("newActivity.description"),
+    }),
+    [t]
+  );
 
   // --------------------------------------------------------------------------
   // Update Handlers (Direct Editing)
@@ -284,13 +291,13 @@ export default function ResultView({
 
     const newActivity: Activity = {
       time: "12:00",
-      activity: t("newActivity.title"),
-      description: t("newActivity.description"),
+      activity: newActivityDefaults.title,
+      description: newActivityDefaults.description,
     };
 
     day.activities = [...day.activities, newActivity];
     onResultChange?.(newResult);
-  }, [result, onResultChange]);
+  }, [newActivityDefaults, result, onResultChange]);
 
   const handleDeleteActivity = useCallback((dayIndex: number, actIndex: number) => {
     const newResult = { ...result };
@@ -376,7 +383,7 @@ export default function ResultView({
             <Tape color="white" position="top-center" className="w-24 opacity-60 -top-3" />
             {result.heroImagePhotographer && (
               <div className="absolute bottom-2 right-2 bg-black/60 backdrop-blur-sm text-white text-[10px] px-2 py-1 rounded">
-                Photo by {result.heroImagePhotographer}
+                {t("hero.photoBy")} {result.heroImagePhotographer}
               </div>
             )}
           </div>
@@ -401,10 +408,10 @@ export default function ResultView({
             <div className="flex flex-col items-center">
                <div className="flex items-center gap-2 mb-2 justify-center">
                   <Stamp color="black" size="sm" className="w-12 h-12 text-[0.6rem] border-2">
-                     DESTI<br/>NATION
+                     {t("hero.destinationStampLine1")}<br/>{t("hero.destinationStampLine2")}
                   </Stamp>
                   <div className="flex flex-col items-start">
-                     <span className="text-xs font-mono text-stone-400 tracking-widest">TRAVEL TO</span>
+                     <span className="text-xs font-mono text-stone-400 tracking-widest">{t("hero.travelToLabel")}</span>
                      <HandwrittenText tag="h1" className="text-4xl sm:text-6xl font-bold text-stone-800 tracking-tight">
                         {result.destination}
                      </HandwrittenText>
@@ -613,7 +620,7 @@ export default function ResultView({
                       <div className="relative z-30 mb-6 flex items-center gap-3">
                         <div className="flex items-center gap-3 bg-white py-2.5 px-5 rounded-xl shadow-sm border border-stone-200">
                           <div className="flex items-baseline gap-1">
-                            <span className="text-xs text-stone-400 font-bold uppercase tracking-wider">Day</span>
+                            <span className="text-xs text-stone-400 font-bold uppercase tracking-wider">{t("dayLabel")}</span>
                             <span className="text-2xl font-bold text-primary tabular-nums">
                               {day.day}
                             </span>

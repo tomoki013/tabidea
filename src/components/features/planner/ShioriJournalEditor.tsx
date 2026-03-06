@@ -137,7 +137,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
       {days.map((day) => (
         <section key={day.id} className="rounded-xl border border-stone-200 bg-white p-5">
           <div className="mb-4 border-b border-dashed border-stone-200 pb-3">
-            <h4 className="text-lg font-semibold text-stone-800">Day {day.day_number}</h4>
+            <h4 className="text-lg font-semibold text-stone-800">{t("dayLabelWithNumber", { day: day.day_number })}</h4>
             <p className="text-sm text-stone-500">{day.title ?? t("defaultDayTitle")}</p>
           </div>
 
@@ -200,7 +200,7 @@ export default function ShioriJournalEditor({ days, onSaveEntry }: ShioriJournal
                     <textarea
                       value={draft.photoUrlsText}
                       onChange={(event) => updateDraft(item.id, { photoUrlsText: event.target.value })}
-                      placeholder="https://..."
+                      placeholder={t("photoUrlPlaceholder")}
                       className="min-h-[72px] rounded-md border border-stone-200 bg-white px-3 py-2 text-sm text-stone-700"
                     />
                   </label>

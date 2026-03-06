@@ -71,7 +71,7 @@ export default function DayPlaceholder({
           </div>
           <div className="flex-1">
             <h3 className="font-bold text-red-800 text-lg mb-1">
-              Day {day} {t("errorTitle")}
+              {t("dayTitle", { day })} {t("errorTitle")}
             </h3>
             <p className="text-sm text-red-600 mb-4">{error}</p>
             {onRetry && (
@@ -110,7 +110,7 @@ export default function DayPlaceholder({
         </div>
         <div className="flex-1">
           <h3 className="font-bold text-stone-800 text-lg">
-            {title || `Day ${day}`}
+            {title || t("dayTitle", { day })}
           </h3>
           {highlightAreas && highlightAreas.length > 0 && (
             <div className="flex flex-wrap gap-1.5 mt-2">
